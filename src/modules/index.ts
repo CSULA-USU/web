@@ -4,4 +4,5 @@ export * from './Footer';
 export * from './Header';
 export * from './HeroSection';
 export * from './Opportunities';
+export * from './Page';
 export * from './UpcomingEvents';

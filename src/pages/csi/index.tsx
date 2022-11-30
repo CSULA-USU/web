@@ -1,9 +1,5 @@
 import Head from 'next/head';
 import {
-  HeroSection,
-  UpcomingEvents,
-  OpportunitiesCTA,
-  BoardOfDirectorsCTA,
   Page,
 } from 'modules';
 
@@ -23,11 +19,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <HeroSection />
-      <UpcomingEvents />
-      <OpportunitiesCTA />
-      <BoardOfDirectorsCTA />
+      <h1>CSI Lives Here</h1>
     </Page>
   );
 }
