@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { Typography } from 'components';
 import { Colors } from 'theme';
+import Link from 'next/link';
 
 const FooterContainer = styled.div`
   display: flex;
@@ -50,9 +51,11 @@ export const Footer = () => (
         <Typography as="h5" variant="smallHeading" color="white">
           Stay Connected
         </Typography>
-        <Typography color="primary" size="sm" lineHeight="2.4">
-          Instagram
-        </Typography>
+        <Link href="https://www.instagram.com/usucalstatela/">
+          <Typography color="primary" size="sm" lineHeight="2.4">
+            Instagram
+          </Typography>
+        </Link>
       </div>
       <div>
         <Typography as="h5" variant="smallHeading" color="white">
