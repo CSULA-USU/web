@@ -1,8 +1,25 @@
+import styled from 'styled-components';
 import Head from 'next/head';
+import Image from 'next/image'
 import {
     Page,
 } from 'modules';
 
+const RecreationContainer = styled.div`
+    background-color: red;
+    height: 1000px;
+    max-width: 100%;
+`
+
+const RecreationHeroContainer = styled.div`
+    background: url('/recreation-hero-background.jpg') no-repeat;
+    background-size: cover;
+    height: 640px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 export default function Home() {
     return (
         <Page>
@@ -19,7 +36,11 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1>recreation Lives Here</h1>
+            <RecreationContainer>
+                <RecreationHeroContainer>
+                    <Image src="/recreation-hero.png" alt="recreation logo" width="660" height="258" />
+                </RecreationHeroContainer>
+            </RecreationContainer>
         </Page>
     );
 }
