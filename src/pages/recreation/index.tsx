@@ -14,7 +14,7 @@ const RecreationContainer = styled.div`
 `
 
 const RecreationHeroContainer = styled.div`
-    background: url('/recreation-hero-background.jpg') no-repeat;
+    background: url('/recreation/recreation-hero-background.jpg') no-repeat;
     background-size: cover;
     height: 960px;
     max-width: 100%;
@@ -28,6 +28,13 @@ const RecreationInnerContainer = styled.div`
     max-width: 1000px;
     text-align: center;
     margin: 0 auto;
+`
+
+const FlavourImageContainer = styled.div`
+    height: 320px;
+    max-width: 100%
+    display: flex;
+    background-color: green;
 `
 export default function Home() {
     return (
@@ -47,7 +54,7 @@ export default function Home() {
             </Head>
             <RecreationContainer>
                 <RecreationHeroContainer>
-                    <Image src="/recreation-hero.png" alt="recreation logo" width="660" height="258" />
+                    <Image src="/recreation/recreation-hero.png" alt="recreation logo" width="660" height="258" />
                 </RecreationHeroContainer>
                 <RecreationInnerContainer>
                     <Typography as="h2" variant="bodySerif" size="lg" weight="500" margin="24px 0 24px">
@@ -69,8 +76,10 @@ export default function Home() {
                     <div>
                         <Typography as="p" variant="bodySerif">
                             <strong>Renovations:</strong>
+                                    <FlavourImageContainer>
+                                        New rubber flooring in the fitness center
+                                    </FlavourImageContainer>
                             <ul>
-                                <li>New rubber flooring in the fitness center</li>
                                 <li>All new strength equipment</li>
                                 <li>Expansion of fitness into the former games room.</li>
                             </ul>
@@ -79,6 +88,6 @@ export default function Home() {
                     </div>
                 </RecreationInnerContainer>
             </RecreationContainer>
-        </Page>
+        </Page >
     );
 }
