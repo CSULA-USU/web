@@ -30,17 +30,31 @@ const RecreationInnerContainer = styled.div`
     margin: 0 auto;
 `
 
-const FlavourImageContainer = styled.div`
-    height: 320px;
-    max-width: 100%
+const FlavourImageContainerLeft = styled.div`
     display: flex;
-    background-color: green;
+    height: 400px;
+    max-width: 1000px;
+    justify-content: space-between;
+    overflow: hidden;
+`
+
+const FlavourImageSection = styled.div`
+    width: 600px;
+    height: 100%;
+    background: url('/recreation/recreation-floor.jpg') no-repeat;
+    border-radius: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+`
+const FlavourTextSection = styled.div`
+    display: flex;
+    align-items: center;
 `
 export default function Home() {
     return (
         <Page>
             <Head>
-                <title>University-Student Union</title>
+                <title>Recreation</title>
                 <meta name="author" content="Recreation" />
                 <meta
                     name="keywords"
@@ -73,19 +87,27 @@ export default function Home() {
                         Esports. The Recreation Fitness Center is located on the basement level of the
                         U-SU, and will be open to all students, staff and faculty.
                     </Typography>
-                    <div>
-                        <Typography as="p" variant="bodySerif">
-                            <strong>Renovations:</strong>
-                                    <FlavourImageContainer>
-                                        New rubber flooring in the fitness center
-                                    </FlavourImageContainer>
-                            <ul>
-                                <li>All new strength equipment</li>
-                                <li>Expansion of fitness into the former games room.</li>
-                            </ul>
-                            For updates and ways to connect now, follow @calstatela_recreation on Instagram!
-                        </Typography>
-                    </div>
+                    <Typography as="h3" variant="smallHeadingCaps" margin="24px 0 24px">
+                        new renovations:
+                    </Typography>
+
+                    <FlavourImageContainerLeft>
+                        <FlavourImageSection>
+                            {/* flavour image goes here */}
+                        </FlavourImageSection>
+                        <FlavourTextSection>
+                            <Typography as="p" variant="bodySerif">
+                                New rubber flooring in the fitness center
+                            </Typography>
+                        </FlavourTextSection>
+                    </FlavourImageContainerLeft>
+                    <Typography as="p" variant="bodySerif">
+                        <ul>
+                            <li>All new strength equipment</li>
+                            <li>Expansion of fitness into the former games room.</li>
+                        </ul>
+                        For updates and ways to connect now, follow @calstatela_recreation on Instagram!
+                    </Typography>
                 </RecreationInnerContainer>
             </RecreationContainer>
         </Page >
