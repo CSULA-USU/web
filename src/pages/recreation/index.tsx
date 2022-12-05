@@ -4,10 +4,10 @@ import Image from 'next/image'
 import {
     Page,
 } from 'modules';
-import { Typography } from 'components';
+import { Typography, TextAndImage } from 'components';
 
 const RecreationContainer = styled.div`
-    height: 2000px;
+    height: 2848px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -30,26 +30,6 @@ const RecreationInnerContainer = styled.div`
     margin: 0 auto;
 `
 
-const FlavourImageContainerLeft = styled.div`
-    display: flex;
-    height: 400px;
-    max-width: 1000px;
-    justify-content: space-between;
-    overflow: hidden;
-`
-
-const FlavourImageSection = styled.div`
-    width: 600px;
-    height: 100%;
-    background: url('/recreation/recreation-floor.jpg') no-repeat;
-    border-radius: 16px;
-    background-size: contain;
-    background-repeat: no-repeat;
-`
-const FlavourTextSection = styled.div`
-    display: flex;
-    align-items: center;
-`
 export default function Home() {
     return (
         <Page>
@@ -87,25 +67,21 @@ export default function Home() {
                         Esports. The Recreation Fitness Center is located on the basement level of the
                         U-SU, and will be open to all students, staff and faculty.
                     </Typography>
-                    <Typography as="h3" variant="smallHeadingCaps" margin="24px 0 24px">
+                    <Typography as="h3" variant="smallHeadingCaps" margin="24px 0 0 0">
                         new renovations:
                     </Typography>
 
-                    <FlavourImageContainerLeft>
-                        <FlavourImageSection>
-                            {/* flavour image goes here */}
-                        </FlavourImageSection>
-                        <FlavourTextSection>
-                            <Typography as="p" variant="bodySerif">
-                                New rubber flooring in the fitness center
-                            </Typography>
-                        </FlavourTextSection>
-                    </FlavourImageContainerLeft>
-                    <Typography as="p" variant="bodySerif">
-                        <ul>
-                            <li>All new strength equipment</li>
-                            <li>Expansion of fitness into the former games room.</li>
-                        </ul>
+                    <TextAndImage imageOrientation="left" img="/recreation/recreation-treadmill.jpg">
+                        Expansion of fitness into former games room
+                    </TextAndImage>
+                    <TextAndImage imageOrientation="right" img="/recreation/recreation-bench.jpg">
+                        All new strength equipment
+                    </TextAndImage>
+                    <TextAndImage imageOrientation="left" img="/recreation/recreation-floor-2.jpg">
+                        New rubber flooring in the fitness center
+                    </TextAndImage>
+
+                    <Typography as="p" variant="bodySerif" margin="24px 0 24px">
                         For updates and ways to connect now, follow @calstatela_recreation on Instagram!
                     </Typography>
                 </RecreationInnerContainer>
