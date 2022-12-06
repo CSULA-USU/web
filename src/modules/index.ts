@@ -6,3 +6,7 @@ export * from './HeroSection';
 export * from './Opportunities';
 export * from './Page';
 export * from './UpcomingEvents';
+export * from './DepartmentPage';
+export * from "./DepartmentPageNav";
+export * from "./DepartmentProgramSection";
+export * from "./DepartmentTextContainer";
