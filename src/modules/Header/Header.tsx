@@ -8,7 +8,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 120px;
-  padding: 36px;
+  padding: 36px 120px;
 `;
 
 const Nav = styled.nav`
@@ -36,11 +36,12 @@ const Search = styled.input`
 `;
 
 const GetInvolvedButton = styled.button`
-  border-radius: 50px;
-  padding: 24px 36px;
+  border-radius: 40px;
   background-color: ${Colors.primary};
   border: none;
   font-weight: bold;
+  width: 245px;
+  height: 50px;
 `;
 
 export const Header = () => (
