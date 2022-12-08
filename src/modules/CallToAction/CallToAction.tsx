@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Button, Typography } from 'components';
 import { Colors } from 'theme';
 
-const CTAYellowContainer = styled.div`
+const CTAContainer = styled.div`
   background-color: ${Colors.primary};
   padding: 36px 72px;
 `;
-const CTAYellowInner = styled.div`
+const CTAInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,23 +18,17 @@ const CTAYellowInner = styled.div`
   }
 `;
 
-type CTAYellowProps = {
-  leftTop: string;
-  leftBottom: string;
+type CTAProps = {
+  children: React.ReactNode;
   text: string;
   buttonText: string;
 }
 
-export const CTAYellow = ({leftTop, leftBottom, text, buttonText}: CTAYellowProps) => (
-  <CTAYellowContainer>
-    <CTAYellowInner>
+export const CallToAction = ({children, text, buttonText}: CTAProps) => (
+  <CTAContainer>
+    <CTAInner>
       <div>
-        <Typography as="h2" size="4xl">
-          {leftTop} <br />
-          <Typography as="span" variant="largeHeading">
-            {leftBottom}
-          </Typography>
-        </Typography>
+        {children}
       </div>
       <div>
         <Typography variant="bodySerif" margin="0 0 16px">
@@ -45,6 +39,6 @@ export const CTAYellow = ({leftTop, leftBottom, text, buttonText}: CTAYellowProp
           {buttonText}
         </Button>
       </div>
-    </CTAYellowInner>
-  </CTAYellowContainer>
+    </CTAInner>
+  </CTAContainer>
 );
