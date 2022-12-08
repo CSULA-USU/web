@@ -1,20 +1,28 @@
+import { FluidContainer } from 'components';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
 
 const NavContainer = styled.div`
-  background-color: ${Colors.greyDarkest};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
-  padding: 36px 120px;
+  img {
+    width: 200px;
+    height: auto;
+  }
+`;
+const NavExtra = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const NavItems = styled.nav`
-display: flex;
-align-items: center;
-a {
+  display: flex;
+  align-items: center;
+  a {
     font-weight: 700;
     color: ${Colors.grey};
     display: inline-block;
@@ -22,17 +30,9 @@ a {
       margin-right: 48px;
     }
   }
-a:hover {
-  color: white;
-}
-`;
-
-const Search = styled.input`
-  border-radius: 26px;
-  margin-right: 24px;
-  padding: 24px;
-  width: 230px;
-  height: 52px;
+  a:hover {
+    color: white;
+  }
 `;
 
 const GetInvolvedButton = styled.button`
@@ -45,23 +45,23 @@ const GetInvolvedButton = styled.button`
 `;
 
 export const Nav = () => (
-  <NavContainer>
-    <Image
-      src="/usu-logo-white.png"
-      alt="Cal State LA Univeristy-Student Union Logo"
-      width={253}
-      height={89}
-    />
-    <NavItems>
-      <a href="#">About</a>
-      <a href="#">Events</a>
-      <a href="#">Departments</a>
-      <a href="#">Employment</a>
-      <a href="#">Governance</a>
-    </NavItems>
-    <div>
-      <Search placeholder="Search" />
-      <GetInvolvedButton>Get Involved</GetInvolvedButton>
-    </div>
-  </NavContainer>
+  <FluidContainer backgroundColor="greyDarkest">
+    <NavContainer>
+      <img
+        src="/usu-logo-white.png"
+        alt="Cal State LA Univeristy-Student Union Logo"
+      />
+      <NavItems>
+        <a href="#">About</a>
+        <a href="#">Events</a>
+        <a href="#">Departments</a>
+        <a href="#">Employment</a>
+        <a href="#">Governance</a>
+      </NavItems>
+      <NavExtra>
+        <MdSearch color={Colors.white} fontSize="36px" />
+        <GetInvolvedButton>Get Involved</GetInvolvedButton>
+      </NavExtra>
+    </NavContainer>
+  </FluidContainer>
 );

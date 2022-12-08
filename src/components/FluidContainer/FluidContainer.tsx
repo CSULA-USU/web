@@ -11,7 +11,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
 
 const FluidInner = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
 `;
 
 interface FluidContainerProps {
