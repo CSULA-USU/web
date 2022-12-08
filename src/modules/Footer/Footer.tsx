@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Typography } from 'components';
 import { Colors } from 'theme';
 import { FluidContainer } from 'components';
+import { AiOutlineInstagram } from 'react-icons/Ai';
 
 const FooterInner = styled.div`
   display: flex;
@@ -21,16 +22,14 @@ const FooterBottomContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   gap: 50px;
-  width: 1800px;
 `;
 const FooterTopContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
 export const Footer = () => (
-  <FluidContainer backgroundColor='greyDarkest'>
+  <FluidContainer backgroundColor="greyDarkest">
     <FooterTopContainer>
       <FooterInner>
         <Image
@@ -63,14 +62,12 @@ export const Footer = () => (
           <Typography color="primary" size="sm" lineHeight="2.4">
             Black Lives Matter Resources
           </Typography>
-          <div>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Covid-19 Resources
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              View Public Documents
-            </Typography>
-          </div>
+          <Typography color="primary" size="sm" lineHeight="2.4">
+            Covid-19 Resources
+          </Typography>
+          <Typography color="primary" size="sm" lineHeight="2.4">
+            View Public Documents
+          </Typography>
         </div>
       </FooterInner>
     </FooterTopContainer>
@@ -88,6 +85,10 @@ export const Footer = () => (
       <Typography color="greyLighter" size="sm" lineHeight="2.4">
         (323) 343-2465
       </Typography>
+      <AiOutlineInstagram
+        color={Colors.greyLighter}
+        fontSize="32px"
+      ></AiOutlineInstagram>
     </FooterBottomContainer>
   </FluidContainer>
 );
