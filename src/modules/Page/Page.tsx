@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Footer } from 'modules';
+import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
 
 const PageContainer = styled.div`
@@ -19,7 +19,7 @@ interface PageProps {
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
     <div>
-      <Header />
+      <Nav />
       {children}
     </div>
     <Footer />
