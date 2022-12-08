@@ -7,7 +7,6 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 1920px;
   margin: 0 auto;
   background-color: ${Colors.white};
 `;
