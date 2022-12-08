@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import {
-  HeroSection,
+  Header,
   UpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
@@ -25,7 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeroSection />
+      <Header />
       <UpcomingEvents />
       <CallToAction
         buttonText="View Opportunities"

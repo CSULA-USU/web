@@ -1,67 +1,44 @@
-import Image from 'next/image';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Typography, Button } from 'components';
+import { EventCard } from 'modules';
 
 const HeaderContainer = styled.div`
-  background-color: ${Colors.greyDarkest};
+  height: 835px;
+  background: url('/hero-background.jpg');
+  background-size: cover;
+  padding: 72px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 120px;
-  padding: 36px 120px;
+  justify-content: space-between;
 `;
 
-const Nav = styled.nav`
-display: flex;
-align-items: center;
-a {
-    font-weight: 700;
-    color: ${Colors.grey};
-    display: inline-block;
-    &:not(:last-child) {
-      margin-right: 48px;
-    }
-  }
-a:hover {
-  color: white;
-}
+const CTASection = styled.div`
+  margin-right: 144px;
 `;
 
-const Search = styled.input`
-  border-radius: 26px;
-  margin-right: 24px;
-  padding: 24px;
-  width: 230px;
-  height: 52px;
-`;
-
-const GetInvolvedButton = styled.button`
-  border-radius: 40px;
-  background-color: ${Colors.primary};
-  border: none;
-  font-weight: bold;
-  width: 245px;
-  height: 50px;
+const FeaturedEventSection = styled.div`
+  flex: 1;
 `;
 
 export const Header = () => (
   <HeaderContainer>
-    <Image
-      src="/usu-logo-white.png"
-      alt="Cal State LA Univeristy-Student Union Logo"
-      width={253}
-      height={89}
-    />
-    <Nav>
-      <a href="#">About</a>
-      <a href="#">Events</a>
-      <a href="#">Departments</a>
-      <a href="#">Employment</a>
-      <a href="#">Governance</a>
-    </Nav>
-    <div>
-      <Search placeholder="Search" />
-      <GetInvolvedButton>Get Involved</GetInvolvedButton>
-    </div>
+    <CTASection>
+      <Typography as="h1" variant="heroHeading">Welcome to the U-SU!</Typography>
+      <Button variant="black">
+        View Event Calendar
+      </Button>
+    </CTASection>
+    <FeaturedEventSection>
+      <Typography as="h2" variant="smallHeadingCaps" margin='0 0 24px'>Featured Event</Typography>
+      <EventCard
+        featured
+        image="/event-0.jpg"
+        org="APISRC"
+        title="A Very Important Event"
+        location="204B"
+        time="4:00 PM – 5:00 PM"
+        url="#"
+      />
+    </FeaturedEventSection>
   </HeaderContainer>
 );
