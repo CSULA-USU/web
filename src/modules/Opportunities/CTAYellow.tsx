@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Button, Typography } from 'components';
 import { Colors } from 'theme';
 
-const OpportunitiesCTAContainer = styled.div`
+const CTAYellowContainer = styled.div`
   background-color: ${Colors.primary};
   padding: 36px 72px;
 `;
-const OpportunitiesCTAInner = styled.div`
+const CTAYellowInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,16 +18,16 @@ const OpportunitiesCTAInner = styled.div`
   }
 `;
 
-type ReusableOpportunitiesCTAProps = {
+type CTAYellowProps = {
   leftTop: string;
   leftBottom: string;
   text: string;
   buttonText: string;
 }
 
-export const ReusableOpportunitiesCTA = ({leftTop, leftBottom, text, buttonText}: ReusableOpportunitiesCTAProps) => (
-  <OpportunitiesCTAContainer>
-    <OpportunitiesCTAInner>
+export const CTAYellow = ({leftTop, leftBottom, text, buttonText}: CTAYellowProps) => (
+  <CTAYellowContainer>
+    <CTAYellowInner>
       <div>
         <Typography as="h2" size="4xl">
           {leftTop} <br />
@@ -45,6 +45,6 @@ export const ReusableOpportunitiesCTA = ({leftTop, leftBottom, text, buttonText}
           {buttonText}
         </Button>
       </div>
-    </OpportunitiesCTAInner>
-  </OpportunitiesCTAContainer>
+    </CTAYellowInner>
+  </CTAYellowContainer>
 );

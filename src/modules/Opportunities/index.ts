@@ -1,2 +1,2 @@
 export * from './OpportunitiesCTA';
-export * from './ReusableOpportunitiesCTA';
+export * from './CTAYellow';
