@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { Typography } from 'components';
 import { Colors } from 'theme';
-import Link from 'next/link';
+import { AiOutlineInstagram } from 'react-icons/Ai';
 
 const FooterContainer = styled.div`
   padding: 52px 52px 22px 52px;
@@ -26,9 +26,7 @@ const FooterBottomContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   gap: 50px;
-  width: 1800px;
 `;
 const FooterTopContainer = styled.div`
   display: flex;
@@ -94,6 +92,7 @@ export const Footer = () => (
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
           (323) 343-2465
         </Typography>
+        <AiOutlineInstagram color={Colors.greyLighter} fontSize="32px"></AiOutlineInstagram>
       </FooterBottomContainer>
     </FooterContainer>
   </>
