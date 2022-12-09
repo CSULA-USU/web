@@ -1,13 +1,7 @@
-import { Button, Typography } from 'components';
+import { Button, Typography, FluidContainer } from 'components';
 import { EventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 
-const UpcomingEventsContainer = styled.div`
-  padding: 72px;
-  > div:not(:last-child) {
-    margin-bottom: 16px;
-  }
-`;
 const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
@@ -17,6 +11,7 @@ const UpcomingEventsContent = styled.div`
   justify-content: space-between;
   > div:not(:last-child) {
     margin-right: 16px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -62,8 +57,9 @@ const events = [
     url: '#',
   },
 ];
+
 export const UpcomingEvents = () => (
-  <UpcomingEventsContainer>
+  <FluidContainer>
     <UpcomingEventsHeading>
       <Typography as="h2" variant="heading" margin="0 24px 0 0">
         Upcoming Events
@@ -82,5 +78,5 @@ export const UpcomingEvents = () => (
         <EventCard key={`${i} ${event.title}`} {...event} />
       ))}
     </UpcomingEventsContent>
-  </UpcomingEventsContainer>
+  </FluidContainer>
 );

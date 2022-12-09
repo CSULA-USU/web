@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import {
-  HeroSection,
+  Header,
   UpcomingEvents,
-  OpportunitiesCTA,
   BoardOfDirectorsCTA,
   Page,
+  CallToAction,
 } from 'modules';
+import { Typography } from 'components';
 
 export default function Home() {
   return (
@@ -24,9 +25,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeroSection />
+      <Header />
       <UpcomingEvents />
-      <OpportunitiesCTA />
+      <CallToAction
+        buttonText="View Opportunities"
+        text="Catalyze your professional development and building your network by
+          becoming a valued member of the U-SU."
+      >
+        <Typography as="h2" size="4xl">
+          Join the <br />
+          <Typography as="span" variant="largeHeading">
+            U-Krew!
+          </Typography>
+        </Typography>
+      </CallToAction>
       <BoardOfDirectorsCTA />
     </Page>
   );
