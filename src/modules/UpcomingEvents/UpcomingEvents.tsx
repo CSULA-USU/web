@@ -2,12 +2,6 @@ import { Button, Typography, FluidContainer } from 'components';
 import { EventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 
-const UpcomingEventsContainer = styled.div`
-  padding: 72px;
-  > div:not(:last-child) {
-    margin-bottom: 16px;
-  }
-`;
 const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
@@ -17,7 +11,7 @@ const UpcomingEventsContent = styled.div`
   justify-content: space-between;
   > div:not(:last-child) {
     margin-right: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 `;
 
