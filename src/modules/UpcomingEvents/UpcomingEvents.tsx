@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
 `;
 const UpcomingEventsContent = styled.div`
   display: flex;
