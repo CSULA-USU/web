@@ -57,6 +57,7 @@ const events = [
     url: '#',
   },
 ];
+
 export const UpcomingEvents = () => (
   <FluidContainer>
     <UpcomingEventsHeading>
