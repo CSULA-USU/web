@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Typography } from 'components';
 import { Colors } from 'theme';
 import { FluidContainer } from 'components';
-import { AiOutlineInstagram } from 'react-icons/Ai';
+import { AiOutlineInstagram } from 'react-icons/ai';
 
 const FooterInner = styled.div`
   display: flex;

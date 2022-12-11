@@ -1,4 +1,5 @@
 export * from './Button'
 export * from './FluidContainer'
+export * from './Image'
 export * from './Typography'
 export * from './TextAndImage'

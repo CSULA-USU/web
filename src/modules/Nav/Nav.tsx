@@ -1,5 +1,4 @@
-import { FluidContainer } from 'components';
-import Image from 'next/image';
+import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
@@ -47,7 +46,7 @@ const GetInvolvedButton = styled.button`
 export const Nav = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <NavContainer>
-      <img
+      <Image
         src="/usu-logo-white.png"
         alt="Cal State LA Univeristy-Student Union Logo"
       />
