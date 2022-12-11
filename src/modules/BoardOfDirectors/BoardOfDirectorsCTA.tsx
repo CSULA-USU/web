@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Typography } from 'components';
+import { Button, Typography, FluidContainer } from 'components';
 import { Colors } from 'theme';
 
 const BoardOfDirectorsCTAContainer = styled.div`
@@ -25,18 +25,22 @@ const BoardOfDirectorsCTAButtons = styled.div`
 `;
 export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>
-    <BoardOfDirectorsCTAText>
-      <Typography as="h2" variant="largeHeading">
-        Board of Directors
-      </Typography>
-      <Typography variant="bodySerif" margin="0 0 24px" size="md">
-        Join the board of directors to make a difference while developing your
-        leadership skills
-      </Typography>
-    </BoardOfDirectorsCTAText>
-    <BoardOfDirectorsCTAButtons>
-      <Button margin="0 24px 0 0" variant="black">Apply To Be A Student Leader</Button>
-      <Button variant="outline">View Current Chair Members</Button>
-    </BoardOfDirectorsCTAButtons>
+    <FluidContainer>
+      <BoardOfDirectorsCTAText>
+        <Typography as="h2" variant="largeHeading">
+          Board of Directors
+        </Typography>
+        <Typography variant="bodySerif" margin="0 0 24px" size="md">
+          Join the board of directors to make a difference while developing your
+          leadership skills
+        </Typography>
+      </BoardOfDirectorsCTAText>
+      <BoardOfDirectorsCTAButtons>
+        <Button margin="0 24px 0 0" variant="black">
+          Apply To Be A Student Leader
+        </Button>
+        <Button variant="outline">View Current Chair Members</Button>
+      </BoardOfDirectorsCTAButtons>
+    </FluidContainer>
   </BoardOfDirectorsCTAContainer>
 );
