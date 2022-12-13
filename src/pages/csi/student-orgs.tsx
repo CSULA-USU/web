@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { FluidContainer } from 'components';
-import { Page, StudentOrgsHeroSection } from 'modules';
+import { Page, StudentOrgsHeroSection, StudentOrgsSubHeader } from 'modules';
 
 export default function StudentOrgs() {
   return (
@@ -24,6 +24,7 @@ export default function StudentOrgs() {
       </Head>
       <FluidContainer>
         <StudentOrgsHeroSection/>
+        <StudentOrgsSubHeader/>
       </FluidContainer>
     </Page>
   );

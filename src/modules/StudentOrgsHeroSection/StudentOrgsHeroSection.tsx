@@ -8,6 +8,7 @@ const StudentOrgsOuterContainer = styled.div`
   width: 552px;
   margin: auto;
   text-align: center;
+  margin-bottom: 77px;
 `;
 const Border = styled.div`
   height: 100px;

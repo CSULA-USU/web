@@ -6,3 +6,5 @@ export * from './Header';
 export * from './Nav';
 export * from './Page';
 export * from './UpcomingEvents';
+export * from './StudentOrgsHeroSection';
+export * from './StudentOrgsSubHeader';
