@@ -51,11 +51,11 @@ export const Nav = () => (
         alt="Cal State LA Univeristy-Student Union Logo"
       />
       <NavItems>
-        <a href="#">About</a>
-        <a href="#">Events</a>
-        <a href="#">Departments</a>
-        <a href="#">Employment</a>
-        <a href="#">Governance</a>
+        <a href="/about">About</a>
+        <a href="/events">Events</a>
+        <a href="/departments">Departments</a>
+        <a href="/employment">Employment</a>
+        <a href="/governance">Governance</a>
       </NavItems>
       <NavExtra>
         <MdSearch color={Colors.white} fontSize="36px" />

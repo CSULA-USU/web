@@ -52,7 +52,7 @@ const StyledButton = styled.button`
   ${getCSS}
 `;
 
-export const Button = ({ href, ...props }: ButtonProps) => {
-  const ButtonComponent: any = href ? StyledAnchor : StyledButton;
+export const Button = (props: ButtonProps) => {
+  const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
   return <ButtonComponent {...props} />;
 };
