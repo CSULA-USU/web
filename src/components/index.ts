@@ -1,3 +1,4 @@
+export * from './Announcement'
 export * from './Button'
 export * from './FluidContainer'
 export * from './Image'
