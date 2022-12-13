@@ -31,7 +31,7 @@ export default function Home() {
         buttonText="View Opportunities"
         text="Catalyze your professional development and building your network by
           becoming a valued member of the U-SU."
-        href="/governance"
+        href="/employment"
       >
         <Typography as="h2" size="4xl">
           Join the <br />
