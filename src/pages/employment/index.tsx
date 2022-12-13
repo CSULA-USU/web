@@ -4,6 +4,7 @@ import { FluidContainer, Typography } from 'components';
 import jobs from 'data/employment.json';
 import styled from 'styled-components';
 import { Colors } from 'theme';
+import Link from 'next/link';
 
 const JobListingContainer = styled.div`
   display: flex;
@@ -52,11 +53,11 @@ export default function Home() {
                 <Typography as="h3" variant="smallHeadingCaps" color="grey">
                   {j.department}
                 </Typography>
-                <a href={j.href}>
+                <Link href={j.href}>
                   <Typography as="h4" variant="smallHeading">
                     {j.title}
                   </Typography>
-                </a>
+                </Link>
               </JobItem>
             ))}
           </div>
@@ -69,11 +70,11 @@ export default function Home() {
                 <Typography as="h3" variant="smallHeadingCaps" color="grey">
                   {j.department}
                 </Typography>
-                <a href={j.href}>
+                <Link href={j.href}>
                   <Typography as="h4" variant="smallHeading">
                     {j.title}
                   </Typography>
-                </a>
+                </Link>
               </JobItem>
             ))}
           </div>
@@ -83,13 +84,13 @@ export default function Home() {
         <Typography as="h3" variant="heading">
           Applications
         </Typography>
-        <a href="/usuforms/u-su/ProfessionalEmployment.pdf">
+        <Link href="/usuforms/u-su/ProfessionalEmployment.pdf">
           Professional Appointment
-        </a>
+        </Link>
         <br />
-        <a href="https://form.jotform.com/210416532268047">
+        <Link href="https://form.jotform.com/210416532268047">
           U-SU Board of Directors
-        </a>
+        </Link>
       </FluidContainer>
     </Page>
   );

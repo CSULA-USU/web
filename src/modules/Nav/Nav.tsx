@@ -2,6 +2,7 @@ import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
+import Link from 'next/link';
 
 const NavContainer = styled.div`
   display: flex;
@@ -51,11 +52,11 @@ export const Nav = () => (
         alt="Cal State LA Univeristy-Student Union Logo"
       />
       <NavItems>
-        <a href="/about">About</a>
-        <a href="/events">Events</a>
-        <a href="/departments">Departments</a>
-        <a href="/employment">Employment</a>
-        <a href="/governance">Governance</a>
+        <Link href="/about">About</Link>
+        <Link href="/events">Events</Link>
+        <Link href="/departments">Departments</Link>
+        <Link href="/employment">Employment</Link>
+        <Link href="/governance">Governance</Link>
       </NavItems>
       <NavExtra>
         <MdSearch color={Colors.white} fontSize="36px" />
