@@ -18,7 +18,7 @@ const FeaturedEventSection = styled.div`
 `;
 
 export const Header = () => (
-  <FluidContainer backgroundImage="/hero-background.jpg">
+  <FluidContainer backgroundImage="/subtle-background-1.jpg">
     <HeaderContainer>
       <CTASection>
         <Typography as="h1" variant="heroHeading">

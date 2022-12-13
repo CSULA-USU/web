@@ -14,7 +14,7 @@ const RecreationContainer = styled.div`
 `
 
 const RecreationHeroContainer = styled.div`
-    background: url('/recreation/recreation-hero-background.jpg') no-repeat;
+    background: url('/recreation/recreation-subtle-background-1.jpg') no-repeat;
     background-size: cover;
     height: 960px;
     max-width: 100%;

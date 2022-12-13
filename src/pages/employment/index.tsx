@@ -38,7 +38,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FluidContainer backgroundImage="/hero-background.jpg">
+      <FluidContainer backgroundImage="/subtle-background-2.jpg">
         <h1>Employment</h1>
       </FluidContainer>
       <FluidContainer>
