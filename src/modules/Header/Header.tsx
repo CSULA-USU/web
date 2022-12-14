@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import {
-  Typography,
-  Button,
-  FluidContainer,
-  VerticalLine,
-  NonBreakingSpan,
-} from 'components';
+import { Typography, Button, FluidContainer, VerticalLine } from 'components';
+
+interface ButtonProps {
+  text: string;
+  href: string;
+}
+interface HeaderProps {
+  title: string;
+  backgroundImage: string;
+  children: React.ReactNode;
+  buttons: ButtonProps[];
+}
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -25,28 +30,30 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const Header = () => (
-  <FluidContainer backgroundImage="/subtle-background-2.jpg">
+export const Header = ({
+  title,
+  children,
+  backgroundImage,
+  buttons,
+}: HeaderProps) => (
+  <FluidContainer backgroundImage={backgroundImage}>
     <HeaderContainer>
       <Typography as="h1" variant="heroHeading">
-        Governance
+        {title}
       </Typography>
       <VerticalLine />
       <Typography as="h2" variant="bodySerif" margin="24px 0">
-        The University-Student Union&apos;s Board of Directors is the governing
-        board of the Union. The purpose of the Board is to establish policy for
-        the Union as a student body center for the benefit of students, faculty,
-        staff and alumni at{' '}
-        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
+        {children}
       </Typography>
-      <ButtonContainer>
-        <Button href="governance/board-of-directors" variant="black">
-          Meet the Board of Directors
-        </Button>
-        <Button href="governance/student-leaders" variant="outline">
-          Be a Student Leader
-        </Button>
-      </ButtonContainer>
+      {buttons && (
+        <ButtonContainer>
+          {buttons.map((b, i) => (
+            <Button key={`${i}_${b.text}`} href={b.href} variant={i > 0 ? 'outline' : 'black'}>
+              {b.text}
+            </Button>
+          ))}
+        </ButtonContainer>
+      )}
     </HeaderContainer>
   </FluidContainer>
 );

@@ -1,10 +1,15 @@
 import Head from 'next/head';
-import {
-  Header,
-  Page,
-} from 'modules';
+import { Header, Page } from 'modules';
+import { NonBreakingSpan } from 'components';
 
 export default function Governance() {
+  const buttons = [
+    {
+      text: 'Meet the Board of Directors',
+      href: 'governance/board-of-directors',
+    },
+    { text: 'Be a Student Leader', href: 'governance/student-leaders' },
+  ];
   return (
     <Page>
       <Head>
@@ -21,7 +26,18 @@ export default function Governance() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header
+        title="Governance"
+        buttons={buttons}
+        backgroundImage="/subtle-background-2.jpg"
+      >
+        The University-Student Union&apos;s Board of Directors is the governing
+        board of the Union. The purpose of the Board is to establish policy for
+        the Union as a student body center for the benefit of students, faculty,
+        staff and alumni at{' '}
+        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
+      </Header>
+      
     </Page>
   );
 }
