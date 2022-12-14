@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint && yarn ts-lint-commit-hook
+yarn lint-staged
+
+# yarn lint && yarn ts-lint-commit-hook
