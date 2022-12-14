@@ -38,11 +38,11 @@ export const Header = ({
 }: HeaderProps) => (
   <FluidContainer backgroundImage={backgroundImage}>
     <HeaderContainer>
-      <Typography as="h1" variant="heroHeading">
+      <Typography as="h1" variant="pageHeader">
         {title}
       </Typography>
       <VerticalLine />
-      <Typography as="h2" variant="bodySerif" margin="24px 0">
+      <Typography as="h2" margin="24px 0">
         {children}
       </Typography>
       {buttons && (

@@ -39,7 +39,7 @@ export const Footer = () => (
           height={90}
         />
         <div>
-          <Typography as="h5" variant="smallHeading" color="white">
+          <Typography as="h5" color="white">
             Involvment
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
@@ -50,7 +50,7 @@ export const Footer = () => (
           </Typography>
         </div>
         <div>
-          <Typography as="h5" variant="smallHeading" color="white">
+          <Typography as="h5" color="white">
             Resources
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">

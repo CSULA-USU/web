@@ -27,10 +27,10 @@ export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>
     <FluidContainer>
       <BoardOfDirectorsCTAText>
-        <Typography as="h2" variant="largeHeading">
+        <Typography as="h2" variant="pageHeader">
           Board of Directors
         </Typography>
-        <Typography variant="bodySerif" margin="0 0 24px" size="md">
+        <Typography margin="0 0 24px">
           Join the board of directors to make a difference while developing your
           leadership skills
         </Typography>

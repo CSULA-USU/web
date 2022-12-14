@@ -75,7 +75,7 @@ export const EventCard = ({
           </Typography>
           <Typography
             as="span"
-            variant="heroHeading"
+            variant="pageHeader"
             color="white"
             lineHeight="1"
           >

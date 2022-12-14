@@ -1,12 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { FontSizes, Colors } from 'theme';
-import { Sizes } from 'types';
 
 interface TypeStyle {
   size?: keyof typeof FontSizes;
   color?: keyof typeof Colors;
-  weight?: string;
+  weight?: '300' | '400' | '700';
   lineHeight?: string;
   margin?: string;
 }
@@ -23,62 +22,70 @@ export interface TypeProps extends TypeStyle {
 interface TypeVariant {
   size: keyof typeof FontSizes;
   weight: string;
-  color: keyof typeof Colors;
+  color?: keyof typeof Colors;
   fontFamily?: string;
   textTransform?: string;
+  lineHeight?: string;
 }
 
 const serif = `'Bitter', serif`;
 
-const styles: { [key: string]: TypeVariant } = {
-  body: { size: 'md', weight: '400', color: 'black' },
-  bodySerif: { size: 'md', weight: '300', color: 'black', fontFamily: serif },
-  heading: { size: 'lg', weight: '700', color: 'black' },
-  largeHeading: {
-    size: '4xl',
-    weight: '700',
-    color: 'black',
-  },
-  heroHeading: {
-    size: '4xl',
-    weight: '700',
-    color: 'black',
+const styles = {
+  pageHeader: { size: '3xl', weight: '700', fontFamily: serif },
+  cta: { size: 'sm', weight: '700' },
+  label: { size: 'lg', weight: '700' },
+  title: { size: 'xl', weight: '700' },
+  titleLarge: {
+    size: '2xl',
+    weight: '300',
+    lineHeight: FontSizes['3xl'],
     fontFamily: serif,
   },
-  smallHeadingCaps: {
+  titleSmall: { size: 'md', weight: '700', lineHeight: FontSizes.lg },
+  copy: {
     size: 'sm',
-    weight: '700',
-    color: 'black',
-    textTransform: 'uppercase',
+    weight: '400',
+    lineHeight: FontSizes.lg,
+    fontFamily: serif,
   },
-  smallHeading: {
-    size: 'sm',
-    weight: '700',
-    color: 'black',
-  },
+  copyLarge: { size: 'lg', weight: '300', fontFamily: serif },
   eventDetail: { size: 'md', weight: '700', color: 'white' },
   eventTitle: { size: '3xl', weight: '700', color: 'white' },
-  eventTime: { size: 'lg', weight: '300', color: 'white', fontFamily: serif },
+  eventTime: {
+    size: 'lg',
+    weight: '300',
+    color: 'white',
+    fontFamily: serif,
+  },
 } as const;
 
 const getCSS = (p: TypeProps) => {
-  const { size, weight, color, fontFamily, textTransform } =
-    styles[p.variant || 'body'];
+  const {
+    size,
+    weight,
+    color = 'black',
+    fontFamily,
+    textTransform,
+    lineHeight,
+  } = styles[p.variant || 'copy'] as TypeVariant;
   return css`
-    ${fontFamily && `font-family: ${fontFamily};`}
-    ${textTransform && `text-transform: ${textTransform};`}
+    *,
+    & {
+      ${fontFamily && `font-family: ${fontFamily};`}
+      ${textTransform && `text-transform: ${textTransform};`}
     font-size: ${FontSizes[p.size || size]};
-    font-weight: ${p.weight || weight};
-    color: ${Colors[p.color || color]};
-    margin: ${p.margin || 0};
-    line-height: ${p.lineHeight || 1.6};;
-    ${p.margin && 'display: inline-block;'}
-    ${p.nowrap &&
-    `
+      font-weight: ${p.weight || weight};
+      color: ${Colors[p.color || color]};
+      margin: ${p.margin || 0};
+      line-height: ${p.lineHeight || lineHeight || 1.6};
+      ${p.margin && 'display: inline-block;'}
+      ${p.nowrap &&
+      `
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
     `}
+    }
   `;
 };
 

@@ -1,15 +1,16 @@
 import { Sizes } from 'types';
 
-export const SpaceSizes: {
-  [Key in Exclude<Sizes, '2xs' | '3xl' | '4xl'>]: string;
+export const Spaces: {
+  [Key in Exclude<Sizes, '3xl' | '4xl'>]: string;
 } = {
   zero: '0px',
-  xs: '4px',
-  sm: '8px',
-  md: '16px',
-  lg: '24px',
-  xl: '36px',
-  '2xl': '72px',
+  '2xs': '4px',
+  xs: '8px',
+  sm: '16px',
+  md: '24px',
+  lg: '36px',
+  xl: '72px',
+  '2xl': '96px',
 } as const;
 
 export const FontSizes: { [Key in Exclude<Sizes, 'zero'>]: string } = {
@@ -18,10 +19,10 @@ export const FontSizes: { [Key in Exclude<Sizes, 'zero'>]: string } = {
   sm: '16px',
   md: '18px',
   lg: '24px',
-  xl: '28px',
-  '2xl': '30px',
-  '3xl': '36px',
-  '4xl': '48px',
+  xl: '36px',
+  '2xl': '48px',
+  '3xl': '64px',
+  '4xl': '96px',
 } as const;
 
 export const Colors = {

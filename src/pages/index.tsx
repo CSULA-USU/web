@@ -35,7 +35,7 @@ export default function Home() {
       >
         <Typography as="h2" size="4xl">
           Join the <br />
-          <Typography as="span" variant="largeHeading">
+          <Typography as="span" variant="titleLarge">
             U-Krew!
           </Typography>
         </Typography>

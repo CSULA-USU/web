@@ -20,7 +20,7 @@ export const Announcement = ({ text, isVisible }: AnnouncementProps) => {
   return isVisible ? (
     <AnnouncementContainer>
       <BsMegaphone fontSize="24px" />
-      <Typography as="h2" variant="bodySerif" weight="500" margin="4px 0 0 8px">
+      <Typography margin="4px 0 0 8px">
         {text}
       </Typography>
     </AnnouncementContainer>

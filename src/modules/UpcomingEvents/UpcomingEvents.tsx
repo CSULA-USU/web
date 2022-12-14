@@ -62,7 +62,7 @@ const events = [
 export const UpcomingEvents = () => (
   <FluidContainer>
     <UpcomingEventsHeading>
-      <Typography as="h2" variant="heading" margin="0 24px 0 0">
+      <Typography as="h2" variant="title" margin="0 24px 0 0">
         Upcoming Events
       </Typography>
       <Button href="#" variant="grey">

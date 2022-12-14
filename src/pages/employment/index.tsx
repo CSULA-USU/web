@@ -45,16 +45,16 @@ export default function Employment() {
       <FluidContainer>
         <JobListingContainer>
           <div>
-            <Typography as="h2" variant="heading" margin="16px 0 8px">
+            <Typography as="h2" variant="title" margin="16px 0 8px">
               Full-time Positions
             </Typography>
             {fulltimeJobs.map((j) => (
               <JobItem key={`${j.department}_${j.title}`}>
-                <Typography as="h3" variant="smallHeadingCaps" color="grey">
+                <Typography as="h3" variant="titleSmall" color="grey">
                   {j.department}
                 </Typography>
                 <Link href={j.href} target="_blank">
-                  <Typography as="h4" variant="smallHeading">
+                  <Typography as="h4" variant="copyLarge">
                     {j.title}
                   </Typography>
                 </Link>
@@ -62,16 +62,16 @@ export default function Employment() {
             ))}
           </div>
           <div>
-            <Typography as="h2" variant="heading" margin="16px 0 8px">
+            <Typography as="h2" variant="pageHeader" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
             {studentJobs.map((j) => (
               <JobItem key={`${j.department}_${j.title}`}>
-                <Typography as="h3" variant="smallHeadingCaps" color="grey">
+                <Typography as="h3" variant="titleSmall" color="grey">
                   {j.department}
                 </Typography>
                 <Link href={j.href} target="_blank">
-                  <Typography as="h4" variant="smallHeading">
+                  <Typography as="h4" variant="copyLarge">
                     {j.title}
                   </Typography>
                 </Link>
@@ -81,7 +81,7 @@ export default function Employment() {
         </JobListingContainer>
       </FluidContainer>
       <FluidContainer>
-        <Typography as="h3" variant="heading">
+        <Typography as="h3" variant="titleLarge">
           Applications
         </Typography>
         <Link href="/usuforms/u-su/ProfessionalEmployment.pdf">

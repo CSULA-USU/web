@@ -21,13 +21,13 @@ export const HomeHeader = () => (
   <FluidContainer backgroundImage="/subtle-background-1.jpg">
     <HeaderContainer>
       <CTASection>
-        <Typography as="h1" variant="heroHeading">
+        <Typography as="h1" variant="pageHeader">
           Welcome to the U-SU!
         </Typography>
         <Button variant="black">View Event Calendar</Button>
       </CTASection>
       <FeaturedEventSection>
-        <Typography as="h2" variant="smallHeadingCaps" margin="0 0 24px">
+        <Typography as="h2" variant="titleSmall" margin="0 0 24px">
           Featured Event
         </Typography>
         <EventCard
