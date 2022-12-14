@@ -30,7 +30,7 @@ const RecreationInnerContainer = styled.div`
     margin: 0 auto;
 `
 
-export default function Home() {
+export default function Recreation() {
     return (
         <Page>
             <Head>

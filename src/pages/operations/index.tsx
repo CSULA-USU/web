@@ -40,7 +40,7 @@ const OperationsDivisionDescriptions = (props: any) => {
         </>
     )
 }
-export default function Home() {
+export default function Operations() {
     return (
         <Page>
             <OperationsContainer>

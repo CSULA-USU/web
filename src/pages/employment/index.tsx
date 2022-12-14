@@ -20,7 +20,7 @@ const JobItem = styled.div`
   margin-bottom: 16px;
 `;
 
-export default function Home() {
+export default function Employment() {
   const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
   const studentJobs = jobs.filter((j) => j.type === 'student-assistant');
   return (

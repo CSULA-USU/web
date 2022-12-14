@@ -34,7 +34,7 @@ const CSIInnerBody = styled.div`
 
 
 
-export default function Home() {
+export default function CSI() {
   return (
     <Page>
       <Head>
