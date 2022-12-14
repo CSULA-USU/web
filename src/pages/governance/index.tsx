@@ -120,6 +120,7 @@ export default function Governance() {
       <FluidContainer flex justifyContent="space-between">
         {cards.map((props) => (
           <Card
+            topBorder
             key={`${props.title}`}
             {...props}
             width="calc(33.33% - 8px)"

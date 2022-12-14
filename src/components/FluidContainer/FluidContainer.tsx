@@ -4,7 +4,7 @@ import { Colors } from 'theme';
 const getBackgroundCSS = (p: FluidContainerProps) => {
   return p.backgroundImage
     ? css`
-        background: url(${p.backgroundImage});
+        background: url(${p.backgroundImage}) no-repeat;
         background-size: cover;
         background-position: center;
       `
@@ -24,7 +24,8 @@ const FluidOuter = styled.div<FluidContainerProps>`
 const FluidInner = styled.div<FluidInnerProps>`
   width: 100%;
   max-width: 1440px;
-  ${(p) => p.innerMaxWidth && `max-width: ${p.innerMaxWidth}`}
+  ${(p) => p.innerMaxWidth && `max-width: ${p.innerMaxWidth};`}
+  ${(p) => p.innerMinHeight && `min-height: ${p.innerMinHeight};`}
   ${(p) =>
     p.flex
       ? css`
@@ -38,6 +39,7 @@ const FluidInner = styled.div<FluidInnerProps>`
 
 interface FluidInnerProps {
   innerMaxWidth?: string;
+  innerMinHeight?: string;
   flex?: boolean;
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   justifyContent?:

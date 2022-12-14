@@ -71,6 +71,9 @@ const getCSS = (p: TypeProps) => {
   return css`
     *,
     & {
+      strong {
+        font-weight: 700;
+      }
       ${fontFamily && `font-family: ${fontFamily};`}
       ${textTransform && `text-transform: ${textTransform};`}
       font-size: ${FontSizes[p.size || size]};

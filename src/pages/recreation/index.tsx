@@ -1,32 +1,13 @@
-import styled from 'styled-components';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Page } from 'modules';
-import { Typography, TextAndImage } from 'components';
-
-const RecreationContainer = styled.div`
-  height: 2848px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const RecreationHeroContainer = styled.div`
-  background: url('/recreation/recreation-subtle-background-1.jpg') no-repeat;
-  background-size: cover;
-  height: 960px;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const RecreationInnerContainer = styled.div`
-  height: 800px;
-  max-width: 1000px;
-  text-align: center;
-  margin: 0 auto;
-`;
+import {
+  Image,
+  Typography,
+  Card,
+  Divider,
+  FluidContainer,
+  VerticalLine,
+} from 'components';
 
 export default function Recreation() {
   return (
@@ -44,64 +25,87 @@ export default function Recreation() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <RecreationContainer>
-        <RecreationHeroContainer>
-          <Image
-            src="/recreation/recreation-hero.png"
-            alt="recreation logo"
-            width="660"
-            height="258"
-          />
-        </RecreationHeroContainer>
-        <RecreationInnerContainer>
-          <Typography as="h2" margin="24px 0 24px">
+      <FluidContainer
+        backgroundImage="/recreation/recreation-hero-background.jpg"
+        flex
+        justifyContent="center"
+        alignItems="center"
+        innerMinHeight="640px"
+        innerMaxWidth="640px"
+      >
+        <Image
+          src="/recreation/recreation-hero.png"
+          alt="recreation logo"
+          width="100%"
+          height="fit-content"
+        />
+      </FluidContainer>
+      <FluidContainer flex justifyContent="space-between" alignItems="center">
+        <div style={{ width: '60%' }}>
+          <Typography as="h2" variant="pageHeader" lineHeight="1">
             The Recreation Fitness Center is now open!
-            <br />
-            Join us in our renovated facility:
-            <br />
-            Monday through Friday from 7:00 a.m. to 9:30 p.m., and Saturday 7:00
-            a.m. to 2:30 p.m.!
           </Typography>
-          <Typography margin="24px 0 24px">
-            Recreation at Cal State LA provides Golden Eagles with opportunities
-            to play, exercise and engage their campus community through
-            programming and events aimed toward enhancing the experience of all
-            who participate.
-            <br />
-            Recreation is comprised of the Recreation Fitness Center Center and
-            Recreation Esports. The Recreation Fitness Center is located on the
-            basement level of the U-SU, and will be open to all students, staff
-            and faculty.
+        </div>
+        <div>
+          <Typography as="h3" variant="titleSmall">
+            Our Hours
           </Typography>
-          <Typography as="h3" variant="titleSmall" margin="24px 0 0 0">
-            new renovations:
+          <Typography margin="0 0 8px">
+            Monday – Friday: 7:00 a.m. to 9:30 p.m. <br />
+            Saturday: 7:00 a.m. to 2:30 p.m. <br />
+            Sunday: Closed <br />
           </Typography>
-
-          <TextAndImage
-            imageOrientation="left"
-            img="/recreation/recreation-treadmill.jpg"
-          >
-            Expansion of fitness into former games room
-          </TextAndImage>
-          <TextAndImage
-            imageOrientation="right"
-            img="/recreation/recreation-bench.jpg"
-          >
-            All new strength equipment
-          </TextAndImage>
-          <TextAndImage
-            imageOrientation="left"
-            img="/recreation/recreation-floor-2.jpg"
-          >
-            New rubber flooring in the fitness center
-          </TextAndImage>
-
-          <Typography margin="24px 0 24px">
-            For updates and ways to connect now, follow @calstatela_recreation
-            on Instagram!
-          </Typography>
-        </RecreationInnerContainer>
-      </RecreationContainer>
+        </div>
+        <Divider />
+      </FluidContainer>
+      <FluidContainer flex justifyContent="space-between">
+        <Typography margin="0 72px 0 0">
+          Recreation at Cal State LA provides Golden Eagles with opportunities
+          to play, exercise and engage their campus community through
+          programming and events aimed toward enhancing the experience of all
+          who participate.
+        </Typography>
+        <Typography>
+          Recreation is comprised of the Recreation Fitness Center Center and
+          Recreation Esports. The Recreation Fitness Center is located on the
+          basement level of the U-SU, and will be open to all students, staff
+          and faculty.
+        </Typography>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography as="h3" variant="title" margin="24px 0 0 0">
+          Our Newly Renovated Fitness Center is Ready For You!
+        </Typography>
+      </FluidContainer>
+      <FluidContainer flex justifyContent="space-between">
+        <Card width="calc(33.33% - 8px)" title="Major Expansion">
+          <Image
+            src="/recreation/recreation-treadmill.jpg"
+            alt="todo:"
+            width="100%"
+          />
+        </Card>
+        <Card width="calc(33.33% - 8px)" title="All New Strength Equipment">
+          <Image
+            src="/recreation/recreation-bench.jpg"
+            alt="todo:"
+            width="100%"
+          />
+        </Card>
+        <Card width="calc(33.33% - 8px)" title="New Rubber Flooring">
+          <Image
+            src="/recreation/recreation-floor-2.jpg"
+            alt="todo:"
+            width="100%"
+          />
+        </Card>
+      </FluidContainer>
+      <FluidContainer backgroundColor="primary">
+        <Typography variant="titleLarge" margin="24px 0 24px">
+          For updates and ways to connect now, follow @calstatela_recreation on
+          Instagram!
+        </Typography>
+      </FluidContainer>
     </Page>
   );
 }

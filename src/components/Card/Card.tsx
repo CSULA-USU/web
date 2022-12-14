@@ -7,13 +7,14 @@ interface CardStyles {
   width?: string;
   minHeight?: string;
   margin?: string;
+  topBorder?: boolean;
 }
 
 interface CardProps extends CardStyles {
   title: string;
-  children: React.ReactNode;
-  linkText: string;
-  href: string;
+  children?: React.ReactNode;
+  linkText?: string;
+  href?: string;
 }
 
 const StyledCard = styled.div<CardStyles>`
@@ -25,8 +26,8 @@ const StyledCard = styled.div<CardStyles>`
   gap: 16px;
 
   background: ${Colors.white};
-  border-top: 3px solid ${Colors.primary};
   box-shadow: 2px 4px 12px rgba(191, 191, 191, 0.25);
+  ${(p) => p.topBorder && `border-top: 3px solid ${Colors.primary};`}
   ${(p) => p.width && `width: ${p.width};`}
   ${(p) => p.margin && `margin: ${p.margin};`}
   ${(p) => p.minHeight && `min-height: ${p.minHeight};`}
@@ -46,8 +47,10 @@ export const Card = ({
       </Typography>
       <div>{children}</div>
     </div>
-    <Typography variant="cta">
-      <Link href={href}>{linkText}</Link>
-    </Typography>
+    {linkText && (
+      <Typography variant="cta">
+        <Link href={href}>{linkText}</Link>
+      </Typography>
+    )}
   </StyledCard>
 );
