@@ -2,7 +2,7 @@ import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
-import Link from 'next/link';
+import { NavItems } from './NavItems';
 
 const NavContainer = styled.div`
   display: flex;
@@ -17,22 +17,6 @@ const NavExtra = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const NavItems = styled.nav`
-  display: flex;
-  align-items: center;
-  a {
-    font-weight: 700;
-    color: ${Colors.grey};
-    display: inline-block;
-    &:not(:last-child) {
-      margin-right: 48px;
-    }
-  }
-  a:hover {
-    color: white;
-  }
 `;
 
 const GetInvolvedButton = styled.button`
@@ -51,13 +35,7 @@ export const Nav = () => (
         src="/usu-logo-white.png"
         alt="Cal State LA Univeristy-Student Union Logo"
       />
-      <NavItems>
-        <Link href="/about">About</Link>
-        <Link href="/events">Events</Link>
-        <Link href="/departments">Departments</Link>
-        <Link href="/employment">Employment</Link>
-        <Link href="/governance">Governance</Link>
-      </NavItems>
+      <NavItems />
       <NavExtra>
         <MdSearch color={Colors.white} fontSize="36px" />
         <GetInvolvedButton>Get Involved</GetInvolvedButton>
