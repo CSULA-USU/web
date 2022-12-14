@@ -23,7 +23,7 @@ const events = [
     title: 'A Very Important Event',
     location: '204B',
     time: '4:00 PM – 5:00 PM',
-    url: '#',
+    href: '#',
   },
   {
     image: '/event-2.jpg',
@@ -31,7 +31,7 @@ const events = [
     title: 'A Very Important Event',
     location: '204B',
     time: '4:00 PM – 5:00 PM',
-    url: '#',
+    href: '#',
   },
   {
     image: '/event-3.jpg',
@@ -39,7 +39,7 @@ const events = [
     title: 'A Very Important Event',
     location: '204B',
     time: '4:00 PM – 5:00 PM',
-    url: '#',
+    href: '#',
   },
   {
     image: '/event-4.jpg',
@@ -47,7 +47,7 @@ const events = [
     title: 'A Very Important Event',
     location: '204B',
     time: '4:00 PM – 5:00 PM',
-    url: '#',
+    href: '#',
   },
   {
     image: '/event-5.jpg',
@@ -55,7 +55,7 @@ const events = [
     title: 'A Very Important Event',
     location: '204B',
     time: '4:00 PM – 5:00 PM',
-    url: '#',
+    href: '#',
   },
 ];
 

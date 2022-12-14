@@ -1,7 +1,7 @@
 import { Sizes } from 'types';
 
 export const Spaces: {
-  [Key in Exclude<Sizes, '2xs' | '4xl'>]: string;
+  [_ in Exclude<Sizes, '2xs' | '4xl'>]: string;
 } = {
   zero: '0px',
   xs: '4px',
@@ -13,7 +13,7 @@ export const Spaces: {
   '3xl': '96px',
 } as const;
 
-export const FontSizes: { [Key in Exclude<Sizes, 'zero'>]: string } = {
+export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
   '2xs': '10px',
   xs: '12px',
   sm: '16px',

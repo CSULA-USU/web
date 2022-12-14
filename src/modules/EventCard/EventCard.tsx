@@ -9,7 +9,7 @@ export interface EventCardProps {
   title: string;
   location: string;
   time: string;
-  url: string;
+  href: string;
 }
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
@@ -63,7 +63,7 @@ export const EventCard = ({
   title,
   location,
   time,
-  url,
+  href,
   ...props
 }: EventCardProps) => {
   return (
@@ -99,7 +99,9 @@ export const EventCard = ({
             {location}
           </Typography>
           {props.featured ? (
-            <Button margin="12px 0 0">Learn More</Button>
+            <Button href={href} margin="12px 0 0">
+              Learn More
+            </Button>
           ) : (
             <Typography color="primary" size="sm">
               Learn More

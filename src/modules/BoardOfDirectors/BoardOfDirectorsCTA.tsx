@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button, Typography, FluidContainer } from 'components';
-import { Colors } from 'theme';
 
 const BoardOfDirectorsCTAContainer = styled.div`
   background-image: url('bod-cta-background.jpg');

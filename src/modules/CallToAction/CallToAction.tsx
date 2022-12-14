@@ -31,9 +31,7 @@ export const CallToAction = ({
     <CTAContainer>
       <div>{children}</div>
       <div>
-        <Typography margin="0 0 16px">
-          {text}
-        </Typography>
+        <Typography margin="0 0 16px">{text}</Typography>
         <br />
         <Button variant="black" href={href}>
           {buttonText}

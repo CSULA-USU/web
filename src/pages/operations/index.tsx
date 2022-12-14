@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Page } from 'modules';
 import { Typography } from 'components';
 import Image from 'next/image';
-import Head from 'next/head';
 
 const OperationsContainer = styled.div`
   height: 1000px;

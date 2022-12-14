@@ -48,7 +48,11 @@ export const Header = ({
       {buttons && (
         <ButtonContainer>
           {buttons.map((b, i) => (
-            <Button key={`${i}_${b.text}`} href={b.href} variant={i > 0 ? 'outline' : 'black'}>
+            <Button
+              key={`${i}_${b.text}`}
+              href={b.href}
+              variant={i > 0 ? 'outline' : 'black'}
+            >
               {b.text}
             </Button>
           ))}

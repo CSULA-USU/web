@@ -19,7 +19,10 @@ interface PageProps {
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
     <div>
-      <Announcement text="Hello, this is what announcements are going to look like." isVisible />
+      <Announcement
+        text="Hello, this is what announcements are going to look like."
+        isVisible
+      />
       <Nav />
       {children}
     </div>

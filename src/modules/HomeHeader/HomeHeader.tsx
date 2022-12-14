@@ -37,7 +37,7 @@ export const HomeHeader = () => (
           title="A Very Important Event"
           location="204B"
           time="4:00 PM – 5:00 PM"
-          url="#"
+          href="#"
         />
       </FeaturedEventSection>
     </HeaderContainer>
