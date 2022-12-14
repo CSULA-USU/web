@@ -8,8 +8,8 @@ export const SpaceSizes: {
   sm: '8px',
   md: '16px',
   lg: '24px',
-  xl: '32px',
-  '2xl': '40px',
+  xl: '36px',
+  '2xl': '72px',
 } as const;
 
 export const FontSizes: { [Key in Exclude<Sizes, 'zero'>]: string } = {
