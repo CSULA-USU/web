@@ -53,7 +53,7 @@ export default function Home() {
                 <Typography as="h3" variant="smallHeadingCaps" color="grey">
                   {j.department}
                 </Typography>
-                <Link href={j.href}>
+                <Link href={j.href} target="_blank">
                   <Typography as="h4" variant="smallHeading">
                     {j.title}
                   </Typography>
@@ -70,7 +70,7 @@ export default function Home() {
                 <Typography as="h3" variant="smallHeadingCaps" color="grey">
                   {j.department}
                 </Typography>
-                <Link href={j.href}>
+                <Link href={j.href} target="_blank">
                   <Typography as="h4" variant="smallHeading">
                     {j.title}
                   </Typography>
