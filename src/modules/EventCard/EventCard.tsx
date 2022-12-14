@@ -76,6 +76,7 @@ export const EventCard = ({
           <Typography
             as="span"
             variant="pageHeader"
+            size="xl"
             color="white"
             lineHeight="1"
           >

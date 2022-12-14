@@ -49,7 +49,7 @@ export const Card = ({
     </div>
     {linkText && (
       <Typography variant="cta">
-        <Link href={href}>{linkText}</Link>
+        <Link href={href || '#'}>{linkText}</Link>
       </Typography>
     )}
   </StyledCard>

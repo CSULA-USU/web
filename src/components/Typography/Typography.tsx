@@ -49,10 +49,10 @@ const styles = {
     fontFamily: serif,
   },
   copyLarge: { size: 'lg', weight: '300', fontFamily: serif },
-  eventDetail: { size: 'md', weight: '700', color: 'white' },
-  eventTitle: { size: '3xl', weight: '700', color: 'white' },
+  eventDetail: { size: 'sm', weight: '700', color: 'white' },
+  eventTitle: { size: 'lg', weight: '700', color: 'white' },
   eventTime: {
-    size: 'lg',
+    size: 'md',
     weight: '300',
     color: 'white',
     fontFamily: serif,

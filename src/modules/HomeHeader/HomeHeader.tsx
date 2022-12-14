@@ -21,7 +21,7 @@ export const HomeHeader = () => (
   <FluidContainer backgroundImage="/subtle-background-1.jpg">
     <HeaderContainer>
       <CTASection>
-        <Typography as="h1" variant="pageHeader">
+        <Typography as="h1" variant="pageHeader" size="2xl">
           Welcome to the U-SU!
         </Typography>
         <Button variant="black">View Event Calendar</Button>

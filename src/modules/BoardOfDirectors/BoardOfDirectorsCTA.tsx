@@ -14,7 +14,7 @@ const BoardOfDirectorsCTAText = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 480px;
+  max-width: 640px;
   margin: 0 auto;
   text-align: center;
 `;
