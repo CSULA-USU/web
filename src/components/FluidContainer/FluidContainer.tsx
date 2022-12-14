@@ -24,6 +24,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
 const FluidInner = styled.div<FluidInnerProps>`
   width: 100%;
   max-width: 1440px;
+  ${(p) => p.innerMaxWidth && `max-width: ${p.innerMaxWidth}`}
   ${(p) =>
     p.flex
       ? css`
@@ -36,6 +37,7 @@ const FluidInner = styled.div<FluidInnerProps>`
 `;
 
 interface FluidInnerProps {
+  innerMaxWidth?: string;
   flex?: boolean;
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   justifyContent?:

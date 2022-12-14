@@ -73,7 +73,7 @@ const getCSS = (p: TypeProps) => {
     & {
       ${fontFamily && `font-family: ${fontFamily};`}
       ${textTransform && `text-transform: ${textTransform};`}
-    font-size: ${FontSizes[p.size || size]};
+      font-size: ${FontSizes[p.size || size]};
       font-weight: ${p.weight || weight};
       color: ${Colors[p.color || color]};
       margin: ${p.margin || 0};
