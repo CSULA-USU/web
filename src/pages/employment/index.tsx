@@ -62,7 +62,7 @@ export default function Employment() {
             ))}
           </div>
           <div>
-            <Typography as="h2" variant="pageHeader" margin="16px 0 8px">
+            <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
             {studentJobs.map((j) => (
