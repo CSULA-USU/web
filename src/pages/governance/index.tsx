@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Header, Page } from 'modules';
-import { NonBreakingSpan } from 'components';
+import { FluidContainer, NonBreakingSpan, Card } from 'components';
 
 export default function Governance() {
   const buttons = [
@@ -9,6 +9,30 @@ export default function Governance() {
       href: 'governance/board-of-directors',
     },
     { text: 'Be a Student Leader', href: 'governance/student-leaders' },
+  ];
+
+  const cards = [
+    {
+      title: 'Elections',
+      children:
+        "The University-Student Union's Board of Directors is the governing board of the Union.",
+      linkText: 'Learn More',
+      href: '#',
+    },
+    {
+      title: 'Student Leadership',
+      children:
+        "The University-Student Union's Board of Directors is the governing board of the Union.",
+      linkText: 'Learn More',
+      href: '#',
+    },
+    {
+      title: 'Learn How to Vote',
+      children:
+        'The University-Student Union Board of Directors is the governing board for the Student Union comprised of faculty, staff, and eight elected student leaders.',
+      linkText: 'Learn More',
+      href: '#',
+    },
   ];
   return (
     <Page>
@@ -37,7 +61,16 @@ export default function Governance() {
         staff and alumni at{' '}
         <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
       </Header>
-      
+      <FluidContainer flex justifyContent="space-between">
+        {cards.map((props) => (
+          <Card
+            key={`${props.title}`}
+            {...props}
+            width="calc(33.33% - 8px)"
+            minHeight="280px"
+          />
+        ))}
+      </FluidContainer>
     </Page>
   );
 }

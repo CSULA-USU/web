@@ -21,12 +21,43 @@ const FluidOuter = styled.div<FluidContainerProps>`
   ${getBackgroundCSS}
 `;
 
-const FluidInner = styled.div`
+const FluidInner = styled.div<FluidInnerProps>`
   width: 100%;
   max-width: 1440px;
+  ${(p) =>
+    p.flex
+      ? css`
+          display: flex;
+          flex-direction: ${p.flexDirection || 'row'};
+          justify-content: ${p.justifyContent || 'flex-start'};
+          align-items: ${p.alignItems || 'stretch'};
+        `
+      : css``};
 `;
 
-interface FluidContainerProps {
+interface FluidInnerProps {
+  flex?: boolean;
+  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  justifyContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'initial'
+    | 'inherit';
+  alignItems?:
+    | 'stretch'
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'initial'
+    | 'inherit';
+}
+
+interface FluidContainerProps extends FluidInnerProps {
   children?: React.ReactNode;
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
@@ -36,11 +67,12 @@ export const FluidContainer = ({
   children,
   backgroundColor,
   backgroundImage,
+  ...props
 }: FluidContainerProps) => (
   <FluidOuter
     backgroundColor={backgroundColor}
     backgroundImage={backgroundImage}
   >
-    <FluidInner>{children}</FluidInner>
+    <FluidInner {...props}>{children}</FluidInner>
   </FluidOuter>
 );
