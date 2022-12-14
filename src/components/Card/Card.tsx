@@ -21,7 +21,7 @@ const StyledCard = styled.div<CardStyles>`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: ${Spaces.lg};
+  padding: ${Spaces.xl};
   gap: 16px;
 
   background: ${Colors.white};
