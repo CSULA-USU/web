@@ -17,7 +17,7 @@ const FeaturedEventSection = styled.div`
   flex: 1;
 `;
 
-export const Header = () => (
+export const HomeHeader = () => (
   <FluidContainer backgroundImage="/subtle-background-1.jpg">
     <HeaderContainer>
       <CTASection>
