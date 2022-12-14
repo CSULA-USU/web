@@ -1,13 +1,6 @@
 import Head from 'next/head';
 import { Page } from 'modules';
-import {
-  Image,
-  Typography,
-  Card,
-  Divider,
-  FluidContainer,
-  VerticalLine,
-} from 'components';
+import { Image, Typography, Card, Divider, FluidContainer } from 'components';
 
 export default function Recreation() {
   return (
@@ -72,12 +65,16 @@ export default function Recreation() {
           and faculty.
         </Typography>
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer backgroundColor="greyLighter">
         <Typography as="h3" variant="title" margin="24px 0 0 0">
           Our Newly Renovated Fitness Center is Ready For You!
         </Typography>
       </FluidContainer>
-      <FluidContainer flex justifyContent="space-between">
+      <FluidContainer
+        backgroundColor="greyLighter"
+        flex
+        justifyContent="space-between"
+      >
         <Card width="calc(33.33% - 8px)" title="Major Expansion">
           <Image
             src="/recreation/recreation-treadmill.jpg"
