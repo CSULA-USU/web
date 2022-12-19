@@ -1,7 +1,6 @@
 import { Colors } from 'theme';
 import styled from 'styled-components';
 import { Typography } from 'components';
-import { IconContext } from 'react-icons';
 import { BsMegaphone } from 'react-icons/bs';
 interface AnnouncementProps {
   text: string;
@@ -20,9 +19,7 @@ export const Announcement = ({ text, isVisible }: AnnouncementProps) => {
   return isVisible ? (
     <AnnouncementContainer>
       <BsMegaphone fontSize="24px" />
-      <Typography as="h2" variant="bodySerif" weight="500" margin="4px 0 0 8px">
-        {text}
-      </Typography>
+      <Typography margin="4px 0 0 8px">{text}</Typography>
     </AnnouncementContainer>
   ) : null;
 };

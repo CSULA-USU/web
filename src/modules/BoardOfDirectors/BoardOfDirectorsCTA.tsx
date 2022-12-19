@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button, Typography, FluidContainer } from 'components';
-import { Colors } from 'theme';
 
 const BoardOfDirectorsCTAContainer = styled.div`
   background-image: url('bod-cta-background.jpg');
@@ -14,7 +13,7 @@ const BoardOfDirectorsCTAText = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 480px;
+  max-width: 640px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -27,10 +26,10 @@ export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>
     <FluidContainer>
       <BoardOfDirectorsCTAText>
-        <Typography as="h2" variant="largeHeading">
+        <Typography as="h2" variant="pageHeader">
           Board of Directors
         </Typography>
-        <Typography variant="bodySerif" margin="0 0 24px" size="md">
+        <Typography margin="0 0 24px">
           Join the board of directors to make a difference while developing your
           leadership skills
         </Typography>

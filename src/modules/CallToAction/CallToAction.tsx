@@ -5,6 +5,7 @@ type CTAProps = {
   children: React.ReactNode;
   text: string;
   buttonText: string;
+  href: string;
 };
 
 const CTAContainer = styled.div`
@@ -20,16 +21,21 @@ const CTAContainer = styled.div`
   }
 `;
 
-export const CallToAction = ({ children, text, buttonText }: CTAProps) => (
+export const CallToAction = ({
+  children,
+  text,
+  buttonText,
+  href,
+}: CTAProps) => (
   <FluidContainer backgroundColor="primary">
     <CTAContainer>
       <div>{children}</div>
       <div>
-        <Typography variant="bodySerif" margin="0 0 16px">
-          {text}
-        </Typography>
+        <Typography margin="0 0 16px">{text}</Typography>
         <br />
-        <Button variant="black">{buttonText}</Button>
+        <Button variant="black" href={href}>
+          {buttonText}
+        </Button>
       </div>
     </CTAContainer>
   </FluidContainer>

@@ -1,45 +1,63 @@
 import styled from 'styled-components';
-import { Typography, Button, FluidContainer } from 'components';
-import { EventCard } from 'modules';
+import { Typography, Button, FluidContainer, VerticalLine } from 'components';
+
+interface ButtonProps {
+  text: string;
+  href: string;
+}
+interface HeaderProps {
+  title: string;
+  backgroundImage: string;
+  children: React.ReactNode;
+  buttons: ButtonProps[];
+}
 
 const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
 `;
 
-const CTASection = styled.div`
-  max-width: 20%;
-  margin-right: 144px;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  > *:not(:last-child) {
+    margin-right: 8px;
+  }
 `;
 
-const FeaturedEventSection = styled.div`
-  flex: 1;
-`;
-
-export const Header = () => (
-  <FluidContainer backgroundImage="/hero-background.jpg">
+export const Header = ({
+  title,
+  children,
+  backgroundImage,
+  buttons,
+}: HeaderProps) => (
+  <FluidContainer backgroundImage={backgroundImage}>
     <HeaderContainer>
-      <CTASection>
-        <Typography as="h1" variant="heroHeading">
-          Welcome to the U-SU!
-        </Typography>
-        <Button variant="black">View Event Calendar</Button>
-      </CTASection>
-      <FeaturedEventSection>
-        <Typography as="h2" variant="smallHeadingCaps" margin="0 0 24px">
-          Featured Event
-        </Typography>
-        <EventCard
-          featured
-          image="/event-0.jpg"
-          org="APISRC"
-          title="A Very Important Event"
-          location="204B"
-          time="4:00 PM – 5:00 PM"
-          url="#"
-        />
-      </FeaturedEventSection>
+      <Typography as="h1" variant="pageHeader">
+        {title}
+      </Typography>
+      <VerticalLine />
+      <Typography as="h2" margin="24px 0">
+        {children}
+      </Typography>
+      {buttons && (
+        <ButtonContainer>
+          {buttons.map((b, i) => (
+            <Button
+              key={`${i}_${b.text}`}
+              href={b.href}
+              variant={i > 0 ? 'outline' : 'black'}
+            >
+              {b.text}
+            </Button>
+          ))}
+        </ButtonContainer>
+      )}
     </HeaderContainer>
   </FluidContainer>
 );

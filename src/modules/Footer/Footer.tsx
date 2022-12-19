@@ -1,46 +1,51 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import { Typography } from 'components';
-import { Colors } from 'theme';
-import { FluidContainer } from 'components';
+import { Colors, Spaces } from 'theme';
+import { FluidContainer, Divider } from 'components';
 import { AiOutlineInstagram } from 'react-icons/ai';
 
-const FooterInner = styled.div`
-  display: flex;
-  width: 100%;
+const currentYear = new Date().getFullYear();
+
+const FooterTopLogo = styled.div`
+  width: 50%;
   max-width: 1200px;
+`;
+const FooterTopLinks = styled.div`
+  display: flex;
+  gap: 72px;
+`;
+
+const FooterTopContainer = styled.div`
+  display: flex;
   justify-content: space-between;
 `;
 
-const Border = styled.div`
-  width: 1000px;
-  height: 0px;
-  border: 1px solid #474747;
-  margin: 2em auto;
-`;
 const FooterBottomContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 50px;
+  justify-content: space-between;
 `;
-const FooterTopContainer = styled.div`
+const FooterBottomInner = styled.div`
   display: flex;
-  justify-content: center;
+  max-width: 1200px;
+  text-align: left;
+  gap: 24px;
 `;
 export const Footer = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <FooterTopContainer>
-      <FooterInner>
+      <FooterTopLogo>
         <Image
           src="/calstatela-badge.svg"
           alt="Cal State LA Univeristy-Student Union Logo"
           width={90}
           height={90}
         />
+      </FooterTopLogo>
+      <FooterTopLinks>
         <div>
-          <Typography as="h5" variant="smallHeading" color="white">
-            Involvment
+          <Typography as="h5" color="white">
+            Involvement
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
             U-SU Employment
@@ -50,7 +55,7 @@ export const Footer = () => (
           </Typography>
         </div>
         <div>
-          <Typography as="h5" variant="smallHeading" color="white">
+          <Typography as="h5" color="white">
             Resources
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
@@ -69,22 +74,27 @@ export const Footer = () => (
             View Public Documents
           </Typography>
         </div>
-      </FooterInner>
+      </FooterTopLinks>
     </FooterTopContainer>
-    <Border></Border>
+    <Divider color="grey" margin={`${Spaces.xl}`} />
     <FooterBottomContainer>
-      <Typography color="greyLighter" size="sm" lineHeight="2.4">
-        © 2022 University-Student Union at Cal State LA
-      </Typography>
-      <Typography color="greyLighter" size="sm" lineHeight="2.4">
-        |
-      </Typography>
-      <Typography color="greyLighter" size="sm" lineHeight="2.4">
-        5154 State University Dr, Los Angeles, CA 90032
-      </Typography>
-      <Typography color="greyLighter" size="sm" lineHeight="2.4">
-        (323) 343-2465
-      </Typography>
+      <FooterBottomInner>
+        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+          © {currentYear} University-Student Union at Cal State LA
+        </Typography>
+        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+          |
+        </Typography>
+        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+          5154 State University Dr, Los Angeles, CA 90032
+        </Typography>
+        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+          |
+        </Typography>
+        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+          (323) 343-2465
+        </Typography>
+      </FooterBottomInner>
       <AiOutlineInstagram
         color={Colors.greyLighter}
         fontSize="32px"

@@ -1,27 +1,28 @@
 import { Sizes } from 'types';
 
-export const SpaceSizes: {
-  [Key in Exclude<Sizes, '2xs' | '3xl' | '4xl'>]: string;
+export const Spaces: {
+  [_ in Exclude<Sizes, '2xs' | '4xl'>]: string;
 } = {
   zero: '0px',
   xs: '4px',
   sm: '8px',
   md: '16px',
   lg: '24px',
-  xl: '32px',
-  '2xl': '40px',
+  xl: '36px',
+  '2xl': '72px',
+  '3xl': '96px',
 } as const;
 
-export const FontSizes: { [Key in Exclude<Sizes, 'zero'>]: string } = {
+export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
   '2xs': '10px',
   xs: '12px',
   sm: '16px',
   md: '18px',
   lg: '24px',
-  xl: '28px',
-  '2xl': '30px',
-  '3xl': '36px',
-  '4xl': '48px',
+  xl: '36px',
+  '2xl': '48px',
+  '3xl': '64px',
+  '4xl': '96px',
 } as const;
 
 export const Colors = {
