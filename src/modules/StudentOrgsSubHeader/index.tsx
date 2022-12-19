@@ -1,1 +1,1 @@
-export * from "./StudentOrgsSubHeader"
+export * from './StudentOrgsSubHeader';

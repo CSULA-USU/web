@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Head from 'next/head';
 import { FluidContainer } from 'components';
 import { Page, StudentOrgsHeroSection, StudentOrgsSubHeader } from 'modules';
@@ -23,8 +22,8 @@ export default function StudentOrgs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer>
-        <StudentOrgsHeroSection/>
-        <StudentOrgsSubHeader/>
+        <StudentOrgsHeroSection />
+        <StudentOrgsSubHeader />
       </FluidContainer>
     </Page>
   );

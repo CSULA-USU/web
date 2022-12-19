@@ -1,7 +1,6 @@
-import {Typography } from 'components';
+import { Typography } from 'components';
 import styled from 'styled-components';
 import { AiOutlineInstagram } from 'react-icons/ai';
-import { Colors } from 'theme';
 
 const StudentOrgsSubHeaderContainer = styled.div`
   display: flex;
@@ -32,31 +31,29 @@ export const StudentOrgsSubHeader = () => (
     <FooterTopContainer>
       <FooterInner>
         <div>
-          <Typography margin='0 0 12px 0' as="h5" variant="smallHeading">
+          <Typography margin="0 0 12px 0" as="h5" variant="title">
             Office Hours
           </Typography>
-          <Typography variant="bodySerif" color='grey' size="sm" lineHeight="2.4">
+          <Typography variant="copy" color="grey" size="sm" lineHeight="2.4">
             Monday - Thursday: 8 AM - 6 PM
           </Typography>
-          <Typography variant="bodySerif" color='grey' size="sm" lineHeight="2.4">
+          <Typography variant="copy" color="grey" size="sm" lineHeight="2.4">
             Friday: 8 AM - 5 PM
           </Typography>
         </div>
         <div>
-          <Typography margin='0 0 12px 0'as="h5" variant="smallHeading" >
+          <Typography margin="0 0 12px 0" as="h5" variant="title">
             Club Organization Office
           </Typography>
-          <Typography variant="bodySerif" color='grey' size="sm" lineHeight="2.4">
+          <Typography variant="copy" color="grey" size="sm" lineHeight="2.4">
             Monday - Thursday: 8 AM - 6 PM
           </Typography>
-          <Typography variant="bodySerif" color='grey' size="sm" lineHeight="2.4">
+          <Typography variant="copy" color="grey" size="sm" lineHeight="2.4">
             Satuday - Sunday: Closed
           </Typography>
         </div>
       </FooterInner>
-      <AiOutlineInstagram
-        fontSize="48px"
-      ></AiOutlineInstagram>
+      <AiOutlineInstagram fontSize="48px"></AiOutlineInstagram>
     </FooterTopContainer>
     <Border></Border>
   </StudentOrgsSubHeaderContainer>

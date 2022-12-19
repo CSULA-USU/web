@@ -21,14 +21,14 @@ const BoardOfDirectorsCTAButtons = styled.div`
 `;
 export const StudentOrgsHeroSection = () => (
   <StudentOrgsOuterContainer>
-    <Typography variant="smallHeading" margin="72px 0 24px 0">
+    <Typography variant="titleSmall" margin="72px 0 24px 0">
       University-Student Union
     </Typography>
-    <Typography lineHeight="1.3" weight="600px" variant="heroHeading">
+    <Typography lineHeight="1.3" weight="700" variant="pageHeader">
       Join a Student Organization
     </Typography>
     <Border></Border>
-    <Typography weight="400px" variant="bodySerif" margin="0 0 24px" size="sm">
+    <Typography weight="400" variant="copy" margin="0 0 24px" size="sm">
       Cal State LA is home to over 150+ student organizations that represent a
       variety of student interests and plan hundreds of events each year.
     </Typography>

@@ -1,1 +1,1 @@
-export * from "./StudentOrgsHeroSection";
+export * from './StudentOrgsHeroSection';
