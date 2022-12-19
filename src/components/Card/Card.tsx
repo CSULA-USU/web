@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { Typography } from '../Typography';
+import { Image } from 'components';
 
 interface CardStyles {
   width?: string;
@@ -15,8 +16,15 @@ interface CardProps extends CardStyles {
   children?: React.ReactNode;
   linkText?: string;
   href?: string;
+  iconSrc?: string;
+  iconAlt?: string;
 }
-
+const IconContainer = styled.div`
+  width: ${Spaces['2xl']};
+  height: ${Spaces['2xl']};
+  display: flex;
+  align-items: center;
+`;
 const StyledCard = styled.div<CardStyles>`
   display: flex;
   flex-direction: column;
@@ -38,10 +46,24 @@ export const Card = ({
   children,
   linkText,
   href,
+  iconSrc,
+  iconAlt,
   ...props
 }: CardProps) => (
   <StyledCard {...props}>
     <div>
+      {iconSrc ? (
+        <IconContainer>
+          <Image
+            src={iconSrc}
+            alt={iconAlt ? iconAlt : 'icon img'}
+            width={Spaces['2xl']}
+          />
+        </IconContainer>
+      ) : (
+        <></>
+      )}
+      <br />
       <Typography as="h4" variant="titleSmall" margin="0 0 16px">
         {title}
       </Typography>

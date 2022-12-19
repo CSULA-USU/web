@@ -30,6 +30,7 @@ const FluidInner = styled.div<FluidInnerProps>`
     p.flex
       ? css`
           display: flex;
+          flex-wrap: ${p.flexWrap || 'nowrap'};
           flex-direction: ${p.flexDirection || 'row'};
           justify-content: ${p.justifyContent || 'flex-start'};
           align-items: ${p.alignItems || 'stretch'};
@@ -41,6 +42,7 @@ interface FluidInnerProps {
   innerMaxWidth?: string;
   innerMinHeight?: string;
   flex?: boolean;
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   justifyContent?:
     | 'flex-start'
