@@ -42,19 +42,7 @@ export default function Gene() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer flex>
-        <EventCard
-          featured
-          image="/event-0.jpg"
-          org="Recreation"
-          title="Golden Eagle Nutrition Education (GENE)"
-          location="Zoom"
-          time="12:00 AM – 11:59 PM"
-          href="#"
-        />
         <HeaderContent>
-          <Typography margin="0 0 24px" variant="titleSmall">
-            Join Us
-          </Typography>
           <Typography margin="0 0 24px" variant="titleLarge" weight="400">
             Golden Eagle Nutrition Education (GENE)
           </Typography>
@@ -73,6 +61,15 @@ export default function Gene() {
             lifetime.
           </Typography>
         </HeaderContent>
+        <EventCard
+          featured
+          image="/event-0.jpg"
+          org="Recreation"
+          title="Golden Eagle Nutrition Education (GENE)"
+          location="Zoom"
+          time="12:00 AM – 11:59 PM"
+          href="#"
+        />
       </FluidContainer>
 
       <FluidContainer flex flexWrap="wrap">
