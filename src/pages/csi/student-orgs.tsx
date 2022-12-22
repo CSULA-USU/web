@@ -37,7 +37,6 @@ const cards = [
     title: 'Some title',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
   },
@@ -45,7 +44,6 @@ const cards = [
     title: 'Some title',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
   },
@@ -53,17 +51,25 @@ const cards = [
     title: 'Some title',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
   },
 ];
 const orgsCards = [
   {
+    title: 'Complete The Following Forms Online',
+    href: '#',
+    linkText: 'View Forms',
+  },
+  {
     title: "Submit Your Organization's Constitution and Bylaws",
+    href: '#',
+    linkText: 'View Forms',
   },
   {
     title: 'Attend The Sexual Violence Prevention and Resources Training',
+    href: '#',
+    linkText: 'View Forms',
   },
 ];
 const orgsCategoriesCards = [
@@ -99,10 +105,7 @@ const orgsCategoriesCards = [
 
 export default function StudentOrgs() {
   const buttons = [
-    {
-      text: 'Get Involved',
-      href: '#',
-    },
+    { text: 'Get Involved', href: '#' },
     { text: 'Start Your Own', href: '#' },
   ];
   return (
@@ -150,7 +153,6 @@ export default function StudentOrgs() {
                 margin={`${Spaces.md} 0`}
                 key={`${props.title}`}
                 {...props}
-                borderRadius="12px"
               ></Card>
             ))}
           </OrgsCategoriesCardsContainer>
@@ -161,15 +163,15 @@ export default function StudentOrgs() {
           <Typography margin="auto" variant="title">
             More Information
           </Typography>
-          <FluidContainer flex>
+          <FluidContainer flex justifyContent="space-between">
             {cards.map((props) => (
               <Card
-                margin={`${Spaces.md}`}
+                rounded
+                hoverable
                 key={`${props.title}`}
                 {...props}
-                width="calc(30.33% - 8px)"
+                width="calc(33.33% - 24px)"
                 minHeight="280px"
-                borderRadius="12px"
               ></Card>
             ))}
           </FluidContainer>
@@ -180,7 +182,7 @@ export default function StudentOrgs() {
               more about our recognized student organizations and their events.
             </Typography>
           </MoreInformationTextContainer>
-          <Button margin="24px" variant="black" key={'Learn More'}>
+          <Button margin="24px" variant="black">
             Learn More
           </Button>
         </FluidContainer>
@@ -189,30 +191,14 @@ export default function StudentOrgs() {
         <Typography margin="auto" variant="title">
           Start Your Own Organization
         </Typography>
-        <FluidContainer flex>
-          <Card
-            margin={`${Spaces.md}`}
-            key="Complete The Following Forms Online"
-            title="Complete The Following Forms Online"
-            buttonKey="View Forms"
-            buttonText="View Forms"
-            buttonVariant="black"
-            backgroundColor="primary"
-            width="calc(30.33% - 8px)"
-            minHeight="280px"
-            borderRadius="12px"
-          ></Card>
+        <FluidContainer flex justifyContent="space-between">
           {orgsCards.map((props) => (
             <Card
-              margin={`${Spaces.md}`}
+              topBorder
               key={`${props.title}`}
-              buttonKey="View Forms"
-              buttonText="View Forms"
-              buttonVariant="black"
               {...props}
-              width="calc(30.33% - 8px)"
-              minHeight="280px"
-              borderRadius="12px"
+              width="calc(33.33% - 24px)"
+              minHeight="240px"
             ></Card>
           ))}
         </FluidContainer>
