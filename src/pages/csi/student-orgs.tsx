@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -24,7 +24,12 @@ const MoreInformationTextContainer = styled.div`
   margin: auto;
 `;
 const StudentOrgsCatergoriesContentContainer = styled.div`
-  margin-left: 72px;
+  margin-top: ${Spaces['2xl']};
+`;
+
+const OrgsCategoriesCardsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const cards = [
@@ -59,6 +64,36 @@ const orgsCards = [
   },
   {
     title: 'Attend The Sexual Violence Prevention and Resources Training',
+  },
+];
+const orgsCategoriesCards = [
+  {
+    title: 'Academic',
+    children:
+      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
+    iconSrc: '/calstatela-badge.svg',
+    iconAlt: 'Cal State LA Logo',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
+  },
+  {
+    title: 'Academic',
   },
 ];
 
@@ -98,8 +133,8 @@ export default function StudentOrgs() {
           </Header>
         </HeaderContainer>
       </FluidContainer>
-      <FluidContainer flex>
-        <Image src="/cards-icon.svg" alt="cards" />
+      <FluidContainer flex justifyContent="flex-start">
+        <Image margin="auto" size="80%" src="/cards-icon.svg" alt="cards" />
         <StudentOrgsCatergoriesContentContainer>
           <Typography margin="auto" variant="title">
             Student Organization Categories
@@ -109,6 +144,16 @@ export default function StudentOrgs() {
             cultural, political, professional, religious, spiritual, service,
             social, and recreational.
           </Typography>
+          <OrgsCategoriesCardsContainer>
+            {orgsCategoriesCards.map((props) => (
+              <Card
+                margin={`${Spaces.md} 0`}
+                key={`${props.title}`}
+                {...props}
+                borderRadius="12px"
+              ></Card>
+            ))}
+          </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
       <MoreInformationContainer>
