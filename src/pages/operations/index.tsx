@@ -1,12 +1,40 @@
 import { Page, Header } from 'modules';
-import { Card, FluidContainer } from 'components';
+import { Button, Card, Divider, FluidContainer, Typography } from 'components';
 import { Spaces } from 'theme';
+import styled from 'styled-components';
 
+const PDFDescriptionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: ${Spaces.md};
+`;
+const Title = styled.div`
+  width: 200px;
+`;
+const Description = styled.div`
+  width: 800px;
+`;
+const OperationsPDFDescriptions = (props: any) => {
+  return (
+    <PDFDescriptionContainer>
+      <Title>
+        <Typography variant="titleSmall">{props.title}</Typography>
+      </Title>
+      <Description>
+        <Typography>{props.description}</Typography>
+      </Description>
+      <Button href={props.href} variant="black">
+        PDF
+      </Button>
+    </PDFDescriptionContainer>
+  );
+};
 export default function Operations() {
   const buttons = [
     {
-      text: 'Forms',
-      href: '#',
+      text: 'Events Request Form',
+      href: 'https://form.jotform.com/221578153228053',
     },
     { text: 'Meeting Rooms', href: '#' },
   ];
@@ -16,26 +44,66 @@ export default function Operations() {
       title: 'Building Maintenance',
       children:
         'Is responsible for the efficient upkeep of the University-Student Union including all equipment and furnishings in and around the facility. Additionally, this department addresses any electrical, plumbing, HVAC, carpentry, landscaping, and beautification needs of the building.',
+      iconSrc: '/operations/gardening.png',
+      iconAlt: 'gardening image',
     },
     {
       title: 'Building Services',
       children:
         'Supports the needs of students, faculty and staff who utilize space in and around the U-SU by providing dependable set-ups for events, meetings, and programs.',
+      iconSrc: '/operations/set-up.jpeg',
+      iconAlt: 'decorating image',
+      iconWidth: '160px',
     },
     {
       title: 'Custodial Services',
       children:
         'Is responsible for the general cleanliness of all areas in and surrounding the Union facility including all interior/exterior furnishings and addresses all concerns related to general housekeeping.',
+      iconSrc: '/operations/cleaning.jpg',
+      iconAlt: 'gardening image',
+      iconWidth: '100px',
     },
     {
       title: 'Media Services',
       children:
         'Assists in supporting the increased technical needs of the building and addresses a wide variety of programs and events that occur inside and outside of the U-SU by providing knowledgeable technical and theatrical support.',
+      iconSrc: '/operations/media.jpg',
+      iconAlt: 'media image',
+      iconWidth: '150px',
     },
     {
       title: 'Information & Event Services',
       children:
         'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
+      iconSrc: '/operations/reservation.jpg',
+      iconAlt: 'media image',
+      iconWidth: '150px',
+    },
+  ];
+
+  const pdfDescriptionCards = [
+    {
+      title: 'Media Equiptment Rental Chart',
+      description: 'CSULA Univeristy-Student Union media equipment rental fees',
+      href: '/operations/pdfs/Media-Equipment-Fees-Chart.pdf',
+    },
+    {
+      title: 'MMRS Policies',
+      description:
+        'The Mind Matters Relaxation Station is designated space to support restorative wellness. The intended use is for brief napping in a semi-quiet environment. Access to the room is limited to CAL STATE LA enrolled students only.',
+      href: '/operations/pdfs/MMRS-Policies.pdf',
+    },
+    {
+      title: 'Meeting Space Rental Fees & Capacity Chart',
+      description:
+        'CSULA Univeristy-Student Union meeting space rental fees & capacity.',
+      href: '/operations/pdfs/Meeting-Space-Capacity-Chart.pdf',
+    },
+    {
+      title: 'Reservation Policies and Procedures (with Covid)',
+      description:
+        'Reservation policies and procedures go over guidelines of how the scheduling of U-SU facilities, equipment, sign-up process, and payments are arranged.',
+      href: '/operations/pdfs/POLICIES-PROCEDURES-WITH-COVID-2021.pdf',
     },
   ];
   return (
@@ -59,6 +127,22 @@ export default function Operations() {
             width="calc(30.33% - 8px)"
             minHeight="280px"
           ></Card>
+        ))}
+      </FluidContainer>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        backgroundColor="greyLightest"
+      >
+        <Typography variant="title">Additional Information</Typography>
+      </FluidContainer>
+      <FluidContainer backgroundColor="greyLightest">
+        {pdfDescriptionCards.map((props) => (
+          <FluidContainer key={`${props.title}`}>
+            <OperationsPDFDescriptions {...props}></OperationsPDFDescriptions>
+            <Divider></Divider>
+          </FluidContainer>
         ))}
       </FluidContainer>
     </Page>
