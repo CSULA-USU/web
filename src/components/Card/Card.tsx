@@ -8,6 +8,7 @@ interface CardStyles {
   width?: string;
   minHeight?: string;
   margin?: string;
+  iconWidth?: string;
   topBorder?: boolean;
   rounded?: boolean;
   hoverable?: boolean;
@@ -22,12 +23,7 @@ interface CardProps extends CardStyles {
   iconSrc?: string;
   iconAlt?: string;
 }
-const IconContainer = styled.div`
-  width: ${Spaces['2xl']};
-  height: ${Spaces['2xl']};
-  display: flex;
-  align-items: center;
-`;
+
 const StyledCard = styled.div<CardStyles>`
   display: flex;
   flex-direction: column;
@@ -60,18 +56,18 @@ export const Card = ({
   href,
   iconSrc,
   iconAlt,
+  iconWidth,
   ...props
 }: CardProps) => (
   <StyledCard {...props}>
     <div>
       {iconSrc && (
-        <IconContainer>
-          <Image
-            src={iconSrc}
-            alt={iconAlt ? iconAlt : 'icon img'}
-            width={Spaces['2xl']}
-          />
-        </IconContainer>
+        <Image
+          src={iconSrc}
+          alt={iconAlt ? iconAlt : 'icon img'}
+          width={iconWidth ? iconWidth : Spaces['2xl']}
+          marginBottom="24px"
+        />
       )}
       <br />
       <Typography as="h4" variant="titleSmall" margin="0 0 16px">
