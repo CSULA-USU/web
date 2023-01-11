@@ -7,3 +7,5 @@ export * from './HomeHeader';
 export * from './Nav';
 export * from './Page';
 export * from './UpcomingEvents';
+export * from './DepartmentHeader';
+export * from './OfficeHours';
