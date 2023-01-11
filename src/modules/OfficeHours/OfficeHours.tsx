@@ -2,7 +2,6 @@ import { Typography, Divider } from 'components';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { BiPhone } from 'react-icons/bi';
-import { BsPrinter } from 'react-icons/bs';
 
 const OfficeHoursContentContainer = styled.div`
   display: flex;
@@ -31,20 +30,10 @@ export const OfficeHours = () => (
             <BiPhone fontSize={Spaces.lg} />
             <Typography>323-343-5110</Typography>
           </NumberInnerContainer>
-          <NumberInnerContainer>
-            <BsPrinter fontSize={Spaces.lg} />
-            <Typography>323-343-5101</Typography>
-          </NumberInnerContainer>
         </NumberContainer>
       </div>
       <div>
         <Typography weight="700">Office Hours</Typography>
-        <Typography>Monday - Thursday: 8 AM – 6 PM</Typography>
-        <Typography>Friday: 8 AM – 5 PM</Typography>
-        <Typography>Saturday - Sunday: CLOSED</Typography>
-      </div>
-      <div>
-        <Typography weight="700">Clubs Organizations Offices</Typography>
         <Typography>Monday - Thursday: 8 AM – 6 PM</Typography>
         <Typography>Friday: 8 AM – 5 PM</Typography>
         <Typography>Saturday - Sunday: CLOSED</Typography>
