@@ -1,6 +1,12 @@
 import Head from 'next/head';
 import { Page, DepartmentHeader } from 'modules';
-import { DescriptionCard, FluidContainer, Card, Divider } from 'components';
+import {
+  DescriptionCard,
+  FluidContainer,
+  Card,
+  Divider,
+  Image,
+} from 'components';
 
 export default function CSI() {
   const descriptionCards = [
@@ -52,48 +58,64 @@ export default function CSI() {
       linkText: 'Read More',
       children:
         'Applications for the Golden Eagle Awards of Excellence, U-SU Student Involvement Scholarship, and Student Leader Awards.',
+      imgSrc: '/vectors/csi/awards.svg',
+      imgAlt: 'awards image',
     },
     {
       title: 'Campus Activities, Programs, and Trips',
       linkText: 'Read More',
       children:
         'Bands, comedians, movie nights, arts & crafts, Zumba classes, snow skiing, white water rafting, community service experiences, and major events…new programs are added every quarter!',
+      imgSrc: '/vectors/csi/trip.svg',
+      imgAlt: 'trip image',
     },
     {
       title: 'Fraternities & Sororities',
       linkText: 'Read More',
       children:
         'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
+      imgSrc: '/vectors/csi/fraternities.svg',
+      imgAlt: 'fraternities image',
     },
     {
       title: 'Leadership Academy',
       linkText: 'Read More',
       children:
         'Were you a leader in high school or your community college? Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have.',
+      imgSrc: '/vectors/csi/education.svg',
+      imgAlt: 'trip image',
     },
     {
       title: 'Leadership Library',
       linkText: 'Read More',
       children:
         'The Center for Student Involvement maintains a Leadership Library with information on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can access the information either within the Center or at their leisure through the book/video loan program. The Center staff will frequently add more books and videos to the library to address additional organization topics and interests.',
+      imgSrc: '/vectors/csi/meeting.svg',
+      imgAlt: 'trip image',
     },
     {
       title: 'GEEK',
       linkText: 'Read More',
       children:
         'By helping out behind the scenes of CSI programs and activities, you will be able to get more involved on campus, meet lots of other students, and get some event planning experience. A great addition to your resume!',
+      imgSrc: '/vectors/csi/friends.svg',
+      imgAlt: 'firends image',
     },
     {
       title: 'Student Organizations',
       linkText: 'Read More',
       children:
         'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests.',
+      imgSrc: '/vectors/csi/academic.svg',
+      imgAlt: 'academic image',
     },
     {
       title: 'Student Organization Handbook, Forms, and Policies',
       linkText: 'Read More',
       children:
         'Student organization members will find the documents they need to guide their groups to success.',
+      imgSrc: '/vectors/csi/book.svg',
+      imgAlt: 'book image',
     },
   ];
 
@@ -140,7 +162,14 @@ export default function CSI() {
       </FluidContainer>
 
       {clubCards.map((props) => (
-        <FluidContainer key={`${props.children}`}>
+        <FluidContainer flex alignItems="center" key={`${props.children}`}>
+          <Image
+            src={`${props.imgSrc}`}
+            alt={`${props.imgAlt}`}
+            width="150px"
+            marginRight="48px"
+          ></Image>
+
           <Card hoverable width="100%" minHeight="160px" {...props}></Card>
           <Divider color="grey" />
         </FluidContainer>
