@@ -5,42 +5,42 @@ import { DescriptionCard, FluidContainer, Card, Divider } from 'components';
 export default function CSI() {
   const descriptionCards = [
     {
-      imgSrc: '/connecting-people-icon.png',
+      imgSrc: 'icons/connecting-people-icon.png',
       imgAlt: 'connecting people',
       children:
         'Meet new people! Connect with over 120 student organizations including fraternities & sororities.',
     },
     {
-      imgSrc: '/tent-icon-0.png',
+      imgSrc: 'icons/tent-icon-0.png',
       imgAlt: 'tent',
       children:
         'Adventurous? Go on the snowboarding and whitewater rafting trips!',
     },
     {
-      imgSrc: '/music-icon.png',
+      imgSrc: 'icons/music-icon.png',
       imgAlt: 'music',
       children:
         'Love music? Check out the best new bands right here on campus.',
     },
     {
-      imgSrc: '/resume-icon.png',
+      imgSrc: 'icons/resume-icon.png',
       imgAlt: 'resume',
       children:
         'Build your resume! Develop leadership skills at our interactive programs.',
     },
     {
-      imgSrc: '/giving-hand-icon.png',
+      imgSrc: 'icons/giving-hand-icon.png',
       imgAlt: 'giving hand',
       children:
         'Build your resume! Develop leadership skills at our interactive programs.',
     },
     {
-      imgSrc: '/calendar-icon.png',
+      imgSrc: 'icons/calendar-icon.png',
       imgAlt: 'calendar',
       children: 'Eager to help out at campus events? Join GEEK!',
     },
     {
-      imgSrc: '/tent-icon-1.png',
+      imgSrc: 'icons/tent-icon-1.png',
       imgAlt: 'tent',
       children:
         'Take charge! Start your own student organization or suggest a new event idea!',
