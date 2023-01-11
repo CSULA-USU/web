@@ -78,12 +78,12 @@ export default function Contact() {
             <FluidContainer flex flexDirection="column" justifyContent="center">
               <InputContainer>
                 <Typography>Name</Typography>
-                <input size="70" type="text" name="name" id="name" required />
+                <input size={70} type="text" name="name" id="name" required />
               </InputContainer>
               <InputContainer>
                 <Typography>Email</Typography>
                 <input
-                  size="70"
+                  size={70}
                   type="email"
                   name="email"
                   id="email"
@@ -92,13 +92,13 @@ export default function Contact() {
               </InputContainer>
               <InputContainer>
                 <Typography>Subject</Typography>
-                <input size="70" type="text" name="subject" id="subject" />
+                <input size={70} type="text" name="subject" id="subject" />
               </InputContainer>
               <InputContainer>
                 <Typography>Message</Typography>
                 <textarea
-                  rows="10"
-                  cols="69"
+                  rows={10}
+                  cols={69}
                   id="message"
                   name="message"
                 ></textarea>
