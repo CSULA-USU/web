@@ -6,6 +6,7 @@ import { DropdownNav } from './DropdownNav';
 const NavItemsContainer = styled.nav`
   display: flex;
   align-items: center;
+  z-index: 10;
   > * {
     &:not(:last-child) {
       margin-right: 48px;
@@ -22,13 +23,21 @@ const NavItemsContainer = styled.nav`
 
 export const NavItems = () => (
   <NavItemsContainer>
-    <Link href="/about">About</Link>
+    <DropdownNav
+      title="About"
+      links={[
+        { text: 'Contact', href: '/contact' },
+        { text: 'Tenants', href: '/tenants' },
+      ]}
+    ></DropdownNav>
     <Link href="/events">Events</Link>
     <DropdownNav
       title="Departments"
       links={[
-        { text: 'Recreation', href: '/recreation' },
         { text: 'Center For Student Involvement', href: '/csi' },
+        { text: 'Cross Cultural Centers', href: '/ccc' },
+        { text: 'Operations', href: '/operations' },
+        { text: 'Recreation', href: '/recreation' },
       ]}
     ></DropdownNav>
     <Link href="/employment">Employment</Link>
