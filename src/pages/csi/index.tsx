@@ -1,34 +1,102 @@
-import styled from 'styled-components';
 import Head from 'next/head';
-import { Page } from 'modules';
-import { Typography } from 'components';
-
-const CSIContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const CSIHeaderContainer = styled.div`
-  background: url(csi-header.png);
-  width: 660px;
-  height: 258px;
-`;
-
-const CSIInner = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 850px;
-`;
-
-const CSIInnerBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 850px;
-`;
+import { Page, DepartmentHeader } from 'modules';
+import { DescriptionCard, FluidContainer, Card, Divider } from 'components';
 
 export default function CSI() {
+  const descriptionCards = [
+    {
+      imgSrc: 'icons/connecting-people-icon.png',
+      imgAlt: 'connecting people',
+      children:
+        'Meet new people! Connect with over 120 student organizations including fraternities & sororities.',
+    },
+    {
+      imgSrc: 'icons/tent-icon-0.png',
+      imgAlt: 'tent',
+      children:
+        'Adventurous? Go on the snowboarding and whitewater rafting trips!',
+    },
+    {
+      imgSrc: 'icons/music-icon.png',
+      imgAlt: 'music',
+      children:
+        'Love music? Check out the best new bands right here on campus.',
+    },
+    {
+      imgSrc: 'icons/resume-icon.png',
+      imgAlt: 'resume',
+      children:
+        'Build your resume! Develop leadership skills at our interactive programs.',
+    },
+    {
+      imgSrc: 'icons/giving-hand-icon.png',
+      imgAlt: 'giving hand',
+      children:
+        'Build your resume! Develop leadership skills at our interactive programs.',
+    },
+    {
+      imgSrc: 'icons/calendar-icon.png',
+      imgAlt: 'calendar',
+      children: 'Eager to help out at campus events? Join GEEK!',
+    },
+    {
+      imgSrc: 'icons/tent-icon-1.png',
+      imgAlt: 'tent',
+      children:
+        'Take charge! Start your own student organization or suggest a new event idea!',
+    },
+  ];
+  const clubCards = [
+    {
+      title: 'Awards, Scholarships, and Recognition',
+      linkText: 'Read More',
+      children:
+        'Applications for the Golden Eagle Awards of Excellence, U-SU Student Involvement Scholarship, and Student Leader Awards.',
+    },
+    {
+      title: 'Campus Activities, Programs, and Trips',
+      linkText: 'Read More',
+      children:
+        'Bands, comedians, movie nights, arts & crafts, Zumba classes, snow skiing, white water rafting, community service experiences, and major events…new programs are added every quarter!',
+    },
+    {
+      title: 'Fraternities & Sororities',
+      linkText: 'Read More',
+      children:
+        'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
+    },
+    {
+      title: 'Leadership Academy',
+      linkText: 'Read More',
+      children:
+        'Were you a leader in high school or your community college? Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have.',
+    },
+    {
+      title: 'Leadership Library',
+      linkText: 'Read More',
+      children:
+        'The Center for Student Involvement maintains a Leadership Library with information on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can access the information either within the Center or at their leisure through the book/video loan program. The Center staff will frequently add more books and videos to the library to address additional organization topics and interests.',
+    },
+    {
+      title: 'GEEK',
+      linkText: 'Read More',
+      children:
+        'By helping out behind the scenes of CSI programs and activities, you will be able to get more involved on campus, meet lots of other students, and get some event planning experience. A great addition to your resume!',
+    },
+    {
+      title: 'Student Organizations',
+      linkText: 'Read More',
+      children:
+        'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests.',
+    },
+    {
+      title: 'Student Organization Handbook, Forms, and Policies',
+      linkText: 'Read More',
+      children:
+        'Student organization members will find the documents they need to guide their groups to success.',
+    },
+  ];
+
   return (
     <Page>
       <Head>
@@ -47,138 +115,36 @@ export default function CSI() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CSIContainer>
-        <CSIInner>
-          <CSIHeaderContainer></CSIHeaderContainer>
-          <Typography>
-            The Center for Student Involvement serves as a hub for involvement,
-            recreation and leadership, adding to the value of campus life at Cal
-            State LA.
-          </Typography>
-          <ul>
-            <li>
-              <Typography>
-                Meet new people! Connect with over 120 student organizations
-                including fraternities & sororities.
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Adventurous? Go on the snowboarding and whitewater rafting
-                trips!
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Love music? Check out the best new bands right here on campus.
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Build your resume! Develop leadership skills at our interactive
-                programs.
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Give back! Participate in a community service experience.
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Eager to help out at campus events? Join GEEK!
-              </Typography>
-            </li>
-            <li>
-              <Typography margin="0 0 8px">
-                Take charge! Start your own student organization or suggest a
-                new event idea!
-              </Typography>
-            </li>
-          </ul>
-          <CSIInnerBody>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Awards, Scholarships, and Recognition
-            </Typography>
-            <Typography margin="0 0 24px">
-              Applications for the Golden Eagle Awards of Excellence, U-SU
-              Student Involvement Scholarship, and Student Leader Awards.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Campus Activities, Programs, and Trips
-            </Typography>
-            <Typography margin="0 0 24px">
-              Are you curious about fraternity & sorority life? Looking to add
-              some fun to your university experience? Interested in helping
-              others through community service? Take some time to check out
-              these unique organizations.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Fraternities & Sororities
-            </Typography>
-            <Typography margin="0 0 24px">
-              Bands, comedians, movie nights, arts & crafts, Zumba classes, snow
-              skiing, white water rafting, community service experiences, and
-              major events…new programs are added every quarter!
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Golden Eagle Handbook: Statement of Student Rights and
-              Responsibilities
-            </Typography>
-            <Typography margin="0 0 24px">
-              Important information about your rights and responsibilities as a
-              student at Cal State LA.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Leadership Academy
-            </Typography>
-            <Typography margin="0 0 24px">
-              Were you a leader in high school or your community college? Are
-              you interested in developing the skills you need to be a stand-out
-              in a tough job market? Explore the opportunities we have for all
-              students regardless of the level of leadership experience they
-              have.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Leadership Library
-            </Typography>
-            <Typography margin="0 0 24px">
-              The Center for Student Involvement maintains a Leadership Library
-              with information on retreat planning, team builders, enhancing
-              communication skills, officer transitions, and tips for running a
-              successful meeting. All recognized student organization members
-              can access the information either within the Center or at their
-              leisure through the book/video loan program. The Center staff will
-              frequently add more books and videos to the library to address
-              additional organization topics and interests.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              GEEK
-            </Typography>
-            <Typography margin="0 0 24px">
-              By helping out behind the scenes of CSI programs and activities,
-              you will be able to get more involved on campus, meet lots of
-              other students, and get some event planning experience. A great
-              addition to your resume!
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Student Organizations
-            </Typography>
-            <Typography margin="0 0 24px">
-              Cal State LA is home to over 120 student organizations that
-              represent academic, cultural, political, professional, service,
-              social, spiritual, and recreational interests.
-            </Typography>
-            <Typography as="h3" variant="titleSmall" size="md">
-              Student Organization Handbook, Forms, and Policies
-            </Typography>
-            <Typography margin="0 0 24px">
-              Student organization members will find the documents they need to
-              guide their groups to success.
-            </Typography>
-          </CSIInnerBody>
-        </CSIInner>
-      </CSIContainer>
+      <DepartmentHeader title="Center for Student Involvement">
+        The Center for Student Involvement serves as a hub for involvement,
+        recreation and leadership, adding to the value of campus life at Cal
+        State LA.
+      </DepartmentHeader>
+      <FluidContainer
+        backgroundColor="greyLightest"
+        flex
+        flexWrap="wrap"
+        justifyContent="center"
+      >
+        {descriptionCards.map((props) => (
+          <DescriptionCard
+            rounded
+            hoverable
+            margin="24px 8px"
+            key={`${props.children}`}
+            width="calc(25% - 24px)"
+            minHeight="280px"
+            {...props}
+          ></DescriptionCard>
+        ))}
+      </FluidContainer>
+
+      {clubCards.map((props) => (
+        <FluidContainer key={`${props.children}`}>
+          <Card hoverable width="100%" minHeight="160px" {...props}></Card>
+          <Divider color="grey" />
+        </FluidContainer>
+      ))}
     </Page>
   );
 }

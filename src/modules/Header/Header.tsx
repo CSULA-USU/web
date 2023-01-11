@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 interface HeaderProps {
   title: string;
-  backgroundImage: string;
+  backgroundImage?: string;
   children: React.ReactNode;
   buttons: ButtonProps[];
 }
