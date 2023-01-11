@@ -25,8 +25,8 @@ export default function CCC() {
       title: 'Asian Pacific Islander Student Resource Center',
       children:
         ' The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
-      iconSrc: '/ccc/apisrcHeader.png',
-      iconAlt: 'apisrc',
+      imgSrc: '/ccc/apisrcHeader.png',
+      imgAlt: 'apisrc',
       href: '#',
       linkText: 'Learn More',
     },
@@ -34,8 +34,8 @@ export default function CCC() {
       title: 'Chicana/o Latina/o Student Resource Center',
       children:
         'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
-      iconSrc: '/ccc/clsrcHeader.png',
-      iconAlt: 'CLSRC',
+      imgSrc: '/ccc/clsrcHeader.png',
+      imgAlt: 'CLSRC',
       href: '#',
       linkText: 'Learn More',
     },
@@ -43,8 +43,8 @@ export default function CCC() {
       title: 'Pan African Student Resource Center',
       children:
         'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
-      iconSrc: '/ccc/pasrc.png',
-      iconAlt: 'PASRC',
+      imgSrc: '/ccc/pasrc.png',
+      imgAlt: 'PASRC',
       href: '#',
       linkText: 'Learn More',
     },
@@ -52,8 +52,8 @@ export default function CCC() {
       title: 'Gender & Sexuality Resource Center',
       children:
         'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of Womyn, Men, and the Lesbian, Gay, Bisexual, Transgender, and Questioning/Queer (LGBTQ) community.',
-      iconSrc: '/ccc/gsrc.png',
-      iconAlt: 'Cal State LA Logo',
+      imgSrc: '/ccc/gsrc.png',
+      imgAlt: 'Cal State LA Logo',
       href: '#',
       linkText: 'Learn More',
     },
@@ -133,12 +133,7 @@ export default function CCC() {
         unique experiences, histories, and heritages of our diverse community.
       </DepartmentHeader>
 
-      <FluidContainer
-        backgroundColor="greyLightest"
-        flex
-        flexWrap="wrap"
-        justifyContent="center"
-      >
+      <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {descriptionCards.map((props) => (
           <DescriptionCard
             rounded
@@ -151,8 +146,11 @@ export default function CCC() {
           ></DescriptionCard>
         ))}
       </FluidContainer>
-      <FluidContainer flex justifyContent="flex-start">
-        <Image margin="auto" size="80%" src="/cards-icon.svg" alt="cards" />
+      <FluidContainer
+        flex
+        justifyContent="flex-start"
+        backgroundColor="greyLightest"
+      >
         <StudentOrgsCatergoriesContentContainer>
           <Typography margin="auto" variant="title">
             Resource Centers
@@ -165,12 +163,22 @@ export default function CCC() {
           </Typography>
           <OrgsCategoriesCardsContainer>
             {orgsCards.map((props) => (
-              <Card
-                margin={`${Spaces.md} 0`}
+              <FluidContainer
+                flex
+                alignItems="center"
+                justifyContent="space-between"
                 key={`${props.title}`}
-                {...props}
-                iconWidth="200px"
-              ></Card>
+              >
+                <Image
+                  src={`${props.imgSrc}`}
+                  alt={`${props.imgAlt}`}
+                  width="400px"
+                  height="150px"
+                  marginBottom="24px"
+                  marginRight="48px"
+                />
+                <Card margin={`${Spaces.md} 0`} {...props}></Card>
+              </FluidContainer>
             ))}
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>

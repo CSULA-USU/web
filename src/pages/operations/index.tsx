@@ -44,14 +44,14 @@ export default function Operations() {
       title: 'Building Maintenance',
       children:
         'Is responsible for the efficient upkeep of the University-Student Union including all equipment and furnishings in and around the facility. Additionally, this department addresses any electrical, plumbing, HVAC, carpentry, landscaping, and beautification needs of the building.',
-      iconSrc: '/operations/gardening.png',
+      iconSrc: 'vectors/operations/gardening.png',
       iconAlt: 'gardening image',
     },
     {
       title: 'Building Services',
       children:
         'Supports the needs of students, faculty and staff who utilize space in and around the U-SU by providing dependable set-ups for events, meetings, and programs.',
-      iconSrc: '/operations/set-up.jpeg',
+      iconSrc: 'vectors/operations/set-up.jpeg',
       iconAlt: 'decorating image',
       iconWidth: '160px',
     },
@@ -59,15 +59,15 @@ export default function Operations() {
       title: 'Custodial Services',
       children:
         'Is responsible for the general cleanliness of all areas in and surrounding the Union facility including all interior/exterior furnishings and addresses all concerns related to general housekeeping.',
-      iconSrc: '/operations/cleaning.jpg',
-      iconAlt: 'gardening image',
+      iconSrc: '/vectors/operations/cleaning.jpg',
+      iconAlt: 'cleaning image',
       iconWidth: '100px',
     },
     {
       title: 'Media Services',
       children:
         'Assists in supporting the increased technical needs of the building and addresses a wide variety of programs and events that occur inside and outside of the U-SU by providing knowledgeable technical and theatrical support.',
-      iconSrc: '/operations/media.jpg',
+      iconSrc: 'vectors/operations/media.jpg',
       iconAlt: 'media image',
       iconWidth: '150px',
     },
@@ -75,7 +75,7 @@ export default function Operations() {
       title: 'Information & Event Services',
       children:
         'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
-      iconSrc: '/operations/reservation.jpg',
+      iconSrc: 'vectors/operations/reservation.jpg',
       iconAlt: 'media image',
       iconWidth: '150px',
     },
