@@ -14,16 +14,22 @@ const cards = [
     title: 'Inclusive',
     children:
       'A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.',
+    iconSrc: '/vectors/recreation/cooking.svg',
+    iconAlt: 'cooking image',
   },
   {
     title: 'Community',
     children:
       'Empowering conversations that focus on your strengths and areas for growth.',
+    iconSrc: '/vectors/recreation/group-workout.svg',
+    iconAlt: 'community workout image',
   },
   {
     title: 'Set Goals',
     children:
       'Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.',
+    iconSrc: '/vectors/recreation/goal.svg',
+    iconAlt: 'goal image',
   },
 ];
 export default function Gene() {
@@ -68,8 +74,7 @@ export default function Gene() {
             been completed.
           </Typography>
           <Button margin={`0 ${Spaces.sm} 0 0`} variant="black">
-            {' '}
-            Linktr{' '}
+            Linktree
           </Button>
           <Button variant="black"> Meet your Educators </Button>
         </HeaderContent>
@@ -119,6 +124,7 @@ export default function Gene() {
               {...props}
               width="calc(30.33% - 8px)"
               minHeight="200px"
+              iconWidth="100px"
             ></Card>
           ))}
         </FluidContainer>
