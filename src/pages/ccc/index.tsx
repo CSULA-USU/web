@@ -81,7 +81,7 @@ export default function CCC() {
     {
       imgSrc: 'icons/open-door-icon.png',
       imgAlt: 'Open door image',
-      children: 'Study & Meeting spaces',
+      children: 'Study spaces',
     },
     {
       imgSrc: 'icons/fridge-icon.png',
@@ -91,7 +91,7 @@ export default function CCC() {
     {
       imgSrc: 'icons/calendar-icon.png',
       imgAlt: 'calendar',
-      children: 'Message boxes for affiliated clubs and organizations',
+      children: 'Culturally relevant programming events throughout the year',
     },
     {
       imgSrc: 'icons/resume-icon.png',
