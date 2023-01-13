@@ -1,11 +1,15 @@
 import { Button, FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
+import { Colors } from 'theme';
 
 type CTAProps = {
   children: React.ReactNode;
   text: string;
   buttonText: string;
   href: string;
+  backgroundColorProp?: keyof typeof Colors;
+  buttonVariantColor?: 'primary' | 'black' | 'grey' | 'outline';
+  textColor?: keyof typeof Colors;
 };
 
 const CTAContainer = styled.div`
@@ -26,14 +30,24 @@ export const CallToAction = ({
   text,
   buttonText,
   href,
+  backgroundColorProp,
+  buttonVariantColor,
+  textColor,
 }: CTAProps) => (
-  <FluidContainer backgroundColor="primary">
+  <FluidContainer
+    backgroundColor={backgroundColorProp ? backgroundColorProp : 'primary'}
+  >
     <CTAContainer>
       <div>{children}</div>
       <div>
-        <Typography margin="0 0 16px">{text}</Typography>
+        <Typography color={textColor ? textColor : 'black'} margin="0 0 16px">
+          {text}
+        </Typography>
         <br />
-        <Button variant="black" href={href}>
+        <Button
+          variant={buttonVariantColor ? buttonVariantColor : 'black'}
+          href={href}
+        >
           {buttonText}
         </Button>
       </div>
