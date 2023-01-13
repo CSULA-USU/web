@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Page, DepartmentHeader } from 'modules';
+import { Page, DepartmentHeader, CallToAction } from 'modules';
 import {
   Typography,
   Card,
@@ -133,19 +133,6 @@ export default function CCC() {
         unique experiences, histories, and heritages of our diverse community.
       </DepartmentHeader>
 
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {descriptionCards.map((props) => (
-          <DescriptionCard
-            rounded
-            hoverable
-            margin="24px 8px"
-            key={`${props.children}`}
-            width="calc(25% - 24px)"
-            minHeight="280px"
-            {...props}
-          ></DescriptionCard>
-        ))}
-      </FluidContainer>
       <FluidContainer
         flex
         justifyContent="flex-start"
@@ -183,6 +170,7 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
+
       <FluidContainer
         flex
         flexDirection="column"
@@ -200,6 +188,34 @@ export default function CCC() {
         </Typography>
         <Button variant="black">Learn More</Button>
       </FluidContainer>
+      <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        {descriptionCards.map((props) => (
+          <DescriptionCard
+            rounded
+            hoverable
+            margin="24px 8px"
+            key={`${props.children}`}
+            width="calc(25% - 24px)"
+            minHeight="280px"
+            {...props}
+          ></DescriptionCard>
+        ))}
+      </FluidContainer>
+      <CallToAction
+        buttonText="View Form"
+        text="Interested in increasing cross-cultural awareness through presentations/training or tabling?"
+        href="https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3XmCNpTA3T5AiUt4YCUxHc1URDlZVFZXTTdWQ1A0N0UzTDFQQlBFRDBBRCQlQCN0PWcu"
+      >
+        <Typography as="h2" variant="title" weight="400" lineHeight="1">
+          Request for
+          <br />
+          <strong>
+            {' '}
+            CCC Presentation <br />
+            or Trainings
+          </strong>
+        </Typography>
+      </CallToAction>
     </Page>
   );
 }
