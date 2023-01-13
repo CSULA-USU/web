@@ -33,8 +33,8 @@ export default function Gene() {
   ];
 
   const buttons = [
-    { text: 'Linktree', href: '' },
-    { text: 'Meet Your Educators', href: '' },
+    { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
+    { text: 'Meet Your Educators', href: '#' },
   ];
 
   return (
@@ -95,7 +95,12 @@ export default function Gene() {
             not be confirmed unless this form has been completed.
           </Typography>
         </WelcomeContentContainer>
-        <Button variant="black">RSVP</Button>
+        <Button
+          variant="black"
+          href="https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3V0syxBFmSRKh-en1AxipFNUNUFPNFZZVTQzRTBCOElUV0UzMUc1NDhKUy4u"
+        >
+          RSVP
+        </Button>
       </FluidContainer>
 
       <FluidContainer
