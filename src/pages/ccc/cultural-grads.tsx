@@ -50,11 +50,6 @@ export default function CCC() {
         <FluidContainer flex>
           <FluidContainer flex flexDirection="column">
             <TeaserContainer />
-            {/* <Image
-                        src="/ccc/nuestra-teaser.jpeg"
-                        alt="graduation image"
-                        width="500px"
-                    /> */}
             <Typography variant="titleSmall">Nuestra Grad &apos;22</Typography>
           </FluidContainer>
           <FluidContainer>
