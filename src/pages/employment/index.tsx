@@ -40,7 +40,9 @@ export default function Employment() {
       </Head>
 
       <FluidContainer backgroundImage="/subtle-background-2.jpg">
-        <h1>Employment</h1>
+        <Typography as="h1" variant="pageHeader">
+          Employment
+        </Typography>
       </FluidContainer>
       <FluidContainer>
         <JobListingContainer>
