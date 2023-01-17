@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Page, EventCard } from 'modules';
 import { Spaces } from 'theme';
 import { Typography, Card, FluidContainer, Button } from 'components';
+import { useEffect, useState } from 'react';
+import { fetchEvents } from 'api';
+import { PresenceEvent } from 'types';
 
 const HeaderContent = styled.div`
   width: 80%;
@@ -33,6 +36,27 @@ const cards = [
   },
 ];
 export default function Gene() {
+  const [events, setEvents] = useState<PresenceEvent[]>([]);
+  const getEvents = async () => {
+    const data: PresenceEvent[] = await fetchEvents();
+    const sortedData = data
+      .filter(
+        (event) =>
+          new Date().getTime() < new Date(event.endDateTimeUtc).getTime() &&
+          ['Recreation'].includes(event.organizationName),
+      )
+      .sort((a, b) => {
+        return (
+          new Date(a.startDateTimeUtc).getTime() -
+          new Date(b.startDateTimeUtc).getTime()
+        );
+      });
+    setEvents(sortedData);
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
   return (
     <Page>
       <Head>
@@ -78,15 +102,7 @@ export default function Gene() {
           </Button>
           <Button variant="black"> Meet your Educators </Button>
         </HeaderContent>
-        <EventCard
-          featured
-          image="/recreation/gene-event.png"
-          org="Recreation"
-          title="Golden Eagle Nutrition Education (GENE)"
-          location="Zoom"
-          time="12:00 AM – 11:59 PM"
-          href="#"
-        />
+        <EventCard featured {...events[0]} />
       </FluidContainer>
       <FluidContainer
         flex
