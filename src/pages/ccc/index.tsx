@@ -25,7 +25,7 @@ export default function CCC() {
       title: 'Asian Pacific Islander Student Resource Center',
       children:
         ' The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
-      imgSrc: '/ccc/apisrcHeader.png',
+      imgSrc: 'departments/ccc/apisrcHeader.png',
       imgAlt: 'apisrc',
       href: '#',
       linkText: 'Learn More',
@@ -34,7 +34,7 @@ export default function CCC() {
       title: 'Chicana/o Latina/o Student Resource Center',
       children:
         'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
-      imgSrc: '/ccc/clsrcHeader.png',
+      imgSrc: 'departments/ccc/clsrcHeader.png',
       imgAlt: 'CLSRC',
       href: '#',
       linkText: 'Learn More',
