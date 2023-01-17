@@ -114,7 +114,8 @@ export default function CCC() {
     {
       title: 'Office Hours',
       times: [
-        'Monday - Friday: 9:00 AM - 5:00 PM',
+        'Monday - Thursday: 8:00 AM - 7:00 PM',
+        'Friday: 8:00 AM - 5:00 PM',
         'Saturday - Sunday: CLOSED',
       ],
     },
@@ -160,8 +161,9 @@ export default function CCC() {
       </Head>
       <DepartmentHeader
         title="Cross Cultural Centers"
-        address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
-        phoneNumber="323-343-5110"
+        address="5154 State University Drive Los Angeles, CA 90032
+        Room 206, 2nd Floor, U-SU"
+        phoneNumber="323-343-5001"
         hours={hours}
         featuredEvent={events[0]}
       >
