@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { Page, DepartmentHeader, CallToAction } from 'modules';
+import { useEffect, useState } from 'react';
+import { fetchEvents } from 'api';
+import { PresenceEvent } from 'types';
 import {
   Typography,
   Card,
@@ -106,6 +109,37 @@ export default function CCC() {
         'Friendly staff and volunteers to answer questions and discuss ideas',
     },
   ];
+
+  const hours = [
+    {
+      title: 'Office Hours',
+      times: [
+        'Monday - Friday: 9:00 AM - 5:00 PM',
+        'Saturday - Sunday: CLOSED',
+      ],
+    },
+  ];
+  const [events, setEvents] = useState<PresenceEvent[]>([]);
+  const getEvents = async () => {
+    const data: PresenceEvent[] = await fetchEvents();
+    const sortedData = data
+      .filter(
+        (event) =>
+          new Date().getTime() < new Date(event.endDateTimeUtc).getTime() &&
+          ['Cross Cultural Centers'].includes(event.organizationName),
+      )
+      .sort((a, b) => {
+        return (
+          new Date(a.startDateTimeUtc).getTime() -
+          new Date(b.startDateTimeUtc).getTime()
+        );
+      });
+    setEvents(sortedData);
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
   return (
     <Page>
       <Head>
@@ -124,7 +158,13 @@ export default function CCC() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DepartmentHeader title="Cross Cultural Centers">
+      <DepartmentHeader
+        title="Cross Cultural Centers"
+        address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
+        phoneNumber="323-343-5110"
+        hours={hours}
+        featuredEvent={events[0]}
+      >
         Established 1997, the mission of the Cross Cultural Centers at
         California State University, Los Angeles is to encourage student
         learning as well as foster an inclusive campus environment that

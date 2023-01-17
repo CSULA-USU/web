@@ -2,11 +2,20 @@ import { Typography, FluidContainer } from 'components';
 import { EventCard } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { OfficeHours } from 'modules/OfficeHours';
+import { PresenceEvent } from 'types';
 
+interface HourProps {
+  title: string;
+  times: string[];
+}
 interface DepartmentHeaderProps {
   title: string;
   backgroundImage?: string;
   children: React.ReactNode;
+  address: string;
+  phoneNumber: string;
+  hours?: HourProps[];
+  featuredEvent: PresenceEvent;
 }
 const HeaderContent = styled.div`
   width: 80%;
@@ -18,6 +27,10 @@ const HeaderContainer = styled.div`
 export const DepartmentHeader = ({
   title,
   children,
+  address,
+  phoneNumber,
+  hours,
+  featuredEvent,
 }: DepartmentHeaderProps) => (
   <FluidContainer backgroundImage="subtle-background-3.jpg">
     <HeaderContainer>
@@ -28,16 +41,12 @@ export const DepartmentHeader = ({
         </Typography>
         <Typography>{children}</Typography>
       </HeaderContent>
-      <EventCard
-        featured
-        image="event-0.jpg"
-        org="Department Name"
-        title="Event Title"
-        location="204B"
-        time="8:00 AM – 9:00AM"
-        href="#"
-      />
+      <EventCard featured {...featuredEvent} />
     </HeaderContainer>
-    <OfficeHours></OfficeHours>
+    <OfficeHours
+      address={address}
+      phoneNumber={phoneNumber}
+      hours={hours}
+    ></OfficeHours>
   </FluidContainer>
 );
