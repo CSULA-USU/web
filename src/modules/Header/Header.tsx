@@ -9,7 +9,7 @@ interface HeaderProps {
   title: string;
   backgroundImage?: string;
   children: React.ReactNode;
-  buttons: ButtonProps[];
+  buttons?: ButtonProps[];
 }
 
 const HeaderContainer = styled.div`
