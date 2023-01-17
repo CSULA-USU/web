@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Page, DepartmentHeader } from 'modules';
+import { Page, DepartmentHeader, CallToAction } from 'modules';
 import {
   Typography,
   Card,
@@ -40,26 +40,31 @@ export default function CCC() {
       linkText: 'Learn More',
     },
     {
-      title: 'Pan African Student Resource Center',
+      title: 'Gender & Sexuality Resource Center',
       children:
-        'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
-      imgSrc: 'departments/ccc/pasrc.png',
-      imgAlt: 'PASRC',
+        'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of Womyn, Men, and the Lesbian, Gay, Bisexual, Transgender, and Questioning/Queer (LGBTQ) community.',
+      imgSrc: '/ccc/gsrc.png',
+      imgAlt: 'Cal State LA Logo',
       href: '#',
       linkText: 'Learn More',
     },
     {
-      title: 'Gender & Sexuality Resource Center',
+      title: 'Pan African Student Resource Center',
       children:
-        'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of Womyn, Men, and the Lesbian, Gay, Bisexual, Transgender, and Questioning/Queer (LGBTQ) community.',
-      imgSrc: 'departments/ccc/gsrc.png',
-      imgAlt: 'Cal State LA Logo',
+        'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
+      imgSrc: '/ccc/pasrc.png',
+      imgAlt: 'PASRC',
       href: '#',
       linkText: 'Learn More',
     },
   ];
 
   const descriptionCards = [
+    {
+      imgSrc: 'icons/giving-hand-icon.png',
+      imgAlt: 'giving hand image',
+      children: 'Support groups and workshops',
+    },
     {
       imgSrc: 'icons/book-icon.png',
       imgAlt: 'book image',
@@ -72,15 +77,11 @@ export default function CCC() {
       children:
         'Cross-cultural video, audio library, and media center for educational purposes',
     },
-    {
-      imgSrc: 'icons/giving-hand-icon.png',
-      imgAlt: 'giving hand image',
-      children: 'Support groups and workshops',
-    },
+
     {
       imgSrc: 'icons/open-door-icon.png',
       imgAlt: 'Open door image',
-      children: 'Study & Meeting spaces',
+      children: 'Study spaces',
     },
     {
       imgSrc: 'icons/fridge-icon.png',
@@ -90,7 +91,7 @@ export default function CCC() {
     {
       imgSrc: 'icons/calendar-icon.png',
       imgAlt: 'calendar',
-      children: 'Message boxes for affiliated clubs and organizations',
+      children: 'Culturally relevant programming events throughout the year',
     },
     {
       imgSrc: 'icons/resume-icon.png',
@@ -133,19 +134,6 @@ export default function CCC() {
         unique experiences, histories, and heritages of our diverse community.
       </DepartmentHeader>
 
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {descriptionCards.map((props) => (
-          <DescriptionCard
-            rounded
-            hoverable
-            margin="24px 8px"
-            key={`${props.children}`}
-            width="calc(25% - 24px)"
-            minHeight="280px"
-            {...props}
-          ></DescriptionCard>
-        ))}
-      </FluidContainer>
       <FluidContainer
         flex
         justifyContent="flex-start"
@@ -183,23 +171,75 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
+      <FluidContainer backgroundImage="/bod-cta-background.jpg">
+        <Typography variant="title">We Provide:</Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {descriptionCards.map((props) => (
+            <DescriptionCard
+              rounded
+              hoverable
+              margin="16px 8px"
+              key={`${props.children}`}
+              width="calc(25% - 24px)"
+              minHeight="280px"
+              {...props}
+            ></DescriptionCard>
+          ))}
+        </FluidContainer>
+      </FluidContainer>
+
       <FluidContainer
         flex
         flexDirection="column"
         alignItems="center"
         backgroundColor="primary"
       >
-        <Typography variant="title">Cultural Graduate Celebrations</Typography>
-        <Typography margin="24px 0">
-          These ceremonies and celebrations are great opportunities to
-          acknowledge your academic achievements, honor your families,
-          communities, and other significant people in your lives, and to
-          celebrate the cultural influences that have contributed to your
-          academic success. The ceremonies are open to all students who would
-          like to sign up and participate.
-        </Typography>
-        <Button variant="black">Learn More</Button>
+        <FluidContainer flex>
+          <Image
+            src="/ccc/nuestra-teaser.jpeg"
+            alt="graduation image"
+            width="500px"
+          ></Image>
+          <FluidContainer>
+            <Typography variant="title">
+              Cultural Graduate Celebrations
+            </Typography>
+            <Typography margin="24px 0">
+              These ceremonies and celebrations are great opportunities to
+              acknowledge your academic achievements, honor your families,
+              communities, and other significant people in your lives, and to
+              celebrate the cultural influences that have contributed to your
+              academic success. The ceremonies are open to all students who
+              would like to sign up and participate.
+            </Typography>
+            <Button variant="black">Learn More</Button>
+          </FluidContainer>
+        </FluidContainer>
       </FluidContainer>
+
+      <CallToAction
+        backgroundColorProp="black"
+        textColor="white"
+        buttonVariantColor="primary"
+        buttonText="View Form"
+        text="Interested in increasing cross-cultural awareness through presentations/training or tabling?"
+        href="https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3XmCNpTA3T5AiUt4YCUxHc1URDlZVFZXTTdWQ1A0N0UzTDFQQlBFRDBBRCQlQCN0PWcu"
+      >
+        <Typography
+          color="white"
+          as="h2"
+          variant="title"
+          weight="400"
+          lineHeight="1"
+        >
+          Request for
+          <br />
+          <strong>
+            CCC Presentation <br />
+            or Trainings
+          </strong>
+        </Typography>
+      </CallToAction>
     </Page>
   );
 }

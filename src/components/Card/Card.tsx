@@ -23,6 +23,11 @@ interface CardProps extends CardStyles {
   iconSrc?: string;
   iconAlt?: string;
 }
+const IconContainer = styled.div`
+  height: 80px;
+  display: flex;
+  align-items: center;
+`;
 
 const StyledCard = styled.div<CardStyles>`
   display: flex;
@@ -62,12 +67,14 @@ export const Card = ({
   <StyledCard {...props}>
     <div>
       {iconSrc && (
-        <Image
-          src={iconSrc}
-          alt={iconAlt ? iconAlt : 'icon img'}
-          width={iconWidth ? iconWidth : Spaces['2xl']}
-          marginBottom="24px"
-        />
+        <IconContainer>
+          <Image
+            src={iconSrc}
+            alt={iconAlt ? iconAlt : 'icon img'}
+            width={iconWidth ? iconWidth : Spaces['2xl']}
+            marginBottom="24px"
+          />
+        </IconContainer>
       )}
       <br />
       <Typography as="h4" variant="titleSmall" margin="0 0 16px">
