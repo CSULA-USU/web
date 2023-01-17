@@ -1,15 +1,10 @@
 import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors } from 'theme';
+import { PresenceEvent } from 'types';
 
-export interface EventCardProps {
+export interface EventCardProps extends PresenceEvent {
   featured?: boolean;
-  image?: string;
-  org: string;
-  title: string;
-  location: string;
-  time: string;
-  href: string;
 }
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
@@ -58,20 +53,43 @@ const EventDate = styled.div`
   opacity: 1;
 `;
 
+const abvOrgNames: { [key: string]: string } = {
+  'Center for Student Involvement': 'CSI',
+  'Cross Cultural Centers': 'CCC',
+  Recreation: 'REC',
+};
+
+const getTime = (utc: string) => {
+  return new Date(utc).toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+};
+
 export const EventCard = ({
-  org,
-  title,
+  organizationName,
+  eventName,
   location,
-  time,
-  href,
-  ...props
+  startDateTimeUtc,
+  endDateTimeUtc,
+  photoUri,
+  featured,
 }: EventCardProps) => {
+  const startTime = getTime(startDateTimeUtc);
+  const endTime = getTime(endDateTimeUtc);
+  const month = new Date(startDateTimeUtc)
+    .toLocaleString('default', { month: 'short' })
+    .toUpperCase();
+  const day = new Date(startDateTimeUtc).getDate();
+
   return (
-    <EventCardContainer {...props}>
+    <EventCardContainer
+      image={`https://calstatela-cdn.presence.io/event-photos/caa045a5-87e3-4730-9e3b-3237755bc0a8/${photoUri}`}
+    >
       <EventCardTop>
         <EventDate>
           <Typography as="span" variant="eventDetail" lineHeight="1">
-            DEC <br />
+            {month} <br />
           </Typography>
           <Typography
             as="span"
@@ -80,28 +98,26 @@ export const EventCard = ({
             color="white"
             lineHeight="1"
           >
-            25
+            {day}
           </Typography>
         </EventDate>
         <Typography as="h5" variant="eventDetail">
-          {org}
+          {abvOrgNames[organizationName]}
         </Typography>
       </EventCardTop>
       <div>
         <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-          {title}
+          {eventName}
         </Typography>
         <Typography as="h4" variant="eventTime">
-          {time}
+          {startTime} - {endTime}
         </Typography>
         <EventCardBottom>
           <Typography as="h5" variant="eventDetail">
             {location}
           </Typography>
-          {props.featured ? (
-            <Button href={href} margin="12px 0 0">
-              Learn More
-            </Button>
+          {featured ? (
+            <Button margin="12px 0 0">Learn More</Button>
           ) : (
             <Typography color="primary" size="sm">
               Learn More
