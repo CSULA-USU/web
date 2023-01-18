@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Page, EventCard } from 'modules';
+import { Page } from 'modules';
 import { Spaces } from 'theme';
-import { Typography, Card, FluidContainer, Button } from 'components';
+import { Typography, Card, FluidContainer, Button, Image } from 'components';
 
 const HeaderContent = styled.div`
   width: 80%;
@@ -78,15 +78,7 @@ export default function Gene() {
           </Button>
           <Button variant="black"> Meet your Educators </Button>
         </HeaderContent>
-        <EventCard
-          featured
-          image="/recreation/gene-event.png"
-          org="Recreation"
-          title="Golden Eagle Nutrition Education (GENE)"
-          location="Zoom"
-          time="12:00 AM – 11:59 PM"
-          href="#"
-        />
+        <Image src="/recreation/gene-event.png" alt="Gene Event" />
       </FluidContainer>
       <FluidContainer
         flex
