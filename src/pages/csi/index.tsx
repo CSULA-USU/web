@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Page, DepartmentHeader } from 'modules';
+import { Page, DepartmentHeader, OfficeHours } from 'modules';
 import {
   DescriptionCard,
   FluidContainer,
@@ -7,9 +7,6 @@ import {
   Divider,
   Image,
 } from 'components';
-import { useEffect, useState } from 'react';
-import { fetchEvents } from 'api';
-import { PresenceEvent } from 'types';
 
 export default function CSI() {
   const descriptionCards = [
@@ -123,27 +120,6 @@ export default function CSI() {
       ],
     },
   ];
-  const [events, setEvents] = useState<PresenceEvent[]>([]);
-  const getEvents = async () => {
-    const data: PresenceEvent[] = await fetchEvents();
-    const sortedData = data
-      .filter(
-        (event) =>
-          new Date().getTime() < new Date(event.endDateTimeUtc).getTime() &&
-          ['Center for Student Involvement'].includes(event.organizationName),
-      )
-      .sort((a, b) => {
-        return (
-          new Date(a.startDateTimeUtc).getTime() -
-          new Date(b.startDateTimeUtc).getTime()
-        );
-      });
-    setEvents(sortedData);
-  };
-
-  useEffect(() => {
-    getEvents();
-  }, []);
   return (
     <Page>
       <Head>
@@ -164,10 +140,13 @@ export default function CSI() {
       </Head>
       <DepartmentHeader
         title="Center for Student Involvement"
-        address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
-        phoneNumber="323-343-5110"
-        hours={hours}
-        featuredEvent={events[0]}
+        infoSection={
+          <OfficeHours
+            address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
+            phoneNumber="323-343-5110"
+            hours={hours}
+          />
+        }
       >
         The Center for Student Involvement empowers Golden Eagles to engage in
         transformative opportunities, build community, and create positive

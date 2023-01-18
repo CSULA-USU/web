@@ -1,21 +1,14 @@
 import { Typography, FluidContainer } from 'components';
 import { EventCard } from '../../modules/EventCard';
 import styled from 'styled-components';
-import { OfficeHours } from 'modules/OfficeHours';
-import { PresenceEvent } from 'types';
+import { useRecoilValue } from 'recoil';
+import { eventListState } from 'atoms';
 
-interface HourProps {
-  title: string;
-  times: string[];
-}
 interface DepartmentHeaderProps {
   title: string;
   backgroundImage?: string;
   children: React.ReactNode;
-  address: string;
-  phoneNumber: string;
-  hours?: HourProps[];
-  featuredEvent: PresenceEvent;
+  infoSection: React.ReactNode;
 }
 const HeaderContent = styled.div`
   width: 80%;
@@ -27,26 +20,26 @@ const HeaderContainer = styled.div`
 export const DepartmentHeader = ({
   title,
   children,
-  address,
-  phoneNumber,
-  hours,
-  featuredEvent,
-}: DepartmentHeaderProps) => (
-  <FluidContainer backgroundImage="subtle-background-3.jpg">
-    <HeaderContainer>
-      <HeaderContent>
-        <Typography variant="titleSmall">Welcome to the</Typography>
-        <Typography margin="0 0 24px" variant="titleLarge" weight="400">
-          {title}
-        </Typography>
-        <Typography>{children}</Typography>
-      </HeaderContent>
-      <EventCard featured {...featuredEvent} />
-    </HeaderContainer>
-    <OfficeHours
-      address={address}
-      phoneNumber={phoneNumber}
-      hours={hours}
-    ></OfficeHours>
-  </FluidContainer>
-);
+  infoSection,
+}: DepartmentHeaderProps) => {
+  const events = useRecoilValue(eventListState);
+  const departmentEvent = events.find(
+    (event) => event.organizationName === title,
+  );
+
+  return (
+    <FluidContainer backgroundImage="subtle-background-3.jpg">
+      <HeaderContainer>
+        <HeaderContent>
+          <Typography variant="titleSmall">Welcome to the</Typography>
+          <Typography margin="0 0 24px" variant="titleLarge" weight="400">
+            {title}
+          </Typography>
+          <Typography>{children}</Typography>
+        </HeaderContent>
+        {departmentEvent && <EventCard featured {...departmentEvent} />}
+      </HeaderContainer>
+      {infoSection}
+    </FluidContainer>
+  );
+};
