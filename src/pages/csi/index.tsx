@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Page, DepartmentHeader } from 'modules';
+import { Page, DepartmentHeader, OfficeHours } from 'modules';
 import {
   DescriptionCard,
   FluidContainer,
@@ -111,6 +111,15 @@ export default function CSI() {
     },
   ];
 
+  const hours = [
+    {
+      title: 'Office Hours',
+      times: [
+        'Monday - Friday: 9:00 AM - 5:00 PM',
+        'Saturday - Sunday: CLOSED',
+      ],
+    },
+  ];
   return (
     <Page>
       <Head>
@@ -129,7 +138,16 @@ export default function CSI() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DepartmentHeader title="Center for Student Involvement">
+      <DepartmentHeader
+        title="Center for Student Involvement"
+        infoSection={
+          <OfficeHours
+            address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
+            phoneNumber="323-343-5110"
+            hours={hours}
+          />
+        }
+      >
         The Center for Student Involvement empowers Golden Eagles to engage in
         transformative opportunities, build community, and create positive
         change.
