@@ -1,14 +1,53 @@
 import styled from 'styled-components';
 import Head from 'next/head';
+import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import { Page } from 'modules';
-import { Typography, FluidContainer, Image, Button } from 'components';
+import { Spaces } from 'theme';
 
 const TeaserContainer = styled.div`
   width: 500px;
   height: 520px;
-  background: center / contain no-repeat url('/ccc/nuestra-teaser.jpeg');
+  background: center / contain no-repeat
+    url('/departments/ccc/nuestra-teaser.jpeg');
   border-radius: 12px;
 `;
+
+const cards = [
+  {
+    title: 'APIDA',
+    children: 'Asian, Pacific Islander, South Asian, Desi-American',
+    linkText: 'Apply Here',
+    href: '#',
+    iconSrc: '/departments/logos/apisrc-icon.svg',
+    iconAlt: 'Cal State LA Logo',
+  },
+  {
+    title: 'Black',
+    children: 'Black, African-American, Pan-African Diaspora',
+    linkText: 'Apply Here',
+    href: '#',
+    iconSrc: '/departments/logos/pasrc-icon.svg',
+    iconAlt: 'Cal State LA Logo',
+  },
+  {
+    title: 'Nuestra',
+    children: 'Chicana/o, Latina/o, Central American, South American',
+    linkText: 'Apply Here',
+    href: '#',
+    iconSrc: '/calstatela-badge.svg',
+    iconAlt: 'Cal State LA Logo',
+  },
+  {
+    title: 'Pride',
+    children:
+      'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
+    linkText: 'Apply Here',
+    href: '#',
+    iconSrc: '/calstatela-badge.svg',
+    iconAlt: 'Cal State LA Logo',
+  },
+];
+
 export default function CCC() {
   return (
     <Page>
@@ -36,7 +75,7 @@ export default function CCC() {
         innerMaxWidth="560px"
       >
         <Image
-          src="/ccc/ccc-grad-banner.jpg"
+          src="/departments/ccc/ccc-grad-banner.jpg"
           alt="recreation logo"
           width="100%"
           height="fit-content"
@@ -68,6 +107,41 @@ export default function CCC() {
             </Typography>
             <Button variant="black">Apply now</Button>
           </FluidContainer>
+        </FluidContainer>
+        <Typography as="h2" variant="title">
+          Graduations:
+        </Typography>
+        <FluidContainer flex flexWrap="wrap">
+          {cards.map((props) => (
+            <Card
+              margin={`${Spaces.md}`}
+              topBorder
+              key={`${props.title}`}
+              {...props}
+              width="calc(22% - 8px)"
+              minHeight="280px"
+            >
+              {/* {if (props.title === 'APIDA') {
+              return(
+                  <h1>this is apida grad</h1>
+              )
+            }}
+            {props.title === 'Pride' ? (
+            <div>
+            <h1>Date: January 13</h1>
+            <br />
+            </div>) : ''}
+            <br />
+            <br /> */}
+              {`${
+                props.children.length > 200
+                  ? props.children.substring(0, 200) + '...'
+                  : props.children
+              }`}
+              <br />
+              <br />
+            </Card>
+          ))}
         </FluidContainer>
       </FluidContainer>
     </Page>
