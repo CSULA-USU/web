@@ -2,6 +2,8 @@ import { Typography, FluidContainer } from 'components';
 import { EventCard } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { OfficeHours } from 'modules/OfficeHours';
+import { useRecoilValue } from 'recoil';
+import { eventListState } from 'atoms';
 
 interface DepartmentHeaderProps {
   title: string;
@@ -18,26 +20,25 @@ const HeaderContainer = styled.div`
 export const DepartmentHeader = ({
   title,
   children,
-}: DepartmentHeaderProps) => (
-  <FluidContainer backgroundImage="subtle-background-3.jpg">
-    <HeaderContainer>
-      <HeaderContent>
-        <Typography variant="titleSmall">Welcome to the</Typography>
-        <Typography margin="0 0 24px" variant="titleLarge" weight="400">
-          {title}
-        </Typography>
-        <Typography>{children}</Typography>
-      </HeaderContent>
-      <EventCard
-        featured
-        image="event-0.jpg"
-        org="Department Name"
-        title="Event Title"
-        location="204B"
-        time="8:00 AM – 9:00AM"
-        href="#"
-      />
-    </HeaderContainer>
-    <OfficeHours></OfficeHours>
-  </FluidContainer>
-);
+}: DepartmentHeaderProps) => {
+  const events = useRecoilValue(eventListState);
+  const departmentEvent = events.find(
+    (event) => event.organizationName === title,
+  );
+
+  return (
+    <FluidContainer backgroundImage="subtle-background-3.jpg">
+      <HeaderContainer>
+        <HeaderContent>
+          <Typography variant="titleSmall">Welcome to the</Typography>
+          <Typography margin="0 0 24px" variant="titleLarge" weight="400">
+            {title}
+          </Typography>
+          <Typography>{children}</Typography>
+        </HeaderContent>
+        {departmentEvent && <EventCard featured {...departmentEvent} />}
+      </HeaderContainer>
+      <OfficeHours></OfficeHours>
+    </FluidContainer>
+  );
+};
