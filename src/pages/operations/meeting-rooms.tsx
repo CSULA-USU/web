@@ -1,4 +1,4 @@
-import { Page, Header, OfficeHours } from 'modules';
+import { Page, Header } from 'modules';
 import { Card, FluidContainer, Image, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 import styled from 'styled-components';
@@ -103,7 +103,6 @@ export default function MeetingRooms() {
           Plaza rooms. We are currently not accepting reservations from
           off-campus sponsors.
         </Header>
-        <OfficeHours></OfficeHours>
       </FluidContainer>
       <FluidContainer
         flex

@@ -1,7 +1,6 @@
 import { Typography, FluidContainer } from 'components';
 import { EventCard } from '../../modules/EventCard';
 import styled from 'styled-components';
-import { OfficeHours } from 'modules/OfficeHours';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 
@@ -9,6 +8,7 @@ interface DepartmentHeaderProps {
   title: string;
   backgroundImage?: string;
   children: React.ReactNode;
+  infoSection: React.ReactNode;
 }
 const HeaderContent = styled.div`
   width: 80%;
@@ -20,6 +20,7 @@ const HeaderContainer = styled.div`
 export const DepartmentHeader = ({
   title,
   children,
+  infoSection,
 }: DepartmentHeaderProps) => {
   const events = useRecoilValue(eventListState);
   const departmentEvent = events.find(
@@ -38,7 +39,7 @@ export const DepartmentHeader = ({
         </HeaderContent>
         {departmentEvent && <EventCard featured {...departmentEvent} />}
       </HeaderContainer>
-      <OfficeHours></OfficeHours>
+      {infoSection}
     </FluidContainer>
   );
 };
