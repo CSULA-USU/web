@@ -12,7 +12,7 @@ const LinkInner = styled.div`
   display: flex;
   align-items: center;
   color: ${Colors.gold};
-  padding: ${Spaces.sm} ${Spaces.sm} ${Spaces.sm} 0;
+  padding: ${Spaces.sm} ${Spaces.md} ${Spaces.sm} 0;
   &:hover {
     opacity: 0.8;
   }
