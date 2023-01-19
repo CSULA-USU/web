@@ -56,7 +56,7 @@ export default function Employment() {
                   {j.department}
                 </Typography>
                 <Link href={j.href} target="_blank">
-                  <Typography as="h4" variant="copyLarge">
+                  <Typography as="h4" variant="labelTitle">
                     {j.title}
                   </Typography>
                 </Link>
@@ -73,7 +73,7 @@ export default function Employment() {
                   {j.department}
                 </Typography>
                 <Link href={j.href} target="_blank">
-                  <Typography as="h4" variant="copyLarge">
+                  <Typography as="h4" variant="labelTitle">
                     {j.title}
                   </Typography>
                 </Link>
