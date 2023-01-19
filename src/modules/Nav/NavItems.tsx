@@ -27,7 +27,7 @@ export const NavItems = () => (
       title="About"
       links={[
         { text: 'Contact', href: '/contact' },
-        { text: 'Tenants', href: '/tenants' },
+        { text: 'Tenants', href: '/about/tenants' },
       ]}
     ></DropdownNav>
     <Link href="/events">Events</Link>
