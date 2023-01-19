@@ -2,41 +2,42 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Typography, Card, FluidContainer, Button, Image } from 'components';
+import { Typography, Card, FluidContainer, Button } from 'components';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
 `;
+
+const cards = [
+  {
+    title: 'Inclusive',
+    children:
+      'A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.',
+    iconSrc: '/vectors/recreation/cooking.svg',
+    iconAlt: 'cooking image',
+  },
+  {
+    title: 'Community',
+    children:
+      'Empowering conversations that focus on your strengths and areas for growth.',
+    iconSrc: '/vectors/recreation/group-workout.svg',
+    iconAlt: 'community workout image',
+  },
+  {
+    title: 'Set Goals',
+    children:
+      'Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.',
+    iconSrc: '/vectors/recreation/goal.svg',
+    iconAlt: 'goal image',
+  },
+];
+
+const buttons = [
+  { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
+  { text: 'Meet Your Educators', href: '#' },
+];
+
 export default function Gene() {
-  const cards = [
-    {
-      title: 'Inclusive',
-      children:
-        'A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.',
-      iconSrc: '/vectors/recreation/cooking.svg',
-      iconAlt: 'cooking image',
-    },
-    {
-      title: 'Community',
-      children:
-        'Empowering conversations that focus on your strengths and areas for growth.',
-      iconSrc: '/vectors/recreation/group-workout.svg',
-      iconAlt: 'community workout image',
-    },
-    {
-      title: 'Set Goals',
-      children:
-        'Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.',
-      iconSrc: '/vectors/recreation/goal.svg',
-      iconAlt: 'goal image',
-    },
-  ];
-
-  const buttons = [
-    { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
-    { text: 'Meet Your Educators', href: '#' },
-  ];
-
   return (
     <Page>
       <Head>
