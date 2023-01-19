@@ -7,9 +7,11 @@ import {
   Divider,
 } from 'components';
 import { Spaces } from 'theme';
-import { StudentOrganizationCategories } from './StudentOrganizationCategories';
-import { GeneralInformation } from './GeneralInformation';
-import { BODDownloads } from './BODDownloads';
+import {
+  BODDownloads,
+  GeneralInformation,
+  StudentOrganizationCategories,
+} from 'partials';
 
 export default function Governance() {
   return (
