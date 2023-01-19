@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Typography, Button, FluidContainer } from 'components';
 import { EventCard } from 'modules';
+import { PresenceEvent } from 'types';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -17,7 +18,11 @@ const FeaturedEventSection = styled.div`
   flex: 1;
 `;
 
-export const HomeHeader = () => (
+export const HomeHeader = ({
+  featuredEvent,
+}: {
+  featuredEvent: PresenceEvent;
+}) => (
   <FluidContainer backgroundImage="/subtle-background-1.jpg">
     <HeaderContainer>
       <CTASection>
@@ -30,15 +35,7 @@ export const HomeHeader = () => (
         <Typography as="h2" variant="titleSmall" margin="0 0 24px">
           Featured Event
         </Typography>
-        <EventCard
-          featured
-          image="/event-0.jpg"
-          org="APISRC"
-          title="A Very Important Event"
-          location="204B"
-          time="4:00 PM – 5:00 PM"
-          href="#"
-        />
+        <EventCard featured {...featuredEvent} />
       </FeaturedEventSection>
     </HeaderContainer>
   </FluidContainer>

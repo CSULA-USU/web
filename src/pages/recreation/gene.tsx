@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Typography, Card, FluidContainer, Button } from 'components';
+import { Typography, Card, FluidContainer, Button, Image } from 'components';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
@@ -63,7 +63,6 @@ export default function Gene() {
           discovering habits of well-being that will last a lifetime.
         </Typography>
       </Header>
-
       <FluidContainer
         flex
         flexDirection="column"

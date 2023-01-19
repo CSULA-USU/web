@@ -31,24 +31,39 @@ interface TypeVariant {
 const serif = `'Bitter', serif`;
 
 const styles = {
-  pageHeader: { size: '3xl', weight: '700', fontFamily: serif },
+  pageHeader: { size: '4xl', weight: '700', fontFamily: serif },
   cta: { size: 'sm', weight: '700' },
   label: { size: 'lg', weight: '700' },
-  title: { size: 'xl', weight: '700' },
   titleLarge: {
-    size: '2xl',
+    size: '3xl',
     weight: '300',
     lineHeight: FontSizes['3xl'],
     fontFamily: serif,
   },
-  titleSmall: { size: 'md', weight: '700', lineHeight: FontSizes.lg },
+  title: { size: '2xl', weight: '700' },
+  titleSmall: {
+    size: 'xl',
+    weight: '400',
+    lineHeight: FontSizes.lg,
+    fontFamily: serif,
+  },
+  subheader: { size: 'lg', weight: '400', fontFamily: serif },
+  labelTitle: {
+    size: 'md',
+    lineHeight: FontSizes.lg,
+    weight: '700',
+  },
+  labelTitleSmall: {
+    size: 'xs',
+    lineHeight: FontSizes.lg,
+    weight: '700',
+  },
   copy: {
     size: 'sm',
     weight: '400',
     lineHeight: FontSizes.lg,
     fontFamily: serif,
   },
-  copyLarge: { size: 'lg', weight: '300', fontFamily: serif },
   eventDetail: { size: 'sm', weight: '700', color: 'white' },
   eventTitle: { size: 'lg', weight: '700', color: 'white' },
   eventTime: {

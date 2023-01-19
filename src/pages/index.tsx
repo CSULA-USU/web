@@ -7,8 +7,11 @@ import {
   CallToAction,
 } from 'modules';
 import { Typography } from 'components';
+import { useRecoilValue } from 'recoil';
+import { eventListState } from 'atoms';
 
 export default function Home() {
+  const events = useRecoilValue(eventListState);
   return (
     <Page>
       <Head>
@@ -25,8 +28,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeHeader />
-      <UpcomingEvents />
+      <HomeHeader featuredEvent={events[0]} />
+      <UpcomingEvents events={events} />
       <CallToAction
         buttonText="View Opportunities"
         text="Catalyze your professional development and building your network by

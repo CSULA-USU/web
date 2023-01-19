@@ -5,6 +5,7 @@ export interface ButtonProps {
   href?: string;
   margin?: string;
   variant?: 'primary' | 'black' | 'grey' | 'outline';
+  disabled?: boolean;
   children?: React.ReactNode;
 }
 
@@ -42,6 +43,10 @@ const getCSS = (p: ButtonProps) => {
     color: ${Colors[color]};
     margin: ${p.margin || 0};
     ${border && `border: 1px solid ${border}`}
+    &:disabled {
+      background-color: ${Colors.greyLighter};
+      color: ${Colors.grey};
+    }
   `;
 };
 

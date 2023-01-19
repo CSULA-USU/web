@@ -40,12 +40,12 @@ const StyledCard = styled.div<CardStyles>`
   ${(p) =>
     p.hoverable &&
     `
-    transition: 0.2s;
+    transition: 0.5s;
     opacity: 0.8;
     &:hover {
       background-color: ${Colors.primary};
       opacity: 1;
-      box-shadow: 0px 12px 40px ${Colors.primary};
+      box-shadow: 0px 6px 20px ${Colors.primary};
     }
   `}
 `;
