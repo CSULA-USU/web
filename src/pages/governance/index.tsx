@@ -7,10 +7,12 @@ import {
   Typography,
   Tabs,
   Divider,
+  Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
+import { AiOutlineFileText } from 'react-icons/ai';
 
 const IconHeading = styled.div`
   display: flex;
@@ -183,6 +185,15 @@ export default function Governance() {
     { title: 'Personal', children: <Personal /> },
   ];
 
+  const LinkInner = styled.div`
+    display: flex;
+    align-items: center;
+    padding: ${Spaces.md};
+    svg {
+      margin-right: ${Spaces.sm};
+    }
+  `;
+
   return (
     <Page>
       <Head>
@@ -203,6 +214,13 @@ export default function Governance() {
         title="Governance"
         buttons={buttons}
         backgroundImage="/subtle-background-2.jpg"
+        extra={
+          <Button variant="outline" href="/governance/public-documents">
+            <LinkInner>
+              <AiOutlineFileText size="24px" /> Public Documents
+            </LinkInner>
+          </Button>
+        }
       >
         The University-Student Union&apos;s Board of Directors is the governing
         board of the Union. The purpose of the Board is to establish policy for
