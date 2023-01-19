@@ -16,7 +16,7 @@ export const DocumentLinkContainer = ({
   links,
   stacked,
 }: DocumentLinkContainerProps) => (
-  <LinkContainer stacked={stacked}>
+  <LinkContainer stacked={!!stacked}>
     {links.map((l, i) => (
       <DocumentLink key={`${l.children}_${i}`} {...l} />
     ))}

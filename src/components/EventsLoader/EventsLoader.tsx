@@ -27,7 +27,7 @@ export const EventsLoader = () => {
 
   useEffect(() => {
     getEvents();
-  }, []);
+  }, []); // eslint-disable-line
 
   return <></>;
 };
