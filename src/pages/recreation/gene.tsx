@@ -56,7 +56,7 @@ export default function Gene() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Golden Eagle Nutrition Educaion (GENE)" buttons={buttons}>
+      <Header title="Golden Eagle Nutrition Education (GENE)" buttons={buttons}>
         <Typography>
           At GENE, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
