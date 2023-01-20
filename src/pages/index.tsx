@@ -7,37 +7,11 @@ import {
   CallToAction,
 } from 'modules';
 import { Typography } from 'components';
-import { useEffect, useState } from 'react';
-import { fetchEvents } from 'api';
-import { PresenceEvent } from 'types';
+import { useRecoilValue } from 'recoil';
+import { eventListState } from 'atoms';
 
 export default function Home() {
-  const [events, setEvents] = useState<PresenceEvent[]>([]);
-  const getEvents = async () => {
-    const data: PresenceEvent[] = await fetchEvents();
-    const sortedData = data
-      .filter(
-        (event) =>
-          new Date().getTime() < new Date(event.endDateTimeUtc).getTime() &&
-          [
-            'Center for Student Involvement',
-            'Cross Cultural Centers',
-            'Recreation',
-          ].includes(event.organizationName),
-      )
-      .sort((a, b) => {
-        return (
-          new Date(a.startDateTimeUtc).getTime() -
-          new Date(b.startDateTimeUtc).getTime()
-        );
-      });
-    setEvents(sortedData);
-  };
-
-  useEffect(() => {
-    getEvents();
-  }, []);
-
+  const events = useRecoilValue(eventListState);
   return (
     <Page>
       <Head>

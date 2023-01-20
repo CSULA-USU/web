@@ -15,18 +15,19 @@ export const Spaces: {
 
 export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
   '2xs': '10px',
-  xs: '12px',
+  xs: '14px',
   sm: '16px',
   md: '18px',
   lg: '24px',
-  xl: '36px',
-  '2xl': '48px',
-  '3xl': '64px',
-  '4xl': '96px',
+  xl: '30px',
+  '2xl': '36px',
+  '3xl': '48px',
+  '4xl': '54px',
 } as const;
 
 export const Colors = {
   primary: '#FFCE04',
+  gold: '#8C6A14',
   black: '#000000',
   greyDarkest: '#2b2b2b',
   greyDarker: '#323232',

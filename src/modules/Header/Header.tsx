@@ -9,6 +9,7 @@ interface HeaderProps {
   title: string;
   backgroundImage?: string;
   children: React.ReactNode;
+  extra?: React.ReactNode;
   buttons?: ButtonProps[];
 }
 
@@ -33,6 +34,7 @@ const ButtonContainer = styled.div`
 export const Header = ({
   title,
   children,
+  extra,
   backgroundImage,
   buttons,
 }: HeaderProps) => (
@@ -58,6 +60,7 @@ export const Header = ({
           ))}
         </ButtonContainer>
       )}
+      {extra}
     </HeaderContainer>
   </FluidContainer>
 );

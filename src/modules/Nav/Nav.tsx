@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
 import { NavItems } from './NavItems';
+import Link from 'next/link';
 
 const NavContainer = styled.div`
   display: flex;
@@ -31,10 +32,12 @@ const GetInvolvedButton = styled.button`
 export const Nav = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <NavContainer>
-      <Image
-        src="/usu-logo-white.png"
-        alt="Cal State LA Univeristy-Student Union Logo"
-      />
+      <Link href="/">
+        <Image
+          src="/usu-logo-white.png"
+          alt="Cal State LA Univeristy-Student Union Logo"
+        />
+      </Link>
       <NavItems />
       <NavExtra>
         <MdSearch color={Colors.white} fontSize="36px" />

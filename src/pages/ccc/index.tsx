@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Page, DepartmentHeader, CallToAction } from 'modules';
+import { Page, DepartmentHeader, CallToAction, OfficeHours } from 'modules';
 import {
   Typography,
   Card,
@@ -25,9 +25,9 @@ export default function CCC() {
       title: 'Asian Pacific Islander Student Resource Center',
       children:
         'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
-      iconSrc: '/ccc/apisrcHeader.png',
-      iconAlt: 'apisrc',
-      href: '#',
+      imgSrc: '/departments/ccc/apisrcHeader.png',
+      imgAlt: 'apisrc',
+      href: 'ccc/apisrc',
       linkText: 'Learn More',
     },
     {
@@ -36,25 +36,25 @@ export default function CCC() {
         'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
       imgSrc: 'departments/ccc/clsrcHeader.png',
       imgAlt: 'CLSRC',
-      href: '#',
+      href: 'ccc/clsrc',
       linkText: 'Learn More',
     },
     {
       title: 'Gender & Sexuality Resource Center',
       children:
         'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of Womyn, Men, and the Lesbian, Gay, Bisexual, Transgender, and Questioning/Queer (LGBTQ) community.',
-      imgSrc: '/ccc/gsrc.png',
+      imgSrc: 'departments/ccc/gsrc.png',
       imgAlt: 'Cal State LA Logo',
-      href: '#',
+      href: 'ccc/gsrc',
       linkText: 'Learn More',
     },
     {
       title: 'Pan African Student Resource Center',
       children:
         'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
-      imgSrc: '/ccc/pasrc.png',
+      imgSrc: '/departments/ccc/pasrc.png',
       imgAlt: 'PASRC',
-      href: '#',
+      href: 'ccc/pasrc',
       linkText: 'Learn More',
     },
   ];
@@ -106,6 +106,17 @@ export default function CCC() {
         'Friendly staff and volunteers to answer questions and discuss ideas',
     },
   ];
+
+  const hours = [
+    {
+      title: 'Office Hours',
+      times: [
+        'Monday - Thursday: 8:00 AM - 7:00 PM',
+        'Friday: 8:00 AM - 5:00 PM',
+        'Saturday - Sunday: CLOSED',
+      ],
+    },
+  ];
   return (
     <Page>
       <Head>
@@ -124,7 +135,17 @@ export default function CCC() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DepartmentHeader title="Cross Cultural Centers">
+      <DepartmentHeader
+        title="Cross Cultural Centers"
+        infoSection={
+          <OfficeHours
+            address="5154 State University Drive Los Angeles, CA 90032
+          Room 206, 2nd Floor, U-SU"
+            phoneNumber="323-343-5001"
+            hours={hours}
+          />
+        }
+      >
         Established 1997, the mission of the Cross Cultural Centers at
         California State University, Los Angeles is to encourage student
         learning as well as foster an inclusive campus environment that

@@ -25,14 +25,16 @@ export const NavItems = () => (
   <NavItemsContainer>
     <DropdownNav
       title="About"
+      href="/about"
       links={[
         { text: 'Contact', href: '/contact' },
-        { text: 'Tenants', href: '/tenants' },
+        { text: 'Tenants', href: '/about/tenants' },
       ]}
     ></DropdownNav>
     <Link href="/events">Events</Link>
     <DropdownNav
       title="Departments"
+      href="/departments"
       links={[
         { text: 'Center For Student Involvement', href: '/csi' },
         { text: 'Cross Cultural Centers', href: '/ccc' },

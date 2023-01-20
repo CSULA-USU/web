@@ -82,7 +82,7 @@ export const EventCard = ({
     .toUpperCase();
   const day = new Date(startDateTimeUtc).getDate();
 
-  return (
+  return !eventName ? null : (
     <EventCardContainer
       image={`https://calstatela-cdn.presence.io/event-photos/caa045a5-87e3-4730-9e3b-3237755bc0a8/${photoUri}`}
     >

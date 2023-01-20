@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { useState } from 'react';
 
-const DropdownTrigger = styled.a`
-  cursor: default;
+const DropdownTrigger = styled(Link)`
+  cursor: pointer;
   padding-bottom: ${Spaces.md};
 `;
 
@@ -25,13 +25,14 @@ const DropdownItems = styled.div`
 
 interface DropdownNavProps {
   title: string;
+  href: string;
   links: {
     text: string;
     href: string;
   }[];
 }
 
-export const DropdownNav = ({ title, links }: DropdownNavProps) => {
+export const DropdownNav = ({ title, href, links }: DropdownNavProps) => {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom-start',
   });
@@ -41,7 +42,7 @@ export const DropdownNav = ({ title, links }: DropdownNavProps) => {
   const showMenu = () => setMenuVisibility(true);
   return (
     <div onMouseLeave={hideMenu}>
-      <DropdownTrigger ref={reference} onMouseOver={showMenu}>
+      <DropdownTrigger href={href} ref={reference} onMouseOver={showMenu}>
         {title}
       </DropdownTrigger>
       {isMenuVisible && (

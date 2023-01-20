@@ -9,3 +9,5 @@ export * from './Page';
 export * from './UpcomingEvents';
 export * from './DepartmentHeader';
 export * from './OfficeHours';
+export * from './DocumentLink';
+export * from './DownloadSection';

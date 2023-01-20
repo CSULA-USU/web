@@ -30,6 +30,7 @@ const cards = [
     href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
+    number: '323-343-2586',
   },
   {
     title: 'Associated Students, Incorporated',
@@ -39,6 +40,7 @@ const cards = [
     href: '#',
     iconSrc: '/asi-logo.png',
     iconAlt: 'Cal State LA Logo',
+    number: '323-343-4780',
   },
   {
     title: 'College of Professional and Global Education',
@@ -48,6 +50,7 @@ const cards = [
     href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
+    number: '323-343-4900',
   },
   {
     title: 'Information Technology Services',
@@ -57,6 +60,7 @@ const cards = [
     href: '#',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
+    number: '',
   },
   {
     title: 'Wells Fargo',
@@ -66,6 +70,7 @@ const cards = [
     href: '#',
     iconSrc: '/wells-fargo.png',
     iconAlt: 'Wells Fargo Logo',
+    number: '323-224-3972',
   },
   {
     title: 'Sbarro',
@@ -75,6 +80,7 @@ const cards = [
     href: '#',
     iconSrc: '/sbarro-logo.png',
     iconAlt: 'Sbarro logo',
+    number: '323-225-1464',
   },
   {
     title: 'Starbucks',
@@ -84,6 +90,7 @@ const cards = [
     href: '#',
     iconSrc: '/starbucks-logo.png',
     iconAlt: 'Starbucks Logo',
+    number: '323-343-6793',
   },
 ];
 
