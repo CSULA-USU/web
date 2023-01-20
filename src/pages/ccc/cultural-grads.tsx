@@ -19,7 +19,7 @@ const cards = [
     linkText: 'Apply Here',
     href: '#',
     iconSrc: '/departments/logos/apisrc-icon.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: 'APISRC logo',
   },
   {
     title: 'Black',
@@ -27,15 +27,15 @@ const cards = [
     linkText: 'Apply Here',
     href: '#',
     iconSrc: '/departments/logos/pasrc-icon.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: 'PASRC logo',
   },
   {
     title: 'Nuestra',
     children: 'Chicana/o, Latina/o, Central American, South American',
     linkText: 'Apply Here',
     href: '#',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconSrc: '/departments/logos/clsrc-logo.svg',
+    iconAlt: 'CLSRC logo',
   },
   {
     title: 'Pride',
@@ -43,8 +43,8 @@ const cards = [
       'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
     linkText: 'Apply Here',
     href: '#',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconSrc: '/departments/logos/gsrc-icon.svg',
+    iconAlt: 'GSRC logo',
   },
 ];
 
@@ -89,7 +89,8 @@ export default function CCC() {
         <FluidContainer flex>
           <FluidContainer flex flexDirection="column">
             <TeaserContainer />
-            <Typography variant="titleSmall">Nuestra Grad &apos;22</Typography>
+            <br />
+            <Typography variant="cta">Nuestra Grad &apos;22</Typography>
           </FluidContainer>
           <FluidContainer>
             <Typography variant="title">
@@ -108,7 +109,9 @@ export default function CCC() {
             <Button variant="black">Apply now</Button>
           </FluidContainer>
         </FluidContainer>
-        <Typography as="h2" variant="title">
+      </FluidContainer>
+      <FluidContainer flex flexDirection="column">
+        <Typography margin="24px 0" as="h2" variant="titleSmall">
           Graduations:
         </Typography>
         <FluidContainer flex flexWrap="wrap">
