@@ -6,61 +6,61 @@ import styled from 'styled-components';
 const Title = styled.div`
   text-align: center;
 `;
+const cards = [
+  {
+    title: 'Inclusiveness',
+    children:
+      'We create a welcoming environment that acknowledges and respects everyone. Through our programs and services, we proactively respond to the evolving needs of our communities.',
+    iconSrc: '/vectors/about/inclusive.svg',
+    iconAlt: 'friends',
+  },
+  {
+    title: 'Growth',
+    children:
+      'We are committed to expanding our intellectual and personal horizons. We evaluate our individual and shared experiences, reflect on them, and integrate new thoughts and ideas into our work, lives, and behaviors.',
+    iconSrc: '/vectors/about/growth.svg',
+    iconAlt: 'growth',
+  },
+  {
+    title: 'Empowerment',
+    children:
+      'We enable our students to thrive by encouraging mindful conversations, supporting risk-taking, and providing new opportunities to lead and grow.',
+    iconSrc: '/vectors/about/leader.svg',
+    iconAlt: 'empowerment',
+  },
+  {
+    title: 'Innovation',
+    children:
+      'We constantly seek ways to improve, and strive to develop ideas and solutions in service of our students and our mission.',
+    iconSrc: '/vectors/about/ideas.svg',
+    iconAlt: 'ideas',
+  },
+  {
+    title: 'Service-Oriented Leadership',
+    children:
+      'We promote friendly interactions and provide resources that create positive and joyful experiences for those we serve. We lead by example. We are caring, respectful and responsive.',
+    iconSrc: '/vectors/about/service.svg',
+    iconAlt: 'service',
+  },
+  {
+    title: 'Teamwork',
+    children:
+      'We build and foster relationships that enable us to learn from each other, have fun together, and collaborate seamlessly to make our greatest impact.',
+    iconSrc: '/vectors/about/team.svg',
+    iconAlt: 'team',
+  },
+];
+const buttons = [
+  {
+    text: 'U-SU Organizational Chart',
+    href: '/org-chart.jpg',
+  },
+  {
+    text: 'U-SU History',
+    href: '#',
+  },
+];
 export default function About() {
-  const cards = [
-    {
-      title: 'Inclusiveness',
-      children:
-        'We create a welcoming environment that acknowledges and respects everyone. Through our programs and services, we proactively respond to the evolving needs of our communities.',
-      iconSrc: '/vectors/about/inclusive.svg',
-      iconAlt: 'friends',
-    },
-    {
-      title: 'Growth',
-      children:
-        'We are committed to expanding our intellectual and personal horizons. We evaluate our individual and shared experiences, reflect on them, and integrate new thoughts and ideas into our work, lives, and behaviors.',
-      iconSrc: '/vectors/about/growth.svg',
-      iconAlt: 'growth',
-    },
-    {
-      title: 'Empowerment',
-      children:
-        'We enable our students to thrive by encouraging mindful conversations, supporting risk-taking, and providing new opportunities to lead and grow.',
-      iconSrc: '/vectors/about/leader.svg',
-      iconAlt: 'empowerment',
-    },
-    {
-      title: 'Innovation',
-      children:
-        'We constantly seek ways to improve, and strive to develop ideas and solutions in service of our students and our mission.',
-      iconSrc: '/vectors/about/ideas.svg',
-      iconAlt: 'ideas',
-    },
-    {
-      title: 'Service-Oriented Leadership',
-      children:
-        'We promote friendly interactions and provide resources that create positive and joyful experiences for those we serve. We lead by example. We are caring, respectful and responsive.',
-      iconSrc: '/vectors/about/service.svg',
-      iconAlt: 'service',
-    },
-    {
-      title: 'Teamwork',
-      children:
-        'We build and foster relationships that enable us to learn from each other, have fun together, and collaborate seamlessly to make our greatest impact.',
-      iconSrc: '/vectors/about/team.svg',
-      iconAlt: 'team',
-    },
-  ];
-  const buttons = [
-    {
-      text: 'U-SU Organizational Chart',
-      href: '/org-chart.jpg',
-    },
-    {
-      text: 'U-SU History',
-      href: '#',
-    },
-  ];
   return (
     <Page>
       <Head>
@@ -84,13 +84,17 @@ export default function About() {
       >
         <Image src="/about.png" alt="student union" />
         <Typography>
-          <Typography variant="titleSmall">Mission: &nbsp;</Typography>With open
-          doors and minds, we provide space and opportunities enabling Golden
-          Eagles to soar.
+          <Typography variant="titleSmall" as="span">
+            Mission: &nbsp;
+          </Typography>
+          With open doors and minds, we provide space and opportunities enabling
+          Golden Eagles to soar.
         </Typography>
         <Typography>
-          <Typography variant="titleSmall">Vision: &nbsp;</Typography>To become
-          Cal State LA&apos;s hub for connection and growth.
+          <Typography variant="titleSmall" as="span">
+            Vision: &nbsp;
+          </Typography>
+          To become Cal State LA&apos;s hub for connection and growth.
         </Typography>
       </Header>
       <Title>
