@@ -1,8 +1,115 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Button, Card, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  Card,
+  Divider,
+  FluidContainer,
+  Image,
+  Tabs,
+  Typography,
+} from 'components';
 import { Page } from 'modules';
 import { Spaces } from 'theme';
+
+const TabContent = styled(Typography)`
+  &,
+  * {
+    line-height: 2;
+  }
+  ol {
+    margin-top: 12px;
+  }
+`;
+
+const HowTab = () => (
+  <TabContent>
+    Please read through the application requirements carefully!
+  </TabContent>
+);
+
+const WhatTab = () => (
+  <TabContent>
+    These ceremonies and celebrations are supplemental to University
+    Commencement and are great opportunities to acknowledge your academic
+    achievements, honor your families, communities, and to celebrate the
+    cultural influences and traditions that have contributed to your academic
+    success.
+  </TabContent>
+);
+
+const WhereTab = () => (
+  <TabContent>
+    Each celebration has a specific location, time and date. Please see the
+    individual applications for information. All applications are due on March
+    17, 2023 by EOD.
+    <br />
+    <ul>
+      <li>
+        APIDA:
+        <ul>
+          <li>Date: Saturday, May 20, 2023</li>
+          <li>Time: TBD (plan for brunch/lunch time)</li>
+          <li>
+            Location: State Playhouse Theatre, California State University Los
+            Angeles
+          </li>
+        </ul>
+      </li>
+      <Divider color="greyLighter" margin="24px auto" />
+      <li>
+        Black
+        <ul>
+          <li>Date: Saturday, May 27, 2023</li>
+          <li>Time: 5:00 PM - 7:00 PM</li>
+          <li>
+            Location: University Gymnasium, California State University Los
+            Angeles
+          </li>
+        </ul>
+      </li>
+      <Divider color="greyLighter" margin="24px auto" />
+      <li>
+        Nuestra:
+        <ul>
+          <li>Date: Saturday, May 27, 2023</li>
+          <li>Time: 12:00 PM - 2:00 PM</li>
+          <li>
+            Location: University Gymnasium, California State University Los
+            Angeles
+          </li>
+        </ul>
+      </li>
+      <Divider color="greyLighter" margin="24px auto" />
+      <li>
+        Pride:
+        <ul>
+          <li>Date: Saturday, May 20, 2023</li>
+          <li>Time: 12:00 PM - 2:00 PM</li>
+          <li>
+            Location: University Gymnasium, California State University Los
+            Angeles
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </TabContent>
+);
+
+const WhoTab = () => (
+  <TabContent>
+    <strong>All</strong> graduating seniors who are interested are welcome to
+    apply. Priority is given to Spring 2023 graduates, but Fall 2022 graduates
+    are welcome to apply as well.
+  </TabContent>
+);
+
+const WhyTab = () => (
+  <TabContent>
+    You deserve to celebrate your achievements with cultural influences that are
+    integral to your being and important to you and your community! APPLY NOW!
+  </TabContent>
+);
 
 const TeaserContainer = styled.div`
   width: 500px;
@@ -17,7 +124,7 @@ const cards = [
     title: 'APIDA',
     children: 'Asian, Pacific Islander, South Asian, Desi-American',
     linkText: 'Apply Here',
-    href: '#',
+    href: 'https://form.jotform.com/223187645673162',
     iconSrc: '/departments/logos/apisrc-icon.svg',
     iconAlt: 'APISRC logo',
   },
@@ -25,7 +132,7 @@ const cards = [
     title: 'Black',
     children: 'Black, African-American, Pan-African Diaspora',
     linkText: 'Apply Here',
-    href: '#',
+    href: 'https://form.jotform.com/230055135393147',
     iconSrc: '/departments/logos/pasrc-icon.svg',
     iconAlt: 'PASRC logo',
   },
@@ -33,7 +140,7 @@ const cards = [
     title: 'Nuestra',
     children: 'Chicana/o, Latina/o, Central American, South American',
     linkText: 'Apply Here',
-    href: '#',
+    href: 'https://form.jotform.com/230047359271151',
     iconSrc: '/departments/logos/clsrc-logo.svg',
     iconAlt: 'CLSRC logo',
   },
@@ -42,13 +149,27 @@ const cards = [
     children:
       'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
     linkText: 'Apply Here',
-    href: '#',
+    href: 'https://form.jotform.com/223187106653152',
     iconSrc: '/departments/logos/gsrc-icon.svg',
     iconAlt: 'GSRC logo',
   },
 ];
 
-export default function CCC() {
+const IconHeading = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${Spaces.md};
+`;
+
+export default function CulturalGrads() {
+  const tabItems = [
+    { title: 'Where & When', children: <WhereTab /> },
+    { title: 'How', children: <HowTab /> },
+    { title: 'What', children: <WhatTab /> },
+    { title: 'Who', children: <WhoTab /> },
+    { title: 'Why', children: <WhyTab /> },
+  ];
+
   return (
     <Page>
       <Head>
@@ -67,6 +188,7 @@ export default function CCC() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <FluidContainer
         backgroundColor="primary"
         flex
@@ -94,7 +216,9 @@ export default function CCC() {
           </FluidContainer>
           <FluidContainer>
             <Typography variant="title">
-              <u>2023 Cultural Graduate Celebrations</u>
+              2023
+              <br />
+              Cultural Graduate Celebrations
             </Typography>
             <Typography margin="24px 0">
               <strong>Dear Cal State LA Prospective Graduate,</strong>
@@ -106,13 +230,15 @@ export default function CCC() {
               academic success. The ceremonies are open to all students who
               would like to sign up and participate.
             </Typography>
-            <Button variant="black">Apply now</Button>
+            <Button variant="black" href="#">
+              Apply now
+            </Button>
           </FluidContainer>
         </FluidContainer>
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
         <Typography margin="24px 0" as="h2" variant="titleSmall">
-          Graduations:
+          <u>Graduations</u>:
         </Typography>
         <FluidContainer flex flexWrap="wrap">
           {cards.map((props) => (
@@ -124,28 +250,23 @@ export default function CCC() {
               width="calc(22% - 8px)"
               minHeight="280px"
             >
-              {/* {if (props.title === 'APIDA') {
-              return(
-                  <h1>this is apida grad</h1>
-              )
-            }}
-            {props.title === 'Pride' ? (
-            <div>
-            <h1>Date: January 13</h1>
-            <br />
-            </div>) : ''}
-            <br />
-            <br /> */}
               {`${
                 props.children.length > 200
                   ? props.children.substring(0, 200) + '...'
                   : props.children
               }`}
-              <br />
-              <br />
             </Card>
           ))}
         </FluidContainer>
+      </FluidContainer>
+
+      <FluidContainer backgroundColor="greyLightest">
+        <IconHeading>
+          <Typography as="h4" variant="labelTitle">
+            Frequently Asked Questions
+          </Typography>
+        </IconHeading>
+        <Tabs items={tabItems} minHeight="320px" />
       </FluidContainer>
     </Page>
   );
