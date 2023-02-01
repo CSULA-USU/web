@@ -11,11 +11,11 @@ interface CardStyles {
 
 interface CardProps extends CardStyles {
   name: string;
-  staffTitle: string;
+  title: string;
   children?: React.ReactNode;
   src: string;
   alt: string;
-  departmentTags: string[];
+  tags?: string[];
 }
 const CenterWord = styled.div`
   text-align: center;
@@ -24,7 +24,7 @@ const CenterWord = styled.div`
 
 export const StaffCard = ({
   name,
-  staffTitle,
+  title,
   children,
   src,
   alt,
@@ -33,7 +33,7 @@ export const StaffCard = ({
   <Panel {...props}>
     <CenterWord>
       <Typography color="gold" margin="auto">
-        {staffTitle}
+        {title}
       </Typography>
     </CenterWord>
     <Image round src={src} alt={alt} />
