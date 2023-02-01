@@ -6,13 +6,13 @@ import {
   Card,
   Typography,
   Tabs,
-  Divider,
   Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { AiOutlineFileText } from 'react-icons/ai';
+import { GovernanceFooter } from 'partials';
 
 const IconHeading = styled.div`
   display: flex;
@@ -233,16 +233,7 @@ export default function Governance() {
         </IconHeading>
         <Tabs items={tabItems} minHeight="320px" />
       </FluidContainer>
-      <FluidContainer innerMaxWidth="1200px" backgroundColor="greyDarkest">
-        <Typography variant="title" color="white">
-          The University-Student Union&apos;s Board of Directors is the
-          governing board of the Union.{' '}
-          <Typography as="span" variant="title" color="primary">
-            Become a Student Leader
-          </Typography>
-        </Typography>
-        <Divider color="grey" margin={`${Spaces.lg} 0 0`} />
-      </FluidContainer>
+      <GovernanceFooter />
     </Page>
   );
 }
