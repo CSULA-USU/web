@@ -1,0 +1,26 @@
+[
+  {
+    "office": "U-SU Administration",
+    "tel": ["(323) 343-2450"]
+  },
+  {
+    "office": "Center for Student Involvement",
+    "tel": ["(323) 343-5110"]
+  },
+  {
+    "office": "Cross Cultural Centers",
+    "tel": ["(323) 343-5001"]
+  },
+  {
+    "office": "U-SU Graffix",
+    "tel": ["(323) 343-2464"]
+  },
+  {
+    "office": "Recreation Center",
+    "tel": ["(323) 343-7546", "(323) 343-2520"]
+  },
+  {
+    "office": "Information & Event Services",
+    "tel": ["(323) 343-2465"]
+  }
+]
