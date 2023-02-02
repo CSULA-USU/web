@@ -1,0 +1,354 @@
+import { Page, Header, OfficeHours } from 'modules';
+import {
+  Card,
+  FluidContainer,
+  Typography,
+  Image,
+  Panel,
+  Button,
+  NonBreakingSpan,
+} from 'components';
+import { Colors, FontSizes, Spaces } from 'theme';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import awards from 'data/acuiAwards.json';
+import awardYears from 'data/acuiYear.json';
+import { AiOutlineInstagram } from 'react-icons/ai';
+import { FaTiktok } from 'react-icons/fa';
+
+const buttons = [
+  { text: 'ACUI Awards', href: '#acui-awards' },
+  { text: 'Linktree', href: 'https://linktr.ee/usugraffix' },
+];
+const hours = [
+  {
+    title: 'Office Hours',
+    times: ['Monday - Friday: 8:00 AM - 5:00 PM'],
+  },
+];
+const cards1 = [
+  {
+    title: 'Graffix Trick or Tour',
+    designer: 'Sebastian Lopez',
+    src: '/departments/graffix/graffix-trick-or-tour.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+  {
+    title: 'Larry Itliong Day',
+    designer: 'P Dacayan',
+    src: '/departments/graffix/larry-itliong.jpg',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+  {
+    title: 'Graffix Open House',
+    designer: 'Hector Almaraz',
+    src: '/departments/graffix/graffix-job-fair.jpg',
+    description: 'This design was inspired by retro scary movie posters.',
+  },
+];
+const cards2 = [
+  {
+    title: 'Smash League Tournament',
+    designer: 'Hector Almaraz',
+    src: '/departments/graffix/smash-league.png',
+    description:
+      'This is a design that takes modern e-sports asthetics and combines them with Cal State LA colors.',
+  },
+
+  {
+    title: 'Harvst Festival',
+    designer: 'Sam Juarez',
+    src: '/departments/graffix/harvest-festival.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+  {
+    title: 'Fluffy Friends',
+    designer: 'Sebastian Lopez',
+    src: '/departments/graffix/fluffy-friends.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+];
+const cards3 = [
+  {
+    title: 'Brown & Gay in LA',
+    designer: 'P Dacayan',
+    src: '/departments/graffix/brown-gay-la.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+  {
+    title: 'Swim in the Sounds',
+    designer: 'Sebastian Lopez',
+    src: '/departments/graffix/swim-in-the-sound.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+  {
+    title: 'Study Break of Color',
+    designer: 'Frankie Sandoval',
+    src: '/departments/graffix/study-break-of-color.png',
+    description:
+      ' This design coincided with Halloween and the Graffix open house.We decided to merge the two and add symbols inspired by Graffix staff.',
+  },
+];
+const NavItems = [
+  'Best of Show',
+  '1st Place',
+  '2nd Place',
+  '3rd Place',
+  'Honorable Mention',
+];
+
+const DesignsContainer = styled.div`
+  width: calc(33.33% - 24px);
+  margin: 0 64px 0 0;
+`;
+
+const InnerAwardContainer = styled.div`
+  display: flex;
+  gap: 24px;
+`;
+
+const NavItemContainer = styled.div`
+  *:hover {
+    color: ${Colors.gold};
+  }
+
+  *:active {
+    color: ${Colors.gold};
+  }
+`;
+
+const HeaderContainer = styled.div`
+  background: url(/subtle-background-1.jpg) no-repeat;
+`;
+
+export default function Graffix() {
+  const [buttonType, setButtonType] = useState('');
+  const [awardCards, setAwardCards] = useState(awards);
+  useEffect(() => {
+    switch (buttonType) {
+      case 'Best of Show':
+        const bestOfShow = awards.filter((p) =>
+          p.place.includes('Best of Show'),
+        );
+        setAwardCards(bestOfShow);
+        break;
+      case '1st Place':
+        const first = awards.filter((p) => p.place.includes('First'));
+        setAwardCards(first);
+        break;
+      case '2nd Place':
+        const second = awards.filter((p) => p.place.includes('Second'));
+        setAwardCards(second);
+        break;
+      case '3rd Place':
+        const third = awards.filter((p) => p.place.includes('Third'));
+        setAwardCards(third);
+        break;
+      case 'Honorable Mention':
+        const honorableMentions = awards.filter((p) =>
+          p.place.includes('Honorable Mention'),
+        );
+        setAwardCards(honorableMentions);
+        break;
+    }
+  }, [buttonType]);
+
+  const AwardsNav = () => {
+    return (
+      <FluidContainer flex justifyContent="space-between">
+        {NavItems.map((item) => (
+          <NavItemContainer
+            key={item}
+            onClick={() => {
+              setButtonType(item);
+            }}
+          >
+            <Typography color="black" variant="labelTitleSmall">
+              {item}
+            </Typography>
+          </NavItemContainer>
+        ))}
+      </FluidContainer>
+    );
+  };
+
+  return (
+    <Page>
+      <HeaderContainer>
+        <FluidContainer flex justifyContent="flex-end">
+          <a
+            style={{ color: Colors.black, margin: `0 ${Spaces.md}` }}
+            href="https://www.instagram.com/usugraffix/?hl=en"
+          >
+            <AiOutlineInstagram fontSize={FontSizes['2xl']} />
+          </a>
+          <a
+            style={{ color: Colors.black }}
+            href="https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc"
+          >
+            <FaTiktok fontSize={FontSizes.xl} />
+          </a>
+        </FluidContainer>
+        <Header title="Graffix" buttons={buttons}>
+          The U-SU Graffix Department is responsible for promoting events and
+          programs coordinated by the U-SU Programming Units through print
+          materials and the U-SU website. We establish and maintain an identity
+          for the U-SU through consistent publicity campaigns and promotions.
+        </Header>
+        <FluidContainer backgroundColor="transparent">
+          <OfficeHours
+            address="5154 State University Dr, Los Angeles, CA 90032 204B"
+            phoneNumber="(323)-343-2464"
+            hours={hours}
+          ></OfficeHours>
+        </FluidContainer>
+      </HeaderContainer>
+      <div id="acui-awards">
+        <FluidContainer flex flexDirection="column" backgroundColor="black">
+          <Typography variant="title" margin="16px 0" color="gold">
+            ACUI Awards{' '}
+          </Typography>
+          <Typography color="greyLighter" variant="label">
+            Association of College Unions International (ACUI)
+          </Typography>
+          <Typography color="white">
+            Association of College Unions International is a nonprofit
+            educational organization that brings together college union and
+            student activities professionals from hundreds of schools in seven
+            countries. Its mission is to build campus community through
+            education, advocacy, and the delivery of services. There are total
+            of eight Regions and California is part of the Region I, which also
+            includes Arizona, Hawaii, Nevada, New Mexico, Australia and the
+            Territory of Guam.
+          </Typography>
+          <Typography variant="label" margin="16px 0 0" color="greyLighter">
+            Steal This Idea
+          </Typography>
+          <Typography color="white" margin="0 0 24px 0">
+            Steal This Idea is the ACUI&apos;s marketing and graphics
+            competition to recognize the year&apos;s best promotional ideas
+            throughout the regions and presents them at the conference. There
+            are at least 10 design categories and each category has both student
+            and professional entries. The winning entries are selected based on
+            concept, design, editorial content, and effectiveness. Also, a
+            &quot;Best in Show&quot; award will honor the top idea presented.
+          </Typography>
+        </FluidContainer>
+      </div>
+      <AwardsNav></AwardsNav>
+      <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        {awardCards.map((award) => (
+          <Panel width="40%" topBorder margin="24px" key={award.name}>
+            <InnerAwardContainer>
+              <Image src={award.src} alt={award.title}></Image>
+              <div>
+                <Typography as="h4" variant="titleSmall" margin="16px 0">
+                  {award.name}
+                </Typography>
+                <Typography>ACUI Name:{award.acuiName}</Typography>
+                <Typography>Title: {award.title}</Typography>
+                <Typography>Place: {award.place}</Typography>
+                <Typography>Category: {award.category}</Typography>
+                <Typography>Class: {award.class}</Typography>
+              </div>
+            </InnerAwardContainer>
+          </Panel>
+        ))}
+      </FluidContainer>
+      <FluidContainer flex>
+        <FluidContainer backgroundColor="primary">
+          <Typography
+            as="h2"
+            variant="title"
+            size="3xl"
+            weight="400"
+            lineHeight="1"
+          >
+            Join the <br />
+            <strong>
+              <NonBreakingSpan>award-winning</NonBreakingSpan> team!
+            </strong>
+          </Typography>
+          <Typography margin={`${Spaces.md} 0`}>
+            {' '}
+            Are you an aspiring graphic designer/ web developer/ social media
+            manager? Hone new skills and experiences here at Graffix!
+          </Typography>
+          <Button href="/employment" variant="black">
+            Apply Now
+          </Button>
+        </FluidContainer>
+        <FluidContainer flex flexWrap="wrap" justifyContent="space-evenly">
+          {awardYears.map((y) => (
+            <Image
+              key={y.alt}
+              src={y.src}
+              alt={y.alt}
+              width="100px"
+              margin="8px"
+            />
+          ))}
+        </FluidContainer>
+      </FluidContainer>
+      <FluidContainer backgroundColor="greyLightest">
+        <Typography variant="title">Graffix Gallery</Typography>
+      </FluidContainer>
+      <FluidContainer flex backgroundColor="greyLightest">
+        <DesignsContainer>
+          {cards1.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Typography weight="700">Designer: {props.designer}</Typography>
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+        <DesignsContainer>
+          {cards2.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Typography weight="700">Designer: {props.designer}</Typography>
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+        <DesignsContainer>
+          {cards3.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Typography weight="700">Designer: {props.designer}</Typography>
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+      </FluidContainer>
+    </Page>
+  );
+}
