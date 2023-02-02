@@ -1,19 +1,19 @@
 import Head from 'next/head';
 import { Page } from 'modules';
-import { FluidContainer, Typography, Button, Card } from 'components';
+import { FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
+import contacts from 'data/contacts.json';
+import { Spaces } from 'theme';
 
-const InputContainer = styled.div`
-  margin-bottom: 12px;
-`;
 const ContactContainer = styled.div`
-  width: 240px;
+  width: 320px;
+  margin-right: ${Spaces.lg};
 `;
-const ContactItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+
+const ContactItem = styled.div`
+  margin-bottom: ${Spaces.lg};
 `;
+
 export default function Contact() {
   return (
     <Page>
@@ -36,79 +36,24 @@ export default function Contact() {
           Contact Us
         </Typography>
       </FluidContainer>
-      <FluidContainer flex justifyContent="space-evenly">
+      <FluidContainer flex justifyContent="flex-start">
         <ContactContainer>
-          <Typography variant="title">Contact Info</Typography>
-          <ContactItemContainer>
-            <Typography>
-              University-Student Union, 5154 State University Dr, Los Angeles
-              CA, 90032
-            </Typography>
-            <div>
-              <Typography weight="700">U-SU Administration</Typography>
-              <Typography>(323) 343-2450</Typography>
-            </div>
-            <div>
-              <Typography weight="700">
-                Center for Student Involvement
-              </Typography>
-              <Typography>(323) 343-5110</Typography>
-            </div>
-            <div>
-              <Typography weight="700">Cross Cultural Centers</Typography>
-              <Typography>(323) 343-5001</Typography>
-            </div>
-            <div>
-              <Typography weight="700">U-SU Graffix</Typography>
-              <Typography>(323) 343-2464</Typography>
-            </div>
-            <div>
-              <Typography weight="700">Recreation Center</Typography>
-              <Typography>(323) 343-7546</Typography>
-              <Typography>(323) 343-2520</Typography>
-            </div>
-            <div>
-              <Typography weight="700">Information & Event Services</Typography>
-              <Typography>(323) 343-2465</Typography>
-            </div>
-          </ContactItemContainer>
+          <Typography>
+            University-Student Union, <br />
+            5154 State University Dr, <br />
+            Los Angeles CA, 90032
+          </Typography>
         </ContactContainer>
-        <Card topBorder rounded width="720px" title="Lets Keep in Touch">
-          <form action="" method="get">
-            <FluidContainer flex flexDirection="column" justifyContent="center">
-              <InputContainer>
-                <Typography>Name</Typography>
-                <input size={70} type="text" name="name" id="name" required />
-              </InputContainer>
-              <InputContainer>
-                <Typography>Email</Typography>
-                <input
-                  size={70}
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                />
-              </InputContainer>
-              <InputContainer>
-                <Typography>Subject</Typography>
-                <input size={70} type="text" name="subject" id="subject" />
-              </InputContainer>
-              <InputContainer>
-                <Typography>Message</Typography>
-                <textarea
-                  rows={10}
-                  cols={69}
-                  id="message"
-                  name="message"
-                ></textarea>
-              </InputContainer>
-              <div>
-                <Button>Submit</Button>
-              </div>
-            </FluidContainer>
-          </form>
-        </Card>
+        <ContactContainer>
+          {contacts.map((c) => (
+            <ContactItem key={c.office}>
+              <Typography weight="700">{c.office}</Typography>
+              {c.tel.map((t, i) => (
+                <Typography key={`c.office ${i}`}>{t}</Typography>
+              ))}
+            </ContactItem>
+          ))}
+        </ContactContainer>
       </FluidContainer>
     </Page>
   );

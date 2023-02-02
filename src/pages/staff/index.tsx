@@ -30,41 +30,33 @@ export default function Staff() {
         setStaffCards(staff);
         break;
       case 'Directors':
-        const directors = staff.filter((s) =>
-          s.departmentTags.includes('Director'),
-        );
+        const directors = staff.filter((s) => s.tags.includes('Director'));
         setStaffCards(directors);
         break;
       case 'Administration':
         const administration = staff.filter((s) =>
-          s.departmentTags.includes('Administration'),
+          s.tags.includes('Administration'),
         );
         setStaffCards(administration);
         break;
       case 'Center for Student Involvement':
-        const csi = staff.filter((s) => s.departmentTags.includes('CSI'));
+        const csi = staff.filter((s) => s.tags.includes('CSI'));
         setStaffCards(csi);
         break;
       case 'Cross Cultural Centers':
-        const ccc = staff.filter((s) => s.departmentTags.includes('CCC'));
+        const ccc = staff.filter((s) => s.tags.includes('CCC'));
         setStaffCards(ccc);
         break;
       case 'Graffix':
-        const graffix = staff.filter((s) =>
-          s.departmentTags.includes('Graffix'),
-        );
+        const graffix = staff.filter((s) => s.tags.includes('Graffix'));
         setStaffCards(graffix);
         break;
       case 'Operations':
-        const operations = staff.filter((s) =>
-          s.departmentTags.includes('Operations'),
-        );
+        const operations = staff.filter((s) => s.tags.includes('Operations'));
         setStaffCards(operations);
         break;
       case 'Recreations':
-        const recreations = staff.filter((s) =>
-          s.departmentTags.includes('Recreation'),
-        );
+        const recreations = staff.filter((s) => s.tags.includes('Recreation'));
         setStaffCards(recreations);
         break;
     }
@@ -107,10 +99,10 @@ export default function Staff() {
           <StaffCard
             key={s.name}
             name={s.name}
-            staffTitle={s.staffTitle}
+            title={s.title}
             src={s.src}
             alt={s.alt}
-            departmentTags={s.departmentTags}
+            tags={s.tags}
             width="calc(22%)"
             margin="24px 16px"
             rounded

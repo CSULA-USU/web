@@ -19,7 +19,7 @@ export interface BaseComponentProps
 }
 
 export const StyledImage = styled.img<ImageProps>`
-  ${(p) => p.round && `border-radius: 50%;`}
+  border-radius: ${(p) => (p.round ? `50%` : p.borderRadius || 0)};
   ${layout}
   ${space}
 `;
@@ -31,6 +31,7 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   sizes?: string;
   src: string;
   srcset?: string;
+  borderRadius?: '12px' | '8px';
   round?: boolean;
 }
 

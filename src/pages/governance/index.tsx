@@ -6,13 +6,13 @@ import {
   Card,
   Typography,
   Tabs,
-  Divider,
   Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { AiOutlineFileText } from 'react-icons/ai';
+import { GovernanceFooter } from 'partials';
 
 const IconHeading = styled.div`
   display: flex;
@@ -133,32 +133,17 @@ export default function Governance() {
   );
   const Nomination = () => (
     <TabContent>
-      The Personnel Committee shall develop and recommend to the Board policies
-      regarding personnel such as hiring, termination, evaluations, salaries,
-      grievances, employee benefits of full and part-time staff and student
-      assistants. The committee shall have nine (9) members; five (5) voting,
-      and four (4) non-voting. The voting members shall be five (5) members of
-      the Board, three (3) of whom shall be students. The four (4) non-voting
-      members are the University-Student Union Executive Director/designee, the
-      Chair of the Board of Directors of the University-Student Union, the Dean
-      of Students and a representative from the organization contracted to
-      provide Human Resource services to the University-Student Union. The
-      committee shall be cochaired by the Chair of the Board and the Dean of
-      Students.
-      <ol>
-        <li>
-          Voting - Five (5) members of the Board. One (1) shall be a student
-          board member and will chair the committee.
-        </li>
-        <li>Liaisons - U-SU Executive Director or designee</li>
-        <li>
-          Liaisons - A representative from the organization contracted to
-          provide Human Resource services to the U-SU.
-        </li>
-      </ol>
+      The Nominating Committee shall interview eligible candidates and nominate
+      a replacement student member to the Board. A Nominating Committee shall be
+      appointed by the Board of Directors to review all qualified applicants.
+      The composition of the Committee shall be up to five (5) student directors
+      one of whom shall be an ASI member (if there is not an ASI member on the
+      BOD to fill this position, ASI shall appoint a student committee member)
+      and up to two (2) advisors and shall be Dean of Students/or designee and
+      University-Student Union Executive Director.
     </TabContent>
   );
-  const Personal = () => (
+  const Personnel = () => (
     <TabContent>
       The Personnel Committee shall develop and recommend to the Board policies
       regarding personnel such as hiring, termination, evaluations, salaries,
@@ -182,7 +167,7 @@ export default function Governance() {
     { title: 'Audit', children: <AuditTab /> },
     { title: 'Fiscal', children: <Fiscal /> },
     { title: 'Nomination', children: <Nomination /> },
-    { title: 'Personal', children: <Personal /> },
+    { title: 'Personnel', children: <Personnel /> },
   ];
 
   const LinkInner = styled.div`
@@ -248,16 +233,7 @@ export default function Governance() {
         </IconHeading>
         <Tabs items={tabItems} minHeight="320px" />
       </FluidContainer>
-      <FluidContainer innerMaxWidth="1200px" backgroundColor="greyDarkest">
-        <Typography variant="title" color="white">
-          The University-Student Union&apos;s Board of Directors is the
-          governing board of the Union.{' '}
-          <Typography as="span" variant="title" color="primary">
-            Become a Student Leader
-          </Typography>
-        </Typography>
-        <Divider color="grey" margin={`${Spaces.lg} 0 0`} />
-      </FluidContainer>
+      <GovernanceFooter />
     </Page>
   );
 }
