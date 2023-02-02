@@ -42,7 +42,7 @@ export default function CCC() {
     {
       title: 'Gender & Sexuality Resource Center',
       children:
-        'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of Womyn, Men, and the Lesbian, Gay, Bisexual, Transgender, and Questioning/Queer (LGBTQ) community.',
+        'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
       imgSrc: 'departments/ccc/gsrc.png',
       imgAlt: 'Cal State LA Logo',
       href: 'ccc/gsrc',

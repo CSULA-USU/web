@@ -1,6 +1,6 @@
 import { Button, Typography } from 'components';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 
 export interface EventCardProps extends PresenceEvent {
@@ -16,7 +16,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   width: 100%;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
-  height: ${({ featured }) => (featured ? `648px` : `400px`)};
+  height: ${({ featured }) => (featured ? `650px` : `400px`)};
   color: ${Colors.white};
   background: linear-gradient(
       180deg,
@@ -43,15 +43,17 @@ const EventCardTop = styled.div`
   justify-content: space-between;
 `;
 
-const EventCardBottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+const EventCardBottom = styled(EventCardTop)<{ featured?: boolean }>`
+  ${(p) => (p.featured ? `align-items: flex-end;` : `flex-direction: column;`)}
 `;
 
-const EventDate = styled.div`
-  opacity: 1;
+const EventDetails = styled.div`
+  padding-top: ${Spaces.md};
+  display: flex;
+  flex-direction: column;
 `;
+
+const EventDate = styled.div``;
 
 const abvOrgNames: { [key: string]: string } = {
   'Center for Student Involvement': 'CSI',
@@ -84,47 +86,56 @@ export const EventCard = ({
 
   return !eventName ? null : (
     <EventCardContainer
+      featured={featured}
       image={`https://calstatela-cdn.presence.io/event-photos/caa045a5-87e3-4730-9e3b-3237755bc0a8/${photoUri}`}
     >
       <EventCardTop>
         <EventDate>
-          <Typography as="span" variant="eventDetail" lineHeight="1">
-            {month} <br />
-          </Typography>
-          <Typography
-            as="span"
-            variant="pageHeader"
-            size="xl"
-            color="white"
-            lineHeight="1"
-          >
-            {day}
-          </Typography>
+          {featured ? (
+            <Typography as="span" variant="eventDetail" lineHeight="1">
+              {month} {day}
+            </Typography>
+          ) : (
+            <>
+              <Typography as="span" variant="eventDetail" lineHeight="1">
+                {month} <br />
+              </Typography>
+              <Typography
+                as="span"
+                variant="pageHeader"
+                size="xl"
+                color="white"
+                lineHeight="1"
+              >
+                {day}
+              </Typography>
+            </>
+          )}
         </EventDate>
         <Typography as="h5" variant="eventDetail">
           {abvOrgNames[organizationName]}
         </Typography>
       </EventCardTop>
-      <div>
-        <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-          {eventName}
-        </Typography>
-        <Typography as="h4" variant="eventTime">
-          {startTime} - {endTime}
-        </Typography>
-        <EventCardBottom>
+      <EventCardBottom featured={featured}>
+        <EventDetails>
+          <Typography as="h3" variant="eventTitle" lineHeight="1.2">
+            {eventName}
+          </Typography>
+          <Typography as="h4" variant="eventTime">
+            {startTime} - {endTime}
+          </Typography>
           <Typography as="h5" variant="eventDetail">
             {location}
           </Typography>
-          {featured ? (
-            <Button margin="12px 0 0">Learn More</Button>
-          ) : (
-            <Typography color="primary" size="sm">
-              Learn More
-            </Typography>
-          )}
-        </EventCardBottom>
-      </div>
+        </EventDetails>
+        {featured ? (
+          <Button margin="12px 0 0">Learn More</Button>
+        ) : (
+          <Typography color="primary" size="sm">
+            Learn More
+          </Typography>
+        )}
+      </EventCardBottom>
     </EventCardContainer>
   );
 };

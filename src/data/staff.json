@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Chris Balam",
+    "title": "Director, Recreation",
+    "src": "/staff/john.jpg",
+    "alt": "Chris Balam",
+    "tags": ["Recreation", "Director"],
+    "department": "Recreation",
+    "email": "cbalam2@calstatela.edu"
+  },
+  {
+    "name": "Cheryl Jose",
+    "title": "Accounting Technician II",
+    "src": "/staff/john.jpg",
+    "alt": "Cheryl Jose",
+    "tags": ["Administration"],
+    "department": "Administration",
+    "email": "cjose@cslanet.calstatela.edu"
+  },
+  {
+    "name": "Chris Battle",
+    "title": "Fraternity & Sorority Coordinator",
+    "src": "/staff/john.jpg",
+    "alt": "Chris Battle",
+    "tags": ["CSI"],
+    "department": "Center for Student Involvement",
+    "email": "cbattle3@calstatela.edu"
+  },
+  {
+    "name": "Anh Le",
+    "title": "Asian Pacific Islander Resource Center Coordinator",
+    "src": "/staff/john.jpg",
+    "alt": "Anh Le",
+    "tags": ["CCC"],
+    "department": "Cross Cultural Centers",
+    "email": "ale101@calstatela.edu"
+  },
+  {
+    "name": "John Yasis",
+    "title": "Web Designer",
+    "src": "/staff/john.jpg",
+    "alt": "John Yasis",
+    "tags": ["Graffix"],
+    "department": "Graffix",
+    "email": "jyasis@calstatela.edu"
+  },
+  {
+    "name": "Adam Guthrie",
+    "title": "Events & Technical Services Coordinator",
+    "src": "/staff/john.jpg",
+    "alt": "Adam Guthrie",
+    "tags": ["Operations"],
+    "department": "Operations",
+    "email": "aguthri2@calstatela.edu"
+  },
+  {
+    "name": "Ashley Lepe",
+    "title": "Recreation Coordinator",
+    "src": "/staff/john.jpg",
+    "alt": "Ashley Lepe",
+    "tags": ["Recreation"],
+    "department": "Recreation",
+    "email": "alepe9@calstatela.edu"
+  }
+]

@@ -8,7 +8,7 @@ interface ButtonProps {
 interface HeaderProps {
   title: string;
   backgroundImage?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   extra?: React.ReactNode;
   buttons?: ButtonProps[];
 }
@@ -43,10 +43,14 @@ export const Header = ({
       <Typography as="h1" variant="pageHeader">
         {title}
       </Typography>
-      <VerticalLine />
-      <Typography as="h2" margin="24px 0">
-        {children}
-      </Typography>
+      {children && (
+        <>
+          <VerticalLine />
+          <Typography as="h2" margin="24px 0">
+            {children}
+          </Typography>
+        </>
+      )}
       {buttons && (
         <ButtonContainer>
           {buttons.map((b, i) => (
