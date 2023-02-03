@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import { Header, Page } from 'modules';
-import { NonBreakingSpan } from 'components';
 import {
   BODDownloads,
   GeneralInformation,
   GovernanceFooter,
-  StudentOrganizationCategories,
+  PublicInspectionDocuments,
 } from 'partials';
 
 export default function Governance() {
@@ -29,15 +28,14 @@ export default function Governance() {
         title="Public Documents"
         backgroundImage="/subtle-background-2.jpg"
       >
-        As a Tax-Exempt Organization the University-Student Union(U-SU) must
+        As a tax-exempt organization, the University-Student Union (U-SU) must
         make the appropriate organizational documents available for inspection
         online or for copying at the organization&apos;s main office during
         normal business hours. We have made our best effort to ensure that the
-        documents posted on the web site are the most recent versions of the
+        documents posted on the website are the most recent versions of the
         aforementioned documents.
-        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
       </Header>
-      <StudentOrganizationCategories />
+      <PublicInspectionDocuments />
       <GeneralInformation />
       <BODDownloads />
       <GovernanceFooter />
