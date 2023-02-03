@@ -84,14 +84,14 @@ export default function About() {
       >
         <Image src="/about.png" alt="student union" />
         <Typography>
-          <Typography variant="titleSmall" as="span">
+          <Typography variant="labelTitle" as="span">
             Mission: &nbsp;
           </Typography>
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
         <Typography>
-          <Typography variant="titleSmall" as="span">
+          <Typography variant="labelTitle" as="span">
             Vision: &nbsp;
           </Typography>
           To become Cal State LA&apos;s hub for connection and growth.
