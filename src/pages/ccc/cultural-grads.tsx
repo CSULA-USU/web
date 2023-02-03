@@ -1,3 +1,4 @@
+import { FaGraduationCap, FaRegQuestionCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
@@ -24,7 +25,8 @@ const TabContent = styled(Typography)`
 
 const HowTab = () => (
   <TabContent>
-    Please read through the application requirements carefully!
+    Please read through the application requirements carefully! For the best
+    results, please disable pop-up blockers and complete form in Incognito mode.
   </TabContent>
 );
 
@@ -35,6 +37,26 @@ const WhatTab = () => (
     achievements, honor your families, communities, and to celebrate the
     cultural influences and traditions that have contributed to your academic
     success.
+    <br />
+    <br />
+    Every student who applies to participate receives the following:
+    <ul>
+      <li>
+        A specially curated lineup of speakers and entertainment during the
+        ceremony
+      </li>
+      <li>A uniquely designed graduation sash</li>
+      <li>A program booklet with your picture and 75 word acknowledgment</li>
+      <li>
+        Tickets for guests (guest ticket amounts may differ for each graduation)
+        <ul>
+          <li>APIDA Graduate Celebration - 10 Tickets</li>
+          <li>Black Graduate Celebration - 10 Tickets</li>
+          <li>Nuestra Graduate Celebration - 10 Tickets</li>
+          <li>Pride Graduate Celebration - 6 Tickets</li>
+        </ul>
+      </li>
+    </ul>
   </TabContent>
 );
 
@@ -48,11 +70,10 @@ const WhereTab = () => (
       <li>
         APIDA:
         <ul>
-          <li>Date: Saturday, May 20, 2023</li>
-          <li>Time: TBD (plan for brunch/lunch time)</li>
+          <li>Saturday, May 20, 2023</li>
+          <li>1:00 PM - 3:00 PM</li>
           <li>
-            Location: State Playhouse Theatre, California State University Los
-            Angeles
+            State Playhouse Theatre, California State University Los Angeles
           </li>
         </ul>
       </li>
@@ -60,36 +81,27 @@ const WhereTab = () => (
       <li>
         Black
         <ul>
-          <li>Date: Saturday, May 27, 2023</li>
-          <li>Time: 5:00 PM - 7:00 PM</li>
-          <li>
-            Location: University Gymnasium, California State University Los
-            Angeles
-          </li>
+          <li>Saturday, May 27, 2023</li>
+          <li>5:00 PM - 7:00 PM</li>
+          <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
       </li>
       <Divider color="greyLighter" margin="24px auto" />
       <li>
         Nuestra:
         <ul>
-          <li>Date: Saturday, May 27, 2023</li>
-          <li>Time: 12:00 PM - 2:00 PM</li>
-          <li>
-            Location: University Gymnasium, California State University Los
-            Angeles
-          </li>
+          <li>Saturday, May 27, 2023</li>
+          <li>12:00 PM - 2:00 PM</li>
+          <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
       </li>
       <Divider color="greyLighter" margin="24px auto" />
       <li>
         Pride:
         <ul>
-          <li>Date: Saturday, May 20, 2023</li>
-          <li>Time: 12:00 PM - 2:00 PM</li>
-          <li>
-            Location: University Gymnasium, California State University Los
-            Angeles
-          </li>
+          <li>Saturday, May 19, 2023</li>
+          <li>5:00 PM - 7:00 PM</li>
+          <li>Los Angeles Rooms, CSULA University-Student Union</li>
         </ul>
       </li>
     </ul>
@@ -98,9 +110,9 @@ const WhereTab = () => (
 
 const WhoTab = () => (
   <TabContent>
-    <strong>All</strong> graduating seniors who are interested are welcome to
-    apply. Priority is given to Spring 2023 graduates, but Fall 2022 graduates
-    are welcome to apply as well.
+    <strong>All</strong> graduating students (of all degree types, Bachelors,
+    Masters, EdD) who are interested are welcome to apply. Priority is given to
+    Spring 2023 graduates, but Fall 2022 graduates are welcome to apply as well.
   </TabContent>
 );
 
@@ -111,6 +123,10 @@ const WhyTab = () => (
   </TabContent>
 );
 
+const SubHeaderSpan = styled.span`
+  display: flex;
+  align-items: center;
+`;
 const TeaserContainer = styled.div`
   width: 500px;
   height: 520px;
@@ -231,15 +247,20 @@ export default function CulturalGrads() {
               would like to sign up and participate.
             </Typography>
             <Button variant="black" href="#">
-              Apply now
+              <SubHeaderSpan>
+                Apply Now&nbsp;
+                <FaGraduationCap color={'white'} fontSize={'24px'} />
+              </SubHeaderSpan>
             </Button>
           </FluidContainer>
         </FluidContainer>
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
-        <Typography margin="24px 0" as="h2" variant="titleSmall">
-          <u>Graduations</u>:
-        </Typography>
+        <SubHeaderSpan>
+          <Typography margin="24px" as="h2" variant="titleSmall">
+            Graduations
+          </Typography>
+        </SubHeaderSpan>
         <FluidContainer flex flexWrap="wrap">
           {cards.map((props) => (
             <Card
@@ -259,12 +280,14 @@ export default function CulturalGrads() {
           ))}
         </FluidContainer>
       </FluidContainer>
-
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
-          <Typography as="h4" variant="labelTitle">
-            Frequently Asked Questions
-          </Typography>
+          <SubHeaderSpan>
+            <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
+              Frequently Asked Questions
+            </Typography>
+            <FaRegQuestionCircle fontSize={'24px'} />
+          </SubHeaderSpan>
         </IconHeading>
         <Tabs items={tabItems} minHeight="320px" />
       </FluidContainer>
