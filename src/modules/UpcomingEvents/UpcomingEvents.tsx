@@ -52,7 +52,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <Typography as="h2" variant="subheader" margin="0 24px 0 0">
             Upcoming Events
           </Typography>
-          <Button href="#" variant="grey">
+          <Button href="#" variant="black">
             View More
           </Button>
         </UpcomingEventsHeading>

@@ -22,7 +22,6 @@ const CTAContainer = styled.div`
   justify-content: center;
   > div:first-child {
     white-space: nowrap;
-    margin-right: 36px;
   }
 `;
 
@@ -38,7 +37,7 @@ export const CallToAction = ({
     backgroundColor={backgroundColorProp ? backgroundColorProp : 'primary'}
   >
     <CTAContainer>
-      <div>{children}</div>
+      {children}
       <div>
         <Typography variant="titleLarge" margin="0 0 16px" lineHeight="1.5">
           {text}
