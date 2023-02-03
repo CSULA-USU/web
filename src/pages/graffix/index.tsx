@@ -261,19 +261,16 @@ export default function Graffix() {
           </Panel>
         ))}
       </FluidContainer>
-      <FluidContainer flex>
-        <FluidContainer backgroundColor="primary">
-          <Typography
-            as="h2"
-            variant="title"
-            size="3xl"
-            weight="400"
-            lineHeight="1"
-          >
-            Join the <br />
+      <FluidContainer flex backgroundColor="primary" padding="0">
+        <FluidContainer>
+          <Typography as="h2" variant="titleLarge" lineHeight="1">
+            Join the
+            <br />
             <strong>
-              <NonBreakingSpan>award-winning</NonBreakingSpan> team!
+              <NonBreakingSpan>award-winning</NonBreakingSpan>
             </strong>
+            <br />
+            team!
           </Typography>
           <Typography margin={`${Spaces.md} 0`}>
             {' '}
@@ -284,7 +281,13 @@ export default function Graffix() {
             Apply Now
           </Button>
         </FluidContainer>
-        <FluidContainer flex flexWrap="wrap" justifyContent="space-evenly">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="space-evenly"
+          backgroundColor="white"
+          padding="24px"
+        >
           {awardYears.map((y) => (
             <Image
               key={y.alt}
