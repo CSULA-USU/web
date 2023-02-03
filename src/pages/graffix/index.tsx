@@ -105,7 +105,7 @@ const NavItems = [
 
 const DesignsContainer = styled.div`
   width: calc(33.33% - 24px);
-  margin: 0 64px 0 0;
+  margin: 0 24px 0 0;
 `;
 
 const InnerAwardContainer = styled.div`
@@ -296,9 +296,6 @@ export default function Graffix() {
           ))}
         </FluidContainer>
       </FluidContainer>
-      <FluidContainer backgroundColor="greyLightest">
-        <Typography variant="title">Graffix Gallery</Typography>
-      </FluidContainer>
       <FluidContainer flex backgroundColor="greyLightest">
         <DesignsContainer>
           {cards1.map((props) => (
@@ -308,8 +305,8 @@ export default function Graffix() {
               rounded
               margin="24px 0 0 0"
             >
-              <Typography weight="700">Designer: {props.designer}</Typography>
               <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
               <Typography variant="copy" margin="12px 0 0 0">
                 {props.description}
               </Typography>
@@ -324,8 +321,8 @@ export default function Graffix() {
               rounded
               margin="24px 0 0 0"
             >
-              <Typography weight="700">Designer: {props.designer}</Typography>
               <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
               <Typography variant="copy" margin="12px 0 0 0">
                 {props.description}
               </Typography>
@@ -340,8 +337,8 @@ export default function Graffix() {
               rounded
               margin="24px 0 0 0"
             >
-              <Typography weight="700">Designer: {props.designer}</Typography>
               <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
               <Typography variant="copy" margin="12px 0 0 0">
                 {props.description}
               </Typography>
