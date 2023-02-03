@@ -29,7 +29,7 @@ const GetInvolvedButton = styled.button`
 `;
 
 export const Nav = () => (
-  <FluidContainer backgroundColor="greyDarkest">
+  <FluidContainer padding="24px" backgroundColor="greyDarkest">
     <NavContainer>
       <Link href="/">
         <Image

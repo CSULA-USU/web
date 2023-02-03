@@ -36,15 +36,8 @@ export default function Home() {
           becoming a valued member of the U-SU."
         href="/employment"
       >
-        <Typography
-          as="h2"
-          variant="title"
-          size="3xl"
-          weight="400"
-          lineHeight="1"
-        >
-          Join the <br />
-          <strong>U-Krew!</strong>
+        <Typography as="h2" variant="label">
+          Join the U-Krew!
         </Typography>
       </CallToAction>
       <BoardOfDirectorsCTA />
