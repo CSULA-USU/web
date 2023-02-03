@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { EventCard } from 'modules';
 import { PresenceEvent } from 'types';
+import { Spaces } from 'theme';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -19,11 +20,13 @@ export const HomeHeader = ({
     flexDirection="column"
     backgroundImage="/subtle-background-1.jpg"
   >
-    <Typography margin="0 auto" variant="title">
-      Welcome to the
-    </Typography>
-    <Typography margin="32px auto 48px" size="4xl" weight="700">
-      University-Student Union
+    <Typography
+      variant="pageHeader"
+      margin={`0 auto ${Spaces.lg}`}
+      size="2xl"
+      color="greyDarker"
+    >
+      Welcome to the University-Student Union!
     </Typography>
     <HeaderContainer>
       <EventCard featured {...featuredEvent} />

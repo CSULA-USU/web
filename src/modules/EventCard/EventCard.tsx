@@ -16,7 +16,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   width: 100%;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
-  height: ${({ featured }) => (featured ? `650px` : `400px`)};
+  height: ${({ featured }) => (featured ? `560px` : `400px`)};
   color: ${Colors.white};
   background: linear-gradient(
       180deg,

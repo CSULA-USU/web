@@ -17,7 +17,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 72px;
+  padding: 24px 72px;
   ${getBackgroundCSS}
 `;
 
