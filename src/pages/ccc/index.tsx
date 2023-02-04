@@ -217,7 +217,7 @@ export default function CCC() {
       >
         <FluidContainer flex>
           <Image
-            src="departments/ccc/nuestra-teaser.jpeg"
+            src="/departments/ccc/nuestra-teaser.jpeg"
             alt="graduation image"
             width="500px"
           ></Image>
