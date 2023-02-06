@@ -217,7 +217,7 @@ export default function CCC() {
       >
         <FluidContainer flex>
           <Image
-            src="/ccc/nuestra-teaser.jpeg"
+            src="/departments/ccc/nuestra-teaser.jpeg"
             alt="graduation image"
             width="500px"
           ></Image>
@@ -240,7 +240,6 @@ export default function CCC() {
 
       <CallToAction
         backgroundColorProp="black"
-        textColor="white"
         buttonVariantColor="primary"
         buttonText="View Form"
         text="Interested in increasing cross-cultural awareness through presentations/training or tabling?"
