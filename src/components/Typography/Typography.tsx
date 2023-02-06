@@ -44,7 +44,7 @@ const styles = {
   titleSmall: {
     size: 'xl',
     weight: '400',
-    lineHeight: FontSizes.lg,
+    lineHeight: FontSizes['2xl'],
     fontFamily: serif,
   },
   subheader: { size: 'lg', weight: '400', fontFamily: serif },
