@@ -31,7 +31,7 @@ const getMonth = (date: string) =>
 
 export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
   const [_, ...laterEvents] = events || [];
-  const eventsByMonth = laterEvents.reduce(
+  const eventsByMonth = (monthly ? events : laterEvents).reduce(
     (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
       const updatedMonths = { ...months };
       const month = getMonth(event.startDateTimeUtc);
@@ -52,7 +52,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <Typography as="h2" variant="subheader" margin="0 24px 0 0">
             Upcoming Events
           </Typography>
-          <Button href="#" variant="black">
+          <Button href="/events" variant="black">
             View More
           </Button>
         </UpcomingEventsHeading>

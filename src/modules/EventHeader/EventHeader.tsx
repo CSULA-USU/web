@@ -10,10 +10,12 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const HomeHeader = ({
+export const EventHeader = ({
   featuredEvent,
+  title,
 }: {
   featuredEvent: PresenceEvent;
+  title?: string;
 }) => (
   <FluidContainer
     flex
@@ -26,7 +28,7 @@ export const HomeHeader = ({
       size="2xl"
       color="greyDarker"
     >
-      Welcome to the University-Student Union!
+      {title}
     </Typography>
     <HeaderContainer>
       <EventCard featured {...featuredEvent} />
