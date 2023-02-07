@@ -102,11 +102,11 @@ export default function HowToVote() {
             Angeles.
           </Typography>
         </HeaderContainer>
-        {/* <Image
+        <Image
           src="/student-leader-elections/student-leader-header.png"
           alt="student leader header"
           width={800}
-        ></Image> */}
+        ></Image>
       </FluidContainer>
       <VotingNav></VotingNav>
       <FluidContainer>
