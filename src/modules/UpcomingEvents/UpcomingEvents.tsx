@@ -99,7 +99,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
       )}
       <EventModal
         isOpen={!!selectedEvent}
-        event={selectedEvent || events[0]}
+        event={selectedEvent}
         onRequestClose={onRequestClose}
       />
     </FluidContainer>
