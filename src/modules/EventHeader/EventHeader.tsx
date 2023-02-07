@@ -31,7 +31,7 @@ export const EventHeader = ({
       {title}
     </Typography>
     <HeaderContainer>
-      <EventCard featured {...featuredEvent} />
+      <EventCard featured event={featuredEvent} />
     </HeaderContainer>
   </FluidContainer>
 );

@@ -2,6 +2,8 @@ import { Button, Typography, FluidContainer, Divider } from 'components';
 import { PresenceEvent } from 'types';
 import { EventCard } from 'modules/EventCard';
 import styled from 'styled-components';
+import { EventModal } from 'modules/EventModal';
+import { useState } from 'react';
 
 interface UpcomingEventsProps {
   events: PresenceEvent[];
@@ -30,6 +32,9 @@ const getMonth = (date: string) =>
   new Date(date).toLocaleString('default', { month: 'long' });
 
 export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
+  const [selectedEvent, selectEvent] = useState<null | PresenceEvent>(null);
+  const onRequestClose = () => selectEvent(null);
+
   const [_, ...laterEvents] = events || [];
   const eventsByMonth = (monthly ? events : laterEvents).reduce(
     (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
@@ -45,7 +50,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
   );
 
   const eventMonths = Object.keys(eventsByMonth);
-  return (
+  return !events.length ? null : (
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
@@ -63,7 +68,11 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
             <Divider label={eventMonth} />
             <UpcomingEventsContent>
               {eventsByMonth[eventMonth].map((event) => (
-                <EventCard key={event.eventNoSqlId} {...event} />
+                <EventCard
+                  key={event.eventNoSqlId}
+                  event={event}
+                  onClick={() => selectEvent(event)}
+                />
               ))}
             </UpcomingEventsContent>
           </div>
@@ -72,14 +81,27 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
         <>
           <UpcomingEventsContent>
             {events.slice(1, 3).map((event) => (
-              <EventCard key={event.eventNoSqlId} {...event} />
+              <EventCard
+                key={event.eventNoSqlId}
+                event={event}
+                onClick={() => selectEvent(event)}
+              />
             ))}
             {events.slice(3, 6).map((event) => (
-              <EventCard key={event.eventNoSqlId} {...event} />
+              <EventCard
+                key={event.eventNoSqlId}
+                event={event}
+                onClick={() => selectEvent(event)}
+              />
             ))}
           </UpcomingEventsContent>
         </>
       )}
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent || events[0]}
+        onRequestClose={onRequestClose}
+      />
     </FluidContainer>
   );
 };
