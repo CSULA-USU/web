@@ -7,7 +7,7 @@ import { PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
 interface EventModalProps {
-  event: PresenceEvent;
+  event?: PresenceEvent;
   isOpen: boolean;
   onRequestClose: () => void;
 }
@@ -35,6 +35,8 @@ export const EventModal = ({
   isOpen,
   onRequestClose,
 }: EventModalProps) => {
+  if (!event) return null;
+
   const {
     startDateTimeUtc,
     endDateTimeUtc,

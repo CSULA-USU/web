@@ -37,7 +37,7 @@ export const DepartmentHeader = ({
           </Typography>
           <Typography>{children}</Typography>
         </HeaderContent>
-        {departmentEvent && <EventCard featured {...departmentEvent} />}
+        {departmentEvent && <EventCard featured event={departmentEvent} />}
       </HeaderContainer>
       {infoSection}
     </FluidContainer>

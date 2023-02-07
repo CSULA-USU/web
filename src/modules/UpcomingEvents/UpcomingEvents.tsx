@@ -32,8 +32,10 @@ const getMonth = (date: string) =>
   new Date(date).toLocaleString('default', { month: 'long' });
 
 export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
-  const [selectedEvent, selectEvent] = useState<null | PresenceEvent>(null);
-  const onRequestClose = () => selectEvent(null);
+  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+    undefined,
+  );
+  const onRequestClose = () => selectEvent(undefined);
 
   const [_, ...laterEvents] = events || [];
   const eventsByMonth = (monthly ? events : laterEvents).reduce(
@@ -99,7 +101,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
       )}
       <EventModal
         isOpen={!!selectedEvent}
-        event={selectedEvent || events[0]}
+        event={selectedEvent}
         onRequestClose={onRequestClose}
       />
     </FluidContainer>
