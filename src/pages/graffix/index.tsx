@@ -59,7 +59,7 @@ const cards2 = [
 
   {
     title: 'Harvst Festival',
-    designer: 'Sam Juarez',
+    designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/harvest-festival.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
@@ -125,6 +125,12 @@ const NavItemContainer = styled.div`
 
 const HeaderContainer = styled.div`
   background: url(/subtle-background-1.jpg) no-repeat;
+`;
+
+const HeaderInnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${Spaces.xl};
 `;
 
 export default function Graffix() {
@@ -195,12 +201,21 @@ export default function Graffix() {
             <FaTiktok fontSize={FontSizes.xl} />
           </a>
         </FluidContainer>
-        <Header title="Graffix" buttons={buttons}>
-          The U-SU Graffix Department is responsible for promoting events and
-          programs coordinated by the U-SU Programming Units through print
-          materials and the U-SU website. We establish and maintain an identity
-          for the U-SU through consistent publicity campaigns and promotions.
-        </Header>
+        <HeaderInnerContainer>
+          <Header title="Graffix" buttons={buttons}>
+            The U-SU Graffix Department is responsible for promoting events and
+            programs coordinated by the U-SU Programming Units through print
+            materials and the U-SU website. We establish and maintain an
+            identity for the U-SU through consistent publicity campaigns and
+            promotions.
+          </Header>
+          <Image
+            src="/departments/graffix/students-1.png"
+            alt="students"
+            width={600}
+            height={700}
+          ></Image>
+        </HeaderInnerContainer>
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
             address="5154 State University Dr, Los Angeles, CA 90032 204B"
@@ -209,6 +224,56 @@ export default function Graffix() {
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
+      <FluidContainer flex backgroundColor="greyLightest">
+        <DesignsContainer>
+          {cards1.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+        <DesignsContainer>
+          {cards2.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+        <DesignsContainer>
+          {cards3.map((props) => (
+            <Card
+              key={props.title}
+              title={props.title}
+              rounded
+              margin="24px 0 0 0"
+            >
+              <Image src={props.src} alt={props.title} width="100%" />
+              <Typography weight="700">{props.designer}</Typography>
+              <Typography variant="copy" margin="12px 0 0 0">
+                {props.description}
+              </Typography>
+            </Card>
+          ))}
+        </DesignsContainer>
+      </FluidContainer>
       <div id="acui-awards">
         <FluidContainer flex flexDirection="column" backgroundColor="black">
           <Typography variant="title" margin="16px 0" color="gold">
@@ -273,7 +338,6 @@ export default function Graffix() {
             team!
           </Typography>
           <Typography margin={`${Spaces.md} 0`}>
-            {' '}
             Are you an aspiring graphic designer/ web developer/ social media
             manager? Hone new skills and experiences here at Graffix!
           </Typography>
@@ -298,56 +362,6 @@ export default function Graffix() {
             />
           ))}
         </FluidContainer>
-      </FluidContainer>
-      <FluidContainer flex backgroundColor="greyLightest">
-        <DesignsContainer>
-          {cards1.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
-          ))}
-        </DesignsContainer>
-        <DesignsContainer>
-          {cards2.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
-          ))}
-        </DesignsContainer>
-        <DesignsContainer>
-          {cards3.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
-          ))}
-        </DesignsContainer>
       </FluidContainer>
     </Page>
   );
