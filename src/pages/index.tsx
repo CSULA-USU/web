@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import {
-  HomeHeader,
+  EventHeader,
   UpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
@@ -28,7 +28,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeHeader featuredEvent={events[0]} />
+      <EventHeader
+        title="Welcome to the University-Student Union!"
+        featuredEvent={events[0]}
+      />
       <UpcomingEvents events={events} />
       <CallToAction
         buttonText="View Opportunities"
@@ -36,15 +39,8 @@ export default function Home() {
           becoming a valued member of the U-SU."
         href="/employment"
       >
-        <Typography
-          as="h2"
-          variant="title"
-          size="3xl"
-          weight="400"
-          lineHeight="1"
-        >
-          Join the <br />
-          <strong>U-Krew!</strong>
+        <Typography as="h2" variant="label">
+          Join the U-Krew!
         </Typography>
       </CallToAction>
       <BoardOfDirectorsCTA />

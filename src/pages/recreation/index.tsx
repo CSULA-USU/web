@@ -44,8 +44,8 @@ export default function Recreation() {
             Our Hours
           </Typography>
           <Typography margin="0 0 8px">
-            Monday – Friday: 7:00 a.m. to 9:30 p.m. <br />
-            Saturday: 7:00 a.m. to 2:30 p.m. <br />
+            Monday – Friday: 7:00 AM to 9:30 PM <br />
+            Saturday: 7:00 AM to 2:30 PM <br />
             Sunday: Closed <br />
           </Typography>
         </div>

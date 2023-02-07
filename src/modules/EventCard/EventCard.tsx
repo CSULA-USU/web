@@ -2,12 +2,21 @@ import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
+import { ABREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
+import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
-export interface EventCardProps extends PresenceEvent {
+export interface EventCardProps {
+  event: PresenceEvent;
   featured?: boolean;
+  onClick?: () => void;
 }
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    opacity: 0.7;
+  }
   display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -16,7 +25,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   width: 100%;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
-  height: ${({ featured }) => (featured ? `650px` : `400px`)};
+  height: ${({ featured }) => (featured ? `560px` : `400px`)};
   color: ${Colors.white};
   background: linear-gradient(
       180deg,
@@ -55,39 +64,26 @@ const EventDetails = styled.div`
 
 const EventDate = styled.div``;
 
-const abvOrgNames: { [key: string]: string } = {
-  'Center for Student Involvement': 'CSI',
-  'Cross Cultural Centers': 'CCC',
-  Recreation: 'REC',
-};
-
-const getTime = (utc: string) => {
-  return new Date(utc).toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit',
-  });
-};
-
-export const EventCard = ({
-  organizationName,
-  eventName,
-  location,
-  startDateTimeUtc,
-  endDateTimeUtc,
-  photoUri,
-  featured,
-}: EventCardProps) => {
+export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
+  if (!event) return null;
+  const {
+    organizationName,
+    eventName,
+    location,
+    startDateTimeUtc,
+    endDateTimeUtc,
+    photoUri,
+  } = event;
   const startTime = getTime(startDateTimeUtc);
   const endTime = getTime(endDateTimeUtc);
-  const month = new Date(startDateTimeUtc)
-    .toLocaleString('default', { month: 'short' })
-    .toUpperCase();
-  const day = new Date(startDateTimeUtc).getDate();
+  const month = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const day = getDay(startDateTimeUtc);
 
   return !eventName ? null : (
     <EventCardContainer
+      onClick={onClick}
       featured={featured}
-      image={`https://calstatela-cdn.presence.io/event-photos/caa045a5-87e3-4730-9e3b-3237755bc0a8/${photoUri}`}
+      image={`${PRESENCE_URI_BASE}/${photoUri}`}
     >
       <EventCardTop>
         <EventDate>
@@ -113,7 +109,7 @@ export const EventCard = ({
           )}
         </EventDate>
         <Typography as="h5" variant="eventDetail">
-          {abvOrgNames[organizationName]}
+          {ABREVIATED_ORGS[organizationName]}
         </Typography>
       </EventCardTop>
       <EventCardBottom featured={featured}>

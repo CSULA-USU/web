@@ -1,6 +1,5 @@
 import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
 import { Colors } from 'theme';
 import { NavItems } from './NavItems';
 import Link from 'next/link';
@@ -30,7 +29,7 @@ const GetInvolvedButton = styled.button`
 `;
 
 export const Nav = () => (
-  <FluidContainer backgroundColor="greyDarkest">
+  <FluidContainer padding="24px" backgroundColor="greyDarkest">
     <NavContainer>
       <Link href="/">
         <Image
@@ -40,7 +39,6 @@ export const Nav = () => (
       </Link>
       <NavItems />
       <NavExtra>
-        <MdSearch color={Colors.white} fontSize="36px" />
         <GetInvolvedButton>Get Involved</GetInvolvedButton>
       </NavExtra>
     </NavContainer>

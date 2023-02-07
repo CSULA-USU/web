@@ -9,19 +9,19 @@ type CTAProps = {
   href: string;
   backgroundColorProp?: keyof typeof Colors;
   buttonVariantColor?: 'primary' | 'black' | 'grey' | 'outline';
-  textColor?: keyof typeof Colors;
 };
 
 const CTAContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1080px;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   > div:first-child {
     white-space: nowrap;
-    margin-right: 36px;
   }
 `;
 
@@ -32,15 +32,14 @@ export const CallToAction = ({
   href,
   backgroundColorProp,
   buttonVariantColor,
-  textColor,
 }: CTAProps) => (
   <FluidContainer
     backgroundColor={backgroundColorProp ? backgroundColorProp : 'primary'}
   >
     <CTAContainer>
-      <div>{children}</div>
+      {children}
       <div>
-        <Typography color={textColor ? textColor : 'black'} margin="0 0 16px">
+        <Typography variant="titleLarge" margin="0 0 16px" lineHeight="1.5">
           {text}
         </Typography>
         <br />

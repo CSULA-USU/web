@@ -19,9 +19,22 @@ const agendaDownloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         stacked
         links={[
-          { href: '#', children: 'BOD Agenda August 1, 2022' },
-          { href: '#', children: 'BOD Agenda September 30, 2022' },
-          { href: '#', children: 'BOD Agenda September 16, 2022' },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy22-23-080122.pdf',
+            children: 'BOD Agenda August 1, 2022',
+          },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy22-23-091622.pdf',
+            children: 'BOD Agenda September 16, 2022',
+          },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy22-23-093022.pdf',
+            children: 'BOD Agenda September 30, 2022',
+          },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy22-23-012023.pdf',
+            children: 'BOD Agenda January 20, 2023',
+          },
         ]}
       />
     ),
@@ -37,9 +50,18 @@ const agendaDownloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         stacked
         links={[
-          { href: '#', children: 'BOD Agenda August 1, 2022' },
-          { href: '#', children: 'BOD Agenda September 30, 2022' },
-          { href: '#', children: 'BOD Agenda September 16, 2022' },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
+            children: 'BOD Agenda January 21, 2022',
+          },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
+            children: 'BOD Agenda October 15, 2021',
+          },
+          {
+            href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
+            children: 'BOD Agenda November 5, 2021',
+          },
         ]}
       />
     ),

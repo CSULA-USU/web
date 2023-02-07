@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Veronica Woo",
+    "acuiName": "La Verne, Region 1 (2014)",
+    "title": "U-Awards",
+    "place": "Best of Show",
+    "category": "Promotional Campaign",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/best-of-show-veronica-woo.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "San-Antonio, 95th Annual(2015)",
+    "title": "Lunar New Year",
+    "place": "First",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/first-place-gerrymi-bernardo.jpg"
+  },
+  {
+    "name": "Sherwinlove Bernardino",
+    "acuiName": "ACUI Philadelphia, 97th Annual (2016)",
+    "title": "Haunted Harvest Festival",
+    "place": "Second",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/second-place-sherwinlove-bernardino.jpg"
+  },
+  {
+    "name": "Robert Gonzales",
+    "acuiName": "San-Antonio, 95th Annual (2015)",
+    "title": "Sodalicious",
+    "place": "Third",
+    "category": "Posters",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/third-place-robert-gonzales.jpg"
+  },
+  {
+    "name": "Sherwinlove Bernardino",
+    "acuiName": "ACUI Philadelphia, 97th Annual (2016)",
+    "title": "Dia de Los Muertos",
+    "place": "Honorable Mention",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/honorable-mention-sherwinlove-bernardino.jpg"
+  }
+]
