@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { HomeHeader, UpcomingEvents, Page } from 'modules';
+import { UpcomingEvents, Page, Header } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 
@@ -20,8 +20,14 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <HomeHeader featuredEvent={events[0]} />
+      <Header
+        title="Upcoming Events"
+        backgroundImage="/subtle-background-1.jpg"
+      >
+        The University-Student Union&apos;s hosts various events through out the
+        school year. Make sure to check back here to stay up to date with the
+        latest events. This needs a rewrite.
+      </Header>
       <UpcomingEvents monthly events={events} />
     </Page>
   );
