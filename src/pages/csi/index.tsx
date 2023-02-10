@@ -17,55 +17,31 @@ export default function CSI() {
         'Meet new people! Connect with over 120 student organizations including fraternities & sororities.',
     },
     {
-      imgSrc: 'icons/tent-icon-0.png',
-      imgAlt: 'tent',
-      children:
-        'Adventurous? Go on the snowboarding and whitewater rafting trips!',
-    },
-    {
-      imgSrc: 'icons/music-icon.png',
-      imgAlt: 'music',
-      children:
-        'Love music? Check out the best new bands right here on campus.',
-    },
-    {
       imgSrc: 'icons/resume-icon.png',
       imgAlt: 'resume',
-      children:
-        'Build your resume! Develop leadership skills at our interactive programs.',
+      children: 'Attend events on and off campus! ',
     },
     {
       imgSrc: 'icons/giving-hand-icon.png',
       imgAlt: 'giving hand',
       children:
-        'Build your resume! Develop leadership skills at our interactive programs.',
+        'Develop your leadership potential by attending an interactive workshop!',
     },
     {
       imgSrc: 'icons/calendar-icon.png',
       imgAlt: 'calendar',
-      children: 'Eager to help out at campus events? Join GEEK!',
-    },
-    {
-      imgSrc: 'icons/tent-icon-1.png',
-      imgAlt: 'tent',
       children:
-        'Take charge! Start your own student organization or suggest a new event idea!',
+        'Interested in helping during CSI events? Sign up for the Golden Eagle Event Krew (GEEK)!',
     },
   ];
   const clubCards = [
     {
-      title: 'Awards, Scholarships, and Recognition',
+      title: 'On Campus and Off Campus Programs',
       children:
-        'Applications for the Golden Eagle Awards of Excellence, U-SU Student Involvement Scholarship, and Student Leader Awards.',
-      imgSrc: '/vectors/csi/awards.svg',
-      imgAlt: 'awards image',
-    },
-    {
-      title: 'Campus Activities, Programs, and Trips',
-      children:
-        'Bands, comedians, movie nights, arts & crafts, Zumba classes, snow skiing, white water rafting, community service experiences, and major events…new programs are added every quarter!',
+        'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
       imgSrc: '/vectors/csi/trip.svg',
       imgAlt: 'trip image',
+      href: '#',
     },
     {
       title: 'Fraternities & Sororities',
@@ -73,41 +49,39 @@ export default function CSI() {
         'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
       imgSrc: '/vectors/csi/fraternities.svg',
       imgAlt: 'fraternities image',
+      href: '#',
     },
     {
-      title: 'Leadership Academy',
+      title: 'LEAD (Leadership Enrichment Advocacy & Development)',
       children:
-        'Were you a leader in high school or your community college? Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have.',
+        'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
       imgSrc: '/vectors/csi/education.svg',
       imgAlt: 'trip image',
+      href: '#',
     },
     {
       title: 'Leadership Library',
       children:
-        'The Center for Student Involvement maintains a Leadership Library with information on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can access the information either within the Center or at their leisure through the book/video loan program. The Center staff will frequently add more books and videos to the library to address additional organization topics and interests.',
+        'CSI maintains a Leadership Library with books on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can check out the books from our office in the U-SU.',
       imgSrc: '/vectors/csi/meeting.svg',
       imgAlt: 'trip image',
+      href: '#',
     },
     {
-      title: 'GEEK',
+      title: 'GEEK (Golden Eagle Event Krew',
       children:
-        'By helping out behind the scenes of CSI programs and activities, you will be able to get more involved on campus, meet lots of other students, and get some event planning experience. A great addition to your resume!',
+        'GEEK is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for CSI events. The volunteer program offers many opportunities to develop professional and leadership skills in a fun, fast-paced environment by working with vendors, campus administrators and CSI staff to make events come to life!',
       imgSrc: '/vectors/csi/friends.svg',
-      imgAlt: 'firends image',
+      imgAlt: 'friends image',
+      href: '#',
     },
     {
       title: 'Student Organizations',
       children:
-        'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests.',
+        'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests. Learn about the organizations or find information about the Student Org Handbook and policies and procedures!',
       imgSrc: '/vectors/csi/academic.svg',
       imgAlt: 'academic image',
-    },
-    {
-      title: 'Student Organization Handbook, Forms, and Policies',
-      children:
-        'Student organization members will find the documents they need to guide their groups to success.',
-      imgSrc: '/vectors/csi/book.svg',
-      imgAlt: 'book image',
+      href: 'https://calstatelausu.org',
     },
   ];
 
