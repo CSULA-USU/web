@@ -8,8 +8,16 @@ import {
   Image,
   Typography,
 } from 'components';
+import { MdOutlineFacebook } from 'react-icons/md';
+import { IoLogoInstagram } from 'react-icons/io';
+import styled from 'styled-components';
 
 export default function CSI() {
+  const SocialsContainer = styled.div`
+    display: flex;
+    margin: 16px 0px;
+  `;
+
   const descriptionCards = [
     {
       imgSrc: 'icons/connecting-people-icon.png',
@@ -35,6 +43,7 @@ export default function CSI() {
         'Interested in helping during CSI events? Sign up for the Golden Eagle Event Krew (GEEK)!',
     },
   ];
+
   const clubCards = [
     {
       title: 'On Campus and Off Campus Programs',
@@ -42,7 +51,7 @@ export default function CSI() {
         'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
       imgSrc: '/vectors/csi/trip.svg',
       imgAlt: 'trip image',
-      href: '#',
+      href: 'https://calstatela.presence.io/events',
       linkText: 'Learn More',
     },
     {
@@ -69,7 +78,7 @@ export default function CSI() {
         'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests. Learn about the organizations or find information about the Student Org Handbook and policies and procedures!',
       imgSrc: '/vectors/csi/academic.svg',
       imgAlt: 'academic image',
-      href: '#',
+      href: 'csi/student-orgs',
       linkText: 'Learn More',
     },
     {
@@ -139,6 +148,14 @@ export default function CSI() {
         <a href="mailto:CSI@calstatela.edu">
           <strong>CSI@calstatela.edu</strong>
         </a>
+        <SocialsContainer>
+          <a href="https://www.facebook.com/csicalstatela">
+            <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
+          </a>
+          <a href="https://www.instagram.com/csicalstatela/?hl=en">
+            <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
+          </a>
+        </SocialsContainer>
       </DepartmentHeader>
       <CallToAction
         href="https://forms.office.com/r/2pTsmaFvCk"
@@ -176,7 +193,6 @@ export default function CSI() {
             width="150px"
             marginRight="48px"
           ></Image>
-
           <Card hoverable width="100%" minHeight="160px" {...props}></Card>
           <Divider color="grey" />
         </FluidContainer>
