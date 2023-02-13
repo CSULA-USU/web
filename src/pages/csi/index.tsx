@@ -1,11 +1,12 @@
 import Head from 'next/head';
-import { Page, DepartmentHeader, OfficeHours } from 'modules';
+import { Page, CallToAction, DepartmentHeader, OfficeHours } from 'modules';
 import {
-  DescriptionCard,
-  FluidContainer,
   Card,
+  DescriptionCard,
   Divider,
+  FluidContainer,
   Image,
+  Typography,
 } from 'components';
 
 export default function CSI() {
@@ -42,6 +43,7 @@ export default function CSI() {
       imgSrc: '/vectors/csi/trip.svg',
       imgAlt: 'trip image',
       href: '#',
+      linkText: 'Learn More',
     },
     {
       title: 'Fraternities & Sororities',
@@ -50,22 +52,7 @@ export default function CSI() {
       imgSrc: '/vectors/csi/fraternities.svg',
       imgAlt: 'fraternities image',
       href: '#',
-    },
-    {
-      title: 'LEAD (Leadership Enrichment Advocacy & Development)',
-      children:
-        'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
-      imgSrc: '/vectors/csi/education.svg',
-      imgAlt: 'trip image',
-      href: '#',
-    },
-    {
-      title: 'Leadership Library',
-      children:
-        'CSI maintains a Leadership Library with books on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can check out the books from our office in the U-SU.',
-      imgSrc: '/vectors/csi/meeting.svg',
-      imgAlt: 'trip image',
-      href: '#',
+      linkText: 'Learn More',
     },
     {
       title: 'GEEK (Golden Eagle Event Krew',
@@ -74,6 +61,7 @@ export default function CSI() {
       imgSrc: '/vectors/csi/friends.svg',
       imgAlt: 'friends image',
       href: '#',
+      linkText: 'Learn More',
     },
     {
       title: 'Student Organizations',
@@ -81,7 +69,26 @@ export default function CSI() {
         'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests. Learn about the organizations or find information about the Student Org Handbook and policies and procedures!',
       imgSrc: '/vectors/csi/academic.svg',
       imgAlt: 'academic image',
-      href: 'https://calstatelausu.org',
+      href: '#',
+      linkText: 'Learn More',
+    },
+    {
+      title: 'LEAD (Leadership Enrichment Advocacy & Development)',
+      children:
+        'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
+      imgSrc: '/vectors/csi/education.svg',
+      imgAlt: 'trip image',
+      href: '',
+      linkText: '',
+    },
+    {
+      title: 'Leadership Library',
+      children:
+        'CSI maintains a Leadership Library with books on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can check out the books from our office in the U-SU.',
+      imgSrc: '/vectors/csi/meeting.svg',
+      imgAlt: 'trip image',
+      href: '',
+      linkText: '',
     },
   ];
 
@@ -125,7 +132,23 @@ export default function CSI() {
         The Center for Student Involvement empowers Golden Eagles to engage in
         transformative opportunities, build community, and create positive
         change.
+        <br />
+        <br />
+        For questions about student organizations or to share event ideas please
+        contact us at:{' '}
+        <a href="mailto:CSI@calstatela.edu">
+          <strong>CSI@calstatela.edu</strong>
+        </a>
       </DepartmentHeader>
+      <CallToAction
+        href="https://forms.office.com/r/2pTsmaFvCk"
+        buttonText="Sign Up"
+        text="CSI Monthly Newsletter"
+      >
+        <Typography as="h2" variant="label">
+          Stay up to date with CSI info, events, updates, and opportunities!
+        </Typography>
+      </CallToAction>
       <FluidContainer
         backgroundColor="greyLightest"
         flex
