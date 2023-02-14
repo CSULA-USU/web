@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import {
   Button,
+  Divider,
   FluidContainer,
   Image,
   Tabs,
@@ -36,7 +37,13 @@ const TabContent = styled(Typography)`
 const Ninetys = () => {
   let ninetys = honorees[0][1999];
   return (
-    <TabContent>{ninetys?.map((p) => p.name + ' | ' + p.major)}</TabContent>
+    <TabContent>
+      {ninetys?.map((p) => (
+        <Typography key={p.name}>
+          {p.name} | {p.major}
+        </Typography>
+      ))}
+    </TabContent>
   );
 };
 
@@ -50,26 +57,30 @@ const calculateYears = (startYear: Number, endYear: Number) => {
     let k: keyof typeof obj;
     for (k in obj) {
       if (Number(k) >= startYear && Number(k) < endYear) {
-        container.push(obj[k]);
+        container.push(obj);
       }
-    }
-  });
-
-  const years: any[] = [];
-  container.map((obj) => {
-    let k: keyof typeof obj;
-    for (k in obj) {
-      years.push(obj[k]);
     }
   });
 
   return (
     <TabContent>
-      {years.map((p) => (
-        <Typography key={p.name}>
-          {p.name} | {p.major}
-        </Typography>
-      ))}
+      {container.map((obj) =>
+        Object.keys(obj).map((item) => (
+          <div key={item}>
+            <Typography>
+              <strong>{item}</strong>
+            </Typography>
+            {obj[item].map((p: any) => (
+              <div key={p.name}>
+                <Typography>
+                  {p.name} | {p.major}
+                </Typography>
+              </div>
+            ))}
+            <Divider color="greyLighter" />
+          </div>
+        )),
+      )}
     </TabContent>
   );
 };

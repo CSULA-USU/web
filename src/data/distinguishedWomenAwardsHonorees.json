@@ -1,12 +1,64 @@
 [
   {
-    "1999": [{ "name": "Jewel Plummer Cobb", "major": "ACCESS Center" }]
+    "1999": [
+      { "name": "Jewel Plummer Cobb", "major": "ACCESS Center" },
+      { "name": "Lily Baba Lily Baba ", "major": "Pat Brown Institute" },
+      { "name": "Shirley Better", "major": "Social Work" },
+      { "name": "Carol Dunn", "major": "Intercollegiate Athletics" },
+      { "name": "Marilyn Elkins", "major": "English" },
+      { "name": "Neda Fabris", "major": "Mechanical Engineering" },
+      { "name": "Virginia Hunter", "major": "Undergraduate Studies" },
+      { "name": "Jewel Plummer Cobb", "major": "ACCESS Center" },
+      { "name": "Hae Kyung Lee", "major": "Theatre Arts and Dance" },
+      { "name": "Sylvia Scott-Hayes", "major": "University Writing Center" },
+      { "name": "Behjat Sharif", "major": "Health and Nutritional Sciences" },
+      { "name": "Carole Srole", "major": "History" },
+      { "name": "Frieda Stahl", "major": "Physics and Astronomy" },
+      { "name": "Eri Yasuhara", "major": "Modern Languages and Literatures" },
+      { "name": "Marlene Zepeda", "major": "Child and Family Studies" }
+    ]
   },
   {
     "2000": [
       {
         "name": "Margaret Hartman",
         "major": "Provost and VP for Academic Affairs"
+      },
+      {
+        "name": "Marjorie Bray",
+        "major": "Latin American Studies"
+      },
+      {
+        "name": "Mika Cho",
+        "major": "Art"
+      },
+      {
+        "name": "Christine Dosland",
+        "major": "University Police"
+      },
+      {
+        "name": "Janet Fisher-Hoult",
+        "major": "Charter College of Education"
+      },
+      {
+        "name": "Judith Hamera",
+        "major": "Communication Studies"
+      },
+      {
+        "name": "Joanna Gaspar",
+        "major": "Student Health Center"
+      },
+      {
+        "name": "Andrea Maxie",
+        "major": "Curriculum and Instruction"
+      },
+      {
+        "name": "Mary Diaz",
+        "major": "Student Health Center"
+      },
+      {
+        "name": "Rosemarie Marshall",
+        "major": "Biology and Microbiology"
       }
     ]
   },
@@ -15,6 +67,46 @@
       {
         "name": "Gloria Romero",
         "major": "Psychology"
+      },
+      {
+        "name": "T. Jean Adenika-Morrow",
+        "major": "Curriculum and Instructions"
+      },
+      {
+        "name": "Maria K. Boss",
+        "major": "Finance and Business Law"
+      },
+      {
+        "name": "Susan Cash",
+        "major": "Art"
+      },
+      {
+        "name": "Gloria Romero",
+        "major": "Psychology"
+      },
+      {
+        "name": "Karen Johnson",
+        "major": "Health and Human Services"
+      },
+      {
+        "name": "Beverly Krilowicz",
+        "major": "Biology and Microbiology"
+      },
+      {
+        "name": "Rosie McNutt",
+        "major": "Office of the President"
+      },
+      {
+        "name": "Marcia Ann Murota",
+        "major": "Intercollegiate Athletics"
+      },
+      {
+        "name": "Jackie White",
+        "major": "Communication Studies"
+      },
+      {
+        "name": "Patricia Woodlin",
+        "major": "Art"
       }
     ]
   },
@@ -23,6 +115,42 @@
       {
         "name": "Fleur B. Yano",
         "major": "Physics and Astronomy"
+      },
+      {
+        "name": "Joanne Altschuler",
+        "major": "Social Work"
+      },
+      {
+        "name": "Naomi J. Caiden",
+        "major": "Political Science"
+      },
+      {
+        "name": "Domnita Dumitrescu",
+        "major": "Modern Languages and Literatures"
+      },
+      {
+        "name": "Ann Garry",
+        "major": "Philosophy"
+      },
+      {
+        "name": "Ruth S. Johnson",
+        "major": "Administration and Counseling"
+      },
+      {
+        "name": "Pamela Kisor",
+        "major": "Anna Bing Arnold Child Care Center"
+      },
+      {
+        "name": "Carmen E. Reyes",
+        "major": "Roybal Institute for Applied Gerontology"
+      },
+      {
+        "name": "Linda Tunstad",
+        "major": "Chemistry and Biochemistry"
+      },
+      {
+        "name": "Gay Yuen Wong",
+        "major": "Curriculum and Instruction"
       }
     ]
   },
@@ -31,6 +159,42 @@
       {
         "name": "Diana Balli",
         "major": "History"
+      },
+      {
+        "name": "Cheryl Ann Cruz",
+        "major": "Accounting"
+      },
+      {
+        "name": "Ramani Durvasula",
+        "major": "Psychology"
+      },
+      {
+        "name": "Loretta Encinas",
+        "major": "Student Affairs"
+      },
+      {
+        "name": "Stephanie Evans",
+        "major": "Educ. Foundations and Interdivisional Studies"
+      },
+      {
+        "name": "Jennifer Faust",
+        "major": "Philosophy"
+      },
+      {
+        "name": "Suzanne Galyean",
+        "major": "Communication Studies"
+      },
+      {
+        "name": "Kylie Hsu",
+        "major": "Modern Languages and Literatures"
+      },
+      {
+        "name": "ChorSwang Ngin",
+        "major": "Anthropology"
+      },
+      {
+        "name": "Elizabeth Torres",
+        "major": "Biology and Microbiology"
       }
     ]
   },
