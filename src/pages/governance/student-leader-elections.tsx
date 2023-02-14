@@ -125,7 +125,7 @@ export default function StudentLeaderElections() {
       >
         <HeaderContainer>
           <Typography variant="pageHeader" color="white">
-            <NonBreakingSpan>Board of Directors Elections</NonBreakingSpan>
+            <NonBreakingSpan>Student Leader Elections</NonBreakingSpan>
           </Typography>
           <Typography color="white" lineHeight="1.8">
             The University-Student Union&apos;s Board of Directors is the
