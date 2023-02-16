@@ -146,7 +146,7 @@ export default function CCC() {
           />
         }
       >
-        Established 1997, the mission of the Cross Cultural Centers at
+        Established in 1997, the mission of the Cross Cultural Centers at
         California State University, Los Angeles is to encourage student
         learning as well as foster an inclusive campus environment that
         challenges racism, sexism, heterosexism, and other forms of oppression.
@@ -241,6 +241,7 @@ export default function CCC() {
       <CallToAction
         backgroundColorProp="black"
         buttonVariantColor="primary"
+        textColorProp="white"
         buttonText="View Form"
         text="Interested in increasing cross-cultural awareness through presentations/training or tabling?"
         href="https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3XmCNpTA3T5AiUt4YCUxHc1URDlZVFZXTTdWQ1A0N0UzTDFQQlBFRDBBRCQlQCN0PWcu"

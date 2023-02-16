@@ -5,6 +5,7 @@ import { Colors } from 'theme';
 type CTAProps = {
   children: React.ReactNode;
   text: string;
+  textColorProp?: keyof typeof Colors;
   buttonText: string;
   href: string;
   backgroundColorProp?: keyof typeof Colors;
@@ -28,6 +29,7 @@ const CTAContainer = styled.div`
 export const CallToAction = ({
   children,
   text,
+  textColorProp,
   buttonText,
   href,
   backgroundColorProp,
@@ -39,7 +41,12 @@ export const CallToAction = ({
     <CTAContainer>
       {children}
       <div>
-        <Typography variant="titleLarge" margin="0 0 16px" lineHeight="1.5">
+        <Typography
+          variant="titleLarge"
+          margin="0 0 16px"
+          lineHeight="1.5"
+          color={textColorProp ? textColorProp : 'black'}
+        >
           {text}
         </Typography>
         <br />
