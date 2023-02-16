@@ -1,6 +1,5 @@
-import { Page, Header, OfficeHours } from 'modules';
+import { Page, Header, OfficeHours, GenericModal } from 'modules';
 import {
-  Card,
   FluidContainer,
   Typography,
   Image,
@@ -15,6 +14,13 @@ import awards from 'data/acuiAwards.json';
 import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
+
+interface DesignCardData {
+  title: string;
+  designer: string;
+  src: string;
+  description: string;
+}
 
 const buttons = [
   { text: 'ACUI Awards', href: '#acui-awards' },
@@ -136,6 +142,9 @@ const HeaderInnerContainer = styled.div`
 export default function Graffix() {
   const [buttonType, setButtonType] = useState('');
   const [awardCards, setAwardCards] = useState(awards);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalData, setModalData] = useState<DesignCardData | null>(null);
+
   useEffect(() => {
     switch (buttonType) {
       case 'Best of Show':
@@ -227,50 +236,59 @@ export default function Graffix() {
       <FluidContainer flex backgroundColor="greyLightest">
         <DesignsContainer>
           {cards1.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
+            <div key={props.title}>
+              <div
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  width="100%"
+                  borderRadius="8px"
+                />
+              </div>
+            </div>
           ))}
         </DesignsContainer>
         <DesignsContainer>
           {cards2.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
+            <div key={props.title}>
+              <div
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  borderRadius="8px"
+                  width="100%"
+                />
+              </div>
+            </div>
           ))}
         </DesignsContainer>
         <DesignsContainer>
           {cards3.map((props) => (
-            <Card
-              key={props.title}
-              title={props.title}
-              rounded
-              margin="24px 0 0 0"
-            >
-              <Image src={props.src} alt={props.title} width="100%" />
-              <Typography weight="700">{props.designer}</Typography>
-              <Typography variant="copy" margin="12px 0 0 0">
-                {props.description}
-              </Typography>
-            </Card>
+            <div key={props.title}>
+              <div
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  borderRadius="8px"
+                  width="100%"
+                />
+              </div>
+            </div>
           ))}
         </DesignsContainer>
       </FluidContainer>
@@ -363,6 +381,26 @@ export default function Graffix() {
           ))}
         </FluidContainer>
       </FluidContainer>
+      {modalData && (
+        <GenericModal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setIsOpen(false)}
+        >
+          <Typography variant="titleSmall" margin="16px 0">
+            {modalData.title}
+          </Typography>
+          <Image
+            src={modalData.src}
+            alt={modalData.title}
+            width="80%"
+            height="80%"
+          />
+          <Typography weight="700">{modalData.designer}</Typography>
+          <Typography variant="copy" margin="12px 0 0 0">
+            {modalData.description}
+          </Typography>
+        </GenericModal>
+      )}
     </Page>
   );
 }
