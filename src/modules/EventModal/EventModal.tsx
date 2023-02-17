@@ -28,6 +28,8 @@ const customStyles = {
 const Main = styled.div`
   max-width: 600px;
   margin: ${Spaces.xs};
+  display: flex;
+  flex-direction: column;
 `;
 
 export const EventModal = ({
