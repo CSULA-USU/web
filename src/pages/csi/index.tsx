@@ -60,16 +60,16 @@ export default function CSI() {
         'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
       imgSrc: '/vectors/csi/fraternities.svg',
       imgAlt: 'fraternities image',
-      href: '#',
+      href: 'csi/fsl',
       linkText: 'Learn More',
     },
     {
-      title: 'GEEK (Golden Eagle Event Krew',
+      title: 'GEEK (Golden Eagle Event Krew)',
       children:
         'GEEK is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for CSI events. The volunteer program offers many opportunities to develop professional and leadership skills in a fun, fast-paced environment by working with vendors, campus administrators and CSI staff to make events come to life!',
       imgSrc: '/vectors/csi/friends.svg',
       imgAlt: 'friends image',
-      href: '#',
+      href: 'csi/geek',
       linkText: 'Learn More',
     },
     {
