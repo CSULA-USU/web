@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { Colors, Spaces } from 'theme';
-import { Page, Header } from 'modules';
+import { CallToAction, Page, Header } from 'modules';
 import { FluidContainer, Typography, Button, Card, Image } from 'components';
 
 const HeaderContainer = styled.div`
@@ -23,8 +23,11 @@ const MoreInformationTextContainer = styled.div`
   width: 762px;
   margin: auto;
 `;
-const StudentOrgsCatergoriesContentContainer = styled.div`
+const PresenceInfoContainer = styled.div`
   margin-top: ${Spaces['2xl']};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const OrgsCategoriesCardsContainer = styled.div`
@@ -76,30 +79,9 @@ const orgsCategoriesCards = [
   {
     title: 'Academic',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
+      'Find a recognized student organization on Presence, Cal State LA’s hub for student organizations and events. ',
     iconSrc: '/calstatela-badge.svg',
     iconAlt: 'Cal State LA Logo',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
   },
 ];
 
@@ -129,23 +111,32 @@ export default function StudentOrgs() {
       <FluidContainer>
         <HeaderContainer>
           <Typography variant="titleSmall">University-Student Union</Typography>
-          <Header title="Join a Student Organization" buttons={buttons}>
-            Cal State LA is home to over 150+ student organizations that
-            represent a variety of student interests and plan hundreds of events
-            each year.
+          <Header title="Recognized Student Organizations" buttons={buttons}>
+            Cal State LA is home to over 120 recognized student organizations
+            that host events and meetings to engage students in community
+            building, entertainment, and professional development.
           </Header>
         </HeaderContainer>
       </FluidContainer>
+      <CallToAction
+        href="https://www.calstatela.edu/studentservices/student-organization-recognition"
+        buttonText="Learn More"
+        text="Visit the Student Organization Handbook"
+      >
+        <Typography as="h2" variant="label">
+          Can’t find an organization that interests you? Start your own!
+        </Typography>
+      </CallToAction>
       <FluidContainer flex justifyContent="flex-start">
-        <Image margin="auto" size="80%" src="/cards-icon.svg" alt="cards" />
-        <StudentOrgsCatergoriesContentContainer>
-          <Typography margin="auto" variant="title">
-            Student Organization Categories
-          </Typography>
-          <Typography margin="auto">
-            Student groups are categorized under the following themes: academic,
-            cultural, political, professional, religious, spiritual, service,
-            social, and recreational.
+        <Image
+          margin="auto"
+          size="50%"
+          src="/departments/csi/presence-screen.png"
+          alt="screenshot of presence homepage"
+        />
+        <PresenceInfoContainer>
+          <Typography margin="auto 24px" variant="title">
+            Presence
           </Typography>
           <OrgsCategoriesCardsContainer>
             {orgsCategoriesCards.map((props) => (
@@ -156,7 +147,7 @@ export default function StudentOrgs() {
               ></Card>
             ))}
           </OrgsCategoriesCardsContainer>
-        </StudentOrgsCatergoriesContentContainer>
+        </PresenceInfoContainer>
       </FluidContainer>
       <MoreInformationContainer>
         <FluidContainer flex flexDirection="column" alignItems="center">
