@@ -12,3 +12,4 @@ export * from './Tabs';
 export * from './TextAndImage';
 export * from './Typography';
 export * from './VerticalLine';
+export * from './Expandable';
