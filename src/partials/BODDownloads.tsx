@@ -10,6 +10,7 @@ import {
   DownloadSection,
   DownloadSectionProps,
 } from 'modules';
+import Link from 'next/link';
 import { Spaces } from 'theme';
 
 const agendaDownloads: DownloadSectionProps[] = [
@@ -137,5 +138,6 @@ export const BODDownloads = () => (
     {meetingsDownloads.map((d) => (
       <DownloadSection key={d.title} {...d} />
     ))}
+    <Link href="/governance/public-document-archives">View All Documents</Link>
   </FluidContainer>
 );
