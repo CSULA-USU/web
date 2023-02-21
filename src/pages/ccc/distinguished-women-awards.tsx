@@ -8,6 +8,7 @@ import {
   Tabs,
   Typography,
   VerticalLine,
+  Expandable,
 } from 'components';
 import { Page } from 'modules';
 import { Spaces } from 'theme';
@@ -66,19 +67,21 @@ const calculateYears = (startYear: Number, endYear: Number) => {
     <TabContent>
       {container.map((obj) =>
         Object.keys(obj).map((item) => (
-          <div key={item}>
-            <Typography>
-              <strong>{item}</strong>
-            </Typography>
-            {obj[item].map((p: any) => (
-              <div key={p.name}>
-                <Typography>
-                  {p.name} | {p.major}
-                </Typography>
-              </div>
-            ))}
+          <>
+            <Expandable
+              key={item}
+              header={<Typography size="md">{item}</Typography>}
+            >
+              {obj[item].map((p: any) => (
+                <div key={p.name}>
+                  <Typography>
+                    {p.name} | {p.major}
+                  </Typography>
+                </div>
+              ))}
+            </Expandable>
             <Divider color="greyLighter" />
-          </div>
+          </>
         )),
       )}
     </TabContent>
