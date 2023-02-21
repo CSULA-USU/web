@@ -4,6 +4,7 @@ import { EventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
+import { media } from 'theme';
 
 interface UpcomingEventsProps {
   events: PresenceEvent[];
@@ -22,9 +23,11 @@ const UpcomingEventsContent = styled.div`
   gap: 24px;
   > div {
     max-width: calc(50% - 12px);
+    ${media('tablet')(`max-width: 100%;`)}
   }
   > div:nth-child(n + 3) {
     max-width: calc(33.33% - 16px);
+    ${media('tablet')(`max-width: 100%;`)}
   }
 `;
 

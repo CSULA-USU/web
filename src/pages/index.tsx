@@ -6,7 +6,7 @@ import {
   Page,
   CallToAction,
 } from 'modules';
-import { Typography } from 'components';
+import { NonBreakingSpan, Typography } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 
@@ -29,7 +29,12 @@ export default function Home() {
       </Head>
 
       <EventHeader
-        title="Welcome to the University-Student Union!"
+        title={
+          <>
+            Welcome to the{' '}
+            <NonBreakingSpan>University-Student Union!</NonBreakingSpan>
+          </>
+        }
         featuredEvent={events[0]}
       />
       <UpcomingEvents events={events} />

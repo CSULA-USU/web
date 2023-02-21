@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, Spaces, media } from 'theme';
 import Link from 'next/link';
 import { DropdownNav } from './DropdownNav';
 
 const NavItemsContainer = styled.nav`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   z-index: 10;
   > * {
     &:not(:last-child) {
-      margin-right: 48px;
+      margin-right: ${Spaces.xl};
+      ${media('tablet')(`margin-right: ${Spaces.md}`)}
     }
   }
   * {

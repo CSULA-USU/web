@@ -1,4 +1,22 @@
 import { Sizes } from 'types';
+import { CSSObject } from 'styled-components';
+
+export const breakpoints = {
+  uhd: 1980,
+  widescreen: 1366,
+  desktop: 1024,
+  tablet: 768,
+  mobile: 414,
+};
+
+export const media = (key: keyof typeof breakpoints) => {
+  return (style: TemplateStringsArray | CSSObject | String) =>
+    `
+      @media (max-width: ${breakpoints[key]}px) {
+        ${style};
+      }
+    `;
+};
 
 export const Spaces: {
   [_ in Exclude<Sizes, '2xs' | '4xl'>]: string;

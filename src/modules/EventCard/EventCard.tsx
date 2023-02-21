@@ -49,6 +49,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
 
 const EventCardTop = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 

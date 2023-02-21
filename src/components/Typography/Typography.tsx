@@ -13,6 +13,7 @@ interface TypeStyle {
 type TypeElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
 
 export interface TypeProps extends TypeStyle {
+  className?: string;
   variant?: keyof typeof styles;
   nowrap?: boolean;
   as?: TypeElements;
@@ -31,7 +32,12 @@ interface TypeVariant {
 const serif = `'Bitter', serif`;
 
 const styles = {
-  pageHeader: { size: '4xl', weight: '700', fontFamily: serif },
+  pageHeader: {
+    size: '4xl',
+    weight: '700',
+    fontFamily: serif,
+    lineHeight: FontSizes['4xl'],
+  },
   cta: { size: 'sm', weight: '700' },
   label: { size: 'lg', weight: '700' },
   titleLarge: {
