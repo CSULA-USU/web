@@ -37,27 +37,22 @@ const OrgsCategoriesCardsContainer = styled.div`
 
 const cards = [
   {
-    title: 'Some title',
+    title: 'Sample Constitution',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+      'This document is intended to serve as the model to follow when writing the constitution of your organization.',
   },
   {
-    title: 'Some title',
+    title: 'Presence Trainings',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+      'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
   },
   {
-    title: 'Some title',
+    title: 'Club Banking Forms',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
   },
 ];
+
 const orgsCards = [
   {
     title: 'Complete The Following Forms Online',
@@ -77,11 +72,11 @@ const orgsCards = [
 ];
 const orgsCategoriesCards = [
   {
-    title: 'Academic',
+    title: 'Explore Student Organizations',
+    href: 'https://calstatela.presence.io/',
+    linkText: 'Visit Presence',
     children:
       'Find a recognized student organization on Presence, Cal State LA’s hub for student organizations and events. ',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
   },
 ];
 
@@ -124,20 +119,25 @@ export default function StudentOrgs() {
         text="Visit the Student Organization Handbook"
       >
         <Typography as="h2" variant="label">
-          Can’t find an organization that interests you? Start your own!
+          Can&apos;t find an organization that interests you? Start your own!
+          Read up on the policies and procedures governing student
+          organizations, information about recognition processes for new and
+          returning orgs, and conduct procedures.
         </Typography>
       </CallToAction>
-      <FluidContainer flex justifyContent="flex-start">
-        <Image
-          margin="auto"
-          size="50%"
-          src="/departments/csi/presence-screen.png"
-          alt="screenshot of presence homepage"
-        />
-        <PresenceInfoContainer>
-          <Typography margin="auto 24px" variant="title">
+      <FluidContainer flex>
+        <FluidContainer flex flexDirection="column">
+          <Typography margin="auto 24px 24px" variant="title">
             Presence
           </Typography>
+          <Image
+            margin="auto"
+            size="100%"
+            src="/departments/csi/presence-screen.png"
+            alt="screenshot of presence homepage"
+          />
+        </FluidContainer>
+        <PresenceInfoContainer>
           <OrgsCategoriesCardsContainer>
             {orgsCategoriesCards.map((props) => (
               <Card
@@ -152,7 +152,7 @@ export default function StudentOrgs() {
       <MoreInformationContainer>
         <FluidContainer flex flexDirection="column" alignItems="center">
           <Typography margin="auto" variant="title">
-            More Information
+            Student Organization Resources
           </Typography>
           <FluidContainer flex justifyContent="space-between">
             {cards.map((props) => (
@@ -194,6 +194,19 @@ export default function StudentOrgs() {
           ))}
         </FluidContainer>
       </FluidContainer>
+      <CallToAction
+        href="https://www.calstatela.edu/deanofstudents/cal-state-la-standards-conduct-and-disciplinary-procedures-university-recognized"
+        buttonText="Learn More"
+        buttonVariantColor="primary"
+        text="Conduct and Disciplinary Procedures"
+        backgroundColorProp="black"
+        textColorProp="white"
+      >
+        <Typography as="h2" variant="label" color="white">
+          Learn more about the Student Organization Conduct code <br />
+          or report an incident related to student organizations
+        </Typography>
+      </CallToAction>
     </Page>
   );
 }
