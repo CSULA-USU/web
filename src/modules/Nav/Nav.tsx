@@ -1,12 +1,13 @@
 import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, media } from 'theme';
 import { NavItems } from './NavItems';
 import Link from 'next/link';
 
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   img {
     width: 200px;
@@ -17,6 +18,7 @@ const NavExtra = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${media('tablet')(`display: none;`)}
 `;
 
 const GetInvolvedButton = styled.button`

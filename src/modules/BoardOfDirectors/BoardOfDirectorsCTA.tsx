@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Typography, FluidContainer } from 'components';
+import { Button, Typography } from 'components';
 
 const BoardOfDirectorsCTAContainer = styled.div`
   background-image: url('bod-cta-background.jpg');
@@ -21,25 +21,23 @@ const BoardOfDirectorsCTAText = styled.div`
 const BoardOfDirectorsCTAButtons = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 16px;
 `;
 export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>
-    <FluidContainer>
-      <BoardOfDirectorsCTAText>
-        <Typography as="h2" variant="pageHeader">
-          Board of Directors
-        </Typography>
-        <Typography margin="0 0 24px">
-          Join the board of directors to make a difference while developing your
-          leadership skills
-        </Typography>
-      </BoardOfDirectorsCTAText>
-      <BoardOfDirectorsCTAButtons>
-        <Button margin="0 24px 0 0" variant="black">
-          Apply To Be A Student Leader
-        </Button>
-        <Button variant="outline">View Current Chair Members</Button>
-      </BoardOfDirectorsCTAButtons>
-    </FluidContainer>
+    <BoardOfDirectorsCTAText>
+      <Typography as="h2" variant="pageHeader">
+        Board of Directors
+      </Typography>
+      <Typography margin="0 0 24px">
+        Join the board of directors to make a difference while developing your
+        leadership skills
+      </Typography>
+    </BoardOfDirectorsCTAText>
+    <BoardOfDirectorsCTAButtons>
+      <Button variant="black">Apply To Be A Student Leader</Button>
+      <Button variant="outline">View Current Chair Members</Button>
+    </BoardOfDirectorsCTAButtons>
   </BoardOfDirectorsCTAContainer>
 );

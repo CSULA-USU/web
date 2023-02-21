@@ -43,6 +43,7 @@ export const CallToAction = ({
       <div>
         <Typography
           variant="titleLarge"
+          size="2xl"
           margin="0 0 16px"
           lineHeight="1.5"
           color={textColorProp ? textColorProp : 'black'}

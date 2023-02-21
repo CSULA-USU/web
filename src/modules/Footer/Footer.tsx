@@ -1,35 +1,39 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Typography } from 'components';
-import { Colors, Spaces } from 'theme';
+import { NonBreakingSpan, Typography } from 'components';
+import { Colors, media, Spaces } from 'theme';
 import { FluidContainer, Divider } from 'components';
 import { AiOutlineInstagram } from 'react-icons/ai';
 
 const currentYear = new Date().getFullYear();
 
 const FooterTopLogo = styled.div`
-  width: 50%;
   max-width: 1200px;
 `;
 const FooterTopLinks = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 72px;
 `;
 
 const FooterTopContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
-const FooterBottomContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+const FooterBottomContainer = styled(FooterTopContainer)``;
 const FooterBottomInner = styled.div`
   display: flex;
+  flex-wrap: wrap;
   max-width: 1200px;
   text-align: left;
   gap: 24px;
+  ${media('tablet')(`
+    .mobile-hidden {
+      display: none;
+    }
+  `)}
 `;
 export const Footer = () => (
   <FluidContainer backgroundColor="greyDarkest">
@@ -80,15 +84,28 @@ export const Footer = () => (
     <FooterBottomContainer>
       <FooterBottomInner>
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
-          © {currentYear} University-Student Union at Cal State LA
+          © {currentYear}{' '}
+          <NonBreakingSpan>University-Student Union</NonBreakingSpan>{' '}
+          <NonBreakingSpan>at Cal State LA</NonBreakingSpan>
         </Typography>
-        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+        <Typography
+          className="mobile-hidden"
+          color="greyLighter"
+          size="sm"
+          lineHeight="2.4"
+        >
           |
         </Typography>
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
-          5154 State University Dr, Los Angeles, CA 90032
+          5154 State University Dr,{' '}
+          <NonBreakingSpan>Los Angeles, CA 90032</NonBreakingSpan>
         </Typography>
-        <Typography color="greyLighter" size="sm" lineHeight="2.4">
+        <Typography
+          className="mobile-hidden"
+          color="greyLighter"
+          size="sm"
+          lineHeight="2.4"
+        >
           |
         </Typography>
         <Typography color="greyLighter" size="sm" lineHeight="2.4">

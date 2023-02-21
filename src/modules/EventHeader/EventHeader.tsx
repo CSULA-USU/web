@@ -15,7 +15,7 @@ export const EventHeader = ({
   title,
 }: {
   featuredEvent: PresenceEvent;
-  title?: string;
+  title?: React.ReactNode;
 }) => (
   <FluidContainer
     flex

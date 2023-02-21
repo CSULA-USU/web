@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, media } from 'theme';
 
 const getBackgroundCSS = (p: FluidContainerProps) => {
   return p.backgroundImage
@@ -18,6 +18,10 @@ const FluidOuter = styled.div<FluidContainerProps>`
   align-items: center;
   justify-content: center;
   padding: ${(p) => p.padding || '36px 72px'};
+  ${(p) =>
+    media('tablet')(`
+    padding: ${p.padding || '18px 36px'};
+  `)}
   ${getBackgroundCSS}
 `;
 
