@@ -1,11 +1,9 @@
 import Head from 'next/head';
-import { Header, Page } from 'modules';
-import { FluidContainer, Divider, Card, Image } from 'components';
-import { useBreakpoint } from 'hooks';
+import { Header, ImageAndCard, Page } from 'modules';
+import { FluidContainer } from 'components';
 import departments from 'data/departments.json';
 
 export default function Departments() {
-  const { isTablet } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -30,31 +28,7 @@ export default function Departments() {
       </Header>
       <FluidContainer>
         {departments.map((props) => (
-          <FluidContainer
-            flex
-            flexDirection={isTablet ? 'column' : 'row'}
-            alignItems="center"
-            key={`${props.children}`}
-            padding="16px"
-          >
-            {!isTablet && (
-              <Image
-                src={`${props.imgSrc}`}
-                alt={`${props.imgAlt}`}
-                width="150px"
-                marginRight="48px"
-              ></Image>
-            )}
-            <Card
-              iconSrc={isTablet ? props.imgSrc : undefined}
-              iconWidth="120px"
-              hoverable
-              width="100%"
-              minHeight="160px"
-              {...props}
-            ></Card>
-            <Divider color="grey" />
-          </FluidContainer>
+          <ImageAndCard key={props.title} {...props} />
         ))}
       </FluidContainer>
     </Page>

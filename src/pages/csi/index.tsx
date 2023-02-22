@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import { Page, CallToAction, DepartmentHeader, OfficeHours } from 'modules';
 import {
-  Card,
-  DescriptionCard,
-  Divider,
-  FluidContainer,
-  Image,
-  Typography,
-} from 'components';
+  Page,
+  CallToAction,
+  DepartmentHeader,
+  OfficeHours,
+  ImageAndCard,
+} from 'modules';
+import { DescriptionCard, FluidContainer, Typography } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 
 export default function CSI() {
   const SocialsContainer = styled.div`
@@ -110,6 +110,11 @@ export default function CSI() {
       ],
     },
   ];
+
+  const { isTablet, isDesktop } = useBreakpoint();
+  let descriptionCardWidth = 'calc(25% - 24px)';
+  if (isDesktop) descriptionCardWidth = 'calc(50% - 24px)';
+  if (isTablet) descriptionCardWidth = '100%';
   return (
     <Page>
       <Head>
@@ -132,7 +137,13 @@ export default function CSI() {
         title="Center for Student Involvement"
         infoSection={
           <OfficeHours
-            address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
+            address={
+              <>
+                5154 State University Drive <br />
+                Los Angeles, CA 90032 <br />
+                Room 204, 2nd Floor, U-SU
+              </>
+            }
             phoneNumber="323-343-5110"
             hours={hours}
           />
@@ -178,7 +189,7 @@ export default function CSI() {
             hoverable
             margin="24px 8px"
             key={`${props.children}`}
-            width="calc(25% - 24px)"
+            width={descriptionCardWidth}
             minHeight="280px"
             {...props}
           ></DescriptionCard>
@@ -186,16 +197,7 @@ export default function CSI() {
       </FluidContainer>
 
       {clubCards.map((props) => (
-        <FluidContainer flex alignItems="center" key={`${props.children}`}>
-          <Image
-            src={`${props.imgSrc}`}
-            alt={`${props.imgAlt}`}
-            width="150px"
-            marginRight="48px"
-          ></Image>
-          <Card hoverable width="100%" minHeight="160px" {...props}></Card>
-          <Divider color="grey" />
-        </FluidContainer>
+        <ImageAndCard key={props.title} {...props} />
       ))}
     </Page>
   );

@@ -38,6 +38,7 @@ const FluidInner = styled.div<FluidInnerProps>`
           flex-direction: ${p.flexDirection || 'row'};
           justify-content: ${p.justifyContent || 'flex-start'};
           align-items: ${p.alignItems || 'stretch'};
+          gap: ${p.gap || 'initial'};
         `
       : css``};
 `;
@@ -65,6 +66,7 @@ interface FluidInnerProps {
     | 'baseline'
     | 'initial'
     | 'inherit';
+  gap?: string;
 }
 
 interface FluidContainerProps extends FluidInnerProps {

@@ -18,7 +18,8 @@ const getBreakpointName = (width: number) => {
 };
 
 export const useBreakpoint = () => {
-  const [breakpoint, setBreakpoint] = useState('desktop');
+  const [breakpoint, setBreakpoint] =
+    useState<keyof typeof breakpoints>('desktop');
   const resize = throttle(() => {
     setBreakpoint(getBreakpointName(window.innerWidth));
   });
@@ -40,11 +41,50 @@ export const useBreakpoint = () => {
   const isDesktop = ['mini', 'tablet', 'mobile', 'desktop'].includes(
     breakpoint,
   );
+
+  interface BreakpointMap {
+    mini: any;
+    mobile: any;
+    tablet: any;
+    desktop: any;
+    widescreen: any;
+    uhd: any;
+  }
+
+  const returnByBreakpoint = (breakpointMap: Partial<BreakpointMap>) => {
+    const bpNames: (typeof breakpoint)[] = [
+      'mini',
+      'mobile',
+      'tablet',
+      'desktop',
+      'widescreen',
+      'uhd',
+    ];
+    const fullMap = {} as BreakpointMap;
+    let currentValue: any;
+    const findNextValue = () => {
+      const remainingBreakpoints = bpNames.filter(
+        (n) => !Object.keys(fullMap).includes(n),
+      );
+      for (let i = 0; i < remainingBreakpoints.length; i++) {
+        const currBpName = remainingBreakpoints[i];
+        if (breakpointMap[currBpName]) return breakpointMap[currBpName];
+      }
+    };
+    bpNames.forEach((bpName) => {
+      currentValue = breakpointMap[bpName] || findNextValue() || currentValue;
+      fullMap[bpName] = currentValue;
+    });
+
+    return fullMap[breakpoint];
+  };
+
   return {
     isMini,
     isMobile,
     isTablet,
     isDesktop,
     breakpoint,
+    returnByBreakpoint,
   };
 };
