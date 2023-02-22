@@ -9,6 +9,7 @@ const currentYear = new Date().getFullYear();
 
 const FooterTopLogo = styled.div`
   max-width: 1200px;
+  margin-bottom: ${Spaces.xl};
 `;
 const FooterTopLinks = styled.div`
   display: flex;
