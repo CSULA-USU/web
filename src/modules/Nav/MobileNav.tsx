@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import * as Drawer from '@accessible/drawer';
 import Link from 'next/link';
@@ -79,33 +80,27 @@ export const MobileNav = () => (
         </Drawer.CloseButton>
         <T1Container>
           {navMap.map((t1) => (
-            <>
-              <Link href={t1.href} key={`t1-${t1.href}`}>
-                {t1.text}
-              </Link>
+            <React.Fragment key={`t1-${t1.href}`}>
+              <Link href={t1.href}>{t1.text}</Link>
               {t1.sub?.length && (
                 <T2Container>
                   {t1.sub?.map((t2) => (
-                    <>
-                      <Link href={t2.href} key={`t2-${t2.href}`}>
-                        {t2.text}
-                      </Link>
+                    <React.Fragment key={`t2-${t2.href}`}>
+                      <Link href={t2.href}>{t2.text}</Link>
                       {t2.sub?.length && (
                         <T3Container>
                           {t2.sub?.map((t3) => (
-                            <>
-                              <Link href={t3.href} key={`t3-${t3.href}`}>
-                                {t3.text}
-                              </Link>
-                            </>
+                            <Link href={t3.href} key={`t3-${t3.href}`}>
+                              {t3.text}
+                            </Link>
                           ))}
                         </T3Container>
                       )}
-                    </>
+                    </React.Fragment>
                   ))}
                 </T2Container>
               )}
-            </>
+            </React.Fragment>
           ))}
         </T1Container>
       </Container>

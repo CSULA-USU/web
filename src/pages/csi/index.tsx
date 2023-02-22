@@ -111,10 +111,13 @@ export default function CSI() {
     },
   ];
 
-  const { isTablet, isDesktop } = useBreakpoint();
-  let descriptionCardWidth = 'calc(25% - 24px)';
-  if (isDesktop) descriptionCardWidth = 'calc(50% - 24px)';
-  if (isTablet) descriptionCardWidth = '100%';
+  const { returnByBreakpoint } = useBreakpoint();
+  const descriptionCardWidth = returnByBreakpoint({
+    tablet: '100%',
+    desktop: 'calc(50% - 16px)',
+    widescreen: 'calc(25% - 16px)',
+  });
+
   return (
     <Page>
       <Head>

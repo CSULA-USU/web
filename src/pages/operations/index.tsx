@@ -1,13 +1,18 @@
 import { Page, Header } from 'modules';
-import { Button, Card, Divider, FluidContainer, Typography } from 'components';
+import { Button, Card, FluidContainer, Typography } from 'components';
 import { Spaces } from 'theme';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 
 const PDFDescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin: ${Spaces.md};
+  > * {
+    margin-bottom: ${Spaces.md};
+  }
 `;
 const Title = styled.div`
   width: 200px;
@@ -106,6 +111,12 @@ export default function Operations() {
       href: '/operations/pdfs/POLICIES-PROCEDURES-WITH-COVID-2021.pdf',
     },
   ];
+  const { returnByBreakpoint } = useBreakpoint();
+  const cardWidth = returnByBreakpoint({
+    tablet: '100%',
+    desktop: 'calc(50% - 32px)',
+    widescreen: 'calc(33.33% - 32px)',
+  });
   return (
     <Page>
       <Header
@@ -124,7 +135,7 @@ export default function Operations() {
             topBorder
             key={`${props.title}`}
             {...props}
-            width="calc(30.33% - 8px)"
+            width={cardWidth}
             minHeight="280px"
           ></Card>
         ))}
@@ -141,7 +152,6 @@ export default function Operations() {
         {pdfDescriptionCards.map((props) => (
           <FluidContainer key={`${props.title}`}>
             <OperationsPDFDescriptions {...props}></OperationsPDFDescriptions>
-            <Divider></Divider>
           </FluidContainer>
         ))}
       </FluidContainer>

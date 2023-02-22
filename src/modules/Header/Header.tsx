@@ -27,6 +27,7 @@ const HeaderContainer = styled.div`
 const ButtonContainer = styled.div`
   margin-top: ${Spaces.md};
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   > *:not(:last-child) {
     margin-right: 8px;
