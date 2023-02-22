@@ -246,40 +246,42 @@ export default function CulturalGrads() {
               academic success. The ceremonies are open to all students who
               would like to sign up and participate.
             </Typography>
-            <Button variant="black" href="#">
+            <Button variant="black" href="#graduations">
               <SubHeaderSpan>
-                Apply Now&nbsp;
+                Apply Below&nbsp;
                 <FaGraduationCap color={'white'} fontSize={'24px'} />
               </SubHeaderSpan>
             </Button>
           </FluidContainer>
         </FluidContainer>
       </FluidContainer>
-      <FluidContainer flex flexDirection="column">
-        <SubHeaderSpan>
-          <Typography margin="24px" as="h2" variant="titleSmall">
-            Graduations
-          </Typography>
-        </SubHeaderSpan>
-        <FluidContainer flex flexWrap="wrap">
-          {cards.map((props) => (
-            <Card
-              margin={`${Spaces.md}`}
-              topBorder
-              key={`${props.title}`}
-              {...props}
-              width="calc(22% - 8px)"
-              minHeight="280px"
-            >
-              {`${
-                props.children.length > 200
-                  ? props.children.substring(0, 200) + '...'
-                  : props.children
-              }`}
-            </Card>
-          ))}
+      <div id="graduations">
+        <FluidContainer flex flexDirection="column">
+          <SubHeaderSpan>
+            <Typography margin="24px" as="h2" variant="titleSmall">
+              Graduations
+            </Typography>
+          </SubHeaderSpan>
+          <FluidContainer flex flexWrap="wrap">
+            {cards.map((props) => (
+              <Card
+                margin={`${Spaces.md}`}
+                topBorder
+                key={`${props.title}`}
+                {...props}
+                width="calc(22% - 8px)"
+                minHeight="280px"
+              >
+                {`${
+                  props.children.length > 200
+                    ? props.children.substring(0, 200) + '...'
+                    : props.children
+                }`}
+              </Card>
+            ))}
+          </FluidContainer>
         </FluidContainer>
-      </FluidContainer>
+      </div>
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
           <SubHeaderSpan>

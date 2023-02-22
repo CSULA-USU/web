@@ -232,7 +232,9 @@ export default function CCC() {
               academic success. The ceremonies are open to all students who
               would like to sign up and participate.
             </Typography>
-            <Button variant="black">Learn More</Button>
+            <Button variant="black" href={'/ccc/cultural-grads'}>
+              Learn More
+            </Button>
           </FluidContainer>
         </FluidContainer>
       </FluidContainer>
