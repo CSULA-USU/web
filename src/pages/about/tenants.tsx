@@ -29,9 +29,9 @@ const TenantsText = styled.div`
   text-align: center;
 `;
 const CardContainer = styled.div`
-  width: calc(30.33% - 8px);
-  min-height: 280x;
-  margin: ${Spaces.lg};
+  min-width: 400px;
+  flex: 1;
+  margin: ${Spaces.lg} 0;
 `;
 
 const cards = [
@@ -130,7 +130,7 @@ export default function Tenants() {
           </TenantsText>
         </FluidContainer>
       </TenantsTopContainer>
-      <FluidContainer flex flexWrap="wrap">
+      <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
         {cards.map((props) => (
           <CardContainer
             key={props.title}
@@ -155,6 +155,8 @@ export default function Tenants() {
             </Card>
           </CardContainer>
         ))}
+        <CardContainer />
+        <CardContainer />
       </FluidContainer>
       {modalData && (
         <GenericModal

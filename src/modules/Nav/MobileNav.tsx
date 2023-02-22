@@ -54,10 +54,22 @@ const T3Container = styled(NavList)`
   }
 `;
 
+const StyledButton = styled.button`
+  border: none;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
 export const MobileNav = () => (
   <Drawer.Drawer>
     <Drawer.Trigger>
-      <HiMenuAlt3 size={48} />
+      <StyledButton>
+        <HiMenuAlt3 size={48} />
+      </StyledButton>
     </Drawer.Trigger>
 
     <Drawer.Target>

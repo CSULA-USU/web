@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Page, Header } from 'modules';
 import { FluidContainer, Typography, Card, Image } from 'components';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 
 const Title = styled.div`
   text-align: center;
@@ -61,6 +62,7 @@ const buttons = [
   },
 ];
 export default function About() {
+  const { isDesktop } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -108,7 +110,7 @@ export default function About() {
           <Card
             key={props.title}
             {...props}
-            width="calc(33.33% - 24px)"
+            width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
             topBorder
             margin="16px 8px"
             iconWidth="112px"
