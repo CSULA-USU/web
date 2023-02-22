@@ -9,9 +9,11 @@ import {
 import { NonBreakingSpan, Typography } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
+import { useBreakpoint } from 'hooks';
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -31,8 +33,16 @@ export default function Home() {
       <EventHeader
         title={
           <>
-            Welcome to the{' '}
-            <NonBreakingSpan>University-Student Union!</NonBreakingSpan>
+            {isMobile ? (
+              <>
+                Welcome to <NonBreakingSpan>the U-SU!</NonBreakingSpan>
+              </>
+            ) : (
+              <>
+                Welcome to the{' '}
+                <NonBreakingSpan>University-Student Union</NonBreakingSpan>
+              </>
+            )}
           </>
         }
         featuredEvent={events[0]}

@@ -11,7 +11,7 @@ const AnnouncementContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48px;
+  padding: 8px 16px;
   background-color: ${Colors.primary};
 `;
 

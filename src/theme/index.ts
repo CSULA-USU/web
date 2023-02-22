@@ -6,7 +6,8 @@ export const breakpoints = {
   widescreen: 1366,
   desktop: 1024,
   tablet: 768,
-  mobile: 414,
+  mobile: 580,
+  mini: 414,
 };
 
 export const media = (key: keyof typeof breakpoints) => {

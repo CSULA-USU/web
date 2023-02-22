@@ -1,0 +1,74 @@
+[
+  {
+    "text": "About",
+    "href": "/about",
+    "sub": [
+      {
+        "text": "Contact",
+        "href": "/contact"
+      },
+      {
+        "text": "Tenants",
+        "href": "/about/tenants"
+      }
+    ]
+  },
+  {
+    "text": "Events",
+    "href": "/events"
+  },
+  {
+    "text": "Departments",
+    "href": "/departments",
+    "sub": [
+      {
+        "text": "CSI",
+        "href": "/csi"
+      },
+      {
+        "text": "CCC",
+        "href": "/ccc",
+        "sub": [
+          {
+            "text": "Cultural Grads",
+            "href": "/ccc/cultural-grads"
+          },
+          {
+            "text": "Distinguished Women Awards",
+            "href": "/ccc/distinguished-women-awards"
+          }
+        ]
+      },
+      {
+        "text": "Operations",
+        "href": "/operations"
+      },
+      {
+        "text": "Recreation",
+        "href": "/recreation"
+      }
+    ]
+  },
+  {
+    "text": "Employment",
+    "href": "/employment"
+  },
+  {
+    "text": "Governance",
+    "href": "/governance",
+    "sub": [
+      {
+        "text": "Student Leader Elections",
+        "href": "/student-leader-elections"
+      },
+      {
+        "text": "Meet The Board",
+        "href": "/meet-the-board"
+      },
+      {
+        "text": "Public Documents",
+        "href": "/public-documents"
+      }
+    ]
+  }
+]
