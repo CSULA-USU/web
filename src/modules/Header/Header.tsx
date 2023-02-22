@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Typography, Button, FluidContainer, VerticalLine } from 'components';
+import { Spaces } from 'theme';
 
 interface ButtonProps {
   text: string;
@@ -24,7 +25,9 @@ const HeaderContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  margin-top: ${Spaces.md};
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   > *:not(:last-child) {
     margin-right: 8px;
@@ -46,9 +49,13 @@ export const Header = ({
       {children && (
         <>
           <VerticalLine />
-          <Typography as="h2" margin="24px 0">
-            {children}
-          </Typography>
+          {typeof children === 'string' ? (
+            <Typography as="h2" margin="24px 0">
+              {children}
+            </Typography>
+          ) : (
+            children
+          )}
         </>
       )}
       {buttons && (

@@ -1,56 +1,9 @@
 import Head from 'next/head';
-import { Header, Page } from 'modules';
-import { FluidContainer, Divider, Card, Image } from 'components';
+import { Header, ImageAndCard, Page } from 'modules';
+import { FluidContainer } from 'components';
+import departments from 'data/departments.json';
 
 export default function Departments() {
-  const cards = [
-    {
-      title: 'Center for Student Involvement (CSI)',
-      children:
-        'The Center for Student Involvement serves as a hub for involvement, recreation, and leadership, adding to the excitement of campus life at Cal State LA. Visit CSI to connect with student organizations, join one of our leadership development opportunities including the Leader Project, or participate in a thrilling campus activity! Getting involved on campus is the best decision you can make to set yourself up for success at Cal State LA & into your future! We look forward to meeting you soon!',
-      imgSrc: '/departments/logos/csi-icon.svg',
-      imgAlt: 'CSI Icon',
-      linkText: 'Learn More',
-      href: '/csi',
-    },
-    {
-      title: 'Cross Cultural Centers (CCC)',
-      children:
-        'The Cross Cultural Centers provide an inclusive and friendly space that allows students to be themselves. The Centers are open to individuals from all ethnic and gender backgrounds. Please stop by to find out more information or to relax and meet with friends.',
-      imgSrc: '/departments/logos/ccc-icon.svg',
-      imgAlt: 'CCC Icon',
-      linkText: 'Learn More',
-      href: '/ccc',
-    },
-    {
-      title: 'Graffix',
-      children:
-        'The U-SU Graphics Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions.',
-      imgSrc: '/departments/logos/graffix-icon.svg',
-      imgAlt: 'graffix Icon',
-      linkText: 'Learn More',
-      href: '/graffix',
-    },
-    {
-      title: 'Operations',
-      children:
-        'The Operations Team consists of five departments: Building Maintenance, Building Services, Custodial Services, Media Services, and Information & Event Services.',
-      imgSrc: '/departments/logos/operations-icon.svg',
-      imgAlt: 'Operations Icon',
-      imgWidth: '20px',
-      linkText: 'Learn More',
-      href: '/operations',
-    },
-    {
-      title: 'Recreation',
-      children:
-        'Recreation is comprised of the Recreation Fitness Center and Recreation Esports. The Recreation Fitness Center is located on the basement level of the U-SU, and is open to all students, staff and faculty.',
-      imgSrc: '/departments/logos/recreation-icon.svg',
-      imgAlt: 'Recreations Icon',
-      linkText: 'Learn More',
-      href: '/recreation',
-    },
-  ];
   return (
     <Page>
       <Head>
@@ -74,17 +27,8 @@ export default function Departments() {
         availability for on-the-go students.
       </Header>
       <FluidContainer>
-        {cards.map((props) => (
-          <FluidContainer flex alignItems="center" key={`${props.children}`}>
-            <Image
-              src={`${props.imgSrc}`}
-              alt={`${props.imgAlt}`}
-              width="150px"
-              marginRight="48px"
-            ></Image>
-            <Card hoverable width="100%" minHeight="160px" {...props}></Card>
-            <Divider color="grey" />
-          </FluidContainer>
+        {departments.map((props) => (
+          <ImageAndCard key={props.title} {...props} />
         ))}
       </FluidContainer>
     </Page>

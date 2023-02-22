@@ -1,6 +1,6 @@
 import { Button, Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, Spaces } from 'theme';
+import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { ABREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
@@ -21,7 +21,13 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   flex-direction: column;
   border-radius: 16px;
   background-color: ${Colors.grey};
-  padding: 36px;
+  padding: 32px;
+  ${media('desktop')(`
+    padding: 24px;
+  `)}
+  ${media('tablet')(`
+    padding: 16px;
+  `)}
   width: 100%;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
@@ -32,7 +38,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
       rgba(0, 0, 0, 0.6) 0%,
       rgba(0, 0, 0, 0.2) 20%,
       rgba(0, 0, 0, 0) 55%,
-      rgba(0, 0, 0, 0.7) 80%,
+      rgba(0, 0, 0, 0.8) 75%,
       rgba(0, 0, 0, 0.85) 100%
     ),
     ${({ image }) => image && `url(${image})`};

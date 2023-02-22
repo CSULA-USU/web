@@ -8,13 +8,18 @@ interface HourProps {
   times: string[];
 }
 interface OfficeHourProps {
-  address: string;
+  address: React.ReactNode;
   phoneNumber?: string;
   hours?: HourProps[];
 }
 const OfficeHoursContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  > * {
+    min-width: 400px;
+    margin-bottom: ${Spaces.md};
+  }
 `;
 const NumberInnerContainer = styled.div`
   display: flex;

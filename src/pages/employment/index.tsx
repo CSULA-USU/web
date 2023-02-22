@@ -3,14 +3,18 @@ import { Page } from 'modules';
 import { FluidContainer, Typography } from 'components';
 import jobs from 'data/employment.json';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, media, Spaces } from 'theme';
 import Link from 'next/link';
 
 const JobListingContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   > div {
     width: calc(50% - 16px);
+    ${media('tablet')(`
+      width: 100%;
+    `)}
   }
 `;
 
@@ -82,8 +86,8 @@ export default function Employment() {
           </div>
         </JobListingContainer>
       </FluidContainer>
-      <FluidContainer>
-        <Typography as="h3" variant="titleLarge">
+      <FluidContainer flex flexDirection="column">
+        <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
         <Link href="/usuforms/u-su/ProfessionalEmployment.pdf">

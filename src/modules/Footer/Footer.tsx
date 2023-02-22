@@ -9,6 +9,7 @@ const currentYear = new Date().getFullYear();
 
 const FooterTopLogo = styled.div`
   max-width: 1200px;
+  margin-bottom: ${Spaces.xl};
 `;
 const FooterTopLinks = styled.div`
   display: flex;
@@ -25,16 +26,20 @@ const FooterTopContainer = styled.div`
 const FooterBottomContainer = styled(FooterTopContainer)``;
 const FooterBottomInner = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   max-width: 1200px;
   text-align: left;
   gap: 24px;
-  ${media('tablet')(`
+  ${media('desktop')(`
+    gap: 0;
+    flex-direction: column;
     .mobile-hidden {
       display: none;
     }
   `)}
 `;
+
 export const Footer = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <FooterTopContainer>

@@ -11,11 +11,12 @@ interface DepartmentHeaderProps {
   infoSection: React.ReactNode;
 }
 const HeaderContent = styled.div`
-  width: 80%;
-  padding: 72px;
+  min-width: 50%;
+  padding: 48px;
 `;
 const HeaderContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 export const DepartmentHeader = ({
   title,

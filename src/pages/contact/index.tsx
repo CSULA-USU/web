@@ -8,6 +8,7 @@ import { Spaces } from 'theme';
 const ContactContainer = styled.div`
   width: 320px;
   margin-right: ${Spaces.lg};
+  margin-bottom: ${Spaces.xl};
 `;
 
 const ContactItem = styled.div`
@@ -36,7 +37,7 @@ export default function Contact() {
           Contact Us
         </Typography>
       </FluidContainer>
-      <FluidContainer flex justifyContent="flex-start">
+      <FluidContainer flex justifyContent="flex-start" flexWrap="wrap">
         <ContactContainer>
           <Typography>
             University-Student Union, <br />
