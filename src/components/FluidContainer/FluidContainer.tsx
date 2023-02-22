@@ -19,7 +19,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
   justify-content: center;
   padding: ${(p) => p.padding || '36px 72px'};
   ${(p) =>
-    media('tablet')(`
+    media('desktop')(`
     padding: ${p.padding || '18px 36px'};
   `)}
   ${getBackgroundCSS}

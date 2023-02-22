@@ -23,7 +23,7 @@ const FooterTopContainer = styled.div`
 `;
 
 const FooterBottomContainer = styled(FooterTopContainer)``;
-const FooterBottomInner = styled.div<{ stack: boolean }>`
+const FooterBottomInner = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
