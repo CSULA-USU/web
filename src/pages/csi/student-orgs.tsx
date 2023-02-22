@@ -40,16 +40,22 @@ const cards = [
     title: 'Sample Constitution',
     children:
       'This document is intended to serve as the model to follow when writing the constitution of your organization.',
+    linkText: 'View PDF',
+    href: '/departments/csi/forms/csi-sample-constitution.pdf',
   },
   {
     title: 'Presence Trainings',
     children:
       'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
+    linkText: 'Learn More',
+    href: 'https://calstatela.presence.io/experiences',
   },
   {
     title: 'Club Banking Forms',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
+    linkText: 'See Forms',
+    href: '/csi/forms',
   },
 ];
 
@@ -88,10 +94,10 @@ export default function StudentOrgs() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Organizations</title>
+        <title>U-SU Recognized Student Organizations</title>
         <meta
           name="author"
-          content="The University Student Union Center for Student Involvement"
+          content="The University Student Union Center for Student Involvement Student Organizations"
         />
         <meta
           name="keywords"
@@ -135,6 +141,7 @@ export default function StudentOrgs() {
             size="100%"
             src="/departments/csi/presence-screen.png"
             alt="screenshot of presence homepage"
+            borderRadius="8px"
           />
         </FluidContainer>
         <PresenceInfoContainer>
