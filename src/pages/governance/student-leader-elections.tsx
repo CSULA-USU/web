@@ -177,6 +177,9 @@ export default function StudentLeaderElections() {
         <Typography variant="title">Election Results</Typography>
         <Typography>Results pending...</Typography>
       </FluidContainer>
+      <FluidContainer backgroundColor="black">
+        <Typography color="gold">Frequently Asked Questions</Typography>
+      </FluidContainer>
     </Page>
   );
 }
