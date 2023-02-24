@@ -6,7 +6,7 @@ import {
   OfficeHours,
   ImageAndCard,
 } from 'modules';
-import { DescriptionCard, FluidContainer, Typography } from 'components';
+import { DescriptionCard, FluidContainer, Image, Typography } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
@@ -162,12 +162,21 @@ export default function CSI() {
         <a href="mailto:CSI@calstatela.edu">
           <strong>CSI@calstatela.edu</strong>
         </a>
+        <SocialsContainer></SocialsContainer>
         <SocialsContainer>
           <a href="https://www.facebook.com/csicalstatela">
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
           </a>
           <a href="https://www.instagram.com/csicalstatela/?hl=en">
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
+          </a>
+          <a href="https://linktr.ee/csicalstatela">
+            <Image
+              alt="linktree icon"
+              src="/departments/logos/linktree.svg"
+              height="29px"
+              width="32px"
+            />
           </a>
         </SocialsContainer>
       </DepartmentHeader>
