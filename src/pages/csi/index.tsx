@@ -162,7 +162,6 @@ export default function CSI() {
         <a href="mailto:CSI@calstatela.edu">
           <strong>CSI@calstatela.edu</strong>
         </a>
-        <SocialsContainer></SocialsContainer>
         <SocialsContainer>
           <a href="https://www.facebook.com/csicalstatela">
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
@@ -207,10 +206,17 @@ export default function CSI() {
           ></DescriptionCard>
         ))}
       </FluidContainer>
-
       {clubCards.map((props) => (
         <ImageAndCard key={props.title} {...props} />
       ))}
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="center for student involvement logo"
+          src="/departments/logos/csi-logo.svg"
+          height="400px"
+          width="400px"
+        />
+      </FluidContainer>
     </Page>
   );
 }
