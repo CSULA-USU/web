@@ -35,7 +35,7 @@ export const Nav = () => {
         <Image
           maxHeight={isMobile ? '64px' : '80px'}
           src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
-          alt="Cal State LA Univeristy-Student Union Logo"
+          alt="Cal State LA University-Student Union Logo"
         />
       </Link>
       <MobileNav />
@@ -53,7 +53,7 @@ export const Nav = () => {
         <Image
           maxWidth="200px"
           src="/usu-wordmark-white.png"
-          alt="Cal State LA Univeristy-Student Union Logo"
+          alt="Cal State LA University-Student Union Logo"
         />
       </Link>
       <NavItems />
