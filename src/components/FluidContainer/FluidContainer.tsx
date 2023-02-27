@@ -19,7 +19,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
   justify-content: center;
   padding: ${(p) => p.padding || '36px 72px'};
   ${(p) =>
-    media('tablet')(`
+    media('desktop')(`
     padding: ${p.padding || '18px 36px'};
   `)}
   ${getBackgroundCSS}
@@ -38,6 +38,7 @@ const FluidInner = styled.div<FluidInnerProps>`
           flex-direction: ${p.flexDirection || 'row'};
           justify-content: ${p.justifyContent || 'flex-start'};
           align-items: ${p.alignItems || 'stretch'};
+          gap: ${p.gap || 'initial'};
         `
       : css``};
 `;
@@ -65,6 +66,7 @@ interface FluidInnerProps {
     | 'baseline'
     | 'initial'
     | 'inherit';
+  gap?: string;
 }
 
 interface FluidContainerProps extends FluidInnerProps {

@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Page, DepartmentHeader, CallToAction, OfficeHours } from 'modules';
+import {
+  Page,
+  DepartmentHeader,
+  CallToAction,
+  OfficeHours,
+  ImageAndCard,
+} from 'modules';
 import {
   Typography,
-  Card,
   FluidContainer,
   Image,
   DescriptionCard,
   Button,
 } from 'components';
 import { Spaces } from 'theme';
+import { useBreakpoint } from 'hooks';
 
 const StudentOrgsCatergoriesContentContainer = styled.div`
   margin-top: ${Spaces['2xl']};
@@ -117,6 +123,14 @@ export default function CCC() {
       ],
     },
   ];
+
+  const { returnByBreakpoint } = useBreakpoint();
+  const descriptionCardWidth = returnByBreakpoint({
+    tablet: '100%',
+    desktop: 'calc(50% - 16px)',
+    widescreen: 'calc(25% - 16px)',
+  });
+
   return (
     <Page>
       <Head>
@@ -172,36 +186,21 @@ export default function CCC() {
           </Typography>
           <OrgsCategoriesCardsContainer>
             {orgsCards.map((props) => (
-              <FluidContainer
-                flex
-                alignItems="center"
-                justifyContent="space-between"
-                key={`${props.title}`}
-              >
-                <Image
-                  src={`${props.imgSrc}`}
-                  alt={`${props.imgAlt}`}
-                  width="400px"
-                  height="150px"
-                  marginBottom="24px"
-                  marginRight="48px"
-                />
-                <Card margin={`${Spaces.md} 0`} {...props}></Card>
-              </FluidContainer>
+              <ImageAndCard key={props.title} imageWidth="300px" {...props} />
             ))}
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
       <FluidContainer backgroundImage="/bod-cta-background.jpg">
         <Typography variant="title">We Provide:</Typography>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
           {descriptionCards.map((props) => (
             <DescriptionCard
               rounded
               hoverable
-              margin="16px 8px"
+              width={descriptionCardWidth}
+              margin="0 0 24px"
               key={`${props.children}`}
-              width="calc(25% - 24px)"
               minHeight="280px"
               {...props}
             ></DescriptionCard>
@@ -233,7 +232,9 @@ export default function CCC() {
               academic success. The ceremonies are open to all students who
               would like to sign up and participate.
             </Typography>
-            <Button variant="black">Learn More</Button>
+            <Button variant="black" href={'/ccc/cultural-grads'}>
+              Learn More
+            </Button>
           </FluidContainer>
         </FluidContainer>
       </FluidContainer>

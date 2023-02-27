@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import { Page, CallToAction, DepartmentHeader, OfficeHours } from 'modules';
 import {
-  Card,
-  DescriptionCard,
-  Divider,
-  FluidContainer,
-  Image,
-  Typography,
-} from 'components';
+  Page,
+  CallToAction,
+  DepartmentHeader,
+  OfficeHours,
+  ImageAndCard,
+} from 'modules';
+import { DescriptionCard, FluidContainer, Image, Typography } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 
 export default function CSI() {
   const SocialsContainer = styled.div`
@@ -110,6 +110,14 @@ export default function CSI() {
       ],
     },
   ];
+
+  const { returnByBreakpoint } = useBreakpoint();
+  const descriptionCardWidth = returnByBreakpoint({
+    tablet: '100%',
+    desktop: 'calc(50% - 16px)',
+    widescreen: 'calc(25% - 16px)',
+  });
+
   return (
     <Page>
       <Head>
@@ -132,7 +140,13 @@ export default function CSI() {
         title="Center for Student Involvement"
         infoSection={
           <OfficeHours
-            address="5154 State University Drive Los Angeles, CA 90032 Room 204, 2nd Floor, U-SU"
+            address={
+              <>
+                5154 State University Drive <br />
+                Los Angeles, CA 90032 <br />
+                Room 204, 2nd Floor, U-SU
+              </>
+            }
             phoneNumber="323-343-5110"
             hours={hours}
           />
@@ -154,6 +168,14 @@ export default function CSI() {
           </a>
           <a href="https://www.instagram.com/csicalstatela/?hl=en">
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
+          </a>
+          <a href="https://linktr.ee/csicalstatela">
+            <Image
+              alt="linktree icon"
+              src="/departments/logos/linktree.svg"
+              height="29px"
+              width="32px"
+            />
           </a>
         </SocialsContainer>
       </DepartmentHeader>
@@ -178,25 +200,23 @@ export default function CSI() {
             hoverable
             margin="24px 8px"
             key={`${props.children}`}
-            width="calc(25% - 24px)"
+            width={descriptionCardWidth}
             minHeight="280px"
             {...props}
           ></DescriptionCard>
         ))}
       </FluidContainer>
-
       {clubCards.map((props) => (
-        <FluidContainer flex alignItems="center" key={`${props.children}`}>
-          <Image
-            src={`${props.imgSrc}`}
-            alt={`${props.imgAlt}`}
-            width="150px"
-            marginRight="48px"
-          ></Image>
-          <Card hoverable width="100%" minHeight="160px" {...props}></Card>
-          <Divider color="grey" />
-        </FluidContainer>
+        <ImageAndCard key={props.title} {...props} />
       ))}
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="center for student involvement logo"
+          src="/departments/logos/csi-logo.svg"
+          height="400px"
+          width="400px"
+        />
+      </FluidContainer>
     </Page>
   );
 }
