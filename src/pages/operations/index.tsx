@@ -41,7 +41,7 @@ export default function Operations() {
       text: 'Events Request Form',
       href: 'https://form.jotform.com/221578153228053',
     },
-    { text: 'Meeting Rooms', href: '#' },
+    { text: 'Meeting Rooms', href: '/operations/meeting-rooms' },
   ];
 
   const cards = [
@@ -88,7 +88,7 @@ export default function Operations() {
 
   const pdfDescriptionCards = [
     {
-      title: 'Media Equiptment Rental Chart',
+      title: 'Media Equipment Rental Chart',
       description: 'CSULA Univeristy-Student Union media equipment rental fees',
       href: '/operations/pdfs/Media-Equipment-Fees-Chart.pdf',
     },

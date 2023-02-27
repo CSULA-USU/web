@@ -6,7 +6,7 @@ import {
   OfficeHours,
   ImageAndCard,
 } from 'modules';
-import { DescriptionCard, FluidContainer, Typography } from 'components';
+import { DescriptionCard, FluidContainer, Image, Typography } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
@@ -169,6 +169,14 @@ export default function CSI() {
           <a href="https://www.instagram.com/csicalstatela/?hl=en">
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
+          <a href="https://linktr.ee/csicalstatela">
+            <Image
+              alt="linktree icon"
+              src="/departments/logos/linktree.svg"
+              height="29px"
+              width="32px"
+            />
+          </a>
         </SocialsContainer>
       </DepartmentHeader>
       <CallToAction
@@ -198,10 +206,17 @@ export default function CSI() {
           ></DescriptionCard>
         ))}
       </FluidContainer>
-
       {clubCards.map((props) => (
         <ImageAndCard key={props.title} {...props} />
       ))}
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="center for student involvement logo"
+          src="/departments/logos/csi-logo.svg"
+          height="400px"
+          width="400px"
+        />
+      </FluidContainer>
     </Page>
   );
 }

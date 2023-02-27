@@ -3,6 +3,7 @@ import { Page } from 'modules';
 import {
   Button,
   Divider,
+  Expandable,
   FluidContainer,
   Image,
   NonBreakingSpan,
@@ -176,6 +177,138 @@ export default function StudentLeaderElections() {
       <FluidContainer backgroundColor="greyLightest">
         <Typography variant="title">Election Results</Typography>
         <Typography>Results pending...</Typography>
+      </FluidContainer>
+      <FluidContainer backgroundColor="black">
+        <Typography color="gold" variant="title">
+          Frequently Asked Questions
+        </Typography>
+        <Expandable
+          header={
+            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+              What is the role of the U-SU Board of Directors Member{' '}
+            </Typography>
+          }
+        >
+          <Typography color="white">
+            <ul>
+              <li>
+                Attend U-SU Board of Directors meetings. Meetings are held on
+                the second Friday of each month at 2 PM
+              </li>
+              <li>
+                Represent other students by actively seeking out their opinions
+                on U-SU programs, services, and building use.
+              </li>
+              <li>
+                Chair and/or serve on at least one U-SU standing committee.
+              </li>
+              <li>
+                Participate in U-SU programs and events as your schedule allows.
+              </li>
+              <li>Ask questions!</li>
+              <li>
+                Interact with Board members, U-SU staff members, student
+                assistants, and guests to the building so together, we can
+                enhance the services currently offered.
+              </li>
+            </ul>
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          header={
+            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+              What is the difference between the U-SU Board of Directors and
+              A.S.I?
+            </Typography>
+          }
+        >
+          <Typography color="white">
+            The University-Student Union Board of Directors is charged with
+            managing, supporting, and advocating for the University-Student
+            Union on campus. The Board of Directors is comprised of 16 member, 8
+            Student Directors, who are tasked with overseeing the Student Union,
+            which includes the Cross Cultural Centers, Center for Student
+            Involvement, Xtreme Fitness, and other departments that support
+            student development on campus. A.S.I. , or the Associated Students,
+            Inc. is the student government for the University. A.S.I. serves as
+            an entity for student input in governance on campus, oversees club
+            and organization funding, and provides discounted tickets to local
+            attractions, among other responsibilities. Both the
+            University-Student Union and A.S.I. are non-profit auxiliaries on
+            campus. They differ in structure and purpose. For more information
+            about each, please visit University-Student Union and A.S.I.
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          header={
+            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+              Do you have what it takes to serve the U-SU Board of Directors?
+            </Typography>
+          }
+        >
+          <Typography color="white">
+            Undergraduate Candidates must:
+            <ul>
+              <li>
+                Have been enrolled at Cal State LA and completed two quarters
+                prior to applying.
+              </li>
+              <li>
+                Have earned no fewer than 9 quarter units of academic credit
+                during that year prior to consideration.
+              </li>
+              <li>
+                Have earned a 2.0 or better grade point average during the 12
+                months immediately preceding the quarter in which the
+                appointment occurs.
+              </li>
+            </ul>
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          header={
+            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+              What can you gain from serving on the U-SU Board of Directors?
+            </Typography>
+          }
+        >
+          <Typography color="white">
+            <ul>
+              <li>Develop your leadership &amp; communication skills.</li>
+              <li>Build your academic and professional resume.</li>
+              <li>
+                HNetwork with campus administrators, staff and other students
+                who serve on the BOD.
+              </li>
+              <li>
+                Inﬂuence the future of the University-Student Union as you
+                provide opinions on existing programs, services, and policies.
+              </li>
+              <li>
+                Meet new people and develop long lasting relationships with a
+                diverse group of people from across the campus.
+              </li>
+            </ul>
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          header={
+            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+              I have more questions about applying. Who do I contact?
+            </Typography>
+          }
+        >
+          <Typography color="white">
+            For more information on the application process, please visit the
+            University-Student Union administration office in room 306 or call
+            Joe Sedlacek, Assistant to the Executive Director, at 323.343.2461.
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
       </FluidContainer>
     </Page>
   );
