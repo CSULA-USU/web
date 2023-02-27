@@ -128,6 +128,7 @@ const SubHeaderSpan = styled.span`
   display: flex;
   align-items: center;
 `;
+
 const TeaserContainer = styled.div`
   width: 500px;
   height: 520px;
@@ -214,20 +215,6 @@ export default function CulturalGrads() {
       {isDesktop ? (
         <>
           <FluidContainer
-            backgroundColor="primary"
-            flex
-            justifyContent="center"
-            alignItems="center"
-            innerMaxWidth="560px"
-          >
-            <Image
-              src="/departments/ccc/ccc-grad-banner.jpg"
-              alt="recreation logo"
-              width="100%"
-              height="fit-content"
-            />
-          </FluidContainer>
-          <FluidContainer
             flex
             flexDirection="column"
             backgroundImage="/bod-cta-background.jpg"
@@ -238,9 +225,14 @@ export default function CulturalGrads() {
                 <br />
                 Cultural Graduate Celebrations
               </Typography>
-              <FluidContainer flex flexDirection="column">
-                <TeaserContainer />
-              </FluidContainer>
+              <Image
+                marginTop="24px"
+                alt="picture of nuestra graduate"
+                height="100%"
+                width="100%"
+                borderRadius="12px"
+                src="/departments/ccc/nuestra-teaser.jpeg"
+              />
               <Typography margin="24px 0">
                 <strong>Dear Cal State LA Prospective Graduate,</strong>
                 <br />
