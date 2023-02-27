@@ -3,6 +3,9 @@ import { EventCard } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
+import { useState } from 'react';
+import { PresenceEvent } from 'types';
+import { EventModal } from 'modules/EventModal';
 
 interface DepartmentHeaderProps {
   title: string;
@@ -30,20 +33,36 @@ export const DepartmentHeader = ({
   const departmentEvent = events.find(
     (event) => event.organizationName === title,
   );
-
+  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+    undefined,
+  );
+  const onRequestClose = () => selectEvent(undefined);
   return (
-    <FluidContainer backgroundImage="subtle-background-3.jpg">
-      <HeaderContainer>
-        <HeaderContent>
-          <Typography variant="labelTitle">Welcome to the</Typography>
-          <Typography margin="0 0 24px" variant="titleLarge" weight="400">
-            {title}
-          </Typography>
-          <Typography>{children}</Typography>
-        </HeaderContent>
-        {departmentEvent && <EventCard featured event={departmentEvent} />}
-      </HeaderContainer>
-      {infoSection}
-    </FluidContainer>
+    <>
+      <FluidContainer backgroundImage="subtle-background-3.jpg">
+        <HeaderContainer>
+          <HeaderContent>
+            <Typography variant="labelTitle">Welcome to the</Typography>
+            <Typography margin="0 0 24px" variant="titleLarge" weight="400">
+              {title}
+            </Typography>
+            <Typography>{children}</Typography>
+          </HeaderContent>
+          {departmentEvent && (
+            <EventCard
+              onClick={() => selectEvent(departmentEvent)}
+              featured
+              event={departmentEvent}
+            />
+          )}
+        </HeaderContainer>
+        {infoSection}
+      </FluidContainer>
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent}
+        onRequestClose={onRequestClose}
+      />
+    </>
   );
 };
