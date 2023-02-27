@@ -30,35 +30,27 @@ const TabContent = styled(Typography)`
   }
 `;
 export default function Governance() {
-  const buttons = [
-    {
-      text: 'Meet the Board of Directors',
-      href: 'governance/board-of-directors',
-    },
-    { text: 'Be a Student Leader', href: 'governance/student-leaders' },
-  ];
-
   const cards = [
     {
-      title: 'Elections',
+      title: 'Meet the Board of Directors',
       children:
-        "The University-Student Union's Board of Directors is the governing board of the Union.",
+        "Learn more about the University Student Union's Board of Directors!",
       linkText: 'Learn More',
-      href: '#',
+      href: 'governance/meet-the-board',
     },
     {
-      title: 'Student Leadership',
+      title: 'Be a Student Leader',
       children:
-        "The University-Student Union's Board of Directors is the governing board of the Union.",
+        'See how the elections are going and checkout the upcoming events!',
       linkText: 'Learn More',
-      href: '#',
+      href: 'governance/student-leader-elections',
     },
     {
       title: 'Learn How to Vote',
       children:
-        'The University-Student Union Board of Directors is the governing board for the Student Union comprised of faculty, staff, and eight elected student leaders.',
+        'Confused or uncertain on how to vote for your favorite candidates? Click below for instructions!',
       linkText: 'Learn More',
-      href: '#',
+      href: '/governance/how-to-vote',
     },
   ];
 
@@ -197,7 +189,6 @@ export default function Governance() {
 
       <Header
         title="Governance"
-        buttons={buttons}
         backgroundImage="/subtle-background-2.jpg"
         extra={
           <Button variant="outline" href="/governance/public-documents">

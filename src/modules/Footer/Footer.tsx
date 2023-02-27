@@ -4,6 +4,7 @@ import { NonBreakingSpan, Typography } from 'components';
 import { Colors, media, Spaces } from 'theme';
 import { FluidContainer, Divider } from 'components';
 import { AiOutlineInstagram } from 'react-icons/ai';
+import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
 
@@ -56,32 +57,50 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Involvement
           </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            U-SU Employment
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Calendar of Events
-          </Typography>
+          <Link href={'/employment'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              U-SU Employment
+            </Typography>
+          </Link>
+          <Link href={'/events'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Calendar of Events
+            </Typography>
+          </Link>
         </div>
         <div>
           <Typography as="h5" color="white">
             Resources
           </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Cal State L.A. Chancellor Message against racism
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            President Covino&apos;s message against racism
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Black Lives Matter Resources
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Covid-19 Resources
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            View Public Documents
-          </Typography>
+          <Link
+            href={
+              'https://www2.calstate.edu/Pages/a-call-for-unity-and-understanding.aspx'
+            }
+          >
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Cal State L.A. Chancellor Message against racism
+            </Typography>
+          </Link>
+          <Link href={'https://www.calstatela.edu/president/may30-message'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              President Covino&apos;s message against racism
+            </Typography>
+          </Link>
+          <Link href={'https://www.calstatelausu.org/blackLivesResources'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Black Lives Matter Resources
+            </Typography>
+          </Link>
+          <Link href={'https://www.calstatelausu.org/covid19'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Covid-19 Resources
+            </Typography>
+          </Link>
+          <Link href={'governance/public-documents'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              View Public Documents
+            </Typography>
+          </Link>
         </div>
       </FooterTopLinks>
     </FooterTopContainer>
@@ -117,10 +136,12 @@ export const Footer = () => (
           (323) 343-2465
         </Typography>
       </FooterBottomInner>
-      <AiOutlineInstagram
-        color={Colors.greyLighter}
-        fontSize="32px"
-      ></AiOutlineInstagram>
+      <Link href={'https://www.instagram.com/usucalstatela/?hl=en'}>
+        <AiOutlineInstagram
+          color={Colors.greyLighter}
+          fontSize="32px"
+        ></AiOutlineInstagram>
+      </Link>
     </FooterBottomContainer>
   </FluidContainer>
 );
