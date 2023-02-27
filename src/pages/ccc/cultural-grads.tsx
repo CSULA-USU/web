@@ -221,8 +221,6 @@ export default function CulturalGrads() {
           >
             <FluidContainer flex flexDirection="column" alignItems="center">
               <Typography variant="title">
-                2023
-                <br />
                 Cultural Graduate Celebrations
               </Typography>
               <Image
@@ -321,8 +319,6 @@ export default function CulturalGrads() {
               </FluidContainer>
               <FluidContainer>
                 <Typography variant="title">
-                  2023
-                  <br />
                   Cultural Graduate Celebrations
                 </Typography>
                 <Typography margin="24px 0">
