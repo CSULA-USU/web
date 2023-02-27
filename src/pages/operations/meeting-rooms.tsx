@@ -1,35 +1,7 @@
 import { Page, Header } from 'modules';
-import { Card, FluidContainer, Image, Typography } from 'components';
-import { Colors, Spaces } from 'theme';
-import styled from 'styled-components';
+import { Card, FluidContainer, Image } from 'components';
+import { Spaces } from 'theme';
 
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: ${Spaces.xl};
-  box-shadow: 2px 4px 12px rgba(191, 191, 191, 0.25);
-  border-radius: 12px;
-  background-color: ${Colors.white};
-  width: 300px;
-  height: 300px;
-  margin: 24px;
-`;
-const OperationsRoomCard = (props: any) => {
-  return (
-    <CardContainer>
-      <Typography margin="12px 0" variant="titleSmall">
-        {props.title}
-      </Typography>
-      <Image
-        src={props.src}
-        alt={props.alt}
-        width="250px"
-        height="200px"
-      ></Image>
-    </CardContainer>
-  );
-};
 export default function MeetingRooms() {
   const cards = [
     {
@@ -111,12 +83,14 @@ export default function MeetingRooms() {
         backgroundColor="greyLightest"
       >
         {roomCards.map((props) => (
-          <OperationsRoomCard
-            title={`${props.title}`}
-            src={`${props.src}`}
-            alt={`${props.alt}`}
-            key={`${props.title}`}
-          />
+          <Card
+            key={props.title}
+            margin={`${Spaces.sm}`}
+            width="calc(25%)"
+            title={props.title}
+          >
+            <Image src={props.src} alt={props.alt} width="100%" />
+          </Card>
         ))}
       </FluidContainer>
       <FluidContainer
