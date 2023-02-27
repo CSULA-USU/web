@@ -3,6 +3,8 @@ import { FluidContainer, Typography } from 'components';
 import { EventCard } from 'modules';
 import { PresenceEvent } from 'types';
 import { Spaces } from 'theme';
+import { useState } from 'react';
+import { EventModal } from 'modules/EventModal';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -16,22 +18,33 @@ export const EventHeader = ({
 }: {
   featuredEvent: PresenceEvent;
   title?: React.ReactNode;
-}) => (
-  <FluidContainer
-    flex
-    flexDirection="column"
-    backgroundImage="/subtle-background-1.jpg"
-  >
-    <Typography
-      variant="pageHeader"
-      margin={`0 auto ${Spaces.lg}`}
-      size="2xl"
-      color="greyDarker"
+}) => {
+  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+    undefined,
+  );
+  const onRequestClose = () => selectEvent(undefined);
+  return (
+    <FluidContainer
+      flex
+      flexDirection="column"
+      backgroundImage="/subtle-background-1.jpg"
     >
-      {title}
-    </Typography>
-    <HeaderContainer>
-      <EventCard featured event={featuredEvent} />
-    </HeaderContainer>
-  </FluidContainer>
-);
+      <Typography
+        variant="pageHeader"
+        margin={`0 auto ${Spaces.lg}`}
+        size="2xl"
+        color="greyDarker"
+      >
+        {title}
+      </Typography>
+      <HeaderContainer onClick={() => selectEvent(featuredEvent)}>
+        <EventCard featured event={featuredEvent} />
+      </HeaderContainer>
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent}
+        onRequestClose={onRequestClose}
+      />
+    </FluidContainer>
+  );
+};
