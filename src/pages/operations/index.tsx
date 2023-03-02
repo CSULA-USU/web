@@ -35,6 +35,7 @@ const OperationsPDFDescriptions = (props: any) => {
     </PDFDescriptionContainer>
   );
 };
+
 export default function Operations() {
   const buttons = [
     {

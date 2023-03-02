@@ -1,0 +1,236 @@
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import { Page } from 'modules';
+import meetingRoomsData from 'data/meetingRooms.json';
+import { useRouter } from 'next/router';
+import { FluidContainer, Typography, Image } from 'components';
+import styled from 'styled-components';
+import { Colors, Spaces } from 'theme';
+import Link from 'next/link';
+
+const EquipmentSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.sm};
+`;
+
+const NavItemContainer = styled.div`
+  *:hover {
+    color: ${Colors.gold};
+  }
+`;
+
+const TextCenter = styled.div`
+  text-align: center;
+`;
+
+const Table = styled.div`
+  text-align: left;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tr {
+    border-bottom: 1pt solid black;
+  }
+
+  th {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  td {
+    width: 33.33%;
+  }
+`;
+
+const NavItems = [
+  {
+    header: 'Alhambra',
+    id: 'alhambra-room',
+  },
+  {
+    header: 'San Gabriel',
+    id: 'san-gabriel-room',
+  },
+  {
+    header: 'Los Angeles',
+    id: 'los-angeles-room',
+  },
+  {
+    header: 'Theater Room',
+    id: 'theater-room',
+  },
+  {
+    header: 'Boardroom North',
+    id: 'boardroom-north',
+  },
+  {
+    header: 'Boardroom South',
+    id: 'boardroom-south',
+  },
+];
+
+export default function MeetingRoom() {
+  const router = useRouter();
+  const { id } = router.query;
+  const [selectedRoom, setSelectedRoom] =
+    useState<(typeof meetingRoomsData)[number]>();
+
+  useEffect(() => {
+    const room = meetingRoomsData.find((room) => room.id === id);
+    setSelectedRoom(room);
+  }, [id]);
+
+  const StaffNav = () => {
+    return (
+      <FluidContainer
+        backgroundColor="greyDarker"
+        flex
+        justifyContent="space-between"
+      >
+        {NavItems.map((item) => (
+          <NavItemContainer key={item.header}>
+            <Link href={'/operations/meeting-rooms/' + item.id}>
+              <Typography color="white" variant="labelTitleSmall">
+                {item.header}
+              </Typography>
+            </Link>
+          </NavItemContainer>
+        ))}
+      </FluidContainer>
+    );
+  };
+
+  return !selectedRoom ? null : (
+    <Page>
+      <Head>
+        <title>University-Student Union</title>
+        <meta name="author" content="The University Student Union" />
+        <meta
+          name="keywords"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, student, organizations, MORE, Cross Cultural Centers, Center For Student Involvement, Fitness Center, The Pit, The Gameroom, Student orgnizations, Calendar, Events, Gender and sexuality resource center, Pan African resource center, Asian Pacific islander, Chicana Latina, Information and Event Services, Distinguished Women, awards, Cultural Graduate Celebrations, LOUDmouth Zine, S.T.A.R.S. Program, Employment Opportunities, Board of Directors, Jobs"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <StaffNav></StaffNav>
+      <FluidContainer
+        flex
+        alignItems="center"
+        justifyContent="center"
+        backgroundImage="/subtle-background-1.jpg"
+      >
+        <Image
+          borderRadius="12px"
+          width={1500}
+          src={selectedRoom.headerImage}
+          alt={selectedRoom.mainImageAlt}
+        />
+      </FluidContainer>
+
+      <FluidContainer>
+        <Table>
+          <table width="70%" align="center" vertical-align>
+            <thead>
+              <tr>
+                <th></th>
+                <th>
+                  <Typography variant="cta" size="lg">
+                    Setup
+                  </Typography>
+                </th>
+                <th>
+                  <Typography variant="cta" size="lg">
+                    Capacity
+                  </Typography>
+                </th>
+                <th>
+                  <Typography variant="cta" size="lg">
+                    Equipment
+                  </Typography>
+                </th>
+              </tr>
+            </thead>
+
+            {selectedRoom.arrangements.map((arrangement) => (
+              <tr key={arrangement.setup}>
+                <th>
+                  {arrangement.image && (
+                    <Image
+                      borderRadius="12px"
+                      width={350}
+                      marginRight={Spaces['2xl']}
+                      src={arrangement.image}
+                      alt={arrangement.setup}
+                    />
+                  )}
+                </th>
+                <td>
+                  <Typography variant="title" weight="400" size="md">
+                    {arrangement.setup}
+                  </Typography>
+                </td>
+                <td>
+                  <Typography variant="title" weight="400" size="md">
+                    {arrangement.capacity}
+                  </Typography>
+                </td>
+                <td>
+                  <EquipmentSection>
+                    {arrangement.equiptment.map((e) => (
+                      <Typography
+                        key={e}
+                        variant="title"
+                        weight="400"
+                        size="md"
+                      >
+                        {' '}
+                        {e}
+                      </Typography>
+                    ))}
+                  </EquipmentSection>
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <td colSpan={4}>
+                <TextCenter>
+                  <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
+                    Fixed Room Features
+                  </Typography>
+                  <Typography margin={`0 0 ${Spaces.md}`}>
+                    {selectedRoom.features}
+                  </Typography>
+                </TextCenter>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={4}>
+                <TextCenter>
+                  <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
+                    Meeting Space Rental Fees do not include:
+                  </Typography>
+                  <Typography margin={`0 0 ${Spaces.md}`}>
+                    {' '}
+                    Personnel fees, equipment fees, cleaning fees, catering
+                    fees, and extended hours fees. Those are separate charges
+                    that may vary upon each reservation
+                  </Typography>
+                </TextCenter>
+              </td>
+            </tr>
+          </table>
+        </Table>
+      </FluidContainer>
+      <FluidContainer flex justifyContent="center">
+        <embed
+          type="application/pdf"
+          width="80%"
+          height={600}
+          src="https://www.calstatelausu.org/usuforms/u-su/operations/Meeting%20Space%20capacity%20Chart.pdf"
+        />
+      </FluidContainer>
+    </Page>
+  );
+}
