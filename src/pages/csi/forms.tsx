@@ -7,7 +7,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 1: President, Treasurer, and 1 Advisor',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -17,7 +23,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 2: President, Treasurer, and 1 Advisor, Plus One Additional Signee',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -27,7 +39,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 3: President, Treasurer, 2 Advisors, Are the Only Signees',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -37,7 +55,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 4: President, Treasurer, 2 Advisors, Plus One Additional Signee',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -49,7 +73,13 @@ const account = [
 const banking = [
   {
     title: 'Club Banking Exemption Request Form',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        All clubs and organizations must bank with the on-campus entity, but
+        depending on if your club/organization qualifies to be exempt from this
+        mandate, use this form.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -73,7 +103,13 @@ const banking = [
   },
   {
     title: 'Student Organization Check Requisition',
-    children: <Typography>Updated 7/19/22</Typography>,
+    children: (
+      <Typography>
+        Check requisitions are forms completed to pay vendors, reimburse
+        individuals, and to pay for services. <br />
+        Updated 7/19/22
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -82,7 +118,15 @@ const banking = [
   },
   {
     title: 'Student Organization Deposit Slip',
-    children: <Typography>Updated 7/19/22</Typography>,
+    children: (
+      <Typography>
+        As student clubs and organizations, cash and/or checks must be kept in a
+        secure location at all times. Use this form to deposit money safely into
+        your organization&apos;s bank account.
+        <br />
+        Updated 7/19/22
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -91,7 +135,14 @@ const banking = [
   },
   {
     title: 'Student Organization Sales Receipt Log',
-    children: <Typography>Updated 7/28/17</Typography>,
+    children: (
+      <Typography>
+        In circumstances where it is not practical to process a receipt (e.g.
+        club bake sales, ticket sales), other mitigating controls must be
+        implemented <br />
+        Updated 7/28/17
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
