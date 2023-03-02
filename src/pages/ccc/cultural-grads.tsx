@@ -10,6 +10,7 @@ import {
   Tabs,
   Typography,
 } from 'components';
+import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import { Spaces } from 'theme';
 
@@ -127,6 +128,7 @@ const SubHeaderSpan = styled.span`
   display: flex;
   align-items: center;
 `;
+
 const TeaserContainer = styled.div`
   width: 500px;
   height: 520px;
@@ -178,6 +180,8 @@ const IconHeading = styled.div`
 `;
 
 export default function CulturalGrads() {
+  const { isTablet, isDesktop } = useBreakpoint();
+
   const tabItems = [
     { title: 'Where & When', children: <WhereTab /> },
     { title: 'How', children: <HowTab /> },
@@ -202,97 +206,182 @@ export default function CulturalGrads() {
           name="description"
           content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
         />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+        ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <FluidContainer
-        backgroundColor="primary"
-        flex
-        justifyContent="center"
-        alignItems="center"
-        innerMaxWidth="560px"
-      >
-        <Image
-          src="/departments/ccc/ccc-grad-banner.jpg"
-          alt="recreation logo"
-          width="100%"
-          height="fit-content"
-        />
-      </FluidContainer>
-      <FluidContainer
-        flex
-        flexDirection="column"
-        backgroundImage="/bod-cta-background.jpg"
-      >
-        <FluidContainer flex>
+      {isDesktop ? (
+        <>
+          <FluidContainer
+            flex
+            flexDirection="column"
+            backgroundImage="/bod-cta-background.jpg"
+          >
+            <FluidContainer flex flexDirection="column" alignItems="center">
+              <Typography variant="title">
+                Cultural Graduate Celebrations
+              </Typography>
+              <Image
+                marginTop="24px"
+                alt="picture of nuestra graduate"
+                height="100%"
+                width="100%"
+                borderRadius="12px"
+                src="/departments/ccc/nuestra-teaser.jpeg"
+              />
+              <Typography margin="24px 0">
+                <strong>Dear Cal State LA Prospective Graduate,</strong>
+                <br />
+                These ceremonies and celebrations are great opportunities to
+                acknowledge your academic achievements, honor your families,
+                communities, and other significant people in your lives, and to
+                celebrate the cultural influences that have contributed to your
+                academic success. The ceremonies are open to all students who
+                would like to sign up and participate.
+              </Typography>
+              <Button variant="black" href="#">
+                <SubHeaderSpan>
+                  Apply Now&nbsp;
+                  <FaGraduationCap color={'white'} fontSize={'24px'} />
+                </SubHeaderSpan>
+              </Button>
+            </FluidContainer>
+          </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <TeaserContainer />
-            <br />
-            <Typography variant="cta">Nuestra Grad &apos;22</Typography>
+            <SubHeaderSpan>
+              <Typography margin="24px" as="h2" variant="titleSmall">
+                Graduations
+              </Typography>
+            </SubHeaderSpan>
+            <FluidContainer flex flexWrap="wrap">
+              {cards.map((props) => (
+                <Card
+                  margin={`${Spaces.md}`}
+                  topBorder
+                  key={`${props.title}`}
+                  {...props}
+                  width={isTablet ? 'calc(95%)' : 'calc(45% - 8px)'}
+                  minHeight="280px"
+                >
+                  {`${
+                    props.children.length > 200
+                      ? props.children.substring(0, 200) + '...'
+                      : props.children
+                  }`}
+                </Card>
+              ))}
+            </FluidContainer>
           </FluidContainer>
-          <FluidContainer>
-            <Typography variant="title">
-              2023
-              <br />
-              Cultural Graduate Celebrations
-            </Typography>
-            <Typography margin="24px 0">
-              <strong>Dear Cal State LA Prospective Graduate,</strong>
-              <br />
-              These ceremonies and celebrations are great opportunities to
-              acknowledge your academic achievements, honor your families,
-              communities, and other significant people in your lives, and to
-              celebrate the cultural influences that have contributed to your
-              academic success. The ceremonies are open to all students who
-              would like to sign up and participate.
-            </Typography>
-            <Button variant="black" href="#graduations">
+          <FluidContainer backgroundColor="greyLightest">
+            <IconHeading>
               <SubHeaderSpan>
-                Apply Below&nbsp;
-                <FaGraduationCap color={'white'} fontSize={'24px'} />
+                <Typography
+                  margin="24px 8px 24px 0px"
+                  as="h2"
+                  variant="titleSmall"
+                >
+                  Frequently Asked Questions
+                </Typography>
+                <FaRegQuestionCircle fontSize={'24px'} />
               </SubHeaderSpan>
-            </Button>
+            </IconHeading>
+            <Tabs items={tabItems} minHeight="320px" />
           </FluidContainer>
-        </FluidContainer>
-      </FluidContainer>
-      <div id="graduations">
-        <FluidContainer flex flexDirection="column">
-          <SubHeaderSpan>
-            <Typography margin="24px" as="h2" variant="titleSmall">
-              Graduations
-            </Typography>
-          </SubHeaderSpan>
-          <FluidContainer flex flexWrap="wrap">
-            {cards.map((props) => (
-              <Card
-                margin={`${Spaces.md}`}
-                topBorder
-                key={`${props.title}`}
-                {...props}
-                width="calc(22% - 8px)"
-                minHeight="280px"
-              >
-                {`${
-                  props.children.length > 200
-                    ? props.children.substring(0, 200) + '...'
-                    : props.children
-                }`}
-              </Card>
-            ))}
+        </>
+      ) : (
+        <>
+          <FluidContainer
+            backgroundColor="primary"
+            flex
+            justifyContent="center"
+            alignItems="center"
+            innerMaxWidth="560px"
+          >
+            <Image
+              src="/departments/ccc/ccc-grad-banner.jpg"
+              alt="recreation logo"
+              width="100%"
+              height="fit-content"
+            />
           </FluidContainer>
-        </FluidContainer>
-      </div>
-      <FluidContainer backgroundColor="greyLightest">
-        <IconHeading>
-          <SubHeaderSpan>
-            <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
-              Frequently Asked Questions
-            </Typography>
-            <FaRegQuestionCircle fontSize={'24px'} />
-          </SubHeaderSpan>
-        </IconHeading>
-        <Tabs items={tabItems} minHeight="320px" />
-      </FluidContainer>
+          <FluidContainer
+            flex
+            flexDirection="column"
+            backgroundImage="/bod-cta-background.jpg"
+          >
+            <FluidContainer flex>
+              <FluidContainer flex flexDirection="column">
+                <TeaserContainer />
+                <br />
+                <Typography variant="cta">Nuestra Grad &apos;22</Typography>
+              </FluidContainer>
+              <FluidContainer>
+                <Typography variant="title">
+                  Cultural Graduate Celebrations
+                </Typography>
+                <Typography margin="24px 0">
+                  <strong>Dear Cal State LA Prospective Graduate,</strong>
+                  <br />
+                  These ceremonies and celebrations are great opportunities to
+                  acknowledge your academic achievements, honor your families,
+                  communities, and other significant people in your lives, and
+                  to celebrate the cultural influences that have contributed to
+                  your academic success. The ceremonies are open to all students
+                  who would like to sign up and participate.
+                </Typography>
+                <Button variant="black" href="#">
+                  <SubHeaderSpan>
+                    Apply Now&nbsp;
+                    <FaGraduationCap color={'white'} fontSize={'24px'} />
+                  </SubHeaderSpan>
+                </Button>
+              </FluidContainer>
+            </FluidContainer>
+          </FluidContainer>
+          <FluidContainer flex flexDirection="column">
+            <SubHeaderSpan>
+              <Typography margin="24px" as="h2" variant="titleSmall">
+                Graduations
+              </Typography>
+            </SubHeaderSpan>
+            <FluidContainer flex flexWrap="wrap">
+              {cards.map((props) => (
+                <Card
+                  margin={`${Spaces.md}`}
+                  topBorder
+                  key={`${props.title}`}
+                  {...props}
+                  width={isDesktop ? 'calc(45% - 8px)' : 'calc(22% - 8px)'}
+                  minHeight="280px"
+                >
+                  {`${
+                    props.children.length > 200
+                      ? props.children.substring(0, 200) + '...'
+                      : props.children
+                  }`}
+                </Card>
+              ))}
+            </FluidContainer>
+          </FluidContainer>
+          <FluidContainer backgroundColor="greyLightest">
+            <IconHeading>
+              <SubHeaderSpan>
+                <Typography
+                  margin="24px 8px 24px 0px"
+                  as="h2"
+                  variant="titleSmall"
+                >
+                  Frequently Asked Questions
+                </Typography>
+                <FaRegQuestionCircle fontSize={'24px'} />
+              </SubHeaderSpan>
+            </IconHeading>
+            <Tabs items={tabItems} minHeight="320px" />
+          </FluidContainer>
+        </>
+      )}
     </Page>
   );
 }
