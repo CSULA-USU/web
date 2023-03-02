@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { Colors, Spaces } from 'theme';
-import { Page, Header } from 'modules';
+import { CallToAction, Page, Header } from 'modules';
 import { FluidContainer, Typography, Button, Card, Image } from 'components';
 
 const HeaderContainer = styled.div`
@@ -23,8 +23,11 @@ const MoreInformationTextContainer = styled.div`
   width: 762px;
   margin: auto;
 `;
-const StudentOrgsCatergoriesContentContainer = styled.div`
+const PresenceInfoContainer = styled.div`
   margin-top: ${Spaces['2xl']};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const OrgsCategoriesCardsContainer = styled.div`
@@ -34,27 +37,28 @@ const OrgsCategoriesCardsContainer = styled.div`
 
 const cards = [
   {
-    title: 'Some title',
+    title: 'Sample Constitution',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+      'This document is intended to serve as the model to follow when writing the constitution of your organization.',
+    linkText: 'View PDF',
+    href: '/departments/csi/forms/csi-sample-constitution.pdf',
   },
   {
-    title: 'Some title',
+    title: 'Presence Trainings',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+      'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
+    linkText: 'Learn More',
+    href: 'https://calstatela.presence.io/experiences',
   },
   {
-    title: 'Some title',
+    title: 'Club Banking Forms',
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    linkText: 'See Forms',
+    href: '/csi/forms',
   },
 ];
+
 const orgsCards = [
   {
     title: 'Complete The Following Forms Online',
@@ -74,32 +78,11 @@ const orgsCards = [
 ];
 const orgsCategoriesCards = [
   {
-    title: 'Academic',
+    title: 'Explore Student Organizations',
+    href: 'https://calstatela.presence.io/',
+    linkText: 'Visit Presence',
     children:
-      'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
-  },
-  {
-    title: 'Academic',
+      'Find a recognized student organization on Presence, Cal State LA’s hub for student organizations and events. ',
   },
 ];
 
@@ -111,10 +94,10 @@ export default function StudentOrgs() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Organizations</title>
+        <title>U-SU Recognized Student Organizations</title>
         <meta
           name="author"
-          content="The University Student Union Center for Student Involvement"
+          content="The University Student Union Center for Student Involvement Student Organizations"
         />
         <meta
           name="keywords"
@@ -129,24 +112,39 @@ export default function StudentOrgs() {
       <FluidContainer>
         <HeaderContainer>
           <Typography variant="titleSmall">University-Student Union</Typography>
-          <Header title="Join a Student Organization" buttons={buttons}>
-            Cal State LA is home to over 150+ student organizations that
-            represent a variety of student interests and plan hundreds of events
-            each year.
+          <Header title="Recognized Student Organizations" buttons={buttons}>
+            Cal State LA is home to over 120 recognized student organizations
+            that host events and meetings to engage students in community
+            building, entertainment, and professional development.
           </Header>
         </HeaderContainer>
       </FluidContainer>
-      <FluidContainer flex justifyContent="flex-start">
-        <Image margin="auto" size="80%" src="/cards-icon.svg" alt="cards" />
-        <StudentOrgsCatergoriesContentContainer>
-          <Typography margin="auto" variant="title">
-            Student Organization Categories
+      <CallToAction
+        href="https://www.calstatela.edu/studentservices/student-organization-recognition"
+        buttonText="Learn More"
+        text="Visit the Student Organization Handbook"
+      >
+        <Typography as="h2" variant="label">
+          Can&apos;t find an organization that interests you? Start your own!
+          Read up on the policies and procedures governing student
+          organizations, information about recognition processes for new and
+          returning orgs, and conduct procedures.
+        </Typography>
+      </CallToAction>
+      <FluidContainer flex>
+        <FluidContainer flex flexDirection="column">
+          <Typography margin="auto 24px 24px" variant="title">
+            Presence
           </Typography>
-          <Typography margin="auto">
-            Student groups are categorized under the following themes: academic,
-            cultural, political, professional, religious, spiritual, service,
-            social, and recreational.
-          </Typography>
+          <Image
+            margin="auto"
+            size="100%"
+            src="/departments/csi/presence-screen.png"
+            alt="screenshot of presence homepage"
+            borderRadius="8px"
+          />
+        </FluidContainer>
+        <PresenceInfoContainer>
           <OrgsCategoriesCardsContainer>
             {orgsCategoriesCards.map((props) => (
               <Card
@@ -156,12 +154,12 @@ export default function StudentOrgs() {
               ></Card>
             ))}
           </OrgsCategoriesCardsContainer>
-        </StudentOrgsCatergoriesContentContainer>
+        </PresenceInfoContainer>
       </FluidContainer>
       <MoreInformationContainer>
         <FluidContainer flex flexDirection="column" alignItems="center">
           <Typography margin="auto" variant="title">
-            More Information
+            Student Organization Resources
           </Typography>
           <FluidContainer flex justifyContent="space-between">
             {cards.map((props) => (
@@ -203,6 +201,19 @@ export default function StudentOrgs() {
           ))}
         </FluidContainer>
       </FluidContainer>
+      <CallToAction
+        href="https://www.calstatela.edu/deanofstudents/cal-state-la-standards-conduct-and-disciplinary-procedures-university-recognized"
+        buttonText="Learn More"
+        buttonVariantColor="primary"
+        text="Conduct and Disciplinary Procedures"
+        backgroundColorProp="black"
+        textColorProp="white"
+      >
+        <Typography as="h2" variant="label" color="white">
+          Learn more about the Student Organization Conduct code <br />
+          or report an incident related to student organizations
+        </Typography>
+      </CallToAction>
     </Page>
   );
 }
