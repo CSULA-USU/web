@@ -73,7 +73,13 @@ const account = [
 const banking = [
   {
     title: 'Club Banking Exemption Request Form',
-    children: <Typography></Typography>,
+    children: (
+      <Typography>
+        All clubs and organizations must bank with the on-campus entity, but
+        depending on if your club/organization qualifies to be exempt from this
+        mandate, use this form.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -112,7 +118,15 @@ const banking = [
   },
   {
     title: 'Student Organization Deposit Slip',
-    children: <Typography>Updated 7/19/22</Typography>,
+    children: (
+      <Typography>
+        As student clubs and organizations, cash and/or checks must be kept in a
+        secure location at all times. Use this form to deposit money safely into
+        your organization&apos;s bank account.
+        <br />
+        Updated 7/19/22
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -121,7 +135,14 @@ const banking = [
   },
   {
     title: 'Student Organization Sales Receipt Log',
-    children: <Typography>Updated 7/28/17</Typography>,
+    children: (
+      <Typography>
+        In circumstances where it is not practical to process a receipt (e.g.
+        club bake sales, ticket sales), other mitigating controls must be
+        implemented <br />
+        Updated 7/28/17
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
