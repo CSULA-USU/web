@@ -35,13 +35,14 @@ const OperationsPDFDescriptions = (props: any) => {
     </PDFDescriptionContainer>
   );
 };
+
 export default function Operations() {
   const buttons = [
     {
       text: 'Events Request Form',
       href: 'https://form.jotform.com/221578153228053',
     },
-    { text: 'Meeting Rooms', href: '#' },
+    { text: 'Meeting Rooms', href: '/operations/meeting-rooms' },
   ];
 
   const cards = [
