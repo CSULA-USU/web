@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
@@ -74,9 +75,13 @@ const NavItems = [
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
+  const [selectedRoom, setSelectedRoom] =
+    useState<(typeof meetingRoomsData)[number]>();
 
-  const queriedRoom = meetingRoomsData.filter((room) => room.id === id);
-  const selectedRoom = queriedRoom[0];
+  useEffect(() => {
+    const room = meetingRoomsData.find((room) => room.id === id);
+    setSelectedRoom(room);
+  }, [id]);
 
   const StaffNav = () => {
     return (
@@ -98,7 +103,7 @@ export default function MeetingRoom() {
     );
   };
 
-  return (
+  return !selectedRoom ? null : (
     <Page>
       <Head>
         <title>University-Student Union</title>
