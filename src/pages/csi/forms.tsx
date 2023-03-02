@@ -7,7 +7,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 1: President, Treasurer, and 1 Advisor',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -17,7 +23,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 2: President, Treasurer, and 1 Advisor, Plus One Additional Signee',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -27,7 +39,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 3: President, Treasurer, 2 Advisors, Are the Only Signees',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -37,7 +55,13 @@ const account = [
   {
     title:
       'Student Organization Account Form 4: President, Treasurer, 2 Advisors, Plus One Additional Signee',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: (
+      <Typography>
+        Input the names and emails of the signers (based on the list on the left
+        for your organizational needs) in the DocuSign Power form. Each signer
+        will receive the form directly.
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -49,7 +73,7 @@ const account = [
 const banking = [
   {
     title: 'Club Banking Exemption Request Form',
-    children: <Typography>Can be provided upon written request.</Typography>,
+    children: <Typography></Typography>,
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
@@ -73,7 +97,13 @@ const banking = [
   },
   {
     title: 'Student Organization Check Requisition',
-    children: <Typography>Updated 7/19/22</Typography>,
+    children: (
+      <Typography>
+        Check requisitions are forms completed to pay vendors, reimburse
+        individuals, and to pay for services. <br />
+        Updated 7/19/22
+      </Typography>
+    ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
