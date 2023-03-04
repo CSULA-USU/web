@@ -15,7 +15,7 @@ export interface Form {
 
 export const FormsSection = ({ forms, sectionTitle }: FormSectionProps) => (
   <FluidContainer>
-    <Typography variant="titleSmall" as="h2">
+    <Typography variant="title" as="h2">
       {sectionTitle}
     </Typography>
     <Divider color="grey" margin={`${Spaces.xl} 0`} />
