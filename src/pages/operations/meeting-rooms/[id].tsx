@@ -172,9 +172,11 @@ export default function MeetingRoom() {
                   </Typography>
                 </td>
                 <td>
-                  <Typography variant="title" weight="400" size="md">
-                    {arrangement.capacity}
-                  </Typography>
+                  {arrangement.capacity.map((c) => (
+                    <Typography variant="title" weight="400" size="md" key={c}>
+                      {c}
+                    </Typography>
+                  ))}
                 </td>
                 <td>
                   <EquipmentSection>
