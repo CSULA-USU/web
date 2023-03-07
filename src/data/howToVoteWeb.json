@@ -4,7 +4,7 @@
     "content": ["Log in to calstatela.edu"],
     "src": "/governance/how-to-vote/web-1.png",
     "alt": "login",
-    "width": "800"
+    "width": "600"
   },
   {
     "title": "Network Credentials",
@@ -29,7 +29,7 @@
     "content": ["This brings to Voting Options below."],
     "src": "/governance/how-to-vote/web-4.png",
     "alt": "login",
-    "width": "800"
+    "width": "600"
   },
   {
     "title": "Summary page",

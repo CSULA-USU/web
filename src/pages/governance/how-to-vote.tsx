@@ -12,6 +12,8 @@ import webInstructions from 'data/howToVoteWeb.json';
 import mobileInstructions from 'data/howToVoteMobile.json';
 import { Spaces, Colors } from 'theme';
 import { useState } from 'react';
+import { useBreakpoint } from 'hooks';
+
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,6 +30,8 @@ const NavItemContainer = styled.div`
 `;
 const NavItems = ['How to Vote on GET', 'How to Vote on Mobile'];
 const InstructionCard = (props: any) => {
+  const { isTablet } = useBreakpoint();
+
   return (
     <Panel topBorder>
       {props.title && (
@@ -38,14 +42,14 @@ const InstructionCard = (props: any) => {
       <Image
         src={props.src}
         alt={props.alt}
-        width={props.width && Number(props.width)}
+        width={!isTablet ? props.width && Number(props.width) : '100%'}
       ></Image>
     </Panel>
   );
 };
 export default function HowToVote() {
   const [buttonName, setButtonName] = useState('How to Vote on GET');
-  console.log(buttonName);
+  const { isTablet } = useBreakpoint();
 
   const VotingNav = () => {
     return (
@@ -89,9 +93,14 @@ export default function HowToVote() {
         backgroundColor="black"
         flex
         justifyContent="space-between"
+        flexWrap={!isTablet ? 'nowrap' : 'wrap'}
       >
         <HeaderContainer>
-          <Typography variant="pageHeader" color="white">
+          <Typography
+            variant="pageHeader"
+            color="white"
+            margin={isTablet ? 'auto' : ''}
+          >
             <NonBreakingSpan>How to Vote</NonBreakingSpan>
           </Typography>
           <Typography color="white" lineHeight="1.8">
@@ -105,7 +114,8 @@ export default function HowToVote() {
         <Image
           src="/student-leader-elections/student-leader-header.png"
           alt="student leader header"
-          width={800}
+          margin={Spaces.sm}
+          width={isTablet ? '100%' : '50%'}
         ></Image>
       </FluidContainer>
       <VotingNav></VotingNav>
