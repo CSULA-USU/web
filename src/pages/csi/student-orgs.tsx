@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
 import { CallToAction, Page, Header } from 'modules';
 import { FluidContainer, Typography, Button, Card, Image } from 'components';
+import { useBreakpoint } from 'hooks';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -13,16 +14,7 @@ const HeaderContainer = styled.div`
   margin: 0 auto;
   text-align: center;
 `;
-const MoreInformationContainer = styled.div`
-  background-color: ${Colors.primary};
-  height: 705px;
-  margin: 0 auto;
-`;
-const MoreInformationTextContainer = styled.div`
-  text-align: center;
-  width: 762px;
-  margin: auto;
-`;
+
 const PresenceInfoContainer = styled.div`
   margin-top: ${Spaces['2xl']};
   display: flex;
@@ -35,6 +27,9 @@ const OrgsCategoriesCardsContainer = styled.div`
   flex-direction: column;
 `;
 
+const TextCenter = styled.div`
+  text-align: center;
+`;
 const cards = [
   {
     title: 'Sample Constitution',
@@ -87,6 +82,8 @@ const orgsCategoriesCards = [
 ];
 
 export default function StudentOrgs() {
+  const { isTablet, isDesktop } = useBreakpoint();
+
   const buttons = [
     { text: 'Get Involved', href: '#' },
     { text: 'Start Your Own', href: '#' },
@@ -131,11 +128,19 @@ export default function StudentOrgs() {
           returning orgs, and conduct procedures.
         </Typography>
       </CallToAction>
-      <FluidContainer flex>
+      <FluidContainer flex flexDirection={isTablet ? 'column' : 'row'}>
         <FluidContainer flex flexDirection="column">
-          <Typography margin="auto 24px 24px" variant="title">
-            Presence
-          </Typography>
+          {isTablet ? (
+            <TextCenter>
+              <Typography margin="auto 24px 24px" variant="title">
+                Presence
+              </Typography>
+            </TextCenter>
+          ) : (
+            <Typography margin="auto 24px 24px" variant="title">
+              Presence
+            </Typography>
+          )}
           <Image
             margin="auto"
             size="100%"
@@ -156,47 +161,58 @@ export default function StudentOrgs() {
           </OrgsCategoriesCardsContainer>
         </PresenceInfoContainer>
       </FluidContainer>
-      <MoreInformationContainer>
-        <FluidContainer flex flexDirection="column" alignItems="center">
+
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        backgroundColor="primary"
+      >
+        <TextCenter>
           <Typography margin="auto" variant="title">
             Student Organization Resources
           </Typography>
-          <FluidContainer flex justifyContent="space-between">
-            {cards.map((props) => (
-              <Card
-                rounded
-                hoverable
-                key={`${props.title}`}
-                {...props}
-                width="calc(33.33% - 24px)"
-                minHeight="280px"
-              ></Card>
-            ))}
-          </FluidContainer>
-          <MoreInformationTextContainer>
-            <Typography>
-              These organizations provide limitless opportunities to achieve an
-              active role on campus and to pursue individual interests. Learn
-              more about our recognized student organizations and their events.
-            </Typography>
-          </MoreInformationTextContainer>
-          <Button margin="24px" variant="black">
-            Learn More
-          </Button>
+        </TextCenter>
+        <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
+          {cards.map((props) => (
+            <Card
+              rounded
+              hoverable
+              key={`${props.title}`}
+              {...props}
+              width={!isDesktop ? 'calc(33.33% - 24px)' : '100%'}
+              minHeight="280px"
+              margin={`${Spaces.sm} 0`}
+            ></Card>
+          ))}
         </FluidContainer>
-      </MoreInformationContainer>
+        <TextCenter>
+          <Typography>
+            These organizations provide limitless opportunities to achieve an
+            active role on campus and to pursue individual interests. Learn more
+            about our recognized student organizations and their events.
+          </Typography>
+        </TextCenter>
+        <Button margin="24px" variant="black">
+          Learn More
+        </Button>
+      </FluidContainer>
+
       <FluidContainer flex flexDirection="column">
-        <Typography margin="auto" variant="title">
-          Start Your Own Organization
-        </Typography>
-        <FluidContainer flex justifyContent="space-between">
+        <TextCenter>
+          <Typography margin="auto" variant="title">
+            Start Your Own Organization
+          </Typography>
+        </TextCenter>
+        <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
           {orgsCards.map((props) => (
             <Card
               topBorder
               key={`${props.title}`}
               {...props}
-              width="calc(33.33% - 24px)"
+              width={!isDesktop ? 'calc(33.33% - 24px)' : '100%'}
               minHeight="240px"
+              margin={`${Spaces.sm} 0`}
             ></Card>
           ))}
         </FluidContainer>
