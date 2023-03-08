@@ -1,6 +1,6 @@
 import { Button, ButtonProps, Divider, Typography } from 'components';
 import styled from 'styled-components';
-import { Spaces } from 'theme';
+import { Spaces, media } from 'theme';
 
 export interface DownloadSectionProps {
   title?: string;
@@ -11,15 +11,19 @@ export interface DownloadSectionProps {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  ${media('tablet')(`flex-direction: column;`)}
 `;
 
 const Title = styled.div`
   width: 20%;
+  ${media('tablet')(`width: 100%;`)}
 `;
 
 const Content = styled.div`
   width: 60%;
+  ${media('tablet')('width: 100%;')}
   margin: 0 ${Spaces['3xl']};
+  ${media('tablet')('margin: 24px auto;')}
 `;
 
 export const DownloadSection = ({
