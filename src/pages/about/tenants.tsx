@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { Page, GenericModal } from 'modules';
+import { Page, GenericModal, Header } from 'modules';
 import { Spaces } from 'theme';
 import styled from 'styled-components';
 import { Typography, Card, FluidContainer, Image } from 'components';
@@ -12,22 +12,7 @@ interface TenantCardData {
   iconAlt: string;
   number: string;
 }
-const TenantsTopContainer = styled.div`
-  background-image: url('subtle-background-1.jpg');
-  background-position: center;
-  background-size: cover;
-  padding: 72px 72px;
-`;
 
-const TenantsText = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-`;
 const CardContainer = styled.div`
   min-width: 400px;
   flex: 1;
@@ -115,21 +100,13 @@ export default function Tenants() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TenantsTopContainer>
-        <FluidContainer>
-          <TenantsText>
-            <Typography as="h2" variant="pageHeader">
-              Tenants
-            </Typography>
-            <Typography margin="0 0 24px">
-              The University-Student Union mission is to provide a unique and
-              friendly environment for the campus community to interact
-              informally. Our services and facilities departments provide
-              convenience and easy availability for on-the-go students.
-            </Typography>
-          </TenantsText>
-        </FluidContainer>
-      </TenantsTopContainer>
+      <Header title="Tenants">
+        The University-Student Union mission is to provide a unique and friendly
+        environment for the campus community to interact informally. Our
+        services and facilities departments provide convenience and easy
+        availability for on-the-go students.
+      </Header>
+
       <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
         {cards.map((props) => (
           <CardContainer
