@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
 import { Typography, Card, FluidContainer, Button } from 'components';
+import { useBreakpoint } from 'hooks';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
@@ -38,6 +39,8 @@ const buttons = [
 ];
 
 export default function Gene() {
+  const { isTablet } = useBreakpoint();
+
   return (
     <Page>
       <Head>
@@ -110,14 +113,14 @@ export default function Gene() {
         alignItems="center"
       >
         <Typography variant="title">What to expect</Typography>
-        <FluidContainer flex>
+        <FluidContainer flex flexWrap="wrap">
           {cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
               topBorder
               key={`${props.title}`}
               {...props}
-              width="calc(30.33% - 8px)"
+              width={isTablet ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
             ></Card>
