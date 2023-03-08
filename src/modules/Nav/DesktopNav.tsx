@@ -1,0 +1,98 @@
+import React from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
+import { Colors, FontSizes, Spaces, media } from 'theme';
+import navMap from 'data/navMap.json';
+import { NonBreakingSpan } from 'components';
+
+const Container = styled.nav`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 10;
+  > * {
+    &:not(:last-child) {
+      margin-right: ${Spaces.xl};
+      ${media('tablet')(`margin-right: ${Spaces.md}`)}
+    }
+  }
+  button {
+    background-color: transparent;
+    border: none;
+  }
+  a,
+  button {
+    color: ${Colors.greyLighter};
+    font-weight: 700;
+    font-size: ${FontSizes.sm};
+  }
+  .szh-menu-container > ul {
+    transform: translate(16px, 16px);
+  }
+  ul {
+    border-left: 3px solid ${Colors.grey};
+    transform: translateX(8px);
+    a,
+    button,
+    .szh-menu__item--submenu {
+      color: ${Colors.greyLighter};
+      font-weight: 400;
+      font-size: ${FontSizes.sm};
+    }
+    .szh-menu__item--submenu:after {
+      content: '>';
+      position: absolute;
+      right: 4px;
+    }
+  }
+  ul {
+    padding: 8px;
+    list-style: none;
+    background-color: ${Colors.greyDarker};
+  }
+  .szh-menu__item {
+    padding: 8px;
+  }
+`;
+
+export const DesktopNav = () => (
+  <Container>
+    {navMap.map((t1, index) => {
+      if (t1.sub) {
+        return (
+          <Menu key={index} menuButton={<MenuButton>{t1.text}</MenuButton>}>
+            <MenuItem>
+              <Link href={t1.href}>{t1.text}</Link>
+            </MenuItem>
+            {t1.sub.map((t2, index) => {
+              if (t2.sub) {
+                return (
+                  <SubMenu key={`t2_${index}`} label={t2.text}>
+                    {t2.sub.map((t3, index) => (
+                      <MenuItem key={`t3_${index}`}>
+                        <Link href={t3.href}>
+                          <NonBreakingSpan>{t3.text}</NonBreakingSpan>
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </SubMenu>
+                );
+              }
+              return (
+                <MenuItem key={`t2_${index}`}>
+                  <Link href={t2.href}>{t2.text}</Link>
+                </MenuItem>
+              );
+            })}
+          </Menu>
+        );
+      }
+      return (
+        <Link key={index} href={t1.href}>
+          {t1.text}
+        </Link>
+      );
+    })}
+  </Container>
+);

@@ -1,10 +1,10 @@
 import { FluidContainer, Image, Button } from 'components';
 import styled from 'styled-components';
 import { Colors, media } from 'theme';
-import { NavItems } from './NavItems';
 import Link from 'next/link';
 import { useBreakpoint } from 'hooks';
 import { MobileNav } from './MobileNav';
+import { DesktopNav } from './DesktopNav';
 
 const NavExtra = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ export const Nav = () => {
           alt="Cal State LA University-Student Union Logo"
         />
       </Link>
-      <NavItems />
+      <DesktopNav />
       {!isDesktop && (
         <NavExtra>
           <GetInvolvedButton>Get Involved</GetInvolvedButton>

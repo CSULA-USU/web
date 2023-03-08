@@ -551,6 +551,14 @@
   dependencies:
     tslib "^2.4.0"
 
+"@szhsin/react-menu@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.5.2.tgz#b316b7aec4cc0dfd10c13a81e9063ea1668d4096"
+  integrity sha512-eR7dzDBrwlt9RSgGmLXjfA1Rd5tYqD5mnqjQgZJysf3Jt3vBPkrbDT1oW21nLpfUCkyUQOuZ38n2IdhWl9KkzQ==
+  dependencies:
+    prop-types "^15.7.2"
+    react-transition-state "^1.1.5"
+
 "@types/cheerio@^0.22.18":
   version "0.22.31"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.31.tgz#b8538100653d6bb1b08a1e46dec75b4f2a5d5eb6"
@@ -2522,6 +2530,11 @@ react-portalize@^2.1.0:
   dependencies:
     "@types/cheerio" "^0.22.18"
     cheerio "^1.0.0-rc.3"
+
+react-transition-state@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.5.tgz#22accee21d0011b1d0245be24b6262ae67f494c3"
+  integrity sha512-ITY2mZqc2dWG2eitJkYNdcSFW8aKeOlkL2A/vowRrLL8GH3J6Re/SpD/BLvQzrVOTqjsP0b5S9N10vgNNzwMUQ==
 
 react@18.2.0:
   version "18.2.0"
