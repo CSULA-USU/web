@@ -5,6 +5,7 @@ import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import navMap from 'data/navMap.json';
 import { NonBreakingSpan } from 'components';
+import { FiChevronDown } from 'react-icons/fi';
 
 const Container = styled.nav`
   display: flex;
@@ -26,9 +27,12 @@ const Container = styled.nav`
     color: ${Colors.greyLighter};
     font-weight: 700;
     font-size: ${FontSizes.sm};
+    &:hover {
+      color: ${Colors.primary};
+    }
   }
   .szh-menu-container > ul {
-    transform: translate(16px, 16px);
+    transform: translate(16px, 8px);
   }
   ul {
     border-left: 3px solid ${Colors.grey};
@@ -38,7 +42,9 @@ const Container = styled.nav`
     .szh-menu__item--submenu {
       color: ${Colors.greyLighter};
       font-weight: 400;
-      font-size: ${FontSizes.sm};
+      &:hover {
+        color: ${Colors.primary};
+      }
     }
     .szh-menu__item--submenu:after {
       content: '>';
@@ -56,12 +62,30 @@ const Container = styled.nav`
   }
 `;
 
+const MainMenuItem = styled.div`
+  display: flex;
+  align-items: flex-end;
+  > :last-child {
+    margin-left: 4px;
+  }
+`;
+
 export const DesktopNav = () => (
   <Container>
     {navMap.map((t1, index) => {
       if (t1.sub) {
         return (
-          <Menu key={index} menuButton={<MenuButton>{t1.text}</MenuButton>}>
+          <Menu
+            key={index}
+            menuButton={
+              <MenuButton>
+                <MainMenuItem>
+                  {t1.text}
+                  <FiChevronDown />
+                </MainMenuItem>
+              </MenuButton>
+            }
+          >
             <MenuItem>
               <Link href={t1.href}>{t1.text}</Link>
             </MenuItem>
