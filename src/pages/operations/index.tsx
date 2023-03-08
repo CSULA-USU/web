@@ -20,11 +20,17 @@ const Title = styled.div`
 const Description = styled.div`
   width: 800px;
 `;
+
+const TextCenter = styled.div`
+  text-align: center;
+`;
 const OperationsPDFDescriptions = (props: any) => {
   return (
     <PDFDescriptionContainer>
       <Title>
-        <Typography variant="titleSmall">{props.title}</Typography>
+        <Typography variant="subheader" weight="700">
+          {props.title}
+        </Typography>
       </Title>
       <Description>
         <Typography>{props.description}</Typography>
@@ -146,8 +152,11 @@ export default function Operations() {
         flexDirection="column"
         alignItems="center"
         backgroundColor="greyLightest"
+        justifyContent="center"
       >
-        <Typography variant="title">Additional Information</Typography>
+        <TextCenter>
+          <Typography variant="title">Additional Information</Typography>
+        </TextCenter>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLightest">
         {pdfDescriptionCards.map((props) => (
