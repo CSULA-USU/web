@@ -14,10 +14,6 @@
     ]
   },
   {
-    "text": "Events",
-    "href": "/events"
-  },
-  {
     "text": "Departments",
     "href": "/departments",
     "sub": [
@@ -50,10 +46,6 @@
     ]
   },
   {
-    "text": "Employment",
-    "href": "/employment"
-  },
-  {
     "text": "Governance",
     "href": "/governance",
     "sub": [
@@ -70,5 +62,13 @@
         "href": "/public-documents"
       }
     ]
+  },
+  {
+    "text": "Events",
+    "href": "/events"
+  },
+  {
+    "text": "Employment",
+    "href": "/employment"
   }
 ]

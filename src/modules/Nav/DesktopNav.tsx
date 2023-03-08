@@ -8,6 +8,9 @@ import { NonBreakingSpan } from 'components';
 import { FiChevronDown } from 'react-icons/fi';
 
 const Container = styled.nav`
+  * {
+    outline: none;
+  }
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -27,7 +30,8 @@ const Container = styled.nav`
     color: ${Colors.greyLighter};
     font-weight: 700;
     font-size: ${FontSizes.sm};
-    &:hover {
+    &:hover,
+    &:focus {
       color: ${Colors.primary};
     }
   }
@@ -35,14 +39,18 @@ const Container = styled.nav`
     transform: translate(16px, 8px);
   }
   ul {
-    border-left: 3px solid ${Colors.grey};
+    border-left: 2px solid ${Colors.grey};
     transform: translateX(8px);
     a,
     button,
+    .szh-menu__item,
     .szh-menu__item--submenu {
       color: ${Colors.greyLighter};
       font-weight: 400;
-      &:hover {
+      &:hover,
+      &:focus,
+      &:hover a,
+      &:focus a {
         color: ${Colors.primary};
       }
     }
@@ -53,7 +61,7 @@ const Container = styled.nav`
     }
   }
   ul {
-    padding: 8px;
+    padding: 4px 8px;
     list-style: none;
     background-color: ${Colors.greyDarker};
   }
@@ -87,7 +95,9 @@ export const DesktopNav = () => (
             }
           >
             <MenuItem>
-              <Link href={t1.href}>{t1.text}</Link>
+              <Link href={t1.href}>
+                <NonBreakingSpan>{t1.text}</NonBreakingSpan>
+              </Link>
             </MenuItem>
             {t1.sub.map((t2, index) => {
               if (t2.sub) {
@@ -105,7 +115,9 @@ export const DesktopNav = () => (
               }
               return (
                 <MenuItem key={`t2_${index}`}>
-                  <Link href={t2.href}>{t2.text}</Link>
+                  <Link href={t2.href}>
+                    <NonBreakingSpan>{t2.text}</NonBreakingSpan>
+                  </Link>
                 </MenuItem>
               );
             })}

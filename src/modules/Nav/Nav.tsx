@@ -33,6 +33,7 @@ export const Nav = () => {
     >
       <Link href="/">
         <Image
+          tabIndex={0}
           maxHeight={isMobile ? '64px' : '80px'}
           src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
           alt="Cal State LA University-Student Union Logo"
