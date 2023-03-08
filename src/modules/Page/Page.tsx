@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
-import { Announcement } from 'components';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -19,10 +18,6 @@ interface PageProps {
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
     <div>
-      <Announcement
-        text="Hello, this is what announcements are going to look like."
-        isVisible
-      />
       <Nav />
       {children}
     </div>

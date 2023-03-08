@@ -17,6 +17,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   &:hover {
     opacity: 0.7;
   }
+  &:focus {
+    opacity: 0.8;
+    outline: 1px solid ${Colors.primary};
+  }
   display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -88,6 +92,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
 
   return !eventName ? null : (
     <EventCardContainer
+      tabIndex={0}
       onClick={onClick}
       featured={featured}
       image={`${PRESENCE_URI_BASE}/${photoUri}`}

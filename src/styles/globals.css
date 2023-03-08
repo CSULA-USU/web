@@ -20,4 +20,5 @@ a {
 
 *:focus {
   outline: 1px dashed gold;
+  text-decoration: underline;
 }
