@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { Spaces } from 'theme';
 import { Page } from 'modules';
+import { useBreakpoint } from 'hooks';
+
 import {
   FluidContainer,
   Typography,
@@ -39,6 +41,7 @@ const descriptionCards = [
   },
 ];
 export default function Geek() {
+  const { isTablet } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -67,7 +70,7 @@ export default function Geek() {
         <Image
           src="/departments/csi/geek-header.jpg"
           alt="geek header"
-          height={400}
+          height={isTablet ? 200 : 400}
           marginBottom={Spaces.lg}
         ></Image>
         <VerticalLine />
@@ -107,7 +110,7 @@ export default function Geek() {
               hoverable
               margin="16px 8px"
               key={`${props.children}`}
-              width="calc(25% - 24px)"
+              width={isTablet ? '100%' : 'calc(25% - 24px)'}
               minHeight="280px"
               {...props}
             ></DescriptionCard>
