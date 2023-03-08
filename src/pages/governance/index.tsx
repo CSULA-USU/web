@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { AiOutlineFileText } from 'react-icons/ai';
 import { GovernanceFooter } from 'partials';
+import { useBreakpoint } from 'hooks';
 
 const IconHeading = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const TabContent = styled(Typography)`
   }
 `;
 export default function Governance() {
+  const { isDesktop } = useBreakpoint();
   const cards = [
     {
       title: 'Meet the Board of Directors',
@@ -204,14 +206,15 @@ export default function Governance() {
         staff and alumni at{' '}
         <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
       </Header>
-      <FluidContainer flex justifyContent="space-between">
+      <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
         {cards.map((props) => (
           <Card
             topBorder
             key={`${props.title}`}
             {...props}
-            width="calc(33.33% - 8px)"
+            width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
             minHeight="280px"
+            margin={`${Spaces.md} 0`}
           />
         ))}
       </FluidContainer>
