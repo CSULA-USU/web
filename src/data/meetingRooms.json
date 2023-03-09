@@ -22,7 +22,7 @@
         "setup": "Reception",
         "image": "/operations/meeting-rooms/alhambra/reception.jpg",
         "capacity": [30],
-        "equiptment": ["Chairs", "Cocktail Tabels"]
+        "equiptment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
@@ -114,7 +114,7 @@
         "setup": "Reception",
         "capacity": ["Room A: 44", "Room B: 54", "Room : 64"],
         "image": "/operations/meeting-rooms/los-angeles/reception.jpg",
-        "equiptment": ["Chairs", "Cocktail Tabels"]
+        "equiptment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
@@ -192,7 +192,7 @@
         "setup": "Reception",
         "image": "/operations/meeting-rooms/boardroom/south/reception.jpg",
         "capacity": [32],
-        "equiptment": ["Chairs", "Cocktail Tabels"]
+        "equiptment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { useBreakpoint } from 'hooks';
 export default function MeetingRooms() {
-  const { isTablet } = useBreakpoint();
+  const { isDesktop } = useBreakpoint();
   const cards = [
     {
       title: 'Attendees',
@@ -57,7 +57,7 @@ export default function MeetingRooms() {
           <Card
             key={props.title}
             margin={`${Spaces.sm}`}
-            width={isTablet ? 'calc(80%)' : 'calc(25%)'}
+            width={isDesktop ? 'calc(75%)' : 'calc(25%)'}
             title={props.title}
           >
             <Link key={props.title} href={'./meeting-rooms/' + props.id}>
