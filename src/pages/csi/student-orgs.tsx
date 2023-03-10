@@ -30,6 +30,7 @@ const OrgsCategoriesCardsContainer = styled.div`
 const TextCenter = styled.div`
   text-align: center;
 `;
+
 const cards = [
   {
     title: 'Sample Constitution',
@@ -39,7 +40,7 @@ const cards = [
     href: '/departments/csi/forms/csi-sample-constitution.pdf',
   },
   {
-    title: 'Presence Trainings',
+    title: 'ODC Info & Videos',
     children:
       'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
     linkText: 'Learn More',
@@ -52,23 +53,30 @@ const cards = [
     linkText: 'See Forms',
     href: '/csi/forms',
   },
+  {
+    title: 'Officer Change Form',
+    children:
+      "To begin the organization officer transition, the organization's President must first complete the Organization Officer Change Form.",
+    linkText: 'See Form',
+    href: 'https://forms.office.com/Pages/ResponsePage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3Ss0cdfPUjJEkZSkEGEKuVJUN1M1U1JGSVAzRkFSVEs4V0RQU1daTUZTTCQlQCN0PWcu',
+  },
 ];
 
 const orgsCards = [
   {
-    title: 'Complete The Following Forms Online',
-    href: '#',
-    linkText: 'View Forms',
+    title: 'Organization Registration Form',
+    href: 'https://calstatela.presence.io/form/event-registration',
+    linkText: 'View Form',
   },
   {
-    title: "Submit Your Organization's Constitution and Bylaws",
-    href: '#',
-    linkText: 'View Forms',
+    title: 'Officer & Advisor Form',
+    href: 'https://calstatela.presence.io/form/student-organization-officer-advisor-acknowledgement-form',
+    linkText: 'View Form',
   },
   {
-    title: 'Attend The Sexual Violence Prevention and Resources Training',
-    href: '#',
-    linkText: 'View Forms',
+    title: 'Organizational Development',
+    href: 'https://calstatela.presence.io/form/apply-for-opportunity',
+    linkText: 'View Form',
   },
 ];
 const orgsCategoriesCards = [
@@ -85,8 +93,8 @@ export default function StudentOrgs() {
   const { isTablet, isDesktop } = useBreakpoint();
 
   const buttons = [
-    { text: 'Get Involved', href: '#' },
-    { text: 'Start Your Own', href: '#' },
+    { text: 'Resources', href: '#resources' },
+    { text: 'Start Your Own', href: '#start' },
   ];
   return (
     <Page>
@@ -117,7 +125,7 @@ export default function StudentOrgs() {
         </HeaderContainer>
       </FluidContainer>
       <CallToAction
-        href="https://www.calstatela.edu/studentservices/student-organization-recognition"
+        href="https://www.calstatela.edu/studentservices/student-organization-handbook"
         buttonText="Learn More"
         text="Visit the Student Organization Handbook"
       >
@@ -146,7 +154,7 @@ export default function StudentOrgs() {
             size="100%"
             src="/departments/csi/presence-screen.png"
             alt="screenshot of presence homepage"
-            borderRadius="8px"
+            borderRadius="12px"
           />
         </FluidContainer>
         <PresenceInfoContainer>
@@ -168,7 +176,7 @@ export default function StudentOrgs() {
         alignItems="center"
         backgroundColor="primary"
       >
-        <TextCenter>
+        <TextCenter id="resources">
           <Typography margin="auto" variant="title">
             Student Organization Resources
           </Typography>
@@ -180,7 +188,13 @@ export default function StudentOrgs() {
               hoverable
               key={`${props.title}`}
               {...props}
-              width={!isDesktop ? 'calc(33.33% - 24px)' : '100%'}
+              width={
+                !isDesktop
+                  ? 'calc(25% - 24px)'
+                  : !isTablet
+                  ? 'calc(50% - 24px)'
+                  : '100%'
+              }
               minHeight="280px"
               margin={`${Spaces.sm} 0`}
             ></Card>
@@ -189,17 +203,23 @@ export default function StudentOrgs() {
         <TextCenter>
           <Typography>
             These organizations provide limitless opportunities to achieve an
-            active role on campus and to pursue individual interests. Learn more
-            about our recognized student organizations and their events.
+            active role on campus and to pursue individual interests.
+            <br />
+            Learn more about our recognized student organizations and their
+            events.
           </Typography>
         </TextCenter>
-        <Button margin="24px" variant="black">
+        <Button
+          margin="24px"
+          variant="black"
+          href="https://calstatela.presence.io/organizations"
+        >
           Learn More
         </Button>
       </FluidContainer>
 
       <FluidContainer flex flexDirection="column">
-        <TextCenter>
+        <TextCenter id="start">
           <Typography margin="auto" variant="title">
             Start Your Own Organization
           </Typography>
@@ -226,7 +246,7 @@ export default function StudentOrgs() {
         textColorProp="white"
       >
         <Typography as="h2" variant="label" color="white">
-          Learn more about the Student Organization Conduct code <br />
+          Read up on the Student Organization Conduct Code <br />
           or report an incident related to student organizations
         </Typography>
       </CallToAction>
