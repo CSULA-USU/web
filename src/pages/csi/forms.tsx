@@ -183,6 +183,67 @@ const banking = [
   },
 ];
 
+const event = [
+  {
+    title: 'Amplified Sound Request',
+    children: (
+      <Typography>
+        Amplified Sound Request (On-Campus Departments Only & Off-Campus
+        Organizations only).
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>View</NonBreakingSpan>,
+      disabled: false,
+      href: 'https://powerforms.docusign.net/bb01a878-4b07-41a4-8a4f-b1e3cbfcdcc6?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+    },
+  },
+  {
+    title: 'Event Registration',
+    children: (
+      <Typography>
+        Student organization event registrations are subject to all necessary
+        requirements before they can be approved.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>View</NonBreakingSpan>,
+      disabled: false,
+      href: 'https://calstatela.presence.io/form/event-registration',
+    },
+  },
+  {
+    title: 'Request to Serve Alcoholic Beverages Form',
+    children: (
+      <Typography>
+        The Office of Annual Giving needs to review and approve all private
+        external fund raising events and activities to make sure they met the
+        education-exemption criteria and make sure all policies and procedures
+        are met.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>View</NonBreakingSpan>,
+      disabled: false,
+      href: '/departments/csi/forms/alcoholic-beverages.pdf',
+    },
+  },
+  {
+    title: 'Student Organization Temporary Food Permit Form',
+    children: (
+      <Typography>
+        Please ensure you have all required information in order to apply for a
+        temporary food permit.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>View</NonBreakingSpan>,
+      disabled: false,
+      href: 'https://powerforms.docusign.net/5d3218e7-f550-4d3a-bf4b-8537bf931f19?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+    },
+  },
+];
+
 export default function CSIForms() {
   return (
     <Page>
@@ -210,6 +271,7 @@ export default function CSIForms() {
       </Header>
       <FormsSection forms={account} sectionTitle="Account Update Forms" />
       <FormsSection forms={banking} sectionTitle="Club Banking" />
+      <FormsSection forms={event} sectionTitle="Event" />
     </Page>
   );
 }
