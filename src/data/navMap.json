@@ -8,6 +8,10 @@
         "href": "/contact"
       },
       {
+        "text": "Staff",
+        "href": "/staff"
+      },
+      {
         "text": "Tenants",
         "href": "/about/tenants"
       }
@@ -17,10 +21,6 @@
     "text": "Departments",
     "href": "/departments",
     "sub": [
-      {
-        "text": "CSI",
-        "href": "/csi"
-      },
       {
         "text": "CCC",
         "href": "/ccc",
@@ -36,12 +36,66 @@
         ]
       },
       {
+        "text": "CSI",
+        "href": "/csi",
+        "sub": [
+          { "text": "CSI Forms", "href": "/csi/forms" },
+          { "text": "GEEK", "href": "/csi/geek" },
+          {
+            "text": "Recognized Student Organizations",
+            "href": "/csi/student-orgs"
+          }
+        ]
+      },
+      {
+        "text": "Graffix",
+        "href": "/graffix"
+      },
+      {
         "text": "Operations",
-        "href": "/operations"
+        "href": "/operations",
+        "sub": [
+          {
+            "text": "Meeting Rooms",
+            "href": "/operations/meeting-rooms",
+            "sub": [
+              {
+                "text": "Alhambra Room",
+                "href": "/operations/meeting-rooms/alhambra-room"
+              },
+              {
+                "text": "Boardroom North",
+                "href": "/operations/meeting-rooms/boardroom-north"
+              },
+              {
+                "text": "Boardroom South",
+                "href": "/operations/meeting-rooms/boardroom-south"
+              },
+              {
+                "text": "Los Angeles Room",
+                "href": "/operations/meeting-rooms/los-angeles-room"
+              },
+              {
+                "text": "San Gabriel Room",
+                "href": "/operations/meeting-rooms/san-gabriel-room"
+              },
+              {
+                "text": "Theater Room",
+                "href": "/operations/meeting-rooms/theater-room"
+              }
+            ]
+          }
+        ]
       },
       {
         "text": "Recreation",
-        "href": "/recreation"
+        "href": "/recreation",
+        "sub": [
+          {
+            "text": "GENE",
+            "href": "/recreation/gene"
+          }
+        ]
       }
     ]
   },
@@ -50,16 +104,24 @@
     "href": "/governance",
     "sub": [
       {
-        "text": "Student Leader Elections",
-        "href": "/student-leader-elections"
+        "text": "How to Vote",
+        "href": "/governance/how-to-vote"
       },
       {
         "text": "Meet The Board",
-        "href": "/meet-the-board"
+        "href": "/governance/meet-the-board"
       },
       {
         "text": "Public Documents",
-        "href": "/public-documents"
+        "href": "/governance/public-documents"
+      },
+      {
+        "text": "Public Document Archives",
+        "href": "/governance/public-document-archives"
+      },
+      {
+        "text": "Student Leader Elections",
+        "href": "/governance/student-leader-elections"
       }
     ]
   },
