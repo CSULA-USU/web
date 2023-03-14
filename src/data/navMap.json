@@ -26,6 +26,10 @@
         "href": "/ccc",
         "sub": [
           {
+            "text": "CCC Home",
+            "href": "/ccc"
+          },
+          {
             "text": "Cultural Grads",
             "href": "/ccc/cultural-grads"
           },
@@ -39,7 +43,8 @@
         "text": "CSI",
         "href": "/csi",
         "sub": [
-          { "text": "CSI Forms", "href": "/csi/forms" },
+          { "text": "CSI Home", "href": "/csi" },
+          { "text": "Forms", "href": "/csi/forms" },
           { "text": "GEEK", "href": "/csi/geek" },
           {
             "text": "Recognized Student Organizations",
@@ -55,6 +60,10 @@
         "text": "Operations",
         "href": "/operations",
         "sub": [
+          {
+            "text": "Operations Home",
+            "href": "/operations"
+          },
           {
             "text": "Meeting Rooms",
             "href": "/operations/meeting-rooms",
@@ -91,6 +100,10 @@
         "text": "Recreation",
         "href": "/recreation",
         "sub": [
+          {
+            "text": "Recreation Home",
+            "href": "/recreation"
+          },
           {
             "text": "GENE",
             "href": "/recreation/gene"
