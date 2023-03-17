@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Header, OfficeHours, Page } from 'modules';
-import { FluidContainer, Image } from 'components';
+import { Header, CallToAction, OfficeHours, Page } from 'modules';
+import { FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -85,7 +85,7 @@ export default function APISRC() {
           </a>
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc"
+            href="https://www.tiktok.com/@apisrc.ccc"
           >
             <FaTiktok fontSize={FontSizes.xl} aria-label="apisrc tiktok icon" />
           </a>
@@ -121,6 +121,23 @@ export default function APISRC() {
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
+      <CallToAction
+        href="https://forms.office.com/r/2pTsmaFvCk"
+        buttonText="Sign Up"
+        text="APIDA Grad Committee"
+      >
+        <Typography as="h2" variant="label">
+          We&apos;re looking for committee members to help us plan APIDA Grad!
+          From the theme, sash design, performance - join us in making one of
+          the biggest celebrations happen! You don&apos;t have to be a
+          graduating student to be on the committee!
+        </Typography>
+      </CallToAction>
+      <FluidContainer>
+        <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
+          Frequently Asked Questions
+        </Typography>
+      </FluidContainer>
     </Page>
   );
 }
