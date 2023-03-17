@@ -241,7 +241,7 @@ export default function CulturalGrads() {
                 academic success. The ceremonies are open to all students who
                 would like to sign up and participate.
               </Typography>
-              <Button variant="black" href="#">
+              <Button variant="black" href="#apply">
                 <SubHeaderSpan>
                   Apply Now&nbsp;
                   <FaGraduationCap color={'white'} fontSize={'24px'} />
@@ -250,7 +250,7 @@ export default function CulturalGrads() {
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan>
+            <SubHeaderSpan id="apply">
               <Typography margin="24px" as="h2" variant="titleSmall">
                 Graduations
               </Typography>
@@ -331,7 +331,7 @@ export default function CulturalGrads() {
                   your academic success. The ceremonies are open to all students
                   who would like to sign up and participate.
                 </Typography>
-                <Button variant="black" href="#">
+                <Button variant="black" href="#apply">
                   <SubHeaderSpan>
                     Apply Now&nbsp;
                     <FaGraduationCap color={'white'} fontSize={'24px'} />
@@ -341,7 +341,7 @@ export default function CulturalGrads() {
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan>
+            <SubHeaderSpan id="apply">
               <Typography margin="24px" as="h2" variant="titleSmall">
                 Graduations
               </Typography>
