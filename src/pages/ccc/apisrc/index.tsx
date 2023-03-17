@@ -1,11 +1,16 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Header, CallToAction, OfficeHours, Page } from 'modules';
+import { CallToAction, Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import { FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaDiscord, FaTiktok } from 'react-icons/fa';
+
+const OfferingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const buttons = [
   { text: 'APIDA Grad', href: '#apida-grad' },
@@ -21,6 +26,45 @@ const hours = [
       'Monday - Thursday: 8:30 AM - 7:00 PM',
       'Friday: 8:30 AM - 4:00 PM',
     ],
+  },
+];
+
+const offerings = [
+  {
+    title: 'Cultural Education',
+    children:
+      'Cultural Education – Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
+    imgAlt: 'cultural education',
+    href: 'ccc/apisrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Cultural Engagement',
+    children:
+      'Cultural Engagement – Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
+    imgAlt: 'apisrc',
+    href: 'ccc/apisrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Cultural Student Development',
+    children:
+      'Cultural Student Development – Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
+    imgAlt: 'apisrc',
+    href: 'ccc/apisrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Cultural Environment Enhancement',
+    children:
+      'Cultural Environment Enhancement – Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources available within the center',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
+    imgAlt: 'apisrc',
+    href: 'ccc/apisrc',
+    linkText: 'Learn More',
   },
 ];
 
@@ -135,8 +179,13 @@ export default function APISRC() {
       </CallToAction>
       <FluidContainer>
         <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
-          Frequently Asked Questions
+          Today, the APISRC continues to serve the mission through 4 components:
         </Typography>
+        <OfferingsContainer>
+          {offerings.map((props) => (
+            <ImageAndCard key={props.title} imageWidth="300px" {...props} />
+          ))}
+        </OfferingsContainer>
       </FluidContainer>
     </Page>
   );
