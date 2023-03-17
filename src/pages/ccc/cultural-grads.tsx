@@ -255,7 +255,7 @@ export default function CulturalGrads() {
                 Graduations
               </Typography>
             </SubHeaderSpan>
-            <FluidContainer flex flexWrap="wrap">
+            <FluidContainer flex flexWrap="wrap" padding="0px">
               {cards.map((props) => (
                 <Card
                   margin={`${Spaces.md}`}
@@ -346,7 +346,7 @@ export default function CulturalGrads() {
                 Graduations
               </Typography>
             </SubHeaderSpan>
-            <FluidContainer flex flexWrap="wrap">
+            <FluidContainer flex flexWrap="wrap" padding="0px">
               {cards.map((props) => (
                 <Card
                   margin={`${Spaces.md}`}
