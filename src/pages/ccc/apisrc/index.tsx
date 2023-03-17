@@ -121,6 +121,12 @@ export default function APISRC() {
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="center for student involvement logo"
+          src="/departments/ccc/apisrc-header.png"
+        />
+      </FluidContainer>
     </Page>
   );
 }
