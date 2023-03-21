@@ -41,7 +41,7 @@ const descriptionCards = [
   },
 ];
 export default function Geek() {
-  const { isTablet } = useBreakpoint();
+  const { isTablet, isDesktop } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -70,7 +70,7 @@ export default function Geek() {
         <Image
           src="/departments/csi/geek-header.jpg"
           alt="geek header"
-          height={isTablet ? 200 : 400}
+          width={isDesktop ? '100%' : '80%'}
           marginBottom={Spaces.lg}
         ></Image>
         <VerticalLine />
