@@ -17,7 +17,6 @@ const OfficeHoursContentContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   > * {
-    min-width: 400px;
     margin-bottom: ${Spaces.md};
   }
 `;
