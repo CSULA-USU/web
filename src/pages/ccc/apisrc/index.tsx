@@ -191,7 +191,7 @@ export default function APISRC() {
         <Image
           margin="auto"
           borderRadius="12px"
-          src="/departments/ccc/nuestra-teaser.jpeg"
+          src="/departments/ccc/apisrc/apida-grad.jpeg"
           alt="graduation image"
           width={isMobile ? '100%' : '45%'}
           height={isMobile ? '100%' : '45%'}
@@ -217,6 +217,8 @@ export default function APISRC() {
         <Image
           alt="center for student involvement logo"
           src="/departments/ccc/apisrc-header.png"
+          width="100%"
+          margin={`${Spaces.xl} 500px`}
         />
       </FluidContainer>
     </Page>
