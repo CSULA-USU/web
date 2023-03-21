@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { Page, GenericModal, Header } from 'modules';
-import { Spaces } from 'theme';
+import { Spaces, media } from 'theme';
 import styled from 'styled-components';
 import { Typography, Card, FluidContainer, Image } from 'components';
 
@@ -14,7 +14,9 @@ interface TenantCardData {
 }
 
 const CardContainer = styled.div`
-  min-width: 400px;
+  ${media('tablet')(`min-width: 100%;`)}
+
+  min-width: calc(33.33% - 8px);
   flex: 1;
   margin: ${Spaces.lg} 0;
 `;
