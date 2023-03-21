@@ -6,17 +6,16 @@ import {
   Expandable,
   FluidContainer,
   Image,
-  NonBreakingSpan,
   Typography,
 } from 'components';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { BsQuestionCircle } from 'react-icons/bs';
+import { useBreakpoint } from 'hooks';
 
 const LinkOuter = styled.div`
   display: flex;
   justify-content: center;
-  margin-left: -100px;
 `;
 
 const LinkInner = styled.div`
@@ -36,6 +35,17 @@ const HeaderContainer = styled.div`
 
 const ElectionUpdatesCard = styled.div`
   margin: ${Spaces.xl} 0;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${Spaces.sm};
+`;
+
+const TextCenter = styled.div`
+  text-align: center;
 `;
 
 const ElectionUpdates = (props: any) => {
@@ -103,6 +113,8 @@ const electionUpdateItems = [
 ];
 
 export default function StudentLeaderElections() {
+  const { isTablet } = useBreakpoint();
+
   return (
     <Page>
       <Head>
@@ -123,32 +135,30 @@ export default function StudentLeaderElections() {
         backgroundColor="black"
         flex
         justifyContent="space-between"
+        flexWrap={!isTablet ? 'nowrap' : 'wrap'}
       >
         <HeaderContainer>
           <Typography variant="pageHeader" color="white">
-            <NonBreakingSpan>Student Leader Elections</NonBreakingSpan>
+            <TextCenter>Student Leader Elections</TextCenter>
           </Typography>
+
           <Typography color="white" lineHeight="1.8">
-            The University-Student Union&apos;s Board of Directors is the
-            governing board of the Union. The purpose of the Board is to
-            establish policy for the Union as a student body center for the
-            benefit of students, faculty, staff and alumni at Cal State Los
-            Angeles.
+            <TextCenter>
+              The University-Student Union&apos;s Board of Directors is the
+              governing board of the Union. The purpose of the Board is to
+              establish policy for the Union as a student body center for the
+              benefit of students, faculty, staff and alumni at Cal State Los
+              Angeles.
+            </TextCenter>
           </Typography>
-          <div>
-            <Button
-              margin="24px 0"
-              href="https://form.jotform.com/210416532268047"
-            >
+          <ButtonContainer>
+            <Button href="https://form.jotform.com/210416532268047">
               U-SU Board of Directors
             </Button>
-            <Button
-              margin="24px 24px"
-              href="https://asicalstatela.org/general-election"
-            >
+            <Button href="https://asicalstatela.org/general-election">
               ASI Student Government
             </Button>
-          </div>
+          </ButtonContainer>
           <LinkOuter>
             <Button href="#" variant="outline">
               <LinkInner>
@@ -163,7 +173,7 @@ export default function StudentLeaderElections() {
         <Image
           src="/student-leader-elections/student-leader-header.png"
           alt="student leader header"
-          width={800}
+          width={isTablet ? '100%' : '40%'}
         ></Image>
       </FluidContainer>
       <FluidContainer>

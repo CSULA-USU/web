@@ -124,7 +124,7 @@ export default function CCC() {
     },
   ];
 
-  const { returnByBreakpoint } = useBreakpoint();
+  const { returnByBreakpoint, isTablet, isMobile } = useBreakpoint();
   const descriptionCardWidth = returnByBreakpoint({
     tablet: '100%',
     desktop: 'calc(50% - 16px)',
@@ -214,11 +214,14 @@ export default function CCC() {
         alignItems="center"
         backgroundColor="primary"
       >
-        <FluidContainer flex>
+        <FluidContainer flex flexWrap={isTablet ? 'wrap' : 'nowrap'}>
           <Image
+            margin="auto"
+            borderRadius="12px"
             src="/departments/ccc/nuestra-teaser.jpeg"
             alt="graduation image"
-            width="500px"
+            width={isMobile ? '100%' : '45%'}
+            height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
             <Typography variant="title">

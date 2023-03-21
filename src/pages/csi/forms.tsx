@@ -213,22 +213,6 @@ const event = [
     },
   },
   {
-    title: 'Request to Serve Alcoholic Beverages Form',
-    children: (
-      <Typography>
-        The Office of Annual Giving needs to review and approve all private
-        external fund raising events and activities to make sure they met the
-        education-exemption criteria and make sure all policies and procedures
-        are met.
-      </Typography>
-    ),
-    button: {
-      children: <NonBreakingSpan>View</NonBreakingSpan>,
-      disabled: false,
-      href: '/departments/csi/forms/alcoholic-beverages.pdf',
-    },
-  },
-  {
     title: 'Student Organization Temporary Food Permit Form',
     children: (
       <Typography>
