@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { CallToAction, Header, ImageAndCard, OfficeHours, Page } from 'modules';
-import { FluidContainer, Image, Typography } from 'components';
+import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -66,6 +66,7 @@ const offerings = [
 
 export default function APISRC() {
   const { isDesktop } = useBreakpoint();
+  const { isTablet, isMobile } = useBreakpoint();
 
   const HeaderContainer = styled.div`
     background: url(/bod-cta-background.jpg) no-repeat;
@@ -184,6 +185,33 @@ export default function APISRC() {
             <ImageAndCard key={props.title} imageWidth="300px" {...props} />
           ))}
         </OfferingsContainer>
+      </FluidContainer>
+
+      <FluidContainer flex flexWrap={isTablet ? 'wrap' : 'nowrap'}>
+        <Image
+          margin="auto"
+          borderRadius="12px"
+          src="/departments/ccc/nuestra-teaser.jpeg"
+          alt="graduation image"
+          width={isMobile ? '100%' : '45%'}
+          height={isMobile ? '100%' : '45%'}
+        ></Image>
+        <FluidContainer>
+          <Typography variant="title">
+            Cultural Graduate Celebrations
+          </Typography>
+          <Typography margin="24px 0">
+            These ceremonies and celebrations are great opportunities to
+            acknowledge your academic achievements, honor your families,
+            communities, and other significant people in your lives, and to
+            celebrate the cultural influences that have contributed to your
+            academic success. The ceremonies are open to all students who would
+            like to sign up and participate.
+          </Typography>
+          <Button variant="black" href={'/ccc/cultural-grads'}>
+            Learn More
+          </Button>
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer flex justifyContent="center">
         <Image
