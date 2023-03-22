@@ -1,55 +1,55 @@
 [
   {
     "title": "President's Designee",
-    "src": "/board/john.jpg",
+    "src": "/board/male-placeholder.jpg",
     "name": "Dr. Ron Vogel",
     "credentials": "Dean of Rongxiang Xu College of Health and Human Services"
   },
   {
     "title": "Vice President of Student Life",
-    "src": "/board/john.jpg",
+    "src": "/board/octavio-villalpando.png",
     "name": "Dr. Octavio Villalpando",
     "credentials": "Vice President For Diversity Equity Inclusion And Student Life"
   },
   {
     "title": "Faculty Appointee",
-    "src": "/board/john.jpg",
+    "src": "/board/adele-dobry.jpg",
     "name": "Ms. Adele Dobry",
     "credentials": "Health Sciences Librarian"
   },
   {
     "title": "Faculty Appointee",
-    "src": "/board/john.jpg",
+    "src": "/board/male-placeholder.jpg",
     "name": "Ms. Somak Banerjee",
     "credentials": "Business & Economics"
   },
   {
     "title": "VP & CFO, Administration Finance Designee",
-    "src": "/board/john.jpg",
+    "src": "/board/female-placeholder.jpg",
     "name": "Ms. Ronnie Wills",
     "credentials": "Student Financial Services"
   },
   {
     "title": "Dean of Students",
-    "src": "/board/john.jpg",
+    "src": "/board/danielle-chambers.png",
     "name": "Ms. Danielle Chambers",
     "credentials": "Interim Associate Vice President For Student Life and Dean of Students"
   },
   {
     "title": "Advisor",
-    "src": "/board/john.jpg",
+    "src": "/board/stephen-fleischer.jpg",
     "name": "Dr. Stephen Fleischer",
     "credentials": "Executive Director, University-Student Union"
   },
   {
     "title": "Advisor",
-    "src": "/board/john.jpg",
-    "name": "Mr. Tario Marji",
+    "src": "/board/tariq-marji.jpg",
+    "name": "Mr. Tariq Marji",
     "credentials": "Executive Director, University Auxiliary Services"
   },
   {
     "title": "Advisor",
-    "src": "/board/john.jpg",
+    "src": "/board/barnaby-peake.jpg",
     "name": "Dr. Barnaby Peake",
     "credentials": "Executive Director, Associated Students, Inc."
   }
