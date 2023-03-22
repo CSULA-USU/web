@@ -193,7 +193,7 @@ export default function APISRC() {
           {offerings.map((props) => (
             <ImageAndCard
               key={props.title}
-              imageWidth={isMobile ? '65%' : '250px'}
+              imageWidth={isMobile ? '65%' : '184px'}
               {...props}
             />
           ))}
