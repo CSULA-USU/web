@@ -164,11 +164,13 @@ export default function APISRC() {
       </HeaderContainer>
       <CallToAction
         href="https://forms.office.com/r/2pTsmaFvCk"
+        buttonVariantColor="primary"
         buttonText="Sign Up"
         text="APIDA Grad Committee"
-        backgroundColorProp="primary"
+        textColorProp="white"
+        backgroundColorProp="greyDarkest"
       >
-        <Typography as="h3" variant="labelTitle">
+        <Typography as="h3" variant="labelTitle" color="white">
           We&apos;re looking for committee members to help us plan APIDA Grad!
           From the theme, sash design, performance - join us in making one of
           the biggest celebrations happen! You don&apos;t have to be a
@@ -184,14 +186,18 @@ export default function APISRC() {
           {offerings.map((props) => (
             <ImageAndCard
               key={props.title}
-              imageWidth={isMobile ? '100%' : '300px'}
+              imageWidth={isMobile ? '65%' : '300px'}
               {...props}
             />
           ))}
         </OfferingsContainer>
       </FluidContainer>
 
-      <FluidContainer flex flexWrap={isTablet ? 'wrap' : 'nowrap'}>
+      <FluidContainer
+        flex
+        flexWrap={isTablet ? 'wrap' : 'nowrap'}
+        backgroundColor="greyLightest"
+      >
         <Image
           margin="auto"
           borderRadius="12px"
@@ -201,9 +207,7 @@ export default function APISRC() {
           height={isMobile ? '100%' : '45%'}
         ></Image>
         <FluidContainer>
-          <Typography variant="title">
-            Cultural Graduate Celebrations
-          </Typography>
+          <Typography variant="title">APIDA Grad</Typography>
           <Typography margin="24px 0">
             These ceremonies and celebrations are great opportunities to
             acknowledge your academic achievements, honor your families,
