@@ -1,0 +1,36 @@
+[
+  {
+    "Co-Ed": [
+      {
+        "name": "Delta Sigma Chi Co-Ed Fraternity",
+        "crest": "/departments/csi/fsl/DSC.png",
+        "values": [
+          "Brotherhood,",
+          "Sisterhood,",
+          "Community, Service,",
+          "Scholarship"
+        ],
+        "founding": "May 6, 2005",
+        "communityService": ["Heart Cancer Toy Drive,", "Relay for Life"],
+        "colors": ["Red", "Black", "Gold"],
+        "symbol": "Black Panther"
+      }
+    ]
+  },
+  {
+    "Fraternities": [
+      {
+        "name": "Beta Gamma Nu",
+        "crest": "/departments/csi/fsl/BGN.png",
+        "values": [
+          "Pride in Culture",
+          "Brotherhood in arms",
+          "Respect for Life"
+        ],
+        "founding": "2016",
+        "colors": ["Brown", "Cream"],
+        "symbol": "Black Panther"
+      }
+    ]
+  }
+]

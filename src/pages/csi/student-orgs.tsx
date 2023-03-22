@@ -79,6 +79,7 @@ const orgsCards = [
     linkText: 'View Form',
   },
 ];
+
 const orgsCategoriesCards = [
   {
     title: 'Explore Student Organizations',
