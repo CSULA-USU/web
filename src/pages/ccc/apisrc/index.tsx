@@ -182,7 +182,11 @@ export default function APISRC() {
         </Typography>
         <OfferingsContainer>
           {offerings.map((props) => (
-            <ImageAndCard key={props.title} imageWidth="300px" {...props} />
+            <ImageAndCard
+              key={props.title}
+              imageWidth={isMobile ? '100%' : '300px'}
+              {...props}
+            />
           ))}
         </OfferingsContainer>
       </FluidContainer>
