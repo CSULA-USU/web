@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
-
+import { Spaces } from 'theme';
 interface CardStyles {
   margin?: string;
   width?: string;
@@ -19,7 +19,11 @@ interface CardProps extends CardStyles {
 }
 const CenterWord = styled.div`
   text-align: center;
-  margin: auto;
+  word-wrap: break-word;
+`;
+
+const Container = styled.div`
+  height: 80px;
 `;
 
 export const StaffCard = ({
@@ -29,17 +33,21 @@ export const StaffCard = ({
   src,
   alt,
   ...props
-}: CardProps) => (
-  <Panel {...props}>
-    <CenterWord>
-      <Typography color="gold" margin="auto">
-        {title}
-      </Typography>
-    </CenterWord>
-    <Image round src={src} alt={alt} />
-    <Typography margin="auto" size="md" weight="700">
-      {name}
-    </Typography>
-    <CenterWord>{children}</CenterWord>
-  </Panel>
-);
+}: CardProps) => {
+  return (
+    <Panel {...props} width={'350px'}>
+      <CenterWord>
+        <Container>
+          <Typography color="gold" margin={`${Spaces.sm}`} weight="700">
+            {title}
+          </Typography>
+        </Container>
+        <Image round src={src} alt={alt} width="100%" />
+        <Typography margin="auto" size="md" weight="700">
+          {name}
+        </Typography>
+        {children}
+      </CenterWord>
+    </Panel>
+  );
+};

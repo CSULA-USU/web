@@ -7,13 +7,14 @@ import {
   Button,
   NonBreakingSpan,
 } from 'components';
-import { Colors, FontSizes, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import awards from 'data/acuiAwards.json';
 import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
+import { useBreakpoint } from 'hooks';
 
 interface DesignCardData {
   title: string;
@@ -111,12 +112,23 @@ const NavItems = [
 
 const DesignsContainer = styled.div`
   width: calc(33.33% - 24px);
+  ${media('tablet')(`
+   width: 100%
+   `)}
   margin: 0 24px 0 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 const InnerAwardContainer = styled.div`
   display: flex;
-  gap: 24px;
+  align-items: center;
+  flex-direction: column;
+  ${media('tablet')(`
+   flex-wrap: wrap;
+  
+   `)}
+  margin: auto;
 `;
 
 const NavItemContainer = styled.div`
@@ -140,6 +152,7 @@ const HeaderInnerContainer = styled.div`
 `;
 
 export default function Graffix() {
+  const { isTablet, isDesktop } = useBreakpoint();
   const [buttonType, setButtonType] = useState('');
   const [awardCards, setAwardCards] = useState(awards);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -218,12 +231,14 @@ export default function Graffix() {
             identity for the U-SU through consistent publicity campaigns and
             promotions.
           </Header>
-          <Image
-            src="/departments/graffix/students-1.png"
-            alt="students"
-            width={600}
-            height={700}
-          ></Image>
+          {!isDesktop && (
+            <Image
+              src="/departments/graffix/students-1.png"
+              alt="students"
+              width={600}
+              height={700}
+            ></Image>
+          )}
         </HeaderInnerContainer>
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
@@ -233,7 +248,7 @@ export default function Graffix() {
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
-      <FluidContainer flex backgroundColor="greyLightest">
+      <FluidContainer flex flexWrap="wrap" backgroundColor="greyLightest">
         <DesignsContainer>
           {cards1.map((props) => (
             <div key={props.title}>
@@ -327,9 +342,18 @@ export default function Graffix() {
       <AwardsNav></AwardsNav>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {awardCards.map((award) => (
-          <Panel width="40%" topBorder margin="24px" key={award.name}>
+          <Panel
+            width={!isTablet ? 'calc(35%)' : '100%'}
+            topBorder
+            margin={Spaces.md}
+            key={award.name}
+          >
             <InnerAwardContainer>
-              <Image src={award.src} alt={award.title}></Image>
+              <Image
+                src={award.src}
+                alt={award.title}
+                marginRight={Spaces.md}
+              ></Image>
               <div>
                 <Typography as="h4" variant="titleSmall" margin="16px 0">
                   {award.name}
@@ -363,23 +387,25 @@ export default function Graffix() {
             Apply Now
           </Button>
         </FluidContainer>
-        <FluidContainer
-          flex
-          flexWrap="wrap"
-          justifyContent="space-evenly"
-          backgroundColor="white"
-          padding="24px"
-        >
-          {awardYears.map((y) => (
-            <Image
-              key={y.alt}
-              src={y.src}
-              alt={y.alt}
-              width="100px"
-              margin="8px"
-            />
-          ))}
-        </FluidContainer>
+        {!isDesktop && (
+          <FluidContainer
+            flex
+            flexWrap="wrap"
+            justifyContent="space-evenly"
+            backgroundColor="white"
+            padding="24px"
+          >
+            {awardYears.map((y) => (
+              <Image
+                key={y.alt}
+                src={y.src}
+                alt={y.alt}
+                width="100px"
+                margin="8px"
+              />
+            ))}
+          </FluidContainer>
+        )}
       </FluidContainer>
       {modalData && (
         <GenericModal

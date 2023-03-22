@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import { StaffCard } from 'components/StaffCard';
 import { useEffect, useState } from 'react';
 import staff from 'data/staff.json';
-import { Colors } from 'theme';
+import { Colors, Spaces } from 'theme';
 
 const NavItemContainer = styled.div`
   *:hover {
     color: ${Colors.gold};
   }
 `;
+
 const NavItems = [
   'All',
   'Directors',
@@ -67,7 +68,8 @@ export default function Staff() {
       <FluidContainer
         backgroundColor="greyDarkest"
         flex
-        justifyContent="space-between"
+        justifyContent="space-evenly"
+        flexWrap="wrap"
       >
         {NavItems.map((item) => (
           <NavItemContainer
@@ -76,7 +78,11 @@ export default function Staff() {
               setButtonType(item);
             }}
           >
-            <Typography color="white" variant="labelTitleSmall">
+            <Typography
+              color="white"
+              variant="labelTitleSmall"
+              margin={`0 ${Spaces.sm} 0 0`}
+            >
               {item}
             </Typography>
           </NavItemContainer>
@@ -88,7 +94,7 @@ export default function Staff() {
   return (
     <Page>
       <Header title="Meet the Staff" backgroundImage="/subtle-background-1.jpg">
-        Union: An act or instance of uniting or joining two or more things intok
+        Union: An act or instance of uniting or joining two or more things into
         one. Something that is made one : something formed bby a combining or
         coalition of parts or members. A confederation of independent
         individuals for some common purpose.
@@ -103,12 +109,11 @@ export default function Staff() {
             src={s.src}
             alt={s.alt}
             tags={s.tags}
-            width="calc(22%)"
-            margin="24px 16px"
+            margin={`${Spaces.sm}`}
             rounded
           >
-            <Typography>{s.department}</Typography>
-            <Typography margin="8px 0">{s.email}</Typography>
+            <Typography size="xs">{s.department}</Typography>
+            <Typography size="xs">{s.email}</Typography>
           </StaffCard>
         ))}
       </FluidContainer>

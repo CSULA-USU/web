@@ -1,10 +1,11 @@
-import { Page, Header } from 'modules';
+import { Page, Header, ImageAndCard } from 'modules';
 import { Card, FluidContainer, Image } from 'components';
 import { Spaces } from 'theme';
 import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
-
+import { useBreakpoint } from 'hooks';
 export default function MeetingRooms() {
+  const { isDesktop } = useBreakpoint();
   const cards = [
     {
       title: 'Attendees',
@@ -56,7 +57,7 @@ export default function MeetingRooms() {
           <Card
             key={props.title}
             margin={`${Spaces.sm}`}
-            width="calc(25%)"
+            width={isDesktop ? 'calc(75%)' : 'calc(25%)'}
             title={props.title}
           >
             <Link key={props.title} href={'./meeting-rooms/' + props.id}>
@@ -76,15 +77,7 @@ export default function MeetingRooms() {
         justifyContent="space-between"
       >
         {cards.map((props) => (
-          <FluidContainer flex alignItems="center" key={`${props.title}`}>
-            <Image
-              src={`${props.imgSrc}`}
-              alt={`${props.imgAlt}`}
-              width="150px"
-              marginRight="48px"
-            />
-            <Card {...props} minHeight="200px"></Card>
-          </FluidContainer>
+          <ImageAndCard key={props.title} {...props} />
         ))}
       </FluidContainer>
     </Page>

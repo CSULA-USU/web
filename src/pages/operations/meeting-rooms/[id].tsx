@@ -7,6 +7,7 @@ import { FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
+import { useBreakpoint } from 'hooks';
 
 const EquipmentSection = styled.div`
   display: flex;
@@ -36,12 +37,14 @@ const Table = styled.div`
   }
 
   th {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px 0 40px 0;
   }
 
+  thead th {
+    padding-right: 40px;
+  }
   td {
-    width: 33.33%;
+    width: 35%;
   }
 `;
 
@@ -75,6 +78,7 @@ const NavItems = [
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
+  const { isDesktop } = useBreakpoint();
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -83,17 +87,22 @@ export default function MeetingRoom() {
     setSelectedRoom(room);
   }, [id]);
 
-  const StaffNav = () => {
+  const MeetingRoomsNav = () => {
     return (
       <FluidContainer
         backgroundColor="greyDarker"
         flex
-        justifyContent="space-between"
+        justifyContent="space-evenly"
+        flexWrap="wrap"
       >
         {NavItems.map((item) => (
           <NavItemContainer key={item.header}>
             <Link href={'/operations/meeting-rooms/' + item.id}>
-              <Typography color="white" variant="labelTitleSmall">
+              <Typography
+                margin={`0 ${Spaces.sm} 0`}
+                color="white"
+                variant="labelTitleSmall"
+              >
                 {item.header}
               </Typography>
             </Link>
@@ -114,7 +123,7 @@ export default function MeetingRoom() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <StaffNav></StaffNav>
+      <MeetingRoomsNav></MeetingRoomsNav>
       <FluidContainer
         flex
         alignItems="center"
@@ -123,7 +132,7 @@ export default function MeetingRoom() {
       >
         <Image
           borderRadius="12px"
-          width={1500}
+          width="100%"
           src={selectedRoom.headerImage}
           alt={selectedRoom.mainImageAlt}
         />
@@ -131,10 +140,14 @@ export default function MeetingRoom() {
 
       <FluidContainer>
         <Table>
-          <table width="70%" align="center" vertical-align>
+          <table
+            width={isDesktop ? '70%' : '100%'}
+            align="center"
+            vertical-align
+          >
             <thead>
               <tr>
-                <th></th>
+                {!isDesktop && <th></th>}
                 <th>
                   <Typography variant="cta" size="lg">
                     Setup
@@ -155,17 +168,19 @@ export default function MeetingRoom() {
 
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
-                <th>
-                  {arrangement.image && (
-                    <Image
-                      borderRadius="12px"
-                      width={350}
-                      marginRight={Spaces['2xl']}
-                      src={arrangement.image}
-                      alt={arrangement.setup}
-                    />
-                  )}
-                </th>
+                {!isDesktop && (
+                  <th>
+                    {arrangement.image && (
+                      <Image
+                        borderRadius="12px"
+                        width={350}
+                        marginRight={Spaces['2xl']}
+                        src={arrangement.image}
+                        alt={arrangement.setup}
+                      />
+                    )}
+                  </th>
+                )}
                 <td>
                   <Typography variant="title" weight="400" size="md">
                     {arrangement.setup}
