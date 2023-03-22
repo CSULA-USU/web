@@ -152,7 +152,7 @@ const HeaderInnerContainer = styled.div`
 `;
 
 export default function Graffix() {
-  const { isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [buttonType, setButtonType] = useState('');
   const [awardCards, setAwardCards] = useState(awards);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -248,7 +248,13 @@ export default function Graffix() {
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
-      <FluidContainer flex flexWrap="wrap" backgroundColor="greyLightest">
+      <FluidContainer
+        flex
+        flexWrap="wrap"
+        backgroundColor="greyLightest"
+        justifyContent="center"
+        alignItems="center"
+      >
         <DesignsContainer>
           {cards1.map((props) => (
             <div key={props.title}>
@@ -374,7 +380,11 @@ export default function Graffix() {
             Join the
             <br />
             <strong>
-              <NonBreakingSpan>award-winning</NonBreakingSpan>
+              {!isMobile ? (
+                <NonBreakingSpan>award-winning</NonBreakingSpan>
+              ) : (
+                <>award winning</>
+              )}
             </strong>
             <br />
             team!
