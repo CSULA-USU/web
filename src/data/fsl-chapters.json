@@ -4,16 +4,11 @@
       {
         "name": "Delta Sigma Chi Co-Ed Fraternity",
         "crest": "/departments/csi/fsl/DSC.png",
-        "values": [
-          "Brotherhood,",
-          "Sisterhood,",
-          "Community, Service,",
-          "Scholarship"
-        ],
-        "founding": "May 6, 2005",
-        "communityService": ["Heart Cancer Toy Drive,", "Relay for Life"],
-        "colors": ["Red", "Black", "Gold"],
-        "symbol": "Black Panther"
+        "values": ["Brotherhood, Sisterhood, Community, Service, Scholarship"],
+        "founding": "2005",
+        "communityService": [" Heart Cancer Toy Drive, Relay for Life"],
+        "colors": [" Red, Black, Gold"],
+        "symbol": " Black Panther"
       }
     ]
   },
@@ -22,14 +17,108 @@
       {
         "name": "Beta Gamma Nu",
         "crest": "/departments/csi/fsl/BGN.png",
-        "values": [
-          "Pride in Culture",
-          "Brotherhood in arms",
-          "Respect for Life"
-        ],
+        "values": ["Pride in Culture, Brotherhood in Arms, Respect for Life"],
         "founding": "2016",
-        "colors": ["Brown", "Cream"],
-        "symbol": "Black Panther"
+        "colors": [" Brown, Cream"],
+        "symbol": " Black Panther"
+      },
+      {
+        "name": "Sigma Alpha Epsilon",
+        "crest": "/departments/csi/fsl/SAE.png",
+        "values": ["Friendship, Scholarship, Service"],
+        "founding": "1956",
+        "colors": [" Royal Purple, Old Gold"],
+        "symbol": " Lion"
+      },
+      {
+        "name": "Sigma Lambda Beta International Fraternity",
+        "crest": "/departments/csi/fsl/SLB.png",
+        "values": [
+          "Brotherhood, Scholarship, Community Service, Cultural Awareness"
+        ],
+        "founding": " 1997",
+        "communityService": [" CPR Awareness Day for Victor Correa"],
+        "colors": [" Royal Purple, Purest White"],
+        "symbol": " White Stallion Mustang"
+      },
+      {
+        "name": "Sigma Nu",
+        "crest": "/departments/csi/fsl/SN.png",
+        "values": ["Love, Truth, Honor"],
+        "founding": "1966",
+        "communityService": [" Helping Hand Initiative"],
+        "colors": [" Black, Gold, White"],
+        "symbol": " Sword"
+      }
+    ]
+  },
+  {
+    "Sororities": [
+      {
+        "name": "Alpha Sigma Tau",
+        "crest": "/departments/csi/fsl/AST.png",
+        "values": ["Intellect, Excellence, Graciousness, Respect, Connections"],
+        "founding": "1993",
+        "communityService": [
+          " Pine Mountain Settlement School, Habitat for Humanity"
+        ],
+        "colors": [" Brown, Cream"],
+        "symbol": " Anchor"
+      },
+      {
+        "name": "Alpha Theta Pi",
+        "crest": "/departments/csi/fsl/ATPi.png",
+        "values": ["Sisterhood, Scholastic, Service, Social, Sports"],
+        "founding": "1948",
+        "communityService": [
+          " AIDS Walk, MS Walk, Beach Clean Ups, Holiday Caroling, Toy, Food, and Clothing Drives"
+        ],
+        "colors": [" Red, White, Black"],
+        "symbol": " Pegasus"
+      },
+      {
+        "name": "Delta Phi Epsilon",
+        "crest": "/departments/csi/fsl/DPE.png",
+        "values": ["Sisterhood, Scholarship, Self, Service, Social"],
+        "founding": "2016",
+        "communityService": [
+          " Cystic Fibrosis Foundation, National Association of Anorexia Nervosa and Associated Disorders, Delta Phi Epsilon Educational Foundation"
+        ],
+        "colors": [" Royal Purple, Pure Gold"],
+        "symbol": " Unicorn"
+      },
+      {
+        "name": "Delta Sigma Theta",
+        "crest": "/departments/csi/fsl/DST.png",
+        "values": ["Scholarship, Sisterhood, Service"],
+        "founding": "1962",
+        "communityService": [
+          " Public service initiatives via Five-Point Program Thrust of Economic Development, Educational Development, International Awareness and Involvement, Physical and Mental Health, Political Awareness and Involvement"
+        ],
+        "colors": [" Crimson, Cream"],
+        "symbol": " Fortitude"
+      },
+      {
+        "name": "Delta Zeta",
+        "crest": "/departments/csi/fsl/DZ.png",
+        "values": ["Sisterhood, Philanthropy, Scholarship"],
+        "founding": "1966",
+        "communityService": [
+          " Painted Turtle Camp, Starkey Hearing Foundation"
+        ],
+        "colors": [" Rose, Green"],
+        "symbol": " Roman Lamp"
+      },
+      {
+        "name": "Sigma Lambda Gamma",
+        "crest": "/departments/csi/fsl/SLG.png",
+        "values": [
+          "Academics, Community Service, Cultural Awareness, Morals and Ethics, Social Interaction"
+        ],
+        "founding": "2012",
+        "communityService": [" Breast Cancer Awareness, TRIO Program"],
+        "colors": [" Shocking Pink, Majestic Purple"],
+        "symbol": " Pink Rose, Purple Panther"
       }
     ]
   }
