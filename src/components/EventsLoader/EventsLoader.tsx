@@ -13,7 +13,8 @@ export const EventsLoader = () => {
     const sortedData = data
       .filter(
         (event) =>
-          new Date().getTime() < new Date(event.endDateTimeUtc).getTime() &&
+          new Date().getTime() + 1 <
+            new Date(event.startDateTimeUtc).getTime() &&
           USU_ORGS.includes(event.organizationName),
       )
       .sort((a, b) => {
