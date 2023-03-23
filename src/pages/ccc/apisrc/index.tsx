@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { CallToAction, Header, ImageAndCard, OfficeHours, Page } from 'modules';
-import { FluidContainer, Image, Typography } from 'components';
+import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -65,7 +65,7 @@ const offerings = [
 ];
 
 export default function APISRC() {
-  const { isDesktop } = useBreakpoint();
+  const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
     background: url(/bod-cta-background.jpg) no-repeat;
@@ -135,6 +135,15 @@ export default function APISRC() {
             title="Asian Pacific Islander Student Resource Center"
             buttons={buttons}
           >
+            {isDesktop && (
+              <Image
+                src="/departments/ccc/apisrc/apisrc-sticker-2.svg"
+                alt="students"
+                width="100%"
+                height="400px"
+                margin={`${Spaces.sm} auto`}
+              ></Image>
+            )}
             The APISRC is one of the four identity-based centers within the
             Cross Cultural Centers at the University-Student Union. The APISRC
             was established in 1993 to address the growing needs and concerns of
@@ -163,34 +172,73 @@ export default function APISRC() {
       </HeaderContainer>
       <CallToAction
         href="https://forms.office.com/r/2pTsmaFvCk"
+        buttonVariantColor="primary"
         buttonText="Sign Up"
         text="APIDA Grad Committee"
-        backgroundColorProp="primary"
+        textColorProp="white"
+        backgroundColorProp="greyDarkest"
       >
-        <Typography as="h3" variant="labelTitle">
+        <Typography as="h3" variant="labelTitle" color="white">
           We&apos;re looking for committee members to help us plan APIDA Grad!
           From the theme, sash design, performance - join us in making one of
           the biggest celebrations happen! You don&apos;t have to be a
           graduating student to be on the committee!
         </Typography>
       </CallToAction>
-
       <FluidContainer>
         <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
           The APISRC continues to serve the mission through 4 components:
         </Typography>
         <OfferingsContainer>
           {offerings.map((props) => (
-            <ImageAndCard key={props.title} imageWidth="300px" {...props} />
+            <ImageAndCard
+              key={props.title}
+              imageWidth={isMobile ? '65%' : '184px'}
+              {...props}
+            />
           ))}
         </OfferingsContainer>
       </FluidContainer>
-      <FluidContainer flex justifyContent="center">
-        <Image
-          alt="center for student involvement logo"
-          src="/departments/ccc/apisrc-header.png"
-        />
-      </FluidContainer>
+      <div id="apida-grad">
+        <FluidContainer
+          flex
+          flexWrap={isTablet ? 'wrap' : 'nowrap'}
+          backgroundColor="greyLightest"
+        >
+          <Image
+            margin="auto"
+            borderRadius="12px"
+            src="/departments/ccc/apisrc/apida-grad.jpeg"
+            alt="2022 apida graduation image"
+            width={isMobile ? '100%' : '45%'}
+            height={isMobile ? '100%' : '45%'}
+          ></Image>
+          <FluidContainer>
+            <Typography variant="title">APIDA Grad</Typography>
+            <Typography margin="24px 0">
+              These ceremonies and celebrations are great opportunities to
+              acknowledge your academic achievements, honor your families,
+              communities, and other significant people in your lives, and to
+              celebrate the cultural influences that have contributed to your
+              academic success. The ceremonies are open to all students who
+              would like to sign up and participate.
+            </Typography>
+            <Button variant="black" href={'/ccc/cultural-grads'}>
+              Learn More
+            </Button>
+          </FluidContainer>
+        </FluidContainer>
+      </div>
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="asian pacific islander student resource center logo"
+            src="/departments/ccc/apisrc-header.png"
+            width="100%"
+            margin={`${Spaces.xl} 500px`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }
