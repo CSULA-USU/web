@@ -379,7 +379,7 @@ const ResourceButtons = [
 ];
 
 export default function FSL() {
-  const { isTablet, isDesktop } = useBreakpoint();
+  const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
   const [isNavButton, setIsNavButton] = useState('');
   const [displayContent, setDisplayContent] = useState('');
 
@@ -465,7 +465,7 @@ export default function FSL() {
         <Image
           src="/departments/csi/fsl/fsl-header.png"
           alt="fsl header"
-          height={isTablet ? 150 : 280}
+          height={isMini ? 100 : isMobile ? 150 : 280}
           marginBottom={Spaces.lg}
         ></Image>
         <TextCenter>
@@ -616,42 +616,55 @@ export default function FSL() {
                       <Typography variant="titleSmall"> {item}</Typography>
                     }
                   >
-                    {obj[item].map((p: any) => (
-                      <Card
-                        rounded
-                        title={p.name}
-                        key={p.name}
-                        width="calc(33.33% - 8px)"
-                      >
-                        <Image
-                          marginBottom={Spaces.lg}
-                          src={p.crest}
-                          alt="crest"
-                          width="80%"
-                        ></Image>
-                        <Typography>
-                          <strong>Values: </strong>
-                          {p.values.map((value: string) => value + ' ')}
-                          <br />
-                          <strong>Founding: </strong>
-                          {p.founding}
-                          <br />
-                          {p.communityService && (
-                            <Typography>
-                              <strong>Community Service:</strong>
-                              {p.communityService.map(
-                                (service: string) => service + ' ',
-                              )}
-                            </Typography>
-                          )}
-                          <strong>Colors:</strong>
-                          {p.colors.map((color: string) => color + ' ')}
-                          <br />
-                          <strong>Symbol:</strong>
-                          {p.symbol}
-                        </Typography>
-                      </Card>
-                    ))}
+                    <FluidContainer
+                      flex
+                      justifyContent="space-between"
+                      flexWrap="wrap"
+                    >
+                      {obj[item].map((p: any) => (
+                        <Card
+                          rounded
+                          title={p.name}
+                          key={p.name}
+                          width={
+                            isMobile
+                              ? '100%'
+                              : isTablet
+                              ? 'calc(45%)'
+                              : 'calc(33.33% - 8px)'
+                          }
+                          margin={` 0 0 ${Spaces.sm}`}
+                        >
+                          <Image
+                            marginBottom={Spaces.lg}
+                            src={p.crest}
+                            alt="crest"
+                            width="80%"
+                          ></Image>
+                          <Typography>
+                            <strong>Values: </strong>
+                            {p.values.map((value: string) => value + ' ')}
+                            <br />
+                            <strong>Founding: </strong>
+                            {p.founding}
+                            <br />
+                            {p.communityService && (
+                              <Typography>
+                                <strong>Community Service:</strong>
+                                {p.communityService.map(
+                                  (service: string) => service + ' ',
+                                )}
+                              </Typography>
+                            )}
+                            <strong>Colors:</strong>
+                            {p.colors.map((color: string) => color + ' ')}
+                            <br />
+                            <strong>Symbol:</strong>
+                            {p.symbol}
+                          </Typography>
+                        </Card>
+                      ))}
+                    </FluidContainer>
                   </Expandable>
                   <Divider margin={`${Spaces.md} 0`} />
                 </>
