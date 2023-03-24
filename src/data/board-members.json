@@ -1,56 +1,116 @@
 [
   {
+    "title": "Student Director",
+    "src": "/board/female-placeholder.png",
+    "name": "Cameryn Mabry",
+    "credentials": "Board Chair"
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/female-placeholder.png",
+    "name": "Josephine Yasuda",
+    "credentials": ""
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/female-placeholder.png",
+    "name": "Stacy Mencias",
+    "credentials": ""
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/male-placeholder.png",
+    "name": "Javier Arzate",
+    "credentials": ""
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/male-placeholder.png",
+    "name": "Ash Gupta",
+    "credentials": ""
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/male-placeholder.png",
+    "name": "Rahul S Bhogale",
+    "credentials": ""
+  },
+  {
+    "title": "Alumni Representative",
+    "src": "/board/nina-torres.jpg",
+    "name": "Nina Torres",
+    "credentials": "Class of 2014"
+  },
+  {
     "title": "President's Designee",
-    "src": "/board/male-placeholder.jpg",
+    "src": "/board/ron-vogel.jpg",
     "name": "Dr. Ron Vogel",
     "credentials": "Dean of Rongxiang Xu College of Health and Human Services"
   },
   {
-    "title": "Vice President of Student Life",
-    "src": "/board/octavio-villalpando.png",
+    "title": "Vice President for Student Life",
+    "src": "/board/octavio-villalpando.jpg",
     "name": "Dr. Octavio Villalpando",
-    "credentials": "Vice President For Diversity Equity Inclusion And Student Life"
+    "credentials": "Vice President For Diversity Equity Inclusion and Student Life"
   },
   {
     "title": "Faculty Appointee",
     "src": "/board/adele-dobry.jpg",
-    "name": "Ms. Adele Dobry",
+    "name": "Adele Dobry",
     "credentials": "Health Sciences Librarian"
   },
   {
     "title": "Faculty Appointee",
-    "src": "/board/male-placeholder.jpg",
-    "name": "Ms. Somak Banerjee",
-    "credentials": "Business & Economics"
+    "src": "/board/juily-phun.jpg",
+    "name": "Juily Phun",
+    "credentials": "Asian and American Studies"
+  },
+  {
+    "title": "Faculty Appointee",
+    "src": "/board/somak-banerjee.jpg",
+    "name": "Somak Banerjee",
+    "credentials": "Business and Economics"
   },
   {
     "title": "VP & CFO, Administration Finance Designee",
-    "src": "/board/female-placeholder.jpg",
-    "name": "Ms. Ronnie Wills",
+    "src": "/board/male-placeholder.png",
+    "name": "Ronnie Wills",
     "credentials": "Student Financial Services"
+  },
+  {
+    "title": "Vice President for Administration and Chief Financial Officer Designee",
+    "src": "/board/female-placeholder.png",
+    "name": "Judith Benjamin",
+    "credentials": "University Controller"
   },
   {
     "title": "Dean of Students",
     "src": "/board/danielle-chambers.png",
-    "name": "Ms. Danielle Chambers",
+    "name": "Danielle Chambers",
     "credentials": "Interim Associate Vice President For Student Life and Dean of Students"
   },
   {
     "title": "Advisor",
     "src": "/board/stephen-fleischer.jpg",
     "name": "Dr. Stephen Fleischer",
-    "credentials": "Executive Director, University-Student Union"
+    "credentials": "Executive Director of University-Student Union"
   },
   {
     "title": "Advisor",
     "src": "/board/tariq-marji.jpg",
-    "name": "Mr. Tariq Marji",
-    "credentials": "Executive Director, University Auxiliary Services"
+    "name": "Tariq Marji",
+    "credentials": "Executive Director of University Auxiliary Services"
   },
   {
     "title": "Advisor",
     "src": "/board/barnaby-peake.jpg",
     "name": "Dr. Barnaby Peake",
-    "credentials": "Executive Director, Associated Students, Inc."
+    "credentials": "Executive Director of Associated Students, Inc."
+  },
+  {
+    "title": "Advisor",
+    "src": "/board/brian-nguyen.jpg",
+    "name": "Brian Nguyen",
+    "credentials": "President of Associated Students, Inc."
   }
 ]
