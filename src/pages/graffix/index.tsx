@@ -352,13 +352,14 @@ export default function Graffix() {
               <Image
                 src={award.src}
                 alt={award.title}
+                width={'300px'}
                 marginRight={Spaces.md}
               ></Image>
               <div>
                 <Typography as="h4" variant="titleSmall" margin="16px 0">
                   {award.name}
                 </Typography>
-                <Typography>ACUI Name:{award.acuiName}</Typography>
+                <Typography>ACUI Conference:{award.acuiName}</Typography>
                 <Typography>Title: {award.title}</Typography>
                 <Typography>Place: {award.place}</Typography>
                 <Typography>Category: {award.category}</Typography>
