@@ -33,7 +33,7 @@ const offerings = [
   {
     title: 'Cultural Education',
     children:
-      'Cultural Education – Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
+      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
     imgSrc: '/vectors/ccc/teaching.svg',
     imgAlt: 'cultural education',
     href: 'ccc/apisrc',
@@ -41,7 +41,7 @@ const offerings = [
   {
     title: 'Cultural Engagement',
     children:
-      'Cultural Engagement – Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy',
+      'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy',
     imgSrc: '/vectors/ccc/winner.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -49,7 +49,7 @@ const offerings = [
   {
     title: 'Cultural Student Development',
     children:
-      'Cultural Student Development – Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience',
+      'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience',
     imgSrc: '/vectors/ccc/education.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -57,7 +57,7 @@ const offerings = [
   {
     title: 'Cultural Environment Enhancement',
     children:
-      'Cultural Environment Enhancement – Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources available within the center',
+      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources available within the center',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -141,7 +141,7 @@ export default function APISRC() {
                 alt="students"
                 width="100%"
                 height="400px"
-                margin={`${Spaces.sm} auto`}
+                margin={`${Spaces.md} auto`}
               ></Image>
             )}
             The APISRC is one of the four identity-based centers within the
@@ -186,14 +186,19 @@ export default function APISRC() {
         </Typography>
       </CallToAction>
       <FluidContainer>
-        <Typography margin="24px 8px 24px 0px" as="h2" variant="titleSmall">
+        <Typography
+          margin="24px 8px 24px 0px"
+          as="h2"
+          variant="title"
+          size={isMobile ? 'lg' : '2xl'}
+        >
           The APISRC continues to serve the mission through 4 components:
         </Typography>
         <OfferingsContainer>
           {offerings.map((props) => (
             <ImageAndCard
               key={props.title}
-              imageWidth={isMobile ? '65%' : '184px'}
+              imageWidth={isTablet ? '128px' : '184px'}
               {...props}
             />
           ))}
