@@ -18,6 +18,9 @@ const OfficeHoursContentContainer = styled.div`
   flex-wrap: wrap;
   > * {
     min-width: 400px;
+    @media (max-width: 600px) {
+      min-width: 100%;
+    }
     margin-bottom: ${Spaces.md};
   }
 `;
@@ -29,6 +32,7 @@ const NumberContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
 `;
+
 export const OfficeHours = ({
   address,
   phoneNumber,
