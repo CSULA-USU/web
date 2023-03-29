@@ -16,7 +16,7 @@ const CarouselContainer = styled.div`
   width: 50%;
 `;
 
-export const Carousels = ({ carouselImages }: CarouselProps) => (
+export const ReactCarousel = ({ carouselImages }: CarouselProps) => (
   <FluidContainer flex justifyContent="center">
     <CarouselContainer>
       <Carousel centerSlidePercentage={100}>
