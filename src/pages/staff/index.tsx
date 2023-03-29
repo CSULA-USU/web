@@ -56,7 +56,7 @@ export default function Staff() {
         const operations = staff.filter((s) => s.tags.includes('Operations'));
         setStaffCards(operations);
         break;
-      case 'Recreations':
+      case 'Recreation':
         const recreations = staff.filter((s) => s.tags.includes('Recreation'));
         setStaffCards(recreations);
         break;
