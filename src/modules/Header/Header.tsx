@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 import { Typography, Button, FluidContainer, VerticalLine } from 'components';
 import { Spaces } from 'theme';
 
@@ -40,38 +41,45 @@ export const Header = ({
   extra,
   backgroundImage,
   buttons,
-}: HeaderProps) => (
-  <FluidContainer backgroundImage={backgroundImage}>
-    <HeaderContainer>
-      <Typography as="h1" variant="pageHeader">
-        {title}
-      </Typography>
-      {children && (
-        <>
-          <VerticalLine />
-          {typeof children === 'string' ? (
-            <Typography as="h2" margin="24px 0">
-              {children}
-            </Typography>
-          ) : (
-            children
-          )}
-        </>
-      )}
-      {buttons && (
-        <ButtonContainer>
-          {buttons.map((b, i) => (
-            <Button
-              key={`${i}_${b.text}`}
-              href={b.href}
-              variant={i > 0 ? 'outline' : 'black'}
-            >
-              {b.text}
-            </Button>
-          ))}
-        </ButtonContainer>
-      )}
-      {extra}
-    </HeaderContainer>
-  </FluidContainer>
-);
+}: HeaderProps) => {
+  const { isMobile } = useBreakpoint();
+  return (
+    <FluidContainer backgroundImage={backgroundImage}>
+      <HeaderContainer>
+        <Typography
+          as="h1"
+          variant="pageHeader"
+          size={isMobile ? '2xl' : '4xl'}
+        >
+          {title}
+        </Typography>
+        {children && (
+          <>
+            <VerticalLine />
+            {typeof children === 'string' ? (
+              <Typography as="h2" margin="24px 0">
+                {children}
+              </Typography>
+            ) : (
+              children
+            )}
+          </>
+        )}
+        {buttons && (
+          <ButtonContainer>
+            {buttons.map((b, i) => (
+              <Button
+                key={`${i}_${b.text}`}
+                href={b.href}
+                variant={i > 0 ? 'outline' : 'black'}
+              >
+                {b.text}
+              </Button>
+            ))}
+          </ButtonContainer>
+        )}
+        {extra}
+      </HeaderContainer>
+    </FluidContainer>
+  );
+};
