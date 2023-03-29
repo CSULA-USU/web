@@ -1,25 +1,61 @@
 [
   {
-    "name": "Veronica Woo",
-    "acuiName": "La Verne, Region 1 (2014)",
-    "title": "U-Awards",
-    "place": "Best of Show",
-    "category": "Promotional Campaign",
+    "name": "Robert Gonzalez",
+    "acuiName": " Atlanta 2020",
+    "title": "U-SU 45th Anniversary",
+    "place": "First",
+    "category": "Cards/Invitations",
     "class": "Professional",
-    "src": "/departments/graffix/acui-awards/best-of-show-veronica-woo.jpg"
+    "src": "/departments/graffix/acui-awards/2020/robert-gonzalez-45th-anniversary.jpg"
   },
   {
-    "name": "Gerrymi Bernardo",
-    "acuiName": "San-Antonio, 95th Annual(2015)",
-    "title": "Lunar New Year",
+    "name": "Stacy Le",
+    "acuiName": " Atlanta 2020",
+    "title": "Learn the Basics",
+    "place": "First",
+    "category": "Brochures",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2020/stacy-le-learn-the-basics.jpg"
+  },
+  {
+    "name": "Valaeri To",
+    "acuiName": " Atlanta 2020",
+    "title": "Social Identity Exploration",
     "place": "First",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/first-place-gerrymi-bernardo.jpg"
+    "src": "/departments/graffix/acui-awards/2020/valaeri-to-social-identity-exploration.jpg"
+  },
+  {
+    "name": "Gabriel Villa",
+    "acuiName": " San Diego 2019",
+    "title": "Despertando A Los Muertitos",
+    "place": "First",
+    "category": "Cards/Postcards",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2019/gabriel-villa-despertando-a-los-muertitos.jpg"
+  },
+  {
+    "name": "Roxana Joncyzk",
+    "acuiName": " San Diego 2019",
+    "title": "Take Back the Night",
+    "place": "First",
+    "category": "Posters",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2019/roxana-joncyzk-take-back-the-night.jpg"
   },
   {
     "name": "Sherwinlove Bernardino",
-    "acuiName": "ACUI Philadelphia, 97th Annual (2016)",
+    "acuiName": " Philadelphia 2016",
+    "title": "Dia de Los Muertos",
+    "place": "Honorable Mention",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/honorable-mention-sherwinlove-bernardino.jpg"
+  },
+  {
+    "name": "Sherwinlove Bernardino",
+    "acuiName": " Philadelphia 2016",
     "title": "Haunted Harvest Festival",
     "place": "Second",
     "category": "Cards/Invitations",
@@ -27,8 +63,17 @@
     "src": "/departments/graffix/acui-awards/second-place-sherwinlove-bernardino.jpg"
   },
   {
+    "name": "Gerrymi Bernardo",
+    "acuiName": " San-Antonio 2015",
+    "title": "Lunar New Year",
+    "place": "First",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/first-place-gerrymi-bernardo.jpg"
+  },
+  {
     "name": "Robert Gonzales",
-    "acuiName": "San-Antonio, 95th Annual (2015)",
+    "acuiName": " an-Antonio 2015",
     "title": "Sodalicious",
     "place": "Third",
     "category": "Posters",
@@ -36,12 +81,12 @@
     "src": "/departments/graffix/acui-awards/third-place-robert-gonzales.jpg"
   },
   {
-    "name": "Sherwinlove Bernardino",
-    "acuiName": "ACUI Philadelphia, 97th Annual (2016)",
-    "title": "Dia de Los Muertos",
-    "place": "Honorable Mention",
-    "category": "Cards/Invitations",
-    "class": "Student",
-    "src": "/departments/graffix/acui-awards/honorable-mention-sherwinlove-bernardino.jpg"
+    "name": "Veronica Woo",
+    "acuiName": " La Verne 2014",
+    "title": "U-Awards",
+    "place": "Best of Show",
+    "category": "Promotional Campaign",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/best-of-show-veronica-woo.jpg"
   }
 ]
