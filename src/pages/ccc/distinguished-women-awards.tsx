@@ -122,8 +122,8 @@ export default function CulturalGrads() {
           <Image
             src="/departments/ccc/distinguished-women-awards-header.png"
             alt="distinguished women awards header"
-            width={800}
-            height={300}
+            width={'100%'}
+            height={'100%'}
             margin={`${Spaces.md} 0`}
           />
         </a>

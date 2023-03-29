@@ -41,7 +41,7 @@ const Table = styled.div`
   }
 
   thead th {
-    padding-right: 40px;
+    padding-right: 20px;
   }
   td {
     width: 35%;
@@ -78,7 +78,7 @@ const NavItems = [
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -140,26 +140,24 @@ export default function MeetingRoom() {
 
       <FluidContainer>
         <Table>
-          <table
-            width={isDesktop ? '70%' : '100%'}
-            align="center"
-            vertical-align
-          >
+          <table align="center" vertical-align>
             <thead>
               <tr>
                 {!isDesktop && <th></th>}
                 <th>
-                  <Typography variant="cta" size="lg">
+                  <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
                     Setup
                   </Typography>
                 </th>
                 <th>
-                  <Typography variant="cta" size="lg">
-                    Capacity
-                  </Typography>
+                  {
+                    <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
+                      Capacity
+                    </Typography>
+                  }
                 </th>
                 <th>
-                  <Typography variant="cta" size="lg">
+                  <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
                     Equipment
                   </Typography>
                 </th>
@@ -182,13 +180,22 @@ export default function MeetingRoom() {
                   </th>
                 )}
                 <td>
-                  <Typography variant="title" weight="400" size="md">
+                  <Typography
+                    variant="title"
+                    weight="400"
+                    size={isMobile ? 'xs' : 'md'}
+                  >
                     {arrangement.setup}
                   </Typography>
                 </td>
                 <td>
                   {arrangement.capacity.map((c) => (
-                    <Typography variant="title" weight="400" size="md" key={c}>
+                    <Typography
+                      variant="title"
+                      weight="400"
+                      size={isMobile ? 'xs' : 'md'}
+                      key={c}
+                    >
                       {c}
                     </Typography>
                   ))}
@@ -200,7 +207,7 @@ export default function MeetingRoom() {
                         key={e}
                         variant="title"
                         weight="400"
-                        size="md"
+                        size={isMobile ? 'xs' : 'md'}
                       >
                         {' '}
                         {e}
@@ -216,7 +223,10 @@ export default function MeetingRoom() {
                   <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
                     Fixed Room Features
                   </Typography>
-                  <Typography margin={`0 0 ${Spaces.md}`}>
+                  <Typography
+                    margin={`0 0 ${Spaces.md}`}
+                    size={isMobile ? 'xs' : 'md'}
+                  >
                     {selectedRoom.features}
                   </Typography>
                 </TextCenter>
@@ -228,7 +238,10 @@ export default function MeetingRoom() {
                   <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
                     Meeting Space Rental Fees do not include:
                   </Typography>
-                  <Typography margin={`0 0 ${Spaces.md}`}>
+                  <Typography
+                    margin={`0 0 ${Spaces.md}`}
+                    size={isMobile ? 'xs' : 'md'}
+                  >
                     {' '}
                     Personnel fees, equipment fees, cleaning fees, catering
                     fees, and extended hours fees. Those are separate charges

@@ -5,16 +5,6 @@ import { CallToAction, Page, Header } from 'modules';
 import { FluidContainer, Typography, Button, Card, Image } from 'components';
 import { useBreakpoint } from 'hooks';
 
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
-`;
-
 const PresenceInfoContainer = styled.div`
   margin-top: ${Spaces['2xl']};
   display: flex;
@@ -114,16 +104,12 @@ export default function StudentOrgs() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer>
-        <HeaderContainer>
-          <Typography variant="titleSmall">University-Student Union</Typography>
-          <Header title="Recognized Student Organizations" buttons={buttons}>
-            Cal State LA is home to over 120 recognized student organizations
-            that host events and meetings to engage students in community
-            building, entertainment, and professional development.
-          </Header>
-        </HeaderContainer>
-      </FluidContainer>
+
+      <Header title="Recognized Student Organizations" buttons={buttons}>
+        Cal State LA is home to over 120 recognized student organizations that
+        host events and meetings to engage students in community building,
+        entertainment, and professional development.
+      </Header>
       <CallToAction
         href="https://www.calstatela.edu/studentservices/student-organization-handbook"
         buttonText="Learn More"

@@ -214,7 +214,7 @@ export default function CSI() {
           alt="center for student involvement logo"
           src="/departments/logos/csi-logo.svg"
           height="400px"
-          width="400px"
+          width="100%"
         />
       </FluidContainer>
     </Page>

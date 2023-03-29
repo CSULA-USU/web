@@ -84,7 +84,7 @@ export default function About() {
         backgroundImage="subtle-background-1.jpg"
         buttons={buttons}
       >
-        <Image src="/about.png" alt="student union" />
+        <Image src="/about.png" alt="student union" width="100%" />
         <Typography>
           <Typography variant="labelTitle" as="span">
             Mission: &nbsp;
