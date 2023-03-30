@@ -170,7 +170,7 @@ export default function APISRC() {
                 src="/departments/ccc/apisrc/apisrc-sticker-2.svg"
                 alt="students"
                 width="100%"
-                height="400px"
+                height="300px"
                 margin={`${Spaces.md} auto`}
               ></Image>
             )}
