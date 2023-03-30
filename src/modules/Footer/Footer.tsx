@@ -78,12 +78,12 @@ export const Footer = () => (
             }
           >
             <Typography color="primary" size="sm" lineHeight="2.4">
-              Cal State L.A. Chancellor Message against racism
+              Cal State L.A. Chancellor Message Against Racism
             </Typography>
           </Link>
           <Link href={'https://www.calstatela.edu/president/may30-message'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
-              President Covino&apos;s message against racism
+              President Covino&apos;s Message Against Racism
             </Typography>
           </Link>
           <Link href={'https://www.calstatelausu.org/blackLivesResources'}>
