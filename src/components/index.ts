@@ -1,6 +1,7 @@
 export * from './Announcement';
 export * from './Button';
 export * from './Card';
+export * from './Carousel';
 export * from './DescriptionCard';
 export * from './Divider';
 export * from './EventsLoader';
@@ -13,4 +14,3 @@ export * from './TextAndImage';
 export * from './Typography';
 export * from './VerticalLine';
 export * from './Expandable';
-export * from './Carousel';

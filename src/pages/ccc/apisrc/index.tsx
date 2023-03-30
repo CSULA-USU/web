@@ -1,7 +1,13 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { CallToAction, Header, ImageAndCard, OfficeHours, Page } from 'modules';
-import { Button, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  ReactCarousel,
+  FluidContainer,
+  Image,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -19,6 +25,30 @@ const buttons = [
     href: 'https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3SKXNpO6eVxLkvnb3NWEIOBUNjIzMUxQNjVERkhDWUY4NURMTjZLUEkwSC4u',
   },
 ];
+
+const carouselImages = [
+  {
+    src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
+    alt: 'CCC staff posing for holiday photos',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/lunar-new-year.png',
+    alt: 'A CSI and CCC collaboration for Lunar New Year',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/center.png',
+    alt: 'Midterm study session',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/book-club.jpg',
+    alt: 'RISE book club',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/art.png',
+    alt: 'Make your own holiday stocking event',
+  },
+];
+
 const hours = [
   {
     title: 'Office Hours',
@@ -186,12 +216,7 @@ export default function APISRC() {
         </Typography>
       </CallToAction>
       <FluidContainer>
-        <Typography
-          margin="24px 8px 24px 0px"
-          as="h2"
-          variant="title"
-          size={isMobile ? 'lg' : '2xl'}
-        >
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           The APISRC continues to serve the mission through 4 components:
         </Typography>
         <OfferingsContainer>
@@ -236,16 +261,22 @@ export default function APISRC() {
           </FluidContainer>
         </FluidContainer>
       </div>
-      {!isMobile && (
-        <FluidContainer flex justifyContent="center">
-          <Image
-            alt="asian pacific islander student resource center logo"
-            src="/departments/ccc/apisrc-header.png"
-            width="100%"
-            margin={`${Spaces.xl} 500px`}
-          />
-        </FluidContainer>
-      )}
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Check our events out:
+        </Typography>
+        <ReactCarousel carouselImages={carouselImages} />
+        {!isMobile && (
+          <FluidContainer flex justifyContent="center">
+            <Image
+              alt="asian pacific islander student resource center logo"
+              src="/departments/ccc/apisrc-header.png"
+              width="100%"
+              margin={`0px 500px ${Spaces.xl}`}
+            />
+          </FluidContainer>
+        )}
+      </FluidContainer>
     </Page>
   );
 }
