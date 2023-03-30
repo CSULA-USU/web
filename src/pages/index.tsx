@@ -50,7 +50,7 @@ export default function Home() {
       <UpcomingEvents events={events} />
       <CallToAction
         buttonText="View Opportunities"
-        text="Catalyze your professional development and building your network by
+        text="Catalyze your professional development and build your network by
           becoming a valued member of the U-SU."
         href="/employment"
       >
