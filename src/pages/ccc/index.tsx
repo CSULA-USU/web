@@ -25,105 +25,106 @@ const OrgsCategoriesCardsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const orgsCards = [
+  {
+    title: 'Asian Pacific Islander Student Resource Center',
+    children:
+      'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
+    imgAlt: 'apisrc',
+    href: 'ccc/apisrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Chicana/o Latina/o Student Resource Center',
+    children:
+      'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
+    imgSrc: 'departments/ccc/clsrcHeader.png',
+    imgAlt: 'CLSRC',
+    href: 'ccc/clsrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Gender & Sexuality Resource Center',
+    children:
+      'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
+    imgSrc: 'departments/ccc/gsrc.png',
+    imgAlt: 'Cal State LA Logo',
+    href: 'ccc/gsrc',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Pan African Student Resource Center',
+    children:
+      'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
+    imgSrc: '/departments/ccc/pasrc.png',
+    imgAlt: 'PASRC',
+    href: 'ccc/pasrc',
+    linkText: 'Learn More',
+  },
+];
+
+const descriptionCards = [
+  {
+    imgSrc: 'icons/giving-hand-icon.png',
+    imgAlt: 'giving hand image',
+    children: 'Support groups and workshops',
+  },
+  {
+    imgSrc: 'icons/book-icon.png',
+    imgAlt: 'book image',
+    children:
+      'Library including books, journals, magazines, and website listings',
+  },
+  {
+    imgSrc: 'icons/computer-icon.png',
+    imgAlt: 'icons/computer-icon.png',
+    children:
+      'Cross-cultural video, audio library, and media center for educational purposes',
+  },
+
+  {
+    imgSrc: 'icons/open-door-icon.png',
+    imgAlt: 'Open door image',
+    children: 'Study spaces',
+  },
+  {
+    imgSrc: 'icons/fridge-icon.png',
+    imgAlt: 'Fridge image',
+    children: 'Microwaves and refrigerators',
+  },
+  {
+    imgSrc: 'icons/calendar-icon.png',
+    imgAlt: 'calendar',
+    children: 'Culturally relevant programming events throughout the year',
+  },
+  {
+    imgSrc: 'icons/resume-icon.png',
+    imgAlt: 'resume icon',
+    children:
+      'Information on community organizations, job opportunities, and scholarships',
+  },
+  {
+    imgSrc: 'icons/connecting-people-icon.png',
+    imgAlt: 'connecting people image',
+    children:
+      'Friendly staff and volunteers to answer questions and discuss ideas',
+  },
+];
+
+const hours = [
+  {
+    title: 'Office Hours',
+    times: [
+      'Monday - Thursday: 8:00 AM - 7:00 PM',
+      'Friday: 8:00 AM - 5:00 PM',
+      'Saturday - Sunday: CLOSED',
+    ],
+  },
+];
+
 export default function CCC() {
-  const orgsCards = [
-    {
-      title: 'Asian Pacific Islander Student Resource Center',
-      children:
-        'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
-      imgSrc: '/departments/ccc/apisrcHeader.png',
-      imgAlt: 'apisrc',
-      href: 'ccc/apisrc',
-      linkText: 'Learn More',
-    },
-    {
-      title: 'Chicana/o Latina/o Student Resource Center',
-      children:
-        'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
-      imgSrc: 'departments/ccc/clsrcHeader.png',
-      imgAlt: 'CLSRC',
-      href: 'ccc/clsrc',
-      linkText: 'Learn More',
-    },
-    {
-      title: 'Gender & Sexuality Resource Center',
-      children:
-        'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
-      imgSrc: 'departments/ccc/gsrc.png',
-      imgAlt: 'Cal State LA Logo',
-      href: 'ccc/gsrc',
-      linkText: 'Learn More',
-    },
-    {
-      title: 'Pan African Student Resource Center',
-      children:
-        'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
-      imgSrc: '/departments/ccc/pasrc.png',
-      imgAlt: 'PASRC',
-      href: 'ccc/pasrc',
-      linkText: 'Learn More',
-    },
-  ];
-
-  const descriptionCards = [
-    {
-      imgSrc: 'icons/giving-hand-icon.png',
-      imgAlt: 'giving hand image',
-      children: 'Support groups and workshops',
-    },
-    {
-      imgSrc: 'icons/book-icon.png',
-      imgAlt: 'book image',
-      children:
-        'Library including books, journals, magazines, and website listings',
-    },
-    {
-      imgSrc: 'icons/computer-icon.png',
-      imgAlt: 'icons/computer-icon.png',
-      children:
-        'Cross-cultural video, audio library, and media center for educational purposes',
-    },
-
-    {
-      imgSrc: 'icons/open-door-icon.png',
-      imgAlt: 'Open door image',
-      children: 'Study spaces',
-    },
-    {
-      imgSrc: 'icons/fridge-icon.png',
-      imgAlt: 'Fridge image',
-      children: 'Microwaves and refrigerators',
-    },
-    {
-      imgSrc: 'icons/calendar-icon.png',
-      imgAlt: 'calendar',
-      children: 'Culturally relevant programming events throughout the year',
-    },
-    {
-      imgSrc: 'icons/resume-icon.png',
-      imgAlt: 'resume icon',
-      children:
-        'Information on community organizations, job opportunities, and scholarships',
-    },
-    {
-      imgSrc: 'icons/connecting-people-icon.png',
-      imgAlt: 'connecting people image',
-      children:
-        'Friendly staff and volunteers to answer questions and discuss ideas',
-    },
-  ];
-
-  const hours = [
-    {
-      title: 'Office Hours',
-      times: [
-        'Monday - Thursday: 8:00 AM - 7:00 PM',
-        'Friday: 8:00 AM - 5:00 PM',
-        'Saturday - Sunday: CLOSED',
-      ],
-    },
-  ];
-
   const { returnByBreakpoint, isTablet, isMobile } = useBreakpoint();
   const descriptionCardWidth = returnByBreakpoint({
     tablet: '100%',

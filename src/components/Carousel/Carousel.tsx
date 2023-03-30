@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import { useBreakpoint } from 'hooks';
 import { Typography, Image, FluidContainer } from 'components';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -12,22 +11,33 @@ interface CarouselProps {
   carouselImages: CarouselImageProps[];
 }
 
-const CarouselContainer = styled.div`
-  width: 50%;
-`;
-
-export const ReactCarousel = ({ carouselImages }: CarouselProps) => (
-  <FluidContainer flex justifyContent="center">
-    <CarouselContainer>
-      <Carousel centerSlidePercentage={100}>
+export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
+  const { isMobile } = useBreakpoint();
+  return (
+    <FluidContainer flex justifyContent="center" backgroundColor="white">
+      <Carousel
+        centerSlidePercentage={100}
+        centerMode={true}
+        infiniteLoop={true}
+        swipeable={true}
+        emulateTouch={true}
+        useKeyboardArrows={true}
+        dynamicHeight={true}
+        showThumbs={true}
+      >
         {carouselImages &&
           carouselImages.map((item) => (
             <div key={item.src}>
-              <Image src={item.src} alt={item.alt} />
+              <Image
+                src={item.src}
+                alt={item.alt}
+                borderRadius="12px"
+                maxWidth={!isMobile ? '50%' : '100%'}
+              />
               <Typography className="legend">{item.alt}</Typography>
             </div>
           ))}
       </Carousel>
-    </CarouselContainer>
-  </FluidContainer>
-);
+    </FluidContainer>
+  );
+};
