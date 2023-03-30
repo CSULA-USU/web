@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
@@ -38,29 +39,37 @@ export const Card = ({
   iconAlt,
   iconWidth,
   ...props
-}: CardProps) => (
-  <Panel {...props}>
-    <div>
-      {iconSrc && (
-        <IconContainer>
-          <Image
-            src={iconSrc}
-            alt={iconAlt ? iconAlt : 'icon img'}
-            width={iconWidth ? iconWidth : Spaces['2xl']}
-            marginBottom="24px"
-          />
-        </IconContainer>
+}: CardProps) => {
+  const { isMobile } = useBreakpoint();
+  return (
+    <Panel {...props}>
+      <div>
+        {iconSrc && (
+          <IconContainer>
+            <Image
+              src={iconSrc}
+              alt={iconAlt ? iconAlt : 'icon img'}
+              width={iconWidth ? iconWidth : Spaces['2xl']}
+              marginBottom="24px"
+            />
+          </IconContainer>
+        )}
+        <br />
+        <Typography
+          as="h4"
+          variant="titleSmall"
+          margin="0 0 16px"
+          size={isMobile ? 'lg' : 'xl'}
+        >
+          {title}
+        </Typography>
+        <div>{children}</div>
+      </div>
+      {linkText && (
+        <Typography variant="cta">
+          <Link href={href || '#'}>{linkText}</Link>
+        </Typography>
       )}
-      <br />
-      <Typography as="h4" variant="titleSmall" margin="0 0 16px">
-        {title}
-      </Typography>
-      <div>{children}</div>
-    </div>
-    {linkText && (
-      <Typography variant="cta">
-        <Link href={href || '#'}>{linkText}</Link>
-      </Typography>
-    )}
-  </Panel>
-);
+    </Panel>
+  );
+};
