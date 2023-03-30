@@ -95,7 +95,7 @@ export default function Staff() {
     <Page>
       <Header title="Meet the Staff" backgroundImage="/subtle-background-1.jpg">
         Union: An act or instance of uniting or joining two or more things into
-        one. Something that is made one : something formed bby a combining or
+        one. Something that is made one : something formed by a combination or
         coalition of parts or members. A confederation of independent
         individuals for some common purpose.
       </Header>
