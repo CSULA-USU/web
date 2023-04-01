@@ -13,7 +13,7 @@ const Container = styled.div`
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 10;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 const NavList = styled.ul`

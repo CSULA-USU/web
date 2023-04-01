@@ -37,7 +37,7 @@ const Main = styled.div`
     max-height: 400px;
     object-fit: contain;
   }
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 export const EventModal = ({
   event,
