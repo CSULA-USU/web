@@ -13,6 +13,7 @@ interface EventModalProps {
 }
 
 const customStyles = {
+  overlay: { zIndex: 100 },
   content: {
     top: '50%',
     left: '50%',
