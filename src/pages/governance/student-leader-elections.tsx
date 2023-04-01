@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { useBreakpoint } from 'hooks';
+import { BiChevronRight } from 'react-icons/bi';
 
 const LinkOuter = styled.div`
   display: flex;
@@ -193,6 +194,7 @@ export default function StudentLeaderElections() {
           Frequently Asked Questions
         </Typography>
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               What is the role of the U-SU Board of Directors Member{' '}
@@ -226,6 +228,7 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               What is the difference between the U-SU Board of Directors and
@@ -252,6 +255,7 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               Do you have what it takes to serve the U-SU Board of Directors?
@@ -279,6 +283,7 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               What can you gain from serving on the U-SU Board of Directors?
@@ -306,6 +311,7 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               I have more questions about applying. Who do I contact?

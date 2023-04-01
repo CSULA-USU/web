@@ -1,4 +1,5 @@
 import { Divider, Image, Typography } from 'components';
+import { useEffect } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
@@ -13,6 +14,7 @@ interface EventModalProps {
 }
 
 const customStyles = {
+  overlay: { zIndex: 100 },
   content: {
     top: '50%',
     left: '50%',
@@ -30,13 +32,26 @@ const Main = styled.div`
   margin: ${Spaces.xs};
   display: flex;
   flex-direction: column;
+  max-height: 80vh;
+  img {
+    max-height: 400px;
+    object-fit: contain;
+  }
+  overflow-y: scroll;
 `;
-
 export const EventModal = ({
   event,
   isOpen,
   onRequestClose,
 }: EventModalProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   if (!event) return null;
 
   const {
