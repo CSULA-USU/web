@@ -138,7 +138,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             style={{ overflowWrap: 'anywhere' }}
           >
             {location.indexOf('.zoom.us') > -1 ? (
-              <a href={location}>Zoom</a>
+              <a href={location}>Zoom Meeting</a>
             ) : (
               location
             )}
