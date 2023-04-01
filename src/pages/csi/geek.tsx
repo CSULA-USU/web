@@ -13,6 +13,7 @@ import {
   Expandable,
   Divider,
 } from 'components';
+import { BiChevronRight } from 'react-icons/bi';
 
 const TextCenter = styled.div`
   text-align: center;
@@ -124,6 +125,7 @@ export default function Geek() {
         </Typography>
 
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               What are the requirements that GEEK volunteers must fulfill?
@@ -147,6 +149,7 @@ export default function Geek() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               How many events do GEEKs commit to?
@@ -163,6 +166,7 @@ export default function Geek() {
         <Divider color="gold" />
 
         <Expandable
+          indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
               How am I supposed to conduct myself while volunteering?

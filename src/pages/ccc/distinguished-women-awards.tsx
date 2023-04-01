@@ -13,6 +13,7 @@ import {
 import { Page } from 'modules';
 import { Spaces } from 'theme';
 import honorees from 'data/distinguishedWomenAwardsHonorees.json';
+import { BiChevronRight } from 'react-icons/bi';
 
 const IconHeading = styled.div`
   display: flex;
@@ -70,6 +71,7 @@ const calculateYears = (startYear: Number, endYear: Number) => {
           <>
             <Expandable
               key={item}
+              indicator={<BiChevronRight size={48} />}
               header={<Typography size="md">{item}</Typography>}
             >
               {obj[item].map((p: any) => (
