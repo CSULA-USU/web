@@ -39,11 +39,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   color: ${Colors.white};
   background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.2) 20%,
-      rgba(0, 0, 0, 0) 55%,
-      rgba(0, 0, 0, 0.8) 75%,
-      rgba(0, 0, 0, 0.85) 100%
+      rgba(0, 0, 0, 0.7) 5%,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0.85) 75%,
+      rgba(0, 0, 0, 0.95) 100%
     ),
     ${({ image }) => image && `url(${image})`};
   background-size: cover;
