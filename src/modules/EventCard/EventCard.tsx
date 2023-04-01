@@ -132,8 +132,16 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
           <Typography as="h4" variant="eventTime">
             {startTime} - {endTime}
           </Typography>
-          <Typography as="h5" variant="eventDetail">
-            {location}
+          <Typography
+            as="h5"
+            variant="eventDetail"
+            style={{ overflowWrap: 'anywhere' }}
+          >
+            {location.indexOf('.zoom.us') > -1 ? (
+              <a href={location}>Zoom</a>
+            ) : (
+              location
+            )}
           </Typography>
         </EventDetails>
         {featured ? (

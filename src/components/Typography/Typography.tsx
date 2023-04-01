@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { CSSObject, css } from 'styled-components';
 import { FontSizes, Colors } from 'theme';
 
 interface TypeStyle {
@@ -13,6 +13,7 @@ interface TypeStyle {
 type TypeElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
 
 export interface TypeProps extends TypeStyle {
+  style?: CSSObject;
   className?: string;
   variant?: keyof typeof styles;
   nowrap?: boolean;
