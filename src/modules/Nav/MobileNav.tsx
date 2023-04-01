@@ -12,6 +12,7 @@ const Container = styled.div`
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 10;
+  overflow-y: scroll;
 `;
 
 const NavList = styled.ul`
@@ -73,7 +74,7 @@ export const MobileNav = () => (
       </StyledButton>
     </Drawer.Trigger>
 
-    <Drawer.Target>
+    <Drawer.Target preventScroll>
       <Container>
         <Drawer.CloseButton>
           <button>Close me</button>
