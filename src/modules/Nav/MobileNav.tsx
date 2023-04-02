@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { Colors, FontSizes } from 'theme';
 import navMap from 'data/navMap.json';
+import { MdCancel } from 'react-icons/md';
 
 const Container = styled.div`
   height: 100vh;
@@ -12,6 +13,7 @@ const Container = styled.div`
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 10;
+  overflow-y: auto;
 `;
 
 const NavList = styled.ul`
@@ -73,10 +75,22 @@ export const MobileNav = () => (
       </StyledButton>
     </Drawer.Trigger>
 
-    <Drawer.Target>
+    <Drawer.Target preventScroll>
       <Container>
         <Drawer.CloseButton>
-          <button>Close me</button>
+          <button
+            style={{
+              border: 0,
+              backgroundColor: 'transparent',
+              fontSize: 16,
+              position: 'absolute',
+              right: 16,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            CLOSE <MdCancel size={40} />
+          </button>
         </Drawer.CloseButton>
         <T1Container>
           {navMap.map((t1) => (

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface ExpandableProps {
   isExpanded?: boolean;
   onToggle?: () => void;
+  indicator?: React.ReactNode;
   header: React.ReactNode;
   children: React.ReactNode;
 }
@@ -15,6 +16,9 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
@@ -27,6 +31,7 @@ const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
 export const Expandable = ({
   isExpanded,
   onToggle,
+  indicator,
   header,
   children,
 }: ExpandableProps) => {
@@ -48,7 +53,12 @@ export const Expandable = ({
   const expandedState = isExpanded === undefined ? isOpen : isExpanded;
   return (
     <Container>
-      <HeaderContainer onClick={handleToggle}>{header}</HeaderContainer>
+      <HeaderContainer onClick={handleToggle}>
+        {header}
+        {indicator && (
+          <div style={{ rotate: isOpen ? '90deg' : 'unset' }}>{indicator}</div>
+        )}
+      </HeaderContainer>
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}
       </ContentContainer>
