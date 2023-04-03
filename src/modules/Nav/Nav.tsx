@@ -60,7 +60,7 @@ export const Nav = () => {
       <DesktopNav />
       {!isDesktop && (
         <NavExtra>
-          <GetInvolvedButton>Get Involved</GetInvolvedButton>
+          <GetInvolvedButton href="/employment">Get Involved</GetInvolvedButton>
         </NavExtra>
       )}
     </FluidContainer>
