@@ -16,24 +16,24 @@ const buttons = [{ text: 'Nuestra Grad', href: '#nuestra-grad' }];
 
 const carouselImages = [
   {
-    src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
-    alt: 'CCC staff posing for holiday photos',
+    src: '/departments/ccc/clsrc/carousel/creating-interview.jpg',
+    alt: 'Interview for Creating Worlds CLSRC event',
   },
   {
-    src: '/departments/ccc/apisrc/carousel/lunar-new-year.png',
-    alt: 'A CSI and CCC collaboration for Lunar New Year',
+    src: '/departments/ccc/clsrc/carousel/clsrc-space.jpg',
+    alt: 'Picture of CLSRC space',
   },
   {
-    src: '/departments/ccc/apisrc/carousel/center.png',
-    alt: 'Midterm study session',
+    src: '/departments/ccc/clsrc/carousel/creating-event.jpg',
+    alt: 'Creating Worlds event presentation',
   },
   {
-    src: '/departments/ccc/apisrc/carousel/book-club.jpg',
-    alt: 'RISE book club',
+    src: '/departments/ccc/clsrc/carousel/salvadorian-loteria.jpg',
+    alt: 'Salvadorian loterìa',
   },
   {
-    src: '/departments/ccc/apisrc/carousel/art.png',
-    alt: 'Make your own holiday stocking event',
+    src: '/departments/ccc/clsrc/carousel/video-game-space.jpg',
+    alt: 'Students playing video games',
   },
 ];
 
@@ -122,7 +122,7 @@ export default function CLSRC() {
           </Header>
           {!isDesktop && (
             <Image
-              src="/departments/ccc/logos/clsrc-text-logo.svg"
+              src="/departments/logos/clsrc-text-logo.svg"
               alt="clsrc logo"
               width={400}
               height={500}
@@ -141,12 +141,12 @@ export default function CLSRC() {
         <FluidContainer
           flex
           flexWrap={isTablet ? 'wrap' : 'nowrap'}
-          backgroundColor="greyLightest"
+          backgroundColor="primary"
         >
           <Image
             margin="auto"
             borderRadius="12px"
-            src="/departments/ccc/apisrc/apida-grad.jpeg"
+            src="/departments/ccc/nuestra-teaser.jpeg"
             alt="2022 nuestra graduation"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
