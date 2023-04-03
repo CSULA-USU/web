@@ -187,7 +187,11 @@ export default function CCC() {
           </Typography>
           <OrgsCategoriesCardsContainer>
             {orgsCards.map((props) => (
-              <ImageAndCard key={props.title} imageWidth="300px" {...props} />
+              <ImageAndCard
+                key={props.title}
+                imageWidth={!isTablet ? '300px' : '225px'}
+                {...props}
+              />
             ))}
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
