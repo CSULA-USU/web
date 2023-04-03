@@ -1,7 +1,7 @@
 [
   {
     "title": "Center for Student Involvement (CSI)",
-    "children": "The Center for Student Involvement serves as a hub for involvement, recreation, and leadership, adding to the excitement of campus life at Cal State LA. Visit CSI to connect with student organizations, join one of our leadership development opportunities including the Leader Project, or participate in a thrilling campus activity! Getting involved on campus is the best decision you can make to set yourself up for success at Cal State LA & into your future! We look forward to meeting you soon!",
+    "children": "The Center for Student Involvement serves as a hub for involvement, recreation, and leadership, adding to the excitement of campus life at Cal State LA. Visit CSI to connect with student organizations, join one of our leadership development opportunities including the Leader Project, or participate in a thrilling campus activity! Getting involved on campus is the best decision you can make to set yourself up for success at Cal State LA and into your future! We look forward to meeting you soon!",
     "imgSrc": "/departments/logos/csi-icon.svg",
     "imgAlt": "CSI Icon",
     "linkText": "Learn More",
@@ -25,7 +25,7 @@
   },
   {
     "title": "Operations",
-    "children": "The Operations Team consists of five departments: Building Maintenance, Building Services, Custodial Services, Media Services, and Information & Event Services.",
+    "children": "The Operations Team consists of five departments: Building Maintenance, Building Services, Custodial Services, Media Services, and Information and Event Services.",
     "imgSrc": "/departments/logos/operations-icon.svg",
     "imgAlt": "Operations Icon",
     "imgWidth": "20px",
