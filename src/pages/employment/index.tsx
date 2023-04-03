@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import { Page } from 'modules';
 import { FluidContainer, Typography } from 'components';
 import jobs from 'data/employment.json';
@@ -26,7 +27,19 @@ const JobItem = styled.div`
 
 export default function Employment() {
   const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
-  const studentJobs = jobs.filter((j) => j.type === 'student-assistant');
+  const [studentJobs, setStudentJobs] = useState([]);
+  const Parser = require('rss-parser');
+  const parser = new Parser();
+  useEffect(() => {
+    (async () => {
+      const feed = await parser.parseURL(
+        'https://calstatela.joinhandshake.com/external_feeds/13885/public.rss?token=p75-vOp36nyfxpcaxPFmrwZGaM6BDLJ7EvG9Qo30CKGdNAttmYqD-Q',
+      );
+      setStudentJobs(feed.items);
+      console.log('this is feed', studentJobs);
+    })();
+  }, []);
+
   return (
     <Page>
       <Head>
@@ -71,12 +84,9 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
-            {studentJobs.map((j) => (
-              <JobItem key={`${j.department}_${j.title}`}>
-                <Typography as="h3" variant="titleSmall" color="grey">
-                  {j.department}
-                </Typography>
-                <Link href={j.href} target="_blank">
+            {studentJobs.map((j: any) => (
+              <JobItem key={`${j.title}`}>
+                <Link href={j.link} target="_blank">
                   <Typography as="h4" variant="labelTitle">
                     {j.title}
                   </Typography>
