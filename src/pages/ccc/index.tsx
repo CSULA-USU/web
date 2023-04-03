@@ -30,7 +30,7 @@ const orgsCards = [
   {
     title: 'Asian Pacific Islander Student Resource Center',
     children:
-      'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi American student population while enriching and raising social awareness for the entire campus community.',
+      'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi-American student population while enriching and raising social awareness for the entire campus community.',
     imgSrc: '/departments/ccc/apisrcHeader.png',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -46,9 +46,9 @@ const orgsCards = [
     linkText: 'Learn More',
   },
   {
-    title: 'Gender & Sexuality Resource Center',
+    title: 'Gender and Sexuality Resource Center',
     children:
-      'The Gender & Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
+      'The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
     imgSrc: 'departments/ccc/gsrc.png',
     imgAlt: 'Cal State LA Logo',
     href: 'ccc/gsrc',
@@ -57,7 +57,7 @@ const orgsCards = [
   {
     title: 'Pan African Student Resource Center',
     children:
-      'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues',
+      'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues.',
     imgSrc: '/departments/ccc/pasrc.png',
     imgAlt: 'PASRC',
     href: 'ccc/pasrc',
