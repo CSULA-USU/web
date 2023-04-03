@@ -180,8 +180,8 @@ export default function APISRC() {
             the Asian, Pacific Islander, and Desi American student population
             while enriching and raising social awareness for the entire campus
             community. The APISRC provides services and support for students who
-            identity as, or are interested in, AA, PI, and DA community and
-            cultural issues.
+            identity as, or are interested in, Asian American, Pacific Islander,
+            and South Asian/Desi community cultural issues.
           </Header>
           {!isDesktop && (
             <Image
