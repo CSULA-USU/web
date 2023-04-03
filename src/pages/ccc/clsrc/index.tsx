@@ -132,7 +132,7 @@ export default function CLSRC() {
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
             address="5154 State University Dr, Los Angeles, CA 90032 Room 206"
-            phoneNumber="(323)-343-5001"
+            phoneNumber="(323)-343-5047"
             hours={hours}
           ></OfficeHours>
         </FluidContainer>
