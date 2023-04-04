@@ -84,6 +84,16 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
+            <JobItem key="Operations Assistant">
+              <Link
+                href="https://calstatela.joinhandshake.com/jobs/7647111/share_preview"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Operations Assistant
+                </Typography>
+              </Link>
+            </JobItem>
             {studentJobs.map((j: any) => (
               <JobItem key={`${j.title}`}>
                 <Link href={j.link} target="_blank">
