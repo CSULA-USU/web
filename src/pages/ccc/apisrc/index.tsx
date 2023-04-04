@@ -63,7 +63,7 @@ const offerings = [
   {
     title: 'Cultural Education',
     children:
-      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
+      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom',
     imgSrc: '/vectors/ccc/teaching.svg',
     imgAlt: 'cultural education',
     href: 'ccc/apisrc',
