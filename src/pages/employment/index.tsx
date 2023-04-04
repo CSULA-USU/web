@@ -100,7 +100,7 @@ export default function Employment() {
         <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
-        <Link href="/usuforms/u-su/ProfessionalEmployment.pdf">
+        <Link href="/professional-employment.pdf">
           Professional Appointment
         </Link>
         <br />
