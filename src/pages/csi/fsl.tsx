@@ -440,14 +440,14 @@ export default function FSL() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Organizations FSL</title>
+        <title>Student Organizations FSL</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment"
         />
         <meta
           name="description"

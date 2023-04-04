@@ -200,7 +200,7 @@ export default function CulturalGrads() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, Cross Cultural Center, CCC, U-SU, University Student, Cultural Graduation, Black Graduation, APIDA Graduation, Pride Graduation, Nuestra Graduation"
         />
         <meta
           name="description"
