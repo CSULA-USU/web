@@ -12,8 +12,6 @@ import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 
-const buttons = [{ text: 'Nuestra Grad', href: '#nuestra-grad' }];
-
 const carouselImages = [
   {
     src: '/departments/ccc/clsrc/carousel/creating-interview.jpg',
@@ -99,10 +97,7 @@ export default function CLSRC() {
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
-          <Header
-            title="Chicana/o Latina/o Student Resource Center"
-            buttons={buttons}
-          >
+          <Header title="Chicana/o Latina/o Student Resource Center">
             {isDesktop && (
               <Image
                 src="/departments/logos/clsrc-text-logo.svg"
