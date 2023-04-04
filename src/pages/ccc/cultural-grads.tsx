@@ -80,7 +80,7 @@ const WhereTab = () => (
       </li>
       <Divider color="greyLighter" margin="24px auto" />
       <li>
-        Black
+        Black:
         <ul>
           <li>Saturday, May 27, 2023</li>
           <li>5:00 PM - 7:00 PM</li>
