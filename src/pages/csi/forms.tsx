@@ -22,7 +22,7 @@ const account = [
   },
   {
     title:
-      'Student Organization Account Form 2: President, Treasurer, and 1 Advisor, Plus One Additional Signee',
+      'Student Organization Account Form 2: President, Treasurer, 1 Advisor, and 1 Additional Signee',
     children: (
       <Typography>
         Input the names and emails of the signers (based on the list on the left
@@ -38,7 +38,7 @@ const account = [
   },
   {
     title:
-      'Student Organization Account Form 3: President, Treasurer, 2 Advisors, Are the Only Signees',
+      'Student Organization Account Form 3: President, Treasurer, and 2 Advisors',
     children: (
       <Typography>
         Input the names and emails of the signers (based on the list on the left
@@ -54,7 +54,7 @@ const account = [
   },
   {
     title:
-      'Student Organization Account Form 4: President, Treasurer, 2 Advisors, Plus One Additional Signee',
+      'Student Organization Account Form 4: President, Treasurer, 2 Advisors, and 1 Additional Signee',
     children: (
       <Typography>
         Input the names and emails of the signers (based on the list on the left
@@ -92,7 +92,7 @@ const banking = [
       <Typography>
         Student clubs and organizations may submit a Payment Advance Check
         Requisition (Req) up to $200 to an individual for an event. Payment
-        advances follow the same process as a Check Requisition.
+        advances follow the same process as a check requisition.
       </Typography>
     ),
     button: {
@@ -139,7 +139,7 @@ const banking = [
       <Typography>
         In circumstances where it is not practical to process a receipt (e.g.
         club bake sales, ticket sales), other mitigating controls must be
-        implemented <br />
+        implemented. <br />
         Updated 7/28/17
       </Typography>
     ),
@@ -154,7 +154,7 @@ const banking = [
     children: (
       <Typography>
         The Office of Annual Giving needs to review and approve all private
-        external fund raising events and activities to make sure they met the
+        external fundraising events and activities to make sure they meet the
         education-exemption criteria and make sure all policies and procedures
         are met.
       </Typography>
@@ -170,7 +170,7 @@ const banking = [
     children: (
       <Typography>
         The Office of Annual Giving needs to review and approve all private
-        external fund raising events and activities to make sure they met the
+        external fundraising events and activities to make sure they meet the
         education-exemption criteria and make sure all policies and procedures
         are met.
       </Typography>

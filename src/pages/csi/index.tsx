@@ -55,9 +55,9 @@ export default function CSI() {
       linkText: 'Learn More',
     },
     {
-      title: 'Fraternities & Sororities',
+      title: 'Fraternities and Sororities',
       children:
-        'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
+        'Are you curious about fraternity and sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
       imgSrc: '/vectors/csi/fraternities.svg',
       imgAlt: 'fraternities image',
       href: 'csi/fsl',
@@ -82,7 +82,7 @@ export default function CSI() {
       linkText: 'Learn More',
     },
     {
-      title: 'LEAD (Leadership Enrichment Advocacy & Development)',
+      title: 'LEAD (Leadership Enrichment Advocacy and Development)',
       children:
         'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
       imgSrc: '/vectors/csi/education.svg',

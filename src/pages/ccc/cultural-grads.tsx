@@ -51,7 +51,7 @@ const WhatTab = () => (
       <li>
         Tickets for guests (guest ticket amounts may differ for each graduation)
         <ul>
-          <li>APIDA Graduate Celebration - 10 Tickets</li>
+          <li>APIDA Graduate Celebration - 6 Tickets</li>
           <li>Black Graduate Celebration - 10 Tickets</li>
           <li>Nuestra Graduate Celebration - 10 Tickets</li>
           <li>Pride Graduate Celebration - 6 Tickets</li>
@@ -72,7 +72,7 @@ const WhereTab = () => (
         APIDA:
         <ul>
           <li>Saturday, May 20, 2023</li>
-          <li>1:00 PM - 3:00 PM</li>
+          <li>5:00 PM - 7:00 PM</li>
           <li>
             State Playhouse Theatre, California State University Los Angeles
           </li>
@@ -80,7 +80,7 @@ const WhereTab = () => (
       </li>
       <Divider color="greyLighter" margin="24px auto" />
       <li>
-        Black
+        Black:
         <ul>
           <li>Saturday, May 27, 2023</li>
           <li>5:00 PM - 7:00 PM</li>

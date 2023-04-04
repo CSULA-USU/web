@@ -90,8 +90,8 @@ const calculateYears = (startYear: Number, endYear: Number) => {
   );
 };
 const tabItems = [
-  { title: '2010-2019 ', children: <Tens /> },
-  { title: '2000-2009', children: <Thousands /> },
+  { title: '2020-2010 ', children: <Tens /> },
+  { title: '2009-2000', children: <Thousands /> },
   { title: '1999', children: <Ninetys /> },
 ];
 export default function CulturalGrads() {
