@@ -30,6 +30,14 @@ const carouselImages = [
     src: '/departments/ccc/gsrc/carousel/gsrc-group.jpg',
     alt: 'Students in the GSRC posing for a pic',
   },
+  {
+    src: '/departments/ccc/gsrc/carousel/pride-drag.jpg',
+    alt: 'Drag show at pride grad',
+  },
+  {
+    src: '/departments/ccc/gsrc/carousel/grad-group.jpg',
+    alt: 'Pride graduates',
+  },
 ];
 
 const hours = [
