@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
 import { Spaces } from 'theme';
+
 interface CardStyles {
   margin?: string;
   width?: string;
@@ -42,7 +43,8 @@ export const StaffCard = ({
             {title}
           </Typography>
         </Container>
-        <Image round src={src} alt={alt} width="100%" />
+
+        <Image round src={src} alt={alt} width="100%" marginTop={25} />
         <Typography margin="auto" size="md" weight="700">
           {name}
         </Typography>
