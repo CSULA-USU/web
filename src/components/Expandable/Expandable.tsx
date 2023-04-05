@@ -46,7 +46,7 @@ export const Expandable = ({
     if (ref?.current) {
       setHeight(ref?.current?.scrollHeight);
     }
-  }, [ref]);
+  }, [ref, isOpen]);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
