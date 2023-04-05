@@ -215,10 +215,10 @@ export default function APISRC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title" size={isMobile ? 'xl' : '2xl'}>
+            <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
               APIDA Grad
             </Typography>
-            <Typography margin="24px 0">
+            <Typography as="h3" margin="24px 0">
               These ceremonies and celebrations are great opportunities to
               acknowledge your academic achievements, honor your families,
               communities, and other significant people in your lives, and to
