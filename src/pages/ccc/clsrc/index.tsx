@@ -78,6 +78,7 @@ export default function CLSRC() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/clsrc.ccc/"
+            aria-label="link to the Chicano/a, Latino/a Student Resource Center's Instagram feed"
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}

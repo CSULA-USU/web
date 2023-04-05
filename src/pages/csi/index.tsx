@@ -166,7 +166,10 @@ export default function CSI() {
           <a href="https://www.facebook.com/csicalstatela">
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
           </a>
-          <a href="https://www.instagram.com/csicalstatela/?hl=en">
+          <a
+            href="https://www.instagram.com/csicalstatela/?hl=en"
+            aria-label="link to the Center For Student Involvement's Instagram feed"
+          >
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
           <a href="https://linktr.ee/csicalstatela">

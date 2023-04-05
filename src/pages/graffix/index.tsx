@@ -213,6 +213,7 @@ export default function Graffix() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.md}` }}
             href="https://www.instagram.com/usugraffix/?hl=en"
+            aria-label="link to University-Student Union Graffix's Instagram feed"
           >
             <AiOutlineInstagram fontSize={FontSizes['2xl']} />
           </a>

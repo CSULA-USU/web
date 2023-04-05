@@ -135,6 +135,7 @@ export default function APISRC() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/apisrc.ccc/"
+            aria-label="link to the Asian, Pacific Islander, Desi-American, Student Resource Center's Instagram feed"
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}
