@@ -103,22 +103,22 @@ const HowToJoinContent = [
   {
     title: 'IFC Recruitment',
     content:
-      'The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC and then make decisions of who they would like to get to know further and join. This process takes place in the early fall semester and the early spring semester. All prospective participants must register through the online registration system that can be found within the Cal State LA Fraternity & Sorority Life webpage. A participant’s eligibility will be based on his most recent completed academic semester, whether that be graduating from high school or ending a collegiate academic semester. To be eligible to join, men coming from High School must have an unweighted 2.75 High School GPA. If men are currently enrolled in college, men must have a 2.60 cumulative GPA based on 12 or more credits. We will not round up or make exceptions for those who are below this standard.',
+      'The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC and then make decisions of who they would like to get to know further and join. This process takes place in the early fall and spring semesters. All prospective participants must register through the online registration system that can be found within the Cal State LA Fraternity and Sorority Life webpage. A participant’s eligibility will be based on his most recent completed academic semester, whether that be graduating from high school or ending a collegiate academic semester. To be eligible to join, men coming from High School must have an unweighted 2.75 High School GPA. If men are currently enrolled in college, men must have a 2.60 cumulative GPA based on 12 or more credits. We will not round up or make exceptions for those who are below this standard.',
   },
   {
     title: 'MGC Membership Intake',
     content:
-      'Each chapter within MGC conducts their own membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an MGC organization are encouraged to attend the Fraternity & Sorority Info Night that takes place at the beginning of each semester. From there interested students are encouraged to attend chapters’ events, educational forums and civic engagement opportunities to get to know more about the organizations and its members.',
+      'Each chapter within MGC conducts their own membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an MGC organization are encouraged to attend the Fraternity & Sorority Info Night that takes place at the beginning of each semester. From there, interested students are encouraged to attend chapters’ events, educational forums and civic engagement opportunities to get to know more about the organizations and its members.',
   },
   {
     title: 'NPHC Membership Intake',
     content:
-      'NPHC organization host membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an NPHC organization are encouraged to attend the Fraternity & Sorority Info Night that takes place at the beginning of each semester. There interested students can learn more about the joining requirements of the NPHC organizations on our campus as well as what it means to be a member of their organization. Students are encouraged to get to know organizations and their members through their attendance at chapter events, educational forums and civic engagement opportunities. The chapters along with their National and Regional Offices determine their own joining requirements and the minimal standards are 12 hours and a 2.5 GPA. However, some organizations may have higher standards for membership.',
+      'NPHC organization host membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an NPHC organization are encouraged to attend the Fraternity and Sorority Info Night that takes place at the beginning of each semester. There interested students can learn more about the joining requirements of the NPHC organizations on our campus as well as what it means to be a member of their organization. Students are encouraged to get to know organizations and their members through their attendance at chapter events, educational forums and civic engagement opportunities. The chapters along with their National and Regional Offices determine their own joining requirements and the minimal standards are 12 hours and a 2.5 GPA. However, some organizations may have higher standards for membership.',
   },
   {
     title: 'Panhellenic Recruitment',
     content:
-      'The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester. All interested and prospective members must register through the online registration form on the Cal State LA Fraternity & Sorority Life webpage. Recruitment will provide women with an understanding of what it means to be in a sorority and the expectations of membership.',
+      'The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester. All interested and prospective members must register through the online registration form on the Cal State LA Fraternity and Sorority Life webpage. Recruitment will provide women with an understanding of what it means to be in a sorority and the expectations of membership.',
   },
 ];
 
@@ -126,7 +126,7 @@ const FamilyAndFriendsCostOfMembershipConent = [
   {
     title: 'What are the financial obligation?',
     children:
-      'Your student will have financial responsibilities when it comes to joining a fraternity or sorority. In most organizations, there is a one-time new member/initiation fee as well as semester membership dues. Depending on which organization your student wants to join will determine the amount of dues they will have to pay each semester. If your student is really interested in becoming a member of an organization, we suggest that you sit down with them and work out a college budget to determine whether or not joining a fraternity or sorority is within reason.The dues that are paid cover a wide range of areas to keep the organizations in existence. These dues are used to pay for community service and philanthropic projects, social events, parent and alumni events, insurance and national fees as well as general chapter expenses. We encourage students who are interested in joining to ask questions to clarify what is expected of them before they join.',
+      'Your student will have financial responsibilities when it comes to joining a fraternity or sorority. In most organizations, there is a one-time new member/initiation fee as well as semester membership dues. Depending on which organization your student wants to join will determine the amount of dues they will have to pay each semester. If your student is interested in becoming a member of an organization, we suggest that you sit down with them and work out a college budget to determine whether or not joining a fraternity or sorority is within reason.The dues that are paid cover a wide range of areas to keep the organizations in existence. These dues are used to pay for community service and philanthropic projects, social events, parent and alumni events, insurance and national fees as well as general chapter expenses. We encourage students who are interested in joining to ask questions to clarify what is expected of them before they join.',
   },
   {
     title: 'Recruitment/Intake Rules',
@@ -136,36 +136,36 @@ const FamilyAndFriendsCostOfMembershipConent = [
   {
     title: 'IFC Recruitment',
     children:
-      'The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC and then make decisions of who they would like to get to know further and join. This process takes place in the early fall semester and the early spring semester. All prospective participants must register through the online registration system that can be found within the Cal State LA Fraternity & Sorority Life webpage. A participant’s eligibility will be based on his most recent completed academic semester, whether that be graduating from high school or ending a collegiate academic semester. To be eligible to join, men coming from High School must have an unweighted 2.75 High School GPA. If men are currently enrolled in college, men must have a 2.60 cumulative GPA based on 12 or more credits. We will not round up or make exceptions for those who are below this standard.',
+      'The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC and then make decisions of who they would like to get to know further and join. This process takes place in the early fall and spring semesters. All prospective participants must register through the online registration system that can be found within the Cal State LA Fraternity and Sorority Life webpage. A participant’s eligibility will be based on his most recent completed academic semester, whether that be graduating from high school or ending a collegiate academic semester. To be eligible to join, men coming from High School must have an unweighted 2.75 High School GPA. If men are currently enrolled in college, men must have a 2.60 cumulative GPA based on 12 or more credits. We will not round up or make exceptions for those who are below this standard.',
   },
   {
     title: 'MGC Membership Intake',
     children:
-      'Each chapter within MGC conducts their own membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an MGC organization are encouraged to attend the Fraternity & Sorority Info Night that takes place at the beginning of each semester. From there interested students are encouraged to attend chapters’ events, educational forums and civic engagement opportunities to get to know more about the organizations and its members.',
+      'Each chapter within MGC conducts their own membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an MGC organization are encouraged to attend the Fraternity and Sorority Info Night that takes place at the beginning of each semester. From there interested students are encouraged to attend chapters’ events, educational forums and civic engagement opportunities to get to know more about the organizations and its members.',
   },
   {
     title: 'NPHC Membership Intake',
     children:
-      'NPHC organization host membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an NPHC organization are encouraged to attend the Fraternity & Sorority Info Night that takes place at the beginning of each semester. There interested students can learn more about the joining requirements of the NPHC organizations on our campus as well as what it means to be a member of their organization. Students are encouraged to get to know organizations and their members through their attendance at chapter events, educational forums and civic engagement opportunities.',
+      'NPHC organization host membership intake after their National or Regional Office approves the process for bringing in new members. Students who are interested in joining an NPHC organization are encouraged to attend the Fraternity and Sorority Info Night that takes place at the beginning of each semester. There interested students can learn more about the joining requirements of the NPHC organizations on our campus as well as what it means to be a member of their organization. Students are encouraged to get to know organizations and their members through their attendance at chapter events, educational forums and civic engagement opportunities.',
   },
   {
     title: 'Panhellenic',
     children:
-      'The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester. All interested and prospective members must register through the online registration form on the Cal State LA Fraternity & Sorority Life webpage. Recruitment will provide women with an understanding of what it means to be in a sorority and the expectations of membership.',
+      'The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester. All interested and prospective members must register through the online registration form on the Cal State LA Fraternity and Sorority Life webpage. Recruitment will provide women with an understanding of what it means to be in a sorority and the expectations of membership.',
   },
 ];
 
 const FamilyAndFriendsCostFAQs = [
   {
     header:
-      'What is Fraternity & Sorority Life? What is involved in Membership?',
+      'What is Fraternity and Sorority Life? What is involved in Membership?',
     children:
       'Joining a fraternity or sorority is a lifelong commitment and an excellent investment for your child’s future. Our students are leaders on campus and are often heavily involved in community service and philanthropic projects. Fraternity and sorority members enjoy the friendship of their “brothers” and “sisters” for life. They are highly involved, academically committed, and well-rounded.',
   },
   {
-    header: 'What are the benefits of joining a Fraternity/Soroity?',
+    header: 'What are the benefits of joining a Fraternity/Sorority?',
     children: (
-      <Typography>
+      <Typography as="p">
         There are many benefits to being a member of a fraternity or sorority.
         Below is a list of how membership can shape your student’s college
         experience at Cal State LA.
@@ -173,16 +173,16 @@ const FamilyAndFriendsCostFAQs = [
           <li>Offers a home-away-from-home environment.</li>
           <li>
             Enhances education that happens in the classroom through academic
-            achievement & plans to support members as well as hold them
+            achievement and plans to support members as well as hold them
             accountable.
           </li>
           <li>
             Provides opportunities to give back to the surrounding community,
-            help others & raise awareness to causes through hands-on service &
-            philanthropic donations.
+            help others and raise awareness to causes through hands-on service
+            and philanthropic donations.
           </li>
           <li>
-            Increases the student’s involvement on-campus & within the
+            Increases the student’s involvement on campus and within the
             community.
           </li>
           <li>
@@ -204,7 +204,7 @@ const FamilyAndFriendsCostFAQs = [
     ),
   },
   {
-    header: 'How does involement in a Fraternity/Sorority affect academics?',
+    header: 'How does involvement in a Fraternity/Sorority affect academics?',
     children:
       'The number one goal for your student at Cal State LA, should be to graduate. Fraternities and sororities can help your student achieve this as long as they work hard and commit themselves to being successful in the classroom. Most Greek organizations not only have a minimum GPA requirement to join but also to remain a member. Typically, each individual chapter has an elected official who is responsible for keeping track of members and their academic performance. Furthermore, many fraternities and sororities have educational programs, such as tutoring and study sessions, which can assist the entire chapter in excelling academically. Most chapters also offer member scholarships. Since obtaining a degree is the main reason for attending college, our organizations are working to help all of their members be successful in the classroom.',
   },
@@ -226,22 +226,22 @@ const FamilyAndFriendsCostFAQs = [
   {
     header: 'What are the benefits of membership after college?',
     children:
-      'In addition to the numerous benefits during college, fraternities and sororities provide a myriad of opportunities to their members after graduation. Fraternities and sororities provide a strong network for your student locally, nationally and abroad for career development and advancement. Furthermore, the leadership and organizational skills members learn in college will be invaluable in their future careers, and the friends they make will surely last a lifetime.',
+      'In addition to the numerous benefits during college, fraternities and sororities provide myriad opportunities to their members after graduation. Fraternities and sororities provide a strong network for your student locally, nationally and abroad for career development and advancement. Furthermore, the leadership and organizational skills members learn in college will be invaluable in their future careers, and the friends they make will surely last a lifetime.',
   },
   {
-    header: 'How much time is involved when joining a fraternity or soroity?',
+    header: 'How much time is involved when joining a fraternity or sorority?',
     children:
       'On average, your student should expect to contribute a few hours per week for meetings and activities. If your student has the time and desire, they can also choose to participate in optional activities, such as holding an office, attending social events, helping out with various projects, etc. Some organizations require more time than others. Advise your child to ask questions regarding time commitments during their recruitment/intake process.',
   },
   {
     header: 'What is Philanthropy?',
     children:
-      'Philanthropic events are events in which fraternity & sorority members will raise money for a particular charitable cause. Many chapters hold events to raise money for campus-wide events and most have charities associated with their (inter)national headquarters.',
+      'Philanthropic events are events in which fraternity and sorority members will raise money for a particular charitable cause. Many chapters hold events to raise money for campus-wide events and most have charities associated with their (inter)national headquarters.',
   },
   {
     header: "Who is in charge of my student's fraternity/sorority?",
     children:
-      'At Cal State LA, Fraternity & Sorority Life is staffed by Chris Battle, FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
+      'At Cal State LA, Fraternity and Sorority Life is staffed by Chris Battle, FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
   },
 ];
 
@@ -260,12 +260,12 @@ const HazingPoliciesContent = [
   {
     name: 'Individual',
     content:
-      'no less than disciplinary probation for one academic year, no more than permanent separation from the university. In addition, the individual(s) including officers of the chapter could face criminal charges.',
+      'No less than disciplinary probation for one academic year, no more than permanent separation from the university. In addition, the individual(s) including officers of the chapter could face criminal charges.',
   },
   {
     name: 'Organizations',
     content:
-      'no less than suspension of privileges for one academic year, no more than indefinite disbanding of the organization.',
+      'No less than suspension of privileges for one academic year, no more than indefinite disbanding of the organization.',
   },
   {
     name: 'Hazing',
@@ -285,7 +285,7 @@ const FSLExpansionContent = [
   },
   {
     content:
-      'Once a group has membership and is granted permission to expand from the appropriate governing council and/or Cal State LA, a new fraternity or sorority must register as a student organization with the Center for Student Involvement, provide contact information for chapter officers and advisors(s), and submit a roster of members to the Fraternity & Sorority Life Coordinator.',
+      'Once a group has membership and is granted permission to expand from the appropriate governing council and/or Cal State LA, a new fraternity or sorority must register as a student organization with the Center for Student Involvement, provide contact information for chapter officers and advisors(s), and submit a roster of members to the Fraternity and Sorority Life Coordinator.',
   },
   {
     content:
@@ -469,7 +469,7 @@ export default function FSL() {
           marginBottom={Spaces.lg}
         ></Image>
         <TextCenter>
-          <Typography>
+          <Typography as="p">
             Fraternities and sororities have been a part of the Cal State LA
             experience since 1948! We have over 25 fraternities and sororities
             on campus from which students experience relationships, community
@@ -477,7 +477,7 @@ export default function FSL() {
             Our community includes organizations that are community service
             based, culturally focused, social, and everything between so there’s
             a place for everyone in our growing community! See the pages below
-            to learn more about our community, it’s members, opportunities, and
+            to learn more about our community, its members, opportunities, and
             events. Be sure to follow us on Instagram.
           </Typography>
         </TextCenter>
@@ -488,12 +488,12 @@ export default function FSL() {
           <FluidContainer>
             <Expandable
               header={
-                <Typography variant="titleSmall">
+                <Typography variant="titleSmall" as="h2">
                   What is Greek Life?
                 </Typography>
               }
             >
-              <Typography margin={`${Spaces.md} 0 `}>
+              <Typography as="p" margin={`${Spaces.md} 0 `}>
                 Fraternities and sororities provide an enriching student
                 experience that helps individuals to grow and develop as
                 students who have leadership and social skills, who prioritize
@@ -523,26 +523,30 @@ export default function FSL() {
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
               header={
-                <Typography variant="titleSmall">Community Reports</Typography>
+                <Typography variant="titleSmall" as="h2">
+                  Community Reports
+                </Typography>
               }
             >
-              <Typography margin={`${Spaces.md} 0 `}>
+              <Typography as="p" margin={`${Spaces.md} 0 `}>
                 Community reports are created to demonstrate academic, service,
                 and philanthropic efforts of the Greek community.
               </Typography>
-              <Typography variant="subheader">Chapter Status</Typography>
+              <Typography variant="subheader" as="h3">
+                Chapter Status
+              </Typography>
               <Typography>
                 In an effort to be as transparent as possible with our
                 community, the Center for Student Involvement has published the
                 chapter status of each chapter chartered at California State
                 University, Los Angeles.
               </Typography>
-              <Typography weight="700" margin={`${Spaces.sm} 0 0`}>
+              <Typography weight="700" as="h4" margin={`${Spaces.sm} 0 0`}>
                 <u>University Status Key for FSl Groups</u>
               </Typography>
               <ul>
                 <li>
-                  <Typography>
+                  <Typography as="p">
                     <strong>Good Standing: </strong> the organization is
                     officially recognized by the university. These organizations
                     have the privileges of using University facilities and
@@ -554,7 +558,7 @@ export default function FSL() {
                   </Typography>
                 </li>
                 <li>
-                  <Typography>
+                  <Typography as="p">
                     <strong>Unrecognized: </strong> the organization is not in
                     good standing and is no longer associated with the
                     University, their HQs, or council. The organization and its
@@ -570,7 +574,7 @@ export default function FSL() {
                   </Typography>
                 </li>
                 <li>
-                  <Typography>
+                  <Typography as="p">
                     <strong>Probation: </strong>places the organization on
                     probation for a period of time during which the organization
                     is expected to demonstrate exemplary compliance with
@@ -588,18 +592,24 @@ export default function FSL() {
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
-              header={<Typography variant="titleSmall">Visit Us</Typography>}
+              header={
+                <Typography variant="titleSmall" as="h2">
+                  Visit Us
+                </Typography>
+              }
             >
-              <Typography margin={`${Spaces.md} 0 `}>
+              <Typography as="p" margin={`${Spaces.md} 0 `}>
                 The CSI staff is available during the work week and can be seen
                 on campus at night and weekends for meetings and programs to
                 assist you in your fraternity and sorority experience. Please
                 email us or stop by our office for more information.
               </Typography>
-              <Typography weight="700">Contact Us</Typography>
-              <Typography>Phone: 323-343-5110</Typography>
-              <Typography>Fax: 323-343-5101</Typography>
-              <Typography>Email: cbattle3@calstatela.edu</Typography>
+              <Typography weight="700" as="h4">
+                Contact Us
+              </Typography>
+              <Typography as="p">Phone: 323-343-5110</Typography>
+              <Typography as="p">Fax: 323-343-5101</Typography>
+              <Typography as="p">Email: cbattle3@calstatela.edu</Typography>
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
           </FluidContainer>
@@ -641,7 +651,7 @@ export default function FSL() {
                             alt="crest"
                             width="80%"
                           ></Image>
-                          <Typography>
+                          <Typography as="span">
                             <strong>Values: </strong>
                             {p.values.map((value: string) => value + ' ')}
                             <br />
@@ -649,7 +659,7 @@ export default function FSL() {
                             {p.founding}
                             <br />
                             {p.communityService && (
-                              <Typography>
+                              <Typography as="span">
                                 <strong>Community Service:</strong>
                                 {p.communityService.map(
                                   (service: string) => service + ' ',
@@ -676,7 +686,7 @@ export default function FSL() {
       {displayContent === 'HowToJoinSection' && (
         <HowToJoinSection>
           <FluidContainer>
-            <Typography color="white" margin={`${Spaces.sm} 0`}>
+            <Typography as="p" color="white" margin={`${Spaces.sm} 0`}>
               At Cal State LA, the joining process for each organization is
               based on their governing council and their National and Regional
               Offices. The process to join an organization is different for each
@@ -698,11 +708,12 @@ export default function FSL() {
             <Typography
               variant="titleSmall"
               color="gold"
+              as="h2"
               margin={`${Spaces.md} 0`}
             >
               Welcome to Fraternity & Sorority Life at Cal State LA!
             </Typography>
-            <Typography>
+            <Typography as="p">
               Your student has embarked upon a great adventure and opportunity
               by choosing to attend California State University, Los Angeles.
               Your student has many opportunities ahead of them while at Cal
@@ -721,11 +732,11 @@ export default function FSL() {
               organizations to enhance the overall Greek experience by upholding
               their values, community standards and university Policies.
             </Typography>
-            <Typography variant="titleSmall" margin={`${Spaces.md} 0`}>
+            <Typography variant="titleSmall" as="h2" margin={`${Spaces.md} 0`}>
               Your Role as a Parent/Family Member. Get Connected, Stay Informed,
               Support Your Students.
             </Typography>
-            <Typography>
+            <Typography as="p">
               Students need support throughout the process of recruitment/intake
               and new member education. Be supportive and learn as much as you
               can about Greek life by asking questions of your student as they
@@ -764,14 +775,14 @@ export default function FSL() {
               If you have any questions or concerns about Greek Life on Cal
               State LA’s campus, please contact us!
             </Typography>
-            <Typography weight="700" margin={`${Spaces.md} 0 0`}>
+            <Typography weight="700" as="h4" margin={`${Spaces.md} 0 0`}>
               Contact Us
             </Typography>
-            <Typography>
+            <Typography as="p">
               Phone: 323-343-5110 <br /> Fax: 323-343-5101 <br /> Email:
               cbattle3@calstatela.edu
             </Typography>
-            <Typography variant="titleSmall" margin={`${Spaces.md} 0`}>
+            <Typography variant="titleSmall" as="h2" margin={`${Spaces.md} 0`}>
               Cost of Membership
             </Typography>
 
@@ -788,6 +799,7 @@ export default function FSL() {
             <Typography
               variant="title"
               color="gold"
+              as="h2"
               margin={`0 0 ${Spaces.md} `}
             >
               Frequently Asked Questions
@@ -814,7 +826,9 @@ export default function FSL() {
       {displayContent === 'CurrentMembersSection' && (
         <CurrentMembersSection>
           <FluidContainer>
-            <Typography variant="title">Memebership Intake Forms</Typography>
+            <Typography variant="title" as="h2">
+              Memebership Intake Forms
+            </Typography>
             <FluidContainer
               flex
               flexWrap="wrap"
@@ -830,10 +844,12 @@ export default function FSL() {
                 </Button>
               ))}
             </FluidContainer>
-            <Typography variant="title" margin={`${Spaces.sm} 0`}>
+            <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
               Policies
             </Typography>
-            <Typography variant="cta">California Hazing Law</Typography>
+            <Typography variant="cta" as="h4">
+              California Hazing Law
+            </Typography>
             <Typography>
               <strong>Hazing is not permitted on Cal State LA’s campus.</strong>
               This is in accordance with California law; the policies of
@@ -844,7 +860,7 @@ export default function FSL() {
               Handbook for information concerning Cal State LA’s definition of
               hazing, California State law, and possible sanctions.
             </Typography>
-            <Typography margin={`${Spaces.md} 0`}>
+            <Typography as="p" margin={`${Spaces.md} 0`}>
               At Cal State LA, the sanctions for hazing include:
             </Typography>
             <HazingPoliciesContentSection>
@@ -872,7 +888,7 @@ export default function FSL() {
                 </Button>
               ))}
             </FluidContainer>
-            <Typography variant="title">
+            <Typography variant="title" as="h2">
               {' '}
               Exapansion of New Fraternities and Soroities
             </Typography>
@@ -887,7 +903,9 @@ export default function FSL() {
       {displayContent === 'ResourcesSection' && (
         <ResourcesSection>
           <FluidContainer>
-            <Typography variant="title">Resources</Typography>
+            <Typography variant="title" as="h1">
+              Resources
+            </Typography>
             <FluidContainer flex flexWrap="wrap">
               {ResourceButtons.map((resource) => (
                 <ResourceButtonsSection key={resource.title}>

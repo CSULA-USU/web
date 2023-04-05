@@ -74,13 +74,13 @@ export default function Recreation() {
         justifyContent="space-between"
         flexWrap={isMobile ? 'wrap' : 'nowrap'}
       >
-        <Typography margin="0 72px 24px 0">
+        <Typography as="p" margin="0 72px 24px 0">
           Recreation at Cal State LA provides Golden Eagles with opportunities
           to play, exercise and engage their campus community through
           programming and events aimed toward enhancing the experience of all
           who participate.
         </Typography>
-        <Typography>
+        <Typography as="p">
           Recreation is comprised of the Recreation Fitness Center Center and
           Recreation Esports. The Recreation Fitness Center is located on the
           basement level of the U-SU, and will be open to all students, staff
@@ -133,7 +133,7 @@ export default function Recreation() {
         </Card>
       </FluidContainer>
       <FluidContainer backgroundColor="primary">
-        <Typography variant="titleLarge" margin="24px 0 24px">
+        <Typography variant="titleLarge" as="h3" margin="24px 0 24px">
           For updates and ways to connect now, follow @calstatela_recreation on
           Instagram!
         </Typography>

@@ -130,7 +130,7 @@ export default function CulturalGrads() {
           />
         </a>
         <VerticalLine />
-        <Typography margin={`${Spaces.md} 0`}>
+        <Typography as="p" margin={`${Spaces.md} 0`}>
           The Division of Student Life, University-Student Union, and Cross
           Cultural Centers are seeking nominations for the 21st Distinguished
           Women Awards. This event honors women from Cal State LA for their many
@@ -142,15 +142,15 @@ export default function CulturalGrads() {
         </Typography>
       </FluidContainer>
       <FluidContainer backgroundColor="black">
-        <Typography color="white" variant="title">
+        <Typography color="white" variant="title" as="h1">
           Nominations
         </Typography>
-        <Typography color="white" margin={`${Spaces.sm} 0`}>
+        <Typography color="white" as="p" margin={`${Spaces.sm} 0`}>
           We welcome self-nominations as well as nominations from faculty,
           staff, students, and alums of outstanding women from Cal State LA,
           including:{' '}
         </Typography>
-        <Typography color="white">
+        <Typography color="white" as="p">
           <ul>
             <li>faculty</li>
             <li>staff</li>
@@ -160,15 +160,15 @@ export default function CulturalGrads() {
             <li>alumna</li>
           </ul>
         </Typography>
-        <Typography color="white" margin={`${Spaces.sm} 0`}>
+        <Typography color="white" as="p" margin={`${Spaces.sm} 0`}>
           Nominees who are employees must be full-time employees of Cal State LA
           or its auxiliaries. Emeriti faculty are eligible. However, past
           Distinguished Women Award recipients are not eligible.
         </Typography>
-        <Typography color="white">
+        <Typography color="white" as="p">
           The submission deadline is March 1, 2023.
         </Typography>
-        <Typography color="white" margin={`0 0 ${Spaces.md}`}>
+        <Typography color="white" as="p" margin={`0 0 ${Spaces.md}`}>
           Award recipients will be recognized during a reception on Monday,
           March 20, 2023, in the Golden Eagle Ballrooms. Check-in begins at 12
           p.m. and the program begins at 12:30 p.m.

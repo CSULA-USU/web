@@ -329,13 +329,13 @@ export default function Graffix() {
       </FluidContainer>
       <div id="acui-awards">
         <FluidContainer flex flexDirection="column" backgroundColor="black">
-          <Typography variant="title" margin="16px 0" color="gold">
+          <Typography variant="title" margin="16px 0" color="gold" as="h2">
             ACUI Awards{' '}
           </Typography>
-          <Typography color="greyLighter" variant="label">
+          <Typography color="greyLighter" variant="label" as="h3">
             Association of College Unions International (ACUI)
           </Typography>
-          <Typography color="white">
+          <Typography color="white" as="p">
             Association of College Unions International is a nonprofit
             educational organization that brings together college union and
             student activities professionals from hundreds of schools in seven
@@ -345,10 +345,15 @@ export default function Graffix() {
             includes Arizona, Hawaii, Nevada, New Mexico, Australia and the
             Territory of Guam.
           </Typography>
-          <Typography variant="label" margin="16px 0 0" color="greyLighter">
+          <Typography
+            variant="label"
+            margin="16px 0 0"
+            color="greyLighter"
+            as="h3"
+          >
             Steal This Idea
           </Typography>
-          <Typography color="white" margin="0 0 24px 0">
+          <Typography color="white" as="p" margin="0 0 24px 0">
             Steal This Idea is the ACUI&apos;s marketing and graphics
             competition to recognize the year&apos;s best promotional ideas
             throughout the regions and presents them at the conference. There
@@ -379,11 +384,11 @@ export default function Graffix() {
                 <Typography as="h4" variant="titleSmall" margin="16px 0">
                   {award.name}
                 </Typography>
-                <Typography>ACUI Conference:{award.acuiName}</Typography>
-                <Typography>Title: {award.title}</Typography>
-                <Typography>Place: {award.place}</Typography>
-                <Typography>Category: {award.category}</Typography>
-                <Typography>Class: {award.class}</Typography>
+                <Typography as="p">ACUI Conference:{award.acuiName}</Typography>
+                <Typography as="p">Title: {award.title}</Typography>
+                <Typography as="p">Place: {award.place}</Typography>
+                <Typography as="p">Category: {award.category}</Typography>
+                <Typography as="p">Class: {award.class}</Typography>
               </div>
             </InnerAwardContainer>
           </Panel>
@@ -404,7 +409,7 @@ export default function Graffix() {
             <br />
             team!
           </Typography>
-          <Typography margin={`${Spaces.md} 0`}>
+          <Typography as="p" margin={`${Spaces.md} 0`}>
             Are you an aspiring graphic designer/ web developer/ social media
             manager? Hone new skills and experiences here at Graffix!
           </Typography>
