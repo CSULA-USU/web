@@ -76,7 +76,7 @@ export default function Geek() {
         ></Image>
         <VerticalLine />
         <TextCenter>
-          <Typography margin={`${Spaces.md} 0`}>
+          <Typography as="p" margin={`${Spaces.md} 0`}>
             Golden Eagle Event Krew (GEEK) is an opportunity for Cal State LA
             students to get involved behind the scenes, helping with event
             programming and/or marketing for Center for Student Involvement
@@ -87,7 +87,7 @@ export default function Geek() {
           </Typography>
         </TextCenter>
         <TextCenter>
-          <Typography>
+          <Typography as="p">
             CSI welcomes volunteers in the fall and spring semester of each
             school year, helping with wellness and engagement programming. GEEK
             volunteers are an essential component of a program’s success.
@@ -100,7 +100,7 @@ export default function Geek() {
       </FluidContainer>
       <FluidContainer>
         <TextCenter>
-          <Typography variant="title">
+          <Typography variant="title" as="p">
             The GEEK Program strives to grow students in the following areas:
           </Typography>
         </TextCenter>
@@ -120,19 +120,29 @@ export default function Geek() {
       </FluidContainer>
 
       <FluidContainer backgroundColor="black">
-        <Typography variant="title" color="gold" margin={`0 0 ${Spaces.md}`}>
+        <Typography
+          variant="title"
+          color="gold"
+          as="h3"
+          margin={`0 0 ${Spaces.md}`}
+        >
           GEEK FAQ
         </Typography>
 
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What are the requirements that GEEKs must fulfill?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             <ul>
               <li>Maintain 2.0 GPA</li>
               <li>Complete a total of 5 events and/or 20 hours</li>
@@ -151,12 +161,17 @@ export default function Geek() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What is the GEEK dress code?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             We ask GEEK members to dress comfortably as there may be times where
             you might be moving around frequently during an event. Please wear
             clothes that you will be able to be active in. Closed-toed shoes
@@ -168,12 +183,17 @@ export default function Geek() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What is the GEEK code of conduct?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             As a GEEK member, you are representing the Center for Student
             Involvement and the University-Student Union. We expect you to
             conduct yourself accordingly at all times. All members of the Cal

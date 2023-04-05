@@ -220,7 +220,7 @@ export default function CulturalGrads() {
             backgroundImage="/bod-cta-background.jpg"
           >
             <FluidContainer flex flexDirection="column" alignItems="center">
-              <Typography variant="title">
+              <Typography variant="title" as="h1">
                 Cultural Graduate Celebrations
               </Typography>
               <Image
@@ -231,7 +231,7 @@ export default function CulturalGrads() {
                 borderRadius="12px"
                 src="/departments/ccc/nuestra-teaser.jpeg"
               />
-              <Typography margin="24px 0">
+              <Typography margin="24px 0" as="h3">
                 <strong>Dear Cal State LA Prospective Graduate,</strong>
                 <br />
                 These ceremonies and celebrations are great opportunities to

@@ -52,15 +52,21 @@ export default function Governance() {
       ></Header>
       <FluidContainer flex justifyContent="space-between">
         <div>
-          <Typography {...typographyProps}>Agenda</Typography>
+          <Typography as="h2" {...typographyProps}>
+            Agenda
+          </Typography>
           <DocumentLinkContainer stacked links={agendaLinks} />
         </div>
         <div>
-          <Typography {...typographyProps}>Minutes</Typography>
+          <Typography as="h2" {...typographyProps}>
+            Minutes
+          </Typography>
           <DocumentLinkContainer stacked links={minutesLinks} />
         </div>
         <div>
-          <Typography {...typographyProps}>Meetings</Typography>
+          <Typography as="h2" {...typographyProps}>
+            Meetings
+          </Typography>
           <DocumentLinkContainer stacked links={meetingLinks} />
         </div>
       </FluidContainer>

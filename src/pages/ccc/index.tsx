@@ -176,10 +176,10 @@ export default function CCC() {
         backgroundColor="greyLightest"
       >
         <StudentOrgsCatergoriesContentContainer>
-          <Typography margin="auto" variant="title">
+          <Typography margin="auto" variant="title" as="h2">
             Resource Centers
           </Typography>
-          <Typography margin="auto">
+          <Typography margin="auto" as="p">
             The Cross Cultural Centers provide an inclusive and friendly space
             that allows students to be themselves. The Centers are open to
             individuals from all ethnic and gender backgrounds. Please stop by
@@ -197,7 +197,9 @@ export default function CCC() {
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
       <FluidContainer backgroundImage="/bod-cta-background.jpg">
-        <Typography variant="title">We Provide:</Typography>
+        <Typography variant="title" as="h2">
+          We Provide:
+        </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
           {descriptionCards.map((props) => (
             <DescriptionCard
@@ -229,10 +231,10 @@ export default function CCC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title">
+            <Typography variant="title" as="h2">
               Cultural Graduate Celebrations
             </Typography>
-            <Typography margin="24px 0">
+            <Typography margin="24px 0" as="p">
               These ceremonies and celebrations are great opportunities to
               acknowledge your academic achievements, honor your families,
               communities, and other significant people in your lives, and to

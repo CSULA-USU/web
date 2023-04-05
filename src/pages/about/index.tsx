@@ -85,14 +85,14 @@ export default function About() {
         buttons={buttons}
       >
         <Image src="/about.png" alt="student union" width="100%" />
-        <Typography>
+        <Typography as="p">
           <Typography variant="labelTitle" as="span">
             Mission: &nbsp;
           </Typography>
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
-        <Typography>
+        <Typography as="p">
           <Typography variant="labelTitle" as="span">
             Vision: &nbsp;
           </Typography>
@@ -100,7 +100,7 @@ export default function About() {
         </Typography>
       </Header>
       <Title>
-        <Typography variant="title" margin="48px 0 0 0 ">
+        <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
         </Typography>
       </Title>

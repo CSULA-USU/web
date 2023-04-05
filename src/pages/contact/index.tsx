@@ -33,13 +33,13 @@ export default function Contact() {
       </Head>
 
       <FluidContainer backgroundImage="/subtle-background-2.jpg">
-        <Typography variant="titleLarge" weight="700">
+        <Typography variant="titleLarge" weight="700" as="h1">
           Contact Us
         </Typography>
       </FluidContainer>
       <FluidContainer flex justifyContent="flex-start" flexWrap="wrap">
         <ContactContainer>
-          <Typography>
+          <Typography as="p">
             University-Student Union, <br />
             5154 State University Dr, <br />
             Los Angeles CA, 90032

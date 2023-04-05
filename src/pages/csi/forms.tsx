@@ -8,7 +8,7 @@ const account = [
     title:
       'Student Organization Account Form 1: President, Treasurer, and 1 Advisor',
     children: (
-      <Typography>
+      <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
         for your organizational needs) in the DocuSign Power form. Each signer
         will receive the form directly.
@@ -24,7 +24,7 @@ const account = [
     title:
       'Student Organization Account Form 2: President, Treasurer, 1 Advisor, and 1 Additional Signee',
     children: (
-      <Typography>
+      <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
         for your organizational needs) in the DocuSign Power form. Each signer
         will receive the form directly.
@@ -40,7 +40,7 @@ const account = [
     title:
       'Student Organization Account Form 3: President, Treasurer, and 2 Advisors',
     children: (
-      <Typography>
+      <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
         for your organizational needs) in the DocuSign Power form. Each signer
         will receive the form directly.
@@ -56,7 +56,7 @@ const account = [
     title:
       'Student Organization Account Form 4: President, Treasurer, 2 Advisors, and 1 Additional Signee',
     children: (
-      <Typography>
+      <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
         for your organizational needs) in the DocuSign Power form. Each signer
         will receive the form directly.
@@ -74,7 +74,7 @@ const banking = [
   {
     title: 'Club Banking Exemption Request Form',
     children: (
-      <Typography>
+      <Typography as="p">
         All clubs and organizations must bank with the on-campus entity, but
         depending on if your club/organization qualifies to be exempt from this
         mandate, use this form.
@@ -89,7 +89,7 @@ const banking = [
   {
     title: 'Payment Advance Procedures',
     children: (
-      <Typography>
+      <Typography as="p">
         Student clubs and organizations may submit a Payment Advance Check
         Requisition (Req) up to $200 to an individual for an event. Payment
         advances follow the same process as a check requisition.
@@ -104,7 +104,7 @@ const banking = [
   {
     title: 'Student Organization Check Requisition',
     children: (
-      <Typography>
+      <Typography as="p">
         Check requisitions are forms completed to pay vendors, reimburse
         individuals, and to pay for services. <br />
         Updated 7/19/22
@@ -119,7 +119,7 @@ const banking = [
   {
     title: 'Student Organization Deposit Slip',
     children: (
-      <Typography>
+      <Typography as="p">
         As student clubs and organizations, cash and/or checks must be kept in a
         secure location at all times. Use this form to deposit money safely into
         your organization&apos;s bank account.
@@ -136,7 +136,7 @@ const banking = [
   {
     title: 'Student Organization Sales Receipt Log',
     children: (
-      <Typography>
+      <Typography as="p">
         In circumstances where it is not practical to process a receipt (e.g.
         club bake sales, ticket sales), other mitigating controls must be
         implemented. <br />
@@ -152,7 +152,7 @@ const banking = [
   {
     title: 'Student Clubs and Orgs Event Fundraising Request Form',
     children: (
-      <Typography>
+      <Typography as="p">
         The Office of Annual Giving needs to review and approve all private
         external fundraising events and activities to make sure they meet the
         education-exemption criteria and make sure all policies and procedures
@@ -168,7 +168,7 @@ const banking = [
   {
     title: 'Student Organization External Private Fundraising Approval Form',
     children: (
-      <Typography>
+      <Typography as="p">
         The Office of Annual Giving needs to review and approve all private
         external fundraising events and activities to make sure they meet the
         education-exemption criteria and make sure all policies and procedures
@@ -187,7 +187,7 @@ const event = [
   {
     title: 'Amplified Sound Request',
     children: (
-      <Typography>
+      <Typography as="p">
         Amplified Sound Request (On-Campus Departments Only & Off-Campus
         Organizations only).
       </Typography>
@@ -201,7 +201,7 @@ const event = [
   {
     title: 'Event Registration',
     children: (
-      <Typography>
+      <Typography as="p">
         Student organization event registrations are subject to all necessary
         requirements before they can be approved.
       </Typography>
@@ -215,7 +215,7 @@ const event = [
   {
     title: 'Student Organization Temporary Food Permit Form',
     children: (
-      <Typography>
+      <Typography as="p">
         Please ensure you have all required information in order to apply for a
         temporary food permit.
       </Typography>

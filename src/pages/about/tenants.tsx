@@ -142,7 +142,7 @@ export default function Tenants() {
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
-          <Typography variant="titleSmall" margin="16px 0">
+          <Typography variant="titleSmall" as="h2" margin="16px 0">
             {modalData.title}
           </Typography>
           <div>

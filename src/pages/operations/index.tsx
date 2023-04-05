@@ -178,6 +178,7 @@ export default function Operations() {
             <Typography
               variant="pageHeader"
               color="white"
+              as="h1"
               margin={`${Spaces.md} 0`}
               size={isMobile ? 'xl' : '4xl'}
             >
@@ -186,7 +187,7 @@ export default function Operations() {
             <video width="100%" loop autoPlay muted>
               <source src="/operations/videos/ops-loop.mp4" type="video/mp4" />
             </video>
-            <Typography color="white" margin={`${Spaces.md} 0`}>
+            <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
               {' '}
               The Operations Team consists of five divisions: building
               maintenance, building services, custodial services, media
@@ -209,11 +210,12 @@ export default function Operations() {
               <Typography
                 variant="pageHeader"
                 color="white"
+                as="h1"
                 margin={`${Spaces.md} 0`}
               >
                 Operations & Reservations
               </Typography>
-              <Typography color="white" margin={`${Spaces.md} 0`}>
+              <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
                 {' '}
                 The Operations Team consists of five divisions: building
                 maintenance, building services, custodial services, media
@@ -268,7 +270,9 @@ export default function Operations() {
         justifyContent="center"
       >
         <TextCenter>
-          <Typography variant="title">Additional Information</Typography>
+          <Typography variant="title" as="h2">
+            Additional Information
+          </Typography>
         </TextCenter>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLightest">

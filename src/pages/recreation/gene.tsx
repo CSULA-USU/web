@@ -60,7 +60,7 @@ export default function Gene() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header title="Golden Eagle Nutrition Education (GENE)" buttons={buttons}>
-        <Typography>
+        <Typography as="p">
           At GENE, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
@@ -75,11 +75,11 @@ export default function Gene() {
         innerMinHeight="200px"
         backgroundColor="primary"
       >
-        <Typography margin="auto" variant="title">
+        <Typography margin="auto" variant="title" as="h2">
           Welcome
         </Typography>
         <WelcomeContentContainer>
-          <Typography margin="12px 0">
+          <Typography as="p" margin="12px 0">
             Welcome to the Golden Eagle Nutrition Education (GENE) program!
             Here, you can sign up for personalized nutrition education sessions
             provided by our Cal State LA Nutritional Science students. Our
@@ -89,7 +89,7 @@ export default function Gene() {
             individual feedback and encouragement as you make food and lifestyle
             changes.
           </Typography>
-          <Typography margin="24px 0" weight="700">
+          <Typography as="p" margin="24px 0" weight="700">
             Schedule your appointment today by filling out an RSVP form with the
             RSVP button to be partnered with a Nutrition Educator! Please allow
             24 hours to be scheduled. Student organizations must complete and
@@ -112,7 +112,9 @@ export default function Gene() {
         flexDirection="column"
         alignItems="center"
       >
-        <Typography variant="title">What to expect</Typography>
+        <Typography variant="title" as="h2">
+          What to expect
+        </Typography>
         <FluidContainer flex flexWrap="wrap">
           {cards.map((props) => (
             <Card

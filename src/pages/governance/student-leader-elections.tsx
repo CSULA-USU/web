@@ -64,25 +64,27 @@ const ElectionUpdates = (props: any) => {
 const electionUpdateItems = [
   {
     title: 'Application Deadline',
-    children: <Typography>Friday, February 10</Typography>,
+    children: <Typography as="p">Friday, February 10</Typography>,
   },
   {
     title: 'ASI Candidate Briefing',
-    children: <Typography>Monday, February 27</Typography>,
+    children: <Typography as="p">Monday, February 27</Typography>,
   },
   {
     title: 'Verifying Eligibilty',
-    children: <Typography>Tuesday, March 7 - Friday, March 10</Typography>,
+    children: (
+      <Typography as="p">Tuesday, March 7 - Friday, March 10</Typography>
+    ),
   },
   {
     title: 'U-SU Mandatory Candidate Briefing',
     children: (
-      <Typography>Wednesday, March 15 or Wednesday March 22</Typography>
+      <Typography as="p">Wednesday, March 15 or Wednesday March 22</Typography>
     ),
   },
   {
     title: 'Candidate Campaigning',
-    children: <Typography>Monday, April 3 - Friday, April 7</Typography>,
+    children: <Typography as="p">Monday, April 3 - Friday, April 7</Typography>,
   },
   {
     title: 'Voting For Elections',
@@ -90,18 +92,18 @@ const electionUpdateItems = [
       "Stop by to vote and receive a ticket for that day's food option. You choose the day to vote, but you can only vote once! Happy voting!",
     children: (
       <div>
-        <Typography margin={`0 0 ${Spaces.md}`}>
+        <Typography as="p" margin={`0 0 ${Spaces.md}`}>
           Stop by to vote and receive a ticket for that day&apos;s food option.
           You choose the day to vote, but you can only vote once! Happy voting!
         </Typography>
 
-        <Typography>
+        <Typography as="p">
           Monday, April 10 - Elections Voting Table: Dessert for Democracy
         </Typography>
-        <Typography margin={`${Spaces.sm} 0 ${Spaces.sm}`}>
+        <Typography as="p" margin={`${Spaces.sm} 0 ${Spaces.sm}`}>
           Tuesday, April 11 - Elections Voting Table: In-N-Out Food Truck
         </Typography>
-        <Typography>
+        <Typography as="p">
           Thursday, April 13 - Elections Voting Table: Taco Truck
         </Typography>
       </div>
@@ -109,7 +111,7 @@ const electionUpdateItems = [
   },
   {
     title: 'Election Results Announced',
-    children: <Typography>Thursday, April 20</Typography>,
+    children: <Typography as="p">Thursday, April 20</Typography>,
   },
 ];
 
@@ -139,11 +141,11 @@ export default function StudentLeaderElections() {
         flexWrap={!isTablet ? 'nowrap' : 'wrap'}
       >
         <HeaderContainer>
-          <Typography variant="pageHeader" color="white">
+          <Typography variant="pageHeader" color="white" as="h1">
             <TextCenter>Student Leader Elections</TextCenter>
           </Typography>
 
-          <Typography color="white" lineHeight="1.8">
+          <Typography color="white" lineHeight="1.8" as="p">
             <TextCenter>
               The University-Student Union&apos;s Board of Directors is the
               governing board of the Union. The purpose of the Board is to
@@ -178,7 +180,7 @@ export default function StudentLeaderElections() {
         ></Image>
       </FluidContainer>
       <FluidContainer>
-        <Typography as="h1" variant="titleLarge">
+        <Typography as="h2" variant="titleLarge">
           Election Updates
         </Typography>
         {electionUpdateItems.map((props) => (
@@ -186,22 +188,29 @@ export default function StudentLeaderElections() {
         ))}
       </FluidContainer>
       <FluidContainer backgroundColor="greyLightest">
-        <Typography variant="title">Election Results</Typography>
-        <Typography>Results pending...</Typography>
+        <Typography variant="title" as="h2">
+          Election Results
+        </Typography>
+        <Typography as="p">Results pending...</Typography>
       </FluidContainer>
       <FluidContainer backgroundColor="black">
-        <Typography color="gold" variant="title">
+        <Typography color="gold" variant="title" as="h2">
           Frequently Asked Questions
         </Typography>
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What is the role of the U-SU Board of Directors Member{' '}
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             <ul>
               <li>
                 Attend U-SU Board of Directors meetings. Meetings are held on
@@ -230,13 +239,18 @@ export default function StudentLeaderElections() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What is the difference between the U-SU Board of Directors and
               A.S.I?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             The University-Student Union Board of Directors is charged with
             managing, supporting, and advocating for the University-Student
             Union on campus. The Board of Directors is comprised of 16 member, 8
@@ -257,12 +271,17 @@ export default function StudentLeaderElections() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               Do you have what it takes to serve the U-SU Board of Directors?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             Undergraduate Candidates must:
             <ul>
               <li>
@@ -285,12 +304,17 @@ export default function StudentLeaderElections() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               What can you gain from serving on the U-SU Board of Directors?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             <ul>
               <li>Develop your leadership &amp; communication skills.</li>
               <li>Build your academic and professional resume.</li>
@@ -313,12 +337,17 @@ export default function StudentLeaderElections() {
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={
-            <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
+            <Typography
+              variant="label"
+              color="white"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
               I have more questions about applying. Who do I contact?
             </Typography>
           }
         >
-          <Typography color="white">
+          <Typography color="white" as="p">
             For more information on the application process, please visit the
             University-Student Union administration office in room 306 or call
             Joe Sedlacek, Assistant to the Executive Director, at 323.343.2461.
