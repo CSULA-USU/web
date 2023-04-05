@@ -46,14 +46,14 @@ export default function Geek() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Organizations Geek</title>
+        <title>U-SU GEEK</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Studen, GEEK, Golden Eagle Event Krew"
         />
         <meta
           name="description"
@@ -128,7 +128,7 @@ export default function Geek() {
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
-              What are the requirements that GEEK volunteers must fulfill?
+              What are the requirements that GEEKs must fulfill?
             </Typography>
           }
         >
@@ -152,7 +152,7 @@ export default function Geek() {
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
-              How many events do GEEKs commit to?
+              What is the GEEK dress code?
             </Typography>
           }
         >
@@ -169,7 +169,7 @@ export default function Geek() {
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography variant="label" color="white" margin={`${Spaces.sm} 0`}>
-              How am I supposed to conduct myself while volunteering?
+              What is the GEEK code of conduct?
             </Typography>
           }
         >

@@ -35,7 +35,7 @@ const cards = [
 
 const buttons = [
   { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
-  { text: 'Meet Your Educators', href: '#' },
+  { text: 'Meet Your Educators', href: '/gene-bios.pdf' },
 ];
 
 export default function Gene() {
@@ -44,11 +44,11 @@ export default function Gene() {
   return (
     <Page>
       <Head>
-        <title>Recreation - GENE</title>
+        <title>Recreation GENE</title>
         <meta name="author" content="Recreation" />
         <meta
           name="keywords"
-          content="recreation fitness workout calstate la los angeles cal state california state university csula chris balam jay san luis gym"
+          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition"
         />
         <meta
           name="description"

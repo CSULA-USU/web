@@ -55,9 +55,9 @@ export default function CSI() {
       linkText: 'Learn More',
     },
     {
-      title: 'Fraternities & Sororities',
+      title: 'Fraternities and Sororities',
       children:
-        'Are you curious about fraternity & sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
+        'Are you curious about fraternity and sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
       imgSrc: '/vectors/csi/fraternities.svg',
       imgAlt: 'fraternities image',
       href: 'csi/fsl',
@@ -82,7 +82,7 @@ export default function CSI() {
       linkText: 'Learn More',
     },
     {
-      title: 'LEAD (Leadership Enrichment Advocacy & Development)',
+      title: 'LEAD (Leadership Enrichment Advocacy and Development)',
       children:
         'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
       imgSrc: '/vectors/csi/education.svg',
@@ -128,7 +128,7 @@ export default function CSI() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, GEEK, Golden Eagle Event Krew, FSL, Greek Life, Sorority, Fraternity, Student Organizations, Leadership Enrichment Advocacy and Development, LEAD, Leadership Library, On Campus Programs, Off Campus Programs, Presence"
         />
         <meta
           name="description"
@@ -166,7 +166,10 @@ export default function CSI() {
           <a href="https://www.facebook.com/csicalstatela">
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
           </a>
-          <a href="https://www.instagram.com/csicalstatela/?hl=en">
+          <a
+            href="https://www.instagram.com/csicalstatela/?hl=en"
+            aria-label="link to the Center For Student Involvement's Instagram feed"
+          >
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
           <a href="https://linktr.ee/csicalstatela">

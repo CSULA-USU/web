@@ -11,11 +11,11 @@ export default function Governance() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>U-SU Public Docs</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, student, leader, asi "
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Documents, Public, Tax Exemption Application, Form 1023, IRS Determination Letter, Articles of Incorporation, Annual Registration Renewal, RRF-1, Code of Procedures, Conflict of Interest Policy, Form 990, Form 199, Audited Financial Statements, Statement of Information, SI-100, U-SU Bylaws, Statement, Finance, Financial, Bylaw, Records, Public, Agenda, Minutes, Meetings, Fiscal Year"
         />
         <meta
           name="description"

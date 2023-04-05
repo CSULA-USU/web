@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { CallToAction, Header, ImageAndCard, OfficeHours, Page } from 'modules';
+import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
   ReactCarousel,
@@ -19,7 +19,6 @@ const OfferingsContainer = styled.div`
 `;
 
 const buttons = [
-  { text: 'APIDA Grad', href: '#apida-grad' },
   {
     text: 'Volunteer',
     href: 'https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3SKXNpO6eVxLkvnb3NWEIOBUNjIzMUxQNjVERkhDWUY4NURMTjZLUEkwSC4u',
@@ -29,7 +28,7 @@ const buttons = [
 const carouselImages = [
   {
     src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
-    alt: 'CCC staff posing for holiday photos',
+    alt: 'CCC staff and holiday photos',
   },
   {
     src: '/departments/ccc/apisrc/carousel/lunar-new-year.png',
@@ -63,7 +62,7 @@ const offerings = [
   {
     title: 'Cultural Education',
     children:
-      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
+      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom',
     imgSrc: '/vectors/ccc/teaching.svg',
     imgAlt: 'cultural education',
     href: 'ccc/apisrc',
@@ -114,7 +113,7 @@ export default function APISRC() {
         <meta name="author" content="apisrc coordinator" />
         <meta
           name="keywords"
-          content="csula cal state la student union cross cultural centers asian pacific islander student resource ccc u-su university-student"
+          content="CSULA, Cal State LA Student Union, Cross Cultural Centers, CCC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Cultural Graduation, Cultural Grads, Asian, Pacific Islander, Desi-American, U-SU, University Student"
         />
         <meta
           name="description"
@@ -136,6 +135,7 @@ export default function APISRC() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/apisrc.ccc/"
+            aria-label="link to the Asian, Pacific Islander, Desi-American, Student Resource Center's Instagram feed"
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}
@@ -180,8 +180,8 @@ export default function APISRC() {
             the Asian, Pacific Islander, and Desi American student population
             while enriching and raising social awareness for the entire campus
             community. The APISRC provides services and support for students who
-            identity as, or are interested in, AA, PI, and DA community and
-            cultural issues.
+            identity as, or are interested in, Asian American, Pacific Islander,
+            and South Asian/Desi community cultural issues.
           </Header>
           {!isDesktop && (
             <Image
@@ -195,45 +195,16 @@ export default function APISRC() {
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
             address="5154 State University Dr, Los Angeles, CA 90032 Room 206"
-            phoneNumber="(323)-343-5001"
+            phoneNumber="(323)-343-5471"
             hours={hours}
           ></OfficeHours>
         </FluidContainer>
       </HeaderContainer>
-      <CallToAction
-        href="https://forms.office.com/r/2pTsmaFvCk"
-        buttonVariantColor="primary"
-        buttonText="Sign Up"
-        text="APIDA Grad Committee"
-        textColorProp="white"
-        backgroundColorProp="greyDarkest"
-      >
-        <Typography as="h3" variant="labelTitle" color="white">
-          We&apos;re looking for committee members to help us plan APIDA Grad!
-          From the theme, sash design, performance - join us in making one of
-          the biggest celebrations happen! You don&apos;t have to be a
-          graduating student to be on the committee!
-        </Typography>
-      </CallToAction>
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          The APISRC continues to serve the mission through 4 components:
-        </Typography>
-        <OfferingsContainer>
-          {offerings.map((props) => (
-            <ImageAndCard
-              key={props.title}
-              imageWidth={isTablet ? '128px' : '184px'}
-              {...props}
-            />
-          ))}
-        </OfferingsContainer>
-      </FluidContainer>
       <div id="apida-grad">
         <FluidContainer
           flex
           flexWrap={isTablet ? 'wrap' : 'nowrap'}
-          backgroundColor="greyLightest"
+          backgroundColor="primary"
         >
           <Image
             margin="auto"
@@ -261,6 +232,20 @@ export default function APISRC() {
           </FluidContainer>
         </FluidContainer>
       </div>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          The APISRC continues to serve the mission through 4 components:
+        </Typography>
+        <OfferingsContainer>
+          {offerings.map((props) => (
+            <ImageAndCard
+              key={props.title}
+              imageWidth={isTablet ? '128px' : '184px'}
+              {...props}
+            />
+          ))}
+        </OfferingsContainer>
+      </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Check our events out:

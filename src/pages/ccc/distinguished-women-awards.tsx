@@ -90,8 +90,8 @@ const calculateYears = (startYear: Number, endYear: Number) => {
   );
 };
 const tabItems = [
-  { title: '2010-2019 ', children: <Tens /> },
-  { title: '2000-2009', children: <Thousands /> },
+  { title: '2020-2010 ', children: <Tens /> },
+  { title: '2009-2000', children: <Thousands /> },
   { title: '1999', children: <Ninetys /> },
 ];
 export default function CulturalGrads() {
@@ -105,7 +105,7 @@ export default function CulturalGrads() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, U-SU, University Student, Distinguished Women Awards, CCC, Cross Cultural Center"
         />
         <meta
           name="description"
