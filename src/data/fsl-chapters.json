@@ -15,6 +15,14 @@
   {
     "Fraternities": [
       {
+        "name": "Alpha Phi Alpha",
+        "crest": "/departments/csi/fsl/APA.png",
+        "values": ["Manly Deeds, Scholarship, and Love for All Mankind"],
+        "founding": "1906",
+        "colors": [" Black, Old Gold"],
+        "symbol": " Sphinx"
+      },
+      {
         "name": "Beta Gamma Nu",
         "crest": "/departments/csi/fsl/BGN.png",
         "values": ["Pride in Culture, Brotherhood in Arms, Respect for Life"],
