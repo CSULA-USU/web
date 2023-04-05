@@ -82,7 +82,7 @@ const WhereTab = () => (
       <li>
         Black:
         <ul>
-          <li>Saturday, May 27, 2023</li>
+          <li>Sunday, May 21, 2023</li>
           <li>5:00 PM - 7:00 PM</li>
           <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
@@ -91,7 +91,7 @@ const WhereTab = () => (
       <li>
         Nuestra:
         <ul>
-          <li>Saturday, May 27, 2023</li>
+          <li>Sunday, May 21, 2023</li>
           <li>12:00 PM - 2:00 PM</li>
           <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
@@ -100,7 +100,7 @@ const WhereTab = () => (
       <li>
         Pride:
         <ul>
-          <li>Saturday, May 19, 2023</li>
+          <li>Friday, May 19, 2023</li>
           <li>5:00 PM - 7:00 PM</li>
           <li>Los Angeles Rooms, CSULA University-Student Union</li>
         </ul>
@@ -200,7 +200,7 @@ export default function CulturalGrads() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, Cross Cultural Center, CCC, U-SU, University Student, Cultural Graduation, Black Graduation, APIDA Graduation, Pride Graduation, Nuestra Graduation"
         />
         <meta
           name="description"

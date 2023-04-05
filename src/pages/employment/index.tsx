@@ -43,11 +43,11 @@ export default function Employment() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>U-SU Employment</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, student, organizations, MORE, Cross Cultural Centers, Center For Student Involvement, Fitness Center, The Pit, The Gameroom, Student orgnizations, Calendar, Events, Gender and sexuality resource center, Pan African resource center, Asian Pacific islander, Chicana Latina, Information and Event Services, Distinguished Women, awards, Cultural Graduate Celebrations, LOUDmouth Zine, S.T.A.R.S. Program, Employment Opportunities, Board of Directors, Jobs"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
         />
         <meta
           name="description"
@@ -84,6 +84,16 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
+            <JobItem key="Operations Assistant">
+              <Link
+                href="https://calstatela.joinhandshake.com/jobs/7647111/share_preview"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Operations Assistant
+                </Typography>
+              </Link>
+            </JobItem>
             {studentJobs.map((j: any) => (
               <JobItem key={`${j.title}`}>
                 <Link href={j.link} target="_blank">
@@ -100,7 +110,7 @@ export default function Employment() {
         <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
-        <Link href="/usuforms/u-su/ProfessionalEmployment.pdf">
+        <Link href="/professional-employment.pdf">
           Professional Appointment
         </Link>
         <br />

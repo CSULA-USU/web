@@ -105,7 +105,7 @@ export default function CulturalGrads() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, U-SU, University Student, Distinguished Women Awards, CCC, Cross Cultural Center"
         />
         <meta
           name="description"

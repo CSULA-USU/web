@@ -49,7 +49,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: '#',
+      href: '/governance/public-documents/agenda/fy22-23.zip',
       variant: 'black',
     },
   },
@@ -86,7 +86,7 @@ const minutesDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: '#',
+      href: '/governance/public-documents/minutes/fy22-23.zip',
       variant: 'black',
     },
   },

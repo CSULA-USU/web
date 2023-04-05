@@ -27,11 +27,12 @@ const TabTitles = styled.div`
     margin-right: ${Spaces.md};
   }
 `;
-const Tab = styled.div<{ active?: boolean }>`
+const Tab = styled.div`
   transition: 0.4s ease;
-  color: ${(p) => (p.active ? Colors.black : Colors.grey)};
+  color: ${Colors.black};
   :hover {
     color: ${Colors.black};
+    text-decoration: underline;
   }
   cursor: pointer;
 `;
@@ -43,12 +44,8 @@ export const Tabs = ({ items, ...props }: TabsProps) => {
     <TabsContainer {...props}>
       <TabTitles>
         {items.map((tab, i) => (
-          <Tab
-            key={tab.title}
-            active={i === activeTab}
-            onClick={() => setActiveTab(i)}
-          >
-            {tab.title}
+          <Tab key={tab.title} onClick={() => setActiveTab(i)}>
+            {i === activeTab ? <strong>{tab.title}</strong> : tab.title}
           </Tab>
         ))}
       </TabTitles>

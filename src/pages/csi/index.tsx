@@ -128,7 +128,7 @@ export default function CSI() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, GEEK, Golden Eagle Event Krew, FSL, Greek Life, Sorority, Fraternity, Student Organizations, Leadership Enrichment Advocacy and Development, LEAD, Leadership Library, On Campus Programs, Off Campus Programs, Presence"
         />
         <meta
           name="description"
@@ -166,7 +166,10 @@ export default function CSI() {
           <a href="https://www.facebook.com/csicalstatela">
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
           </a>
-          <a href="https://www.instagram.com/csicalstatela/?hl=en">
+          <a
+            href="https://www.instagram.com/csicalstatela/?hl=en"
+            aria-label="link to the Center For Student Involvement's Instagram feed"
+          >
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
           <a href="https://linktr.ee/csicalstatela">

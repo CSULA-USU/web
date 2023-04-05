@@ -119,11 +119,11 @@ export default function StudentLeaderElections() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>U-SU Student Elections</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, student, leader, asi "
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Elections, Student Government, Application, Candidate"
         />
         <meta
           name="description"

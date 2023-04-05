@@ -127,6 +127,7 @@ export default function GSRC() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/gsrc.ccc/"
+            aria-label="link to the Cross Cultural Center's Instagram feed"
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}

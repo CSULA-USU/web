@@ -136,7 +136,10 @@ export const Footer = () => (
           (323) 343-2465
         </Typography>
       </FooterBottomInner>
-      <Link href={'https://www.instagram.com/usucalstatela/?hl=en'}>
+      <Link
+        href={'https://www.instagram.com/usucalstatela/?hl=en'}
+        aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
+      >
         <AiOutlineInstagram
           color={Colors.greyLighter}
           fontSize="32px"
