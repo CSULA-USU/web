@@ -144,7 +144,7 @@ export default function CSI() {
               <>
                 5154 State University Drive <br />
                 Los Angeles, CA 90032 <br />
-                Room 204, 2nd Floor, U-SU
+                Room 204, 2nd Floor
               </>
             }
             phoneNumber="323-343-5110"
