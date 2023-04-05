@@ -3,7 +3,7 @@
     "Co-Ed": [
       {
         "name": "Delta Sigma Chi Co-Ed Fraternity",
-        "crest": "/departments/csi/fsl/DSC.png",
+        "crest": "/departments/csi/fsl/dsc.png",
         "values": ["Brotherhood, Sisterhood, Community, Service, Scholarship"],
         "founding": "2005",
         "communityService": [" Heart Cancer Toy Drive, Relay for Life"],
@@ -16,7 +16,7 @@
     "Fraternities": [
       {
         "name": "Alpha Phi Alpha",
-        "crest": "/departments/csi/fsl/APA.png",
+        "crest": "/departments/csi/fsl/apa.png",
         "values": ["Manly Deeds, Scholarship, and Love for All Mankind"],
         "founding": "1906",
         "colors": [" Black, Old Gold"],
@@ -24,7 +24,7 @@
       },
       {
         "name": "Beta Gamma Nu",
-        "crest": "/departments/csi/fsl/BGN.png",
+        "crest": "/departments/csi/fsl/bgn.png",
         "values": ["Pride in Culture, Brotherhood in Arms, Respect for Life"],
         "founding": "2016",
         "colors": [" Brown, Cream"],
@@ -32,7 +32,7 @@
       },
       {
         "name": "Sigma Alpha Epsilon",
-        "crest": "/departments/csi/fsl/SAE.png",
+        "crest": "/departments/csi/fsl/sae.png",
         "values": ["Friendship, Scholarship, Service"],
         "founding": "1956",
         "colors": [" Royal Purple, Old Gold"],
@@ -40,7 +40,7 @@
       },
       {
         "name": "Sigma Lambda Beta International Fraternity",
-        "crest": "/departments/csi/fsl/SLB.png",
+        "crest": "/departments/csi/fsl/slb.png",
         "values": [
           "Brotherhood, Scholarship, Community Service, Cultural Awareness"
         ],
@@ -51,7 +51,7 @@
       },
       {
         "name": "Sigma Nu",
-        "crest": "/departments/csi/fsl/SN.png",
+        "crest": "/departments/csi/fsl/sn.png",
         "values": ["Love, Truth, Honor"],
         "founding": "1966",
         "communityService": [" Helping Hand Initiative"],
@@ -64,7 +64,7 @@
     "Sororities": [
       {
         "name": "Alpha Sigma Tau",
-        "crest": "/departments/csi/fsl/AST.png",
+        "crest": "/departments/csi/fsl/ast.png",
         "values": ["Intellect, Excellence, Graciousness, Respect, Connections"],
         "founding": "1993",
         "communityService": [
@@ -75,7 +75,7 @@
       },
       {
         "name": "Alpha Theta Pi",
-        "crest": "/departments/csi/fsl/ATPi.png",
+        "crest": "/departments/csi/fsl/atp.png",
         "values": ["Sisterhood, Scholastic, Service, Social, Sports"],
         "founding": "1948",
         "communityService": [
@@ -86,7 +86,7 @@
       },
       {
         "name": "Delta Phi Epsilon",
-        "crest": "/departments/csi/fsl/DPE.png",
+        "crest": "/departments/csi/fsl/dpe.png",
         "values": ["Sisterhood, Scholarship, Self, Service, Social"],
         "founding": "2016",
         "communityService": [
@@ -97,7 +97,7 @@
       },
       {
         "name": "Delta Sigma Theta",
-        "crest": "/departments/csi/fsl/DST.png",
+        "crest": "/departments/csi/fsl/dst.png",
         "values": ["Scholarship, Sisterhood, Service"],
         "founding": "1962",
         "communityService": [
@@ -108,7 +108,7 @@
       },
       {
         "name": "Delta Zeta",
-        "crest": "/departments/csi/fsl/DZ.png",
+        "crest": "/departments/csi/fsl/dz.png",
         "values": ["Sisterhood, Philanthropy, Scholarship"],
         "founding": "1966",
         "communityService": [
@@ -119,7 +119,7 @@
       },
       {
         "name": "Sigma Lambda Gamma",
-        "crest": "/departments/csi/fsl/SLG.png",
+        "crest": "/departments/csi/fsl/slg.png",
         "values": [
           "Academics, Community Service, Cultural Awareness, Morals and Ethics, Social Interaction"
         ],
