@@ -66,7 +66,7 @@ const cards2 = [
   },
 
   {
-    title: 'Harvst Festival',
+    title: 'Harvest Festival',
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/harvest-festival.png',
     description:
@@ -256,7 +256,7 @@ export default function Graffix() {
         </HeaderInnerContainer>
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
-            address="5154 State University Dr, Los Angeles, CA 90032 204B"
+            address="5154 State University Dr, Los Angeles, CA 90032 Room 204B, Floor 2"
             phoneNumber="(323)-343-2464"
             hours={hours}
           ></OfficeHours>

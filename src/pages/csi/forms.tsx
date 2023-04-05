@@ -98,7 +98,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/PAYMENT ADVANCE PROCEDURES.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/payment-advance-procedures.pdf',
     },
   },
   {
@@ -113,7 +113,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/Student Organization Check Requisition.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/student-org-check-req.pdf',
     },
   },
   {
@@ -130,7 +130,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/Student Organization Deposit Slip.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/student-org-deposit-slip.pdf',
     },
   },
   {
@@ -146,7 +146,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/Appendix 1 Procedure SO Sales receipt log.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/sales-receipt-log.pdf',
     },
   },
   {
@@ -162,7 +162,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/10.17.19-Student Clubs and Orgs Event Fund Raising Request Form.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/student-clubs-and-orgs-event-fundraising-approval-form.pdf',
     },
   },
   {
@@ -178,7 +178,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/usuforms/csi/Forms/10.16.19-Student Clubs and Orgs Corportate Fund Raising Request Form.pdf',
+      href: 'https://www.calstatelausu.org/departments/csi/forms/external-private-fundraising-approval-form.pdf',
     },
   },
 ];
