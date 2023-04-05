@@ -36,8 +36,12 @@ export const BoardOfDirectorsCTA = () => (
       </Typography>
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
-      <Button variant="black">Apply To Be A Student Leader</Button>
-      <Button variant="outline">View Current Chair Members</Button>
+      <Button variant="black" href="https://asicalstatela.org/general-election">
+        Apply To Be A Student Leader
+      </Button>
+      <Button variant="outline" href="/governance/meet-the-board">
+        View Current Chair Members
+      </Button>
     </BoardOfDirectorsCTAButtons>
   </BoardOfDirectorsCTAContainer>
 );
