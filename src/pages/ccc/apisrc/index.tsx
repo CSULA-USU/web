@@ -113,7 +113,7 @@ export default function APISRC() {
         <meta name="author" content="apisrc coordinator" />
         <meta
           name="keywords"
-          content="csula cal state la student union cross cultural centers asian pacific islander student resource ccc u-su university-student"
+          content="CSULA, Cal State LA Student Union, Cross Cultural Centers, CCC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Cultural Graduation, Cultural Grads, Asian, Pacific Islander, Desi-American, U-SU, University Student"
         />
         <meta
           name="description"

@@ -90,11 +90,11 @@ export default function Tenants() {
   return (
     <Page>
       <Head>
-        <title>Tenants</title>
+        <title>U-SU Tenants</title>
         <meta name="author" content="Tenants" />
         <meta
           name="keywords"
-          content="The University-Student Union mission is to provide a unique and friendly environment for the campus community to interact informally. Our services and facilities departments provide convenience and easy availability for on-the-go students."
+          content="Alumni Association, Associated Students Incorporated, ASI, College of Professional and Global Education, PAGE, Information Technology Services, Open Access Labs, OAL, Wells Fargo, Sbarro, Starbucks"
         />
         <meta
           name="description"
