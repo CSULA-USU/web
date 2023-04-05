@@ -1,4 +1,5 @@
 import { Page } from 'modules';
+import Head from 'next/head';
 import {
   Button,
   Card,
@@ -129,7 +130,7 @@ export default function Operations() {
       iconWidth: '150px',
     },
     {
-      title: 'Info & Event Services',
+      title: 'Info and Event Services',
       children:
         'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
       iconSrc: '/operations/images/information-event-services.jpg',
@@ -151,9 +152,9 @@ export default function Operations() {
       href: '/operations/pdfs/MMRS-Policies.pdf',
     },
     {
-      title: 'Meeting Space Rental Fees & Capacity Chart',
+      title: 'Meeting Space Rental Fees and Capacity Chart',
       description:
-        'CSULA Univeristy-Student Union meeting space rental fees & capacity.',
+        'CSULA Univeristy-Student Union meeting space rental fees and capacity.',
       href: '/operations/pdfs/Meeting-Space-Capacity-Chart.pdf',
     },
     {
@@ -172,6 +173,15 @@ export default function Operations() {
   });
   return (
     <Page>
+      <Head>
+        <title>U-SU Operations</title>
+        <meta name="author" content="The University Student Union" />
+        <meta
+          name="keywords"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations, Reservations, Building Maintenance, Building Services, Custodial Services, Media Services, Media Equipment Rental Chart, MMRS Policies, MMRS, Meeting Space Rental Fees, Capacity Charts, COVID"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <FluidContainer backgroundColor="black">
         {isMobile ? (
           <HeaderContainer>
@@ -190,7 +200,7 @@ export default function Operations() {
               {' '}
               The Operations Team consists of five divisions: building
               maintenance, building services, custodial services, media
-              services, and union meeting & event services.
+              services, and union meeting and event services.
             </Typography>
             <InnerButtonContainer>
               {buttons.map((button) => (
@@ -211,13 +221,13 @@ export default function Operations() {
                 color="white"
                 margin={`${Spaces.md} 0`}
               >
-                Operations & Reservations
+                Operations and Reservations
               </Typography>
               <Typography color="white" margin={`${Spaces.md} 0`}>
                 {' '}
                 The Operations Team consists of five divisions: building
                 maintenance, building services, custodial services, media
-                services, and union meeting & event services.
+                services, and union meeting and event services.
               </Typography>
 
               <InnerButtonContainer>
