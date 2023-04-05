@@ -1,28 +1,11 @@
-import { FluidContainer, Image, Button } from 'components';
-import styled from 'styled-components';
-import { Colors, media } from 'theme';
+import { FluidContainer, Image } from 'components';
 import Link from 'next/link';
 import { useBreakpoint } from 'hooks';
 import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 
-const NavExtra = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  ${media('tablet')(`display: none;`)}
-`;
-
-const GetInvolvedButton = styled(Button)`
-  border-radius: 40px;
-  background-color: ${Colors.primary};
-  border: none;
-  font-weight: bold;
-  height: 50px;
-`;
-
 export const Nav = () => {
-  const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
     <FluidContainer
       padding="24px"
@@ -58,11 +41,6 @@ export const Nav = () => {
         />
       </Link>
       <DesktopNav />
-      {!isDesktop && (
-        <NavExtra>
-          <GetInvolvedButton>Get Involved</GetInvolvedButton>
-        </NavExtra>
-      )}
     </FluidContainer>
   );
 };
