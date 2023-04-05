@@ -77,11 +77,11 @@ export default function HowToVote() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>How To Vote</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, student, leader, asi "
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Elections, Office, Candidate, Elect, Representative"
         />
         <meta
           name="description"

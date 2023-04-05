@@ -1,4 +1,5 @@
 import { Page, Header, OfficeHours, GenericModal } from 'modules';
+import Head from 'next/head';
 import {
   FluidContainer,
   Typography,
@@ -208,11 +209,24 @@ export default function Graffix() {
 
   return (
     <Page>
+      <Head>
+        <title>U-SU Graffix</title>
+        <meta
+          name="author"
+          content="The University Student Union Graffix Department"
+        />
+        <meta
+          name="keywords"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.md}` }}
             href="https://www.instagram.com/usugraffix/?hl=en"
+            aria-label="link to University-Student Union Graffix's Instagram feed"
           >
             <AiOutlineInstagram fontSize={FontSizes['2xl']} />
           </a>

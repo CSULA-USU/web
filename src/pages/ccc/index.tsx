@@ -142,7 +142,7 @@ export default function CCC() {
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, CCC, Cross Cultural Center, APISRC, Asian Pacific Islander Student Resource Center, Asian, Pacific Islander, Desi-American, APIDA, Chicana/o Latina/o Student Resrouce Center, Chicana, Chicano, Latina, Latino, Latinx, Gender and Sexuality Resource Center, Pan African Student Resource Center, Cultural Graduations, Black Graduation, APIDA Graduation, Pride Graduation, Nuestra Graduation, Distinguished Women Award"
         />
         <meta
           name="description"

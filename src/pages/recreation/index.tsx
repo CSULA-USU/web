@@ -19,11 +19,11 @@ export default function Recreation() {
   return (
     <Page>
       <Head>
-        <title>Recreation</title>
+        <title>U-SU Recreation</title>
         <meta name="author" content="Recreation" />
         <meta
           name="keywords"
-          content="recreation fitness workout calstate la los angeles cal state california state university csula chris balam jay san luis gym"
+          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam, Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition"
         />
         <meta
           name="description"

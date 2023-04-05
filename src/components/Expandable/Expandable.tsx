@@ -19,6 +19,9 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  > div {
+    transition: 0.3s;
+  }
 `;
 
 const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
@@ -43,7 +46,7 @@ export const Expandable = ({
     if (ref?.current) {
       setHeight(ref?.current?.scrollHeight);
     }
-  }, [ref]);
+  }, [ref, isOpen]);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);

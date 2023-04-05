@@ -8,6 +8,10 @@
         "href": "/contact"
       },
       {
+        "text": "Services",
+        "href": "/about/services"
+      },
+      {
         "text": "Staff",
         "href": "/staff"
       },
@@ -30,12 +34,28 @@
             "href": "/ccc"
           },
           {
+            "text": "APISRC",
+            "href": "/ccc/apisrc"
+          },
+          {
+            "text": "CLSRC",
+            "href": "/ccc/clsrc"
+          },
+          {
             "text": "Cultural Grads",
             "href": "/ccc/cultural-grads"
           },
           {
+            "text": "GSRC",
+            "href": "/ccc/gsrc"
+          },
+          {
             "text": "Distinguished Women Awards",
             "href": "/ccc/distinguished-women-awards"
+          },
+          {
+            "text": "PASRC",
+            "href": "/ccc/pasrc"
           }
         ]
       },

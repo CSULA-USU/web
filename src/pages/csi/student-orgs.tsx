@@ -30,7 +30,7 @@ const cards = [
     href: '/departments/csi/forms/csi-sample-constitution.pdf',
   },
   {
-    title: 'ODC Info & Videos',
+    title: 'ODC Info and Videos',
     children:
       'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
     linkText: 'Learn More',
@@ -90,14 +90,14 @@ export default function StudentOrgs() {
   return (
     <Page>
       <Head>
-        <title>U-SU Recognized Student Organizations</title>
+        <title>U-SU Recognized Student Orgs</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement Student Organizations"
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Consitituion, ODC Info and Videos, Club Banking Forms, Officer Change Form"
         />
         <meta
           name="description"

@@ -46,14 +46,14 @@ export default function Geek() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Organizations Geek</title>
+        <title>U-SU GEEK</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
         />
         <meta
           name="keywords"
-          content="csula cal state la student union center for student involvement csi u-su university-student"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Studen, GEEK, Golden Eagle Event Krew"
         />
         <meta
           name="description"

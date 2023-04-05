@@ -1,4 +1,5 @@
 import { Page, Header } from 'modules';
+import Head from 'next/head';
 import { FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
 import { StaffCard } from 'components/StaffCard';
@@ -93,6 +94,15 @@ export default function Staff() {
 
   return (
     <Page>
+      <Head>
+        <title>U-SU Staff</title>
+        <meta name="author" content="Recreation" />
+        <meta
+          name="keywords"
+          content="Cal State LA, CSULA, U-SU, University Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header title="Meet the Staff" backgroundImage="/subtle-background-1.jpg">
         Union: An act or instance of uniting or joining two or more things into
         one. Something that is made one : something formed by a combination or
