@@ -155,7 +155,7 @@ export default function CCC() {
         infoSection={
           <OfficeHours
             address="5154 State University Drive Los Angeles, CA 90032
-          Room 206, 2nd Floor, U-SU"
+          Room 206, 2nd Floor"
             phoneNumber="323-343-5001"
             hours={hours}
           />
