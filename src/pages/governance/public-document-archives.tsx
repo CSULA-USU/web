@@ -33,11 +33,11 @@ export default function Governance() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>U-SU Public Docs Archive</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, student, leader, asi "
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Agenda, Minutes, Meetings, Archive"
         />
         <meta
           name="description"

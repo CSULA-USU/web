@@ -11,21 +11,40 @@ export interface EventCardProps {
   onClick?: () => void;
 }
 
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s ease-out;
+`;
+
+const EventCardTop = styled.div`
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  transition: 0.3s ease;
+  justify-content: space-between;
+`;
+
+const EventCardBottom = styled(EventCardTop)<{ featured?: boolean }>`
+  z-index: 1;
+  transition: 0.3s ease;
+  ${(p) => (p.featured ? `align-items: flex-end;` : `flex-direction: column;`)}
+`;
+
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
+  position: relative;
   cursor: pointer;
   transition: 0.3s ease;
-  &:hover {
-    opacity: 0.7;
-  }
-  &:focus {
-    opacity: 0.8;
-    outline: 1px solid ${Colors.primary};
-  }
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
   background-color: ${Colors.grey};
   padding: 32px;
+  overflow: hidden;
   ${media('desktop')(`
     padding: 24px;
   `)}
@@ -37,33 +56,41 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     featured ? `flex-end` : `space-between`};
   height: ${({ featured }) => (featured ? `560px` : `400px`)};
   color: ${Colors.white};
-  background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.7) 5%,
-      rgba(0, 0, 0, 0) 30%,
-      rgba(0, 0, 0, 0.85) 75%,
-      rgba(0, 0, 0, 0.95) 100%
-    ),
-    ${({ image }) => image && `url(${image})`};
-  background-size: cover;
-  background-position: center;
   > div:first-child {
     padding-bottom: 12px;
     border-bottom: ${({ featured }) =>
       featured ? `1px solid ${Colors.white}` : `none`};
     align-items: ${({ featured }) => (featured ? 'flex-end' : 'flex-start')};
   }
-  position: relative;
-`;
-
-const EventCardTop = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const EventCardBottom = styled(EventCardTop)<{ featured?: boolean }>`
-  ${(p) => (p.featured ? `align-items: flex-end;` : `flex-direction: column;`)}
+  ${Overlay} {
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.7) 5%,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(0, 0, 0, 0.85) 75%,
+        rgba(0, 0, 0, 0.95) 100%
+      ),
+      ${({ image }) => image && `url(${image})`};
+    background-size: cover;
+    background-position: center;
+  }
+  border: 1px solid transparent;
+  &:hover,
+  &:focus {
+    border: 1px solid ${Colors.black};
+    ${Overlay} {
+      filter: blur(4px) brightness(0.6);
+    }
+    ${EventCardTop} {
+      transform: translateY(10%);
+    }
+    ${EventCardBottom} {
+      transform: translateY(-10%);
+    }
+  }
+  &:focus {
+    text-decoration: underline;
+  }
 `;
 
 const EventDetails = styled.div`
@@ -96,6 +123,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
       featured={featured}
       image={`${PRESENCE_URI_BASE}/${photoUri}`}
     >
+      <Overlay />
       <EventCardTop>
         <EventDate>
           {featured ? (
