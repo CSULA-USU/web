@@ -133,7 +133,7 @@ const TeaserContainer = styled.div`
   width: 500px;
   height: 520px;
   background: center / contain no-repeat
-    url('/departments/ccc/nuestra-teaser.jpeg');
+    url('/departments/ccc/clsrc/nuestra-teaser.jpeg');
   border-radius: 12px;
 `;
 
@@ -229,7 +229,7 @@ export default function CulturalGrads() {
                 height="100%"
                 width="100%"
                 borderRadius="12px"
-                src="/departments/ccc/nuestra-teaser.jpeg"
+                src="/departments/ccc/clsrc/nuestra-teaser.jpeg"
               />
               <Typography margin="24px 0" as="h3">
                 <strong>Dear Cal State LA Prospective Graduate,</strong>
@@ -300,7 +300,7 @@ export default function CulturalGrads() {
             innerMaxWidth="560px"
           >
             <Image
-              src="/departments/ccc/ccc-grad-banner.jpg"
+              src="/departments/ccc/ccc/cultural-grad-banner.jpg"
               alt="recreation logo"
               width="100%"
               height="fit-content"

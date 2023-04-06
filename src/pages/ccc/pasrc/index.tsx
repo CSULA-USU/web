@@ -218,7 +218,7 @@ export default function PASRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="pan african student resource center header"
-              src="/departments/ccc/pasrc.png"
+              src="/departments/ccc/pasrc/pasrc.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />

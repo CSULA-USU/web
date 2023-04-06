@@ -66,7 +66,7 @@ export default function Services() {
       </Head>
 
       <Header title="Services" backgroundImage="subtle-background-1.jpg">
-        <Image src="/about.png" alt="student union" width="100%" />
+        <Image src="/about/about.png" alt="student union" width="100%" />
         <Typography>
           The programs and services hosted by the University-Student Union are
           funded by the student union fee and are available to all students free
