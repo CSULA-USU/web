@@ -11,32 +11,25 @@ import {
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
+import Link from 'next/link';
 
 const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const buttons = [
-  {
-    text: 'LGBTQIPA+',
-    href: '/departments/ccc/gsrc/booklets/lgbtqipa.pdf',
-  },
-  { text: 'Womenlife', href: '/departments/ccc/gsrc/booklets/womenlife.pdf' },
-];
-
 const carouselImages = [
   {
     src: '/departments/ccc/gsrc/carousel/gsrc-group.jpg',
-    alt: 'Students in the GSRC posing for a pic',
+    alt: 'Quiero Mis Quinces: Queering Traditions',
   },
   {
     src: '/departments/ccc/gsrc/carousel/pride-drag.jpg',
-    alt: 'Drag show at pride grad',
+    alt: 'Pride Grad ’22',
   },
   {
     src: '/departments/ccc/gsrc/carousel/grad-group.jpg',
-    alt: 'Pride graduates',
+    alt: 'Pride Grad ’22',
   },
 ];
 
@@ -52,45 +45,44 @@ const hours = [
 
 const offerings = [
   {
-    title: 'Student Organizations',
-    children:
-      'Occasionally hosting "The Queer Connection" club meetings. Note: not officially affiliated with GSRC',
-    imgSrc: '/departments/ccc/gsrc/vectors/pride.svg',
-    imgAlt: 'the queer connection club',
-  },
-  {
-    title: 'Resources',
-    children:
-      'Referrals to outside agencies focusing on various issues including, but not limited to: domestic violence, sexual assault, health clinics, LGBTQ safe spaces, shelters, etc.',
-    imgSrc: '/departments/ccc/gsrc/vectors/medicine.svg',
-    imgAlt: 'resources and connections to agencies',
-  },
-  {
-    title: 'Counseling',
-    children:
-      'Individual counseling and crisis intervention leading to on and off-campus referrals.',
-    imgSrc: '/departments/ccc/gsrc/vectors/referral.svg',
-    imgAlt: 'referrals and counseling',
-  },
-  {
     title: 'Programming',
     children:
-      'Programs and events that build awareness on issues concerning Womyn, Men, and the LGBTQ community',
+      'Programs centering around education, engagement, and empowerment in relation to gender equity and LGBTQIA+ issues.',
     imgSrc: '/departments/ccc/gsrc/vectors/calendar.svg',
     imgAlt: 'gsrc events',
   },
   {
-    title: 'Dialogue',
-    children: 'Space for open-minded dialogue groups for Womyn and Men',
-    imgSrc: '/departments/ccc/gsrc/vectors/conversation.svg',
-    imgAlt: 'dialogue groups',
-  },
-  {
-    title: 'Environment Enhancement',
-    children:
-      'Books on gender, sexuality, feminist expression, parenting, identity, and empowerment, breastfeeding area, microwave, community refrigerator',
+    title: 'Resources',
+    children: (
+      <ul>
+        <li>
+          Books on relevant topics such as: gender, sexuality, feminism,
+          parenting, identity and empowerment
+        </li>
+        <li>
+          Lactation Room for parenting students stocked with resources such as
+          diapers, toys, childrens books, and blankets
+        </li>
+        <li>
+          Affirmation Closet: free gently used clothing for students to take
+        </li>
+        <li>Free menstruation products (pads, tampons, liners)</li>
+        <li>Free sexual health products (condoms, lube, dental dam)</li>
+        <li>Microwave and refrigerator</li>
+      </ul>
+    ),
     imgSrc: '/departments/ccc/gsrc/vectors/bookshelf.svg',
     imgAlt: 'books fridges microwaves ',
+  },
+  {
+    title: 'Relevant Student Organizations',
+    children: (
+      <Link href="https://www.instagram.com/thetransqueerconnection">
+        Trans Queer Connection
+      </Link>
+    ),
+    imgSrc: '/departments/ccc/gsrc/vectors/pride.svg',
+    imgAlt: 'the queer connection club',
   },
 ];
 
@@ -147,10 +139,7 @@ export default function GSRC() {
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
-          <Header
-            title="Gender and Sexuality Resource Center"
-            buttons={buttons}
-          >
+          <Header title="Gender and Sexuality Resource Center">
             {isDesktop && (
               <Image
                 src="/departments/logos/gsrc-icon.svg"
@@ -160,19 +149,12 @@ export default function GSRC() {
                 margin={`${Spaces.md} auto`}
               ></Image>
             )}
-            The Gender & Sexuality Resource Center at Cal State LA is dedicated
-            to creating safe and respectful learning spaces, catering
-            specifically to the empowerment of Womyn, Men, and the Lesbian, Gay,
-            Bisexual, Transgender, and Questioning/Queer (LGBTQ) community. We
-            pride ourselves in challenging societal norms that have been used
-            historically to oppress and marginalize, while raising awareness on
-            contemporary issues we face. The GSRC is open and available to all.
-            Please visit us... Our doors are always open! The term
-            &quot;Womyn&quot; has been adopted to reclaim a feminist identity
-            that rejects patriarchal and sexist language.
+            The Gender and Sexuality Resource Center at Cal State LA is
+            dedicated to creating safe and respectful learning spaces, catering
+            specifically to the empowerment of all individuals across the gender
+            and sexuality spectrum.
             <br />
             <br />
-            Booklets:
           </Header>
           {!isDesktop && (
             <Image
@@ -239,7 +221,7 @@ export default function GSRC() {
       </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
+          Check out some of our past events:
         </Typography>
         <ReactCarousel carouselImages={carouselImages} />
         {!isMobile && (
