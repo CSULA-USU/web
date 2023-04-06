@@ -3,10 +3,11 @@ import { Page, Header, ImageAndCard } from 'modules';
 import { FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-
+import { Spaces } from 'theme';
 const ServicesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: ${Spaces.lg};
 `;
 
 const services = [
@@ -81,7 +82,7 @@ export default function Services() {
           {services.map((props) => (
             <ImageAndCard
               key={props.title}
-              imageWidth={isTablet ? '128px' : '184px'}
+              imageWidth={isMobile ? '80%' : isTablet ? '60%' : '20%'}
               {...props}
             />
           ))}
