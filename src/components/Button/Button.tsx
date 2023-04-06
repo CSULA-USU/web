@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Colors } from 'theme';
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   href?: string;
   margin?: string;
   variant?: 'primary' | 'black' | 'grey' | 'outline';
