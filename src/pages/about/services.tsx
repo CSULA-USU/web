@@ -11,7 +11,7 @@ const ServicesContainer = styled.div`
 
 const services = [
   {
-    title: 'Sleep Pods (Relaxation Station)',
+    title: 'Nap Pods (Relaxation Station)',
     children:
       'In late 2019, the U-SU opened the Relaxation Station on the third floor room 304 of the student union. The station is comprised of three state of the art sleep pods which provide quiet, comfortable, and relaxing space for student to get some much needed rest.  The pods are available for 20 minute intervals while the union is open. Prior reservations are required and only take a quick visit to the information desk in the U-SU lobby or by calling (323) 343-2465',
     imgSrc: '/about/nap-pod.png',
@@ -39,7 +39,7 @@ const services = [
     imgAlt: 'bathroom diaper changing station',
   },
   {
-    title: 'Gender-Inclusive Bathroom',
+    title: 'Gender-Inclusive Restrooms',
     children:
       'In 2016, the U-SU Board of Directors in consultation with the Associated Students, Inc. designated the restrooms on the second floor as gender inclusive. The rooms were retrofitted with stalls that created additional privacy and have provided supportive options for students across the gender identity spectrum',
     imgSrc: '/about/all-gender-restroom.jpg',

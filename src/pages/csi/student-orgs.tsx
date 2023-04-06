@@ -128,12 +128,12 @@ export default function StudentOrgs() {
         <FluidContainer flex flexDirection="column">
           {isTablet ? (
             <TextCenter>
-              <Typography margin="auto 24px 24px" variant="title">
+              <Typography margin="auto 24px 24px" variant="title" as="h2">
                 Presence
               </Typography>
             </TextCenter>
           ) : (
-            <Typography margin="auto 24px 24px" variant="title">
+            <Typography margin="auto 24px 24px" variant="title" as="h2">
               Presence
             </Typography>
           )}
@@ -165,7 +165,7 @@ export default function StudentOrgs() {
         backgroundColor="primary"
       >
         <TextCenter id="resources">
-          <Typography margin="auto" variant="title">
+          <Typography margin="auto" variant="title" as="h2">
             Student Organization Resources
           </Typography>
         </TextCenter>
@@ -189,7 +189,7 @@ export default function StudentOrgs() {
           ))}
         </FluidContainer>
         <TextCenter>
-          <Typography>
+          <Typography as="p">
             These organizations provide limitless opportunities to achieve an
             active role on campus and to pursue individual interests.
             <br />
@@ -208,7 +208,7 @@ export default function StudentOrgs() {
 
       <FluidContainer flex flexDirection="column">
         <TextCenter id="start">
-          <Typography margin="auto" variant="title">
+          <Typography margin="auto" variant="title" as="h2">
             Start Your Own Organization
           </Typography>
         </TextCenter>

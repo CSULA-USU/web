@@ -99,11 +99,12 @@ export default function HowToVote() {
           <Typography
             variant="pageHeader"
             color="white"
+            as="h1"
             margin={isTablet ? 'auto' : ''}
           >
             <NonBreakingSpan>How to Vote</NonBreakingSpan>
           </Typography>
-          <Typography color="white" lineHeight="1.8">
+          <Typography color="white" lineHeight="1.8" as="p">
             The University-Student Union&apos;s Board of Directors is the
             governing board of the Union. The purpose of the Board is to
             establish policy for the Union as a student body center for the
@@ -123,7 +124,7 @@ export default function HowToVote() {
         {buttonName === 'How to Vote on GET' ? (
           <div>
             {' '}
-            <Typography variant="title" margin={`${Spaces.md} 0`}>
+            <Typography variant="title" as="h2" margin={`${Spaces.md} 0`}>
               Voting on GET
             </Typography>
             {webInstructions.map((props) => (
@@ -140,7 +141,7 @@ export default function HowToVote() {
         ) : (
           <div>
             {' '}
-            <Typography variant="title" margin={`${Spaces.md} 0`}>
+            <Typography variant="title" as="h2" margin={`${Spaces.md} 0`}>
               Voting on GET Mobile
             </Typography>
             {mobileInstructions.map((props) => (

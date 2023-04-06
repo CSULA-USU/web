@@ -122,8 +122,12 @@ export default function Staff() {
             margin={`${Spaces.sm}`}
             rounded
           >
-            <Typography size="xs">{s.department}</Typography>
-            <Typography size="xs">{s.email}</Typography>
+            <Typography size="xs" as="p">
+              {s.department}
+            </Typography>
+            <Typography size="xs" as="p">
+              {s.email}
+            </Typography>
           </StaffCard>
         ))}
       </FluidContainer>

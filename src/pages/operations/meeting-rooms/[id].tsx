@@ -145,19 +145,31 @@ export default function MeetingRoom() {
               <tr>
                 {!isDesktop && <th></th>}
                 <th>
-                  <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
                     Setup
                   </Typography>
                 </th>
                 <th>
                   {
-                    <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
+                    <Typography
+                      variant="cta"
+                      as="h2"
+                      size={isMobile ? 'sm' : 'lg'}
+                    >
                       Capacity
                     </Typography>
                   }
                 </th>
                 <th>
-                  <Typography variant="cta" size={isMobile ? 'sm' : 'lg'}>
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
                     Equipment
                   </Typography>
                 </th>
@@ -220,7 +232,7 @@ export default function MeetingRoom() {
             <tr>
               <td colSpan={4}>
                 <TextCenter>
-                  <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
+                  <Typography weight="700" as="h3" margin={`${Spaces.md}0 0 0`}>
                     Fixed Room Features
                   </Typography>
                   <Typography
@@ -235,11 +247,12 @@ export default function MeetingRoom() {
             <tr>
               <td colSpan={4}>
                 <TextCenter>
-                  <Typography weight="700" margin={`${Spaces.md}0 0 0`}>
+                  <Typography weight="700" as="h3" margin={`${Spaces.md}0 0 0`}>
                     Meeting Space Rental Fees do not include:
                   </Typography>
                   <Typography
                     margin={`0 0 ${Spaces.md}`}
+                    as="p"
                     size={isMobile ? 'xs' : 'md'}
                   >
                     {' '}

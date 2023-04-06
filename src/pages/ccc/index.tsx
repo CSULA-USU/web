@@ -155,7 +155,7 @@ export default function CCC() {
         infoSection={
           <OfficeHours
             address="5154 State University Drive Los Angeles, CA 90032
-          Room 206, 2nd Floor, U-SU"
+          Room 206, 2nd Floor"
             phoneNumber="323-343-5001"
             hours={hours}
           />
@@ -169,17 +169,34 @@ export default function CCC() {
         wide variety of programs and services that explore both the shared and
         unique experiences, histories, and heritages of our diverse community.
       </DepartmentHeader>
-
+      <CallToAction
+        backgroundColorProp="black"
+        buttonVariantColor="primary"
+        textColorProp="white"
+        buttonText="Sign Up"
+        text=""
+        href="https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Feepurl.com%2Fh-h7Tv&data=05%7C01%7Cjyasis%40calstatela.edu%7Cd17cdb6e9e4847dda24d08db34932fdd%7Cce8a2002448f4f5882b1d86f73e3afdd%7C0%7C0%7C638161578991018136%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=tuEa0AkrHnm7dPb%2Brd4faRBfikG%2F10KUM21YykfoFEs%3D&reserved=0"
+      >
+        <Typography
+          color="white"
+          as="h2"
+          variant="title"
+          weight="400"
+          lineHeight="1"
+        >
+          Keep up with the latest CCC events with our newsletter:
+        </Typography>
+      </CallToAction>
       <FluidContainer
         flex
         justifyContent="flex-start"
         backgroundColor="greyLightest"
       >
         <StudentOrgsCatergoriesContentContainer>
-          <Typography margin="auto" variant="title">
+          <Typography margin="auto" variant="title" as="h2">
             Resource Centers
           </Typography>
-          <Typography margin="auto">
+          <Typography margin="auto" as="p">
             The Cross Cultural Centers provide an inclusive and friendly space
             that allows students to be themselves. The Centers are open to
             individuals from all ethnic and gender backgrounds. Please stop by
@@ -197,7 +214,9 @@ export default function CCC() {
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
       <FluidContainer backgroundImage="/bod-cta-background.jpg">
-        <Typography variant="title">We Provide:</Typography>
+        <Typography variant="title" as="h2">
+          We Provide:
+        </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
           {descriptionCards.map((props) => (
             <DescriptionCard
@@ -229,10 +248,10 @@ export default function CCC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title">
+            <Typography variant="title" as="h2">
               Cultural Graduate Celebrations
             </Typography>
-            <Typography margin="24px 0">
+            <Typography margin="24px 0" as="p">
               These ceremonies and celebrations are great opportunities to
               acknowledge your academic achievements, honor your families,
               communities, and other significant people in your lives, and to
