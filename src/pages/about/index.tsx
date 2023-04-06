@@ -61,6 +61,7 @@ const buttons = [
     href: '#',
   },
 ];
+
 export default function About() {
   const { isDesktop } = useBreakpoint();
   return (
@@ -79,26 +80,36 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header
-        title="About Us"
-        backgroundImage="subtle-background-1.jpg"
-        buttons={buttons}
+      <FluidContainer
+        flex
+        backgroundImage="/subtle-background-1.jpg"
+        flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
       >
-        <Image src="/about.png" alt="student union" width="100%" />
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
+        <Image
+          src="/about/calstatela-hero.jpeg"
+          alt="student union"
+          width={isDesktop ? '75%' : '50%'}
+          borderRadius="12px"
+        />
+        <Header title="About Us" buttons={buttons}></Header>
+      </FluidContainer>
+      <FluidContainer flex flexDirection="column" alignItems="center">
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
             Mission: &nbsp;
           </Typography>
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
             Vision: &nbsp;
           </Typography>
           To become Cal State LA&apos;s hub for connection and growth.
         </Typography>
-      </Header>
+      </FluidContainer>
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
