@@ -1,5 +1,4 @@
-import { useBreakpoint } from 'hooks';
-import { Typography, Image, FluidContainer } from 'components';
+import { Image, FluidContainer } from 'components';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 interface CarouselImageProps {
@@ -12,7 +11,6 @@ interface CarouselProps {
 }
 
 export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
-  const { isMobile } = useBreakpoint();
   return (
     <FluidContainer flex justifyContent="center" backgroundColor="white">
       <Carousel
@@ -23,7 +21,7 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
         emulateTouch={true}
         useKeyboardArrows={true}
         dynamicHeight={true}
-        showThumbs={true}
+        showThumbs={false}
       >
         {carouselImages &&
           carouselImages.map((item) => (
@@ -32,9 +30,8 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
                 src={item.src}
                 alt={item.alt}
                 borderRadius="12px"
-                maxWidth={!isMobile ? '50%' : '100%'}
+                maxWidth="100%"
               />
-              <Typography className="legend">{item.alt}</Typography>
             </div>
           ))}
       </Carousel>
