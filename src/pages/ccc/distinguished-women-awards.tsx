@@ -122,7 +122,7 @@ export default function CulturalGrads() {
         <a href="https://www.calstatela.edu/studentservices/nomination-form-%E2%80%93-distinguished-women-awards">
           {' '}
           <Image
-            src="/departments/ccc/ccc/distinguished-women-awards-header.png"
+            src="/departments/ccc/distinguished-women-awards-header.png"
             alt="distinguished women awards header"
             width={'100%'}
             height={'100%'}

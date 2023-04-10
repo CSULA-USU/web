@@ -54,7 +54,7 @@ const cards = [
 const buttons = [
   {
     text: 'U-SU Organizational Chart',
-    href: '/about/org-chart.jpg',
+    href: '/org-chart.jpg',
   },
   {
     text: 'U-SU History',
@@ -84,7 +84,7 @@ export default function About() {
         backgroundImage="subtle-background-1.jpg"
         buttons={buttons}
       >
-        <Image src="/about/about.png" alt="student union" width="100%" />
+        <Image src="/about.png" alt="student union" width="100%" />
         <Typography as="p">
           <Typography variant="labelTitle" as="span">
             Mission: &nbsp;

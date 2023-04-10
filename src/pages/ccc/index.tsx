@@ -31,7 +31,7 @@ const orgsCards = [
     title: 'Asian Pacific Islander Student Resource Center',
     children:
       'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi-American student population while enriching and raising social awareness for the entire campus community.',
-    imgSrc: '/departments/ccc/apisrc/apisrcHeader.png',
+    imgSrc: '/departments/ccc/apisrcHeader.png',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
     linkText: 'Learn More',
@@ -40,7 +40,7 @@ const orgsCards = [
     title: 'Chicana/o Latina/o Student Resource Center',
     children:
       'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
-    imgSrc: 'departments/ccc/clsrc/clsrcHeader.png',
+    imgSrc: 'departments/ccc/clsrcHeader.png',
     imgAlt: 'CLSRC',
     href: 'ccc/clsrc',
     linkText: 'Learn More',
@@ -49,7 +49,7 @@ const orgsCards = [
     title: 'Gender and Sexuality Resource Center',
     children:
       'The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
-    imgSrc: 'departments/ccc/gsrc/gsrc.png',
+    imgSrc: 'departments/ccc/gsrc.png',
     imgAlt: 'Cal State LA Logo',
     href: 'ccc/gsrc',
     linkText: 'Learn More',
@@ -58,7 +58,7 @@ const orgsCards = [
     title: 'Pan African Student Resource Center',
     children:
       'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues.',
-    imgSrc: '/departments/ccc/pasrc/pasrc.png',
+    imgSrc: '/departments/ccc/pasrc.png',
     imgAlt: 'PASRC',
     href: 'ccc/pasrc',
     linkText: 'Learn More',
@@ -242,7 +242,7 @@ export default function CCC() {
           <Image
             margin="auto"
             borderRadius="12px"
-            src="/departments/ccc/clsrc/nuestra-teaser.jpeg"
+            src="/departments/ccc/nuestra-teaser.jpeg"
             alt="graduation image"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
