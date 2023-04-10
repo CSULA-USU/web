@@ -102,14 +102,14 @@ export default function Operations() {
       title: 'Building Maintenance',
       children:
         'Is responsible for the efficient upkeep of the University-Student Union including all equipment and furnishings in and around the facility. Additionally, this department addresses any electrical, plumbing, HVAC, carpentry, landscaping, and beautification needs of the building.',
-      iconSrc: '/operations/images/building-maintenance.jpg',
+      iconSrc: '/departments/operations/images/building-maintenance.jpg',
       iconAlt: 'gardening image',
     },
     {
       title: 'Building Services',
       children:
         'Supports the needs of students, faculty and staff who utilize space in and around the U-SU by providing dependable set-ups for events, meetings, and programs.',
-      iconSrc: '/operations/images/building-services.jpg',
+      iconSrc: '/departments/operations/images/building-services.jpg',
       iconAlt: 'decorating image',
       iconWidth: '160px',
     },
@@ -117,7 +117,7 @@ export default function Operations() {
       title: 'Custodial Services',
       children:
         'Is responsible for the general cleanliness of all areas in and surrounding the Union facility including all interior/exterior furnishings and addresses all concerns related to general housekeeping.',
-      iconSrc: '/operations/images/custodial-services.jpg',
+      iconSrc: '/departments/operations/images/custodial-services.jpg',
       iconAlt: 'cleaning image',
       iconWidth: '100px',
     },
@@ -125,7 +125,7 @@ export default function Operations() {
       title: 'Media Services',
       children:
         'Assists in supporting the increased technical needs of the building and addresses a wide variety of programs and events that occur inside and outside of the U-SU by providing knowledgeable technical and theatrical support.',
-      iconSrc: '/operations/images/media-services.jpg',
+      iconSrc: '/departments/operations/images/media-services.jpg',
       iconAlt: 'media image',
       iconWidth: '150px',
     },
@@ -133,7 +133,7 @@ export default function Operations() {
       title: 'Info and Event Services',
       children:
         'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
-      iconSrc: '/operations/images/information-event-services.jpg',
+      iconSrc: '/departments/operations/images/information-event-services.jpg',
       iconAlt: 'media image',
       iconWidth: '150px',
     },
@@ -143,25 +143,25 @@ export default function Operations() {
     {
       title: 'Media Equipment Rental Chart',
       description: 'CSULA Univeristy-Student Union media equipment rental fees',
-      href: '/operations/pdfs/Media-Equipment-Fees-Chart.pdf',
+      href: '/departments/operations/pdfs/Media-Equipment-Fees-Chart.pdf',
     },
     {
       title: 'MMRS Policies',
       description:
         'The Mind Matters Relaxation Station is designated space to support restorative wellness. The intended use is for brief napping in a semi-quiet environment. Access to the room is limited to CAL STATE LA enrolled students only.',
-      href: '/operations/pdfs/MMRS-Policies.pdf',
+      href: '/departments/operations/pdfs/MMRS-Policies.pdf',
     },
     {
       title: 'Meeting Space Rental Fees and Capacity Chart',
       description:
         'CSULA Univeristy-Student Union meeting space rental fees and capacity.',
-      href: '/operations/pdfs/Meeting-Space-Capacity-Chart.pdf',
+      href: '/departments/operations/pdfs/Meeting-Space-Capacity-Chart.pdf',
     },
     {
       title: 'Reservation Policies and Procedures (with Covid)',
       description:
         'Reservation policies and procedures go over guidelines of how the scheduling of U-SU facilities, equipment, sign-up process, and payments are arranged.',
-      href: '/operations/pdfs/POLICIES-PROCEDURES-WITH-COVID-2021.pdf',
+      href: '/departments/operations/pdfs/POLICIES-PROCEDURES-WITH-COVID-2021.pdf',
     },
   ];
   const { returnByBreakpoint } = useBreakpoint();
@@ -195,7 +195,10 @@ export default function Operations() {
               Operations & Reservations
             </Typography>
             <video width="100%" loop autoPlay muted>
-              <source src="/operations/videos/ops-loop.mp4" type="video/mp4" />
+              <source
+                src="/departments/operations/videos/ops-loop.mp4"
+                type="video/mp4"
+              />
             </video>
             <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
               {' '}
@@ -214,7 +217,10 @@ export default function Operations() {
         ) : (
           <HeaderContainer>
             <video width="100%" height="600px" loop autoPlay muted>
-              <source src="/operations/videos/ops-loop.mp4" type="video/mp4" />
+              <source
+                src="/departments/operations/videos/ops-loop.mp4"
+                type="video/mp4"
+              />
             </video>
             <InnerHeaderContainer>
               <Typography

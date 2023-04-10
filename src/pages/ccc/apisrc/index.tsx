@@ -97,7 +97,7 @@ export default function APISRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -255,7 +255,7 @@ export default function APISRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="asian pacific islander student resource center logo"
-              src="/departments/ccc/apisrc-header.png"
+              src="/departments/ccc/apisrc/apisrc-header.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />
