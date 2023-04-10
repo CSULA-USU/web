@@ -49,7 +49,7 @@ export default function CLSRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -174,7 +174,7 @@ export default function CLSRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="chicano/a latino/a student resource center logo"
-              src="/departments/ccc/clsrc-header.png"
+              src="/departments/ccc/clsrc/clsrc-header.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />

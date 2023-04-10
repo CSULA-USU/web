@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button, Typography } from 'components';
 
 const BoardOfDirectorsCTAContainer = styled.div`
-  background-image: url('bod-cta-background.jpg');
+  background-image: url('/backgrounds/bod-cta-background.jpg');
   background-position: center;
   background-size: cover;
   padding: 240px 72px;

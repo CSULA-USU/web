@@ -57,7 +57,6 @@ const cards = [
     iconAlt: 'team',
   },
 ];
-
 export default function About() {
   const { isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -79,11 +78,11 @@ export default function About() {
 
       <Header
         title="About Us"
-        backgroundImage="subtle-background-1.jpg"
+        backgroundImage="/backgrounds/subtle-background-1.jpg"
         buttons={[
           {
             text: 'U-SU Organizational Chart',
-            href: '/org-chart.jpg',
+            href: '/about/org-chart.jpg',
           },
           {
             text: 'U-SU History',

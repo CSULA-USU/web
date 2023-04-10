@@ -32,7 +32,7 @@ export default function Recreation() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer
-        backgroundImage="/recreation/recreation-hero-background.jpg"
+        backgroundImage="/departments/recreation/recreation-hero-background.jpg"
         flex
         justifyContent="center"
         alignItems="center"
@@ -40,7 +40,7 @@ export default function Recreation() {
         innerMaxWidth="640px"
       >
         <Image
-          src="/recreation/recreation-hero.png"
+          src="/departments/recreation/recreation-hero.png"
           alt="recreation logo"
           width="100%"
           height="fit-content"
@@ -104,7 +104,7 @@ export default function Recreation() {
           title="Major Expansion"
         >
           <Image
-            src="/recreation/recreation-treadmill.jpg"
+            src="/departments/recreation/recreation-treadmill.jpg"
             alt="todo:"
             width="100%"
           />
@@ -115,7 +115,7 @@ export default function Recreation() {
           title="All New Strength Equipment"
         >
           <Image
-            src="/recreation/recreation-bench.jpg"
+            src="/departments/recreation/recreation-bench.jpg"
             alt="todo:"
             width="100%"
           />
@@ -126,7 +126,7 @@ export default function Recreation() {
           title="New Rubber Flooring"
         >
           <Image
-            src="/recreation/recreation-floor-2.jpg"
+            src="/departments/recreation/recreation-floor-2.jpg"
             alt="todo:"
             width="100%"
           />

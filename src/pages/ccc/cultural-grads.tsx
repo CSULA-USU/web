@@ -217,7 +217,7 @@ export default function CulturalGrads() {
           <FluidContainer
             flex
             flexDirection="column"
-            backgroundImage="/bod-cta-background.jpg"
+            backgroundImage="/backgrounds/bod-cta-background.jpg"
           >
             <FluidContainer flex flexDirection="column" alignItems="center">
               <Typography variant="title" as="h1">
@@ -309,7 +309,7 @@ export default function CulturalGrads() {
           <FluidContainer
             flex
             flexDirection="column"
-            backgroundImage="/bod-cta-background.jpg"
+            backgroundImage="/backgrounds/bod-cta-background.jpg"
           >
             <FluidContainer flex>
               <FluidContainer flex flexDirection="column">

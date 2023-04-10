@@ -81,7 +81,7 @@ export default function PASRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -218,7 +218,7 @@ export default function PASRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="pan african student resource center header"
-              src="/departments/ccc/pasrc.png"
+              src="/departments/ccc/pasrc/pasrc.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />
