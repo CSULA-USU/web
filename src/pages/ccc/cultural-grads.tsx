@@ -179,16 +179,16 @@ const IconHeading = styled.div`
   margin-bottom: ${Spaces.md};
 `;
 
+const tabItems = [
+  { title: 'Where & When', children: <WhereTab /> },
+  { title: 'How', children: <HowTab /> },
+  { title: 'What', children: <WhatTab /> },
+  { title: 'Who', children: <WhoTab /> },
+  { title: 'Why', children: <WhyTab /> },
+];
+
 export default function CulturalGrads() {
   const { isTablet, isDesktop } = useBreakpoint();
-
-  const tabItems = [
-    { title: 'Where & When', children: <WhereTab /> },
-    { title: 'How', children: <HowTab /> },
-    { title: 'What', children: <WhatTab /> },
-    { title: 'Who', children: <WhoTab /> },
-    { title: 'Why', children: <WhyTab /> },
-  ];
 
   return (
     <Page>

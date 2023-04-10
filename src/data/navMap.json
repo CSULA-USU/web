@@ -65,6 +65,7 @@
         "sub": [
           { "text": "CSI Home", "href": "/csi" },
           { "text": "Forms", "href": "/csi/forms" },
+          { "text": "FSL", "href": "/csi/fsl" },
           { "text": "GEEK", "href": "/csi/geek" },
           {
             "text": "Recognized Student Organizations",
