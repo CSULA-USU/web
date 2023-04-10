@@ -6,6 +6,7 @@ import { Spaces } from 'theme';
 interface ButtonProps {
   text: string;
   href: string;
+  handleClick?: () => void;
 }
 interface HeaderProps {
   title: string;
@@ -69,6 +70,7 @@ export const Header = ({
           <ButtonContainer>
             {buttons.map((b, i) => (
               <Button
+                onClick={b.handleClick}
                 key={`${i}_${b.text}`}
                 href={b.href}
                 variant={i > 0 ? 'outline' : 'black'}
