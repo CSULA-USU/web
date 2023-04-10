@@ -76,7 +76,7 @@ export default function About() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <Header
         title="About Us"
         backgroundImage="subtle-background-1.jpg"
@@ -100,20 +100,22 @@ export default function About() {
           width={isDesktop ? '75%' : '50%'}
           borderRadius="12px"
         />
-        <Header title="About Us" buttons={buttons}></Header>
-      </FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="center">
+      </Header>
+      <FluidContainer flex flexDirection="column">
         <Typography as="p" variant="cta" size="lg">
           <Typography variant="title" as="span" color="gold">
-            Mission: &nbsp;
+            Mission:
           </Typography>
+          <br />
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
+        <br />
         <Typography as="p" variant="cta" size="lg">
           <Typography variant="title" as="span" color="gold">
-            Vision: &nbsp;
+            Vision:
           </Typography>
+          <br />
           To become Cal State LA&apos;s hub for connection and growth.
         </Typography>
       </FluidContainer>
