@@ -80,13 +80,14 @@ const orgsCategoriesCards = [
   },
 ];
 
+const buttons = [
+  { text: 'Resources', href: '#resources' },
+  { text: 'Start Your Own', href: '#start' },
+];
+
 export default function StudentOrgs() {
   const { isTablet, isDesktop } = useBreakpoint();
 
-  const buttons = [
-    { text: 'Resources', href: '#resources' },
-    { text: 'Start Your Own', href: '#start' },
-  ];
   return (
     <Page>
       <Head>

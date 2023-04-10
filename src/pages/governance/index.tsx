@@ -30,148 +30,152 @@ const TabContent = styled(Typography)`
     margin-top: 12px;
   }
 `;
+
+const cards = [
+  {
+    title: 'Meet the Board of Directors',
+    children:
+      "Learn more about the University Student Union's Board of Directors!",
+    linkText: 'Learn More',
+    href: 'governance/meet-the-board',
+  },
+  {
+    title: 'Be a Student Leader',
+    children:
+      'See how the elections are going and checkout the upcoming events!',
+    linkText: 'Learn More',
+    href: 'governance/student-leader-elections',
+  },
+  {
+    title: 'Learn How to Vote',
+    children:
+      'Confused or uncertain on how to vote for your favorite candidates? Click below for instructions!',
+    linkText: 'Learn More',
+    href: '/governance/how-to-vote',
+  },
+];
+
+const AuditTab = () => (
+  <TabContent>
+    The Audit Committee recommends to the Board of Directors the retention and
+    termination of independent auditors; negotiating the independent
+    auditors&apos; compensation; conferring with the auditors to satisfy
+    committee members that the financial affairs of the Corporation are in
+    order; reviewing and determining whether to accept the audit; assuring that
+    any non-audit services performed by the auditing firm conform with the
+    standards for auditor independence set forth in the latest revision of the
+    Government Auditing Standards issued by the Comptroller General of the
+    United States; and approving performance of non-audit services by the
+    auditing firm. The committee shall have seven (7) members; five (5) voting,
+    and two (2) non-voting. The voting members shall be three (3) students, one
+    of whom shall be a student voting member of the Board and shall chair the
+    committee. The two (2) non-voting members shall be the University-Student
+    Union Executive Director or designee and a representative from the
+    organization contracted to provide financial services to the
+    University-Student Union.
+    <ol>
+      <li>Voting - Five (5) voting, and two (2) non-voting.</li>
+      <li>
+        Voting - Three (3) students, one of whom shall be a student-voting
+        member of the Board and shall chair the committee.
+      </li>
+      <li>Liaisons - U-SU Executive Director or designee.</li>
+      <li>
+        Liaisons - Representative from the organization contracted to provide
+        financial services to the U-SU.
+      </li>
+    </ol>
+  </TabContent>
+);
+
+const Fiscal = () => (
+  <TabContent>
+    The Fiscal Committee shall recommend to the Board policies regarding fiscal
+    matters, including but not limited to operations, support, review of its
+    budget and budget modifications. The committee shall be responsible for
+    alladministrative actions under the Retirement Plans and implementing
+    actions approved by the Board related to fiduciary responsibilities as
+    required by law or contemplated in the U-SU&apos;s 403 (b) Plan documents
+    (including annual approval of 403 (b) plan viability). The Committee shall
+    also approve the annual budget process and make recommendations to the Board
+    regarding the annual budget. The Committee shall have eight (8) members;
+    five (5) voting, and three (3) non-voting. The voting shall include three
+    (3) students, one of whom shall be a student-voting member of the Board and
+    shall chair the committee. The last two voting members may be students at
+    large who are regular members of Associated Students Incorporated as defined
+    in Article I of the Associated Students Inc. bylaws, or any University-
+    Student Union board member who is not a student. The nonvoting members shall
+    be the University-Student Union Executive Director or designee, Chair of the
+    Board of Directors of the University-Student Union or designee, and a
+    representative from the organization contracted to provide financial
+    services to the University-Student Union. If a tie occurs, the Chair of the
+    Fiscal Committee will have the deciding vote.
+    <ol>
+      <li>Voting - Five (5) voting, two (2) non-voting.</li>
+      <li>
+        Voting - Three (3) students, one (1) of whom shall be a student-voting
+        member of the Board and shall chair the committee.
+      </li>
+      <li>Liaisons - U-SU Executive Director or designee</li>
+      <li>
+        Liaisons - Representative from the organization contracted to provide
+        financial services to the U-SU
+      </li>
+    </ol>
+  </TabContent>
+);
+
+const Nomination = () => (
+  <TabContent>
+    The Nominating Committee shall interview eligible candidates and nominate a
+    replacement student member to the Board. A Nominating Committee shall be
+    appointed by the Board of Directors to review all qualified applicants. The
+    composition of the Committee shall be up to five (5) student directors one
+    of whom shall be an ASI member (if there is not an ASI member on the BOD to
+    fill this position, ASI shall appoint a student committee member) and up to
+    two (2) advisors and shall be Dean of Students/or designee and
+    University-Student Union Executive Director.
+  </TabContent>
+);
+
+const Personnel = () => (
+  <TabContent>
+    The Personnel Committee shall develop and recommend to the Board policies
+    regarding personnel such as hiring, termination, evaluations, salaries,
+    grievances, employee benefits of full and part-time staff and student
+    assistants. The committee shall have nine (9) members; five (5) voting, and
+    four (4) non-voting. The voting members shall be five (5) members of the
+    Board, three (3) of whom shall be students. The four (4) non-voting members
+    are the University-Student Union Executive Director/designee, the Chair of
+    the Board of Directors of the University-Student Union, the Dean of Students
+    and a representative from the organization contracted to provide Human
+    Resource services to the University-Student Union. The committee shall be
+    cochaired by the Chair of the Board and the Dean of Students. Voting - Five
+    (5) members of the Board. One (1) shall be a student board member and will
+    chair the committee. Liaisons - U-SU Executive Director or designee Liaisons
+    - A representative from the organization contracted to provide Human
+    Resource services to the U-SU.
+  </TabContent>
+);
+
+const tabItems = [
+  { title: 'Audit', children: <AuditTab /> },
+  { title: 'Fiscal', children: <Fiscal /> },
+  { title: 'Nomination', children: <Nomination /> },
+  { title: 'Personnel', children: <Personnel /> },
+];
+
+const LinkInner = styled.div`
+  display: flex;
+  align-items: center;
+  padding: ${Spaces.md};
+  svg {
+    margin-right: ${Spaces.sm};
+  }
+`;
+
 export default function Governance() {
   const { isDesktop } = useBreakpoint();
-  const cards = [
-    {
-      title: 'Meet the Board of Directors',
-      children:
-        "Learn more about the University Student Union's Board of Directors!",
-      linkText: 'Learn More',
-      href: 'governance/meet-the-board',
-    },
-    {
-      title: 'Be a Student Leader',
-      children:
-        'See how the elections are going and checkout the upcoming events!',
-      linkText: 'Learn More',
-      href: 'governance/student-leader-elections',
-    },
-    {
-      title: 'Learn How to Vote',
-      children:
-        'Confused or uncertain on how to vote for your favorite candidates? Click below for instructions!',
-      linkText: 'Learn More',
-      href: '/governance/how-to-vote',
-    },
-  ];
-
-  const AuditTab = () => (
-    <TabContent>
-      The Audit Committee recommends to the Board of Directors the retention and
-      termination of independent auditors; negotiating the independent
-      auditors&apos; compensation; conferring with the auditors to satisfy
-      committee members that the financial affairs of the Corporation are in
-      order; reviewing and determining whether to accept the audit; assuring
-      that any non-audit services performed by the auditing firm conform with
-      the standards for auditor independence set forth in the latest revision of
-      the Government Auditing Standards issued by the Comptroller General of the
-      United States; and approving performance of non-audit services by the
-      auditing firm. The committee shall have seven (7) members; five (5)
-      voting, and two (2) non-voting. The voting members shall be three (3)
-      students, one of whom shall be a student voting member of the Board and
-      shall chair the committee. The two (2) non-voting members shall be the
-      University-Student Union Executive Director or designee and a
-      representative from the organization contracted to provide financial
-      services to the University-Student Union.
-      <ol>
-        <li>Voting - Five (5) voting, and two (2) non-voting.</li>
-        <li>
-          Voting - Three (3) students, one of whom shall be a student-voting
-          member of the Board and shall chair the committee.
-        </li>
-        <li>Liaisons - U-SU Executive Director or designee.</li>
-        <li>
-          Liaisons - Representative from the organization contracted to provide
-          financial services to the U-SU.
-        </li>
-      </ol>
-    </TabContent>
-  );
-  const Fiscal = () => (
-    <TabContent>
-      The Fiscal Committee shall recommend to the Board policies regarding
-      fiscal matters, including but not limited to operations, support, review
-      of its budget and budget modifications. The committee shall be responsible
-      for alladministrative actions under the Retirement Plans and implementing
-      actions approved by the Board related to fiduciary responsibilities as
-      required by law or contemplated in the U-SU&apos;s 403 (b) Plan documents
-      (including annual approval of 403 (b) plan viability). The Committee shall
-      also approve the annual budget process and make recommendations to the
-      Board regarding the annual budget. The Committee shall have eight (8)
-      members; five (5) voting, and three (3) non-voting. The voting shall
-      include three (3) students, one of whom shall be a student-voting member
-      of the Board and shall chair the committee. The last two voting members
-      may be students at large who are regular members of Associated Students
-      Incorporated as defined in Article I of the Associated Students Inc.
-      bylaws, or any University- Student Union board member who is not a
-      student. The nonvoting members shall be the University-Student Union
-      Executive Director or designee, Chair of the Board of Directors of the
-      University-Student Union or designee, and a representative from the
-      organization contracted to provide financial services to the
-      University-Student Union. If a tie occurs, the Chair of the Fiscal
-      Committee will have the deciding vote.
-      <ol>
-        <li>Voting - Five (5) voting, two (2) non-voting.</li>
-        <li>
-          Voting - Three (3) students, one (1) of whom shall be a student-voting
-          member of the Board and shall chair the committee.
-        </li>
-        <li>Liaisons - U-SU Executive Director or designee</li>
-        <li>
-          Liaisons - Representative from the organization contracted to provide
-          financial services to the U-SU
-        </li>
-      </ol>
-    </TabContent>
-  );
-  const Nomination = () => (
-    <TabContent>
-      The Nominating Committee shall interview eligible candidates and nominate
-      a replacement student member to the Board. A Nominating Committee shall be
-      appointed by the Board of Directors to review all qualified applicants.
-      The composition of the Committee shall be up to five (5) student directors
-      one of whom shall be an ASI member (if there is not an ASI member on the
-      BOD to fill this position, ASI shall appoint a student committee member)
-      and up to two (2) advisors and shall be Dean of Students/or designee and
-      University-Student Union Executive Director.
-    </TabContent>
-  );
-  const Personnel = () => (
-    <TabContent>
-      The Personnel Committee shall develop and recommend to the Board policies
-      regarding personnel such as hiring, termination, evaluations, salaries,
-      grievances, employee benefits of full and part-time staff and student
-      assistants. The committee shall have nine (9) members; five (5) voting,
-      and four (4) non-voting. The voting members shall be five (5) members of
-      the Board, three (3) of whom shall be students. The four (4) non-voting
-      members are the University-Student Union Executive Director/designee, the
-      Chair of the Board of Directors of the University-Student Union, the Dean
-      of Students and a representative from the organization contracted to
-      provide Human Resource services to the University-Student Union. The
-      committee shall be cochaired by the Chair of the Board and the Dean of
-      Students. Voting - Five (5) members of the Board. One (1) shall be a
-      student board member and will chair the committee. Liaisons - U-SU
-      Executive Director or designee Liaisons - A representative from the
-      organization contracted to provide Human Resource services to the U-SU.
-    </TabContent>
-  );
-
-  const tabItems = [
-    { title: 'Audit', children: <AuditTab /> },
-    { title: 'Fiscal', children: <Fiscal /> },
-    { title: 'Nomination', children: <Nomination /> },
-    { title: 'Personnel', children: <Personnel /> },
-  ];
-
-  const LinkInner = styled.div`
-    display: flex;
-    align-items: center;
-    padding: ${Spaces.md};
-    svg {
-      margin-right: ${Spaces.sm};
-    }
-  `;
 
   return (
     <Page>
