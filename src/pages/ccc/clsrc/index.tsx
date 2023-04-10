@@ -142,7 +142,7 @@ export default function CLSRC() {
           <Image
             margin="auto"
             borderRadius="12px"
-            src="/departments/ccc/nuestra-teaser.jpeg"
+            src="/departments/ccc/clsrc/nuestra-teaser.jpeg"
             alt="2022 nuestra graduation"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
@@ -174,7 +174,7 @@ export default function CLSRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="chicano/a latino/a student resource center logo"
-              src="/departments/ccc/clsrc-header.png"
+              src="/departments/ccc/clsrc/clsrc-header.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />
