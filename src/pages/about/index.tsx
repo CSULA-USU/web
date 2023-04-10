@@ -94,21 +94,31 @@ export default function About() {
           },
         ]}
       >
-        <Image src="/about.png" alt="student union" width="100%" />
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
-            Mission: &nbsp;
+        <Image
+          src="/about/calstatela-hero.jpeg"
+          alt="student union"
+          width={isDesktop ? '75%' : '50%'}
+          borderRadius="12px"
+        />
+      </Header>
+      <FluidContainer flex flexDirection="column">
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
+            Mission:
           </Typography>
+          <br />
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
-            Vision: &nbsp;
+        <br />
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
+            Vision:
           </Typography>
+          <br />
           To become Cal State LA&apos;s hub for connection and growth.
         </Typography>
-      </Header>
+      </FluidContainer>
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
