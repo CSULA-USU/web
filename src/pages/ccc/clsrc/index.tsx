@@ -33,6 +33,14 @@ const carouselImages = [
     src: '/departments/ccc/clsrc/carousel/video-game-space.jpg',
     alt: 'Students playing video games',
   },
+  {
+    src: '/departments/ccc/clsrc/carousel/title-space.jpg',
+    alt: 'CLSRC',
+  },
+  {
+    src: '/departments/ccc/clsrc/carousel/creating-group.jpg',
+    alt: 'Creating Worlds event',
+  },
 ];
 
 const hours = [
