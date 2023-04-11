@@ -143,7 +143,7 @@ const NavItemContainer = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  background: url(/subtle-background-1.jpg) no-repeat;
+  background: url(/backgrounds/subtle-background-1.jpg) no-repeat;
 `;
 
 const HeaderInnerContainer = styled.div`

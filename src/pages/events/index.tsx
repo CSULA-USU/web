@@ -22,7 +22,7 @@ export default function Home() {
       </Head>
       <Header
         title="Upcoming Events"
-        backgroundImage="/subtle-background-1.jpg"
+        backgroundImage="/backgrounds/subtle-background-1.jpg"
       >
         The University-Student Union&apos;s hosts various events through out the
         school year. Make sure to check back here to stay up to date with the
