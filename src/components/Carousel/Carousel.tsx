@@ -17,7 +17,7 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
       swipeable={true}
       emulateTouch={true}
       useKeyboardArrows={true}
-      showThumbs={true}
+      showThumbs={false}
     >
       {carouselImages &&
         carouselImages.map((item) => (
