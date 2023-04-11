@@ -90,7 +90,7 @@ export default function GSRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -228,7 +228,7 @@ export default function GSRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="gender and sexuality resource center header"
-              src="/departments/ccc/gsrc.png"
+              src="/departments/ccc/gsrc/gsrc.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />

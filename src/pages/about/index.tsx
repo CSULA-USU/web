@@ -1,12 +1,18 @@
 import Head from 'next/head';
-import { Page, Header } from 'modules';
+import { Page, Header, GenericModal } from 'modules';
 import { FluidContainer, Typography, Card, Image } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-
+import { useState } from 'react';
+import { media } from 'theme';
 const Title = styled.div`
   text-align: center;
 `;
+
+const HistoryContainer = styled.div`
+  ${media('mobile')(`width:300px;`)}
+`;
+
 const cards = [
   {
     title: 'Inclusiveness',
@@ -51,18 +57,9 @@ const cards = [
     iconAlt: 'team',
   },
 ];
-const buttons = [
-  {
-    text: 'U-SU Organizational Chart',
-    href: '/org-chart.jpg',
-  },
-  {
-    text: 'U-SU History',
-    href: '#',
-  },
-];
 export default function About() {
   const { isDesktop } = useBreakpoint();
+  const [modalIsOpen, setIsOpen] = useState(false);
   return (
     <Page>
       <Head>
@@ -81,24 +78,46 @@ export default function About() {
 
       <Header
         title="About Us"
-        backgroundImage="subtle-background-1.jpg"
-        buttons={buttons}
+        backgroundImage="/backgrounds/subtle-background-1.jpg"
+        buttons={[
+          {
+            text: 'U-SU Organizational Chart',
+            href: '/about/org-chart.jpg',
+          },
+          {
+            text: 'U-SU History',
+            href: '#',
+            handleClick: () => {
+              setIsOpen(true);
+            },
+          },
+        ]}
       >
-        <Image src="/about.png" alt="student union" width="100%" />
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
-            Mission: &nbsp;
+        <Image
+          src="/about/calstatela-hero.jpeg"
+          alt="student union"
+          width={isDesktop ? '75%' : '50%'}
+          borderRadius="12px"
+        />
+      </Header>
+      <FluidContainer flex flexDirection="column">
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
+            Mission:
           </Typography>
+          <br />
           With open doors and minds, we provide space and opportunities enabling
           Golden Eagles to soar.
         </Typography>
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
-            Vision: &nbsp;
+        <br />
+        <Typography as="p" variant="cta" size="lg">
+          <Typography variant="title" as="span" color="gold">
+            Vision:
           </Typography>
+          <br />
           To become Cal State LA&apos;s hub for connection and growth.
         </Typography>
-      </Header>
+      </FluidContainer>
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
@@ -117,6 +136,17 @@ export default function About() {
           ></Card>
         ))}
       </FluidContainer>
+      <GenericModal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <HistoryContainer>
+          <Typography variant="title">U-SU History</Typography>
+          <video width="100%" controls>
+            <source src="/about/usu-opening.mp4" type="video/mp4" />
+          </video>
+        </HistoryContainer>
+      </GenericModal>
     </Page>
   );
 }

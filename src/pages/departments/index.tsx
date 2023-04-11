@@ -20,7 +20,10 @@ export default function Departments() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header title="Departments" backgroundImage="/subtle-background-2.jpg">
+      <Header
+        title="Departments"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
+      >
         The University-Student Union mission is to provide a unique and friendly
         environment for the campus community to interact informally. Our
         services and facilities departments provide convenience and easy

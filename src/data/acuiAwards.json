@@ -1,6 +1,6 @@
 [
   {
-    "name": "Robert Gonzalez",
+    "name": "Robert Gonzales",
     "acuiName": " Atlanta 2020",
     "title": "U-SU 45th Anniversary",
     "place": "First",
@@ -51,7 +51,7 @@
     "place": "Honorable Mention",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/honorable-mention-sherwinlove-bernardino.jpg"
+    "src": "/departments/graffix/acui-awards/2016/honorable-mention-sherwinlove-bernardino.jpg"
   },
   {
     "name": "Sherwinlove Bernardino",
@@ -60,7 +60,7 @@
     "place": "Second",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/second-place-sherwinlove-bernardino.jpg"
+    "src": "/departments/graffix/acui-awards/2016/second-place-sherwinlove-bernardino.jpg"
   },
   {
     "name": "Gerrymi Bernardo",
@@ -69,16 +69,16 @@
     "place": "First",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/first-place-gerrymi-bernardo.jpg"
+    "src": "/departments/graffix/acui-awards/2015/first-place-gerrymi-bernardo.jpg"
   },
   {
     "name": "Robert Gonzales",
-    "acuiName": " an-Antonio 2015",
+    "acuiName": " San-Antonio 2015",
     "title": "Sodalicious",
     "place": "Third",
     "category": "Posters",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/third-place-robert-gonzales.jpg"
+    "src": "/departments/graffix/acui-awards/2015/third-place-robert-gonzales.jpg"
   },
   {
     "name": "Veronica Woo",
@@ -87,6 +87,6 @@
     "place": "Best of Show",
     "category": "Promotional Campaign",
     "class": "Professional",
-    "src": "/departments/graffix/acui-awards/best-of-show-veronica-woo.jpg"
+    "src": "/departments/graffix/acui-awards/2014/best-of-show-veronica-woo.jpg"
   }
 ]
