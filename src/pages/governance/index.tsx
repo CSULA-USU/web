@@ -195,7 +195,7 @@ export default function Governance() {
 
       <Header
         title="Governance"
-        backgroundImage="/subtle-background-2.jpg"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
         extra={
           <Button variant="outline" href="/governance/public-documents">
             <LinkInner>

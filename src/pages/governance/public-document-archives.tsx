@@ -48,7 +48,7 @@ export default function Governance() {
 
       <Header
         title="Archives"
-        backgroundImage="/subtle-background-3.jpg"
+        backgroundImage="/backgrounds/subtle-background-3.jpg"
       ></Header>
       <FluidContainer flex justifyContent="space-between">
         <div>
