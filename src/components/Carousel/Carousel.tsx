@@ -1,4 +1,4 @@
-import { Typography, Image, FluidContainer } from 'components';
+import { Image } from 'components';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 interface CarouselImageProps {
@@ -12,24 +12,32 @@ interface CarouselProps {
 
 export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
   return (
-    <FluidContainer flex justifyContent="center" backgroundColor="white">
-      <Carousel
-        centerSlidePercentage={100}
-        centerMode={true}
-        infiniteLoop={true}
-        swipeable={true}
-        emulateTouch={true}
-        useKeyboardArrows={true}
-        showThumbs={true}
-      >
-        {carouselImages &&
-          carouselImages.map((item) => (
-            <div key={item.src}>
-              <Image src={item.src} alt={item.alt} borderRadius="12px" />
-              <Typography className="legend">{item.alt}</Typography>
-            </div>
-          ))}
-      </Carousel>
-    </FluidContainer>
+    <Carousel
+      infiniteLoop={true}
+      swipeable={true}
+      emulateTouch={true}
+      useKeyboardArrows={true}
+      showThumbs={true}
+    >
+      {carouselImages &&
+        carouselImages.map((item) => (
+          <div
+            key={item.src}
+            style={{
+              maxHeight: '560px',
+              display: 'flex',
+              alignItems: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              style={{ borderRadius: '12px', flex: 'none' }}
+            ></Image>
+            <p className="legend">{item.alt}</p>
+          </div>
+        ))}
+    </Carousel>
   );
 };
