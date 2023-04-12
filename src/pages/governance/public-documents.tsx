@@ -26,7 +26,7 @@ export default function Governance() {
 
       <Header
         title="Public Documents"
-        backgroundImage="/subtle-background-2.jpg"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
       >
         As a tax-exempt organization, the University-Student Union (U-SU) must
         make the appropriate organizational documents available for inspection

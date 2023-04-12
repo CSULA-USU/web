@@ -46,6 +46,22 @@ const carouselImages = [
     src: '/departments/ccc/apisrc/carousel/art.png',
     alt: 'Make your own holiday stocking event',
   },
+  {
+    src: '/departments/ccc/apisrc/carousel/xmas-photo-2.png',
+    alt: 'Holiday photo shoot',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/grad-drummer.jpg',
+    alt: 'Drummers for APIDA grad',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/kalahi.jpg',
+    alt: 'Kalahi meeting',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/open-house.jpg',
+    alt: 'APISRC open house',
+  },
 ];
 
 const hours = [
