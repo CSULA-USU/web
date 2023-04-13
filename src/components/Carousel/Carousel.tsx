@@ -17,7 +17,7 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
       swipeable={true}
       emulateTouch={true}
       useKeyboardArrows={true}
-      showThumbs={true}
+      showThumbs={false}
     >
       {carouselImages &&
         carouselImages.map((item) => (
@@ -33,7 +33,12 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
             <Image
               src={item.src}
               alt={item.alt}
-              style={{ borderRadius: '12px', flex: 'none' }}
+              style={{
+                borderRadius: '12px',
+                flex: 'none',
+                maxWidth: '960px',
+                margin: '0px auto',
+              }}
             ></Image>
             <p className="legend">{item.alt}</p>
           </div>
