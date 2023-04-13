@@ -32,7 +32,7 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FluidContainer backgroundImage="/subtle-background-2.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
         <Typography variant="titleLarge" weight="700" as="h1">
           Contact Us
         </Typography>

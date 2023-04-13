@@ -35,7 +35,10 @@ const cards = [
 
 const buttons = [
   { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
-  { text: 'Meet Your Educators', href: '/gene-bios.pdf' },
+  {
+    text: 'Meet Your Educators',
+    href: '/departments/recreation/gene-bios.pdf',
+  },
 ];
 
 export default function Gene() {

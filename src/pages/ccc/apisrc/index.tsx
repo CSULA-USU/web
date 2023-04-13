@@ -46,6 +46,22 @@ const carouselImages = [
     src: '/departments/ccc/apisrc/carousel/art.png',
     alt: 'Make your own holiday stocking event',
   },
+  {
+    src: '/departments/ccc/apisrc/carousel/xmas-photo-2.png',
+    alt: 'Holiday photo shoot',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/grad-drummer.jpg',
+    alt: 'Drummers for APIDA grad',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/kalahi.jpg',
+    alt: 'Kalahi meeting',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/open-house.jpg',
+    alt: 'APISRC open house',
+  },
 ];
 
 const hours = [
@@ -97,7 +113,7 @@ export default function APISRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -255,7 +271,7 @@ export default function APISRC() {
           <FluidContainer flex justifyContent="center">
             <Image
               alt="asian pacific islander student resource center logo"
-              src="/departments/ccc/apisrc-header.png"
+              src="/departments/ccc/apisrc/apisrc-header.png"
               width="100%"
               margin={`0px 500px ${Spaces.xl}`}
             />

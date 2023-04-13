@@ -103,7 +103,10 @@ export default function Staff() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Meet the Staff" backgroundImage="/subtle-background-1.jpg">
+      <Header
+        title="Meet the Staff"
+        backgroundImage="/backgrounds/subtle-background-1.jpg"
+      >
         Union: An act or instance of uniting or joining two or more things into
         one. Something that is made one : something formed by a combination or
         coalition of parts or members. A confederation of independent

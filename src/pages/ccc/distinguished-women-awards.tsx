@@ -117,7 +117,7 @@ export default function CulturalGrads() {
         flex
         flexDirection="column"
         alignItems="center"
-        backgroundImage="/subtle-background-1.jpg"
+        backgroundImage="/backgrounds/subtle-background-1.jpg"
       >
         <a href="https://www.calstatela.edu/studentservices/nomination-form-%E2%80%93-distinguished-women-awards">
           {' '}

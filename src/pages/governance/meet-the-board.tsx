@@ -24,7 +24,7 @@ export default function Governance() {
 
       <Header
         title="Meet the Board  Members"
-        backgroundImage="/subtle-background-3.jpg"
+        backgroundImage="/backgrounds/subtle-background-3.jpg"
       >
         The University-Student Union&apos;s Board of Directors is the governing
         board of the Union. The purpose of the Board is to establish policy for

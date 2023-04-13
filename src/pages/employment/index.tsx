@@ -56,7 +56,7 @@ export default function Employment() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FluidContainer backgroundImage="/subtle-background-2.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
         <Typography as="h1" variant="pageHeader">
           Employment
         </Typography>
@@ -110,7 +110,7 @@ export default function Employment() {
         <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
-        <Link href="/professional-employment.pdf">
+        <Link href="/usuforms/u-su/professional-employment.pdf">
           Professional Appointment
         </Link>
         <br />

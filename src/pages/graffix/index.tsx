@@ -38,21 +38,21 @@ const cards1 = [
   {
     title: 'Graffix Trick or Tour',
     designer: 'Sebastian Lopez',
-    src: '/departments/graffix/graffix-trick-or-tour.png',
+    src: '/departments/graffix/student-designs/graffix-trick-or-tour.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
   {
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
-    src: '/departments/graffix/larry-itliong.jpg',
+    src: '/departments/graffix/student-designs/larry-itliong.jpg',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
   {
     title: 'Graffix Open House',
     designer: 'Hector Almaraz',
-    src: '/departments/graffix/graffix-job-fair.jpg',
+    src: '/departments/graffix/student-designs/graffix-job-fair.jpg',
     description: 'This design was inspired by retro scary movie posters.',
   },
 ];
@@ -60,7 +60,7 @@ const cards2 = [
   {
     title: 'Smash League Tournament',
     designer: 'Hector Almaraz',
-    src: '/departments/graffix/smash-league.png',
+    src: '/departments/graffix/student-designs/smash-league.png',
     description:
       'This is a design that takes modern e-sports asthetics and combines them with Cal State LA colors.',
   },
@@ -68,14 +68,14 @@ const cards2 = [
   {
     title: 'Harvest Festival',
     designer: 'Anthony (Tony) Villa',
-    src: '/departments/graffix/harvest-festival.png',
+    src: '/departments/graffix/student-designs/harvest-festival.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
   {
     title: 'Fluffy Friends',
     designer: 'Sebastian Lopez',
-    src: '/departments/graffix/fluffy-friends.png',
+    src: '/departments/graffix/student-designs/fluffy-friends.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
@@ -84,21 +84,21 @@ const cards3 = [
   {
     title: 'Brown & Gay in LA',
     designer: 'P Dacayan',
-    src: '/departments/graffix/brown-gay-la.png',
+    src: '/departments/graffix/student-designs/brown-gay-la.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
-    src: '/departments/graffix/swim-in-the-sound.png',
+    src: '/departments/graffix/student-designs/swim-in-the-sound.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
-    src: '/departments/graffix/study-break-of-color.png',
+    src: '/departments/graffix/student-designs/study-break-of-color.png',
     description:
       ' This design coincided with Halloween and the Graffix open house.We decided to merge the two and add symbols inspired by Graffix staff.',
   },
@@ -143,7 +143,7 @@ const NavItemContainer = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  background: url(/subtle-background-1.jpg) no-repeat;
+  background: url(/backgrounds/subtle-background-1.jpg) no-repeat;
 `;
 
 const HeaderInnerContainer = styled.div`

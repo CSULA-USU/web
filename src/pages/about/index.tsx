@@ -1,12 +1,47 @@
 import Head from 'next/head';
-import { Page, Header } from 'modules';
-import { FluidContainer, Typography, Card, Image } from 'components';
+import { Page, GenericModal } from 'modules';
+import {
+  FluidContainer,
+  Typography,
+  Card,
+  SideImageHeader,
+  Button,
+  NonBreakingSpan,
+} from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-
+import { useState } from 'react';
+import { media, Spaces } from 'theme';
 const Title = styled.div`
   text-align: center;
 `;
+
+const HistoryContainer = styled.div`
+  ${media('mobile')(`width:300px;`)}
+`;
+
+const HeaderContainer = styled.div`
+  width: 50%;
+  ${media('tablet')(`width:50%;`)}
+  ${media('desktop')(`width:50%;`)}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: ${Spaces.lg};
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: ${Spaces['2xl']};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  ./ > *:not(:last-child) {
+    margin-right: 8px;
+  }
+`;
+
 const cards = [
   {
     title: 'Inclusiveness',
@@ -51,18 +86,10 @@ const cards = [
     iconAlt: 'team',
   },
 ];
-const buttons = [
-  {
-    text: 'U-SU Organizational Chart',
-    href: '/org-chart.jpg',
-  },
-  {
-    text: 'U-SU History',
-    href: '#',
-  },
-];
+
 export default function About() {
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const [modalIsOpen, setIsOpen] = useState(false);
   return (
     <Page>
       <Head>
@@ -79,26 +106,70 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header
-        title="About Us"
-        backgroundImage="subtle-background-1.jpg"
-        buttons={buttons}
+      <SideImageHeader
+        imgAlt="student union"
+        imgSrc="/about/about-hero-bw.jpeg"
+        imgWidth={isDesktop ? '100%' : '50%'}
+        background="/backgrounds/subtle-background-1.jpg"
       >
-        <Image src="/about.png" alt="student union" width="100%" />
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
+        <HeaderContainer>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            size={isDesktop ? '2xl' : isTablet ? '3xl' : '4xl'}
+            margin={
+              isMobile
+                ? `${Spaces.md} 0 ${Spaces.md} 0`
+                : `0 0 ${Spaces['2xl']}`
+            }
+          >
+            About Us
+          </Typography>
+          <Typography
+            variant="title"
+            as="span"
+            color="gold"
+            size={isDesktop ? 'lg' : '2xl'}
+          >
             Mission: &nbsp;
           </Typography>
-          With open doors and minds, we provide space and opportunities enabling
-          Golden Eagles to soar.
-        </Typography>
-        <Typography as="p">
-          <Typography variant="labelTitle" as="span">
+          <Typography as="p" size={isDesktop ? 'md' : 'lg'} lineHeight="2">
+            <NonBreakingSpan>With open doors and minds</NonBreakingSpan>
+            <br />
+            <NonBreakingSpan>
+              We provide space and opportunities
+            </NonBreakingSpan>{' '}
+            <br />
+            <NonBreakingSpan>Enabling Golden Eagles to soar</NonBreakingSpan>
+          </Typography>
+          <Typography
+            variant="title"
+            as="span"
+            color="gold"
+            margin={`${Spaces.lg} 0 0 0`}
+            size={isDesktop ? 'lg' : '2xl'}
+          >
             Vision: &nbsp;
           </Typography>
-          To become Cal State LA&apos;s hub for connection and growth.
-        </Typography>
-      </Header>
+          <Typography as="p" size={isDesktop ? 'md' : 'lg'}>
+            To become Cal State LA&apos;s hub for connection and growth
+          </Typography>
+          <ButtonContainer>
+            <Button variant="black" href="/about/org-chart.jpg">
+              U-SU Organizational Chart
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              U-SU History
+            </Button>
+          </ButtonContainer>
+        </HeaderContainer>
+      </SideImageHeader>
+
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
@@ -117,6 +188,17 @@ export default function About() {
           ></Card>
         ))}
       </FluidContainer>
+      <GenericModal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <HistoryContainer>
+          <Typography variant="title">U-SU History</Typography>
+          <video width="100%" controls>
+            <source src="/about/usu-opening.mp4" type="video/mp4" />
+          </video>
+        </HistoryContainer>
+      </GenericModal>
     </Page>
   );
 }

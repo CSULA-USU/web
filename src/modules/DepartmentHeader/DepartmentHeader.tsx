@@ -39,7 +39,7 @@ export const DepartmentHeader = ({
   const onRequestClose = () => selectEvent(undefined);
   return (
     <>
-      <FluidContainer backgroundImage="subtle-background-3.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-3.jpg">
         <HeaderContainer>
           <HeaderContent>
             <Typography variant="labelTitle">Welcome to the</Typography>

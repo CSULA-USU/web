@@ -69,7 +69,7 @@ export default function Geek() {
         backgroundImage="/subtle-background-1.jpg"
       >
         <Image
-          src="/departments/csi/geek-header.jpg"
+          src="/departments/csi/geek/geek-header.jpg"
           alt="geek header"
           width={isDesktop ? '100%' : '80%'}
           marginBottom={Spaces.lg}

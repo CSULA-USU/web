@@ -42,7 +42,7 @@ const cards = [
   {
     title: 'Be a Student Leader',
     children:
-      'See how the elections are going and checkout the upcoming events!',
+      'See how the elections are going and check out the upcoming events!',
     linkText: 'Learn More',
     href: 'governance/student-leader-elections',
   },
@@ -195,7 +195,7 @@ export default function Governance() {
 
       <Header
         title="Governance"
-        backgroundImage="/subtle-background-2.jpg"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
         extra={
           <Button variant="outline" href="/governance/public-documents">
             <LinkInner>
@@ -208,7 +208,7 @@ export default function Governance() {
         board of the Union. The purpose of the Board is to establish policy for
         the Union as a student body center for the benefit of students, faculty,
         staff and alumni at{' '}
-        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>.
+        <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
       </Header>
       <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
         {cards.map((props) => (
