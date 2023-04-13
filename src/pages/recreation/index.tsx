@@ -36,7 +36,7 @@ export default function Recreation() {
         flex
         justifyContent="center"
         alignItems="center"
-        innerMinHeight="640px"
+        innerMinHeight={isMobile ? '320px' : '640px'}
         innerMaxWidth="640px"
       >
         <Image
@@ -52,8 +52,13 @@ export default function Recreation() {
         alignItems="center"
         flexWrap="wrap"
       >
-        <div style={{ maxWidth: '800px' }}>
-          <Typography as="h2" variant="pageHeader" lineHeight="1">
+        <div style={{ maxWidth: '800px', marginBottom: '32px' }}>
+          <Typography
+            as="h2"
+            variant="pageHeader"
+            lineHeight="1"
+            size={isMobile ? '2xl' : '4xl'}
+          >
             The Recreation <NonBreakingSpan>Fitness Center</NonBreakingSpan>{' '}
             <NonBreakingSpan>is now open!</NonBreakingSpan>
           </Typography>
@@ -133,7 +138,11 @@ export default function Recreation() {
         </Card>
       </FluidContainer>
       <FluidContainer backgroundColor="primary">
-        <Typography variant="titleLarge" as="h3" margin="24px 0 24px">
+        <Typography
+          variant={isMobile ? 'titleSmall' : 'titleLarge'}
+          as="h3"
+          margin="24px 0 24px"
+        >
           For updates and ways to connect now, follow @calstatela_recreation on
           Instagram!
         </Typography>
