@@ -1,16 +1,45 @@
 import Head from 'next/head';
-import { Page, Header, GenericModal } from 'modules';
-import { FluidContainer, Typography, Card, Image } from 'components';
+import { Page, GenericModal } from 'modules';
+import {
+  FluidContainer,
+  Typography,
+  Card,
+  SideImageHeader,
+  Button,
+  NonBreakingSpan,
+} from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { useState } from 'react';
-import { media } from 'theme';
+import { media, Spaces } from 'theme';
 const Title = styled.div`
   text-align: center;
 `;
 
 const HistoryContainer = styled.div`
   ${media('mobile')(`width:300px;`)}
+`;
+
+const HeaderContainer = styled.div`
+  width: 50%;
+  ${media('tablet')(`width:50%;`)}
+  ${media('desktop')(`width:50%;`)}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: ${Spaces.lg};
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: ${Spaces['2xl']};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  ./ > *:not(:last-child) {
+    margin-right: 8px;
+  }
 `;
 
 const cards = [
@@ -57,8 +86,9 @@ const cards = [
     iconAlt: 'team',
   },
 ];
+
 export default function About() {
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   return (
     <Page>
@@ -76,48 +106,70 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header
-        title="About Us"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
-        buttons={[
-          {
-            text: 'U-SU Organizational Chart',
-            href: '/about/org-chart.jpg',
-          },
-          {
-            text: 'U-SU History',
-            href: '#',
-            handleClick: () => {
-              setIsOpen(true);
-            },
-          },
-        ]}
+      <SideImageHeader
+        imgAlt="student union"
+        imgSrc="/about/about-hero-bw.jpeg"
+        imgWidth={isDesktop ? '100%' : '50%'}
+        background="/backgrounds/subtle-background-1.jpg"
       >
-        <Image
-          src="/about/calstatela-hero.jpeg"
-          alt="student union"
-          width={isDesktop ? '75%' : '50%'}
-          borderRadius="12px"
-        />
-      </Header>
-      <FluidContainer flex flexDirection="column">
-        <Typography as="p" variant="cta" size="lg">
-          <Typography variant="title" as="span" color="gold">
-            Mission:
+        <HeaderContainer>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            size={isDesktop ? '2xl' : isTablet ? '3xl' : '4xl'}
+            margin={
+              isMobile
+                ? `${Spaces.md} 0 ${Spaces.md} 0`
+                : `0 0 ${Spaces['2xl']}`
+            }
+          >
+            About Us
           </Typography>
-          <br />
-          With open doors and minds, we provide space and opportunities enabling
-          Golden Eagles to soar.
-        </Typography>
-        <br />
-        <Typography as="p" variant="cta" size="lg">
-          <Typography variant="title" as="span" color="gold">
-            Vision:
+          <Typography
+            variant="title"
+            as="span"
+            color="gold"
+            size={isDesktop ? 'lg' : '2xl'}
+          >
+            Mission: &nbsp;
           </Typography>
-          <br />
-          To become Cal State LA&apos;s hub for connection and growth.
-        </Typography>
-      </FluidContainer>
+          <Typography as="p" size={isDesktop ? 'md' : 'lg'} lineHeight="2">
+            <NonBreakingSpan>With open doors and minds</NonBreakingSpan>
+            <br />
+            <NonBreakingSpan>
+              We provide space and opportunities
+            </NonBreakingSpan>{' '}
+            <br />
+            <NonBreakingSpan>Enabling Golden Eagles to soar</NonBreakingSpan>
+          </Typography>
+          <Typography
+            variant="title"
+            as="span"
+            color="gold"
+            margin={`${Spaces.lg} 0 0 0`}
+            size={isDesktop ? 'lg' : '2xl'}
+          >
+            Vision: &nbsp;
+          </Typography>
+          <Typography as="p" size={isDesktop ? 'md' : 'lg'}>
+            To become Cal State LA&apos;s hub for connection and growth
+          </Typography>
+          <ButtonContainer>
+            <Button variant="black" href="/about/org-chart.jpg">
+              U-SU Organizational Chart
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              U-SU History
+            </Button>
+          </ButtonContainer>
+        </HeaderContainer>
+      </SideImageHeader>
+
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
