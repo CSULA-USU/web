@@ -93,7 +93,12 @@ export default function Recreation() {
         </Typography>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLighter">
-        <Typography as="h3" variant="title" margin="24px 0 0 0">
+        <Typography
+          as="h3"
+          variant="title"
+          margin="24px 0 0 0"
+          size={isMobile ? 'lg' : '2xl'}
+        >
           Our Newly Renovated Fitness Center is Ready For You!
         </Typography>
       </FluidContainer>
