@@ -56,6 +56,12 @@ const HazingPoliciesContentSection = styled.div`
 
 const ResourceButtonsSection = styled.div`
   width: calc(30%);
+  @media (max-width: 900px) {
+    width: calc(40%);
+  }
+  @media (max-width: 750px) {
+    width: calc(100%);
+  }
   margin: ${Spaces.sm};
 `;
 
@@ -912,7 +918,7 @@ export default function FSL() {
                   <a href={resource.href}>
                     <Card
                       topBorder
-                      minHeight="450px"
+                      minHeight={isMobile ? '320px' : '100%'}
                       title={resource.title}
                       hoverable
                       rounded
