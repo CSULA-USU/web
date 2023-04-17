@@ -6,16 +6,16 @@
     "place": "First",
     "category": "Cards/Invitations",
     "class": "Professional",
-    "src": "/departments/graffix/acui-awards/2020/robert-gonzalez-45th-anniversary.jpg"
+    "src": "/departments/graffix/acui-awards/2020/45th-anniversary.jpg"
   },
   {
     "name": "Stacy Le",
     "acuiName": " Atlanta 2020",
     "title": "Learn the Basics",
     "place": "First",
-    "category": "Brochures",
+    "category": "Brochures/Pamphlets",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2020/stacy-le-learn-the-basics.jpg"
+    "src": "/departments/graffix/acui-awards/2020/learn-the-basics.jpg"
   },
   {
     "name": "Valaeri To",
@@ -24,7 +24,7 @@
     "place": "First",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2020/valaeri-to-social-identity-exploration.jpg"
+    "src": "/departments/graffix/acui-awards/2020/social-identity-exploration.jpg"
   },
   {
     "name": "Gabriel Villa",
@@ -33,7 +33,7 @@
     "place": "First",
     "category": "Cards/Postcards",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2019/gabriel-villa-despertando-a-los-muertitos.jpg"
+    "src": "/departments/graffix/acui-awards/2019/despertando-a-los-muertitos.jpg"
   },
   {
     "name": "Roxana Joncyzk",
@@ -42,7 +42,7 @@
     "place": "First",
     "category": "Posters",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2019/roxana-joncyzk-take-back-the-night.jpg"
+    "src": "/departments/graffix/acui-awards/2019/take-back-the-night.jpg"
   },
   {
     "name": "Sherwinlove Bernardino",
@@ -51,7 +51,7 @@
     "place": "Honorable Mention",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2016/honorable-mention-sherwinlove-bernardino.jpg"
+    "src": "/departments/graffix/acui-awards/2016/dia-de-los-meurtos.jpg"
   },
   {
     "name": "Sherwinlove Bernardino",
@@ -60,7 +60,7 @@
     "place": "Second",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2016/second-place-sherwinlove-bernardino.jpg"
+    "src": "/departments/graffix/acui-awards/2016/haunted-harvest-festival.jpg"
   },
   {
     "name": "Gerrymi Bernardo",
@@ -69,7 +69,7 @@
     "place": "First",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2015/first-place-gerrymi-bernardo.jpg"
+    "src": "/departments/graffix/acui-awards/2015/lunar-new-year.jpg"
   },
   {
     "name": "Robert Gonzales",
@@ -78,7 +78,7 @@
     "place": "Third",
     "category": "Posters",
     "class": "Student",
-    "src": "/departments/graffix/acui-awards/2015/third-place-robert-gonzales.jpg"
+    "src": "/departments/graffix/acui-awards/2015/sodalicious.jpg"
   },
   {
     "name": "Veronica Woo",
@@ -87,6 +87,492 @@
     "place": "Best of Show",
     "category": "Promotional Campaign",
     "class": "Professional",
-    "src": "/departments/graffix/acui-awards/2014/best-of-show-veronica-woo.jpg"
+    "src": "/departments/graffix/acui-awards/2014/la-verne/u-awards.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": " La Verne 2014",
+    "title": "Spring Student Fest",
+    "place": "Second",
+    "category": "Print Advertisements",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/spring-student-fest.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": " La Verne 2014",
+    "title": "Home Coming Float",
+    "place": "Second",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/home-coming-float.jpg"
+  },
+  {
+    "name": "Marina Olivera",
+    "acuiName": " La Verne 2014",
+    "title": "Take a Stand",
+    "place": "Second",
+    "category": "One-or-Two Color Posters",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/take-a-stand.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": " La Verne 2014",
+    "title": "Xtreme Fitness Housing",
+    "place": "First",
+    "category": "One-or-Two Color Posters",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/x-treme-fitness-housing.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": " La Verne 2014",
+    "title": "Black Graduate",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/black-graduate.jpg"
+  },
+  {
+    "name": "Carlos Godoy",
+    "acuiName": " La Verne 2014",
+    "title": "Pride Graduate",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/pride-graduate.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": " La Verne 2014",
+    "title": "LGBT Month 2014",
+    "place": "First",
+    "category": "Brochures/Pamphlets",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/lgbt-month-2014.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": " La Verne 2014",
+    "title": "Union Plaza Project Banner",
+    "place": "Second",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/union-plaza-project-banner.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": " La Verne 2014",
+    "title": "Conference Banner",
+    "place": "Second",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/la-verne/conference-banner.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "Orlando 2014",
+    "title": "5th Annual Womyn of Color Conference",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/5th-annual-womyn-of-color-conference.jpg"
+  },
+  {
+    "name": "Laura Tu",
+    "acuiName": "Orlando 2014",
+    "title": "Fraternity and Sorority Life Handbook",
+    "place": "Honorable Mention",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/fraternity-and-sorority-life-handbook.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "Orlando 2014",
+    "title": "Black Graduate Booklet",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/orlando/black-graduate-booklet.jpg"
+  },
+  {
+    "name": "John-Paul Bonite",
+    "acuiName": "Orlando 2014",
+    "title": "Graffix Font Book",
+    "place": " Second",
+    "category": "Miscellaneous Promo",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/graffix-font-book.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Orlando 2014",
+    "title": "CSI: Surprise! Prize Sticker",
+    "place": "Second",
+    "category": "Miscellaneous Promo",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/orlando/.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "Orlando 2014",
+    "title": "Alcohol and Drug Awareness Postcard",
+    "place": "Honorable Mention",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/alcohol-and-drug-awareness-postcard.jpg"
+  },
+  {
+    "name": "Aimee Guzman",
+    "acuiName": "Orlando 2014",
+    "title": "LGBTQIPA Pride Series Postcard",
+    "place": "Third",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/lgbtqipa-pride-series-postcard.jpg"
+  },
+  {
+    "name": "John-Paul Bonite",
+    "acuiName": "Orlando 2014",
+    "title": "2013 Lunar New Year Postcard",
+    "place": "Second",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/2013-lunar-new-year-postcard.jpg"
+  },
+  {
+    "name": "John-Paul Bonite",
+    "acuiName": "Orlando 2014",
+    "title": "CCC Department Postcard",
+    "place": "First",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/ccc-department-postcard.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "Orlando 2014",
+    "title": "Winter 2013 Calender",
+    "place": "Honorable Mention",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/2013-winter-calender.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Orlando 2014",
+    "title": "Fun In The Sun Staff Retreat Invite",
+    "place": "Third",
+    "category": "Cards/Invitations",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/orlando/fun-in-the-sun-staff-retreat-invite.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo and John-Paul Bonite",
+    "acuiName": "Orlando 2014",
+    "title": "Fall 2013 Calendar",
+    "place": "First",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2014/orlando/fall-2013-calendar.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Orlando 2014",
+    "title": "X-treme Fitness Tips Postcards",
+    "place": "Second",
+    "category": "Cards/Invitations",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2014/orlando/x-treme-fitness-tips-postcards.jpg"
+  },
+  {
+    "name": "Aimee Guzman, Thomas Salonga, Gerrymi Bernardo",
+    "acuiName": "St. Louis 2013",
+    "title": "Student Awareness Campaign",
+    "place": "Second",
+    "category": "Miscellaneous Promo",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/student-awareness-campaign.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "St. Louis 2013",
+    "title": "U-SU Spring 2012 Calendar",
+    "place": "Second",
+    "category": "Calendars/Schedules",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/u-su-spring-2012-calendar.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "St. Louis 2013",
+    "title": "Union Link Wall Decal",
+    "place": "Third",
+    "category": "Signs/Banners",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/union-link-wall-decal.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "St. Louis 2013",
+    "title": "Xtreme Fitness Window Decal",
+    "place": "First",
+    "category": "Signs/Banners",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/xtreme-fitness-window-decal.jpg"
+  },
+  {
+    "name": "Aimee Guzman",
+    "acuiName": "St. Louis 2013",
+    "title": "The Names Project-Aids Memorial Quilt Exhibit",
+    "place": "Second",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/the-names-project-aids-memorial-quilt-exhibit.jpg"
+  },
+  {
+    "name": "Aimee Guzman",
+    "acuiName": "St. Louis 2013",
+    "title": "CCC Summer 2012 Calendar",
+    "place": "First",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/ccc-summer-2012-calendar.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "St. Louis 2013",
+    "title": "Camp Golden Eagle",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/camp-golden-eagle.jpg"
+  },
+  {
+    "name": "Cicely Feng ",
+    "acuiName": "St. Louis 2013",
+    "title": "Sodalicious!",
+    "place": "First",
+    "category": "Four-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/sodalicious.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "St. Louis 2013",
+    "title": "A Place of Our Own",
+    "place": "Second",
+    "category": "Two-Color Poster",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/a-place-of-our-own.jpg"
+  },
+  {
+    "name": "Gerrymi Bernardo",
+    "acuiName": "St. Louis 2013",
+    "title": "Made in L.A.",
+    "place": "First",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/made-in-la.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "St. Louis 2013",
+    "title": "New Student Orientation Brochure",
+    "place": "First",
+    "category": "Brochures/Pamphlets",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2013/st-louis/new-student-orientation-brochure.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Boston 2012",
+    "title": "Union Strengths Finder Deck",
+    "place": "Third",
+    "category": "Brochures/Pamphlets",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/boston/union-strengths-finder-deck.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Boston 2012",
+    "title": "U-SU Balcony",
+    "place": "Third",
+    "category": "Signs/Banners",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/boston/u-su-balcony.jpg"
+  },
+  {
+    "name": "Andrea Dela Cruz",
+    "acuiName": "Boston 2012",
+    "title": "U-SU Fall 2011 Calendar",
+    "place": "Third",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/boston/u-su-fall-2011-calendar.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Boston 2012",
+    "title": "Black and Gold Music Fest",
+    "place": "Third",
+    "category": "T-Shirts",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/boston/black-and-gold-music-fest.jpg"
+  },
+  {
+    "name": "Jennifer Chow",
+    "acuiName": "Boston 2012",
+    "title": "You Go Girrrl",
+    "place": "Third",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/boston/you-go-girrrl.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Boston 2012",
+    "title": "Raza Grad Booklet",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/boston/raza-grad-booklet.jpg"
+  },
+  {
+    "name": "Gomer Sevillano Jr.",
+    "acuiName": "Boston 2012",
+    "title": "Cup of Culture Series",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/boston/cup-of-culture-series.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "New Student Orientation Brochure",
+    "place": "Third",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/new-student-orientation-brochure.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "U-SU Strength Finder Playcards",
+    "place": "First",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/u-su-strength-finder-playcards.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "Our CSULA Street Light Banners",
+    "place": "Third",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/our-csula-street-light-banners.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "Xtreme Fitness Window Decals",
+    "place": "Second",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/xtreme-fitness-window-decals.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "U-SU Street Light Banners",
+    "place": "First",
+    "category": "Signs/Signage",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/u-su-street-light-banners.jpg"
+  },
+  {
+    "name": "John-Paul Bonite",
+    "acuiName": "Sacramento 2012",
+    "title": "Office Hour Decals",
+    "place": "First",
+    "category": "Signs/Signage",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/office-hour-decals.jpg"
+  },
+  {
+    "name": "John-Paul Bonite",
+    "acuiName": "Sacramento 2012",
+    "title": "U-SU Floor Plan",
+    "place": "Third",
+    "category": "Maps/Directories",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/u-su-floor-plan.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "THE Event",
+    "place": "First",
+    "category": "Promotional Campaign",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/the-event.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Sacramento 2012",
+    "title": "A Place of Our Own",
+    "place": "Third",
+    "category": "One-or-Two Color Posters",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/a-place-of-our-own.jpg"
+  },
+  {
+    "name": "Andrea Dela Cruz",
+    "acuiName": "Sacramento 2012",
+    "title": "Lunar New Year",
+    "place": "Third",
+    "category": "One-or-Two Color Posters",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/lunar-new-year.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Sacramento 2012",
+    "title": "API Graduation Booklet 2012",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/api-graduation-booklet-2012.jpg"
+  },
+  {
+    "name": "Andrea Dela Cruz",
+    "acuiName": "Sacramento 2012",
+    "title": "Fall 2011 Calendar of Events",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/fall-2011-calendar-of-events.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Sacramento 2012",
+    "title": "Welcome Week",
+    "place": "First",
+    "category": "Print Advertisements",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/welcome-week.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Sacramento 2012",
+    "title": "Native American History Month",
+    "place": "Second",
+    "category": "Cards,Invitations, and Postcards",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/native-american-history-month.jpg"
   }
 ]
