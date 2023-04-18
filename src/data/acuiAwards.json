@@ -46,7 +46,7 @@
   },
   {
     "name": "Sherwinlove Bernardino",
-    "acuiName": " Philadelphia 2016",
+    "acuiName": " Philadelphia 2017",
     "title": "Dia de Los Muertos",
     "place": "Honorable Mention",
     "category": "Cards/Invitations",
@@ -55,7 +55,7 @@
   },
   {
     "name": "Sherwinlove Bernardino",
-    "acuiName": " Philadelphia 2016",
+    "acuiName": " Philadelphia 2017",
     "title": "Haunted Harvest Festival",
     "place": "Second",
     "category": "Cards/Invitations",
@@ -405,7 +405,7 @@
     "src": "/departments/graffix/acui-awards/2012/boston/u-su-balcony.jpg"
   },
   {
-    "name": "Andrea Dela Cruz",
+    "name": "Andrea De La Cruz",
     "acuiName": "Boston 2012",
     "title": "U-SU Fall 2011 Calendar",
     "place": "Third",
@@ -531,7 +531,7 @@
     "src": "/departments/graffix/acui-awards/2012/sacramento/a-place-of-our-own.jpg"
   },
   {
-    "name": "Andrea Dela Cruz",
+    "name": "Andrea De La Cruz",
     "acuiName": "Sacramento 2012",
     "title": "Lunar New Year",
     "place": "Third",
@@ -549,7 +549,7 @@
     "src": "/departments/graffix/acui-awards/2012/sacramento/api-graduation-booklet-2012.jpg"
   },
   {
-    "name": "Andrea Dela Cruz",
+    "name": "Andrea De La Cruz",
     "acuiName": "Sacramento 2012",
     "title": "Fall 2011 Calendar of Events",
     "place": "Third",
@@ -574,5 +574,626 @@
     "category": "Cards,Invitations, and Postcards",
     "class": "Professional",
     "src": "/departments/graffix/acui-awards/2012/sacramento/native-american-history-month.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Sacramento 2012",
+    "title": "Native American History Month",
+    "place": "Second",
+    "category": "Cards,Invitations, and Postcards",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2012/sacramento/native-american-history-month.jpg"
+  },
+  {
+    "name": "Gomer Sevillano Jr.",
+    "acuiName": "USC 2011",
+    "title": "LGBTQ Life On Campus",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/lgbtq-life-on-campus.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "USC 2011",
+    "title": "The Shark and the Goldfish Bookmark",
+    "place": "Second",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/the-shark-and-the-goldfish-bookmark.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "USC 2011",
+    "title": "Black Grad Booklet",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/black-grad-booklet.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "USC 2011",
+    "title": "U-SU Meeting Room Directory",
+    "place": "Second",
+    "category": "Maps/Directories",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/u-su-meeting-room-directory.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "USC 2011",
+    "title": "U-SU Calendar Spring 2011",
+    "place": "Third",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/usc/u-su-calendar-spring-2011.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "USC 2011",
+    "title": "U-SU Calendar Winter 2011",
+    "place": "Second",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/usc/u-su-calendar-winter-2011.jpg"
+  },
+  {
+    "name": "Andrea De La Cruz",
+    "acuiName": "USC 2011",
+    "title": "Leadership Academy",
+    "place": "Second",
+    "category": "Brochures/Pamphlets",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/usc/leadership-academy.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "USC 2011",
+    "title": "Oxfam America Hunger Banquet",
+    "place": "First",
+    "category": "Four-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/usc/oxfam-america-hunger-banquet.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "USC 2011",
+    "title": "U-SU 2011 Exterior Banners",
+    "place": "Third",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/u-su-2011-exterior-banners.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "USC 2011",
+    "title": "Golden Eagle Entrance Banner",
+    "place": "First",
+    "category": "Banners/Large Scale Media",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/golden-eagle-entrance-banner.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "USC 2011",
+    "title": "Oktoberfest",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/oktoberfest.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "USC 2011",
+    "title": "Student Club and Organization Offices",
+    "place": "First",
+    "category": "Signs/Signage",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2011/usc/student-club-and-organization-offices.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Chicago 2011",
+    "title": "U-SU Fall 2010 Calendar",
+    "place": "Second",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/u-su-fall-2010-calendar.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "Chicago 2011",
+    "title": "U-SU Winter 2010 Calendar",
+    "place": "First",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/u-su-winter-2010-calendar.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "Chicago 2011",
+    "title": "Sins Invalid",
+    "place": "First",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/sins-invalid.jpg"
+  },
+  {
+    "name": "Thomas Salonga",
+    "acuiName": "Chicago 2011",
+    "title": "Pride Grad Booklet",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/pride-grad-booklet.jpg"
+  },
+  {
+    "name": "Yiheng Yu",
+    "acuiName": "Chicago 2011",
+    "title": "API Grad Booklet",
+    "place": "Second",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/api-grad-booklet.jpg"
+  },
+  {
+    "name": "Yothsoran Rermraksakul",
+    "acuiName": "Chicago 2011",
+    "title": "Black Grad Booklet",
+    "place": "First",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2011/chicago/black-grad-booklet.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "Black Grad Celebration Booklet",
+    "place": "Third",
+    "category": "Multipage Documents",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/black-grad-celebration-booklet.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "New York 2010",
+    "title": "APISRC Grad Celebration Booklet",
+    "place": "First",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2010/new-york/apisrc-grad-celebration-booklet.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "Love Your Body Postcard",
+    "place": "Honorable Mention",
+    "category": "Cards/Postcards",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/love-your-body-postcard.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "New York 2010",
+    "title": "Womyn on Top Postcard",
+    "place": "Honorable Mention",
+    "category": "Cards/Postcards",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/womyn-on-top-postcard.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "New York 2010",
+    "title": "Center for Student Involvement Lobby Signage",
+    "place": "Third",
+    "category": "Signs/Banners",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2010/new-york/center-for-student-involvement-lobby-signage.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "U-SU Winter 09 Calendar",
+    "place": "First",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/u-su-winter-09-calendar.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "Quarterly Training Bookmark",
+    "place": "Honorable Mention",
+    "category": "Miscellaneous",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/quarterly-training-bookmark.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "Alcohol Awareness",
+    "place": "Second",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/alcohol-awareness.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "New York 2010",
+    "title": "The Tattooed Soldier",
+    "place": "First",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/the-tattooed-soldier.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "New York 2010",
+    "title": "Human Rights Crisis in Gaza",
+    "place": "Third",
+    "category": "Two-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/human-rights-crisis-in-gaza.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "New York 2010",
+    "title": "Sweet for Your Sweetheart",
+    "place": "Third",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/sweet-for-your-sweetheart.jpg"
+  },
+  {
+    "name": "Jennifer Chow",
+    "acuiName": "New York 2010",
+    "title": "Dance to Wellness Series",
+    "place": "First",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/new-york/dance-to-wellness-series.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "Reno 2010",
+    "title": "Mardi Gras Campaign",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/mardi-gras-campaign.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "Reno 2010",
+    "title": "Alcohol Awareness Campaign",
+    "place": "Second",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/alcohol-awareness-campaign.jpg"
+  },
+  {
+    "name": "YiHeng Hu",
+    "acuiName": "Reno 2010",
+    "title": "Day of Silence Campaign",
+    "place": "First",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/day-of-silence-campaign.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Reno 2010",
+    "title": "2010 Lobby Banner",
+    "place": "First",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2010/reno/2010-lobby-banner.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Reno 2010",
+    "title": "Next Step Social Justice Retreat Logo",
+    "place": "Second",
+    "category": "Logo/Brand Identity",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/next-step-social-justice-retreat-logo.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "Reno 2010",
+    "title": "Black History Month Postcard",
+    "place": "Second",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/black-history-month-postcard.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "Reno 2010",
+    "title": "Womyn's Herstory Month Postcard",
+    "place": "First",
+    "category": "Cards/Invitations",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/womyns-herstory-month-postcard.jpg"
+  },
+  {
+    "name": "YiHeng Yu",
+    "acuiName": "Reno 2010",
+    "title": "API Grad 2010 Booklet",
+    "place": "Third",
+    "category": "Brochures/Pamphlets",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/api-grad-2010-booklet.jpg"
+  },
+  {
+    "name": "Gustavo Salazar",
+    "acuiName": "Reno 2010",
+    "title": "ASI Spring 2010 Calendar",
+    "place": "First",
+    "category": "Print Advertisements",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2010/reno/asi-spring-2010-calendar.jpg"
+  },
+  {
+    "name": "Bobby Rojas",
+    "acuiName": "Anaheim 2009",
+    "title": "U-SU Fall 08",
+    "place": "Second",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/u-su-fall-08.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "Anaheim 2009",
+    "title": "Midnight Breakfast",
+    "place": "Second",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/midnight-breakfast.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "Anaheim 2009",
+    "title": "XTreme Fitness",
+    "place": "First",
+    "category": "Logo/Brand Identity",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/xtreme-fitness.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "Anaheim 2009",
+    "title": "UDay 2008",
+    "place": "First",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/uday-2008.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Anaheim 2009",
+    "title": "U-SU Branding",
+    "place": "Honorable Mention",
+    "category": "Promotional Campaign",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/u-su-branding.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "Anaheim 2009",
+    "title": "U-SU Thank You",
+    "place": "Honorable Mention",
+    "category": "Cards/Invitations",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/u-su-thank-you.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "Anaheim 2009",
+    "title": "The Pit Logo",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/the-pit-logo.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "Anaheim 2009",
+    "title": "U Live, U Learn, U Grow",
+    "place": "Third",
+    "category": "T-Shirts",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2009/anaheim/u-live-u-learn-u-grow.jpg"
+  },
+  {
+    "name": "Jennifer Oh",
+    "acuiName": "San Bernadino 2009",
+    "title": "Lunar New Year Celebration: Year of the OX",
+    "place": "Third",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/san-bernadino/lunar-new-year-celebration-year-of-the-ox.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "San Bernadino 2009",
+    "title": "Take Back the Night",
+    "place": "Second",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/san-bernadino/take-back-the-night.jpg"
+  },
+  {
+    "name": "Natt Rermraksakul",
+    "acuiName": "San Bernadino 2009",
+    "title": "Take Back the Night",
+    "place": "Second",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2009/san-bernadino/take-back-the-night.jpg"
+  },
+  {
+    "name": "Tanya White",
+    "acuiName": "New Orleans 2008",
+    "title": "Get Caught in the U-SU",
+    "place": "Third",
+    "category": "Miscellaneous Promo",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/get-caught-in-the-u-su.jpg"
+  },
+  {
+    "name": "Eric Shimabukuro",
+    "acuiName": "New Orleans 2008",
+    "title": "Alcohol Awareness Week",
+    "place": "Honorable Mention",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/alcohol-awareness-week.jpg"
+  },
+  {
+    "name": "Mina Nakajima",
+    "acuiName": "New Orleans 2008",
+    "title": "Spring Quarterly Training-Save The Date",
+    "place": "Honorable Mention",
+    "category": "Promotional Campaign",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/spring-quarterly-training-save-the-date.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "New Orleans 2008",
+    "title": "ASI Fall Calendar",
+    "place": "Second",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/asi-fall-calendar.jpg"
+  },
+  {
+    "name": "Mirai Takashima",
+    "acuiName": "New Orleans 2008",
+    "title": "U-SU Fall Calendar",
+    "place": "First",
+    "category": "Calendars/Schedules",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/u-su-fall-calendar.jpg"
+  },
+  {
+    "name": "Judy Thang",
+    "acuiName": "New Orleans 2008",
+    "title": "Commencement 2007",
+    "place": "Third",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/commencement-2007.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "New Orleans 2008",
+    "title": "Fall Student Fest 2007",
+    "place": "Second",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/fall-student-fest-2007.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "New Orleans 2008",
+    "title": "Leader Project 2007",
+    "place": "First",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/leader-project-2007.jpg"
+  },
+  {
+    "name": "Tanya White",
+    "acuiName": "New Orleans 2008",
+    "title": "S.T.A.R.S Mentor Brochure",
+    "place": "Third",
+    "category": "Four-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/stars-mentor-brochure.jpg"
+  },
+  {
+    "name": "Saul Vargas",
+    "acuiName": "New Orleans 2008",
+    "title": "ASI Mandatory Funding Workshop",
+    "place": "First",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/asi-mandatory-funding-workshop.jpg"
+  },
+  {
+    "name": "Veronica Woo",
+    "acuiName": "New Orleans 2008",
+    "title": "Office of Research And Sponsored Programs 2007 Annual Report",
+    "place": "First",
+    "category": "Multipage Documents",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2008/new-orleans/office-of-research-and-sponsored-programs-2007-annual-report.jpg"
+  },
+  {
+    "name": "Hector Catalan",
+    "acuiName": "Northridge 2007",
+    "title": "My Cal-State L.A. Banners",
+    "place": "First",
+    "category": "Open",
+    "class": "Professional",
+    "src": "/departments/graffix/acui-awards/2007/northridge/my-cal-state-la-banners.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "Northridge 2007",
+    "title": "Leader Project 2007",
+    "place": "Third",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/leader-project-2007.jpg"
+  },
+  {
+    "name": "Judy Thang",
+    "acuiName": "Northridge 2007",
+    "title": "Commencement 2007",
+    "place": "First",
+    "category": "T-Shirts",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/commencement-2007.jpg"
+  },
+  {
+    "name": "Patrick Landito",
+    "acuiName": "Northridge 2007",
+    "title": "Ghetto Nation",
+    "place": "First",
+    "category": "Four-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/ghetto-nation.jpg"
+  },
+  {
+    "name": "Patrick Landito",
+    "acuiName": "Northridge 2007",
+    "title": "Required Student Organization Meeting",
+    "place": "First",
+    "category": "Two-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/required-student-organization-meeting.jpg"
+  },
+  {
+    "name": "Christian Campos",
+    "acuiName": "Northridge 2007",
+    "title": "Anti-Columbus Day",
+    "place": "Second",
+    "category": "One-Color Poster",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/anti-columbus-day.jpg"
+  },
+  {
+    "name": "Judy Thang",
+    "acuiName": "Northridge 2007",
+    "title": "LA Fun in the Sun",
+    "place": "First",
+    "category": "Cards,Invitations, and Postcards",
+    "class": "Student",
+    "src": "/departments/graffix/acui-awards/2007/northridge/la-fun-in-the-sun.jpg"
   }
 ]
