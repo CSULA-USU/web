@@ -1,4 +1,5 @@
 import { Page, Header, ImageAndCard } from 'modules';
+import Head from 'next/head';
 import { Card, FluidContainer, Image } from 'components';
 import { Spaces } from 'theme';
 import Link from 'next/link';
@@ -39,6 +40,15 @@ export default function MeetingRooms() {
 
   return (
     <Page>
+      <Head>
+        <title>U-SU Meeting Rooms</title>
+        <meta name="author" content="The University Student Union" />
+        <meta
+          name="keywords"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <FluidContainer>
         <Header title="Meeting Rooms">
           Rent out a meeting space at CSULA U-SU. Current locations available to
