@@ -1,0 +1,204 @@
+import { Page } from 'modules';
+import Head from 'next/head';
+import { FluidContainer, Typography, Image, Panel } from 'components';
+import { Colors, Spaces, media } from 'theme';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import awards from 'data/acuiAwards.json';
+import { useBreakpoint } from 'hooks';
+import ReactPaginate from 'react-paginate';
+import awardYears from 'data/acuiYear.json';
+const NavItemContainer = styled.div`
+  *:hover {
+    color: ${Colors.gold};
+  }
+
+  *:active {
+    color: ${Colors.gold};
+  }
+`;
+
+const NavItems = [
+  'Best of Show',
+  '1st Place',
+  '2nd Place',
+  '3rd Place',
+  'Honorable Mention',
+];
+
+const InnerAwardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  ${media('tablet')(`
+   flex-wrap: wrap;
+  
+   `)}
+  margin: auto;
+`;
+
+const PaginationConatiner = styled.div`
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  a {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid ${Colors.black};
+    color: ${Colors.black};
+  }
+
+  a:hover {
+    background: ${Colors.primary};
+  }
+`;
+
+export default function AcuiAwards() {
+  const { isTablet } = useBreakpoint();
+  const [buttonType, setButtonType] = useState('');
+  const [awardCards, setAwardCards] = useState(awards);
+  const [currentPage, setCurrentPage] = useState(0);
+  useEffect(() => {
+    switch (buttonType) {
+      case 'Best of Show':
+        const bestOfShow = awards.filter((p) =>
+          p.place.includes('Best of Show'),
+        );
+        setAwardCards(bestOfShow);
+        break;
+      case '1st Place':
+        const first = awards.filter((p) => p.place.includes('First'));
+        setAwardCards(first);
+        console.log(awardCards);
+        break;
+      case '2nd Place':
+        const second = awards.filter((p) => p.place.includes('Second'));
+        setAwardCards(second);
+        console.log(awardCards);
+        break;
+      case '3rd Place':
+        const third = awards.filter((p) => p.place.includes('Third'));
+        setAwardCards(third);
+        console.log(awardCards);
+        break;
+      case 'Honorable Mention':
+        const honorableMentions = awards.filter((p) =>
+          p.place.includes('Honorable Mention'),
+        );
+        setAwardCards(honorableMentions);
+        console.log(awardCards);
+        break;
+    }
+  }, [buttonType]);
+
+  const AwardsNav = () => {
+    return (
+      <FluidContainer
+        flex
+        backgroundColor="greyLightest"
+        justifyContent="space-between"
+      >
+        {NavItems.map((item) => (
+          <NavItemContainer
+            key={item}
+            onClick={() => {
+              setButtonType(item);
+            }}
+          >
+            <Typography color="black" variant="labelTitleSmall">
+              {item}
+            </Typography>
+          </NavItemContainer>
+        ))}
+      </FluidContainer>
+    );
+  };
+  const PER_PAGE = 2;
+  const offset = currentPage * PER_PAGE;
+  const currentPageData = awardCards
+    .slice(offset, offset + PER_PAGE)
+    .map((award) => (
+      <Panel
+        width={!isTablet ? 'calc(35%)' : '100%'}
+        topBorder
+        margin={Spaces.md}
+        key={award.name + award.title}
+      >
+        <InnerAwardContainer>
+          <Image
+            src={award.src}
+            alt={award.title}
+            width={'100%'}
+            marginRight={Spaces.md}
+          ></Image>
+          <div>
+            <Typography as="h4" variant="titleSmall" margin="16px 0">
+              {award.name}
+            </Typography>
+            <Typography as="p">ACUI Conference:{award.acuiName}</Typography>
+            <Typography as="p">Title: {award.title}</Typography>
+            <Typography as="p">Place: {award.place}</Typography>
+            <Typography as="p">Category: {award.category}</Typography>
+            <Typography as="p">Class: {award.class}</Typography>
+          </div>
+        </InnerAwardContainer>
+      </Panel>
+    ));
+  const pageCount = Math.ceil(awardCards.length / PER_PAGE);
+
+  function handlePageClick({ selected: selectedPage }: any) {
+    setCurrentPage(selectedPage);
+  }
+  return (
+    <Page>
+      <Head>
+        <title>U-SU Graffix ACUI Awards</title>
+        <meta
+          name="author"
+          content="The University Student Union Graffix Department"
+        />
+        <meta
+          name="keywords"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <FluidContainer flex justifyContent="center" backgroundColor="black">
+        <Typography variant="pageHeader" color="gold">
+          ACUI Awards
+        </Typography>
+      </FluidContainer>
+      <FluidContainer flex justifyContent="center" flexWrap="wrap">
+        {awardYears.map((y) => (
+          <Image
+            key={y.alt}
+            src={y.src}
+            alt={y.alt}
+            width="100px"
+            margin="8px"
+          />
+        ))}
+      </FluidContainer>
+      <AwardsNav></AwardsNav>
+      <FluidContainer>
+        <div>
+          <FluidContainer flex justifyContent="center">
+            {currentPageData}
+          </FluidContainer>
+          <PaginationConatiner>
+            <ReactPaginate
+              previousLabel={'Previous'}
+              nextLabel={'Next'}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+            />
+          </PaginationConatiner>
+        </div>
+      </FluidContainer>
+    </Page>
+  );
+}

@@ -4,14 +4,12 @@ import {
   FluidContainer,
   Typography,
   Image,
-  Panel,
   Button,
   NonBreakingSpan,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import awards from 'data/acuiAwards.json';
+import { useState } from 'react';
 import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
@@ -25,7 +23,7 @@ interface DesignCardData {
 }
 
 const buttons = [
-  { text: 'ACUI Awards', href: '#acui-awards' },
+  { text: 'ACUI Awards', href: '/graffix/acuiAwards' },
   { text: 'Linktree', href: 'https://linktr.ee/usugraffix' },
 ];
 const hours = [
@@ -103,13 +101,6 @@ const cards3 = [
       ' This design coincided with Halloween and the Graffix open house.We decided to merge the two and add symbols inspired by Graffix staff.',
   },
 ];
-const NavItems = [
-  'Best of Show',
-  '1st Place',
-  '2nd Place',
-  '3rd Place',
-  'Honorable Mention',
-];
 
 const DesignsContainer = styled.div`
   width: calc(33.33% - 24px);
@@ -119,27 +110,6 @@ const DesignsContainer = styled.div`
   margin: 0 24px 0 0;
   display: flex;
   flex-direction: column;
-`;
-
-const InnerAwardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  ${media('tablet')(`
-   flex-wrap: wrap;
-  
-   `)}
-  margin: auto;
-`;
-
-const NavItemContainer = styled.div`
-  *:hover {
-    color: ${Colors.gold};
-  }
-
-  *:active {
-    color: ${Colors.gold};
-  }
 `;
 
 const HeaderContainer = styled.div`
@@ -153,59 +123,9 @@ const HeaderInnerContainer = styled.div`
 `;
 
 export default function Graffix() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
-  const [buttonType, setButtonType] = useState('');
-  const [awardCards, setAwardCards] = useState(awards);
+  const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-
-  useEffect(() => {
-    switch (buttonType) {
-      case 'Best of Show':
-        const bestOfShow = awards.filter((p) =>
-          p.place.includes('Best of Show'),
-        );
-        setAwardCards(bestOfShow);
-        break;
-      case '1st Place':
-        const first = awards.filter((p) => p.place.includes('First'));
-        setAwardCards(first);
-        break;
-      case '2nd Place':
-        const second = awards.filter((p) => p.place.includes('Second'));
-        setAwardCards(second);
-        break;
-      case '3rd Place':
-        const third = awards.filter((p) => p.place.includes('Third'));
-        setAwardCards(third);
-        break;
-      case 'Honorable Mention':
-        const honorableMentions = awards.filter((p) =>
-          p.place.includes('Honorable Mention'),
-        );
-        setAwardCards(honorableMentions);
-        break;
-    }
-  }, [buttonType]);
-
-  const AwardsNav = () => {
-    return (
-      <FluidContainer flex justifyContent="space-between">
-        {NavItems.map((item) => (
-          <NavItemContainer
-            key={item}
-            onClick={() => {
-              setButtonType(item);
-            }}
-          >
-            <Typography color="black" variant="labelTitleSmall">
-              {item}
-            </Typography>
-          </NavItemContainer>
-        ))}
-      </FluidContainer>
-    );
-  };
 
   return (
     <Page>
@@ -327,73 +247,7 @@ export default function Graffix() {
           ))}
         </DesignsContainer>
       </FluidContainer>
-      <div id="acui-awards">
-        <FluidContainer flex flexDirection="column" backgroundColor="black">
-          <Typography variant="title" margin="16px 0" color="gold" as="h2">
-            ACUI Awards{' '}
-          </Typography>
-          <Typography color="greyLighter" variant="label" as="h3">
-            Association of College Unions International (ACUI)
-          </Typography>
-          <Typography color="white" as="p">
-            Association of College Unions International is a nonprofit
-            educational organization that brings together college union and
-            student activities professionals from hundreds of schools in seven
-            countries. Its mission is to build campus community through
-            education, advocacy, and the delivery of services. There are total
-            of eight Regions and California is part of the Region I, which also
-            includes Arizona, Hawaii, Nevada, New Mexico, Australia and the
-            Territory of Guam.
-          </Typography>
-          <Typography
-            variant="label"
-            margin="16px 0 0"
-            color="greyLighter"
-            as="h3"
-          >
-            Steal This Idea
-          </Typography>
-          <Typography color="white" as="p" margin="0 0 24px 0">
-            Steal This Idea is the ACUI&apos;s marketing and graphics
-            competition to recognize the year&apos;s best promotional ideas
-            throughout the regions and presents them at the conference. There
-            are at least 10 design categories and each category has both student
-            and professional entries. The winning entries are selected based on
-            concept, design, editorial content, and effectiveness. Also, a
-            &quot;Best in Show&quot; award will honor the top idea presented.
-          </Typography>
-        </FluidContainer>
-      </div>
-      <AwardsNav></AwardsNav>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {awardCards.map((award) => (
-          <Panel
-            width={!isTablet ? 'calc(35%)' : '100%'}
-            topBorder
-            margin={Spaces.md}
-            key={award.name}
-          >
-            <InnerAwardContainer>
-              <Image
-                src={award.src}
-                alt={award.title}
-                width={'300px'}
-                marginRight={Spaces.md}
-              ></Image>
-              <div>
-                <Typography as="h4" variant="titleSmall" margin="16px 0">
-                  {award.name}
-                </Typography>
-                <Typography as="p">ACUI Conference:{award.acuiName}</Typography>
-                <Typography as="p">Title: {award.title}</Typography>
-                <Typography as="p">Place: {award.place}</Typography>
-                <Typography as="p">Category: {award.category}</Typography>
-                <Typography as="p">Class: {award.class}</Typography>
-              </div>
-            </InnerAwardContainer>
-          </Panel>
-        ))}
-      </FluidContainer>
+
       <FluidContainer flex backgroundColor="primary" padding="0">
         <FluidContainer>
           <Typography as="h2" variant="titleLarge" lineHeight="1">
@@ -437,6 +291,43 @@ export default function Graffix() {
           </FluidContainer>
         )}
       </FluidContainer>
+      <div id="acui-awards">
+        <FluidContainer flex flexDirection="column" backgroundColor="black">
+          <Typography variant="title" margin="16px 0" color="gold" as="h2">
+            ACUI Awards{' '}
+          </Typography>
+          <Typography color="greyLighter" variant="label" as="h3">
+            Association of College Unions International (ACUI)
+          </Typography>
+          <Typography color="white" as="p">
+            Association of College Unions International is a nonprofit
+            educational organization that brings together college union and
+            student activities professionals from hundreds of schools in seven
+            countries. Its mission is to build campus community through
+            education, advocacy, and the delivery of services. There are total
+            of eight Regions and California is part of the Region I, which also
+            includes Arizona, Hawaii, Nevada, New Mexico, Australia and the
+            Territory of Guam.
+          </Typography>
+          <Typography
+            variant="label"
+            margin="16px 0 0"
+            color="greyLighter"
+            as="h3"
+          >
+            Steal This Idea
+          </Typography>
+          <Typography color="white" as="p" margin="0 0 24px 0">
+            Steal This Idea is the ACUI&apos;s marketing and graphics
+            competition to recognize the year&apos;s best promotional ideas
+            throughout the regions and presents them at the conference. There
+            are at least 10 design categories and each category has both student
+            and professional entries. The winning entries are selected based on
+            concept, design, editorial content, and effectiveness. Also, a
+            &quot;Best in Show&quot; award will honor the top idea presented.
+          </Typography>
+        </FluidContainer>
+      </div>
       {modalData && (
         <GenericModal
           isOpen={modalIsOpen}
