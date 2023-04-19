@@ -153,6 +153,7 @@ export default function Graffix() {
           <a
             style={{ color: Colors.black }}
             href="https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc"
+            aria-label="link to University-Student Union Graffix's Tiktok feed"
           >
             <FaTiktok fontSize={FontSizes.xl} />
           </a>
