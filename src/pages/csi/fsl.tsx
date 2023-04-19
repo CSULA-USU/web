@@ -634,7 +634,7 @@ export default function FSL() {
                   >
                     <FluidContainer
                       flex
-                      justifyContent="space-between"
+                      justifyContent="center"
                       flexWrap="wrap"
                     >
                       {obj[item].map((p: any) => (
@@ -649,13 +649,13 @@ export default function FSL() {
                               ? 'calc(45%)'
                               : 'calc(33.33% - 8px)'
                           }
-                          margin={` 0 0 ${Spaces.sm}`}
+                          margin={` 0 ${Spaces.xs} ${Spaces.sm}`}
                         >
                           <Image
                             marginBottom={Spaces.lg}
                             src={p.crest}
                             alt="crest"
-                            width="80%"
+                            width="90%"
                           ></Image>
                           <Typography as="span">
                             <strong>Values: </strong>
