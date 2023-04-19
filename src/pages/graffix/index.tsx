@@ -23,7 +23,7 @@ interface DesignCardData {
 }
 
 const buttons = [
-  { text: 'ACUI Awards', href: '/graffix/acuiAwards' },
+  { text: 'ACUI Awards', href: '/graffix/acui-awards' },
   { text: 'Linktree', href: 'https://linktr.ee/usugraffix' },
 ];
 const hours = [

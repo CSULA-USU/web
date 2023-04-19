@@ -73,24 +73,21 @@ export default function AcuiAwards() {
       case '1st Place':
         const first = awards.filter((p) => p.place.includes('First'));
         setAwardCards(first);
-        console.log(awardCards);
+
         break;
       case '2nd Place':
         const second = awards.filter((p) => p.place.includes('Second'));
         setAwardCards(second);
-        console.log(awardCards);
         break;
       case '3rd Place':
         const third = awards.filter((p) => p.place.includes('Third'));
         setAwardCards(third);
-        console.log(awardCards);
         break;
       case 'Honorable Mention':
         const honorableMentions = awards.filter((p) =>
           p.place.includes('Honorable Mention'),
         );
         setAwardCards(honorableMentions);
-        console.log(awardCards);
         break;
     }
   }, [buttonType]);
@@ -117,7 +114,7 @@ export default function AcuiAwards() {
       </FluidContainer>
     );
   };
-  const PER_PAGE = 2;
+  const PER_PAGE = 4;
   const offset = currentPage * PER_PAGE;
   const currentPageData = awardCards
     .slice(offset, offset + PER_PAGE)
@@ -186,7 +183,7 @@ export default function AcuiAwards() {
       <AwardsNav></AwardsNav>
       <FluidContainer>
         <div>
-          <FluidContainer flex justifyContent="center">
+          <FluidContainer flex justifyContent="center" flexWrap="wrap">
             {currentPageData}
           </FluidContainer>
           <PaginationConatiner>
