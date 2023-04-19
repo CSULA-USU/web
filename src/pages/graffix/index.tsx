@@ -170,24 +170,21 @@ export default function Graffix() {
       case '1st Place':
         const first = awards.filter((p) => p.place.includes('First'));
         setAwardCards(first);
-        console.log(awardCards);
         break;
       case '2nd Place':
         const second = awards.filter((p) => p.place.includes('Second'));
         setAwardCards(second);
-        console.log(awardCards);
         break;
       case '3rd Place':
         const third = awards.filter((p) => p.place.includes('Third'));
         setAwardCards(third);
-        console.log(awardCards);
         break;
       case 'Honorable Mention':
         const honorableMentions = awards.filter((p) =>
           p.place.includes('Honorable Mention'),
         );
         setAwardCards(honorableMentions);
-        console.log(awardCards);
+
         break;
     }
   }, [buttonType]);
