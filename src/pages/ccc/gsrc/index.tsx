@@ -78,7 +78,7 @@ const offerings = [
     title: 'Relevant Student Organizations',
     children: (
       <Link href="https://www.instagram.com/thetransqueerconnection">
-        Trans Queer Connection
+        <Typography color="black">Trans Queer Connection</Typography>
       </Link>
     ),
     imgSrc: '/departments/ccc/gsrc/vectors/pride.svg',

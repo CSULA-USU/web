@@ -156,11 +156,17 @@ export default function CSI() {
         <br />
         For questions about student organizations or to share event ideas please
         contact us at:{' '}
-        <a href="mailto:CSI@calstatela.edu">
+        <a
+          href="mailto:CSI@calstatela.edu"
+          aria-label="University-Student Union CSI's email"
+        >
           <strong>CSI@calstatela.edu</strong>
         </a>
         <SocialsContainer>
-          <a href="https://www.facebook.com/csicalstatela">
+          <a
+            href="https://www.facebook.com/csicalstatela"
+            aria-label="link to University-Student Union CSI's Facebook"
+          >
             <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
           </a>
           <a
@@ -169,7 +175,10 @@ export default function CSI() {
           >
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
-          <a href="https://linktr.ee/csicalstatela">
+          <a
+            href="https://linktr.ee/csicalstatela"
+            aria-label="link to University-Student Union CSI's Linktree"
+          >
             <Image
               alt="linktree icon"
               src="/departments/logos/linktree.svg"

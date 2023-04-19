@@ -184,6 +184,7 @@ export default function Graffix() {
           p.place.includes('Honorable Mention'),
         );
         setAwardCards(honorableMentions);
+
         break;
     }
   }, [buttonType]);
@@ -233,6 +234,7 @@ export default function Graffix() {
           <a
             style={{ color: Colors.black }}
             href="https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc"
+            aria-label="link to University-Student Union Graffix's Tiktok feed"
           >
             <FaTiktok fontSize={FontSizes.xl} />
           </a>
@@ -371,13 +373,13 @@ export default function Graffix() {
             width={!isTablet ? 'calc(35%)' : '100%'}
             topBorder
             margin={Spaces.md}
-            key={award.name}
+            key={award.name + award.title}
           >
             <InnerAwardContainer>
               <Image
                 src={award.src}
                 alt={award.title}
-                width={'300px'}
+                width={'100%'}
                 marginRight={Spaces.md}
               ></Image>
               <div>
