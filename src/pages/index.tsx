@@ -89,7 +89,7 @@ export default function Home() {
         images={images}
       >
         Catalyze your professional development and build your network by
-        becoming a valued member of the<NonBreakingSpan>U-SU</NonBreakingSpan>
+        becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
       <BoardOfDirectorsCTA />
     </Page>

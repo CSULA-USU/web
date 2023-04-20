@@ -1,5 +1,4 @@
 import { Button, FluidContainer, Typography, Image } from 'components';
-import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import styled from 'styled-components';
 const CenterText = styled.div`
@@ -34,9 +33,9 @@ export const CallToActionImages = ({
           <Typography as="h2" variant="titleLarge" lineHeight="1">
             {title}
           </Typography>
-          <Typography as="p" margin={`${Spaces.md} 0`}>
-            {children}
-          </Typography>
+          <FluidContainer>
+            <Typography as="p">{children}</Typography>
+          </FluidContainer>
           <Button href={buttonHref} variant="black">
             {buttonText}
           </Button>
