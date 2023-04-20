@@ -4,22 +4,43 @@ import {
   UpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
+  CallToActionImages,
 } from 'modules';
-import {
-  NonBreakingSpan,
-  Typography,
-  FluidContainer,
-  Button,
-  Image,
-} from 'components';
+import { NonBreakingSpan } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
+
+const images = [
+  {
+    src: '/departments/operations/images/building-maintenance.jpg',
+    alt: 'building-maintenance',
+    width: '275',
+    margin: '0',
+  },
+  {
+    src: '/departments/operations/images/information-event-services.jpg',
+    alt: 'information event services',
+    width: '275',
+    margin: '0',
+  },
+  {
+    src: '/departments/operations/images/building-services.jpg',
+    alt: 'building services',
+    width: '275',
+    margin: '5px 0 0',
+  },
+  {
+    src: '/departments/operations/images/media-services.jpg',
+    alt: 'medis services',
+    width: '275',
+    margin: '5px 0 0',
+  },
+];
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -54,55 +75,22 @@ export default function Home() {
         featuredEvent={events[0]}
       />
       <UpcomingEvents events={events} />
-      <FluidContainer flex backgroundColor="primary" padding="0">
-        <FluidContainer>
-          <Typography as="h2" variant="titleLarge" lineHeight="1">
+
+      <CallToActionImages
+        title={
+          <>
             Join the
             <br />
             <strong>U-Krew!</strong>
-          </Typography>
-          <Typography as="p" margin={`${Spaces.md} 0`}>
-            Catalyze your professional development and build your network by
-            becoming a valued member of the U-SU.
-          </Typography>
-          <Button href="/employment" variant="black">
-            View Opportunities
-          </Button>
-        </FluidContainer>
-        {!isDesktop && (
-          <FluidContainer
-            flex
-            flexWrap="wrap"
-            justifyContent="space-evenly"
-            backgroundColor="white"
-          >
-            <Image
-              src="/departments/operations/images/building-maintenance.jpg"
-              alt="building-maintenance"
-              width="275px"
-              margin="6px"
-            />
-            <Image
-              src="/departments/operations/images/information-event-services.jpg"
-              alt="building-maintenance"
-              width="275px"
-              margin="6px"
-            />
-            <Image
-              src="/departments/operations/images/building-services.jpg"
-              alt="building-maintenance"
-              width="275px"
-              margin="6px"
-            />
-            <Image
-              src="/departments/operations/images/media-services.jpg"
-              alt="building-maintenance"
-              width="275px"
-              margin="6px"
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
+          </>
+        }
+        buttonHref="/employment"
+        buttonText="View Opportunities"
+        images={images}
+      >
+        Catalyze your professional development and build your network by
+        becoming a valued member of the<NonBreakingSpan>U-SU</NonBreakingSpan>
+      </CallToActionImages>
       <BoardOfDirectorsCTA />
     </Page>
   );
