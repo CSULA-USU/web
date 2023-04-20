@@ -4,12 +4,39 @@ import {
   UpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
-  CallToAction,
+  CallToActionImages,
 } from 'modules';
-import { NonBreakingSpan, Typography } from 'components';
+import { NonBreakingSpan } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
+
+const images = [
+  {
+    src: '/departments/operations/images/building-maintenance.jpg',
+    alt: 'building-maintenance',
+    width: '275',
+    margin: '0',
+  },
+  {
+    src: '/departments/operations/images/information-event-services.jpg',
+    alt: 'information event services',
+    width: '275',
+    margin: '0',
+  },
+  {
+    src: '/departments/operations/images/building-services.jpg',
+    alt: 'building services',
+    width: '275',
+    margin: '5px 0 0',
+  },
+  {
+    src: '/departments/operations/images/media-services.jpg',
+    alt: 'medis services',
+    width: '275',
+    margin: '5px 0 0',
+  },
+];
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
@@ -48,16 +75,22 @@ export default function Home() {
         featuredEvent={events[0]}
       />
       <UpcomingEvents events={events} />
-      <CallToAction
+
+      <CallToActionImages
+        title={
+          <>
+            Join the
+            <br />
+            <strong>U-Krew!</strong>
+          </>
+        }
+        buttonHref="/employment"
         buttonText="View Opportunities"
-        text="Catalyze your professional development and build your network by
-          becoming a valued member of the U-SU."
-        href="/employment"
+        images={images}
       >
-        <Typography as="h2" variant="label">
-          Join the U-Krew!
-        </Typography>
-      </CallToAction>
+        Catalyze your professional development and build your network by
+        becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
+      </CallToActionImages>
       <BoardOfDirectorsCTA />
     </Page>
   );
