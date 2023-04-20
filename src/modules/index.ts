@@ -13,3 +13,4 @@ export * from './DocumentLink';
 export * from './DownloadSection';
 export * from './GenericModal';
 export * from './ImageAndCard';
+export * from './CallToActionImages';
