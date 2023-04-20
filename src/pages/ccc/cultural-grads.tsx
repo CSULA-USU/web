@@ -78,7 +78,9 @@ const WhereTab = () => (
           </li>
         </ul>
       </li>
-      <Divider color="greyLighter" margin="24px auto" />
+    </ul>
+    <Divider color="greyLighter" margin="24px auto" />
+    <ul>
       <li>
         Black:
         <ul>
@@ -87,7 +89,9 @@ const WhereTab = () => (
           <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
       </li>
-      <Divider color="greyLighter" margin="24px auto" />
+    </ul>
+    <Divider color="greyLighter" margin="24px auto" />
+    <ul>
       <li>
         Nuestra:
         <ul>
@@ -96,7 +100,9 @@ const WhereTab = () => (
           <li>University Gymnasium, California State University Los Angeles</li>
         </ul>
       </li>
-      <Divider color="greyLighter" margin="24px auto" />
+    </ul>
+    <Divider color="greyLighter" margin="24px auto" />
+    <ul>
       <li>
         Pride:
         <ul>
@@ -106,6 +112,7 @@ const WhereTab = () => (
         </ul>
       </li>
     </ul>
+    <Divider color="greyLighter" margin="24px auto" />
   </TabContent>
 );
 
