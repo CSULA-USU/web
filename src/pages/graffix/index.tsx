@@ -248,7 +248,6 @@ export default function Graffix() {
           ))}
         </DesignsContainer>
       </FluidContainer>
-
       <FluidContainer flex backgroundColor="primary" padding="0">
         <FluidContainer>
           <Typography as="h2" variant="titleLarge" lineHeight="1">
