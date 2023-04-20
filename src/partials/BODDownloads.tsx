@@ -44,6 +44,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: '/governance/public-documents/agenda/fy22-23/bod-mar-10-23.pdf',
             children: 'BOD Agenda March 10, 2023',
           },
+          {
+            href: '/governance/public-documents/agenda/fy22-23/bod-apr-14-23.pdf',
+            children: 'BOD Agenda April 14, 2023',
+          },
         ]}
       />
     ),
@@ -80,6 +84,10 @@ const minutesDownloads: DownloadSectionProps[] = [
           {
             href: '/governance/public-documents/minutes/fy22-23/bod-feb-10-23.pdf',
             children: 'BOD Minutes February 10, 2022',
+          },
+          {
+            href: '/governance/public-documents/minutes/fy22-23/bod-mar-10-23.pdf',
+            children: 'BOD Minutes March 10, 2023',
           },
         ]}
       />
