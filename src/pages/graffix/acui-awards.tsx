@@ -166,7 +166,7 @@ export default function AcuiAwards() {
       </Head>
       <FluidContainer flex justifyContent="center" backgroundColor="black">
         <Typography variant="pageHeader" color="gold">
-          ACUI Awards
+          Graffix ACUI Awards
         </Typography>
       </FluidContainer>
       <FluidContainer flex justifyContent="center" flexWrap="wrap">
