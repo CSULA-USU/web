@@ -2,12 +2,14 @@ export const USU_ORGS = [
   'Center for Student Involvement',
   'Cross Cultural Centers',
   'Recreation',
+  'Graffix',
 ];
 
 export const ABREVIATED_ORGS: { [key: string]: string } = {
   'Center for Student Involvement': 'CSI',
   'Cross Cultural Centers': 'CCC',
   Recreation: 'REC',
+  Graffix: 'GFX',
 };
 
 export const PRESENCE_URI_BASE =
