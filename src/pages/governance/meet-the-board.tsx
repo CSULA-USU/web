@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import { Header, Page } from 'modules';
 import { FluidContainer, NonBreakingSpan, Typography } from 'components';
+import { useBreakpoint } from 'hooks';
 import boardMembers from 'data/board-members.json';
 import { StaffCard } from 'components/StaffCard';
 import { GovernanceFooter } from 'partials';
 
 export default function Governance() {
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -30,23 +32,78 @@ export default function Governance() {
         board of the Union. The purpose of the Board is to establish policy for
         the Union as a student body center for the benefit of students, faculty,
         staff and alumni at
-        <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>.
+        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>
       </Header>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {boardMembers.map((m) => (
-          <StaffCard
-            key={m.name}
-            name={m.name}
-            title={m.title}
-            src={m.src}
-            alt={`Photo of ${m.name}, ${m.title}`}
-            width="calc(22%)"
-            margin="24px 16px"
-            rounded
-          >
-            <Typography>{m.credentials}</Typography>
-          </StaffCard>
-        ))}
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Student Representatives
+        </Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {boardMembers.map((m) =>
+            m.section === 'student-representative' ? (
+              <StaffCard
+                key={m.name}
+                name={m.name}
+                title={m.title}
+                src={m.src}
+                alt={`Photo of ${m.name}, ${m.title}`}
+                width="calc(22%)"
+                margin="24px 16px"
+                rounded
+              >
+                <Typography>{m.credentials}</Typography>
+              </StaffCard>
+            ) : (
+              ''
+            ),
+          )}
+        </FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Pro Board Members
+        </Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {boardMembers.map((m) =>
+            m.section === 'pro-board-member' ? (
+              <StaffCard
+                key={m.name}
+                name={m.name}
+                title={m.title}
+                src={m.src}
+                alt={`Photo of ${m.name}, ${m.title}`}
+                width="calc(22%)"
+                margin="24px 16px"
+                rounded
+              >
+                <Typography>{m.credentials}</Typography>
+              </StaffCard>
+            ) : (
+              ''
+            ),
+          )}
+        </FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Advisors
+        </Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {boardMembers.map((m) =>
+            m.section === 'advisors' ? (
+              <StaffCard
+                key={m.name}
+                name={m.name}
+                title={m.title}
+                src={m.src}
+                alt={`Photo of ${m.name}, ${m.title}`}
+                width="calc(22%)"
+                margin="24px 16px"
+                rounded
+              >
+                <Typography>{m.credentials}</Typography>
+              </StaffCard>
+            ) : (
+              ''
+            ),
+          )}
+        </FluidContainer>
       </FluidContainer>
       <GovernanceFooter />
     </Page>
