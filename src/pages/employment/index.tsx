@@ -30,6 +30,7 @@ export default function Employment() {
   const [studentJobs, setStudentJobs] = useState([]);
   const Parser = require('rss-parser');
   const parser = new Parser();
+
   useEffect(() => {
     (async () => {
       const feed = await parser.parseURL(
@@ -84,6 +85,26 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
+            <JobItem key="Center Aide CLSRC">
+              <Link
+                href="https://app.joinhandshake.com/emp/jobs/7799103"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Center Aide, Chicana/o, Latina/o Student Resource Center
+                </Typography>
+              </Link>
+            </JobItem>
+            <JobItem key="Center Aide GSRC">
+              <Link
+                href="https://app.joinhandshake.com/emp/jobs/7799122"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Center Aide, Gender and Sexuality Student Resource Center
+                </Typography>
+              </Link>
+            </JobItem>
             <JobItem key="Operations Assistant">
               <Link
                 href="https://calstatela.joinhandshake.com/jobs/7647111/share_preview"
@@ -91,6 +112,38 @@ export default function Employment() {
               >
                 <Typography as="h4" variant="labelTitle">
                   Operations Assistant
+                </Typography>
+              </Link>
+            </JobItem>
+            <JobItem key="Program Coordinator Assistant APISRC">
+              <Link
+                href="https://app.joinhandshake.com/emp/jobs/7799089"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Program Coordinator Assistant, Asian Pacific Islander Student
+                  Resource Center
+                </Typography>
+              </Link>
+            </JobItem>
+            <JobItem key="Program Coordinator Assistant CLSRC">
+              <Link
+                href="https://app.joinhandshake.com/emp/jobs/7799047"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Program Coordinator Assistant, Chicana/o, Latina/o Student
+                  Resource Center
+                </Typography>
+              </Link>
+            </JobItem>
+            <JobItem key="Student Engagement Assistant">
+              <Link
+                href="https://app.joinhandshake.com/emp/jobs/7799166"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Student Engagement Assistant
                 </Typography>
               </Link>
             </JobItem>
