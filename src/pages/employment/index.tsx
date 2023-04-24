@@ -126,14 +126,14 @@ export default function Employment() {
                 </Typography>
               </Link>
             </JobItem>
-            <JobItem key="Program Coordinator Assistant CLSRC">
+            <JobItem key="Program Coordinator Assistant PASRC">
               <Link
-                href="https://app.joinhandshake.com/emp/jobs/7799047"
+                href="https://app.joinhandshake.com/emp/jobs/7801699"
                 target="_blank"
               >
                 <Typography as="h4" variant="labelTitle">
-                  Program Coordinator Assistant, Chicana/o, Latina/o Student
-                  Resource Center
+                  Program Coordinator Assistant, Pan African Student Resource
+                  Center
                 </Typography>
               </Link>
             </JobItem>
