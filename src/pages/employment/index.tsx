@@ -28,13 +28,15 @@ const JobItem = styled.div`
 export default function Employment() {
   const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
   const [studentJobs, setStudentJobs] = useState([]);
+  const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
   const Parser = require('rss-parser');
   const parser = new Parser();
 
   useEffect(() => {
     (async () => {
       const feed = await parser.parseURL(
-        'https://calstatela.joinhandshake.com/external_feeds/13885/public.rss?token=p75-vOp36nyfxpcaxPFmrwZGaM6BDLJ7EvG9Qo30CKGdNAttmYqD-Q',
+        CORS_PROXY +
+          'https://calstatela.joinhandshake.com/external_feeds/13885/public.rss?token=p75-vOp36nyfxpcaxPFmrwZGaM6BDLJ7EvG9Qo30CKGdNAttmYqD-Q',
       );
       setStudentJobs(feed.items);
       console.log('this is feed', studentJobs);
