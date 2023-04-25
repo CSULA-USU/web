@@ -71,7 +71,7 @@ const electionUpdateItems = [
     children: <Typography as="p">Monday, February 27</Typography>,
   },
   {
-    title: 'Verifying Eligibilty',
+    title: 'Verifying Eligibility',
     children: (
       <Typography as="p">Tuesday, March 7 - Friday, March 10</Typography>
     ),
