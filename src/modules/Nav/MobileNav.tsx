@@ -7,6 +7,11 @@ import { Colors, FontSizes } from 'theme';
 import navMap from 'data/navMap.json';
 import { MdCancel } from 'react-icons/md';
 
+interface navMapType {
+  text: string;
+  href: string;
+  sub?: navMapType[];
+}
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -93,7 +98,7 @@ export const MobileNav = () => (
           </button>
         </Drawer.CloseButton>
         <T1Container>
-          {navMap.map((t1) => (
+          {(navMap as navMapType[]).map((t1) => (
             <React.Fragment key={`t1-${t1.href}`}>
               <Link href={t1.href}>{t1.text}</Link>
               {t1.sub?.length && (
