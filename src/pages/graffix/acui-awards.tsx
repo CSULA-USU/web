@@ -19,6 +19,7 @@ const NavItemContainer = styled.div`
 `;
 
 const NavItems = [
+  'All',
   'Best of Show',
   '1st Place',
   '2nd Place',
@@ -64,6 +65,9 @@ export default function AcuiAwards() {
   const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
     switch (buttonType) {
+      case 'All':
+        setAwardCards(awards);
+        break;
       case 'Best of Show':
         const bestOfShow = awards.filter((p) =>
           p.place.includes('Best of Show'),
@@ -73,7 +77,6 @@ export default function AcuiAwards() {
       case '1st Place':
         const first = awards.filter((p) => p.place.includes('First'));
         setAwardCards(first);
-
         break;
       case '2nd Place':
         const second = awards.filter((p) => p.place.includes('Second'));
