@@ -1,9 +1,9 @@
 [
   {
-    "title": "Board Chair",
+    "title": "Student Board Chair",
     "src": "/board/female-placeholder.png",
     "name": "Cameryn Mabry",
-    "credentials": "Board Chair",
+    "credentials": "",
     "section": "student-representative"
   },
   {
@@ -38,6 +38,20 @@
     "title": "Student Director",
     "src": "/board/male-placeholder.png",
     "name": "Rahul S Bhogale",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/male-placeholder.png",
+    "name": "Vacant",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
+    "src": "/board/female-placeholder.png",
+    "name": "Vacant",
     "credentials": "",
     "section": "student-representative"
   },
@@ -77,24 +91,10 @@
     "section": "pro-board-member"
   },
   {
-    "title": "Faculty Appointee",
-    "src": "/board/somak-banerjee.jpg",
-    "name": "Somak Banerjee",
-    "credentials": "Business and Economics",
-    "section": "pro-board-member"
-  },
-  {
     "title": "VP & CFO, Administration Finance Designee",
     "src": "/board/male-placeholder.png",
-    "name": "Ronnie Wills",
-    "credentials": "Student Financial Services",
-    "section": "pro-board-member"
-  },
-  {
-    "title": "Vice President for Administration",
-    "src": "/board/female-placeholder.png",
     "name": "Judith Benjamin",
-    "credentials": "University Controller",
+    "credentials": "Student Financial Services",
     "section": "pro-board-member"
   },
   {
