@@ -75,7 +75,11 @@
       },
       {
         "text": "Graffix",
-        "href": "/graffix"
+        "href": "/graffix",
+        "sub": [
+          { "text": "Graffix Home", "href": "/graffix" },
+          { "text": "ACUI Awards", "href": "/graffix/acui-awards" }
+        ]
       },
       {
         "text": "Operations",
