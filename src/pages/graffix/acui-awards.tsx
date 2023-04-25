@@ -38,7 +38,7 @@ const InnerAwardContainer = styled.div`
   margin: auto;
 `;
 
-const PaginationConatiner = styled.div`
+const PaginationContainer = styled.div`
   ul {
     list-style-type: none;
     display: flex;
@@ -93,6 +93,7 @@ export default function AcuiAwards() {
         setAwardCards(honorableMentions);
         break;
     }
+    setCurrentPage(0);
   }, [buttonType]);
 
   const AwardsNav = () => {
@@ -189,14 +190,14 @@ export default function AcuiAwards() {
           <FluidContainer flex justifyContent="center" flexWrap="wrap">
             {currentPageData}
           </FluidContainer>
-          <PaginationConatiner>
+          <PaginationContainer>
             <ReactPaginate
               previousLabel={'Previous'}
               nextLabel={'Next'}
               pageCount={pageCount}
               onPageChange={handlePageClick}
             />
-          </PaginationConatiner>
+          </PaginationContainer>
         </div>
       </FluidContainer>
     </Page>
