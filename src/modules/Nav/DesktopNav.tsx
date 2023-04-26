@@ -7,6 +7,11 @@ import navMap from 'data/navMap.json';
 import { NonBreakingSpan } from 'components';
 import { FiChevronDown } from 'react-icons/fi';
 
+interface navMapType {
+  text: string;
+  href: string;
+  sub?: navMapType[];
+}
 const Container = styled.nav`
   * {
     outline: none;
@@ -80,7 +85,7 @@ const MainMenuItem = styled.div`
 
 export const DesktopNav = () => (
   <Container>
-    {navMap.map((t1, index) => {
+    {(navMap as navMapType[]).map((t1, index) => {
       if (t1.sub) {
         return (
           <Menu

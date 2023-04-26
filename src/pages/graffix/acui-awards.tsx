@@ -1,6 +1,6 @@
 import { Page } from 'modules';
 import Head from 'next/head';
-import { FluidContainer, Typography, Image, Panel } from 'components';
+import { FluidContainer, Typography, Image, Panel, Button } from 'components';
 import { Colors, Spaces, media } from 'theme';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
@@ -9,16 +9,12 @@ import { useBreakpoint } from 'hooks';
 import ReactPaginate from 'react-paginate';
 import awardYears from 'data/acuiYear.json';
 const NavItemContainer = styled.div`
-  *:hover {
-    color: ${Colors.gold};
-  }
-
-  *:active {
-    color: ${Colors.gold};
-  }
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const NavItems = [
+  'All',
   'Best of Show',
   '1st Place',
   '2nd Place',
@@ -37,16 +33,16 @@ const InnerAwardContainer = styled.div`
   margin: auto;
 `;
 
-const PaginationConatiner = styled.div`
+const PaginationContainer = styled.div`
   ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     cursor: pointer;
   }
 
   a {
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid ${Colors.black};
     color: ${Colors.black};
@@ -58,12 +54,15 @@ const PaginationConatiner = styled.div`
 `;
 
 export default function AcuiAwards() {
-  const { isTablet } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [buttonType, setButtonType] = useState('');
   const [awardCards, setAwardCards] = useState(awards);
   const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
     switch (buttonType) {
+      case 'All':
+        setAwardCards(awards);
+        break;
       case 'Best of Show':
         const bestOfShow = awards.filter((p) =>
           p.place.includes('Best of Show'),
@@ -73,7 +72,6 @@ export default function AcuiAwards() {
       case '1st Place':
         const first = awards.filter((p) => p.place.includes('First'));
         setAwardCards(first);
-
         break;
       case '2nd Place':
         const second = awards.filter((p) => p.place.includes('Second'));
@@ -90,14 +88,15 @@ export default function AcuiAwards() {
         setAwardCards(honorableMentions);
         break;
     }
+    setCurrentPage(0);
   }, [buttonType]);
 
   const AwardsNav = () => {
     return (
       <FluidContainer
         flex
-        backgroundColor="greyLightest"
-        justifyContent="space-between"
+        justifyContent={isDesktop ? 'initial' : 'center'}
+        flexWrap="wrap"
       >
         {NavItems.map((item) => (
           <NavItemContainer
@@ -106,21 +105,23 @@ export default function AcuiAwards() {
               setButtonType(item);
             }}
           >
-            <Typography color="black" variant="labelTitleSmall">
-              {item}
-            </Typography>
+            <Button margin="5px">
+              <Typography lineHeight="1" variant="cta">
+                {item}
+              </Typography>
+            </Button>
           </NavItemContainer>
         ))}
       </FluidContainer>
     );
   };
-  const PER_PAGE = 4;
+  const PER_PAGE = 8;
   const offset = currentPage * PER_PAGE;
   const currentPageData = awardCards
     .slice(offset, offset + PER_PAGE)
     .map((award) => (
       <Panel
-        width={!isTablet ? 'calc(35%)' : '100%'}
+        width={isMobile ? '100%' : isTablet ? 'calc(40%)' : 'calc(30%)'}
         topBorder
         margin={Spaces.md}
         key={award.name + award.title}
@@ -133,7 +134,11 @@ export default function AcuiAwards() {
             marginRight={Spaces.md}
           ></Image>
           <div>
-            <Typography as="h4" variant="titleSmall" margin="16px 0">
+            <Typography
+              as="h4"
+              variant={isMobile ? 'label' : 'titleSmall'}
+              margin="16px 0"
+            >
               {award.name}
             </Typography>
             <Typography as="p">ACUI Conference:{award.acuiName}</Typography>
@@ -186,14 +191,14 @@ export default function AcuiAwards() {
           <FluidContainer flex justifyContent="center" flexWrap="wrap">
             {currentPageData}
           </FluidContainer>
-          <PaginationConatiner>
+          <PaginationContainer>
             <ReactPaginate
-              previousLabel={'Previous'}
-              nextLabel={'Next'}
+              previousLabel={'<'}
+              nextLabel={'>'}
               pageCount={pageCount}
               onPageChange={handlePageClick}
             />
-          </PaginationConatiner>
+          </PaginationContainer>
         </div>
       </FluidContainer>
     </Page>
