@@ -44,6 +44,23 @@ const downloads: DownloadSectionProps[] = [
     },
   },
   {
+    title: 'Auxiliary Operating Agreement',
+    children: (
+      <Typography>
+        This agreement is made and entered into by and between the Trustees of
+        the California State University by their duly qualified Chancellor (CSU)
+        and the University-Student Union Board (Auxiliary) serving California
+        State University Los Angeles (Campus).
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
+      disabled: false,
+      variant: 'black',
+      href: '/governance/public-documents/auxiliary-operating-agreement.pdf',
+    },
+  },
+  {
     title: 'Annual Registration Renewal (RRF-1)',
     children: (
       <Typography>
