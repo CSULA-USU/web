@@ -1,6 +1,6 @@
 import { Page, Header } from 'modules';
 import Head from 'next/head';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, Typography, Button } from 'components';
 import styled from 'styled-components';
 import { StaffCard } from 'components/StaffCard';
 import { useEffect, useState } from 'react';
@@ -11,6 +11,8 @@ const NavItemContainer = styled.div`
   *:hover {
     color: ${Colors.gold};
   }
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const NavItems = [
@@ -66,12 +68,7 @@ export default function Staff() {
 
   const StaffNav = () => {
     return (
-      <FluidContainer
-        backgroundColor="greyDarkest"
-        flex
-        justifyContent="space-evenly"
-        flexWrap="wrap"
-      >
+      <FluidContainer flex justifyContent="space-evenly" flexWrap="wrap">
         {NavItems.map((item) => (
           <NavItemContainer
             key={item}
@@ -79,13 +76,11 @@ export default function Staff() {
               setButtonType(item);
             }}
           >
-            <Typography
-              color="white"
-              variant="labelTitleSmall"
-              margin={`0 ${Spaces.sm} 0 0`}
-            >
-              {item}
-            </Typography>
+            <Button margin="5px" variant="black">
+              <Typography lineHeight="1" variant="cta" color="white" size="xs">
+                {item}
+              </Typography>
+            </Button>
           </NavItemContainer>
         ))}
       </FluidContainer>

@@ -95,7 +95,6 @@ export default function AcuiAwards() {
     return (
       <FluidContainer
         flex
-        backgroundColor="greyLightest"
         justifyContent={isDesktop ? 'initial' : 'center'}
         flexWrap="wrap"
       >
@@ -109,11 +108,8 @@ export default function AcuiAwards() {
             <Button margin="5px">
               <Typography lineHeight="1" variant="cta">
                 {item}
-              </Typography>{' '}
+              </Typography>
             </Button>
-            {/* <Typography color="black" variant="labelTitleSmall">
-              {item}
-            </Typography> */}
           </NavItemContainer>
         ))}
       </FluidContainer>
