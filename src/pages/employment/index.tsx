@@ -107,6 +107,16 @@ export default function Employment() {
                 </Typography>
               </Link>
             </JobItem>
+            <JobItem key="Maintenance Aide">
+              <Link
+                href="https://app.joinhandshake.com/stu/jobs/7817347"
+                target="_blank"
+              >
+                <Typography as="h4" variant="labelTitle">
+                  Maintenance Aide
+                </Typography>
+              </Link>
+            </JobItem>
             <JobItem key="Operations Assistant">
               <Link
                 href="https://calstatela.joinhandshake.com/jobs/7647111/share_preview"
