@@ -116,6 +116,18 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: '/governance/public-documents/form-990-199/form-990-199-fy21-22.pdf',
+            children: 'FY 21-22',
+          },
+          {
+            href: '/governance/public-documents/form-990-199/form-990-199-fy20-21.pdf',
+            children: 'FY 20-21',
+          },
+          {
+            href: '/governance/public-documents/form-990-199/form-990-199-fy19-20.pdf',
+            children: 'FY 19-20',
+          },
+          {
             href: '/governance/public-documents/form-990-199/form-990-199-fy18-19.pdf',
             children: 'FY 18-19',
           },
