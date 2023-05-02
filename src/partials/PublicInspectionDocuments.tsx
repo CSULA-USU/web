@@ -139,18 +139,6 @@ const downloads: DownloadSectionProps[] = [
             href: '/governance/public-documents/form-990-199/form-990-199-fy16-17.pdf',
             children: 'FY 16-17',
           },
-          {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy15-16.pdf',
-            children: 'FY 15-16',
-          },
-          {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy14-15.pdf',
-            children: 'FY 14-15',
-          },
-          {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy12-13.pdf',
-            children: 'FY 12-13',
-          },
         ]}
       />
     ),
@@ -168,6 +156,18 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy21-22.pdf',
+            children: 'FY 21-22',
+          },
+          {
+            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy20-21.pdf',
+            children: 'FY 20-21',
+          },
+          {
+            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy19-20.pdf',
+            children: 'FY 19-20',
+          },
+          {
             href: '/governance/public-documents/latest-audited-financial-statements/afs-fy18-19.pdf',
             children: 'FY 18-19',
           },
@@ -178,18 +178,6 @@ const downloads: DownloadSectionProps[] = [
           {
             href: '/governance/public-documents/latest-audited-financial-statements/afs-fy16-17.pdf',
             children: 'FY 16-17',
-          },
-          {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy15-16.pdf',
-            children: 'FY 15-16',
-          },
-          {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy14-15.pdf',
-            children: 'FY 14-15',
-          },
-          {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy13-14.pdf',
-            children: 'FY 13-14',
           },
         ]}
       />
