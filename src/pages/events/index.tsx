@@ -24,9 +24,9 @@ export default function Home() {
         title="Upcoming Events"
         backgroundImage="/backgrounds/subtle-background-1.jpg"
       >
-        The University-Student Union&apos;s hosts various events through out the
-        school year. Make sure to check back here to stay up to date with the
-        latest events.
+        The University-Student Union hosts various events throughout the school
+        year. Make sure to check back here to stay up to date with the latest
+        events
       </Header>
       <UpcomingEvents monthly events={events} />
     </Page>
