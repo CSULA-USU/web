@@ -1,8 +1,13 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Button, SideImageHeader, Typography } from 'components';
+import {
+  Button,
+  FluidContainer,
+  SideImageHeader,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
-import { Page } from 'modules';
+import { ImageAndCard, Page } from 'modules';
 import { media, Spaces } from 'theme';
 
 const HeaderContainer = styled.div`
@@ -15,10 +20,65 @@ const HeaderContainer = styled.div`
   justify-content: space-around;
   text-align: center;
 `;
+const requests = [
+  {
+    title: 'Individual',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Conference',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Awards',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Social Media',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Single Item',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+  {
+    title: 'Shirt',
+    children:
+      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
+    imgSrc: '/vectors/csi/trip.svg',
+    imgAlt: 'trip image',
+    href: 'https://calstatela.presence.io/events',
+    linkText: 'Learn More',
+  },
+];
 
 export default function Backoffice() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
-
   return (
     <Page>
       <Head>
@@ -52,6 +112,14 @@ export default function Backoffice() {
           </Button>
         </HeaderContainer>
       </SideImageHeader>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Types of Requests
+        </Typography>
+        {requests.map((props) => (
+          <ImageAndCard key={props.title} {...props} />
+        ))}
+      </FluidContainer>
     </Page>
   );
 }
