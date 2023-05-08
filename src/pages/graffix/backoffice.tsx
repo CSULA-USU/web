@@ -1,15 +1,30 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import styled from 'styled-components';
 import {
   Button,
+  Card,
   FluidContainer,
   SideImageHeader,
   Typography,
 } from 'components';
 import { useBreakpoint } from 'hooks';
-import { ImageAndCard, Page } from 'modules';
+import { GenericModal, Page } from 'modules';
 import { media, Spaces } from 'theme';
+interface TenantCardData {
+  title: string;
+  children: string;
+  iconSrc: string;
+  iconAlt: string;
+  number: string;
+}
 
+const RequestContainer = styled.div`
+  ${media('tablet')(`min-width: 100%;`)}
+  min-width: calc(33.33% - 8px);
+  flex: 1;
+  margin: ${Spaces.lg} 0;
+`;
 const HeaderContainer = styled.div`
   width: 50%;
   ${media('tablet')(`width:50%;`)}
@@ -20,65 +35,59 @@ const HeaderContainer = styled.div`
   justify-content: space-around;
   text-align: center;
 `;
+
 const requests = [
   {
     title: 'Individual',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc:
+      '/departments/graffix/backoffice/request-images/individual-campaign.svg',
+    iconAlt: 'individual campaign',
+    children: '',
+    number: '',
   },
   {
     title: 'Conference',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc: '/departments/graffix/backoffice/request-images/conference.svg',
+    iconAlt: 'conference',
+    children: '',
+    number: '',
   },
   {
     title: 'Awards',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc: '/departments/graffix/backoffice/request-images/awards.svg',
+    iconAlt: 'awards',
+    children: '',
+    number: '',
   },
   {
     title: 'Social Media',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc: '/departments/graffix/backoffice/request-images/social-media.svg',
+    iconAlt: 'social media',
+    children: '',
+    number: '',
   },
   {
     title: 'Single Item',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc: '/departments/graffix/backoffice/request-images/single-item.svg',
+    iconAlt: 'single item',
+    children: 'asdf',
+    number: '',
   },
   {
     title: 'Shirt',
-    children:
-      'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
-    imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
-    href: 'https://calstatela.presence.io/events',
-    linkText: 'Learn More',
+    iconSrc: '/departments/graffix/backoffice/request-images/shirt.svg',
+    iconAlt: 'shirt',
+    children: 'asdf',
+    number: '',
   },
 ];
 
 export default function Backoffice() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalData, setModalData] = useState<TenantCardData | null>(null);
+
   return (
     <Page>
       <Head>
@@ -116,10 +125,63 @@ export default function Backoffice() {
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Types of Requests
         </Typography>
-        {requests.map((props) => (
-          <ImageAndCard key={props.title} {...props} />
-        ))}
+        <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
+          {requests.map((props) => (
+            <RequestContainer
+              key={props.title}
+              onClick={() => {
+                setModalData(props);
+                setIsOpen(true);
+              }}
+            >
+              <Card
+                hoverable
+                topBorder
+                iconAlt={`${props.iconAlt}`}
+                iconSrc={`${props.iconSrc}`}
+                key={`${props.title}`}
+                margin={`${Spaces.md}`}
+                minHeight="100%"
+                title={`${props.title}`}
+              ></Card>
+            </RequestContainer>
+          ))}
+        </FluidContainer>
       </FluidContainer>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Guidelines
+        </Typography>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          What Programmers Will Receive From Graffix
+        </Typography>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Important Dates
+        </Typography>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Promotional Items Notes
+        </Typography>
+      </FluidContainer>
+      {modalData && (
+        <GenericModal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setIsOpen(false)}
+        >
+          <Typography variant="titleSmall" as="h2" margin="16px 0">
+            {modalData.title}
+          </Typography>
+          <br />
+          <Typography margin={`${Spaces.md} 0`}>
+            {modalData.children}
+          </Typography>
+        </GenericModal>
+      )}
     </Page>
   );
 }

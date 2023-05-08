@@ -15,7 +15,6 @@ interface TenantCardData {
 
 const CardContainer = styled.div`
   ${media('tablet')(`min-width: 100%;`)}
-
   min-width: calc(33.33% - 8px);
   flex: 1;
   margin: ${Spaces.lg} 0;
