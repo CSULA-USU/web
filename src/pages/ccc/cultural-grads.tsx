@@ -53,6 +53,7 @@ const WhatTab = () => (
         <ul>
           <li>APIDA Graduate Celebration - 6 Tickets</li>
           <li>Black Graduate Celebration - 10 Tickets</li>
+          <li>Native Graduate Celebration - 15 Tickets</li>
           <li>Nuestra Graduate Celebration - 10 Tickets</li>
           <li>Pride Graduate Celebration - 6 Tickets</li>
         </ul>
@@ -87,6 +88,17 @@ const WhereTab = () => (
           <li>Sunday, May 21, 2023</li>
           <li>5:00 PM - 7:00 PM</li>
           <li>University Gymnasium, California State University Los Angeles</li>
+        </ul>
+      </li>
+    </ul>
+    <Divider color="greyLighter" margin="24px auto" />
+    <ul>
+      <li>
+        Native:
+        <ul>
+          <li>Saturday, May 20, 2023</li>
+          <li>10:00 AM - 12:00 PM</li>
+          <li>Los Angeles Room, Student Center</li>
         </ul>
       </li>
     </ul>
@@ -146,15 +158,15 @@ const TeaserContainer = styled.div`
 
 const cards = [
   {
-    title: 'APIDA',
+    title: 'APIDA Grad',
     children: 'Asian, Pacific Islander, South Asian, Desi-American',
     linkText: 'Apply Here',
     href: 'https://form.jotform.com/223187645673162',
-    iconSrc: '/departments/logos/apisrc-icon.svg',
+    iconSrc: '/departments/ccc/apisrc/apisrc-textless.svg',
     iconAlt: 'APISRC logo',
   },
   {
-    title: 'Black',
+    title: 'Black Grad',
     children: 'Black, African-American, Pan-African Diaspora',
     linkText: 'Apply Here',
     href: 'https://form.jotform.com/230055135393147',
@@ -162,7 +174,15 @@ const cards = [
     iconAlt: 'PASRC logo',
   },
   {
-    title: 'Nuestra',
+    title: 'Native Grad',
+    children: 'Native American, Indigenous',
+    linkText: 'Apply Here',
+    href: '',
+    iconSrc: '/departments/ccc/native-logo.png',
+    iconAlt: 'Native American and Indigenous Student Association logo',
+  },
+  {
+    title: 'Nuestra Grad',
     children: 'Chicana/o, Latina/o, Central American, South American',
     linkText: 'Apply Here',
     href: 'https://form.jotform.com/230047359271151',
@@ -170,7 +190,7 @@ const cards = [
     iconAlt: 'CLSRC logo',
   },
   {
-    title: 'Pride',
+    title: 'Pride Grad',
     children:
       'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
     linkText: 'Apply Here',
@@ -360,7 +380,7 @@ export default function CulturalGrads() {
                   topBorder
                   key={`${props.title}`}
                   {...props}
-                  width={isDesktop ? 'calc(45% - 8px)' : 'calc(22% - 8px)'}
+                  width={isDesktop ? 'calc(45% - 8px)' : 'calc(30% - 8px)'}
                   minHeight="280px"
                 >
                   {`${
