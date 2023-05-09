@@ -177,7 +177,7 @@ const cards = [
     title: 'Native Grad',
     children: 'Native American, Indigenous',
     linkText: 'Apply Here',
-    href: '',
+    href: 'https://calstatela.co1.qualtrics.com/jfe/form/SV_1CaIIXDc9V2lZvU',
     iconSrc: '/departments/ccc/native-logo.png',
     iconAlt: 'Native American and Indigenous Student Association logo',
   },
