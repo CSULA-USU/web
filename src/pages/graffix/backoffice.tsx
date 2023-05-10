@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import {
   Button,
   Card,
+  Divider,
+  Expandable,
   FluidContainer,
   SideImageHeader,
   Typography,
@@ -11,12 +13,13 @@ import {
 import { useBreakpoint } from 'hooks';
 import { GenericModal, Page } from 'modules';
 import { media, Spaces } from 'theme';
+import { BiChevronRight } from 'react-icons/bi';
+
 interface TenantCardData {
   title: string;
-  children: string;
+  children: ReactNode;
   iconSrc: string;
   iconAlt: string;
-  number: string;
 }
 
 const RequestContainer = styled.div`
@@ -24,7 +27,9 @@ const RequestContainer = styled.div`
   min-width: calc(33.33% - 8px);
   flex: 1;
   margin: ${Spaces.lg} 0;
+  font-decoration: none;
 `;
+
 const HeaderContainer = styled.div`
   width: 50%;
   ${media('tablet')(`width:50%;`)}
@@ -42,49 +47,141 @@ const requests = [
     iconSrc:
       '/departments/graffix/backoffice/request-images/individual-campaign.svg',
     iconAlt: 'individual campaign',
-    children: '',
-    number: '',
+    children: (
+      <FluidContainer
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        innerMaxWidth="100%"
+      >
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Requirements
+            </Typography>
+          }
+        >
+          <Typography as="p" margin="0px 0px 8px">
+            Event title
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Series or single event choice
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Event dates and times
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Design options
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Calendar descriptions
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Themes
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Social media choices
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Item Selection
+            </Typography>
+          }
+        >
+          <Typography as="h5" weight="700">
+            Printed Items
+          </Typography>
+          <Typography as="p" margin="0px 0px 1px">
+            Color Posters
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 1px">
+            Postcards
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 1px">
+            Button
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 1px">
+            UT Ad (Published Every Tuesday)
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Other (specify)
+          </Typography>
+          <br />
+          <Typography as="h5" weight="700">
+            Large Scale Items
+          </Typography>
+          <Typography as="p">Big Banner (22&quot; x 28&quot;)</Typography>
+          <Typography as="p">Foam Board (20&quot; x 30&quot;)</Typography>
+          <Typography as="p" margin="0px 0px 8px">
+            Window Decal (CCC 35&quot; x 28&quot;)
+          </Typography>
+          <Typography as="h5" weight="700">
+            Signage
+          </Typography>
+        </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Social Media
+            </Typography>
+          }
+        >
+          <Typography as="p">Event title</Typography>
+        </Expandable>
+      </FluidContainer>
+    ),
   },
   {
     title: 'Conference',
     iconSrc: '/departments/graffix/backoffice/request-images/conference.svg',
     iconAlt: 'conference',
     children: '',
-    number: '',
   },
   {
     title: 'Awards',
     iconSrc: '/departments/graffix/backoffice/request-images/awards.svg',
     iconAlt: 'awards',
     children: '',
-    number: '',
   },
   {
     title: 'Social Media',
     iconSrc: '/departments/graffix/backoffice/request-images/social-media.svg',
     iconAlt: 'social media',
     children: '',
-    number: '',
   },
   {
     title: 'Single Item',
     iconSrc: '/departments/graffix/backoffice/request-images/single-item.svg',
     iconAlt: 'single item',
     children: 'asdf',
-    number: '',
   },
   {
     title: 'Shirt',
     iconSrc: '/departments/graffix/backoffice/request-images/shirt.svg',
     iconAlt: 'shirt',
     children: 'asdf',
-    number: '',
   },
 ];
 
 export default function Backoffice() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
-
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<TenantCardData | null>(null);
 
@@ -135,7 +232,6 @@ export default function Backoffice() {
               }}
             >
               <Card
-                hoverable
                 topBorder
                 iconAlt={`${props.iconAlt}`}
                 iconSrc={`${props.iconSrc}`}
@@ -148,7 +244,7 @@ export default function Backoffice() {
           ))}
         </FluidContainer>
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer justifyContent="flex-start">
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Guidelines
         </Typography>
@@ -177,9 +273,7 @@ export default function Backoffice() {
             {modalData.title}
           </Typography>
           <br />
-          <Typography margin={`${Spaces.md} 0`}>
-            {modalData.children}
-          </Typography>
+          {modalData.children}
         </GenericModal>
       )}
     </Page>

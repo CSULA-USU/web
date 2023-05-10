@@ -206,7 +206,7 @@ export default function StudentLeaderElections() {
               as="h3"
               margin={`${Spaces.sm} 0`}
             >
-              What is the role of the U-SU Board of Directors Member{' '}
+              What is the role of a U-SU Board of Directors Member{' '}
             </Typography>
           }
         >
@@ -319,8 +319,8 @@ export default function StudentLeaderElections() {
               <li>Develop your leadership &amp; communication skills.</li>
               <li>Build your academic and professional resume.</li>
               <li>
-                HNetwork with campus administrators, staff and other students
-                who serve on the BOD.
+                Network with campus administrators, staff and other students who
+                serve on the BOD.
               </li>
               <li>
                 Inﬂuence the future of the University-Student Union as you
