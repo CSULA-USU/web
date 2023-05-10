@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   NonBreakingSpan,
+  InstagramContainer,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
@@ -14,12 +15,23 @@ import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
+import { useEffect } from 'react';
+
+import axios from 'axios';
 
 interface DesignCardData {
   title: string;
   designer: string;
   src: string;
   description: string;
+}
+interface InstagramData {
+  id: string;
+  username: string;
+  caption: string;
+  media_url: string;
+  permalink: string;
+  media_type: string;
 }
 
 const buttons = [
@@ -126,6 +138,18 @@ export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
+
+  const fetchGraffixIGAPI = () =>
+    axios
+      .get('/api/graffix-instagram')
+      .then((json) => json.data)
+      .then((result) => result.data)
+      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
+
+  useEffect(() => {
+    fetchGraffixIGAPI();
+  }, []);
 
   return (
     <Page>
@@ -328,6 +352,11 @@ export default function Graffix() {
           </Typography>
         </FluidContainer>
       </div>
+      <InstagramContainer
+        username="usugraffix"
+        instagramPosts={instagramPosts}
+      ></InstagramContainer>
+
       {modalData && (
         <GenericModal
           isOpen={modalIsOpen}
