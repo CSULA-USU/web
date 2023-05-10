@@ -60,6 +60,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: '/governance/public-documents/agenda/fy22-23/bod-apr-14-23.pdf',
             children: 'Meeting April 14, 2023',
           },
+          {
+            href: '/governance/public-documents/agenda/fy22-23/bod-may-12-23.pdf',
+            children: 'Meeting May 12, 2023',
+          },
         ]}
       />
     ),
