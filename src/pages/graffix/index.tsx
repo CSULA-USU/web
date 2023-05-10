@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   NonBreakingSpan,
+  InstagramContainer,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
@@ -15,7 +16,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import { useEffect } from 'react';
-import Link from 'next/link';
+
 import axios from 'axios';
 
 interface DesignCardData {
@@ -24,7 +25,7 @@ interface DesignCardData {
   src: string;
   description: string;
 }
-interface IDInstagramData {
+interface InstagramData {
   id: string;
   username: string;
   caption: string;
@@ -133,25 +134,18 @@ const HeaderInnerContainer = styled.div`
   gap: ${Spaces.xl};
 `;
 
-const InstagramContainer = styled.div`
-  width: 30%;
-  ${media('tablet')(`width: 50%`)}
-  ${media('mobile')(`width: 100%`)}
-  max-height: 480px;
-  padding: ${Spaces.xs};
-`;
 export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-  const [instagramPosts, setInstagramPosts] = useState<IDInstagramData[]>([]);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
 
   const fetchGraffixIGAPI = () =>
     axios
       .get('/api/graffix-instagram')
       .then((json) => json.data)
       .then((result) => result.data)
-      .then((data) => setInstagramPosts(data.data.slice(0, 9)));
+      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
 
   useEffect(() => {
     fetchGraffixIGAPI();
@@ -358,55 +352,11 @@ export default function Graffix() {
           </Typography>
         </FluidContainer>
       </div>
-      <FluidContainer>
-        <Typography variant="title">
-          Follow Us on Instagram @usugraffix
-        </Typography>
-      </FluidContainer>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {isMobile ? (
-          <InstagramContainer>
-            <Link
-              href={instagramPosts[1].permalink && instagramPosts[1].permalink}
-            >
-              {instagramPosts[0].media_type === 'VIDEO' ? (
-                <video width="100%" height="100%">
-                  <source src={instagramPosts[0].media_url}></source>
-                </video>
-              ) : (
-                <Image
-                  src={instagramPosts[0].media_url}
-                  alt={`${instagramPosts[0].username} instagram post`}
-                  width="100%"
-                  height="100%"
-                  borderRadius="12px"
-                ></Image>
-              )}
-            </Link>
-          </InstagramContainer>
-        ) : (
-          instagramPosts.map((post, index) => (
-            <InstagramContainer key={`${index}_${post.username}`}>
-              <Link href={post.permalink}>
-                {post.media_type === 'VIDEO' ? (
-                  <video width="100%" height="100%">
-                    {' '}
-                    <source src={post.media_url}></source>
-                  </video>
-                ) : (
-                  <Image
-                    src={post.media_url}
-                    alt={`${post.username} instagram post`}
-                    borderRadius="12px"
-                    width="100%"
-                    height="100%"
-                  ></Image>
-                )}
-              </Link>
-            </InstagramContainer>
-          ))
-        )}
-      </FluidContainer>
+      <InstagramContainer
+        username="usugraffix"
+        instagramPosts={instagramPosts}
+      ></InstagramContainer>
+
       {modalData && (
         <GenericModal
           isOpen={modalIsOpen}
