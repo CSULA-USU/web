@@ -28,19 +28,15 @@ const JobItem = styled.div`
 export default function Employment() {
   const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
   const [studentJobs, setStudentJobs] = useState([]);
-  const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
-  const Parser = require('rss-parser');
-  const parser = new Parser();
+
+  const fetchJobFeed = async () => {
+    const data = await fetch('/api/employment');
+    const feed = await data.json();
+    setStudentJobs(feed.items);
+  };
 
   useEffect(() => {
-    (async () => {
-      const feed = await parser.parseURL(
-        CORS_PROXY +
-          'https://calstatela.joinhandshake.com/external_feeds/13885/public.rss?token=p75-vOp36nyfxpcaxPFmrwZGaM6BDLJ7EvG9Qo30CKGdNAttmYqD-Q',
-      );
-      setStudentJobs(feed.items);
-      console.log('this is feed', studentJobs);
-    })();
+    fetchJobFeed();
   }, []);
 
   return (
@@ -87,71 +83,9 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
-            <JobItem key="Center Aide CLSRC">
-              <Link
-                href="https://app.joinhandshake.com/emp/jobs/7799103"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Center Aide, Chicana/o, Latina/o Student Resource Center
-                </Typography>
-              </Link>
-            </JobItem>
-            <JobItem key="Center Aide GSRC">
-              <Link
-                href="https://app.joinhandshake.com/emp/jobs/7799122"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Center Aide, Gender and Sexuality Student Resource Center
-                </Typography>
-              </Link>
-            </JobItem>
-            <JobItem key="Operations Assistant">
-              <Link
-                href="https://calstatela.joinhandshake.com/jobs/7647111/share_preview"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Operations Assistant
-                </Typography>
-              </Link>
-            </JobItem>
-            <JobItem key="Program Coordinator Assistant APISRC">
-              <Link
-                href="https://app.joinhandshake.com/emp/jobs/7799089"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Program Coordinator Assistant, Asian Pacific Islander Student
-                  Resource Center
-                </Typography>
-              </Link>
-            </JobItem>
-            <JobItem key="Program Coordinator Assistant PASRC">
-              <Link
-                href="https://app.joinhandshake.com/emp/jobs/7801699"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Program Coordinator Assistant, Pan African Student Resource
-                  Center
-                </Typography>
-              </Link>
-            </JobItem>
-            <JobItem key="Student Engagement Assistant">
-              <Link
-                href="https://app.joinhandshake.com/emp/jobs/7799166"
-                target="_blank"
-              >
-                <Typography as="h4" variant="labelTitle">
-                  Student Engagement Assistant
-                </Typography>
-              </Link>
-            </JobItem>
             {studentJobs.map((j: any) => (
               <JobItem key={`${j.title}`}>
-                <Link href={j.link} target="_blank">
+                <Link href={j.link || ''} target="_blank">
                   <Typography as="h4" variant="labelTitle">
                     {j.title}
                   </Typography>
