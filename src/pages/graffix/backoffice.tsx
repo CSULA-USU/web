@@ -125,13 +125,30 @@ const requests = [
           <Typography as="h5" weight="700">
             Large Scale Items
           </Typography>
-          <Typography as="p">Big Banner (22&quot; x 28&quot;)</Typography>
-          <Typography as="p">Foam Board (20&quot; x 30&quot;)</Typography>
+          <Typography as="p" margin="0px 0px 1px">
+            Big Banner (22&quot; x 28&quot;)
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 1px">
+            Foam Board (20&quot; x 30&quot;)
+          </Typography>
+          <br />
           <Typography as="p" margin="0px 0px 8px">
             Window Decal (CCC 35&quot; x 28&quot;)
           </Typography>
           <Typography as="h5" weight="700">
             Signage
+          </Typography>
+          <Typography as="p" margin="0px 0px 1px">
+            2 A-Frame (24&quot; x 36&quot;)
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 1px">
+            Vinyl (12&quot; x 4&quot;)
+          </Typography>
+          <br />
+          <Typography as="p" margin="0px 0px 8px">
+            Vinyl (3&quot; x 8&quot;)
           </Typography>
         </Expandable>
         <Divider color="gold" />
