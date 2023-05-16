@@ -16,7 +16,6 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import { useEffect } from 'react';
-
 import axios from 'axios';
 
 interface DesignCardData {
@@ -25,6 +24,7 @@ interface DesignCardData {
   src: string;
   description: string;
 }
+
 interface InstagramData {
   id: string;
   username: string;
@@ -32,6 +32,7 @@ interface InstagramData {
   media_url: string;
   permalink: string;
   media_type: string;
+  thumbnail_url: string;
 }
 
 const buttons = [
@@ -355,6 +356,7 @@ export default function Graffix() {
       <InstagramContainer
         username="usugraffix"
         instagramPosts={instagramPosts}
+        url="https://www.instagram.com/usugraffix/"
       ></InstagramContainer>
 
       {modalData && (
