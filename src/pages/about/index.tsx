@@ -7,11 +7,25 @@ import {
   SideImageHeader,
   Button,
   NonBreakingSpan,
+  InstagramContainer,
 } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+interface InstagramData {
+  id: string;
+  username: string;
+  caption: string;
+  media_url: string;
+  permalink: string;
+  media_type: string;
+  thumbnail_url: string;
+}
+
 const Title = styled.div`
   text-align: center;
 `;
@@ -90,6 +104,19 @@ const cards = [
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
+
+  const fetchAboutIGAPI = () =>
+    axios
+      .get('/api/about-instagram')
+      .then((json) => json.data)
+      .then((result) => result.data)
+      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
+
+  useEffect(() => {
+    fetchAboutIGAPI();
+  }, []);
+
   return (
     <Page>
       <Head>
@@ -188,6 +215,11 @@ export default function About() {
           ></Card>
         ))}
       </FluidContainer>
+      <InstagramContainer
+        username="usucalstatela"
+        instagramPosts={instagramPosts}
+        url="https://www.instagram.com/usucalstatela/"
+      ></InstagramContainer>
       <GenericModal
         isOpen={modalIsOpen}
         onRequestClose={() => setIsOpen(false)}
