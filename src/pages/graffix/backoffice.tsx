@@ -739,7 +739,9 @@ export default function Backoffice() {
             variant="title"
             size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
           >
-            Requests for Graphics for Summer and Fall 2023
+            Requests for Graphics
+            <br />
+            Summer and Fall 2023
           </Typography>
           <Button href="https://form.jotform.com/222994969107168" margin="16px">
             Request Form
