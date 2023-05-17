@@ -11,7 +11,6 @@ import {
   SideImageHeader,
   Typography,
 } from 'components';
-import items from 'data/backoffice.json';
 import { useBreakpoint } from 'hooks';
 import { GenericModal, Page } from 'modules';
 import { media, Spaces } from 'theme';
@@ -47,6 +46,54 @@ const HeaderContainer = styled.div`
   justify-content: space-around;
   text-align: center;
 `;
+
+const items = [
+  {
+    title: 'A Frame',
+    src: '/departments/graffix/backoffice/item-selection/a-frame.jpg',
+    alt: 'A-Frame 24 inches by 36 inches',
+  },
+  {
+    title: 'Buttons',
+    src: '/departments/graffix/backoffice/item-selection/buttons.jpg',
+    alt: 'Buttons 1.5 inches, 2.25 inches, 3 inches',
+  },
+  {
+    title: 'Foam Board',
+    src: '/departments/graffix/backoffice/item-selection/foamboard.jpg',
+    alt: 'foam board 20 inches by 30 inches',
+  },
+  {
+    title: 'Half-Page Postcard',
+    src: '/departments/graffix/backoffice/item-selection/half-page-postcard.jpg',
+    alt: 'half inch page postcard 8.5 inches by 5.25 inches',
+  },
+  {
+    title: 'Large Poster',
+    src: '/departments/graffix/backoffice/item-selection/large-poster.jpg',
+    alt: 'large poster 22 inches by 28 inches',
+  },
+  {
+    title: 'Large Vinyl Banner',
+    src: '/departments/graffix/backoffice/item-selection/large-vinyl-banner.jpg',
+    alt: 'large vinyl banner 144 inches by 48 inches',
+  },
+  {
+    title: 'Poster',
+    src: '/departments/graffix/backoffice/item-selection/poster.jpg',
+    alt: 'poster 11 inches by 17 inches',
+  },
+  {
+    title: 'Quarter-Page Postcard',
+    src: '/departments/graffix/backoffice/item-selection/qtr-page-postcard.jpg',
+    alt: 'quarter inch page postcard 4.25 inches by 5.25 inches',
+  },
+  {
+    title: 'Window Decal',
+    src: '/departments/graffix/backoffice/item-selection/window-decal.jpg',
+    alt: 'alt text',
+  },
+];
 
 const requests = [
   {
@@ -885,11 +932,11 @@ export default function Backoffice() {
           {items.map((item) => (
             <Card
               width={isMobile ? '100%' : '45%'}
+              title={item.title}
               key={item.title}
               margin={`${Spaces.md} 0px`}
             >
               <Image src={item.src} alt={item.alt} width="100%" />
-              <Typography as="p">{item.title}</Typography>
             </Card>
           ))}
         </FluidContainer>

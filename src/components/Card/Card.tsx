@@ -17,7 +17,7 @@ interface CardStyles {
 }
 
 interface CardProps extends CardStyles {
-  title?: string;
+  title: string;
   children?: React.ReactNode;
   linkText?: string;
   href?: string;
