@@ -27,6 +27,18 @@ const buttons = [
 
 const carouselImages = [
   {
+    src: '/departments/ccc/apisrc/carousel/night-market-staff.jpg',
+    alt: 'USU staff at the Asian American and Pacific Islander Night Market',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/financial-literacy.jpg',
+    alt: 'Students learning about the importance of money management, saving, and investing at the Financial Literacy Workshop',
+  },
+  {
+    src: '/departments/ccc/apisrc/carousel/self-defense.jpg',
+    alt: 'Students learning self-defense techniques at the Intro to Self Defense Workshop',
+  },
+  {
     src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
     alt: 'CCC staff and holiday photos',
   },
