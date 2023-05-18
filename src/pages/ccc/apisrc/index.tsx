@@ -28,7 +28,7 @@ const buttons = [
 const carouselImages = [
   {
     src: '/departments/ccc/apisrc/carousel/night-market-staff.jpg',
-    alt: 'USU staff at the Asian American and Pacific Islander Night Market',
+    alt: 'U-SU staff at the Asian American and Pacific Islander Night Market',
   },
   {
     src: '/departments/ccc/apisrc/carousel/financial-literacy.jpg',
