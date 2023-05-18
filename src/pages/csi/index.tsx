@@ -18,6 +18,7 @@ import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
+
 const descriptionCards = [
   {
     imgSrc: 'icons/connecting-people-icon.png',
@@ -119,6 +120,7 @@ export default function CSI() {
   `;
 
   const { returnByBreakpoint } = useBreakpoint();
+
   const descriptionCardWidth = returnByBreakpoint({
     tablet: '100%',
     desktop: 'calc(50% - 16px)',

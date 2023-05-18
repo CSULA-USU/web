@@ -111,7 +111,7 @@ export default function Recreation() {
         <Card
           margin={`0 0 ${Spaces.md}`}
           width={cardWidth}
-          title="Major Expansion"
+          title="Major Expansion&nbsp;&nbsp;&nbsp;"
         >
           <Image
             src="/departments/recreation/recreation-treadmill.jpg"
