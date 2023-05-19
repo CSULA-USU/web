@@ -1,17 +1,47 @@
 import Head from 'next/head';
 import { DocumentLinkContainer, Header, Page } from 'modules';
-import { FluidContainer, TypeProps, Typography } from 'components';
+import { Expandable, FluidContainer, TypeProps, Typography } from 'components';
+import { useBreakpoint } from 'hooks';
+import { BiChevronRight } from 'react-icons/bi';
+import styled from 'styled-components';
 import { Spaces } from 'theme';
-import { GovernanceFooter } from 'partials';
+
+const FYContainer = styled.div`
+  border: 1px solid;
+  margin: 8px;
+`;
 
 const typographyProps = {
   variant: 'titleSmall',
-  as: 'h2',
+  as: 'h3',
   color: 'gold',
-  margin: `${Spaces.xl} 0 0`,
 } as TypeProps;
 
 const agendaLinks = [
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
+    children: 'BOD Agenda January 21, 2022',
+  },
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
+    children: 'BOD Agenda October 15, 2021',
+  },
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
+    children: 'BOD Agenda November 5, 2021',
+  },
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
+    children: 'BOD Agenda January 21, 2022',
+  },
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
+    children: 'BOD Agenda October 15, 2021',
+  },
+  {
+    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
+    children: 'BOD Agenda November 5, 2021',
+  },
   {
     href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
     children: 'BOD Agenda January 21, 2022',
@@ -30,6 +60,7 @@ const minutesLinks = agendaLinks;
 const meetingLinks = agendaLinks;
 
 export default function Governance() {
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -50,17 +81,47 @@ export default function Governance() {
         title="Archives"
         backgroundImage="/backgrounds/subtle-background-3.jpg"
       ></Header>
+      <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Agenda
+        </Typography>
+        <FluidContainer
+          flex
+          flexDirection="column"
+          padding={isMobile ? Spaces.sm : Spaces.md}
+        >
+          <Typography {...typographyProps} size={isMobile ? 'md' : 'xl'}>
+            Committee
+          </Typography>
+          <FYContainer>
+            <FluidContainer padding="8px">
+              <Expandable
+                indicator={<BiChevronRight color="black" size={48} />}
+                header={
+                  <Typography variant="labelTitle" as="h4">
+                    FY 21-22
+                  </Typography>
+                }
+              >
+                <FluidContainer flex justifyContent="space-between">
+                  <DocumentLinkContainer links={agendaLinks} />
+                </FluidContainer>
+              </Expandable>
+            </FluidContainer>
+          </FYContainer>
+          <Typography {...typographyProps} size={isMobile ? 'md' : 'xl'}>
+            Meeting
+          </Typography>
+        </FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Minutes
+        </Typography>
+      </FluidContainer>
       <FluidContainer flex justifyContent="space-between">
         <div>
-          <Typography as="h2" {...typographyProps}>
-            Agenda
-          </Typography>
           <DocumentLinkContainer stacked links={agendaLinks} />
         </div>
         <div>
-          <Typography as="h2" {...typographyProps}>
-            Minutes
-          </Typography>
           <DocumentLinkContainer stacked links={minutesLinks} />
         </div>
         <div>
@@ -70,7 +131,6 @@ export default function Governance() {
           <DocumentLinkContainer stacked links={meetingLinks} />
         </div>
       </FluidContainer>
-      <GovernanceFooter />
     </Page>
   );
 }
