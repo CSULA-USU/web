@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { DocumentLinkContainer, Header, Page } from 'modules';
 import { Expandable, FluidContainer, TypeProps, Typography } from 'components';
+import archiveData from 'data/public-document-archives.json';
 import { useBreakpoint } from 'hooks';
 import { BiChevronRight } from 'react-icons/bi';
 import styled from 'styled-components';
@@ -16,48 +17,6 @@ const typographyProps = {
   as: 'h3',
   color: 'gold',
 } as TypeProps;
-
-const agendaLinks = [
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
-    children: 'BOD Agenda January 21, 2022',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
-    children: 'BOD Agenda October 15, 2021',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
-    children: 'BOD Agenda November 5, 2021',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
-    children: 'BOD Agenda January 21, 2022',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
-    children: 'BOD Agenda October 15, 2021',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
-    children: 'BOD Agenda November 5, 2021',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy-21-22-012122.pdf',
-    children: 'BOD Agenda January 21, 2022',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-101521.pdf',
-    children: 'BOD Agenda October 15, 2021',
-  },
-  {
-    href: '/governance/public-documents/agenda/bod-agenda-fy21-22-110521.pdf',
-    children: 'BOD Agenda November 5, 2021',
-  },
-];
-
-const minutesLinks = agendaLinks;
-const meetingLinks = agendaLinks;
 
 export default function Governance() {
   const { isMobile } = useBreakpoint();
@@ -76,7 +35,6 @@ export default function Governance() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header
         title="Archives"
         backgroundImage="/backgrounds/subtle-background-3.jpg"
@@ -93,43 +51,95 @@ export default function Governance() {
           <Typography {...typographyProps} size={isMobile ? 'md' : 'xl'}>
             Committee
           </Typography>
-          <FYContainer>
-            <FluidContainer padding="8px">
-              <Expandable
-                indicator={<BiChevronRight color="black" size={48} />}
-                header={
-                  <Typography variant="labelTitle" as="h4">
-                    FY 21-22
-                  </Typography>
-                }
-              >
-                <FluidContainer flex justifyContent="space-between">
-                  <DocumentLinkContainer links={agendaLinks} />
+          {archiveData.agenda.committee.map((fycm) => {
+            return (
+              <FYContainer key={fycm.fy}>
+                <FluidContainer padding="0px 16px">
+                  <Expandable
+                    indicator={<BiChevronRight color="black" size={48} />}
+                    header={
+                      <Typography variant="labelTitle" as="h4">
+                        {fycm.fy}
+                      </Typography>
+                    }
+                  >
+                    <FluidContainer
+                      flex
+                      justifyContent="space-between"
+                      padding={isMobile ? '0px' : ''}
+                    >
+                      <DocumentLinkContainer links={fycm.data} />
+                    </FluidContainer>
+                  </Expandable>
                 </FluidContainer>
-              </Expandable>
-            </FluidContainer>
-          </FYContainer>
-          <Typography {...typographyProps} size={isMobile ? 'md' : 'xl'}>
+              </FYContainer>
+            );
+          })}
+          <Typography
+            {...typographyProps}
+            size={isMobile ? 'md' : 'xl'}
+            margin="16px 0px 0px"
+          >
             Meeting
           </Typography>
+          {archiveData.agenda.meeting.map((fymeet) => {
+            return (
+              <FYContainer key={fymeet.fy}>
+                <FluidContainer padding="0px 16px">
+                  <Expandable
+                    indicator={<BiChevronRight color="black" size={48} />}
+                    header={
+                      <Typography variant="labelTitle" as="h4">
+                        {fymeet.fy}
+                      </Typography>
+                    }
+                  >
+                    <FluidContainer
+                      flex
+                      justifyContent="space-between"
+                      padding={isMobile ? '0px' : ''}
+                    >
+                      <DocumentLinkContainer links={fymeet.data} />
+                    </FluidContainer>
+                  </Expandable>
+                </FluidContainer>
+              </FYContainer>
+            );
+          })}
         </FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Minutes
         </Typography>
-      </FluidContainer>
-      <FluidContainer flex justifyContent="space-between">
-        <div>
-          <DocumentLinkContainer stacked links={agendaLinks} />
-        </div>
-        <div>
-          <DocumentLinkContainer stacked links={minutesLinks} />
-        </div>
-        <div>
-          <Typography as="h2" {...typographyProps}>
-            Meetings
-          </Typography>
-          <DocumentLinkContainer stacked links={meetingLinks} />
-        </div>
+        <FluidContainer
+          flex
+          flexDirection="column"
+          padding={isMobile ? Spaces.sm : Spaces.md}
+        >
+          {archiveData.minutes.map((fyminutes) => {
+            return (
+              <FYContainer key={fyminutes.fy}>
+                <FluidContainer padding="0px 16px">
+                  <Expandable
+                    indicator={<BiChevronRight color="black" size={48} />}
+                    header={
+                      <Typography variant="labelTitle" as="h4">
+                        {fyminutes.fy}
+                      </Typography>
+                    }
+                  >
+                    <FluidContainer
+                      flex
+                      justifyContent="space-between"
+                      padding={isMobile ? '0px' : ''}
+                    >
+                      <DocumentLinkContainer links={fyminutes.data} />
+                    </FluidContainer>
+                  </Expandable>
+                </FluidContainer>
+              </FYContainer>
+            );
+          })}
+        </FluidContainer>
       </FluidContainer>
     </Page>
   );

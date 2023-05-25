@@ -1,0 +1,44 @@
+{
+  "agenda": {
+    "committee": [
+      {
+        "fy": "FY 21-22",
+        "data": [{ "href": "asdf/calstatela", "children": "asdf" }]
+      },
+      {
+        "fy": "FY 20-21",
+        "data": [{ "href": "asdf/calstatela", "children": "asdf" }]
+      }
+    ],
+    "meeting": [
+      {
+        "fy": "FY 21-22",
+        "data": [
+          {
+            "href": "/governance/public-documents/agenda/meeting-oct-15-21.pdf",
+            "children": "BOD Meeting Oct. 15, 2021"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-nov-05-21.pdf",
+            "children": "BOD Meeting Nov. 5, 2021"
+          }
+        ]
+      }
+    ]
+  },
+  "minutes": [
+    {
+      "fy": "FY 21-22",
+      "data": [
+        {
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-feb-11-22.pdf",
+          "children": "BOD Minutes Feb. 11, 2022"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-nov-05-21.pdf",
+          "children": "BOD Minutes Nov. 5, 2022"
+        }
+      ]
+    }
+  ]
+}
