@@ -11,7 +11,7 @@
   {
     "name": "Anh Le",
     "title": "Asian Pacific Islander Resource Center Coordinator, CCC",
-    "src": "/staff/anh-lee.png",
+    "src": "/staff/anh-le.png",
     "alt": "Anh Le",
     "tags": ["CCC"],
     "department": "Cross Cultural Centers",
@@ -38,7 +38,7 @@
   {
     "name": "Chris Battle",
     "title": "Fraternity and Sorority Life Coordinator, CSI",
-    "src": "/staff/chris-battle.jpg",
+    "src": "/staff/chris-battle.png",
     "alt": "Chris Battle",
     "tags": ["CSI"],
     "department": "Center for Student Involvement",
@@ -74,7 +74,7 @@
   {
     "name": "Han Nguyen",
     "title": "Accounting Technician III",
-    "src": "/staff/han-nguyen.jpg",
+    "src": "/staff/han-nguyen.png",
     "alt": "Han Nguyen",
     "tags": ["Administration"],
     "department": "U-SU Administration",
@@ -83,7 +83,7 @@
   {
     "name": "Jaime Venegas",
     "title": "Maintenance Coordinator",
-    "src": "/staff/jaime-venegas.jpg",
+    "src": "/staff/jaime-venegas.png",
     "alt": "Jaime Venegas",
     "tags": ["Operations"],
     "department": "Operations",
@@ -110,7 +110,7 @@
   {
     "name": "Jay San Luis",
     "title": "Fitness Coordinator",
-    "src": "/staff/jay-san-luis.jpg",
+    "src": "/staff/jay-luis.png",
     "alt": "Jay San Luis",
     "tags": ["Recreation"],
     "department": "Recreation",
@@ -119,7 +119,7 @@
   {
     "name": "John Ortiz",
     "title": "Director, Operations",
-    "src": "/staff/john-ortiz.jpg",
+    "src": "/staff/john-ortiz.png",
     "alt": "John Ortiz",
     "tags": ["Operations", "Director"],
     "department": "Operations",
@@ -128,7 +128,7 @@
   {
     "name": "John Yasis",
     "title": "Web Designer",
-    "src": "/staff/john-yasis.jpg",
+    "src": "/staff/john-yasis.png",
     "alt": "John Yasis",
     "tags": ["Graffix"],
     "department": "Graffix",
@@ -137,25 +137,16 @@
   {
     "name": "Joseph Sedlacek",
     "title": "Associate Director of Administration for Human Resources Management",
-    "src": "/staff/joseph-sedlacek.jpg",
+    "src": "/staff/joseph-sedlacek.png",
     "alt": "Joseph Sedlacek",
     "tags": ["Administration", "Director"],
     "department": "U-SU Administration",
     "email": "jsedlacek@cslanet.calstatela.edu"
   },
   {
-    "name": "Karin Morales",
-    "title": "Information and Event Services Coordinator",
-    "src": "/staff/karin-morales.jpg",
-    "alt": "Karin Morales",
-    "tags": ["Operations"],
-    "department": "Operations",
-    "email": "kmoral74@calstatela.edu"
-  },
-  {
     "name": "Laura Tejeda",
     "title": "Assistant Director and Chicana/o Latina/o Student Resource Center Coordinator, CCC",
-    "src": "/staff/laura-tejeda.jpg",
+    "src": "/staff/laura-tejeda.png",
     "alt": "Laura Tejeda",
     "tags": ["CCC", "Director"],
     "department": "Cross Cultural Centers",
@@ -164,7 +155,7 @@
   {
     "name": "Lena Zeng",
     "title": "Accounting Technician III",
-    "src": "/staff/lena-zeng.jpg",
+    "src": "/staff/lena-zeng.png",
     "alt": "Lena Zeng",
     "tags": ["Administration"],
     "department": "U-SU Administration",
@@ -182,7 +173,7 @@
   {
     "name": "Luisa Perales",
     "title": "Operations Coordinator",
-    "src": "/staff/luisa-perales.jpg",
+    "src": "/staff/luisa-perales.png",
     "alt": "Luisa Perales",
     "tags": ["Operations"],
     "department": "Operations",
@@ -191,7 +182,7 @@
   {
     "name": "Mario Pizarro Rojas",
     "title": "Gender and Sexuality Resource Center Coordinator, CCC",
-    "src": "/staff/mario-pizarro-rojas.png",
+    "src": "/staff/mario-rojas.png",
     "alt": "Mario Pizarro Rojas",
     "tags": ["CCC"],
     "department": "Cross Cultural Centers",
@@ -200,7 +191,7 @@
   {
     "name": "Martin Sandoval",
     "title": "Assistant Director, Operations",
-    "src": "/staff/martin-sandoval.jpg",
+    "src": "/staff/martin-sandoval.png",
     "alt": "Martin Sandoval",
     "tags": ["Operations", "Director"],
     "department": "Operations",
@@ -245,7 +236,7 @@
   {
     "name": "Ron Ruiz",
     "title": "Senior Events and Technical Services Coordinator",
-    "src": "/staff/ron-ruiz.jpg",
+    "src": "/staff/ron-ruiz.png",
     "alt": "Ron Ruiz",
     "tags": ["Operations"],
     "department": "Operations",
@@ -263,7 +254,7 @@
   {
     "name": "Sophia Shiau",
     "title": "Associate Executive Director and Director of Financial Services",
-    "src": "/staff/sophia-shiau.jpg",
+    "src": "/staff/sophia-shiau.png",
     "alt": "Sophia Shiau",
     "tags": ["Administration", "Director"],
     "department": "U-SU Financial Services",
