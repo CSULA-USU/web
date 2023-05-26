@@ -91,14 +91,14 @@ export default function StudentOrgs() {
   return (
     <Page>
       <Head>
-        <title>U-SU Recognized Student Orgs</title>
+        <title>U-SU Recognized Student Organizations</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement Student Organizations"
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Consitituion, ODC Info and Videos, Club Banking Forms, Officer Change Form"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Constitution, ODC Info and Videos, Club Banking Forms, Officer Change Form, clubs, organization"
         />
         <meta
           name="description"
