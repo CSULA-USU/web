@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { DocumentLinkContainer, Header, Page } from 'modules';
-import { Expandable, FluidContainer, TypeProps, Typography } from 'components';
+import { Expandable, FluidContainer, Typography } from 'components';
 import archiveData from 'data/public-document-archives.json';
 import { useBreakpoint } from 'hooks';
 import { BiChevronRight } from 'react-icons/bi';
@@ -11,12 +11,6 @@ const FYContainer = styled.div`
   border: 1px solid;
   margin: 8px;
 `;
-
-const typographyProps = {
-  variant: 'titleSmall',
-  as: 'h3',
-  color: 'gold',
-} as TypeProps;
 
 export default function Governance() {
   const { isMobile } = useBreakpoint();
@@ -48,40 +42,6 @@ export default function Governance() {
           flexDirection="column"
           padding={isMobile ? Spaces.sm : Spaces.md}
         >
-          <Typography {...typographyProps} size={isMobile ? 'md' : 'xl'}>
-            Committee
-          </Typography>
-          {archiveData.agenda.committee.map((fycm) => {
-            return (
-              <FYContainer key={fycm.fy}>
-                <FluidContainer padding="0px 16px">
-                  <Expandable
-                    indicator={<BiChevronRight color="black" size={48} />}
-                    header={
-                      <Typography variant="labelTitle" as="h4">
-                        {fycm.fy}
-                      </Typography>
-                    }
-                  >
-                    <FluidContainer
-                      flex
-                      justifyContent="space-between"
-                      padding={isMobile ? '0px' : ''}
-                    >
-                      <DocumentLinkContainer links={fycm.data} />
-                    </FluidContainer>
-                  </Expandable>
-                </FluidContainer>
-              </FYContainer>
-            );
-          })}
-          <Typography
-            {...typographyProps}
-            size={isMobile ? 'md' : 'xl'}
-            margin="16px 0px 0px"
-          >
-            Meeting
-          </Typography>
           {archiveData.agenda.meeting.map((fymeet) => {
             return (
               <FYContainer key={fymeet.fy}>
