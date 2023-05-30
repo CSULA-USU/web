@@ -1,26 +1,107 @@
 {
   "agenda": {
-    "committee": [
-      {
-        "fy": "FY 21-22",
-        "data": [{ "href": "asdf/calstatela", "children": "asdf" }]
-      },
-      {
-        "fy": "FY 20-21",
-        "data": [{ "href": "asdf/calstatela", "children": "asdf" }]
-      }
-    ],
     "meeting": [
       {
         "fy": "FY 21-22",
         "data": [
           {
-            "href": "/governance/public-documents/agenda/meeting-oct-15-21.pdf",
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-oct-15-21.pdf",
             "children": "BOD Meeting Oct. 15, 2021"
           },
           {
             "href": "/governance/public-documents/agenda/fy21-22/meeting-nov-05-21.pdf",
             "children": "BOD Meeting Nov. 5, 2021"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-jan-21-22.pdf",
+            "children": "BOD Meeting Jan. 21, 2022"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-feb-11-22.pdf",
+            "children": "BOD Meeting Feb. 11, 2022"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-mar-11-22.pdf",
+            "children": "BOD Meeting Mar. 11, 2022"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-apr-15-22.pdf",
+            "children": "BOD Meeting Apr. 15, 2022"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy21-22/meeting-may-13-22.pdf",
+            "children": "BOD Meeting May. 13, 2022"
+          }
+        ]
+      },
+      {
+        "fy": "FY 20-21",
+        "data": [
+          {
+            "href": "/governance/public-documents/agenda/fy20-21/meeting-aug-14-20.pdf",
+            "children": "BOD Meeting Aug. 14, 2020"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy20-21/meeting-nov-06-20.pdf",
+            "children": "BOD Meeting Nov. 6, 2020"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy20-21/meeting-jan-22-21.pdf",
+            "children": "BOD Meeting Jan. 22, 2021"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy20-21/meeting-feb-12-21.pdf",
+            "children": "BOD Meeting Feb. 12, 2021"
+          }
+        ]
+      },
+      {
+        "fy": "FY 19-20",
+        "data": [
+          {
+            "href": "/governance/public-documents/agenda/fy19-20/meeting-feb-14-20.pdf",
+            "children": "BOD Meeting Feb. 14, 2020"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy19-20/meeting-mar-13-20-cancelled.pdf",
+            "children": "BOD Meeting Mar. 13, 2020"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy19-20/meeting-apr-24-20.pdf",
+            "children": "BOD Meeting Apr. 24, 2020"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy19-20/meeting-may-08-20.pdf",
+            "children": "BOD Meeting May 8, 2020"
+          }
+        ]
+      },
+      {
+        "fy": "FY 18-19",
+        "data": [
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-aug-17-18.pdf",
+            "children": "BOD Meeting Aug. 17, 2018"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-sep-28-18.pdf",
+            "children": "BOD Meeting Sep. 28, 2018"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-oct-12-18.pdf",
+            "children": "BOD Meeting Oct. 12, 2018"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-mar-15-19.pdf",
+            "children": "BOD Meeting Mar. 15, 2019"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-apr-12-19.pdf",
+            "children": "BOD Meeting Apr. 12, 2019"
+          },
+          {
+            "href": "/governance/public-documents/agenda/fy18-19/meeting-may-10-19.pdf",
+            "children": "BOD Meeting May 10, 2019"
           }
         ]
       }
@@ -31,12 +112,91 @@
       "fy": "FY 21-22",
       "data": [
         {
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-sep-17-21.pdf",
+          "children": "BOD Minutes Sep. 17, 2021"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-oct-15-21.pdf",
+          "children": "BOD Minutes Oct. 15, 2021"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-nov-05-21.pdf",
+          "children": "BOD Minutes Nov. 5, 2021"
+        },
+        {
           "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-feb-11-22.pdf",
           "children": "BOD Minutes Feb. 11, 2022"
         },
         {
-          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-nov-05-21.pdf",
-          "children": "BOD Minutes Nov. 5, 2022"
+          "href": "/governance/public-documents/minutes/fy21-22/bod-minutes-mar-11-22.pdf",
+          "children": "BOD Minutes Mar. 11, 2022"
+        }
+      ]
+    },
+    {
+      "fy": "FY 20-21",
+      "data": [
+        {
+          "href": "/governance/public-documents/minutes/fy20-21/bod-minutes-sep-18-20.pdf",
+          "children": "BOD Minutes Sep. 18, 2020"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy20-21/bod-minutes-nov-06-20.pdf",
+          "children": "BOD Minutes Nov. 6, 2020"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy20-21/bod-minutes-jan-22-21.pdf",
+          "children": "BOD Minutes Jan. 22, 2021"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy20-21/bod-minutes-feb-12-21.pdf",
+          "children": "BOD Minutes Feb. 12, 2021"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy20-21/bod-minutes-aug-13-21.pdf",
+          "children": "BOD Minutes Aug. 13, 2021"
+        }
+      ]
+    },
+    {
+      "fy": "FY 19-20",
+      "data": [
+        {
+          "href": "/governance/public-documents/minutes/fy19-20/bod-minutes-nov-09-19.pdf",
+          "children": "BOD Minutes Nov. 19, 2019"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy19-20/bod-minutes-feb-14-20.pdf",
+          "children": "BOD Minutes Feb. 14, 2020"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy19-20/bod-minutes-apr-24-20.pdf",
+          "children": "BOD Minutes Apr. 24, 2020"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy19-20/bod-minutes-may-08-20.pdf",
+          "children": "BOD Minutes May 08, 2020"
+        }
+      ]
+    },
+    {
+      "fy": "FY 18-19",
+      "data": [
+        {
+          "href": "/governance/public-documents/minutes/fy18-19/bod-minutes-aug-17-18.pdf",
+          "children": "BOD Minutes Aug. 17, 2018"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy18-19/bod-minutes-oct-12-18.pdf",
+          "children": "BOD Minutes Oct. 12, 2018"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy18-19/bod-minutes-apr-12-19.pdf",
+          "children": "BOD Minutes Apr. 12, 2019"
+        },
+        {
+          "href": "/governance/public-documents/minutes/fy18-19/bod-minutes-apr-17-19.pdf",
+          "children": "BOD Minutes Apr. 17, 2019"
         }
       ]
     }

@@ -1,8 +1,20 @@
-import { FluidContainer, Image } from 'components';
+import { FluidContainer, Image, Typography } from 'components';
 import Link from 'next/link';
 import { useBreakpoint } from 'hooks';
+import styled from 'styled-components';
+import { Colors } from 'theme';
 import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
+
+const GetInvolvedButton = styled.div`
+  background-color: ${Colors.primary};
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 32px;
+`;
 
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
@@ -41,6 +53,13 @@ export const Nav = () => {
         />
       </Link>
       <DesktopNav />
+      <GetInvolvedButton>
+        <Link href="/csi/student-orgs">
+          <Typography variant="eventDetail" color="black">
+            Get Involved
+          </Typography>
+        </Link>
+      </GetInvolvedButton>
     </FluidContainer>
   );
 };
