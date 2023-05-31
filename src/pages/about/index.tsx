@@ -182,7 +182,7 @@ export default function About() {
             To become Cal State LA&apos;s hub for connection and growth
           </Typography>
           <ButtonContainer>
-            <Button variant="black" href="/about/org-chart.jpg">
+            <Button variant="black" href="/about/org-chart-5-31-23.jpg">
               U-SU Organizational Chart
             </Button>
             <Button
