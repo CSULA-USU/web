@@ -3,6 +3,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Colors } from 'theme';
 import styled from 'styled-components';
+
 interface CarouselImageProps {
   src: string;
   alt: string;
@@ -16,14 +17,18 @@ const ListItem = styled.li`
   display: inline;
 `;
 
+const PageItem = styled.span`
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+`;
+
 export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
   return (
     <Carousel
-      infiniteLoop={true}
-      swipeable={true}
       emulateTouch={true}
-      useKeyboardArrows={true}
+      infiniteLoop={true}
       showThumbs={false}
+      swipeable={true}
+      useKeyboardArrows={true}
       renderIndicator={(onClickHandler, isSelected, index, label) => {
         const defStyle = {
           marginLeft: 20,
@@ -43,7 +48,7 @@ export const ReactCarousel = ({ carouselImages }: CarouselProps) => {
             tabIndex={0}
             aria-label={`${label} ${index + 1}`}
           >
-            {index + 1}
+            <PageItem>{index + 1}</PageItem>
           </ListItem>
         );
       }}
