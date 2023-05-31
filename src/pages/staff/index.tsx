@@ -25,6 +25,7 @@ const NavItems = [
   'Operations',
   'Recreation',
 ];
+
 export default function Staff() {
   const [buttonType, setButtonType] = useState('');
   const [staffCards, setStaffCards] = useState(staff);
