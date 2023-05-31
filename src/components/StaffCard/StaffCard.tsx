@@ -21,10 +21,10 @@ interface CardProps extends CardStyles {
 const CenterWord = styled.div`
   text-align: center;
   word-wrap: break-word;
-`;
-
-const Container = styled.div`
-  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 `;
 
 export const StaffCard = ({
@@ -36,19 +36,23 @@ export const StaffCard = ({
   ...props
 }: CardProps) => {
   return (
-    <Panel {...props} width={'350px'}>
+    <Panel {...props} width={'304px'} height="512px">
       <CenterWord>
-        <Container>
-          <Typography color="gold" margin={`${Spaces.sm}`} weight="700">
-            {title}
-          </Typography>
-        </Container>
-
-        <Image round src={src} alt={alt} width="100%" marginTop={25} />
-        <Typography margin="auto" size="md" weight="700">
-          {name}
+        <Typography
+          color="gold"
+          margin={`${Spaces.sm}`}
+          variant="copy"
+          weight="700"
+        >
+          {title}
         </Typography>
-        {children}
+        <div>
+          <Image src={src} alt={alt} width="220px" height="245px" />
+          <Typography size="md" weight="700" margin="8px 0px 0px">
+            {name}
+          </Typography>
+          {children}
+        </div>
       </CenterWord>
     </Panel>
   );

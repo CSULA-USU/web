@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 
 interface CardStyles {
+  height?: string;
   width?: string;
   minHeight?: string;
   margin?: string;
@@ -24,6 +25,7 @@ const StyledPanel = styled.div<CardStyles>`
   gap: 16px;
   box-shadow: 2px 4px 12px rgba(191, 191, 191, 0.25);
   background-color: ${(p) => Colors[p.backgroundColor || 'white']};
+  ${(p) => p.height && `height: ${p.height};`}
   ${(p) => p.width && `width: ${p.width};`}
   ${(p) => p.margin && `margin: ${p.margin};`}
   ${(p) => p.minHeight && `min-height: ${p.minHeight};`}
