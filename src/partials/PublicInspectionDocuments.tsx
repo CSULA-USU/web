@@ -29,6 +29,23 @@ const downloads: DownloadSectionProps[] = [
     },
   },
   {
+    title: 'Annual Registration Renewal (RRF-1)',
+    children: (
+      <Typography>
+        The purpose of the Annual Registration Renewal Fee Report (Form RRF-1)
+        is to assist the Attorney General&apos;s Office with early detection of
+        charity fiscal mismanagement and unlawful diversion of charitable
+        assets.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
+      disabled: false,
+      variant: 'black',
+      href: 'https://www.dropbox.com/s/6p9cw7epbpcj4ff/annual-registration-renewal.pdf?dl=0',
+    },
+  },
+  {
     title: 'Articles of Incorporation',
     children: (
       <Typography>
@@ -40,7 +57,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/articles-of-incorporation.pdf',
+      href: 'https://www.dropbox.com/s/kje616wz6jy9dab/articles-of-incorporation.pdf?dl=0',
     },
   },
   {
@@ -57,24 +74,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/auxiliary-operating-agreement.pdf',
-    },
-  },
-  {
-    title: 'Annual Registration Renewal (RRF-1)',
-    children: (
-      <Typography>
-        The purpose of the Annual Registration Renewal Fee Report (Form RRF-1)
-        is to assist the Attorney General&apos;s Office with early detection of
-        charity fiscal mismanagement and unlawful diversion of charitable
-        assets.
-      </Typography>
-    ),
-    button: {
-      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
-      disabled: false,
-      variant: 'black',
-      href: '/governance/public-documents/annual-registration-renewal.pdf',
+      href: 'https://www.dropbox.com/s/egirk9clsotm7fc/auxiliary-operating-agreement.pdf?dl=0',
     },
   },
   {
@@ -91,7 +91,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/code-of-procedures.pdf',
+      href: 'https://www.dropbox.com/s/kky5hcwdvvues1u/code-of-procedures.pdf?dl=0',
     },
   },
   {
@@ -107,7 +107,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/conflict-of-interest-policy.pdf',
+      href: '/https://www.dropbox.com/s/c8uyei4lbhxa923/conflict-of-interest-policy.pdf?dl=0',
     },
   },
   {
@@ -116,27 +116,27 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy21-22.pdf',
+            href: 'https://www.dropbox.com/s/19vmf0cryq32xi1/form-990-199-fy21-22.pdf?dl=0',
             children: 'FY 21-22',
           },
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy20-21.pdf',
+            href: 'https://www.dropbox.com/s/m7nm6yh9mxnml0z/form-990-199-fy20-21.pdf?dl=0',
             children: 'FY 20-21',
           },
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy19-20.pdf',
+            href: 'https://www.dropbox.com/s/d6wvalv3pem1aoj/form-990-199-fy19-20.pdf?dl=0',
             children: 'FY 19-20',
           },
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy18-19.pdf',
+            href: 'https://www.dropbox.com/s/6g4ki72vxgadr6z/form-990-199-fy18-19.pdf?dl=0',
             children: 'FY 18-19',
           },
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy17-18.pdf',
+            href: 'https://www.dropbox.com/s/goj6ouitf3m70te/form-990-199-fy17-18.pdf?dl=0',
             children: 'FY 17-18',
           },
           {
-            href: '/governance/public-documents/form-990-199/form-990-199-fy16-17.pdf',
+            href: 'https://www.dropbox.com/s/5y4k2g8pcfe5x3p/form-990-199-fy16-17.pdf?dl=0',
             children: 'FY 16-17',
           },
         ]}
@@ -156,27 +156,27 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy21-22.pdf',
+            href: 'https://www.dropbox.com/s/9jyug3bcr31qiri/afs-fy21-22.pdf?dl=0',
             children: 'FY 21-22',
           },
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy20-21.pdf',
+            href: 'https://www.dropbox.com/s/9cppkh14klau2u9/afs-fy20-21.pdf?dl=0',
             children: 'FY 20-21',
           },
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy19-20.pdf',
+            href: 'https://www.dropbox.com/s/qif2otjgz2pigr9/afs-fy19-20.pdf?dl=0',
             children: 'FY 19-20',
           },
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy18-19.pdf',
+            href: 'https://www.dropbox.com/s/6gfq5mg9fbhvlfl/afs-fy18-19.pdf?dl=0',
             children: 'FY 18-19',
           },
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy17-18.pdf',
+            href: 'https://www.dropbox.com/s/4nx64g8yerc7oc1/afs-fy17-18.pdf?dl=0',
             children: 'FY 17-18',
           },
           {
-            href: '/governance/public-documents/latest-audited-financial-statements/afs-fy16-17.pdf',
+            href: 'https://www.dropbox.com/s/dc1xyxw5epnbxpv/afs-fy16-17.pdf?dl=0',
             children: 'FY 16-17',
           },
         ]}
@@ -201,7 +201,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/statement-of-information.pdf',
+      href: '/https://www.dropbox.com/s/7yunk42xvdvhpx7/statement-of-information.pdf?dl=0',
     },
   },
   {
@@ -216,7 +216,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: '/governance/public-documents/bylaws.pdf',
+      href: 'https://www.dropbox.com/s/6i500mjzltccfao/bylaws.pdf?dl=0',
     },
   },
 ];

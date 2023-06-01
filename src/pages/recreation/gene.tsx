@@ -37,7 +37,7 @@ const buttons = [
   { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
   {
     text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-bios.pdf',
+    href: 'https://www.dropbox.com/s/kv2x9skhab6pn69/gene-bios.pdf?dl=0',
   },
 ];
 
