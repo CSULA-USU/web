@@ -271,7 +271,7 @@ export default function MeetingRoom() {
           type="application/pdf"
           width="80%"
           height={600}
-          src="https://www.calstatelausu.org/operations/pdfs/Meeting-Space-Capacity-Chart.pdf"
+          src="https://www.calstatelausu.org/departments/operations/pdfs/Meeting-Space-Capacity-Chart.pdf"
         />
       </FluidContainer>
     </Page>
