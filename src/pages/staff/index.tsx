@@ -9,7 +9,7 @@ import { Colors, Spaces } from 'theme';
 
 const NavItemContainer = styled.div`
   *:hover {
-    color: ${Colors.gold};
+    color: ${Colors.primary};
   }
   display: flex;
   flex-wrap: wrap;
