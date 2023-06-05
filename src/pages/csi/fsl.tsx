@@ -130,7 +130,7 @@ const HowToJoinContent = [
 
 const FamilyAndFriendsCostOfMembershipConent = [
   {
-    title: 'What are the financial obligation?',
+    title: 'What are the financial obligations?',
     children:
       'Your student will have financial responsibilities when it comes to joining a fraternity or sorority. In most organizations, there is a one-time new member/initiation fee as well as semester membership dues. Depending on which organization your student wants to join will determine the amount of dues they will have to pay each semester. If your student is interested in becoming a member of an organization, we suggest that you sit down with them and work out a college budget to determine whether or not joining a fraternity or sorority is within reason.The dues that are paid cover a wide range of areas to keep the organizations in existence. These dues are used to pay for community service and philanthropic projects, social events, parent and alumni events, insurance and national fees as well as general chapter expenses. We encourage students who are interested in joining to ask questions to clarify what is expected of them before they join.',
   },
@@ -253,11 +253,11 @@ const FamilyAndFriendsCostFAQs = [
 
 const MembershipIntakeForms = [
   {
-    href: '/departments/csi/forms/fsl/memebership-intake-checklist.pdf',
+    href: 'https://www.dropbox.com/s/tfshoebcna6mf2z/memebership-intake-checklist.pdf?dl=0',
     title: 'Membership Intake Check List',
   },
   {
-    href: '/departments/csi/forms/fsl/notice-of-membership-intake.pdf',
+    href: 'https://www.dropbox.com/s/1rid6st7s6x4wrq/notice-of-membership-intake.pdf?dl=0',
     title: 'Notice of Membership Intake',
   },
 ];
@@ -308,10 +308,6 @@ const PolicyButtons = [
   {
     href: 'https://www.calstatela.edu/studentservices/california-code-regulations-standards-student-conduct',
     children: 'University Code of Conduct',
-  },
-  {
-    href: 'http://www.fipg.org/',
-    children: 'Fraternal Information and Programming Group (FIPG)',
   },
 ];
 
@@ -833,7 +829,7 @@ export default function FSL() {
         <CurrentMembersSection>
           <FluidContainer>
             <Typography variant="title" as="h2">
-              Memebership Intake Forms
+              Membership Intake Forms
             </Typography>
             <FluidContainer
               flex
@@ -857,9 +853,11 @@ export default function FSL() {
               California Hazing Law
             </Typography>
             <Typography>
-              <strong>Hazing is not permitted on Cal State LA’s campus.</strong>
+              <strong>
+                Hazing is not permitted on Cal State LA’s campus.{' '}
+              </strong>
               This is in accordance with California law; the policies of
-              California State University, Los Angeles, including the By-laws of
+              California State University, Los Angeles, including the bylaws of
               all inter/national organizations represented on our campus, hazing
               is not permitted. All acts of hazing by any organization, member,
               and/or alumni are specifically forbidden. Refer to the Student
@@ -896,7 +894,7 @@ export default function FSL() {
             </FluidContainer>
             <Typography variant="title" as="h2">
               {' '}
-              Exapansion of New Fraternities and Soroities
+              Expansion of New Fraternities and Sororities
             </Typography>
             {FSLExpansionContent.map((item) => (
               <Panel key={item.content} margin={`${Spaces.md} 0`}>

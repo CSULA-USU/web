@@ -98,7 +98,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/payment-advance-procedures.pdf',
+      href: 'https://www.dropbox.com/s/68hzleaqe7fa97t/payment-advance-procedures.pdf?dl=0',
     },
   },
   {
@@ -113,7 +113,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/student-org-check-req.pdf',
+      href: 'https://www.dropbox.com/s/bm6b1kg5jigaq33/student-org-check-req.pdf?dl=0',
     },
   },
   {
@@ -130,7 +130,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/student-org-deposit-slip.pdf',
+      href: 'https://www.dropbox.com/s/0rywue6nhm7z26e/student-org-deposit-slip.pdf?dl=0',
     },
   },
   {
@@ -146,7 +146,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/sales-receipt-log.pdf',
+      href: 'https://www.dropbox.com/s/ba00lnrs6441khn/sales-receipt-log.pdf?dl=0',
     },
   },
   {
@@ -162,7 +162,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/student-clubs-and-orgs-event-fundraising-approval-form.pdf',
+      href: 'https://www.dropbox.com/s/6h3tje7ykwvibhp/student-clubs-and-orgs-event-fundraising-approval-form.pdf?dl=0',
     },
   },
   {
@@ -178,7 +178,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.calstatelausu.org/departments/csi/forms/external-private-fundraising-approval-form.pdf',
+      href: 'https://www.dropbox.com/s/5qmdbzsfflgayhj/external-private-fundraising-approval-form.pdf?dl=0',
     },
   },
 ];
