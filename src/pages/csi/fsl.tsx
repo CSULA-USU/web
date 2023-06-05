@@ -253,11 +253,11 @@ const FamilyAndFriendsCostFAQs = [
 
 const MembershipIntakeForms = [
   {
-    href: '/departments/csi/forms/fsl/memebership-intake-checklist.pdf',
+    href: 'https://www.dropbox.com/s/tfshoebcna6mf2z/memebership-intake-checklist.pdf?dl=0',
     title: 'Membership Intake Check List',
   },
   {
-    href: '/departments/csi/forms/fsl/notice-of-membership-intake.pdf',
+    href: 'https://www.dropbox.com/s/1rid6st7s6x4wrq/notice-of-membership-intake.pdf?dl=0',
     title: 'Notice of Membership Intake',
   },
 ];
