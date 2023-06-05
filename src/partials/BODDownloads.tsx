@@ -69,7 +69,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: '/governance/public-documents/agenda/fy22-23.zip',
+      href: 'https://www.dropbox.com/s/8l2t64fp097xvib/fy22-23.zip?dl=0',
       variant: 'black',
     },
   },
@@ -110,7 +110,7 @@ const minutesDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: '/governance/public-documents/minutes/fy22-23.zip',
+      href: 'https://www.dropbox.com/s/v10ka40w20fqu9v/fy22-23.zip?dl=0',
       variant: 'black',
     },
   },
