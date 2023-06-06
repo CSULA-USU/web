@@ -193,7 +193,7 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="/departments/graffix/students-1.png"
+              src="https://www.dropbox.com/s/7uo8gsk1iy3ukn4/students-1.png?raw=1"
               alt="students"
               width={600}
               height={700}
