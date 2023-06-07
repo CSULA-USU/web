@@ -5,8 +5,10 @@ export const fetchEvents = async () => {
   return events;
 };
 
-export const fetchPagesSections = async (slug: string) => {
+export const fetchPagesSections = async (slug: string | string[]) => {
   const data = await fetch(`/api/sections?slug=${slug}`);
+  console.log(data.status);
+  console.log(data.headers);
   return await data.json();
 };
 
