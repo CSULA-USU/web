@@ -7,15 +7,12 @@ import {
   SideImageHeader,
   Button,
   NonBreakingSpan,
-  InstagramContainer,
+  InstagramFeed,
 } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
-import { useEffect } from 'react';
-import { fetchInstagramFeed } from 'api';
-import { InstagramPost } from 'types';
 
 const Title = styled.div`
   text-align: center;
@@ -95,16 +92,6 @@ const cards = [
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
-
-  const getInstgramFeed = async () => {
-    const { data } = await fetchInstagramFeed('usu');
-    setInstagramPosts(data.data.slice(0, 12));
-  };
-
-  useEffect(() => {
-    getInstgramFeed();
-  }, []);
 
   return (
     <Page>
@@ -204,11 +191,7 @@ export default function About() {
           ></Card>
         ))}
       </FluidContainer>
-      <InstagramContainer
-        username="usucalstatela"
-        instagramPosts={instagramPosts}
-        url="https://www.instagram.com/usucalstatela/"
-      ></InstagramContainer>
+      <InstagramFeed department="usu" />
       <GenericModal
         isOpen={modalIsOpen}
         onRequestClose={() => setIsOpen(false)}

@@ -2,9 +2,11 @@ import { Header, Page } from 'modules';
 import { fetchPagesSections } from 'api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { InstagramFeed } from 'components';
 
 const Components = {
   hero: Header,
+  InstagramFeed: InstagramFeed,
 };
 
 export default function DynamicPage() {
@@ -34,11 +36,7 @@ export default function DynamicPage() {
           const SectionComponent =
             Components[section.sections.name as keyof typeof Components];
           return (
-            <SectionComponent
-              {...section.data}
-              title={section.data.title}
-              key={section.sections.name}
-            >
+            <SectionComponent {...section.data} key={section.sections.name}>
               {section.data.description}
             </SectionComponent>
           );

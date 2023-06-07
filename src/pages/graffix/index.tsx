@@ -6,7 +6,7 @@ import {
   Image,
   Button,
   NonBreakingSpan,
-  InstagramContainer,
+  InstagramFeed,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
@@ -15,9 +15,6 @@ import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
-import { useEffect } from 'react';
-import { fetchInstagramFeed } from 'api';
-import { InstagramPost } from 'types';
 
 interface DesignCardData {
   title: string;
@@ -130,16 +127,6 @@ export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
-
-  const getInstgramFeed = async () => {
-    const { data } = await fetchInstagramFeed('graffix');
-    setInstagramPosts(data.data.slice(0, 12));
-  };
-
-  useEffect(() => {
-    getInstgramFeed();
-  }, []);
 
   return (
     <Page>
@@ -342,11 +329,7 @@ export default function Graffix() {
           </Typography>
         </FluidContainer>
       </div>
-      <InstagramContainer
-        username="usugraffix"
-        instagramPosts={instagramPosts}
-        url="https://www.instagram.com/usugraffix/"
-      ></InstagramContainer>
+      <InstagramFeed department="graffix" />
 
       {modalData && (
         <GenericModal
