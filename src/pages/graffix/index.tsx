@@ -16,23 +16,14 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import { useEffect } from 'react';
-import axios from 'axios';
+import { fetchInstagramFeed } from 'api';
+import { InstagramPost } from 'types';
 
 interface DesignCardData {
   title: string;
   designer: string;
   src: string;
   description: string;
-}
-
-interface InstagramData {
-  id: string;
-  username: string;
-  caption: string;
-  media_url: string;
-  permalink: string;
-  media_type: string;
-  thumbnail_url: string;
 }
 
 const buttons = [
@@ -139,17 +130,15 @@ export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
 
-  const fetchGraffixIGAPI = () =>
-    axios
-      .get('/api/instagram?org=graffix')
-      .then((json) => json.data)
-      .then((result) => result.data)
-      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
+  const getInstgramFeed = async () => {
+    const { data } = await fetchInstagramFeed('graffix');
+    setInstagramPosts(data.data.slice(0, 12));
+  };
 
   useEffect(() => {
-    fetchGraffixIGAPI();
+    getInstgramFeed();
   }, []);
 
   return (

@@ -9,3 +9,8 @@ export const fetchPagesSections = async (slug: string) => {
   const data = await fetch(`/api/sections?slug=${slug}`);
   return await data.json();
 };
+
+export const fetchInstagramFeed = async (org: string) => {
+  const data = await fetch(`/api/instagram?org=${org}`);
+  return await data.json();
+};

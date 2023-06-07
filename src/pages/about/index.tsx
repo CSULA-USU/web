@@ -14,17 +14,8 @@ import { useBreakpoint } from 'hooks';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
 import { useEffect } from 'react';
-import axios from 'axios';
-
-interface InstagramData {
-  id: string;
-  username: string;
-  caption: string;
-  media_url: string;
-  permalink: string;
-  media_type: string;
-  thumbnail_url: string;
-}
+import { fetchInstagramFeed } from 'api';
+import { InstagramPost } from 'types';
 
 const Title = styled.div`
   text-align: center;
@@ -104,17 +95,15 @@ const cards = [
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
 
-  const fetchAboutIGAPI = () =>
-    axios
-      .get('/api/instagram?org=usu')
-      .then((json) => json.data)
-      .then((result) => result.data)
-      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
+  const getInstgramFeed = async () => {
+    const { data } = await fetchInstagramFeed('usu');
+    setInstagramPosts(data.data.slice(0, 12));
+  };
 
   useEffect(() => {
-    fetchAboutIGAPI();
+    getInstgramFeed();
   }, []);
 
   return (

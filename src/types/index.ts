@@ -1,4 +1,5 @@
 export * from './DesignSystem';
+export * from './Instagram';
 
 export interface PresenceEvent {
   apiId: string;
