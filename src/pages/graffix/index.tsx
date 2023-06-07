@@ -143,7 +143,7 @@ export default function Graffix() {
 
   const fetchGraffixIGAPI = () =>
     axios
-      .get('/api/graffix-instagram')
+      .get('/api/instagram?org=graffix')
       .then((json) => json.data)
       .then((result) => result.data)
       .then((data) => setInstagramPosts(data.data.slice(0, 12)));

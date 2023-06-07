@@ -108,7 +108,7 @@ export default function About() {
 
   const fetchAboutIGAPI = () =>
     axios
-      .get('/api/about-instagram')
+      .get('/api/instagram?org=usu')
       .then((json) => json.data)
       .then((result) => result.data)
       .then((data) => setInstagramPosts(data.data.slice(0, 12)));
