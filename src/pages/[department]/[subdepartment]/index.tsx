@@ -13,8 +13,11 @@ export default function DynamicPage() {
   const [sections, setSections] = useState<any>([]);
 
   const getPagesSections = async () => {
-    const slug = `${department}/${subdepartment}`;
-    if (department && subdepartment) {
+    if (department || subdepartment) {
+      const slug = subdepartment
+        ? `${department}/${subdepartment}`
+        : department;
+      if (!slug) return; //todo: send to 404 page
       const { pages_sections } = await fetchPagesSections(slug);
       setSections(pages_sections);
     }
@@ -26,7 +29,7 @@ export default function DynamicPage() {
 
   return (
     <Page>
-      {sections.length &&
+      {!!sections.length &&
         sections.map((section: any) => {
           const SectionComponent =
             Components[section.sections.name as keyof typeof Components];
@@ -40,7 +43,6 @@ export default function DynamicPage() {
             </SectionComponent>
           );
         })}
-      ;
     </Page>
   );
 }
