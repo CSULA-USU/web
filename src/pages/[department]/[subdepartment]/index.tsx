@@ -18,7 +18,7 @@ export default function DynamicPage() {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
-        : department;
+        : String(department);
       if (!slug) return; //todo: send to 404 page
       const { pages_sections } = await fetchPagesSections(slug);
       setSections(pages_sections);

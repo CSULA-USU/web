@@ -5,7 +5,7 @@ export const fetchEvents = async () => {
   return events;
 };
 
-export const fetchPagesSections = async (slug: string | string[]) => {
+export const fetchPagesSections = async (slug: string) => {
   const data = await fetch(`/api/sections?slug=${slug}`);
   return await data.json();
 };
