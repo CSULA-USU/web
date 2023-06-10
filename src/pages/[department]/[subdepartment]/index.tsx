@@ -22,7 +22,6 @@ export default function DynamicPage() {
       if (!slug) return; //todo: send to 404 page
       const { pages_sections } = await fetchPagesSections(slug);
       setSections(pages_sections.reverse());
-      console.log('sections:', sections);
     }
   };
 
