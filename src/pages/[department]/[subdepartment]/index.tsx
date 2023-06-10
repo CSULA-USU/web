@@ -21,7 +21,7 @@ export default function DynamicPage() {
         : String(department);
       if (!slug) return; //todo: send to 404 page
       const { pages_sections } = await fetchPagesSections(slug);
-      setSections(pages_sections);
+      setSections(pages_sections.reverse());
     }
   };
 
