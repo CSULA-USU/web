@@ -194,9 +194,11 @@ export default function StudentLeaderElections() {
         <Typography as="p">Results pending...</Typography>
       </FluidContainer>
       <FluidContainer backgroundColor="black">
-        <Typography color="gold" variant="title" as="h2">
-          Frequently Asked Questions
-        </Typography>
+        <div id="faqs">
+          <Typography color="gold" variant="title" as="h2">
+            Frequently Asked Questions
+          </Typography>
+        </div>
         <Expandable
           indicator={<BiChevronRight color="white" size={48} />}
           header={

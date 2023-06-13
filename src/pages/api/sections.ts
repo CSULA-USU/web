@@ -8,8 +8,9 @@ export default async function handler(
 ) {
   let { data: sections, error } = await supabase
     .from('pages')
-    .select('slug, pages_sections(data, sections(name, schema))')
-    .eq('slug', req.query.slug);
+    .select('slug, pages_sections(data, section_name)')
+    .eq('slug', req.query.slug)
+    .order('order', { foreignTable: 'pages_sections', ascending: true });
 
   if (!error) res.status(200).json(sections?.[0]);
 }

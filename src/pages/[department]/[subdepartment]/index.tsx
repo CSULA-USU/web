@@ -2,9 +2,11 @@ import { Header, Page } from 'modules';
 import { fetchPagesSections } from 'api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { InstagramFeed } from 'components';
 
 const Components = {
-  hero: Header,
+  DepartmentHero: Header,
+  InstagramFeed: InstagramFeed,
 };
 
 export default function DynamicPage() {
@@ -13,8 +15,11 @@ export default function DynamicPage() {
   const [sections, setSections] = useState<any>([]);
 
   const getPagesSections = async () => {
-    const slug = `${department}/${subdepartment}`;
-    if (department && subdepartment) {
+    if (department || subdepartment) {
+      const slug = subdepartment
+        ? `${department}/${subdepartment}`
+        : String(department);
+      if (!slug) return; //todo: send to 404 page
       const { pages_sections } = await fetchPagesSections(slug);
       setSections(pages_sections);
     }
@@ -26,21 +31,16 @@ export default function DynamicPage() {
 
   return (
     <Page>
-      {sections.length &&
+      {!!sections.length &&
         sections.map((section: any) => {
           const SectionComponent =
-            Components[section.sections.name as keyof typeof Components];
+            Components[section.section_name as keyof typeof Components];
           return (
-            <SectionComponent
-              {...section.data}
-              title={section.data.title}
-              key={section.sections.name}
-            >
+            <SectionComponent {...section.data} key={section.section_name}>
               {section.data.description}
             </SectionComponent>
           );
         })}
-      ;
     </Page>
   );
 }

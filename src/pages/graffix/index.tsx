@@ -6,7 +6,7 @@ import {
   Image,
   Button,
   NonBreakingSpan,
-  InstagramContainer,
+  InstagramFeed,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
@@ -15,24 +15,12 @@ import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
-import { useEffect } from 'react';
-import axios from 'axios';
 
 interface DesignCardData {
   title: string;
   designer: string;
   src: string;
   description: string;
-}
-
-interface InstagramData {
-  id: string;
-  username: string;
-  caption: string;
-  media_url: string;
-  permalink: string;
-  media_type: string;
-  thumbnail_url: string;
 }
 
 const buttons = [
@@ -57,8 +45,7 @@ const cards1 = [
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/larry-itliong.jpg',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Larry Itliong Day',
   },
   {
     title: 'Graffix Open House',
@@ -80,15 +67,13 @@ const cards2 = [
     title: 'Harvest Festival',
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/student-designs/harvest-festival.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Harvest Festival',
   },
   {
     title: 'Fluffy Friends',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/fluffy-friends.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Fluffy Friends',
   },
 ];
 const cards3 = [
@@ -96,22 +81,19 @@ const cards3 = [
     title: 'Brown & Gay in LA',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/brown-gay-la.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Brown & Gay in LA',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/swim-in-the-sound.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Swim in the Sounds',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
     src: '/departments/graffix/student-designs/study-break-of-color.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house.We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Study Break of Color',
   },
 ];
 
@@ -139,18 +121,6 @@ export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-  const [instagramPosts, setInstagramPosts] = useState<InstagramData[]>([]);
-
-  const fetchGraffixIGAPI = () =>
-    axios
-      .get('/api/graffix-instagram')
-      .then((json) => json.data)
-      .then((result) => result.data)
-      .then((data) => setInstagramPosts(data.data.slice(0, 12)));
-
-  useEffect(() => {
-    fetchGraffixIGAPI();
-  }, []);
 
   return (
     <Page>
@@ -193,7 +163,7 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="/departments/graffix/students-1.png"
+              src="https://www.dropbox.com/s/7uo8gsk1iy3ukn4/students-1.png?raw=1"
               alt="students"
               width={600}
               height={700}
@@ -353,11 +323,7 @@ export default function Graffix() {
           </Typography>
         </FluidContainer>
       </div>
-      <InstagramContainer
-        username="usugraffix"
-        instagramPosts={instagramPosts}
-        url="https://www.instagram.com/usugraffix/"
-      ></InstagramContainer>
+      <InstagramFeed department="graffix" />
 
       {modalData && (
         <GenericModal
