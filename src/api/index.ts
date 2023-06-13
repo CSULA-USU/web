@@ -14,3 +14,8 @@ export const fetchInstagramFeed = async (org: string) => {
   const data = await fetch(`/api/instagram?org=${org}`);
   return await data.json();
 };
+
+export const fetchTokens = async () => {
+  const data = await fetch(`/api/tokens`);
+  return await data.json();
+};
