@@ -45,8 +45,7 @@ const cards1 = [
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/larry-itliong.jpg',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Larry Itliong Day',
   },
   {
     title: 'Graffix Open House',
@@ -68,15 +67,13 @@ const cards2 = [
     title: 'Harvest Festival',
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/student-designs/harvest-festival.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Harvest Festival',
   },
   {
     title: 'Fluffy Friends',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/fluffy-friends.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Fluffy Friends',
   },
 ];
 const cards3 = [
@@ -84,22 +81,19 @@ const cards3 = [
     title: 'Brown & Gay in LA',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/brown-gay-la.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Brown & Gay in LA',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/swim-in-the-sound.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Swim in the Sounds',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
     src: '/departments/graffix/student-designs/study-break-of-color.png',
-    description:
-      ' This design coincided with Halloween and the Graffix open house.We decided to merge the two and add symbols inspired by Graffix staff.',
+    description: ' Study Break of Color',
   },
 ];
 
