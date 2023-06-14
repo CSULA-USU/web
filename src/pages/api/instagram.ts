@@ -1,7 +1,6 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Departments } from 'types';
-import { supabase } from 'lib/supabase';
 import { fetchTokens } from 'api';
 
 export default async function handler(
