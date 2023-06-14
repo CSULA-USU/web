@@ -16,6 +16,6 @@ export const fetchInstagramFeed = async (org: string) => {
 };
 
 export const fetchTokens = async () => {
-  const data = await fetch(`/api/tokens`);
+  const data = await fetch(`http://localhost:3000/api/tokens`);
   return await data.json();
 };
