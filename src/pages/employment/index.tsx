@@ -27,6 +27,7 @@ const JobItem = styled.div`
 
 export default function Employment() {
   const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
+
   const [studentJobs, setStudentJobs] = useState([]);
 
   const fetchJobFeed = async () => {
