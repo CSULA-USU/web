@@ -54,11 +54,6 @@ export default function Home() {
           name="description"
           content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
         />
-        <meta
-          property="og:image"
-          content="https://previews.dropbox.com/p/thumb/AB7G2s_pRsQDGcFNNRrYp7Pd8euAyIXbEHZCuhWEezVOoH6-CdX_9LaY-AJrjrkOJZ0HAlwXYIXqmvZpquZkP_FRUPb7iUIXnbio5jOsc6VJ9XEUV849FsWy-zu1EVh6VQzxxh4LICMChrqVdjFKp9lEZVvSPyY2WpeK19DNixvEcIpPROPSnxTgIGhZpvnwNzmsyojf1TxhhjEFbCwF93fvXLjjvpYwLPpplHhSH09gSOol2ARNM4fXF-2TfKs_Uhxvi4RGFI7Tc19d7iSs4JsJpObmRIOP_d51WOSDp6SWiCEx4EGoi_zXGktvWZ8NoY9wZqpzOYCN8gY6DD1_0YE7I0LrrA8x5xfnYNMi-OxOm4zFlKAsS1z0M996x4MMiAA/p.jpeg"
-        />
-        <meta name="twitter:card" content="summary" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
