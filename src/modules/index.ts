@@ -14,3 +14,4 @@ export * from './DownloadSection';
 export * from './GenericModal';
 export * from './ImageAndCard';
 export * from './CallToActionImages';
+export * from './Search';

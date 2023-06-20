@@ -41,6 +41,7 @@ const images = [
 export default function Home() {
   const events = useRecoilValue(eventListState);
   const { isMobile } = useBreakpoint();
+
   return (
     <Page>
       <Head>
@@ -61,7 +62,6 @@ export default function Home() {
         <meta name="twitter:card" content="summary" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <EventHeader
         title={
           <>
@@ -80,7 +80,6 @@ export default function Home() {
         featuredEvent={events[0]}
       />
       <UpcomingEvents events={events} />
-
       <CallToActionImages
         title={
           <>
