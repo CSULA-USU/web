@@ -1,4 +1,4 @@
-// import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { StyledInput } from 'components';
 import { useRecoilState } from 'recoil';
 import { queryState } from 'atoms';
@@ -6,11 +6,11 @@ import { queryState } from 'atoms';
 export const Search = () => {
   const [query, setQuery] = useRecoilState<string>(queryState);
 
-  const handleOnChange = (event: any) => {
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
 
-  const handleFormSubmit = (event: any) => {
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(query);
   };
