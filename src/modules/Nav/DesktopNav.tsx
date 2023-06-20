@@ -6,6 +6,7 @@ import { Colors, FontSizes, Spaces, media } from 'theme';
 import navMap from 'data/navMap.json';
 import { NonBreakingSpan, Typography } from 'components';
 import { FiChevronDown } from 'react-icons/fi';
+import { Search } from 'modules/Search';
 
 interface navMapType {
   text: string;
@@ -152,5 +153,6 @@ export const DesktopNav = () => (
         </Typography>
       </Link>
     </GetInvolvedButton>
+    <Search />
   </Container>
 );
