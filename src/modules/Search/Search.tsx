@@ -26,7 +26,7 @@ export const Search = () => {
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const options = {
-      keys: ['title', 'url', 'description', 'tags.*'],
+      keys: ['title', 'url', 'description', 'tags'],
     };
     const fuse = new Fuse(list, options);
     const results = fuse.search(query);
