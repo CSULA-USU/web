@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import Fuse from 'fuse.js';
 
 export interface SearchResult {
   title: string;
@@ -9,5 +10,12 @@ export interface SearchResult {
 
 export const searchResultState = atom({
   key: 'SearchResultList',
-  default: [] as SearchResult[],
+  default: [] as
+    | SearchResult[]
+    | Fuse.FuseResult<{
+        title: string;
+        url: string;
+        description: string;
+        tags: string[];
+      }>[],
 });

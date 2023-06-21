@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent } from 'react';
 import { StyledInput } from 'components';
 import { useRecoilState } from 'recoil';
-import { queryState, searchResultState } from 'atoms';
+import { queryState, searchResultState, SearchResult } from 'atoms';
 import data from 'data/directory.json';
 import Fuse from 'fuse.js';
 
@@ -9,8 +9,15 @@ const list = data;
 
 export const Search = () => {
   const [query, setQuery] = useRecoilState<string>(queryState);
-  const [searchResults, setSearchResults] =
-    useRecoilState<any[]>(searchResultState);
+  const [searchResults, setSearchResults] = useRecoilState<
+    | SearchResult[]
+    | Fuse.FuseResult<{
+        title: string;
+        url: string;
+        description: string;
+        tags: string[];
+      }>[]
+  >(searchResultState);
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
