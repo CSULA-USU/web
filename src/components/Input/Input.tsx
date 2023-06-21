@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-// import { ChangeEvent, FormEvent } from 'react';
-
-// export interface SearchProps {
-//   input?: string;
-//   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-//   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
-// }
 
 const OuterContainer = styled.div`
   display: flex;
