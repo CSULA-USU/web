@@ -8,14 +8,9 @@ export interface SearchResult {
   tags: string[];
 }
 
-export const searchResultState = atom({
+export type ResultsType = Fuse.FuseResult<SearchResult>;
+
+export const searchResultState = atom<ResultsType[]>({
   key: 'SearchResultList',
-  default: [] as
-    | SearchResult[]
-    | Fuse.FuseResult<{
-        title: string;
-        url: string;
-        description: string;
-        tags: string[];
-      }>[],
+  default: [],
 });

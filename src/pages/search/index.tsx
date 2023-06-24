@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { queryState } from 'atoms';
-import { useRecoilState } from 'recoil';
+import { ResultsType, queryState } from 'atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { Page, Header } from 'modules';
 import { FluidContainer, Typography } from 'components';
-import { searchResultState, SearchResult } from 'atoms';
+import { searchResultState } from 'atoms';
 import data from 'data/directory.json';
 import Fuse from 'fuse.js';
 
@@ -42,25 +42,9 @@ const SearchCard = styled.div`
 `;
 
 export default function Search() {
+  const searchResults = useRecoilValue<ResultsType[]>(searchResultState);
   const [query, setQuery] = useRecoilState<string>(queryState);
-  const [searchResults, _] = useRecoilState<
-    | SearchResult[]
-    | Fuse.FuseResult<{
-        title: string;
-        url: string;
-        description: string;
-        tags: string[];
-      }>[]
-  >(searchResultState);
-  const [results, setResults] = useState<
-    | SearchResult[]
-    | Fuse.FuseResult<{
-        title: string;
-        url: string;
-        description: string;
-        tags: string[];
-      }>[]
-  >(searchResults);
+  const [results, setResults] = useState<ResultsType[]>(searchResults);
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
