@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { queryState } from 'atoms';
 import { useRecoilState } from 'recoil';
 import { Page, Header } from 'modules';
-import { FluidContainer } from 'components';
+import { FluidContainer, Typography } from 'components';
 import { searchResultState, SearchResult } from 'atoms';
 import data from 'data/directory.json';
 import Fuse from 'fuse.js';
@@ -82,9 +83,13 @@ export default function Search() {
           return (
             <div key={index}>
               <SearchCard>
-                <div>{title}</div>
+                <Typography as="h3" variant="subheader">
+                  {title}
+                </Typography>
                 <div>{description}</div>
-                <div>calstatelausu.org{url}</div>
+                <Link href={url}>
+                  <Typography>calstatelausu.org{url}</Typography>
+                </Link>
               </SearchCard>
             </div>
           );
@@ -124,7 +129,12 @@ export default function Search() {
           />
         </form>
       </Header>
-      <FluidContainer>{content}</FluidContainer>
+      <FluidContainer>
+        <Typography variant="title" as="h2">
+          Results:
+        </Typography>
+        {content}
+      </FluidContainer>
     </Page>
   );
 }
