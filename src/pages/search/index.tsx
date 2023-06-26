@@ -30,15 +30,17 @@ const SearchBig = styled.input`
 `;
 
 const SearchCard = styled.div`
-  background-color: green;
   border: 1 rem solid black;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
   height: 160px;
   justify-content: space-between;
   margin-top: 32px;
   padding: 24px;
+  :hover {
+    border-radius: 16px;
+    border: 2px solid black;
+  }
 `;
 
 export default function Search() {
@@ -67,9 +69,11 @@ export default function Search() {
           return (
             <div key={index}>
               <SearchCard>
-                <Typography as="h3" variant="subheader">
-                  {title}
-                </Typography>
+                <Link href={url}>
+                  <Typography as="h3" variant="subheader">
+                    {title}
+                  </Typography>
+                </Link>
                 <div>{description}</div>
                 <Link href={url}>
                   <Typography>calstatelausu.org{url}</Typography>
@@ -113,7 +117,7 @@ export default function Search() {
           />
         </form>
       </Header>
-      <FluidContainer>
+      <FluidContainer innerMaxWidth="1216px">
         <Typography variant="title" as="h2">
           Results:
         </Typography>
