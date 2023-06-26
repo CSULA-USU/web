@@ -15,6 +15,7 @@ const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 24px;
+  justify-content: space-between;
 `;
 
 const UpcomingEventsContent = styled.div`
