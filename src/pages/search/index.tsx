@@ -39,7 +39,7 @@ const SearchCard = styled.div`
   padding: 24px;
   :hover {
     border-radius: 16px;
-    border: 2px solid black;
+    border: 1px solid black;
   }
 `;
 
@@ -55,7 +55,9 @@ export default function Search() {
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const options = {
-      keys: ['title', 'url', 'description', 'tags'],
+      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
+      minMatchCharLength: 2,
+      threshold: 0.5,
     };
     const fuse = new Fuse(data, options);
     setResults(fuse.search(query));
