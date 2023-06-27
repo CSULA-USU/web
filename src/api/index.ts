@@ -19,3 +19,25 @@ export const fetchTokens = async () => {
   const data = await fetch(`http://localhost:3000/api/tokens`);
   return await data.json();
 };
+
+export const fetchToken = async (name: string) => {
+  const data = await fetch(`http://localhost:3000/api/token?name=${name}`);
+
+  return await data.json();
+};
+
+export const refreshInstagramToken = async (token: string) => {
+  const data = await fetch(
+    `http://localhost:3000/api/refresh-ig-token?token=${token}`,
+  );
+
+  return await data.json();
+};
+
+export const updateSupabaseToken = async (newToken: string, name: string) => {
+  const data = await fetch(
+    `http://localhost:3000/api/update-supabase-token?newToken=${newToken}&name=${name}`,
+  );
+
+  return await data.json();
+};
