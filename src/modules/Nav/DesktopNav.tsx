@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import navMap from 'data/navMap.json';
-import { NonBreakingSpan, Typography } from 'components';
+import { NonBreakingSpan } from 'components';
 import { FiChevronDown } from 'react-icons/fi';
+import { Search } from 'modules/Search';
 
 interface navMapType {
   text: string;
@@ -75,16 +76,6 @@ const Container = styled.nav`
   }
 `;
 
-const GetInvolvedButton = styled.div`
-  background-color: ${Colors.primary};
-  border-radius: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 136px;
-  height: 40px;
-`;
-
 const MainMenuItem = styled.div`
   display: flex;
   align-items: flex-end;
@@ -145,12 +136,6 @@ export const DesktopNav = () => (
         </Link>
       );
     })}
-    <GetInvolvedButton>
-      <Link href="/csi/student-orgs">
-        <Typography variant="eventDetail" color="black">
-          Get Involved
-        </Typography>
-      </Link>
-    </GetInvolvedButton>
+    <Search />
   </Container>
 );
