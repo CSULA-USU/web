@@ -11,8 +11,10 @@ import {
 } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { media, Spaces } from 'theme';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 
 const Title = styled.div`
   text-align: center;
@@ -92,6 +94,25 @@ const cards = [
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_USU')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_USU');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
 
   return (
     <Page>
