@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent } from 'react';
 import { StyledInput } from 'components';
 import { useRecoilState } from 'recoil';
@@ -25,7 +26,10 @@ export const Search = () => {
     const results = fuse.search(query);
     setSearchResults(results);
     console.log('these are search results', searchResults);
+    router.push('/search');
   };
+
+  const router = useRouter();
 
   return (
     <StyledInput
