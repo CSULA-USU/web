@@ -1,17 +1,9 @@
 import { useRouter } from 'next/router';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { StyledInput } from 'components';
-import { useRecoilState } from 'recoil';
-import { queryState, searchResultState, ResultsType } from 'atoms';
-import data from 'data/directory.json';
-import Fuse from 'fuse.js';
-
-const list = data;
 
 export const Search = () => {
-  const [query, setQuery] = useRecoilState<string>(queryState);
-  const [searchResults, setSearchResults] =
-    useRecoilState<ResultsType[]>(searchResultState);
+  const [searchQuery, setQuery] = useState<string>('');
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -19,21 +11,14 @@ export const Search = () => {
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const options = {
-      keys: ['title', 'url', 'description', 'tags'],
-    };
-    const fuse = new Fuse(list, options);
-    const results = fuse.search(query);
-    setSearchResults(results);
-    console.log('these are search results', searchResults);
-    router.push('/search');
+    router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
   };
 
   const router = useRouter();
 
   return (
     <StyledInput
-      input={query}
+      input={searchQuery}
       onChange={handleOnChange}
       onSubmit={handleFormSubmit}
     />
