@@ -52,9 +52,21 @@ export default function Search() {
 
   useEffect(() => {
     const { query } = router.query;
-    console.log('tis search query:', query);
     setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
   }, []);
+
+  useEffect(() => {
+    const options = {
+      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
+      minMatchCharLength: 2,
+      threshold: 0.1,
+    };
+
+    const fuse = new Fuse(data, options);
+    const queryString = typeof searchQuery === 'string' ? searchQuery : '';
+
+    setResults(fuse.search(queryString));
+  }, [searchQuery]);
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
