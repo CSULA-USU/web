@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Colors, Spaces, media } from 'theme';
 import Link from 'next/link';
 import { DropdownNav } from './DropdownNav';
+import { Search } from 'modules/Search';
 
 const NavItemsContainer = styled.nav`
   display: flex;
@@ -46,5 +47,6 @@ export const NavItems = () => (
     ></DropdownNav>
     <Link href="/employment">Employment</Link>
     <Link href="/governance">Governance</Link>
+    <Search />
   </NavItemsContainer>
 );

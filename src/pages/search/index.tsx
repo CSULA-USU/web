@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import { ResultsType } from 'atoms';
 import { useRecoilValue } from 'recoil';
 import { Page, Header } from 'modules';
 import { FluidContainer, Typography } from 'components';
@@ -34,7 +33,7 @@ const SearchCard = styled.div`
   border: 1 rem solid black;
   display: flex;
   flex-direction: column;
-  height: 160px;
+  height: 200px;
   justify-content: space-between;
   margin-top: 32px;
   padding: 24px;
@@ -43,6 +42,15 @@ const SearchCard = styled.div`
     border: 1px solid black;
   }
 `;
+
+interface SearchResult {
+  title: string;
+  url: string;
+  description: string;
+  tags: string[];
+}
+
+type ResultsType = Fuse.FuseResult<SearchResult>;
 
 export default function Search() {
   const searchResults = useRecoilValue<ResultsType[]>(searchResultState);
@@ -97,9 +105,11 @@ export default function Search() {
                     {title}
                   </Typography>
                 </Link>
-                <div>{description}</div>
+                <Typography as="p" variant="copy">
+                  {description}
+                </Typography>
                 <Link href={url}>
-                  <Typography>calstatelausu.org{url}</Typography>
+                  <Typography color="gold">calstatelausu.org{url}</Typography>
                 </Link>
               </SearchCard>
             </div>

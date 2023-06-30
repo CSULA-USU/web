@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
+import { useBreakpoint } from 'hooks';
 
 export interface SearchProps {
   input?: string;
@@ -10,8 +12,6 @@ export interface SearchProps {
 
 const OuterContainer = styled.div`
   display: flex;
-  margin: 0 auto;
-  padding: 36px 72px;
 `;
 
 const InputContainerForm = styled.form`
@@ -19,7 +19,6 @@ const InputContainerForm = styled.form`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
   border-radius: 120px;
   gap: 12px;
 `;
@@ -47,11 +46,19 @@ const Input = styled.input`
 `;
 
 export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
+  const { isDesktop } = useBreakpoint();
+
   return (
     <OuterContainer>
       <InputContainerForm onSubmit={onSubmit}>
-        <Input placeholder="Search" value={input} onChange={onChange} />
-        <FaSearch size={'1.25em'} color="#FFF" />
+        {isDesktop ? (
+          ''
+        ) : (
+          <Input placeholder="Search" value={input} onChange={onChange} />
+        )}
+        <Link href="/search">
+          <FaSearch size={'1.25em'} color="#FFF" />
+        </Link>
       </InputContainerForm>
     </OuterContainer>
   );
