@@ -36,7 +36,7 @@ const SearchCard = styled.div`
   height: 200px;
   justify-content: space-between;
   margin-top: 32px;
-  padding: 24px;
+  padding: 16px;
   :hover {
     border-radius: 16px;
     border: 1px solid black;
