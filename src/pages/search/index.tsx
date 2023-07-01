@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Page, Header } from 'modules';
 import { FluidContainer, Typography } from 'components';
@@ -54,11 +54,16 @@ type ResultsType = Fuse.FuseResult<SearchResult>;
 
 export default function Search() {
   const searchResults = useRecoilValue<ResultsType[]>(searchResultState);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [results, setResults] = useState<ResultsType[]>(searchResults);
   const router = useRouter();
 
   useEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+
     const { query } = router.query;
     setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
   }, []);
@@ -147,6 +152,7 @@ export default function Search() {
             value={searchQuery}
             onChange={handleOnChange}
             placeholder="Search the U-SU"
+            ref={searchInputRef}
           />
         </form>
       </Header>
