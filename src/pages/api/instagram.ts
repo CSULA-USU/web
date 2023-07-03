@@ -11,7 +11,7 @@ export default async function handler(
 
   let IG_TOKEN_USU = '';
   let IG_TOKEN_GRAFFIX = '';
-
+  let IG_TOKEN_CSI = '';
   await fetchTokens()
     .then((response) => {
       response.map((item: any) => {
@@ -21,6 +21,9 @@ export default async function handler(
             break;
           case 'IG_TOKEN_GRAFFIX':
             IG_TOKEN_GRAFFIX = item.token;
+            break;
+          case 'IG_TOKEN_CSI':
+            IG_TOKEN_CSI = item.token;
             break;
         }
       });
@@ -34,9 +37,13 @@ export default async function handler(
   }
 
   /*eslint no-unused-vars: "off"*/
-  const tokens: Pick<{ [key in Departments]: string }, 'usu' | 'graffix'> = {
+  const tokens: Pick<
+    { [key in Departments]: string },
+    'usu' | 'graffix' | 'csi'
+  > = {
     usu: IG_TOKEN_USU,
     graffix: IG_TOKEN_GRAFFIX,
+    csi: IG_TOKEN_CSI,
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
