@@ -5,20 +5,8 @@
     "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions",
     "tags": [
       "art",
-      "university",
-      "student",
-      "union",
-      "california",
-      "state",
-      "los",
-      "angeles",
-      "csula",
-      "cal",
-      "la",
-      "u-su",
       "graffix",
       "graphics",
-      "programming",
       "events",
       "campaign",
       "promo",
@@ -31,30 +19,383 @@
     ]
   },
   {
-    "title": "U-SU Graffix",
-    "url": "/graffix",
-    "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions",
+    "title": "About The U-SU",
+    "url": "/about",
+    "description": "Mission: With open doors and minds, we provide space and opportunities, enabling Golden Eagles to soar. Vision: To become Cal State LA's hub for connection and growth.",
     "tags": [
-      "university",
-      "student",
-      "union",
-      "california",
-      "state",
-      "los",
-      "angeles",
-      "csula",
-      "cal",
-      "la",
-      "u-su",
+      "history",
+      "organizational chart",
+      "staff chart",
+      "values",
+      "mission statement",
+      "mission",
+      "vision"
+    ]
+  },
+  {
+    "title": "Contact Us",
+    "url": "/contact",
+    "description": "University-Student Union, 5154 State University Dr, Los Angeles CA, 90032",
+    "tags": ["contact", "address", "phone numbers", "zip code", "street"]
+  },
+  {
+    "title": "Services",
+    "url": "/about/services",
+    "description": "The programs and services hosted by the University-Student Union are funded by the student union fee and are available to all students free of charge.",
+    "tags": [
+      "services",
+      "nap pods",
+      "relaxation station",
+      "lactation",
+      "reflection",
+      "diaper changing",
+      "gender-inclusive",
+      "restrooms"
+    ]
+  },
+  {
+    "title": "Staff",
+    "url": "/staff",
+    "description": "Meet the staff of the U-SU.",
+    "tags": [
+      "staff",
+      "directors",
+      "administation",
+      "coordinators",
+      "technician",
+      "assistant"
+    ]
+  },
+  {
+    "title": "Tenants",
+    "url": "/about/tenants",
+    "description": "Our services and facilities departments provide convenience and easy availability for on-the-go students.",
+    "tags": [
+      "tenants",
+      "alumni association",
+      "associated students, incorporated",
+      "asi",
+      "page",
+      "college of professional and global education",
+      "information technology services",
+      "its",
+      "wells fargo",
+      "bank",
+      "sbarro",
+      "starbucks"
+    ]
+  },
+  {
+    "title": "Departments",
+    "url": "/departments",
+    "description": "",
+    "tags": [
+      "departments",
+      "center for student involvement",
+      "csi",
+      "cross cultural centers",
+      "ccc",
       "graffix",
-      "graphics",
-      "programming",
+      "operations",
+      "recreation"
+    ]
+  },
+  {
+    "title": "Cross Cultural Centers",
+    "url": "/ccc",
+    "description": "With a commitment to increasing cross-cultural awareness, we offer a wide variety of programs and services that explore both the shared and unique experiences, histories, and heritages of our diverse community.",
+    "tags": [
+      "ccc",
+      "cross cultural centers",
+      "student resource",
+      "apisrc",
+      "asian pacific islander",
+      "chicana chicano latina latino",
+      "gender and sexuality",
+      "pan african",
+      "black",
+      "gay",
+      "trans",
+      "queer",
+      "cultural graduates",
+      "pride",
+      "nuestra"
+    ]
+  },
+  {
+    "title": "Asian Pacific Islander Resource Center",
+    "url": "/ccc/apisrc",
+    "description": "The APISRC provides services and support for students who identity as, or are interested in, Asian American, Pacific Islander, and South Asian/Desi community cultural issues.",
+    "tags": [
+      "apisrc",
+      "asian pacific islander",
+      "cultural graduates",
+      "ccc",
+      "cross cultural centers"
+    ]
+  },
+  {
+    "title": "Chicana/o Latina/o Student Resource Center",
+    "url": "/ccc/clsrc",
+    "description": "The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues. The CLSRC also develops long and short term programs and events focusing on issues of importance to the Chicana/o Latina/o community.",
+    "tags": [
+      "clsrc",
+      "chicana/o latina/o",
+      "ccc",
+      "cross cultural centers",
+      "cultural graduates",
+      "nuestra"
+    ]
+  },
+  {
+    "title": "Cultural Graduation",
+    "url": "/ccc/cultural-grads",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "nuestra",
+      "pride",
+      "black",
+      "native",
+      "apida"
+    ]
+  },
+  {
+    "title": "Gender and Sexuality Resource Center",
+    "url": "/ccc/gsrc",
+    "description": "The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.",
+    "tags": [
+      "gsrc",
+      "pride",
+      "gay",
+      "ccc",
+      "gender and sexuality",
+      "cultural graduates",
+      "trans",
+      "queer"
+    ]
+  },
+  {
+    "title": "Distinguished Women's Awards",
+    "url": "/ccc/distinguished-women-awards",
+    "description": "This event honors women from Cal State LA for their many outstanding achievements and contributions to the community.",
+    "tags": ["ccc", "distinguished women's awards"]
+  },
+  {
+    "title": "Pan African Student Resource Center",
+    "url": "/ccc/pasrc",
+    "description": "The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues. The PASRC also develops long and short term programs and events focusing on issues of importance to the Pan African community.",
+    "tags": ["pasrc", "black", "ccc", "cultural graduates"]
+  },
+  {
+    "title": "Center for Student Involvement",
+    "url": "/csi",
+    "description": "The Center for Student Involvement empowers Golden Eagles to engage in transformative opportunities, build community, and create positive change.",
+    "tags": [
+      "csi",
+      "center for student involvement",
+      "programs",
+      "fraternity",
+      "sorority",
+      "geek",
+      "golden eagle event krew",
+      "student organizations",
+      "lead",
+      "leadership enrichment advocacy and development"
+    ]
+  },
+  {
+    "title": "Center for Student Involvement Forms",
+    "url": "/csi/forms",
+    "description": "Forms that pertain to the Center for Student Involvement",
+    "tags": [
+      "csi",
+      "center for student involvement",
+      "forms",
+      "student organization",
+      "club",
       "events",
+      "permit"
+    ]
+  },
+  {
+    "title": "Fraternity and Sorority Life",
+    "url": "/csi/fsl",
+    "description": "We have over 25 fraternities and sororities on campus from which students experience relationships, community service, leadership development, networking, and personal growth.",
+    "tags": [
+      "csi",
+      "fsl",
+      "fraternity",
+      "sorority",
+      "greek",
+      "chapters",
+      "co-ed",
+      "rush"
+    ]
+  },
+  {
+    "title": "Golden Eagle Event Krew (GEEK)",
+    "url": "/csi/geek",
+    "description": "Golden Eagle Event Krew (GEEK) is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for Center for Student Involvement events.",
+    "tags": ["csi", "geek", "golden eagle event krew", "volunteer", "events"]
+  },
+  {
+    "title": "Recognized Student Organizations",
+    "url": "/csi/student-orgs",
+    "description": "Cal State LA is home to over 120 recognized student organizations that host events and meetings to engage students in community building, entertainment, and professional development.",
+    "tags": [
+      "csi",
+      "recognized student organizations",
+      "presence",
+      "forms",
+      "clubs",
+      "code of conduct"
+    ]
+  },
+  {
+    "title": "Graffix ACUI Awards",
+    "url": "/graffix/acui-awards",
+    "description": "Steal This Idea is the ACUI's marketing and graphics competition to recognize the year's best promotional ideas throughout the regions and presents them at the conference. The winning entries are selected based on concept, design, editorial content, and effectiveness.",
+    "tags": ["graffix", "acui awards", "graphic design", "art", "designer"]
+  },
+  {
+    "title": "Operations",
+    "url": "/operations",
+    "description": "The Operations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.",
+    "tags": [
+      "operations",
+      "building maintenance",
+      "custodial services",
+      "media",
+      "union meeting",
+      "events"
+    ]
+  },
+  {
+    "title": "Meeting Rooms",
+    "url": "/operations/meeting-rooms",
+    "description": "Rent out a meeting space at CSULA U-SU. Current locations available to book are Los Angeles A/B/C (ABC), Theater, Alhambra, San Gabriel, U-SU Plaza rooms.",
+    "tags": ["operations", "meeting rooms", "boardroom"]
+  },
+  {
+    "title": "Recreation",
+    "url": "/recreation",
+    "description": "Recreation is comprised of the Recreation Fitness Center Center and Recreation Esports. The Recreation Fitness Center is located on the basement level of the U-SU, and will be open to all students, staff and faculty.",
+    "tags": ["recreation", "fitness center", "esports", "gene", "basement", ""]
+  },
+  {
+    "title": "Golden Eagle Nutrition Education (GENE)",
+    "url": "/recreation/gene",
+    "description": "Welcome to the Golden Eagle Nutrition Education (GENE) program! Here, you can sign up for personalized nutrition education sessions provided by our Cal State LA Nutritional Science students.",
+    "tags": [
+      "recreation",
+      "gene",
+      "nutrition education",
+      "coach",
+      "fitness center"
+    ]
+  },
+  {
+    "title": "Governance",
+    "url": "governance",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": [
+      "governance",
+      "board of directors",
+      "vote",
+      "public documents",
+      "committees",
+      "student leader",
+      "elections",
+      "archives"
+    ]
+  },
+  {
+    "title": "How to Vote",
+    "url": "/governance/how-to-vote",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": ["vote", "board of directors", "governance", "elections"]
+  },
+  {
+    "title": "Meet the Board",
+    "url": "governance/meet-the-board",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": [
+      "board members",
+      "student representatives",
+      "director",
+      "dean",
+      "faculty",
+      "alumni",
+      "advisor"
+    ]
+  },
+  {
+    "title": "Public Documents",
+    "url": "governance/public-documents",
+    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
+    "tags": [
+      "public documents",
+      "financial statements",
+      "bylaws",
+      "conflict of interest",
+      "policy",
+      "tax exemption",
+      "irs determination",
+      "annual registration renewal",
+      "articles of incorporation",
+      "auxiliary operating agreement",
+      "code of procedures",
+      "form 990",
+      "199"
+    ]
+  },
+  {
+    "title": "Public Document Archives",
+    "url": "/governance/public-document-archives",
+    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
+    "tags": [
+      "archives",
+      "agenda",
+      "minutes",
+      "board meeting",
+      "public documents"
+    ]
+  },
+  {
+    "title": "Student Leader Elections",
+    "url": "governance/student-leader-elections",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": [
+      "student leader",
+      "elections",
+      "government",
+      "asi",
+      "associated students, incorporated",
+      "board of directors",
+      "candidate",
       "campaign",
-      "promo",
-      "promotion",
-      "print",
-      "acui"
+      "vote"
+    ]
+  },
+  {
+    "title": "Events",
+    "url": "/events",
+    "description": "The University-Student Union hosts various events throughout the school year. Make sure to check back here to stay up to date with the latest events.",
+    "tags": ["events", "calendar", "csi", "center for student involvement"]
+  },
+  {
+    "title": "Employment",
+    "url": "/employment",
+    "description": "Apply here for full-time or student assistant positions.",
+    "tags": [
+      "employment",
+      "full-time",
+      "student-assistant",
+      "jobs",
+      "applications",
+      "handshake"
     ]
   }
 ]
