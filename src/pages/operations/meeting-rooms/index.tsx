@@ -18,7 +18,7 @@ export default function MeetingRooms() {
     {
       title: 'Members',
       children:
-        'A list of members organizing, staffing and/or volunteering will be required to obtain a reservation confirmation for all outdoor events (no guest list needed)',
+        'A list of members organizing, staffing and/or volunteering will be required to obtain a reservation confirmation for all outdoor events (no guest list needed).',
       imgSrc: '/vectors/operations/teams.svg',
       imgAlt: 'teams image',
     },
@@ -52,9 +52,9 @@ export default function MeetingRooms() {
       <FluidContainer>
         <Header title="Meeting Rooms">
           Rent out a meeting space at CSULA U-SU. Current locations available to
-          book are Los Angeles A/B/C (ABC), Theater, Alhambra, San Gabriel, U-SU
-          Plaza rooms. We are currently not accepting reservations from
-          off-campus sponsors.
+          book are Los Angeles A/B/C, Theater, Alhambra, San Gabriel, U-SU Plaza
+          rooms. We are currently not accepting reservations from off-campus
+          sponsors.
         </Header>
       </FluidContainer>
       <FluidContainer

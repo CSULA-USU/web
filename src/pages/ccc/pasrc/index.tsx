@@ -140,11 +140,12 @@ export default function PASRC() {
               ></Image>
             )}
             The Pan African Student Resource Center (PASRC) was founded in 1990.
-            The PASRC provides services and support for students who identify
-            as, or are interested in, Pan African community and cultural issues.
-            The PASRC also develops long and short term programs and events
-            focusing on issues of importance to the Pan African community in the
-            U.S., Caribbean, Africa and Central/South America and worldwide.
+            The PASRC provides services and support for students who identify as
+            Pan African, or are interested in, Pan African community and
+            cultural issues. The PASRC also develops long and short term
+            programs and events focusing on issues of importance to the Pan
+            African community in the U.S., Caribbean, Africa and Central/South
+            America and worldwide.
           </Header>
           {!isDesktop && (
             <Image

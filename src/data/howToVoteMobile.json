@@ -2,30 +2,18 @@
   {
     "title": "Getting into GET",
     "content": [
-      "Once you're in GET main menu, you should be able to see Cal State LA Elections and that's where you want to go.",
-      "The link provided below links to our campus portal, where you can also access GET.",
-      "If you were enrolled in DUO authentication... Follow instructions to complete the DUO authentication process."
+      "In the GET main menu, tap Cal State LA Voting.",
+      "If you were enrolled in DUO authentication, follow the instructions to complete the DUO authentication process."
     ],
     "src": "https://i.imgur.com/A1yL2gy.png",
     "alt": "login",
     "width": "800"
   },
   {
-    "title": "Voting Options",
-    "content": [
-      "Once you reached into the Cal State LA's Elections.",
-      "Click on Cal State LA Voting Summary."
-    ],
-    "src": "https://i.imgur.com/wkkRIPT.png",
-    "alt": "voting options",
-    "width": "800"
-  },
-  {
     "title": "Voting Summary",
     "content": [
-      "This is the main menu for the voting positions, it will display the display the ones you voted and not voted.",
-      "Click the position you would like to vote for, once clicked it will bring you to the candidates.",
-      "For more information on the Candidates and their platforms click the button below."
+      "Tap the position you would like to vote for, it will display the candidates for that position.",
+      "For more information on the candidates and their platforms tap the link shown below."
     ],
     "src": "https://i.imgur.com/gJv7k2i.png",
     "alt": "voting summary",
@@ -34,10 +22,10 @@
   {
     "title": "Electing a Candidate",
     "content": [
-      "Once ready to Vote, Click on the office you would like to Vote. If you would like to vote for President office, Click on the hyperlink President. This will take you to the screen below which brings the candidates competing for the office of President.",
-      "Once you click on the Elect button next to the candidate that you would like to vote, then click on the Vote button. Voting status will change from Not Voted to Voted.",
-      "Repeat the process for all the offices that have candidates for election. Once voted you will not be able to change the selection. So Click on the vote button only after finalizing your choice.",
-      "You should be able to choose representative for your college. For example, If you are student of College of Natural and Social Sciences then you will be able to vote for the representative from your college."
+      "Once you have selected your candidate, the status will change from Not Voted to Voted.",
+      "Repeat this process for all offices that have candidates up for election. Once you have voted, you will not be able to change your selection.",
+      "You will also be able to choose a representative for your college.",
+      "For example, If you are student of the College of Natural and Social Sciences, you will be able to vote for the representative from your respective college."
     ],
     "src": "https://i.imgur.com/Owhg02m.png",
     "alt": "voting summary",
