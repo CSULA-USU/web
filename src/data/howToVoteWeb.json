@@ -9,34 +9,33 @@
   {
     "title": "Network Credentials",
     "content": [
-      "Click on MyCalStateLA",
-      "Enter network Credentials",
-      "(If you were enrolled in DUO authentication... Follow instructions to complete the DUO authentication process)"
+      "Click on MyCalStateLA.",
+      "Enter your network Credentials.",
+      "(If you were enrolled in DUO authentication, follow the instructions to complete the DUO authentication process.)"
     ],
     "src": "/governance/how-to-vote/web-2.png",
     "alt": "login",
     "width": "300"
   },
   {
-    "title": "CalState LA Elections menu",
-    "content": ["Click on CalState LA Elections menu item below."],
+    "title": "CalState LA Elections Menu",
+    "content": ["Click on the CalState LA Elections menu item below."],
     "src": "/governance/how-to-vote/web-3.png",
     "alt": "login",
     "width": "400"
   },
   {
     "title": "Voting Options",
-    "content": ["This brings to Voting Options below."],
+    "content": ["This brings up the Voting Options shown below."],
     "src": "/governance/how-to-vote/web-4.png",
     "alt": "login",
     "width": "600"
   },
   {
-    "title": "Summary page",
+    "title": "Summary Page",
     "content": [
-      "Click on CalStateLA Voting Summary page",
-      "For more information on the Candidates and their platforms click on the link below. This link takes you to the ASI Website.",
-      "http://www.calstatela.edu/asi/elections"
+      "Click on the CalStateLA Voting Summary page.",
+      "For more information on the Candidates visit: http://www.calstatela.edu/asi/elections"
     ],
     "src": "/governance/how-to-vote/web-5.png",
     "alt": "login",
@@ -45,7 +44,8 @@
   {
     "title": "Office Vote",
     "content": [
-      "Once ready to Vote, Click on the office you would like to Vote. If would like to vote for President office, Click on the hyperlink President. This will takeyou to the screen below which brings the candidates competing for the office of President."
+      "Once ready to vote, click on the office you would like to vote for.",
+      "This will take you to the screen below which displays the candidates competing for the selected office."
     ],
     "src": "/governance/how-to-vote/web-6.png",
     "alt": "login",
@@ -53,9 +53,7 @@
   },
   {
     "title": "Elect Candidate",
-    "content": [
-      "Once you click on the Elect button next to the candidate that you would like to vote"
-    ],
+    "content": ["Next, click on the Elect button for the chosen candidate."],
     "src": "/governance/how-to-vote/web-7.png",
     "alt": "login",
     "width": "500"
@@ -63,44 +61,44 @@
   {
     "title": "Voting Status",
     "content": [
-      "Then click on the Vote button. Voting status will change from Not Voted to Voted"
+      "Then, click on the Vote button. Voting status will change from Not Voted to Voted.",
+      "Repeat the process for all offices that have candidates up for election.",
+      "Once you have voted, you will not be able to change your selection."
     ],
     "src": "/governance/how-to-vote/web-8.png",
     "alt": "login",
     "width": "500"
   },
   {
-    "title": "Choosing Representative",
+    "title": "Choosing a Representative",
     "content": [
-      "Repeat the process for all the offices that have candidates for election. Once voted you will not be able to change the selection. So Click on the vote button only after finalizing your choice.",
-      "You should be able to choose representative for your college.Example: If you are student of College of Natural and Social Sciences then you will be able to vote for the representative from your college."
+      "You can choose a representative for your respective college.",
+      "Example: If you are student of the College of Natural and Social Sciences then you will be able to vote for the representative from your college."
     ],
     "src": "/governance/how-to-vote/web-9.png",
     "alt": "login",
     "width": "500"
   },
   {
-    "title": "Eight Votes",
-    "content": [
-      "BOD Elections:There are eight open positions for this office. You can elect and vote up to 8 Candidates."
-    ],
+    "title": "Board of Directors",
+    "content": ["You can select and vote for up to 8 candidates."],
     "src": "/governance/how-to-vote/web-10.png",
     "alt": "login",
     "width": "500"
   },
   {
-    "title": "Too Many Votes Error",
+    "title": "Too Many Votes",
     "content": [
-      "BOD Elections: There are eight open positions for this office. You can elect and vote up to 8 Candidates."
+      "If you vote for more than eight candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-12.png",
     "alt": "login",
     "width": "500"
   },
   {
-    "title": "No Votes Error",
+    "title": "No Votes",
     "content": [
-      "If you elect no candidates and try to submit your vote… you will get the following message."
+      "If you select no candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-13.png",
     "alt": "login",

@@ -90,7 +90,7 @@ const offerings = [
   {
     title: 'Cultural Education',
     children:
-      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom',
+      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
     imgSrc: '/vectors/ccc/teaching.svg',
     imgAlt: 'cultural education',
     href: 'ccc/apisrc',
@@ -98,7 +98,7 @@ const offerings = [
   {
     title: 'Cultural Engagement',
     children:
-      'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy',
+      'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy.',
     imgSrc: '/vectors/ccc/winner.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -106,7 +106,7 @@ const offerings = [
   {
     title: 'Cultural Student Development',
     children:
-      'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience',
+      'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience.',
     imgSrc: '/vectors/ccc/education.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -114,7 +114,7 @@ const offerings = [
   {
     title: 'Cultural Environment Enhancement',
     children:
-      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources available within the center',
+      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center.',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -262,7 +262,7 @@ export default function APISRC() {
       </div>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          The APISRC continues to serve the mission through 4 components:
+          The APISRC continues to serve the mission through four components:
         </Typography>
         <OfferingsContainer>
           {offerings.map((props) => (

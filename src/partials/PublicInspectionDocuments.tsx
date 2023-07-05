@@ -84,7 +84,7 @@ const downloads: DownloadSectionProps[] = [
         The policies that govern the operation of the Union as a student body
         center for the benefit of the students, faculty, staff, and Alumni and
         to conform to the policy set forth by the Trustees of the California
-        State University system and by California State University, Los Angeles
+        State University system and by California State University, Los Angeles.
       </Typography>
     ),
     button: {
