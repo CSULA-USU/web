@@ -55,6 +55,17 @@ export const Footer = () => (
       <FooterTopLinks>
         <div>
           <Typography as="h5" color="white">
+            Building Hours
+          </Typography>
+          <Typography color="primary" size="sm" lineHeight="2.4">
+            Monday - Friday: 7 AM - 7 PM
+          </Typography>
+          <Typography color="primary" size="sm" lineHeight="2.4">
+            Saturday and Sunday: Closed
+          </Typography>
+        </div>
+        <div>
+          <Typography as="h5" color="white">
             Involvement
           </Typography>
           <Link href={'/employment'}>
