@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import { ResultsType, queryState } from 'atoms';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { Page, Header } from 'modules';
 import { FluidContainer, Typography } from 'components';
 import { searchResultState } from 'atoms';
-import data from 'data/directory.json';
+import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
 
 const SearchBig = styled.input`
@@ -33,23 +33,56 @@ const SearchCard = styled.div`
   border: 1 rem solid black;
   display: flex;
   flex-direction: column;
-  height: 160px;
+  height: 200px;
   justify-content: space-between;
   margin-top: 32px;
-  padding: 24px;
+  padding: 16px;
   :hover {
     border-radius: 16px;
     border: 1px solid black;
   }
 `;
 
+interface SearchResult {
+  title: string;
+  url: string;
+  description: string;
+  tags: string[];
+}
+
+type ResultsType = Fuse.FuseResult<SearchResult>;
+
 export default function Search() {
   const searchResults = useRecoilValue<ResultsType[]>(searchResultState);
-  const [query, setQuery] = useRecoilState<string>(queryState);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [results, setResults] = useState<ResultsType[]>(searchResults);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+
+    const { query } = router.query;
+    setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
+  }, []);
+
+  useEffect(() => {
+    const options = {
+      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
+      minMatchCharLength: 2,
+      threshold: 0.1,
+    };
+
+    const fuse = new Fuse(data, options);
+    const queryString = typeof searchQuery === 'string' ? searchQuery : '';
+
+    setResults(fuse.search(queryString));
+  }, [searchQuery]);
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -57,10 +90,11 @@ export default function Search() {
     const options = {
       keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
       minMatchCharLength: 2,
-      threshold: 0.5,
+      threshold: 0.1,
     };
     const fuse = new Fuse(data, options);
-    setResults(fuse.search(query));
+    const queryString = typeof searchQuery === 'string' ? searchQuery : '';
+    setResults(fuse.search(queryString));
   };
 
   const content: JSX.Element | null = results ? (
@@ -76,9 +110,11 @@ export default function Search() {
                     {title}
                   </Typography>
                 </Link>
-                <div>{description}</div>
+                <Typography as="p" variant="copy">
+                  {description}
+                </Typography>
                 <Link href={url}>
-                  <Typography>calstatelausu.org{url}</Typography>
+                  <Typography color="gold">calstatelausu.org{url}</Typography>
                 </Link>
               </SearchCard>
             </div>
@@ -113,9 +149,10 @@ export default function Search() {
         <form onSubmit={handleOnSubmit}>
           <SearchBig
             type="text"
-            value={query}
+            value={searchQuery}
             onChange={handleOnChange}
             placeholder="Search the U-SU"
+            ref={searchInputRef}
           />
         </form>
       </Header>

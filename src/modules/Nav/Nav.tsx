@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useBreakpoint } from 'hooks';
 import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
+import { Search } from 'modules/Search';
 
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
@@ -41,6 +42,7 @@ export const Nav = () => {
         />
       </Link>
       <DesktopNav />
+      <Search />
     </FluidContainer>
   );
 };
