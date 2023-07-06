@@ -15,6 +15,7 @@ export default async function handler(
   let IG_TOKEN_RECREATION = '';
   let IG_TOKEN_CCC = '';
   let IG_TOKEN_APISRC = '';
+  let IG_TOKEN_CLSRC = '';
   let { data } = await supabase.from('instagram_tokens').select();
 
   data?.map((item: any) => {
@@ -37,6 +38,9 @@ export default async function handler(
       case 'IG_TOKEN_APISRC':
         IG_TOKEN_APISRC = item.token;
         break;
+      case 'IG_TOKEN_CLSRC':
+        IG_TOKEN_CLSRC = item.token;
+        break;
     }
   });
 
@@ -46,7 +50,8 @@ export default async function handler(
     !IG_TOKEN_CSI ||
     !IG_TOKEN_RECREATION ||
     !IG_TOKEN_CCC ||
-    !IG_TOKEN_APISRC
+    !IG_TOKEN_APISRC ||
+    !IG_TOKEN_CLSRC
   ) {
     throw new Error('One or more Instagram auth tokens may be missing');
   }
@@ -54,7 +59,7 @@ export default async function handler(
   /*eslint no-unused-vars: "off"*/
   const tokens: Pick<
     { [key in Departments]: string },
-    'usu' | 'graffix' | 'csi' | 'recreation' | 'ccc' | 'apisrc'
+    'usu' | 'graffix' | 'csi' | 'recreation' | 'ccc' | 'apisrc' | 'clsrc'
   > = {
     usu: IG_TOKEN_USU,
     graffix: IG_TOKEN_GRAFFIX,
@@ -62,6 +67,7 @@ export default async function handler(
     recreation: IG_TOKEN_RECREATION,
     ccc: IG_TOKEN_CCC,
     apisrc: IG_TOKEN_APISRC,
+    clsrc: IG_TOKEN_CLSRC,
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
