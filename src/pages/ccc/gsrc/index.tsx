@@ -226,6 +226,16 @@ export default function GSRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="gsrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="gender and sexuality student resource center logo"
+            src="/departments/ccc/gsrc/gsrc.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }

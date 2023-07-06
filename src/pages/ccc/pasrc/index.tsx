@@ -210,6 +210,16 @@ export default function PASRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="pasrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="pan african student resource center logo"
+            src="/departments/ccc/pasrc/pasrc.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }
