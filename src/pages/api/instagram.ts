@@ -17,6 +17,7 @@ export default async function handler(
   let IG_TOKEN_APISRC = '';
   let IG_TOKEN_CLSRC = '';
   let IG_TOKEN_PASRC = '';
+  let IG_TOKEN_GSRC = '';
   let { data } = await supabase.from('instagram_tokens').select();
 
   data?.map((item: any) => {
@@ -45,6 +46,9 @@ export default async function handler(
       case 'IG_TOKEN_PASRC':
         IG_TOKEN_PASRC = item.token;
         break;
+      case 'IG_TOKEN_GSRC':
+        IG_TOKEN_GSRC = item.token;
+        break;
     }
   });
 
@@ -55,7 +59,9 @@ export default async function handler(
     !IG_TOKEN_RECREATION ||
     !IG_TOKEN_CCC ||
     !IG_TOKEN_APISRC ||
-    !IG_TOKEN_CLSRC
+    !IG_TOKEN_CLSRC ||
+    !IG_TOKEN_PASRC ||
+    !IG_TOKEN_GSRC
   ) {
     throw new Error('One or more Instagram auth tokens may be missing');
   }
@@ -71,6 +77,7 @@ export default async function handler(
     | 'apisrc'
     | 'clsrc'
     | 'pasrc'
+    | 'gsrc'
   > = {
     usu: IG_TOKEN_USU,
     graffix: IG_TOKEN_GRAFFIX,
@@ -80,6 +87,7 @@ export default async function handler(
     apisrc: IG_TOKEN_APISRC,
     clsrc: IG_TOKEN_CLSRC,
     pasrc: IG_TOKEN_PASRC,
+    gsrc: IG_TOKEN_GSRC,
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
