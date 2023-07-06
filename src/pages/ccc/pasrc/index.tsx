@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
@@ -19,29 +18,6 @@ const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg',
-    alt: 'Black grad celebration',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg',
-    alt: 'African drumming performance',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-family.jpg',
-    alt: 'Picture of grad and family',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-performance.jpg',
-    alt: 'Black grad performance',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-side.jpg',
-    alt: 'A graduating student posing for a picture',
-  },
-];
 
 const hours = [
   {
@@ -234,22 +210,6 @@ export default function PASRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="pasrc" />
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="pan african student resource center header"
-              src="/departments/ccc/pasrc/pasrc.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
     </Page>
   );
 }
