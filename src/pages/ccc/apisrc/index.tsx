@@ -3,16 +3,18 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaDiscord, FaTiktok } from 'react-icons/fa';
-
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,57 +24,6 @@ const buttons = [
   {
     text: 'Volunteer',
     href: 'https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3SKXNpO6eVxLkvnb3NWEIOBUNjIzMUxQNjVERkhDWUY4NURMTjZLUEkwSC4u',
-  },
-];
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/apisrc/carousel/night-market-staff.jpg',
-    alt: 'U-SU staff at the Asian American and Pacific Islander Night Market',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/financial-literacy.jpg',
-    alt: 'Students learning about the importance of money management, saving, and investing at the Financial Literacy Workshop',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/self-defense.jpg',
-    alt: 'Students learning self-defense techniques at the Intro to Self Defense Workshop',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
-    alt: 'CCC staff and holiday photos',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/lunar-new-year.png',
-    alt: 'A CSI and CCC collaboration for Lunar New Year',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/center.png',
-    alt: 'Midterm study session',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/book-club.jpg',
-    alt: 'RISE book club',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/art.png',
-    alt: 'Make your own holiday stocking event',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/xmas-photo-2.png',
-    alt: 'Holiday photo shoot',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/grad-drummer.jpg',
-    alt: 'Drummers for APIDA grad',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/kalahi.jpg',
-    alt: 'Kalahi meeting',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/open-house.jpg',
-    alt: 'APISRC open house',
   },
 ];
 
@@ -90,7 +41,7 @@ const offerings = [
   {
     title: 'Cultural Education',
     children:
-      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom',
+      'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
     imgSrc: '/vectors/ccc/teaching.svg',
     imgAlt: 'cultural education',
     href: 'ccc/apisrc',
@@ -98,7 +49,7 @@ const offerings = [
   {
     title: 'Cultural Engagement',
     children:
-      'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy',
+      'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy.',
     imgSrc: '/vectors/ccc/winner.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -106,7 +57,7 @@ const offerings = [
   {
     title: 'Cultural Student Development',
     children:
-      'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience',
+      'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience.',
     imgSrc: '/vectors/ccc/education.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -114,7 +65,7 @@ const offerings = [
   {
     title: 'Cultural Environment Enhancement',
     children:
-      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources available within the center',
+      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center.',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
     imgAlt: 'apisrc',
     href: 'ccc/apisrc',
@@ -133,6 +84,26 @@ export default function APISRC() {
     justify-content: center;
     gap: ${Spaces.xl};
   `;
+
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_APISRC')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_APISRC');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
 
   return (
     <Page>
@@ -262,7 +233,7 @@ export default function APISRC() {
       </div>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          The APISRC continues to serve the mission through 4 components:
+          The APISRC continues to serve the mission through four components:
         </Typography>
         <OfferingsContainer>
           {offerings.map((props) => (
@@ -274,22 +245,17 @@ export default function APISRC() {
           ))}
         </OfferingsContainer>
       </FluidContainer>
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="asian pacific islander student resource center logo"
-              src="/departments/ccc/apisrc/apisrc-header.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
+      <InstagramFeed department="apisrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="asian pacific islander student resource center logo"
+            src="/departments/ccc/apisrc/apisrc-header.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }

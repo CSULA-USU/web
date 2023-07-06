@@ -3,35 +3,22 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import Link from 'next/link';
-
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/gsrc/carousel/gsrc-group.jpg',
-    alt: 'Quiero Mis Quinces: Queering Traditions',
-  },
-  {
-    src: '/departments/ccc/gsrc/carousel/pride-drag.jpg',
-    alt: 'Pride Grad ’22',
-  },
-  {
-    src: '/departments/ccc/gsrc/carousel/grad-group.jpg',
-    alt: 'Pride Grad ’22',
-  },
-];
 
 const hours = [
   {
@@ -99,6 +86,25 @@ export default function GSRC() {
     gap: ${Spaces.xl};
   `;
 
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_GSRC')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_GSRC');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
   return (
     <Page>
       <Head>
@@ -219,22 +225,17 @@ export default function GSRC() {
           ))}
         </OfferingsContainer>
       </FluidContainer>
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check out some of our past events:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="gender and sexuality resource center header"
-              src="/departments/ccc/gsrc/gsrc.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
+      <InstagramFeed department="gsrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="gender and sexuality student resource center logo"
+            src="/departments/ccc/gsrc/gsrc.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }

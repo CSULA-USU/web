@@ -3,42 +3,21 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
-
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg',
-    alt: 'Black grad celebration',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg',
-    alt: 'African drumming performance',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-family.jpg',
-    alt: 'Picture of grad and family',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-performance.jpg',
-    alt: 'Black grad performance',
-  },
-  {
-    src: '/departments/ccc/pasrc/black-grad/2022/grad-side.jpg',
-    alt: 'A graduating student posing for a picture',
-  },
-];
 
 const hours = [
   {
@@ -90,6 +69,26 @@ export default function PASRC() {
     gap: ${Spaces.xl};
   `;
 
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_PASRC')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_PASRC');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
+
   return (
     <Page>
       <Head>
@@ -140,11 +139,12 @@ export default function PASRC() {
               ></Image>
             )}
             The Pan African Student Resource Center (PASRC) was founded in 1990.
-            The PASRC provides services and support for students who identify
-            as, or are interested in, Pan African community and cultural issues.
-            The PASRC also develops long and short term programs and events
-            focusing on issues of importance to the Pan African community in the
-            U.S., Caribbean, Africa and Central/South America and worldwide.
+            The PASRC provides services and support for students who identify as
+            Pan African, or are interested in, Pan African community and
+            cultural issues. The PASRC also develops long and short term
+            programs and events focusing on issues of importance to the Pan
+            African community in the U.S., Caribbean, Africa and Central/South
+            America and worldwide.
           </Header>
           {!isDesktop && (
             <Image
@@ -209,22 +209,17 @@ export default function PASRC() {
           ))}
         </OfferingsContainer>
       </FluidContainer>
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="pan african student resource center header"
-              src="/departments/ccc/pasrc/pasrc.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
+      <InstagramFeed department="pasrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="pan african student resource center logo"
+            src="/departments/ccc/pasrc/pasrc.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }

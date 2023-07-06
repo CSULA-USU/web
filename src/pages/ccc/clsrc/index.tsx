@@ -3,45 +3,17 @@ import styled from 'styled-components';
 import { Header, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-interview.jpg',
-    alt: 'Interview for Creating Worlds CLSRC event',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/clsrc-space.jpg',
-    alt: 'Picture of CLSRC space',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-event.jpg',
-    alt: 'Creating Worlds event presentation',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/salvadorian-loteria.jpg',
-    alt: 'Salvadorian loterìa',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/video-game-space.jpg',
-    alt: 'Students playing video games',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/title-space.jpg',
-    alt: 'CLSRC',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-group.jpg',
-    alt: 'Creating Worlds event',
-  },
-];
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 
 const hours = [
   {
@@ -66,6 +38,25 @@ export default function CLSRC() {
     gap: ${Spaces.xl};
   `;
 
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_CLSRC')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_CLSRC');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
   return (
     <Page>
       <Head>
@@ -173,22 +164,17 @@ export default function CLSRC() {
           </FluidContainer>
         </FluidContainer>
       </div>
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="chicano/a latino/a student resource center logo"
-              src="/departments/ccc/clsrc/clsrc-header.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
+      <InstagramFeed department="clsrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="chicana chicano latina latino student resource center logo"
+            src="/departments/ccc/clsrc/clsrc-header.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }
