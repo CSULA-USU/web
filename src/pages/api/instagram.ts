@@ -11,7 +11,7 @@ export default async function handler(
 
   let IG_TOKEN_USU = '';
   let IG_TOKEN_GRAFFIX = '';
-
+  let IG_TOKEN_CSI = '';
   let { data } = await supabase.from('instagram_tokens').select();
 
   data?.map((item: any) => {
@@ -22,17 +22,24 @@ export default async function handler(
       case 'IG_TOKEN_GRAFFIX':
         IG_TOKEN_GRAFFIX = item.token;
         break;
+      case 'IG_TOKEN_CSI':
+        IG_TOKEN_CSI = item.token;
+        break;
     }
   });
 
-  if (!IG_TOKEN_USU || !IG_TOKEN_GRAFFIX) {
+  if (!IG_TOKEN_USU || !IG_TOKEN_GRAFFIX || !IG_TOKEN_CSI) {
     throw new Error('One or more Instagram auth tokens may be missing');
   }
 
   /*eslint no-unused-vars: "off"*/
-  const tokens: Pick<{ [key in Departments]: string }, 'usu' | 'graffix'> = {
+  const tokens: Pick<
+    { [key in Departments]: string },
+    'usu' | 'graffix' | 'csi'
+  > = {
     usu: IG_TOKEN_USU,
     graffix: IG_TOKEN_GRAFFIX,
+    csi: IG_TOKEN_CSI,
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
