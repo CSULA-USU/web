@@ -28,7 +28,7 @@ const services = [
   {
     title: 'Lactation Room',
     children:
-      'The lactation room is located in the Gender and Sexuality Center within the Cross Cultural Centers (CCC), Room 206. The space is open from 9:00 a.m. to 5:30 p.m. Monday through Friday. Reservations may be made at the front desk of the CCC at (323) 343-5001. Walk-ins are welcome based on availability.',
+      'The lactation room is located in the Gender and Sexuality Center within the Cross Cultural Centers (CCC), Room 206. The space is open from 9:00 AM to 5:30 PM Monday through Friday. Reservations may be made at the front desk of the CCC at (323) 343-5001. Walk-ins are welcome based on availability.',
     imgSrc: '/about/services/lactation-room.jpg',
     imgAlt: 'gsrc lactation room',
   },
