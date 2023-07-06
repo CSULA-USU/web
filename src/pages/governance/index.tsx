@@ -92,24 +92,24 @@ const Fiscal = () => (
   <TabContent>
     The Fiscal Committee shall recommend to the Board policies regarding fiscal
     matters, including but not limited to operations, support, review of its
-    budget and budget modifications. The committee shall be responsible for
-    alladministrative actions under the Retirement Plans and implementing
-    actions approved by the Board related to fiduciary responsibilities as
-    required by law or contemplated in the U-SU&apos;s 403 (b) Plan documents
-    (including annual approval of 403 (b) plan viability). The Committee shall
-    also approve the annual budget process and make recommendations to the Board
-    regarding the annual budget. The Committee shall have eight (8) members;
-    five (5) voting, and three (3) non-voting. The voting shall include three
-    (3) students, one of whom shall be a student-voting member of the Board and
+    budget and budget modifications. The committee shall be responsible for all
+    administrative actions under the Retirement Plans and implementing actions
+    approved by the Board related to fiduciary responsibilities as required by
+    law or contemplated in the U-SU&apos;s 403 (b) Plan documents (including
+    annual approval of 403 (b) plan viability). The Committee shall also approve
+    the annual budget process and make recommendations to the Board regarding
+    the annual budget. The Committee shall have eight (8) members; five (5)
+    voting, and three (3) non-voting. The voting shall include three (3)
+    students, one of whom shall be a student-voting member of the Board and
     shall chair the committee. The last two voting members may be students at
     large who are regular members of Associated Students Incorporated as defined
-    in Article I of the Associated Students Inc. bylaws, or any University-
-    Student Union board member who is not a student. The nonvoting members shall
-    be the University-Student Union Executive Director or designee, Chair of the
-    Board of Directors of the University-Student Union or designee, and a
-    representative from the organization contracted to provide financial
-    services to the University-Student Union. If a tie occurs, the Chair of the
-    Fiscal Committee will have the deciding vote.
+    in Article I of the Associated Students Inc. bylaws, or any
+    University-Student Union board member who is not a student. The nonvoting
+    members shall be the University-Student Union Executive Director or
+    designee, Chair of the Board of Directors of the University-Student Union or
+    designee, and a representative from the organization contracted to provide
+    financial services to the University-Student Union. If a tie occurs, the
+    Chair of the Fiscal Committee will have the deciding vote.
     <ol>
       <li>Voting - Five (5) voting, two (2) non-voting.</li>
       <li>
@@ -208,7 +208,7 @@ export default function Governance() {
         board of the Union. The purpose of the Board is to establish policy for
         the Union as a student body center for the benefit of students, faculty,
         staff and alumni at{' '}
-        <NonBreakingSpan>Cal State Los Angeles</NonBreakingSpan>
+        <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
       </Header>
       <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
         {cards.map((props) => (

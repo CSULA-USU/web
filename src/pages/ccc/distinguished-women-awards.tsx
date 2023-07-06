@@ -134,7 +134,7 @@ export default function CulturalGrads() {
           The Division of Student Life, University-Student Union, and Cross
           Cultural Centers are seeking nominations for the 21st Distinguished
           Women Awards. This event honors women from Cal State LA for their many
-          outstanding achievements and contributions to the community.The
+          outstanding achievements and contributions to the community. The
           selection committee will look at achievements in the nominee’s field;
           significant contributions to Cal State LA; commitment to students,
           student success, and student development; commitment to women, women’s
@@ -152,12 +152,12 @@ export default function CulturalGrads() {
         </Typography>
         <Typography color="white" as="p">
           <ul>
-            <li>faculty</li>
-            <li>staff</li>
-            <li>administrator (including MPP/Dean)</li>
-            <li>undergraduate student</li>
-            <li>graduate student</li>
-            <li>alumna</li>
+            <li>Faculty</li>
+            <li>Staff</li>
+            <li>Administration (including MPP/Dean)</li>
+            <li>Undergraduate Students</li>
+            <li>Graduate Students</li>
+            <li>Alumna</li>
           </ul>
         </Typography>
         <Typography color="white" as="p" margin={`${Spaces.sm} 0`}>

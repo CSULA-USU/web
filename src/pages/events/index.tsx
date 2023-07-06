@@ -26,7 +26,7 @@ export default function Home() {
       >
         The University-Student Union hosts various events throughout the school
         year. Make sure to check back here to stay up to date with the latest
-        events
+        events.
       </Header>
       <UpcomingEvents monthly events={events} />
     </Page>

@@ -37,7 +37,6 @@ export const TextAndImage = ({
   imageOrientation,
   img,
 }: TextAndImageProps) => {
-  // console.log('this is image orientation', imageOrientation)
   return (
     <div>
       {imageOrientation === 'left' ? (

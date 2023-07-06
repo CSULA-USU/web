@@ -116,7 +116,7 @@ export default function Gene() {
         alignItems="center"
       >
         <Typography variant="title" as="h2">
-          What to expect
+          What to expect:
         </Typography>
         <FluidContainer flex flexWrap="wrap">
           {cards.map((props) => (

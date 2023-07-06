@@ -24,6 +24,7 @@ interface CardProps extends CardStyles {
   iconSrc?: string;
   iconAlt?: string;
 }
+
 const IconContainer = styled.div`
   height: 80px;
   display: flex;
