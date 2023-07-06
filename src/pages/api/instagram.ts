@@ -12,6 +12,7 @@ export default async function handler(
   let IG_TOKEN_USU = '';
   let IG_TOKEN_GRAFFIX = '';
   let IG_TOKEN_CSI = '';
+  let IG_TOKEN_RECREATION = '';
   let { data } = await supabase.from('instagram_tokens').select();
 
   data?.map((item: any) => {
@@ -25,6 +26,9 @@ export default async function handler(
       case 'IG_TOKEN_CSI':
         IG_TOKEN_CSI = item.token;
         break;
+      case 'IG_TOKEN_RECREATION':
+        IG_TOKEN_RECREATION = item.token;
+        break;
     }
   });
 
@@ -35,11 +39,12 @@ export default async function handler(
   /*eslint no-unused-vars: "off"*/
   const tokens: Pick<
     { [key in Departments]: string },
-    'usu' | 'graffix' | 'csi'
+    'usu' | 'graffix' | 'csi' | 'recreation'
   > = {
     usu: IG_TOKEN_USU,
     graffix: IG_TOKEN_GRAFFIX,
     csi: IG_TOKEN_CSI,
+    recreation: IG_TOKEN_RECREATION,
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
