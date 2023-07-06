@@ -6,9 +6,13 @@ import {
   Card,
   FluidContainer,
   NonBreakingSpan,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 
 export default function Recreation() {
   const { isMobile, returnByBreakpoint } = useBreakpoint();
@@ -16,6 +20,26 @@ export default function Recreation() {
     tablet: '100%',
     desktop: 'calc(33.33% - 8px)',
   });
+
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_RECREATION')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_RECREATION');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
   return (
     <Page>
       <Head>
@@ -142,16 +166,7 @@ export default function Recreation() {
           />
         </Card>
       </FluidContainer>
-      <FluidContainer backgroundColor="primary">
-        <Typography
-          variant={isMobile ? 'titleSmall' : 'titleLarge'}
-          as="h3"
-          margin="24px 0 24px"
-        >
-          For updates and ways to connect now, follow @calstatela_recreation on
-          Instagram!
-        </Typography>
-      </FluidContainer>
+      <InstagramFeed department="recreation" />
     </Page>
   );
 }
