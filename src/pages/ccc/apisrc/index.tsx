@@ -246,6 +246,16 @@ export default function APISRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="apisrc" />
+      {!isMobile && (
+        <FluidContainer flex justifyContent="center">
+          <Image
+            alt="asian pacific islander student resource center logo"
+            src="/departments/ccc/apisrc/apisrc-header.png"
+            width="100%"
+            margin={`0px 500px ${Spaces.xl}`}
+          />
+        </FluidContainer>
+      )}
     </Page>
   );
 }
