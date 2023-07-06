@@ -7,11 +7,14 @@ import {
   FluidContainer,
   Image,
   Typography,
+  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
-
+import { useEffect } from 'react';
+import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
+import * as schedule from 'node-schedule';
 const carouselImages = [
   {
     src: '/departments/ccc/clsrc/carousel/creating-interview.jpg',
@@ -66,6 +69,25 @@ export default function CLSRC() {
     gap: ${Spaces.xl};
   `;
 
+  const updateToken = async () => {
+    await fetchToken('IG_TOKEN_CLSRC')
+      .then((data) => data[0].token)
+      .then(async (oldToken) => {
+        await refreshInstagramToken(oldToken)
+          .then((newToken) => newToken.access_token)
+          .then(async (newToken) => {
+            await updateSupabaseToken(newToken, 'IG_TOKEN_CLSRC');
+          });
+      });
+  };
+
+  const rule = new schedule.RecurrenceRule();
+  rule.date = new schedule.Range(1, 31, 55);
+  useEffect(() => {
+    schedule.scheduleJob(rule, function () {
+      updateToken();
+    });
+  }, []);
   return (
     <Page>
       <Head>
@@ -173,6 +195,7 @@ export default function CLSRC() {
           </FluidContainer>
         </FluidContainer>
       </div>
+      <InstagramFeed department="clsrc" />
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Check our events out:
