@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
@@ -25,57 +24,6 @@ const buttons = [
   {
     text: 'Volunteer',
     href: 'https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3SKXNpO6eVxLkvnb3NWEIOBUNjIzMUxQNjVERkhDWUY4NURMTjZLUEkwSC4u',
-  },
-];
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/apisrc/carousel/night-market-staff.jpg',
-    alt: 'U-SU staff at the Asian American and Pacific Islander Night Market',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/financial-literacy.jpg',
-    alt: 'Students learning about the importance of money management, saving, and investing at the Financial Literacy Workshop',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/self-defense.jpg',
-    alt: 'Students learning self-defense techniques at the Intro to Self Defense Workshop',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/xmas-photo.png',
-    alt: 'CCC staff and holiday photos',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/lunar-new-year.png',
-    alt: 'A CSI and CCC collaboration for Lunar New Year',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/center.png',
-    alt: 'Midterm study session',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/book-club.jpg',
-    alt: 'RISE book club',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/art.png',
-    alt: 'Make your own holiday stocking event',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/xmas-photo-2.png',
-    alt: 'Holiday photo shoot',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/grad-drummer.jpg',
-    alt: 'Drummers for APIDA grad',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/kalahi.jpg',
-    alt: 'Kalahi meeting',
-  },
-  {
-    src: '/departments/ccc/apisrc/carousel/open-house.jpg',
-    alt: 'APISRC open house',
   },
 ];
 
@@ -298,22 +246,6 @@ export default function APISRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="apisrc" />
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="asian pacific islander student resource center logo"
-              src="/departments/ccc/apisrc/apisrc-header.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
     </Page>
   );
 }

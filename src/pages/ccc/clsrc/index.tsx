@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Header, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
@@ -15,36 +14,6 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
-const carouselImages = [
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-interview.jpg',
-    alt: 'Interview for Creating Worlds CLSRC event',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/clsrc-space.jpg',
-    alt: 'Picture of CLSRC space',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-event.jpg',
-    alt: 'Creating Worlds event presentation',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/salvadorian-loteria.jpg',
-    alt: 'Salvadorian loterìa',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/video-game-space.jpg',
-    alt: 'Students playing video games',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/title-space.jpg',
-    alt: 'CLSRC',
-  },
-  {
-    src: '/departments/ccc/clsrc/carousel/creating-group.jpg',
-    alt: 'Creating Worlds event',
-  },
-];
 
 const hours = [
   {
@@ -196,22 +165,6 @@ export default function CLSRC() {
         </FluidContainer>
       </div>
       <InstagramFeed department="clsrc" />
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check our events out:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="chicano/a latino/a student resource center logo"
-              src="/departments/ccc/clsrc/clsrc-header.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
     </Page>
   );
 }

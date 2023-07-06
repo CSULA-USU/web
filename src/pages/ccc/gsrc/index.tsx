@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
 import {
   Button,
-  ReactCarousel,
   FluidContainer,
   Image,
   Typography,
@@ -20,21 +19,6 @@ const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const carouselImages = [
-  {
-    src: '/departments/ccc/gsrc/carousel/gsrc-group.jpg',
-    alt: 'Quiero Mis Quinces: Queering Traditions',
-  },
-  {
-    src: '/departments/ccc/gsrc/carousel/pride-drag.jpg',
-    alt: 'Pride Grad ’22',
-  },
-  {
-    src: '/departments/ccc/gsrc/carousel/grad-group.jpg',
-    alt: 'Pride Grad ’22',
-  },
-];
 
 const hours = [
   {
@@ -242,22 +226,6 @@ export default function GSRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="gsrc" />
-      <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Check out some of our past events:
-        </Typography>
-        <ReactCarousel carouselImages={carouselImages} />
-        {!isMobile && (
-          <FluidContainer flex justifyContent="center">
-            <Image
-              alt="gender and sexuality resource center header"
-              src="/departments/ccc/gsrc/gsrc.png"
-              width="100%"
-              margin={`0px 500px ${Spaces.xl}`}
-            />
-          </FluidContainer>
-        )}
-      </FluidContainer>
     </Page>
   );
 }
