@@ -134,7 +134,7 @@ export default function About() {
         imgAlt="student union"
         imgSrc="/about/about-hero-bw.jpeg"
         imgWidth={isDesktop ? '100%' : '50%'}
-        background="/backgrounds/subtle-background-1.jpg"
+        background="https://www.dropbox.com/scl/fi/wz3sii40uvpv72ug6hpv5/subtle-fractal.png?rlkey=4cag0dlr5hjdjwe5bx5xt1ty7&raw=1"
       >
         <HeaderContainer>
           <Typography
@@ -149,12 +149,7 @@ export default function About() {
           >
             About Us
           </Typography>
-          <Typography
-            variant="title"
-            as="span"
-            color="gold"
-            size={isDesktop ? 'lg' : '2xl'}
-          >
+          <Typography variant="title" as="span" size={isDesktop ? 'lg' : '2xl'}>
             Mission: &nbsp;
           </Typography>
           <Typography as="p" size={isDesktop ? 'md' : 'lg'} lineHeight="2">
@@ -169,7 +164,6 @@ export default function About() {
           <Typography
             variant="title"
             as="span"
-            color="gold"
             margin={`${Spaces.lg} 0 0 0`}
             size={isDesktop ? 'lg' : '2xl'}
           >
