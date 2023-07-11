@@ -8,6 +8,13 @@
   },
   {
     "title": "Student Director",
+    "src": "/board/female-placeholder.png",
+    "name": "Andrea Dominguez",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/9xt2spg4081gg4vn0l5l1/melissa-nicole-lopez.png?rlkey=9mqqz0saodxure895cj0cm6ez&raw=1",
     "name": "Melissa Nicole Lopez",
     "credentials": "",
@@ -24,13 +31,6 @@
     "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/74vd3gihc3xnmul6ljv5p/joseph-guevara.png?rlkey=z7ol7rw5rv9nl5v17dwltlndy&raw=1",
     "name": "Joseph Guevara",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "/board/male-placeholder.png",
-    "name": "Vacant",
     "credentials": "",
     "section": "student-representative"
   },
@@ -71,9 +71,9 @@
   },
   {
     "title": "Vice President for Student Life",
-    "src": "/board/octavio-villalpando.jpg",
-    "name": "Dr. Octavio Villalpando",
-    "credentials": "",
+    "src": "https://www.dropbox.com/scl/fi/n207n9qqv8676qk1udewh/grace-castillo.png?rlkey=zdsjfw35gsv3ojfir5usjetwb&raw=1",
+    "name": "Grace Castillo",
+    "credentials": "Interim Vice President for Student Life",
     "section": "pro-board-member"
   },
   {
@@ -85,9 +85,9 @@
   },
   {
     "title": "Faculty Appointee",
-    "src": "/board/juily-phun.jpg",
-    "name": "Juily Phun",
-    "credentials": "Asian and Asian American Studies",
+    "src": "https://www.dropbox.com/scl/fi/a4x2nflg2nef247710wm1/michael-runnels.jpg?rlkey=75hmnoiv2su72gimrhomk8wf5&raw=1",
+    "name": "Michael Runnels",
+    "credentials": "Finance, Law and Real Estate",
     "section": "pro-board-member"
   },
   {
@@ -99,9 +99,9 @@
   },
   {
     "title": "Dean of Students",
-    "src": "/board/danielle-chambers.png",
-    "name": "Danielle Chambers",
-    "credentials": "",
+    "src": "https://www.dropbox.com/scl/fi/va2vxedsdgksr1bs89hna/bianca-martinez-navarro.png?rlkey=b7bp2gs9egja6a85iz66xm0j4&raw=1",
+    "name": "Bianca Martinez-Navarro",
+    "credentials": "Associate Vice President for Student Life and Dean of Students",
     "section": "pro-board-member"
   },
   {
@@ -127,8 +127,8 @@
   },
   {
     "title": "Advisor",
-    "src": "/board/brian-nguyen.jpg",
-    "name": "Brian Nguyen",
+    "src": "https://www.dropbox.com/scl/fi/uet6pphxgnsycawm1ssfc/yahir-flores.jpeg?rlkey=3c397xtom1jpqoq53ksevr0sf&raw=1",
+    "name": "Yahir Flores",
     "credentials": "President of Associated Students, Inc.",
     "section": "advisors"
   }

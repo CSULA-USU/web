@@ -23,7 +23,6 @@ export default function Governance() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header
         title="Meet the Board  Members"
         backgroundImage="/backgrounds/subtle-background-3.jpg"
