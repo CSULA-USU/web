@@ -72,6 +72,19 @@ const account = [
 
 const banking = [
   {
+    title: 'Club Banking At-A-Glance',
+    children: (
+      <Typography as="p">
+        A comprehensive PDF guide for all things club banking.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>View</NonBreakingSpan>,
+      disabled: false,
+      href: 'https://www.dropbox.com/scl/fi/xbz7638nr4snihcfte4iu/club-banking-at-a-glance.pdf?rlkey=ipcvhw7qregajytxe9jhyra9y&dl=0',
+    },
+  },
+  {
     title: 'Club Banking Exemption Request Form',
     children: (
       <Typography as="p">
