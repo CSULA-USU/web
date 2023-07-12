@@ -27,6 +27,10 @@ const CenterWord = styled.div`
   height: 100%;
 `;
 
+const NameSection = styled.div`
+  height: 80px;
+`;
+
 export const StaffCard = ({
   name,
   title,
@@ -48,10 +52,12 @@ export const StaffCard = ({
         </Typography>
         <div>
           <Image src={src} alt={alt} width="220px" height="245px" />
-          <Typography size="md" weight="700" margin="8px 0px 0px">
-            {name}
-          </Typography>
-          {children}
+          <NameSection>
+            <Typography size="md" weight="700" margin="8px 0px 0px">
+              {name}
+            </Typography>
+            {children}
+          </NameSection>
         </div>
       </CenterWord>
     </Panel>
