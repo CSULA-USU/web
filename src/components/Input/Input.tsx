@@ -45,6 +45,10 @@ const Input = styled.input`
   }
 `;
 
+const Label = styled.label`
+  display: none;
+`;
+
 export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
   const { isDesktop } = useBreakpoint();
 
@@ -54,7 +58,15 @@ export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
         {isDesktop ? (
           ''
         ) : (
-          <Input placeholder="Search" value={input} onChange={onChange} />
+          <>
+            <Label htmlFor="searchInput">Search</Label>
+            <Input
+              id="searchInput"
+              placeholder="Search"
+              value={input}
+              onChange={onChange}
+            />
+          </>
         )}
         <Link href="/search">
           <FaSearch size={'1.25em'} color="#FFF" />
