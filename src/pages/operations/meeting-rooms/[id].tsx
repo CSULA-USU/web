@@ -143,7 +143,7 @@ export default function MeetingRoom() {
           <table align="center" vertical-align>
             <thead>
               <tr>
-                {!isDesktop && <th></th>}
+                {!isDesktop && <td>&nbsp;</td>}
                 <th>
                   <Typography
                     variant="cta"
