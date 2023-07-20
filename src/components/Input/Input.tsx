@@ -68,7 +68,7 @@ export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
             />
           </>
         )}
-        <Link href="/search">
+        <Link href="/search" aria-label="Search the University Student Union">
           <FaSearch size={'1.25em'} color="#FFF" />
         </Link>
       </InputContainerForm>
