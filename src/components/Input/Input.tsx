@@ -62,6 +62,7 @@ export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
             <Label htmlFor="searchInput">Search</Label>
             <Input
               id="searchInput"
+              aria-labelledby="searchInput"
               placeholder="Search"
               value={input}
               onChange={onChange}
