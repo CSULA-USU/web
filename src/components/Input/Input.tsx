@@ -10,6 +10,14 @@ export interface SearchProps {
   onSubmit?: (_: FormEvent<HTMLFormElement>) => void;
 }
 
+const HiddenSpan = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+`;
+
 const OuterContainer = styled.div`
   display: flex;
 `;
@@ -62,13 +70,15 @@ export const StyledInput = ({ input, onChange, onSubmit }: SearchProps) => {
             <Label htmlFor="searchInput">Search</Label>
             <Input
               id="searchInput"
+              aria-labelledby="searchInput"
               placeholder="Search"
               value={input}
               onChange={onChange}
             />
           </>
         )}
-        <Link href="/search">
+        <Link href="/search" aria-label="Search the University Student Union">
+          <HiddenSpan aria-hidden="true">Search</HiddenSpan>
           <FaSearch size={'1.25em'} color="#FFF" />
         </Link>
       </InputContainerForm>

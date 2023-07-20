@@ -68,14 +68,19 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Involvement
           </Typography>
-          <Link href={'/employment'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              U-SU Employment
-            </Typography>
-          </Link>
           <Link href={'/events'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               Calendar of Events
+            </Typography>
+          </Link>
+          <Link href={'/csi/student-orgs'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Clubs & Orgs
+            </Typography>
+          </Link>
+          <Link href={'/employment'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              U-SU Employment
             </Typography>
           </Link>
         </div>
