@@ -64,6 +64,7 @@ export const InstagramFeed = ({
         {isMobile ? (
           <Link
             href={instagramPosts[0].permalink && instagramPosts[0].permalink}
+            aria-label="view instagram post"
           >
             <InstagramCardsContainer
               src={
