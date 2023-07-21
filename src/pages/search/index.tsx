@@ -24,6 +24,12 @@ const SearchBig = styled.input`
   font-weight: 500;
   font-family: 'Bitter', serif;
   text-decoration: none;
+  @media screen and (max-width: 768px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
   &:placeholder {
     color: #2b2b2b;
   }
@@ -33,13 +39,16 @@ const SearchCard = styled.div`
   border: 1 rem solid black;
   display: flex;
   flex-direction: column;
-  height: 200px;
-  justify-content: space-between;
+  height: 100%;
+  justify-content: center;
   margin-top: 32px;
   padding: 16px;
   :hover {
     border-radius: 16px;
     border: 1px solid black;
+  }
+  @media screen and (max-width: 480px) {
+    height: 100%;
   }
 `;
 
