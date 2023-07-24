@@ -17,3 +17,4 @@ export * from './Expandable';
 export * from './SideImageHeader';
 export * from './InstagramFeed';
 export * from './Input';
+export * from './IGRefresher';
