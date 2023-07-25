@@ -8,7 +8,9 @@ export default async function handler(
 ) {
   let { data: sections, error } = await supabase
     .from('pages')
-    .select('slug, pages_sections(data, section_name)')
+    .select(
+      'slug, pages_sections(id, data, section_name, component:sections(name, schema))',
+    )
     .eq('slug', req.query.slug)
     .order('order', { foreignTable: 'pages_sections', ascending: true });
 

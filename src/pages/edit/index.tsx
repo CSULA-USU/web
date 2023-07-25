@@ -1,7 +1,14 @@
 import { EditPage } from 'modules';
 import { fetchPages } from 'api';
 import { useEffect, useState } from 'react';
-import { FluidContainer } from 'components';
+import { FluidContainer, Typography } from 'components';
+import styled from 'styled-components';
+
+const PageItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
 
 export default function DynamicPage() {
   const [pages, setPages] = useState<any>([]);
@@ -16,19 +23,16 @@ export default function DynamicPage() {
   }, []);
 
   return (
-    <EditPage>
+    <EditPage title="USU Editor: Select Page">
       <FluidContainer>
-        <h1>U-SU Editor</h1>
         <h2>Pages</h2>
         {pages?.length &&
           pages.map((p) => (
-            <div key={p.id}>
-              <p>
-                <strong>{p.title}</strong>
-                <br />
-                <span>{p.slug}</span>
-              </p>
-            </div>
+            <PageItem key={p.id}>
+              <a href={`/edit/${p.slug}`}>Edit</a>
+              <Typography variant="labelTitle">{p.title}</Typography>
+              <Typography as="span">{p.slug}</Typography>
+            </PageItem>
           ))}
       </FluidContainer>
     </EditPage>
