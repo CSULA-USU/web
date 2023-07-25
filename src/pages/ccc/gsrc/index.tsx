@@ -64,12 +64,30 @@ const offerings = [
   {
     title: 'Relevant Student Organizations',
     children: (
-      <Link href="https://www.instagram.com/thetransqueerconnection">
-        <Typography color="black">Trans Queer Connection</Typography>
-      </Link>
+      <ul>
+        <li>
+          <Link href="https://www.instagram.com/csula_wgsclub/">
+            <Typography color="gold">
+              Cal State LA Women&apos;s, Gender, and Sexualities Club
+            </Typography>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://www.instagram.com/swd_csula/">
+            <Typography color="gold">
+              Students with Dependents at Cal State LA
+            </Typography>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://www.instagram.com/thetransqueerconnection">
+            <Typography color="gold">Trans Queer Connection</Typography>
+          </Link>
+        </li>
+      </ul>
     ),
     imgSrc: '/departments/ccc/gsrc/vectors/pride.svg',
-    imgAlt: 'the queer connection club',
+    imgAlt: 'the queer connection club ',
   },
 ];
 

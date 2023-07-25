@@ -15,7 +15,14 @@ const Container = styled.div<HeaderStyles>`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  ${(p) => p.background && `background: url(${p.background});`}
+  ${(p) =>
+    p.background &&
+    `
+  background: url(${p.background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  `}
 `;
 
 export const SideImageHeader = ({
