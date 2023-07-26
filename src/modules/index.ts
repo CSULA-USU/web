@@ -15,3 +15,5 @@ export * from './GenericModal';
 export * from './ImageAndCard';
 export * from './CallToActionImages';
 export * from './Search';
+export * from './EditDrawer';
+export * from './PageSections';
