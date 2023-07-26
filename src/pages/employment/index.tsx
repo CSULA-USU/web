@@ -65,34 +65,46 @@ export default function Employment() {
         <JobListingContainer>
           <div>
             <Typography as="h2" variant="title" margin="16px 0 8px">
-              Full-time Positions
+              Student Assistant Positions
             </Typography>
-            {fulltimeJobs.map((j) => (
-              <JobItem key={`${j.department}_${j.title}`}>
-                <Typography as="h3" variant="titleSmall" color="grey">
-                  {j.department}
-                </Typography>
-                <Link href={j.href} target="_blank">
-                  <Typography as="h4" variant="labelTitle">
-                    {j.title}
-                  </Typography>
-                </Link>
-              </JobItem>
-            ))}
+            {studentJobs.length >= 1 ? (
+              studentJobs.map((j: any) => (
+                <JobItem key={`${j.title}`}>
+                  <Link href={j.link || ''} target="_blank">
+                    <Typography as="h4" variant="labelTitle">
+                      {j.title}
+                    </Typography>
+                  </Link>
+                </JobItem>
+              ))
+            ) : (
+              <Typography>
+                No available student assitant positions at this time.
+              </Typography>
+            )}
           </div>
           <div>
             <Typography as="h2" variant="title" margin="16px 0 8px">
-              Student Assistant Positions
+              Full-time Positions
             </Typography>
-            {studentJobs.map((j: any) => (
-              <JobItem key={`${j.title}`}>
-                <Link href={j.link || ''} target="_blank">
-                  <Typography as="h4" variant="labelTitle">
-                    {j.title}
+            {fulltimeJobs.length >= 1 ? (
+              fulltimeJobs.map((j) => (
+                <JobItem key={`${j.department}_${j.title}`}>
+                  <Typography as="h3" variant="titleSmall" color="grey">
+                    {j.department}
                   </Typography>
-                </Link>
-              </JobItem>
-            ))}
+                  <Link href={j.href} target="_blank">
+                    <Typography as="h4" variant="labelTitle">
+                      {j.title}
+                    </Typography>
+                  </Link>
+                </JobItem>
+              ))
+            ) : (
+              <Typography>
+                No available full-time postions at this time.
+              </Typography>
+            )}
           </div>
         </JobListingContainer>
       </FluidContainer>
