@@ -1,5 +1,5 @@
 import { Header, Page } from 'modules';
-import { fetchPagesSections } from 'api';
+import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { InstagramFeed } from 'components';
@@ -20,7 +20,7 @@ export default function DynamicPage() {
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const { pages_sections } = await fetchPagesSections(slug);
+      const { pages_sections } = await fetchPageSections(slug);
       setSections(pages_sections);
     }
   };

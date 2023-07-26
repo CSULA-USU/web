@@ -1,5 +1,5 @@
 import { EditDrawer, EditPage, Header } from 'modules';
-import { fetchPagesSections } from 'api';
+import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { InstagramFeed } from 'components';
@@ -11,7 +11,7 @@ const Components = {
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [sections, setSections] = useState<any>([]);
+  const [page, setPage] = useState<any>(null);
 
   const getPagesSections = async () => {
     if (department || subdepartment) {
@@ -19,8 +19,8 @@ export default function DynamicPage() {
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const { pages_sections } = await fetchPagesSections(slug);
-      setSections(pages_sections);
+      const page = await fetchPageSections(slug);
+      setPage(page);
     }
   };
 
@@ -30,17 +30,23 @@ export default function DynamicPage() {
 
   return (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      <EditDrawer sections={sections} />
-      {!!sections.length &&
-        sections.map((section: any) => {
-          const SectionComponent =
-            Components[section.section_name as keyof typeof Components];
-          return (
-            <SectionComponent {...section.data} key={section.section_name}>
-              {section.data.description}
-            </SectionComponent>
-          );
-        })}
+      {!!page ? (
+        <>
+          <EditDrawer page={page} />
+          {page.sections.length &&
+            page.sections.map((section: any) => {
+              const SectionComponent =
+                Components[section.section_name as keyof typeof Components];
+              return (
+                <SectionComponent {...section.data} key={section.section_name}>
+                  {section.data?.description}
+                </SectionComponent>
+              );
+            })}
+        </>
+      ) : (
+        'loading...'
+      )}
     </EditPage>
   );
 }

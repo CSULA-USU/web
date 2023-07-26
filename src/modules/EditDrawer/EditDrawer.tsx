@@ -3,17 +3,11 @@ import styled from 'styled-components';
 import * as Drawer from '@accessible/drawer';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdCancel } from 'react-icons/md';
+import { AddSection } from './AddSection';
+import { Page } from 'types/Supabase';
 
 interface EditDrawerProps {
-  sections: {
-    id: number;
-    data: any;
-    section_name: string;
-    component: {
-      name: string;
-      schema: any;
-    };
-  }[];
+  page: Page;
 }
 const Container = styled.div`
   height: 100vh;
@@ -40,39 +34,42 @@ const StyledButton = styled.button`
   }
 `;
 
-export const EditDrawer = ({ sections }: EditDrawerProps) => (
-  <Drawer.Drawer>
-    <Drawer.Trigger>
-      <StyledButton>
-        <HiMenuAlt3 size={48} />
-      </StyledButton>
-    </Drawer.Trigger>
+export const EditDrawer = ({ page }: EditDrawerProps) => {
+  return (
+    <Drawer.Drawer>
+      <Drawer.Trigger>
+        <StyledButton>
+          <HiMenuAlt3 size={48} />
+        </StyledButton>
+      </Drawer.Trigger>
 
-    <Drawer.Target preventScroll>
-      <Container>
-        <Drawer.CloseButton>
-          <button
-            style={{
-              border: 0,
-              backgroundColor: 'transparent',
-              fontSize: 16,
-              position: 'absolute',
-              right: 16,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            CLOSE <MdCancel size={40} />
-          </button>
-        </Drawer.CloseButton>
-        {sections.length &&
-          sections.map((section) => (
-            <SectionItem key={section.id}>
-              <h2>{section.section_name}</h2>
-              <pre>{JSON.stringify(section.data, null, 2)}</pre>
-            </SectionItem>
-          ))}
-      </Container>
-    </Drawer.Target>
-  </Drawer.Drawer>
-);
+      <Drawer.Target preventScroll>
+        <Container>
+          <Drawer.CloseButton>
+            <button
+              style={{
+                border: 0,
+                backgroundColor: 'transparent',
+                fontSize: 16,
+                position: 'absolute',
+                right: 16,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              CLOSE <MdCancel size={40} />
+            </button>
+          </Drawer.CloseButton>
+          {page.sections.length &&
+            page.sections.map((section) => (
+              <SectionItem key={section.id}>
+                <h2>{section.section_name}</h2>
+                <pre>{JSON.stringify(section.data, null, 2)}</pre>
+              </SectionItem>
+            ))}
+          <AddSection pageId={page.id} sectionCount={page.sections.length} />
+        </Container>
+      </Drawer.Target>
+    </Drawer.Drawer>
+  );
+};
