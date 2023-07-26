@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import { Page, GenericModal } from 'modules';
 import {
-  FluidContainer,
-  Typography,
-  Card,
-  SideImageHeader,
   Button,
-  NonBreakingSpan,
+  Card,
+  FluidContainer,
+  Image,
   InstagramFeed,
+  NonBreakingSpan,
+  SideImageHeader,
+  Typography,
 } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
@@ -15,12 +16,15 @@ import { useEffect, useState } from 'react';
 import { media, Spaces } from 'theme';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
-const Title = styled.div`
-  text-align: center;
-`;
 
-const HistoryContainer = styled.div`
-  ${media('mobile')(`width:300px;`)}
+const ButtonContainer = styled.div`
+  margin-top: ${Spaces['2xl']};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  ./ > *:not(:last-child) {
+    margin-right: 8px;
+  }
 `;
 
 const HeaderContainer = styled.div`
@@ -35,14 +39,12 @@ const HeaderContainer = styled.div`
   padding: ${Spaces.lg};
 `;
 
-const ButtonContainer = styled.div`
-  margin-top: ${Spaces['2xl']};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  ./ > *:not(:last-child) {
-    margin-right: 8px;
-  }
+const HistoryContainer = styled.div`
+  ${media('mobile')(`width:300px;`)}
+`;
+
+const Title = styled.div`
+  text-align: center;
 `;
 
 const cards = [
@@ -134,16 +136,16 @@ export default function About() {
         imgAlt="student union"
         imgSrc="/about/about-hero-bw.jpeg"
         imgWidth={isDesktop ? '100%' : '50%'}
-        background="https://www.dropbox.com/scl/fi/wz3sii40uvpv72ug6hpv5/subtle-fractal.png?rlkey=4cag0dlr5hjdjwe5bx5xt1ty7&raw=1"
+        background="https://www.dropbox.com/scl/fi/m1su64mfjv6zfjp891lfy/streak-2.png?rlkey=dkj7qc5gutprfo2jv17mp53gb&raw=1"
       >
         <HeaderContainer>
           <Typography
             as="h1"
             variant="pageHeader"
-            size={isDesktop ? '2xl' : isTablet ? '3xl' : '4xl'}
+            size={isDesktop ? 'xl' : isTablet ? '3xl' : '4xl'}
             margin={
               isMobile
-                ? `${Spaces.md} 0 ${Spaces.md} 0`
+                ? `${Spaces.xl} 0 ${Spaces.md} 0`
                 : `0 0 ${Spaces['2xl']}`
             }
           >
@@ -187,13 +189,11 @@ export default function About() {
           </ButtonContainer>
         </HeaderContainer>
       </SideImageHeader>
-
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
         </Typography>
       </Title>
-
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {cards.map((props) => (
           <Card
@@ -205,6 +205,18 @@ export default function About() {
             iconWidth="112px"
           ></Card>
         ))}
+      </FluidContainer>
+      <FluidContainer>
+        <Title>
+          <Typography variant="title" as="h2">
+            Map
+          </Typography>
+        </Title>
+        <Image
+          src="https://www.dropbox.com/scl/fi/h65geahk3a540zd7zt9wf/usu-floor-plan.jpg?rlkey=om0kgi8wt0z760vfli0kpvrq1&raw=1"
+          alt="map of the university student union"
+          maxWidth="100%"
+        />
       </FluidContainer>
       <InstagramFeed department="usu" />
       <GenericModal
