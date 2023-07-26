@@ -61,32 +61,34 @@ export const InstagramFeed = ({
         </Typography>
       </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {isMobile ? (
-          <Link
-            href={instagramPosts[0].permalink && instagramPosts[0].permalink}
-            aria-label="view instagram post"
-          >
-            <InstagramCardsContainer
-              src={
-                instagramPosts[0].media_type === 'VIDEO'
-                  ? instagramPosts[0].thumbnail_url
-                  : instagramPosts[0].media_url
-              }
-            ></InstagramCardsContainer>
-          </Link>
-        ) : (
-          instagramPosts.map((post, index) => (
-            <Link href={post.permalink} key={`${index}_${post.username}`}>
-              <InstagramCardsContainer
-                src={
-                  post.media_type === 'VIDEO'
-                    ? post.thumbnail_url
-                    : post.media_url
+        {isMobile
+          ? instagramPosts.length > 0 && (
+              <Link
+                href={
+                  instagramPosts[0].permalink && instagramPosts[0].permalink
                 }
-              ></InstagramCardsContainer>
-            </Link>
-          ))
-        )}
+                aria-label="view instagram post"
+              >
+                <InstagramCardsContainer
+                  src={
+                    instagramPosts[0].media_type === 'VIDEO'
+                      ? instagramPosts[0].thumbnail_url
+                      : instagramPosts[0].media_url
+                  }
+                ></InstagramCardsContainer>
+              </Link>
+            )
+          : instagramPosts.map((post, index) => (
+              <Link href={post.permalink} key={`${index}_${post.username}`}>
+                <InstagramCardsContainer
+                  src={
+                    post.media_type === 'VIDEO'
+                      ? post.thumbnail_url
+                      : post.media_url
+                  }
+                ></InstagramCardsContainer>
+              </Link>
+            ))}
       </FluidContainer>
     </>
   );
