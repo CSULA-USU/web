@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { EditDrawer, EditPage } from 'modules';
 import { fetchPageSections } from 'api';
-import { Page } from 'modules';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
 
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [sections, setSections] = useState<any>([]);
+  const [page, setPage] = useState<any>(null);
 
   const getPagesSections = async () => {
     if (department || subdepartment) {
@@ -15,8 +15,8 @@ export default function DynamicPage() {
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const { pages_sections } = await fetchPageSections(slug);
-      setSections(pages_sections);
+      const page = await fetchPageSections(slug);
+      setPage(page);
     }
   };
 
@@ -25,8 +25,15 @@ export default function DynamicPage() {
   }, [router.query]);
 
   return (
-    <Page>
-      <PageSections sections={sections} />
-    </Page>
+    <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
+      {!!page ? (
+        <>
+          <EditDrawer page={page} />
+          <PageSections sections={page.sections} />
+        </>
+      ) : (
+        'loading...'
+      )}
+    </EditPage>
   );
 }

@@ -17,10 +17,8 @@ interface PageProps {
 
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
-    <div>
-      <Nav />
-      {children}
-    </div>
+    <Nav />
+    <div>{children}</div>
     <Footer />
   </PageContainer>
 );
