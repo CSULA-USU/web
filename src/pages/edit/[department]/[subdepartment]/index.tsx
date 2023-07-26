@@ -1,13 +1,9 @@
-import { EditDrawer, EditPage, Header } from 'modules';
+import { EditDrawer, EditPage } from 'modules';
 import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { InstagramFeed } from 'components';
+import PageSections from 'modules/PageSections/PageSections';
 
-const Components = {
-  DepartmentHero: Header,
-  InstagramFeed: InstagramFeed,
-};
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
@@ -33,16 +29,7 @@ export default function DynamicPage() {
       {!!page ? (
         <>
           <EditDrawer page={page} />
-          {page.sections.length &&
-            page.sections.map((section: any) => {
-              const SectionComponent =
-                Components[section.section_name as keyof typeof Components];
-              return (
-                <SectionComponent {...section.data} key={section.section_name}>
-                  {section.data?.description}
-                </SectionComponent>
-              );
-            })}
+          <PageSections sections={page.sections} />
         </>
       ) : (
         'loading...'

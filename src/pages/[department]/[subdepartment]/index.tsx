@@ -1,13 +1,8 @@
-import { Header, Page } from 'modules';
-import { fetchPageSections } from 'api';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { InstagramFeed } from 'components';
-
-const Components = {
-  DepartmentHero: Header,
-  InstagramFeed: InstagramFeed,
-};
+import { useRouter } from 'next/router';
+import { fetchPageSections } from 'api';
+import { Page } from 'modules';
+import PageSections from 'modules/PageSections/PageSections';
 
 export default function DynamicPage() {
   const router = useRouter();
@@ -31,16 +26,7 @@ export default function DynamicPage() {
 
   return (
     <Page>
-      {!!sections.length &&
-        sections.map((section: any) => {
-          const SectionComponent =
-            Components[section.section_name as keyof typeof Components];
-          return (
-            <SectionComponent {...section.data} key={section.section_name}>
-              {section.data.description}
-            </SectionComponent>
-          );
-        })}
+      <PageSections sections={sections} />
     </Page>
   );
 }
