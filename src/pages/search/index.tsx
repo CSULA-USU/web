@@ -138,7 +138,7 @@ export default function Search() {
   return (
     <Page>
       <Head>
-        <title>Search</title>
+        <title>U-SU Search</title>
         <meta name="author" content="Search" />
         <meta
           name="keywords"
@@ -165,7 +165,7 @@ export default function Search() {
           />
         </form>
       </Header>
-      <FluidContainer innerMaxWidth="1216px">
+      <FluidContainer innerMaxWidth="1216px" innerMinHeight="24vh">
         <Typography variant="title" as="h2">
           Results:
         </Typography>
