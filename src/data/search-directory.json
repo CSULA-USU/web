@@ -2,7 +2,7 @@
   {
     "title": "U-SU Graffix",
     "url": "/graffix",
-    "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions",
+    "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions.",
     "tags": [
       "art",
       "graffix",
@@ -29,7 +29,9 @@
       "values",
       "mission statement",
       "mission",
-      "vision"
+      "vision",
+      "map",
+      "directions"
     ]
   },
   {
@@ -88,7 +90,7 @@
   {
     "title": "Departments",
     "url": "/departments",
-    "description": "Visit the departments of the U-SU: CCC, CSI, Graffix, Operations, Recreation",
+    "description": "Visit the departments of the U-SU: CCC, CSI, Graffix, Operations, and Recreation.",
     "tags": [
       "departments",
       "center for student involvement",
@@ -208,7 +210,7 @@
   {
     "title": "Center for Student Involvement Forms",
     "url": "/csi/forms",
-    "description": "Forms that pertain to the Center for Student Involvement",
+    "description": "Forms that pertain to the Center for Student Involvement.",
     "tags": [
       "csi",
       "center for student involvement",
