@@ -18,4 +18,5 @@ export interface SectionComponent {
   id: number;
   name: string;
   schema: any;
+  default_data: any;
 }

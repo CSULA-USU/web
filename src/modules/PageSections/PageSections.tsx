@@ -1,10 +1,12 @@
 import { Header } from 'modules';
 import { InstagramFeed } from 'components';
 import { PageSection } from 'types/Supabase';
+import { CallToAction } from 'sections';
 
 const Components = {
   DepartmentHero: Header,
   InstagramFeed: InstagramFeed,
+  CallToAction: CallToAction,
 };
 
 export default function PageSections({

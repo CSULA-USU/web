@@ -24,10 +24,11 @@ export const AddSection = ({
     getSections();
   }, []);
 
-  const handleAddSection = (sectionName: string) => {
+  const handleAddSection = (section: SectionComponent) => {
     addPageSection({
       page_id: pageId,
-      section_name: sectionName,
+      section_name: section.name,
+      data: section.default_data,
       order: sectionCount,
     });
   };
@@ -39,10 +40,7 @@ export const AddSection = ({
       >
         {sections.length &&
           sections.map((section) => (
-            <div
-              key={section.id}
-              onClick={() => handleAddSection(section.name)}
-            >
+            <div key={section.id} onClick={() => handleAddSection(section)}>
               <Typography variant="labelTitle">{section.name}</Typography>
             </div>
           ))}

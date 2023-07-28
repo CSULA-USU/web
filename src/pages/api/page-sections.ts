@@ -7,12 +7,9 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   if (req.method === 'POST') {
-    console.log(req.body.section_name);
-    const { error } = await supabase.from('pages_sections').insert({
-      order: req.body.order,
-      page_id: req.body.page_id,
-      section_name: req.body.section_name,
-    });
+    const { error } = await supabase
+      .from('pages_sections')
+      .insert({ ...req.body });
 
     if (error) {
       res.status(500).json(error);

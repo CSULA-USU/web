@@ -37,8 +37,18 @@ export const CallToAction = ({
   return (
     <FluidContainer backgroundColor={backgroundColor}>
       <CTAContainer>
-        <Typography color={textColor}>{title}</Typography>
-        <Typography color={textColor}>{description}</Typography>
+        <Typography variant="label" size="lg" color={textColor}>
+          {title}
+        </Typography>
+        <Typography
+          variant="titleLarge"
+          size="2xl"
+          margin="0 0 24px"
+          lineHeight="1.5"
+          color={textColor}
+        >
+          {description}
+        </Typography>
         <Button variant={buttonColor} href={primaryButtonHref}>
           {primaryButtonText}
         </Button>
