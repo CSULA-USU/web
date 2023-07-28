@@ -11,7 +11,7 @@ export interface PageSection {
   section_name: string;
   order: number;
   data: any;
-  component?: SectionComponent;
+  component: SectionComponent;
 }
 
 export interface SectionComponent {
