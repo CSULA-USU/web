@@ -14,7 +14,7 @@ export default function PageSections({
 }) {
   return (
     <>
-      {!!sections.length &&
+      {!!sections?.length &&
         sections.map((section: any) => {
           const SectionComponent =
             Components[section.section_name as keyof typeof Components];

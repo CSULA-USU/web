@@ -7,26 +7,26 @@ import PageSections from 'modules/PageSections/PageSections';
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [sections, setSections] = useState<any>([]);
+  const [page, setPage] = useState<any>(null);
 
-  const getPagesSections = async () => {
+  const getPageSections = async () => {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const { pages_sections } = await fetchPageSections(slug);
-      setSections(pages_sections);
+      const page = await fetchPageSections(slug);
+      setPage(page);
     }
   };
 
   useEffect(() => {
-    getPagesSections();
+    getPageSections();
   }, [router.query]);
 
   return (
     <Page>
-      <PageSections sections={sections} />
+      <PageSections sections={page?.sections} />
     </Page>
   );
 }

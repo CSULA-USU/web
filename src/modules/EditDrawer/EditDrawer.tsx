@@ -35,7 +35,7 @@ const StyledButton = styled.button`
 `;
 
 export const EditDrawer = ({ page }: EditDrawerProps) => {
-  return (
+  return !page ? null : (
     <Drawer.Drawer>
       <Drawer.Trigger>
         <StyledButton>

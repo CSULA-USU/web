@@ -9,7 +9,7 @@ export default function DynamicPage() {
   const { department, subdepartment } = router.query;
   const [page, setPage] = useState<any>(null);
 
-  const getPagesSections = async () => {
+  const getPageSections = async () => {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
@@ -21,19 +21,13 @@ export default function DynamicPage() {
   };
 
   useEffect(() => {
-    getPagesSections();
+    getPageSections();
   }, [router.query]);
 
   return (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      {!!page ? (
-        <>
-          <EditDrawer page={page} />
-          <PageSections sections={page.sections} />
-        </>
-      ) : (
-        'loading...'
-      )}
+      <EditDrawer page={page} />
+      <PageSections sections={page?.sections} />
     </EditPage>
   );
 }
