@@ -1,14 +1,6 @@
 import { Button, FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
-
-type CTAProps = {
-  variant: 'gold' | 'black';
-  backgroundImage?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  primaryButtonText: string;
-  primaryButtonHref: string;
-};
+import { CallToActionProps } from './props';
 
 const CTAContainer = styled.div`
   display: flex;
@@ -30,7 +22,7 @@ export const CallToAction = ({
   description,
   primaryButtonText,
   primaryButtonHref,
-}: CTAProps) => {
+}: CallToActionProps) => {
   const backgroundColor = variant === 'gold' ? 'primary' : 'black';
   const textColor = variant === 'gold' ? 'black' : 'white';
   const buttonColor = variant !== 'gold' ? 'primary' : 'black';
