@@ -236,7 +236,7 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
-      <FluidContainer backgroundImage="/backgrounds/bod-cta-background.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-4.jpg">
         <Typography variant="title" as="h2">
           We Provide:
         </Typography>

@@ -76,7 +76,7 @@ export default function APISRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
