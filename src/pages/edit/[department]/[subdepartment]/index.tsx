@@ -1,13 +1,52 @@
 import { EditDrawer, EditPage } from 'modules';
 import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
+import { supabase } from 'lib/supabase';
+import { SupaPage, SupaSection } from 'types';
+
+interface SectionPayload {
+  old: { id: number };
+  new: SupaSection;
+}
 
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [page, setPage] = useState<any>(null);
+  const [page, setPage] = useState<SupaPage>(null);
+
+  const updatePage = useCallback(
+    (payload: SectionPayload) => {
+      setPage({
+        ...page,
+        sections: page.sections.map((section) =>
+          section.id === payload.old.id ? payload.new : section,
+        ),
+      });
+    },
+    [page],
+  );
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('section_changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'sections' },
+        (payload: SectionPayload) => {
+          updatePage(payload);
+        },
+      )
+      .subscribe();
+
+    async function unsub() {
+      await channel.unsubscribe();
+    }
+    return () => {
+      unsub();
+    };
+  }, [updatePage]);
 
   const getPageSections = async () => {
     if (department || subdepartment) {
