@@ -10,12 +10,15 @@ export default function PageSections({
     <>
       {!!pageSections?.length &&
         pageSections.map((section: any) => {
-          const SectionComponent =
-            sections[section.name as keyof typeof sections].Component;
-          return (
-            <SectionComponent {...section.data} key={section.name}>
+          const Section = sections[section.name as keyof typeof sections];
+          return !Section ? (
+            <h1
+              key={section.id}
+            >{`Component: [${section.name}] not found.`}</h1>
+          ) : (
+            <Section.Component {...section.data} key={section.id}>
               {section.data?.description}
-            </SectionComponent>
+            </Section.Component>
           );
         })}
     </>
