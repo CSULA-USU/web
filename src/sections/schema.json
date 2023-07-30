@@ -5,10 +5,7 @@
       "type": "object",
       "properties": {
         "variant": {
-          "enum": [
-            "black",
-            "gold"
-          ],
+          "enum": ["black", "gold"],
           "type": "string"
         },
         "title": {
@@ -24,10 +21,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "title",
-        "variant"
-      ]
+      "required": ["title", "variant"]
     },
     "HeroHeaderProps": {
       "type": "object",
@@ -89,45 +83,34 @@
                 }
               }
             },
-            "required": [
-              "times",
-              "title"
-            ]
+            "required": ["times", "title"]
           }
         }
       },
-      "required": [
-        "title"
-      ]
+      "required": ["title"]
     },
     "InstagramFeedProps": {
       "type": "object",
       "properties": {
         "department": {
-          "$ref": "#/definitions/Departments"
+          "enum": [
+            "apisrc",
+            "ccc",
+            "clsrc",
+            "csi",
+            "graffix",
+            "gsrc",
+            "operations",
+            "pasrc",
+            "recreation",
+            "usu"
+          ],
+          "type": "string"
         },
         "postsToShow": {
           "type": "number"
         }
-      },
-      "required": [
-        "department"
-      ]
-    },
-    "Departments": {
-      "enum": [
-        "apisrc",
-        "ccc",
-        "clsrc",
-        "csi",
-        "graffix",
-        "gsrc",
-        "operations",
-        "pasrc",
-        "recreation",
-        "usu"
-      ],
-      "type": "string"
+      }
     }
   }
 }

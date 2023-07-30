@@ -27,12 +27,10 @@ const InstagramLinkContainter = styled.span`
   }
 `;
 
-export const defaultProps: InstagramFeedProps = {
-  department: 'usu',
-};
+export const defaultProps: InstagramFeedProps = {};
 
 export const Component = ({
-  department,
+  department = 'usu',
   postsToShow = 12,
 }: InstagramFeedProps) => {
   const { isMobile } = useBreakpoint();
