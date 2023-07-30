@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { PageSection } from 'types/Supabase';
+import { SupaSection } from 'types';
 
 interface SectionEditorProps {
-  section: PageSection;
+  section: SupaSection;
 }
 
 const SectionItem = styled.div`
@@ -14,11 +14,11 @@ const SectionItem = styled.div`
 `;
 
 export const SectionEditor = ({ section }: SectionEditorProps) => {
-  const { section_name, data } = section;
+  const { name, data } = section;
 
   return (
     <SectionItem>
-      <h2>{section_name}</h2>
+      <h2>{name}</h2>
       <pre>{JSON.stringify(data)}</pre>
     </SectionItem>
   );

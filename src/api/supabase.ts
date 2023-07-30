@@ -1,4 +1,4 @@
-import { PageSection } from 'types/Supabase';
+import { SupaSection } from 'types';
 
 export const fetchPages = async () => {
   const data = await fetch(`/api/pages`);
@@ -6,17 +6,12 @@ export const fetchPages = async () => {
 };
 
 export const fetchPageSections = async (slug: string) => {
-  const data = await fetch(`/api/page-sections?slug=${slug}`);
+  const data = await fetch(`/api/sections?slug=${slug}`);
   return await data.json();
 };
 
-export const fetchSections = async () => {
-  const data = await fetch(`/api/sections`);
-  return await data.json();
-};
-
-export const addPageSection = async (pageSection: Partial<PageSection>) => {
-  const data = await fetch(`/api/page-sections`, {
+export const addPageSection = async (pageSection: Partial<SupaSection>) => {
+  const data = await fetch(`/api/sections`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

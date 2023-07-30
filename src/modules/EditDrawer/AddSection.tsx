@@ -1,8 +1,7 @@
-import { addPageSection, fetchSections } from 'api';
+import { addPageSection } from 'api';
 import { Expandable, Typography } from 'components';
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { SectionComponent } from 'types/Supabase';
+import Sections from 'sections';
 
 const Container = styled.div``;
 
@@ -13,35 +12,28 @@ export const AddSection = ({
   pageId: number;
   sectionCount: number;
 }) => {
-  const [sections, setSections] = useState<SectionComponent[]>([]);
-
-  const getSections = async () => {
-    const data = await fetchSections();
-    setSections(data);
-  };
-
-  useEffect(() => {
-    getSections();
-  }, []);
-
-  const handleAddSection = (section: SectionComponent) => {
+  const handleAddSection = (sectionName: string) => {
     addPageSection({
       page_id: pageId,
-      section_name: section.name,
-      data: section.default_data,
+      name: sectionName,
+      data: Sections[sectionName as keyof typeof Sections].defaultProps,
       order: sectionCount,
     });
   };
 
+  const sectionNames = Object.keys(Sections);
   return (
     <Container>
       <Expandable
         header={<Typography variant="label">+ Add Section</Typography>}
       >
-        {sections.length &&
-          sections.map((section) => (
-            <div key={section.id} onClick={() => handleAddSection(section)}>
-              <Typography variant="labelTitle">{section.name}</Typography>
+        {sectionNames.length &&
+          sectionNames.map((sectionName) => (
+            <div
+              key={sectionName}
+              onClick={() => handleAddSection(sectionName)}
+            >
+              <Typography variant="labelTitle">{sectionName}</Typography>
             </div>
           ))}
       </Expandable>

@@ -16,7 +16,16 @@ const CTAContainer = styled.div`
   }
 `;
 
-export const CallToAction = ({
+export const defaultProps: CallToActionProps = {
+  title: 'Call To Action Title',
+  variant: 'gold',
+  description:
+    'Enter your description here...Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sit, fugit vero, fuga delectus facere, animi ducimus non nesciunt enim voluptatum at sed? Nulla minus eum earum possimus! Officiis, eius?',
+  primaryButtonHref: '#',
+  primaryButtonText: 'Button Text',
+};
+
+export const Component = ({
   variant,
   title,
   description,

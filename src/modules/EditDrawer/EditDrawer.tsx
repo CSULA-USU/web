@@ -5,10 +5,10 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdCancel } from 'react-icons/md';
 import { AddSection } from './AddSection';
 import { SectionEditor } from './SectionEditor';
-import { Page } from 'types/Supabase';
+import { SupaPage } from 'types';
 
 interface EditDrawerProps {
-  page: Page;
+  page: SupaPage;
 }
 const Container = styled.div`
   height: 100vh;

@@ -3,7 +3,7 @@ import { fetchPages } from 'api';
 import { useEffect, useState } from 'react';
 import { FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
-import { Page } from 'types/Supabase';
+import { SupaPage } from 'types';
 
 const PageItem = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export default function DynamicPage() {
       <FluidContainer>
         <h2>Pages</h2>
         {pages?.length &&
-          pages.map((p: Page) => (
+          pages.map((p: SupaPage) => (
             <PageItem key={p.id}>
               <a href={`/edit/${p.slug}`}>Edit</a>
               <Typography variant="labelTitle">{p.title}</Typography>

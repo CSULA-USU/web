@@ -1,6 +1,7 @@
 export * from './DesignSystem';
-export * from './Instagram';
 export * from './Departments';
+export * from './Instagram';
+export * from './Supabase';
 
 export interface PresenceEvent {
   apiId: string;
