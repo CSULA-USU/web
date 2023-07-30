@@ -14,10 +14,11 @@ interface SectionPayload {
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [page, setPage] = useState<SupaPage>(null);
+  const [page, setPage] = useState<SupaPage | undefined>();
 
   const updatePage = useCallback(
     (payload: SectionPayload) => {
+      if (!page) return;
       setPage({
         ...page,
         sections: page.sections.map((section) =>
@@ -63,7 +64,7 @@ export default function DynamicPage() {
     getPageSections();
   }, [router.query]);
 
-  return (
+  return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
       <EditDrawer page={page} />
       <PageSections pageSections={page?.sections} />

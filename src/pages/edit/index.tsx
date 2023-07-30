@@ -12,11 +12,11 @@ const PageItem = styled.div`
 `;
 
 export default function DynamicPage() {
-  const [pages, setPages] = useState<any>([]);
+  const [pages, setPages] = useState<SupaPage[]>([]);
 
   const getPages = async () => {
     const data = await fetchPages();
-    setPages(data);
+    if (data) setPages(data);
   };
 
   useEffect(() => {
