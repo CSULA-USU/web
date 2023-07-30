@@ -4,12 +4,7 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
 import { supabase } from 'lib/supabase';
-import { SupaPage, SupaSection } from 'types';
-
-interface SectionPayload {
-  old: { id: number };
-  new: SupaSection;
-}
+import { SupaPage } from 'types';
 
 export default function DynamicPage() {
   const router = useRouter();
@@ -17,7 +12,7 @@ export default function DynamicPage() {
   const [page, setPage] = useState<SupaPage | undefined>();
 
   const updatePage = useCallback(
-    (payload: SectionPayload) => {
+    (payload: any) => {
       if (!page) return;
       setPage({
         ...page,
@@ -35,7 +30,7 @@ export default function DynamicPage() {
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'sections' },
-        (payload: SectionPayload) => {
+        (payload) => {
           updatePage(payload);
         },
       )
