@@ -15,5 +15,4 @@ export * from './Typography';
 export * from './VerticalLine';
 export * from './Expandable';
 export * from './SideImageHeader';
-export * from './InstagramFeed';
 export * from './Input';

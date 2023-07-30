@@ -27,7 +27,7 @@ export default function DynamicPage() {
   return (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
       <EditDrawer page={page} />
-      <PageSections sections={page?.sections} />
+      <PageSections pageSections={page?.sections} />
     </EditPage>
   );
 }

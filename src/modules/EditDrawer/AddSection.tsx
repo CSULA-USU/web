@@ -1,7 +1,7 @@
 import { addPageSection } from 'api';
 import { Expandable, Typography } from 'components';
 import styled from 'styled-components';
-import Sections from 'sections';
+import { sections } from 'sections';
 
 const Container = styled.div``;
 
@@ -16,12 +16,12 @@ export const AddSection = ({
     addPageSection({
       page_id: pageId,
       name: sectionName,
-      data: Sections[sectionName as keyof typeof Sections].defaultProps,
+      data: sections[sectionName as keyof typeof sections].defaultProps,
       order: sectionCount,
     });
   };
 
-  const sectionNames = Object.keys(Sections);
+  const sectionNames = Object.keys(sections);
   return (
     <Container>
       <Expandable

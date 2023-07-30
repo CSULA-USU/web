@@ -26,7 +26,7 @@ export default function DynamicPage() {
 
   return (
     <Page>
-      <PageSections sections={page?.sections} />
+      <PageSections pageSections={page?.sections} />
     </Page>
   );
 }

@@ -1,17 +1,17 @@
 import { SupaSection } from 'types';
-import Sections from 'sections';
+import { sections } from 'sections';
 
 export default function PageSections({
-  sections,
+  pageSections,
 }: {
-  sections: SupaSection[];
+  pageSections: SupaSection[];
 }) {
   return (
     <>
-      {!!sections?.length &&
-        sections.map((section: any) => {
+      {!!pageSections?.length &&
+        pageSections.map((section: any) => {
           const SectionComponent =
-            Sections[section.name as keyof typeof Sections].Component;
+            sections[section.name as keyof typeof sections].Component;
           return (
             <SectionComponent {...section.data} key={section.name}>
               {section.data?.description}

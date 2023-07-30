@@ -6,7 +6,6 @@ import {
   Image,
   Button,
   NonBreakingSpan,
-  InstagramFeed,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
@@ -17,6 +16,8 @@ import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 interface DesignCardData {
   title: string;
   designer: string;

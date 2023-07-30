@@ -1,11 +1,10 @@
 import * as CallToAction from './CallToAction';
-import { InstagramFeed } from '../components/InstagramFeed';
+import * as InstagramFeed from './CallToAction';
 import { Header } from 'modules';
+export { default as schema } from './schema.json';
 
-const Sections = {
+export const sections = {
   CallToAction,
   DepartmentHero: { Component: Header, defaultProps: {} },
-  InstagramFeed: { Component: InstagramFeed, defaultProps: {} },
+  InstagramFeed,
 };
-
-export default Sections;

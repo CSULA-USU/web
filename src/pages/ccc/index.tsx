@@ -13,13 +13,14 @@ import {
   Image,
   DescriptionCard,
   Button,
-  InstagramFeed,
 } from 'components';
 import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 const StudentOrgsCatergoriesContentContainer = styled.div`
   margin-top: ${Spaces['2xl']};
 `;
