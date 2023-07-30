@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "CallToActionProps": {
+      "type": "object",
+      "properties": {
+        "variant": {
+          "enum": [
+            "black",
+            "gold"
+          ],
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "primaryButtonText": {
+          "type": "string"
+        },
+        "primaryButtonHref": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "variant"
+      ]
+    },
+    "HeroHeaderProps": {
+      "type": "object",
+      "properties": {
+        "subtleBackground": {
+          "enum": [
+            "subtle-background-1",
+            "subtle-background-2",
+            "subtle-background-3",
+            "subtle-background-4"
+          ],
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "department": {
+          "enum": [
+            "apisrc",
+            "ccc",
+            "clsrc",
+            "csi",
+            "graffix",
+            "gsrc",
+            "operations",
+            "pasrc",
+            "recreation",
+            "usu"
+          ],
+          "type": "string"
+        },
+        "primaryButtonText": {
+          "type": "string"
+        },
+        "primaryButtonHref": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "hours": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "times": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "times",
+              "title"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title"
+      ]
+    },
+    "InstagramFeedProps": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "$ref": "#/definitions/Departments"
+        },
+        "postsToShow": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "department"
+      ]
+    },
+    "Departments": {
+      "enum": [
+        "apisrc",
+        "ccc",
+        "clsrc",
+        "csi",
+        "graffix",
+        "gsrc",
+        "operations",
+        "pasrc",
+        "recreation",
+        "usu"
+      ],
+      "type": "string"
+    }
+  }
+}

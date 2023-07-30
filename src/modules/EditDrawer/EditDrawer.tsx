@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import * as Drawer from '@accessible/drawer';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdCancel } from 'react-icons/md';
-import { AddSection } from './AddSection';
-import { SectionEditor } from './SectionEditor';
+import { SectionAdder } from './SectionAdder';
+import { SectionForm } from './SectionForm';
 import { SupaPage } from 'types';
 
 interface EditDrawerProps {
@@ -15,7 +15,6 @@ const Container = styled.div`
   width: 480px;
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
-  z-index: 10;
   overflow-y: auto;
 `;
 
@@ -57,9 +56,9 @@ export const EditDrawer = ({ page }: EditDrawerProps) => {
           </Drawer.CloseButton>
           {page.sections.length &&
             page.sections.map((section) => (
-              <SectionEditor key={section.id} section={section} />
+              <SectionForm key={section.id} section={section} />
             ))}
-          <AddSection pageId={page.id} sectionCount={page.sections.length} />
+          <SectionAdder pageId={page.id} sectionCount={page.sections.length} />
         </Container>
       </Drawer.Target>
     </Drawer.Drawer>

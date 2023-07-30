@@ -5,7 +5,7 @@ import { sections } from 'sections';
 
 const Container = styled.div``;
 
-export const AddSection = ({
+export const SectionAdder = ({
   pageId,
   sectionCount,
 }: {
