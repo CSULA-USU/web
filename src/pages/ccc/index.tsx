@@ -13,13 +13,14 @@ import {
   Image,
   DescriptionCard,
   Button,
-  InstagramFeed,
 } from 'components';
 import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 const StudentOrgsCatergoriesContentContainer = styled.div`
   margin-top: ${Spaces['2xl']};
 `;
@@ -235,7 +236,7 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
-      <FluidContainer backgroundImage="/backgrounds/bod-cta-background.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-4.jpg">
         <Typography variant="title" as="h2">
           We Provide:
         </Typography>

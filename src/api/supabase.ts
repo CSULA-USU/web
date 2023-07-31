@@ -1,27 +1,34 @@
-import { PageSection } from 'types/Supabase';
+import { supabase } from 'lib/supabase';
+import { SupaPage, SupaSection } from 'types';
 
 export const fetchPages = async () => {
-  const data = await fetch(`/api/pages`);
-  return await data.json();
+  const { data: pages, error } = await supabase.from('pages').select('*');
+
+  if (error) {
+    console.log(error);
+  } else {
+    return pages as SupaPage[];
+  }
 };
 
 export const fetchPageSections = async (slug: string) => {
-  const data = await fetch(`/api/page-sections?slug=${slug}`);
-  return await data.json();
+  const { data: pages, error } = await supabase
+    .from('pages')
+    .select('id, slug, sections(id, page_id, name, order, data)')
+    .eq('slug', slug)
+    .order('order', { foreignTable: 'sections', ascending: true });
+
+  if (error) {
+    console.log(error);
+  } else {
+    return pages?.[0] as SupaPage;
+  }
 };
 
-export const fetchSections = async () => {
-  const data = await fetch(`/api/sections`);
-  return await data.json();
-};
+export const addPageSection = async (pageSection: Partial<SupaSection>) => {
+  const { error } = await supabase
+    .from('sections')
+    .insert(JSON.stringify(pageSection));
 
-export const addPageSection = async (pageSection: Partial<PageSection>) => {
-  const data = await fetch(`/api/page-sections`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(pageSection),
-  });
-  return await data.json();
+  if (error) console.log(error);
 };

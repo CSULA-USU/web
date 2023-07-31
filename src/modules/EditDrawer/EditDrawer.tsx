@@ -3,25 +3,19 @@ import styled from 'styled-components';
 import * as Drawer from '@accessible/drawer';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdCancel } from 'react-icons/md';
-import { AddSection } from './AddSection';
-import { Page } from 'types/Supabase';
+import { SectionAdder } from './SectionAdder';
+import { SectionForm } from './SectionForm';
+import { SupaPage } from 'types';
 
 interface EditDrawerProps {
-  page: Page;
+  page: SupaPage;
 }
 const Container = styled.div`
   height: 100vh;
   width: 480px;
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
-  z-index: 10;
   overflow-y: auto;
-`;
-
-const SectionItem = styled.div`
-  * {
-    text-wrap: wrap;
-  }
 `;
 
 const StyledButton = styled.button`
@@ -35,7 +29,7 @@ const StyledButton = styled.button`
 `;
 
 export const EditDrawer = ({ page }: EditDrawerProps) => {
-  return (
+  return !page ? null : (
     <Drawer.Drawer>
       <Drawer.Trigger>
         <StyledButton>
@@ -62,12 +56,9 @@ export const EditDrawer = ({ page }: EditDrawerProps) => {
           </Drawer.CloseButton>
           {page.sections.length &&
             page.sections.map((section) => (
-              <SectionItem key={section.id}>
-                <h2>{section.section_name}</h2>
-                <pre>{JSON.stringify(section.data, null, 2)}</pre>
-              </SectionItem>
+              <SectionForm key={section.id} section={section} />
             ))}
-          <AddSection pageId={page.id} sectionCount={page.sections.length} />
+          <SectionAdder pageId={page.id} sectionCount={page.sections.length} />
         </Container>
       </Drawer.Target>
     </Drawer.Drawer>

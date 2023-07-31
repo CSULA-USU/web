@@ -1,13 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
-import {
-  Button,
-  FluidContainer,
-  Image,
-  Typography,
-  InstagramFeed,
-} from 'components';
+import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -15,6 +9,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 const OfferingsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -95,7 +91,7 @@ export default function GSRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`

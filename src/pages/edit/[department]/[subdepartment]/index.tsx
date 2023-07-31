@@ -1,15 +1,50 @@
 import { EditDrawer, EditPage } from 'modules';
 import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
+import { supabase } from 'lib/supabase';
+import { SupaPage } from 'types';
 
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [page, setPage] = useState<any>(null);
+  const [page, setPage] = useState<SupaPage | undefined>();
 
-  const getPagesSections = async () => {
+  const updatePage = useCallback(
+    (payload: any) => {
+      if (!page) return;
+      setPage({
+        ...page,
+        sections: page.sections.map((section) =>
+          section.id === payload.old.id ? payload.new : section,
+        ),
+      });
+    },
+    [page],
+  );
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('section_changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'sections' },
+        (payload) => {
+          updatePage(payload);
+        },
+      )
+      .subscribe();
+
+    async function unsub() {
+      await channel.unsubscribe();
+    }
+    return () => {
+      unsub();
+    };
+  }, [updatePage]);
+
+  const getPageSections = async () => {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
@@ -21,19 +56,13 @@ export default function DynamicPage() {
   };
 
   useEffect(() => {
-    getPagesSections();
+    getPageSections();
   }, [router.query]);
 
-  return (
+  return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      {!!page ? (
-        <>
-          <EditDrawer page={page} />
-          <PageSections sections={page.sections} />
-        </>
-      ) : (
-        'loading...'
-      )}
+      <EditDrawer page={page} />
+      <PageSections pageSections={page?.sections} />
     </EditPage>
   );
 }

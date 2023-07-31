@@ -15,5 +15,7 @@ export * from './Typography';
 export * from './VerticalLine';
 export * from './Expandable';
 export * from './SideImageHeader';
-export * from './InstagramFeed';
+export * from './SearchInput';
 export * from './Input';
+export * from './Label';
+export * from './Select';

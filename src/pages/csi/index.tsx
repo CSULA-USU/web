@@ -12,7 +12,6 @@ import {
   Image,
   Typography,
   Button,
-  InstagramFeed,
 } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
@@ -22,6 +21,7 @@ import { Spaces } from 'theme';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const descriptionCards = [
   {

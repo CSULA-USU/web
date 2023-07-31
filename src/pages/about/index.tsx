@@ -5,7 +5,6 @@ import {
   Card,
   FluidContainer,
   Image,
-  InstagramFeed,
   NonBreakingSpan,
   SideImageHeader,
   Typography,
@@ -16,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { media, Spaces } from 'theme';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const ButtonContainer = styled.div`
   margin-top: ${Spaces['2xl']};

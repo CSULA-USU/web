@@ -5,16 +5,13 @@ import Link from 'next/link';
 import { FluidContainer, Typography } from 'components';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchInstagramFeed } from 'api';
-import { Departments, InstagramPost } from 'types';
-
-interface InstagramFeedProps {
-  department: Departments;
-  postsToShow?: number;
-}
+import { InstagramPost } from 'types';
+import { InstagramFeedProps } from './props';
 
 interface InstagramFeedStyleProps {
   src?: string;
 }
+
 const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   width: 320px;
   height: 320px;
@@ -29,8 +26,11 @@ const InstagramLinkContainter = styled.span`
     color: ${Colors.gold};
   }
 `;
-export const InstagramFeed = ({
-  department,
+
+export const defaultProps: InstagramFeedProps = {};
+
+export const Component = ({
+  department = 'usu',
   postsToShow = 12,
 }: InstagramFeedProps) => {
   const { isMobile } = useBreakpoint();

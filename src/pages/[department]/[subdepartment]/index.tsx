@@ -3,30 +3,31 @@ import { useRouter } from 'next/router';
 import { fetchPageSections } from 'api';
 import { Page } from 'modules';
 import PageSections from 'modules/PageSections/PageSections';
+import { SupaPage } from 'types';
 
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [sections, setSections] = useState<any>([]);
+  const [page, setPage] = useState<SupaPage | undefined>();
 
-  const getPagesSections = async () => {
+  const getPageSections = async () => {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const { pages_sections } = await fetchPageSections(slug);
-      setSections(pages_sections);
+      const page = await fetchPageSections(slug);
+      setPage(page);
     }
   };
 
   useEffect(() => {
-    getPagesSections();
+    getPageSections();
   }, [router.query]);
 
-  return (
+  return !page ? null : (
     <Page>
-      <PageSections sections={sections} />
+      <PageSections pageSections={page?.sections} />
     </Page>
   );
 }

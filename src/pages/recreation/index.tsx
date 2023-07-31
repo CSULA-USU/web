@@ -6,13 +6,13 @@ import {
   Card,
   FluidContainer,
   NonBreakingSpan,
-  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { useEffect } from 'react';
 import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
 import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 export default function Recreation() {
   const { isMobile, returnByBreakpoint } = useBreakpoint();
