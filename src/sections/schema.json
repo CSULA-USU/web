@@ -5,7 +5,10 @@
       "type": "object",
       "properties": {
         "variant": {
-          "enum": ["black", "gold"],
+          "enum": [
+            "black",
+            "gold"
+          ],
           "type": "string"
         },
         "title": {
@@ -21,7 +24,10 @@
           "type": "string"
         }
       },
-      "required": ["title", "variant"]
+      "required": [
+        "title",
+        "variant"
+      ]
     },
     "HeroHeaderProps": {
       "type": "object",
@@ -83,11 +89,16 @@
                 }
               }
             },
-            "required": ["times", "title"]
+            "required": [
+              "times",
+              "title"
+            ]
           }
         }
       },
-      "required": ["title"]
+      "required": [
+        "title"
+      ]
     },
     "InstagramFeedProps": {
       "type": "object",
