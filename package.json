@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"watch 'npm run generate-section-schemas' ./src/sections \"",
+    "dev": "next dev",
+    "dev:sections": "concurrently \"next dev\" \"watch 'npm run generate-section-schemas' ./src/sections \"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
