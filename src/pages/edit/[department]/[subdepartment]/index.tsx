@@ -9,7 +9,7 @@ import { SupaPage } from 'types';
 export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [page, setPage] = useState<SupaPage | undefined>();
+  const [page, setPage] = useState<SupaPage>();
 
   const updatePage = useCallback(
     (payload: any) => {
