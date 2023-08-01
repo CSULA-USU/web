@@ -5,11 +5,9 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdCancel } from 'react-icons/md';
 import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
-import { SupaPage } from 'types';
+import { useRecoilValue } from 'recoil';
+import { editorPageState } from 'atoms/EditorAtom';
 
-interface EditDrawerProps {
-  page: SupaPage;
-}
 const Container = styled.div`
   height: 100vh;
   width: 480px;
@@ -28,7 +26,9 @@ const StyledButton = styled.button`
   }
 `;
 
-export const EditDrawer = ({ page }: EditDrawerProps) => {
+export const EditDrawer = () => {
+  const page = useRecoilValue(editorPageState);
+
   return !page ? null : (
     <Drawer.Drawer>
       <Drawer.Trigger>
@@ -51,13 +51,15 @@ export const EditDrawer = ({ page }: EditDrawerProps) => {
                 alignItems: 'center',
               }}
             >
-              CLOSE <MdCancel size={40} />
+              <MdCancel size={40} />
             </button>
           </Drawer.CloseButton>
-          {page.sections.length &&
-            page.sections.map((section) => (
-              <SectionForm key={section.id} section={section} />
-            ))}
+          {page.sections.map((section) => (
+            <SectionForm
+              key={`${section.name}:${section.id}`}
+              section={section}
+            />
+          ))}
           <SectionAdder pageId={page.id} sectionCount={page.sections.length} />
         </Container>
       </Drawer.Target>
