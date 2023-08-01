@@ -10,13 +10,23 @@ export const fetchPageSections = async (slug: string) => {
   return await data.json();
 };
 
-export const addPageSection = async (pageSection: Partial<SupaSection>) => {
-  const data = await fetch(`/api/sections`, {
+const insertOrUpsert = (data: Partial<SupaSection> | Partial<SupaSection>[]) =>
+  fetch(`/api/sections`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(pageSection),
+    body: JSON.stringify(data),
   });
+
+export const insertPageSection = async (pageSection: Partial<SupaSection>) => {
+  const data = await insertOrUpsert(pageSection);
+  return await data.json();
+};
+
+export const upsertPageSection = async (
+  pageSection: Partial<SupaSection>[],
+) => {
+  const data = await insertOrUpsert(pageSection);
   return await data.json();
 };

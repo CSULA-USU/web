@@ -7,6 +7,7 @@ import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
 import { useRecoilValue } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
+import { upsertPageSection } from 'api';
 
 const Container = styled.div`
   height: 100vh;
@@ -29,6 +30,10 @@ const StyledButton = styled.button`
 export const EditDrawer = () => {
   const page = useRecoilValue(editorPageState);
 
+  const handleSave = () => {
+    page?.sections && upsertPageSection(page.sections);
+  };
+
   return !page ? null : (
     <Drawer.Drawer>
       <Drawer.Trigger>
@@ -40,20 +45,25 @@ export const EditDrawer = () => {
       <Drawer.Target preventScroll>
         <Container>
           <Drawer.CloseButton>
-            <button
-              style={{
-                border: 0,
-                backgroundColor: 'transparent',
-                fontSize: 16,
-                position: 'absolute',
-                right: 16,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
+            <button style={{ cursor: 'pointer', border: 0 }}>
               <MdCancel size={40} />
             </button>
           </Drawer.CloseButton>
+          <button
+            onClick={handleSave}
+            style={{
+              backgroundColor: 'transparent',
+              fontSize: 16,
+              position: 'absolute',
+              top: 24,
+              right: 24,
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            SAVE
+          </button>
           {page.sections.map((section) => (
             <SectionForm
               key={`${section.name}:${section.id}`}

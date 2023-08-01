@@ -1,4 +1,4 @@
-import { addPageSection } from 'api';
+import { insertPageSection } from 'api';
 import { Expandable, Typography } from 'components';
 import styled from 'styled-components';
 import { sections } from 'sections';
@@ -13,7 +13,7 @@ export const SectionAdder = ({
   sectionCount: number;
 }) => {
   const handleAddSection = (sectionName: string) => {
-    addPageSection({
+    insertPageSection({
       page_id: pageId,
       name: sectionName,
       data: sections[sectionName as keyof typeof sections].defaultProps,
@@ -29,12 +29,12 @@ export const SectionAdder = ({
       >
         {sectionNames.length &&
           sectionNames.map((sectionName) => (
-            <div
+            <button
               key={sectionName}
               onClick={() => handleAddSection(sectionName)}
             >
               <Typography variant="labelTitle">{sectionName}</Typography>
-            </div>
+            </button>
           ))}
       </Expandable>
     </Container>
