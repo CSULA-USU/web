@@ -117,6 +117,15 @@
     "email": "jsanlui2@calstatela.edu"
   },
   {
+    "name": "Jennifer Celaya Davis",
+    "title": "Interim Executive Director",
+    "src": "/staff/jennifer-davis.png",
+    "alt": "Jennifer Celaya Davis",
+    "tags": ["Administration", "Director"],
+    "department": "U-SU Administration",
+    "email": "jcelaya@cslanet.calstatela.edu"
+  },
+  {
     "name": "John Ortiz",
     "title": "Director, Operations",
     "src": "/staff/john-ortiz.png",
@@ -259,15 +268,6 @@
     "tags": ["Administration", "Director"],
     "department": "U-SU Financial Services",
     "email": "sshiau2@calstatela.edu"
-  },
-  {
-    "name": "Stephen Fleischer",
-    "title": "Executive Director",
-    "src": "/staff/stephen-fleischer.jpg",
-    "alt": "Stephen Fleischer",
-    "tags": ["Administration", "Director"],
-    "department": "U-SU Administration",
-    "email": "sfleischer@cslanet.calstatela.edu"
   },
   {
     "name": "Taraneh Tabatabai",
