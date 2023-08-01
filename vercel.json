@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/token-cron",
-      "schedule": "45 10 */55 * *"
+      "schedule": "50 10 * * *"
     }
   ]
 }
