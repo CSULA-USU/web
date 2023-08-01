@@ -12,6 +12,13 @@ interface InstagramFeedStyleProps {
   src?: string;
 }
 
+const HiddenSpan = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+`;
 const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   width: 320px;
   height: 320px;
@@ -21,7 +28,8 @@ const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   margin: ${Spaces.sm};
   border-radius: 8px;
 `;
-const InstagramLinkContainter = styled.span`
+
+const InstagramLinkContainer = styled.span`
   :hover {
     color: ${Colors.gold};
   }
@@ -53,11 +61,11 @@ export const Component = ({
       <FluidContainer>
         <Typography variant={isMobile ? 'titleSmall' : 'title'}>
           Follow Us on Instagram{' '}
-          <InstagramLinkContainter>
+          <InstagramLinkContainer>
             <Link href={url}>
               <strong>@{username}</strong>
             </Link>{' '}
-          </InstagramLinkContainter>
+          </InstagramLinkContainer>
         </Typography>
       </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
@@ -69,6 +77,7 @@ export const Component = ({
                 }
                 aria-label="view instagram post"
               >
+                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
                 <InstagramCardsContainer
                   src={
                     instagramPosts[0].media_type === 'VIDEO'
@@ -80,6 +89,7 @@ export const Component = ({
             )
           : instagramPosts.map((post, index) => (
               <Link href={post.permalink} key={`${index}_${post.username}`}>
+                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
                 <InstagramCardsContainer
                   src={
                     post.media_type === 'VIDEO'

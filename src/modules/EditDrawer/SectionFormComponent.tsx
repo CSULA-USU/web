@@ -1,12 +1,15 @@
 import { Input, Label, Select } from 'components';
 import _ from 'lodash';
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { editorPageState } from 'atoms/EditorAtom';
+import { SupaSection } from 'types';
 
 interface SectionFormComponentProps {
-  sectionName: string;
+  section: SupaSection;
   propertySchema: any[];
-  defaultValue: any;
+  value: any;
 }
 
 const Checkbox = styled.input``;
@@ -26,7 +29,9 @@ const getFormComponent = (
   }
 
   const formComponentMap = {
-    string: Input,
+    string: (props: any) => (
+      <Input {...props} onChange={(e: any) => props.onChange(e.target.value)} />
+    ),
     number: (props: any) => <Input type="number" {...props} />,
     boolean: Checkbox,
     enum: (props: any) => (
@@ -35,6 +40,7 @@ const getFormComponent = (
         items={items}
         placeholder={`Select a ${property}`}
         {...props}
+        onValueChange={props.onChange}
       />
     ),
   };
@@ -44,18 +50,44 @@ const getFormComponent = (
     (() => <Input disabled placeholder="Not implemented" />)
   );
 };
+
 export const SectionFormComponent = ({
-  sectionName,
+  section,
   propertySchema,
-  defaultValue,
+  value,
 }: SectionFormComponentProps) => {
+  const [page, setPage] = useRecoilState(editorPageState);
   const [property, definition] = propertySchema;
 
-  const FormComponent = getFormComponent(definition, property);
+  const FormComponent = useMemo(
+    () => getFormComponent(definition, property),
+    [definition, property],
+  );
+
+  const handleChange = useCallback(
+    async (newValue: any) => {
+      if (!page) return;
+      const updatedPage = {
+        ...page,
+        sections: [
+          ...page.sections.map((s) => ({
+            ...s,
+            data: {
+              ...s.data,
+              [property]: s.id === section.id ? newValue : undefined,
+            },
+          })),
+        ],
+      };
+      setPage(updatedPage);
+    },
+    [page, setPage, section, property],
+  );
+
   return (
-    <Label htmlFor={`${sectionName}_${property}`}>
+    <Label htmlFor={`${section.name}_${section.name}_${property}`}>
       {property}: <br />
-      <FormComponent name={property} defaultValue={defaultValue} />
+      <FormComponent name={property} value={value} onChange={handleChange} />
       <br />
     </Label>
   );

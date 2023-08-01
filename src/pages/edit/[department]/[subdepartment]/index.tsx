@@ -1,15 +1,16 @@
 import { EditDrawer, EditPage } from 'modules';
 import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
 import { supabase } from 'lib/supabase';
-import { SupaPage } from 'types';
+import { useRecoilState } from 'recoil';
+import { editorPageState } from 'atoms/EditorAtom';
 
 export default function DynamicPage() {
+  const [page, setPage] = useRecoilState(editorPageState);
   const router = useRouter();
   const { department, subdepartment } = router.query;
-  const [page, setPage] = useState<SupaPage | undefined>();
 
   const updatePage = useCallback(
     (payload: any) => {
@@ -21,7 +22,7 @@ export default function DynamicPage() {
         ),
       });
     },
-    [page],
+    [page, setPage],
   );
 
   useEffect(() => {
@@ -44,24 +45,24 @@ export default function DynamicPage() {
     };
   }, [updatePage]);
 
-  const getPageSections = async () => {
+  const getPageSections = useCallback(async () => {
     if (department || subdepartment) {
       const slug = subdepartment
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const page = await fetchPageSections(slug);
-      setPage(page);
+      const pageSections = await fetchPageSections(slug);
+      setPage(pageSections);
     }
-  };
+  }, [setPage, department, subdepartment]);
 
   useEffect(() => {
     getPageSections();
-  }, [router.query]);
+  }, [router.query, getPageSections]);
 
   return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      <EditDrawer page={page} />
+      <EditDrawer />
       <PageSections pageSections={page?.sections} />
     </EditPage>
   );
