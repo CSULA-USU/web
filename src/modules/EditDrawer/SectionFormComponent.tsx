@@ -39,8 +39,8 @@ const getFormComponent = (
         ariaLabel={property}
         items={items}
         placeholder={`Select a ${property}`}
-        {...props}
         onValueChange={props.onChange}
+        {...props}
       />
     ),
   };
@@ -67,19 +67,18 @@ export const SectionFormComponent = ({
   const handleChange = useCallback(
     async (newValue: any) => {
       if (!page) return;
-      const updatedPage = {
-        ...page,
-        sections: [
-          ...page.sections.map((s) => ({
-            ...s,
-            data: {
-              ...s.data,
-              [property]: s.id === section.id ? newValue : undefined,
-            },
-          })),
-        ],
-      };
-      setPage(updatedPage);
+      const sections = page.sections.map((sectionItem) => {
+        return sectionItem.id === section.id
+          ? {
+              ...sectionItem,
+              data: {
+                ...sectionItem.data,
+                [property]: newValue,
+              },
+            }
+          : sectionItem;
+      });
+      setPage({ ...page, sections });
     },
     [page, setPage, section, property],
   );
