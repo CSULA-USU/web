@@ -6,9 +6,6 @@ import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaDiscord, FaTiktok } from 'react-icons/fa';
-import { useEffect } from 'react';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const OfferingsContainer = styled.div`
@@ -80,26 +77,6 @@ export default function APISRC() {
     justify-content: center;
     gap: ${Spaces.xl};
   `;
-
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_APISRC')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_APISRC');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
 
   return (
     <Page>

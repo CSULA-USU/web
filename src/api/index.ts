@@ -11,23 +11,3 @@ export const fetchInstagramFeed = async (org: string) => {
   const data = await fetch(`/api/instagram?org=${org}`);
   return await data.json();
 };
-
-export const fetchToken = async (name: string) => {
-  const data = await fetch(`/api/token?name=${name}`);
-
-  return await data.json();
-};
-
-export const refreshInstagramToken = async (token: string) => {
-  const data = await fetch(`/api/refresh-ig-token?token=${token}`);
-
-  return await data.json();
-};
-
-export const updateSupabaseToken = async (newToken: string, name: string) => {
-  const data = await fetch(
-    `/api/update-supabase-token?newToken=${newToken}&name=${name}`,
-  );
-
-  return await data.json();
-};
