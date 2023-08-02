@@ -35,14 +35,16 @@ const getCSS = (p: ButtonProps) => {
   return css`
     font-size: 16px;
     font-weight: 700;
-    border: none;
+    border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;
     padding: 18px 36px;
     background-color: ${Colors[backgroundColor]};
     color: ${Colors[color]};
     margin: ${p.margin || 0};
-    ${border && `border: 1px solid ${border}`}
+    &:hover {
+      opacity: 0.7;
+    }
     &:disabled {
       background-color: ${Colors.greyLighter};
       color: ${Colors.grey};
