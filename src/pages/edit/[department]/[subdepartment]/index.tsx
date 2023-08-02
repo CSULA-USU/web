@@ -12,6 +12,18 @@ export default function DynamicPage() {
   const router = useRouter();
   const { department, subdepartment } = router.query;
 
+  const deletePageSection = useCallback(
+    (payload: any) => {
+      if (!page) return;
+      setPage({
+        ...page,
+        sections: page.sections.filter(
+          (section) => section.id !== payload.old.id,
+        ),
+      });
+    },
+    [page, setPage],
+  );
   const updatePage = useCallback(
     (payload: any) => {
       if (!page) return;
@@ -32,7 +44,11 @@ export default function DynamicPage() {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'sections' },
         (payload) => {
-          updatePage(payload);
+          if (payload.eventType === 'DELETE') {
+            deletePageSection(payload);
+          } else {
+            updatePage(payload);
+          }
         },
       )
       .subscribe();
@@ -43,7 +59,7 @@ export default function DynamicPage() {
     return () => {
       unsub();
     };
-  }, [updatePage]);
+  }, [updatePage, deletePageSection]);
 
   const getPageSections = useCallback(async () => {
     if (department || subdepartment) {
