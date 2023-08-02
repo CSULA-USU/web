@@ -1,11 +1,11 @@
-import { SupaSection } from 'types';
+import { SupaPage, SupaSection } from 'types';
 
-export const fetchPages = async () => {
+export const fetchPages = async (): Promise<SupaPage[]> => {
   const data = await fetch(`/api/pages`);
   return await data.json();
 };
 
-export const fetchPageSections = async (slug: string) => {
+export const fetchPageSections = async (slug: string): Promise<SupaPage> => {
   const data = await fetch(`/api/sections?slug=${slug}`);
   return await data.json();
 };
@@ -19,14 +19,7 @@ const insertOrUpsert = (data: Partial<SupaSection> | Partial<SupaSection>[]) =>
     body: JSON.stringify(data),
   });
 
-export const insertPageSection = async (pageSection: Partial<SupaSection>) => {
-  const data = await insertOrUpsert(pageSection);
-  return await data.json();
-};
-
-export const upsertPageSection = async (
-  pageSection: Partial<SupaSection>[],
-) => {
+export const savePageSections = async (pageSection: Partial<SupaSection>[]) => {
   const data = await insertOrUpsert(pageSection);
   return await data.json();
 };

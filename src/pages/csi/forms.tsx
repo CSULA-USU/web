@@ -10,8 +10,8 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
@@ -26,8 +26,8 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
@@ -42,8 +42,8 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
@@ -58,8 +58,8 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {

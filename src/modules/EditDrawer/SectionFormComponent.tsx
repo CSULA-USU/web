@@ -1,11 +1,10 @@
-import { Input, Label, Select } from 'components';
-import _ from 'lodash';
+import { Input, Label, Select, Typography } from 'components';
 import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
 import { SupaSection } from 'types';
-
+import { title } from 'radash';
 interface SectionFormComponentProps {
   section: SupaSection;
   propertySchema: any[];
@@ -32,7 +31,13 @@ const getFormComponent = (
     string: (props: any) => (
       <Input {...props} onChange={(e: any) => props.onChange(e.target.value)} />
     ),
-    number: (props: any) => <Input type="number" {...props} />,
+    number: (props: any) => (
+      <Input
+        type="number"
+        {...props}
+        onChange={(e: any) => props.onChange(e.target.value)}
+      />
+    ),
     boolean: Checkbox,
     enum: (props: any) => (
       <Select
@@ -68,7 +73,7 @@ export const SectionFormComponent = ({
     async (newValue: any) => {
       if (!page) return;
       const sections = page.sections.map((sectionItem) => {
-        return sectionItem.id === section.id
+        return sectionItem.order === section.order
           ? {
               ...sectionItem,
               data: {
@@ -85,7 +90,7 @@ export const SectionFormComponent = ({
 
   return (
     <Label htmlFor={`${section.name}_${section.name}_${property}`}>
-      {property}: <br />
+      <Typography variant="copy">{title(property)}</Typography>
       <FormComponent name={property} value={value} onChange={handleChange} />
       <br />
     </Label>

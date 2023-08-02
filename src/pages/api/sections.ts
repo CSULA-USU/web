@@ -6,27 +6,55 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
-  if (req.method === 'POST') {
-    const { error } = req.body.length
-      ? await supabase.from('sections').upsert([...req.body])
-      : await supabase.from('sections').insert({ ...req.body });
+  switch (req.method) {
+    case 'POST':
+      const responses = await Promise.all(
+        await req.body.map(async (section: any) => {
+          if (section.order < 0) {
+            if (section.id) {
+              return await supabase
+                .from('sections')
+                .delete()
+                .eq('id', section.id);
+            }
+            return {};
+          } else if (section.id) {
+            return await supabase.from('sections').upsert(section);
+          } else {
+            return await supabase.from('sections').insert(section);
+          }
+        }),
+      );
 
-    if (error) {
-      res.status(500).json(error);
-    } else {
+      const hasErrors = responses.some((r) => r.error);
+      if (hasErrors) res.status(500).json(responses.filter((r) => r.error));
+
       res.status(200).json({ message: 'success' });
-    }
-  } else {
-    const { data: sections, error } = await supabase
-      .from('pages')
-      .select('id, slug, sections(id, page_id, name, order, data)')
-      .eq('slug', req.query.slug)
-      .order('order', { foreignTable: 'sections', ascending: true });
+      break;
+    case 'DELETE':
+      const { error: deleteError } = await supabase
+        .from('sections')
+        .delete()
+        .eq('id', req.body.id);
 
-    if (error) {
-      res.status(500).json(error);
-    } else {
-      res.status(200).json(sections?.[0]);
-    }
+      if (deleteError) {
+        res.status(500).json(deleteError);
+      } else {
+        res.status(200).json({ message: 'success' });
+      }
+      break;
+    default:
+      const { data: sections, error: getError } = await supabase
+        .from('pages')
+        .select('id, slug, sections(id, page_id, name, order, data)')
+        .eq('slug', req.query.slug)
+        .order('order', { foreignTable: 'sections', ascending: true });
+
+      if (getError) {
+        res.status(500).json(getError);
+      } else {
+        res.status(200).json(sections?.[0]);
+      }
+      break;
   }
 }

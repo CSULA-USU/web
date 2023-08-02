@@ -1,42 +1,59 @@
-import { insertPageSection } from 'api';
-import { Expandable, Typography } from 'components';
-import styled from 'styled-components';
+import { Popover, Typography } from 'components';
 import { sections } from 'sections';
+import { useRecoilState } from 'recoil';
+import { editorPageState } from 'atoms/EditorAtom';
+import { BiSolidPlusSquare } from 'react-icons/bi';
+import styled from 'styled-components';
+import { Colors } from 'theme';
 
-const Container = styled.div``;
+const SectionButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 4px;
+  width: 100%;
 
-export const SectionAdder = ({
-  pageId,
-  sectionCount,
-}: {
-  pageId: number;
-  sectionCount: number;
-}) => {
+  &:hover p {
+    color: ${Colors.grey};
+  }
+`;
+
+export const SectionAdder = ({ pageId }: { pageId: number }) => {
+  const [page, setPage] = useRecoilState(editorPageState);
+
   const handleAddSection = (sectionName: string) => {
-    insertPageSection({
+    if (!page) return;
+    const newSection = {
       page_id: pageId,
       name: sectionName,
       data: sections[sectionName as keyof typeof sections].defaultProps,
-      order: sectionCount,
+      order: page?.sections.length,
+    };
+    setPage({
+      ...page,
+      sections: [...page.sections, newSection],
     });
   };
 
   const sectionNames = Object.keys(sections);
   return (
-    <Container>
-      <Expandable
-        header={<Typography variant="label">+ Add Section</Typography>}
-      >
-        {sectionNames.length &&
-          sectionNames.map((sectionName) => (
-            <button
-              key={sectionName}
-              onClick={() => handleAddSection(sectionName)}
-            >
-              <Typography variant="labelTitle">{sectionName}</Typography>
-            </button>
-          ))}
-      </Expandable>
-    </Container>
+    <Popover
+      noCloseButton
+      trigger={
+        <button>
+          <BiSolidPlusSquare size={40} />
+        </button>
+      }
+    >
+      {sectionNames.length &&
+        sectionNames.map((sectionName) => (
+          <SectionButton
+            key={`AddSection:${sectionName}`}
+            onClick={() => handleAddSection(sectionName)}
+          >
+            <Typography variant="labelTitle">{sectionName}</Typography>
+          </SectionButton>
+        ))}
+    </Popover>
   );
 };
