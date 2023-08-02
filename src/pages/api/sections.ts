@@ -10,7 +10,7 @@ export default async function handler(
     case 'POST':
       const responses = await Promise.all(
         await req.body.map(async (section: any) => {
-          if (section.order === -1) {
+          if (section.order < 0) {
             if (section.id) {
               return await supabase
                 .from('sections')

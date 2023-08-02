@@ -6,6 +6,7 @@ import PageSections from 'modules/PageSections/PageSections';
 import { supabase } from 'lib/supabase';
 import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
+import { SupaSection } from 'types';
 
 export default function DynamicPage() {
   const [page, setPage] = useRecoilState(editorPageState);
@@ -85,8 +86,16 @@ export default function DynamicPage() {
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      const pageSections = await fetchPageSections(slug);
-      setPage(pageSections);
+      const fetchedPage = await fetchPageSections(slug);
+      setPage({
+        ...fetchedPage,
+        sections: fetchedPage.sections.map(
+          (section: SupaSection, index: number) => ({
+            ...section,
+            order: index,
+          }),
+        ),
+      });
     }
   }, [setPage, department, subdepartment]);
 
@@ -96,7 +105,7 @@ export default function DynamicPage() {
 
   return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      <PageSections pageSections={page?.sections} />
+      <PageSections pageSections={page.sections} />
     </EditPage>
   );
 }

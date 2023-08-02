@@ -89,7 +89,7 @@ export const EditDrawer = () => {
             <Typography variant="label">Sections</Typography>
             <Divider margin="8px 0 16px" />
             {page.sections
-              .filter((s) => s.order !== -1)
+              .filter((s) => s.order > -1)
               .map((section) => (
                 <SectionForm
                   key={`SectionForm:${section.order}:${section.name}`}

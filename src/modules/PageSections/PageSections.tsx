@@ -10,7 +10,7 @@ export default function PageSections({
     <>
       {!!pageSections?.length &&
         pageSections
-          .filter((s) => s.order !== -1)
+          .filter((s) => s.order > -1)
           .map((section: any) => {
             const Section = sections[section.name as keyof typeof sections];
             const key = `Section:${section.order}:${section.name}`;

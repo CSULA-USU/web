@@ -56,18 +56,22 @@ export const SectionForm = ({ section }: SectionFormProps) => {
     return sectionSchema && Object.entries(sectionSchema.properties);
   }, [name]);
 
-  const handleDelete = useCallback(async () => {
-    if (!page) return;
-    const sections = page.sections.map((sectionItem) => {
-      return sectionItem.order === section.order
-        ? {
-            ...sectionItem,
-            order: -1,
-          }
-        : sectionItem;
-    });
-    setPage({ ...page, sections });
-  }, [page, setPage, section]);
+  const handleDelete = useCallback(
+    async (e: any) => {
+      e.stopPropagation();
+      if (!page) return;
+      const sections = page.sections.map((sectionItem) => {
+        return sectionItem.order === section.order
+          ? {
+              ...sectionItem,
+              order: (page.sections.length + 1) * -1,
+            }
+          : sectionItem;
+      });
+      setPage({ ...page, sections });
+    },
+    [page, setPage, section],
+  );
 
   return (
     <SectionItem>
