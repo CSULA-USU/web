@@ -33,6 +33,7 @@ const styles: { [key: string]: ButtonVariant } = {
 const getCSS = (p: ButtonProps) => {
   const { backgroundColor, color, border } = styles[p.variant || 'primary'];
   return css`
+    cursor: pointer;
     font-size: 16px;
     font-weight: 700;
     border: ${border ? `1px solid ${border}` : 'none'};

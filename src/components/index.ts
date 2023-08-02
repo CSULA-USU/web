@@ -19,3 +19,4 @@ export * from './SearchInput';
 export * from './Input';
 export * from './Label';
 export * from './Select';
+export * from './Popover';
