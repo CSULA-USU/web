@@ -32,7 +32,13 @@ const getFormComponent = (
     string: (props: any) => (
       <Input {...props} onChange={(e: any) => props.onChange(e.target.value)} />
     ),
-    number: (props: any) => <Input type="number" {...props} />,
+    number: (props: any) => (
+      <Input
+        type="number"
+        {...props}
+        onChange={(e: any) => props.onChange(e.target.value)}
+      />
+    ),
     boolean: Checkbox,
     enum: (props: any) => (
       <Select
