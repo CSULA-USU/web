@@ -24,13 +24,25 @@ export default function DynamicPage() {
     },
     [page, setPage],
   );
-  const updatePage = useCallback(
+  const updatePageSection = useCallback(
     (payload: any) => {
       if (!page) return;
       setPage({
         ...page,
         sections: page.sections.map((section) =>
           section.id === payload.old.id ? payload.new : section,
+        ),
+      });
+    },
+    [page, setPage],
+  );
+  const insertPageSection = useCallback(
+    (payload: any) => {
+      if (!page) return;
+      setPage({
+        ...page,
+        sections: page.sections.map((section) =>
+          section.order === payload.new.order ? payload.new : section,
         ),
       });
     },
@@ -44,10 +56,16 @@ export default function DynamicPage() {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'sections' },
         (payload) => {
-          if (payload.eventType === 'DELETE') {
-            deletePageSection(payload);
-          } else {
-            updatePage(payload);
+          switch (payload.eventType) {
+            case 'INSERT':
+              insertPageSection(payload);
+              break;
+            case 'UPDATE':
+              updatePageSection(payload);
+              break;
+            case 'DELETE':
+              deletePageSection(payload);
+              break;
           }
         },
       )
@@ -59,7 +77,7 @@ export default function DynamicPage() {
     return () => {
       unsub();
     };
-  }, [updatePage, deletePageSection]);
+  }, [insertPageSection, updatePageSection, deletePageSection]);
 
   const getPageSections = useCallback(async () => {
     if (department || subdepartment) {

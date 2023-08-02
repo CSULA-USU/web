@@ -74,7 +74,7 @@ export const SectionFormComponent = ({
     async (newValue: any) => {
       if (!page) return;
       const sections = page.sections.map((sectionItem) => {
-        return sectionItem.id === section.id
+        return sectionItem.order === section.order
           ? {
               ...sectionItem,
               data: {

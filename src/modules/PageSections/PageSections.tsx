@@ -9,18 +9,19 @@ export default function PageSections({
   return (
     <>
       {!!pageSections?.length &&
-        pageSections.map((section: any) => {
-          const Section = sections[section.name as keyof typeof sections];
-          return !Section ? (
-            <h1
-              key={section.id}
-            >{`Component: [${section.name}] not found.`}</h1>
-          ) : (
-            <Section.Component {...section.data} key={section.id}>
-              {section.data?.description}
-            </Section.Component>
-          );
-        })}
+        pageSections
+          .filter((s) => s.order !== -1)
+          .map((section: any) => {
+            const Section = sections[section.name as keyof typeof sections];
+            const key = `Section:${section.order}:${section.name}`;
+            return !Section ? (
+              <h1 key={key}>{`Component: [${section.name}] not found.`}</h1>
+            ) : (
+              <Section.Component {...section.data} key={key}>
+                {section.data?.description}
+              </Section.Component>
+            );
+          })}
     </>
   );
 }

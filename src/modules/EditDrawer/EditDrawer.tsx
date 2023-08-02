@@ -64,12 +64,14 @@ export const EditDrawer = () => {
           >
             SAVE
           </button>
-          {page.sections.map((section) => (
-            <SectionForm
-              key={`${section.name}:${section.id}`}
-              section={section}
-            />
-          ))}
+          {page.sections
+            .filter((s) => s.order !== -1)
+            .map((section) => (
+              <SectionForm
+                key={`SectionForm:${section.order}:${section.name}`}
+                section={section}
+              />
+            ))}
           <SectionAdder pageId={page.id} />
         </Container>
       </Drawer.Target>
