@@ -1,4 +1,4 @@
-import { EditDrawer, EditPage } from 'modules';
+import { EditPage } from 'modules';
 import { fetchPageSections } from 'api';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect } from 'react';
@@ -62,7 +62,6 @@ export default function DynamicPage() {
 
   return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      <EditDrawer />
       <PageSections pageSections={page?.sections} />
     </EditPage>
   );

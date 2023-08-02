@@ -38,7 +38,7 @@ export const EditDrawer = () => {
     <Drawer.Drawer>
       <Drawer.Trigger>
         <StyledButton>
-          <HiMenuAlt3 size={48} />
+          <HiMenuAlt3 color="white" size={48} />
         </StyledButton>
       </Drawer.Trigger>
 
