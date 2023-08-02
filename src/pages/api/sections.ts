@@ -7,15 +7,23 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   if (req.method === 'POST') {
-    const { error } = req.body.length
-      ? await supabase.from('sections').upsert([...req.body])
-      : await supabase.from('sections').insert({ ...req.body });
+    const errors = await Promise.all(
+      await req.body.reduce(async (acc, section: any) => {
+        let e;
+        if (section.id) {
+          const { error } = await supabase.from('sections').upsert(section);
+          e = error;
+        } else {
+          const { error } = await supabase.from('sections').insert(section);
+          e = error;
+        }
+        return e ? [...acc, e] : acc;
+      }, []),
+    );
 
-    if (error) {
-      res.status(500).json(error);
-    } else {
-      res.status(200).json({ message: 'success' });
-    }
+    if (errors.length) res.status(500).json(errors);
+
+    res.status(200).json({ message: 'success' });
   } else {
     const { data: sections, error } = await supabase
       .from('pages')

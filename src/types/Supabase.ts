@@ -6,7 +6,7 @@ export interface SupaPage {
 }
 
 export interface SupaSection {
-  id: number;
+  id?: number;
   page_id: number;
   name: string;
   order: number;
