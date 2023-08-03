@@ -79,7 +79,7 @@ export default function Employment() {
               ))
             ) : (
               <Typography>
-                No available student assitant positions at this time.
+                No available student assistant positions at this time.
               </Typography>
             )}
           </div>
@@ -102,7 +102,7 @@ export default function Employment() {
               ))
             ) : (
               <Typography>
-                No available full-time postions at this time.
+                No available full-time positions at this time.
               </Typography>
             )}
           </div>
