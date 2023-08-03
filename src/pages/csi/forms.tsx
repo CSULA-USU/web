@@ -85,7 +85,7 @@ const banking = [
     },
   },
   {
-    title: 'Club Banking Exemption Request Form',
+    title: 'Exception Request Form',
     children: (
       <Typography as="p">
         All clubs and organizations must bank with the on-campus entity, but
@@ -96,7 +96,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://na2.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=58b242d4-5b79-4b5e-81d1-0fa72a34f31c&env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&v=2',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCJ5zNc3nY1740fR3Cl6yh5Z4i5NYYWcFGfsSvYOFvlnheb2sMnqB6QjiegIJOwAjo*',
     },
   },
   {
