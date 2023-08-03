@@ -6,17 +6,16 @@ import {
   Image,
   Button,
   NonBreakingSpan,
-  InstagramFeed,
 } from 'components';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 interface DesignCardData {
   title: string;
   designer: string;
@@ -122,26 +121,6 @@ export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
-
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_GRAFFIX')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_GRAFFIX');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
 
   return (
     <Page>

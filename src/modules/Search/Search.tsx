@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { StyledInput } from 'components';
+import { SearchInput } from 'components';
 
 export const Search = () => {
   const [searchQuery, setQuery] = useState<string>('');
@@ -17,7 +17,7 @@ export const Search = () => {
   const router = useRouter();
 
   return (
-    <StyledInput
+    <SearchInput
       input={searchQuery}
       onChange={handleOnChange}
       onSubmit={handleFormSubmit}

@@ -4,16 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:sections": "concurrently \"next dev\" \"watch 'npm run generate-section-schemas' ./src/sections \"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit --incremental",
+    "generate-section-schemas": "node src/scripts/generate-section-schemas",
     "prepare": "husky install"
   },
   "dependencies": {
     "@accessible/drawer": "^3.0.2",
     "@floating-ui/react": "^0.14.0",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-select": "^1.2.2",
     "@supabase/supabase-js": "^2.21.0",
     "@szhsin/react-menu": "^3.5.2",
     "@types/lodash.throttle": "^4.1.7",
@@ -23,6 +28,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-modal": "^3.13.1",
     "axios": "^1.4.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.7.0",
     "eslint-config-next": "13.0.5",
     "fuse.js": "^6.6.2",
@@ -30,9 +36,10 @@
     "next": "13.0.5",
     "node-schedule": "^2.1.1",
     "prettier": "^2.5.1",
+    "radash": "^11.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.7.1",
+    "react-icons": "^4.10.1",
     "react-is": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
@@ -41,7 +48,9 @@
     "rss-parser": "^3.12.0",
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
-    "typescript": "4.9.3"
+    "typescript": "4.9.3",
+    "typescript-json-schema": "^0.59.0",
+    "watch": "^1.0.2"
   },
   "resolutions": {
     "styled-components": "^5"

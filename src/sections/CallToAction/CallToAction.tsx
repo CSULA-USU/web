@@ -1,14 +1,6 @@
 import { Button, FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
-
-type CTAProps = {
-  variant: 'gold' | 'black';
-  backgroundImage?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  primaryButtonText: string;
-  primaryButtonHref: string;
-};
+import { CallToActionProps } from './props';
 
 const CTAContainer = styled.div`
   display: flex;
@@ -24,21 +16,40 @@ const CTAContainer = styled.div`
   }
 `;
 
-export const CallToAction = ({
+export const defaultProps: CallToActionProps = {
+  title: 'Call To Action Title',
+  variant: 'gold',
+  description:
+    'Enter your description here...Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sit, fugit vero, fuga delectus facere, animi ducimus non nesciunt enim voluptatum at sed? Nulla minus eum earum possimus! Officiis, eius?',
+  primaryButtonHref: '#',
+  primaryButtonText: 'Button Text',
+};
+
+export const Component = ({
   variant,
   title,
   description,
   primaryButtonText,
   primaryButtonHref,
-}: CTAProps) => {
+}: CallToActionProps) => {
   const backgroundColor = variant === 'gold' ? 'primary' : 'black';
   const textColor = variant === 'gold' ? 'black' : 'white';
   const buttonColor = variant !== 'gold' ? 'primary' : 'black';
   return (
     <FluidContainer backgroundColor={backgroundColor}>
       <CTAContainer>
-        <Typography color={textColor}>{title}</Typography>
-        <Typography color={textColor}>{description}</Typography>
+        <Typography variant="label" size="lg" color={textColor}>
+          {title}
+        </Typography>
+        <Typography
+          variant="titleLarge"
+          size="2xl"
+          margin="0 0 24px"
+          lineHeight="1.5"
+          color={textColor}
+        >
+          {description}
+        </Typography>
         <Button variant={buttonColor} href={primaryButtonHref}>
           {primaryButtonText}
         </Button>

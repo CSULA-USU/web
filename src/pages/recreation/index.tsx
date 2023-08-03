@@ -6,13 +6,10 @@ import {
   Card,
   FluidContainer,
   NonBreakingSpan,
-  InstagramFeed,
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
-import { useEffect } from 'react';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 export default function Recreation() {
   const { isMobile, returnByBreakpoint } = useBreakpoint();
@@ -21,25 +18,6 @@ export default function Recreation() {
     desktop: 'calc(33.33% - 8px)',
   });
 
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_RECREATION')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_RECREATION');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
   return (
     <Page>
       <Head>

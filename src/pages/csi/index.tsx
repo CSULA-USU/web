@@ -12,16 +12,13 @@ import {
   Image,
   Typography,
   Button,
-  InstagramFeed,
 } from 'components';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
-import { useEffect } from 'react';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const descriptionCards = [
   {
@@ -130,26 +127,6 @@ export default function CSI() {
     desktop: 'calc(50% - 16px)',
     widescreen: 'calc(25% - 16px)',
   });
-
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_CSI')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_CSI');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
 
   return (
     <Page>

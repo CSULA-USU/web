@@ -1,19 +1,11 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { Header, OfficeHours, Page } from 'modules';
-import {
-  Button,
-  FluidContainer,
-  Image,
-  Typography,
-  InstagramFeed,
-} from 'components';
+import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
-import { useEffect } from 'react';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const hours = [
   {
@@ -29,7 +21,7 @@ export default function CLSRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   const HeaderContainer = styled.div`
-    background: url(/backgrounds/bod-cta-background.jpg) no-repeat;
+    background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
   `;
 
   const HeaderLeftContainer = styled.div`
@@ -38,25 +30,6 @@ export default function CLSRC() {
     gap: ${Spaces.xl};
   `;
 
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_CLSRC')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_CLSRC');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
   return (
     <Page>
       <Head>

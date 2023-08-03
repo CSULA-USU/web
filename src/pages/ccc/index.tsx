@@ -13,13 +13,11 @@ import {
   Image,
   DescriptionCard,
   Button,
-  InstagramFeed,
 } from 'components';
 import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
-import { useEffect } from 'react';
-import { fetchToken, refreshInstagramToken, updateSupabaseToken } from 'api';
-import * as schedule from 'node-schedule';
+import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
 const StudentOrgsCatergoriesContentContainer = styled.div`
   margin-top: ${Spaces['2xl']};
 `;
@@ -135,25 +133,6 @@ export default function CCC() {
     widescreen: 'calc(25% - 16px)',
   });
 
-  const updateToken = async () => {
-    await fetchToken('IG_TOKEN_CCC')
-      .then((data) => data[0].token)
-      .then(async (oldToken) => {
-        await refreshInstagramToken(oldToken)
-          .then((newToken) => newToken.access_token)
-          .then(async (newToken) => {
-            await updateSupabaseToken(newToken, 'IG_TOKEN_CCC');
-          });
-      });
-  };
-
-  const rule = new schedule.RecurrenceRule();
-  rule.date = new schedule.Range(1, 31, 55);
-  useEffect(() => {
-    schedule.scheduleJob(rule, function () {
-      updateToken();
-    });
-  }, []);
   return (
     <Page>
       <Head>
@@ -235,7 +214,7 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCatergoriesContentContainer>
       </FluidContainer>
-      <FluidContainer backgroundImage="/backgrounds/bod-cta-background.jpg">
+      <FluidContainer backgroundImage="/backgrounds/subtle-background-4.jpg">
         <Typography variant="title" as="h2">
           We Provide:
         </Typography>

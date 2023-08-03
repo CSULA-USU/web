@@ -10,14 +10,14 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://powerforms.docusign.net/d93e0323-b1ce-42ff-b13e-fb91599dcb2e?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCA3gbE5jpOjXe_bZlMi1B0tM7EA0ShOvjJuD5JZlwouZqjdDMDKpiFj7-lLuQVcis*',
     },
   },
   {
@@ -26,14 +26,14 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://powerforms.docusign.net/be151637-4c37-4907-b350-f17753e7d2cf?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhC__aUmueIh55IpUci-TWnRzoQ084XFOGEyxGrt8UvZLaIELaL_e03b35kEm4gvFro*',
     },
   },
   {
@@ -42,14 +42,14 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://powerforms.docusign.net/6915f235-1d19-49fe-8f17-8e073b5dc143?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhB9-vhbt5sNfsWKDeDsbIMuAuLIp-dfGy7IxXkH8I_LSodeAOyJd0qQ2yfDufNn8sk*',
     },
   },
   {
@@ -58,14 +58,14 @@ const account = [
     children: (
       <Typography as="p">
         Input the names and emails of the signers (based on the list on the left
-        for your organizational needs) in the DocuSign Power form. Each signer
-        will receive the form directly.
+        for your organizational needs) in the AdobeSign form. Each signer will
+        receive the form directly.
       </Typography>
     ),
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://powerforms.docusign.net/171e68a3-6fe2-428c-95e9-3005649e084f?env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&accountId=7891c003-1b6a-4447-a52d-e722502ecfaa',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhArNhqimsD0dveu63A3dExvu7PbubBtezN8hRgi95AI4u0A1jfLHkn6P0DeVynwSwM*',
     },
   },
 ];
@@ -85,7 +85,7 @@ const banking = [
     },
   },
   {
-    title: 'Club Banking Exemption Request Form',
+    title: 'Exception Request Form',
     children: (
       <Typography as="p">
         All clubs and organizations must bank with the on-campus entity, but
@@ -96,7 +96,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://na2.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=58b242d4-5b79-4b5e-81d1-0fa72a34f31c&env=na2&acct=7891c003-1b6a-4447-a52d-e722502ecfaa&v=2',
+      href: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCJ5zNc3nY1740fR3Cl6yh5Z4i5NYYWcFGfsSvYOFvlnheb2sMnqB6QjiegIJOwAjo*',
     },
   },
   {
