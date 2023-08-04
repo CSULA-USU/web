@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
 import { Expandable, Typography } from 'components';
 import { BiChevronRight } from 'react-icons/bi';
+import { Colors } from 'theme';
 
 interface SectionFormProps {
   section: SupaSection;
@@ -24,13 +25,14 @@ const DeleteButton = styled.button<{ stagedDelete?: boolean }>`
   border: none;
   cursor: pointer;
   padding: 0;
-  color: ${(p) => (p.stagedDelete ? 'orange' : 'red')};
+  color: ${(p) => (p.stagedDelete ? Colors.greyDarker : 'red')};
   margin-left: ${(p) => (p.stagedDelete ? '-16px' : 0)};
   transition: 0.3s ease;
   > svg {
     transition: 0.3s ease;
-    transform: rotate(${(p) => (p.stagedDelete ? '-45deg' : '0deg')});
+    transform: rotate(${(p) => (p.stagedDelete ? '-315deg' : '0deg')});
     &:hover {
+      scale: 1.2;
       color: ${(p) => (p.stagedDelete ? 'green' : 'orange')};
     }
   }
