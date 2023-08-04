@@ -6,7 +6,7 @@ import { MdCancel } from 'react-icons/md';
 import { BiSolidSave } from 'react-icons/bi';
 import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
 import { savePageSections } from 'api';
 import { Divider, Typography } from 'components';
@@ -58,10 +58,15 @@ const OpenButton = styled.button`
 `;
 
 export const EditDrawer = () => {
-  const page = useRecoilValue(editorPageState);
+  const [page, setPage] = useRecoilState(editorPageState);
 
-  const handleSave = () => {
-    page?.sections && savePageSections(page.sections);
+  const handleSave = async () => {
+    if (!page?.sections) return;
+    await savePageSections(page.sections);
+    setPage({
+      ...page,
+      sections: page.sections.filter((section) => !section.stagedDelete),
+    });
   };
 
   return !page ? null : (
@@ -88,14 +93,12 @@ export const EditDrawer = () => {
           <Content>
             <Typography variant="label">Sections</Typography>
             <Divider margin="8px 0 16px" />
-            {page.sections
-              .filter((s) => s.order > -1)
-              .map((section) => (
-                <SectionForm
-                  key={`SectionForm:${section.order}:${section.name}`}
-                  section={section}
-                />
-              ))}
+            {page.sections.map((section) => (
+              <SectionForm
+                key={`SectionForm:${section.order}:${section.name}`}
+                section={section}
+              />
+            ))}
           </Content>
         </Container>
       </Drawer.Target>

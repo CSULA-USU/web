@@ -10,18 +10,20 @@ const PageContainer = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   background-color: ${Colors.white};
+  position: relative;
 `;
 
 const Nav = styled.div`
+  position: fixed;
   display: flex;
   padding: 8px;
+  width: 100%;
   height: 80px;
   background-color: ${Colors.greyDarkest};
 `;
 
 const Content = styled.div`
-  overflow: scroll;
-  height: calc(100vh - 80px);
+  margin-top: 80px;
 `;
 
 interface PageProps {

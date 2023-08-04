@@ -105,7 +105,7 @@ export default function DynamicPage() {
 
   return !page ? null : (
     <EditPage title={`USU Editor: ${department || ''}/${subdepartment || ''}`}>
-      <PageSections pageSections={page.sections} />
+      <PageSections editMode pageSections={page.sections} />
     </EditPage>
   );
 }

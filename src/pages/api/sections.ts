@@ -1,6 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { supabase } from 'lib/supabase';
+import { SupaSection } from 'types';
+
+type SplitSections = {
+  toDelete: number[];
+  toUpdate: SupaSection[];
+};
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,22 +14,32 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'POST':
-      const responses = await Promise.all(
-        await req.body.map(async (section: any) => {
-          if (section.order < 0) {
-            if (section.id) {
-              return await supabase
-                .from('sections')
-                .delete()
-                .eq('id', section.id);
-            }
-            return {};
-          } else if (section.id) {
-            return await supabase.from('sections').upsert(section);
+      // split sections into toDelete and toUpdate
+      const { toDelete, toUpdate } = req.body.reduce(
+        (acc: SplitSections, section: SupaSection) => {
+          if (section.stagedDelete) {
+            return section.id
+              ? { ...acc, toDelete: [...acc.toDelete, section.id] }
+              : acc;
           } else {
-            return await supabase.from('sections').insert(section);
+            delete section.stagedDelete;
+            return { ...acc, toUpdate: [...acc.toUpdate, section] };
           }
+        },
+        { toDelete: [], toUpdate: [] },
+      );
+
+      // process deletes
+      const responses = await Promise.all(
+        await toUpdate.map(async (section: SupaSection, order: number) => {
+          const method = section.id ? 'upsert' : 'insert';
+          return await supabase.from('sections')[method]({ ...section, order });
         }),
+      );
+
+      // process deletes
+      responses.push(
+        await supabase.from('sections').delete().in('id', toDelete),
       );
 
       const hasErrors = responses.some((r) => r.error);

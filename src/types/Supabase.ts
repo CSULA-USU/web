@@ -11,4 +11,5 @@ export interface SupaSection {
   name: string;
   order: number;
   data: any;
+  stagedDelete?: boolean;
 }
