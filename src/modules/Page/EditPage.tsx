@@ -1,22 +1,21 @@
-import { FluidContainer, Typography } from 'components';
-import { EditDrawer } from 'modules/EditDrawer';
+import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors } from 'theme';
 
 const PageContainer = styled.div`
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
   background-color: ${Colors.white};
-  position: relative;
+  overflow: hidden;
 `;
 
 const Nav = styled.div`
   position: fixed;
   display: flex;
-  padding: 8px;
+  align-items: center;
+  padding: 16px;
   width: 100%;
   height: 80px;
   background-color: ${Colors.greyDarkest};
@@ -24,6 +23,7 @@ const Nav = styled.div`
 
 const Content = styled.div`
   margin-top: 80px;
+  height: calc(100vh - 80px);
 `;
 
 interface PageProps {
@@ -34,12 +34,9 @@ interface PageProps {
 export const EditPage = ({ children, title }: PageProps) => (
   <PageContainer>
     <Nav>
-      <EditDrawer />
-      <FluidContainer>
-        <Typography color="white" as="h1" variant="label">
-          {title}
-        </Typography>
-      </FluidContainer>
+      <Typography color="white" as="h1" variant="label">
+        {title}
+      </Typography>
     </Nav>
     <Content>{children}</Content>
   </PageContainer>
