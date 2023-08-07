@@ -14,13 +14,25 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.div<{ isOpen?: boolean }>`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  > div {
+  > * {
     transition: 0.3s;
+  }
+
+  div:last-child {
+    rotate: ${(p) => (p.isOpen ? '90deg' : '0deg')};
+  }
+
+  &:hover {
+    opacity: 0.8;
+    div:last-child {
+      scale: 1.2;
+      translate: ${(p) => (p.isOpen ? '0' : '4px')};
+    }
   }
 `;
 
@@ -56,11 +68,9 @@ export const Expandable = ({
   const expandedState = isExpanded === undefined ? isOpen : isExpanded;
   return (
     <Container>
-      <HeaderContainer onClick={handleToggle}>
+      <HeaderContainer onClick={handleToggle} isOpen={isOpen}>
         {header}
-        {indicator && (
-          <div style={{ rotate: isOpen ? '90deg' : 'unset' }}>{indicator}</div>
-        )}
+        {indicator && <div>{indicator}</div>}
       </HeaderContainer>
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}

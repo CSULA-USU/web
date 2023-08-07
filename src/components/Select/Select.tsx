@@ -6,6 +6,7 @@ import {
   ChevronUpIcon,
 } from '@radix-ui/react-icons';
 import styled from 'styled-components';
+import { Colors } from 'theme';
 
 interface SelectProps extends RadixSelect.SelectProps {
   items: { label: string; value: string }[];
@@ -24,21 +25,20 @@ const SelectTrigger = styled(RadixSelect.SelectTrigger)`
   height: 35px;
   gap: 5px;
   background-color: white;
-  color: var(--violet-11);
-  box-shadow: 0 2px 10px var(--black-a7);
+  color: black;
   &:hover {
-    background-color: var(--mauve-3);
+    background-color: white;
   }
   *:focus {
     box-shadow: 0 0 0 2px black;
   }
   &[data-placeholder] {
-    color: var(--violet-9);
+    color: ${Colors.grey};
   }
 `;
 
 const SelectIcon = styled(RadixSelect.SelectIcon)`
-  color: Var(--violet-11);
+  color: black;
 `;
 
 const SelectContent = styled(RadixSelect.Content)`
@@ -70,7 +70,7 @@ SelectItem.displayName = 'SelectItem';
 const StyledItem = styled(RadixSelect.Item)`
   font-size: 13px;
   line-height: 1;
-  color: var(--violet-11);
+  color: ${Colors.black};
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -78,15 +78,14 @@ const StyledItem = styled(RadixSelect.Item)`
   padding: 0 35px 0 25px;
   position: relative;
   user-select: none;
-
   &[data-disabled] {
-    color: var(--mauve-8);
+    color: ${Colors.greyLighter};
     pointer-events: none;
   }
   &[data-highlighted] {
     outline: none;
-    background-color: var(--violet-9);
-    color: var(--violet-1);
+    background-color: ${Colors.greyLightest};
+    color: ${Colors.black};
   }
 `;
 

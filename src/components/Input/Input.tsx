@@ -10,13 +10,12 @@ const StyledInput = styled.input`
   height: 35px;
   font-size: 14px;
   line-height: 1;
-  background-color: var(--black-a5);
-  box-shadow: 0 0 0 1px var(--black-a9);
+  background-color: white;
   &:focus {
     box-shadow: 0 0 0 2px black;
   }
   &::selection {
-    background-color: var(--black-a9);
+    background-color: white;
     color: white;
   }
 `;

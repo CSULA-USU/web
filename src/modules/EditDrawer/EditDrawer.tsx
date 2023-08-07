@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import * as Drawer from '@accessible/drawer';
-import { HiMenuAlt3 } from 'react-icons/hi';
-import { MdCancel } from 'react-icons/md';
-import { BiSolidSave } from 'react-icons/bi';
+import {
+  BiSolidChevronLeftSquare,
+  BiSolidChevronRightSquare,
+  BiSolidSave,
+} from 'react-icons/bi';
 import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
 import { savePageSections } from 'api';
-import { Divider, Typography } from 'components';
+import { Divider, PushDrawer, Typography } from 'components';
 import { Colors } from 'theme';
 
 const Container = styled.div`
   border-right: 8px solid ${Colors.primary};
   position: relative;
+  width: 360px;
+  height: 100%;
+  background-color: lightyellow;
 `;
 
 const Content = styled.div`
-  height: 100vh;
-  width: 360px;
   padding: 24px;
-  background-color: white;
-  overflow-y: auto;
+  height: calc(100vh - 80px);
+  overflow: scroll;
 `;
 
 const Toolbar = styled.div`
+  &,
+  * {
+    transition: 0.2s ease;
+  }
   display: flex;
   flex-direction: column;
-  width: 50px;
+  width: 62px;
+  border-left: 8px solid ${Colors.primary};
+  background-color: ${Colors.primary};
   button {
     display: flex;
     justify-content: center;
@@ -36,50 +44,47 @@ const Toolbar = styled.div`
     cursor: pointer;
     background-color: ${Colors.primary};
     border: none;
-    transition: 0.3s ease;
+    color: ${Colors.greyDarkest};
+    padding: 8px 4px;
     &:hover {
-      color: ${Colors.gold};
-      transform: translateX(8px);
+      color: ${Colors.greyDark};
+      svg {
+        transform: scale(1.1);
+      }
     }
   }
   position: absolute;
-  right: -50px;
-  top: 24px;
+  right: -62px;
+  top: 66px;
 `;
 
-const OpenButton = styled.button`
-  border: none;
-  background-color: transparent;
-  border-radius: 8px;
-  transition: 0.3s ease;
-  &:hover {
-    opacity: 0.7;
-  }
-`;
+export const EditDrawer = ({ children }: { children: React.ReactNode }) => {
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [page, setPage] = useRecoilState(editorPageState);
 
-export const EditDrawer = () => {
-  const page = useRecoilValue(editorPageState);
-
-  const handleSave = () => {
-    page?.sections && savePageSections(page.sections);
+  const handleSave = async () => {
+    if (!page?.sections) return;
+    await savePageSections(page.sections);
+    setPage({
+      ...page,
+      sections: page.sections.filter((section) => !section.stagedDelete),
+    });
   };
 
+  const handleToggle = () => setDrawerIsOpen((isOpen) => !isOpen);
   return !page ? null : (
-    <Drawer.Drawer>
-      <Drawer.Trigger>
-        <OpenButton>
-          <HiMenuAlt3 color="white" size={48} />
-        </OpenButton>
-      </Drawer.Trigger>
-
-      <Drawer.Target preventScroll>
+    <PushDrawer
+      isOpen={drawerIsOpen}
+      drawer={
         <Container>
           <Toolbar>
-            <Drawer.CloseButton>
-              <button>
-                <MdCancel size={40} />
-              </button>
-            </Drawer.CloseButton>
+            <button onClick={handleToggle}>
+              {drawerIsOpen ? (
+                <BiSolidChevronLeftSquare size={40} />
+              ) : (
+                <BiSolidChevronRightSquare size={40} />
+              )}
+            </button>
             <button onClick={handleSave}>
               <BiSolidSave size={40}></BiSolidSave>
             </button>
@@ -88,17 +93,17 @@ export const EditDrawer = () => {
           <Content>
             <Typography variant="label">Sections</Typography>
             <Divider margin="8px 0 16px" />
-            {page.sections
-              .filter((s) => s.order > -1)
-              .map((section) => (
-                <SectionForm
-                  key={`SectionForm:${section.order}:${section.name}`}
-                  section={section}
-                />
-              ))}
+            {page.sections.map((section) => (
+              <SectionForm
+                key={`SectionForm:${section.order}:${section.name}`}
+                section={section}
+              />
+            ))}
           </Content>
         </Container>
-      </Drawer.Target>
-    </Drawer.Drawer>
+      }
+    >
+      {children}
+    </PushDrawer>
   );
 };

@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { SupaSection } from 'types';
 import { schema, sections } from 'sections';
 import { SectionFormComponent } from './SectionFormComponent';
-import { RiCloseCircleLine } from 'react-icons/ri';
+import { RiCloseCircleFill } from 'react-icons/ri';
 import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
 import { Expandable, Typography } from 'components';
 import { BiChevronRight } from 'react-icons/bi';
+import { Colors } from 'theme';
 
 interface SectionFormProps {
   section: SupaSection;
@@ -17,18 +18,22 @@ const SectionHeader = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 4px;
 `;
 
-const DeleteButton = styled.button`
+const DeleteButton = styled.button<{ stagedDelete?: boolean }>`
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  color: red;
+  color: ${(p) => (p.stagedDelete ? Colors.greyDarker : 'red')};
+  margin-left: ${(p) => (p.stagedDelete ? '-16px' : 0)};
+  transition: 0.3s ease;
   > svg {
+    transition: 0.3s ease;
+    transform: rotate(${(p) => (p.stagedDelete ? '-315deg' : '0deg')});
     &:hover {
-      color: orange;
+      scale: 1.2;
+      color: ${(p) => (p.stagedDelete ? 'green' : 'orange')};
     }
   }
 `;
@@ -47,7 +52,7 @@ const SectionFormContainer = styled.div`
 
 export const SectionForm = ({ section }: SectionFormProps) => {
   const [page, setPage] = useRecoilState(editorPageState);
-  const { name, data } = section;
+  const { name, data, order, stagedDelete } = section;
 
   const sectionProperties = useMemo(() => {
     const sectionSchema =
@@ -61,35 +66,55 @@ export const SectionForm = ({ section }: SectionFormProps) => {
       e.stopPropagation();
       if (!page) return;
       const sections = page.sections.map((sectionItem) => {
-        return sectionItem.order === section.order
+        return sectionItem.order === order
           ? {
               ...sectionItem,
-              order: (page.sections.length + 1) * -1,
+              stagedDelete: !sectionItem.stagedDelete,
             }
           : sectionItem;
       });
       setPage({ ...page, sections });
     },
-    [page, setPage, section],
+    [page, setPage, order],
+  );
+
+  const SectionFormHeader = useMemo(
+    () => (
+      <SectionHeader>
+        <DeleteButton onClick={handleDelete} stagedDelete={stagedDelete}>
+          <RiCloseCircleFill size={24} />
+        </DeleteButton>
+        <Typography
+          as="span"
+          color={stagedDelete ? 'grey' : 'black'}
+          style={{
+            textDecoration: stagedDelete ? 'line-through' : 'none',
+          }}
+          variant="labelTitle"
+        >
+          {`\u{00A0}\u{00A0}${name}\u{00A0}\u{00A0}`}
+          {section.id ? '' : '*'}
+        </Typography>
+        <Typography
+          as="span"
+          color="gold"
+          variant="labelTitleSmall"
+        ></Typography>
+      </SectionHeader>
+    ),
+    [handleDelete, name, stagedDelete, section.id],
   );
 
   return (
     <SectionItem>
       <Expandable
         indicator={<BiChevronRight size={24} />}
-        header={
-          <SectionHeader>
-            <DeleteButton onClick={handleDelete}>
-              <RiCloseCircleLine size={24} />
-            </DeleteButton>
-            <Typography variant="labelTitle">{name}</Typography>
-          </SectionHeader>
-        }
+        header={SectionFormHeader}
       >
         <SectionFormContainer>
           {sectionProperties.map((propertySchema) => (
             <SectionFormComponent
-              key={`SectionFormComponent:${section.order}:${section.name}:${propertySchema[0]}`}
+              key={`SectionFormComponent:${order}:${name}:${propertySchema[0]}`}
               section={section}
               propertySchema={propertySchema}
               value={data[propertySchema[0]]}
