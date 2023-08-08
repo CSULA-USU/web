@@ -191,7 +191,7 @@ export default function About() {
           </Typography>
         </Title>
         <Image
-          src="https://www.dropbox.com/scl/fi/h65geahk3a540zd7zt9wf/usu-floor-plan.jpg?rlkey=om0kgi8wt0z760vfli0kpvrq1&raw=1"
+          src="https://www.dropbox.com/scl/fi/drgfh9sry5evvs4hg05tp/USU-Floor-Plan-Inside.jpg?rlkey=w2180m5xqn5tlabvulsk2i3v8&raw=1"
           alt="map of the university student union"
           maxWidth="100%"
         />
