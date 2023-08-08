@@ -23,6 +23,7 @@ const BoardOfDirectorsCTAButtons = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   column-gap: 16px;
+  row-gap: 16px;
 `;
 export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>

@@ -23,6 +23,8 @@ const ButtonContainer = styled.div`
   ./ > *:not(:last-child) {
     margin-right: 8px;
   }
+  column-gap: ${Spaces.md};
+  row-gap: ${Spaces.md};
 `;
 
 const HeaderContainer = styled.div`
@@ -153,11 +155,7 @@ export default function About() {
             To become Cal State LA&apos;s hub for connection and growth
           </Typography>
           <ButtonContainer>
-            <Button
-              variant="black"
-              href="/about/org-chart-5-31-23.jpg"
-              margin={Spaces.sm}
-            >
+            <Button variant="black" href="/about/org-chart-5-31-23.jpg">
               U-SU Organizational Chart
             </Button>
             <Button
@@ -165,7 +163,6 @@ export default function About() {
               onClick={() => {
                 setIsOpen(true);
               }}
-              margin={Spaces.sm}
             >
               U-SU History
             </Button>
