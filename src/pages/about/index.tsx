@@ -23,6 +23,8 @@ const ButtonContainer = styled.div`
   ./ > *:not(:last-child) {
     margin-right: 8px;
   }
+  column-gap: ${Spaces.md};
+  row-gap: ${Spaces.md};
 `;
 
 const HeaderContainer = styled.div`
