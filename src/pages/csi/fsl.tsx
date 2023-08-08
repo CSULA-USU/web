@@ -42,7 +42,6 @@ const ResourcesSection = styled.div``;
 const LinkInner = styled.div`
   display: flex;
   align-items: center;
-  padding: ${Spaces.md};
   svg {
     margin-right: ${Spaces.sm};
   }
@@ -846,7 +845,12 @@ export default function FSL() {
               alignItems="center"
             >
               {MembershipIntakeForms.map((form) => (
-                <Button variant="outline" href={form.href} key={form.title}>
+                <Button
+                  variant="outline"
+                  href={form.href}
+                  key={form.title}
+                  margin={Spaces.md}
+                >
                   <LinkInner>
                     <AiOutlineFileText size="24px" />
                     {form.title}
