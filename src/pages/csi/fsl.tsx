@@ -843,13 +843,14 @@ export default function FSL() {
               flexWrap="wrap"
               justifyContent="center"
               alignItems="center"
+              padding="0"
             >
               {MembershipIntakeForms.map((form) => (
                 <Button
                   variant="outline"
                   href={form.href}
                   key={form.title}
-                  margin={Spaces.md}
+                  margin={Spaces.sm}
                 >
                   <LinkInner>
                     <AiOutlineFileText size="24px" />
@@ -866,15 +867,15 @@ export default function FSL() {
             </Typography>
             <Typography>
               <strong>
-                Hazing is not permitted on Cal State LA’s campus.{' '}
+                Hazing is not permitted on Cal State LA&apos;s campus.{' '}
               </strong>
               This is in accordance with California law; the policies of
               California State University, Los Angeles, including the bylaws of
               all inter/national organizations represented on our campus, hazing
               is not permitted. All acts of hazing by any organization, member,
               and/or alumni are specifically forbidden. Refer to the Student
-              Handbook for information concerning Cal State LA’s definition of
-              hazing, California State law, and possible sanctions.
+              Handbook for information concerning Cal State LA&apos;s definition
+              of hazing, California State law, and possible sanctions.
             </Typography>
             <Typography as="p" margin={`${Spaces.md} 0`}>
               At Cal State LA, the sanctions for hazing include:
