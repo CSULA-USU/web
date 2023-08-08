@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/update-ig-tokens",
-      "schedule": "15 10 * * *"
+      "schedule": "0 0 1 * *"
     }
   ]
 }
