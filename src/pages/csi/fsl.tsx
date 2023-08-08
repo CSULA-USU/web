@@ -588,6 +588,9 @@ export default function FSL() {
                   </Typography>
                 </li>
               </ul>
+              <Button href="https://csula.sharepoint.com/:x:/s/CenterForStudentInvolvement/EVRwQIqtOeFAnArKx6PdXiwBT0QETtyq41vdycvduqprgQ?e=CEVBdS">
+                FSL Scoresheet
+              </Button>
               <Image
                 src="https://www.dropbox.com/scl/fi/yqvpbwehonhndilfprcpx/climate-survey.jpg?rlkey=49mpoec6meksoxupu3wo4nx48&raw=1"
                 alt="climate survey graphic"
@@ -596,9 +599,6 @@ export default function FSL() {
                 borderRadius="12px"
                 maxWidth="100%"
               />
-              <Button href="https://csula.sharepoint.com/:x:/s/CenterForStudentInvolvement/EVRwQIqtOeFAnArKx6PdXiwBT0QETtyq41vdycvduqprgQ?e=CEVBdS">
-                FSL Scoresheet
-              </Button>
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
