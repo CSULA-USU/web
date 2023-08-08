@@ -165,15 +165,6 @@ const tabItems = [
   { title: 'Personnel', children: <Personnel /> },
 ];
 
-const LinkInner = styled.div`
-  display: flex;
-  align-items: center;
-  padding: ${Spaces.md};
-  svg {
-    margin-right: ${Spaces.sm};
-  }
-`;
-
 export default function Governance() {
   const { isDesktop } = useBreakpoint();
 
@@ -197,10 +188,12 @@ export default function Governance() {
         title="Governance"
         backgroundImage="/backgrounds/subtle-background-2.jpg"
         extra={
-          <Button variant="outline" href="/governance/public-documents">
-            <LinkInner>
-              <AiOutlineFileText size="24px" /> Public Documents
-            </LinkInner>
+          <Button
+            variant="black"
+            href="/governance/public-documents"
+            margin={Spaces.md}
+          >
+            <AiOutlineFileText size="14px" /> Public Documents
           </Button>
         }
       >
