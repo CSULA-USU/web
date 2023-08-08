@@ -21,6 +21,14 @@ const IconHeading = styled.div`
   margin-bottom: ${Spaces.md};
 `;
 
+const LinkInner = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: ${Spaces.sm};
+  }
+`;
+
 const TabContent = styled(Typography)`
   &,
   * {
@@ -183,7 +191,6 @@ export default function Governance() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header
         title="Governance"
         backgroundImage="/backgrounds/subtle-background-2.jpg"
@@ -193,7 +200,9 @@ export default function Governance() {
             href="/governance/public-documents"
             margin={Spaces.md}
           >
-            <AiOutlineFileText size="14px" /> Public Documents
+            <LinkInner>
+              <AiOutlineFileText size="24px" /> Public Documents
+            </LinkInner>
           </Button>
         }
       >
