@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
-import { EventCard } from 'modules';
+import { ModEventCard } from 'modules';
 import { PresenceEvent } from 'types';
 import { Spaces } from 'theme';
 import { useState } from 'react';
@@ -38,7 +38,7 @@ export const EventHeader = ({
         {title}
       </Typography>
       <HeaderContainer onClick={() => selectEvent(featuredEvent)}>
-        <EventCard featured event={featuredEvent} />
+        <ModEventCard featured event={featuredEvent} />
       </HeaderContainer>
       <EventModal
         isOpen={!!selectedEvent}
