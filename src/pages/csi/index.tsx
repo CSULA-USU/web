@@ -177,7 +177,7 @@ export default function CSI() {
         </a>
         <ButtonContainer>
           <Button href="/csi/forms" variant="black" margin={``}>
-            <Typography color="white"> CSI Forms </Typography>
+            <Typography color="white">CSI Forms</Typography>
           </Button>
         </ButtonContainer>
         <SocialsContainer>
@@ -207,7 +207,7 @@ export default function CSI() {
         </SocialsContainer>
       </DepartmentHeader>
       <CallToAction
-        href="https://forms.office.com/r/2pTsmaFvCk"
+        href="https://lp.constantcontactpages.com/su/ZS9x5ft/CSInews"
         buttonText="Sign Up"
         text="CSI Monthly Newsletter"
       >
