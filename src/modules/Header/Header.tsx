@@ -74,6 +74,7 @@ export const Header = ({
                 key={`${i}_${b.text}`}
                 href={b.href}
                 variant={i > 0 ? 'outline' : 'black'}
+                margin="8px"
               >
                 {b.text}
               </Button>

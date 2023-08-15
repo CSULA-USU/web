@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Typography, Card, FluidContainer, Button } from 'components';
+import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 
 const WelcomeContentContainer = styled.div`
@@ -34,7 +34,10 @@ const cards = [
 ];
 
 const buttons = [
-  { text: 'Linktree', href: 'https://linktr.ee/CalStateLA_Recreation' },
+  {
+    text: 'Program Portfolio',
+    href: 'https://www.dropbox.com/scl/fi/umgxniy3fxfocj60vmxja/ACHA_Poster_Final_5.31.22.pdf?rlkey=hel3lzj55v8tuzao50fvu66y1&raw=1',
+  },
   {
     text: 'Meet Your Educators',
     href: 'https://www.dropbox.com/s/kv2x9skhab6pn69/gene-bios.pdf?dl=0',
@@ -42,7 +45,7 @@ const buttons = [
 ];
 
 export default function Gene() {
-  const { isTablet } = useBreakpoint();
+  const { isDesktop, isMobile, isTablet } = useBreakpoint();
 
   return (
     <Page>
@@ -62,14 +65,44 @@ export default function Gene() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Golden Eagle Nutrition Education (GENE)" buttons={buttons}>
-        <Typography as="p">
-          At GENE, we believe we all can benefit from learning new skills and
-          receiving support to live our best lives. We are your partner in
-          change and want to support you in fostering new possibilities and
-          discovering habits of well-being that will last a lifetime.
-        </Typography>
-      </Header>
+      <FluidContainer flex flexDirection="row">
+        <Header
+          title="Golden Eagle Nutrition Education (GENE)"
+          buttons={buttons}
+        >
+          {isDesktop && isMobile && (
+            <Image
+              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+              alt="illustration of young man using gene services"
+              height="300px"
+              margin="0px auto"
+            />
+          )}
+          <Typography as="p">
+            At GENE, we believe we all can benefit from learning new skills and
+            receiving support to live our best lives. We are your partner in
+            change and want to support you in fostering new possibilities and
+            discovering habits of well-being that will last a lifetime.
+          </Typography>
+        </Header>
+        {!isDesktop && (
+          <Image
+            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            alt="illustration of young man using gene services"
+            height="500px"
+            margin="auto"
+          />
+        )}
+        {!isMobile && isDesktop && (
+          <Image
+            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            alt="illustration of young man using gene services"
+            height="250px"
+            margin="auto"
+          />
+        )}
+      </FluidContainer>
+
       <FluidContainer
         flex
         flexDirection="column"
@@ -101,10 +134,7 @@ export default function Gene() {
             not be confirmed unless this form has been completed.
           </Typography>
         </WelcomeContentContainer>
-        <Button
-          variant="black"
-          href="https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3V0syxBFmSRKh-en1AxipFNUNUFPNFZZVTQzRTBCOElUV0UzMUc1NDhKUy4u"
-        >
+        <Button variant="black" href="https://forms.office.com/r/TucXfKXDT2">
           RSVP
         </Button>
       </FluidContainer>
