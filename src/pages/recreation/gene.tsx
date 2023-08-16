@@ -65,16 +65,16 @@ export default function Gene() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer flex flexDirection="row">
+      <FluidContainer flex flexDirection="row" padding="0px">
         <Header
           title="Golden Eagle Nutrition Education (GENE)"
           buttons={buttons}
         >
           {isDesktop && isMobile && (
             <Image
-              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-              alt="illustration of young man using gene services"
-              height="300px"
+              src="/departments/recreation/orangeeatinglaptopman.png"
+              alt="illustration of young man using gene services on mobile"
+              height="250px"
               margin="0px auto"
             />
           )}
@@ -102,7 +102,6 @@ export default function Gene() {
           />
         )}
       </FluidContainer>
-
       <FluidContainer
         flex
         flexDirection="column"
@@ -112,26 +111,28 @@ export default function Gene() {
         backgroundColor="primary"
       >
         <Typography margin="auto" variant="title" as="h2">
-          Welcome
+          Welcome!
         </Typography>
         <WelcomeContentContainer>
           <Typography as="p" margin="12px 0">
             Welcome to the Golden Eagle Nutrition Education (GENE) program!
+            {<br />}
             Here, you can sign up for personalized nutrition education sessions
-            provided by our Cal State LA Nutritional Science students. Our
-            student coaches can teach you everything you need to know about
-            nutrition, plus the science of mindfulness and habit change. Think
-            of your nutrition coach as a supportive mentor who can offer
-            individual feedback and encouragement as you make food and lifestyle
-            changes.
+            provided by our Cal State LA Nutritional Science students. {<br />}
+            Our student coaches can teach you everything you need to know about
+            nutrition, plus the science of mindfulness and habit change.{' '}
+            {<br />}Think of your nutrition coach as a supportive mentor who can
+            offer individual feedback and encouragement as you make food and
+            lifestyle changes.
           </Typography>
           <Typography as="p" margin="24px 0" weight="700">
             Schedule your appointment today by filling out an RSVP form with the
-            RSVP button to be partnered with a Nutrition Educator! Please allow
-            24 hours to be scheduled. Student organizations must complete and
-            submit this form at least 10 business days prior to the
-            event/meeting date. Reservations for on-campus events/meetings will
-            not be confirmed unless this form has been completed.
+            RSVP button to be partnered with a Nutrition Educator! {<br />}
+            Please allow 24 hours to be scheduled. {<br />}Student organizations
+            must complete and submit this form at least 10 business days prior
+            to the event/meeting date. {<br />}Reservations for on-campus
+            events/meetings will not be confirmed unless this form has been
+            completed.
           </Typography>
         </WelcomeContentContainer>
         <Button variant="black" href="https://forms.office.com/r/TucXfKXDT2">
@@ -148,7 +149,7 @@ export default function Gene() {
         <Typography variant="title" as="h2">
           What to expect:
         </Typography>
-        <FluidContainer flex flexWrap="wrap">
+        <FluidContainer flex flexWrap="wrap" padding="0px">
           {cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
