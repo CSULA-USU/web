@@ -45,7 +45,7 @@ const buttons = [
 ];
 
 export default function Gene() {
-  const { isDesktop, isMobile, isTablet } = useBreakpoint();
+  const { isDesktop, isMobile } = useBreakpoint();
 
   return (
     <Page>
@@ -74,7 +74,7 @@ export default function Gene() {
             <Image
               src="/departments/recreation/orangeeatinglaptopman.png"
               alt="illustration of young man using gene services on mobile"
-              height="250px"
+              height="232px"
               margin="0px auto"
             />
           )}
@@ -156,7 +156,7 @@ export default function Gene() {
               topBorder
               key={`${props.title}`}
               {...props}
-              width={isTablet ? '100%' : 'calc(30.33% - 8px)'}
+              width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
             ></Card>
