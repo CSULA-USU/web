@@ -72,7 +72,7 @@ export default function Gene() {
         >
           {isDesktop && isMobile && (
             <Image
-              src="/departments/recreation/orangeeatinglaptopman.png"
+              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
               alt="illustration of young man using gene services on mobile"
               height="232px"
               margin="0px auto"
