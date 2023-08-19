@@ -36,7 +36,7 @@ const cards = [
 const buttons = [
   {
     text: 'Program Portfolio',
-    href: 'https://www.dropbox.com/scl/fi/umgxniy3fxfocj60vmxja/ACHA_Poster_Final_5.31.22.pdf?rlkey=hel3lzj55v8tuzao50fvu66y1&dl=0',
+    href: 'https://www.dropbox.com/scl/fi/umgxniy3fxfocj60vmxja/ACHA_Poster_Final_5.31.22.pdf?rlkey=hel3lzj55v8tuzao50fvu66y1&raw=1',
   },
   {
     text: 'Meet Your Educators',
@@ -72,7 +72,7 @@ export default function Gene() {
         >
           {isDesktop && isMobile && (
             <Image
-              src="/departments/recreation/orangeeatinglaptopman.png"
+              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
               alt="illustration of young man using gene services on mobile"
               height="232px"
               margin="0px auto"
