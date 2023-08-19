@@ -37,8 +37,12 @@ export const EventHeader = ({
       >
         {title}
       </Typography>
-      <HeaderContainer onClick={() => selectEvent(featuredEvent)}>
-        <ModEventCard featured event={featuredEvent} />
+      <HeaderContainer>
+        <ModEventCard
+          featured
+          event={featuredEvent}
+          onClick={() => selectEvent(featuredEvent)}
+        />
       </HeaderContainer>
       <EventModal
         isOpen={!!selectedEvent}
