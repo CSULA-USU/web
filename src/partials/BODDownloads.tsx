@@ -64,6 +64,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/s/h79q91yjuvx4b99/bod-may-12-23.pdf?dl=0',
             children: 'Meeting May 12, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/hhke5ecmjflcs94emk24s/bod-aug-25-23.pdf?rlkey=xdpl14daz00mg10zapl6vvi45&dl=0',
+            children: 'Meeting Aug 25, 2023',
+          },
         ]}
       />
     ),
