@@ -6,7 +6,7 @@ import {
   Page,
   CallToActionImages,
 } from 'modules';
-import { NonBreakingSpan } from 'components';
+import { Image, NonBreakingSpan } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
@@ -57,6 +57,11 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Image
+        alt="warning announcement"
+        src="https://www.dropbox.com/scl/fi/003pk3tj6d7m2o4zil2bm/TopicalStorm_Web.jpg?rlkey=8ske76y9dp439rdw0tv39dxnu&raw=1"
+        width="100%"
+      />
       <EventHeader
         title={
           <>
