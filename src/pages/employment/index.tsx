@@ -112,7 +112,7 @@ export default function Employment() {
         <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
-        <Link href="/employment/professional-employment.pdf">
+        <Link href="/employment/forms/professional-employment.pdf">
           Professional Appointment
         </Link>
         <br />
