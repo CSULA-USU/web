@@ -1,4 +1,6 @@
 import { Button, Typography } from 'components';
+import { EventModal } from 'modules/EventModal';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
@@ -18,20 +20,6 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   transition: 0.5s ease-out;
-`;
-
-const EventCardTop = styled.div`
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  transition: 0.3s ease;
-  justify-content: space-between;
-`;
-
-const EventCardBottom = styled(EventCardTop)<{ featured?: boolean }>`
-  z-index: 1;
-  transition: 0.3s ease;
-  ${(p) => (p.featured ? `align-items: flex-end;` : `flex-direction: column;`)}
 `;
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
@@ -65,22 +53,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     background-size: cover;
     background-position: center;
   }
-  border: 2px solid transparent;
-  &:focus {
-    border: 1px solid ${Colors.black};
-    ${Overlay} {
-      filter: blur(4px) brightness(0.6);
-    }
-    ${EventCardTop} {
-      transform: translateY(10%);
-    }
-    ${EventCardBottom} {
-      transform: translateY(-10%);
-    }
-  }
-  &:focus {
-    text-decoration: underline;
-  }
+  border: 1px solid transparent;
 `;
 
 const EventContainer = styled.div`
@@ -135,6 +108,9 @@ export const ModEventCard = ({
   featured,
   onClick,
 }: ModEventCardProps) => {
+  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+    undefined,
+  );
   if (!event) return null;
   const {
     organizationName,
@@ -144,6 +120,7 @@ export const ModEventCard = ({
     endDateTimeUtc,
     photoUri,
   } = event;
+  const onRequestClose = () => selectEvent(undefined);
   const startTime = getTime(startDateTimeUtc);
   const endTime = getTime(endDateTimeUtc);
   const month = getMonth(startDateTimeUtc, 'short').toUpperCase();
@@ -158,6 +135,7 @@ export const ModEventCard = ({
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
       >
         <Overlay />
+
         {/* <EventCardTop>
        
         <Typography as="h5" variant="eventDetail">
@@ -245,7 +223,9 @@ export const ModEventCard = ({
                 {ABBREVIATED_ORGS[organizationName]}
               </Typography>
               {featured ? (
-                <Button margin="12px 0 0">Learn More</Button>
+                <Button margin="12px 0 0" onClick={() => selectEvent(event)}>
+                  Learn More
+                </Button>
               ) : (
                 <Typography color="primary" size="sm">
                   Learn More
@@ -257,6 +237,11 @@ export const ModEventCard = ({
       ) : (
         <p>upcoming</p>
       )}
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent}
+        onRequestClose={onRequestClose}
+      />
     </EventContainer>
   );
 };
