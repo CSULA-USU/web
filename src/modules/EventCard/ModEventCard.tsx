@@ -58,8 +58,6 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   color: ${Colors.white};
   > div:first-child {
     padding-bottom: 12px;
-    border-bottom: ${({ featured }) =>
-      featured ? `1px solid ${Colors.white}` : `none`};
     align-items: ${({ featured }) => (featured ? 'flex-end' : 'flex-start')};
   }
   ${Overlay} {
@@ -68,7 +66,6 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     background-position: center;
   }
   border: 2px solid transparent;
-  &:hover,
   &:focus {
     border: 1px solid ${Colors.black};
     ${Overlay} {
@@ -123,6 +120,7 @@ const ButtonSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
+  min-width: 184px;
 `;
 
 const DetailsSection = styled.div`
@@ -160,28 +158,6 @@ export const ModEventCard = ({
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
       >
         <Overlay />
-        <EventDateSection>
-          {featured ? (
-            <Typography as="span" variant="eventDetail" lineHeight="1">
-              {month} {day}
-            </Typography>
-          ) : (
-            <>
-              <Typography as="span" variant="eventDetail" lineHeight="1">
-                {month} <br />
-              </Typography>
-              <Typography
-                as="span"
-                variant="pageHeader"
-                size="xl"
-                color="white"
-                lineHeight="1"
-              >
-                {day}
-              </Typography>
-            </>
-          )}
-        </EventDateSection>
         {/* <EventCardTop>
        
         <Typography as="h5" variant="eventDetail">
