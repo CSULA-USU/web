@@ -19,30 +19,30 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  transition: 0.5s ease-out;
+  height: 100%;
+  width: 100%;
 `;
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   position: relative;
   cursor: pointer;
-  transition: 0.3s ease;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  background-color: ${Colors.grey};
+  background-color: ${Colors.white};
   padding: 32px;
   overflow: hidden;
   ${media('desktop')(`
-    padding: 24px;
-  `)}
+  padding: 24px;
+`)}
   ${media('tablet')(`
-    padding: 16px;
-  `)}
-  width: 100%;
+  padding: 16px;
+`)}
+width: 100%;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
-  height: ${({ featured }) => (featured ? `560px` : `400px`)};
+  height: ${({ featured }) => (featured ? `750px` : `400px`)};
   color: ${Colors.white};
   > div:first-child {
     padding-bottom: 12px;
@@ -57,10 +57,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
 `;
 
 const EventContainer = styled.div`
-  flex;
-  flex-direction: column;
-  width: 1200px;
-  margin: 0px auto;
+flex;
+flex-direction: column;
+width: 1200px;
+margin: 0px auto;
 `;
 
 const EventDetails = styled.div`
@@ -137,39 +137,39 @@ export const ModEventCard = ({
         <Overlay />
 
         {/* <EventCardTop>
-       
-        <Typography as="h5" variant="eventDetail">
-          {ABBREVIATED_ORGS[organizationName]}
+      
+      <Typography as="h5" variant="eventDetail">
+        {ABBREVIATED_ORGS[organizationName]}
+      </Typography>
+    </EventCardTop>
+    <EventCardBottom featured={featured}>
+      <EventDetails>
+        <Typography as="h3" variant="eventTitle" lineHeight="1.2">
+          {eventName}
         </Typography>
-      </EventCardTop>
-      <EventCardBottom featured={featured}>
-        <EventDetails>
-          <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-            {eventName}
-          </Typography>
-          <Typography as="h4" variant="eventTime">
-            {startTime} - {endTime}
-          </Typography>
-          <Typography
-            as="h5"
-            variant="eventDetail"
-            style={{ overflowWrap: 'anywhere' }}
-          >
-            {location.indexOf('.zoom.us') > -1 ? (
-              <a href={location}>Zoom Meeting</a>
-            ) : (
-              location
-            )}
-          </Typography>
-        </EventDetails>
-        {featured ? (
-          <Button margin="12px 0 0">Learn More</Button>
-        ) : (
-          <Typography color="primary" size="sm">
-            Learn More
-          </Typography>
-        )}
-      </EventCardBottom> */}
+        <Typography as="h4" variant="eventTime">
+          {startTime} - {endTime}
+        </Typography>
+        <Typography
+          as="h5"
+          variant="eventDetail"
+          style={{ overflowWrap: 'anywhere' }}
+        >
+          {location.indexOf('.zoom.us') > -1 ? (
+            <a href={location}>Zoom Meeting</a>
+          ) : (
+            location
+          )}
+        </Typography>
+      </EventDetails>
+      {featured ? (
+        <Button margin="12px 0 0">Learn More</Button>
+      ) : (
+        <Typography color="primary" size="sm">
+          Learn More
+        </Typography>
+      )}
+    </EventCardBottom> */}
       </EventCardContainer>
       {featured ? (
         <HeroEventDetails>
