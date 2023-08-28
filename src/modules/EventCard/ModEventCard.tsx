@@ -1,4 +1,5 @@
 import { Button, Typography } from 'components';
+import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -39,11 +40,28 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   ${media('tablet')(`
   padding: 16px;
 `)}
-width: 100%;
+  width: 100%;
+  height: 900px;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
-  height: ${({ featured }) => (featured ? `750px` : `400px`)};
-  color: ${Colors.white};
+  @media (max-width: 1024px) {
+    height: 768px;
+  }
+  @media (max-width: 768px) {
+    height: 576px;
+  }
+  @media (max-width: 600px) {
+    height: 450px;
+  }
+  @media (max-width: 540px) {
+    height: 405px;
+  }
+  @media (max-width: 420px) {
+    height: 315px;
+  }
+  @media (max-width: 320px) {
+    height: 240px;
+  }
   > div:first-child {
     padding-bottom: 12px;
     align-items: ${({ featured }) => (featured ? 'flex-end' : 'flex-start')};
@@ -53,7 +71,7 @@ width: 100%;
     background-size: cover;
     background-position: center;
   }
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 `;
 
 const EventContainer = styled.div`
@@ -76,6 +94,7 @@ const EventDateSection = styled.div`
   justify-content: center;
   align-items: center;
   background-color: black;
+
   width: 80px;
   height: 80px;
   border-radius: 16px;
@@ -84,6 +103,9 @@ const EventDateSection = styled.div`
 
 const HeroEventDetails = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   height: 100px;
   margin: ${Spaces.md} 0px;
   width: 100%;
@@ -103,11 +125,23 @@ const DetailsSection = styled.div`
   width: 100%;
 `;
 
+const MobileDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const MobileTopColumn = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+`;
 export const ModEventCard = ({
   event,
   featured,
   onClick,
 }: ModEventCardProps) => {
+  const { isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -171,7 +205,7 @@ export const ModEventCard = ({
       )}
     </EventCardBottom> */}
       </EventCardContainer>
-      {featured ? (
+      {featured && !isTablet ? (
         <HeroEventDetails>
           <EventDateSection>
             <Typography
@@ -235,7 +269,39 @@ export const ModEventCard = ({
           </DetailsSection>
         </HeroEventDetails>
       ) : (
-        <p>upcoming</p>
+        <MobileDetails>
+          <MobileTopColumn>
+            <EventDateSection>
+              <Typography
+                as="span"
+                variant="eventDetail"
+                size="md"
+                lineHeight="1"
+              >
+                {month} <br />
+              </Typography>
+              <Typography
+                as="span"
+                variant="pageHeader"
+                size="2xl"
+                color="white"
+                lineHeight="1"
+              >
+                {day}
+              </Typography>
+            </EventDateSection>
+            <Typography
+              as="h3"
+              variant="eventTitle"
+              lineHeight="1.2"
+              color="black"
+              size="lg"
+              margin="16px"
+            >
+              {eventName}
+            </Typography>
+          </MobileTopColumn>
+        </MobileDetails>
       )}
       <EventModal
         isOpen={!!selectedEvent}
