@@ -42,8 +42,8 @@ const minutesDownloads: DownloadSectionProps[] = [
         stacked
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fi/h8519l3yauw3ijt6homqg/BOD-Aug-25-2023-Minutes-fix.pdf?rlkey=2jju8gp4n5q9erc5wqes8j183&dl=0',
-            children: 'BOD Minutes August 25, 2023',
+            href: 'https://www.dropbox.com/scl/fi/h8519l3yauw3ijt6homqg/BOD-May-12-2023-Minutes.pdf?rlkey=2jju8gp4n5q9erc5wqes8j183&dl=0',
+            children: 'BOD Minutes May 12, 2023',
           },
         ]}
       />
