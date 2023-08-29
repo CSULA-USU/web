@@ -41,7 +41,6 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   background-color: ${Colors.grey};
   padding: 32px;
   overflow: hidden;

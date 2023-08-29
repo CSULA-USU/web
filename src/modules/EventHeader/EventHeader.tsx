@@ -8,8 +8,7 @@ import { EventModal } from 'modules/EventModal';
 
 const HeaderContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const EventHeader = ({

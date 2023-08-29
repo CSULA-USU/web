@@ -32,7 +32,7 @@ const images = [
   },
   {
     src: '/departments/operations/images/media-services.jpg',
-    alt: 'medis services',
+    alt: 'media services',
     width: '275',
     margin: '5px 0 0',
   },

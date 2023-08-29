@@ -3,7 +3,7 @@ import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Colors, media, Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
@@ -14,34 +14,18 @@ export interface ModEventCardProps {
   onClick?: () => void;
 }
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-`;
-
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   position: relative;
   cursor: pointer;
+  border-radius: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   background-color: ${Colors.white};
-  padding: 32px;
+  margin: 0px auto;
   overflow: hidden;
-  ${media('desktop')(`
-  padding: 24px;
-`)}
-  ${media('tablet')(`
-  padding: 16px;
-`)}
-  width: 100%;
-  height: 900px;
+  max-width: 800px;
+  height: 600px;
   justify-content: ${({ featured }) =>
     featured ? `flex-end` : `space-between`};
   @media (max-width: 1024px) {
@@ -66,11 +50,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     padding-bottom: 12px;
     align-items: ${({ featured }) => (featured ? 'flex-end' : 'flex-start')};
   }
-  ${Overlay} {
-    background: ${({ image }) => image && `url(${image})`};
-    background-size: cover;
-    background-position: center;
-  }
+  background: ${({ image }) => image && `url(${image})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border: 2px solid transparent;
 `;
 
@@ -78,7 +61,6 @@ const EventContainer = styled.div`
 flex;
 flex-direction: column;
 width: 1200px;
-margin: 0px auto;
 `;
 
 const EventDetails = styled.div`
@@ -94,7 +76,7 @@ const EventDateSection = styled.div`
   justify-content: center;
   align-items: center;
   background-color: black;
-
+  min-width: 50px;
   width: 80px;
   height: 80px;
   border-radius: 16px;
@@ -168,7 +150,7 @@ export const ModEventCard = ({
         featured={featured}
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
       >
-        <Overlay />
+        {/* <Overlay /> */}
 
         {/* <EventCardTop>
       
@@ -275,7 +257,7 @@ export const ModEventCard = ({
               <Typography
                 as="span"
                 variant="eventDetail"
-                size="md"
+                size="sm"
                 lineHeight="1"
               >
                 {month} <br />
@@ -283,7 +265,7 @@ export const ModEventCard = ({
               <Typography
                 as="span"
                 variant="pageHeader"
-                size="2xl"
+                size="lg"
                 color="white"
                 lineHeight="1"
               >
@@ -295,7 +277,7 @@ export const ModEventCard = ({
               variant="eventTitle"
               lineHeight="1.2"
               color="black"
-              size="lg"
+              size="md"
               margin="16px"
             >
               {eventName}
