@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { ModEventCard } from 'modules';
 import { PresenceEvent } from 'types';
-import { Spaces } from 'theme';
 import { useState } from 'react';
 import { EventModal } from 'modules/EventModal';
 
@@ -30,7 +29,7 @@ export const EventHeader = ({
     >
       <Typography
         variant="pageHeader"
-        margin={`0 auto ${Spaces.lg}`}
+        margin={`0 auto`}
         size="2xl"
         color="greyDarker"
       >

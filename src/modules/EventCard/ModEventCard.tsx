@@ -2,6 +2,7 @@ import { Button, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
+import { BsInfoCircle } from 'react-icons/bs';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
@@ -17,7 +18,6 @@ export interface ModEventCardProps {
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   position: relative;
   cursor: pointer;
-  border-radius: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -55,6 +55,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   background-repeat: no-repeat;
   background-position: center;
   border: 2px solid transparent;
+  border-radius: 16px;
 `;
 
 const EventContainer = styled.div`
@@ -80,12 +81,12 @@ const EventDateSection = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 16px;
-  margin: auto 0px;
+  margin: auto;
 `;
 
 const HeroEventDetails = styled.div`
   display: flex;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: column;
   }
   height: 100px;
@@ -113,11 +114,24 @@ const MobileDetails = styled.div`
   width: 100%;
 `;
 
+const MobileBottomColumn = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
 const MobileTopColumn = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  justify-content: space-evenly;
 `;
+
+const MobileRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px 8px;
+`;
+
 export const ModEventCard = ({
   event,
   featured,
@@ -272,17 +286,47 @@ export const ModEventCard = ({
                 {day}
               </Typography>
             </EventDateSection>
-            <Typography
-              as="h3"
-              variant="eventTitle"
-              lineHeight="1.2"
-              color="black"
-              size="md"
-              margin="16px"
-            >
-              {eventName}
-            </Typography>
+            <MobileRight>
+              <Typography
+                as="h3"
+                variant="eventDetail"
+                lineHeight="1.2"
+                color="black"
+                size="md"
+              >
+                {eventName}
+              </Typography>
+              <Typography as="h4" variant="eventTime" color="black">
+                {startTime} - {endTime}
+              </Typography>
+              <Typography
+                as="h5"
+                variant="eventDetail"
+                style={{ overflowWrap: 'anywhere' }}
+                color="black"
+              >
+                {location.indexOf('.zoom.us') > -1 ? (
+                  <a href={location}>Zoom Meeting</a>
+                ) : (
+                  location
+                )}
+              </Typography>
+              <Typography as="h5" variant="eventDetail" color="black">
+                {ABBREVIATED_ORGS[organizationName]}
+              </Typography>
+            </MobileRight>
           </MobileTopColumn>
+          <MobileBottomColumn>
+            {featured ? (
+              <Button onClick={() => selectEvent(event)} variant="transparent">
+                <BsInfoCircle size="30" />
+              </Button>
+            ) : (
+              <Typography color="primary" size="sm">
+                Learn More
+              </Typography>
+            )}
+          </MobileBottomColumn>
         </MobileDetails>
       )}
       <EventModal
