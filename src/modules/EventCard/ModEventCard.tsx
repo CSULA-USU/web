@@ -141,7 +141,7 @@ export const ModEventCard = ({
   featured,
   onClick,
 }: ModEventCardProps) => {
-  const { isTablet } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -310,7 +310,7 @@ export const ModEventCard = ({
                 variant="eventDetail"
                 lineHeight="1.2"
                 color="black"
-                size="md"
+                size={isMobile ? 'md' : 'lg'}
               >
                 {eventName}
               </Typography>
