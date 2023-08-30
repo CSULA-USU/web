@@ -82,6 +82,10 @@ const EventDateSection = styled.div`
   height: 80px;
   border-radius: 16px;
   margin: auto;
+  @media (max-width: 768px) {
+    height: 60px;
+    width: 60px;
+  }
 `;
 
 const HeroEventDetails = styled.div`
@@ -114,22 +118,22 @@ const MobileDetails = styled.div`
   width: 100%;
 `;
 
-const MobileBottomColumn = styled.div`
+const MobileLeft = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
 `;
 
 const MobileTopColumn = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 const MobileRight = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0px 8px;
+  padding: auto 0px;
+  justify-content: space-between;
 `;
 
 export const ModEventCard = ({
@@ -267,25 +271,39 @@ export const ModEventCard = ({
       ) : (
         <MobileDetails>
           <MobileTopColumn>
-            <EventDateSection>
-              <Typography
-                as="span"
-                variant="eventDetail"
-                size="sm"
-                lineHeight="1"
-              >
-                {month} <br />
-              </Typography>
-              <Typography
-                as="span"
-                variant="pageHeader"
-                size="lg"
-                color="white"
-                lineHeight="1"
-              >
-                {day}
-              </Typography>
-            </EventDateSection>
+            <MobileLeft>
+              <EventDateSection>
+                <Typography
+                  as="span"
+                  variant="eventDetail"
+                  size="sm"
+                  lineHeight="1"
+                >
+                  {month} <br />
+                </Typography>
+                <Typography
+                  as="span"
+                  variant="pageHeader"
+                  size="lg"
+                  color="white"
+                  lineHeight="1"
+                >
+                  {day}
+                </Typography>
+              </EventDateSection>
+              {featured ? (
+                <Button
+                  onClick={() => selectEvent(event)}
+                  variant="transparent"
+                >
+                  <BsInfoCircle size="30" color={`${Colors.gold}`} />
+                </Button>
+              ) : (
+                <Typography color="primary" size="sm">
+                  Learn More
+                </Typography>
+              )}
+            </MobileLeft>
             <MobileRight>
               <Typography
                 as="h3"
@@ -316,17 +334,6 @@ export const ModEventCard = ({
               </Typography>
             </MobileRight>
           </MobileTopColumn>
-          <MobileBottomColumn>
-            {featured ? (
-              <Button onClick={() => selectEvent(event)} variant="transparent">
-                <BsInfoCircle size="30" />
-              </Button>
-            ) : (
-              <Typography color="primary" size="sm">
-                Learn More
-              </Typography>
-            )}
-          </MobileBottomColumn>
         </MobileDetails>
       )}
       <EventModal
