@@ -5,7 +5,7 @@ export const USU_ORGS = [
   'Graffix',
 ];
 
-export const ABREVIATED_ORGS: { [key: string]: string } = {
+export const ABBREVIATED_ORGS: { [key: string]: string } = {
   'Center for Student Involvement': 'CSI',
   'Cross Cultural Centers': 'CCC',
   Recreation: 'REC',

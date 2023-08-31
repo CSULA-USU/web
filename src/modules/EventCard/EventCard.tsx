@@ -2,7 +2,7 @@ import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
-import { ABREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
+import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
 export interface EventCardProps {
@@ -41,7 +41,6 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   background-color: ${Colors.grey};
   padding: 32px;
   overflow: hidden;
@@ -148,7 +147,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
           )}
         </EventDate>
         <Typography as="h5" variant="eventDetail">
-          {ABREVIATED_ORGS[organizationName]}
+          {ABBREVIATED_ORGS[organizationName]}
         </Typography>
       </EventCardTop>
       <EventCardBottom featured={featured}>
