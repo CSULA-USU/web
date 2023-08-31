@@ -4,7 +4,7 @@ import { Colors } from 'theme';
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   href?: string;
   margin?: string;
-  variant?: 'primary' | 'black' | 'grey' | 'outline';
+  variant?: 'primary' | 'black' | 'grey' | 'outline' | 'transparent';
   disabled?: boolean;
   children?: React.ReactNode;
 }
@@ -27,6 +27,11 @@ const styles: { [key: string]: ButtonVariant } = {
     backgroundColor: 'transparent',
     color: 'black',
     border: 'black',
+  },
+  transparent: {
+    backgroundColor: 'transparent',
+    color: 'black',
+    border: '',
   },
 } as const;
 

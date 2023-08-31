@@ -70,7 +70,12 @@ export const EventModal = ({
   const year = getYear(startDateTimeUtc);
 
   return (
-    <Modal isOpen={isOpen} style={customStyles} onRequestClose={onRequestClose}>
+    <Modal
+      isOpen={isOpen}
+      style={customStyles}
+      onRequestClose={onRequestClose}
+      ariaHideApp={false}
+    >
       <Main>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}

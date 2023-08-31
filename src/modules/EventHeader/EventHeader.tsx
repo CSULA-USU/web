@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
-import { EventCard } from 'modules';
+import { ModEventCard } from 'modules';
 import { PresenceEvent } from 'types';
-import { Spaces } from 'theme';
 import { useState } from 'react';
 import { EventModal } from 'modules/EventModal';
 
 const HeaderContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const EventHeader = ({
@@ -31,14 +29,18 @@ export const EventHeader = ({
     >
       <Typography
         variant="pageHeader"
-        margin={`0 auto ${Spaces.lg}`}
+        margin={`0 auto`}
         size="2xl"
         color="greyDarker"
       >
         {title}
       </Typography>
-      <HeaderContainer onClick={() => selectEvent(featuredEvent)}>
-        <EventCard featured event={featuredEvent} />
+      <HeaderContainer>
+        <ModEventCard
+          featured
+          event={featuredEvent}
+          onClick={() => selectEvent(featuredEvent)}
+        />
       </HeaderContainer>
       <EventModal
         isOpen={!!selectedEvent}
