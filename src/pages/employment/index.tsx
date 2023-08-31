@@ -33,7 +33,10 @@ export default function Employment() {
   const fetchJobFeed = async () => {
     const data = await fetch('/api/employment');
     const feed = await data.json();
-    setStudentJobs(feed.items);
+    const partTimeResults = feed.items.filter(
+      (item: any) => !item.contentSnippet.includes('5/40'),
+    );
+    setStudentJobs(partTimeResults);
   };
 
   useEffect(() => {
