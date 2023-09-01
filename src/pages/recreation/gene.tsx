@@ -116,23 +116,13 @@ export default function Gene() {
         <WelcomeContentContainer>
           <Typography as="p" margin="12px 0">
             Welcome to the Golden Eagle Nutrition Education (GENE) program!
-            {<br />}
             Here, you can sign up for personalized nutrition education sessions
-            provided by our Cal State LA Nutritional Science students. {<br />}
-            Our student coaches can teach you everything you need to know about
-            nutrition, plus the science of mindfulness and habit change.{' '}
-            {<br />}Think of your nutrition coach as a supportive mentor who can
-            offer individual feedback and encouragement as you make food and
-            lifestyle changes.
-          </Typography>
-          <Typography as="p" margin="24px 0" weight="700">
-            Schedule your appointment today by filling out an RSVP form with the
-            RSVP button to be partnered with a Nutrition Educator! {<br />}
-            Please allow 24 hours to be scheduled. {<br />}Student organizations
-            must complete and submit this form at least 10 business days prior
-            to the event/meeting date. {<br />}Reservations for on-campus
-            events/meetings will not be confirmed unless this form has been
-            completed.
+            provided by our Cal State LA Nutritional Science students. Our
+            student coaches can teach you everything you need to know about
+            nutrition, plus the science of mindfulness and habit change. Think
+            of your nutrition coach as a supportive mentor who can offer
+            individual feedback and encouragement as you make food and lifestyle
+            changes.
           </Typography>
         </WelcomeContentContainer>
         <Button variant="black" href="https://forms.office.com/r/TucXfKXDT2">

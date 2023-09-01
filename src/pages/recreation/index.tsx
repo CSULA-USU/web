@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styled from 'styled-components';
 import { Page } from 'modules';
 import {
   Image,
@@ -10,6 +11,15 @@ import {
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+
+const HoursSection = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Hours = styled.div`
+  margin: 0px 16px;
+`;
 
 export default function Recreation() {
   const { isMobile, returnByBreakpoint } = useBreakpoint();
@@ -65,16 +75,40 @@ export default function Recreation() {
             <NonBreakingSpan>is now open!</NonBreakingSpan>
           </Typography>
         </div>
-        <div>
-          <Typography as="h3" variant="titleSmall">
-            Our Hours
-          </Typography>
-          <Typography margin="0 0 8px">
-            Monday – Friday: 7:00 AM to 9:30 PM <br />
-            Saturday: 7:00 AM to 2:30 PM <br />
-            Sunday: Closed <br />
-          </Typography>
-        </div>
+        <HoursSection>
+          <div>
+            <Typography as="h3" variant="titleSmall">
+              Our Hours
+            </Typography>
+            <Typography margin="0 0 8px">
+              Monday – Friday: 7:00 AM to 9:30 PM <br />
+              Saturday: 7:00 AM to 2:30 PM <br />
+              Sunday: Closed <br />
+            </Typography>
+          </div>
+          <Hours>
+            <Typography as="h3" variant="titleSmall">
+              Game Room
+            </Typography>
+            <Typography margin="0 0 8px">
+              Monday – Thursday: 12:00 PM to 6:00 PM <br />
+              Saturday: Closed
+              <br />
+              Sunday: Closed <br />
+            </Typography>
+          </Hours>
+          <Hours>
+            <Typography as="h3" variant="titleSmall">
+              South Village Wellness Zone
+            </Typography>
+            <Typography margin="0 0 8px">
+              Monday – Friday: 7:00 AM to 12:00 PM and 4:30 PM to 9:30 PM
+              <br />
+              Saturday: 7:00 AM to 3:00 PM <br />
+              Sunday: Closed <br />
+            </Typography>
+          </Hours>
+        </HoursSection>
       </FluidContainer>
       <FluidContainer
         flex
