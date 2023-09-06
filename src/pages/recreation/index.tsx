@@ -8,21 +8,46 @@ import {
   FluidContainer,
   NonBreakingSpan,
 } from 'components';
+import { BiPhone } from 'react-icons/bi';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
-const HoursSection = styled.div`
+const HeaderSection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 `;
 
-const Hours = styled.div`
-  margin: 0px 16px;
+const HoursSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const PhoneSection = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1 0 auto;
+  margin: 0px 0px 32px;
+`;
+
+const NumberInnerContainer = styled.div`
+  display: flex;
+  gap: ${Spaces.sm};
+`;
+
+const NumberContainer = styled.div`
+  display: flex;
+  gap: ${Spaces.lg};
 `;
 
 export default function Recreation() {
-  const { isMobile, returnByBreakpoint } = useBreakpoint();
+  const { isMobile, isTablet, returnByBreakpoint } = useBreakpoint();
   const cardWidth = returnByBreakpoint({
     tablet: '100%',
     desktop: 'calc(33.33% - 8px)',
@@ -64,50 +89,113 @@ export default function Recreation() {
         alignItems="center"
         flexWrap="wrap"
       >
-        <div style={{ maxWidth: '800px', marginBottom: '32px' }}>
-          <Typography
-            as="h2"
-            variant="pageHeader"
-            lineHeight="1"
-            size={isMobile ? '2xl' : '4xl'}
-          >
-            The Recreation <NonBreakingSpan>Fitness Center</NonBreakingSpan>{' '}
-            <NonBreakingSpan>is now open!</NonBreakingSpan>
-          </Typography>
-        </div>
-        <HoursSection>
-          <div>
-            <Typography as="h3" variant="titleSmall">
-              Our Hours
-            </Typography>
-            <Typography margin="0 0 8px">
-              Monday – Friday: 7:00 AM to 9:30 PM <br />
-              Saturday: 7:00 AM to 2:30 PM <br />
-              Sunday: Closed <br />
+        <HeaderSection>
+          <div style={{ maxWidth: '800px', marginBottom: '32px' }}>
+            <Typography
+              as="h2"
+              variant="pageHeader"
+              lineHeight="1"
+              size={isMobile ? '2xl' : '4xl'}
+            >
+              The Recreation <NonBreakingSpan>Fitness Center</NonBreakingSpan>{' '}
+              <NonBreakingSpan>is now open!</NonBreakingSpan>
             </Typography>
           </div>
-          <Hours>
-            <Typography as="h3" variant="titleSmall">
+          <PhoneSection>
+            <NumberContainer>
+              <NumberInnerContainer>
+                <BiPhone fontSize={Spaces.lg} />
+                <Typography as="p" variant="labelTitleSmall">
+                  Recreation 1:{' '}
+                </Typography>
+                <Typography as="p">(323) 343-7546</Typography>
+              </NumberInnerContainer>
+            </NumberContainer>
+            <NumberContainer>
+              <NumberInnerContainer>
+                <BiPhone fontSize={Spaces.lg} />
+                <Typography as="p" variant="labelTitleSmall">
+                  Recreation 2:{' '}
+                </Typography>
+                <Typography as="p">(323) 343-2520</Typography>
+              </NumberInnerContainer>
+            </NumberContainer>
+          </PhoneSection>
+        </HeaderSection>
+        <HoursSection>
+          <div>
+            <Typography
+              as="h3"
+              variant="titleSmall"
+              size={!isTablet ? 'xl' : 'lg'}
+            >
+              Rec 1 & 2
+            </Typography>
+            <Typography as="p" variant="label" size="md">
+              U-SU Basement
+            </Typography>
+            <Typography as="p">
+              <u>Monday – Friday</u>
+              <br />
+              7:00 AM to 9:30 PM
+              <br />
+              <u>Saturday</u>
+              <br />
+              7:00 AM to 2:45 PM
+              <br />
+              <u>Sunday</u>
+              <br />
+              Closed <br />
+            </Typography>
+          </div>
+          <br />
+          <div>
+            <Typography
+              as="h3"
+              variant="titleSmall"
+              size={!isTablet ? 'xl' : 'lg'}
+            >
               Game Room
             </Typography>
-            <Typography margin="0 0 8px">
-              Monday – Thursday: 12:00 PM to 6:00 PM <br />
-              Saturday: Closed
-              <br />
-              Sunday: Closed <br />
+            <Typography as="p" variant="label" size="md">
+              U-SU Room 201
             </Typography>
-          </Hours>
-          <Hours>
-            <Typography as="h3" variant="titleSmall">
+            <Typography as="p">
+              <u>Monday – Friday</u>
+              <br />
+              12:00 PM to 6:00 PM
+              <br />
+              <u>Friday - Sunday</u>
+              <br />
+              Closed
+            </Typography>
+          </div>
+          <br />
+          <div>
+            <Typography
+              as="h3"
+              variant="titleSmall"
+              size={!isTablet ? 'xl' : 'lg'}
+            >
               South Village Wellness Zone
             </Typography>
-            <Typography margin="0 0 8px">
-              Monday – Friday: 7:00 AM to 12:00 PM and 4:30 PM to 9:30 PM
-              <br />
-              Saturday: 7:00 AM to 3:00 PM <br />
-              Sunday: Closed <br />
+            <Typography as="p" variant="label" size="md">
+              South Village Housing
             </Typography>
-          </Hours>
+            <Typography as="p">
+              <u>Monday – Friday</u>
+              <br />
+              7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM
+              <br />
+              <u>Saturday</u>
+              <br />
+              7:00 AM to 3:00 PM
+              <br />
+              <u>Sunday</u>
+              <br />
+              Closed <br />
+            </Typography>
+          </div>
         </HoursSection>
       </FluidContainer>
       <FluidContainer
@@ -158,7 +246,7 @@ export default function Recreation() {
         <Card
           margin={`0 0 ${Spaces.md}`}
           width={cardWidth}
-          title="All New Strength Equipment"
+          title="Strength Equipment"
         >
           <Image
             src="/departments/recreation/recreation-bench.jpg"
@@ -169,7 +257,7 @@ export default function Recreation() {
         <Card
           margin={`0 0 ${Spaces.md}`}
           width={cardWidth}
-          title="New Rubber Flooring"
+          title="Rubber Flooring"
         >
           <Image
             src="/departments/recreation/recreation-floor-2.jpg"
