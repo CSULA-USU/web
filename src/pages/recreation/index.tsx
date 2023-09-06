@@ -9,6 +9,7 @@ import {
   NonBreakingSpan,
 } from 'components';
 import { BiPhone } from 'react-icons/bi';
+import { MdLocationPin } from 'react-icons/md';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
@@ -30,10 +31,20 @@ const HoursSection = styled.div`
 
 const PhoneSection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   flex: 1 0 auto;
   margin: 0px 0px 32px;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: start;
+  }
+`;
+
+const LocationContainer = styled.span`
+  display: flex;
+  align-items: center;
 `;
 
 const NumberInnerContainer = styled.div`
@@ -131,9 +142,12 @@ export default function Recreation() {
             >
               Rec 1 & 2
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              U-SU Basement
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin />
+              <Typography as="p" variant="label" size="md">
+                U-SU Basement
+              </Typography>
+            </LocationContainer>
             <Typography as="p">
               <u>Monday – Friday</u>
               <br />
@@ -154,9 +168,12 @@ export default function Recreation() {
             >
               Game Room
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              U-SU Room 201
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin />
+              <Typography as="p" variant="label" size="md">
+                U-SU Room 201
+              </Typography>
+            </LocationContainer>
             <Typography as="p">
               <u>Monday – Thursday</u>
               <br />
@@ -176,9 +193,12 @@ export default function Recreation() {
             >
               South Village Wellness Zone
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              South Village Housing
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin />
+              <Typography as="p" variant="label" size="md">
+                South Village Housing
+              </Typography>
+            </LocationContainer>
             <Typography as="p">
               <u>Monday – Friday</u>
               <br />
