@@ -139,13 +139,10 @@ export default function Recreation() {
               <br />
               7:00 AM to 9:30 PM
               <br />
-              <u>Saturday</u>
+              <u>Saturday - Sunday</u>
               <br />
-              7:00 AM to 2:45 PM
+              Closed
               <br />
-              <u>Sunday</u>
-              <br />
-              Closed <br />
             </Typography>
           </div>
           <br />
@@ -161,7 +158,7 @@ export default function Recreation() {
               U-SU Room 201
             </Typography>
             <Typography as="p">
-              <u>Monday – Friday</u>
+              <u>Monday – Thursday</u>
               <br />
               12:00 PM to 6:00 PM
               <br />
@@ -187,13 +184,9 @@ export default function Recreation() {
               <br />
               7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM
               <br />
-              <u>Saturday</u>
+              <u>Saturday - Sunday</u>
               <br />
-              7:00 AM to 3:00 PM
-              <br />
-              <u>Sunday</u>
-              <br />
-              Closed <br />
+              Closed
             </Typography>
           </div>
         </HoursSection>
