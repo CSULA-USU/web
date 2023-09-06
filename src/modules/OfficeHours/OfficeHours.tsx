@@ -24,10 +24,12 @@ const OfficeHoursContentContainer = styled.div`
     margin-bottom: ${Spaces.md};
   }
 `;
+
 const NumberInnerContainer = styled.div`
   display: flex;
   gap: ${Spaces.sm};
 `;
+
 const NumberContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
@@ -47,7 +49,7 @@ export const OfficeHours = ({
         <NumberContainer>
           <NumberInnerContainer>
             <BiPhone fontSize={Spaces.lg} />
-            <Typography>{phoneNumber}</Typography>
+            <Typography as="p">{phoneNumber}</Typography>
           </NumberInnerContainer>
         </NumberContainer>
       </div>
@@ -56,11 +58,15 @@ export const OfficeHours = ({
         <>
           {hours.map((props) => (
             <div key={props.title}>
-              <Typography weight="700">{props.title}</Typography>
+              <Typography as="p" weight="700">
+                {props.title}
+              </Typography>
               {props.times && (
                 <>
                   {props.times.map((time) => (
-                    <Typography key={time}>{time}</Typography>
+                    <Typography as="p" key={time}>
+                      {time}
+                    </Typography>
                   ))}
                 </>
               )}
