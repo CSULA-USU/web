@@ -95,7 +95,7 @@ export default function Recreation() {
           src="/departments/recreation/recreation-hero.png"
           alt="recreation logo"
           width="100%"
-          maxHeight={isMobile ? '160px' : '224px'}
+          maxHeight={isMobile ? '144px' : '224px'}
           height="fit-content"
         />
       </FluidContainer>
