@@ -8,7 +8,8 @@ import {
   FluidContainer,
   NonBreakingSpan,
 } from 'components';
-import { BiPhone } from 'react-icons/bi';
+import { BiPhone, BiTimeFive } from 'react-icons/bi';
+import { MdLocationPin } from 'react-icons/md';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
@@ -30,10 +31,20 @@ const HoursSection = styled.div`
 
 const PhoneSection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   flex: 1 0 auto;
   margin: 0px 0px 32px;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: start;
+  }
+`;
+
+const LocationContainer = styled.span`
+  display: flex;
+  align-items: center;
 `;
 
 const NumberInnerContainer = styled.div`
@@ -44,6 +55,10 @@ const NumberInnerContainer = styled.div`
 const NumberContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
+`;
+
+const TimeContainer = styled.span`
+  display: flex;
 `;
 
 export default function Recreation() {
@@ -131,19 +146,25 @@ export default function Recreation() {
             >
               Rec 1 & 2
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              U-SU Basement
-            </Typography>
-            <Typography as="p">
-              <u>Monday – Friday</u>
-              <br />
-              7:00 AM to 9:30 PM
-              <br />
-              <u>Saturday - Sunday</u>
-              <br />
-              Closed
-              <br />
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin size="24px" />
+              <Typography as="p" variant="label" size="md">
+                U-SU Basement
+              </Typography>
+            </LocationContainer>
+            <TimeContainer>
+              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <Typography as="p">
+                <u>Monday – Friday</u>
+                <br />
+                7:00 AM to 9:30 PM
+                <br />
+                <u>Saturday - Sunday</u>
+                <br />
+                Closed
+                <br />
+              </Typography>
+            </TimeContainer>
           </div>
           <br />
           <div>
@@ -154,18 +175,24 @@ export default function Recreation() {
             >
               Game Room
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              U-SU Room 201
-            </Typography>
-            <Typography as="p">
-              <u>Monday – Thursday</u>
-              <br />
-              12:00 PM to 6:00 PM
-              <br />
-              <u>Friday - Sunday</u>
-              <br />
-              Closed
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin size="24px" />
+              <Typography as="p" variant="label" size="md">
+                U-SU Room 201
+              </Typography>
+            </LocationContainer>
+            <TimeContainer>
+              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <Typography as="p">
+                <u>Monday – Thursday</u>
+                <br />
+                12:00 PM to 6:00 PM
+                <br />
+                <u>Friday - Sunday</u>
+                <br />
+                Closed
+              </Typography>
+            </TimeContainer>
           </div>
           <br />
           <div>
@@ -176,18 +203,24 @@ export default function Recreation() {
             >
               South Village Wellness Zone
             </Typography>
-            <Typography as="p" variant="label" size="md">
-              South Village Housing
-            </Typography>
-            <Typography as="p">
-              <u>Monday – Friday</u>
-              <br />
-              7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM
-              <br />
-              <u>Saturday - Sunday</u>
-              <br />
-              Closed
-            </Typography>
+            <LocationContainer>
+              <MdLocationPin size="24px" />
+              <Typography as="p" variant="label" size="md">
+                South Village Housing
+              </Typography>
+            </LocationContainer>
+            <TimeContainer>
+              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <Typography as="p">
+                <u>Monday – Friday</u>
+                <br />
+                7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM
+                <br />
+                <u>Saturday - Sunday</u>
+                <br />
+                Closed
+              </Typography>
+            </TimeContainer>
           </div>
         </HoursSection>
       </FluidContainer>
