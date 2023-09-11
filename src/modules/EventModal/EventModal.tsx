@@ -2,6 +2,7 @@ import { Divider, Image, Typography } from 'components';
 import { useEffect } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
+import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { PRESENCE_URI_BASE } from 'utils/constants';
@@ -28,6 +29,22 @@ const customStyles = {
   },
 };
 
+const mobileCustomStyles = {
+  overlay: { zIndex: 100 },
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    width: '85%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '12px',
+    border: `1px solid ${Colors.greyLightest}`,
+    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+    textDecoration: 'none',
+  },
+};
+
 const Main = styled.div`
   max-width: 600px;
   margin: ${Spaces.xs};
@@ -45,6 +62,8 @@ export const EventModal = ({
   isOpen,
   onRequestClose,
 }: EventModalProps) => {
+  const { isMobile } = useBreakpoint();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -54,7 +73,6 @@ export const EventModal = ({
   }, [isOpen]);
 
   if (!event) return null;
-
   const {
     startDateTimeUtc,
     endDateTimeUtc,
@@ -72,7 +90,7 @@ export const EventModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      style={customStyles}
+      style={isMobile ? mobileCustomStyles : customStyles}
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
