@@ -92,10 +92,9 @@ export default function Recreation() {
         innerMaxWidth="640px"
       >
         <Image
-          src="/departments/recreation/recreation-hero.png"
+          src="/departments/recreation/recreation-hero.svg"
           alt="recreation logo"
           width="100%"
-          maxHeight={isMobile ? '144px' : '224px'}
           height="fit-content"
         />
       </FluidContainer>
