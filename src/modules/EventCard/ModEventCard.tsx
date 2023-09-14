@@ -2,9 +2,10 @@ import { Button, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
-import { BiTimeFive } from 'react-icons/bi';
+import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdLocationPin } from 'react-icons/md';
+import { VscOrganization } from 'react-icons/vsc';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
@@ -120,21 +121,9 @@ const MobileDetails = styled.div`
   width: 100%;
 `;
 
-const MobileLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const MobileTopColumn = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-`;
-
 const MobileRight = styled.div`
   display: flex;
   flex-direction: column;
-  padding: auto 0px;
   justify-content: space-between;
 `;
 
@@ -143,12 +132,17 @@ const InfoContainer = styled.div`
   align-items: center;
 `;
 
+const MobileBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const ModEventCard = ({
   event,
   featured,
   onClick,
 }: ModEventCardProps) => {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -286,53 +280,63 @@ export const ModEventCard = ({
         </HeroEventDetails>
       ) : (
         <MobileDetails>
-          <MobileTopColumn>
-            <MobileLeft>
-              <EventDateSection>
-                <Typography
-                  as="span"
-                  variant="eventDetail"
-                  size="sm"
-                  lineHeight="1"
-                >
-                  {month} <br />
-                </Typography>
-                <Typography
-                  as="span"
-                  variant="pageHeader"
-                  size="lg"
-                  color="white"
-                  lineHeight="1"
-                >
-                  {day}
-                </Typography>
-              </EventDateSection>
-              {featured ? (
-                <Button
-                  onClick={() => selectEvent(event)}
-                  variant="transparent"
-                >
-                  <BsInfoCircle size="30" color={`${Colors.gold}`} />
-                </Button>
-              ) : (
-                <Typography color="primary" size="sm">
-                  Learn More
-                </Typography>
-              )}
-            </MobileLeft>
-            <MobileRight>
+          {/* <MobileLeft>
+            <EventDateSection>
               <Typography
-                as="h3"
+                as="span"
                 variant="eventDetail"
-                lineHeight="1.2"
-                color="black"
-                size={isMobile ? 'md' : 'lg'}
+                size="sm"
+                lineHeight="1"
               >
-                {eventName}
+                {month} <br />
               </Typography>
+              <Typography
+                as="span"
+                variant="pageHeader"
+                size="lg"
+                color="white"
+                lineHeight="1"
+              >
+                {day}
+              </Typography>
+            </EventDateSection>
+            {featured ? (
+              <Button onClick={() => selectEvent(event)} variant="transparent">
+                <BsInfoCircle size="30" color={`${Colors.gold}`} />
+              </Button>
+            ) : (
+              <Typography color="primary" size="sm">
+                Learn More
+              </Typography>
+            )}
+          </MobileLeft> */}
+          <MobileRight>
+            <Typography
+              as="h3"
+              variant="eventDetail"
+              lineHeight="1.2"
+              color="black"
+              size="lg"
+            >
+              {eventName}
+            </Typography>
+            <InfoContainer>
+              <BiCalendar size="20px" style={{ margin: '0px 8px 2px 0px' }} />
+              <Typography as="h4" variant="eventDetail" color="black">
+                {month} {day}
+              </Typography>
+            </InfoContainer>
+            <InfoContainer>
+              <BiTimeFive size="20px" style={{ margin: '0px 8px 2px 0px' }} />
               <Typography as="h4" variant="eventTime" color="black">
                 {startTime} - {endTime}
               </Typography>
+            </InfoContainer>
+            <InfoContainer>
+              <MdLocationPin
+                size="20px"
+                style={{ margin: '0px 8px 0px 0px' }}
+              />
               <Typography
                 as="h5"
                 variant="eventDetail"
@@ -345,11 +349,32 @@ export const ModEventCard = ({
                   location
                 )}
               </Typography>
-              <Typography as="h5" variant="eventDetail" color="black">
-                {ABBREVIATED_ORGS[organizationName]}
-              </Typography>
-            </MobileRight>
-          </MobileTopColumn>
+            </InfoContainer>
+            <MobileBottom>
+              <InfoContainer>
+                <VscOrganization
+                  size="20px"
+                  style={{ margin: '0px 8px 2px 0px' }}
+                />
+                <Typography as="h5" variant="eventDetail" color="black">
+                  {ABBREVIATED_ORGS[organizationName]}
+                </Typography>
+              </InfoContainer>
+              {featured ? (
+                <Button
+                  onClick={() => selectEvent(event)}
+                  variant="transparent"
+                  padding="500px"
+                >
+                  <BsInfoCircle size="20" color={`${Colors.gold}`} />
+                </Button>
+              ) : (
+                <Typography color="primary" size="sm">
+                  Learn More
+                </Typography>
+              )}
+            </MobileBottom>
+          </MobileRight>
         </MobileDetails>
       )}
       <EventModal
