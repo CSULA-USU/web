@@ -7,12 +7,14 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?: 'primary' | 'black' | 'grey' | 'outline' | 'transparent';
   disabled?: boolean;
   children?: React.ReactNode;
+  padding?: string;
 }
 
 interface ButtonVariant {
   backgroundColor: keyof typeof Colors;
   color: keyof typeof Colors;
   border?: string;
+  padding?: string;
 }
 
 const styles: { [key: string]: ButtonVariant } = {
@@ -36,7 +38,8 @@ const styles: { [key: string]: ButtonVariant } = {
 } as const;
 
 const getCSS = (p: ButtonProps) => {
-  const { backgroundColor, color, border } = styles[p.variant || 'primary'];
+  const { backgroundColor, border, color, padding } =
+    styles[p.variant || 'primary'];
   return css`
     cursor: pointer;
     font-size: 16px;
@@ -44,7 +47,7 @@ const getCSS = (p: ButtonProps) => {
     border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;
-    padding: 18px 36px;
+    padding: ${p.padding ? `${padding}` : '18px 36px'};
     background-color: ${Colors[backgroundColor]};
     color: ${Colors[color]};
     margin: ${p.margin || 0};
