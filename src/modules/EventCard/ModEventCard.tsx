@@ -2,7 +2,9 @@ import { Button, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
+import { BiTimeFive } from 'react-icons/bi';
 import { BsInfoCircle } from 'react-icons/bs';
+import { MdLocationPin } from 'react-icons/md';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
@@ -136,6 +138,11 @@ const MobileRight = styled.div`
   justify-content: space-between;
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const ModEventCard = ({
   event,
   featured,
@@ -236,21 +243,30 @@ export const ModEventCard = ({
               >
                 {eventName}
               </Typography>
-              <Typography as="h4" variant="eventTime" color="black">
-                {startTime} - {endTime}
-              </Typography>
-              <Typography
-                as="h5"
-                variant="eventDetail"
-                style={{ overflowWrap: 'anywhere' }}
-                color="black"
-              >
-                {location.indexOf('.zoom.us') > -1 ? (
-                  <a href={location}>Zoom Meeting</a>
-                ) : (
-                  location
-                )}
-              </Typography>
+              <InfoContainer>
+                <BiTimeFive size="20px" style={{ margin: '0px 3px 0px 4px' }} />
+                <Typography as="h4" variant="eventTime" color="black">
+                  {startTime} - {endTime}
+                </Typography>
+              </InfoContainer>
+              <InfoContainer>
+                <MdLocationPin
+                  size="20px"
+                  style={{ margin: '0px 3px 0px 3px' }}
+                />
+                <Typography
+                  as="h5"
+                  variant="eventDetail"
+                  style={{ overflowWrap: 'anywhere' }}
+                  color="black"
+                >
+                  {location.indexOf('.zoom.us') > -1 ? (
+                    <a href={location}>Zoom Meeting</a>
+                  ) : (
+                    location
+                  )}
+                </Typography>
+              </InfoContainer>
             </EventDetails>
             <ButtonSection>
               <Typography as="h5" variant="eventDetail" color="black">
