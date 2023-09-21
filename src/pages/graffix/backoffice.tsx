@@ -124,6 +124,27 @@ const requests = [
             Optional: Zoom, IG Sticker, FB Event Cover
           </Typography>
         </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Optional
+            </Typography>
+          }
+        >
+          <Typography as="p">Buttons 1.5&quot;</Typography>
+          <Typography as="p">Buttons 2.25&quot;</Typography>
+          <Typography as="p">Buttons 3&quot;</Typography>
+          <Typography as="p">Enamel Pins</Typography>
+          <Typography as="p">Event Shirts</Typography>
+          <Typography as="p">Bags</Typography>
+          <Typography as="p">Hats</Typography>
+          <Typography as="p">Stickers</Typography>
+          <Typography as="p" margin="0px 0px 8px">
+            Other
+          </Typography>
+        </Expandable>
       </FluidContainer>
     ),
   },
@@ -202,6 +223,27 @@ const requests = [
             Optional: Zoom, IG Sticker
           </Typography>
         </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Optional
+            </Typography>
+          }
+        >
+          <Typography as="p">Buttons 1.5&quot;</Typography>
+          <Typography as="p">Buttons 2.25&quot;</Typography>
+          <Typography as="p">Buttons 3&quot;</Typography>
+          <Typography as="p">Enamel Pins</Typography>
+          <Typography as="p">Event Shirts</Typography>
+          <Typography as="p">Bags</Typography>
+          <Typography as="p">Hats</Typography>
+          <Typography as="p">Stickers</Typography>
+          <Typography as="p" margin="0px 0px 8px">
+            Other
+          </Typography>
+        </Expandable>
       </FluidContainer>
     ),
   },
@@ -267,57 +309,28 @@ const requests = [
             Optional: Zoom, IG Sticker, FB Event Cover
           </Typography>
         </Expandable>
+        <Divider color="gold" />
+        <Expandable
+          indicator={<BiChevronRight color="black" size={48} />}
+          header={
+            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              Optional
+            </Typography>
+          }
+        >
+          <Typography as="p">Buttons 1.5&quot;</Typography>
+          <Typography as="p">Buttons 2.25&quot;</Typography>
+          <Typography as="p">Buttons 3&quot;</Typography>
+          <Typography as="p">Enamel Pins</Typography>
+          <Typography as="p">Event Shirts</Typography>
+          <Typography as="p">Bags</Typography>
+          <Typography as="p">Hats</Typography>
+          <Typography as="p">Stickers</Typography>
+          <Typography as="p" margin="0px 0px 8px">
+            Other
+          </Typography>
+        </Expandable>
       </FluidContainer>
-    ),
-  },
-  {
-    title: 'Package D (Single Item)',
-    iconSrc: '/departments/graffix/backoffice/request-images/single-item.svg',
-    iconAlt: 'package d single items request information',
-    children: (
-      <Expandable
-        indicator={<BiChevronRight color="black" size={48} />}
-        header={
-          <Typography variant="label" as="h3" margin={'0px 0px 1px'}>
-            Instructions
-          </Typography>
-        }
-      >
-        <Typography as="p" margin="0px 0px 8px">
-          Please provide correct spelling/punctuation. Graffix will not be
-          responsible for incorrect information on submission.
-        </Typography>
-        <Typography as="p" margin="0px 0px 8px">
-          Submit all photos, text copy, graphic elements, concepts and layout to
-          be used in U-SU Marketing. Please have everything ready at the time of
-          the request.
-        </Typography>
-      </Expandable>
-    ),
-  },
-  {
-    title: 'Package E',
-    iconSrc: '/departments/graffix/backoffice/request-images/upload.svg',
-    iconAlt: 'Package E request info',
-    children: (
-      <Expandable
-        indicator={<BiChevronRight color="black" size={48} />}
-        header={
-          <Typography variant="label" as="h3" margin={'0px 0px 1px'}>
-            Instructions
-          </Typography>
-        }
-      >
-        <Typography as="p" margin="0px 0px 8px">
-          Please provide correct spelling/punctuation. Graffix will not be
-          responsible for incorrect information on submission.
-        </Typography>
-        <Typography as="p" margin="0px 0px 8px">
-          Submit all photos, text copy, graphic elements, concepts and layout to
-          be used in U-SU Marketing. Please have everything ready at the time of
-          the request.
-        </Typography>
-      </Expandable>
     ),
   },
 ];
