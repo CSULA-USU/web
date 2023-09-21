@@ -50,10 +50,10 @@ const HeaderContainer = styled.div`
 
 const requests = [
   {
-    title: 'Individual',
+    title: 'Package A',
     iconSrc:
       '/departments/graffix/backoffice/request-images/individual-campaign.svg',
-    iconAlt: 'individual campaign',
+    iconAlt: 'Package A request info',
     children: (
       <FluidContainer
         flex
@@ -69,33 +69,13 @@ const requests = [
             </Typography>
           }
         >
-          <Typography as="p" margin="0px 0px 8px">
-            Event title
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Series or single event choice
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Event dates and times
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Design options
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Calendar descriptions
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Themes
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Social media choices
-          </Typography>
+          <Typography as="p">Event title</Typography>
+          <Typography as="p">Series or single event choice</Typography>
+          <Typography as="p">Event dates and times</Typography>
+          <Typography as="p">Design options</Typography>
+          <Typography as="p">Calendar descriptions</Typography>
+          <Typography as="p">Themes</Typography>
+          <Typography as="p">Social media choices</Typography>
         </Expandable>
         <Divider color="gold" />
         <Expandable
@@ -107,56 +87,28 @@ const requests = [
           }
         >
           <Typography as="h5" weight="700">
-            Printed Items
+            Small Print
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Color Posters
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Postcards
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Button
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            UT Ad (Published Every Tuesday)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Other (specify)
-          </Typography>
+          <Typography as="p">Poster (11 x 17&quot;)</Typography>
+          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
+          <Typography as="p">Postcard (8.25 x 5.5&quot;)</Typography>
           <br />
           <Typography as="h5" weight="700">
-            Large Scale Items
+            Large Print
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Big Banner (22&quot; x 28&quot;)
-          </Typography>
+          <Typography as="p">Large Poster (22 x 28&quot;)</Typography>
+          <Typography as="p">Window Decal (CCC 36 x 28&quot;)</Typography>
           <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Foam Board (20&quot; x 30&quot;)
+          <Typography as="h5" weight="700">
+            Banners
           </Typography>
+          <Typography as="p">Banner 12 x 4&rsquo;</Typography>
           <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Window Decal (CCC 35&quot; x 28&quot;)
-          </Typography>
           <Typography as="h5" weight="700">
             Signage
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            2 A-Frame (24&quot; x 36&quot;)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Vinyl (12&quot; x 4&quot;)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Vinyl (3&quot; x 8&quot;)
-          </Typography>
+          <Typography as="p">2 A-Frame (24&quot; x 36&quot;)</Typography>
+          <Typography as="p">Location Signage (11&quot; x 17&quot;)</Typography>
         </Expandable>
         <Divider color="gold" />
         <Expandable
@@ -167,46 +119,18 @@ const requests = [
             </Typography>
           }
         >
-          <Typography as="p" margin="0px 0px 1px">
-            The following questions will ask you to provide information on your
-            preferred social media and virtual event platforms. Having
-            information like your Zoom link, password, RSVP method or event
-            theme will be helpful, but is not required.
+          <Typography as="p">Instagram Post or Story</Typography>
+          <Typography as="p" margin="0px 0px 8px">
+            Optional: Zoom, IG Sticker, FB Event Cover
           </Typography>
-          <br />
-          <ol>
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Instagram Post or Story
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Facebook Post or Story
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Twitter Post
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 8px">
-                Optional: Zoom, IG Sticker, FB Event Cover
-              </Typography>
-            </li>
-          </ol>
         </Expandable>
       </FluidContainer>
     ),
   },
   {
-    title: 'Conference',
-    iconSrc: '/departments/graffix/backoffice/request-images/conference.svg',
-    iconAlt: 'conference',
+    title: 'Package B',
+    iconSrc: '/departments/graffix/backoffice/request-images/party.svg',
+    iconAlt: 'Package B Information',
     children: (
       <FluidContainer
         flex
@@ -222,33 +146,13 @@ const requests = [
             </Typography>
           }
         >
-          <Typography as="p" margin="0px 0px 8px">
-            Event title
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Series or single event choice
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Event dates and times
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Design options
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Calendar descriptions
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Themes
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Social media choices
-          </Typography>
+          <Typography as="p">Event title</Typography>
+          <Typography as="p">Series or single event choice</Typography>
+          <Typography as="p">Event dates and times</Typography>
+          <Typography as="p">Design options</Typography>
+          <Typography as="p">Calendar descriptions</Typography>
+          <Typography as="p">Themes</Typography>
+          <Typography as="p">Social media choices</Typography>
         </Expandable>
         <Divider color="gold" />
         <Expandable
@@ -260,56 +164,26 @@ const requests = [
           }
         >
           <Typography as="h5" weight="700">
-            Printed Items
+            Small Print
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Color Posters
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Postcards
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Button
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            UT Ad (Published Every Tuesday)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Brochure/Program
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Other (specify)
-          </Typography>
+          <Typography as="p">Poster (11 x 17&quot;)</Typography>
+          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
+          <Typography as="p">Postcard (8.25 x 5.5&quot;)</Typography>
           <br />
           <Typography as="h5" weight="700">
-            Large Scale Items
+            Large Print
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Big Banner (22&quot; x 28&quot;)
-          </Typography>
+          <Typography as="p">Large Poster (22 x 28&quot;)</Typography>
           <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Foam Board (20&quot; x 30&quot;)
+          <Typography as="h5" weight="700">
+            Banners
           </Typography>
+          <Typography as="p">Banner 3 x 8&rsquo;</Typography>
+          <br />
           <Typography as="h5" weight="700">
             Signage
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            2 A-Frame (24&quot; x 36&quot;)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Event Signage
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Window Decal (CCC - 35&quot; x 28&quot;)
-          </Typography>
+          <Typography as="p">A-Frame (24&quot; x 36&quot;)</Typography>
         </Expandable>
         <Divider color="gold" />
         <Expandable
@@ -324,25 +198,17 @@ const requests = [
             Instagram Post or Story
           </Typography>
           <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Facebook Post or Story
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Twitter Post
-          </Typography>
-          <br />
           <Typography as="p" margin="0px 0px 8px">
-            Optional: Zoom, IG Sticker, FB Event Cover
+            Optional: Zoom, IG Sticker
           </Typography>
         </Expandable>
       </FluidContainer>
     ),
   },
   {
-    title: 'Awards',
-    iconSrc: '/departments/graffix/backoffice/request-images/awards.svg',
-    iconAlt: 'awards',
+    title: 'Package C',
+    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconAlt: 'Package C information',
     children: (
       <FluidContainer
         flex
@@ -358,30 +224,12 @@ const requests = [
             </Typography>
           }
         >
-          <Typography as="p" margin="0px 0px 8px">
-            Event title
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Series or single event choice
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Event dates and times
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Design options
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Calendar descriptions
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Themes
-          </Typography>
-          <br />
+          <Typography as="p">Event title</Typography>
+          <Typography as="p">Series or single event choice</Typography>
+          <Typography as="p">Event dates and times</Typography>
+          <Typography as="p">Design options</Typography>
+          <Typography as="p">Calendar descriptions</Typography>
+          <Typography as="p">Themes</Typography>
           <Typography as="p" margin="0px 0px 8px">
             Social media choices
           </Typography>
@@ -396,55 +244,14 @@ const requests = [
           }
         >
           <Typography as="h5" weight="700">
-            Printed Items
+            Small Print
           </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Color Posters
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Postcards
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Button
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            UT Ad (Published Every Tuesday)
-          </Typography>
-          <br />
+          <Typography as="p">Poster (11 x 17&quot;)</Typography>
+          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
           <Typography as="p" margin="0px 0px 8px">
-            Other (specify)
+            Postcard (8.25 x 5.5&quot;)
           </Typography>
           <br />
-          <Typography as="h5" weight="700">
-            Large Scale Items
-          </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Big Banner (22&quot; x 28&quot;)
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Foam Board (20&quot; x 30&quot;)
-          </Typography>
-          <Typography as="h5" weight="700">
-            Signage
-          </Typography>
-          <Typography as="p" margin="0px 0px 1px">
-            Event Signage
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Podium Signage
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Window Decal (CCC - 35&quot; x 28&quot;)
-          </Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Window Decal (CSI - 33.5&quot; x 30&quot;)
-          </Typography>
         </Expandable>
         <Divider color="gold" />
         <Expandable
@@ -455,107 +262,8 @@ const requests = [
             </Typography>
           }
         >
-          <Typography as="p" margin="0px 0px 1px">
-            The following questions will ask you to provide information on your
-            preferred social media and virtual event platforms. Having
-            information like your Zoom link, password, RSVP method or event
-            theme will be helpful, but is not required.
-          </Typography>
-          <br />
-          <ol>
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Instagram Post or Story
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Facebook Post or Story
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Twitter Post
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 8px">
-                Optional: Zoom, IG Sticker, FB Event Cover
-              </Typography>
-            </li>
-          </ol>
-        </Expandable>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Social Media',
-    iconSrc: '/departments/graffix/backoffice/request-images/social-media.svg',
-    iconAlt: 'social media',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Requirements
-            </Typography>
-          }
-        >
-          <Typography as="p" margin="0px 0px 1px">
-            Event title
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Series or single event choice
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Event dates and times
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Design options
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Calendar descriptions
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Themes
-          </Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Social Media Selection
-            </Typography>
-          }
-        >
-          <Typography as="p" margin="0px 0px 1px">
-            Instagram Post or Story
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Facebook Post or Story
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 1px">
-            Twitter Post
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
+          <Typography as="p">Instagram Post or Story</Typography>
+          <Typography as="p">
             Optional: Zoom, IG Sticker, FB Event Cover
           </Typography>
         </Expandable>
@@ -563,9 +271,9 @@ const requests = [
     ),
   },
   {
-    title: 'Single Item',
+    title: 'Package D (Single Item)',
     iconSrc: '/departments/graffix/backoffice/request-images/single-item.svg',
-    iconAlt: 'single item',
+    iconAlt: 'package d single items request information',
     children: (
       <Expandable
         indicator={<BiChevronRight color="black" size={48} />}
@@ -588,75 +296,28 @@ const requests = [
     ),
   },
   {
-    title: 'Shirt',
-    iconSrc: '/departments/graffix/backoffice/request-images/shirt.svg',
-    iconAlt: 'shirt',
+    title: 'Package E',
+    iconSrc: '/departments/graffix/backoffice/request-images/upload.svg',
+    iconAlt: 'Package E request info',
     children: (
-      <div>
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={'0px 0px 1px'}>
-              Instructions
-            </Typography>
-          }
-        >
-          <ol>
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Completely fill out form or it will be returned unprocessed.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                T-shirt (silkscreen/embroidery) production requires at least 7-9
-                working days.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Price quote and press check require an additional 1 week.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                We require at least 2-3 weeks for each project (NOT including
-                production time).
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Minimum order of 50 shirts per request.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Request is subject to approval.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Please provide correct spelling/punctuation. Graffix will not be
-                responsible for incorrect information on submission.
-              </Typography>
-            </li>
-            <br />
-            <li>
-              <Typography as="p" margin="0px 0px 1px">
-                Submit all photos, text copy, graphic elements, concepts &
-                layout to be used in U-SU Marketing. Please have everything
-                ready at the time of the request.
-              </Typography>
-            </li>
-          </ol>
-        </Expandable>
-      </div>
+      <Expandable
+        indicator={<BiChevronRight color="black" size={48} />}
+        header={
+          <Typography variant="label" as="h3" margin={'0px 0px 1px'}>
+            Instructions
+          </Typography>
+        }
+      >
+        <Typography as="p" margin="0px 0px 8px">
+          Please provide correct spelling/punctuation. Graffix will not be
+          responsible for incorrect information on submission.
+        </Typography>
+        <Typography as="p" margin="0px 0px 8px">
+          Submit all photos, text copy, graphic elements, concepts and layout to
+          be used in U-SU Marketing. Please have everything ready at the time of
+          the request.
+        </Typography>
+      </Expandable>
     ),
   },
 ];
