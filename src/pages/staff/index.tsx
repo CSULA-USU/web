@@ -1,6 +1,6 @@
 import { Page, Header } from 'modules';
 import Head from 'next/head';
-import { FluidContainer, Typography, Button } from 'components';
+import { FluidContainer, Typography, Button, Image } from 'components';
 import styled from 'styled-components';
 import { StaffCard } from 'components/StaffCard';
 import { useEffect, useState } from 'react';
@@ -129,6 +129,14 @@ export default function Staff() {
             </Typography>
           </StaffCard>
         ))}
+      </FluidContainer>
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="group photo of full time usu staff"
+          src="/staff/group-staff.jpg"
+          width="100%"
+          margin={`0px 500px ${Spaces.xl}`}
+        />
       </FluidContainer>
     </Page>
   );
