@@ -10,40 +10,40 @@
         "setup": "Classroom",
         "image": "/departments/operations/meeting-rooms/alhambra/classroom.jpg",
         "capacity": [36],
-        "equiptment": ["6 x 18 Tables", "Chairs"]
+        "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater",
         "image": "/departments/operations/meeting-rooms/alhambra/theatre.jpg",
         "capacity": [54],
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Reception",
         "image": "/departments/operations/meeting-rooms/alhambra/reception.jpg",
         "capacity": [30],
-        "equiptment": ["Chairs", "Cocktail Tables"]
+        "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
         "capacity": [34],
         "image": "/departments/operations/meeting-rooms/alhambra/discussion-circle.jpg",
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Conference",
         "capacity": [20],
         "image": "/departments/operations/meeting-rooms/alhambra/conference.jpg",
-        "equiptment": ["6 x 30 Tables", "Chairs"]
+        "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet",
         "capacity": [45],
         "image": "/departments/operations/meeting-rooms/alhambra/banquet.jpg",
-        "equiptment": ["60\" Round Tables", "Chairs"]
+        "equipment": ["60\" Round Tables", "Chairs"]
       }
     ],
-    "features": "White Board, Black-Out Shades, Built-In Audio & Visual System.For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "White Board, Black-Out Shades, Built-In Audio and Visual System. For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
     "title": "San Gabriel Room",
@@ -56,40 +56,40 @@
         "setup": "Classroom",
         "capacity": [26],
         "image": "/departments/operations/meeting-rooms/san-gabriel/classroom.jpg",
-        "equiptment": ["6 x 18 Tables", "Chairs"]
+        "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater",
         "capacity": [65],
         "image": "/departments/operations/meeting-rooms/san-gabriel/theater.jpg",
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Reception",
         "capacity": [36],
         "image": "/departments/operations/meeting-rooms/san-gabriel/reception.jpg",
-        "equiptment": ["Chairs", "Cocktail Tables"]
+        "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
         "capacity": [34],
         "image": "/departments/operations/meeting-rooms/san-gabriel/discussion.jpg",
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Conference",
         "capacity": [20],
         "image": "/departments/operations/meeting-rooms/san-gabriel/conference.jpg",
-        "equiptment": ["6 x 30 Tables", "Chairs"]
+        "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet",
         "capacity": [45],
         "image": "/departments/operations/meeting-rooms/san-gabriel/banquet.jpg",
-        "equiptment": ["60\" Round Tables", "Chairs"]
+        "equipment": ["60\" Round Tables", "Chairs"]
       }
     ],
-    "features": "White Board, Black-Out Shades, Built-In Audio & Visual System.For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "White Board, Black-Out Shades, Built-In Audio and Visual System. For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
     "title": "Los Angeles Room",
@@ -102,40 +102,40 @@
         "setup": "Classroom",
         "capacity": ["Room A: 30", "Room B: 60", "Room : 90"],
         "image": "/departments/operations/meeting-rooms/los-angeles/classroom.jpg",
-        "equiptment": ["6 x 18 Tables", "Chairs"]
+        "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater",
         "capacity": ["Room A: 70", "Room B: 130", "Room : 200"],
         "image": "/departments/operations/meeting-rooms/los-angeles/theatre.jpg",
-        "equiptment": ["LA Chairs"]
+        "equipment": ["LA Chairs"]
       },
       {
         "setup": "Reception",
         "capacity": ["Room A: 44", "Room B: 54", "Room : 64"],
         "image": "/departments/operations/meeting-rooms/los-angeles/reception.jpg",
-        "equiptment": ["Chairs", "Cocktail Tables"]
+        "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
         "capacity": ["Room A: 30", "Room B: 45", "Room : 60"],
         "image": "/departments/operations/meeting-rooms/los-angeles/discussion.jpg",
-        "equiptment": ["LA Chairs"]
+        "equipment": ["LA Chairs"]
       },
       {
         "setup": "Conference",
         "capacity": ["Room A: 20", "Room B: 36", "Room : 54"],
         "image": "/departments/operations/meeting-rooms/los-angeles/conference.jpg",
-        "equiptment": ["6 x 30 Tables", "LA Chairs"]
+        "equipment": ["6 x 30 Tables", "LA Chairs"]
       },
       {
         "setup": "Banquet",
         "capacity": ["Room A: 50", "Room B: 110", "Room : 170"],
         "image": "/departments/operations/meeting-rooms/los-angeles/banquet.jpg",
-        "equiptment": ["60\" Round Tables", "LA Chairs"]
+        "equipment": ["60\" Round Tables", "LA Chairs"]
       }
     ],
-    "features": "Retractable Walls, Built-In Audio & Visual System.For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "Retractable Walls, Built-In Audio and Visual System. For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
     "title": "Theater Room",
@@ -148,10 +148,10 @@
         "setup": "Theater",
         "image": "/departments/operations/meeting-rooms/theater/u-su-theater.jpg",
         "capacity": ["192 + 8 (ADA)"],
-        "equiptment": ["Fixed Seating"]
+        "equipment": ["Fixed Seating"]
       }
     ],
-    "features": "Theatre Packages: Basic Sound, Full Sound, Cinema, Presentation, Discussion Panel, Basic Stage Lighting, Full Stage Lighting (Gel Colors). For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "Theatre Packages: Basic Sound, Full Sound, Cinema, Presentation, Discussion Panel, Basic Stage Lighting, Full Stage Lighting (Gel Colors). For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
     "title": "Boardroom North",
@@ -164,10 +164,10 @@
         "setup": "Conference",
         "image": "/departments/operations/meeting-rooms/boardroom/north/u-su-board-room-north.jpg",
         "capacity": [20],
-        "equiptment": ["Large Conference Table", "Rolling Chairs"]
+        "equipment": ["Large Conference Table", "Rolling Chairs"]
       }
     ],
-    "features": "Fixed Room Features: Retractable Walls—Connects with Board Room South, White Board, Black-Out Shades, Large Conference Table, Projector Screen, Built in Audio & Visual (Smart Room).For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "Retractable Walls that connect with Board Room South, White Board, Black-Out Shades, Large Conference Table, Projector Screen, Built in Audio and Visual (Smart Room). For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
     "title": "Boardroom South",
@@ -180,39 +180,39 @@
         "setup": "Classroom",
         "image": "/departments/operations/meeting-rooms/boardroom/south/classroom.jpg",
         "capacity": [20],
-        "equiptment": ["6 x 18 Tables", "Chairs"]
+        "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater",
         "image": "/departments/operations/meeting-rooms/boardroom/south/theater.jpg",
         "capacity": [32],
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Reception",
         "image": "/departments/operations/meeting-rooms/boardroom/south/reception.jpg",
         "capacity": [32],
-        "equiptment": ["Chairs", "Cocktail Tables"]
+        "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle",
         "image": "/departments/operations/meeting-rooms/boardroom/south/discussion.jpg",
         "capacity": [32],
-        "equiptment": ["Chairs"]
+        "equipment": ["Chairs"]
       },
       {
         "setup": "Conference",
         "image": "/departments/operations/meeting-rooms/boardroom/south/conference.jpg",
         "capacity": [12],
-        "equiptment": ["6 x 30 Tables", "Chairs"]
+        "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet",
         "image": "/departments/operations/meeting-rooms/boardroom/south/banquet.jpg",
         "capacity": [24],
-        "equiptment": ["60\" Round Tables", "Chairs"]
+        "equipment": ["60\" Round Tables", "Chairs"]
       }
     ],
-    "features": "White Board, Black-Out Shades, Projector Screen, Retractable Walls—Connects with Board Room North. For special set-up please set up a meeting with Event Services Coordinator"
+    "features": "White Board, Black-Out Shades, Projector Screen, Retractable Walls that connect with Board Room North. For special set-up please schedule a meeting with the Event Services Coordinator."
   }
 ]
