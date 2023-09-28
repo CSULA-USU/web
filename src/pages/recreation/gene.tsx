@@ -40,7 +40,7 @@ const buttons = [
   },
   {
     text: 'Meet Your Educators',
-    href: 'https://www.dropbox.com/s/kv2x9skhab6pn69/gene-bios.pdf?dl=0',
+    href: '/departments/recreation/gene-fall-2023-educators.pdf',
   },
 ];
 
