@@ -28,12 +28,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/fq0gtfffhw4bqb490rrsz/bod-sep-15-23.pdf?rlkey=xk51yjktx91mxp8ac2zrch7s8&dl=0',
             children: 'BOD Meeting Sep 15, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/dunyfe6dqhzf7kppdff59/bod-sep-29-23.pdf?rlkey=jwmjhq8z1kffyqqdjpm92h285&dl=0',
+            children: 'BOD Meeting Sep 29, 2023',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/i4wg3izhs4chhoe9m85n7/fy23-24.zip?rlkey=p11gz07afggco6cc86vsigjsw&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/i6xq6ml1y48hh2ueabujm/fy23-24.zip?rlkey=ruiq4rse8k3sqr5yhgkrdgbkw&dl=0',
       variant: 'black',
     },
   },
