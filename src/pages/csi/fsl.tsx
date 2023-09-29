@@ -524,7 +524,7 @@ export default function FSL() {
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
               header={
-                <Typography variant="subheader" as="h3">
+                <Typography variant="subheader" as="h2">
                   Community Reports
                 </Typography>
               }
