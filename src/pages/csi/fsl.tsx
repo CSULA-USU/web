@@ -524,19 +524,37 @@ export default function FSL() {
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
               header={
-                <Typography variant="titleSmall" as="h2">
+                <Typography variant="subheader" as="h3">
                   Community Reports
                 </Typography>
               }
             >
-              <Typography as="p" margin={`${Spaces.md} 0 `}>
+              <Typography as="p" margin={`0 0 ${Spaces.md} 0 `}>
                 Community reports are created to demonstrate academic, service,
                 and philanthropic efforts of the Greek community.
               </Typography>
               <Typography variant="subheader" as="h3">
+                Campus-Recognized Sorority And Fraternity Transparency Act -
+                AB524
+              </Typography>
+              <Typography as="p" margin={`0 0 ${Spaces.md} 0`}>
+                The Transparency Act requires each institution in California
+                with fraternities and sororities to compile and maintain details
+                about each recognized organization concerning the organizations,
+                the members, and their conduct. The information in this report
+                is shared annually with the Cal State LA community about the
+                previous academic year.
+              </Typography>
+              <Button
+                margin={`0 0 ${Spaces.sm} 0`}
+                href="https://www.dropbox.com/scl/fi/xtwwn88jpjes0auqqi5db/2022-2023-AB-524-Report.pdf?rlkey=75ar2lwbee8p3jbwaorku2lot&dl=0"
+              >
+                AB 524 Report
+              </Button>
+              <Typography variant="subheader" as="h3">
                 Chapter Status
               </Typography>
-              <Typography>
+              <Typography as="p">
                 In an effort to be as transparent as possible with our
                 community, the Center for Student Involvement has published the
                 chapter status of each chapter chartered at California State
