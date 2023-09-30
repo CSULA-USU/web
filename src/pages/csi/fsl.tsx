@@ -524,7 +524,7 @@ export default function FSL() {
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
               header={
-                <Typography variant="subheader" as="h3">
+                <Typography variant="titleSmall" as="h2">
                   Community Reports
                 </Typography>
               }
@@ -547,7 +547,7 @@ export default function FSL() {
               </Typography>
               <Button
                 margin={`0 0 ${Spaces.sm} 0`}
-                href="https://www.dropbox.com/scl/fi/xtwwn88jpjes0auqqi5db/2022-2023-AB-524-Report.pdf?rlkey=75ar2lwbee8p3jbwaorku2lot&dl=0"
+                href="/departments/csi/fsl/ab-524-report.pdf"
               >
                 AB 524 Report
               </Button>
