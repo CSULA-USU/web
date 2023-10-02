@@ -44,8 +44,8 @@ const Container = styled.nav`
     transform: translate(16px, 8px);
   }
   ul {
-    border-left: 2px solid ${Colors.grey};
-    transform: translateX(8px);
+    border-left: 2px solid ${Colors.primary};
+    transform: translateX(20px);
     a,
     button,
     .szh-menu__item,
@@ -60,7 +60,7 @@ const Container = styled.nav`
       }
     }
     .szh-menu__item--submenu:after {
-      content: '>';
+      content: '+';
       position: absolute;
       right: 4px;
     }
@@ -72,6 +72,7 @@ const Container = styled.nav`
   }
   .szh-menu__item {
     padding: 8px;
+    margin-right: 12px;
   }
 `;
 
@@ -107,7 +108,7 @@ export const DesktopNav = () => (
             {t1.sub.map((t2, index) => {
               if (t2.sub) {
                 return (
-                  <SubMenu key={`t2_${index}`} label={t2.text}>
+                  <SubMenu key={`t2_${index}`} label={`${t2.text}`}>
                     {t2.sub.map((t3, index) => (
                       <MenuItem key={`t3_${index}`}>
                         <Link href={t3.href}>
