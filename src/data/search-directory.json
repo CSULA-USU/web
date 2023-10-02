@@ -99,7 +99,9 @@
       "ccc",
       "graffix",
       "operations",
-      "recreation"
+      "recreation",
+      "reservation",
+      "reservation"
     ]
   },
   {
@@ -262,16 +264,19 @@
     "tags": ["graffix", "acui awards", "graphic design", "art", "designer"]
   },
   {
-    "title": "Operations",
+    "title": "Operations and Reservations",
     "url": "/operations",
-    "description": "The Operations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.",
+    "description": "The Operations and Reservations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.",
     "tags": [
       "operations",
       "building maintenance",
       "custodial services",
       "media",
       "union meeting",
-      "events"
+      "events",
+      "reservation",
+      "reserve",
+      "rooms"
     ]
   },
   {
