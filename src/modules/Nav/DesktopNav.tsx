@@ -44,6 +44,15 @@ const Container = styled.nav`
     transform: translate(16px, 8px);
   }
   ul {
+    animation: fadeIn 0.2s;
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     border-left: 2px solid ${Colors.primary};
     transform: translateX(20px);
     a,
