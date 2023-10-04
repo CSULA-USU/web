@@ -45,26 +45,17 @@
     "email": "esoares@calstatela.edu"
   },
   {
-    "name": "Fabiola Avina",
-    "title": "Associate Director, CSI",
+    "name": "Fabi Avina",
+    "title": "Director, CSI",
     "src": "/staff/fabiola-avina.png",
-    "alt": "Fabiola Avina",
+    "alt": "Fabi Avina",
     "tags": ["CSI", "Director"],
     "department": "Center for Student Involvement",
     "email": "favina@calstatela.edu"
   },
   {
-    "name": "Frangelo Ayran",
-    "title": "Senior Associate Dean of Students",
-    "src": "/staff/frangelo.png",
-    "alt": "Frangelo Ayran",
-    "tags": ["CSI", "Director"],
-    "department": "Center for Student Involvement",
-    "email": "FAyran@cslanet.calstatela.edu"
-  },
-  {
     "name": "Han Nguyen",
-    "title": "Accounting Technician III",
+    "title": "Accounting Technician",
     "src": "/staff/han-nguyen.png",
     "alt": "Han Nguyen",
     "tags": ["Administration"],
@@ -82,7 +73,7 @@
   },
   {
     "name": "James Lui",
-    "title": "Night Operations Coordinator",
+    "title": "Operations Coordinator",
     "src": "/staff/james-lui.png",
     "alt": "James Lui",
     "tags": ["Operations"],
@@ -100,7 +91,7 @@
   },
   {
     "name": "Jay San Luis",
-    "title": "Fitness Coordinator",
+    "title": "Recreation Coordinator",
     "src": "/staff/jay-luis.png",
     "alt": "Jay San Luis",
     "tags": ["Recreation"],
@@ -136,7 +127,7 @@
   },
   {
     "name": "Joseph Sedlacek",
-    "title": "Associate Director of Administration for Human Resources Management",
+    "title": "Associate Director, Administration for Human Resources Management",
     "src": "/staff/joseph-sedlacek.png",
     "alt": "Joseph Sedlacek",
     "tags": ["Administration", "Director"],
@@ -145,7 +136,7 @@
   },
   {
     "name": "Lena Zeng",
-    "title": "Accounting Technician III",
+    "title": "Accounting Technician",
     "src": "/staff/lena-zeng.png",
     "alt": "Lena Zeng",
     "tags": ["Administration"],
@@ -162,7 +153,7 @@
     "email": "lmarque2@calstatela.edu"
   },
   {
-    "name": "Luisa Perales",
+    "name": "Luisa Perales Ruiz",
     "title": "Operations Coordinator",
     "src": "/staff/luisa-perales.png",
     "alt": "Luisa Perales",
@@ -172,7 +163,7 @@
   },
   {
     "name": "Mario Pizarro Rojas",
-    "title": "Gender and Sexuality Resource Center Coordinator, CCC",
+    "title": "Gender and Sexuality Resource Center Coordinator",
     "src": "/staff/mario-rojas.png",
     "alt": "Mario Pizarro Rojas",
     "tags": ["CCC"],
@@ -181,7 +172,7 @@
   },
   {
     "name": "Martin Sandoval",
-    "title": "Assistant Director, Operations",
+    "title": "Assistant Director of Operations",
     "src": "/staff/martin-sandoval.png",
     "alt": "Martin Sandoval",
     "tags": ["Operations", "Director"],
@@ -190,7 +181,7 @@
   },
   {
     "name": "Michelle Marin-Martinez",
-    "title": "Administrative Assistant, CCC",
+    "title": "Administrative Assistant",
     "src": "/staff/michelle-martinez.png",
     "alt": "Michelle Marin-Martinez",
     "tags": ["CCC"],
@@ -199,7 +190,7 @@
   },
   {
     "name": "Raymond Lu",
-    "title": "Student Engagement Coordinator, CSI",
+    "title": "Student Engagement Coordinator",
     "src": "/staff/raymond-lu.png",
     "alt": "Raymond Lu",
     "tags": ["CSI"],
@@ -208,7 +199,7 @@
   },
   {
     "name": "Rebekah Galvan",
-    "title": "Administrative Assistant, CSI",
+    "title": "Interim Fraternity and Sorority Life Coordinator",
     "src": "/staff/rebekah-galvan.png",
     "alt": "Rebekah Galvan",
     "tags": ["CSI"],
@@ -234,7 +225,7 @@
     "email": "rruiz@cslanet.calstatela.edu"
   },
   {
-    "name": "Samantha Juarez",
+    "name": "Sam Juarez",
     "title": "Graphics Coordinator",
     "src": "/staff/samantha-juarez.jpg",
     "alt": "Samantha Juarez",
@@ -244,7 +235,7 @@
   },
   {
     "name": "Sophia Shiau",
-    "title": "Associate Executive Director and Director of Financial Services",
+    "title": "Associate Executive Director U-SU/Director of Financial Services",
     "src": "/staff/sophia-shiau.png",
     "alt": "Sophia Shiau",
     "tags": ["Administration", "Director"],
