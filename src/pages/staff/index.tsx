@@ -136,6 +136,7 @@ export default function Staff() {
           src="/staff/group-staff.jpg"
           width="100%"
           margin={`0px 500px ${Spaces.xl}`}
+          borderRadius="12px"
         />
       </FluidContainer>
     </Page>
