@@ -37,7 +37,7 @@
   },
   {
     "name": "Evita Soares",
-    "title": "Student Engagement Coordinator, CSI",
+    "title": "Student Engagement Coordinator",
     "src": "/staff/evita-soares.png",
     "alt": "Evita Soares",
     "tags": ["CSI"],
@@ -46,7 +46,7 @@
   },
   {
     "name": "Fabi Avina",
-    "title": "Director, CSI",
+    "title": "Director, Center for Student Involvement",
     "src": "/staff/fabiola-avina.png",
     "alt": "Fabi Avina",
     "tags": ["CSI", "Director"],
@@ -82,7 +82,7 @@
   },
   {
     "name": "Jasmine Heredia",
-    "title": "Assistant to the Executive Director",
+    "title": "Assistant to Executive Director",
     "src": "/staff/jasmine-heredia.png",
     "alt": "Jasmine Heredia",
     "tags": ["Administration"],
@@ -145,7 +145,7 @@
   },
   {
     "name": "Lorena Márquez",
-    "title": "Director, CCC",
+    "title": "Director, Cross Cultural Centers",
     "src": "/staff/lorena-marquez.png",
     "alt": "Lorena Márquez",
     "tags": ["CCC", "Director"],
@@ -244,7 +244,7 @@
   },
   {
     "name": "Taraneh Tabatabai",
-    "title": "Student Engagement Coordinator, CSI",
+    "title": "Student Engagement Coordinator",
     "src": "/staff/taraneh-tabatabai.png",
     "alt": "Taraneh Tabatabai",
     "tags": ["CSI"],
