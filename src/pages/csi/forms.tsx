@@ -111,7 +111,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/68hzleaqe7fa97t/payment-advance-procedures.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/77p267f1qorhnrb/payment-advance-procedures.pdf?dl=0',
     },
   },
   {
@@ -126,7 +126,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/bm6b1kg5jigaq33/student-org-check-req.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/9ytgzwxf80fknsb/student-org-check-req.pdf?dl=0',
     },
   },
   {
@@ -143,7 +143,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/0rywue6nhm7z26e/student-org-deposit-slip.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/qr0dh47qnk5tqbe/student-org-deposit-slip.pdf?dl=0',
     },
   },
   {
@@ -159,7 +159,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/ba00lnrs6441khn/sales-receipt-log.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/z28vo02xeezptem/sales-receipt-log.pdf?dl=0',
     },
   },
   {
@@ -175,7 +175,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/6h3tje7ykwvibhp/student-clubs-and-orgs-event-fundraising-approval-form.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/nyco2uo1mc32l3h/student-clubs-and-orgs-event-fundraising-approval-form.pdf?dl=0',
     },
   },
   {
@@ -191,7 +191,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/5qmdbzsfflgayhj/external-private-fundraising-approval-form.pdf?dl=0',
+      href: 'https://www.dropbox.com/s/zc8tq74gzhmjf3o/external-private-fundraising-approval-form.pdf?dl=0',
     },
   },
 ];
