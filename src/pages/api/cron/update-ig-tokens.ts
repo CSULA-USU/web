@@ -16,14 +16,12 @@ async function refreshToken(token: string) {
     .get(URL)
     .then((response) => response.data)
     .catch(function (error) {
-      console.log(error);
       return error;
     });
   return refreshedToken;
 }
 
 async function updateSupabase(name: string, refreshedToken: any) {
-  console.log(name, refreshedToken);
   if (!refreshedToken) return; // prevent failed refreshes from updating supabase
   let { data } = await supabase
     .from('instagram_tokens')
