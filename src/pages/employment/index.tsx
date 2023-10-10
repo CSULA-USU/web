@@ -118,10 +118,6 @@ export default function Employment() {
         <Link href="/employment/forms/professional-employment.pdf">
           Professional Appointment
         </Link>
-        <br />
-        <Link href="https://form.jotform.com/210416532268047">
-          U-SU Board of Directors
-        </Link>
       </FluidContainer>
     </Page>
   );

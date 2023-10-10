@@ -81,6 +81,11 @@ export const Footer = () => (
               Clubs & Orgs
             </Typography>
           </Link>
+          <Link href={'https://form.jotform.com/210416532268047'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              U-SU Board of Directors Application
+            </Typography>
+          </Link>
           <Link href={'/employment'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               U-SU Employment
