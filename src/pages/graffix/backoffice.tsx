@@ -368,7 +368,7 @@ export default function Backoffice() {
           >
             Requests for Graphics
             <br />
-            Spring and Summer 2024
+            Spring 2024
           </Typography>
           <Button href="https://form.jotform.com/231835701552150" margin="16px">
             Request Form
