@@ -163,7 +163,7 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="https://www.dropbox.com/s/7uo8gsk1iy3ukn4/students-1.png?raw=1"
+              src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
               alt="students"
               width={600}
               height={700}
