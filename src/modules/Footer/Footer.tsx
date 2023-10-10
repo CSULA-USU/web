@@ -81,6 +81,11 @@ export const Footer = () => (
               Clubs & Orgs
             </Typography>
           </Link>
+          <Link href={'https://form.jotform.com/210416532268047'}>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              U-SU Board of Directors Application
+            </Typography>
+          </Link>
           <Link href={'/employment'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               U-SU Employment
@@ -91,28 +96,14 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Resources
           </Typography>
-          <Link
-            href={
-              'https://www2.calstate.edu/Pages/a-call-for-unity-and-understanding.aspx'
-            }
-          >
+          <Link href={'https://www.calstatela.edu/president'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
-              Cal State L.A. Chancellor Message Against Racism
+              Office of the President
             </Typography>
           </Link>
-          <Link href={'https://www.calstatela.edu/president/may30-message'}>
+          <Link href={'https://www.calstatela.edu/'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
-              President Covino&apos;s Message Against Racism
-            </Typography>
-          </Link>
-          <Link href={'https://www.calstatelausu.org/blackLivesResources'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Black Lives Matter Resources
-            </Typography>
-          </Link>
-          <Link href={'https://www.calstatelausu.org/covid19'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Covid-19 Resources
+              Cal State LA Homepage
             </Typography>
           </Link>
           <Link href={'governance/public-documents'}>
