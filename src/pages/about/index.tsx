@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { Page, GenericModal } from 'modules';
 import {
-  Button,
   Card,
   FluidContainer,
   Image,
@@ -158,14 +157,14 @@ export default function About() {
             {/* <Button variant="black" href="/about/org-chart-8-6-23.jpg">
               U-SU Organizational Chart
             </Button> */}
-            <Button
+            {/* <Button
               variant="outline"
               onClick={() => {
                 setIsOpen(true);
               }}
             >
               U-SU History
-            </Button>
+            </Button> */}
           </ButtonContainer>
         </HeaderContainer>
       </SideImageHeader>
