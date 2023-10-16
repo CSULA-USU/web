@@ -45,12 +45,14 @@ export const Footer = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <FooterTopContainer>
       <FooterTopLogo>
-        <Image
-          src="/calstatela-badge.svg"
-          alt="Cal State LA Univeristy-Student Union Logo"
-          width={90}
-          height={90}
-        />
+        <Link href={'https://www.calstatela.edu/'}>
+          <Image
+            src="/calstatela-badge.svg"
+            alt="Cal State LA Univeristy-Student Union Logo"
+            width={90}
+            height={90}
+          />
+        </Link>
       </FooterTopLogo>
       <FooterTopLinks>
         <div>
