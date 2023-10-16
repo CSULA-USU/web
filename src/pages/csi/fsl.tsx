@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Colors, Spaces } from 'theme';
 import { Page } from 'modules';
 import { useBreakpoint } from 'hooks';
@@ -18,6 +19,9 @@ import {
 } from 'components';
 import chapters from 'data/fsl-chapters.json';
 
+const AB524 = styled.div`
+  margin: 0 0 ${Spaces.md} 0;
+`;
 const TextCenter = styled.div`
   text-align: center;
 `;
@@ -529,14 +533,49 @@ export default function FSL() {
                 </Typography>
               }
             >
-              <Typography as="p" margin={`${Spaces.md} 0 `}>
+              <Typography as="p" margin={`0 0 ${Spaces.md} 0 `}>
                 Community reports are created to demonstrate academic, service,
                 and philanthropic efforts of the Greek community.
               </Typography>
               <Typography variant="subheader" as="h3">
+                Campus-Recognized Sorority And Fraternity Transparency Act -
+                AB524
+              </Typography>
+              <Typography as="p" margin={`0 0 ${Spaces.md} 0`}>
+                The Annual Campus-Recognized Sorority and Fraternity
+                Transparency Report, which offers insights about recognized
+                fraternities and sororities Cal State LA during the previous
+                academic year, is now available. You can access the report here
+                by clicking the button below.
+              </Typography>
+              <AB524>
+                <Typography as="p">
+                  This report is shared annually in October in compliance with{' '}
+                  <Link
+                    href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202120220AB524"
+                    aria-label="AB-524 Postsecondary education: Campus-Recognized Sorority and Fraternity Transparency Act information"
+                  >
+                    <u>
+                      Assembly Bill 524; Sections 66310-66312 of the California
+                      Education Code
+                    </u>
+                  </Link>
+                  , which requires that institutions in California with
+                  fraternities and sororities compile and maintain details about
+                  each organization, including information about the
+                  organizations, their members, and their conduct.
+                </Typography>
+              </AB524>
+              <Button
+                margin={`0 0 ${Spaces.sm} 0`}
+                href="/departments/csi/fsl/ab-524-report.pdf"
+              >
+                AB 524 Report
+              </Button>
+              <Typography variant="subheader" as="h3">
                 Chapter Status
               </Typography>
-              <Typography>
+              <Typography as="p">
                 In an effort to be as transparent as possible with our
                 community, the Center for Student Involvement has published the
                 chapter status of each chapter chartered at California State

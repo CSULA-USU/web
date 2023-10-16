@@ -28,16 +28,29 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/fq0gtfffhw4bqb490rrsz/bod-sep-15-23.pdf?rlkey=xk51yjktx91mxp8ac2zrch7s8&dl=0',
             children: 'BOD Meeting Sep 15, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/dunyfe6dqhzf7kppdff59/bod-sep-29-23.pdf?rlkey=jwmjhq8z1kffyqqdjpm92h285&dl=0',
+            children: 'BOD Meeting Sep 29, 2023',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
+            children: 'BOD Meeting Oct 6, 2023',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/tu6vye98c8ewuejci99l3/bod-oct-13-23.docx?rlkey=yopndir9ke3o1wwfnlemtpz2p&dl=0',
+            children: 'BOD Meeting Oct 13, 2023',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/i4wg3izhs4chhoe9m85n7/fy23-24.zip?rlkey=p11gz07afggco6cc86vsigjsw&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/1hxvk1ybb966hukkxn6v5/fy23-24.zip?rlkey=37whhtmqrvlw93gb260279z64&dl=0',
       variant: 'black',
     },
   },
 ];
+
 const minutesDownloads: DownloadSectionProps[] = [
   {
     title: 'Fiscal Year 23-24',

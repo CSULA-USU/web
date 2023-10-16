@@ -214,7 +214,7 @@ export default function MeetingRoom() {
                 </td>
                 <td>
                   <EquipmentSection>
-                    {arrangement.equiptment.map((e) => (
+                    {arrangement.equipment.map((e) => (
                       <Typography
                         key={e}
                         variant="title"
@@ -233,7 +233,7 @@ export default function MeetingRoom() {
               <td colSpan={4}>
                 <TextCenter>
                   <Typography weight="700" as="h3" margin={`${Spaces.md}0 0 0`}>
-                    Fixed Room Features
+                    Fixed Room Features:
                   </Typography>
                   <Typography
                     margin={`0 0 ${Spaces.md}`}
@@ -257,8 +257,11 @@ export default function MeetingRoom() {
                   >
                     {' '}
                     Personnel fees, equipment fees, cleaning fees, catering
-                    fees, and extended hours fees. Those are separate charges
-                    that may vary upon each reservation
+                    fees, and extended hours fees as these are separate charges
+                    that vary per room reservation.{' '}
+                    <strong>
+                      Disclaimer: The fees listed below are subject to change.
+                    </strong>
                   </Typography>
                 </TextCenter>
               </td>
