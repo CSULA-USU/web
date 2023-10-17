@@ -4,7 +4,7 @@ import { Page } from 'modules';
 import { FluidContainer, Typography } from 'components';
 import jobs from 'data/employment.json';
 import styled from 'styled-components';
-import { Colors, media, Spaces } from 'theme';
+import { Colors, media } from 'theme';
 import Link from 'next/link';
 
 const JobListingContainer = styled.div`
@@ -111,14 +111,14 @@ export default function Employment() {
           </div>
         </JobListingContainer>
       </FluidContainer>
-      <FluidContainer flex flexDirection="column">
+      {/* <FluidContainer flex flexDirection="column">
         <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
           Applications
         </Typography>
         <Link href="/employment/forms/professional-employment.pdf">
           Professional Appointment
         </Link>
-      </FluidContainer>
+      </FluidContainer> */}
     </Page>
   );
 }
