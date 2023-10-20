@@ -6,14 +6,18 @@ import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 import { Search } from 'modules/Search';
 
-const NavWrapper = styled.div`
+const MobileNavWrapper = styled.div`
   filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 0.1));
+`;
+
+const NavWrapper = styled.div`
+  filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
 `;
 
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
-    <NavWrapper>
+    <MobileNavWrapper>
       <FluidContainer
         padding="24px"
         backgroundColor="white"
@@ -31,7 +35,7 @@ export const Nav = () => {
         </Link>
         <MobileNav />
       </FluidContainer>
-    </NavWrapper>
+    </MobileNavWrapper>
   ) : (
     <NavWrapper>
       <FluidContainer
