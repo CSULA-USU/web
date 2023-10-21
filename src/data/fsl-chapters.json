@@ -9,6 +9,15 @@
         "communityService": [" Heart Cancer Toy Drive, Relay for Life"],
         "colors": [" Red, Black, Gold"],
         "symbol": " Black Panther"
+      },
+
+      {
+        "name": "Alpha Phi Omega",
+        "crest": "/departments/csi/fsl/APO.png",
+        "values": ["Leadership, Friendship, Service"],
+        "founding": "1925",
+        "colors": [" Old Glory Gold, Royal Blue"],
+        "symbol": [" Golden Eagle, Oak Tree, Diamond, Forget-me-not"]
       }
     ]
   },

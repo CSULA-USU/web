@@ -25,7 +25,7 @@ export const EventHeader = ({
     <FluidContainer
       flex
       flexDirection="column"
-      backgroundImage="/backgrounds/subtle-background-1.jpg"
+      backgroundImage="/backgrounds/subtle-paint.jpg"
     >
       <Typography
         variant="pageHeader"
