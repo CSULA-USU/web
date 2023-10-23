@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { Image } from 'components';
+import { Colors } from 'theme';
 
 const LogoContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding: 1%;
-  background-color: green;
+  padding: 2%;
 `;
 
 interface Logo {
@@ -14,14 +12,23 @@ interface Logo {
   alt: string;
 }
 
-interface LogoArrayProps {
+interface LogosDisplayStyles {
+  backgroundColor?: keyof typeof Colors;
+  style?: React.CSSProperties;
+}
+
+interface LogoArrayProps extends LogosDisplayStyles {
   logos: Logo[];
 }
 
-export const LogosDisplay = ({ logos }: LogoArrayProps) => {
-  return logos.map((c: Logo) => (
-    <LogoContainer key={c.name}>
-      <Image src={c.src} alt={c.alt} width="6%" />
-    </LogoContainer>
-  ));
+export const LogosDisplay = ({ logos, style }: LogoArrayProps) => {
+  return (
+    <div style={style}>
+      {logos.map((c: Logo) => (
+        <LogoContainer key={c.name}>
+          <Image src={c.src} alt={c.alt} width="80px" />
+        </LogoContainer>
+      ))}
+    </div>
+  );
 };

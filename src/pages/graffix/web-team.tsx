@@ -3,9 +3,11 @@ import { Page, LogosDisplay } from 'modules';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import companies from 'data/web-team-company-logos.json';
+import { useState } from 'react';
 
 const Center = styled.div`
   text-align: center;
+  margin-top: 3%;
 `;
 
 const ButtonContainer = styled.div`
@@ -24,61 +26,14 @@ const CurrentTeamContainer = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+  margin: 0 10% 0 10%;
+`;
+const CurrentTeamContainer2 = styled.div`
   margin: 0 15% 0 15%;
 `;
 
-const PastTeamContainter = styled.div`
-  display: flex;
-  jusitfy-content: center;
-  margin: 0 10% 0 10%;
-`;
-
 export default function WebTeam() {
-  // const company1: CompanyLogo = {
-  //   name: 'Microsoft',
-  //   src: 'departments/graffix/company-logos/microsoft.png',
-  //   alt: 'Microsoft Logo',
-  // };
-
-  // const company2: CompanyLogo = {
-  //   name: 'Snapchat',
-  //   src: 'departments/graffix/company-logos/snapchat.png',
-  //   alt: 'Snapchat Logo',
-  // };
-
-  // const company3: CompanyLogo = {
-  //   name: 'Riot Games',
-  //   src: 'departments/graffix/company-logos/riot-games.png',
-  //   alt: 'Riot Games Logo',
-  // };
-
-  // const company: Company = [
-  //   {
-  //     company1: company1,
-  //   },
-  //   { company2: company2 },
-  //   {
-  //     company3: company3,
-  //   },
-  // ];
-
-  // const listOfCompanies = [company1, company2, company3];
-
-  // const CompaniesAdvancedTo = ({ companies }: CompaniesAdvancedToProps) => {
-  //   return (
-  //     <div>
-  //       {companies.map((company) => {
-  //         console.log('company item within companies:', company);
-  //         return (
-  //           <div key={company.company1.name}>
-  //             <Image src={company.company1.src} alt={company.company1.alt} />
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-  //   );
-  // };
-  // listOfCompanies.map((c) => console.log(c));
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <Page>
       <FluidContainer backgroundColor="white">
@@ -104,8 +59,77 @@ export default function WebTeam() {
             </Button>
           </ButtonContainer>
         </Center>
-        <LogosDisplay logos={companies} />
       </FluidContainer>
+
+      <Center>
+        <Typography as="h1" variant="label">
+          Employment Outcomes
+        </Typography>
+        <Typography as="p" variant="labelTitle">
+          Graduates who were part of the web team have gone on to secure
+          promising positons and opportunities at exceptional companies, such as
+          these:
+        </Typography>
+      </Center>
+      <LogosDisplay
+        style={{
+          justifyContent: 'space-evenly',
+          display: 'flex',
+        }}
+        logos={companies}
+      />
+
+      <CurrentTeamContainer2>
+        <FluidContainer flex>
+          <Image
+            src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
+            alt="John Yasis"
+            object-fit="contain"
+            width="30%"
+          />
+          <FluidContainer justifyContent="flex-end">
+            <Typography as="h1" variant="labelTitle">
+              John Yasis
+            </Typography>
+            <Typography as="h2" variant="copy">
+              Web Designer
+            </Typography>
+            <Typography as="p" variant="copy">
+              i enjoy all types f cheseee :| from moz to brie to feta and
+              sometimes on the weekends and holidays i prefer specialized goat
+              blue cheese. i and others would considerd myself a cheese monger
+            </Typography>
+          </FluidContainer>
+        </FluidContainer>
+
+        <FluidContainer flex>
+          <FluidContainer justifyContent="flex-start">
+            <Typography as="h1" variant="labelTitle">
+              Tammy Xaypraseuth
+            </Typography>
+            <Typography as="h2" variant="copy">
+              Junior Web Developer Associate
+            </Typography>
+            <Typography as="p" variant="copy">
+              i enjoy all types f cheseee :| from moz to brie to feta and
+              sometimes on the weekends and holidays i prefer specialized goat
+              blue cheese. i and others would considerd myself a cheese monger
+            </Typography>
+          </FluidContainer>
+
+          <Image
+            src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
+            alt="Tammy Xaypraseuth"
+            object-fit="contain"
+            width="30%"
+            onMouseOver={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{
+              border: isHovered ? '2px solid red' : '2px solid green',
+            }}
+          />
+        </FluidContainer>
+      </CurrentTeamContainer2>
 
       <FluidContainer>
         <CurrentTeamContainer>
@@ -121,6 +145,11 @@ export default function WebTeam() {
             <Typography as="h2" variant="copy">
               Web Designer
             </Typography>
+            <Typography as="p" variant="copy">
+              i enjoy all types f cheseee :| from moz to brie to feta and
+              sometimes on the weekends and holidays i prefer specialized goat
+              blue cheese. i and others would considerd myself a cheese monger
+            </Typography>
           </Card>
           <Card>
             <Image
@@ -134,11 +163,14 @@ export default function WebTeam() {
             <Typography as="h2" variant="copy">
               Junior Web Developer Associate
             </Typography>
+            <Typography as="p" variant="copy">
+              i enjoy all types f cheseee :| from moz to brie to feta and
+              sometimes on the weekends and holidays i prefer specialized goat
+              blue cheese. i and others would considerd myself a cheese monger
+            </Typography>
           </Card>
         </CurrentTeamContainer>
-        <PastTeamContainter>
-          <Card></Card>
-        </PastTeamContainter>
+        <Button>Join Us</Button>
       </FluidContainer>
     </Page>
   );

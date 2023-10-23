@@ -13,5 +13,15 @@
     "name": "Riot Games",
     "src": "/departments/graffix/company-logos/riot-games.png",
     "alt": "Riot Games Logo"
+  },
+  {
+    "name": "FYI",
+    "src": "/departments/graffix/company-logos/fyi.jpeg",
+    "alt": "Focus Your Ideas Logo"
+  },
+  {
+    "name": "Bearclaw Gaming",
+    "src": "/departments/graffix/company-logos/bearclaw-gaming.png",
+    "alt": "Bearclaw Gaming Logo"
   }
 ]
