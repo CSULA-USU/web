@@ -6,10 +6,6 @@ import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 import { Search } from 'modules/Search';
 
-const MobileNavWrapper = styled.div`
-  filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 0.1));
-`;
-
 const NavWrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
 `;
@@ -17,25 +13,23 @@ const NavWrapper = styled.div`
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
-    <MobileNavWrapper>
-      <FluidContainer
-        padding="24px"
-        backgroundColor="white"
-        justifyContent="space-between"
-        alignItems="center"
-        flex
-      >
-        <Link href="/">
-          <Image
-            tabIndex={0}
-            maxHeight={isMobile ? '64px' : '80px'}
-            src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
-            alt="Cal State LA University-Student Union Logo"
-          />
-        </Link>
-        <MobileNav />
-      </FluidContainer>
-    </MobileNavWrapper>
+    <FluidContainer
+      padding="24px"
+      backgroundColor="white"
+      justifyContent="space-between"
+      alignItems="center"
+      flex
+    >
+      <Link href="/">
+        <Image
+          tabIndex={0}
+          maxHeight={isMobile ? '64px' : '80px'}
+          src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
+          alt="Cal State LA University-Student Union Logo"
+        />
+      </Link>
+      <MobileNav />
+    </FluidContainer>
   ) : (
     <NavWrapper>
       <FluidContainer
