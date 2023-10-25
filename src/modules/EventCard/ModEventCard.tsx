@@ -24,7 +24,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   display: flex;
   flex-direction: column;
   background-color: ${Colors.white};
-  margin: 0px auto;
+  margin: 0px auto ${Spaces.xl};
   overflow: hidden;
   max-width: 800px;
   height: 600px;
