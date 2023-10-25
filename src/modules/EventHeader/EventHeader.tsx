@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { ModEventCard } from 'modules';
+import { Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { useState } from 'react';
 import { EventModal } from 'modules/EventModal';
@@ -8,6 +9,7 @@ import { EventModal } from 'modules/EventModal';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: ${Spaces.md};
 `;
 
 export const EventHeader = ({
