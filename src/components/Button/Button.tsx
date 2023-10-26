@@ -44,6 +44,7 @@ const getCSS = (p: ButtonProps) => {
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;
+    filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
     border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;

@@ -1,6 +1,6 @@
 import { Button, Typography, FluidContainer, Divider } from 'components';
 import { PresenceEvent } from 'types';
-import { EventCard } from 'modules/EventCard';
+import { EventCard, MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
@@ -27,9 +27,15 @@ const UpcomingEventsContent = styled.div`
     ${media('tablet')(`max-width: 100%;`)}
   }
   > div:nth-child(n + 3) {
-    max-width: calc(33.33% - 16px);
+    max-width: 100%;
     ${media('tablet')(`max-width: 100%;`)}
   }
+`;
+
+const TertiaryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const getMonth = (date: string) =>
@@ -93,13 +99,22 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                 onClick={() => selectEvent(event)}
               />
             ))}
-            {events.slice(3, 6).map((event) => (
+            <TertiaryContainer>
+              {events.slice(3, 6).map((event) => (
+                <MinimalistEvent
+                  key={event.eventNoSqlId}
+                  event={event}
+                  onClick={() => selectEvent(event)}
+                />
+              ))}
+            </TertiaryContainer>
+            {/* {events.slice(3, 6).map((event) => (
               <EventCard
                 key={event.eventNoSqlId}
                 event={event}
                 onClick={() => selectEvent(event)}
               />
-            ))}
+            ))} */}
           </UpcomingEventsContent>
         </>
       )}

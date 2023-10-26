@@ -22,6 +22,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   cursor: pointer;
   box-sizing: border-box;
   display: flex;
+  z-index: 1;
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   flex-direction: column;
   background-color: ${Colors.white};
