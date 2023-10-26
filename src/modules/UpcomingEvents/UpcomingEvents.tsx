@@ -70,7 +70,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
             Upcoming Events
           </Typography>
           <Button href="/events" variant="black">
-            View More
+            View Events
           </Button>
         </UpcomingEventsHeading>
       )}
