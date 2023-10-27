@@ -27,11 +27,13 @@ export default function Governance() {
         title="Meet the Board  Members"
         backgroundImage="/backgrounds/subtle-background-3.jpg"
       >
-        The University-Student Union&apos;s Board of Directors is the governing
-        board of the Union. The purpose of the Board is to establish policy for
-        the Union as a student body center for the benefit of students, faculty,
-        staff and alumni at
-        <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
+        <Typography as="h2">
+          The University-Student Union&apos;s Board of Directors is the
+          governing board of the Union. The purpose of the Board is to establish
+          policy for the Union as a student body center for the benefit of
+          students, faculty, staff and alumni at{' '}
+          <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
+        </Typography>
       </Header>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
