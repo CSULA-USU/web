@@ -206,11 +206,13 @@ export default function Governance() {
           </Button>
         }
       >
-        The University-Student Union&apos;s Board of Directors is the governing
-        board of the Union. The purpose of the Board is to establish policy for
-        the Union as a student body center for the benefit of students, faculty,
-        staff and alumni at{' '}
-        <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
+        <Typography as="h2">
+          The University-Student Union&apos;s Board of Directors is the
+          governing board of the Union. The purpose of the Board is to establish
+          policy for the Union as a student body center for the benefit of
+          students, faculty, staff and alumni at{' '}
+          <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
+        </Typography>
       </Header>
       <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
         {cards.map((props) => (
