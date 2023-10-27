@@ -106,6 +106,15 @@ export const Footer = () => (
               Cal State LA Homepage
             </Typography>
           </Link>
+          <Link
+            href={
+              'https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0'
+            }
+          >
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Strategic Planning
+            </Typography>
+          </Link>
           <Link href={'/governance/public-documents'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               View Public Documents
