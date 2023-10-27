@@ -101,17 +101,12 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Resources
           </Typography>
-          <Link href={'https://www.calstatela.edu/president'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Office of the President
-            </Typography>
-          </Link>
           <Link href={'https://www.calstatela.edu/'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               Cal State LA Homepage
             </Typography>
           </Link>
-          <Link href={'governance/public-documents'}>
+          <Link href={'/governance/public-documents'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               View Public Documents
             </Typography>
