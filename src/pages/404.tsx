@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Page } from 'modules';
-import { Typography, FluidContainer } from 'components';
+import { FluidContainer, Image, Typography } from 'components';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Spaces } from 'theme';
@@ -28,13 +28,27 @@ export default function Custom404() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer flex justifyContent="center" flexWrap="wrap">
+      <FluidContainer
+        flex
+        justifyContent="space-between"
+        flexWrap="wrap"
+        alignItems="center"
+        flexDirection="column"
+      >
         <Typography variant="title" margin={`0 0 ${Spaces.md}`}>
           Sorry! We can’t seem to find the page you’re looking for.
         </Typography>
+        <br />
+        <Image
+          src="/vectors/404/lost-road-sign.svg"
+          style={{
+            maxHeight: '200px',
+          }}
+          alt="lost person searching at crossroads"
+        />
         <LinkContainer>
           <Typography variant="cta" size="lg">
-            Here are some suggested pages:
+            Suggested pages:
           </Typography>
           <Link href="/">Home</Link>
           <Link href="/departments">Departments</Link>
