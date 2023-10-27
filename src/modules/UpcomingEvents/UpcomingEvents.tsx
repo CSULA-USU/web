@@ -1,4 +1,4 @@
-import { Button, Typography, FluidContainer, Divider } from 'components';
+import { Typography, FluidContainer, Divider } from 'components';
 import { PresenceEvent } from 'types';
 import { EventCard, MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
@@ -23,7 +23,7 @@ const UpcomingEventsContent = styled.div`
   flex-wrap: wrap;
   gap: 24px;
   > div {
-    max-width: calc(50% - 12px);
+    max-width: 100%;
     ${media('tablet')(`max-width: 100%;`)}
   }
   > div:nth-child(n + 3) {
@@ -69,9 +69,9 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <Typography as="h2" variant="subheader" margin="0 24px 0 0">
             Upcoming Events
           </Typography>
-          <Button href="/events" variant="black">
+          {/* <Button href="/events" variant="black">
             View Events
-          </Button>
+          </Button> */}
         </UpcomingEventsHeading>
       )}
       {monthly ? (
@@ -92,15 +92,15 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
       ) : (
         <>
           <UpcomingEventsContent>
-            {events.slice(1, 3).map((event) => (
+            {/* {events.slice(1, 3).map((event) => (
               <EventCard
                 key={event.eventNoSqlId}
                 event={event}
                 onClick={() => selectEvent(event)}
               />
-            ))}
+            ))} */}
             <TertiaryContainer>
-              {events.slice(3, 6).map((event) => (
+              {events.slice(1, 6).map((event) => (
                 <MinimalistEvent
                   key={event.eventNoSqlId}
                   event={event}

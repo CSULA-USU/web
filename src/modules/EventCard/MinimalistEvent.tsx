@@ -29,6 +29,10 @@ const MinimalistEventContainer = styled.div`
   height: 96px;
   width: 100%;
 `;
+
+const TitleContainer = styled.span`
+  cursor: pointer;
+`;
 export interface MinimalistEventProps {
   event: PresenceEvent;
   onClick?: () => void;
@@ -53,16 +57,18 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
           </Typography>
         </LeftContainer>
         <MiddleContainer>
-          <Typography as="h3" variant="eventTitle" color="black" size="md">
-            {eventName}
-          </Typography>
+          <TitleContainer onClick={onClick}>
+            <Typography as="h3" variant="eventTitle" color="black" size="md">
+              {eventName}
+            </Typography>
+          </TitleContainer>
           <Typography as="h4" variant="eventTime" color="grey" weight="400">
             {location}
           </Typography>
         </MiddleContainer>
         <RightContainer>
-          <Button variant="primary" onClick={onClick}>
-            Learn More
+          <Button variant="grey" onClick={onClick}>
+            View Event
           </Button>
         </RightContainer>
       </MinimalistEventContainer>

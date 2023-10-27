@@ -65,7 +65,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
 const EventContainer = styled.div`
 flex;
 flex-direction: column;
-width: 1200px;
+width: 1080px;
 `;
 
 const EventDetails = styled.div`
@@ -94,7 +94,7 @@ const EventDateSection = styled.div`
 
 const HeroEventDetails = styled.div`
   display: flex;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
   height: 100px;
@@ -265,7 +265,11 @@ export const ModEventCard = ({
                 {ABBREVIATED_ORGS[organizationName]}
               </Typography>
               {featured ? (
-                <Button margin="12px 0 0" onClick={() => selectEvent(event)}>
+                <Button
+                  margin="12px 0 0"
+                  onClick={() => selectEvent(event)}
+                  variant="black"
+                >
                   Learn More
                 </Button>
               ) : (
