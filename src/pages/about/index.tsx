@@ -111,7 +111,6 @@ export default function About() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <SideImageHeader
         imgAlt="student union"
         imgSrc="/about/about-hero-bw.jpeg"
@@ -155,9 +154,12 @@ export default function About() {
             To become Cal State LA&apos;s hub for connection and growth
           </Typography>
           <ButtonContainer>
-            {/* <Button variant="black" href="/about/org-chart-8-6-23.jpg">
+            <Button
+              variant="black"
+              href="https://www.dropbox.com/scl/fi/tumh4ov1j4bjh6tnxf3so/org-chart.png?rlkey=xmzu2lb0gpbwmrmsum5wrfabg&dl=0"
+            >
               U-SU Organizational Chart
-            </Button> */}
+            </Button>
             <Button
               variant="outline"
               href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
