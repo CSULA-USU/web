@@ -34,7 +34,7 @@ export default function Custom404() {
         </Typography>
         <LinkContainer>
           <Typography variant="cta" size="lg">
-            Here are some useful pages:
+            Here are some suggested pages:
           </Typography>
           <Link href="/">Home</Link>
           <Link href="/departments">Departments</Link>
