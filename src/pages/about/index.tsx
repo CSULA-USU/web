@@ -164,7 +164,7 @@ export default function About() {
               variant="outline"
               href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
             >
-              Strategic Planning
+              Strategic Plan
             </Button>
           </ButtonContainer>
         </HeaderContainer>
