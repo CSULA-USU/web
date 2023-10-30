@@ -27,7 +27,7 @@ const cards = [
     children:
       'This document is intended to serve as the model to follow when writing the constitution of your organization.',
     linkText: 'View PDF',
-    href: 'https://www.dropbox.com/s/wiggbjzvx0epz9l/csi-sample-constitution.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/tj7m2njk5cod8c7/csi-sample-constitution.pdf?dl=0',
   },
   {
     title: 'ODC Info and Videos',
