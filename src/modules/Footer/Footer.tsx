@@ -45,7 +45,7 @@ export const Footer = () => (
   <FluidContainer backgroundColor="greyDarkest">
     <FooterTopContainer>
       <FooterTopLogo>
-        <Link href={'https://www.calstatela.edu/'}>
+        <Link target="_blank" href={'https://www.calstatela.edu/'}>
           <Image
             src="/calstatela-badge.svg"
             alt="Cal State LA Univeristy-Student Union Logo"
@@ -76,22 +76,25 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Involvement
           </Typography>
-          <Link href={'/events'}>
+          <Link target="_blank" href={'/events'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               Calendar of Events
             </Typography>
           </Link>
-          <Link href={'/csi/student-orgs'}>
+          <Link target="_blank" href={'/csi/student-orgs'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               Clubs & Orgs
             </Typography>
           </Link>
-          <Link href={'https://form.jotform.com/210416532268047'}>
+          <Link
+            target="_blank"
+            href={'https://form.jotform.com/210416532268047'}
+          >
             <Typography color="primary" size="sm" lineHeight="2.4">
               U-SU Board of Directors Application
             </Typography>
           </Link>
-          <Link href={'/employment'}>
+          <Link target="_blank" href={'/employment'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               U-SU Employment
             </Typography>
@@ -101,21 +104,22 @@ export const Footer = () => (
           <Typography as="h5" color="white">
             Resources
           </Typography>
-          <Link href={'https://www.calstatela.edu/'}>
+          <Link target="_blank" href={'https://www.calstatela.edu/'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               Cal State LA Homepage
             </Typography>
           </Link>
           <Link
+            target="_blank"
             href={
               'https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0'
             }
           >
             <Typography color="primary" size="sm" lineHeight="2.4">
-              Strategic Planning
+              Strategic Plan
             </Typography>
           </Link>
-          <Link href={'/governance/public-documents'}>
+          <Link target="_blank" href={'/governance/public-documents'}>
             <Typography color="primary" size="sm" lineHeight="2.4">
               View Public Documents
             </Typography>
@@ -156,6 +160,7 @@ export const Footer = () => (
         </Typography>
       </FooterBottomInner>
       <Link
+        target="_blank"
         href={'https://www.instagram.com/usucalstatela/?hl=en'}
         aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
       >
