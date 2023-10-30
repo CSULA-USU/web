@@ -19,7 +19,6 @@ export interface ModEventCardProps {
 }
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
-  position: relative;
   cursor: pointer;
   box-sizing: border-box;
   display: flex;
@@ -91,13 +90,22 @@ const EventDateSection = styled.div`
   }
 `;
 
+const HeroEventContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  filter: drop-shadow(0px 2px 4px rgb(0, 0, 0, 0.25));
+  padding: ${Spaces.sm} ${Spaces.lg};
+  border-radius: 16px;
+  margin: ${Spaces.md} 0px;
+`;
+
 const HeroEventDetails = styled.div`
   display: flex;
   @media (max-width: 767px) {
     flex-direction: column;
   }
   height: 100px;
-  margin: ${Spaces.md} 0px;
   width: 100%;
 `;
 
@@ -170,9 +178,7 @@ export const ModEventCard = ({
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
       >
         {/* <Overlay /> */}
-
         {/* <EventCardTop>
-      
       <Typography as="h5" variant="eventDetail">
         {ABBREVIATED_ORGS[organizationName]}
       </Typography>
@@ -207,77 +213,82 @@ export const ModEventCard = ({
     </EventCardBottom> */}
       </EventCardContainer>
       {featured && !isTablet ? (
-        <HeroEventDetails>
-          <EventDateSection>
-            <Typography
-              as="span"
-              variant="eventDetail"
-              size="md"
-              lineHeight="1"
-            >
-              {month} <br />
-            </Typography>
-            <Typography
-              as="span"
-              variant="pageHeader"
-              size="2xl"
-              color="white"
-              lineHeight="1"
-            >
-              {day}
-            </Typography>
-          </EventDateSection>
-          <DetailsSection>
-            <EventDetails>
+        <HeroEventContainer>
+          <HeroEventDetails>
+            <EventDateSection>
               <Typography
-                as="h3"
-                variant="eventTitle"
-                lineHeight="1.2"
-                color="black"
+                as="span"
+                variant="eventDetail"
+                size="md"
+                lineHeight="1"
               >
-                {eventName}
+                {month} <br />
               </Typography>
-              <InfoContainer>
-                <BiTimeFive size="20px" style={{ margin: '0px 3px 0px 4px' }} />
-                <Typography as="h4" variant="eventTime" color="black">
-                  {startTime} - {endTime}
-                </Typography>
-              </InfoContainer>
-              <InfoContainer>
-                <MdLocationPin
-                  size="20px"
-                  style={{ margin: '0px 3px 0px 3px' }}
-                />
+              <Typography
+                as="span"
+                variant="pageHeader"
+                size="2xl"
+                color="white"
+                lineHeight="1"
+              >
+                {day}
+              </Typography>
+            </EventDateSection>
+            <DetailsSection>
+              <EventDetails>
                 <Typography
-                  as="h5"
-                  variant="eventDetail"
-                  style={{ overflowWrap: 'anywhere' }}
+                  as="h3"
+                  variant="eventTitle"
+                  lineHeight="1.2"
                   color="black"
                 >
-                  {location.indexOf('.zoom.us') > -1 ? (
-                    <a href={location}>Zoom Meeting</a>
-                  ) : (
-                    location
-                  )}
+                  {eventName}
                 </Typography>
-              </InfoContainer>
-            </EventDetails>
-            <ButtonSection>
-              <Typography as="h5" variant="eventDetail" color="black">
-                {ABBREVIATED_ORGS[organizationName]}
-              </Typography>
-              {featured ? (
-                <Button margin="12px 0 0" onClick={() => selectEvent(event)}>
-                  Learn More
-                </Button>
-              ) : (
-                <Typography color="primary" size="sm">
-                  Learn More
+                <InfoContainer>
+                  <BiTimeFive
+                    size="20px"
+                    style={{ margin: '0px 3px 0px 4px' }}
+                  />
+                  <Typography as="h4" variant="eventTime" color="black">
+                    {startTime} - {endTime}
+                  </Typography>
+                </InfoContainer>
+                <InfoContainer>
+                  <MdLocationPin
+                    size="20px"
+                    style={{ margin: '0px 3px 0px 3px' }}
+                  />
+                  <Typography
+                    as="h5"
+                    variant="eventDetail"
+                    style={{ overflowWrap: 'anywhere' }}
+                    color="black"
+                  >
+                    {location.indexOf('.zoom.us') > -1 ? (
+                      <a href={location}>Zoom Meeting</a>
+                    ) : (
+                      location
+                    )}
+                  </Typography>
+                </InfoContainer>
+              </EventDetails>
+              <ButtonSection>
+                <Typography as="h5" variant="eventDetail" color="black">
+                  {ABBREVIATED_ORGS[organizationName]}
                 </Typography>
-              )}
-            </ButtonSection>
-          </DetailsSection>
-        </HeroEventDetails>
+                {featured ? (
+                  <Button margin="12px 0 0" onClick={() => selectEvent(event)}>
+                    Learn More
+                  </Button>
+                ) : (
+                  <Typography color="primary" size="sm">
+                    Learn More
+                  </Typography>
+                )}
+              </ButtonSection>
+            </DetailsSection>
+          </HeroEventDetails>
+        </HeroEventContainer>
       ) : (
         <MobileDetails>
           {/* <MobileLeft>
