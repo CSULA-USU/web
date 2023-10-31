@@ -29,7 +29,7 @@ const styles: { [key: string]: ButtonVariant } = {
   outline: {
     backgroundColor: 'transparent',
     color: 'black',
-    border: 'black',
+    border: 'greyLighter',
   },
   transparent: {
     backgroundColor: 'transparent',

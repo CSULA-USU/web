@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import {
   EventHeader,
-  UpcomingEvents,
+  ModUpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
   CallToActionImages,
@@ -74,7 +74,7 @@ export default function Home() {
         }
         featuredEvent={events[0]}
       />
-      <UpcomingEvents events={events} />
+      <ModUpcomingEvents events={events} />
       <CallToActionImages
         title={
           <>

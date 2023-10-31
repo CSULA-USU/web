@@ -168,42 +168,7 @@ export const ModEventCard = ({
         onClick={onClick}
         featured={featured}
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
-      >
-        {/* <Overlay /> */}
-        {/* <EventCardTop>
-      <Typography as="h5" variant="eventDetail">
-        {ABBREVIATED_ORGS[organizationName]}
-      </Typography>
-    </EventCardTop>
-    <EventCardBottom featured={featured}>
-      <EventDetails>
-        <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-          {eventName}
-        </Typography>
-        <Typography as="h4" variant="eventTime">
-          {startTime} - {endTime}
-        </Typography>
-        <Typography
-          as="h5"
-          variant="eventDetail"
-          style={{ overflowWrap: 'anywhere' }}
-        >
-          {location.indexOf('.zoom.us') > -1 ? (
-            <a href={location}>Zoom Meeting</a>
-          ) : (
-            location
-          )}
-        </Typography>
-      </EventDetails>
-      {featured ? (
-        <Button margin="12px 0 0">Learn More</Button>
-      ) : (
-        <Typography color="primary" size="sm">
-          Learn More
-        </Typography>
-      )}
-    </EventCardBottom> */}
-      </EventCardContainer>
+      ></EventCardContainer>
       {featured && !isTablet ? (
         <HeroEventDetails>
           <EventDateSection>
@@ -282,36 +247,6 @@ export const ModEventCard = ({
         </HeroEventDetails>
       ) : (
         <MobileDetails>
-          {/* <MobileLeft>
-            <EventDateSection>
-              <Typography
-                as="span"
-                variant="eventDetail"
-                size="sm"
-                lineHeight="1"
-              >
-                {month} <br />
-              </Typography>
-              <Typography
-                as="span"
-                variant="pageHeader"
-                size="lg"
-                color="white"
-                lineHeight="1"
-              >
-                {day}
-              </Typography>
-            </EventDateSection>
-            {featured ? (
-              <Button onClick={() => selectEvent(event)} variant="transparent">
-                <BsInfoCircle size="30" color={`${Colors.gold}`} />
-              </Button>
-            ) : (
-              <Typography color="primary" size="sm">
-                Learn More
-              </Typography>
-            )}
-          </MobileLeft> */}
           <MobileRight>
             <Typography
               as="h3"
