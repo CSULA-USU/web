@@ -50,7 +50,7 @@ export interface MinimalistEventProps {
 }
 
 export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
-  const { isDesktop, isTablet } = useBreakpoint();
+  const { isDesktop, isMobile } = useBreakpoint();
   if (!event) return null;
   const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
   const startTime = getTime(startDateTimeUtc);
@@ -60,42 +60,101 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
   return (
     <>
       {isDesktop ? (
-        <>
-          <MinimalistEventContainer>
-            <LeftContainer>
-              <Typography as="h3" variant="eventDetail" color="gold">
-                {month} {day}
-              </Typography>
-              <TitleContainer onClick={onClick}>
-                <Typography
-                  as="h3"
-                  variant="eventTitle"
-                  color="black"
-                  size="md"
-                >
-                  {eventName}
+        isMobile ? (
+          <>
+            <MinimalistEventContainer>
+              <LeftContainer>
+                <Typography as="h3" variant="eventDetail" color="gold">
+                  {month} {day}
                 </Typography>
-              </TitleContainer>
-            </LeftContainer>
-            <MiddleContainer>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
-                {location}
-              </Typography>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
-                {startTime}
-              </Typography>
-            </MiddleContainer>
-            <RightContainer>
-              <InfoContainer>
-                <BsInfoCircle
-                  size={isTablet ? '18px' : '30px'}
-                  onClick={onClick}
-                />
-              </InfoContainer>
-            </RightContainer>
-          </MinimalistEventContainer>
-          <Divider color="greyLighter" />
-        </>
+                <TitleContainer onClick={onClick}>
+                  <Typography
+                    as="h3"
+                    variant="eventTitle"
+                    color="black"
+                    size="md"
+                  >
+                    {eventName}
+                  </Typography>
+                </TitleContainer>
+              </LeftContainer>
+              <MiddleContainer>
+                <Typography
+                  as="h4"
+                  variant="eventTime"
+                  color="grey"
+                  weight="400"
+                >
+                  {location}
+                </Typography>
+                <Typography
+                  as="h4"
+                  variant="eventTime"
+                  color="grey"
+                  weight="400"
+                >
+                  {startTime}
+                </Typography>
+              </MiddleContainer>
+              <RightContainer>
+                <InfoContainer>
+                  <BsInfoCircle
+                    size={isMobile ? '18px' : '30px'}
+                    onClick={onClick}
+                  />
+                </InfoContainer>
+              </RightContainer>
+            </MinimalistEventContainer>
+            <Divider color="greyLighter" />
+          </>
+        ) : (
+          <>
+            <MinimalistEventContainer>
+              <LeftContainer>
+                <Typography as="h3" variant="eventDetail" color="gold">
+                  {month} {day}
+                </Typography>
+                <Typography
+                  as="h4"
+                  variant="eventTime"
+                  color="grey"
+                  weight="400"
+                >
+                  {startTime}
+                </Typography>
+              </LeftContainer>
+              <MiddleContainer>
+                <TitleContainer onClick={onClick}>
+                  <Typography
+                    as="h3"
+                    variant="eventTitle"
+                    color="black"
+                    size="md"
+                  >
+                    {eventName}
+                  </Typography>
+                </TitleContainer>
+                <Typography
+                  as="h4"
+                  variant="eventTime"
+                  color="grey"
+                  weight="400"
+                >
+                  {location}
+                </Typography>
+              </MiddleContainer>
+              <RightContainer>
+                <InfoContainer>
+                  <BsInfoCircle
+                    size={isMobile ? '18px' : '30px'}
+                    onClick={onClick}
+                  />
+                </InfoContainer>
+              </RightContainer>
+            </MinimalistEventContainer>
+            <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+          </>
+        )
       ) : (
         <>
           <MinimalistEventContainer>
