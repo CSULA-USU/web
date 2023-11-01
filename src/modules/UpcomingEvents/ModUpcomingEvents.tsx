@@ -15,7 +15,7 @@ interface UpcomingEventsProps {
 const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   justify-content: space-between;
 `;
 
@@ -48,7 +48,6 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
   );
   const [eventLimit, setEventLimit] = useState<number>(6);
   const onRequestClose = () => selectEvent(undefined);
-
   const [_, ...laterEvents] = events || [];
   const eventsByMonth = (monthly ? events : laterEvents).reduce(
     (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
@@ -62,7 +61,6 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     },
     {},
   );
-
   const eventMonths = Object.keys(eventsByMonth);
   return !events.length ? null : (
     <FluidContainer>
@@ -73,9 +71,6 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
               Upcoming Events
             </Typography>
           </Link>
-          {/* <Button href="/events" variant="black">
-            View Events
-          </Button> */}
         </UpcomingEventsHeading>
       )}
       {monthly ? (
@@ -104,20 +99,20 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                   onClick={() => selectEvent(event)}
                 />
               ))}
+              {events.length > eventLimit ? (
+                <Button
+                  margin="16px auto 0px"
+                  onClick={() => {
+                    setEventLimit(eventLimit + 3);
+                  }}
+                  variant="outline"
+                >
+                  Load More
+                </Button>
+              ) : (
+                ''
+              )}
             </TertiaryContainer>
-            {events.length > eventLimit ? (
-              <Button
-                margin="0px auto"
-                onClick={() => {
-                  setEventLimit(eventLimit + 3);
-                }}
-                variant="outline"
-              >
-                Load More
-              </Button>
-            ) : (
-              ''
-            )}
           </UpcomingEventsContent>
         </>
       )}

@@ -1,20 +1,28 @@
-import { PresenceEvent } from 'types';
 import { Button, Divider, Typography } from 'components';
+import { BsInfoCircle } from 'react-icons/bs';
+import { useBreakpoint } from 'hooks';
+import { PresenceEvent } from 'types';
 import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
-import { Spaces } from 'theme';
+import { Spaces, media } from 'theme';
 
+const InfoContainer = styled.span`
+  cursor: pointer;
+`;
 const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 20%;
+  ${media('mobile')('width: 100%;')}
 `;
 
 const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+  ${media('tablet')('width: 80%;')}
+  ${media('mobile')('width: 100%;')}
 `;
 
 const RightContainer = styled.div`
@@ -28,6 +36,9 @@ const MinimalistEventContainer = styled.div`
   justify-content: space-between;
   height: 96px;
   width: 100%;
+  ${media('mobile')(
+    'flex-direction: column; align-items: start; height: 160px; justify-content: center',
+  )}
 `;
 
 const TitleContainer = styled.span`
@@ -39,6 +50,7 @@ export interface MinimalistEventProps {
 }
 
 export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
+  const { isDesktop, isTablet } = useBreakpoint();
   if (!event) return null;
   const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
   const startTime = getTime(startDateTimeUtc);
@@ -47,32 +59,78 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
   const day = getDay(startDateTimeUtc);
   return (
     <>
-      <MinimalistEventContainer>
-        <LeftContainer>
-          <Typography as="h3" variant="eventDetail" color="gold">
-            {month} {day}
-          </Typography>
-          <Typography as="h4" variant="eventTime" color="grey" weight="400">
-            {startTime} - {endTime}
-          </Typography>
-        </LeftContainer>
-        <MiddleContainer>
-          <TitleContainer onClick={onClick}>
-            <Typography as="h3" variant="eventTitle" color="black" size="md">
-              {eventName}
-            </Typography>
-          </TitleContainer>
-          <Typography as="h4" variant="eventTime" color="grey" weight="400">
-            {location}
-          </Typography>
-        </MiddleContainer>
-        <RightContainer>
-          <Button variant="grey" onClick={onClick}>
-            View Event
-          </Button>
-        </RightContainer>
-      </MinimalistEventContainer>
-      <Divider color="greyLighter" margin={`${Spaces.md} 0 `} />
+      {isDesktop ? (
+        <>
+          <MinimalistEventContainer>
+            <LeftContainer>
+              <Typography as="h3" variant="eventDetail" color="gold">
+                {month} {day}
+              </Typography>
+              <TitleContainer onClick={onClick}>
+                <Typography
+                  as="h3"
+                  variant="eventTitle"
+                  color="black"
+                  size="md"
+                >
+                  {eventName}
+                </Typography>
+              </TitleContainer>
+            </LeftContainer>
+            <MiddleContainer>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {location}
+              </Typography>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {startTime}
+              </Typography>
+            </MiddleContainer>
+            <RightContainer>
+              <InfoContainer>
+                <BsInfoCircle
+                  size={isTablet ? '18px' : '30px'}
+                  onClick={onClick}
+                />
+              </InfoContainer>
+            </RightContainer>
+          </MinimalistEventContainer>
+          <Divider color="greyLighter" />
+        </>
+      ) : (
+        <>
+          <MinimalistEventContainer>
+            <LeftContainer>
+              <Typography as="h3" variant="eventDetail" color="gold">
+                {month} {day}
+              </Typography>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {startTime} - {endTime}
+              </Typography>
+            </LeftContainer>
+            <MiddleContainer>
+              <TitleContainer onClick={onClick}>
+                <Typography
+                  as="h3"
+                  variant="eventTitle"
+                  color="black"
+                  size="md"
+                >
+                  {eventName}
+                </Typography>
+              </TitleContainer>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {location}
+              </Typography>
+            </MiddleContainer>
+            <RightContainer>
+              <Button variant="grey" onClick={onClick}>
+                View Event
+              </Button>
+            </RightContainer>
+          </MinimalistEventContainer>
+          <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+        </>
+      )}
     </>
   );
 };

@@ -253,7 +253,7 @@ export const ModEventCard = ({
               variant="eventDetail"
               lineHeight="1.2"
               color="black"
-              size="md"
+              size="lg"
             >
               {eventName}
             </Typography>
