@@ -7,7 +7,7 @@ import { StaffCard } from 'components/StaffCard';
 import { GovernanceFooter } from 'partials';
 
 export default function Governance() {
-  const { isMobile } = useBreakpoint();
+  const {} = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -24,7 +24,7 @@ export default function Governance() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
-        title="Meet the Board  Members"
+        title="Meet the Board of Directors"
         backgroundImage="/backgrounds/subtle-background-3.jpg"
       >
         <Typography as="h2">
@@ -36,15 +36,13 @@ export default function Governance() {
         </Typography>
       </Header>
       <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Student Representatives
-        </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {boardMembers.map((m) =>
             m.section === 'student-representative' ? (
               <StaffCard
                 key={m.name}
                 name={m.name}
+                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
@@ -59,15 +57,13 @@ export default function Governance() {
             ),
           )}
         </FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Pro Board Members
-        </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {boardMembers.map((m) =>
             m.section === 'pro-board-member' ? (
               <StaffCard
                 key={m.name}
                 name={m.name}
+                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
@@ -82,15 +78,13 @@ export default function Governance() {
             ),
           )}
         </FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Advisors
-        </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {boardMembers.map((m) =>
             m.section === 'advisors' ? (
               <StaffCard
                 key={m.name}
                 name={m.name}
+                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
