@@ -41,7 +41,7 @@ export const BoardOfDirectorsCTA = () => (
         Apply To Be A Student Leader
       </Button>
       <Button variant="outline" href="/governance/meet-the-board">
-        View Current Chair Members
+        View Current Board Members
       </Button>
     </BoardOfDirectorsCTAButtons>
   </BoardOfDirectorsCTAContainer>
