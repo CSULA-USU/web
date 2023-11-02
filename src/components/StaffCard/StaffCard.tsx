@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
-import { Spaces } from 'theme';
 
 interface CardStyles {
   margin?: string;
@@ -12,6 +11,7 @@ interface CardStyles {
 
 interface CardProps extends CardStyles {
   name: string;
+  head?: string;
   title: string;
   children?: React.ReactNode;
   src: string;
@@ -33,6 +33,7 @@ const NameSection = styled.div`
 
 export const StaffCard = ({
   name,
+  head,
   title,
   children,
   src,
@@ -42,18 +43,38 @@ export const StaffCard = ({
   return (
     <Panel {...props} width={'304px'} height="512px">
       <CenterWord>
-        <Typography
-          color="gold"
-          margin={`${Spaces.sm}`}
-          variant="copy"
-          weight="700"
-        >
-          {title}
-        </Typography>
+        <div>
+          <Typography
+            color="gold"
+            variant="copy"
+            weight="700"
+            size="md"
+            margin="0 0 0 0"
+            style={{ display: 'block' }}
+          >
+            {head}
+          </Typography>
+
+          <Typography
+            color="gold"
+            variant="copy"
+            weight="700"
+            size="md"
+            margin="0 0 0 0"
+          >
+            {title}
+          </Typography>
+        </div>
+
         <div>
           <Image src={src} alt={alt} width="220px" height="245px" />
           <NameSection>
-            <Typography size="md" weight="700" margin="8px 0px 0px">
+            <Typography
+              size="sm"
+              weight="700"
+              margin="8px 0px 0px"
+              variant="labelTitle"
+            >
               {name}
             </Typography>
             {children}
