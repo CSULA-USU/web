@@ -8,6 +8,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   disabled?: boolean;
   children?: React.ReactNode;
   padding?: string;
+  shadow?: boolean;
 }
 
 interface ButtonVariant {
@@ -28,7 +29,7 @@ const styles: { [key: string]: ButtonVariant } = {
   outline: {
     backgroundColor: 'transparent',
     color: 'black',
-    border: 'black',
+    border: 'greyLighter',
   },
   transparent: {
     backgroundColor: 'transparent',
@@ -44,6 +45,7 @@ const getCSS = (p: ButtonProps) => {
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;
+    filter: ${p.shadow ? 'drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25))' : ''};
     border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;
