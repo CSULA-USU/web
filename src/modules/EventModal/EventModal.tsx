@@ -79,6 +79,7 @@ export const EventModal = ({
     photoUri,
     organizationName,
     eventName,
+    location,
     description,
   } = event;
   const startTime = getTime(startDateTimeUtc);
@@ -112,9 +113,12 @@ export const EventModal = ({
           as="h3"
           variant="subheader"
           color="greyDark"
-          margin={`0 0 ${Spaces.md}`}
+          margin={`0 0 ${Spaces.xs}`}
         >
           {month} {day} {year}, {startTime} - {endTime}
+        </Typography>
+        <Typography as="h4" variant="cta" margin={`0 0 ${Spaces.md}`}>
+          {location}
         </Typography>
         <Typography variant="copy" color="greyDark" margin={`0 0 ${Spaces.sm}`}>
           <span dangerouslySetInnerHTML={{ __html: description }} />
