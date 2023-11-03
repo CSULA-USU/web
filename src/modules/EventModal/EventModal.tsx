@@ -52,7 +52,7 @@ const Main = styled.div`
   flex-direction: column;
   max-height: 80vh;
   img {
-    max-height: 400px;
+    max-height: 600px;
     object-fit: contain;
   }
   overflow-y: auto;
@@ -109,13 +109,11 @@ export const EventModal = ({
         <Typography as="h1" variant="label" margin={`0 0 ${Spaces.xs}`}>
           {eventName}
         </Typography>
-        <Typography
-          as="h3"
-          variant="subheader"
-          color="greyDark"
-          margin={`0 0 ${Spaces.xs}`}
-        >
-          {month} {day} {year}, {startTime} - {endTime}
+        <Typography as="h3" variant="subheader" color="greyDark">
+          {month} {day}, {year}
+        </Typography>
+        <Typography as="h3" variant="subheader" color="greyDark" size="md">
+          {startTime} - {endTime}
         </Typography>
         <Typography as="h4" variant="cta" margin={`0 0 ${Spaces.md}`}>
           {location}
