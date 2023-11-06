@@ -62,7 +62,7 @@ const mobileCustomStyles = {
 };
 
 const Main = styled.div`
-  max-width: 600px;
+  max-width: 100%;
   margin: ${Spaces.xs};
   display: flex;
   flex-direction: column;
