@@ -7,9 +7,9 @@ const getBreakpointName = (width: number) => {
     return 'mini';
   } else if (width >= breakpoints.mini && width < breakpoints.mobile) {
     return 'mobile';
-  } else if (width >= breakpoints.mobile && width < breakpoints.tablet) {
+  } else if (width >= breakpoints.mobile && width <= breakpoints.tablet) {
     return 'tablet';
-  } else if (width >= breakpoints.tablet && width < breakpoints.desktop) {
+  } else if (width > breakpoints.tablet && width < breakpoints.desktop) {
     return 'desktop';
   } else if (width >= breakpoints.desktop && width < breakpoints.widescreen) {
     return 'widescreen';
