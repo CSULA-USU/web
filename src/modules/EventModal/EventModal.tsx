@@ -29,6 +29,22 @@ const customStyles = {
   },
 };
 
+const desktopCustomStyles = {
+  overlay: { zIndex: 100 },
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    width: '85%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '12px',
+    border: `1px solid ${Colors.greyLightest}`,
+    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+    textDecoration: 'none',
+  },
+};
+
 const mobileCustomStyles = {
   overlay: { zIndex: 100 },
   content: {
@@ -46,13 +62,13 @@ const mobileCustomStyles = {
 };
 
 const Main = styled.div`
-  max-width: 600px;
+  max-width: 100%;
   margin: ${Spaces.xs};
   display: flex;
   flex-direction: column;
   max-height: 80vh;
   img {
-    max-height: 400px;
+    max-height: 600px;
     object-fit: contain;
   }
   overflow-y: auto;
@@ -62,7 +78,7 @@ export const EventModal = ({
   isOpen,
   onRequestClose,
 }: EventModalProps) => {
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
 
   useEffect(() => {
     if (isOpen) {
@@ -79,6 +95,7 @@ export const EventModal = ({
     photoUri,
     organizationName,
     eventName,
+    location,
     description,
   } = event;
   const startTime = getTime(startDateTimeUtc);
@@ -90,7 +107,13 @@ export const EventModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      style={isMobile ? mobileCustomStyles : customStyles}
+      style={
+        isMobile
+          ? mobileCustomStyles
+          : isDesktop
+          ? desktopCustomStyles
+          : customStyles
+      }
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
@@ -108,13 +131,14 @@ export const EventModal = ({
         <Typography as="h1" variant="label" margin={`0 0 ${Spaces.xs}`}>
           {eventName}
         </Typography>
-        <Typography
-          as="h3"
-          variant="subheader"
-          color="greyDark"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          {month} {day} {year}, {startTime} - {endTime}
+        <Typography as="h3" variant="subheader" color="greyDark">
+          {month} {day}, {year}
+        </Typography>
+        <Typography as="h3" variant="subheader" color="greyDark" size="md">
+          {startTime} - {endTime}
+        </Typography>
+        <Typography as="h4" variant="cta" margin={`0 0 ${Spaces.md}`}>
+          {location}
         </Typography>
         <Typography variant="copy" color="greyDark" margin={`0 0 ${Spaces.sm}`}>
           <span dangerouslySetInnerHTML={{ __html: description }} />
