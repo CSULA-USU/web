@@ -357,7 +357,7 @@ export default function Backoffice() {
             as="h1"
             variant="pageHeader"
             size={isDesktop ? '2xl' : isTablet ? '3xl' : '4xl'}
-            margin={`${Spaces.md} 0 ${Spaces.md} 0`}
+            margin={`${Spaces.lg} 0 ${Spaces.lg} 0`}
           >
             Graffix Backoffice
           </Typography>
@@ -365,7 +365,7 @@ export default function Backoffice() {
             as="p"
             variant="title"
             size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
-            margin={`0 0 ${Spaces.md} 0`}
+            margin={`0 0 ${Spaces.lg} 0`}
           >
             Requests for Graphics
             <br />
