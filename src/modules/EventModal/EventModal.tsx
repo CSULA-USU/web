@@ -128,16 +128,27 @@ export const EventModal = ({
           {organizationName}
         </Typography>
         <Divider margin={`${Spaces.sm} 0`} />
-        <Typography as="h1" variant="label" margin={`0 0 ${Spaces.xs}`}>
+        <Typography
+          as="h3"
+          variant="eventTitle"
+          color="black"
+          margin={`0 0 ${Spaces.xs}`}
+        >
           {eventName}
         </Typography>
-        <Typography as="h3" variant="subheader" color="greyDark">
+        <Typography as="h3" variant="eventDetail" color="gold" size="lg">
           {month} {day}, {year}
         </Typography>
-        <Typography as="h3" variant="subheader" color="greyDark" size="md">
+        <Typography as="h4" variant="eventTime" color="grey" weight="400">
           {startTime} - {endTime}
         </Typography>
-        <Typography as="h4" variant="cta" margin={`0 0 ${Spaces.md}`}>
+        <Typography
+          as="h4"
+          variant="eventTime"
+          color="grey"
+          weight="400"
+          margin={`0 0 ${Spaces.md}`}
+        >
           {location}
         </Typography>
         <Typography variant="copy" color="greyDark" margin={`0 0 ${Spaces.sm}`}>
