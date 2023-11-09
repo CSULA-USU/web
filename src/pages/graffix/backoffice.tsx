@@ -44,7 +44,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
 `;
 
@@ -357,7 +357,7 @@ export default function Backoffice() {
             as="h1"
             variant="pageHeader"
             size={isDesktop ? '2xl' : isTablet ? '3xl' : '4xl'}
-            margin={isMobile ? `${Spaces.md} 0 ${Spaces.md} 0` : `0 0}`}
+            margin={`${Spaces.lg} 0 ${Spaces.lg} 0`}
           >
             Graffix Backoffice
           </Typography>
@@ -365,12 +365,13 @@ export default function Backoffice() {
             as="p"
             variant="title"
             size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
+            margin={`0 0 ${Spaces.lg} 0`}
           >
             Requests for Graphics
             <br />
             Spring and Summer 2024
           </Typography>
-          <Button href="https://form.jotform.com/231835701552150" margin="16px">
+          <Button href="https://form.jotform.com/231835701552150" margin="3%">
             Request Form
           </Button>
         </HeaderContainer>
