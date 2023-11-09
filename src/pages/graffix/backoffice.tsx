@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   Button,
   Card,
-  Divider,
   Expandable,
   FluidContainer,
   Image,
@@ -61,90 +60,29 @@ const requests = [
         justifyContent="center"
         innerMaxWidth="100%"
       >
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Requirements
-            </Typography>
-          }
-        >
-          <Typography as="p">Event title</Typography>
-          <Typography as="p">Series or single event choice</Typography>
-          <Typography as="p">Event dates and times</Typography>
-          <Typography as="p">Design options</Typography>
-          <Typography as="p">Calendar descriptions</Typography>
-          <Typography as="p">Themes</Typography>
-          <Typography as="p">Social media choices</Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Item Selection
-            </Typography>
-          }
-        >
-          <Typography as="h5" weight="700">
-            Small Print
-          </Typography>
-          <Typography as="p">Poster (11 x 17&quot;)</Typography>
-          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
-          <Typography as="p">Postcard (8.25 x 5.5&quot;)</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Large Print
-          </Typography>
-          <Typography as="p">Large Poster (22 x 28&quot;)</Typography>
-          <Typography as="p">Window Decal (CCC 36 x 28&quot;)</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Banners
-          </Typography>
-          <Typography as="p">Banner 12 x 4&rsquo;</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Signage
-          </Typography>
-          <Typography as="p">2 A-Frame (24&quot; x 36&quot;)</Typography>
-          <Typography as="p">Location Signage (11&quot; x 17&quot;)</Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Social Media
-            </Typography>
-          }
-        >
-          <Typography as="p">Instagram Post or Story</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Optional: Zoom, IG Sticker, FB Event Cover
-          </Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Optional
-            </Typography>
-          }
-        >
-          <Typography as="p">Buttons 1.5&quot;</Typography>
-          <Typography as="p">Buttons 2.25&quot;</Typography>
-          <Typography as="p">Buttons 3&quot;</Typography>
-          <Typography as="p">Enamel Pins</Typography>
-          <Typography as="p">Event Shirts</Typography>
-          <Typography as="p">Bags</Typography>
-          <Typography as="p">Hats</Typography>
-          <Typography as="p">Stickers</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Other
-          </Typography>
-        </Expandable>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Social Media
+        </Typography>
+        <Typography as="p">IG Post/Story</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Small Print
+        </Typography>
+        <Typography as="p">Poster</Typography>
+        <Typography as="p">Postcard</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Large Print
+        </Typography>
+        <Typography as="p">Large Poster</Typography>
+        <Typography as="p">Window Decal</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Banners
+        </Typography>
+        <Typography as="p">12&apos; x 4&apos;</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Signage
+        </Typography>
+        <Typography as="p">A-Frame (2)</Typography>
+        <Typography as="p">Location Signage (poster size)</Typography>
       </FluidContainer>
     ),
   },
@@ -159,91 +97,27 @@ const requests = [
         justifyContent="center"
         innerMaxWidth="100%"
       >
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Requirements
-            </Typography>
-          }
-        >
-          <Typography as="p">Event title</Typography>
-          <Typography as="p">Series or single event choice</Typography>
-          <Typography as="p">Event dates and times</Typography>
-          <Typography as="p">Design options</Typography>
-          <Typography as="p">Calendar descriptions</Typography>
-          <Typography as="p">Themes</Typography>
-          <Typography as="p">Social media choices</Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Item Selection
-            </Typography>
-          }
-        >
-          <Typography as="h5" weight="700">
-            Small Print
-          </Typography>
-          <Typography as="p">Poster (11 x 17&quot;)</Typography>
-          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
-          <Typography as="p">Postcard (8.25 x 5.5&quot;)</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Large Print
-          </Typography>
-          <Typography as="p">Large Poster (22 x 28&quot;)</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Banners
-          </Typography>
-          <Typography as="p">Banner 3 x 8&rsquo;</Typography>
-          <br />
-          <Typography as="h5" weight="700">
-            Signage
-          </Typography>
-          <Typography as="p">A-Frame (24&quot; x 36&quot;)</Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Social Media
-            </Typography>
-          }
-        >
-          <Typography as="p" margin="0px 0px 1px">
-            Instagram Post or Story
-          </Typography>
-          <br />
-          <Typography as="p" margin="0px 0px 8px">
-            Optional: Zoom, IG Sticker
-          </Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Optional
-            </Typography>
-          }
-        >
-          <Typography as="p">Buttons 1.5&quot;</Typography>
-          <Typography as="p">Buttons 2.25&quot;</Typography>
-          <Typography as="p">Buttons 3&quot;</Typography>
-          <Typography as="p">Enamel Pins</Typography>
-          <Typography as="p">Event Shirts</Typography>
-          <Typography as="p">Bags</Typography>
-          <Typography as="p">Hats</Typography>
-          <Typography as="p">Stickers</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Other
-          </Typography>
-        </Expandable>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Social Media
+        </Typography>
+        <Typography as="p">IG Post/Story</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Small Print
+        </Typography>
+        <Typography as="p">Poster</Typography>
+        <Typography as="p">Postcard</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Large Print
+        </Typography>
+        <Typography as="p">Large Poster</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Banners
+        </Typography>
+        <Typography as="p">3&apos; x 8&apos;</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Signage
+        </Typography>
+        <Typography as="p">A-Frame (2)</Typography>
       </FluidContainer>
     ),
   },
@@ -258,78 +132,90 @@ const requests = [
         justifyContent="center"
         innerMaxWidth="100%"
       >
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Requirements
-            </Typography>
-          }
-        >
-          <Typography as="p">Event title</Typography>
-          <Typography as="p">Series or single event choice</Typography>
-          <Typography as="p">Event dates and times</Typography>
-          <Typography as="p">Design options</Typography>
-          <Typography as="p">Calendar descriptions</Typography>
-          <Typography as="p">Themes</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Social media choices
-          </Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Item Selection
-            </Typography>
-          }
-        >
-          <Typography as="h5" weight="700">
-            Small Print
-          </Typography>
-          <Typography as="p">Poster (11 x 17&quot;)</Typography>
-          <Typography as="p">Postcard (4.25 x 5.5&quot;)</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Postcard (8.25 x 5.5&quot;)
-          </Typography>
-          <br />
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Social Media
-            </Typography>
-          }
-        >
-          <Typography as="p">Instagram Post or Story</Typography>
-          <Typography as="p">
-            Optional: Zoom, IG Sticker, FB Event Cover
-          </Typography>
-        </Expandable>
-        <Divider color="gold" />
-        <Expandable
-          indicator={<BiChevronRight color="black" size={48} />}
-          header={
-            <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-              Optional
-            </Typography>
-          }
-        >
-          <Typography as="p">Buttons 1.5&quot;</Typography>
-          <Typography as="p">Buttons 2.25&quot;</Typography>
-          <Typography as="p">Buttons 3&quot;</Typography>
-          <Typography as="p">Enamel Pins</Typography>
-          <Typography as="p">Event Shirts</Typography>
-          <Typography as="p">Bags</Typography>
-          <Typography as="p">Hats</Typography>
-          <Typography as="p">Stickers</Typography>
-          <Typography as="p" margin="0px 0px 8px">
-            Other
-          </Typography>
-        </Expandable>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Social Media
+        </Typography>
+        <Typography as="p">IG Post/Story</Typography>
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Small Print
+        </Typography>
+        <Typography as="p">Poster</Typography>
+        <Typography as="p">Postcard</Typography>
+      </FluidContainer>
+    ),
+  },
+  {
+    title: 'Package D',
+    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconAlt: 'Package D information',
+    children: (
+      <FluidContainer
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        innerMaxWidth="100%"
+      >
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Single Item Request
+        </Typography>
+        <Typography as="p">Specify the Request</Typography>
+      </FluidContainer>
+    ),
+  },
+  {
+    title: 'Package E',
+    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconAlt: 'Package E information',
+    children: (
+      <FluidContainer
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        innerMaxWidth="100%"
+      >
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Department Social Media Design Post
+        </Typography>
+      </FluidContainer>
+    ),
+  },
+  {
+    title: 'Optional Promo',
+    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconAlt: 'Package C information',
+    children: (
+      <FluidContainer
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        innerMaxWidth="100%"
+      >
+        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+          Requires an additional week for design and print time
+        </Typography>
+        <Typography as="p">
+          Needs to be disccussed prior to adding promo
+        </Typography>
+        <ol>
+          <li>
+            If solely requesting promo items, submit as a single item request
+          </li>
+        </ol>
+        <Typography as="p">This is based on budget and capacity</Typography>
+        <Typography as="p">Apparel</Typography>
+        <ol>
+          <li>Hats, shirts, hoodies, jackets, etc.</li>
+        </ol>
+        <Typography as="p">Products</Typography>
+        <ol>
+          <li>
+            Bags, cups, planners, pens, stickers, pins (Enamel & Crocs), etc.
+          </li>
+        </ol>
+        <Typography as="p">Outdoor</Typography>
+        <ol>
+          <li>Floor decals, large window decals (Window facing the plaza)</li>
+        </ol>
       </FluidContainer>
     ),
   },
@@ -378,7 +264,7 @@ export default function Backoffice() {
       </SideImageHeader>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Types of Requests
+          Marketing Packages
         </Typography>
       </FluidContainer>
       <FluidContainer
@@ -422,31 +308,119 @@ export default function Backoffice() {
               indicator={<BiChevronRight color="black" size={48} />}
               header={
                 <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-                  Marketing Guidelines
+                  Design Guidelines
                 </Typography>
               }
             >
               <ol>
                 <li>
-                  All event marketing for the U-SU departments is required to be
-                  designed by the Graffix Department unless it is a
-                  collaboration with a campus partner that is handling the
-                  designs
-                </li>
-                <li>
-                  If U-SU logos are being used in the marketing, the director is
-                  required to approve it.
+                  The Graffix Department designs all event marketing for the
+                  U-SU departments.
                   <ul>
                     <li>
-                      Content Marketing on social media does not require a
-                      graphics request, but the use of any logos will need the
-                      approval of the director.
+                      The exception is if a campus partner handles the designs
+                      for the events marketing.
+                      <ol>
+                        <li>
+                          If a collaboration with any U-SU department the
+                          Graffix Department will need to verify the branding
+                          and marketing description of the U-SU to post the
+                          designs around campus{' '}
+                        </li>
+                        <li>
+                          In the event the Graffix Department does not approve
+                          the design then it releases the liability of the
+                          Graffix departments and the department in question
+                          will be responsible for any issues that arise from the
+                          design.{' '}
+                        </li>
+                      </ol>
+                    </li>
+                    <li>
+                      Department social media designs are only required as a
+                      graphics request if the event is going up on presence.
+                      <ol>
+                        <li>
+                          There are specific size requirements for presence
+                          cover images.{' '}
+                        </li>
+                        <li>
+                          Seven business days is required to schedule and resize
+                          your design properly.
+                        </li>
+                      </ol>
+                    </li>
+                    <li>
+                      If Presence is not used for social media content, U-SU
+                      logos are still required on your designs.
+                      <ol>
+                        <li>
+                          Your director will approve your design based on
+                          branding and accessibility guidelines provided by the
+                          Graffix Department.
+                        </li>
+                        <li>
+                          Adhering to the branding and accessibility guidelines
+                          falls on the department and the director approving the
+                          design.
+                        </li>
+                        <li>
+                          Graphics does not assume responsibility for these
+                          designs.
+                        </li>
+                      </ol>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  We request that you all use our vendor, but we understand
-                  pricing might be an issue.
+                  All design artwork created by the Graffix Department will have
+                  the Graffix branding to differentiate from internal department
+                  designs.
+                </li>
+                <li>
+                  All design requests require at least 8 weeks to fulfill the
+                  request if 4 weeks of marketing is requested.
+                  <ul>
+                    <li>
+                      Graffix needs a minimum of 3 weeks for design creation and
+                      review time with the programmer.
+                    </li>
+                    <li>
+                      If you are out of the office for an extended period,
+                      please let us know so we can plan accordingly.
+                      <ol>
+                        <li>
+                          Example: A conference taking you out of town for 4-5
+                          workdays.
+                        </li>
+                        <li>
+                          An option is to assign someone to approve designs in
+                          your absence.
+                        </li>
+                      </ol>
+                    </li>
+                    <li>
+                      Adding promo items to your request extends the request
+                      time to 5-8 working days.
+                      <ol>
+                        <li>
+                          The promo item needs to be approved by the department
+                          director and the Graffix department which is based on
+                          budget and capacity
+                        </li>
+                      </ol>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  We require all information related to the submittal at the
+                  time of submission.
+                  <ul>
+                    <li>
+                      Exception: If you are still trying to sign speakers or
+                      entertainment acts
+                    </li>
+                  </ul>
                 </li>
               </ol>
             </Expandable>
@@ -502,6 +476,119 @@ export default function Backoffice() {
                       Any non-design printing requests are accepted based on the
                       capacity of the department at the time of request and are
                       required to be submitted 2 days before the date needed.
+                    </li>
+                  </ul>
+                </li>
+              </ol>
+            </Expandable>
+          </FluidContainer>
+        </GuidelineContainer>
+        <GuidelineContainer>
+          <FluidContainer>
+            <Expandable
+              indicator={<BiChevronRight color="black" size={48} />}
+              header={
+                <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+                  Submittal Requirements
+                </Typography>
+              }
+            >
+              <ol>
+                <li>
+                  Event Start & End Time
+                  <ul>
+                    <li>
+                      What is the theme of your event?
+                      <ul>
+                        <li>
+                          Colors schemes, style, perception
+                          <ul>
+                            Ex. Warm colors, inspirational leadership, building
+                            community, afro-futurism theme
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Date & Location
+                  <ul>
+                    <li>
+                      What is the purpose or goal of the event?
+                      <ul>
+                        <li>
+                          Example:
+                          <ul>
+                            I want to provide the students with a cultural and
+                            learning experience.
+                          </ul>
+                          <ul>I want them to sign up for our newsletter.</ul>
+                          <ul>
+                            I want to bring awareness to a specific topic.
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Reservation Number for U-SU Building Reservations ***Not
+                  required for outside reservations***
+                  <ul>
+                    <li>
+                      Who is your target student demographic?
+                      <ul>
+                        <li>
+                          Example:
+                          <ul>
+                            I want to target transfer students so that they are
+                            aware of the services we provide.
+                          </ul>
+                          <ul>
+                            I want to target Latinx students who are 1st gen
+                            students in social work.
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Presence Calendar Description
+                  <ul>
+                    <li>
+                      Mood Boards
+                      <ul>
+                        <li>
+                          Please be specific to certain areas of inspiration
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Any non-design printing requests are accepted based on the
+                      capacity of the department at the time of request and are
+                      required to be submitted 2 days before the date needed.
+                    </li>
+                  </ul>
+                </li>
+                <li>Event Title</li>
+                <li>
+                  Series? How many events? Are they different designs within the
+                  same series? Use the same design for all of them?
+                  <ul>
+                    <li>
+                      A Word Doc with Relatable Images
+                      <ul>
+                        <li>
+                          If you want us to use specific images, please provide
+                          high-resolution images.
+                        </li>
+                        <ul>
+                          They will come out blurry if the images are low
+                          resolution.{' '}
+                        </ul>
+                      </ul>
                     </li>
                   </ul>
                 </li>
