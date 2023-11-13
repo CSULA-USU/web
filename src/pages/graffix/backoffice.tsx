@@ -146,7 +146,8 @@ const requests = [
   },
   {
     title: 'Package D',
-    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconSrc:
+      '/departments/graffix/backoffice/request-images/features-overview.svg',
     iconAlt: 'Package D information',
     children: (
       <FluidContainer
@@ -164,7 +165,8 @@ const requests = [
   },
   {
     title: 'Package E',
-    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconSrc:
+      '/departments/graffix/backoffice/request-images/online-popularity.svg',
     iconAlt: 'Package E information',
     children: (
       <FluidContainer
@@ -181,7 +183,7 @@ const requests = [
   },
   {
     title: 'Optional Promo',
-    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
+    iconSrc: '/departments/graffix/backoffice/request-images/gift-box.svg',
     iconAlt: 'Package C information',
     children: (
       <FluidContainer
@@ -320,40 +322,40 @@ export default function Backoffice() {
                     <li>
                       The exception is if a campus partner handles the designs
                       for the events marketing.
-                      <ol>
+                      <ul>
                         <li>
                           If a collaboration with any U-SU department the
                           Graffix Department will need to verify the branding
                           and marketing description of the U-SU to post the
-                          designs around campus{' '}
+                          designs around campus.
                         </li>
                         <li>
                           In the event the Graffix Department does not approve
                           the design then it releases the liability of the
                           Graffix departments and the department in question
                           will be responsible for any issues that arise from the
-                          design.{' '}
+                          design.
                         </li>
-                      </ol>
+                      </ul>
                     </li>
                     <li>
                       Department social media designs are only required as a
                       graphics request if the event is going up on presence.
-                      <ol>
+                      <ul>
                         <li>
                           There are specific size requirements for presence
-                          cover images.{' '}
+                          cover images.
                         </li>
                         <li>
                           Seven business days is required to schedule and resize
                           your design properly.
                         </li>
-                      </ol>
+                      </ul>
                     </li>
                     <li>
                       If Presence is not used for social media content, U-SU
                       logos are still required on your designs.
-                      <ol>
+                      <ul>
                         <li>
                           Your director will approve your design based on
                           branding and accessibility guidelines provided by the
@@ -368,7 +370,7 @@ export default function Backoffice() {
                           Graphics does not assume responsibility for these
                           designs.
                         </li>
-                      </ol>
+                      </ul>
                     </li>
                   </ul>
                 </li>
@@ -388,7 +390,7 @@ export default function Backoffice() {
                     <li>
                       If you are out of the office for an extended period,
                       please let us know so we can plan accordingly.
-                      <ol>
+                      <ul>
                         <li>
                           Example: A conference taking you out of town for 4-5
                           workdays.
@@ -397,18 +399,18 @@ export default function Backoffice() {
                           An option is to assign someone to approve designs in
                           your absence.
                         </li>
-                      </ol>
+                      </ul>
                     </li>
                     <li>
                       Adding promo items to your request extends the request
                       time to 5-8 working days.
-                      <ol>
+                      <ul>
                         <li>
                           The promo item needs to be approved by the department
                           director and the Graffix department which is based on
                           budget and capacity
                         </li>
-                      </ol>
+                      </ul>
                     </li>
                   </ul>
                 </li>
