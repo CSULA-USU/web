@@ -960,7 +960,7 @@ export default function FSL() {
             <Typography variant="title" as="h1">
               Resources
             </Typography>
-            <FluidContainer flex flexWrap="wrap">
+            <FluidContainer justifyContent="center" flex flexWrap="wrap">
               {ResourceButtons.map((resource) => (
                 <ResourceButtonsSection key={resource.title}>
                   <a href={resource.href}>

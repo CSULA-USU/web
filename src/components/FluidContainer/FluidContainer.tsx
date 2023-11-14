@@ -22,6 +22,10 @@ const FluidOuter = styled.div<FluidContainerProps>`
     media('desktop')(`
     padding: ${p.padding || '18px 36px'};
   `)}
+  ${(p) =>
+    media('mobile')(`
+    padding: ${p.padding || '18px 16px'};
+  `)}
   ${getBackgroundCSS}
 `;
 
