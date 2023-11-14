@@ -27,6 +27,7 @@ const TextCenter = styled.div`
 `;
 const NavItemContainer = styled.div`
   *:hover {
+    cursor: pointer;
     color: ${Colors.gold};
   }
 `;
