@@ -601,43 +601,6 @@ export default function Backoffice() {
       </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          What Programmers Will Receive From Graffix
-        </Typography>
-        <Typography as="h3" variant="titleSmall" size={isMobile ? 'md' : 'lg'}>
-          Individual Spreadsheet:
-        </Typography>
-        <ol>
-          <li>Event Info</li>
-          <li>Designer Assignment</li>
-          <li>
-            Designer Email
-            <ul>
-              <li>
-                The designers will add their schedules to Outlook. That way, you
-                all can set up a meeting with them when you need to Designers
-                will set the first meeting to talk about concepts if requested
-                on the graphics request form.
-              </li>
-              <li>
-                No design project status or updates related walk-ins are allowed
-                without a previous meeting scheduled.
-              </li>
-              <li>
-                The designers don’t have the authority to change the scope of
-                any design project.
-              </li>
-              <li>
-                All things print, the Director or Graphics Coordinator will
-                handle approvals on adding to the scope of the work.
-              </li>
-              <li>
-                All things web, the web designer will handle approvals on adding
-                to the scope of the project.
-              </li>
-            </ul>
-          </li>
-        </ol>
-        <Typography as="h3" variant="titleSmall" size={isMobile ? 'md' : 'lg'}>
           Item Selection Examples:
         </Typography>
         <FluidContainer
@@ -657,39 +620,6 @@ export default function Backoffice() {
             </Card>
           ))}
         </FluidContainer>
-        <Typography as="h3" variant="titleSmall" size={isMobile ? 'md' : 'lg'}>
-          Important Dates:
-        </Typography>
-        <ol>
-          <li>First Draft</li>
-          <li>Send to Print</li>
-          <li>Target Completion Date</li>
-          <li>Event Date</li>
-          <li>Sign Up Dates (if there is one) Start and End</li>
-          <li>
-            If any event requests come up after the deadline, we require a
-            minimum of six weeks for design and marketing time.
-          </li>
-        </ol>
-        <Typography as="h3" variant="titleSmall" size={isMobile ? 'md' : 'lg'}>
-          Promotional Items Notes:
-        </Typography>
-        <ol>
-          <li>
-            We will give you the site we use for promo items so you can browse
-            based on your budget.
-          </li>
-          <li>
-            When submitting an apparel request, we ask that you also offer a
-            budget range so we can work within your desired scope.
-          </li>
-          <li>Sometimes we need to make quick decisions about your request</li>
-          <li>
-            There is a chain supply shortage going on right now where things are
-            flying off the shelf, and waiting might change an item being there
-            or not.
-          </li>
-        </ol>
       </FluidContainer>
       {modalData && (
         <GenericModal
