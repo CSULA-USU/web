@@ -2,7 +2,8 @@ import Head from 'next/head';
 import {
   EventHeader,
   ModUpcomingEvents,
-  BoardOfDirectorsCTA,
+  // BoardOfDirectorsCTA,
+  BoardOfDirectorsCTAPromotion,
   Page,
   CallToActionImages,
 } from 'modules';
@@ -74,6 +75,9 @@ export default function Home() {
         }
         featuredEvent={events[0]}
       />
+      {/* Toggle the line below if there is a promotion. */}
+      <BoardOfDirectorsCTAPromotion />
+
       <ModUpcomingEvents events={events} />
       <CallToActionImages
         title={
@@ -90,7 +94,8 @@ export default function Home() {
         Catalyze your professional development and build your network by
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
-      <BoardOfDirectorsCTA />
+      {/* Toggle the line below if there is a promotion. */}
+      {/* <BoardOfDirectorsCTA /> */}
     </Page>
   );
 }
