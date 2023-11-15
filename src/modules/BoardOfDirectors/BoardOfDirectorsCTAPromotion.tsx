@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { Button, Typography } from 'components';
 
 const BoardOfDirectorsCTAContainer = styled.div`
-  background-image: url('/backgrounds/subtle-background-4.jpg');
+  background-color: black;
   background-position: center;
   background-size: cover;
-  padding: 240px 72px;
+  padding: 36px 72px;
 `;
 
 const BoardOfDirectorsCTAText = styled.div`
@@ -25,23 +25,27 @@ const BoardOfDirectorsCTAButtons = styled.div`
   column-gap: 16px;
   row-gap: 16px;
 `;
-export const BoardOfDirectorsCTA = () => (
+export const BoardOfDirectorsCTAPromotion = () => (
   <BoardOfDirectorsCTAContainer>
     <BoardOfDirectorsCTAText>
-      <Typography as="h2" variant="pageHeader">
-        Board of Directors
+      <Typography color="greyLightest" as="h2" variant="pageHeader">
+        Become A Board of Director
       </Typography>
-      <Typography margin="revert-layer">
-        Apply to be on the board of directors to make a difference while
-        developing your leadership skills.
+      <Typography color="greyLightest" margin="revert-layer">
+        Applications are now open! Apply to be on the board of directors to make
+        a difference while developing your leadership skills.
       </Typography>
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
-      <Button variant="black" href="https://form.jotform.com/210416532268047">
-        U-SU Board of Directors Application
+      <Button variant="primary" href="https://form.jotform.com/210416532268047">
+        <Typography variant="cta">
+          U-SU Board of Directors Application
+        </Typography>
       </Button>
-      <Button variant="outline" href="/governance/meet-the-board">
-        View Current Board Members
+      <Button variant="black" href="/governance/meet-the-board">
+        <Typography variant="cta" color="greyLightest">
+          View Current Board Members
+        </Typography>
       </Button>
     </BoardOfDirectorsCTAButtons>
   </BoardOfDirectorsCTAContainer>
