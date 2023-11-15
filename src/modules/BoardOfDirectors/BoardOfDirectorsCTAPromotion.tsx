@@ -38,7 +38,9 @@ export const BoardOfDirectorsCTAPromotion = () => (
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
       <Button variant="primary" href="https://form.jotform.com/210416532268047">
-        U-SU Board of Directors Application
+        <Typography variant="cta">
+          U-SU Board of Directors Application
+        </Typography>
       </Button>
       <Button variant="black" href="/governance/meet-the-board">
         <Typography variant="cta" color="greyLightest">
