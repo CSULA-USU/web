@@ -43,6 +43,7 @@ const getCSS = (p: ButtonProps) => {
     styles[p.variant || 'primary'];
   return css`
     cursor: pointer;
+    text-align: center;
     font-size: 16px;
     font-weight: 700;
     filter: ${p.shadow ? 'drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25))' : ''};
