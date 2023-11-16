@@ -29,18 +29,16 @@ export const BoardOfDirectorsCTAPromotion = () => (
   <BoardOfDirectorsCTAContainer>
     <BoardOfDirectorsCTAText>
       <Typography color="greyLightest" as="h2" variant="pageHeader">
-        Become A Board of Director
+        Join the U-SU Board of Directors
       </Typography>
       <Typography color="greyLightest" margin="revert-layer">
-        Applications are now open! Apply to be on the board of directors to make
+        Applications are now open! Apply to be on the Board of Directors to make
         a difference while developing your leadership skills.
       </Typography>
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
       <Button variant="primary" href="https://form.jotform.com/210416532268047">
-        <Typography variant="cta">
-          U-SU Board of Directors Application
-        </Typography>
+        <Typography variant="cta">BOD Application</Typography>
       </Button>
       <Button variant="black" href="/governance/meet-the-board">
         <Typography variant="cta" color="greyLightest">
