@@ -42,7 +42,7 @@ export const BoardOfDirectorsCTAPromotion = () => (
           U-SU Board of Directors Application
         </Typography>
       </Button>
-      <Button variant="black" href="/governance/meet-the-board">
+      <Button variant="whiteOutline" href="/governance/meet-the-board">
         <Typography variant="cta" color="greyLightest">
           View Current Board Members
         </Typography>
