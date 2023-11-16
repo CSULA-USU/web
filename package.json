@@ -46,7 +46,7 @@
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
-    "recoil": "^0.7.6",
+    "recoil": "0.7.7",
     "rss-parser": "^3.13.0",
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
