@@ -60,7 +60,7 @@ const cards2 = [
     designer: 'Hector Almaraz',
     src: '/departments/graffix/student-designs/smash-league.png',
     description:
-      'This is a design that takes modern e-sports asthetics and combines them with Cal State LA colors.',
+      'This is a design that takes modern e-sports aesthetics and combines them with Cal State LA colors.',
   },
 
   {
