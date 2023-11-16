@@ -29,10 +29,10 @@ export const BoardOfDirectorsCTAPromotion = () => (
   <BoardOfDirectorsCTAContainer>
     <BoardOfDirectorsCTAText>
       <Typography color="greyLightest" as="h2" variant="pageHeader">
-        Become A Board of Director
+        Become a Student Director
       </Typography>
       <Typography color="greyLightest" margin="revert-layer">
-        Applications are now open! Apply to be on the board of directors to make
+        Applications are now open! Apply to be on the Board of Directors to make
         a difference while developing your leadership skills.
       </Typography>
     </BoardOfDirectorsCTAText>
