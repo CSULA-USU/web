@@ -49,18 +49,18 @@ const offerings = [
   },
 ];
 
+const HeaderContainer = styled.div`
+  background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
+`;
+
+const HeaderLeftContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${Spaces.xl};
+`;
+
 export default function PASRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
-
-  const HeaderContainer = styled.div`
-    background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
-  `;
-
-  const HeaderLeftContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    gap: ${Spaces.xl};
-  `;
 
   return (
     <Page>
