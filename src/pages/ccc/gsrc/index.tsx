@@ -8,11 +8,6 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import Link from 'next/link';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
-const OfferingsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const hours = [
   {
     title: 'Office Hours',
@@ -84,18 +79,23 @@ const offerings = [
   },
 ];
 
+const HeaderContainer = styled.div`
+  background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
+`;
+
+const HeaderLeftContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${Spaces.xl};
+`;
+
+const OfferingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export default function GSRC() {
   const { isDesktop, isMobile, isTablet } = useBreakpoint();
-
-  const HeaderContainer = styled.div`
-    background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
-  `;
-
-  const HeaderLeftContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    gap: ${Spaces.xl};
-  `;
 
   return (
     <Page>
