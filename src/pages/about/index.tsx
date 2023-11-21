@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { Page, GenericModal } from 'modules';
 import {
+  Button,
   Card,
   FluidContainer,
   Image,
   NonBreakingSpan,
-  SideImageHeader,
   Typography,
 } from 'components';
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ import { media, Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const ButtonContainer = styled.div`
-  margin-top: ${Spaces['2xl']};
+  margin-top: ${Spaces['sm']};
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -24,18 +24,6 @@ const ButtonContainer = styled.div`
   }
   column-gap: ${Spaces.md};
   row-gap: ${Spaces.md};
-`;
-
-const HeaderContainer = styled.div`
-  width: 50%;
-  ${media('tablet')(`width:50%;`)}
-  ${media('desktop')(`width:50%;`)}
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: ${Spaces.lg};
 `;
 
 const HistoryContainer = styled.div`
@@ -110,64 +98,127 @@ export default function About() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <SideImageHeader
-        imgAlt="student union"
-        imgSrc="/about/about-hero-bw.jpeg"
-        imgWidth={isDesktop ? '100%' : '50%'}
-        background="https://www.dropbox.com/scl/fi/m1su64mfjv6zfjp891lfy/streak-2.png?rlkey=dkj7qc5gutprfo2jv17mp53gb&raw=1"
+      <FluidContainer
+        flex
+        justifyContent="center"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
       >
-        <HeaderContainer>
-          <Typography
-            as="h1"
-            variant="pageHeader"
-            size={isDesktop ? 'xl' : isTablet ? '3xl' : '4xl'}
-            margin={
-              isMobile
-                ? `${Spaces.xl} 0 ${Spaces.md} 0`
-                : `0 0 ${Spaces['2xl']}`
-            }
-          >
-            About Us
-          </Typography>
-          <Typography variant="title" as="span" size={isDesktop ? 'lg' : '2xl'}>
-            Mission: &nbsp;
-          </Typography>
-          <Typography as="p" size={isDesktop ? 'md' : 'lg'} lineHeight="2">
-            <NonBreakingSpan>With open doors and minds</NonBreakingSpan>
-            <br />
-            <NonBreakingSpan>
-              We provide space and opportunities
-            </NonBreakingSpan>{' '}
-            <br />
-            <NonBreakingSpan>Enabling Golden Eagles to soar</NonBreakingSpan>
-          </Typography>
-          <Typography
-            variant="title"
-            as="span"
-            margin={`${Spaces.lg} 0 0 0`}
-            size={isDesktop ? 'lg' : '2xl'}
-          >
-            Vision: &nbsp;
-          </Typography>
-          <Typography as="p" size={isDesktop ? 'md' : 'lg'}>
-            To become Cal State LA&apos;s hub for connection and growth
-          </Typography>
-          <ButtonContainer>
-            {/* <Button variant="black" href="/about/org-chart-8-6-23.jpg">
-              U-SU Organizational Chart
-            </Button> */}
-            {/* <Button
-              variant="outline"
-              onClick={() => {
-                setIsOpen(true);
-              }}
+        {isTablet || isMobile ? (
+          <>
+            <FluidContainer>
+              <Typography
+                as="h1"
+                variant="pageHeader"
+                size={isTablet ? '4xl' : '5xl'}
+                lineHeight="1.3"
+                style={{ textAlign: 'center' }}
+              >
+                We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+              </Typography>
+              <FluidContainer flex justifyContent="center" alignItems="center">
+                <Image
+                  alt="student union"
+                  src="/about/calstatela-hero.jpeg"
+                  style={{ width: '100%', height: '100%' }}
+                ></Image>
+              </FluidContainer>
+              <ButtonContainer>
+                <Button
+                  variant="black"
+                  href="https://www.dropbox.com/scl/fi/tumh4ov1j4bjh6tnxf3so/org-chart.png?rlkey=xmzu2lb0gpbwmrmsum5wrfabg&dl=0"
+                >
+                  U-SU Organizational Chart
+                </Button>
+                <Button
+                  variant="outline"
+                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                >
+                  Strategic Plan
+                </Button>
+              </ButtonContainer>
+            </FluidContainer>
+          </>
+        ) : (
+          <>
+            <FluidContainer
+              flex
+              justifyContent="center"
+              alignItems="center"
+              padding="0"
             >
-              U-SU History
-            </Button> */}
-          </ButtonContainer>
-        </HeaderContainer>
-      </SideImageHeader>
+              <Image
+                alt="student union"
+                src="/about/calstatela-hero.jpeg"
+                style={{ width: '100%', height: 'auto' }}
+              ></Image>
+            </FluidContainer>
+
+            <FluidContainer padding="18px 0px 18px 18px">
+              <FluidContainer>
+                <Typography
+                  as="h1"
+                  variant="pageHeader"
+                  size={isDesktop ? '4xl' : '5xl'}
+                  lineHeight="1.3"
+                  style={{ textAlign: 'center' }}
+                >
+                  We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                </Typography>
+              </FluidContainer>
+
+              <ButtonContainer>
+                <Button
+                  variant="black"
+                  href="https://www.dropbox.com/scl/fi/tumh4ov1j4bjh6tnxf3so/org-chart.png?rlkey=xmzu2lb0gpbwmrmsum5wrfabg&dl=0"
+                >
+                  U-SU Organizational Chart
+                </Button>
+                <Button
+                  variant="outline"
+                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                >
+                  Strategic Plan
+                </Button>
+              </ButtonContainer>
+            </FluidContainer>
+          </>
+        )}
+      </FluidContainer>
+      <FluidContainer
+        flex
+        flexDirection={isMobile ? 'column' : 'row'}
+        backgroundColor="primary"
+        padding="0"
+      >
+        <FluidContainer>
+          <Typography
+            variant="pageHeader"
+            as="span"
+            size={isDesktop ? 'lg' : 'xl'}
+            lineHeight="1.5"
+          >
+            With open doors and minds, we provide space and opportunities,
+            enabling Golden Eagles to soar. Our vision is to become Cal State
+            LA&apos;s hub for connection and growth.
+          </Typography>
+        </FluidContainer>
+        <FluidContainer>
+          <Typography
+            variant="pageHeader"
+            color="greyDarkest"
+            as="p"
+            size={isDesktop ? 'sm' : 'md'}
+            lineHeight="1.5"
+          >
+            The University-Student Union, or U-SU for short, is a great one-stop
+            location for students eager to learn about what&apos;s happening on
+            campus, collect student discounts or get involved. It is the
+            headquarters for the Alumni Center, student government (Associated
+            Students Incorporated) and campus organizations and clubs.
+          </Typography>
+        </FluidContainer>
+      </FluidContainer>
+
       <Title>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values

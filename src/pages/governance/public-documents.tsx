@@ -23,7 +23,6 @@ export default function Governance() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header
         title="Public Documents"
         backgroundImage="/backgrounds/subtle-background-2.jpg"

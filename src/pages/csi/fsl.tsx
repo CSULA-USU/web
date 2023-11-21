@@ -27,6 +27,7 @@ const TextCenter = styled.div`
 `;
 const NavItemContainer = styled.div`
   *:hover {
+    cursor: pointer;
     color: ${Colors.gold};
   }
 `;
@@ -250,17 +251,17 @@ const FamilyAndFriendsCostFAQs = [
   {
     header: "Who is in charge of my student's fraternity/sorority?",
     children:
-      'At Cal State LA, Fraternity and Sorority Life is staffed by Chris Battle, FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
+      'At Cal State LA, Fraternity and Sorority Life is staffed by Rebekah Galvan, Interim FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
   },
 ];
 
 const MembershipIntakeForms = [
   {
-    href: 'https://www.dropbox.com/s/tfshoebcna6mf2z/memebership-intake-checklist.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/f0xtfsnle3swlap/membership-intake-checklist.pdf?dl=0',
     title: 'Membership Intake Check List',
   },
   {
-    href: 'https://www.dropbox.com/s/1rid6st7s6x4wrq/notice-of-membership-intake.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/8rqm2ab4hq632n4/notice-of-membership-intake.pdf?dl=0',
     title: 'Notice of Membership Intake',
   },
 ];
@@ -655,9 +656,8 @@ export default function FSL() {
               <Typography weight="700" as="h4">
                 Contact Us
               </Typography>
-              <Typography as="p">Phone: 323-343-5110</Typography>
-              <Typography as="p">Fax: 323-343-5101</Typography>
-              <Typography as="p">Email: cbattle3@calstatela.edu</Typography>
+              <Typography as="p">Phone: 323-343-5709</Typography>
+              <Typography as="p">Email: rgalvan2@calstatela.edu</Typography>
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
           </FluidContainer>
@@ -827,8 +827,7 @@ export default function FSL() {
               Contact Us
             </Typography>
             <Typography as="p">
-              Phone: 323-343-5110 <br /> Fax: 323-343-5101 <br /> Email:
-              cbattle3@calstatela.edu
+              Phone: 323-343-5709 <br /> Email: rgalvan2@calstatela.edu
             </Typography>
             <Typography variant="titleSmall" as="h2" margin={`${Spaces.md} 0`}>
               Cost of Membership
@@ -962,7 +961,7 @@ export default function FSL() {
             <Typography variant="title" as="h1">
               Resources
             </Typography>
-            <FluidContainer flex flexWrap="wrap">
+            <FluidContainer justifyContent="center" flex flexWrap="wrap">
               {ResourceButtons.map((resource) => (
                 <ResourceButtonsSection key={resource.title}>
                   <a href={resource.href}>

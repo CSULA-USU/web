@@ -1,71 +1,80 @@
 [
   {
-    "title": "Student Board Chair",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Vacant",
+    "head": "Chair",
+    "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/otoaony7dcc2sqvepiiem/Cameryn.png?rlkey=pew31iwg7jx7p215z8vswrcul&raw=1",
+    "name": "Cameryn Mabry",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "head": "Vice-Chair",
+    "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/037y82e326mxxcpnsm2gv/Aishwarya-Gupta.png?rlkey=tf3g0ze5f2ucmku7tm88ncdve&raw=1",
+    "name": "Aishwarya Gupta",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "src": "https://www.dropbox.com/scl/fi/sol65v3ih0t4uz3i9b20k/Andrea-Dominguez.png?rlkey=qin20jwwl53azmvljuvfopq48&raw=1",
     "name": "Andrea Dominguez",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/9xt2spg4081gg4vn0l5l1/melissa-nicole-lopez.png?rlkey=9mqqz0saodxure895cj0cm6ez&raw=1",
-    "name": "Melissa Nicole Lopez",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/2izn3cdjdqh2d80uusq05/negin-dadmarz.png?rlkey=6jzhq0pr5a0qxwsdhbg59xn49&raw=1",
-    "name": "Negin Dadmarz",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/74vd3gihc3xnmul6ljv5p/joseph-guevara.png?rlkey=z7ol7rw5rv9nl5v17dwltlndy&raw=1",
+    "src": "https://www.dropbox.com/scl/fi/2v9fp7je27etc499tv1vb/Joseph.png?rlkey=937otnxup1tfzhdqqqfh7xh5l&raw=1",
     "name": "Joseph Guevara",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Vacant",
+    "src": "https://www.dropbox.com/scl/fi/orw9xey0e6s6mg2rcre6c/Melissa.png?rlkey=rh3ejf6cciqpg2rs8m92ps6z4&raw=1",
+    "name": "Melissa Nicole Lopez",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Vacant",
+    "src": "https://www.dropbox.com/scl/fi/47kafjpu5bsep91blfyyu/Negin.png?rlkey=45uykk9zu8nzjchmludc0g26z&raw=1",
+    "name": "Negin Dadmarz",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Vacant",
+    "src": "https://www.dropbox.com/scl/fi/88e42jt58fqgj2jhwmt0p/Rahul-Bogale.png?rlkey=uodrgfveuw4alrconbt9v7iqx&raw=1",
+    "name": "Rahul Bhogale",
     "credentials": "",
     "section": "student-representative"
   },
   {
-    "title": "Alumni Representative",
-    "src": "https://www.dropbox.com/scl/fi/rtrxesfviikrecx6qdp7t/nina-torres.jpg?rlkey=9jtj4xghtzqzjml26g57h11i5&raw=1",
-    "name": "Nina Torres",
-    "credentials": "Director at Large, Class of 2014",
+    "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/meonq3kgjd80qtqpu7ugv/Victoria-Lozoya-Hernandez.png?rlkey=06evo42268kkifjeavskrtdpr&raw=1",
+    "name": "Victoria Lozoya-Hernandez",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Faculty Member",
+    "src": "https://www.dropbox.com/scl/fi/gr10uwnge59917kyalm0n/adele-dobry.jpg?rlkey=23u7vkg53dcihojzpy5od2md2&raw=1",
+    "name": "Adele Dobry",
+    "credentials": "Health Sciences Librarian",
+    "section": "pro-board-member"
+  },
+  {
+    "title": "Faculty Member",
+    "src": "https://www.dropbox.com/scl/fi/a4x2nflg2nef247710wm1/michael-runnels.jpg?rlkey=75hmnoiv2su72gimrhomk8wf5&raw=1",
+    "name": "Michael Runnels",
+    "credentials": "Assistant Professor of Business Law",
     "section": "pro-board-member"
   },
   {
     "title": "President's Designee",
     "src": "https://www.dropbox.com/scl/fi/tatacrn0poqqkn6esqnr1/ron-vogel.jpg?rlkey=qrm8a8x3hjqd7j8z327i83ycv&raw=1",
-    "name": "Dr. Ron Vogel",
+    "name": "Ron Vogel",
     "credentials": "Dean of Rongxiang Xu College of Health and Human Services",
     "section": "pro-board-member"
   },
@@ -77,31 +86,24 @@
     "section": "pro-board-member"
   },
   {
-    "title": "Faculty Appointee",
-    "src": "https://www.dropbox.com/scl/fi/gr10uwnge59917kyalm0n/adele-dobry.jpg?rlkey=23u7vkg53dcihojzpy5od2md2&raw=1",
-    "name": "Adele Dobry",
-    "credentials": "Health Sciences Librarian",
-    "section": "pro-board-member"
-  },
-  {
-    "title": "Faculty Appointee",
-    "src": "https://www.dropbox.com/scl/fi/a4x2nflg2nef247710wm1/michael-runnels.jpg?rlkey=75hmnoiv2su72gimrhomk8wf5&raw=1",
-    "name": "Michael Runnels",
-    "credentials": "Assistant Professor of Business Law",
-    "section": "pro-board-member"
-  },
-  {
-    "title": "Vice President & Chief Financial Officer Designee",
+    "title": "Vice President and Chief Financial Officers' Designee",
     "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
     "name": "Judith Benjamin",
-    "credentials": "Student Financial Services",
+    "credentials": "University Controller",
     "section": "pro-board-member"
   },
   {
-    "title": "Associate Vice President for Student Life and Dean of Students",
+    "title": "Dean of Students",
     "src": "https://www.dropbox.com/scl/fi/7353kde4bw6imgovcvi67/bianca-martinez-navarro.png?rlkey=92q52qsgp5ugsxfde4sz048i5&raw=1",
     "name": "Blanca Martinez-Navarro",
-    "credentials": "Associate Vice President for Student Life",
+    "credentials": "Associate Vice President for Student Life and Dean of Students",
+    "section": "pro-board-member"
+  },
+  {
+    "title": "Alumni Representative",
+    "src": "https://www.dropbox.com/scl/fi/rtrxesfviikrecx6qdp7t/nina-torres.jpg?rlkey=9jtj4xghtzqzjml26g57h11i5&raw=1",
+    "name": "Nina Torres",
+    "credentials": "Director at Large, Class of 2014",
     "section": "pro-board-member"
   },
   {
@@ -121,7 +123,7 @@
   {
     "title": "Advisor",
     "src": "https://www.dropbox.com/scl/fi/u37cxhiq9gurg9ux9fxa5/barnaby-peake.jpg?rlkey=mjxybzw3m06tny7ldlv17er68&raw=1",
-    "name": "Dr. Barnaby Peake",
+    "name": "Barnaby Peake",
     "credentials": "Executive Director of Associated Students, Inc.",
     "section": "advisors"
   },

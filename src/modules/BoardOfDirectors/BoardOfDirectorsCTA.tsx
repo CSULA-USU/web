@@ -13,7 +13,7 @@ const BoardOfDirectorsCTAText = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 640px;
+  max-width: 1440px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -31,17 +31,17 @@ export const BoardOfDirectorsCTA = () => (
       <Typography as="h2" variant="pageHeader">
         Board of Directors
       </Typography>
-      <Typography margin="0 0 24px">
-        Join the board of directors to make a difference while developing your
-        leadership skills
+      <Typography margin="revert-layer">
+        Apply to be on the board of directors to make a difference while
+        developing your leadership skills.
       </Typography>
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
-      <Button variant="black" href="https://asicalstatela.org/general-election">
-        Apply To Be A Student Leader
+      <Button variant="black" href="https://form.jotform.com/210416532268047">
+        U-SU Board of Directors Application
       </Button>
       <Button variant="outline" href="/governance/meet-the-board">
-        View Current Chair Members
+        View Current Board Members
       </Button>
     </BoardOfDirectorsCTAButtons>
   </BoardOfDirectorsCTAContainer>

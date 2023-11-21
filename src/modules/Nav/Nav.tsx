@@ -8,6 +8,7 @@ import { Search } from 'modules/Search';
 
 const NavWrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
+  z-index: 99;
 `;
 
 export const Nav = () => {

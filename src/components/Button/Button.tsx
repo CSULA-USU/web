@@ -4,10 +4,17 @@ import { Colors } from 'theme';
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   href?: string;
   margin?: string;
-  variant?: 'primary' | 'black' | 'grey' | 'outline' | 'transparent';
+  variant?:
+    | 'primary'
+    | 'black'
+    | 'grey'
+    | 'outline'
+    | 'transparent'
+    | 'whiteOutline';
   disabled?: boolean;
   children?: React.ReactNode;
   padding?: string;
+  shadow?: boolean;
 }
 
 interface ButtonVariant {
@@ -35,6 +42,11 @@ const styles: { [key: string]: ButtonVariant } = {
     color: 'black',
     border: '',
   },
+  whiteOutline: {
+    backgroundColor: 'transparent',
+    color: 'white',
+    border: 'white',
+  },
 } as const;
 
 const getCSS = (p: ButtonProps) => {
@@ -42,8 +54,10 @@ const getCSS = (p: ButtonProps) => {
     styles[p.variant || 'primary'];
   return css`
     cursor: pointer;
+    text-align: center;
     font-size: 16px;
     font-weight: 700;
+    filter: ${p.shadow ? 'drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25))' : ''};
     border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;
@@ -70,5 +84,5 @@ const StyledButton = styled.button`
 
 export const Button = (props: ButtonProps) => {
   const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
-  return <ButtonComponent {...props} />;
+  return <ButtonComponent {...props} target="_blank" />;
 };

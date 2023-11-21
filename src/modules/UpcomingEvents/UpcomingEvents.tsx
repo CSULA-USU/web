@@ -1,8 +1,9 @@
-import { Button, Typography, FluidContainer, Divider } from 'components';
+import { Divider, FluidContainer, Typography } from 'components';
 import { PresenceEvent } from 'types';
 import { EventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
+import Link from 'next/link';
 import { useState } from 'react';
 import { media } from 'theme';
 
@@ -23,11 +24,11 @@ const UpcomingEventsContent = styled.div`
   flex-wrap: wrap;
   gap: 24px;
   > div {
-    max-width: calc(50% - 12px);
+    max-width: calc(50% - 16px);
     ${media('tablet')(`max-width: 100%;`)}
   }
   > div:nth-child(n + 3) {
-    max-width: calc(33.33% - 16px);
+    max-width: calc(33% - 16px);
     ${media('tablet')(`max-width: 100%;`)}
   }
 `;
@@ -60,12 +61,14 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
-          <Typography as="h2" variant="subheader" margin="0 24px 0 0">
-            Upcoming Events
-          </Typography>
-          <Button href="/events" variant="black">
-            View More
-          </Button>
+          <Link href="/events">
+            <Typography as="h2" variant="subheader" margin="0 24px 0 0">
+              Upcoming Events
+            </Typography>
+          </Link>
+          {/* <Button href="/events" variant="black">
+            View Events
+          </Button> */}
         </UpcomingEventsHeading>
       )}
       {monthly ? (
@@ -93,6 +96,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                 onClick={() => selectEvent(event)}
               />
             ))}
+
             {events.slice(3, 6).map((event) => (
               <EventCard
                 key={event.eventNoSqlId}
