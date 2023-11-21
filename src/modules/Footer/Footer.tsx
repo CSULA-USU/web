@@ -71,6 +71,16 @@ export const Footer = () => (
           <Typography color="primary" size="sm" lineHeight="2.4">
             Sunday: Closed
           </Typography>
+          <Link
+            target="_blank"
+            href={
+              'https://www.dropbox.com/scl/fi/tg0h7xcgea5oj45evn7gb/fall-2023-holiday-hours.docx?rlkey=0e1bdch2nenynnc10yg4tsczo&dl=0'
+            }
+          >
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Holiday Hours
+            </Typography>
+          </Link>
         </div>
         <div>
           <Typography as="h5" color="white">
