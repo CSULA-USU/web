@@ -8,4 +8,5 @@ export type Sizes =
   | 'xl'
   | '2xl'
   | '3xl'
-  | '4xl';
+  | '4xl'
+  | '5xl';
