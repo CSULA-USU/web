@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const Center = styled.div`
   text-align: center;
-  padding-top: 3%;
+  padding: 1%;
 `;
 
 const ButtonContainer = styled.div`
@@ -36,7 +36,8 @@ export default function WebTeam() {
       <title>U-SU Graffix Web Team</title>
       <div
         style={{
-          backgroundImage: 'url(/departments/graffix/temp-background.jpg)',
+          backgroundImage:
+            'url(/departments/graffix/web-team/square-windows-pattern.jpg)',
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
@@ -67,7 +68,7 @@ export default function WebTeam() {
             </Typography>
             <Image
               alt="ashley coding"
-              src="/departments/graffix/ashley-coding.png"
+              src="/departments/graffix/web-team/ashley-coding.png"
               style={{
                 width: '80%',
                 margin: '5%',
@@ -91,7 +92,7 @@ export default function WebTeam() {
           backgroundColor: 'gold',
         }}
       >
-        <Typography as="h1" variant="title" size={isMobile ? 'lg' : '2xl'}>
+        <Typography as="h1" variant="title" size={isMobile ? 'xl' : '2xl'}>
           Employment Outcomes
         </Typography>
         {isMobile ? (
@@ -116,95 +117,7 @@ export default function WebTeam() {
         />
       </Center>
 
-      {/* <FluidContainer>
-        <Card>
-          <FluidContainer flex>
-            <div
-              style={{
-                position: 'relative',
-                alignItems: 'center',
-                justifyContent: 'center',
-                display: 'flex',
-                width: '50%',
-              }}
-            >
-              <Image
-                src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-                alt="John Yasis"
-                object-fit="contain"
-                width="100%"
-              />
-              <Image
-                src="https://www.onlygfx.com/wp-content/uploads/2021/09/cute-frog-doodle-5951.png"
-                alt="Temporary Doodle Frog"
-                width="100%"
-                onMouseOver={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{
-                  opacity: isHovered ? '1' : '0',
-                  position: 'absolute',
-                  top: '0',
-                  left: '0',
-                }}
-              ></Image>
-            </div>
-            <FluidContainer>
-              <Typography as="h1" variant="label" color="black">
-                John Yasis
-              </Typography>
-              <Typography as="h2" variant="labelTitle" color="black">
-                Web Designer
-              </Typography>
-              <Typography as="p" variant="copy" color="black">
-                i enjoy all types f cheseee :| from moz to brie to feta and
-                sometimes on the weekends and holidays i prefer specialized goat
-                blue cheese. i and others would considerd myself a cheese monger
-              </Typography>
-            </FluidContainer>
-          </FluidContainer>
-        </Card>
-
-        <Card>
-          <FluidContainer flex>
-            <FluidContainer>
-              <Typography as="h1" variant="label" color="black">
-                Tammy Xaypraseuth
-              </Typography>
-              <Typography as="h2" variant="labelTitle" color="black">
-                Junior Web Developer Associate
-              </Typography>
-              <Typography as="p" variant="copy" color="black">
-                i enjoy all types f cheseee :| from moz to brie to feta and
-                sometimes on the weekends and holidays i prefer specialized goat
-                blue cheese. i and others would considerd myself a cheese monger
-              </Typography>
-            </FluidContainer>
-            <div
-              style={{
-                position: 'relative',
-                alignItems: 'center',
-                justifyContent: 'center',
-                display: 'flex',
-              }}
-            >
-              <Image
-                src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-                alt="Tammy Xaypraseuth"
-                width="70%"
-                style={{
-                  position: 'relative',
-                }}
-              />
-              <Image
-                src="https://www.onlygfx.com/wp-content/uploads/2021/09/cute-frog-doodle-5951.png"
-                alt="Temporary Doodle Frog"
-                width="70%"
-              ></Image>
-            </div>
-          </FluidContainer>
-        </Card>
-      </FluidContainer> */}
-      <FluidContainer backgroundColor="white">
+      <FluidContainer backgroundImage="/departments/graffix/web-team/lumpy-wall.jpg">
         <Typography
           as="h1"
           variant="title"
@@ -213,14 +126,15 @@ export default function WebTeam() {
         >
           Current Team
         </Typography>
+        <Center></Center>
         <ImageAndCard
           imgSrc={
             hovered
-              ? 'https://images.unsplash.com/photo-1593799723560-499b89c0397c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y3V0ZSUyMHNxdWFyZXxlbnwwfHwwfHx8Mg%3D%3D'
+              ? 'https://minifigures.e2ecdn.com/Products/MF132_1.jpg?w=493&h=493&quality=85&scale=canvas'
               : 'https://www.onlygfx.com/wp-content/uploads/2021/09/cute-frog-doodle-5951.png'
           }
           imgAlt="Photo of John Yasis"
-          imageWidth="25vw"
+          imageWidth="25vh"
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
@@ -231,19 +145,21 @@ export default function WebTeam() {
             Web Designer
           </Typography>
           <Typography as="p" variant="copy">
-            i enjoy all types f cheseee :| from moz to brie to feta and
-            sometimes on the weekends and holidays i prefer specialized goat
-            blue cheese. i and others would considerd myself a cheese monger
+            Pilgrim Johnathan Yasis has betrayed us for the last time. Since the
+            day he set foot in america, he has been spreading his hobbiies and
+            friendshiip. His cult, the Buddy society, has a quarter of america
+            under their rule. he still operates the cult and is now a humble
+            website programer.
           </Typography>
         </ImageAndCard>
         <ImageAndCard
           imgSrc={
             hovered
-              ? 'https://images.unsplash.com/photo-1593799723560-499b89c0397c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y3V0ZSUyMHNxdWFyZXxlbnwwfHwwfHx8Mg%3D%3D'
+              ? 'https://i.pinimg.com/originals/84/cd/28/84cd28bf76d7aeede1584f57828fb3e9.jpg'
               : 'https://www.onlygfx.com/wp-content/uploads/2021/09/cute-frog-doodle-5951.png'
           }
           imgAlt="Photo of Tammy Xaypraseuth"
-          imageWidth="25vw"
+          imageWidth="25vh"
           imageOnRight="true"
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
@@ -262,60 +178,6 @@ export default function WebTeam() {
           </Typography>
         </ImageAndCard>
       </FluidContainer>
-
-      {/* <CallToAction text="" buttonText="Join Our Team" href="/employment">
-        <Typography
-          color="black"
-          as="h2"
-          variant="title"
-          weight="300"
-          lineHeight="1"
-        >
-          Looking to develop your career by working with the accomplished
-          Graffix Web Team?
-        </Typography>
-      </CallToAction> */}
-
-      {/* <FluidContainer>
-        <CurrentTeamContainer>
-          <Card>
-            <Image
-              src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-              alt="John Yasis"
-              width="60%"
-            />
-            <Typography as="h1" variant="labelTitle">
-              John Yasis
-            </Typography>
-            <Typography as="h2" variant="copy">
-              Web Designer
-            </Typography>
-            <Typography as="p" variant="copy">
-              i enjoy all types f cheseee :| from moz to brie to feta and
-              sometimes on the weekends and holidays i prefer specialized goat
-              blue cheese. i and others would considerd myself a cheese monger
-            </Typography>
-          </Card>
-          <Card>
-            <Image
-              src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-              alt="Tammy Xaypraseuth"
-              width="60%"
-            />
-            <Typography as="h1" variant="labelTitle">
-              Tammy Xaypraseuth
-            </Typography>
-            <Typography as="h2" variant="copy">
-              Junior Web Developer Associate
-            </Typography>
-            <Typography as="p" variant="copy">
-              i enjoy all types f cheseee :| from moz to brie to feta and
-              sometimes on the weekends and holidays i prefer specialized goat
-              blue cheese. i and others would considerd myself a cheese monger
-            </Typography>
-          </Card>
-        </CurrentTeamContainer>
-      </FluidContainer> */}
     </Page>
   );
 }

@@ -17,25 +17,24 @@ export const ImageAndCard = ({
       padding="16px"
     >
       {imageOnRight ? (
-        !isTablet && (
-          <>
+        <>
+          {!isTablet && (
             <Image
               src={`${imgSrc}`}
               alt={`${imgAlt}`}
               width={imageWidth}
               marginRight="48px"
             />
-
-            <Card
-              iconSrc={isTablet ? imgSrc : undefined}
-              iconWidth={imageWidth}
-              hoverable
-              width="100%"
-              minHeight="160px"
-              {...props}
-            ></Card>
-          </>
-        )
+          )}
+          <Card
+            iconSrc={isTablet ? imgSrc : undefined}
+            iconWidth={imageWidth}
+            hoverable
+            width="100%"
+            minHeight="160px"
+            {...props}
+          ></Card>
+        </>
       ) : (
         <>
           <Card
@@ -51,7 +50,7 @@ export const ImageAndCard = ({
               src={`${imgSrc}`}
               alt={`${imgAlt}`}
               width={imageWidth}
-              marginRight="48px"
+              marginLeft="48px"
             />
           )}
         </>
