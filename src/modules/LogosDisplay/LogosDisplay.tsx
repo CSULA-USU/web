@@ -26,7 +26,7 @@ export const LogosDisplay = ({ logos, style }: LogoArrayProps) => {
     <div style={style}>
       {logos.map((c: Logo) => (
         <LogoContainer key={c.name}>
-          <Image src={c.src} alt={c.alt} width="80px" />
+          <Image src={c.src} alt={c.alt} width="8vh" />
         </LogoContainer>
       ))}
     </div>
