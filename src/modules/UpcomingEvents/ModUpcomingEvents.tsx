@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import Link from 'next/link';
 import { useState } from 'react';
-import { media } from 'theme';
+import { media, Spaces } from 'theme';
 
 interface UpcomingEventsProps {
   events: PresenceEvent[];
@@ -92,12 +92,19 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
         <>
           <UpcomingEventsContent>
             <TertiaryContainer>
-              {events.slice(1, eventLimit).map((event) => (
-                <MinimalistEvent
-                  key={event.eventNoSqlId}
-                  event={event}
-                  onClick={() => selectEvent(event)}
-                />
+              {events.slice(1, eventLimit).map((event, index, eventArray) => (
+                <>
+                  <MinimalistEvent
+                    key={event.eventNoSqlId}
+                    event={event}
+                    onClick={() => selectEvent(event)}
+                  />
+                  {index === eventArray.length - 1 ? (
+                    ''
+                  ) : (
+                    <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+                  )}
+                </>
               ))}
               {events.length > eventLimit ? (
                 <Button
