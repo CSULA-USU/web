@@ -1,11 +1,11 @@
-import { Button, Divider, Image, Typography } from 'components';
+import { Button, Image, Typography } from 'components';
 import { BsInfoCircle } from 'react-icons/bs';
 import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
 import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { PRESENCE_URI_BASE } from 'utils/constants';
-import { Colors, Spaces, media } from 'theme';
+import { Colors, media } from 'theme';
 
 const InfoContainer = styled.span`
   cursor: pointer;
@@ -147,7 +147,6 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
-            <Divider color="greyLighter" />
           </>
         ) : (
           <>
@@ -194,7 +193,6 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
-            <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
           </>
         )
       ) : (
@@ -250,7 +248,6 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
               </PreviewContainer>
             </MinimalistEventContainer>
           </EventAndPreviewContainer>
-          <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
         </>
       )}
     </>
