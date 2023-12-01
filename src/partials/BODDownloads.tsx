@@ -67,19 +67,27 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'BOD Minutes May 12, 2023',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/v1juab6s134llnbj6ihll/BOD-Minutes-August-25-2023.pdf?rlkey=hki135hyxe73087qz748buv2h&dl=0',
+            children: 'BOD Minutes August 25, 2023',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/g7er99czzgfbyrvsqbut8/Minutes-Board-of-Directors-September-15-2023.pdf?rlkey=lie8b76v1qxtoik1foa7z97tn&dl=0',
             children: 'BOD Minutes September 15, 2023',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/hvcn6693beh5jg13lf5mf/Minutes-Board-of-Directors-Special-Meeting-September-29-2023.pdf?rlkey=vj69ndeb55e1p5so4a9qtwl7p&dl=0',
-            children: 'BOD Special Meeting Minutes September 29, 2023',
+            children: 'Special Meeting Minutes September 29, 2023',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/g7lk04fia214904axdned/BOD-Minutes-October-13-2023.pdf?rlkey=wya7domnwdjq4elea5gjmty1o&dl=0',
+            children: 'BOD Minutes October 13, 2023',
           },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/y1x7jg56p3j5v8i9yve77/fy23-24.zip?rlkey=rb50jyf2k43w4j99t3tu0wzz2&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/rj51goh3ickst0q4en4em/fy23-24-minutes.zip?rlkey=hqcgqx2yfchuowz241wd7kwtw&dl=0',
       variant: 'black',
     },
   },
