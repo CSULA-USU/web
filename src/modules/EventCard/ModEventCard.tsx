@@ -42,13 +42,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     min-height: 320px;
   }
   @media (max-width: 540px) {
-    min-height: 240px;
-  }
-  @media (max-width: 420px) {
-    min-height: 200px;
+    min-height: 272px;
   }
   @media (max-width: 320px) {
-    height: 240px;
+    min-height: 240px;
   }
   > div:first-child {
     padding-bottom: 12px;
