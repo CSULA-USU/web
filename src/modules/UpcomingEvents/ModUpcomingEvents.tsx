@@ -93,9 +93,8 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <UpcomingEventsContent>
             <TertiaryContainer>
               {events.slice(1, eventLimit).map((event, index, eventArray) => (
-                <>
+                <div key={event.eventNoSqlId}>
                   <MinimalistEvent
-                    key={event.eventNoSqlId}
                     event={event}
                     onClick={() => selectEvent(event)}
                   />
@@ -104,7 +103,7 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                   ) : (
                     <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
                   )}
-                </>
+                </div>
               ))}
               {events.length > eventLimit ? (
                 <Button
