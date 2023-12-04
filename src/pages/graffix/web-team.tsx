@@ -137,20 +137,23 @@ export default function WebTeam() {
           imageWidth="25vh"
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          title="John Yasis"
         >
-          <Typography as="h1" variant="label">
-            John Yasis
-          </Typography>
-          <Typography as="h2" variant="labelTitle">
-            Web Designer
-          </Typography>
-          <Typography as="p" variant="copy">
-            Pilgrim Johnathan Yasis has betrayed us for the last time. Since the
-            day he set foot in america, he has been spreading his hobbiies and
-            friendshiip. His cult, the Buddy society, has a quarter of america
-            under their rule. he still operates the cult and is now a humble
-            website programer.
-          </Typography>
+          <div>
+            {/* <Typography as="h1" variant="label">
+              John Yasis
+            </Typography> */}
+            <Typography as="h2" variant="labelTitle">
+              Web Designer
+            </Typography>
+            <Typography as="p" variant="copy">
+              Pilgrim Johnathan Yasis has betrayed us for the last time. Since
+              the day he set foot in america, he has been spreading his hobbiies
+              and friendshiip. His cult, the Buddy society, has a quarter of
+              america under their rule. he still operates the cult and is now a
+              humble website programer.
+            </Typography>
+          </div>
         </ImageAndCard>
         <ImageAndCard
           imgSrc={
@@ -163,10 +166,11 @@ export default function WebTeam() {
           imageOnRight="true"
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          title="Tammy Xaypraseuth"
         >
-          <Typography as="h1" variant="label">
+          {/* <Typography as="h1" variant="label">
             Tammy Xaypraseuth
-          </Typography>
+          </Typography> */}
           <Typography as="h2" variant="labelTitle">
             Junior Web Developer Associate
           </Typography>
