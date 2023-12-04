@@ -54,7 +54,7 @@ export default function Employment() {
         />
         <meta
           name="description"
-          content="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
+          content="Explore work opportunities and positions for the University-Student Union at Cal State LA"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -119,7 +119,7 @@ export default function Employment() {
           href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application (2023).pdf"
           target="_blank"
         >
-          Professional Appointment
+          Full-time Professional Appointment
         </Link>
       </FluidContainer>
     </Page>
