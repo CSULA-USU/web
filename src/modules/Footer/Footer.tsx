@@ -78,7 +78,7 @@ export const Footer = () => (
             }
           >
             <Typography color="primary" size="sm" lineHeight="2.4">
-              Holiday Hours
+              View Holiday Hours
             </Typography>
           </Link>
         </div>
