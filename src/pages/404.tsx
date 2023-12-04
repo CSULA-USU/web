@@ -40,7 +40,7 @@ export default function Custom404() {
         </Typography>
         <br />
         <Image
-          src="/vectors/404/lost-road-sign.svg"
+          src="https://media0.giphy.com/media/hqOIyGbkgZoQB7h3Pd/giphy.gif"
           style={{
             maxHeight: '200px',
           }}
