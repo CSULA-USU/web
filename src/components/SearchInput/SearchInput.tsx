@@ -73,7 +73,10 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               placeholder="Search"
               value={input}
               onChange={onChange}
-              style={{ backgroundColor: Colors.greyLighter }}
+              style={{
+                backgroundColor: Colors.greyLighter,
+                color: Colors.black,
+              }}
             />
           </>
         ) : (
