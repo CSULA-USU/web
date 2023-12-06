@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
 import { useBreakpoint } from 'hooks';
+import { Colors } from 'theme';
 
 export interface SearchProps {
   input?: string;
@@ -58,14 +59,12 @@ const Label = styled.label`
 `;
 
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
 
   return (
     <OuterContainer>
       <InputContainerForm onSubmit={onSubmit}>
-        {isDesktop ? (
-          ''
-        ) : (
+        {isMobile ? (
           <>
             <Label htmlFor="searchInput">Search</Label>
             <StyledInput
@@ -74,12 +73,39 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               placeholder="Search"
               value={input}
               onChange={onChange}
+              style={{
+                backgroundColor: Colors.greyLighter,
+                color: Colors.black,
+              }}
             />
+          </>
+        ) : (
+          <>
+            {isDesktop ? (
+              ''
+            ) : (
+              <>
+                <Label htmlFor="searchInput">Search</Label>
+                <StyledInput
+                  id="searchInput"
+                  aria-labelledby="searchInput"
+                  placeholder="Search"
+                  value={input}
+                  onChange={onChange}
+                />
+              </>
+            )}
           </>
         )}
         <Link href="/search" aria-label="Search the University Student Union">
           <HiddenSpan aria-hidden="true">Search</HiddenSpan>
-          <FaSearch size={'1.25em'} color="#FFF" />
+          {isMobile ? (
+            <></>
+          ) : (
+            <>
+              <FaSearch size={'1.25em'} color="#FFF" />
+            </>
+          )}
         </Link>
       </InputContainerForm>
     </OuterContainer>
