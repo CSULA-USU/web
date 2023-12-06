@@ -1,30 +1,24 @@
-// import { Typography } from 'components';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { Colors } from 'theme';
 import { useState, useEffect } from 'react';
-// import { BiArrowToTop } from 'react-icons/bi';
-// import { FaCircleArrowUp } from 'react-icons/fa6';
-// import {FaArrowCircleUp} from 'react-icons/fa';
-// import { BsArrowUpCircleFill } from "react-icons/bs";
 import { TbCircleArrowUpFilled } from 'react-icons/tb';
 
-// const StyledButton = styled.button`
-//   background-color: ${Colors.greyLighter};
-//   opacity: 0.7;
-//   border: none;
-//   border-radius: 35px;
-//   width: 60px;
-//   height: 60px;
-//   text-align: center;
-//   cursor: pointer;
-//   justify-content: center;
-//   align-items: center;
-//   float: right;
-//   position: fixed;
-//   bottom: 70px;
-//   right: 70px;
-//   display: none;
-// `;
+const StyledButton = styled.button`
+  background-color: white;
+  border: none;
+  border-radius: 35px;
+  width: 39px;
+  height: 39px;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  position: fixed;
+  bottom: 46px;
+  right: 46px;
+  display: none;
+`;
 
 const scrollToTop = () => {
   document.body.scrollTop = 0; // Safari
@@ -45,26 +39,21 @@ export const BackToTop = () => {
     };
   }, []);
   return (
-    <TbCircleArrowUpFilled
-      size={50}
-      color={Colors.grey}
-      style={{
-        position: 'fixed',
-        bottom: '40px',
-        right: '40px',
-        opacity: '0.75',
-      }}
-      display={visible ? 'flex' : 'none'}
+    <StyledButton
       onClick={scrollToTop}
-    ></TbCircleArrowUpFilled>
-    // <StyledButton
-    //   onClick={scrollToTop}
-    //   style={{ display: visible ? 'flex' : 'none' }}
-    // >
-    //   {/* <Typography as="p" variant="copy" size="xl" color="greyDarker">
-    //     ↑
-    //   </Typography> */}
-
-    // </StyledButton>
+      style={{ display: visible ? 'flex' : 'none' }}
+    >
+      <TbCircleArrowUpFilled
+        size={50}
+        color={Colors.grey}
+        style={{
+          position: 'fixed',
+          bottom: '40px',
+          right: '40px',
+        }}
+        display={visible ? 'flex' : 'none'}
+        onClick={scrollToTop}
+      ></TbCircleArrowUpFilled>
+    </StyledButton>
   );
 };
