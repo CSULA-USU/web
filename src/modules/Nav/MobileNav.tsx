@@ -6,6 +6,8 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import { Colors, FontSizes } from 'theme';
 import navMap from 'data/navMap.json';
 import { MdCancel } from 'react-icons/md';
+import { Search } from 'modules/Search';
+import { FluidContainer } from 'components';
 
 interface navMapType {
   text: string;
@@ -39,7 +41,6 @@ const T1Container = styled(NavList)`
     text-transform: uppercase;
     font-size: ${FontSizes['xl']};
     font-weight: 700;
-    margin-top: 32px;
   }
 `;
 
@@ -82,21 +83,24 @@ export const MobileNav = () => (
 
     <Drawer.Target preventScroll>
       <Container>
-        <Drawer.CloseButton>
-          <button
-            style={{
-              border: 0,
-              backgroundColor: 'transparent',
-              fontSize: 16,
-              position: 'absolute',
-              right: 16,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            CLOSE <MdCancel size={40} />
-          </button>
-        </Drawer.CloseButton>
+        <FluidContainer flex justifyContent="flex-start" alignItems="center">
+          <Search></Search>
+          <Drawer.CloseButton>
+            <button
+              style={{
+                border: 0,
+                backgroundColor: 'transparent',
+                fontSize: 16,
+                position: 'absolute',
+                right: 16,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              CLOSE <MdCancel size={40} />
+            </button>
+          </Drawer.CloseButton>
+        </FluidContainer>
         <T1Container>
           {(navMap as navMapType[]).map((t1) => (
             <React.Fragment key={`t1-${t1.href}`}>
