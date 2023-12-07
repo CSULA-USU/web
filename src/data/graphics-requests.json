@@ -20,5 +20,16 @@
     "printDate": "Jnaurary 29, 2023",
     "printDelivery": "Febraury 29, 2023",
     "eventDate": "COtober 29, 2023"
+  },
+  {
+    "department": "CCC",
+    "title": "Grinch's Village",
+    "submissionDate": "November 28, 2023",
+    "requestor": "Grinch Bobbers",
+    "artist": "Grinch Ross",
+    "digitalDelivery": "Grinch 29, 2023",
+    "printDate": "Grinch 29, 2023",
+    "printDelivery": "Grinch 29, 2023",
+    "eventDate": "Grinch 29, 2023"
   }
 ]

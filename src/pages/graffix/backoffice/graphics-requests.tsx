@@ -18,7 +18,7 @@ export default function GraphicsRequests() {
         ></Image>
       </Header>
       <FluidContainer>
-        {requests.map((item) => (
+        {requests.map((item, index) => (
           <FluidContainer key={item.title}>
             <Typography variant="labelTitle" color="gold">
               {item.submissionDate}
@@ -58,7 +58,7 @@ export default function GraphicsRequests() {
             <FluidContainer flex justifyContent="center">
               <Button variant="black">View Request</Button>
             </FluidContainer>
-            <hr></hr>
+            {index !== requests.length - 1 && <hr />}
           </FluidContainer>
         ))}
       </FluidContainer>
