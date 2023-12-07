@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NonBreakingSpan, Typography } from 'components';
 import { Colors, media, Spaces } from 'theme';
 import { FluidContainer, Divider } from 'components';
-import { AiOutlineInstagram } from 'react-icons/ai';
+import { AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
 import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
@@ -38,6 +38,9 @@ const FooterBottomInner = styled.div`
     .mobile-hidden {
       display: none;
     }
+  `)}
+  ${media('mobile')(`
+    text-align: center;
   `)}
 `;
 
@@ -168,17 +171,21 @@ export const Footer = () => (
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
           (323) 343-2465
         </Typography>
+        <Link
+          target="_blank"
+          href={'https://www.instagram.com/usucalstatela/?hl=en'}
+          aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
+        >
+          <AiOutlineInstagram
+            color={Colors.greyLighter}
+            fontSize="32px"
+          ></AiOutlineInstagram>
+          <AiOutlineLinkedin
+            color={Colors.greyLighter}
+            fontSize="32px"
+          ></AiOutlineLinkedin>
+        </Link>
       </FooterBottomInner>
-      <Link
-        target="_blank"
-        href={'https://www.instagram.com/usucalstatela/?hl=en'}
-        aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-      >
-        <AiOutlineInstagram
-          color={Colors.greyLighter}
-          fontSize="32px"
-        ></AiOutlineInstagram>
-      </Link>
     </FooterBottomContainer>
   </FluidContainer>
 );
