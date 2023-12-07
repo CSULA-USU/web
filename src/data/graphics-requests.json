@@ -1,0 +1,24 @@
+[
+  {
+    "department": "CCC",
+    "title": "Gingerbread House Making",
+    "submissionDate": "November 28, 2023",
+    "requestor": "Bobby Bobbers",
+    "artist": "Bob Ross",
+    "digitalDelivery": "September 29, 2023",
+    "printDate": "September 29, 2023",
+    "printDelivery": "September 29, 2023",
+    "eventDate": "September 29, 2023"
+  },
+  {
+    "department": "CCC",
+    "title": "Santa's Village",
+    "submissionDate": "November 28, 2023",
+    "requestor": "Bobby Bobbers",
+    "artist": "Bob Ross",
+    "digitalDelivery": "June 29, 2023",
+    "printDate": "Jnaurary 29, 2023",
+    "printDelivery": "Febraury 29, 2023",
+    "eventDate": "COtober 29, 2023"
+  }
+]
