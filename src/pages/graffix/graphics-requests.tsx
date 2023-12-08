@@ -1,10 +1,28 @@
 import { Header, Page } from 'modules';
 import { Button, FluidContainer, Image, Typography } from 'components';
 import graphicsRequests from 'data/graphics-requests.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function GraphicsRequests() {
   const [requests] = useState(graphicsRequests);
+  const [graffixRequests, setGraffixRequests] = useState([]);
+
+  const fetchRequestFeed = async () => {
+    try {
+      const data = await fetch('../api/notion');
+      const requestFeed = await data.json();
+      setGraffixRequests(requestFeed);
+      console.log('request feed', requestFeed);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRequestFeed();
+    console.log(graffixRequests);
+  }, []);
+
   return (
     <Page>
       <Header
