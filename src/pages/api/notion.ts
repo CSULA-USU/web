@@ -7,15 +7,9 @@ export default async function handler(_req: any, res: NextApiResponse<any>) {
   try {
     const requestFeed = await notion.databases.query({
       database_id: databaseId,
-      filter: {
-        property: 'Department',
-        rich_text: {
-          contains: 'CCC',
-        },
-      },
     });
 
-    res.status(200).json(requestFeed);
+    res.status(200).json(requestFeed.results);
   } catch (error) {
     console.error('Error fetching data from Notion:', error);
     res.status(500).json({ error: 'Internal Server Error' });

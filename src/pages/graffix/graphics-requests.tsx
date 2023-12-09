@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 
 export default function GraphicsRequests() {
   const [requests] = useState(graphicsRequests);
-  const [graffixRequests, setGraffixRequests] = useState([]);
+  const [_graffixRequests, setGraffixRequests] = useState([]);
 
   const fetchRequestFeed = async () => {
     try {
       const data = await fetch('../api/notion');
       const requestFeed = await data.json();
       setGraffixRequests(requestFeed);
-      console.log('request feed', requestFeed);
+      // console.log('request feed', requestFeed);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -20,7 +20,6 @@ export default function GraphicsRequests() {
 
   useEffect(() => {
     fetchRequestFeed();
-    console.log(graffixRequests);
   }, []);
 
   return (
