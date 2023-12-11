@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NonBreakingSpan, Typography } from 'components';
 import { Colors, media, Spaces } from 'theme';
 import { FluidContainer, Divider } from 'components';
-import { AiOutlineInstagram } from 'react-icons/ai';
+import { AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
 import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
@@ -24,7 +24,9 @@ const FooterTopContainer = styled.div`
   justify-content: space-between;
 `;
 
-const FooterBottomContainer = styled(FooterTopContainer)``;
+const FooterBottomContainer = styled(FooterTopContainer)`
+  justify-content: center;
+`;
 const FooterBottomInner = styled.div`
   display: flex;
   flex-direction: row;
@@ -39,6 +41,9 @@ const FooterBottomInner = styled.div`
       display: none;
     }
   `)}
+  ${media('mobile')(`
+    text-align: center;
+-  `)}
 `;
 
 export const Footer = () => (
@@ -168,17 +173,31 @@ export const Footer = () => (
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
           (323) 343-2465
         </Typography>
+        <div>
+          <Link
+            target="_blank"
+            href={'https://www.instagram.com/usucalstatela/?hl=en'}
+            aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
+          >
+            <AiOutlineInstagram
+              color={Colors.greyLighter}
+              fontSize="32px"
+            ></AiOutlineInstagram>
+          </Link>
+          <Link
+            target="_blank"
+            href={
+              'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
+            }
+            aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
+          >
+            <AiOutlineLinkedin
+              color={Colors.greyLighter}
+              fontSize="32px"
+            ></AiOutlineLinkedin>
+          </Link>
+        </div>
       </FooterBottomInner>
-      <Link
-        target="_blank"
-        href={'https://www.instagram.com/usucalstatela/?hl=en'}
-        aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-      >
-        <AiOutlineInstagram
-          color={Colors.greyLighter}
-          fontSize="32px"
-        ></AiOutlineInstagram>
-      </Link>
     </FooterBottomContainer>
   </FluidContainer>
 );
