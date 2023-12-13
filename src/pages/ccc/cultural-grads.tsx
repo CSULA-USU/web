@@ -1,8 +1,7 @@
-import { FaGraduationCap, FaRegQuestionCircle } from 'react-icons/fa';
+import { FaRegQuestionCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
-  Button,
   Card,
   Divider,
   FluidContainer,
@@ -26,8 +25,8 @@ const TabContent = styled(Typography)`
 
 const HowTab = () => (
   <TabContent>
-    Please read through the application requirements carefully! For the best
-    results, please disable pop-up blockers and complete form in Incognito mode.
+    Read through the application requirements carefully! For the best results,
+    please disable pop-up blockers and complete form in Incognito mode.
   </TabContent>
 );
 
@@ -248,7 +247,7 @@ export default function CulturalGrads() {
           >
             <FluidContainer flex flexDirection="column" alignItems="center">
               <Typography variant="title" as="h1">
-                Cultural Graduate Celebrations
+                Cultural Graduate Celebrationsmobeel
               </Typography>
               <Image
                 marginTop="24px"
@@ -268,17 +267,11 @@ export default function CulturalGrads() {
                 academic success. The ceremonies are open to all students who
                 would like to sign up and participate.
               </Typography>
-              <Button variant="black" href="#apply">
-                <SubHeaderSpan>
-                  Apply Now&nbsp;
-                  <FaGraduationCap color={'white'} fontSize={'24px'} />
-                </SubHeaderSpan>
-              </Button>
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
             <SubHeaderSpan id="apply">
-              <Typography margin="24px" as="h2" variant="titleSmall">
+              <Typography margin="24px 0px" as="h2" variant="titleSmall">
                 Graduations
               </Typography>
             </SubHeaderSpan>
@@ -335,44 +328,45 @@ export default function CulturalGrads() {
           </FluidContainer>
           <FluidContainer
             flex
-            flexDirection="column"
+            flexDirection="row"
             backgroundImage="/backgrounds/subtle-background-4.jpg"
+            justifyContent="space-evenly"
           >
-            <FluidContainer flex>
-              <FluidContainer flex flexDirection="column">
-                <TeaserContainer />
+            <FluidContainer
+              flex
+              flexDirection="column"
+              padding="16px"
+              innerMaxWidth="500px"
+            >
+              <TeaserContainer />
+              <br />
+              <Typography variant="cta">Nuestra Grad &apos;22</Typography>
+            </FluidContainer>
+            <FluidContainer
+              padding="16px"
+              flex
+              flexDirection="column"
+              innerMaxWidth="500px"
+            >
+              <Typography variant="title">
+                Cultural Graduate Celebrations
+              </Typography>
+              <Typography margin="24px 0">
+                <strong>Dear Cal State LA Prospective Graduate,</strong>
                 <br />
-                <Typography variant="cta">Nuestra Grad &apos;22</Typography>
-              </FluidContainer>
-              <FluidContainer>
-                <Typography variant="title">
-                  Cultural Graduate Celebrations
-                </Typography>
-                <Typography margin="24px 0">
-                  <strong>Dear Cal State LA Prospective Graduate,</strong>
-                  <br />
-                  These ceremonies and celebrations are great opportunities to
-                  acknowledge your academic achievements, honor your families,
-                  communities, and other significant people in your lives, and
-                  to celebrate the cultural influences that have contributed to
-                  your academic success. The ceremonies are open to all students
-                  who would like to sign up and participate.
-                </Typography>
-                <Button variant="black" href="#apply">
-                  <SubHeaderSpan>
-                    Apply Now&nbsp;
-                    <FaGraduationCap color={'white'} fontSize={'24px'} />
-                  </SubHeaderSpan>
-                </Button>
-              </FluidContainer>
+                These ceremonies and celebrations are great opportunities to
+                acknowledge your academic achievements, honor your families,
+                communities, and other significant people in your lives, and to
+                celebrate the cultural influences that have contributed to your
+                academic success. The ceremonies are open to all students who
+                would like to sign up and participate.
+              </Typography>
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan id="apply">
-              <Typography margin="24px" as="h2" variant="titleSmall">
-                Graduations
-              </Typography>
-            </SubHeaderSpan>
+            <Typography margin="24px 0px" as="h2" variant="titleSmall">
+              Graduations
+            </Typography>
             <FluidContainer flex flexWrap="wrap" padding="0px">
               {cards.map((props) => (
                 <Card
