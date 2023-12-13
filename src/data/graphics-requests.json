@@ -5,20 +5,20 @@
     "submissionDate": "November 28, 2023",
     "requestor": "Bobby Bobbers",
     "artist": "Bob Ross",
-    "digitalDelivery": "September 29, 2023",
-    "printDate": "September 29, 2023",
-    "printDelivery": "September 29, 2023",
-    "eventDate": "September 29, 2023"
+    "digitalDelivery": "September 29",
+    "printDate": "September 29",
+    "printDelivery": "September 29",
+    "eventDate": "September 29"
   },
   {
     "department": "CCC",
     "title": "Santa's Village",
-    "submissionDate": "November 28, 2023",
+    "submissionDate": "December 28, 2023",
     "requestor": "Bobby Bobbers",
     "artist": "Bob Ross",
-    "digitalDelivery": "June 29, 2023",
-    "printDate": "Jnaurary 29, 2023",
-    "printDelivery": "Febraury 29, 2023",
-    "eventDate": "COtober 29, 2023"
+    "digitalDelivery": "June 29",
+    "printDate": "Janurary 29",
+    "printDelivery": "February 29",
+    "eventDate": "October 29"
   }
 ]

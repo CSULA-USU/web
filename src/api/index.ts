@@ -14,7 +14,7 @@ export const fetchInstagramFeed = async (org: string) => {
 
 export const fetchRequests = async () => {
   try {
-    const data = await fetch('../api/notion');
+    const data = await fetch('/api/notion');
     const requestFeed = await data.json();
     return requestFeed;
   } catch (error) {

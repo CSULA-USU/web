@@ -14,6 +14,7 @@ import graphicsRequests from 'data/graphics-requests.json';
 import departments from 'data/departments.json';
 import { BiChevronRight } from 'react-icons/bi';
 import { Spaces } from 'theme';
+import { useBreakpoint } from 'hooks';
 
 export interface Prop {
   department: 'csi' | 'ccc' | 'graffix' | 'operations' | 'recreation';
@@ -36,47 +37,38 @@ const getNotionColors = (color: StatusButtonProps['color']) => {
     case 'grey':
       return css`
         background-color: #787774;
-        color: #fff;
       `;
     case 'orange':
       return css`
         background-color: #d9730d;
-        color: #fff;
       `;
     case 'purple':
       return css`
         background-color: #9065b0;
-        color: #fff;
       `;
     case 'blue':
       return css`
         background-color: #337ea9;
-        color: #fff;
       `;
     case 'pink':
       return css`
         background-color: #c14c8a;
-        color: #fff;
       `;
     case 'red':
       return css`
         background-color: #d44c47;
-        color: #fff;
       `;
     case 'green':
       return css`
         background-color: #448361;
-        color: #fff;
       `;
     case 'brown':
       return css`
         background-color: #9f6b53;
-        color: #fff;
       `;
     default:
       return css`
         background-color: #37352f;
-        color: #fff;
       `;
   }
 };
@@ -86,12 +78,19 @@ const StatusButton = styled.button<StatusButtonProps>`
   border: none;
   border-radius: 5px;
   margin: ${Spaces.md};
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.7;
+  }
 
   ${(props) => getNotionColors(props.color)}
 `;
 
 const StatusNav = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 `;
@@ -105,6 +104,7 @@ const ExpandableContainer = styled.div`
 const Table = styled.table`
   text-align: left;
   width: 100%;
+  flex-wrap: wrap;
   table {
     border-collapse: collapse;
   }
@@ -118,9 +118,15 @@ const Table = styled.table`
 `;
 
 export const GraphicsRequests = ({}: Prop) => {
+  const { isMobile } = useBreakpoint();
   const [department, setDepartment] = useState<(typeof departments)[number]>();
+  const [currentStatus, setCurrentStatus] = useState('All');
   const [requests] = useState(graphicsRequests);
   const graffixRequests = useRecoilValue(graphicsRequestListState);
+
+  const changeStatus = (status: string) => {
+    setCurrentStatus(status);
+  };
 
   useEffect(() => {
     const pathSegments = window.location.pathname.split('/');
@@ -147,38 +153,76 @@ export const GraphicsRequests = ({}: Prop) => {
       </Header>
       <StatusNav>
         <StatusButton>All</StatusButton>
-        <StatusButton color="grey">Not Started</StatusButton>
-        <StatusButton color="orange">In-Progress</StatusButton>
-        <StatusButton color="purple">Approved</StatusButton>
-        <StatusButton color="blue">Send to Print</StatusButton>
-        <StatusButton color="pink">Waiting for Approval</StatusButton>
-        <StatusButton color="red">On Hold</StatusButton>
-        <StatusButton color="green">Complete</StatusButton>
-        <StatusButton color="brown">Cancelled</StatusButton>
+        <StatusButton color="grey" onClick={() => changeStatus('Not Started')}>
+          Not Started
+        </StatusButton>
+        <StatusButton
+          color="orange"
+          onClick={() => changeStatus('In-Progress')}
+        >
+          In-Progress
+        </StatusButton>
+        <StatusButton color="purple" onClick={() => changeStatus('Approved')}>
+          Approved
+        </StatusButton>
+        <StatusButton
+          color="blue"
+          onClick={() => changeStatus('Send To Print')}
+        >
+          Send to Print
+        </StatusButton>
+        <StatusButton
+          color="pink"
+          onClick={() => changeStatus('Waiting for Approval')}
+        >
+          Waiting for Approval
+        </StatusButton>
+        <StatusButton color="red" onClick={() => changeStatus('On Hold')}>
+          On Hold
+        </StatusButton>
+        <StatusButton color="green" onClick={() => changeStatus('Complete')}>
+          Complete
+        </StatusButton>
+        <StatusButton color="brown" onClick={() => changeStatus('Cancelled')}>
+          Cancelled
+        </StatusButton>
       </StatusNav>
       <FluidContainer>
+        <Typography as="h1" variant="title">
+          {currentStatus}: Alot
+        </Typography>
         {requests.map((event) => (
           <ExpandableContainer key={event.title}>
             <Expandable
-              indicator={<BiChevronRight color="black" size={48} />}
+              indicator={<BiChevronRight size={48} />}
               header={
-                <Typography
-                  variant="label"
-                  color="black"
-                  as="h3"
-                  margin={`${Spaces.sm} 0`}
-                >
+                <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
                   {event.title}
                 </Typography>
               }
             >
               <Table>
                 <tbody>
-                  <tr>
-                    <td>
-                      <span>Submission Date</span>: {event.submissionDate}
-                    </td>
-                  </tr>
+                  {isMobile ? (
+                    <>
+                      <tr>
+                        <td>
+                          <span>Submission Date</span>:
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{event.submissionDate}</td>
+                      </tr>
+                    </>
+                  ) : (
+                    <>
+                      <tr>
+                        <td>
+                          <span>Submission Date</span>: {event.submissionDate}
+                        </td>
+                      </tr>
+                    </>
+                  )}
                   <tr>
                     <td>
                       <span>Requestor</span>: {event.requestor}
@@ -191,23 +235,54 @@ export const GraphicsRequests = ({}: Prop) => {
                   </tr>
                 </tbody>
               </Table>
+              {isMobile ? (
+                <>
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span>Digital Delivery</span>: {event.digitalDelivery}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>Send To Print</span>: {event.printDate}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>Print Delivery</span>: {event.printDelivery}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>Event Date</span>: {event.eventDate}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </>
+              ) : (
+                <>
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <th>Digital Delivery:</th>
+                        <th>Send to Print:</th>
+                        <th>Print Delivery:</th>
+                        <th>Event Date:</th>
+                      </tr>
+                      <tr>
+                        <td>{event.digitalDelivery}</td>
+                        <td>{event.printDate}</td>
+                        <td>{event.printDelivery}</td>
+                        <td>{event.eventDate}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </>
+              )}
 
-              <Table>
-                <tbody>
-                  <tr>
-                    <th>Digital Delivery:</th>
-                    <th>Send to Print:</th>
-                    <th>Print Delivery:</th>
-                    <th>Event Date:</th>
-                  </tr>
-                  <tr>
-                    <td>{event.digitalDelivery}</td>
-                    <td>{event.printDate}</td>
-                    <td>{event.printDelivery}</td>
-                    <td>{event.eventDate}</td>
-                  </tr>
-                </tbody>
-              </Table>
               <FluidContainer flex justifyContent="center">
                 <Button variant="primary">View Request</Button>
               </FluidContainer>
