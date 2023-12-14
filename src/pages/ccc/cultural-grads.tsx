@@ -1,8 +1,7 @@
-import { FaGraduationCap, FaRegQuestionCircle } from 'react-icons/fa';
+import { FaRegQuestionCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
-  Button,
   Card,
   Divider,
   FluidContainer,
@@ -26,8 +25,8 @@ const TabContent = styled(Typography)`
 
 const HowTab = () => (
   <TabContent>
-    Please read through the application requirements carefully! For the best
-    results, please disable pop-up blockers and complete form in Incognito mode.
+    Read through the application requirements carefully! For the best results,
+    please disable pop-up blockers and complete form in Incognito mode.
   </TabContent>
 );
 
@@ -51,11 +50,11 @@ const WhatTab = () => (
       <li>
         Tickets for guests (guest ticket amounts may differ for each graduation)
         <ul>
-          <li>APIDA Graduate Celebration - 6 Tickets</li>
-          <li>Black Graduate Celebration - 10 Tickets</li>
-          <li>Native Graduate Celebration - 15 Tickets</li>
-          <li>Nuestra Graduate Celebration - 10 Tickets</li>
-          <li>Pride Graduate Celebration - 6 Tickets</li>
+          <li>APIDA Graduate Celebration - Ticket # TBA</li>
+          <li>Black Graduate Celebration - Ticket # TBA</li>
+          <li>Native Graduate Celebration - Ticket # TBA</li>
+          <li>Nuestra Graduate Celebration - Ticket # TBA</li>
+          <li>Pride Graduate Celebration - Ticket # TBA</li>
         </ul>
       </li>
     </ul>
@@ -72,11 +71,9 @@ const WhereTab = () => (
       <li>
         APIDA:
         <ul>
-          <li>Saturday, May 20, 2023</li>
-          <li>5:00 PM - 7:00 PM</li>
-          <li>
-            State Playhouse Theatre, California State University Los Angeles
-          </li>
+          <li>Day, Date TBA</li>
+          <li>Time TBA</li>
+          <li>Location TBA</li>
         </ul>
       </li>
     </ul>
@@ -85,9 +82,9 @@ const WhereTab = () => (
       <li>
         Black:
         <ul>
-          <li>Sunday, May 21, 2023</li>
-          <li>5:00 PM - 7:00 PM</li>
-          <li>University Gymnasium, California State University Los Angeles</li>
+          <li>Day, Date TBA</li>
+          <li>Time TBA</li>
+          <li>Location TBA</li>
         </ul>
       </li>
     </ul>
@@ -96,9 +93,9 @@ const WhereTab = () => (
       <li>
         Native:
         <ul>
-          <li>Saturday, May 20, 2023</li>
-          <li>10:00 AM - 12:00 PM</li>
-          <li>Los Angeles Room, Student Center</li>
+          <li>Day, Date TBA</li>
+          <li>Time TBA</li>
+          <li>Location TBA</li>
         </ul>
       </li>
     </ul>
@@ -107,9 +104,9 @@ const WhereTab = () => (
       <li>
         Nuestra:
         <ul>
-          <li>Sunday, May 21, 2023</li>
-          <li>12:00 PM - 2:00 PM</li>
-          <li>University Gymnasium, California State University Los Angeles</li>
+          <li>Day, Date TBA</li>
+          <li>Time TBA</li>
+          <li>Location TBA</li>
         </ul>
       </li>
     </ul>
@@ -118,9 +115,9 @@ const WhereTab = () => (
       <li>
         Pride:
         <ul>
-          <li>Friday, May 19, 2023</li>
-          <li>5:00 PM - 7:00 PM</li>
-          <li>Los Angeles Rooms, CSULA University-Student Union</li>
+          <li>Day, Date TBA</li>
+          <li>Time TBA</li>
+          <li>Location TBA</li>
         </ul>
       </li>
     </ul>
@@ -132,14 +129,14 @@ const WhoTab = () => (
   <TabContent>
     <strong>All</strong> graduating students (of all degree types, Bachelors,
     Masters, EdD) who are interested are welcome to apply. Priority is given to
-    Spring 2023 graduates, but Fall 2022 graduates are welcome to apply as well.
+    Spring 2024 graduates, but Fall 2023 graduates are welcome to apply as well.
   </TabContent>
 );
 
 const WhyTab = () => (
   <TabContent>
     You deserve to celebrate your achievements with cultural influences that are
-    integral to your being and important to you and your community! APPLY NOW!
+    integral to your being and important to you and your community! Apply now!
   </TabContent>
 );
 
@@ -160,32 +157,32 @@ const cards = [
   {
     title: 'APIDA Grad',
     children: 'Asian, Pacific Islander, South Asian, Desi-American',
-    linkText: 'Apply Here',
-    href: 'https://form.jotform.com/223187645673162',
+    linkText: 'Application Closed',
+    href: '',
     iconSrc: '/departments/ccc/apisrc/apisrc-textless.svg',
     iconAlt: 'APISRC logo',
   },
   {
     title: 'Black Grad',
     children: 'Black, African-American, Pan-African Diaspora',
-    linkText: 'Apply Here',
-    href: 'https://form.jotform.com/230055135393147',
+    linkText: 'Application Closed',
+    href: '',
     iconSrc: '/departments/logos/pasrc-icon.svg',
     iconAlt: 'PASRC logo',
   },
   {
     title: 'Native Grad',
     children: 'Native American, Indigenous',
-    linkText: 'Apply Here',
-    href: 'https://calstatela.co1.qualtrics.com/jfe/form/SV_1CaIIXDc9V2lZvU',
+    linkText: 'Application Closed',
+    href: '',
     iconSrc: '/departments/ccc/native-logo.png',
     iconAlt: 'Native American and Indigenous Student Association logo',
   },
   {
     title: 'Nuestra Grad',
     children: 'Chicana/o, Latina/o, Central American, South American',
-    linkText: 'Apply Here',
-    href: 'https://form.jotform.com/230047359271151',
+    linkText: 'Application Closed',
+    href: '',
     iconSrc: '/departments/logos/clsrc-logo.svg',
     iconAlt: 'CLSRC logo',
   },
@@ -193,8 +190,8 @@ const cards = [
     title: 'Pride Grad',
     children:
       'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
-    linkText: 'Apply Here',
-    href: 'https://form.jotform.com/223187106653152',
+    linkText: 'Application Closed',
+    href: '',
     iconSrc: '/departments/logos/gsrc-icon.svg',
     iconAlt: 'GSRC logo',
   },
@@ -242,23 +239,31 @@ export default function CulturalGrads() {
       {isDesktop ? (
         <>
           <FluidContainer
+            backgroundColor="primary"
+            flex
+            justifyContent="center"
+            alignItems="center"
+            innerMaxWidth="560px"
+          >
+            <Image
+              src="/departments/ccc/ccc-grad-banner.jpg"
+              alt="cultural grad banner"
+              width="100%"
+              height="fit-content"
+            />
+          </FluidContainer>
+          <FluidContainer
             flex
             flexDirection="column"
             backgroundImage="/backgrounds/subtle-background-4.jpg"
           >
-            <FluidContainer flex flexDirection="column" alignItems="center">
-              <Typography variant="title" as="h1">
+            <SubHeaderSpan>
+              <Typography margin="0px" as="h2" variant="titleSmall">
                 Cultural Graduate Celebrations
               </Typography>
-              <Image
-                marginTop="24px"
-                alt="picture of nuestra graduate"
-                height="100%"
-                width="100%"
-                borderRadius="12px"
-                src="/departments/ccc/nuestra-teaser.jpeg"
-              />
-              <Typography margin="24px 0" as="h3">
+            </SubHeaderSpan>
+            <FluidContainer flex flexDirection="column" alignItems="center">
+              <Typography margin="0" as="h3">
                 <strong>Dear Cal State LA Prospective Graduate,</strong>
                 <br />
                 These ceremonies and celebrations are great opportunities to
@@ -268,17 +273,11 @@ export default function CulturalGrads() {
                 academic success. The ceremonies are open to all students who
                 would like to sign up and participate.
               </Typography>
-              <Button variant="black" href="#apply">
-                <SubHeaderSpan>
-                  Apply Now&nbsp;
-                  <FaGraduationCap color={'white'} fontSize={'24px'} />
-                </SubHeaderSpan>
-              </Button>
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan id="apply">
-              <Typography margin="24px" as="h2" variant="titleSmall">
+            <SubHeaderSpan>
+              <Typography margin="0px" as="h2" variant="titleSmall">
                 Graduations
               </Typography>
             </SubHeaderSpan>
@@ -305,11 +304,11 @@ export default function CulturalGrads() {
             <IconHeading>
               <SubHeaderSpan>
                 <Typography
-                  margin="24px 8px 24px 0px"
+                  margin="0px 8px 0px 0px"
                   as="h2"
                   variant="titleSmall"
                 >
-                  Frequently Asked Questions
+                  FAQs
                 </Typography>
                 <FaRegQuestionCircle fontSize={'24px'} />
               </SubHeaderSpan>
@@ -328,51 +327,52 @@ export default function CulturalGrads() {
           >
             <Image
               src="/departments/ccc/ccc-grad-banner.jpg"
-              alt="recreation logo"
+              alt="cultural grad banner"
               width="100%"
               height="fit-content"
             />
           </FluidContainer>
           <FluidContainer
             flex
-            flexDirection="column"
+            flexDirection="row"
             backgroundImage="/backgrounds/subtle-background-4.jpg"
+            justifyContent="space-evenly"
           >
-            <FluidContainer flex>
-              <FluidContainer flex flexDirection="column">
-                <TeaserContainer />
+            <FluidContainer
+              flex
+              flexDirection="column"
+              padding="16px"
+              innerMaxWidth="500px"
+            >
+              <TeaserContainer />
+              <br />
+              <Typography variant="cta">Nuestra Grad &apos;22</Typography>
+            </FluidContainer>
+            <FluidContainer
+              padding="16px"
+              flex
+              flexDirection="column"
+              innerMaxWidth="500px"
+            >
+              <Typography variant="title">
+                Cultural Graduate Celebrations
+              </Typography>
+              <Typography margin="24px 0">
+                <strong>Dear Cal State LA Prospective Graduate,</strong>
                 <br />
-                <Typography variant="cta">Nuestra Grad &apos;22</Typography>
-              </FluidContainer>
-              <FluidContainer>
-                <Typography variant="title">
-                  Cultural Graduate Celebrations
-                </Typography>
-                <Typography margin="24px 0">
-                  <strong>Dear Cal State LA Prospective Graduate,</strong>
-                  <br />
-                  These ceremonies and celebrations are great opportunities to
-                  acknowledge your academic achievements, honor your families,
-                  communities, and other significant people in your lives, and
-                  to celebrate the cultural influences that have contributed to
-                  your academic success. The ceremonies are open to all students
-                  who would like to sign up and participate.
-                </Typography>
-                <Button variant="black" href="#apply">
-                  <SubHeaderSpan>
-                    Apply Now&nbsp;
-                    <FaGraduationCap color={'white'} fontSize={'24px'} />
-                  </SubHeaderSpan>
-                </Button>
-              </FluidContainer>
+                These ceremonies and celebrations are great opportunities to
+                acknowledge your academic achievements, honor your families,
+                communities, and other significant people in your lives, and to
+                celebrate the cultural influences that have contributed to your
+                academic success. The ceremonies are open to all students who
+                would like to sign up and participate.
+              </Typography>
             </FluidContainer>
           </FluidContainer>
           <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan id="apply">
-              <Typography margin="24px" as="h2" variant="titleSmall">
-                Graduations
-              </Typography>
-            </SubHeaderSpan>
+            <Typography margin="24px 0px" as="h2" variant="titleSmall">
+              Graduations
+            </Typography>
             <FluidContainer flex flexWrap="wrap" padding="0px">
               {cards.map((props) => (
                 <Card

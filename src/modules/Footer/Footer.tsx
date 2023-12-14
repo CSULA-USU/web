@@ -25,7 +25,8 @@ const FooterTopContainer = styled.div`
 `;
 
 const FooterBottomContainer = styled(FooterTopContainer)`
-  justify-content: center;
+  justify-content: space-between;
+  ${media('mobile')(`justify-content: center`)}
 `;
 const FooterBottomInner = styled.div`
   display: flex;
@@ -173,31 +174,31 @@ export const Footer = () => (
         <Typography color="greyLighter" size="sm" lineHeight="2.4">
           (323) 343-2465
         </Typography>
-        <div>
-          <Link
-            target="_blank"
-            href={'https://www.instagram.com/usucalstatela/?hl=en'}
-            aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-          >
-            <AiOutlineInstagram
-              color={Colors.greyLighter}
-              fontSize="32px"
-            ></AiOutlineInstagram>
-          </Link>
-          <Link
-            target="_blank"
-            href={
-              'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
-            }
-            aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
-          >
-            <AiOutlineLinkedin
-              color={Colors.greyLighter}
-              fontSize="32px"
-            ></AiOutlineLinkedin>
-          </Link>
-        </div>
       </FooterBottomInner>
+      <div>
+        <Link
+          target="_blank"
+          href={'https://www.instagram.com/usucalstatela/?hl=en'}
+          aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
+        >
+          <AiOutlineInstagram
+            color={Colors.greyLighter}
+            fontSize="32px"
+          ></AiOutlineInstagram>
+        </Link>
+        <Link
+          target="_blank"
+          href={
+            'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
+          }
+          aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
+        >
+          <AiOutlineLinkedin
+            color={Colors.greyLighter}
+            fontSize="32px"
+          ></AiOutlineLinkedin>
+        </Link>
+      </div>
     </FooterBottomContainer>
   </FluidContainer>
 );
