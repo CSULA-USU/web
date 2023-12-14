@@ -10,11 +10,10 @@ import { Header, Page } from 'modules';
 import styled, { css } from 'styled-components';
 import { graphicsRequestListState } from 'atoms';
 import { useRecoilValue } from 'recoil';
-import graphicsRequests from 'data/graphics-requests.json';
 import departments from 'data/departments.json';
 import { BiChevronRight } from 'react-icons/bi';
 import { Spaces } from 'theme';
-import { useBreakpoint } from 'hooks';
+// import { useBreakpoint } from 'hooks';
 
 export interface Prop {
   department: 'csi' | 'ccc' | 'graffix' | 'operations' | 'recreation';
@@ -37,38 +36,47 @@ const getNotionColors = (color: StatusButtonProps['color']) => {
     case 'grey':
       return css`
         background-color: #787774;
+        color: #f1f1ef;
       `;
     case 'orange':
       return css`
         background-color: #d9730d;
+        color: #faebdd;
       `;
     case 'purple':
       return css`
         background-color: #9065b0;
+        color: #f6f3f9;
       `;
     case 'blue':
       return css`
         background-color: #337ea9;
+        color: #e7f3f8;
       `;
     case 'pink':
       return css`
         background-color: #c14c8a;
+        color: #faf1f5;
       `;
     case 'red':
       return css`
         background-color: #d44c47;
+        color: #fdebec;
       `;
     case 'green':
       return css`
         background-color: #448361;
+        color: #edf3ec;
       `;
     case 'brown':
       return css`
         background-color: #9f6b53;
+        color: #f4eeee;
       `;
     default:
       return css`
         background-color: #37352f;
+        color: #fff;
       `;
   }
 };
@@ -77,7 +85,10 @@ const StatusButton = styled.button<StatusButtonProps>`
   text-align: center;
   border: none;
   border-radius: 5px;
+  padding: 12px 16px;
   margin: ${Spaces.md};
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
   color: #fff;
 
@@ -101,38 +112,56 @@ const ExpandableContainer = styled.div`
   margin: ${Spaces.md};
 `;
 
-const Table = styled.table`
-  text-align: left;
-  width: 100%;
+const RequestLabel = styled.span`
+  text-decoration: underline;
+`;
+
+const InnerRequestContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  table {
-    border-collapse: collapse;
-  }
-  th {
-    text-decoration: underline;
-    font-weight: normal;
-  }
-  span {
-    text-decoration: underline;
-  }
+  width: 95%;
+`;
+
+const RequestInfoContainer = styled.div`
+  margin: ${Spaces.xs};
 `;
 
 export const GraphicsRequests = ({}: Prop) => {
-  const { isMobile } = useBreakpoint();
+  // const { isMobile } = useBreakpoint();
   const [department, setDepartment] = useState<(typeof departments)[number]>();
-  const [currentStatus, setCurrentStatus] = useState('All');
-  const [requests] = useState(graphicsRequests);
+  const statuses = [
+    'Not Started',
+    'In-Progress',
+    'Approved',
+    'Send to Print',
+    'Waiting for Approval',
+    'On Hold',
+    'Complete',
+    'Cancelled',
+  ];
+  const [currentStatus, setCurrentStatus] = useState(statuses[0]);
   const graffixRequests = useRecoilValue(graphicsRequestListState);
+  const [requestCount, setRequestCount] = useState(0);
 
   const changeStatus = (status: string) => {
     setCurrentStatus(status);
+    const requestsFilter = graffixRequests
+      .filter(
+        (request) =>
+          request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
+          department?.id,
+      )
+      .filter((request) => request.properties.Status.status.name === status);
+    setRequestCount(requestsFilter.length);
   };
 
   useEffect(() => {
     const pathSegments = window.location.pathname.split('/');
     const id = pathSegments[pathSegments.length - 1];
-    const dep = departments.find((room) => room.id === id);
-    setDepartment(dep);
+    const selectedDepartment = departments.find((param) => param.id === id);
+    setDepartment(selectedDepartment);
+    // setRequestCount(requestsFilter.length);
     console.log(
       'requests from recoil within graphics-requests',
       graffixRequests,
@@ -152,7 +181,7 @@ export const GraphicsRequests = ({}: Prop) => {
         ></Image>
       </Header>
       <StatusNav>
-        <StatusButton>All</StatusButton>
+        <StatusButton onClick={() => changeStatus('All')}>All</StatusButton>
         <StatusButton color="grey" onClick={() => changeStatus('Not Started')}>
           Not Started
         </StatusButton>
@@ -188,107 +217,187 @@ export const GraphicsRequests = ({}: Prop) => {
         </StatusButton>
       </StatusNav>
       <FluidContainer>
-        <Typography as="h1" variant="title">
-          {currentStatus}: Alot
-        </Typography>
-        {requests.map((event) => (
-          <ExpandableContainer key={event.title}>
-            <Expandable
-              indicator={<BiChevronRight size={48} />}
-              header={
-                <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-                  {event.title}
+        {currentStatus === 'All' ? (
+          <>
+            {statuses.map((status, index) => (
+              <>
+                <Typography as="h1" variant="title" key={index}>
+                  {status}: {requestCount}
                 </Typography>
-              }
-            >
-              <Table>
-                <tbody>
-                  {isMobile ? (
-                    <>
-                      <tr>
-                        <td>
-                          <span>Submission Date</span>:
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>{event.submissionDate}</td>
-                      </tr>
-                    </>
-                  ) : (
-                    <>
-                      <tr>
-                        <td>
-                          <span>Submission Date</span>: {event.submissionDate}
-                        </td>
-                      </tr>
-                    </>
-                  )}
-                  <tr>
-                    <td>
-                      <span>Requestor</span>: {event.requestor}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>Artist</span>: {event.artist}
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              {isMobile ? (
-                <>
-                  <Table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <span>Digital Delivery</span>: {event.digitalDelivery}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Send To Print</span>: {event.printDate}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Print Delivery</span>: {event.printDelivery}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Event Date</span>: {event.eventDate}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </>
-              ) : (
-                <>
-                  <Table>
-                    <tbody>
-                      <tr>
-                        <th>Digital Delivery:</th>
-                        <th>Send to Print:</th>
-                        <th>Print Delivery:</th>
-                        <th>Event Date:</th>
-                      </tr>
-                      <tr>
-                        <td>{event.digitalDelivery}</td>
-                        <td>{event.printDate}</td>
-                        <td>{event.printDelivery}</td>
-                        <td>{event.eventDate}</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </>
-              )}
+                {graffixRequests
+                  .filter(
+                    (request) =>
+                      request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
+                      department?.id,
+                  )
+                  .filter(
+                    (request) =>
+                      request.properties.Status.status.name === status,
+                  )
+                  .map((request) => (
+                    <ExpandableContainer key={request.title}>
+                      <Expandable
+                        indicator={<BiChevronRight size={48} />}
+                        header={
+                          <Typography
+                            variant="label"
+                            as="h3"
+                            margin={`${Spaces.sm} 0`}
+                          >
+                            {request.properties.Item.title[0]?.plain_text}
+                          </Typography>
+                        }
+                      >
+                        <RequestInfoContainer>
+                          <RequestLabel>Submission Date</RequestLabel>:{' '}
+                          {request.properties['Submission Date']?.date?.start}
+                        </RequestInfoContainer>
+                        <RequestInfoContainer>
+                          <RequestLabel>Requestor</RequestLabel>:{' '}
+                          {request.properties.Contact.rich_text[0]?.plain_text}
+                        </RequestInfoContainer>
+                        <RequestInfoContainer>
+                          <RequestLabel>Artist</RequestLabel>: {}
+                        </RequestInfoContainer>
+                        <InnerRequestContainer>
+                          <RequestInfoContainer>
+                            <RequestLabel>Digital Delivery</RequestLabel>:
+                            <Typography as="p" variant="cta" weight="400">
+                              {
+                                request.properties['Digital Delivery']?.formula
+                                  ?.date?.start
+                              }
+                            </Typography>
+                          </RequestInfoContainer>
+                          <RequestInfoContainer>
+                            <RequestLabel>Send To Print</RequestLabel>:
+                            <Typography as="p" variant="cta" weight="400">
+                              {
+                                request.properties['Send to Print']?.formula
+                                  ?.date?.start
+                              }
+                            </Typography>
+                          </RequestInfoContainer>
+                          <RequestInfoContainer>
+                            <RequestLabel>Print Delivery</RequestLabel>:
+                            <Typography as="p" variant="cta" weight="400">
+                              {
+                                request.properties['Print Delivery']?.formula
+                                  ?.date?.start
+                              }
+                            </Typography>
+                          </RequestInfoContainer>
+                          <RequestInfoContainer>
+                            <RequestLabel>Event Date</RequestLabel>:
+                            <Typography as="p" variant="cta" weight="400">
+                              {request.properties['Event Date']?.date?.start}
+                            </Typography>
+                          </RequestInfoContainer>
+                        </InnerRequestContainer>
 
-              <FluidContainer flex justifyContent="center">
-                <Button variant="primary">View Request</Button>
-              </FluidContainer>
-            </Expandable>
-          </ExpandableContainer>
-        ))}
+                        <FluidContainer flex justifyContent="center">
+                          <Button
+                            variant="primary"
+                            href={request.properties['Project Brief']?.url}
+                          >
+                            View Request
+                          </Button>
+                        </FluidContainer>
+                      </Expandable>
+                    </ExpandableContainer>
+                  ))}
+              </>
+            ))}
+          </>
+        ) : (
+          <>
+            <Typography as="h1" variant="title">
+              {currentStatus}: {requestCount}
+            </Typography>
+            {graffixRequests
+              .filter(
+                (request) =>
+                  request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
+                  department?.id,
+              )
+              .filter(
+                (request) =>
+                  request.properties.Status.status.name === currentStatus,
+              )
+              .map((request) => (
+                <ExpandableContainer key={request.title}>
+                  <Expandable
+                    indicator={<BiChevronRight size={48} />}
+                    header={
+                      <Typography
+                        variant="label"
+                        as="h3"
+                        margin={`${Spaces.sm} 0`}
+                      >
+                        {request.properties.Item.title[0]?.plain_text}
+                      </Typography>
+                    }
+                  >
+                    <RequestInfoContainer>
+                      <RequestLabel>Submission Date</RequestLabel>:{' '}
+                      {request.properties['Submission Date']?.date?.start}
+                    </RequestInfoContainer>
+                    <RequestInfoContainer>
+                      <RequestLabel>Requestor</RequestLabel>:{' '}
+                      {request.properties.Contact.rich_text[0]?.plain_text}
+                    </RequestInfoContainer>
+                    <RequestInfoContainer>
+                      <RequestLabel>Artist</RequestLabel>: {}
+                    </RequestInfoContainer>
+                    <InnerRequestContainer>
+                      <RequestInfoContainer>
+                        <RequestLabel>Digital Delivery</RequestLabel>:
+                        <Typography as="p" variant="cta" weight="400">
+                          {
+                            request.properties['Digital Delivery']?.formula
+                              ?.date?.start
+                          }
+                        </Typography>
+                      </RequestInfoContainer>
+                      <RequestInfoContainer>
+                        <RequestLabel>Send To Print</RequestLabel>:
+                        <Typography as="p" variant="cta" weight="400">
+                          {
+                            request.properties['Send to Print']?.formula?.date
+                              ?.start
+                          }
+                        </Typography>
+                      </RequestInfoContainer>
+                      <RequestInfoContainer>
+                        <RequestLabel>Print Delivery</RequestLabel>:
+                        <Typography as="p" variant="cta" weight="400">
+                          {
+                            request.properties['Print Delivery']?.formula?.date
+                              ?.start
+                          }
+                        </Typography>
+                      </RequestInfoContainer>
+                      <RequestInfoContainer>
+                        <RequestLabel>Event Date</RequestLabel>:
+                        <Typography as="p" variant="cta" weight="400">
+                          {request.properties['Event Date']?.date?.start}
+                        </Typography>
+                      </RequestInfoContainer>
+                    </InnerRequestContainer>
+
+                    <FluidContainer flex justifyContent="center">
+                      <Button
+                        variant="primary"
+                        href={request.properties['Project Brief']?.url}
+                      >
+                        View Request
+                      </Button>
+                    </FluidContainer>
+                  </Expandable>
+                </ExpandableContainer>
+              ))}
+          </>
+        )}
       </FluidContainer>
     </Page>
   );
