@@ -8,7 +8,6 @@ export default async function handler(_req: any, res: NextApiResponse<any>) {
     const requestFeed = await notion.databases.query({
       database_id: databaseId,
     });
-
     res.status(200).json(requestFeed.results);
   } catch (error) {
     console.error('Error fetching data from Notion:', error);

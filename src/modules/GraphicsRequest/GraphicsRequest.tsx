@@ -13,7 +13,7 @@ import { graphicsRequestListState } from 'atoms';
 import { useRecoilValue } from 'recoil';
 import departments from 'data/departments.json';
 import { BiChevronRight } from 'react-icons/bi';
-import { Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 // import { useBreakpoint } from 'hooks';
 
 export interface Prop {
@@ -30,6 +30,8 @@ interface StatusButtonProps {
     | 'red'
     | 'green'
     | 'brown';
+
+  active?: boolean;
 }
 
 const notionColorsDM = (color: StatusButtonProps['color']) => {
@@ -82,56 +84,6 @@ const notionColorsDM = (color: StatusButtonProps['color']) => {
   }
 };
 
-// const notionColorsLM = (color: StatusButtonProps['color']) => {
-//   switch (color) {
-//     case 'grey':
-//       return css`
-//         background-color: #787774;
-//         color: #f1f1ef;
-//       `;
-//     case 'orange':
-//       return css`
-//         background-color: #d9730d;
-//         color: #faebdd;
-//       `;
-//     case 'purple':
-//       return css`
-//         background-color: #9065b0;
-//         color: #f6f3f9;
-//       `;
-//     case 'blue':
-//       return css`
-//         background-color: #337ea9;
-//         color: #e7f3f8;
-//       `;
-//     case 'pink':
-//       return css`
-//         background-color: #c14c8a;
-//         color: #faf1f5;
-//       `;
-//     case 'red':
-//       return css`
-//         background-color: #d44c47;
-//         color: #fdebec;
-//       `;
-//     case 'green':
-//       return css`
-//         background-color: #448361;
-//         color: #edf3ec;
-//       `;
-//     case 'brown':
-//       return css`
-//         background-color: #9f6b53;
-//         color: #f4eeee;
-//       `;
-//     default:
-//       return css`
-//         background-color: #37352f;
-//         color: #fff;
-//       `;
-//   }
-// };
-
 const StatusButton = styled.button<StatusButtonProps>`
   text-align: center;
   border: none;
@@ -142,12 +94,19 @@ const StatusButton = styled.button<StatusButtonProps>`
   font-weight: 700;
   cursor: pointer;
   color: #fff;
+  box-shadow: 3px 3px 5px ${Colors.greyDarkest};
 
   &:hover {
     opacity: 0.7;
   }
 
   ${(props) => notionColorsDM(props.color)}
+
+  ${(props) =>
+    props.active &&
+    css`
+      box-shadow: none;
+    `}
 `;
 
 const StatusNav = styled.div`
@@ -189,14 +148,17 @@ const AllRequestsCountContainer = styled.div`
 `;
 
 const Loading = styled.div<{ visible?: boolean }>`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  justify
-  background-color: white;
-  opacity: 0.7;
-  width: 100%;
-  height: 100%;
-
-  ${(props) => (props.visible === true ? 'display: block' : 'display: none')}
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: fixed;
+  font-weight: 700;
+  font-size: 36px;
 `;
 
 type RequestsMap = Record<string, { title: string; data: any[] }>;
@@ -208,8 +170,8 @@ export const GraphicsRequests = ({ department }: Prop) => {
         title: 'Not Started',
         data: [],
       },
-      'In-Progress': {
-        title: 'In-Progress',
+      'In Progress': {
+        title: 'In Progress',
         data: [],
       },
       Approved: {
@@ -241,6 +203,7 @@ export const GraphicsRequests = ({ department }: Prop) => {
   );
   const [currentStatus, setCurrentStatus] = useState('All');
   const graffixRequests = useRecoilValue(graphicsRequestListState);
+  const [loading, setLoading] = useState(true);
 
   const populateRequestsList = useCallback(() => {
     Object.values(requestsList).forEach((status) => {
@@ -257,13 +220,20 @@ export const GraphicsRequests = ({ department }: Prop) => {
     });
   }, [department, graffixRequests, requestsList]);
 
+  const toggleLoading = () => {
+    if (loading) {
+      setLoading(false);
+    }
+  };
+
   const changeStatus = (status: string) => {
     setCurrentStatus(status);
   };
 
   useEffect(() => {
     populateRequestsList();
-    // toggleLoading();
+    setTimeout(() => toggleLoading(), 2000);
+    console.log(graffixRequests);
   }, [graffixRequests, populateRequestsList]);
 
   return (
@@ -275,48 +245,76 @@ export const GraphicsRequests = ({ department }: Prop) => {
       <Header
         title={`${
           departments.find((d) => d.id === department)?.title
-        } Graphics Request`}
+        } Graphics Requests`}
         backgroundImage="/subtle-background-2.jpg"
       >
         <Image
-          alt="Graphics Requests Art Museum Header Image"
-          src="/departments/graffix/backoffice/graphics-requests.svg"
+          alt="Graphics Requests Designer Life Header Image"
+          src="/departments/graffix/backoffice/graffix-requests.svg"
           size={300}
         ></Image>
       </Header>
       <StatusNav>
-        <StatusButton onClick={() => changeStatus('All')}>All</StatusButton>
-        <StatusButton color="grey" onClick={() => changeStatus('Not Started')}>
+        <StatusButton
+          active={currentStatus === 'All'}
+          onClick={() => changeStatus('All')}
+        >
+          All
+        </StatusButton>
+        <StatusButton
+          color="grey"
+          active={currentStatus === 'Not Started'}
+          onClick={() => changeStatus('Not Started')}
+        >
           Not Started
         </StatusButton>
         <StatusButton
           color="orange"
-          onClick={() => changeStatus('In-Progress')}
+          active={currentStatus === 'In Progress'}
+          onClick={() => changeStatus('In Progress')}
         >
-          In-Progress
+          In Progress
         </StatusButton>
-        <StatusButton color="purple" onClick={() => changeStatus('Approved')}>
+        <StatusButton
+          color="purple"
+          active={currentStatus === 'Approved'}
+          onClick={() => changeStatus('Approved')}
+        >
           Approved
         </StatusButton>
         <StatusButton
           color="blue"
+          active={currentStatus === 'Send to Print'}
           onClick={() => changeStatus('Send to Print')}
         >
           Send to Print
         </StatusButton>
         <StatusButton
           color="pink"
+          active={currentStatus === 'Waiting for Approval'}
           onClick={() => changeStatus('Waiting for Approval')}
         >
           Waiting for Approval
         </StatusButton>
-        <StatusButton color="red" onClick={() => changeStatus('On Hold')}>
+        <StatusButton
+          color="red"
+          active={currentStatus === 'On Hold'}
+          onClick={() => changeStatus('On Hold')}
+        >
           On Hold
         </StatusButton>
-        <StatusButton color="green" onClick={() => changeStatus('Complete')}>
+        <StatusButton
+          color="green"
+          active={currentStatus === 'Complete'}
+          onClick={() => changeStatus('Complete')}
+        >
           Complete
         </StatusButton>
-        <StatusButton color="brown" onClick={() => changeStatus('Cancelled')}>
+        <StatusButton
+          color="brown"
+          active={currentStatus === 'Cancelled'}
+          onClick={() => changeStatus('Cancelled')}
+        >
           Cancelled
         </StatusButton>
       </StatusNav>
@@ -324,8 +322,8 @@ export const GraphicsRequests = ({ department }: Prop) => {
         {currentStatus === 'All' ? (
           <>
             {Object.values(requestsList).map((status, index) => (
-              <>
-                <Typography as="h1" variant="title" key={index}>
+              <div key={index}>
+                <Typography as="h1" variant="title">
                   {status.title}: {status.data.length || 0}
                 </Typography>
                 {status.data.map((data, index) => (
@@ -400,7 +398,7 @@ export const GraphicsRequests = ({ department }: Prop) => {
                     </Expandable>
                   </ExpandableContainer>
                 ))}
-              </>
+              </div>
             ))}
             <AllRequestsCountContainer>
               <Typography as="h1" variant="title">
@@ -502,7 +500,13 @@ export const GraphicsRequests = ({ department }: Prop) => {
           </>
         )}
       </FluidContainer>
-      <Loading visible>Loading...</Loading>
+      {loading ? (
+        <>
+          <Loading>Loading...</Loading>
+        </>
+      ) : (
+        <></>
+      )}
     </Page>
   );
 };
