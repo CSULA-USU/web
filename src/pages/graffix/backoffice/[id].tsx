@@ -16,6 +16,7 @@ import { BiChevronRight } from 'react-icons/bi';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 // export interface Prop {
 //   department: 'csi' | 'ccc' | 'graffix' | 'operations' | 'recreation';
@@ -600,7 +601,42 @@ export default function GraphicsRequests() {
           )}
         </>
       ) : (
-        <></>
+        <>
+          <FluidContainer>
+            <FluidContainer flex justifyContent="center" alignItems="center">
+              <Typography as="h1" variant="title">
+                OOPS! We can&apos;t find the page you&apos;re looking for.
+              </Typography>
+            </FluidContainer>
+            <FluidContainer flex justifyContent="center" alignItems="center">
+              <Image
+                alt="Eddie the Eagle figuring out what you were thinking"
+                src="https://media.giphy.com/media/Ihn3KpMcpCMamJdI30/giphy.gif"
+              ></Image>
+            </FluidContainer>
+
+            <FluidContainer flex justifyContent="center" alignItems="center">
+              <Typography as="h2" variant="subheader">
+                Did you mean:{' '}
+              </Typography>
+              <Link href="/graffix/backoffice/csi">
+                <StatusButton color="blue">CSI</StatusButton>
+              </Link>
+              <Link href="/graffix/backoffice/ccc">
+                <StatusButton color="green">CCC</StatusButton>
+              </Link>
+              <Link href="/graffix/backoffice/graffix">
+                <StatusButton color="orange">Graffix</StatusButton>
+              </Link>
+              <Link href="/graffix/backoffice/operations">
+                <StatusButton color="purple">Operations</StatusButton>
+              </Link>
+              <Link href="/graffix/backoffice/recreation">
+                <StatusButton color="red">Recreation</StatusButton>
+              </Link>
+            </FluidContainer>
+          </FluidContainer>
+        </>
       )}
     </Page>
   );
