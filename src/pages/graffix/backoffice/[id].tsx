@@ -18,10 +18,6 @@ import { useBreakpoint } from 'hooks';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-// export interface Prop {
-//   department: 'csi' | 'ccc' | 'graffix' | 'operations' | 'recreation';
-// }
-
 interface StatusButtonProps {
   color?:
     | 'grey'
@@ -501,9 +497,6 @@ export default function GraphicsRequests() {
                           <RequestLabel>Requestor</RequestLabel>:{' '}
                           {request.properties.Contact.rich_text[0]?.plain_text}
                         </RequestInfoContainer>
-                        <RequestInfoContainer>
-                          {/* <RequestLabel>Artist</RequestLabel>: {} */}
-                        </RequestInfoContainer>
                         {isMobile ? (
                           <>
                             <RequestInfoContainer>
@@ -577,7 +570,6 @@ export default function GraphicsRequests() {
                             </InnerRequestContainer>
                           </>
                         )}
-
                         <ButtonContainer>
                           <Button
                             variant="primary"
