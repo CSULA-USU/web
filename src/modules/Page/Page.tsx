@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
+import { BackToTop } from 'components';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -19,6 +20,7 @@ export const Page = ({ children }: PageProps) => (
   <PageContainer>
     <Nav />
     <div>{children}</div>
+    <BackToTop></BackToTop>
     <Footer />
   </PageContainer>
 );

@@ -50,11 +50,11 @@ export default function Employment() {
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
+          content="hiring,hire,opportunity,apply,The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
         />
         <meta
           name="description"
-          content="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
+          content="Explore work opportunities and job positions at the University-Student Union at Cal State LA, and help contribute to its mission of encouraging broad social, cultural, recreational, and informal educational programming for the university and its surroundings"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -119,7 +119,7 @@ export default function Employment() {
           href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application (2023).pdf"
           target="_blank"
         >
-          Professional Appointment
+          Full-time Professional Appointment
         </Link>
       </FluidContainer>
     </Page>

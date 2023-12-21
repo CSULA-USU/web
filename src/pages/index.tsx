@@ -77,7 +77,6 @@ export default function Home() {
       />
       {/* Toggle the line below if there is a promotion. */}
       <BoardOfDirectorsCTAPromotion />
-
       <ModUpcomingEvents events={events} />
       <CallToActionImages
         title={

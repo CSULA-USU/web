@@ -232,7 +232,7 @@ export default function Backoffice() {
     <Page>
       <Head>
         <title>Graffix Backoffice</title>
-        <meta name="author" content="Graffix Backoffice" />
+        <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SideImageHeader
