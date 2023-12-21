@@ -4,7 +4,6 @@ export * from './EventCard';
 export * from './Footer';
 export * from './Header';
 export * from './EventHeader';
-export * from './GraphicsRequest';
 export * from './Nav';
 export * from './Page';
 export * from './UpcomingEvents';

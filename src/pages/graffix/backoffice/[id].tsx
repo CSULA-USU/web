@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -209,20 +209,23 @@ export default function GraphicsRequests() {
   const [useEffectCounter, setEffectCounter] = useState(0);
   const [department, setDepartment] = useState<(typeof departments)[number]>();
 
-  const populateRequestsList = useCallback(() => {
-    Object.values(requestsList).forEach((status) => {
-      const filteredRequests = graffixRequests
-        .filter(
-          (request) =>
-            request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-            department?.id,
-        )
-        .filter(
-          (request) => request.properties.Status.status.name === status.title,
-        );
-      status.data = [...filteredRequests];
-    });
-  }, [department, graffixRequests, requestsList]);
+  const populateRequestsList = () => {
+    if (graffixRequests) {
+      Object.values(requestsList).forEach((status) => {
+        const filteredRequests = graffixRequests
+          .filter(
+            (request) =>
+              request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
+              department?.id,
+          )
+          .filter(
+            (request) => request.properties.Status.status.name === status.title,
+          );
+
+        status.data = [...filteredRequests];
+      });
+    }
+  };
 
   const toggleLoading = () => {
     if (loading) {
@@ -360,9 +363,6 @@ export default function GraphicsRequests() {
                                 ?.plain_text
                             }
                           </RequestInfoContainer>
-                          <RequestInfoContainer>
-                            {/* <RequestLabel>Artist</RequestLabel>: {} */}
-                          </RequestInfoContainer>
                           {isMobile ? (
                             <>
                               <RequestInfoContainer>
@@ -469,14 +469,14 @@ export default function GraphicsRequests() {
                   .filter(
                     (request) =>
                       request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-                      department,
+                      department?.id,
                   )
                   .filter(
                     (request) =>
                       request.properties.Status.status.name === currentStatus,
                   )
-                  .map((request) => (
-                    <ExpandableContainer key={request.title}>
+                  .map((request, index) => (
+                    <ExpandableContainer key={index}>
                       <Expandable
                         indicator={<BiChevronRight size={48} />}
                         header={
