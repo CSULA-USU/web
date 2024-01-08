@@ -232,5 +232,14 @@
     "tags": ["CSI"],
     "department": "Center for Student Involvement",
     "email": "ttabata3@calstatela.edu"
+  },
+  {
+    "name": "Yaritza Rodriguez",
+    "title": "Information and Reservations Coordinator",
+    "src": "/staff/yaritza-rodriguez.png",
+    "alt": "Yaritza Rodriguez",
+    "tags": ["Operations"],
+    "department": "Operations",
+    "email": "yrodri103@calstatela.edu"
   }
 ]
