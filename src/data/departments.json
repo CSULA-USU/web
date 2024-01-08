@@ -1,6 +1,7 @@
 [
   {
     "title": "Center for Student Involvement (CSI)",
+    "id": "csi",
     "children": "The Center for Student Involvement serves as a hub for involvement, recreation, and leadership, adding to the excitement of campus life at Cal State LA. Visit CSI to connect with student organizations, join one of our leadership development opportunities including the Leader Project, or participate in a thrilling campus activity! Getting involved on campus is the best decision you can make to set yourself up for success at Cal State LA and into your future! We look forward to meeting you soon!",
     "imgSrc": "/departments/logos/csi-icon.svg",
     "imgAlt": "CSI Icon",
@@ -9,6 +10,7 @@
   },
   {
     "title": "Cross Cultural Centers (CCC)",
+    "id": "ccc",
     "children": "The Cross Cultural Centers provide an inclusive and friendly space that allows students to be themselves. The Centers are open to individuals from all ethnic and gender backgrounds. Please stop by to find out more information or to relax and meet with friends.",
     "imgSrc": "/departments/logos/ccc-icon.svg",
     "imgAlt": "CCC Icon",
@@ -17,6 +19,7 @@
   },
   {
     "title": "Graffix",
+    "id": "graffix",
     "children": "The U-SU Graphics Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions.",
     "imgSrc": "/departments/logos/graffix-icon.svg",
     "imgAlt": "graffix Icon",
@@ -25,6 +28,7 @@
   },
   {
     "title": "Operations",
+    "id": "operations",
     "children": "The Operations Team consists of five departments: Building Maintenance, Building Services, Custodial Services, Media Services, and Information and Event Services.",
     "imgSrc": "/departments/logos/operations-icon.svg",
     "imgAlt": "Operations Icon",
@@ -34,6 +38,7 @@
   },
   {
     "title": "Recreation",
+    "id": "recreation",
     "children": "Recreation is comprised of the Recreation Fitness Center and Recreation Esports. The Recreation Fitness Center is located on the basement level of the U-SU, and is open to all students, staff and faculty.",
     "imgSrc": "/departments/logos/recreation-icon.svg",
     "imgAlt": "Recreations Icon",
