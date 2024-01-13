@@ -63,6 +63,15 @@
     "email": "hnguy147@calstatela.edu"
   },
   {
+    "name": "Ian Prieto",
+    "title": "Fraternity & Sorority Life Coordinator",
+    "src": "/staff/ian-prieto.png",
+    "alt": "Ian Prieto the fraternity and sorority life coordinator",
+    "tags": ["CSI"],
+    "department": "Center for Student Involvement",
+    "email": "iprieto7@calstatela.edu"
+  },
+  {
     "name": "Jaime Venegas",
     "title": "Maintenance Coordinator",
     "src": "/staff/jaime-venegas.png",
@@ -119,7 +128,7 @@
   {
     "name": "John Yasis",
     "title": "Web Designer",
-    "src": "/staff/john-yasis.png",
+    "src": "/staff/john-yasis2.png",
     "alt": "John Yasis",
     "tags": ["Graffix"],
     "department": "Graffix",
@@ -151,6 +160,15 @@
     "tags": ["Operations"],
     "department": "Operations",
     "email": "lperale4@calstatela.edu"
+  },
+  {
+    "name": "Malia Otuhiva",
+    "title": "Asian Pacific Islander Student Resource Center Coordinator",
+    "src": "/staff/malia-otuhiva.png",
+    "alt": "malia otuhiva the asian pacific islander student resource center coordinator",
+    "tags": ["CCC"],
+    "department": "Cross Cultural Centers",
+    "email": "motuhiv@calstatela.edu"
   },
   {
     "name": "Mario Pizarro Rojas",
