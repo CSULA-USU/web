@@ -44,6 +44,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/8cjzpzbb66yvswsa6feoo/bod-nov-17-23.pdf?rlkey=floyjw88s8m3yz7e4l0ryzcdm&dl=0',
             children: 'BOD Meeting Nov 17, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/ep6gvcd2n8p7b8z5beoeg/bod-jan-19-24.pdf?rlkey=czpkh0944thji08kka4r1vvbb&dl=0',
+            children: 'BOD Meeting Jan 19, 2024',
+          },
         ]}
       />
     ),
