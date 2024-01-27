@@ -131,7 +131,7 @@ export default function About() {
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/f8g31sg2e2xwp4vzx02jd/01.26.24_SPFDigital.pdf?rlkey=wg95idhykiyewweg2cr5pg47i&dl=0"
                 >
                   Strategic Plan
                 </Button>
@@ -175,7 +175,7 @@ export default function About() {
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/f8g31sg2e2xwp4vzx02jd/01.26.24_SPFDigital.pdf?rlkey=wg95idhykiyewweg2cr5pg47i&dl=0"
                 >
                   Strategic Plan
                 </Button>
