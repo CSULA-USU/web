@@ -125,13 +125,13 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/tumh4ov1j4bjh6tnxf3so/org-chart.png?rlkey=xmzu2lb0gpbwmrmsum5wrfabg&dl=0"
+                  href="https://www.dropbox.com/scl/fi/bbfpgn2lxjoahxlgkxu51/current-org-chart.png?rlkey=gfylliad7kzgqvpinwgmjs424&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/f8g31sg2e2xwp4vzx02jd/01.26.24_SPFDigital.pdf?rlkey=wg95idhykiyewweg2cr5pg47i&dl=0"
                 >
                   Strategic Plan
                 </Button>
@@ -169,13 +169,13 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/tumh4ov1j4bjh6tnxf3so/org-chart.png?rlkey=xmzu2lb0gpbwmrmsum5wrfabg&dl=0"
+                  href="https://www.dropbox.com/scl/fi/bbfpgn2lxjoahxlgkxu51/current-org-chart.png?rlkey=gfylliad7kzgqvpinwgmjs424&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/3bxq1xzitycak2h571tq6/strategic-plan.pdf?rlkey=7bipkob88y3f61wbaxgz6wyt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/f8g31sg2e2xwp4vzx02jd/01.26.24_SPFDigital.pdf?rlkey=wg95idhykiyewweg2cr5pg47i&dl=0"
                 >
                   Strategic Plan
                 </Button>
