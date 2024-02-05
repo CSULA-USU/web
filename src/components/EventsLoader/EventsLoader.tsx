@@ -30,8 +30,6 @@ export const EventsLoader = () => {
 
   const getGraphicsRequests = async () => {
     const requestData: any = await fetchRequests();
-
-    console.log('can i console here in eventsloader', requestData);
     setGraphicsRequests(requestData);
   };
 
