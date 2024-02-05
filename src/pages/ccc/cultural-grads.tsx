@@ -64,8 +64,8 @@ const WhatTab = () => (
 const WhereTab = () => (
   <TabContent>
     Each celebration has a specific location, time and date. Please see the
-    individual applications for information. All applications are due on March
-    17, 2023 by EOD.
+    individual applications for information. All applications are due TBD by
+    EOD.
     <br />
     <ul>
       <li>
@@ -129,7 +129,7 @@ const WhoTab = () => (
   <TabContent>
     <strong>All</strong> graduating students (of all degree types, Bachelors,
     Masters, EdD) who are interested are welcome to apply. Priority is given to
-    Spring 2024 graduates, but Fall 2023 graduates are welcome to apply as well.
+    Spring 2024 graduates, but Fall 2024 graduates are welcome to apply as well.
   </TabContent>
 );
 
