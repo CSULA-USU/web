@@ -3,6 +3,7 @@ export const USU_ORGS = [
   'Cross Cultural Centers',
   'Recreation',
   'Graffix',
+  'University-Student Union',
 ];
 
 export const ABBREVIATED_ORGS: { [key: string]: string } = {
@@ -10,6 +11,7 @@ export const ABBREVIATED_ORGS: { [key: string]: string } = {
   'Cross Cultural Centers': 'CCC',
   Recreation: 'REC',
   Graffix: 'GFX',
+  'University-Student Union': 'U-SU',
 };
 
 export const PRESENCE_URI_BASE =
