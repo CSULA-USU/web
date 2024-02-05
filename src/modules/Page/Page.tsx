@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
-import { BackToTop } from 'components';
+import { Announcement, BackToTop } from 'components';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -18,6 +18,10 @@ interface PageProps {
 
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
+    <Announcement
+      text="Out of an abundance of caution the U-SU is closed on Monday, Feb 5"
+      isVisible={true}
+    />
     <Nav />
     <div>{children}</div>
     <BackToTop></BackToTop>
