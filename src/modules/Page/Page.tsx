@@ -20,7 +20,7 @@ export const Page = ({ children }: PageProps) => (
   <PageContainer>
     <Announcement
       text="Out of an abundance of caution the U-SU is closed on Monday, Feb 5"
-      isVisible={true}
+      isVisible={false}
     />
     <Nav />
     <div>{children}</div>
