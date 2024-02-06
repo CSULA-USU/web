@@ -90,6 +90,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/g7lk04fia214904axdned/BOD-Minutes-October-13-2023.pdf?rlkey=wya7domnwdjq4elea5gjmty1o&dl=0',
             children: 'BOD Minutes October 13, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/1l1srke43ahma579aai9d/Minutes-Board-of-Directors-November-17-2023-signed.pdf?rlkey=kh3lpvmanywd7birbm0nu8p8v&dl=0',
+            children: 'BOD Minutes November 17, 2023',
+          },
         ]}
       />
     ),
