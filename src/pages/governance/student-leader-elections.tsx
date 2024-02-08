@@ -174,7 +174,7 @@ export default function StudentLeaderElections() {
           </LinkOuter>
         </HeaderContainer>
         <Image
-          src="/student-leader-elections/student-leader-header.png"
+          src="/student-leader-elections/sle-vote-hero.svg"
           alt="student leader header"
           width={isTablet ? '100%' : '40%'}
         ></Image>
