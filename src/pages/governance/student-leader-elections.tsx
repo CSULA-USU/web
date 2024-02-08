@@ -63,55 +63,138 @@ const ElectionUpdates = (props: any) => {
 
 const electionUpdateItems = [
   {
-    title: 'Application Deadline',
-    children: <Typography as="p">Friday, February 10</Typography>,
-  },
-  {
-    title: 'ASI Candidate Briefing',
-    children: <Typography as="p">Monday, February 27</Typography>,
-  },
-  {
-    title: 'Verifying Eligibility',
+    title: 'Applications Open',
     children: (
-      <Typography as="p">Tuesday, March 7 - Friday, March 10</Typography>
+      <>
+        <Typography as="p">Monday, January 29</Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            Are you interested in running for a position? Not sure where to
+            start? We encourage any interested student to pursue candidacy for
+            elected student positions on the ASI Board of Directors and Cal
+            State LA Academic Senate by filing the Candidate Elections Packet by
+            the required deadline.
+          </Typography>
+        </div>
+      </>
     ),
   },
   {
-    title: 'U-SU Mandatory Candidate Briefing',
+    title: 'Leadership Info Sessions',
+    description: '',
     children: (
-      <Typography as="p">Wednesday, March 15 or Wednesday March 22</Typography>
+      <>
+        <Typography as="p">
+          Wednesday, February 7 @ 10AM to 3PM - Leadership Info Session I
+        </Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            Need to know more? We got you! Join us for an Own It info session
+            and find out how you can Own It in 2024-2025. As part of student
+            government, students can network, gain leadership experience, and be
+            the voice for students. If elected, you will be able to help the
+            students of Cal State LA and assist with essential changes on
+            campus. Stop by this info session to learn about the election
+            process, available positions, and more.
+          </Typography>
+        </div>
+        <Typography as="p">
+          Thursday, February 8 @ 1PM to 5PM - Leadership Session II
+        </Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            If you didn&apos;t stop by our previous info session, you can stop
+            by on this one. Join us for an Own It info session and find out how
+            you can Own It in 2024-2025. As part of student government, students
+            can network, gain leadership experience, and be the voice for
+            students. If elected, you will be able to help the students of Cal
+            State LA and assist with essential changes on campus. Stop by this
+            info session to learn about the election process, available
+            positions, and more.
+          </Typography>
+        </div>
+      </>
     ),
   },
   {
-    title: 'Candidate Campaigning',
-    children: <Typography as="p">Monday, April 3 - Friday, April 7</Typography>,
+    title: 'Applications Due',
+    children: <Typography as="p">Friday, February 9</Typography>,
   },
   {
-    title: 'Voting For Elections',
-    description:
-      "Stop by to vote and receive a ticket for that day's food option. You choose the day to vote, but you can only vote once! Happy voting!",
+    title: 'Mandatory Candidate Briefing',
     children: (
-      <div>
+      <>
+        <Typography as="p">
+          Wednesday, March 20 - Mandatory Candidate Briefing
+        </Typography>
+        <Typography as="p" margin={`${Spaces.md} 0 0`}>
+          Monday, March 25 - Mandatory Candidate Briefing - Make Up
+        </Typography>
+      </>
+    ),
+  },
+  {
+    title: 'Campaign Week',
+    children: (
+      <>
+        <Typography as="p">Monday, April 8 to Friday, April 12</Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            Choose to lead! This is the week where you can let the student body
+            know who you are, what you would do, and overall, why you choose to
+            lead.
+          </Typography>
+        </div>
         <Typography as="p" margin={`0 0 ${Spaces.md}`}>
-          Stop by to vote and receive a ticket for that day&apos;s food option.
-          You choose the day to vote, but you can only vote once! Happy voting!
+          Wednesday, April 10 - Candidate Meet & Greet
+        </Typography>
+        <Typography as="p">
+          Thursday, April 11 - Candidate Meet & Greet 2
+        </Typography>
+      </>
+    ),
+  },
+  {
+    title: 'Student Leader Election: Vote',
+    children: (
+      <>
+        <Typography as="p">Friday, April 12 to Tuesday, April 16</Typography>
+        <Typography as="p">GET</Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            Your Voice, Your Vote! Vote online for your student representatives
+            through the Cal State LA GET System. Check your Cal State LA email
+            for more details regarding the ASI General Election. Get involved!
+            Be heard! Win prizes!
+          </Typography>
+        </div>
+        <Typography as="p">
+          Monday, April 15 @ 11AM to 2PM - Taco Day
+        </Typography>
+        <Typography as="p" margin={`0 0 ${Spaces.md}`}>
+          U-SU Plaza Taco Truck
         </Typography>
 
         <Typography as="p">
-          Monday, April 10 - Elections Voting Table: Dessert for Democracy
+          Tuesday, April 16 @ 11AM to 2PM - In-N-Out
         </Typography>
-        <Typography as="p" margin={`${Spaces.sm} 0 ${Spaces.sm}`}>
-          Tuesday, April 11 - Elections Voting Table: In-N-Out Food Truck
-        </Typography>
-        <Typography as="p">
-          Thursday, April 13 - Elections Voting Table: Taco Truck
-        </Typography>
-      </div>
+        <Typography as="p">U-SU Plaza In-N-Out Truck</Typography>
+      </>
     ),
   },
   {
-    title: 'Election Results Announced',
-    children: <Typography as="p">Thursday, April 20</Typography>,
+    title: 'Election Results Announcement',
+    children: (
+      <>
+        <Typography as="p">Tuesday, April 23</Typography>
+        <Typography as="p">U-SU Plaza</Typography>
+        <div style={{ margin: `${Spaces.md} 0px` }}>
+          <Typography as="p">
+            Return and see who won the student leader elections.
+          </Typography>
+        </div>
+      </>
+    ),
   },
 ];
 
