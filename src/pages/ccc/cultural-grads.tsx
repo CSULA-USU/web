@@ -64,8 +64,8 @@ const WhatTab = () => (
 const WhereTab = () => (
   <TabContent>
     Each celebration has a specific location, time and date. Please see the
-    individual applications for information. All applications are due on March
-    17, 2023 by EOD.
+    individual applications for information. All applications are due TBD by
+    EOD.
     <br />
     <ul>
       <li>
@@ -129,7 +129,7 @@ const WhoTab = () => (
   <TabContent>
     <strong>All</strong> graduating students (of all degree types, Bachelors,
     Masters, EdD) who are interested are welcome to apply. Priority is given to
-    Spring 2024 graduates, but Fall 2023 graduates are welcome to apply as well.
+    Spring 2024 graduates, but Fall 2024 graduates are welcome to apply as well.
   </TabContent>
 );
 
@@ -157,7 +157,7 @@ const cards = [
   {
     title: 'APIDA Grad',
     children: 'Asian, Pacific Islander, South Asian, Desi-American',
-    linkText: 'Application Closed',
+    linkText: 'Applications will be open soon',
     href: '',
     iconSrc: '/departments/ccc/apisrc/apisrc-textless.svg',
     iconAlt: 'APISRC logo',
@@ -165,7 +165,7 @@ const cards = [
   {
     title: 'Black Grad',
     children: 'Black, African-American, Pan-African Diaspora',
-    linkText: 'Application Closed',
+    linkText: 'Applications will be open soon',
     href: '',
     iconSrc: '/departments/logos/pasrc-icon.svg',
     iconAlt: 'PASRC logo',
@@ -173,7 +173,7 @@ const cards = [
   {
     title: 'Native Grad',
     children: 'Native American, Indigenous',
-    linkText: 'Application Closed',
+    linkText: 'Applications will be open soon',
     href: '',
     iconSrc: '/departments/ccc/native-logo.png',
     iconAlt: 'Native American and Indigenous Student Association logo',
@@ -181,7 +181,7 @@ const cards = [
   {
     title: 'Nuestra Grad',
     children: 'Chicana/o, Latina/o, Central American, South American',
-    linkText: 'Application Closed',
+    linkText: 'Applications will be open soon',
     href: '',
     iconSrc: '/departments/logos/clsrc-logo.svg',
     iconAlt: 'CLSRC logo',
@@ -190,7 +190,7 @@ const cards = [
     title: 'Pride Grad',
     children:
       'Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community',
-    linkText: 'Application Closed',
+    linkText: 'Applications will be open soon',
     href: '',
     iconSrc: '/departments/logos/gsrc-icon.svg',
     iconAlt: 'GSRC logo',

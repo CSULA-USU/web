@@ -44,6 +44,14 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/8cjzpzbb66yvswsa6feoo/bod-nov-17-23.pdf?rlkey=floyjw88s8m3yz7e4l0ryzcdm&dl=0',
             children: 'BOD Meeting Nov 17, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/ep6gvcd2n8p7b8z5beoeg/bod-jan-19-24.pdf?rlkey=czpkh0944thji08kka4r1vvbb&dl=0',
+            children: 'BOD Meeting Jan 19, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/d1q9iuy3fdrgai0oy52rd/bod-feb-9-24.docx?rlkey=xc1swg7cng5uu2qcixdxm4r0m&dl=0',
+            children: 'BOD Meeting Feb 9, 2024',
+          },
         ]}
       />
     ),
@@ -81,6 +89,10 @@ const minutesDownloads: DownloadSectionProps[] = [
           {
             href: 'https://www.dropbox.com/scl/fi/g7lk04fia214904axdned/BOD-Minutes-October-13-2023.pdf?rlkey=wya7domnwdjq4elea5gjmty1o&dl=0',
             children: 'BOD Minutes October 13, 2023',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/1l1srke43ahma579aai9d/Minutes-Board-of-Directors-November-17-2023-signed.pdf?rlkey=kh3lpvmanywd7birbm0nu8p8v&dl=0',
+            children: 'BOD Minutes November 17, 2023',
           },
         ]}
       />

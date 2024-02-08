@@ -1,26 +1,20 @@
 [
   {
     "type": "fulltime",
-    "department": "Administration",
-    "title": "Administrative Analyst",
-    "href": "https://app.joinhandshake.com/emp/jobs/8381397"
-  },
-  {
-    "type": "fulltime",
-    "department": "Administration",
-    "title": "Executive Director",
-    "href": "https://www.higheredjobs.com/details.cfm?JobCode=178567100"
-  },
-  {
-    "type": "fulltime",
-    "department": "CCC",
-    "title": "Assistant Director",
-    "href": "https://www.higheredjobs.com/details.cfm?JobCode=178605798"
+    "department": "CSI",
+    "title": "Administrative Assistant",
+    "href": "https://app.joinhandshake.com/emp/jobs/8608079"
   },
   {
     "type": "fulltime",
     "department": "CSI",
     "title": "Student Engagement Coordinator",
     "href": "https://www.higheredjobs.com/details.cfm?JobCode=178627029"
+  },
+  {
+    "type": "fulltime",
+    "department": "Recreation",
+    "title": "Recreation Coordinator",
+    "href": "https://www.higheredjobs.com/details.cfm?JobCode=178647905"
   }
 ]

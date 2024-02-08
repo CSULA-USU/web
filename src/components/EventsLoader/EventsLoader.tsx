@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { fetchEvents } from 'api';
+import { fetchEvents, fetchRequests } from 'api';
 import { PresenceEvent } from 'types';
-import { eventListState } from 'atoms';
+import { eventListState, graphicsRequestListState } from 'atoms';
 import { USU_ORGS } from 'utils/constants';
 
 export const EventsLoader = () => {
   const [_, setEvents] = useRecoilState(eventListState);
-
+  const [_graphicRequests, setGraphicsRequests] = useRecoilState(
+    graphicsRequestListState,
+  );
   const getEvents = async () => {
     const data: PresenceEvent[] = await fetchEvents();
     const sortedData = data
@@ -26,8 +28,14 @@ export const EventsLoader = () => {
     setEvents(sortedData);
   };
 
+  const getGraphicsRequests = async () => {
+    const requestData: any = await fetchRequests();
+    setGraphicsRequests(requestData);
+  };
+
   useEffect(() => {
     getEvents();
+    getGraphicsRequests();
   }, []); // eslint-disable-line
 
   return <></>;
