@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Microsoft",
+    "src": "/departments/graffix/company-logos/microsoft.png",
+    "alt": "Microsoft Logo"
+  },
+  {
+    "name": "Snapchat",
+    "src": "/departments/graffix/company-logos/snapchat.png",
+    "alt": "Snapchat Logo"
+  },
+  {
+    "name": "Riot Games",
+    "src": "/departments/graffix/company-logos/riot-games.png",
+    "alt": "Riot Games Logo"
+  },
+  {
+    "name": "FYI",
+    "src": "/departments/graffix/company-logos/fyi.jpeg",
+    "alt": "Focus Your Ideas Logo"
+  },
+  {
+    "name": "Bearclaw Gaming",
+    "src": "/departments/graffix/company-logos/bearclaw-gaming.png",
+    "alt": "Bearclaw Gaming Logo"
+  }
+]
