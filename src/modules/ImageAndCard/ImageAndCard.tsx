@@ -5,6 +5,7 @@ export const ImageAndCard = ({
   imgSrc,
   imgAlt,
   imageWidth = '150px',
+  imageOnRight,
   ...props
 }: any) => {
   const { isTablet } = useBreakpoint();
@@ -15,22 +16,45 @@ export const ImageAndCard = ({
       alignItems="center"
       padding="16px"
     >
-      {!isTablet && (
-        <Image
-          src={`${imgSrc}`}
-          alt={`${imgAlt}`}
-          width={imageWidth}
-          marginRight="48px"
-        />
+      {imageOnRight ? (
+        <>
+          {!isTablet && (
+            <Image
+              src={`${imgSrc}`}
+              alt={`${imgAlt}`}
+              width={imageWidth}
+              marginRight="48px"
+            />
+          )}
+          <Card
+            iconSrc={isTablet ? imgSrc : undefined}
+            iconWidth="150px"
+            hoverable
+            width="100%"
+            minHeight="160px"
+            {...props}
+          ></Card>
+        </>
+      ) : (
+        <>
+          <Card
+            iconSrc={isTablet ? imgSrc : undefined}
+            iconWidth="150px"
+            hoverable
+            width="100%"
+            minHeight="160px"
+            {...props}
+          ></Card>
+          {!isTablet && (
+            <Image
+              src={`${imgSrc}`}
+              alt={`${imgAlt}`}
+              width={imageWidth}
+              marginLeft="48px"
+            />
+          )}
+        </>
       )}
-      <Card
-        iconSrc={isTablet ? imgSrc : undefined}
-        iconWidth={imageWidth}
-        hoverable
-        width="100%"
-        minHeight="160px"
-        {...props}
-      ></Card>
     </FluidContainer>
   );
 };
