@@ -52,12 +52,20 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/d1q9iuy3fdrgai0oy52rd/bod-feb-9-24.docx?rlkey=xc1swg7cng5uu2qcixdxm4r0m&dl=0',
             children: 'BOD Meeting Feb 9, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/650k0sd6mjibmgwv3v7ca/nominating-feb-9-24.docx?rlkey=gp1fhsneqpntyjq2vbyzav3r2&dl=0',
+            children: 'Nominating Committee Feb 9, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/w1rrzq94dfhnfrif0hj0x/bod-feb-16-24.docx?rlkey=2es0rcl4diaw8mvasv0shwjc5&dl=0',
+            children: 'BOD Meeting Feb 16, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/1hxvk1ybb966hukkxn6v5/fy23-24.zip?rlkey=37whhtmqrvlw93gb260279z64&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/w03owke02gp0d4sjptruf/fy23-24.zip?rlkey=m8jpm5pm0bd1a9fr5hstukgnr&dl=0',
       variant: 'black',
     },
   },
