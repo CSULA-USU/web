@@ -2,8 +2,8 @@ import Head from 'next/head';
 import {
   EventHeader,
   ModUpcomingEvents,
-  // BoardOfDirectorsCTA,
-  BoardOfDirectorsCTAPromotion,
+  BoardOfDirectorsCTA,
+  // BoardOfDirectorsCTAPromotion,
   Page,
   CallToActionImages,
 } from 'modules';
@@ -76,7 +76,7 @@ export default function Home() {
         featuredEvent={events[0]}
       />
       {/* Toggle the line below if there is a promotion. */}
-      <BoardOfDirectorsCTAPromotion />
+      {/* <BoardOfDirectorsCTAPromotion /> */}
       <ModUpcomingEvents events={events} />
       <CallToActionImages
         title={
@@ -94,7 +94,7 @@ export default function Home() {
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
       {/* Toggle the line below if there is a promotion. */}
-      {/* <BoardOfDirectorsCTA /> */}
+      <BoardOfDirectorsCTA />
     </Page>
   );
 }
