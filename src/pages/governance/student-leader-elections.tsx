@@ -246,7 +246,7 @@ export default function StudentLeaderElections() {
             </Button>
           </ButtonContainer>
           <LinkOuter>
-            <Button href="#faqs" variant="outline">
+            <Button href="#faqs" variant="outline" notALink>
               <LinkInner>
                 <BsQuestionCircle size="24px" color="white" />
                 <Typography color="white">

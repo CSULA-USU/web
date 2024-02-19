@@ -2,8 +2,13 @@ import styled, { css } from 'styled-components';
 import { Colors } from 'theme';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+  children?: React.ReactNode;
+  disabled?: boolean;
   href?: string;
   margin?: string;
+  notALink?: boolean;
+  padding?: string;
+  shadow?: boolean;
   variant?:
     | 'primary'
     | 'black'
@@ -11,10 +16,6 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
     | 'outline'
     | 'transparent'
     | 'whiteOutline';
-  disabled?: boolean;
-  children?: React.ReactNode;
-  padding?: string;
-  shadow?: boolean;
 }
 
 interface ButtonVariant {
@@ -84,5 +85,5 @@ const StyledButton = styled.button`
 
 export const Button = (props: ButtonProps) => {
   const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
-  return <ButtonComponent {...props} target="_blank" />;
+  return <ButtonComponent {...props} target={props.notALink ? '' : '_blank'} />;
 };
