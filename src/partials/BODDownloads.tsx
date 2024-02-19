@@ -102,6 +102,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/1l1srke43ahma579aai9d/Minutes-Board-of-Directors-November-17-2023-signed.pdf?rlkey=kh3lpvmanywd7birbm0nu8p8v&dl=0',
             children: 'BOD Minutes November 17, 2023',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/5o9sd8696gemhxivwu35u/Minutes-Board-of-Directors-January-19-2024-signed.pdf?rlkey=sdj410mwecexfm43u8to9yh3n&dl=0',
+            children: 'BOD Minutes January 19, 2024',
+          },
         ]}
       />
     ),
