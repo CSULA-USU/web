@@ -10,8 +10,9 @@ import {
   Typography,
 } from 'components';
 import { useBreakpoint } from 'hooks';
-import { Page } from 'modules';
+import { CulturalGradsHeader, Page } from 'modules';
 import { Spaces } from 'theme';
+import CulturalGradsData from 'data/cgc-data.json';
 
 const TabContent = styled(Typography)`
   &,
@@ -197,6 +198,8 @@ const cards = [
   },
 ];
 
+const slideshowImages = CulturalGradsData['header-images'];
+
 const IconHeading = styled.div`
   display: flex;
   align-items: center;
@@ -318,20 +321,8 @@ export default function CulturalGrads() {
         </>
       ) : (
         <>
-          <FluidContainer
-            backgroundColor="primary"
-            flex
-            justifyContent="center"
-            alignItems="center"
-            innerMaxWidth="560px"
-          >
-            <Image
-              src="/departments/ccc/ccc-grad-banner.jpg"
-              alt="cultural grad banner"
-              width="100%"
-              height="fit-content"
-            />
-          </FluidContainer>
+          <CulturalGradsHeader images={slideshowImages} />
+
           <FluidContainer
             flex
             flexDirection="row"
@@ -406,6 +397,20 @@ export default function CulturalGrads() {
               </SubHeaderSpan>
             </IconHeading>
             <Tabs items={tabItems} minHeight="320px" />
+          </FluidContainer>
+          <FluidContainer
+            backgroundColor="primary"
+            flex
+            justifyContent="center"
+            alignItems="center"
+            innerMaxWidth="560px"
+          >
+            <Image
+              src="/departments/ccc/ccc-grad-banner.jpg"
+              alt="cultural grad banner"
+              width="100%"
+              height="fit-content"
+            />
           </FluidContainer>
         </>
       )}

@@ -1,7 +1,48 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FluidContainer, Typography } from 'components';
-// import { HorizontalImageSlider } from 'partials';
 
+interface SlideshowData {
+  src: string;
+  alt: string;
+}
+interface CulturalGradsHeaderProps {
+  images: SlideshowData[];
+}
+
+const moveAnimation = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
+const SlideshowContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+  margin-top: 4px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #fff 5%,
+    #fff 95%,
+    transparent
+  );
+`;
+
+const SlideshowContent = styled.div`
+  display: flex;
+  animation: ${moveAnimation} 40s linear infinite alternate;
+  animation-delay: 2s;
+`;
+
+const HorizontalSlideshowImage = styled.img`
+  width: 400px;
+  height: auto;
+  flex-shrink: 0;
+  margin-right: 4px;
+`;
 const InsideContainer = styled.div`
   display: flex;
   z-index: 2;
@@ -34,7 +75,8 @@ const TeaserContainer = styled.div`
   border-radius: 12px;
 `;
 
-export const CulturalGradsHeader = () => {
+export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
+  const imageList = images.concat(images);
   return (
     <>
       <OuterContainer>
@@ -71,7 +113,16 @@ export const CulturalGradsHeader = () => {
           </FluidContainer>
         </InsideContainer>
       </OuterContainer>
-      {/* <HorizontalImageSlider /> */}
+      <SlideshowContainer>
+        <SlideshowContent>
+          {imageList &&
+            imageList.map((img, i: number) => {
+              return (
+                <HorizontalSlideshowImage src={img.src} alt={img.alt} key={i} />
+              );
+            })}
+        </SlideshowContent>
+      </SlideshowContainer>
     </>
   );
 };
