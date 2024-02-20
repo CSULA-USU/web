@@ -1,0 +1,28 @@
+{
+  "header-images": [
+    {
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
+      "alt": "black grad 2022 graduate"
+    },
+    {
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg",
+      "alt": "black grad 2022 performance"
+    },
+    {
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.jpg",
+      "alt": "black grad graduate"
+    },
+    {
+      "src": "/departments/ccc/gsrc/carousel/pride-grad.jpg",
+      "alt": "pride grad graduates"
+    },
+    {
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg",
+      "alt": "black grad 2022 drumming performance"
+    },
+    {
+      "src": "/departments/ccc/gsrc/carousel/pride-drag.jpg",
+      "alt": "2022 pride grad performance"
+    }
+  ]
+}

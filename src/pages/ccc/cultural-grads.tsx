@@ -1,4 +1,3 @@
-// import { FaRegQuestionCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
@@ -11,10 +10,10 @@ import {
   Panel,
   Typography,
 } from 'components';
-// import { useBreakpoint } from 'hooks';
-import { Page } from 'modules';
-import { Spaces } from 'theme';
 import { BiChevronRight } from 'react-icons/bi';
+import { CulturalGradsHeader, Page } from 'modules';
+import { Spaces } from 'theme';
+import CulturalGradsData from 'data/cgc-data.json';
 
 // const SubHeaderSpan = styled.span`
 //   display: flex;
@@ -106,15 +105,9 @@ const cards = [
   },
 ];
 
-// const IconHeading = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: ${Spaces.md};
-// `;
+const slideshowImages = CulturalGradsData['header-images'];
 
 export default function CulturalGrads() {
-  // const { isDesktop } = useBreakpoint();
-
   return (
     <Page>
       <Head>
@@ -137,106 +130,7 @@ export default function CulturalGrads() {
         ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* {isDesktop ? (
-        <>
-          <FluidContainer
-            flex
-            flexDirection="column"
-            backgroundImage="/backgrounds/subtle-background-4.jpg"
-          >
-            <SubHeaderSpan>
-              <Typography margin="0px" as="h2" variant="titleSmall">
-                Cultural Graduate Celebrations
-              </Typography>
-            </SubHeaderSpan>
-            <FluidContainer flex flexDirection="column" alignItems="center">
-              <Typography margin="0" as="h3">
-                <strong>Dear Cal State LA Prospective Graduate,</strong>
-                <br />
-                These ceremonies and celebrations are great opportunities to
-                acknowledge your academic achievements, honor your families,
-                communities, and other significant people in your lives, and to
-                celebrate the cultural influences that have contributed to your
-                academic success. The ceremonies are open to all students who
-                would like to sign up and participate.
-              </Typography>
-            </FluidContainer>
-          </FluidContainer>
-          <FluidContainer flex flexDirection="column">
-            <SubHeaderSpan>
-              <Typography margin="0px" as="h2" variant="titleSmall">
-                Graduations
-              </Typography>
-            </SubHeaderSpan>
-          </FluidContainer>
-          <FluidContainer backgroundColor="greyLightest">
-            <IconHeading>
-              <SubHeaderSpan>
-                <Typography
-                  margin="0px 8px 0px 0px"
-                  as="h2"
-                  variant="titleSmall"
-                >
-                  FAQs
-                </Typography>
-                <FaRegQuestionCircle fontSize={'24px'} />
-              </SubHeaderSpan>
-            </IconHeading>
-            <FluidContainer
-              backgroundColor="primary"
-              flex
-              justifyContent="center"
-              alignItems="center"
-              innerMaxWidth="560px"
-            >
-              <Image
-                src="/departments/ccc/ccc-grad-banner.jpg"
-                alt="cultural grad banner"
-                width="100%"
-                height="fit-content"
-              />
-            </FluidContainer>
-          </FluidContainer>
-        </>
-      ) : (
-        <> */}
-      {/* <FluidContainer
-        flex
-        flexDirection="row"
-        backgroundImage="/backgrounds/subtle-background-4.jpg"
-        justifyContent="space-evenly"
-      >
-        <FluidContainer
-          flex
-          flexDirection="column"
-          padding="16px"
-          innerMaxWidth="500px"
-        >
-          <TeaserContainer />
-          <br />
-          <Typography variant="cta">Nuestra Grad &apos;22</Typography>
-        </FluidContainer>
-        <FluidContainer
-          padding="16px"
-          flex
-          flexDirection="column"
-          innerMaxWidth="500px"
-        >
-          <Typography variant="title">
-            Cultural Graduate Celebrations
-          </Typography>
-          <Typography margin="24px 0">
-            <strong>Dear Cal State LA Prospective Graduate,</strong>
-            <br />
-            These ceremonies and celebrations are great opportunities to
-            acknowledge your academic achievements, honor your families,
-            communities, and other significant people in your lives, and to
-            celebrate the cultural influences that have contributed to your
-            academic success. The ceremonies are open to all students who would
-            like to sign up and participate.
-          </Typography>
-        </FluidContainer>
-      </FluidContainer> */}
+      <CulturalGradsHeader images={slideshowImages} />
       <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
         <Image
           src="/departments/ccc/apisrc/apisrc-textless.svg"
@@ -537,8 +431,6 @@ export default function CulturalGrads() {
           height="fit-content"
         />
       </FluidContainer>
-      {/* </>
-      )} */}
     </Page>
   );
 }
