@@ -36,7 +36,7 @@ export const BoardOfDirectorsCTAPromotion = () => {
           color="greyLightest"
           as="h2"
           variant="pageHeader"
-          size={isMobile ? '3xl' : '4xl'}
+          size={isMobile ? 'xl' : '2xl'}
         >
           Become a Student Director
         </Typography>

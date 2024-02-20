@@ -113,7 +113,7 @@ export default function HowToVote() {
           </Typography>
         </HeaderContainer>
         <Image
-          src="/student-leader-elections/student-leader-header.png"
+          src="/student-leader-elections/sle-vote-hero.svg"
           alt="student leader header"
           margin={Spaces.sm}
           width={isTablet ? '100%' : '50%'}
