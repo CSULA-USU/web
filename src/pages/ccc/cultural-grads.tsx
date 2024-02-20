@@ -4,9 +4,11 @@ import Head from 'next/head';
 import {
   Divider,
   Expandable,
+  FlatCard,
   FluidContainer,
   Image,
   ImageAndCard,
+  Panel,
   Typography,
 } from 'components';
 // import { useBreakpoint } from 'hooks';
@@ -19,12 +21,10 @@ import { BiChevronRight } from 'react-icons/bi';
 //   align-items: center;
 // `;
 
-const TeaserContainer = styled.div`
-  width: 500px;
-  height: 520px;
-  background: center / contain no-repeat
-    url('/departments/ccc/nuestra-teaser.jpeg');
-  border-radius: 12px;
+const BenefitCardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const cards = [
@@ -39,7 +39,7 @@ const cards = [
     ],
     applicationLink: '',
     iconSrc: '/departments/ccc/apisrc/apisrc-textless.svg',
-    iconAlt: 'APIDA Grad Logo',
+    iconAlt: 'APIDA Logo',
     imgSrc: '/departments/ccc/apisrc/apida-grad.jpeg',
     imgAlt: 'APIDA Graduates',
   },
@@ -200,7 +200,7 @@ export default function CulturalGrads() {
         </>
       ) : (
         <> */}
-      <FluidContainer
+      {/* <FluidContainer
         flex
         flexDirection="row"
         backgroundImage="/backgrounds/subtle-background-4.jpg"
@@ -236,6 +236,108 @@ export default function CulturalGrads() {
             like to sign up and participate.
           </Typography>
         </FluidContainer>
+      </FluidContainer> */}
+      <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
+        <Image
+          src="/departments/ccc/apisrc/apisrc-textless.svg"
+          alt="APIDA Logo"
+          size={100}
+          style={{ objectFit: 'scale-down' }}
+        />
+        <Image
+          src="/departments/logos/pasrc-icon.svg"
+          alt="PASRC Logo"
+          size={100}
+          style={{ objectFit: 'scale-down' }}
+        />
+        <Image
+          src="/departments/ccc/native-logo.png"
+          alt="Native Logo"
+          size={100}
+          style={{ objectFit: 'scale-down' }}
+        />
+        <Image
+          src="/departments/logos/clsrc-logo.svg"
+          alt="Nuestra Logo"
+          size={100}
+          style={{ objectFit: 'scale-down' }}
+        />
+        <Image
+          src="/departments/logos/gsrc-icon.svg"
+          alt="GSRC Logo"
+          size={100}
+          style={{ objectFit: 'scale-down' }}
+        />
+      </FluidContainer>
+      <FluidContainer>
+        <Panel backgroundColor="black">
+          <Typography as="h4" variant="label" color="primary">
+            Dear Cal State LA Prospective Graduate,
+          </Typography>
+          <Typography as="p" variant="copy" color="white">
+            These ceremonies and celebrations are great opportunities to
+            acknowledge your academic achievements, honor your families,
+            communities, and other significant people in your lives, and to
+            celebrate the cultural influences that have contributed to your
+            academic success. The ceremonies are open to all students who would
+            like to sign up and participate. You deserve to celebrate your
+            achievements with cultural influences that are integral to your
+            being and important to you and your community! Apply now!
+          </Typography>
+        </Panel>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography
+          as="h6"
+          variant="copy"
+          color="black"
+          style={{ textAlign: 'center' }}
+        >
+          <Typography>
+            <Typography as="span" weight="700">
+              All{' '}
+            </Typography>
+            graduating students (of all degree types, Bachelors, Masters, EdD)
+            who are interested are welcome to apply.
+          </Typography>
+          <Typography>
+            Priority is given to Spring 2024 graduates, but Fall 2024 graduates
+            are welcome to apply as well.
+          </Typography>
+        </Typography>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
+          Benefits
+        </Typography>
+        <BenefitCardsContainer>
+          <FlatCard
+            imgSrc="/departments/ccc/cultural-grads/mic-drop.svg"
+            imgAlt="Mic Drop Icon"
+          >
+            Specially curated lineup of speakers and entertainment during the
+            ceremony
+          </FlatCard>
+          <FlatCard
+            imgSrc="/departments/ccc/cultural-grads/wait-in-line.svg"
+            imgAlt="Wait In Line Icon"
+          >
+            Tickets for guests (guest ticket amounts may differ for each
+            graduation)
+          </FlatCard>
+          <FlatCard
+            imgSrc="/departments/ccc/cultural-grads/books.svg"
+            imgAlt="Books Icon"
+          >
+            Program booklet with your picture and 75 word acknowledgement
+          </FlatCard>
+          <FlatCard
+            imgSrc="/departments/ccc/cultural-grads/graduation.svg"
+            imgAlt="Graduation Icon"
+          >
+            Uniquely designed graduation sash
+          </FlatCard>
+        </BenefitCardsContainer>
       </FluidContainer>
       <FluidContainer>
         <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">

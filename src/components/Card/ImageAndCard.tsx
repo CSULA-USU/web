@@ -85,7 +85,7 @@ export const ImageAndCard = ({
                 width="100%"
                 height="100%"
                 style={{ objectFit: 'cover' }}
-              ></Image>
+              />
             </ImageContainer>
           )}
 
@@ -186,7 +186,7 @@ export const ImageAndCard = ({
                 width="100%"
                 height="100%"
                 style={{ objectFit: 'cover' }}
-              ></Image>
+              />
             </ImageContainer>
           )}
         </>
