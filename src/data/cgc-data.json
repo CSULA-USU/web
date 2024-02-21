@@ -13,8 +13,8 @@
       "alt": "black grad graduate"
     },
     {
-      "src": "/departments/ccc/gsrc/carousel/pride-grad.jpg",
-      "alt": "pride grad graduates"
+      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
+      "alt": "apida grad 2023 graduates"
     },
     {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg",
@@ -23,6 +23,148 @@
     {
       "src": "/departments/ccc/gsrc/carousel/pride-drag.jpg",
       "alt": "2022 pride grad performance"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-smiling.jpeg",
+      "alt": "apida grad 2023 graduates"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/drum-performance.jpeg",
+      "alt": "apida grad 2022 performance"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
+      "alt": "apida grad 2023 performance"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
+      "alt": "apida grads 2022 master graduates"
+    }
+  ],
+
+  "benefits": [
+    {
+      "src": "/departments/ccc/cultural-grads/mic-drop.svg",
+      "alt": "Mic Drop Icon",
+      "description": "Specially curated lineup of speakers and entertainment during the ceremony"
+    },
+    {
+      "src": "/departments/ccc/cultural-grads/wait-in-line.svg",
+      "alt": "Wait In Line Icon",
+      "description": "Tickets for guests (guest ticket amounts may differ for each graduation)"
+    },
+    {
+      "src": "/departments/ccc/cultural-grads/books.svg",
+      "alt": "Books Icon",
+      "description": "Program booklet with your picture and 75 word acknowledgement"
+    },
+    {
+      "src": "/departments/ccc/cultural-grads/graduation.svg",
+      "alt": "",
+      "description": "Uniquely designed graduation sash"
+    }
+  ],
+
+  "info-cards": [
+    {
+      "title": "APIDA Grad",
+      "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
+      "copy": [
+        ["Date: TBD", "Time: TBD"],
+        "Location: TBD",
+        "Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
+        "motuhiv@calstatela.edu"
+      ],
+      "applicationLink": "",
+      "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
+      "iconAlt": "APIDA Logo",
+      "imgSrc": "/departments/ccc/apisrc/apida-grad.jpeg",
+      "imgAlt": "APIDA Graduates"
+    },
+    {
+      "title": "Black Grad",
+      "subheader": "Black, African-American, Pan-African Diaspora",
+      "copy": [
+        ["Date: TBD", "Time: TBD"],
+        "Location: TBD",
+        "Da'Vie Guzman, Pan African Student Resource Center Coordinator",
+        "dguzma91@calstatela.edu"
+      ],
+      "applicationLink": "",
+      "iconSrc": "/departments/logos/pasrc-icon.svg",
+      "iconAlt": "PASRC Logo",
+      "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
+      "imgAlt": "PASRC Graduates"
+    },
+    {
+      "title": "Nuestra Grad",
+      "subheader": "Chicana/o, Latina/o, Central American, South American",
+      "copy": [
+        ["Date: TBD", "Time: TBD"],
+        "Location: TBD",
+        "Cross Cultural Center, Univerity-Student Union",
+        "ccc@calstatela.edu"
+      ],
+      "applicationLink": "",
+      "iconSrc": "/departments/logos/clsrc-logo.svg",
+      "iconAlt": "Nuestra Logo",
+      "imgSrc": "/departments/ccc/clsrc/nuestra-grad-family-dancing.jpeg",
+      "imgAlt": "Nuestra Graduates"
+    },
+    {
+      "title": "Pride Grad",
+      "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
+      "copy": [
+        ["Date: TBD", "Time: TBD"],
+        "Location: TBD",
+        "Mario Pizarro Rajos, Gender & Sexuality Resource Center Coordinator",
+        "mpizarr5@calstatela.edu"
+      ],
+      "applicationLink": "",
+      "iconSrc": "/departments/logos/gsrc-icon.svg",
+      "iconAlt": "GSRC Logo",
+      "imgSrc": "/departments/ccc/gsrc/carousel/pride-grad.jpg",
+      "imgAlt": "GSRC Graduates"
+    }
+  ],
+
+  "questions": [
+    {
+      "question": "What do I need to submit in order to participate in the Graduation Celebration?",
+      "answer": [
+        "Submit the cultural graduation application and payment. Prices may vary",
+        "Submit your 75-word personal narrative to be on your booklet (Optional)",
+        "Schedule your photo to be taken (Optional. Your photo will be replaced with a default image.)"
+      ]
+    },
+    {
+      "question": "How will my picture be taken for the booklet?",
+      "answer": "At the end of the Cultural Graduation Application, there will be an option to book an appointment to take your picture. Cap and gown will be provided"
+    },
+    {
+      "question": "What should I wear?",
+      "answer": [
+        "For the photo in the booklet, dress semiformal, and a cap and gown will be provided at the designated photography location",
+        "For picture taking and the graduation celebration, a semi-formal attire is preferred. We encourage you to dress in your culture's traditional wear!"
+      ]
+    },
+    {
+      "question": "How will I receive my sash",
+      "answer": "You will receive your sash the day of your respective cultural graduation inside the venue"
+    },
+    {
+      "question": "How many guest tickets do I get?",
+      "answer": [
+        "ALL Graduations are open seating (not reserved). First come, first served",
+        "APIDA Grad # of Guest Tickets: TBD",
+        "Black Grad # of Guest Tickets: TBD",
+        "Nuestra Grad # of Guest Tickets: TBD",
+        "Pride Grad # of Guest Tickets: TBD"
+      ]
+    },
+    {
+      "question": "I have more questions about applying. Who do I contact?",
+      "answer": "Please contact the respective center coordinator or the Cross Cultural Center (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call at 323-343-5001"
     }
   ]
 }

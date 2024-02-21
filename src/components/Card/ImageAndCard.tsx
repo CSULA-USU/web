@@ -38,6 +38,7 @@ const DescriptionSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: ${Spaces.md};
 `;
 
 const Header = styled.div`
@@ -70,7 +71,7 @@ export const ImageAndCard = ({
   imgAlt,
   index,
 }: InfoPanelProps) => {
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
   return (
     <Card>
       {index % 2 !== 0 ? (
@@ -94,28 +95,49 @@ export const ImageAndCard = ({
               ...(isDesktop && { width: '100%' }),
             }}
           >
-            <Header>
-              <div>
-                <Typography variant="label">{title}</Typography>
+            {isMobile ? (
+              <>
+                <div>
+                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Typography variant="label">{title}</Typography>
+                </div>
                 <Typography variant="labelTitle">{subheader}</Typography>
-              </div>
-              <Image src={iconSrc} alt={iconAlt} size={100} />
-            </Header>
+              </>
+            ) : (
+              <>
+                <Header>
+                  <div>
+                    <Typography variant="label">{title}</Typography>
+                    <Typography variant="labelTitle">{subheader}</Typography>
+                  </div>
+                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                </Header>
+              </>
+            )}
+
             <Copy>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
-                    <MultiColumnCopy key={i}>
-                      {e.map((e, i) => (
-                        <Typography key={i}>{e}</Typography>
-                      ))}
-                    </MultiColumnCopy>
-                  ) : (
                     <>
-                      <Typography key={i} as="p" variant="copy">
-                        {e}
-                      </Typography>
+                      {isMobile ? (
+                        <>
+                          {e.map((e, i) => (
+                            <Typography key={i}>{e}</Typography>
+                          ))}
+                        </>
+                      ) : (
+                        <MultiColumnCopy key={i}>
+                          {e.map((e, i) => (
+                            <Typography key={i}>{e}</Typography>
+                          ))}
+                        </MultiColumnCopy>
+                      )}
                     </>
+                  ) : (
+                    <Typography key={i} as="p" variant="copy">
+                      {e}
+                    </Typography>
                   ),
                 )}
             </Copy>
@@ -139,28 +161,48 @@ export const ImageAndCard = ({
               ...(isDesktop && { width: '100%' }),
             }}
           >
-            <Header>
-              <div>
-                <Typography variant="label">{title}</Typography>
+            {isMobile ? (
+              <>
+                <div>
+                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Typography variant="label">{title}</Typography>
+                </div>
                 <Typography variant="labelTitle">{subheader}</Typography>
-              </div>
-              <Image src={iconSrc} alt={iconAlt} size={100} />
-            </Header>
+              </>
+            ) : (
+              <>
+                <Header>
+                  <div>
+                    <Typography variant="label">{title}</Typography>
+                    <Typography variant="labelTitle">{subheader}</Typography>
+                  </div>
+                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                </Header>
+              </>
+            )}
             <Copy>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
-                    <MultiColumnCopy key={i}>
-                      {e.map((e, i) => (
-                        <Typography key={i}>{e}</Typography>
-                      ))}
-                    </MultiColumnCopy>
-                  ) : (
                     <>
-                      <Typography key={i} as="p" variant="copy">
-                        {e}
-                      </Typography>
+                      {isMobile ? (
+                        <>
+                          {e.map((e, i) => (
+                            <Typography key={i}>{e}</Typography>
+                          ))}
+                        </>
+                      ) : (
+                        <MultiColumnCopy key={i}>
+                          {e.map((e, i) => (
+                            <Typography key={i}>{e}</Typography>
+                          ))}
+                        </MultiColumnCopy>
+                      )}
                     </>
+                  ) : (
+                    <Typography key={i} as="p" variant="copy">
+                      {e}
+                    </Typography>
                   ),
                 )}
             </Copy>
