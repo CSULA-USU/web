@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
@@ -141,9 +142,8 @@ export default function CulturalGrads() {
           </Typography>
         </div>
         {questions.map((e, i) => (
-          <>
+          <React.Fragment key={i}>
             <Expandable
-              key={i}
               indicator={<BiChevronRight color="white" size={48} />}
               header={
                 <Typography
@@ -160,8 +160,8 @@ export default function CulturalGrads() {
                 {Array.isArray(e.answer) ? (
                   <>
                     <ul>
-                      {e.answer.map((e, i) => (
-                        <li key={i}>{e}</li>
+                      {e.answer.map((e, answerKey) => (
+                        <li key={`answer-${answerKey}`}>{e}</li>
                       ))}
                     </ul>
                   </>
@@ -171,7 +171,7 @@ export default function CulturalGrads() {
               </Typography>
             </Expandable>
             <Divider color="gold" />
-          </>
+          </React.Fragment>
         ))}
       </FluidContainer>
       <FluidContainer
