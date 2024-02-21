@@ -89,7 +89,8 @@
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
-      "imgAlt": "APIDA Graduates"
+      "imgAlt": "APIDA Graduates",
+      "id": "apisrc"
     },
     {
       "title": "Black Grad",
@@ -104,7 +105,8 @@
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
-      "imgAlt": "PASRC Graduates"
+      "imgAlt": "PASRC Graduates",
+      "id": "pasrc"
     },
     {
       "title": "Nuestra Grad",
@@ -119,7 +121,8 @@
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
       "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
-      "imgAlt": "Nuestra Graduates"
+      "imgAlt": "Nuestra Graduates",
+      "id": "clsrc"
     },
     {
       "title": "Pride Grad",
@@ -134,7 +137,8 @@
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/carousel/pride-grad.jpg",
-      "imgAlt": "GSRC Graduates"
+      "imgAlt": "GSRC Graduates",
+      "id": "gsrc"
     }
   ],
   "questions": [

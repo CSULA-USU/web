@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
+  Button,
   Divider,
   Expandable,
   FlatCard,
@@ -52,13 +53,16 @@ export default function CulturalGrads() {
       <CulturalGradsHeader images={slideshowImages} />
       <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
         {cards.map((e, i) => (
-          <Image
-            key={i}
-            src={e.iconSrc}
-            alt={e.iconAlt}
-            size={100}
-            style={{ objectFit: 'scale-down' }}
-          />
+          <div key={i}>
+            <Button href={`#${e.id}`} variant="transparent" notALink>
+              <Image
+                src={e.iconSrc}
+                alt={e.iconAlt}
+                size={100}
+                style={{ objectFit: 'scale-down' }}
+              />
+            </Button>
+          </div>
         ))}
       </FluidContainer>
       <FluidContainer>
@@ -115,18 +119,19 @@ export default function CulturalGrads() {
           Graduations
         </Typography>
         {cards.map((card, i) => (
-          <ImageAndCard
-            key={i}
-            index={i}
-            title={card.title}
-            subheader={card.subheader}
-            copy={card.copy}
-            iconAlt={card.iconAlt}
-            iconSrc={card.iconSrc}
-            buttonLink={card.applicationLink}
-            imgSrc={card.imgSrc}
-            imgAlt={card.imgAlt}
-          ></ImageAndCard>
+          <div id={card.id} key={i}>
+            <ImageAndCard
+              index={i}
+              title={card.title}
+              subheader={card.subheader}
+              copy={card.copy}
+              iconAlt={card.iconAlt}
+              iconSrc={card.iconSrc}
+              buttonLink={card.applicationLink}
+              imgSrc={card.imgSrc}
+              imgAlt={card.imgAlt}
+            />
+          </div>
         ))}
       </FluidContainer>
 
