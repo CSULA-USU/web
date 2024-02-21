@@ -5,6 +5,26 @@
       "alt": "black grad 2022 graduate"
     },
     {
+      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
+      "alt": "apida grad 2023 graduates"
+    },
+    {
+      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
+      "alt": "nuestra grad 2023 graduates"
+    },
+    {
+      "src": "/departments/ccc/gsrc/pride-grad/pride-grad.jpg",
+      "alt": "pride grad 2022 graduates"
+    },
+    {
+      "src": "/departments/ccc/clsrc/nuestra-grad/2023-performance.jpeg",
+      "alt": "nuestra grad 2023 performance"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-smiling.jpeg",
+      "alt": "apida grad 2023 graduates"
+    },
+    {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg",
       "alt": "black grad 2022 performance"
     },
@@ -13,8 +33,12 @@
       "alt": "black grad graduate"
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
-      "alt": "apida grad 2023 graduates"
+      "src": "/departments/ccc/apisrc/apida-grad/drum-performance.jpeg",
+      "alt": "apida grad 2022 performance"
+    },
+    {
+      "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
+      "alt": "apida grads 2022 master graduates"
     },
     {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg",
@@ -25,23 +49,10 @@
       "alt": "2022 pride grad performance"
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-smiling.jpeg",
-      "alt": "apida grad 2023 graduates"
-    },
-    {
-      "src": "/departments/ccc/apisrc/apida-grad/drum-performance.jpeg",
-      "alt": "apida grad 2022 performance"
-    },
-    {
       "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
       "alt": "apida grad 2023 performance"
-    },
-    {
-      "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
-      "alt": "apida grads 2022 master graduates"
     }
   ],
-
   "benefits": [
     {
       "src": "/departments/ccc/cultural-grads/mic-drop.svg",
@@ -64,7 +75,6 @@
       "description": "Uniquely designed graduation sash"
     }
   ],
-
   "info-cards": [
     {
       "title": "APIDA Grad",
@@ -78,7 +88,7 @@
       "applicationLink": "",
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
-      "imgSrc": "/departments/ccc/apisrc/apida-grad.jpeg",
+      "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
       "imgAlt": "APIDA Graduates"
     },
     {
@@ -108,7 +118,7 @@
       "applicationLink": "",
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
-      "imgSrc": "/departments/ccc/clsrc/nuestra-grad-family-dancing.jpeg",
+      "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
       "imgAlt": "Nuestra Graduates"
     },
     {
@@ -127,7 +137,6 @@
       "imgAlt": "GSRC Graduates"
     }
   ],
-
   "questions": [
     {
       "question": "What do I need to submit in order to participate in the Graduation Celebration?",
@@ -149,7 +158,7 @@
       ]
     },
     {
-      "question": "How will I receive my sash",
+      "question": "How will I receive my sash?",
       "answer": "You will receive your sash the day of your respective cultural graduation inside the venue"
     },
     {
@@ -163,7 +172,7 @@
       ]
     },
     {
-      "question": "I have more questions about applying. Who do I contact?",
+      "question": "I have more questions about applying. Whom do I contact?",
       "answer": "Please contact the respective center coordinator or the Cross Cultural Center (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call at 323-343-5001"
     }
   ]
