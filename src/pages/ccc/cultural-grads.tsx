@@ -119,7 +119,7 @@ export default function CulturalGrads() {
           Graduations
         </Typography>
         {cards.map((card, i) => (
-          <div id={card.id} key={i}>
+          <div id={card.id} key={card.id}>
             <ImageAndCard
               index={i}
               title={card.title}
@@ -134,7 +134,6 @@ export default function CulturalGrads() {
           </div>
         ))}
       </FluidContainer>
-
       <FluidContainer backgroundColor="black">
         <div id="faqs">
           <Typography color="gold" variant="title" as="h2">

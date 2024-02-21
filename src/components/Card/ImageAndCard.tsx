@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Image, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
@@ -89,7 +90,6 @@ export const ImageAndCard = ({
               />
             </ImageContainer>
           )}
-
           <DescriptionSection
             style={{
               ...(isDesktop && { width: '100%' }),
@@ -121,15 +121,17 @@ export const ImageAndCard = ({
                   Array.isArray(e) ? (
                     <>
                       {isMobile ? (
-                        <>
-                          {e.map((e, i) => (
-                            <Typography key={i}>{e}</Typography>
+                        <React.Fragment key={i}>
+                          {e.map((e, innerKey) => (
+                            <span key={innerKey}>
+                              <Typography>{e}</Typography>
+                            </span>
                           ))}
-                        </>
+                        </React.Fragment>
                       ) : (
-                        <MultiColumnCopy key={i}>
-                          {e.map((e, i) => (
-                            <Typography key={i}>{e}</Typography>
+                        <MultiColumnCopy>
+                          {e.map((e, innerIndex) => (
+                            <Typography key={innerIndex}>{e}</Typography>
                           ))}
                         </MultiColumnCopy>
                       )}
