@@ -22,14 +22,19 @@ const BorderedContainer = styled.div`
   gap: ${Spaces.xl};
 `;
 export const FlatCard = ({ children, imgSrc, imgAlt }: FlatCardProps) => {
-  const { returnByBreakpoint } = useBreakpoint();
+  const { isTablet, returnByBreakpoint } = useBreakpoint();
   const descriptionCardWidth = returnByBreakpoint({
     tablet: '100%',
     desktop: 'calc(50% - 16px)',
     widescreen: 'calc(25% - 16px)',
   });
   return (
-    <BorderedContainer style={{ width: descriptionCardWidth }}>
+    <BorderedContainer
+      style={{
+        width: descriptionCardWidth,
+        justifyContent: isTablet ? 'space-around' : '',
+      }}
+    >
       <Image alt={imgAlt} src={imgSrc} width="100%" height="45%" />
       <Typography as="p" variant="copy">
         {children}

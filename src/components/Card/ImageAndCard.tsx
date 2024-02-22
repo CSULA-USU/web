@@ -17,7 +17,7 @@ interface InfoPanelProps {
 }
 
 const Card = styled.div`
-  min-height: 400px;
+  height: 400px;
   width: 100%;
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   background-color: ${Colors.white};
@@ -74,7 +74,11 @@ export const ImageAndCard = ({
 }: InfoPanelProps) => {
   const { isMobile, isDesktop } = useBreakpoint();
   return (
-    <Card>
+    <Card
+      style={{
+        ...(isMobile && { height: 'auto' }),
+      }}
+    >
       {index % 2 !== 0 ? (
         <>
           {isDesktop ? (

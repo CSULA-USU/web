@@ -16,6 +16,7 @@ import { BiChevronRight } from 'react-icons/bi';
 import { CulturalGradsHeader, Page } from 'modules';
 import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
+import { useBreakpoint } from 'hooks';
 
 const BenefitCardsContainer = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ const questions = CulturalGradsData['questions'];
 const benefits = CulturalGradsData['benefits'];
 
 export default function CulturalGrads() {
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -52,20 +54,27 @@ export default function CulturalGrads() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CulturalGradsHeader images={slideshowImages} />
-      <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
-        {cards.map((e, i) => (
-          <div key={i}>
-            <Button href={`#${e.id}`} variant="transparent" notALink>
-              <Image
-                src={e.iconSrc}
-                alt={e.iconAlt}
-                size={100}
-                style={{ objectFit: 'scale-down' }}
-              />
-            </Button>
-          </div>
-        ))}
-      </FluidContainer>
+      {isMobile ? (
+        <></>
+      ) : (
+        <>
+          <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
+            {cards.map((e, i) => (
+              <div key={i}>
+                <Button href={`#${e.id}`} variant="transparent" notALink>
+                  <Image
+                    src={e.iconSrc}
+                    alt={e.iconAlt}
+                    size={100}
+                    style={{ objectFit: 'scale-down' }}
+                  />
+                </Button>
+              </div>
+            ))}
+          </FluidContainer>
+        </>
+      )}
+
       <FluidContainer>
         <Panel backgroundColor="black">
           <Typography as="h4" variant="label" color="primary">
@@ -88,12 +97,14 @@ export default function CulturalGrads() {
           as="h6"
           variant="copy"
           color="black"
-          style={{ textAlign: 'center' }}
+          style={{
+            ...(isMobile ? { textAlign: 'left' } : { textAlign: 'center' }),
+          }}
         >
-          <Typography>
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
             <Typography as="span" weight="700">
-              All{' '}
-            </Typography>
+              All
+            </Typography>{' '}
             graduating students (of all degree types, Bachelors, Masters, EdD)
             who are interested are welcome to apply.
           </Typography>

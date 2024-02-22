@@ -70,9 +70,9 @@ const MobileOuterContainer = styled.div`
 
 const OuterContainer = styled.div`
   position: relative;
-  height: 800px;
-  background: url(/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg) center
-    bottom/cover no-repeat;
+  height: 670px;
+  background: url(https://www.dropbox.com/scl/fi/havx3bh6698aq58u2ist5/NuestraGrad65.jpg?rlkey=iozhc1e4ig3otwjavhih4639u&raw=1)
+    center bottom/cover no-repeat;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -154,7 +154,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 <TeaserContainer />
                 <br />
                 <Typography variant="cta" color="white">
-                  APIDA Grad &apos;23
+                  Nuestra Grad &apos;22
                 </Typography>
               </FluidContainer>
               <FluidContainer

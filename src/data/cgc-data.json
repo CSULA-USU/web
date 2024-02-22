@@ -5,16 +5,20 @@
       "alt": "black grad 2022 graduate"
     },
     {
+      "src": "https://www.dropbox.com/scl/fi/vyqba8myapysrasmrvwkw/NuestraGrad61.jpg?rlkey=4c9ee493bnup6gsy86eem80jj&raw=1",
+      "alt": "nuestra 2022 graduate"
+    },
+    {
       "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
       "alt": "apida grad 2023 graduates"
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
-      "alt": "nuestra grad 2023 graduates"
+      "src": "https://www.dropbox.com/scl/fi/svxrcfi4o69mt2dbqlg79/NuestraGrad2.jpg?rlkey=px9pzlegp84vkyfp8qiyj0l6u&raw=1",
+      "alt": "nuestra grad's decorated graduation cap"
     },
     {
-      "src": "/departments/ccc/gsrc/pride-grad/pride-grad.jpg",
-      "alt": "pride grad 2022 graduates"
+      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
+      "alt": "nuestra grad 2023 graduates"
     },
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/2023-performance.jpeg",
@@ -33,16 +37,8 @@
       "alt": "black grad graduate"
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/drum-performance.jpeg",
-      "alt": "apida grad 2022 performance"
-    },
-    {
       "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
       "alt": "apida grads 2022 master graduates"
-    },
-    {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-drums.jpg",
-      "alt": "black grad 2022 drumming performance"
     },
     {
       "src": "/departments/ccc/gsrc/carousel/pride-drag.jpg",
@@ -51,6 +47,10 @@
     {
       "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
       "alt": "apida grad 2023 performance"
+    },
+    {
+      "src": "/departments/ccc/native-grad/guests-smiling-in-front-of-balloons.jpg",
+      "alt": "native grad 2022 guests smiling in front of ballons "
     }
   ],
   "benefits": [
@@ -109,6 +109,23 @@
       "id": "pasrc"
     },
     {
+      "title": "Native Grad",
+      "subheader": "Native American, Indigenous",
+      "copy": [
+        ["Date: TBD", "Time: TBD"],
+        "Location: TBD",
+        "Cross Cultural Center, Univerity-Student Union",
+        "ccc@calstatela.edu"
+      ],
+      "applicationLink": "",
+      "iconSrc": "/departments/ccc/native-logo.png",
+      "iconAlt": "Native Logo",
+
+      "imgSrc": "/departments/ccc/native-grad/grad-group-smiling-in-front-of-balloons.jpg",
+      "imgAlt": "Native Graduates",
+      "id": "native"
+    },
+    {
       "title": "Nuestra Grad",
       "subheader": "Chicana/o, Latina/o, Central American, South American",
       "copy": [
@@ -120,7 +137,7 @@
       "applicationLink": "",
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
-      "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
+      "imgSrc": "https://www.dropbox.com/scl/fi/hq8xhoibho7htew1ieet7/NuestraGrad11.jpg?rlkey=jmug6r6adeu89h224o2p83qkh&raw=1",
       "imgAlt": "Nuestra Graduates",
       "id": "clsrc"
     },
@@ -136,7 +153,7 @@
       "applicationLink": "",
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
-      "imgSrc": "/departments/ccc/gsrc/carousel/pride-grad.jpg",
+      "imgSrc": "/departments/ccc/gsrc/pride-grad/grad-group.jpg",
       "imgAlt": "GSRC Graduates",
       "id": "gsrc"
     }
