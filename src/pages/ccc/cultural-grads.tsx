@@ -120,7 +120,7 @@ export default function CulturalGrads() {
           Graduations
         </Typography>
         {cards.map((card, i) => (
-          <div id={card.id} key={card.id}>
+          <div id={card.id} key={`${card.id}-${i}`}>
             <ImageAndCard
               index={i}
               title={card.title}
