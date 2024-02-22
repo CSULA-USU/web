@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Spaces } from 'theme';
 
 interface ExpandableProps {
   isExpanded?: boolean;
@@ -41,10 +40,7 @@ const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
   overflow: hidden;
   transition: 0.3s ease;
   height: 0px;
-  ${(p) =>
-    p.isOpen &&
-    `height: ${p.height}px; margin-bottom: ${Spaces.md};
-  `};
+  ${(p) => p.isOpen && `height: ${p.height}px`};
 `;
 
 export const Expandable = ({
