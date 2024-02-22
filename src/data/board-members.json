@@ -2,16 +2,16 @@
   {
     "head": "Chair",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/otoaony7dcc2sqvepiiem/Cameryn.png?rlkey=pew31iwg7jx7p215z8vswrcul&raw=1",
-    "name": "Cameryn Mabry",
+    "src": "https://www.dropbox.com/scl/fi/037y82e326mxxcpnsm2gv/Aishwarya-Gupta.png?rlkey=tf3g0ze5f2ucmku7tm88ncdve&raw=1",
+    "name": "Ash Gupta",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "head": "Vice-Chair",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/037y82e326mxxcpnsm2gv/Aishwarya-Gupta.png?rlkey=tf3g0ze5f2ucmku7tm88ncdve&raw=1",
-    "name": "Aishwarya Gupta",
+    "src": "https://www.dropbox.com/scl/fi/47kafjpu5bsep91blfyyu/Negin.png?rlkey=45uykk9zu8nzjchmludc0g26z&raw=1",
+    "name": "Negin Dadmarz",
     "credentials": "",
     "section": "student-representative"
   },
@@ -24,22 +24,8 @@
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/2v9fp7je27etc499tv1vb/Joseph.png?rlkey=937otnxup1tfzhdqqqfh7xh5l&raw=1",
-    "name": "Joseph Guevara",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/orw9xey0e6s6mg2rcre6c/Melissa.png?rlkey=rh3ejf6cciqpg2rs8m92ps6z4&raw=1",
     "name": "Melissa Nicole Lopez",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/47kafjpu5bsep91blfyyu/Negin.png?rlkey=45uykk9zu8nzjchmludc0g26z&raw=1",
-    "name": "Negin Dadmarz",
     "credentials": "",
     "section": "student-representative"
   },
@@ -79,6 +65,13 @@
     "section": "pro-board-member"
   },
   {
+    "title": "Vice President for Student Life",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Patrick Day",
+    "credentials": "Interim Vice President for Student Life",
+    "section": "pro-board-member"
+  },
+  {
     "title": "Vice President and Chief Financial Officers' Designee",
     "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
     "name": "Judith Benjamin",
@@ -108,9 +101,9 @@
   },
   {
     "title": "Advisor",
-    "src": "https://www.dropbox.com/scl/fi/sbcdl6l7jgxxqypnunywb/tariq-marji.jpg?rlkey=l37tgv6h7kvzcn6tr7ia0m1s5&raw=1",
-    "name": "Tariq Marji",
-    "credentials": "Executive Director of University Auxiliary Services",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Raul Castaneda",
+    "credentials": "Interim Executive Director of University Auxiliary Services",
     "section": "advisors"
   },
   {
