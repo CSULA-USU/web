@@ -434,8 +434,9 @@ export default function StudentLeaderElections() {
         >
           <Typography color="white" as="p">
             For more information on the application process, please visit the
-            University-Student Union administration office in room 306 or call
-            Joe Sedlacek, Assistant to the Executive Director, at 323.343.2461.
+            University-Student Union administration office in room 306 or
+            contact Jasmine Heredia, Assistant to the Executive Director, at
+            jhered23@calstatela.edu
           </Typography>
         </Expandable>
         <Divider color="gold" />
