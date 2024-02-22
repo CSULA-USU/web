@@ -89,10 +89,10 @@ const Overlay = styled.div`
 `;
 
 const TeaserContainer = styled.div`
-  width: 500px;
-  height: 520px;
+  width: 400px;
+  height: 470px;
   background: center / contain no-repeat
-    url('/departments/ccc/nuestra-teaser.jpeg');
+    url('/departments/ccc/clsrc/nuestra-grad/nuestra-grads-celebrating-onstage.jpg');
   border-radius: 12px;
 `;
 
@@ -154,7 +154,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 <TeaserContainer />
                 <br />
                 <Typography variant="cta" color="white">
-                  Nuestra Grad &apos;22
+                  APIDA Grad &apos;23
                 </Typography>
               </FluidContainer>
               <FluidContainer

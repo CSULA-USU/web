@@ -103,18 +103,7 @@ export default function CulturalGrads() {
           </Typography>
         </Typography>
       </FluidContainer>
-      <FluidContainer>
-        <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
-          Benefits
-        </Typography>
-        <BenefitCardsContainer>
-          {benefits.map((e, i) => (
-            <FlatCard key={i} imgSrc={e.src} imgAlt={e.alt}>
-              {e.description}
-            </FlatCard>
-          ))}
-        </BenefitCardsContainer>
-      </FluidContainer>
+
       <FluidContainer>
         <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
           Graduations
@@ -134,6 +123,18 @@ export default function CulturalGrads() {
             />
           </div>
         ))}
+      </FluidContainer>
+      <FluidContainer>
+        <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
+          Benefits
+        </Typography>
+        <BenefitCardsContainer>
+          {benefits.map((e, i) => (
+            <FlatCard key={i} imgSrc={e.src} imgAlt={e.alt}>
+              {e.description}
+            </FlatCard>
+          ))}
+        </BenefitCardsContainer>
       </FluidContainer>
       <FluidContainer backgroundColor="black">
         <div id="faqs">
