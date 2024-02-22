@@ -25,6 +25,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'BOD Meeting Aug 25, 2023',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/pn57mvy2705y74swssqf9/audit-committee-sep-8-23.docx?rlkey=0o3oqpizwqu72ospxtiu748hn&dl=0',
+            children: 'Audit Committee Sep 8, 2023',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/fq0gtfffhw4bqb490rrsz/bod-sep-15-23.pdf?rlkey=xk51yjktx91mxp8ac2zrch7s8&dl=0',
             children: 'BOD Meeting Sep 15, 2023',
           },
@@ -35,6 +39,10 @@ const agendaDownloads: DownloadSectionProps[] = [
           {
             href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
             children: 'BOD Meeting Oct 6, 2023',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
+            children: 'Personnel Committee Oct 6, 2023',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/tu6vye98c8ewuejci99l3/bod-oct-13-23.docx?rlkey=yopndir9ke3o1wwfnlemtpz2p&dl=0',
@@ -50,7 +58,7 @@ const agendaDownloads: DownloadSectionProps[] = [
           },
           {
             href: 'https://www.dropbox.com/scl/fi/d1q9iuy3fdrgai0oy52rd/bod-feb-9-24.docx?rlkey=xc1swg7cng5uu2qcixdxm4r0m&dl=0',
-            children: 'BOD Meeting Feb 9, 2024',
+            children: 'Fiscal Committee Feb 9, 2024',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/650k0sd6mjibmgwv3v7ca/nominating-feb-9-24.docx?rlkey=gp1fhsneqpntyjq2vbyzav3r2&dl=0',
