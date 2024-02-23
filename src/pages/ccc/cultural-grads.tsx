@@ -186,7 +186,7 @@ export default function CulturalGrads() {
           </React.Fragment>
         ))}
       </FluidContainer>
-      <FluidContainer
+      {/* <FluidContainer
         backgroundColor="primary"
         flex
         justifyContent="center"
@@ -199,7 +199,7 @@ export default function CulturalGrads() {
           width="100%"
           height="fit-content"
         />
-      </FluidContainer>
+      </FluidContainer> */}
     </Page>
   );
 }
