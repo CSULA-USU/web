@@ -18,7 +18,7 @@ import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
 import { useBreakpoint } from 'hooks';
 
-const BenefitCardsContainer = styled.div`
+const IncentiveCardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -27,7 +27,7 @@ const BenefitCardsContainer = styled.div`
 const slideshowImages = CulturalGradsData['header-images'];
 const cards = CulturalGradsData['info-cards'];
 const questions = CulturalGradsData['questions'];
-const benefits = CulturalGradsData['benefits'];
+const incentives = CulturalGradsData['incentives'];
 
 export default function CulturalGrads() {
   const { isMobile } = useBreakpoint();
@@ -137,15 +137,15 @@ export default function CulturalGrads() {
       </FluidContainer>
       <FluidContainer>
         <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
-          Benefits
+          Incentives
         </Typography>
-        <BenefitCardsContainer>
-          {benefits.map((e, i) => (
+        <IncentiveCardsContainer>
+          {incentives.map((e, i) => (
             <FlatCard key={i} imgSrc={e.src} imgAlt={e.alt}>
               {e.description}
             </FlatCard>
           ))}
-        </BenefitCardsContainer>
+        </IncentiveCardsContainer>
       </FluidContainer>
       <FluidContainer backgroundColor="black">
         <div id="faqs">

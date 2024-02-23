@@ -53,7 +53,7 @@
       "alt": "native grad 2022 guests smiling in front of ballons "
     }
   ],
-  "benefits": [
+  "incentives": [
     {
       "src": "/departments/ccc/cultural-grads/mic-drop.svg",
       "alt": "Mic Drop Icon",
@@ -67,7 +67,7 @@
     {
       "src": "/departments/ccc/cultural-grads/books.svg",
       "alt": "Books Icon",
-      "description": "Program booklet with your picture and 75 word acknowledgement"
+      "description": "Program booklet with your picture and 75 word acknowledgment"
     },
     {
       "src": "/departments/ccc/cultural-grads/graduation.svg",
@@ -114,13 +114,12 @@
       "copy": [
         ["Date: TBD", "Time: TBD"],
         "Location: TBD",
-        "Cross Cultural Center, Univerity-Student Union",
-        "ccc@calstatela.edu"
+        "Dr. Christopher Jackson, Cross Cultural Centers Director",
+        "cjacks38@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
-
       "imgSrc": "/departments/ccc/native-grad/grad-group-smiling-in-front-of-balloons.jpg",
       "imgAlt": "Native Graduates",
       "id": "native"
@@ -131,7 +130,7 @@
       "copy": [
         ["Date: TBD", "Time: TBD"],
         "Location: TBD",
-        "Cross Cultural Center, Univerity-Student Union",
+        "Cross Cultural Centers, Univerity-Student Union",
         "ccc@calstatela.edu"
       ],
       "applicationLink": "",
@@ -160,22 +159,22 @@
   ],
   "questions": [
     {
-      "question": "What do I need to submit in order to participate in the Graduation Celebration?",
+      "question": "What do I need to submit to participate in the Graduation Celebration?",
       "answer": [
         "Submit the cultural graduation application and payment. Prices may vary",
         "Submit your 75-word personal narrative to be on your booklet (Optional)",
-        "Schedule your photo to be taken (Optional. Your photo will be replaced with a default image.)"
+        "Schedule your photo to be taken (Optional. Otherwise, photo will be replaced with a default image.)"
       ]
     },
     {
       "question": "How will my picture be taken for the booklet?",
-      "answer": "At the end of the Cultural Graduation Application, there will be an option to book an appointment to take your picture. Cap and gown will be provided"
+      "answer": "At the end of the Cultural Graduation Application, there will be an option to book an appointment to take your picture. Cap and gown may be provided for picture-taking purposes"
     },
     {
       "question": "What should I wear?",
       "answer": [
-        "For the photo in the booklet, dress semiformal, and a cap and gown will be provided at the designated photography location",
-        "For picture taking and the graduation celebration, a semi-formal attire is preferred. We encourage you to dress in your culture's traditional wear!"
+        "For the photo in the booklet, dress semi-formal, and a cap and gown will be provided at the designated photography location",
+        "A semi-formal attire is preferred for picture taking and the graduation celebration. We encourage you to dress in your culture's traditional wear!"
       ]
     },
     {
@@ -194,7 +193,7 @@
     },
     {
       "question": "I have more questions about applying. Whom do I contact?",
-      "answer": "Please contact the respective center coordinator or the Cross Cultural Center (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call at 323-343-5001"
+      "answer": "Please get in touch with the respective center coordinator or the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call 323-343-5001"
     }
   ]
 }
