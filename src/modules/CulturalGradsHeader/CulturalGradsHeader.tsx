@@ -34,7 +34,7 @@ const SlideshowContainer = styled.div`
 
 const SlideshowContent = styled.div`
   display: flex;
-  animation: ${moveAnimation} 40s linear infinite alternate;
+  animation: ${moveAnimation} 120s linear infinite alternate;
   animation-delay: 2s;
 `;
 
