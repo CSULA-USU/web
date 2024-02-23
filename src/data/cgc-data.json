@@ -114,13 +114,12 @@
       "copy": [
         ["Date: TBD", "Time: TBD"],
         "Location: TBD",
-        "Cross Cultural Center, Univerity-Student Union",
-        "ccc@calstatela.edu"
+        "Dr. Christopher Jackson, Cross Cultural Centers Director",
+        "cjacks38@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
-
       "imgSrc": "/departments/ccc/native-grad/grad-group-smiling-in-front-of-balloons.jpg",
       "imgAlt": "Native Graduates",
       "id": "native"
@@ -131,7 +130,7 @@
       "copy": [
         ["Date: TBD", "Time: TBD"],
         "Location: TBD",
-        "Cross Cultural Center, Univerity-Student Union",
+        "Cross Cultural Centers, Univerity-Student Union",
         "ccc@calstatela.edu"
       ],
       "applicationLink": "",
@@ -194,7 +193,7 @@
     },
     {
       "question": "I have more questions about applying. Whom do I contact?",
-      "answer": "Please contact the respective center coordinator or the Cross Cultural Center (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call at 323-343-5001"
+      "answer": "Please contact the respective center coordinator or the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call at 323-343-5001"
     }
   ]
 }
