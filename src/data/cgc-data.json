@@ -47,10 +47,6 @@
     {
       "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
       "alt": "apida grad 2023 performance"
-    },
-    {
-      "src": "/departments/ccc/native-grad/guests-smiling-in-front-of-balloons.jpg",
-      "alt": "native grad 2022 guests smiling in front of ballons "
     }
   ],
   "incentives": [
@@ -67,7 +63,7 @@
     {
       "src": "/departments/ccc/cultural-grads/books.svg",
       "alt": "Books Icon",
-      "description": "Program booklet with your picture and 75 word acknowledgment"
+      "description": "Commemorative program with your picture and 75 word acknowledgment"
     },
     {
       "src": "/departments/ccc/cultural-grads/graduation.svg",
