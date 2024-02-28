@@ -116,7 +116,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                   Cultural
                 </Typography>
                 <Typography variant="title" size="xl" color="white">
-                  Graduate
+                  Graduation
                 </Typography>
                 <Typography variant="title" size="xl" color="white">
                   Celebrations
@@ -167,7 +167,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                   Cultural
                 </Typography>
                 <Typography variant="title" size="3xl" color="white">
-                  Graduate
+                  Graduation
                 </Typography>
                 <Typography variant="title" size="3xl" color="white">
                   Celebrations
