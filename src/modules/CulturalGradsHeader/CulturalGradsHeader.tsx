@@ -71,7 +71,7 @@ const MobileOuterContainer = styled.div`
 const OuterContainer = styled.div`
   position: relative;
   height: 670px;
-  background: url(https://www.dropbox.com/scl/fi/havx3bh6698aq58u2ist5/NuestraGrad65.jpg?rlkey=iozhc1e4ig3otwjavhih4639u&raw=1)
+  background: url(https://www.dropbox.com/scl/fi/rqq1vcllbcojj9o3venab/header-background.png?rlkey=b1lpen7p61hizqrtkmq03ude9&raw=1)
     center bottom/cover no-repeat;
   overflow: hidden;
   display: flex;
@@ -116,7 +116,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                   Cultural
                 </Typography>
                 <Typography variant="title" size="xl" color="white">
-                  Graduate
+                  Graduation
                 </Typography>
                 <Typography variant="title" size="xl" color="white">
                   Celebrations
@@ -167,7 +167,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                   Cultural
                 </Typography>
                 <Typography variant="title" size="3xl" color="white">
-                  Graduate
+                  Graduation
                 </Typography>
                 <Typography variant="title" size="3xl" color="white">
                   Celebrations
