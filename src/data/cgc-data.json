@@ -76,8 +76,8 @@
       "title": "APIDA Grad",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
+        ["Saturday, May 18", "5PM to 7PM"],
+        "State Playhouse",
         "Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "motuhiv@calstatela.edu"
       ],
@@ -92,8 +92,8 @@
       "title": "Black Grad",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
+        ["Sunday, May 19, 2024", "5PM to 7PM"],
+        "University Gym",
         "Da'Vie Guzman, Pan African Student Resource Center Coordinator",
         "dguzma91@calstatela.edu"
       ],
@@ -108,8 +108,8 @@
       "title": "Native Grad",
       "subheader": "Native American, Indigenous",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
+        ["Saturday May 18", "10AM to 12PM"],
+        "University-Student Union",
         "Dr. Christopher Jackson, Cross Cultural Centers Director",
         "cjacks38@calstatela.edu"
       ],
@@ -124,8 +124,8 @@
       "title": "Nuestra Grad",
       "subheader": "Chicana/o, Latina/o, Central American, South American",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
+        ["Sunday, May 19, 2024", "11AM to 1PM"],
+        "University Gym",
         "Cross Cultural Centers, Univerity-Student Union",
         "ccc@calstatela.edu"
       ],
@@ -140,8 +140,8 @@
       "title": "Pride Grad",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
+        ["Thursday May 16, 2024", "5PM to 7PM"],
+        "State Playhouse",
         "Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "mpizarr5@calstatela.edu"
       ],
@@ -182,6 +182,7 @@
         "ALL Graduations are open seating (not reserved). First come, first served",
         "APIDA Grad # of Guest Tickets: TBD",
         "Black Grad # of Guest Tickets: TBD",
+        "Native Grad # of Guest Tickets: TBD",
         "Nuestra Grad # of Guest Tickets: TBD",
         "Pride Grad # of Guest Tickets: TBD"
       ]
