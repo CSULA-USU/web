@@ -20,6 +20,7 @@ const MiddleContainer = styled.div`
 `;
 
 const PreviewContainer = styled.div`
+  background-color: white;
   display: none;
   position: absolute;
   left: 50%;
@@ -54,7 +55,6 @@ const RightContainer = styled.div`
 const EventAndPreviewContainer = styled.div`
   position: relative;
   display: flex;
-
   &:hover ${LeftContainer} {
     border-left: 10px solid ${Colors.primary};
   }
@@ -197,23 +197,27 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
         )
       ) : (
         <>
-          <EventAndPreviewContainer>
-            <MinimalistEventContainer>
-              <LeftContainer>
-                <Typography as="h3" variant="eventDetail" color="gold">
-                  {month} {day}
-                </Typography>
-                <Typography
-                  as="h4"
-                  variant="eventTime"
-                  color="grey"
-                  weight="400"
-                >
-                  {startTime} - {endTime}
-                </Typography>
-              </LeftContainer>
-              <MiddleContainer>
-                <TitleContainer onClick={onClick}>
+          <MinimalistEventContainer>
+            <LeftContainer>
+              <Typography as="h3" variant="eventDetail" color="gold">
+                {month} {day}
+              </Typography>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {startTime} - {endTime}
+              </Typography>
+            </LeftContainer>
+            <MiddleContainer>
+              <TitleContainer onClick={onClick}>
+                <EventAndPreviewContainer>
+                  <PreviewContainer>
+                    <PreviewImage>
+                      <Image
+                        src={`${PRESENCE_URI_BASE}/${photoUri}`}
+                        alt={eventName}
+                        style={{ height: '100%', width: 'auto' }}
+                      />
+                    </PreviewImage>
+                  </PreviewContainer>
                   <Typography
                     as="h3"
                     variant="eventTitle"
@@ -222,32 +226,18 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   >
                     {eventName}
                   </Typography>
-                </TitleContainer>
-                <Typography
-                  as="h4"
-                  variant="eventTime"
-                  color="grey"
-                  weight="400"
-                >
-                  {location}
-                </Typography>
-              </MiddleContainer>
-              <RightContainer>
-                <Button variant="grey" onClick={onClick}>
-                  View Event
-                </Button>
-              </RightContainer>
-              <PreviewContainer>
-                <PreviewImage>
-                  <Image
-                    src={`${PRESENCE_URI_BASE}/${photoUri}`}
-                    alt={eventName}
-                    style={{ height: '100%', width: 'auto' }}
-                  />
-                </PreviewImage>
-              </PreviewContainer>
-            </MinimalistEventContainer>
-          </EventAndPreviewContainer>
+                </EventAndPreviewContainer>
+              </TitleContainer>
+              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+                {location}
+              </Typography>
+            </MiddleContainer>
+            <RightContainer>
+              <Button variant="grey" onClick={onClick}>
+                View Event
+              </Button>
+            </RightContainer>
+          </MinimalistEventContainer>
         </>
       )}
     </>
