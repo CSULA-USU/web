@@ -13,28 +13,28 @@ export default function MeetingRooms() {
       children:
         'A list of all event attendees (guests, members organizing, staff and/or volunteers) will be required to obtain a reservation confirmation for all indoor events.',
       imgSrc: '/vectors/operations/people.svg',
-      imgAlt: 'people image',
+      imgAlt: 'Three People',
     },
     {
       title: 'Members',
       children:
         'A list of members organizing, staffing and/or volunteering will be required to obtain a reservation confirmation for all outdoor events (no guest list needed).',
       imgSrc: '/vectors/operations/teams.svg',
-      imgAlt: 'teams image',
+      imgAlt: 'Connecting Teams',
     },
     {
       title: 'Off Campus Vendors',
       children:
         'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
       imgSrc: '/vectors/operations/form.svg',
-      imgAlt: 'form image',
+      imgAlt: 'Form',
     },
     {
       title: 'Food',
       children:
         'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
       imgSrc: '/vectors/operations/food.svg',
-      imgAlt: 'food image',
+      imgAlt: 'Breakfast',
     },
   ];
 
