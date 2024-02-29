@@ -223,7 +223,7 @@ export const ModEventCard = ({
               </InfoContainer>
             </EventDetails>
             <ButtonSection>
-              <Typography as="h5" variant="eventDetail" color="black">
+              <Typography as="h1" variant="eventDetail" color="black">
                 {ABBREVIATED_ORGS[organizationName]}
               </Typography>
               {featured ? (
@@ -290,7 +290,7 @@ export const ModEventCard = ({
                   size="20px"
                   style={{ margin: '0px 8px 2px 0px' }}
                 />
-                <Typography as="h5" variant="eventDetail" color="black">
+                <Typography as="h1" variant="eventDetail" color="black">
                   {ABBREVIATED_ORGS[organizationName]}
                 </Typography>
               </InfoContainer>
