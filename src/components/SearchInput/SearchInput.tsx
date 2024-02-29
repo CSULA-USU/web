@@ -33,7 +33,7 @@ const InputContainerForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  background-color: #8a8a8a;
+  background-color: #9c9c9c;
   color: white;
   width: 100%;
   border-radius: 40px;
