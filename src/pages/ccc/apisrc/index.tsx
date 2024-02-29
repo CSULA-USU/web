@@ -182,7 +182,7 @@ export default function APISRC() {
             margin="auto"
             borderRadius="12px"
             src="/departments/ccc/apisrc/apida-grad.jpeg"
-            alt="2022 apida graduation image"
+            alt="2022 apida graduation graduates"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
           ></Image>

@@ -632,7 +632,7 @@ export default function FSL() {
               </Button>
               <Image
                 src="https://www.dropbox.com/scl/fi/yqvpbwehonhndilfprcpx/climate-survey.jpg?rlkey=49mpoec6meksoxupu3wo4nx48&raw=1"
-                alt="climate survey graphic"
+                alt="Climate survey"
                 size="lg"
                 margin="16px 0px"
                 borderRadius="12px"

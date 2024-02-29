@@ -27,7 +27,7 @@ export default function MeetingRooms() {
       children:
         'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
       imgSrc: '/vectors/operations/form.svg',
-      imgAlt: 'Form',
+      imgAlt: 'Publish Article',
     },
     {
       title: 'Food',

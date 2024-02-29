@@ -52,7 +52,7 @@ const clubCards = [
     children:
       'Join us for events on campus like movie nights, arts and crafts, leadership workshops, pet therapy and off campus for musical theater trips, theme park visits, and leadership retreats. New events are hosted each semester!',
     imgSrc: '/vectors/csi/trip.svg',
-    imgAlt: 'trip image',
+    imgAlt: 'Trip',
     href: 'https://calstatela.presence.io/events',
     linkText: 'Learn More',
   },
@@ -61,7 +61,7 @@ const clubCards = [
     children:
       'Are you curious about fraternity and sorority life? Looking to add some fun to your university experience? Interested in helping others through community service? Take some time to check out these unique organizations.',
     imgSrc: '/vectors/csi/fraternities.svg',
-    imgAlt: 'fraternities image',
+    imgAlt: 'Greek letter Omega',
     href: 'csi/fsl',
     linkText: 'Learn More',
   },
@@ -70,7 +70,7 @@ const clubCards = [
     children:
       'GEEK is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for CSI events. The volunteer program offers many opportunities to develop professional and leadership skills in a fun, fast-paced environment by working with vendors, campus administrators and CSI staff to make events come to life!',
     imgSrc: '/vectors/csi/friends.svg',
-    imgAlt: 'friends image',
+    imgAlt: 'True Friends',
     href: 'csi/geek',
     linkText: 'Learn More',
   },
@@ -79,7 +79,7 @@ const clubCards = [
     children:
       'Cal State LA is home to over 120 student organizations that represent academic, cultural, political, professional, service, social, spiritual, and recreational interests. Learn about the organizations or find information about the Student Org Handbook and policies and procedures!',
     imgSrc: '/vectors/csi/academic.svg',
-    imgAlt: 'academic image',
+    imgAlt: 'Publish Article',
     href: 'csi/student-orgs',
     linkText: 'Learn More',
   },
@@ -88,7 +88,7 @@ const clubCards = [
     children:
       'Are you interested in developing the skills you need to be a stand-out in a tough job market? Explore the opportunities we have for all students regardless of the level of leadership experience they have. See our events calendar for upcoming opportunities.',
     imgSrc: '/vectors/csi/education.svg',
-    imgAlt: 'trip image',
+    imgAlt: 'Education',
     href: '',
     linkText: '',
   },
@@ -97,7 +97,7 @@ const clubCards = [
     children:
       'CSI maintains a Leadership Library with books on retreat planning, team builders, enhancing communication skills, officer transitions, and tips for running a successful meeting. All recognized student organization members can check out the books from our office in the U-SU.',
     imgSrc: '/vectors/csi/meeting.svg',
-    imgAlt: 'trip image',
+    imgAlt: 'Meeting',
     href: '',
     linkText: '',
   },
