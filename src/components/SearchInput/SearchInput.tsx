@@ -74,8 +74,9 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               value={input}
               onChange={onChange}
               style={{
-                backgroundColor: Colors.greyLighter,
+                backgroundColor: Colors.greyLightest,
                 color: Colors.black,
+                border: '1px solid',
               }}
             />
           </>

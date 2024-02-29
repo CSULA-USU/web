@@ -45,6 +45,7 @@ export const StaffCard = ({
       <CenterWord>
         <div>
           <Typography
+            as="h3"
             color="gold"
             variant="copy"
             weight="700"
@@ -56,6 +57,7 @@ export const StaffCard = ({
           </Typography>
 
           <Typography
+            as="h3"
             color="gold"
             variant="copy"
             weight="700"
