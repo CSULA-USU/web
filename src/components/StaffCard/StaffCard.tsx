@@ -44,17 +44,23 @@ export const StaffCard = ({
     <Panel {...props} width={'304px'} height="512px">
       <CenterWord>
         <div>
-          <Typography
-            as="h3"
-            color="gold"
-            variant="copy"
-            weight="700"
-            size="md"
-            margin="0 0 0 0"
-            style={{ display: 'block' }}
-          >
-            {head}
-          </Typography>
+          {head ? (
+            <>
+              <Typography
+                as="h3"
+                color="gold"
+                variant="copy"
+                weight="700"
+                size="md"
+                margin="0 0 0 0"
+                style={{ display: 'block' }}
+              >
+                {head}
+              </Typography>
+            </>
+          ) : (
+            <></>
+          )}
 
           <Typography
             as="h3"
