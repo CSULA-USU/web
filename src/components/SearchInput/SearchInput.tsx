@@ -33,8 +33,8 @@ const InputContainerForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  background-color: #9c9c9c;
-  color: white;
+  background-color: ${Colors.greyLightest};
+  color: black;
   width: 100%;
   border-radius: 40px;
   border-style: none;
@@ -50,7 +50,7 @@ const StyledInput = styled.input`
     border-style: none;
   }
   &::placeholder {
-    color: #2b2b2b;
+    color: black;
   }
 `;
 
