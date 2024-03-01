@@ -102,14 +102,14 @@ const cards = [
     children:
       'Is responsible for the efficient upkeep of the University-Student Union including all equipment and furnishings in and around the facility. Additionally, this department addresses any electrical, plumbing, HVAC, carpentry, landscaping, and beautification needs of the building.',
     iconSrc: '/departments/operations/images/building-maintenance.jpg',
-    iconAlt: 'gardening image',
+    iconAlt: 'Fixing the ceiling light',
   },
   {
     title: 'Building Services',
     children:
       'Supports the needs of students, faculty and staff who utilize space in and around the U-SU by providing dependable set-ups for events, meetings, and programs.',
     iconSrc: '/departments/operations/images/building-services.jpg',
-    iconAlt: 'decorating image',
+    iconAlt: 'Setting up a canopy',
     iconWidth: '160px',
   },
   {
@@ -117,7 +117,7 @@ const cards = [
     children:
       'Is responsible for the general cleanliness of all areas in and surrounding the Union facility including all interior/exterior furnishings and addresses all concerns related to general housekeeping.',
     iconSrc: '/departments/operations/images/custodial-services.jpg',
-    iconAlt: 'cleaning image',
+    iconAlt: 'Cleaning the windows',
     iconWidth: '100px',
   },
   {
@@ -125,7 +125,7 @@ const cards = [
     children:
       'Assists in supporting the increased technical needs of the building and addresses a wide variety of programs and events that occur inside and outside of the U-SU by providing knowledgeable technical and theatrical support.',
     iconSrc: '/departments/operations/images/media-services.jpg',
-    iconAlt: 'media image',
+    iconAlt: 'Adjusting stage lighting',
     iconWidth: '150px',
   },
   {
@@ -133,7 +133,7 @@ const cards = [
     children:
       'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
     iconSrc: '/departments/operations/images/information-event-services.jpg',
-    iconAlt: 'media image',
+    iconAlt: 'Handing a student paper an informative program',
     iconWidth: '150px',
   },
 ];
