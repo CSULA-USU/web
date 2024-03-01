@@ -68,6 +68,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/w1rrzq94dfhnfrif0hj0x/bod-feb-16-24.docx?rlkey=2es0rcl4diaw8mvasv0shwjc5&dl=0',
             children: 'BOD Meeting Feb 16, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/yinettixdwa9805cof566/Agenda-U-SU-BOD-Special-Meeting-March-1-2024.docx?rlkey=8nzj3ba2rdddv3o4xbnkbdvdj&dl=0',
+            children: 'BOD Special Meeting Mar 1, 2024',
+          },
         ]}
       />
     ),
