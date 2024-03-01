@@ -36,7 +36,7 @@ export default function CulturalGrads() {
     <Page>
       <Head>
         <meta name="robots" content="noindex, nofollow" />
-        {/* <title>Cultural Graduate Celebrations</title>
+        <title>Cultural Graduate Celebrations</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
@@ -53,7 +53,7 @@ export default function CulturalGrads() {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
         ></meta>
-        <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <CulturalGradsHeader images={slideshowImages} />
       {isMobile ? (
