@@ -59,12 +59,12 @@ const Label = styled.label`
 `;
 
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
     <OuterContainer>
       <InputContainerForm onSubmit={onSubmit}>
-        {isMobile ? (
+        {isTablet ? (
           <>
             <Label htmlFor="searchInput">Search</Label>
             <StyledInput
@@ -104,7 +104,7 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
             <></>
           ) : (
             <>
-              <FaSearch size={'1.25em'} color="#FFF" />
+              <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
             </>
           )}
         </Link>
