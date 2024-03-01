@@ -62,7 +62,7 @@ export const Footer = () => (
       </FooterTopLogo>
       <FooterTopLinks>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Building Hours
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
@@ -79,7 +79,7 @@ export const Footer = () => (
           </Typography>
         </div>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Involvement
           </Typography>
           <Link target="_blank" href={'/events'}>
@@ -107,7 +107,7 @@ export const Footer = () => (
           </Link>
         </div>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Resources
           </Typography>
           <Link target="_blank" href={'https://www.calstatela.edu/'}>
