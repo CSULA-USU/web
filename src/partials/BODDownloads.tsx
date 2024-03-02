@@ -38,10 +38,6 @@ const agendaDownloads: DownloadSectionProps[] = [
           },
           {
             href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
-            children: 'BOD Meeting Oct 6, 2023',
-          },
-          {
-            href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
             children: 'Personnel Committee Oct 6, 2023',
           },
           {
@@ -77,7 +73,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/w03owke02gp0d4sjptruf/fy23-24.zip?rlkey=m8jpm5pm0bd1a9fr5hstukgnr&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/rtfz9lbhzxs7ib8s2pd9g/fy-23-24.zip?rlkey=vsxcpnw1yk1y9ceoqeaxemxkg&dl=0',
       variant: 'black',
     },
   },

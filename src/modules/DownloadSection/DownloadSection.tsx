@@ -34,7 +34,9 @@ export const DownloadSection = ({
   <>
     <Container>
       <Title>
-        <Typography variant="labelTitle">{title}</Typography>
+        <Typography variant="labelTitle" as="h3">
+          {title}
+        </Typography>
       </Title>
       <Content>{children}</Content>
       <div>

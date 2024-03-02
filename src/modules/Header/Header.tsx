@@ -58,7 +58,7 @@ export const Header = ({
           <>
             <VerticalLine />
             {typeof children === 'string' ? (
-              <Typography as="h2" margin="24px 0">
+              <Typography as="p" margin="24px 0">
                 {children}
               </Typography>
             ) : (
