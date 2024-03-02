@@ -66,7 +66,7 @@ export const Footer = () => (
             Building Hours
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
-            Monday - Thursday: 7 AM to 10 PM
+            Monday to Thursday: 7 AM to 10 PM
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
             Friday: 7 AM to 8 PM
