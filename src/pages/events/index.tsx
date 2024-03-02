@@ -20,15 +20,14 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        title="Upcoming Events"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
-      >
+      <Header title="Upcoming Events">
         The University-Student Union hosts various events throughout the school
         year. Make sure to check back here to stay up to date with the latest
         events.
       </Header>
-      <UpcomingEvents monthly events={events} />
+      <div style={{ backgroundColor: 'pink' }}>
+        <UpcomingEvents monthly events={events} />
+      </div>
     </Page>
   );
 }

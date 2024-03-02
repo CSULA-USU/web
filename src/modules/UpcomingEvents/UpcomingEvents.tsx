@@ -1,6 +1,6 @@
 import { Divider, FluidContainer, Typography } from 'components';
 import { PresenceEvent } from 'types';
-import { EventCard } from 'modules/EventCard';
+import { SplitEventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import Link from 'next/link';
@@ -77,7 +77,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
             <Divider label={eventMonth} />
             <UpcomingEventsContent>
               {eventsByMonth[eventMonth].map((event) => (
-                <EventCard
+                <SplitEventCard
                   key={event.eventNoSqlId}
                   event={event}
                   onClick={() => selectEvent(event)}
@@ -90,7 +90,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
         <>
           <UpcomingEventsContent>
             {events.slice(1, 3).map((event) => (
-              <EventCard
+              <SplitEventCard
                 key={event.eventNoSqlId}
                 event={event}
                 onClick={() => selectEvent(event)}
@@ -98,7 +98,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
             ))}
 
             {events.slice(3, 6).map((event) => (
-              <EventCard
+              <SplitEventCard
                 key={event.eventNoSqlId}
                 event={event}
                 onClick={() => selectEvent(event)}
