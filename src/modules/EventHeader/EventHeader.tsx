@@ -34,6 +34,7 @@ export const EventHeader = ({
         margin={`0 auto`}
         size="2xl"
         color="greyDarker"
+        as="h1"
       >
         {title}
       </Typography>
