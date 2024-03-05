@@ -132,10 +132,10 @@ export default function AcuiAwards() {
             alt={award.title}
             width={'100%'}
             marginRight={Spaces.md}
-          ></Image>
+          />
           <div>
             <Typography
-              as="h4"
+              as="h2"
               variant={isMobile ? 'label' : 'titleSmall'}
               margin="16px 0"
             >
@@ -170,7 +170,7 @@ export default function AcuiAwards() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer flex justifyContent="center" backgroundColor="black">
-        <Typography variant="pageHeader" color="gold">
+        <Typography variant="pageHeader" color="gold" as="h1">
           Graffix ACUI Awards
         </Typography>
       </FluidContainer>
@@ -185,7 +185,7 @@ export default function AcuiAwards() {
           />
         ))}
       </FluidContainer>
-      <AwardsNav></AwardsNav>
+      <AwardsNav />
       <FluidContainer>
         <div>
           <FluidContainer flex justifyContent="center" flexWrap="wrap">
