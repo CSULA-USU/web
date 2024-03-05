@@ -130,12 +130,14 @@ export default function MeetingRoom() {
         justifyContent="center"
         backgroundImage="/subtle-background-1.jpg"
       >
-        <Image
-          borderRadius="12px"
-          width="100%"
-          src={selectedRoom.headerImage}
-          alt={selectedRoom.mainImageAlt}
-        />
+        <h1>
+          <Image
+            borderRadius="12px"
+            width="100%"
+            src={selectedRoom.headerImage}
+            alt={selectedRoom.mainImageAlt || 'banner image'}
+          />
+        </h1>
       </FluidContainer>
 
       <FluidContainer>
@@ -186,7 +188,7 @@ export default function MeetingRoom() {
                         width={350}
                         marginRight={Spaces['2xl']}
                         src={arrangement.image}
-                        alt={arrangement.setup}
+                        alt={`${arrangement.setup} room example`}
                       />
                     )}
                   </th>
