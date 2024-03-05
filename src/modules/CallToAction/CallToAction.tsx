@@ -41,16 +41,18 @@ export const CallToAction = ({
     <CTAContainer>
       {children}
       <div>
-        <Typography
-          variant="titleLarge"
-          size="2xl"
-          margin="0 0 16px"
-          lineHeight="1.5"
-          color={textColorProp ? textColorProp : 'black'}
-          as="h2"
-        >
-          {text}
-        </Typography>
+        {text && (
+          <Typography
+            variant="titleLarge"
+            size="2xl"
+            margin="0 0 16px"
+            lineHeight="1.5"
+            color={textColorProp ? textColorProp : 'black'}
+            as="h2"
+          >
+            {text}
+          </Typography>
+        )}
         <br />
         <Button
           variant={buttonVariantColor ? buttonVariantColor : 'black'}
