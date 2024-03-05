@@ -1,6 +1,6 @@
 import { Page, Header, ImageAndCard } from 'modules';
 import Head from 'next/head';
-import { Card, FluidContainer, Image } from 'components';
+import { Card, FluidContainer, Image, Typography } from 'components';
 import { Spaces } from 'theme';
 import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
@@ -60,27 +60,31 @@ export default function MeetingRooms() {
       </FluidContainer>
       <FluidContainer
         flex
-        flexWrap="wrap"
-        justifyContent="center"
+        flexDirection="column"
         backgroundColor="greyLightest"
       >
-        {meetingRoomsData.map((props: any) => (
-          <Card
-            key={props.title}
-            margin={`${Spaces.sm}`}
-            width={isDesktop ? 'calc(75%)' : 'calc(25%)'}
-            title={props.title}
-          >
-            <Link key={props.title} href={'./meeting-rooms/' + props.id}>
-              {' '}
-              <Image
-                src={props.mainImageSrc}
-                alt={props.mainImageAlt}
-                width="100%"
-              />
-            </Link>
-          </Card>
-        ))}
+        <Typography as="h2" variant="title">
+          Available Spaces
+        </Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {meetingRoomsData.map((props: any) => (
+            <Card
+              key={props.title}
+              margin={`${Spaces.sm}`}
+              width={isDesktop ? 'calc(75%)' : 'calc(32%)'}
+              title={props.title}
+            >
+              <Link key={props.title} href={'./meeting-rooms/' + props.id}>
+                {' '}
+                <Image
+                  src={props.mainImageSrc}
+                  alt={props.mainImageAlt}
+                  width="100%"
+                />
+              </Link>
+            </Card>
+          ))}
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer
         flex
