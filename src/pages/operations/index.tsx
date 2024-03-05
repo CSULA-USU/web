@@ -266,7 +266,7 @@ export default function Operations() {
       <FluidContainer justifyContent="center">
         <TextCenter>
           <Typography variant="title" as="h2">
-            Divisions:
+            Divisions
           </Typography>
         </TextCenter>
         <FluidContainer flex flexWrap="wrap" justifyContent="center">
