@@ -69,7 +69,7 @@ const orgsCards = [
 const descriptionCards = [
   {
     imgSrc: 'icons/giving-hand-icon.png',
-    imgAlt: 'giving hand image',
+    imgAlt: 'hand giving a heart',
     children: 'Support groups and workshops',
   },
   {

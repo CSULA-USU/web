@@ -146,7 +146,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             </>
           )}
         </EventDate>
-        <Typography as="h5" variant="eventDetail">
+        <Typography as="h2" variant="eventDetail">
           {ABBREVIATED_ORGS[organizationName]}
         </Typography>
       </EventCardTop>
