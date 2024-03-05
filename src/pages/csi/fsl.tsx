@@ -468,12 +468,16 @@ export default function FSL() {
         alignItems="center"
         backgroundImage="/subtle-background-1.jpg"
       >
-        <Image
-          src="/departments/csi/fsl/fsl-header.png"
-          alt="fsl header"
-          height={isMini ? 100 : isMobile ? 150 : 280}
-          marginBottom={Spaces.lg}
-        ></Image>
+        <TextCenter>
+          <h1>
+            <Image
+              src="/departments/csi/fsl/fsl-header.png"
+              alt="fsl header"
+              height={isMini ? 100 : isMobile ? 150 : 280}
+              marginBottom={Spaces.lg}
+            />
+          </h1>
+        </TextCenter>
         <TextCenter>
           <Typography as="p">
             Fraternities and sororities have been a part of the Cal State LA
@@ -481,14 +485,14 @@ export default function FSL() {
             on campus from which students experience relationships, community
             service, leadership development, networking, and personal growth.
             Our community includes organizations that are community service
-            based, culturally focused, social, and everything between so there’s
-            a place for everyone in our growing community! See the pages below
-            to learn more about our community, its members, opportunities, and
-            events. Be sure to follow us on Instagram.
+            based, culturally focused, social, and everything between so
+            there&apos;s a place for everyone in our growing community! See the
+            pages below to learn more about our community, its members,
+            opportunities, and events. Be sure to follow us on Instagram.
           </Typography>
         </TextCenter>
       </FluidContainer>
-      <FSLNav></FSLNav>
+      <FSLNav />
       {displayContent === 'AboutSection' && (
         <AboutSection>
           <FluidContainer>
@@ -556,10 +560,10 @@ export default function FSL() {
                     href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202120220AB524"
                     aria-label="AB-524 Postsecondary education: Campus-Recognized Sorority and Fraternity Transparency Act information"
                   >
-                    <u>
+                    <strong>
                       Assembly Bill 524; Sections 66310-66312 of the California
                       Education Code
-                    </u>
+                    </strong>
                   </Link>
                   , which requires that institutions in California with
                   fraternities and sororities compile and maintain details about
@@ -583,7 +587,7 @@ export default function FSL() {
                 University, Los Angeles.
               </Typography>
               <Typography weight="700" as="h4" margin={`${Spaces.sm} 0 0`}>
-                <u>University Status Key for FSl Groups</u>
+                <strong>University Status Key for FSl Groups</strong>
               </Typography>
               <ul>
                 <li>
@@ -653,7 +657,7 @@ export default function FSL() {
                 assist you in your fraternity and sorority experience. Please
                 email us or stop by our office for more information.
               </Typography>
-              <Typography weight="700" as="h4">
+              <Typography weight="700" as="h3">
                 Contact Us
               </Typography>
               <Typography as="p">Phone: 323-343-5709</Typography>
