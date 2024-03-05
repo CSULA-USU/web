@@ -59,7 +59,7 @@ export const Component = ({
   return (
     <>
       <FluidContainer>
-        <Typography variant={isMobile ? 'titleSmall' : 'title'}>
+        <Typography variant={isMobile ? 'titleSmall' : 'title'} as="h2">
           Follow Us on Instagram{' '}
           <InstagramLinkContainer>
             <Link href={url}>

@@ -43,7 +43,12 @@ export const DepartmentHeader = ({
         <HeaderContainer>
           <HeaderContent>
             <Typography variant="labelTitle">Welcome to the</Typography>
-            <Typography margin="0 0 24px" variant="titleLarge" weight="400">
+            <Typography
+              margin="0 0 24px"
+              variant="titleLarge"
+              weight="400"
+              as="h1"
+            >
               {title}
             </Typography>
             <Typography>{children}</Typography>

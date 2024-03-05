@@ -186,7 +186,7 @@ export default function GSRC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title" size={isMobile ? 'xl' : '2xl'}>
+            <Typography variant="title" size={isMobile ? 'xl' : '2xl'} as="h2">
               Pride Grad
             </Typography>
             <Typography margin="24px 0">

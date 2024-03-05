@@ -31,7 +31,7 @@ const offerings = [
     children:
       'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
     imgSrc: '/vectors/ccc/teaching.svg',
-    imgAlt: 'cultural education',
+    imgAlt: 'man pointing to board',
     href: 'ccc/apisrc',
   },
   {
@@ -39,7 +39,7 @@ const offerings = [
     children:
       'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy.',
     imgSrc: '/vectors/ccc/winner.svg',
-    imgAlt: 'apisrc',
+    imgAlt: 'two people high fiving',
     href: 'ccc/apisrc',
   },
   {
@@ -47,7 +47,7 @@ const offerings = [
     children:
       'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience.',
     imgSrc: '/vectors/ccc/education.svg',
-    imgAlt: 'apisrc',
+    imgAlt: 'woman on books',
     href: 'ccc/apisrc',
   },
   {
@@ -55,7 +55,7 @@ const offerings = [
     children:
       'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center.',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
-    imgAlt: 'apisrc',
+    imgAlt: 'girl reading a book on a bean bag chair under a lamp',
     href: 'ccc/apisrc',
   },
 ];

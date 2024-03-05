@@ -74,7 +74,7 @@ const OperationsPDFDescriptions = (props: any) => {
   return (
     <PDFDescriptionContainer>
       <Title>
-        <Typography variant="subheader" weight="700">
+        <Typography variant="subheader" weight="700" as="h3">
           {props.title}
         </Typography>
       </Title>
@@ -263,27 +263,34 @@ export default function Operations() {
           </HeaderContainer>
         )}
       </FluidContainer>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {cards.map((props) => (
-          <Card
-            margin={`${Spaces.md}`}
-            topBorder
-            key={`${props.title}`}
-            title={props.title}
-            width={cardWidth}
-            minHeight="280px"
-          >
-            <ImageContainer>
-              <Image
-                src={props.iconSrc}
-                alt={props.iconAlt}
-                width="100%"
-                marginBottom={Spaces.sm}
-              ></Image>
-            </ImageContainer>
-            {props.children}
-          </Card>
-        ))}
+      <FluidContainer justifyContent="center">
+        <TextCenter>
+          <Typography variant="title" as="h2">
+            Divisions
+          </Typography>
+        </TextCenter>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {cards.map((props) => (
+            <Card
+              margin={`${Spaces.md}`}
+              topBorder
+              key={`${props.title}`}
+              title={props.title}
+              width={cardWidth}
+              minHeight="280px"
+            >
+              <ImageContainer>
+                <Image
+                  src={props.iconSrc}
+                  alt={props.iconAlt}
+                  width="100%"
+                  marginBottom={Spaces.sm}
+                ></Image>
+              </ImageContainer>
+              {props.children}
+            </Card>
+          ))}
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer
         flex
@@ -301,7 +308,7 @@ export default function Operations() {
       <FluidContainer backgroundColor="greyLightest">
         {pdfDescriptionCards.map((props) => (
           <FluidContainer key={`${props.title}`}>
-            <OperationsPDFDescriptions {...props}></OperationsPDFDescriptions>
+            <OperationsPDFDescriptions {...props} />
           </FluidContainer>
         ))}
       </FluidContainer>
