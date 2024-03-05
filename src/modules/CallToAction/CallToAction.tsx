@@ -47,6 +47,7 @@ export const CallToAction = ({
           margin="0 0 16px"
           lineHeight="1.5"
           color={textColorProp ? textColorProp : 'black'}
+          as="h2"
         >
           {text}
         </Typography>
