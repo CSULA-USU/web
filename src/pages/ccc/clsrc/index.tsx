@@ -94,7 +94,7 @@ export default function CLSRC() {
               alt="clsrc logo"
               width={400}
               height={500}
-            ></Image>
+            />
           )}
         </HeaderLeftContainer>
         <FluidContainer backgroundColor="transparent">
@@ -120,7 +120,7 @@ export default function CLSRC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title" size={isMobile ? 'xl' : '2xl'}>
+            <Typography variant="title" size={isMobile ? 'xl' : '2xl'} as="h2">
               Nuestra Grad
             </Typography>
             <Typography margin="24px 0">
