@@ -2,6 +2,12 @@ import Head from 'next/head';
 import { UpcomingEvents, Page, Header } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
+import styled from 'styled-components';
+
+const BackgroundImage = styled.div`
+  background: url(backgrounds/subtle-background-4.jpg);
+  height: 100%;
+`;
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
@@ -20,14 +26,14 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Upcoming Events">
-        The University-Student Union hosts various events throughout the school
-        year. Make sure to check back here to stay up to date with the latest
-        events.
-      </Header>
-      <div style={{ backgroundColor: 'pink' }}>
+      <BackgroundImage>
+        <Header title="Upcoming Events">
+          The University-Student Union hosts various events throughout the
+          school year. Make sure to check back here to stay up to date with the
+          latest events.
+        </Header>
         <UpcomingEvents monthly events={events} />
-      </div>
+      </BackgroundImage>
     </Page>
   );
 }

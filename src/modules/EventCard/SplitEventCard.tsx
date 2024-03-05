@@ -1,6 +1,6 @@
 import { Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, Spaces } from 'theme';
+import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
@@ -12,14 +12,14 @@ export interface SplitEventCardProps {
 }
 
 const Card = styled.div`
+  border: ${Colors.greyLighter} solid 1px;
   background-color: ${Colors.white};
   cursor: pointer;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
-  height: 450px;
-  width: 420px;
+  height: 550px;
   &:hover,
   &:focus {
     filter: drop-shadow(-${Spaces.xs} ${Spaces.xs} ${Spaces.xs} ${Colors.grey});
@@ -28,28 +28,29 @@ const Card = styled.div`
 
 const Graphic = styled.div<{ image?: string }>`
   background: ${({ image }) => image && `url(${image})`};
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   width: 100%;
-  height: 40%;
-  object-fit: contain;
+  height: 75%;
 `;
 
 const Details = styled.div`
-  height: 60%;
-  padding: ${Spaces.md};
+  height: 55%;
+  padding: ${Spaces.lg};
   display: flex;
   flex-direction: column;
   text-overflow: ellipsis;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
 const EventHeader = styled.div`
-  height: 30%;
+  height: 24.3%;
+  ${media('desktop')(`
+    height: 27%;
+  `)}
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  box-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -90,7 +91,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
       <Graphic image={`${PRESENCE_URI_BASE}/${photoUri}`} />
       <Details>
         <EventHeader>
-          <Typography as="h3" variant="eventTitle" color="black">
+          <Typography as="h3" variant="labelTitle" color="black">
             {eventName}
           </Typography>
         </EventHeader>
