@@ -42,7 +42,9 @@ export const DepartmentHeader = ({
       <FluidContainer backgroundImage="/backgrounds/subtle-background-3.jpg">
         <HeaderContainer>
           <HeaderContent>
-            <Typography variant="labelTitle">Welcome to the</Typography>
+            <Typography variant="labelTitle" as="h1">
+              Welcome to the
+            </Typography>
             <Typography
               margin="0 0 24px"
               variant="titleLarge"
