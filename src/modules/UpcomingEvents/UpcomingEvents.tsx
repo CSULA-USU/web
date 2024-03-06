@@ -70,7 +70,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
       {monthly ? (
         eventMonths.map((eventMonth) => (
           <div key={`${eventMonth} Events`}>
-            <Divider label={eventMonth} variant="title" />
+            <Divider as="h2" label={eventMonth} variant="title" />
             <UpcomingEventsContent>
               {eventsByMonth[eventMonth].map((event) => (
                 <SplitEventCard

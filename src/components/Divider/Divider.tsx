@@ -20,6 +20,7 @@ interface DividerProps {
     | 'copy'
     | 'eventTitle'
     | 'eventTime';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 }
 
 const DividerContainer = styled.div`
@@ -33,10 +34,16 @@ const StyledDivider = styled.div<DividerProps>`
   ${(p) => p.margin && `margin: ${p.margin}`};
 `;
 
-export const Divider = ({ variant = 'label', label, ...props }: DividerProps) =>
+export const Divider = ({
+  variant = 'label',
+  as,
+  label,
+  ...props
+}: DividerProps) =>
   label ? (
     <DividerContainer>
       <Typography
+        as={as}
         variant={variant}
         margin={`${Spaces.sm} ${Spaces.sm} ${Spaces.md} 0`}
       >

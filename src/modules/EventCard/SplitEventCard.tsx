@@ -105,11 +105,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           {location}
         </Typography>
         <FinerDetails>
-          <Typography
-            color="gold"
-            size="sm"
-            style={{ textDecoration: 'underline' }}
-          >
+          <Typography color="gold" size="sm">
             Learn More
           </Typography>
           <Typography variant="cta">
