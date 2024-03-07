@@ -3,41 +3,41 @@
     "title": "Alhambra Room",
     "id": "alhambra-room",
     "mainImageSrc": "/departments/operations/meeting-rooms/alhambra/alhambra-room.jpg",
-    "mainImageAlt": "Alhambra Room image",
+    "mainImageAlt": "Inside of Alhambra Room",
     "headerImage": "/departments/operations/meeting-rooms/alhambra/alhambra-header.jpg",
     "arrangements": [
       {
-        "setup": "Classroom",
+        "setup": "Classroom Layout",
         "image": "/departments/operations/meeting-rooms/alhambra/classroom.jpg",
         "capacity": [36],
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
-        "setup": "Theater",
+        "setup": "Theater Layout",
         "image": "/departments/operations/meeting-rooms/alhambra/theatre.jpg",
         "capacity": [54],
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Reception",
+        "setup": "Reception Layout",
         "image": "/departments/operations/meeting-rooms/alhambra/reception.jpg",
         "capacity": [30],
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
-        "setup": "Discussion Circle",
+        "setup": "Discussion Circle Layout",
         "capacity": [34],
         "image": "/departments/operations/meeting-rooms/alhambra/discussion-circle.jpg",
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Conference",
+        "setup": "Conference Layout",
         "capacity": [20],
         "image": "/departments/operations/meeting-rooms/alhambra/conference.jpg",
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
-        "setup": "Banquet",
+        "setup": "Banquet Layout",
         "capacity": [45],
         "image": "/departments/operations/meeting-rooms/alhambra/banquet.jpg",
         "equipment": ["60\" Round Tables", "Chairs"]
@@ -49,41 +49,41 @@
     "title": "San Gabriel Room",
     "id": "san-gabriel-room",
     "mainImageSrc": "/departments/operations/meeting-rooms/san-gabriel/san-gabriel-room.jpg",
-    "mainImageAlt": "San Gabriel Room image",
+    "mainImageAlt": "Inside of San Gabriel Room",
     "headerImage": "/departments/operations/meeting-rooms/san-gabriel/san-gabriel-header.jpg",
     "arrangements": [
       {
-        "setup": "Classroom",
+        "setup": "Classroom Layout",
         "capacity": [26],
         "image": "/departments/operations/meeting-rooms/san-gabriel/classroom.jpg",
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
-        "setup": "Theater",
+        "setup": "Theater Layout",
         "capacity": [65],
         "image": "/departments/operations/meeting-rooms/san-gabriel/theater.jpg",
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Reception",
+        "setup": "Reception Layout",
         "capacity": [36],
         "image": "/departments/operations/meeting-rooms/san-gabriel/reception.jpg",
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
-        "setup": "Discussion Circle",
+        "setup": "Discussion Circle Layout",
         "capacity": [34],
         "image": "/departments/operations/meeting-rooms/san-gabriel/discussion.jpg",
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Conference",
+        "setup": "Conference Layout",
         "capacity": [20],
         "image": "/departments/operations/meeting-rooms/san-gabriel/conference.jpg",
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
-        "setup": "Banquet",
+        "setup": "Banquet Layout",
         "capacity": [45],
         "image": "/departments/operations/meeting-rooms/san-gabriel/banquet.jpg",
         "equipment": ["60\" Round Tables", "Chairs"]
@@ -95,41 +95,41 @@
     "title": "Los Angeles Room",
     "id": "los-angeles-room",
     "mainImageSrc": "/departments/operations/meeting-rooms/los-angeles/la-room.jpg",
-    "mainImageAlt": "Los Angeles Room image",
+    "mainImageAlt": "Inside of Los Angeles Room",
     "headerImage": "/departments/operations/meeting-rooms/los-angeles/la-room-header.jpg",
     "arrangements": [
       {
-        "setup": "Classroom",
+        "setup": "Classroom Layout",
         "capacity": ["Room A: 30", "Room B: 60", "Room : 90"],
         "image": "/departments/operations/meeting-rooms/los-angeles/classroom.jpg",
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
-        "setup": "Theater",
+        "setup": "Theater Layout",
         "capacity": ["Room A: 70", "Room B: 130", "Room : 200"],
         "image": "/departments/operations/meeting-rooms/los-angeles/theatre.jpg",
         "equipment": ["LA Chairs"]
       },
       {
-        "setup": "Reception",
+        "setup": "Reception Layout",
         "capacity": ["Room A: 44", "Room B: 54", "Room : 64"],
         "image": "/departments/operations/meeting-rooms/los-angeles/reception.jpg",
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
-        "setup": "Discussion Circle",
+        "setup": "Discussion Circle Layout",
         "capacity": ["Room A: 30", "Room B: 45", "Room : 60"],
         "image": "/departments/operations/meeting-rooms/los-angeles/discussion.jpg",
         "equipment": ["LA Chairs"]
       },
       {
-        "setup": "Conference",
+        "setup": "Conference Layout",
         "capacity": ["Room A: 20", "Room B: 36", "Room : 54"],
         "image": "/departments/operations/meeting-rooms/los-angeles/conference.jpg",
         "equipment": ["6 x 30 Tables", "LA Chairs"]
       },
       {
-        "setup": "Banquet",
+        "setup": "Banquet Layout",
         "capacity": ["Room A: 50", "Room B: 110", "Room : 170"],
         "image": "/departments/operations/meeting-rooms/los-angeles/banquet.jpg",
         "equipment": ["60\" Round Tables", "LA Chairs"]
@@ -141,11 +141,11 @@
     "title": "Theater Room",
     "id": "theater-room",
     "mainImageSrc": "/departments/operations/meeting-rooms/theater/theater-room.jpg",
-    "mainImageAlt": "Theater Room image",
+    "mainImageAlt": "Inside of Theater Room",
     "headerImage": "/departments/operations/meeting-rooms/theater/theatre-header.jpg",
     "arrangements": [
       {
-        "setup": "Theater",
+        "setup": "Theater Layout",
         "image": "/departments/operations/meeting-rooms/theater/u-su-theater.jpg",
         "capacity": ["192 + 8 (ADA)"],
         "equipment": ["Fixed Seating"]
@@ -157,11 +157,11 @@
     "title": "Boardroom North",
     "id": "boardroom-north",
     "mainImageSrc": "/departments/operations/meeting-rooms/boardroom/north/board-room-north.jpg",
-    "mainImageAlt": "Boardroom North",
+    "mainImageAlt": "Inside of Boardroom North",
     "headerImage": "/departments/operations/meeting-rooms/boardroom/north/board-room-header-north.jpg",
     "arrangements": [
       {
-        "setup": "Conference",
+        "setup": "Conference Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/north/u-su-board-room-north.jpg",
         "capacity": [20],
         "equipment": ["Large Conference Table", "Rolling Chairs"]
@@ -173,41 +173,41 @@
     "title": "Boardroom South",
     "id": "boardroom-south",
     "mainImageSrc": "/departments/operations/meeting-rooms/boardroom/south/board-room-south.jpg",
-    "mainImageAlt": "Boardroom South",
+    "mainImageAlt": "Inside of Boardroom South",
     "headerImage": "/departments/operations/meeting-rooms/boardroom/south/board-room-header-south.jpg",
     "arrangements": [
       {
-        "setup": "Classroom",
+        "setup": "Classroom Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/classroom.jpg",
         "capacity": [20],
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
-        "setup": "Theater",
+        "setup": "Theater Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/theater.jpg",
         "capacity": [32],
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Reception",
+        "setup": "Reception Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/reception.jpg",
         "capacity": [32],
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
-        "setup": "Discussion Circle",
+        "setup": "Discussion Circle Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/discussion.jpg",
         "capacity": [32],
         "equipment": ["Chairs"]
       },
       {
-        "setup": "Conference",
+        "setup": "Conference Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/conference.jpg",
         "capacity": [12],
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
-        "setup": "Banquet",
+        "setup": "Banquet Layout",
         "image": "/departments/operations/meeting-rooms/boardroom/south/banquet.jpg",
         "capacity": [24],
         "equipment": ["60\" Round Tables", "Chairs"]

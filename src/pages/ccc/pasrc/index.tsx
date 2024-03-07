@@ -151,7 +151,7 @@ export default function PASRC() {
             height={isMobile ? '100%' : '45%'}
           ></Image>
           <FluidContainer>
-            <Typography variant="title" size={isMobile ? 'xl' : '2xl'}>
+            <Typography variant="title" size={isMobile ? 'xl' : '2xl'} as="h2">
               Black Grad
             </Typography>
             <Typography margin="24px 0">

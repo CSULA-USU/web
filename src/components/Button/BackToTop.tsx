@@ -3,7 +3,7 @@ import { Colors } from 'theme';
 import { useState, useEffect } from 'react';
 import { TbCircleArrowUpFilled } from 'react-icons/tb';
 
-const StyledButton = styled.button`
+const Background = styled.div`
   background-color: white;
   border: none;
   border-radius: 35px;
@@ -39,10 +39,7 @@ export const BackToTop = () => {
     };
   }, []);
   return (
-    <StyledButton
-      onClick={scrollToTop}
-      style={{ display: visible ? 'flex' : 'none' }}
-    >
+    <Background style={{ display: visible ? 'flex' : 'none' }}>
       <TbCircleArrowUpFilled
         size={50}
         color={Colors.grey}
@@ -51,9 +48,8 @@ export const BackToTop = () => {
           bottom: '40px',
           right: '40px',
         }}
-        display={visible ? 'flex' : 'none'}
         onClick={scrollToTop}
       ></TbCircleArrowUpFilled>
-    </StyledButton>
+    </Background>
   );
 };

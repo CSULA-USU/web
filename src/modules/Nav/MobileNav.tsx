@@ -84,7 +84,7 @@ export const MobileNav = () => (
     <Drawer.Target preventScroll>
       <Container>
         <FluidContainer flex justifyContent="flex-start" alignItems="center">
-          <Search></Search>
+          <Search />
           <Drawer.CloseButton>
             <button
               style={{
