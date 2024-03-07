@@ -27,7 +27,11 @@ const TabTitles = styled.div`
     margin-right: ${Spaces.md};
   }
 `;
-const Tab = styled.div`
+const Tab = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
   transition: 0.4s ease;
   color: ${Colors.black};
   :hover {
@@ -44,7 +48,7 @@ export const Tabs = ({ items, ...props }: TabsProps) => {
     <TabsContainer {...props}>
       <TabTitles>
         {items.map((tab, i) => (
-          <Tab key={tab.title} onClick={() => setActiveTab(i)}>
+          <Tab tabIndex={0} key={tab.title} onClick={() => setActiveTab(i)}>
             {i === activeTab ? <strong>{tab.title}</strong> : tab.title}
           </Tab>
         ))}
