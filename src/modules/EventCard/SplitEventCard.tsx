@@ -60,6 +60,14 @@ const FinerDetails = styled.div`
   justify-content: space-between;
 `;
 
+const LearnMoreButton = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  color: ${Colors.gold};
+`;
+
 export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
   if (!event) return null;
   const daysOfWeek = [
@@ -105,9 +113,9 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           {location}
         </Typography>
         <FinerDetails>
-          <Typography color="gold" size="sm">
-            Learn More
-          </Typography>
+          <LearnMoreButton onClick={onClick}>
+            <Typography color="gold">Learn More</Typography>
+          </LearnMoreButton>
           <Typography variant="cta">
             {ABBREVIATED_ORGS[organizationName]}
           </Typography>
