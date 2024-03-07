@@ -63,7 +63,7 @@
     {
       "src": "/departments/ccc/cultural-grads/books.svg",
       "alt": "Books Icon",
-      "description": "Commemorative program with your picture and 75 word acknowledgment"
+      "description": "Commemorative program to remember your special day"
     },
     {
       "src": "/departments/ccc/cultural-grads/graduation.svg",
@@ -76,10 +76,10 @@
       "title": "APIDA Grad",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
-        "Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
-        "motuhiv@calstatela.edu"
+        ["Date: Saturday, May 18", "Time: 5PM to 7PM"],
+        "Location: State Playhouse",
+        "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
+        "Email: motuhiv@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
@@ -92,10 +92,10 @@
       "title": "Black Grad",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
-        "Da'Vie Guzman, Pan African Student Resource Center Coordinator",
-        "dguzma91@calstatela.edu"
+        ["Date: Sunday, May 19", "Time: 5PM to 7PM"],
+        "University Gym",
+        "Contact: Da'Vie Guzman, Pan African Student Resource Center Coordinator",
+        "Email: dguzma91@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/logos/pasrc-icon.svg",
@@ -106,14 +106,14 @@
     },
     {
       "title": "Native Grad",
-      "subheader": "Native American, Indigenous",
+      "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
-        "Dr. Christopher Jackson, Cross Cultural Centers Director",
-        "cjacks38@calstatela.edu"
+        ["Date: Saturday, May 18", "Time: 10AM to 12PM"],
+        "Location: Los Angeles Rooms, University-Student Union",
+        "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
+        "Email: cjacks38@calstatela.edu"
       ],
-      "applicationLink": "",
+      "applicationLink": "https://calstatela.co1.qualtrics.com/jfe/form/SV_6WNradBY6WLOZIq",
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
       "imgSrc": "/departments/ccc/native-grad/grad-group-smiling-in-front-of-balloons.jpg",
@@ -124,10 +124,10 @@
       "title": "Nuestra Grad",
       "subheader": "Chicana/o, Latina/o, Central American, South American",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
-        "Cross Cultural Centers, Univerity-Student Union",
-        "ccc@calstatela.edu"
+        ["Date: Sunday, May 19", "Time: 11AM to 1PM"],
+        "Location: University Gym",
+        "Contact: Cross Cultural Centers, University-Student Union",
+        "Email: ccc@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/logos/clsrc-logo.svg",
@@ -140,10 +140,10 @@
       "title": "Pride Grad",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: TBD", "Time: TBD"],
-        "Location: TBD",
-        "Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
-        "mpizarr5@calstatela.edu"
+        ["Date: Thursday, May 16", "Time: 5PM to 7PM"],
+        "Location: State Playhouse",
+        "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
+        "Email: mpizarr5@calstatela.edu"
       ],
       "applicationLink": "",
       "iconSrc": "/departments/logos/gsrc-icon.svg",
@@ -168,9 +168,7 @@
     },
     {
       "question": "What should I wear?",
-      "answer": [
-        "A semi-formal attire is preferred for picture taking and the graduation celebration. We encourage you to dress in your culture's traditional wear! Cap and gown may be provided for picture-taking purposes"
-      ]
+      "answer": "A semi-formal attire is preferred for picture taking and the graduation celebration. We encourage you to dress in your culture's traditional wear! Cap and gown may be provided for picture-taking purposes"
     },
     {
       "question": "How will I receive my sash?",
@@ -180,10 +178,11 @@
       "question": "How many guest tickets do I get?",
       "answer": [
         "ALL Graduations are open seating (not reserved). First come, first served",
-        "APIDA Grad # of Guest Tickets: TBD",
-        "Black Grad # of Guest Tickets: TBD",
-        "Nuestra Grad # of Guest Tickets: TBD",
-        "Pride Grad # of Guest Tickets: TBD"
+        "APIDA Grad # of Guest Tickets: 5",
+        "Black Grad # of Guest Tickets: 10",
+        "Native Grad # of Guest Tickets: 8",
+        "Nuestra Grad # of Guest Tickets: 8",
+        "Pride Grad # of Guest Tickets: 9"
       ]
     },
     {

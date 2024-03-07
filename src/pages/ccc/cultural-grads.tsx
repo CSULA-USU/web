@@ -35,8 +35,7 @@ export default function CulturalGrads() {
   return (
     <Page>
       <Head>
-        <meta name="robots" content="noindex, nofollow" />
-        <title>Cultural Graduate Celebrations</title>
+        <title>Cultural Graduation Celebrations</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
@@ -83,14 +82,14 @@ export default function CulturalGrads() {
             Dear Cal State LA Prospective Graduate,
           </Typography>
           <Typography as="p" variant="copy" color="white">
-            These ceremonies and celebrations are great opportunities to
-            acknowledge your academic achievements, honor your families,
-            communities, and other significant people in your lives, and to
-            celebrate the cultural influences that have contributed to your
-            academic success. The ceremonies are open to all students who would
-            like to sign up and participate. You deserve to celebrate your
-            achievements with cultural influences that are integral to your
-            being and important to you and your community! Apply now!
+            These celebrations are great opportunities to acknowledge your
+            academic achievements, honor your families, communities, and other
+            significant people in your lives, and to celebrate the cultural
+            influences that have contributed to your academic success. The
+            celebrations are open to all students who would like to sign up and
+            participate. You deserve to celebrate your achievements with
+            cultural influences that are integral to your being and important to
+            you and your community! Apply now!
           </Typography>
         </Panel>
       </FluidContainer>
