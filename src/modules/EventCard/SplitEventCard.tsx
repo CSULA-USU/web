@@ -95,7 +95,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
   const dayOfTheWeek = daysOfWeek[new Date(startDateTimeUtc).getDay()];
 
   return (
-    <Card tabIndex={0} onClick={onClick}>
+    <Card onClick={onClick}>
       <Graphic image={`${PRESENCE_URI_BASE}/${photoUri}`} />
       <Details>
         <EventHeader>
