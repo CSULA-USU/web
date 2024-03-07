@@ -24,13 +24,13 @@ const HeaderContainer = styled.div<{ isOpen?: boolean }>`
     transition: 0.3s;
   }
 
-  div:last-child {
+  button:last-child {
     rotate: ${(p) => (p.isOpen ? '90deg' : '0deg')};
   }
 
   &:hover {
     opacity: 0.8;
-    div:last-child {
+    button:last-child {
       scale: 1.2;
       translate: ${(p) => (p.isOpen ? '0' : '4px')};
     }
@@ -47,6 +47,7 @@ const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
 const Button = styled.button`
   background: transparent;
   border: none;
+  padding: 0;
 `;
 
 export const Expandable = ({
