@@ -80,7 +80,7 @@ export const Expandable = ({
     <Container>
       <HeaderContainer onClick={handleToggle} isOpen={isOpen}>
         {header}
-        {indicator && <Button>{indicator}</Button>}
+        {indicator && <Button role="button">{indicator}</Button>}
       </HeaderContainer>
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}
