@@ -117,7 +117,6 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
 
   return !eventName ? null : (
     <EventCardContainer
-      tabIndex={0}
       onClick={onClick}
       featured={featured}
       image={`${PRESENCE_URI_BASE}/${photoUri}`}
