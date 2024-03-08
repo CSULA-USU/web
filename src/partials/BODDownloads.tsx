@@ -38,10 +38,6 @@ const agendaDownloads: DownloadSectionProps[] = [
           },
           {
             href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
-            children: 'BOD Meeting Oct 6, 2023',
-          },
-          {
-            href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
             children: 'Personnel Committee Oct 6, 2023',
           },
           {
@@ -68,12 +64,28 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/w1rrzq94dfhnfrif0hj0x/bod-feb-16-24.docx?rlkey=2es0rcl4diaw8mvasv0shwjc5&dl=0',
             children: 'BOD Meeting Feb 16, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/did9ye71fj5zvatiop4k1/Nominating-Committee-March-1-2024.docx?rlkey=sa5uwwdblrwc79nmhuusyswrv&dl=0',
+            children: 'Nominating Committee Meeting Mar 1, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/yinettixdwa9805cof566/Agenda-U-SU-BOD-Special-Meeting-March-1-2024.docx?rlkey=8nzj3ba2rdddv3o4xbnkbdvdj&dl=0',
+            children: 'BOD Special Meeting Mar 1, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/etcuwrep4ffmnxl281d64/Audit-Committee-March-8-2024.docx?rlkey=cm1qcv6g88shzcq8gnki7tq90&dl=0',
+            children: 'BOD Audit Committee Meeting Mar 8, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/dzzvt3hvxgiwbzamhvzeo/BOD-Budget-Training-March-8-2024.docx?rlkey=yiki6arpd2t3nry2t46xmvvdi&dl=0',
+            children: 'BOD Budget Training Mar 8, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/w03owke02gp0d4sjptruf/fy23-24.zip?rlkey=m8jpm5pm0bd1a9fr5hstukgnr&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/84w5cmuloskr3u19ncdwr/fy23-24.zip?rlkey=fi2cymy5mxbzif8p8vctr9al9&dl=0',
       variant: 'black',
     },
   },

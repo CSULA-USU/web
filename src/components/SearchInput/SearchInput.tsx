@@ -11,14 +11,6 @@ export interface SearchProps {
   onSubmit?: (_: FormEvent<HTMLFormElement>) => void;
 }
 
-const HiddenSpan = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-`;
-
 const OuterContainer = styled.div`
   display: flex;
 `;
@@ -33,8 +25,8 @@ const InputContainerForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  background-color: #757575;
-  color: white;
+  background-color: ${Colors.greyLightest};
+  color: black;
   width: 100%;
   border-radius: 40px;
   border-style: none;
@@ -50,7 +42,7 @@ const StyledInput = styled.input`
     border-style: none;
   }
   &::placeholder {
-    color: #2b2b2b;
+    color: black;
   }
 `;
 
@@ -59,12 +51,12 @@ const Label = styled.label`
 `;
 
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
     <OuterContainer>
       <InputContainerForm onSubmit={onSubmit}>
-        {isMobile ? (
+        {isTablet ? (
           <>
             <Label htmlFor="searchInput">Search</Label>
             <StyledInput
@@ -74,8 +66,9 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               value={input}
               onChange={onChange}
               style={{
-                backgroundColor: Colors.greyLighter,
+                backgroundColor: Colors.greyLightest,
                 color: Colors.black,
+                border: '1px solid',
               }}
             />
           </>
@@ -98,12 +91,11 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
           </>
         )}
         <Link href="/search" aria-label="Search the University Student Union">
-          <HiddenSpan aria-hidden="true">Search</HiddenSpan>
           {isMobile ? (
             <></>
           ) : (
             <>
-              <FaSearch size={'1.25em'} color="#FFF" />
+              <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
             </>
           )}
         </Link>

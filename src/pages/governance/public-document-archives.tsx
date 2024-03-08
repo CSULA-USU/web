@@ -49,7 +49,7 @@ export default function Governance() {
                   <Expandable
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
-                      <Typography variant="labelTitle" as="h4">
+                      <Typography variant="labelTitle" as="h3">
                         {fymeet.fy}
                       </Typography>
                     }
@@ -82,7 +82,7 @@ export default function Governance() {
                   <Expandable
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
-                      <Typography variant="labelTitle" as="h4">
+                      <Typography variant="labelTitle" as="h3">
                         {fyminutes.fy}
                       </Typography>
                     }

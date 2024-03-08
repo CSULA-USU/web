@@ -161,7 +161,6 @@ export const ModEventCard = ({
   return !eventName ? null : (
     <EventContainer>
       <EventCardContainer
-        tabIndex={0}
         onClick={onClick}
         featured={featured}
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
@@ -190,7 +189,7 @@ export const ModEventCard = ({
           <DetailsSection>
             <EventDetails>
               <Typography
-                as="h3"
+                as="h2"
                 variant="eventTitle"
                 lineHeight="1.2"
                 color="black"
@@ -199,7 +198,7 @@ export const ModEventCard = ({
               </Typography>
               <InfoContainer>
                 <BiTimeFive size="20px" style={{ margin: '0px 3px 0px 4px' }} />
-                <Typography as="h4" variant="eventTime" color="black">
+                <Typography as="h3" variant="eventTime" color="black">
                   {startTime} - {endTime}
                 </Typography>
               </InfoContainer>
@@ -209,7 +208,7 @@ export const ModEventCard = ({
                   style={{ margin: '0px 3px 0px 3px' }}
                 />
                 <Typography
-                  as="h5"
+                  as="h4"
                   variant="eventDetail"
                   style={{ overflowWrap: 'anywhere' }}
                   color="black"
@@ -223,7 +222,7 @@ export const ModEventCard = ({
               </InfoContainer>
             </EventDetails>
             <ButtonSection>
-              <Typography as="h5" variant="eventDetail" color="black">
+              <Typography as="h3" variant="eventDetail" color="black">
                 {ABBREVIATED_ORGS[organizationName]}
               </Typography>
               {featured ? (
@@ -290,7 +289,7 @@ export const ModEventCard = ({
                   size="20px"
                   style={{ margin: '0px 8px 2px 0px' }}
                 />
-                <Typography as="h5" variant="eventDetail" color="black">
+                <Typography as="h1" variant="eventDetail" color="black">
                   {ABBREVIATED_ORGS[organizationName]}
                 </Typography>
               </InfoContainer>

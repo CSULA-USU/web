@@ -62,34 +62,24 @@ export const Footer = () => (
       </FooterTopLogo>
       <FooterTopLinks>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Building Hours
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
-            Monday - Thursday: 7 AM - 10 PM
+            Monday to Thursday: 7 AM to 10 PM
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
-            Friday: 7 AM - 8 PM
+            Friday: 7 AM to 8 PM
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
-            Saturday: 7 AM - 3 PM
+            Saturday: 7 AM to 3 PM
           </Typography>
           <Typography color="primary" size="sm" lineHeight="2.4">
             Sunday: Closed
           </Typography>
-          <Link
-            target="_blank"
-            href={
-              'https://www.dropbox.com/scl/fi/tg0h7xcgea5oj45evn7gb/fall-2023-holiday-hours.docx?rlkey=0e1bdch2nenynnc10yg4tsczo&dl=0'
-            }
-          >
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              View Holiday Hours
-            </Typography>
-          </Link>
         </div>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Involvement
           </Typography>
           <Link target="_blank" href={'/events'}>
@@ -117,7 +107,7 @@ export const Footer = () => (
           </Link>
         </div>
         <div>
-          <Typography as="h5" color="white">
+          <Typography as="h3" color="white">
             Resources
           </Typography>
           <Link target="_blank" href={'https://www.calstatela.edu/'}>
@@ -128,7 +118,7 @@ export const Footer = () => (
           <Link
             target="_blank"
             href={
-              'https://www.dropbox.com/scl/fi/f8g31sg2e2xwp4vzx02jd/01.26.24_SPFDigital.pdf?rlkey=wg95idhykiyewweg2cr5pg47i&dl=0'
+              'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
             }
           >
             <Typography color="primary" size="sm" lineHeight="2.4">

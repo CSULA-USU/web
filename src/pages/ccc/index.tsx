@@ -69,30 +69,30 @@ const orgsCards = [
 const descriptionCards = [
   {
     imgSrc: 'icons/giving-hand-icon.png',
-    imgAlt: 'giving hand image',
+    imgAlt: 'hand giving a heart',
     children: 'Support groups and workshops',
   },
   {
     imgSrc: 'icons/book-icon.png',
-    imgAlt: 'book image',
+    imgAlt: 'Open Book',
     children:
       'Library including books, journals, magazines, and website listings',
   },
   {
     imgSrc: 'icons/computer-icon.png',
-    imgAlt: 'icons/computer-icon.png',
+    imgAlt: 'Mac Desktop',
     children:
       'Cross-cultural video, audio library, and media center for educational purposes',
   },
 
   {
     imgSrc: 'icons/open-door-icon.png',
-    imgAlt: 'Open door image',
+    imgAlt: 'Open Door',
     children: 'Study spaces',
   },
   {
     imgSrc: 'icons/fridge-icon.png',
-    imgAlt: 'Fridge image',
+    imgAlt: 'Fridge',
     children: 'Microwaves and refrigerators',
   },
   {
@@ -108,7 +108,7 @@ const descriptionCards = [
   },
   {
     imgSrc: 'icons/connecting-people-icon.png',
-    imgAlt: 'connecting people image',
+    imgAlt: 'Connecting People',
     children:
       'Friendly staff and volunteers to answer questions and discuss ideas',
   },
@@ -244,7 +244,7 @@ export default function CCC() {
             margin="auto"
             borderRadius="12px"
             src="/departments/ccc/nuestra-teaser.jpeg"
-            alt="graduation image"
+            alt="Nuestra Grad smiling while giving a hug"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
           ></Image>

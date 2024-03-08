@@ -57,7 +57,7 @@ export const Card = ({
         )}
         <br />
         <Typography
-          as="h4"
+          as="h3"
           variant="titleSmall"
           margin="0 0 16px"
           size={isMobile ? 'lg' : 'xl'}

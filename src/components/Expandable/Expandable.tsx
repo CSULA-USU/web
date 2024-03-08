@@ -24,13 +24,13 @@ const HeaderContainer = styled.div<{ isOpen?: boolean }>`
     transition: 0.3s;
   }
 
-  div:last-child {
+  button:last-child {
     rotate: ${(p) => (p.isOpen ? '90deg' : '0deg')};
   }
 
   &:hover {
     opacity: 0.8;
-    div:last-child {
+    button:last-child {
       scale: 1.2;
       translate: ${(p) => (p.isOpen ? '0' : '4px')};
     }
@@ -41,7 +41,16 @@ const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
   overflow: hidden;
   transition: 0.3s ease;
   height: 0px;
-  ${(p) => p.isOpen && `height: ${p.height}px; margin-bottom: ${Spaces.md};`};
+  visibility: hidden;
+  ${(p) =>
+    p.isOpen &&
+    `height: ${p.height}px; margin-bottom: ${Spaces.md}; visibility: visible`};
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
 `;
 
 export const Expandable = ({
@@ -71,7 +80,7 @@ export const Expandable = ({
     <Container>
       <HeaderContainer onClick={handleToggle} isOpen={isOpen}>
         {header}
-        {indicator && <div>{indicator}</div>}
+        {indicator && <Button role="button">{indicator}</Button>}
       </HeaderContainer>
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}

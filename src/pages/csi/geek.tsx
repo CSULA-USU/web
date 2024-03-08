@@ -68,12 +68,15 @@ export default function Geek() {
         alignItems="center"
         backgroundImage="/subtle-background-1.jpg"
       >
-        <Image
-          src="/departments/csi/geek/geek-header.jpg"
-          alt="geek header"
-          width={isDesktop ? '100%' : '80%'}
-          marginBottom={Spaces.lg}
-        ></Image>
+        <TextCenter>
+          <h1>
+            <Image
+              src="/departments/csi/geek/geek-header.jpg"
+              alt="geek header banner"
+              width={isDesktop ? '100%' : '80%'}
+            />
+          </h1>
+        </TextCenter>
         <VerticalLine />
         <TextCenter>
           <Typography as="p" margin={`${Spaces.md} 0`}>
@@ -123,7 +126,7 @@ export default function Geek() {
         <Typography
           variant="title"
           color="gold"
-          as="h3"
+          as="h2"
           margin={`0 0 ${Spaces.md}`}
         >
           GEEK FAQ

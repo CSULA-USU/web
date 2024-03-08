@@ -90,6 +90,7 @@ export const Button = (props: ButtonProps) => {
       {...props}
       target={props.notALink ? '' : '_blank'}
       role={props.href ? '' : 'button'}
+      rel="noopener noreferrer"
     />
   );
 };
