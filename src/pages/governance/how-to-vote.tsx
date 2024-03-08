@@ -19,12 +19,13 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
-const NavItemContainer = styled.div`
-  *:hover {
-    color: ${Colors.gold};
-  }
-
-  *:active {
+const NavItemContainer = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  *:hover,
+  *:active,
+  *:focus {
     color: ${Colors.gold};
   }
 `;
@@ -60,6 +61,7 @@ export default function HowToVote() {
       >
         {NavItems.map((item) => (
           <NavItemContainer
+            tabIndex={0}
             key={item}
             onClick={() => {
               setButtonName(item);
