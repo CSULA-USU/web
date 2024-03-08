@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import navMap from 'data/navMap.json';
@@ -93,57 +95,71 @@ const MainMenuItem = styled.div`
   }
 `;
 
-export const DesktopNav = () => (
-  <Container>
-    {(navMap as navMapType[]).map((t1, index) => {
-      if (t1.sub) {
-        return (
-          <Menu
-            key={index}
-            menuButton={
-              <MenuButton>
-                <MainMenuItem>
-                  {t1.text}
-                  <FiChevronDown />
-                </MainMenuItem>
-              </MenuButton>
-            }
-          >
-            <MenuItem>
-              <Link href={t1.href}>
-                <NonBreakingSpan>{t1.text}</NonBreakingSpan>
-              </Link>
-            </MenuItem>
-            {t1.sub.map((t2, index) => {
-              if (t2.sub) {
-                return (
-                  <SubMenu key={`t2_${index}`} label={`${t2.text}`}>
-                    {t2.sub.map((t3, index) => (
-                      <MenuItem key={`t3_${index}`}>
-                        <Link href={t3.href}>
-                          <NonBreakingSpan>{t3.text}</NonBreakingSpan>
-                        </Link>
-                      </MenuItem>
-                    ))}
-                  </SubMenu>
-                );
+export const DesktopNav = () => {
+  const router = useRouter();
+
+  return (
+    <Container>
+      {(navMap as navMapType[]).map((t1, index) => {
+        if (t1.sub) {
+          return (
+            <Menu
+              key={index}
+              menuButton={
+                <MenuButton>
+                  <MainMenuItem>
+                    {t1.text}
+                    <FiChevronDown />
+                  </MainMenuItem>
+                </MenuButton>
               }
-              return (
-                <MenuItem key={`t2_${index}`}>
-                  <Link href={t2.href}>
-                    <NonBreakingSpan>{t2.text}</NonBreakingSpan>
-                  </Link>
-                </MenuItem>
-              );
-            })}
-          </Menu>
+            >
+              <MenuItem>
+                <Link href={t1.href}>
+                  <NonBreakingSpan>{t1.text}</NonBreakingSpan>
+                </Link>
+              </MenuItem>
+              {t1.sub.map((t2, index) => {
+                if (t2.sub) {
+                  return (
+                    <SubMenu key={`t2_${index}`} label={`${t2.text}`}>
+                      {t2.sub.map((t3, index) => (
+                        <MenuItem
+                          key={`t3_${index}`}
+                          onClick={() => {
+                            router.push(`${t3.href}`);
+                          }}
+                        >
+                          <Link href={t3.href}>
+                            <NonBreakingSpan>{t3.text}</NonBreakingSpan>
+                          </Link>
+                        </MenuItem>
+                      ))}
+                    </SubMenu>
+                  );
+                }
+                return (
+                  <MenuItem
+                    key={`t2_${index}`}
+                    onClick={() => {
+                      router.push(`${t2.href}`);
+                    }}
+                  >
+                    <Link href={t2.href}>
+                      <NonBreakingSpan>{t2.text}</NonBreakingSpan>
+                    </Link>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          );
+        }
+        return (
+          <Link key={index} href={t1.href}>
+            {t1.text}
+          </Link>
         );
-      }
-      return (
-        <Link key={index} href={t1.href}>
-          {t1.text}
-        </Link>
-      );
-    })}
-  </Container>
-);
+      })}
+    </Container>
+  );
+};
