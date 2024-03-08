@@ -60,8 +60,8 @@ const MobileHorizontalSlideshowImage = styled.img`
 const MobileOuterContainer = styled.div`
   position: relative;
   height: 240px;
-  background: url(/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg) center
-    bottom/cover no-repeat;
+  background: url(https://www.dropbox.com/scl/fi/rqq1vcllbcojj9o3venab/header-background.png?rlkey=b1lpen7p61hizqrtkmq03ude9&raw=1)
+    center bottom/cover no-repeat;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -153,7 +153,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
               >
                 <TeaserContainer />
                 <br />
-                <Typography variant="cta" color="white">
+                <Typography variant="cta" color="white" as="p">
                   Nuestra Grad &apos;22
                 </Typography>
               </FluidContainer>
@@ -163,13 +163,13 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 flexDirection="column"
                 innerMaxWidth="500px"
               >
-                <Typography variant="title" size="3xl" color="white">
+                <Typography variant="title" size="3xl" color="white" as="h1">
                   Cultural
                 </Typography>
-                <Typography variant="title" size="3xl" color="white">
+                <Typography variant="title" size="3xl" color="white" as="h1">
                   Graduation
                 </Typography>
-                <Typography variant="title" size="3xl" color="white">
+                <Typography variant="title" size="3xl" color="white" as="h1">
                   Celebrations
                 </Typography>
               </FluidContainer>
