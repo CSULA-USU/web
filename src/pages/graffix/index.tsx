@@ -107,6 +107,12 @@ const DesignsContainer = styled.div`
   flex-direction: column;
 `;
 
+const Graphic = styled.button`
+  background: transparent;
+  padding: 0;
+  border: none;
+`;
+
 const HeaderContainer = styled.div`
   background: url(/backgrounds/subtle-background-1.jpg) no-repeat;
 `;
@@ -187,59 +193,56 @@ export default function Graffix() {
       >
         <DesignsContainer>
           {cards1.map((props) => (
-            <div key={props.title}>
-              <div
-                onClick={() => {
-                  setModalData(props);
-                  setIsOpen(true);
-                }}
-              >
-                <Image
-                  src={props.src}
-                  alt={props.title}
-                  width="100%"
-                  borderRadius="8px"
-                />
-              </div>
-            </div>
+            <Graphic
+              key={props.title}
+              onClick={() => {
+                setModalData(props);
+                setIsOpen(true);
+              }}
+            >
+              <Image
+                src={props.src}
+                alt={props.title}
+                width="100%"
+                borderRadius="8px"
+              />
+            </Graphic>
           ))}
         </DesignsContainer>
         <DesignsContainer>
           {cards2.map((props) => (
-            <div key={props.title}>
-              <div
-                onClick={() => {
-                  setModalData(props);
-                  setIsOpen(true);
-                }}
-              >
-                <Image
-                  src={props.src}
-                  alt={props.title}
-                  borderRadius="8px"
-                  width="100%"
-                />
-              </div>
-            </div>
+            <Graphic
+              key={props.title}
+              onClick={() => {
+                setModalData(props);
+                setIsOpen(true);
+              }}
+            >
+              <Image
+                src={props.src}
+                alt={props.title}
+                borderRadius="8px"
+                width="100%"
+              />
+            </Graphic>
           ))}
         </DesignsContainer>
         <DesignsContainer>
           {cards3.map((props) => (
-            <div key={props.title}>
-              <div
-                onClick={() => {
-                  setModalData(props);
-                  setIsOpen(true);
-                }}
-              >
-                <Image
-                  src={props.src}
-                  alt={props.title}
-                  borderRadius="8px"
-                  width="100%"
-                />
-              </div>
-            </div>
+            <Graphic
+              key={props.title}
+              onClick={() => {
+                setModalData(props);
+                setIsOpen(true);
+              }}
+            >
+              <Image
+                src={props.src}
+                alt={props.title}
+                borderRadius="8px"
+                width="100%"
+              />
+            </Graphic>
           ))}
         </DesignsContainer>
       </FluidContainer>
