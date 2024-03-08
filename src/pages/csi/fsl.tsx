@@ -6,6 +6,7 @@ import { Page } from 'modules';
 import { useBreakpoint } from 'hooks';
 import { useEffect, useState } from 'react';
 import { AiOutlineFileText } from 'react-icons/ai';
+import { BiChevronRight } from 'react-icons/bi';
 import {
   FluidContainer,
   Typography,
@@ -25,7 +26,10 @@ const AB524 = styled.div`
 const TextCenter = styled.div`
   text-align: center;
 `;
-const NavItemContainer = styled.div`
+const NavItemContainer = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
   *:hover {
     cursor: pointer;
     color: ${Colors.gold};
@@ -497,6 +501,7 @@ export default function FSL() {
         <AboutSection>
           <FluidContainer>
             <Expandable
+              indicator={<BiChevronRight size={36} />}
               header={
                 <Typography variant="titleSmall" as="h2">
                   What is Greek Life?
@@ -532,6 +537,7 @@ export default function FSL() {
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
+              indicator={<BiChevronRight size={36} />}
               header={
                 <Typography variant="titleSmall" as="h2">
                   Community Reports
@@ -645,6 +651,7 @@ export default function FSL() {
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
+              indicator={<BiChevronRight size={36} />}
               header={
                 <Typography variant="titleSmall" as="h2">
                   Visit Us
@@ -674,6 +681,7 @@ export default function FSL() {
               Object.keys(obj).map((item) => (
                 <>
                   <Expandable
+                    indicator={<BiChevronRight size={36} />}
                     header={
                       <Typography variant="titleSmall"> {item}</Typography>
                     }
