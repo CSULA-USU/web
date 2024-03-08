@@ -161,7 +161,6 @@ export const ModEventCard = ({
   return !eventName ? null : (
     <EventContainer>
       <EventCardContainer
-        tabIndex={0}
         onClick={onClick}
         featured={featured}
         image={`${PRESENCE_URI_BASE}/${photoUri}`}
