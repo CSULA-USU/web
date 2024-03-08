@@ -1244,13 +1244,13 @@
   dependencies:
     tslib "^2.4.0"
 
-"@szhsin/react-menu@^3.5.2":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.5.2.tgz#b316b7aec4cc0dfd10c13a81e9063ea1668d4096"
-  integrity sha512-eR7dzDBrwlt9RSgGmLXjfA1Rd5tYqD5mnqjQgZJysf3Jt3vBPkrbDT1oW21nLpfUCkyUQOuZ38n2IdhWl9KkzQ==
+"@szhsin/react-menu@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-4.1.0.tgz#9a5fd3029356ae7a15122e2b378924b1989f8afd"
+  integrity sha512-lYYGUxqJxM2b/jD2Cn5a9RVOvHl9VBMX8qOnHZuX1w08cO2jslykpz5P75D7WnqudLnXsJ4k4+tI+q2U8XIFYw==
   dependencies:
     prop-types "^15.7.2"
-    react-transition-state "^1.1.5"
+    react-transition-state "^2.1.0"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
@@ -3685,10 +3685,10 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-react-transition-state@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.5.tgz#22accee21d0011b1d0245be24b6262ae67f494c3"
-  integrity sha512-ITY2mZqc2dWG2eitJkYNdcSFW8aKeOlkL2A/vowRrLL8GH3J6Re/SpD/BLvQzrVOTqjsP0b5S9N10vgNNzwMUQ==
+react-transition-state@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-2.1.1.tgz#1601a6177926b647041b7d598bf124321ab8d25b"
+  integrity sha512-kQx5g1FVu9knoz1T1WkapjUgFz08qQ/g1OmuWGi3/AoEFfS0kStxrPlZx81urjCXdz2d+1DqLpU6TyLW/Ro04Q==
 
 react@18.2.0:
   version "18.2.0"
