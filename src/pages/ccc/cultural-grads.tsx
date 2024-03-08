@@ -109,9 +109,18 @@ export default function CulturalGrads() {
             master&apos;s, doctorate&apos;s&mdash;who are interested are welcome
             to apply.
           </Typography>
-          <Typography>
+          <br />
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
             Priority is given to spring 2024 graduates, but fall 2024 graduates
             are welcome to apply as well.
+          </Typography>
+          <br />
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+            Applications go live on Monday, March 11, 2024 at 10 AM.
+          </Typography>
+          <br />
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+            Applications will close on Friday, March 29 at 5 PM.
           </Typography>
         </Typography>
       </FluidContainer>

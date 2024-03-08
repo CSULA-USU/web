@@ -164,7 +164,7 @@ export const ImageAndCard = ({
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Open March 11, 2024 at 10 AM
+                  Sign Up
                 </Button>
               </>
             )}
@@ -237,7 +237,7 @@ export const ImageAndCard = ({
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Open March 11, 2024 at 10 AM
+                  Sign Up
                 </Button>
               </>
             )}
