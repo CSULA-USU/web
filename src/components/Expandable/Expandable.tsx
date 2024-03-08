@@ -41,7 +41,10 @@ const ContentContainer = styled.div<{ isOpen: boolean; height: number }>`
   overflow: hidden;
   transition: 0.3s ease;
   height: 0px;
-  ${(p) => p.isOpen && `height: ${p.height}px; margin-bottom: ${Spaces.md};`};
+  visibility: hidden;
+  ${(p) =>
+    p.isOpen &&
+    `height: ${p.height}px; margin-bottom: ${Spaces.md}; visibility: visible`};
 `;
 
 const Button = styled.button`
