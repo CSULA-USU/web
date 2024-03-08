@@ -89,8 +89,8 @@ export const Button = (props: ButtonProps) => {
     <ButtonComponent
       {...props}
       target={props.notALink ? '' : '_blank'}
-      rel="noopener noreferrer"
       role={props.href ? '' : 'button'}
+      rel="noopener noreferrer"
     />
   );
 };

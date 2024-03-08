@@ -1,37 +1,36 @@
 import Head from 'next/head';
-import { Page } from 'modules';
-// import React from 'react';
-// import styled from 'styled-components';
-// import {
-//   Button,
-//   Divider,
-//   Expandable,
-//   FlatCard,
-//   FluidContainer,
-//   Image,
-//   ImageAndCard,
-//   Panel,
-//   Typography,
-// } from 'components';
-// import { BiChevronRight } from 'react-icons/bi';
-// import { CulturalGradsHeader, Page } from 'modules';
-// import { Spaces } from 'theme';
-// import CulturalGradsData from 'data/cgc-data.json';
-// import { useBreakpoint } from 'hooks';
+import React from 'react';
+import styled from 'styled-components';
+import {
+  Button,
+  Divider,
+  Expandable,
+  FlatCard,
+  FluidContainer,
+  Image,
+  ImageAndCard,
+  Panel,
+  Typography,
+} from 'components';
+import { BiChevronRight } from 'react-icons/bi';
+import { CulturalGradsHeader, Page } from 'modules';
+import { Spaces } from 'theme';
+import CulturalGradsData from 'data/cgc-data.json';
+import { useBreakpoint } from 'hooks';
 
-// const IncentiveCardsContainer = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-between;
-// `;
+const IncentiveCardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
 
-// const slideshowImages = CulturalGradsData['header-images'];
-// const cards = CulturalGradsData['info-cards'];
-// const questions = CulturalGradsData['questions'];
-// const incentives = CulturalGradsData['incentives'];
+const slideshowImages = CulturalGradsData['header-images'];
+const cards = CulturalGradsData['info-cards'];
+const questions = CulturalGradsData['questions'];
+const incentives = CulturalGradsData['incentives'];
 
 export default function CulturalGrads() {
-  // const { isMobile } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -54,7 +53,7 @@ export default function CulturalGrads() {
         ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <CulturalGradsHeader images={slideshowImages} />
+      <CulturalGradsHeader images={slideshowImages} />
       {isMobile ? (
         <></>
       ) : (
@@ -199,7 +198,7 @@ export default function CulturalGrads() {
             <Divider color="gold" />
           </React.Fragment>
         ))}
-      </FluidContainer> */}
+      </FluidContainer>
       {/* <FluidContainer
         backgroundColor="primary"
         flex
