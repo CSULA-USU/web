@@ -103,16 +103,24 @@ export const ImageAndCard = ({
               <>
                 <div>
                   <Image src={iconSrc} alt={iconAlt} size={100} />
-                  <Typography variant="label">{title}</Typography>
+                  <Typography variant="label" as="h3">
+                    {title}
+                  </Typography>
                 </div>
-                <Typography variant="labelTitle">{subheader}</Typography>
+                <Typography variant="labelTitle" as="h4">
+                  {subheader}
+                </Typography>
               </>
             ) : (
               <>
                 <Header>
                   <div>
-                    <Typography variant="label">{title}</Typography>
-                    <Typography variant="labelTitle">{subheader}</Typography>
+                    <Typography variant="label" as="h3">
+                      {title}
+                    </Typography>
+                    <Typography variant="labelTitle" as="h4">
+                      {subheader}
+                    </Typography>
                   </div>
                   <Image src={iconSrc} alt={iconAlt} size={100} />
                 </Header>
@@ -173,16 +181,24 @@ export const ImageAndCard = ({
               <>
                 <div>
                   <Image src={iconSrc} alt={iconAlt} size={100} />
-                  <Typography variant="label">{title}</Typography>
+                  <Typography variant="label" as="h3">
+                    {title}
+                  </Typography>
                 </div>
-                <Typography variant="labelTitle">{subheader}</Typography>
+                <Typography variant="labelTitle" as="h4">
+                  {subheader}
+                </Typography>
               </>
             ) : (
               <>
                 <Header>
                   <div>
-                    <Typography variant="label">{title}</Typography>
-                    <Typography variant="labelTitle">{subheader}</Typography>
+                    <Typography variant="label" as="h3">
+                      {title}
+                    </Typography>
+                    <Typography variant="labelTitle" as="h4">
+                      {subheader}
+                    </Typography>
                   </div>
                   <Image src={iconSrc} alt={iconAlt} size={100} />
                 </Header>

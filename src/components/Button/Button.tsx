@@ -85,5 +85,11 @@ const StyledButton = styled.button`
 
 export const Button = (props: ButtonProps) => {
   const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
-  return <ButtonComponent {...props} target={props.notALink ? '' : '_blank'} />;
+  return (
+    <ButtonComponent
+      {...props}
+      target={props.notALink ? '' : '_blank'}
+      role={props.href ? '' : 'button'}
+    />
+  );
 };

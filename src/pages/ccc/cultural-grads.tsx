@@ -77,7 +77,7 @@ export default function CulturalGrads() {
 
       <FluidContainer>
         <Panel backgroundColor="black">
-          <Typography as="h4" variant="label" color="primary">
+          <Typography as="h2" variant="label" color="primary">
             Dear Cal State LA Prospective Graduate,
           </Typography>
           <Typography as="p" variant="copy" color="white">
@@ -94,7 +94,7 @@ export default function CulturalGrads() {
       </FluidContainer>
       <FluidContainer>
         <Typography
-          as="h6"
+          as="p"
           variant="copy"
           color="black"
           style={{
@@ -105,18 +105,23 @@ export default function CulturalGrads() {
             <Typography as="span" weight="700">
               All
             </Typography>{' '}
-            graduating students (of all degree types, Bachelors, Masters, EdD)
-            who are interested are welcome to apply.
+            graduating students of all degree types&mdash;bachelor&apos;s,
+            master&apos;s, doctorate&apos;s&mdash;who are interested are welcome
+            to apply.
           </Typography>
           <Typography>
-            Priority is given to Spring 2024 graduates, but Fall 2024 graduates
+            Priority is given to spring 2024 graduates, but fall 2024 graduates
             are welcome to apply as well.
           </Typography>
         </Typography>
       </FluidContainer>
 
       <FluidContainer>
-        <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
+        <Typography
+          margin={`${Spaces.md} 0`}
+          as="h2"
+          variant={isMobile ? 'subheader' : 'title'}
+        >
           Graduations
         </Typography>
         {cards.map((card, i) => (
@@ -136,7 +141,11 @@ export default function CulturalGrads() {
         ))}
       </FluidContainer>
       <FluidContainer>
-        <Typography margin={`${Spaces.md} 0`} as="h2" variant="title">
+        <Typography
+          margin={`${Spaces.md} 0`}
+          as="h2"
+          variant={isMobile ? 'subheader' : 'title'}
+        >
           Incentives
         </Typography>
         <IncentiveCardsContainer>
@@ -149,7 +158,11 @@ export default function CulturalGrads() {
       </FluidContainer>
       <FluidContainer backgroundColor="black">
         <div id="faqs">
-          <Typography color="gold" variant="title" as="h2">
+          <Typography
+            color="primary"
+            variant={isMobile ? 'subheader' : 'title'}
+            as="h2"
+          >
             Graduate Participation Information
           </Typography>
         </div>
