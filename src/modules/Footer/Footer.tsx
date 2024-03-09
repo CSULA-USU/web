@@ -48,147 +48,149 @@ const FooterBottomInner = styled.div`
 `;
 
 export const Footer = () => (
-  <FluidContainer backgroundColor="greyDarkest">
-    <FooterTopContainer>
-      <FooterTopLogo>
-        <Link target="_blank" href={'https://www.calstatela.edu/'}>
-          <Image
-            src="/calstatela-badge.svg"
-            alt="Cal State LA Univeristy-Student Union Logo"
-            width={90}
-            height={90}
-          />
-        </Link>
-      </FooterTopLogo>
-      <FooterTopLinks>
-        <div>
-          <Typography as="h3" color="white">
-            Building Hours
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Monday to Thursday: 7 AM to 10 PM
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Friday: 7 AM to 8 PM
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Saturday: 7 AM to 3 PM
-          </Typography>
-          <Typography color="primary" size="sm" lineHeight="2.4">
-            Sunday: Closed
-          </Typography>
-        </div>
-        <div>
-          <Typography as="h3" color="white">
-            Involvement
-          </Typography>
-          <Link target="_blank" href={'/events'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Calendar of Events
-            </Typography>
+  <footer>
+    <FluidContainer backgroundColor="greyDarkest">
+      <FooterTopContainer>
+        <FooterTopLogo>
+          <Link target="_blank" href={'https://www.calstatela.edu/'}>
+            <Image
+              src="/calstatela-badge.svg"
+              alt="Cal State LA Univeristy-Student Union Logo"
+              width={90}
+              height={90}
+            />
           </Link>
-          <Link target="_blank" href={'/csi/student-orgs'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Clubs & Orgs
+        </FooterTopLogo>
+        <FooterTopLinks>
+          <div>
+            <Typography as="h3" color="white">
+              Building Hours
             </Typography>
-          </Link>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Monday to Thursday: 7 AM to 10 PM
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Friday: 7 AM to 8 PM
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Saturday: 7 AM to 3 PM
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              Sunday: Closed
+            </Typography>
+          </div>
+          <div>
+            <Typography as="h3" color="white">
+              Involvement
+            </Typography>
+            <Link target="_blank" href={'/events'}>
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                Calendar of Events
+              </Typography>
+            </Link>
+            <Link target="_blank" href={'/csi/student-orgs'}>
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                Clubs & Orgs
+              </Typography>
+            </Link>
+            <Link
+              target="_blank"
+              href={'https://form.jotform.com/210416532268047'}
+            >
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                U-SU Board of Directors Application
+              </Typography>
+            </Link>
+            <Link target="_blank" href={'/employment'}>
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                U-SU Employment
+              </Typography>
+            </Link>
+          </div>
+          <div>
+            <Typography as="h3" color="white">
+              Resources
+            </Typography>
+            <Link target="_blank" href={'https://www.calstatela.edu/'}>
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                Cal State LA Homepage
+              </Typography>
+            </Link>
+            <Link
+              target="_blank"
+              href={
+                'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
+              }
+            >
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                Strategic Plan
+              </Typography>
+            </Link>
+            <Link target="_blank" href={'/governance/public-documents'}>
+              <Typography color="primary" size="sm" lineHeight="2.4">
+                View Public Documents
+              </Typography>
+            </Link>
+          </div>
+        </FooterTopLinks>
+      </FooterTopContainer>
+      <Divider color="grey" margin={`${Spaces.xl}`} />
+      <FooterBottomContainer>
+        <FooterBottomInner>
+          <Typography color="greyLighter" size="sm" lineHeight="2.4">
+            © {currentYear}{' '}
+            <NonBreakingSpan>University-Student Union</NonBreakingSpan>{' '}
+            <NonBreakingSpan>at Cal State LA</NonBreakingSpan>
+          </Typography>
+          <Typography
+            className="mobile-hidden"
+            color="greyLighter"
+            size="sm"
+            lineHeight="2.4"
+          >
+            |
+          </Typography>
+          <Typography color="greyLighter" size="sm" lineHeight="2.4">
+            5154 State University Dr,{' '}
+            <NonBreakingSpan>Los Angeles, CA 90032</NonBreakingSpan>
+          </Typography>
+          <Typography
+            className="mobile-hidden"
+            color="greyLighter"
+            size="sm"
+            lineHeight="2.4"
+          >
+            |
+          </Typography>
+          <Typography color="greyLighter" size="sm" lineHeight="2.4">
+            (323) 343-2465
+          </Typography>
+        </FooterBottomInner>
+        <div>
           <Link
             target="_blank"
-            href={'https://form.jotform.com/210416532268047'}
+            href={'https://www.instagram.com/usucalstatela/?hl=en'}
+            aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
           >
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              U-SU Board of Directors Application
-            </Typography>
-          </Link>
-          <Link target="_blank" href={'/employment'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              U-SU Employment
-            </Typography>
-          </Link>
-        </div>
-        <div>
-          <Typography as="h3" color="white">
-            Resources
-          </Typography>
-          <Link target="_blank" href={'https://www.calstatela.edu/'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Cal State LA Homepage
-            </Typography>
+            <AiOutlineInstagram
+              color={Colors.greyLighter}
+              fontSize="32px"
+            ></AiOutlineInstagram>
           </Link>
           <Link
             target="_blank"
             href={
-              'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
+              'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
             }
+            aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
           >
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              Strategic Plan
-            </Typography>
-          </Link>
-          <Link target="_blank" href={'/governance/public-documents'}>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              View Public Documents
-            </Typography>
+            <AiOutlineLinkedin
+              color={Colors.greyLighter}
+              fontSize="32px"
+            ></AiOutlineLinkedin>
           </Link>
         </div>
-      </FooterTopLinks>
-    </FooterTopContainer>
-    <Divider color="grey" margin={`${Spaces.xl}`} />
-    <FooterBottomContainer>
-      <FooterBottomInner>
-        <Typography color="greyLighter" size="sm" lineHeight="2.4">
-          © {currentYear}{' '}
-          <NonBreakingSpan>University-Student Union</NonBreakingSpan>{' '}
-          <NonBreakingSpan>at Cal State LA</NonBreakingSpan>
-        </Typography>
-        <Typography
-          className="mobile-hidden"
-          color="greyLighter"
-          size="sm"
-          lineHeight="2.4"
-        >
-          |
-        </Typography>
-        <Typography color="greyLighter" size="sm" lineHeight="2.4">
-          5154 State University Dr,{' '}
-          <NonBreakingSpan>Los Angeles, CA 90032</NonBreakingSpan>
-        </Typography>
-        <Typography
-          className="mobile-hidden"
-          color="greyLighter"
-          size="sm"
-          lineHeight="2.4"
-        >
-          |
-        </Typography>
-        <Typography color="greyLighter" size="sm" lineHeight="2.4">
-          (323) 343-2465
-        </Typography>
-      </FooterBottomInner>
-      <div>
-        <Link
-          target="_blank"
-          href={'https://www.instagram.com/usucalstatela/?hl=en'}
-          aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-        >
-          <AiOutlineInstagram
-            color={Colors.greyLighter}
-            fontSize="32px"
-          ></AiOutlineInstagram>
-        </Link>
-        <Link
-          target="_blank"
-          href={
-            'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
-          }
-          aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
-        >
-          <AiOutlineLinkedin
-            color={Colors.greyLighter}
-            fontSize="32px"
-          ></AiOutlineLinkedin>
-        </Link>
-      </div>
-    </FooterBottomContainer>
-  </FluidContainer>
+      </FooterBottomContainer>
+    </FluidContainer>
+  </footer>
 );
