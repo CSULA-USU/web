@@ -116,11 +116,7 @@ export default function CulturalGrads() {
           </Typography>
           <br />
           <Typography margin={`0 0 ${Spaces.sm} 0`}>
-            Applications go live on Monday, March 11, 2024 at 10 AM.
-          </Typography>
-          <br />
-          <Typography margin={`0 0 ${Spaces.sm} 0`}>
-            Applications will close on Friday, March 29 at 5 PM.
+            Sign ups close: March 29 at 5 p.m.
           </Typography>
         </Typography>
       </FluidContainer>
