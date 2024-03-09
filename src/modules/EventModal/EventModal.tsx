@@ -117,7 +117,7 @@ export const EventModal = ({
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
-      <Main>
+      <Main tabIndex={0}>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`Image of ${eventName}`}
