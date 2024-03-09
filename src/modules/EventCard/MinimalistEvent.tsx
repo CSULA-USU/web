@@ -97,7 +97,8 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
     event;
   const startTime = getTime(startDateTimeUtc);
   const endTime = getTime(endDateTimeUtc);
-  const month = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const month = getMonth(startDateTimeUtc);
   const day = getDay(startDateTimeUtc);
   return (
     <>
@@ -107,7 +108,10 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
             <MinimalistEventContainer>
               <LeftContainer>
                 <Typography as="h3" variant="eventDetail" color="gold">
-                  {month} {day}
+                  <abbr title={month} aria-label="month">
+                    {monthAbbr}
+                  </abbr>{' '}
+                  {day}
                 </Typography>
                 <TitleContainer onClick={onClick}>
                   <Typography
@@ -153,7 +157,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
             <MinimalistEventContainer>
               <LeftContainer>
                 <Typography as="h3" variant="eventDetail" color="gold">
-                  {month} {day}
+                  {monthAbbr} {day}
                 </Typography>
                 <Typography
                   as="h4"
@@ -200,7 +204,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
           <MinimalistEventContainer>
             <LeftContainer>
               <Typography as="h3" variant="eventDetail" color="gold">
-                {month} {day}
+                {monthAbbr} {day}
               </Typography>
               <Typography as="h4" variant="eventTime" color="grey" weight="400">
                 {startTime} - {endTime}

@@ -10,6 +10,9 @@ const PageContainer = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   background-color: ${Colors.white};
+  abbr {
+    text-decoration: none;
+  }
 `;
 
 interface PageProps {
