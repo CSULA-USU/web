@@ -169,7 +169,7 @@ export const ImageAndCard = ({
               </>
             )}
             <Typography>
-              Application will open Monday, March 11, 2024 at 10 p.m.
+              Application will open Monday, March 11, 2024 at 10 a.m.
             </Typography>
           </DescriptionSection>
         </>
@@ -245,7 +245,7 @@ export const ImageAndCard = ({
               </>
             )}
             <Typography margin={`0 0 ${Spaces.sm} 0`}>
-              Application will open Monday, March 11, 2024 at 10 p.m.
+              Application will open Monday, March 11, 2024 at 10 a.m.
             </Typography>
           </DescriptionSection>
           {isDesktop ? (
