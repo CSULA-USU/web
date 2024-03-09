@@ -23,7 +23,7 @@ export const Page = ({ children }: PageProps) => (
       isVisible={false}
     />
     <Nav />
-    <div>{children}</div>
+    <main>{children}</main>
     <BackToTop></BackToTop>
     <Footer />
   </PageContainer>
