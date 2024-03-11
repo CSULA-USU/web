@@ -116,7 +116,17 @@ export default function CulturalGrads() {
           </Typography>
           <br />
           <Typography margin={`0 0 ${Spaces.sm} 0`}>
-            Sign ups close: March 29 at 5 p.m.
+            This year&apos;s Cultural Graduation Celebrations are free to all
+            graduating students who sign up. Please make sure you sign up by the
+            deadline.
+          </Typography>
+          <br />
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+            Spaces are limited for each Cultural Graduation Celebration.
+          </Typography>
+          <br />
+          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+            Deadline for applications: March 29 at 5 p.m.
           </Typography>
         </Typography>
       </FluidContainer>
