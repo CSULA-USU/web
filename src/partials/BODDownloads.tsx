@@ -80,6 +80,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/dzzvt3hvxgiwbzamhvzeo/BOD-Budget-Training-March-8-2024.docx?rlkey=yiki6arpd2t3nry2t46xmvvdi&dl=0',
             children: 'BOD Budget Training Mar 8, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/cnz3e3wp94omlfkcj4u6p/Agenda-U-SU-Board-of-Directors-March-15-2024.docx?rlkey=qmxqvmoo0r96sks46d1g1bbbj&dl=0',
+            children: 'BOD Meeting Mar 15, 2024',
+          },
         ]}
       />
     ),
