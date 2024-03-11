@@ -101,7 +101,7 @@ export default function CulturalGrads() {
             ...(isMobile ? { textAlign: 'left' } : { textAlign: 'center' }),
           }}
         >
-          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+          <Typography>
             <Typography as="span" weight="700">
               All
             </Typography>{' '}
@@ -110,14 +110,22 @@ export default function CulturalGrads() {
             to apply.
           </Typography>
           <br />
-          <Typography margin={`0 0 ${Spaces.sm} 0`}>
+          <Typography>
             Priority is given to spring 2024 graduates, but fall 2024 graduates
             are welcome to apply as well.
           </Typography>
           <br />
-          <Typography margin={`0 0 ${Spaces.sm} 0`}>
-            Sign ups close: March 29 at 5 p.m.
+          <Typography>
+            This year&apos;s Cultural Graduation Celebrations are{' '}
+            <strong>free</strong> to all graduating students who sign up. Please
+            make sure you sign up by the deadline.
           </Typography>
+          <br />
+          <Typography>
+            Spaces are limited for each Cultural Graduation Celebration.
+          </Typography>
+          <br />
+          <Typography>Deadline for applications: March 29 at 5 p.m.</Typography>
         </Typography>
       </FluidContainer>
 
