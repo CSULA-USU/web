@@ -168,9 +168,6 @@ export const ImageAndCard = ({
                 </Button>
               </>
             )}
-            <Typography>
-              Application will open Monday, March 11, 2024 at 10 a.m.
-            </Typography>
           </DescriptionSection>
         </>
       ) : (
@@ -244,9 +241,6 @@ export const ImageAndCard = ({
                 </Button>
               </>
             )}
-            <Typography margin={`0 0 ${Spaces.sm} 0`}>
-              Application will open Monday, March 11, 2024 at 10 a.m.
-            </Typography>
           </DescriptionSection>
           {isDesktop ? (
             <></>
