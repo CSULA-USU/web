@@ -1,11 +1,15 @@
 {
   "header-images": [
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
-      "alt": "black grad 2022 graduate"
+      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-cap.png",
+      "alt": "nuestra grad decorated graduation cap"
     },
     {
-      "src": "https://www.dropbox.com/scl/fi/vyqba8myapysrasmrvwkw/NuestraGrad61.jpg?rlkey=4c9ee493bnup6gsy86eem80jj&raw=1",
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png ",
+      "alt": "black grad 2022 graduate surrounded by family"
+    },
+    {
+      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png",
       "alt": "nuestra 2022 graduate"
     },
     {
@@ -13,15 +17,11 @@
       "alt": "apida grad 2023 graduates"
     },
     {
-      "src": "https://www.dropbox.com/scl/fi/svxrcfi4o69mt2dbqlg79/NuestraGrad2.jpg?rlkey=px9pzlegp84vkyfp8qiyj0l6u&raw=1",
-      "alt": "nuestra grad's decorated graduation cap"
-    },
-    {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
       "alt": "nuestra grad 2023 graduates"
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/2023-performance.jpeg",
+      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-performance.jpeg",
       "alt": "nuestra grad 2023 performance"
     },
     {
@@ -29,19 +29,19 @@
       "alt": "apida grad 2023 graduates"
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg",
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.png",
       "alt": "black grad 2022 performance"
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.jpg",
-      "alt": "black grad graduate"
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.png",
+      "alt": "side profile of black grad participant"
     },
     {
       "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
       "alt": "apida grads 2022 master graduates"
     },
     {
-      "src": "/departments/ccc/gsrc/carousel/pride-drag.jpg",
+      "src": "/departments/ccc/gsrc/pride-grad/pride-performance.jpg",
       "alt": "2022 pride grad performance"
     },
     {
@@ -100,7 +100,7 @@
       "applicationLink": "https://form.jotform.com/233464461546156",
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
-      "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
+      "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
       "imgAlt": "PASRC Graduates",
       "id": "pasrc"
     },
@@ -108,7 +108,7 @@
       "title": "Native Grad",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: Saturday, May 18", "Time: 10 a.m. to 12 p.m."],
+        ["Date: Saturday, May 18", "Time: 11 a.m. to 1 p.m."],
         "Location: University-Student Union, Los Angeles Rooms",
         "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
         "Email: cjacks38@calstatela.edu"
@@ -116,7 +116,7 @@
       "applicationLink": "https://calstatela.co1.qualtrics.com/jfe/form/SV_6WNradBY6WLOZIq",
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
-      "imgSrc": "/departments/ccc/native-grad/grad-group-smiling-in-front-of-balloons.jpg",
+      "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
       "imgAlt": "Native Graduates",
       "id": "native"
     },
@@ -132,7 +132,7 @@
       "applicationLink": "https://form.jotform.com/233465206027148",
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
-      "imgSrc": "https://www.dropbox.com/scl/fi/hq8xhoibho7htew1ieet7/NuestraGrad11.jpg?rlkey=jmug6r6adeu89h224o2p83qkh&raw=1",
+      "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
       "imgAlt": "Nuestra Graduates",
       "id": "clsrc"
     },
@@ -148,7 +148,7 @@
       "applicationLink": "https://form.jotform.com/233464501150142",
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
-      "imgSrc": "/departments/ccc/gsrc/pride-grad/grad-group.jpg",
+      "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
       "imgAlt": "GSRC Graduates",
       "id": "gsrc"
     }
