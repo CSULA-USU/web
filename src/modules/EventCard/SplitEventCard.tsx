@@ -117,7 +117,9 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
             <Typography color="gold">Learn More</Typography>
           </LearnMoreButton>
           <Typography variant="cta">
-            {ABBREVIATED_ORGS[organizationName]}
+            <abbr title={organizationName}>
+              {ABBREVIATED_ORGS[organizationName]}
+            </abbr>
           </Typography>
         </FinerDetails>
       </Details>
