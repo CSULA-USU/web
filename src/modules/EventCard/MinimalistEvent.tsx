@@ -7,7 +7,10 @@ import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { PRESENCE_URI_BASE } from 'utils/constants';
 import { Colors, media } from 'theme';
 
-const InfoContainer = styled.span`
+const InfoContainer = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
 `;
 
@@ -141,6 +144,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
               <RightContainer>
                 <InfoContainer>
                   <BsInfoCircle
+                    title="Learn More"
                     size={isMobile ? '18px' : '30px'}
                     onClick={onClick}
                   />
@@ -187,6 +191,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
               <RightContainer>
                 <InfoContainer>
                   <BsInfoCircle
+                    title="Learn More"
                     size={isMobile ? '18px' : '30px'}
                     onClick={onClick}
                   />

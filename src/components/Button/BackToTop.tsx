@@ -41,6 +41,7 @@ export const BackToTop = () => {
   return (
     <Background style={{ display: visible ? 'flex' : 'none' }}>
       <TbCircleArrowUpFilled
+        title="Back to Top"
         size={50}
         color={Colors.grey}
         style={{

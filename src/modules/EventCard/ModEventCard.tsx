@@ -197,7 +197,11 @@ export const ModEventCard = ({
                 {eventName}
               </Typography>
               <InfoContainer>
-                <BiTimeFive size="20px" style={{ margin: '0px 3px 0px 4px' }} />
+                <BiTimeFive
+                  aria-hidden="true"
+                  size="20px"
+                  style={{ margin: '0px 3px 0px 4px' }}
+                />
                 <Typography as="h3" variant="eventTime" color="black">
                   {startTime} - {endTime}
                 </Typography>
@@ -260,7 +264,11 @@ export const ModEventCard = ({
               </Typography>
             </InfoContainer>
             <InfoContainer>
-              <BiTimeFive size="20px" style={{ margin: '0px 8px 2px 0px' }} />
+              <BiTimeFive
+                aria-hidden="true"
+                size="20px"
+                style={{ margin: '0px 8px 2px 0px' }}
+              />
               <Typography as="h4" variant="eventTime" color="black">
                 {startTime} - {endTime}
               </Typography>
