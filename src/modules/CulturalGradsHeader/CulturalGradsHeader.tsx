@@ -60,7 +60,7 @@ const MobileHorizontalSlideshowImage = styled.img`
 const MobileOuterContainer = styled.div`
   position: relative;
   height: 240px;
-  background: url(https://www.dropbox.com/scl/fi/rqq1vcllbcojj9o3venab/header-background.png?rlkey=b1lpen7p61hizqrtkmq03ude9&raw=1)
+  background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
     center bottom/cover no-repeat;
   overflow: hidden;
   display: flex;
@@ -71,7 +71,7 @@ const MobileOuterContainer = styled.div`
 const OuterContainer = styled.div`
   position: relative;
   height: 670px;
-  background: url(https://www.dropbox.com/scl/fi/rqq1vcllbcojj9o3venab/header-background.png?rlkey=b1lpen7p61hizqrtkmq03ude9&raw=1)
+  background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
     center bottom/cover no-repeat;
   overflow: hidden;
   display: flex;
@@ -92,7 +92,7 @@ const TeaserContainer = styled.div`
   width: 400px;
   height: 470px;
   background: center / contain no-repeat
-    url('/departments/ccc/clsrc/nuestra-grad/nuestra-grads-celebrating-onstage.jpg');
+    url('/departments/ccc/cultural-grads/hero-onstage.png');
   border-radius: 12px;
 `;
 
