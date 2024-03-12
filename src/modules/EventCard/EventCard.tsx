@@ -112,7 +112,8 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
   } = event;
   const startTime = getTime(startDateTimeUtc);
   const endTime = getTime(endDateTimeUtc);
-  const month = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const month = getMonth(startDateTimeUtc);
   const day = getDay(startDateTimeUtc);
 
   return !eventName ? null : (
@@ -125,14 +126,18 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
       <EventCardTop>
         <EventDate>
           {featured ? (
-            <Typography as="span" variant="eventDetail" lineHeight="1">
-              {month} {day}
-            </Typography>
+            <abbr title={`${month} ${day}`}>
+              <Typography as="span" variant="eventDetail" lineHeight="1">
+                {monthAbbr} {day}
+              </Typography>
+            </abbr>
           ) : (
             <>
-              <Typography as="span" variant="eventDetail" lineHeight="1">
-                {month} <br />
-              </Typography>
+              <abbr title={`${month} ${day}`}>
+                <Typography as="span" variant="eventDetail" lineHeight="1">
+                  {monthAbbr} <br />
+                </Typography>
+              </abbr>
               <Typography
                 as="span"
                 variant="pageHeader"
@@ -145,9 +150,11 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             </>
           )}
         </EventDate>
-        <Typography as="h2" variant="eventDetail">
-          {ABBREVIATED_ORGS[organizationName]}
-        </Typography>
+        <abbr title={organizationName}>
+          <Typography as="h2" variant="eventDetail">
+            {ABBREVIATED_ORGS[organizationName]}
+          </Typography>
+        </abbr>
       </EventCardTop>
       <EventCardBottom featured={featured}>
         <EventDetails>

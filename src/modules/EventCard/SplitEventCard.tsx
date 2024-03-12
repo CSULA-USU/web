@@ -58,6 +58,7 @@ const EventHeader = styled.div`
 const FinerDetails = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 `;
 
 const LearnMoreButton = styled.button`
@@ -113,12 +114,14 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           {location}
         </Typography>
         <FinerDetails>
+          <Typography variant="cta">
+            <abbr title={organizationName}>
+              {ABBREVIATED_ORGS[organizationName]}
+            </abbr>
+          </Typography>
           <LearnMoreButton onClick={onClick}>
             <Typography color="gold">Learn More</Typography>
           </LearnMoreButton>
-          <Typography variant="cta">
-            {ABBREVIATED_ORGS[organizationName]}
-          </Typography>
         </FinerDetails>
       </Details>
     </Card>
