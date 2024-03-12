@@ -76,12 +76,12 @@
       "title": "APIDA Grad",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: Saturday, May 18", "Time: 5 PM to 7 PM"],
+        ["Date: Saturday, May 18", "Time: 5 p.m. to 7 p.m."],
         "Location: State Playhouse",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
       ],
-      "applicationLink": "",
+      "applicationLink": "https://form.jotform.com/233465396205156",
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
@@ -92,12 +92,12 @@
       "title": "Black Grad",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
-        ["Date: Sunday, May 19", "Time: 5 PM to 7 PM"],
+        ["Date: Sunday, May 19", "Time: 5 p.m. to 7 p.m."],
         "University Gym",
         "Contact: Da'Vie Guzman, Pan African Student Resource Center Coordinator",
         "Email: dguzma91@calstatela.edu"
       ],
-      "applicationLink": "",
+      "applicationLink": "https://form.jotform.com/233464461546156",
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
@@ -108,7 +108,7 @@
       "title": "Native Grad",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: Saturday, May 18", "Time: 10 AM to 12 PM"],
+        ["Date: Saturday, May 18", "Time: 10 a.m. to 12 p.m."],
         "Location: University-Student Union, Los Angeles Rooms",
         "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
         "Email: cjacks38@calstatela.edu"
@@ -124,12 +124,12 @@
       "title": "Nuestra Grad",
       "subheader": "Chicanx, Latinx, Central American, South American",
       "copy": [
-        ["Date: Sunday, May 19", "Time: 11 AM to 1 PM"],
+        ["Date: Sunday, May 19", "Time: 11 a.m. to 1 p.m."],
         "Location: University Gym",
         "Contact: Cross Cultural Centers, University-Student Union",
         "Email: ccc@calstatela.edu"
       ],
-      "applicationLink": "",
+      "applicationLink": "https://form.jotform.com/233465206027148",
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
       "imgSrc": "https://www.dropbox.com/scl/fi/hq8xhoibho7htew1ieet7/NuestraGrad11.jpg?rlkey=jmug6r6adeu89h224o2p83qkh&raw=1",
@@ -140,12 +140,12 @@
       "title": "Pride Grad",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: Thursday, May 16", "Time: 5 PM to 7 PM"],
+        ["Date: Thursday, May 16", "Time: 5 p.m. to 7 p.m."],
         "Location: State Playhouse",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
       ],
-      "applicationLink": "",
+      "applicationLink": "https://form.jotform.com/233464501150142",
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/pride-grad/grad-group.jpg",
@@ -157,13 +157,13 @@
     {
       "question": "What do I need to submit to participate in the Graduation Celebration?",
       "answer": [
-        "Submit the cultural graduation application.",
-        "Submit your 75-word personal narrative to be on your booklet (optional)."
+        "Submit the Cultural Graduation Application.",
+        "Submit your 75-word personal narrative and picture in the application."
       ]
     },
     {
       "question": "What should I wear?",
-      "answer": "A semi-formal attire is preferred for the graduation celebration. We encourage you to dress in your culture's traditional wear!"
+      "answer": "Semi-formal attire is preferred for picture-taking and the graduation celebration. We encourage you to dress in your culture's traditional wear!"
     },
     {
       "question": "How will I receive my sash?",
@@ -177,7 +177,7 @@
         "Black Grad # of Guest Tickets: 10",
         "Native Grad # of Guest Tickets: 9",
         "Nuestra Grad # of Guest Tickets: 8",
-        "Pride Grad # of Guest Tickets: 9"
+        "Pride Grad # of Guest Tickets: 5"
       ]
     },
     {
