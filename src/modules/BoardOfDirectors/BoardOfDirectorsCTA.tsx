@@ -37,9 +37,11 @@ export const BoardOfDirectorsCTA = () => (
       </Typography>
     </BoardOfDirectorsCTAText>
     <BoardOfDirectorsCTAButtons>
-      <Button variant="black" href="https://form.jotform.com/240387162166154">
-        U-SU Board of Directors Application
-      </Button>
+      <abbr title="University Student Union Board of Directors Application">
+        <Button variant="black" href="https://form.jotform.com/240387162166154">
+          U-SU Board of Directors Application
+        </Button>
+      </abbr>
       <Button variant="outline" href="/governance/meet-the-board">
         View Current Board Members
       </Button>
