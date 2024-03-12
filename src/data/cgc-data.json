@@ -1,8 +1,12 @@
 {
   "header-images": [
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg",
-      "alt": "black grad 2022 graduate"
+      "src": "https://www.dropbox.com/scl/fi/svxrcfi4o69mt2dbqlg79/NuestraGrad2.jpg?rlkey=px9pzlegp84vkyfp8qiyj0l6u&raw=1",
+      "alt": "nuestra grad's decorated graduation cap"
+    },
+    {
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png ",
+      "alt": "black grad 2022 graduate surrounded by family"
     },
     {
       "src": "https://www.dropbox.com/scl/fi/vyqba8myapysrasmrvwkw/NuestraGrad61.jpg?rlkey=4c9ee493bnup6gsy86eem80jj&raw=1",
@@ -11,10 +15,6 @@
     {
       "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
       "alt": "apida grad 2023 graduates"
-    },
-    {
-      "src": "https://www.dropbox.com/scl/fi/svxrcfi4o69mt2dbqlg79/NuestraGrad2.jpg?rlkey=px9pzlegp84vkyfp8qiyj0l6u&raw=1",
-      "alt": "nuestra grad's decorated graduation cap"
     },
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
@@ -29,11 +29,11 @@
       "alt": "apida grad 2023 graduates"
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.jpg",
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.png",
       "alt": "black grad 2022 performance"
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.jpg",
+      "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.png",
       "alt": "black grad graduate"
     },
     {
@@ -108,7 +108,7 @@
       "title": "Native Grad",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: Saturday, May 18", "Time: 10 a.m. to 12 p.m."],
+        ["Date: Saturday, May 18", "Time: 11 a.m. to 1 p.m."],
         "Location: University-Student Union, Los Angeles Rooms",
         "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
         "Email: cjacks38@calstatela.edu"
