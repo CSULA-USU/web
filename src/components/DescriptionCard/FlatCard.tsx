@@ -35,7 +35,7 @@ export const FlatCard = ({ children, imgSrc, imgAlt }: FlatCardProps) => {
         justifyContent: isTablet ? 'space-around' : '',
       }}
     >
-      <Image alt={imgAlt} src={imgSrc} width="100%" height="45%" />
+      <Image alt={imgAlt} src={imgSrc} width="100%" height="45%" lazy />
       <Typography as="p" variant="copy">
         {children}
       </Typography>

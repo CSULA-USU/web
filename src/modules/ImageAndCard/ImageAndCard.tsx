@@ -24,6 +24,7 @@ export const ImageAndCard = ({
               alt={`${imgAlt}`}
               width={imageWidth}
               marginRight="48px"
+              lazy
             />
           )}
           <Card
@@ -33,7 +34,7 @@ export const ImageAndCard = ({
             width="100%"
             minHeight="160px"
             {...props}
-          ></Card>
+          />
         </>
       ) : (
         <>
@@ -44,13 +45,14 @@ export const ImageAndCard = ({
             width="100%"
             minHeight="160px"
             {...props}
-          ></Card>
+          />
           {!isTablet && (
             <Image
               src={`${imgSrc}`}
               alt={`${imgAlt}`}
               width={imageWidth}
               marginLeft="48px"
+              lazy
             />
           )}
         </>
