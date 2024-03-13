@@ -106,11 +106,24 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-      <FluidContainer>
+      {/* <FluidContainer>
         <Typography variant="title" as="h2">
           Educators:
         </Typography>
-      </FluidContainer>
+        <FluidContainer flex flexWrap="wrap">
+          {geneData.educators.map((props) => (
+            <Card
+              margin={`${Spaces.md}`}
+              topBorder
+              key={`${props.title}`}
+              {...props}
+              width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
+              minHeight="200px"
+              iconWidth="100px"
+            />
+          ))}
+        </FluidContainer>
+      </FluidContainer> */}
       <FluidContainer>
         <Typography variant="title" as="h2" margin="0px">
           What to expect:
