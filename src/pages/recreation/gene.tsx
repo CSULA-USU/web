@@ -40,7 +40,7 @@ const buttons = [
   },
   {
     text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-fall-2023-educators.pdf',
+    href: '/departments/recreation/gene-spring-2024.docx',
   },
 ];
 
@@ -58,7 +58,7 @@ export default function Gene() {
         />
         <meta
           name="description"
-          content="At GENE, we believe we all can benefit from learning new skills and
+          content="At gene, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
@@ -73,7 +73,7 @@ export default function Gene() {
           {isDesktop && isMobile && (
             <Image
               src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-              alt="illustration of young man using gene services on mobile"
+              alt="young man using gene services on mobile"
               height="232px"
               margin="0px auto"
             />
@@ -88,7 +88,7 @@ export default function Gene() {
         {!isDesktop && (
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-            alt="illustration of young man using gene services"
+            alt="young man using gene services"
             height="500px"
             margin="auto"
           />
@@ -96,7 +96,7 @@ export default function Gene() {
         {!isMobile && isDesktop && (
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-            alt="illustration of young man using gene services"
+            alt="a young man using gene services eating an apple"
             height="250px"
             margin="auto"
           />
