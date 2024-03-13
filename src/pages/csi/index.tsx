@@ -176,9 +176,11 @@ export default function CSI() {
           <strong>CSI@calstatela.edu</strong>
         </a>
         <ButtonContainer>
-          <Button href="/csi/forms" variant="black" margin={``}>
-            <Typography color="white">CSI Forms</Typography>
-          </Button>
+          <abbr title="Center of Student Involvement Forms">
+            <Button href="/csi/forms" variant="black" margin={``}>
+              <Typography color="white">CSI Forms</Typography>
+            </Button>
+          </abbr>
         </ButtonContainer>
         <SocialsContainer>
           <a
@@ -212,7 +214,8 @@ export default function CSI() {
         text="CSI Monthly Newsletter"
       >
         <Typography as="h2" variant="label">
-          Stay up to date with CSI info, events, updates, and opportunities!
+          Stay up to date with <abbr>CSI</abbr> info, events, updates, and
+          opportunities!
         </Typography>
       </CallToAction>
       <FluidContainer

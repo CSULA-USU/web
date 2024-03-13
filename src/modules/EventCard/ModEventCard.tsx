@@ -155,7 +155,9 @@ export const ModEventCard = ({
   const onRequestClose = () => selectEvent(undefined);
   const startTime = getTime(startDateTimeUtc);
   const endTime = getTime(endDateTimeUtc);
-  const month = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
+  const month = getMonth(startDateTimeUtc);
+
   const day = getDay(startDateTimeUtc);
 
   return !eventName ? null : (
@@ -174,7 +176,7 @@ export const ModEventCard = ({
               size="md"
               lineHeight="1"
             >
-              {month} <br />
+              <abbr title={month}>{monthAbbr}</abbr> <br />
             </Typography>
             <Typography
               as="span"
@@ -260,7 +262,7 @@ export const ModEventCard = ({
             <InfoContainer>
               <BiCalendar size="20px" style={{ margin: '0px 8px 2px 0px' }} />
               <Typography as="h4" variant="eventDetail" color="black">
-                {month} {day}
+                <abbr title={month}>{monthAbbr}</abbr> {day}
               </Typography>
             </InfoContainer>
             <InfoContainer>

@@ -115,6 +115,7 @@ export default function About() {
               >
                 We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
               </Typography>
+
               <FluidContainer flex justifyContent="center" alignItems="center">
                 <Image
                   alt="student union"
