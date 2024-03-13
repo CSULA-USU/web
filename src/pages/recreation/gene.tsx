@@ -4,34 +4,11 @@ import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
 import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
+import data from 'data/recreation.json';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
 `;
-
-const cards = [
-  {
-    title: 'Inclusive',
-    children:
-      'A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.',
-    iconSrc: '/vectors/recreation/cooking.svg',
-    iconAlt: 'cooking image',
-  },
-  {
-    title: 'Community',
-    children:
-      'Empowering conversations that focus on your strengths and areas for growth.',
-    iconSrc: '/vectors/recreation/group-workout.svg',
-    iconAlt: 'community workout image',
-  },
-  {
-    title: 'Set Goals',
-    children:
-      'Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.',
-    iconSrc: '/vectors/recreation/goal.svg',
-    iconAlt: 'goal image',
-  },
-];
 
 const buttons = [
   {
@@ -46,7 +23,7 @@ const buttons = [
 
 export default function Gene() {
   const { isDesktop, isMobile } = useBreakpoint();
-
+  const geneData = data.gene;
   return (
     <Page>
       <Head>
@@ -129,18 +106,12 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-
-      <FluidContainer
-        flex
-        justifyContent="center"
-        flexDirection="column"
-        alignItems="center"
-      >
+      {/* <FluidContainer>
         <Typography variant="title" as="h2">
-          What to expect:
+          Educators:
         </Typography>
-        <FluidContainer flex flexWrap="wrap" padding="0px">
-          {cards.map((props) => (
+        <FluidContainer flex flexWrap="wrap">
+          {geneData.educators.map((props) => (
             <Card
               margin={`${Spaces.md}`}
               topBorder
@@ -149,7 +120,25 @@ export default function Gene() {
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
-            ></Card>
+            />
+          ))}
+        </FluidContainer>
+      </FluidContainer> */}
+      <FluidContainer>
+        <Typography variant="title" as="h2" margin="0px">
+          What to expect:
+        </Typography>
+        <FluidContainer flex flexWrap="wrap">
+          {geneData.cards.map((props) => (
+            <Card
+              margin={`${Spaces.md}`}
+              topBorder
+              key={`${props.title}`}
+              {...props}
+              width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
+              minHeight="200px"
+              iconWidth="100px"
+            />
           ))}
         </FluidContainer>
       </FluidContainer>
