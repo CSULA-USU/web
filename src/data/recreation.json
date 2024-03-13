@@ -1,0 +1,44 @@
+{
+  "gene": {
+    "educators": [
+      {
+        "title": "Coach Angel",
+        "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/cheesecake.png",
+        "iconAlt": "cheesecake"
+      },
+      {
+        "title": "Coach Angel",
+        "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/mango.png",
+        "iconAlt": "mango"
+      },
+      {
+        "title": "Coach Angel",
+        "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/strawberry.png",
+        "iconAlt": "strawberry"
+      }
+    ],
+    "cards": [
+      {
+        "title": "Inclusive",
+        "children": "A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.",
+        "iconSrc": "/vectors/recreation/cooking.svg",
+        "iconAlt": "cooking image"
+      },
+      {
+        "title": "Community",
+        "children": "Empowering conversations that focus on your strengths and areas for growth.",
+        "iconSrc": "/vectors/recreation/group-workout.svg",
+        "iconAlt": "community workout image"
+      },
+      {
+        "title": "Set Goals",
+        "children": "Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.",
+        "iconSrc": "/vectors/recreation/goal.svg",
+        "iconAlt": "goal image"
+      }
+    ]
+  }
+}
