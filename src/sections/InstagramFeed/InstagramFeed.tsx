@@ -88,7 +88,11 @@ export const Component = ({
               </Link>
             )
           : instagramPosts.map((post, index) => (
-              <Link href={post.permalink} key={`${index}_${post.username}`}>
+              <Link
+                href={post.permalink}
+                key={`${index}_${post.username}`}
+                aria-label="view instagram post"
+              >
                 <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
                 <InstagramCardsContainer
                   src={
