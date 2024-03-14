@@ -106,7 +106,7 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-      {/* <FluidContainer>
+      <FluidContainer>
         <Typography variant="title" as="h2">
           Educators:
         </Typography>
@@ -123,7 +123,7 @@ export default function Gene() {
             />
           ))}
         </FluidContainer>
-      </FluidContainer> */}
+      </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2" margin="0px">
           What to expect:
