@@ -59,7 +59,7 @@ export const DescriptionCard = ({
   <StyledCard {...props}>
     <div>
       <IconContainer>
-        <Image src={imgSrc} alt={imgAlt}></Image>
+        <Image src={imgSrc} alt={imgAlt} />
       </IconContainer>
       <Typography margin="24px 0" weight="300">
         {children}
