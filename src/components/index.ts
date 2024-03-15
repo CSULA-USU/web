@@ -6,6 +6,7 @@ export * from './DescriptionCard';
 export * from './Divider';
 export * from './EventsLoader';
 export * from './FluidContainer';
+export * from './Icon';
 export * from './Image';
 export * from './NonBreakingSpan';
 export * from './Panel';

@@ -23,7 +23,7 @@ interface CardProps extends CardStyles {
   href?: string;
   iconSrc?: string;
   iconAlt?: string;
-  iconElement?: React.ReactElement;
+  iconElement?: React.ReactNode;
 }
 
 const IconContainer = styled.div`
