@@ -16,8 +16,8 @@ interface IconProps {
 export const Icon = ({ iconName, size }: IconProps): ReactElement => {
   // Define an object to map icon names to their corresponding components
   const iconComponents: { [key: string]: ReactElement } = {
-    FaRunning: createElement(FaRunning, { size }),
     MdSportsBasketball: createElement(MdSportsBasketball, { size }),
+    FaRunning: createElement(FaRunning, { size }),
     GiBabyBottle: createElement(GiBabyBottle, { size }),
     FaMountainSun: createElement(FaMountainSun, { size }),
     BsSignpost2Fill: createElement(BsSignpost2Fill, { size }),
