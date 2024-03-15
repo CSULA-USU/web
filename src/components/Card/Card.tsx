@@ -23,7 +23,6 @@ interface CardProps extends CardStyles {
   href?: string;
   iconSrc?: string;
   iconAlt?: string;
-  iconElement?: React.ReactElement;
 }
 
 const IconContainer = styled.div`
@@ -39,7 +38,6 @@ export const Card = ({
   href,
   iconSrc,
   iconAlt,
-  iconElement,
   iconWidth,
   ...props
 }: CardProps) => {
@@ -57,7 +55,6 @@ export const Card = ({
             />
           </IconContainer>
         )}
-        {iconElement && <IconContainer>{iconElement}</IconContainer>}
         <br />
         <Typography
           as="h3"
