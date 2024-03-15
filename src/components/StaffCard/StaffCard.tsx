@@ -63,7 +63,7 @@ export const StaffCard = ({
           )}
 
           <Typography
-            as="h3"
+            as="h2"
             color="gold"
             variant="copy"
             weight="700"
