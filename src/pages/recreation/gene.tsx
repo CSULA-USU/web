@@ -17,7 +17,7 @@ const buttons = [
   },
   {
     text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-spring-2024.docx',
+    href: 'https://www.dropbox.com/scl/fi/1ijfqyyzcnwiyjnrzsgcq/GENE-Bios-Spring-2024.pdf?rlkey=z5yb82mq16yg7jh33u7011evp&dl=0',
   },
 ];
 
