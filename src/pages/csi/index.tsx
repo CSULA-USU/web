@@ -152,8 +152,8 @@ export default function CSI() {
           <OfficeHours
             address={
               <>
-                5154 State University Drive <br />
-                Los Angeles, CA 90032 <br />
+                5154 State University Drive <blockquote />
+                Los Angeles, CA 90032 <blockquote />
                 Room 204, 2nd Floor
               </>
             }

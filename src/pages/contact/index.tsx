@@ -40,8 +40,8 @@ export default function Contact() {
       <FluidContainer flex justifyContent="flex-start" flexWrap="wrap">
         <ContactContainer>
           <Typography as="p">
-            University-Student Union, <br />
-            5154 State University Dr, <br />
+            University-Student Union, <blockquote />
+            5154 State University Dr, <blockquote />
             Los Angeles CA, 90032
           </Typography>
         </ContactContainer>
