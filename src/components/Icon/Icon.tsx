@@ -1,11 +1,12 @@
 import { createElement, ReactElement } from 'react';
 import { BsSignpost2Fill } from 'react-icons/bs';
 import { CgPokemon } from 'react-icons/cg';
-import { FaGamepad, FaPaperPlane } from 'react-icons/fa';
+import { FaGamepad, FaPaperPlane, FaRunning } from 'react-icons/fa';
 import { FaMountainSun, FaPlateWheat } from 'react-icons/fa6';
 import { GiBabyBottle, GiStrawberry } from 'react-icons/gi';
 import { ImSpoonKnife } from 'react-icons/im';
 import { LuCakeSlice, LuSoup } from 'react-icons/lu';
+import { MdSportsBasketball } from 'react-icons/md';
 
 interface IconProps {
   iconName: string;
@@ -15,6 +16,8 @@ interface IconProps {
 export const Icon = ({ iconName, size }: IconProps): ReactElement => {
   // Define an object to map icon names to their corresponding components
   const iconComponents: { [key: string]: ReactElement } = {
+    FaRunning: createElement(FaRunning, { size }),
+    MdSportsBasketball: createElement(MdSportsBasketball, { size }),
     GiBabyBottle: createElement(GiBabyBottle, { size }),
     FaMountainSun: createElement(FaMountainSun, { size }),
     BsSignpost2Fill: createElement(BsSignpost2Fill, { size }),
