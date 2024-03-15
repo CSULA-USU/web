@@ -4,52 +4,20 @@
       {
         "title": "Coach Angel",
         "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/cheesecake.png",
         "iconAlt": "cheesecake"
       },
       {
-        "title": "Coach Stephany",
-        "children": "is a RD2B (Registered Dietician to Be) and looks forward to meeting you. She was once in your shoes as a client, and now she is on the other side, happy to listen and support you as a coach. She likes playing Pokemon Go in her free time with her little brother and sister. She hopes to help the people in Los Angeles with what she has learned in school and make a difference in her community. Coach Stephany is ready to be here for anything you need!",
+        "title": "Coach Angel",
+        "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/mango.png",
         "iconAlt": "mango"
       },
       {
-        "title": "Coach Yemi",
-        "children": "is spontaneous and fun, and she loves to travel the world. When she is not working in the airline business or attending classes at Cal State LA, she visits other countries and learns about different cultures. Coach Yemi loves to experience other countries' cultural foods, such as Indian, Japanese, Korean, and Middle Eastern dishes, while pursuing her passion for nutrition. Other activities she enjoys include hitting a weight room and cooking. Are you interested in traveling the world while maintaining a positive relationship with food? Let's chat!",
+        "title": "Coach Angel",
+        "children": "is a Nutritional Science Master's student and dedicated coach. With a background in nutrition and a love for food (Hello, hot pot, pasta, matcha latte, cheesecake, crème brûlée, AND BOBA!), she believes in finding joy and balance in every bite. You're not alone on your journey to reaching your goals—Coach Angel is here to walk alongside you every step of the way. Let's embark on this journey together! Coach Angel is eager to connect with you!",
+        "iconSrc": "/departments/recreation/icons/gene/strawberry.png",
         "iconAlt": "strawberry"
-      },
-      {
-        "title": "Coach Stephanie",
-        "children": "is not your typical woman; she enjoys laughing, listening, persisting, and achieving any objective she sets for herself. Coach Stephanie takes satisfaction in fanning the flames of motivation in others. She is here to assist you in taking action and meeting your nutrition goals. She has completed tasks as a research assistant and has been honored by the University for her academic excellence. In addition to being a dork and mother of two children, two dogs, and one bird, Coach Stephanie has always enjoyed video games.",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Asia",
-        "children": "is a nutritionist, graduate student, and advocate for spreading positive vibes. She considers herself a 'foodie' and loves to cook delicious dishes. She can support and guide you to a healthy relationship with food. As a guide, Coach Asia can assist you with improving the emotions, behaviors, and thoughts you may have when it comes to your nutritional well-being.",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Ashley",
-        "children": "looks forward to providing a comfortable and open space to build a meaningful connection with you. She is an adventurer, roller skater, and avid anime watcher who is passionate about everything nutrition, sports, and health. Coach Ashley is a Spanish-speaking Chicana familiar with being culturally aware and finding the value in food for the body, mind, and soul. She is excited to embark on your journey with you, at your own pace, one page at a time.",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Mayra",
-        "children": "is a motivated, aspiring Registered Dietitian with a desire to help you feel good physically and mentally by nourishing your mind and body. She is passionate about empowering individuals to take control of their health and preventing diet-related diseases through balanced nutrition. Coach Mayra enjoys going on hikes, traveling, and values spending quality time with family and friends. Let's build a positive relationship with food for your happy and healthy life.",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Annie",
-        "children": "is a health-focused nutritionist who believes in Health at Every Size (HAES). She is eager to listen to your stories and dance with you throughout your nutrition journey. As a mom, teacher, and guide, Coach Annie has her ways to help you feel comfortable in your body and love yourself the way you are. She loves dancing, spending time in nature, running, reading, and practicing yoga. Coach Annie speaks Armenian, Farsi, and English. Come with your stories! YOU matter!",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Monique",
-        "children": "is a Supervisor and Degreed Nutritionist at WIC (Special Supplemental Nutrition Program for Women, Infants, and Children), providing assessments, nutrition screening, and counseling to her clients. She is dedicated to creating a safe space to speak your mind and discuss your eating habits and concerns without judgment. Coach Monique’s approach is to build trust, provide unconditional support, and work together to find practical solutions that work for you. Let’s make nutritious choices together and work towards a happier and healthier you!",
-        "iconAlt": ""
-      },
-      {
-        "title": "Coach Holly",
-        "children": "is a registered dietitian and personal trainer with a holistic, integrated perspective on health. She combines a flexible, personalized approach to food and exercise so you create realistic changes that lead to sustainable results and healthy habits. She loves all things nutrition-related, but her passions are digestive health, weight management, and nutrition for endurance sports. Coach Holly looks forward to listening, teaching, and supporting you on your journey to renewed health and wellness.",
-        "iconAlt": ""
       }
     ],
     "cards": [
@@ -57,19 +25,19 @@
         "title": "Inclusive",
         "children": "A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.",
         "iconSrc": "/vectors/recreation/cooking.svg",
-        "iconAlt": "cooking"
+        "iconAlt": "cooking image"
       },
       {
         "title": "Community",
         "children": "Empowering conversations that focus on your strengths and areas for growth.",
         "iconSrc": "/vectors/recreation/group-workout.svg",
-        "iconAlt": "community workout"
+        "iconAlt": "community workout image"
       },
       {
         "title": "Set Goals",
         "children": "Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.",
         "iconSrc": "/vectors/recreation/goal.svg",
-        "iconAlt": "goal setting"
+        "iconAlt": "goal image"
       }
     ]
   }

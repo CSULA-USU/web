@@ -5,8 +5,6 @@ import { Spaces } from 'theme';
 import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import data from 'data/recreation.json';
-import * as ReactIcons from 'react-icons/lu';
-import React from 'react';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
@@ -26,10 +24,6 @@ const buttons = [
 export default function Gene() {
   const { isDesktop, isMobile } = useBreakpoint();
   const geneData = data.gene;
-  const ReactIcon = () => {
-    const IconComponent = ReactIcons['LuCakeSlice'];
-    return <IconComponent size="50px" />;
-  };
   return (
     <Page>
       <Head>
@@ -112,7 +106,7 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-      <FluidContainer>
+      {/* <FluidContainer>
         <Typography variant="title" as="h2">
           Educators:
         </Typography>
@@ -121,16 +115,15 @@ export default function Gene() {
             <Card
               margin={`${Spaces.md}`}
               topBorder
-              key={`${props.iconAlt}`}
+              key={`${props.title}`}
               {...props}
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
-              iconElement={<ReactIcon />}
             />
           ))}
         </FluidContainer>
-      </FluidContainer>
+      </FluidContainer> */}
       <FluidContainer>
         <Typography variant="title" as="h2" margin="0px">
           What to expect:
