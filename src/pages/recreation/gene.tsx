@@ -2,10 +2,16 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Button, Card, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  Card,
+  FluidContainer,
+  Icon,
+  Image,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import data from 'data/recreation.json';
-import * as ReactIcons from 'react-icons/lu';
 import React from 'react';
 
 const WelcomeContentContainer = styled.div`
@@ -19,17 +25,14 @@ const buttons = [
   },
   {
     text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-spring-2024.docx',
+    href: 'https://www.dropbox.com/scl/fi/1ijfqyyzcnwiyjnrzsgcq/GENE-Bios-Spring-2024.pdf?rlkey=z5yb82mq16yg7jh33u7011evp&dl=0',
   },
 ];
 
 export default function Gene() {
   const { isDesktop, isMobile } = useBreakpoint();
   const geneData = data.gene;
-  const ReactIcon = () => {
-    const IconComponent = ReactIcons['LuCakeSlice'];
-    return <IconComponent size="50px" />;
-  };
+
   return (
     <Page>
       <Head>
@@ -126,7 +129,7 @@ export default function Gene() {
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
-              iconElement={<ReactIcon />}
+              iconElement={<Icon iconName={`${props.iconName}`} size="50px" />}
             />
           ))}
         </FluidContainer>
