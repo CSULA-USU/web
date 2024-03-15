@@ -30,7 +30,7 @@ const buttons = [
 ];
 
 export default function Gene() {
-  const { isDesktop, isMobile } = useBreakpoint();
+  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
   const geneData = data.gene;
 
   return (
@@ -119,14 +119,14 @@ export default function Gene() {
         <Typography variant="title" as="h2">
           Educators:
         </Typography>
-        <FluidContainer flex flexWrap="wrap">
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {geneData.educators.map((props) => (
             <Card
               margin={`${Spaces.md}`}
               topBorder
               key={`${props.iconAlt}`}
               {...props}
-              width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
+              width={isWidescreen ? '100%' : 'calc(48% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
               iconElement={<Icon iconName={`${props.iconName}`} size="50px" />}
@@ -142,7 +142,6 @@ export default function Gene() {
           {geneData.cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
-              topBorder
               key={`${props.title}`}
               {...props}
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
