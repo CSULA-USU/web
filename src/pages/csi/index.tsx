@@ -235,7 +235,7 @@ export default function CSI() {
             width={descriptionCardWidth}
             minHeight="280px"
             {...props}
-          ></DescriptionCard>
+          />
         ))}
       </FluidContainer>
       {clubCards.map((props) => (
