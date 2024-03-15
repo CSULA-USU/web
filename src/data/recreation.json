@@ -10,7 +10,7 @@
       {
         "title": "Coach Stephany",
         "children": "is a RD2B (Registered Dietician to Be) and looks forward to meeting you. She was once in your shoes as a client, and now she is on the other side, happy to listen and support you as a coach. She likes playing Pokemon Go in her free time with her little brother and sister. She hopes to help the people in Los Angeles with what she has learned in school and make a difference in her community. Coach Stephany is ready to be here for anything you need!",
-        "iconAlt": "soup",
+        "iconAlt": "pokèball",
         "iconName": "CgPokemon"
       },
       {
@@ -67,22 +67,19 @@
         "title": "Inclusive",
         "children": "A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.",
         "iconSrc": "/vectors/recreation/cooking.svg",
-        "iconAlt": "cooking",
-        "iconName": "GiStrawberry"
+        "iconAlt": "cooking"
       },
       {
         "title": "Community",
         "children": "Empowering conversations that focus on your strengths and areas for growth.",
         "iconSrc": "/vectors/recreation/group-workout.svg",
-        "iconAlt": "community workout",
-        "iconName": "GiStrawberry"
+        "iconAlt": "community workout"
       },
       {
         "title": "Set Goals",
         "children": "Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.",
         "iconSrc": "/vectors/recreation/goal.svg",
-        "iconAlt": "goal setting",
-        "iconName": "GiStrawberry"
+        "iconAlt": "soccer goaltender"
       }
     ]
   }
