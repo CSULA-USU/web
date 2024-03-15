@@ -76,7 +76,7 @@ const StyledButton = styled.button`
 export const MobileNav = () => (
   <Drawer.Drawer>
     <Drawer.Trigger>
-      <StyledButton>
+      <StyledButton aria-label="Navigation Menu">
         <HiMenuAlt3 size={48} />
       </StyledButton>
     </Drawer.Trigger>
