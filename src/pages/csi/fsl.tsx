@@ -837,7 +837,7 @@ export default function FSL() {
               If you have any questions or concerns about Greek Life on Cal
               State LA’s campus, please contact us!
             </Typography>
-            <Typography weight="700" as="h4" margin={`${Spaces.md} 0 0`}>
+            <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0`}>
               Contact Us
             </Typography>
             <Typography as="p">
@@ -914,7 +914,7 @@ export default function FSL() {
             <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
               Policies
             </Typography>
-            <Typography variant="cta" as="h4">
+            <Typography variant="cta" as="h3">
               California Hazing Law
             </Typography>
             <Typography>
