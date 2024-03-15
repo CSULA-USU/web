@@ -106,6 +106,8 @@ export const EventModal = ({
 
   return (
     <Modal
+      role="dialog"
+      contentLabel="Event Details"
       isOpen={isOpen}
       style={
         isMobile
