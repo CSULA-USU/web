@@ -23,8 +23,9 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
-const NavList = styled.ul`
+const NavList = styled.menu`
   padding-left: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   > a {
@@ -51,7 +52,8 @@ const T2Container = styled(NavList)`
   }
 `;
 
-const T3Container = styled(NavList)`
+const T3Container = styled(NavList).attrs(() => ({ as: 'li' }))`
+  ${NavList};
   border-top: 1px solid ${Colors.greyDarker};
   padding-left: 24px;
   > a {
