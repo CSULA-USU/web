@@ -23,10 +23,6 @@ const buttons = [
     text: 'Program Portfolio',
     href: 'https://www.dropbox.com/scl/fi/umgxniy3fxfocj60vmxja/ACHA_Poster_Final_5.31.22.pdf?rlkey=hel3lzj55v8tuzao50fvu66y1&raw=1',
   },
-  {
-    text: 'Meet Your Educators',
-    href: 'https://www.dropbox.com/scl/fi/1ijfqyyzcnwiyjnrzsgcq/GENE-Bios-Spring-2024.pdf?rlkey=z5yb82mq16yg7jh33u7011evp&dl=0',
-  },
 ];
 
 export default function Gene() {
@@ -117,7 +113,11 @@ export default function Gene() {
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          Educators:
+          <abbr title="gene">GENE</abbr> Bios Spring 2024:
+        </Typography>
+        <Typography as="p" margin="8px 0px 0px 0px">
+          Our <abbr title="gene">GENE</abbr> coaches are all working to finish
+          their Masters&apos; of Science in Nutrition here at Cal State LA.
         </Typography>
         <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {geneData.educators.map((props) => (
