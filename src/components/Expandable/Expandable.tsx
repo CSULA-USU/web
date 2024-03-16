@@ -80,7 +80,15 @@ export const Expandable = ({
     <Container>
       <HeaderContainer onClick={handleToggle} isOpen={isOpen}>
         {header}
-        {indicator && <Button role="button">{indicator}</Button>}
+        {indicator && (
+          <Button
+            role="button"
+            aria-expanded={isOpen}
+            aria-label="Toggle Accordion"
+          >
+            {indicator}
+          </Button>
+        )}
       </HeaderContainer>
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}

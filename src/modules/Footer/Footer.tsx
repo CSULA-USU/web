@@ -63,7 +63,7 @@ export const Footer = () => (
         </FooterTopLogo>
         <FooterTopLinks>
           <div>
-            <Typography as="h3" color="white">
+            <Typography as="h2" color="white">
               Building Hours
             </Typography>
             <Typography color="primary" size="sm" lineHeight="2.4">

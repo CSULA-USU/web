@@ -309,7 +309,11 @@ export const ModEventCard = ({
                   variant="transparent"
                   padding="500px"
                 >
-                  <BsInfoCircle size="20" color={`${Colors.gold}`} />
+                  <BsInfoCircle
+                    aria-label="Learn More"
+                    size="20"
+                    color={`${Colors.gold}`}
+                  />
                 </Button>
               ) : (
                 <Typography color="primary" size="sm">

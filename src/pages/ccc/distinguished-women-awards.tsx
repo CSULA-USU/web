@@ -154,7 +154,7 @@ export default function CulturalGrads() {
           <ul>
             <li>Faculty</li>
             <li>Staff</li>
-            <li>Administration (including MPP/Dean)</li>
+            <li>Administration</li>
             <li>Undergraduate Students</li>
             <li>Graduate Students</li>
             <li>Alumna</li>

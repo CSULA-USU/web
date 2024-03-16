@@ -2,9 +2,17 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Button, Card, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  Card,
+  FluidContainer,
+  Icon,
+  Image,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import data from 'data/recreation.json';
+import React from 'react';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
@@ -17,13 +25,14 @@ const buttons = [
   },
   {
     text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-spring-2024.docx',
+    href: 'https://www.dropbox.com/scl/fi/1ijfqyyzcnwiyjnrzsgcq/GENE-Bios-Spring-2024.pdf?rlkey=z5yb82mq16yg7jh33u7011evp&dl=0',
   },
 ];
 
 export default function Gene() {
-  const { isDesktop, isMobile } = useBreakpoint();
+  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
   const geneData = data.gene;
+
   return (
     <Page>
       <Head>
@@ -106,24 +115,25 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-      {/* <FluidContainer>
+      <FluidContainer>
         <Typography variant="title" as="h2">
           Educators:
         </Typography>
-        <FluidContainer flex flexWrap="wrap">
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
           {geneData.educators.map((props) => (
             <Card
               margin={`${Spaces.md}`}
               topBorder
-              key={`${props.title}`}
+              key={`${props.iconAlt}`}
               {...props}
-              width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
+              width={isWidescreen ? '100%' : 'calc(48% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
+              iconElement={<Icon iconName={`${props.iconName}`} size="50px" />}
             />
           ))}
         </FluidContainer>
-      </FluidContainer> */}
+      </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2" margin="0px">
           What to expect:
@@ -132,7 +142,6 @@ export default function Gene() {
           {geneData.cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
-              topBorder
               key={`${props.title}`}
               {...props}
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}

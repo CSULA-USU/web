@@ -29,7 +29,7 @@ const StyledPanel = styled.div<CardStyles>`
   ${(p) => p.width && `width: ${p.width};`}
   ${(p) => p.margin && `margin: ${p.margin};`}
   ${(p) => p.minHeight && `min-height: ${p.minHeight};`}
-  ${(p) => p.topBorder && `border-top: 3px solid ${Colors.primary};`}
+  ${(p) => p.topBorder && `border-top: 5px solid ${Colors.primary};`}
   border-radius: ${(p) => (p.rounded ? '12px' : '0px')};
   ${(p) =>
     p.hoverable &&
