@@ -67,6 +67,7 @@ export default function CulturalGrads() {
                     alt={e.iconAlt}
                     size={100}
                     style={{ objectFit: 'scale-down' }}
+                    lazy
                   />
                 </Button>
               </div>
@@ -102,12 +103,9 @@ export default function CulturalGrads() {
           }}
         >
           <Typography>
-            <Typography as="span" weight="700">
-              All
-            </Typography>{' '}
-            graduating students of all degree types&mdash;bachelor&apos;s,
-            master&apos;s, doctorate&apos;s&mdash;who are interested are welcome
-            to apply.
+            <strong>All</strong> graduating students of all degree
+            types&mdash;bachelor&apos;s, master&apos;s,
+            doctorate&apos;s&mdash;who are interested are welcome to apply.
           </Typography>
           <br />
           <Typography>
