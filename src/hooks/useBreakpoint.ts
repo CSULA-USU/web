@@ -41,6 +41,13 @@ export const useBreakpoint = () => {
   const isDesktop = ['mini', 'tablet', 'mobile', 'desktop'].includes(
     breakpoint,
   );
+  const isWidescreen = [
+    'mini',
+    'tablet',
+    'mobile',
+    'desktop',
+    'widescreen',
+  ].includes(breakpoint);
 
   interface BreakpointMap {
     mini: any;
@@ -84,6 +91,7 @@ export const useBreakpoint = () => {
     isMobile,
     isTablet,
     isDesktop,
+    isWidescreen,
     breakpoint,
     returnByBreakpoint,
   };

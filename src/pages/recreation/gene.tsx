@@ -2,50 +2,32 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Page, Header } from 'modules';
 import { Spaces } from 'theme';
-import { Button, Card, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  Card,
+  FluidContainer,
+  Icon,
+  Image,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
+import data from 'data/recreation.json';
+import React from 'react';
 
 const WelcomeContentContainer = styled.div`
   text-align: center;
 `;
-
-const cards = [
-  {
-    title: 'Inclusive',
-    children:
-      'A welcoming, inclusive space to safely talk about your dietary patterns and nutritional needs.',
-    iconSrc: '/vectors/recreation/cooking.svg',
-    iconAlt: 'cooking image',
-  },
-  {
-    title: 'Community',
-    children:
-      'Empowering conversations that focus on your strengths and areas for growth.',
-    iconSrc: '/vectors/recreation/group-workout.svg',
-    iconAlt: 'community workout image',
-  },
-  {
-    title: 'Set Goals',
-    children:
-      'Goal setting, problem-solving, and ongoing accountability to reach health goals that are important to you.',
-    iconSrc: '/vectors/recreation/goal.svg',
-    iconAlt: 'goal image',
-  },
-];
 
 const buttons = [
   {
     text: 'Program Portfolio',
     href: 'https://www.dropbox.com/scl/fi/umgxniy3fxfocj60vmxja/ACHA_Poster_Final_5.31.22.pdf?rlkey=hel3lzj55v8tuzao50fvu66y1&raw=1',
   },
-  {
-    text: 'Meet Your Educators',
-    href: '/departments/recreation/gene-fall-2023-educators.pdf',
-  },
 ];
 
 export default function Gene() {
-  const { isDesktop, isMobile } = useBreakpoint();
+  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
+  const geneData = data.gene;
 
   return (
     <Page>
@@ -58,7 +40,7 @@ export default function Gene() {
         />
         <meta
           name="description"
-          content="At GENE, we believe we all can benefit from learning new skills and
+          content="At gene, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
@@ -73,7 +55,7 @@ export default function Gene() {
           {isDesktop && isMobile && (
             <Image
               src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-              alt="illustration of young man using gene services on mobile"
+              alt="young man using gene services on mobile"
               height="232px"
               margin="0px auto"
             />
@@ -88,7 +70,7 @@ export default function Gene() {
         {!isDesktop && (
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-            alt="illustration of young man using gene services"
+            alt="young man using gene services"
             height="500px"
             margin="auto"
           />
@@ -96,7 +78,7 @@ export default function Gene() {
         {!isMobile && isDesktop && (
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-            alt="illustration of young man using gene services"
+            alt="a young man using gene services eating an apple"
             height="250px"
             margin="auto"
           />
@@ -129,27 +111,43 @@ export default function Gene() {
           RSVP
         </Button>
       </FluidContainer>
-
-      <FluidContainer
-        flex
-        justifyContent="center"
-        flexDirection="column"
-        alignItems="center"
-      >
+      <FluidContainer>
         <Typography variant="title" as="h2">
-          What to expect:
+          <abbr title="gene">GENE</abbr> Bios Spring 2024:
         </Typography>
-        <FluidContainer flex flexWrap="wrap" padding="0px">
-          {cards.map((props) => (
+        <Typography as="p" margin="8px 0px 0px 0px">
+          Our <abbr title="gene">GENE</abbr> coaches are all working to finish
+          their Masters&apos; of Science in Nutrition here at Cal State LA.
+        </Typography>
+        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+          {geneData.educators.map((props) => (
             <Card
               margin={`${Spaces.md}`}
               topBorder
+              key={`${props.iconAlt}`}
+              {...props}
+              width={isWidescreen ? '100%' : 'calc(48% - 8px)'}
+              minHeight="200px"
+              iconWidth="100px"
+              iconElement={<Icon iconName={`${props.iconName}`} size="50px" />}
+            />
+          ))}
+        </FluidContainer>
+      </FluidContainer>
+      <FluidContainer>
+        <Typography variant="title" as="h2" margin="0px">
+          What to expect:
+        </Typography>
+        <FluidContainer flex flexWrap="wrap">
+          {geneData.cards.map((props) => (
+            <Card
+              margin={`${Spaces.md}`}
               key={`${props.title}`}
               {...props}
               width={isDesktop ? '100%' : 'calc(30.33% - 8px)'}
               minHeight="200px"
               iconWidth="100px"
-            ></Card>
+            />
           ))}
         </FluidContainer>
       </FluidContainer>

@@ -48,7 +48,7 @@ export const OfficeHours = ({
         <Divider color="greyLighter" margin="12px 0" />
         <NumberContainer>
           <NumberInnerContainer>
-            <BiPhone fontSize={Spaces.lg} />
+            <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
             <Typography as="p">{phoneNumber}</Typography>
           </NumberInnerContainer>
         </NumberContainer>

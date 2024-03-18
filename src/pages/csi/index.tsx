@@ -152,9 +152,11 @@ export default function CSI() {
           <OfficeHours
             address={
               <>
-                5154 State University Drive <br />
-                Los Angeles, CA 90032 <br />
-                Room 204, 2nd Floor
+                <Typography as="p">University-Student Union,</Typography>
+                <Typography as="p">
+                  5154 State University Dr, <blockquote />
+                </Typography>
+                <Typography as="p">Los Angeles CA, 90032</Typography>
               </>
             }
             phoneNumber="323-343-5110"
@@ -233,7 +235,7 @@ export default function CSI() {
             width={descriptionCardWidth}
             minHeight="280px"
             {...props}
-          ></DescriptionCard>
+          />
         ))}
       </FluidContainer>
       {clubCards.map((props) => (

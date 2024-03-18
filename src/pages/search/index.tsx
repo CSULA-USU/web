@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Page, Header } from 'modules';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, Image, Typography } from 'components';
 import { searchResultState } from 'atoms';
 import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
+import { Spaces } from 'theme';
+import { useBreakpoint } from 'hooks';
 
 const SearchBig = styled.input`
   display: flex;
@@ -67,6 +69,7 @@ export default function Search() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [results, setResults] = useState<ResultsType[]>(searchResults);
   const router = useRouter();
+  const { isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (searchInputRef.current) {
@@ -106,34 +109,49 @@ export default function Search() {
     setResults(fuse.search(queryString));
   };
 
-  const content: JSX.Element | null = results ? (
-    <>
-      {results.map((result, index) => {
-        if ('item' in result) {
-          const { title, url, description } = result.item;
-          return (
-            <div key={index}>
-              <SearchCard>
-                <Link href={url}>
-                  <Typography as="h3" variant="subheader">
-                    {title}
+  const content: JSX.Element | null =
+    results && results.length > 0 ? (
+      <>
+        {results.map((result, index) => {
+          if ('item' in result) {
+            const { title, url, description } = result.item;
+            return (
+              <div key={index}>
+                <SearchCard>
+                  <Link href={url}>
+                    <Typography as="h3" variant="subheader">
+                      {title}
+                    </Typography>
+                  </Link>
+                  <Typography as="p" variant="copy">
+                    {description}
                   </Typography>
-                </Link>
-                <Typography as="p" variant="copy">
-                  {description}
-                </Typography>
-                <Link href={url}>
-                  <Typography color="gold">calstatelausu.org{url}</Typography>
-                </Link>
-              </SearchCard>
-            </div>
-          );
-        }
-      })}
-    </>
-  ) : (
-    <div>No results found.</div>
-  );
+                  <Link href={url}>
+                    <Typography color="gold">calstatelausu.org{url}</Typography>
+                  </Link>
+                </SearchCard>
+              </div>
+            );
+          }
+        })}
+      </>
+    ) : (
+      <FluidContainer
+        flex
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+      >
+        <Typography as="h3" variant="subheader" margin={`${Spaces.md}`}>
+          No Results Found.
+        </Typography>
+        <Image
+          alt="Eddie the Eagle looking for results"
+          src="https://media2.giphy.com/media/gKTdODaPq6kKoSD5rc/giphy.gif"
+          style={{ width: isMobile ? '70%' : '50%', height: 'auto' }}
+        />
+      </FluidContainer>
+    );
 
   return (
     <Page>

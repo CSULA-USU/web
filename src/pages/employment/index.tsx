@@ -74,7 +74,7 @@ export default function Employment() {
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <Link href={j.link || ''} target="_blank">
-                    <Typography as="h4" variant="labelTitle">
+                    <Typography as="h3" variant="labelTitle">
                       {j.title}
                     </Typography>
                   </Link>

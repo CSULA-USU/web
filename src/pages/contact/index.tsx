@@ -39,11 +39,11 @@ export default function Contact() {
       </FluidContainer>
       <FluidContainer flex justifyContent="flex-start" flexWrap="wrap">
         <ContactContainer>
+          <Typography as="p">University-Student Union,</Typography>
           <Typography as="p">
-            University-Student Union, <br />
-            5154 State University Dr, <br />
-            Los Angeles CA, 90032
+            5154 State University Dr, <blockquote />
           </Typography>
+          <Typography as="p">Los Angeles CA, 90032</Typography>
         </ContactContainer>
         <ContactContainer>
           {contacts.map((c) => (

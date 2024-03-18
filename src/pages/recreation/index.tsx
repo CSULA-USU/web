@@ -119,7 +119,7 @@ export default function Recreation() {
           <PhoneSection>
             <NumberContainer>
               <NumberInnerContainer>
-                <BiPhone fontSize={Spaces.lg} />
+                <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
                 <Typography as="p" variant="labelTitleSmall">
                   Recreation 1:{' '}
                 </Typography>
@@ -128,7 +128,7 @@ export default function Recreation() {
             </NumberContainer>
             <NumberContainer>
               <NumberInnerContainer>
-                <BiPhone fontSize={Spaces.lg} />
+                <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
                 <Typography as="p" variant="labelTitleSmall">
                   Recreation 2:{' '}
                 </Typography>
@@ -147,13 +147,17 @@ export default function Recreation() {
               Rec 1 & 2
             </Typography>
             <LocationContainer>
-              <MdLocationPin size="24px" />
+              <MdLocationPin aria-hidden="true" size="24px" />
               <Typography as="p" variant="label" size="md">
                 U-SU Basement
               </Typography>
             </LocationContainer>
             <TimeContainer>
-              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <BiTimeFive
+                aria-hidden="true"
+                style={{ margin: '2px 3px 0px 2px' }}
+                size="20px"
+              />
               <Typography as="p">
                 <u>Monday – Friday</u>
                 <br />
@@ -176,13 +180,17 @@ export default function Recreation() {
               Game Room
             </Typography>
             <LocationContainer>
-              <MdLocationPin size="24px" />
+              <MdLocationPin aria-hidden="true" size="24px" />
               <Typography as="p" variant="label" size="md">
                 U-SU Room 201
               </Typography>
             </LocationContainer>
             <TimeContainer>
-              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <BiTimeFive
+                aria-hidden="true"
+                style={{ margin: '2px 3px 0px 2px' }}
+                size="20px"
+              />
               <Typography as="p">
                 <u>Monday – Thursday</u>
                 <br />
@@ -204,13 +212,17 @@ export default function Recreation() {
               South Village Wellness Zone
             </Typography>
             <LocationContainer>
-              <MdLocationPin size="24px" />
+              <MdLocationPin aria-hidden="true" size="24px" />
               <Typography as="p" variant="label" size="md">
                 South Village Housing
               </Typography>
             </LocationContainer>
             <TimeContainer>
-              <BiTimeFive style={{ margin: '2px 3px 0px 2px' }} size="20px" />
+              <BiTimeFive
+                aria-hidden="true"
+                style={{ margin: '2px 3px 0px 2px' }}
+                size="20px"
+              />
               <Typography as="p">
                 <u>Monday – Friday</u>
                 <br />

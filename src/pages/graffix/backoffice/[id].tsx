@@ -604,10 +604,16 @@ export default function GraphicsRequests() {
               <Image
                 alt="Eddie the Eagle figuring out what you were thinking"
                 src="https://media.giphy.com/media/Ihn3KpMcpCMamJdI30/giphy.gif"
+                style={{ width: isMobile ? '70%' : '50%', height: 'auto' }}
               ></Image>
             </FluidContainer>
 
-            <FluidContainer flex justifyContent="center" alignItems="center">
+            <FluidContainer
+              flex
+              justifyContent="center"
+              alignItems="center"
+              flexWrap="wrap"
+            >
               <Typography as="h2" variant="subheader">
                 Did you mean:{' '}
               </Typography>
