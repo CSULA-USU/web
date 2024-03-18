@@ -54,6 +54,7 @@ export const Card = ({
               alt={iconAlt ? iconAlt : 'icon img'}
               width={iconWidth ? iconWidth : Spaces['2xl']}
               marginBottom="24px"
+              lazy
             />
           </IconContainer>
         )}
