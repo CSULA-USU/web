@@ -24,8 +24,22 @@
   },
   {
     "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Haseena Kahled",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/orw9xey0e6s6mg2rcre6c/Melissa.png?rlkey=rh3ejf6cciqpg2rs8m92ps6z4&raw=1",
     "name": "Melissa Nicole Lopez",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Monica Sanchez",
     "credentials": "",
     "section": "student-representative"
   },
@@ -66,7 +80,7 @@
   },
   {
     "title": "Vice President for Student Life",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "src": "https://www.calstatela.edu/sites/default/files/Dr.%20Day_cropped_0.jpg",
     "name": "Patrick Day",
     "credentials": "Interim Vice President for Student Life",
     "section": "pro-board-member"
