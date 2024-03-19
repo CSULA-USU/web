@@ -33,6 +33,7 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   srcset?: string;
   borderRadius?: '12px' | '8px';
   round?: boolean;
+  lazy?: boolean;
 }
 
 export const Image: FC<ImageProps> = ({
@@ -42,6 +43,7 @@ export const Image: FC<ImageProps> = ({
   sizes,
   src,
   srcset,
+  lazy = 'eager',
   ...rest
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -63,6 +65,7 @@ export const Image: FC<ImageProps> = ({
       src={imageSrc}
       srcSet={srcset}
       {...rest}
+      loading={lazy ? 'lazy' : 'eager'}
     />
   );
 };
