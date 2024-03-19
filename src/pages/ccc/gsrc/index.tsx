@@ -55,21 +55,23 @@ const offerings = [
       <ul>
         <li>
           <Link href="https://www.instagram.com/csula_wgsclub/">
-            <Typography color="gold">
+            <Typography style={{ textDecoration: 'underline' }}>
               Cal State LA Women&apos;s, Gender, and Sexualities Club
             </Typography>
           </Link>
         </li>
         <li>
           <Link href="https://www.instagram.com/swd_csula/">
-            <Typography color="gold">
+            <Typography style={{ textDecoration: 'underline' }}>
               Students with Dependents at Cal State LA
             </Typography>
           </Link>
         </li>
         <li>
           <Link href="https://www.instagram.com/thetransqueerconnection">
-            <Typography color="gold">Trans Queer Connection</Typography>
+            <Typography style={{ textDecoration: 'underline' }}>
+              Trans Queer Connection
+            </Typography>
           </Link>
         </li>
       </ul>
