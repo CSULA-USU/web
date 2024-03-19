@@ -133,6 +133,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                       src={img.src}
                       alt={img.alt}
                       key={i}
+                      loading={i < 5 ? 'eager' : 'lazy'}
                     />
                   );
                 })}

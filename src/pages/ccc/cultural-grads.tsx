@@ -1,10 +1,11 @@
+'use client';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Button,
   Divider,
-  Expandable,
   FlatCard,
   FluidContainer,
   Image,
@@ -29,8 +30,43 @@ const cards = CulturalGradsData['info-cards'];
 const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
+const DynamicExpandable = dynamic(
+  () => import('../../components/Expandable').then((mod) => mod.Expandable),
+  { ssr: false },
+);
+
 export default function CulturalGrads() {
   const { isMobile } = useBreakpoint();
+  const [showFAQ, setShowFAQ] = useState(false);
+  const [showIncentives, setShowIncentives] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate the position of FAQ section relative to the viewport
+      const faqSection = document.getElementById('faq-section');
+      if (faqSection && !showFAQ) {
+        const rect = faqSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          setShowFAQ(true);
+        }
+      }
+    };
+
+    const incentivesSection = document.getElementById('incentives-section');
+    if (incentivesSection && !showIncentives) {
+      const incentivesRect = incentivesSection.getBoundingClientRect();
+      if (incentivesRect.top < window.innerHeight) {
+        setShowIncentives(true);
+      }
+    }
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up event listener on unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showIncentives, showFAQ]);
+
   return (
     <Page>
       <Head>
@@ -151,65 +187,76 @@ export default function CulturalGrads() {
           </div>
         ))}
       </FluidContainer>
-      <FluidContainer>
-        <Typography
-          margin={`${Spaces.md} 0`}
-          as="h2"
-          variant={isMobile ? 'subheader' : 'title'}
-        >
-          Incentives
-        </Typography>
-        <IncentiveCardsContainer>
-          {incentives.map((e, i) => (
-            <FlatCard key={i} imgSrc={e.src} imgAlt={e.alt}>
-              {e.description}
-            </FlatCard>
-          ))}
-        </IncentiveCardsContainer>
-      </FluidContainer>
-      <FluidContainer backgroundColor="black">
-        <div id="faqs">
-          <Typography
-            color="primary"
-            variant={isMobile ? 'subheader' : 'title'}
-            as="h2"
-          >
-            Graduate Participation Information
-          </Typography>
-        </div>
-        {questions.map((e, i) => (
-          <React.Fragment key={i}>
-            <Expandable
-              indicator={<BiChevronRight color="white" size={48} />}
-              header={
-                <Typography
-                  variant="label"
-                  color="white"
-                  as="h3"
-                  margin={`${Spaces.sm} 0`}
-                >
-                  {e.question}
-                </Typography>
-              }
+      <div id="incentives-section">
+        {showIncentives && (
+          <FluidContainer>
+            <Typography
+              margin={`${Spaces.md} 0`}
+              as="h2"
+              variant={isMobile ? 'subheader' : 'title'}
             >
-              <Typography color="white" as="p">
-                {Array.isArray(e.answer) ? (
-                  <>
-                    <ul>
-                      {e.answer.map((e, answerKey) => (
-                        <li key={`answer-${answerKey}`}>{e}</li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <> {e.answer}</>
-                )}
+              Incentives
+            </Typography>
+            <IncentiveCardsContainer>
+              {incentives.map((e, i) => (
+                <FlatCard key={i} imgSrc={e.src} imgAlt={e.alt}>
+                  {e.description}
+                </FlatCard>
+              ))}
+            </IncentiveCardsContainer>
+          </FluidContainer>
+        )}
+      </div>
+      <div id="faq-section">
+        {showFAQ && (
+          <FluidContainer backgroundColor="black">
+            <div>
+              <Typography
+                color="primary"
+                variant={isMobile ? 'subheader' : 'title'}
+                as="h2"
+              >
+                Graduate Participation Information
               </Typography>
-            </Expandable>
-            <Divider color="gold" />
-          </React.Fragment>
-        ))}
-      </FluidContainer>
+            </div>
+            {/* Render FAQ content */}
+            {/* Replace questions.map with your FAQ content */}
+            {/* Ensure to remove DynamicExpandable and use Expandable directly if you're not dynamically rendering */}
+            {questions.map((e, i) => (
+              <React.Fragment key={i}>
+                <DynamicExpandable
+                  indicator={<BiChevronRight color="white" size={48} />}
+                  header={
+                    <Typography
+                      variant="label"
+                      color="white"
+                      as="h3"
+                      margin={`${Spaces.sm} 0`}
+                    >
+                      {e.question}
+                    </Typography>
+                  }
+                >
+                  <Typography color="white" as="p">
+                    {Array.isArray(e.answer) ? (
+                      <>
+                        <ul>
+                          {e.answer.map((e, answerKey) => (
+                            <li key={`answer-${answerKey}`}>{e}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <> {e.answer}</>
+                    )}
+                  </Typography>
+                </DynamicExpandable>
+                <Divider color="gold" />
+              </React.Fragment>
+            ))}
+          </FluidContainer>
+        )}
+      </div>
       {/* <FluidContainer
         backgroundColor="primary"
         flex
