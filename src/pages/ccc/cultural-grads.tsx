@@ -9,7 +9,6 @@ import {
   FlatCard,
   FluidContainer,
   Image,
-  ImageAndCard,
   Panel,
   Typography,
 } from 'components';
@@ -35,10 +34,19 @@ const DynamicExpandable = dynamic(
   { ssr: false },
 );
 
+const DynamicImageAndCard = dynamic(
+  () =>
+    import('../../components/Card/ImageAndCard').then(
+      (mod) => mod.ImageAndCard,
+    ),
+  { ssr: false },
+);
+
 export default function CulturalGrads() {
   const { isMobile } = useBreakpoint();
   const [showFAQ, setShowFAQ] = useState(false);
   const [showIncentives, setShowIncentives] = useState(false);
+  const [showGraduations, setShowGraduations] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +68,20 @@ export default function CulturalGrads() {
       }
     }
 
+    const graduationsSection = document.getElementById('graduations-section');
+    if (graduationsSection && !showGraduations) {
+      const incentivesRect = graduationsSection.getBoundingClientRect();
+      if (incentivesRect.top < window.innerHeight) {
+        setShowGraduations(true);
+      }
+    }
+
     // Attach scroll event listener
     window.addEventListener('scroll', handleScroll);
 
     // Clean up event listener on unmount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showIncentives, showFAQ]);
+  }, [showIncentives, showFAQ, showGraduations]);
 
   return (
     <Page>
@@ -159,34 +175,37 @@ export default function CulturalGrads() {
             Spaces are limited for each Cultural Graduation Celebration.
           </Typography>
           <br />
-          <Typography>Deadline for applications: March 29 at 5 p.m.</Typography>
+          <Typography>Deadline for applications: March 29 at 5 PM</Typography>
         </Typography>
       </FluidContainer>
-
-      <FluidContainer>
-        <Typography
-          margin={`${Spaces.md} 0`}
-          as="h2"
-          variant={isMobile ? 'subheader' : 'title'}
-        >
-          Graduations
-        </Typography>
-        {cards.map((card, i) => (
-          <div id={card.id} key={`${card.id}-${i}`}>
-            <ImageAndCard
-              index={i}
-              title={card.title}
-              subheader={card.subheader}
-              copy={card.copy}
-              iconAlt={card.iconAlt}
-              iconSrc={card.iconSrc}
-              buttonLink={card.applicationLink}
-              imgSrc={card.imgSrc}
-              imgAlt={card.imgAlt}
-            />
-          </div>
-        ))}
-      </FluidContainer>
+      <div id="graduations-section">
+        {showGraduations && (
+          <FluidContainer>
+            <Typography
+              margin={`${Spaces.md} 0`}
+              as="h2"
+              variant={isMobile ? 'subheader' : 'title'}
+            >
+              Graduations
+            </Typography>
+            {cards.map((card, i) => (
+              <div id={card.id} key={`${card.id}-${i}`}>
+                <DynamicImageAndCard
+                  index={i}
+                  title={card.title}
+                  subheader={card.subheader}
+                  copy={card.copy}
+                  iconAlt={card.iconAlt}
+                  iconSrc={card.iconSrc}
+                  buttonLink={card.applicationLink}
+                  imgSrc={card.imgSrc}
+                  imgAlt={card.imgAlt}
+                />
+              </div>
+            ))}
+          </FluidContainer>
+        )}
+      </div>
       <div id="incentives-section">
         {showIncentives && (
           <FluidContainer>
