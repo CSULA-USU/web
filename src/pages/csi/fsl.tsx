@@ -669,8 +669,8 @@ export default function FSL() {
               <Typography weight="700" as="h3">
                 Contact Us
               </Typography>
-              <Typography as="p">Phone: 323-343-5709</Typography>
-              <Typography as="p">Email: rgalvan2@calstatela.edu</Typography>
+              <Typography as="p">Phone: 323-343-5113</Typography>
+              <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
           </FluidContainer>
