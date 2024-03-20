@@ -89,20 +89,20 @@ export default function CulturalGrads() {
         <title>Cultural Graduation Celebrations</title>
         <meta
           name="author"
-          content="The University Student Union Center for Student Involvement"
+          content="The University Student Union Cross Cultural Centers"
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, Cross Cultural Center, CCC, U-SU, University Student, Cultural Graduation, Black Graduation, APIDA Graduation, Pride Graduation, Nuestra Graduation"
+          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Black, APIDA, Pride, Nuestra"
         />
         <meta
           name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
+          content="The Cross Cultural Centers in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
         />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
-        ></meta>
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CulturalGradsHeader images={slideshowImages} />
@@ -127,7 +127,6 @@ export default function CulturalGrads() {
           </FluidContainer>
         </>
       )}
-
       <FluidContainer>
         <Panel backgroundColor="black">
           <Typography as="h2" variant="label" color="primary">

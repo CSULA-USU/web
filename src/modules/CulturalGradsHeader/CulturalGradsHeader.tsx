@@ -92,7 +92,7 @@ const TeaserContainer = styled.div`
   width: 400px;
   height: 470px;
   background: center / contain no-repeat
-    url('/departments/ccc/cultural-grads/hero-onstage.png');
+    url('/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png');
   border-radius: 12px;
 `;
 
@@ -162,16 +162,10 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 padding="16px"
                 flex
                 flexDirection="column"
-                innerMaxWidth="500px"
+                innerMaxWidth="316px"
               >
                 <Typography variant="title" size="3xl" color="white" as="h1">
-                  Cultural
-                </Typography>
-                <Typography variant="title" size="3xl" color="white" as="h1">
-                  Graduation
-                </Typography>
-                <Typography variant="title" size="3xl" color="white" as="h1">
-                  Celebrations
+                  Cultural Graduation Celebrations
                 </Typography>
               </FluidContainer>
             </InsideContainer>
