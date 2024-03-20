@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 
@@ -12,10 +13,10 @@ interface CulturalGradsHeaderProps {
 
 const moveAnimation = keyframes`
   0% {
-    transform: translateX(0%);
+    transform: translateX(-5%);
   }
   100% {
-    transform: translateX(-250%);
+    transform: translateX(-90%);
   }
 `;
 
@@ -66,26 +67,44 @@ const MobileOuterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const OuterContainer = styled.div`
-  position: relative;
-  height: 670px;
-  background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
-    center bottom/cover no-repeat;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  right: 0;
+  bottom: 0;
+`;
+
+const OuterContainer = styled.div`
+  position: relative;
+  height: 670px;
+  background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
+    bottom/cover no-repeat;
+  background-color: ${Colors.grey};
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const TeaserContainer = styled.div`
@@ -97,14 +116,13 @@ const TeaserContainer = styled.div`
 `;
 
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
-  const imageList = images.concat(images);
+  const imageList = images;
   const { isDesktop } = useBreakpoint();
   return (
     <>
       {isDesktop ? (
         <>
           <MobileOuterContainer>
-            <Overlay />
             <InsideContainer>
               <FluidContainer
                 padding="16px"
