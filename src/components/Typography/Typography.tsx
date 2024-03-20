@@ -71,6 +71,11 @@ const styles = {
     lineHeight: FontSizes.lg,
     fontFamily: serif,
   },
+  span: {
+    size: 'sm',
+    weight: '400',
+    lineHeight: FontSizes.md,
+  },
   eventDetail: { size: 'sm', weight: '700', color: 'white' },
   eventTitle: { size: 'lg', weight: '700', color: 'white' },
   eventTime: {
