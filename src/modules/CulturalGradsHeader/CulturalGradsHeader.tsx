@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
@@ -39,13 +40,6 @@ const SlideshowContent = styled.div`
   animation-delay: 2s;
 `;
 
-const HorizontalSlideshowImage = styled.img`
-  width: 400px;
-  height: auto;
-  flex-shrink: 0;
-  margin-right: 4px;
-`;
-
 const InsideContainer = styled.div`
   display: flex;
   z-index: 2;
@@ -78,14 +72,6 @@ const MobileOuterContainer = styled.div`
   }
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
-
 const OuterContainer = styled.div`
   position: relative;
   height: 670px;
@@ -107,14 +93,6 @@ const OuterContainer = styled.div`
   }
 `;
 
-const TeaserContainer = styled.div`
-  width: 400px;
-  height: 470px;
-  background: center / contain no-repeat
-    url('/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png');
-  border-radius: 12px;
-`;
-
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
   const imageList = images;
   const { isDesktop } = useBreakpoint();
@@ -128,16 +106,10 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 padding="16px"
                 flex
                 flexDirection="column"
-                innerMaxWidth="500px"
+                innerMaxWidth="198px"
               >
-                <Typography variant="title" size="xl" color="white">
-                  Cultural
-                </Typography>
-                <Typography variant="title" size="xl" color="white">
-                  Graduation
-                </Typography>
-                <Typography variant="title" size="xl" color="white">
-                  Celebrations
+                <Typography variant="title" size="xl" color="white" as="h1">
+                  Cultural Graduation Celebrations
                 </Typography>
               </FluidContainer>
             </InsideContainer>
@@ -161,7 +133,6 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
       ) : (
         <>
           <OuterContainer>
-            <Overlay />
             <InsideContainer>
               <FluidContainer
                 flex
@@ -170,8 +141,20 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 innerMaxWidth="500px"
                 alignItems="flex-end"
               >
-                <TeaserContainer />
-                <br />
+                {/* <TeaserContainer /> */}
+                <Image
+                  src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
+                  alt="nuestra graduate participants on stage"
+                  height={0}
+                  width={0}
+                  sizes="100vw"
+                  style={{
+                    width: '400px',
+                    height: '470px',
+                    borderRadius: '12px',
+                    marginBottom: '24px',
+                  }}
+                />
                 <Typography variant="cta" color="white" as="p">
                   Nuestra Grad &apos;22
                 </Typography>
@@ -193,10 +176,18 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
-                    <HorizontalSlideshowImage
+                    <Image
                       src={img.src}
                       alt={img.alt}
                       key={i}
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        height: '276px',
+                        width: 'auto',
+                        marginRight: '8px',
+                      }}
                     />
                   );
                 })}
