@@ -114,11 +114,6 @@ export const DesktopNav = () => {
                 </MenuButton>
               }
             >
-              <MenuItem>
-                <Link href={t1.href}>
-                  <NonBreakingSpan>{t1.text}</NonBreakingSpan>
-                </Link>
-              </MenuItem>
               {t1.sub.map((t2, index) => {
                 if (t2.sub) {
                   return (
