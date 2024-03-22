@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Image, Typography } from 'components';
+import Image from 'next/image';
+import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
@@ -88,9 +89,14 @@ export const ImageAndCard = ({
               <Image
                 src={imgSrc}
                 alt={imgAlt}
-                width="100%"
-                height="100%"
-                style={{ objectFit: 'cover' }}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{
+                  width: 'auto',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
               />
             </ImageContainer>
           )}
@@ -102,7 +108,18 @@ export const ImageAndCard = ({
             {isMobile ? (
               <>
                 <div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image
+                    src={iconSrc}
+                    alt={iconAlt}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                      height: '100%',
+                      width: 'auto',
+                      objectFit: 'scale-down',
+                    }}
+                  />
                   <Typography variant="label" as="h3">
                     {title}
                   </Typography>
@@ -122,7 +139,7 @@ export const ImageAndCard = ({
                       {subheader}
                     </Typography>
                   </div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                 </Header>
               </>
             )}
@@ -180,7 +197,7 @@ export const ImageAndCard = ({
             {isMobile ? (
               <>
                 <div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                   <Typography variant="label" as="h3">
                     {title}
                   </Typography>
@@ -200,7 +217,7 @@ export const ImageAndCard = ({
                       {subheader}
                     </Typography>
                   </div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                 </Header>
               </>
             )}
@@ -247,11 +264,16 @@ export const ImageAndCard = ({
           ) : (
             <ImageContainer>
               <Image
+                sizes="100vw"
                 src={imgSrc}
                 alt={imgAlt}
-                width="100%"
-                height="100%"
-                style={{ objectFit: 'cover' }}
+                width={0}
+                height={0}
+                style={{
+                  width: 'auto',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
               />
             </ImageContainer>
           )}
