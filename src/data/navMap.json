@@ -4,6 +4,10 @@
     "href": "/about",
     "sub": [
       {
+        "text": "About",
+        "href": "/about"
+      },
+      {
         "text": "Contact",
         "href": "/contact"
       },
@@ -25,6 +29,10 @@
     "text": "Departments",
     "href": "/departments",
     "sub": [
+      {
+        "text": "Departments",
+        "href": "/departments"
+      },
       {
         "text": "CCC",
         "href": "/ccc",
@@ -141,6 +149,10 @@
     "text": "Governance",
     "href": "/governance",
     "sub": [
+      {
+        "text": "Governance",
+        "href": "/governance"
+      },
       {
         "text": "How to Vote",
         "href": "/governance/how-to-vote"

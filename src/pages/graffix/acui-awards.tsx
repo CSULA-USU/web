@@ -22,7 +22,7 @@ const NavItems = [
   'Honorable Mention',
 ];
 
-const InnerAwardContainer = styled.div`
+const InnerAwardContainer = styled.nav`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -33,7 +33,7 @@ const InnerAwardContainer = styled.div`
   margin: auto;
 `;
 
-const PaginationContainer = styled.div`
+const PaginationContainer = styled.menu`
   ul {
     list-style-type: none;
     display: flex;
@@ -107,7 +107,7 @@ export default function AcuiAwards() {
           >
             <Button margin="5px">
               <Typography lineHeight="1" variant="cta">
-                {item}
+                {item} fsafasfsa
               </Typography>
             </Button>
           </NavItemContainer>

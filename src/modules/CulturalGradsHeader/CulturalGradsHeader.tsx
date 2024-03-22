@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import styled, { keyframes } from 'styled-components';
+import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 
@@ -12,10 +14,10 @@ interface CulturalGradsHeaderProps {
 
 const moveAnimation = keyframes`
   0% {
-    transform: translateX(0%);
+    transform: translateX(-5%);
   }
   100% {
-    transform: translateX(-250%);
+    transform: translateX(-90%);
   }
 `;
 
@@ -36,25 +38,12 @@ const SlideshowContent = styled.div`
   display: flex;
   animation: ${moveAnimation} 120s linear infinite alternate;
   animation-delay: 2s;
-`;
-
-const HorizontalSlideshowImage = styled.img`
-  width: 400px;
-  height: auto;
-  flex-shrink: 0;
-  margin-right: 4px;
+  width: 100%;
 `;
 
 const InsideContainer = styled.div`
   display: flex;
   z-index: 2;
-`;
-
-const MobileHorizontalSlideshowImage = styled.img`
-  width: 200px;
-  height: auto;
-  flex-shrink: 0;
-  margin-right: 4px;
 `;
 
 const MobileOuterContainer = styled.div`
@@ -66,60 +55,55 @@ const MobileOuterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const OuterContainer = styled.div`
   position: relative;
   height: 670px;
   background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
-    center bottom/cover no-repeat;
+    bottom/cover no-repeat;
+  background-color: ${Colors.grey};
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-`;
-
-const TeaserContainer = styled.div`
-  width: 400px;
-  height: 470px;
-  background: center / contain no-repeat
-    url('/departments/ccc/cultural-grads/hero-onstage.png');
-  border-radius: 12px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
-  const imageList = images.concat(images);
+  const imageList = images;
   const { isDesktop } = useBreakpoint();
   return (
     <>
       {isDesktop ? (
         <>
           <MobileOuterContainer>
-            <Overlay />
             <InsideContainer>
               <FluidContainer
                 padding="16px"
                 flex
                 flexDirection="column"
-                innerMaxWidth="500px"
+                innerMaxWidth="198px"
               >
-                <Typography variant="title" size="xl" color="white">
-                  Cultural
-                </Typography>
-                <Typography variant="title" size="xl" color="white">
-                  Graduation
-                </Typography>
-                <Typography variant="title" size="xl" color="white">
-                  Celebrations
+                <Typography variant="title" size="xl" color="white" as="h1">
+                  Cultural Graduation Celebrations
                 </Typography>
               </FluidContainer>
             </InsideContainer>
@@ -129,10 +113,18 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
-                    <MobileHorizontalSlideshowImage
+                    <Image
                       src={img.src}
                       alt={img.alt}
                       key={i}
+                      height={200}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        width: 'auto',
+                        marginRight: '4px',
+                      }}
+                      loading={i < 5 ? 'eager' : 'lazy'}
                     />
                   );
                 })}
@@ -142,7 +134,6 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
       ) : (
         <>
           <OuterContainer>
-            <Overlay />
             <InsideContainer>
               <FluidContainer
                 flex
@@ -151,8 +142,20 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 innerMaxWidth="500px"
                 alignItems="flex-end"
               >
-                <TeaserContainer />
-                <br />
+                {/* <TeaserContainer /> */}
+                <Image
+                  src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
+                  alt="nuestra graduate participants on stage"
+                  height={0}
+                  width={0}
+                  sizes="100vw"
+                  style={{
+                    width: '400px',
+                    height: '470px',
+                    borderRadius: '12px',
+                    marginBottom: '24px',
+                  }}
+                />
                 <Typography variant="cta" color="white" as="p">
                   Nuestra Grad &apos;22
                 </Typography>
@@ -161,16 +164,10 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 padding="16px"
                 flex
                 flexDirection="column"
-                innerMaxWidth="500px"
+                innerMaxWidth="316px"
               >
                 <Typography variant="title" size="3xl" color="white" as="h1">
-                  Cultural
-                </Typography>
-                <Typography variant="title" size="3xl" color="white" as="h1">
-                  Graduation
-                </Typography>
-                <Typography variant="title" size="3xl" color="white" as="h1">
-                  Celebrations
+                  Cultural Graduation Celebrations
                 </Typography>
               </FluidContainer>
             </InsideContainer>
@@ -180,10 +177,18 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
-                    <HorizontalSlideshowImage
+                    <Image
                       src={img.src}
                       alt={img.alt}
                       key={i}
+                      height={276}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        width: 'auto',
+                        marginRight: '4px',
+                      }}
+                      loading={i < 5 ? 'eager' : 'lazy'}
                     />
                   );
                 })}
