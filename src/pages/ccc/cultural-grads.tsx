@@ -119,7 +119,6 @@ export default function CulturalGrads() {
           flexWrap="wrap"
           innerMinHeight="100px"
           padding="36px 72px 0px"
-          min-height="176px"
         >
           {cards.map((e, i) => (
             <GradButtonContainer key={i}>
