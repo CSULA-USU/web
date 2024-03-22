@@ -1,14 +1,21 @@
 import React from 'react';
-import { Button, Image, Typography } from 'components';
+import Image from 'next/image';
+import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
+
+type ButtonInfo = [
+  buttonLink: string,
+  placeholderText: string,
+  buttonText: string,
+];
 
 interface InfoPanelProps {
   title?: string;
   subheader?: string;
   copy: (string | string[])[];
-  buttonLink?: string;
+  button: ButtonInfo;
   iconSrc: string;
   iconAlt: string;
   imgSrc: string;
@@ -30,6 +37,7 @@ const Card = styled.div`
 const ImageContainer = styled.div`
   width: 45%;
   height: auto;
+  display: flex;
   object-fit: cover;
   overflow: hidden;
 `;
@@ -61,17 +69,18 @@ const MultiColumnCopy = styled.div`
   gap: 25%;
 `;
 
-export const ImageAndCard = ({
+export const ImageWithinCard = ({
   title,
   subheader,
   copy,
-  buttonLink,
+  button,
   iconSrc,
   iconAlt,
   imgSrc,
   imgAlt,
   index,
 }: InfoPanelProps) => {
+  const [buttonLink, buttonText, buttonPlaceholder] = button;
   const { isMobile, isDesktop } = useBreakpoint();
   return (
     <Card
@@ -88,9 +97,14 @@ export const ImageAndCard = ({
               <Image
                 src={imgSrc}
                 alt={imgAlt}
-                width="100%"
-                height="100%"
-                style={{ objectFit: 'cover' }}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                }}
               />
             </ImageContainer>
           )}
@@ -102,7 +116,18 @@ export const ImageAndCard = ({
             {isMobile ? (
               <>
                 <div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image
+                    src={iconSrc}
+                    alt={iconAlt}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                      height: 'auto',
+                      width: '100%',
+                      objectFit: 'scale-down',
+                    }}
+                  />
                   <Typography variant="label" as="h3">
                     {title}
                   </Typography>
@@ -122,12 +147,12 @@ export const ImageAndCard = ({
                       {subheader}
                     </Typography>
                   </div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                 </Header>
               </>
             )}
 
-            <Copy>
+            <Copy key={`copy`}>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
@@ -141,7 +166,7 @@ export const ImageAndCard = ({
                           ))}
                         </React.Fragment>
                       ) : (
-                        <MultiColumnCopy>
+                        <MultiColumnCopy key={i}>
                           {e.map((e, innerIndex) => (
                             <Typography key={`multicolumnar-${innerIndex}`}>
                               {e}
@@ -159,12 +184,12 @@ export const ImageAndCard = ({
             </Copy>
             {buttonLink === '' ? (
               <>
-                <Button variant="primary">Applications will open soon</Button>
+                <Button variant="primary">{buttonPlaceholder}</Button>
               </>
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Sign Up
+                  {buttonText}
                 </Button>
               </>
             )}
@@ -180,7 +205,7 @@ export const ImageAndCard = ({
             {isMobile ? (
               <>
                 <div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                   <Typography variant="label" as="h3">
                     {title}
                   </Typography>
@@ -200,15 +225,15 @@ export const ImageAndCard = ({
                       {subheader}
                     </Typography>
                   </div>
-                  <Image src={iconSrc} alt={iconAlt} size={100} />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                 </Header>
               </>
             )}
-            <Copy>
+            <Copy key={`copy-${index}`}>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
-                    <>
+                    <React.Fragment key={i}>
                       {isMobile ? (
                         <React.Fragment key={`copy-${i}`}>
                           {e.map((e, i) => (
@@ -218,11 +243,11 @@ export const ImageAndCard = ({
                       ) : (
                         <MultiColumnCopy key={`mc-${i}`}>
                           {e.map((e, i) => (
-                            <Typography key={i}>{e}</Typography>
+                            <Typography key={`mcCopy-${i}`}>{e}</Typography>
                           ))}
                         </MultiColumnCopy>
                       )}
-                    </>
+                    </React.Fragment>
                   ) : (
                     <Typography key={i} as="p" variant="copy">
                       {e}
@@ -232,12 +257,12 @@ export const ImageAndCard = ({
             </Copy>
             {buttonLink === '' ? (
               <>
-                <Button variant="primary">Applications will open soon</Button>
+                <Button variant="primary">{buttonPlaceholder}</Button>
               </>
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Sign Up
+                  {buttonText}
                 </Button>
               </>
             )}
@@ -247,11 +272,16 @@ export const ImageAndCard = ({
           ) : (
             <ImageContainer>
               <Image
+                sizes="100vw"
                 src={imgSrc}
                 alt={imgAlt}
-                width="100%"
-                height="100%"
-                style={{ objectFit: 'cover' }}
+                width={0}
+                height={0}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                }}
               />
             </ImageContainer>
           )}
