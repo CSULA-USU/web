@@ -111,6 +111,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'BOD Minutes August 25, 2023',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/os3w86bgfj9hdaaympi95/Minutes-Audit-Committee-September-8-2023-signed.pdf?rlkey=85ll9kldufbwctsxfl7vyla21&dl=0',
+            children: 'BOD Minutes Audit Committee September 8, 2023',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/g7er99czzgfbyrvsqbut8/Minutes-Board-of-Directors-September-15-2023.pdf?rlkey=lie8b76v1qxtoik1foa7z97tn&dl=0',
             children: 'BOD Minutes September 15, 2023',
           },
@@ -129,6 +133,10 @@ const minutesDownloads: DownloadSectionProps[] = [
           {
             href: 'https://www.dropbox.com/scl/fi/5o9sd8696gemhxivwu35u/Minutes-Board-of-Directors-January-19-2024-signed.pdf?rlkey=sdj410mwecexfm43u8to9yh3n&dl=0',
             children: 'BOD Minutes January 19, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/n3c8mb2v6lfplmizct64q/Minutes-Nominating-Committee-February-9-2024.pdf?rlkey=xsqeijfxogrelhp1wzlentpic&dl=0',
+            children: 'BOD Minutes Nominating Committee February 9, 2024',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/r2p1uwpew70d98ci1rchc/Minutes-BOD-Meeting-February-16-2024-signed.pdf?rlkey=v4wjzsptvm17q01nz2qxm7s8h&dl=0',
