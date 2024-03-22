@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
@@ -8,7 +9,6 @@ import {
   Divider,
   FlatCard,
   FluidContainer,
-  Image,
   Panel,
   Typography,
 } from 'components';
@@ -18,6 +18,10 @@ import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
 import { useBreakpoint } from 'hooks';
 
+const GradButtonContainer = styled.div`
+  height: 100px;
+  width: 100px;
+`;
 const IncentiveCardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -109,25 +113,38 @@ export default function CulturalGrads() {
       {isMobile ? (
         <></>
       ) : (
-        <>
-          <FluidContainer flex justifyContent="space-around" flexWrap="wrap">
-            {cards.map((e, i) => (
-              <div key={i}>
-                <Button href={`#${e.id}`} variant="transparent" notALink>
-                  <Image
-                    src={e.iconSrc}
-                    alt={e.iconAlt}
-                    size={100}
-                    style={{ objectFit: 'scale-down' }}
-                    lazy
-                  />
-                </Button>
-              </div>
-            ))}
-          </FluidContainer>
-        </>
+        <FluidContainer
+          flex
+          justifyContent="space-around"
+          flexWrap="wrap"
+          innerMinHeight="100px"
+          padding="36px 72px 0px"
+        >
+          {cards.map((e, i) => (
+            <GradButtonContainer key={i}>
+              <Button
+                href={`#${e.id}`}
+                variant="transparent"
+                padding="0px"
+                notALink
+              >
+                <Image
+                  src={e.iconSrc}
+                  alt={e.iconAlt}
+                  style={{ objectFit: 'scale-down' }}
+                  width={100}
+                  height={100}
+                  loading="lazy"
+                />
+              </Button>
+            </GradButtonContainer>
+          ))}
+        </FluidContainer>
       )}
-      <FluidContainer>
+      <FluidContainer
+        innerMinHeight="122px"
+        padding={isMobile ? '16px 16px 0px' : '36px 72px 0px'}
+      >
         <Panel backgroundColor="black">
           <Typography as="h2" variant="label" color="primary">
             Dear Cal State LA Prospective Graduate,
@@ -144,7 +161,10 @@ export default function CulturalGrads() {
           </Typography>
         </Panel>
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer
+        innerMinHeight="216px"
+        padding={isMobile ? '16px 36px 0px' : '36px 72px 0px'}
+      >
         <Typography
           as="p"
           variant="copy"
@@ -181,9 +201,10 @@ export default function CulturalGrads() {
         {showGraduations && (
           <FluidContainer>
             <Typography
-              margin={`${Spaces.md} 0`}
+              margin={isMobile ? '0px' : `${Spaces.md} 0 0`}
               as="h2"
-              variant={isMobile ? 'subheader' : 'title'}
+              variant="title"
+              size={isMobile ? 'lg' : '2xl'}
             >
               Graduations
             </Typography>
@@ -209,9 +230,10 @@ export default function CulturalGrads() {
         {showIncentives && (
           <FluidContainer>
             <Typography
-              margin={`${Spaces.md} 0`}
+              margin={isMobile ? '0px 0px 24px' : `${Spaces.md} 0`}
               as="h2"
-              variant={isMobile ? 'subheader' : 'title'}
+              variant="title"
+              size={isMobile ? 'lg' : '2xl'}
             >
               Incentives
             </Typography>
@@ -230,9 +252,10 @@ export default function CulturalGrads() {
           <FluidContainer backgroundColor="black">
             <div>
               <Typography
-                color="primary"
-                variant={isMobile ? 'subheader' : 'title'}
                 as="h2"
+                variant="title"
+                size={isMobile ? 'lg' : '2xl'}
+                color="primary"
               >
                 Graduate Participation Information
               </Typography>
@@ -247,6 +270,7 @@ export default function CulturalGrads() {
                   header={
                     <Typography
                       variant="label"
+                      size={isMobile ? 'md' : 'lg'}
                       color="white"
                       as="h3"
                       margin={`${Spaces.sm} 0`}
@@ -282,7 +306,7 @@ export default function CulturalGrads() {
         alignItems="center"
         innerMaxWidth="560px"
       >
-        <Image
+        <LegacyImage
           src="/departments/ccc/ccc-grad-banner.jpg"
           alt="cultural grad banner"
           width="100%"

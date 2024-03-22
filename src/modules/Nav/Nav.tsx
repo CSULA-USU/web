@@ -43,7 +43,8 @@ export const Nav = () => {
       >
         <Link href="/">
           <Image
-            maxWidth="200px"
+            width="200px"
+            height="70"
             src="/usu-wordmark-white.png"
             alt="Cal State LA University-Student Union Logo"
           />
