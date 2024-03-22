@@ -5,11 +5,17 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 
+type ButtonInfo = [
+  buttonLink: string,
+  placeholderText: string,
+  buttonText: string,
+];
+
 interface InfoPanelProps {
   title?: string;
   subheader?: string;
   copy: (string | string[])[];
-  buttonLink?: string;
+  button: ButtonInfo;
   iconSrc: string;
   iconAlt: string;
   imgSrc: string;
@@ -62,17 +68,18 @@ const MultiColumnCopy = styled.div`
   gap: 25%;
 `;
 
-export const ImageAndCard = ({
+export const ImageWithinCard = ({
   title,
   subheader,
   copy,
-  buttonLink,
+  button,
   iconSrc,
   iconAlt,
   imgSrc,
   imgAlt,
   index,
 }: InfoPanelProps) => {
+  const [buttonLink, buttonText, buttonPlaceholder] = button;
   const { isMobile, isDesktop } = useBreakpoint();
   return (
     <Card
@@ -176,12 +183,12 @@ export const ImageAndCard = ({
             </Copy>
             {buttonLink === '' ? (
               <>
-                <Button variant="primary">Applications will open soon</Button>
+                <Button variant="primary">{buttonPlaceholder}</Button>
               </>
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Sign Up
+                  {buttonText}
                 </Button>
               </>
             )}
@@ -249,12 +256,12 @@ export const ImageAndCard = ({
             </Copy>
             {buttonLink === '' ? (
               <>
-                <Button variant="primary">Applications will open soon</Button>
+                <Button variant="primary">{buttonPlaceholder}</Button>
               </>
             ) : (
               <>
                 <Button href={buttonLink} variant="primary">
-                  Sign Up
+                  {buttonText}
                 </Button>
               </>
             )}

@@ -38,11 +38,9 @@ const DynamicExpandable = dynamic(
   { ssr: false },
 );
 
-const DynamicImageAndCard = dynamic(
+const DynamicImageWithinCard = dynamic(
   () =>
-    import('../../components/Card/ImageAndCard').then(
-      (mod) => mod.ImageAndCard,
-    ),
+    import('../../modules/ImageWithinCard').then((mod) => mod.ImageWithinCard),
   { ssr: false },
 );
 
@@ -210,14 +208,18 @@ export default function CulturalGrads() {
             </Typography>
             {cards.map((card, i) => (
               <div id={card.id} key={`${card.id}-${i}`}>
-                <DynamicImageAndCard
+                <DynamicImageWithinCard
                   index={i}
                   title={card.title}
                   subheader={card.subheader}
                   copy={card.copy}
                   iconAlt={card.iconAlt}
                   iconSrc={card.iconSrc}
-                  buttonLink={card.applicationLink}
+                  button={[
+                    card.button[0].applicationLink,
+                    card.button[0].placeholder,
+                    card.button[0].buttonText,
+                  ]}
                   imgSrc={card.imgSrc}
                   imgAlt={card.imgAlt}
                 />
