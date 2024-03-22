@@ -151,7 +151,7 @@ export const ImageWithinCard = ({
               </>
             )}
 
-            <Copy>
+            <Copy key={`copy`}>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
@@ -165,7 +165,7 @@ export const ImageWithinCard = ({
                           ))}
                         </React.Fragment>
                       ) : (
-                        <MultiColumnCopy>
+                        <MultiColumnCopy key={i}>
                           {e.map((e, innerIndex) => (
                             <Typography key={`multicolumnar-${innerIndex}`}>
                               {e}
@@ -228,11 +228,11 @@ export const ImageWithinCard = ({
                 </Header>
               </>
             )}
-            <Copy>
+            <Copy key={`copy-${index}`}>
               {copy &&
                 copy.map((e, i) =>
                   Array.isArray(e) ? (
-                    <>
+                    <React.Fragment key={i}>
                       {isMobile ? (
                         <React.Fragment key={`copy-${i}`}>
                           {e.map((e, i) => (
@@ -242,11 +242,11 @@ export const ImageWithinCard = ({
                       ) : (
                         <MultiColumnCopy key={`mc-${i}`}>
                           {e.map((e, i) => (
-                            <Typography key={i}>{e}</Typography>
+                            <Typography key={`mcCopy-${i}`}>{e}</Typography>
                           ))}
                         </MultiColumnCopy>
                       )}
-                    </>
+                    </React.Fragment>
                   ) : (
                     <Typography key={i} as="p" variant="copy">
                       {e}
