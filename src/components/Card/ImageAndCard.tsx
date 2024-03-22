@@ -93,8 +93,8 @@ export const ImageAndCard = ({
                 height={0}
                 sizes="100vw"
                 style={{
-                  width: 'auto',
-                  height: '100%',
+                  width: '100%',
+                  height: 'auto',
                   objectFit: 'cover',
                 }}
               />
@@ -115,8 +115,8 @@ export const ImageAndCard = ({
                     height={0}
                     sizes="100vw"
                     style={{
-                      height: '100%',
-                      width: 'auto',
+                      height: 'auto',
+                      width: '100%',
                       objectFit: 'scale-down',
                     }}
                   />
@@ -270,8 +270,8 @@ export const ImageAndCard = ({
                 width={0}
                 height={0}
                 style={{
-                  width: 'auto',
-                  height: '100%',
+                  width: '100%',
+                  height: 'auto',
                   objectFit: 'cover',
                 }}
               />
