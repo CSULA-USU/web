@@ -55,7 +55,7 @@ export const Footer = () => (
           <Link target="_blank" href={'https://www.calstatela.edu/'}>
             <Image
               src="/calstatela-badge.svg"
-              alt="Cal State LA Univeristy-Student Union Logo"
+              alt="Cal State LA Logo"
               width={90}
               height={90}
             />

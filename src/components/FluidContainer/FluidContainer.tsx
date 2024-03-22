@@ -18,6 +18,8 @@ const FluidOuter = styled.div<FluidContainerProps>`
   align-items: center;
   justify-content: center;
   padding: ${(p) => p.padding || '36px 72px'};
+  height: ${(p) => p.height};
+  width: ${(p) => p.width};
   ${(p) =>
     media('desktop')(`
     padding: ${p.padding || '18px 36px'};
@@ -78,6 +80,8 @@ interface FluidContainerProps extends FluidInnerProps {
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
   padding?: string;
+  width?: string;
+  height?: string;
 }
 
 export const FluidContainer = ({

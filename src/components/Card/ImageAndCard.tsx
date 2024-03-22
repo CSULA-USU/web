@@ -22,7 +22,7 @@ const Card = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   background-color: ${Colors.white};
   padding: ${Spaces.lg} ${Spaces.xl};
-  margin: ${Spaces.xl} 0px;
+  margin: ${Spaces.lg} 0px;
   display: flex;
   justify-content: space-between;
 `;

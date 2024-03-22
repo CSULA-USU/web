@@ -54,7 +54,7 @@ const styles = {
     lineHeight: FontSizes['2xl'],
     fontFamily: serif,
   },
-  subheader: { size: 'lg', weight: '400', fontFamily: serif },
+  subheader: { size: 'xl', weight: '400', fontFamily: serif },
   labelTitle: {
     size: 'md',
     lineHeight: FontSizes.lg,

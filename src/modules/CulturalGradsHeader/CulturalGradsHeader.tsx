@@ -38,18 +38,12 @@ const SlideshowContent = styled.div`
   display: flex;
   animation: ${moveAnimation} 120s linear infinite alternate;
   animation-delay: 2s;
+  width: 100%;
 `;
 
 const InsideContainer = styled.div`
   display: flex;
   z-index: 2;
-`;
-
-const MobileHorizontalSlideshowImage = styled.img`
-  width: 200px;
-  height: auto;
-  flex-shrink: 0;
-  margin-right: 4px;
 `;
 
 const MobileOuterContainer = styled.div`
@@ -119,10 +113,17 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
-                    <MobileHorizontalSlideshowImage
+                    <Image
                       src={img.src}
                       alt={img.alt}
                       key={i}
+                      height={200}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        width: 'auto',
+                        marginRight: '4px',
+                      }}
                       loading={i < 5 ? 'eager' : 'lazy'}
                     />
                   );
@@ -180,14 +181,14 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                       src={img.src}
                       alt={img.alt}
                       key={i}
-                      height={0}
+                      height={276}
                       width={0}
                       sizes="100vw"
                       style={{
-                        height: '276px',
                         width: 'auto',
-                        marginRight: '8px',
+                        marginRight: '4px',
                       }}
+                      loading={i < 5 ? 'eager' : 'lazy'}
                     />
                   );
                 })}
