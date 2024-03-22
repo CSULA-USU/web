@@ -37,6 +37,7 @@ const Card = styled.div`
 const ImageContainer = styled.div`
   width: 45%;
   height: auto;
+  display: flex;
   object-fit: cover;
   overflow: hidden;
 `;
