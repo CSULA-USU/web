@@ -206,25 +206,23 @@ export default function CulturalGrads() {
             >
               Graduations
             </Typography>
-            {cards.map((card, i) => (
-              <div id={card.id} key={`${card.id}-${i}`}>
-                <DynamicImageWithinCard
-                  index={i}
-                  title={card.title}
-                  subheader={card.subheader}
-                  copy={card.copy}
-                  iconAlt={card.iconAlt}
-                  iconSrc={card.iconSrc}
-                  button={[
-                    card.button[0].applicationLink,
-                    card.button[0].placeholder,
-                    card.button[0].buttonText,
-                  ]}
-                  imgSrc={card.imgSrc}
-                  imgAlt={card.imgAlt}
-                />
-              </div>
-            ))}
+            {cards.map((card, i) => {
+              return (
+                <div id={card.id} key={`${card.id}-${i}`}>
+                  <DynamicImageWithinCard
+                    index={i}
+                    title={card.title}
+                    subheader={card.subheader}
+                    copy={card.copy}
+                    iconAlt={card.iconAlt}
+                    iconSrc={card.iconSrc}
+                    imgSrc={card.imgSrc}
+                    imgAlt={card.imgAlt}
+                    button={card.button}
+                  />
+                </div>
+              );
+            })}
           </FluidContainer>
         )}
       </div>

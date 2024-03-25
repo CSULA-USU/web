@@ -81,13 +81,11 @@
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
       ],
-      "button": [
-        {
-          "applicationLink": "https://form.jotform.com/233465396205156",
-          "placeholder": "Applications will open soon",
-          "buttonText": "Sign Up"
-        }
-      ],
+      "button": {
+        "buttonLink": "https://form.jotform.com/233465396205156",
+        "buttonPlaceholder": "Applications will open soon",
+        "buttonText": "Sign Up"
+      },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
@@ -103,13 +101,11 @@
         "Contact: Da'Vie Guzman, Pan African Student Resource Center Coordinator",
         "Email: dguzma91@calstatela.edu"
       ],
-      "button": [
-        {
-          "applicationLink": "https://form.jotform.com/233464461546156",
-          "placeholder": "Applications will open soon",
-          "buttonText": "Sign Up"
-        }
-      ],
+      "button": {
+        "buttonLink": "https://form.jotform.com/233464461546156",
+        "buttonPlaceholder": "Applications will open soon",
+        "buttonText": "Sign Up"
+      },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
@@ -125,13 +121,11 @@
         "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
         "Email: cjacks38@calstatela.edu"
       ],
-      "button": [
-        {
-          "applicationLink": "https://calstatela.co1.qualtrics.com/jfe/form/SV_6WNradBY6WLOZIq",
-          "placeholder": "Applications will open soon",
-          "buttonText": "Sign Up"
-        }
-      ],
+      "button": {
+        "buttonLink": "https://calstatela.co1.qualtrics.com/jfe/form/SV_6WNradBY6WLOZIq",
+        "buttonPlaceholder": "Applications will open soon",
+        "buttonText": "Sign Up"
+      },
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
       "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
@@ -147,13 +141,11 @@
         "Contact: Cross Cultural Centers, University-Student Union",
         "Email: ccc@calstatela.edu"
       ],
-      "button": [
-        {
-          "applicationLink": "https://form.jotform.com/233465206027148",
-          "placeholder": "Applications will open soon",
-          "buttonText": "Sign Up"
-        }
-      ],
+      "button": {
+        "buttonLink": "https://form.jotform.com/233465206027148",
+        "buttonPlaceholder": "Applications will open soon",
+        "buttonText": "Sign Up"
+      },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
       "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
@@ -169,13 +161,11 @@
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
       ],
-      "button": [
-        {
-          "applicationLink": "https://form.jotform.com/233464501150142",
-          "placeholder": "Applications will open soon",
-          "buttonText": "Sign Up"
-        }
-      ],
+      "button": {
+        "buttonLink": "https://form.jotform.com/233464501150142",
+        "buttonPlaceholder": "Applications will open soon",
+        "buttonText": "Sign Up"
+      },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
