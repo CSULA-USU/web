@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 
-type ButtonInfo = [
-  buttonLink: string,
-  placeholderText: string,
-  buttonText: string,
-];
+type ButtonInfo = {
+  buttonLink: string;
+  buttonPlaceholder: string;
+  buttonText: string;
+};
 
 interface InfoPanelProps {
   title?: string;
@@ -80,7 +80,7 @@ export const ImageWithinCard = ({
   imgAlt,
   index,
 }: InfoPanelProps) => {
-  const [buttonLink, buttonText, buttonPlaceholder] = button;
+  const { buttonLink, buttonText, buttonPlaceholder } = button;
   const { isMobile, isDesktop } = useBreakpoint();
   return (
     <Card
