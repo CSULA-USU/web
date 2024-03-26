@@ -5,6 +5,9 @@ const nextConfig = {
     styledComponents: true,
   },
   swcMinify: true,
-}
+  images: {
+    domains: ['calstatela-cdn.presence.io'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
