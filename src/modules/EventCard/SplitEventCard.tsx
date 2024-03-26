@@ -2,6 +2,7 @@ import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
+import Image from 'next/image';
 import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
@@ -26,12 +27,10 @@ const Card = styled.div`
   }
 `;
 
-const Graphic = styled.div<{ image?: string }>`
-  background: ${({ image }) => image && `url(${image})`};
-  background-size: cover;
-  background-position: center;
+const GraphicContainer = styled.div`
   width: 100%;
   height: 75%;
+  overflow: hidden;
 `;
 
 const Details = styled.div`
@@ -97,7 +96,17 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
 
   return (
     <Card onClick={onClick}>
-      <Graphic image={`${PRESENCE_URI_BASE}/${photoUri}`} />
+      <GraphicContainer>
+        <Image
+          alt={`${eventName}`}
+          src={`${PRESENCE_URI_BASE}/${photoUri}`}
+          width={0}
+          height={0}
+          sizes="100vw"
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </GraphicContainer>
       <Details>
         <EventHeader>
           <Typography as="h3" variant="labelTitle" color="black">

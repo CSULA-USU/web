@@ -73,7 +73,7 @@ export default function Home() {
             )}
           </>
         }
-        featuredEvent={events[0]}
+        featuredEvent={events[7]}
       />
       {/* Toggle the line below if there is a promotion. */}
       {/* <BoardOfDirectorsCTAPromotion /> */}
