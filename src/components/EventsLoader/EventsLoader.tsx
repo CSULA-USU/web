@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { fetchEvents, fetchRequests } from 'api';
+import { fetchEvents, fetchRequests, fetchJotform } from 'api';
 import { PresenceEvent } from 'types';
-import { eventListState, graphicsRequestListState } from 'atoms';
+import {
+  eventListState,
+  graphicsRequestListState,
+  jotformSubmissionsListState,
+} from 'atoms';
 import { USU_ORGS } from 'utils/constants';
 
 export const EventsLoader = () => {
@@ -10,6 +14,10 @@ export const EventsLoader = () => {
   const [_graphicRequests, setGraphicsRequests] = useRecoilState(
     graphicsRequestListState,
   );
+  const [_jotformSubmissions, setJotformSubmissions] = useRecoilState(
+    jotformSubmissionsListState,
+  );
+
   const getEvents = async () => {
     const data: PresenceEvent[] = await fetchEvents();
     const sortedData = data
@@ -33,9 +41,15 @@ export const EventsLoader = () => {
     setGraphicsRequests(requestData);
   };
 
+  const getJotformSubmissions = async () => {
+    const submissionData: any = await fetchJotform();
+    setJotformSubmissions(submissionData);
+  };
+
   useEffect(() => {
     getEvents();
     getGraphicsRequests();
+    getJotformSubmissions();
   }, []); // eslint-disable-line
 
   return <></>;

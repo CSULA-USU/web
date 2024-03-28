@@ -34,13 +34,15 @@ const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
 const DynamicExpandable = dynamic(
-  () => import('../../components/Expandable').then((mod) => mod.Expandable),
+  () => import('../../../components/Expandable').then((mod) => mod.Expandable),
   { ssr: false },
 );
 
 const DynamicImageWithinCard = dynamic(
   () =>
-    import('../../modules/ImageWithinCard').then((mod) => mod.ImageWithinCard),
+    import('../../../modules/ImageWithinCard').then(
+      (mod) => mod.ImageWithinCard,
+    ),
   { ssr: false },
 );
 

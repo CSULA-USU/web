@@ -21,3 +21,27 @@ export const fetchRequests = async () => {
     console.error('Error fetching data:', error);
   }
 };
+
+// export const fetchJotform = async (center: number) => {
+//   try {
+//     const data = await fetch(
+//       `https://api.jotform.com/form/${center}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1
+//       `,
+//     );
+//     return await data.json();
+//   } catch (error) {
+//     console.error('Error fetching jotform data:', error);
+//   }
+// };
+
+export const fetchJotform = async () => {
+  try {
+    const data = await fetch(
+      `https://api.jotform.com/form/233465206027148/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=1000
+      `,
+    );
+    return await data.json();
+  } catch (error) {
+    console.error('Error fetching jotform data:', error);
+  }
+};

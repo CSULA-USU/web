@@ -2,6 +2,7 @@ export * from './DesignSystem';
 export * from './Departments';
 export * from './Instagram';
 export * from './Supabase';
+export * from './CGCJotformSubmissions';
 
 export interface PresenceEvent {
   apiId: string;
