@@ -41,15 +41,15 @@ export const EventsLoader = () => {
     setGraphicsRequests(requestData);
   };
 
-  const getJotformSubmissions = async () => {
-    const submissionData: any = await fetchJotform();
+  const _getJotformSubmissions = async (id: any) => {
+    const submissionData: any = await fetchJotform(id);
     setJotformSubmissions(submissionData);
   };
 
   useEffect(() => {
     getEvents();
     getGraphicsRequests();
-    getJotformSubmissions();
+    // getJotformSubmissions();
   }, []); // eslint-disable-line
 
   return <></>;
