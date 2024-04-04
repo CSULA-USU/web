@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { FluidContainer, SearchInput, Typography } from 'components';
+import { CGCParticipantModal } from 'modules';
 import { Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
@@ -97,7 +98,10 @@ export default function CGCGrad() {
                 <NameGrid>
                   {filteredSubmissions &&
                     filteredSubmissions.map((submission: any, j: number) => (
-                      <Typography key={j}>hi</Typography>
+                      <CGCParticipantModal
+                        participantData={submission}
+                        key={j}
+                      ></CGCParticipantModal>
                     ))}
                 </NameGrid>
               </AlphabetSection>

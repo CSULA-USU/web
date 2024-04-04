@@ -39,7 +39,7 @@ export default async function handler(
           major: submission.answers[60]?.answer,
           minor: submission.answers[65]?.answer,
           certificate: submission.answers[64].answer,
-          secondDegree: submission.answers[123].answer,
+          secondDegree: submission.answers[123].answer?.[0],
           secondMajor: submission.answers[115].answer,
           secondMinor: submission.answers[70].answer,
           secondCertificate: submission.answers[69].answer,
@@ -47,7 +47,6 @@ export default async function handler(
           fileUpload: submission.answers[127],
         };
         specificDataObj.push(person);
-        console.log(specificDataObj);
       });
     res.status(200).json(specificDataObj);
   } catch (error) {
