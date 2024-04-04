@@ -13,7 +13,7 @@ import {
   Typography,
 } from 'components';
 import { BiChevronRight } from 'react-icons/bi';
-import { CulturalGradsHeader, Page } from 'modules';
+import { CGCParticipantModal, CulturalGradsHeader, Page } from 'modules';
 import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
 import { useBreakpoint } from 'hooks';
@@ -51,6 +51,15 @@ export default function CulturalGrads() {
   const [showFAQ, setShowFAQ] = useState(false);
   const [showIncentives, setShowIncentives] = useState(false);
   const [showGraduations, setShowGraduations] = useState(false);
+  const dummy = {
+    img: '/staff/john-yasis2.png',
+    firstName: 'Johnny',
+    middleName: 'middoe',
+    lastName: 'Frieren',
+    suffix: 'esq.',
+    degree: 'Rizzness',
+    major: 'Wumbology',
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -141,6 +150,7 @@ export default function CulturalGrads() {
           ))}
         </FluidContainer>
       )}
+      <CGCParticipantModal participantData={dummy} />
       <FluidContainer
         innerMinHeight="122px"
         padding={isMobile ? '16px 16px 0px' : '36px 72px 0px'}
