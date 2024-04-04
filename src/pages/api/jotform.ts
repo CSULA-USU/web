@@ -1,56 +1,56 @@
-import type { NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { Graduate } from 'types';
 
-type Person = {
-  name: {
-    first: string;
-    last: string;
-    middle: string;
-    prefix: string;
-    suffix: string;
-  };
-  pronoun: string;
-  degree: string;
-  major: string;
-  minor: string;
-  certificate: string;
-  secondDegree: string;
-  secondMajor: string;
-  secondMinor: string;
-  secondCertificate: string;
-  acknowledgement: string;
-  fileUpload: string;
+const FormIDs = {
+  apida: 233465396205156,
+  black: 233464461546156,
+  pride: 233464501150142,
+  nuestra: 233465206027148,
 };
 
-export default async function handler(_req: any, res: NextApiResponse<any>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>,
+) {
+  const { id } = req.query;
+
   try {
+    const formID = FormIDs[id as keyof typeof FormIDs];
     let data = await fetch(
-      `https://api.jotform.com/form/233465206027148/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500`,
+      `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500&orderby=id`,
     );
     const jsonData = await data.json();
-    const specificDataObj: Person[] = [];
+    // console.log(jsonData.content[7].answers[49].answer.first);
+    const specificDataObj: Graduate[] = [];
+    // console.log(jsonData.content[0].answers[49].answer);
     jsonData.content &&
       jsonData.content.forEach((submission: any) => {
+        // if (id === 'nuestra') {
         const person = {
           name: {
-            first: submission.answers[49].answer.first,
-            last: submission.answers[49].answer.last,
-            middle: submission.answers[49].answer.middle,
-            prefix: submission.answers[49].answer.prefix,
-            suffix: submission.answers[49].answer.suffix,
+            first: submission.answers[49]?.answer.first,
+            last: submission.answers[49]?.answer.last,
+            middle: submission.answers[49]?.answer.middle,
+            prefix: submission.answers[49]?.answer.prefix,
+            suffix: submission.answers[49]?.answer.suffix,
           },
-          pronoun: submission.answers[122],
-          degree: submission.answers[58],
-          major: submission.answers[60],
-          minor: submission.answers[65],
-          certificate: submission.answers[64],
-          secondDegree: submission.answers[123],
-          secondMajor: submission.answers[115],
-          secondMinor: submission.answers[70],
-          secondCertificate: submission.answers[69],
-          acknowledgement: submission.answers[73],
+          pronoun: submission.answers[122]?.answer,
+          degree: submission.answers[58]?.answer,
+          major: submission.answers[60]?.answer,
+          minor: submission.answers[65]?.answer,
+          certificate: submission.answers[64].answer,
+          secondDegree: submission.answers[123].answer,
+          secondMajor: submission.answers[115].answer,
+          secondMinor: submission.answers[70].answer,
+          secondCertificate: submission.answers[69].answer,
+          acknowledgement: submission.answers[73].answer,
           fileUpload: submission.answers[127],
         };
+        // }else if ( id==='apida'){
+
+        // }
         specificDataObj.push(person);
+        console.log(specificDataObj);
       });
     res.status(200).json(specificDataObj);
   } catch (error) {

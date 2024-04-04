@@ -1,12 +1,8 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { fetchEvents, fetchRequests, fetchJotform } from 'api';
+import { fetchEvents, fetchRequests } from 'api';
 import { PresenceEvent } from 'types';
-import {
-  eventListState,
-  graphicsRequestListState,
-  jotformSubmissionsListState,
-} from 'atoms';
+import { eventListState, graphicsRequestListState } from 'atoms';
 import { USU_ORGS } from 'utils/constants';
 
 export const EventsLoader = () => {
@@ -14,9 +10,9 @@ export const EventsLoader = () => {
   const [_graphicRequests, setGraphicsRequests] = useRecoilState(
     graphicsRequestListState,
   );
-  const [_jotformSubmissions, setJotformSubmissions] = useRecoilState(
-    jotformSubmissionsListState,
-  );
+  // const [_jotformSubmissions, setJotformSubmissions] = useRecoilState(
+  //   jotformSubmissionsListState,
+  // );
 
   const getEvents = async () => {
     const data: PresenceEvent[] = await fetchEvents();
@@ -41,10 +37,10 @@ export const EventsLoader = () => {
     setGraphicsRequests(requestData);
   };
 
-  const _getJotformSubmissions = async (id: any) => {
-    const submissionData: any = await fetchJotform(id);
-    setJotformSubmissions(submissionData);
-  };
+  // const getJotformSubmissions = async (id: any) => {
+  //   const submissionData: any = await fetchJotform(id);
+  //   setJotformSubmissions(submissionData);
+  // };
 
   useEffect(() => {
     getEvents();

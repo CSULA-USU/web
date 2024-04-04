@@ -28,16 +28,15 @@ const NameGrid = styled.div`
 export default function CGCGrad() {
   const router = useRouter();
   const { id } = router.query;
-
-  //   const jotformSubmissions = useRecoilValue(jotformSubmissionsListState);
   const [jotformSubmissions, setJotformSubmissions] = useState<Graduate[]>([]);
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  //   console.log('jotform blep:', jotformSubmissions);
+  console.log('jotform blep:', jotformSubmissions);
 
   const getJotformSubmissions = useCallback(async () => {
-    const { data } = await fetchJotform(id);
-    setJotformSubmissions(data);
+    // const { data } = await fetchJotform(id);
+    // console.log('dsa', data);
+    setJotformSubmissions(await fetchJotform(id));
   }, [id]);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function CGCGrad() {
     <Page>
       <Head>
         {/* include year in the title? */}
-        <title>Nuestra Graduation</title>
+        <title>{id} Graduation</title>
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
@@ -83,7 +82,7 @@ export default function CGCGrad() {
       <FluidContainer>
         {alphabets.split('').map((alphabet, i) => {
           const filteredSubmissions =
-            jotformSubmissions &&
+            Array.isArray(jotformSubmissions) &&
             jotformSubmissions.filter(
               (person: any) =>
                 person.name.first.slice(0, 1).toUpperCase() === alphabet,
