@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+// import { cache } from 'react-cache';
 import { Graduate } from 'types';
 
 const FormIDs = {
@@ -17,12 +18,11 @@ export default async function handler(
   try {
     const formID = FormIDs[id as keyof typeof FormIDs];
     let data = await fetch(
-      `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500&orderby=id`,
+      `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500`,
     );
     const jsonData = await data.json();
     // console.log(jsonData.content[7].answers[49].answer.first);
     const specificDataObj: Graduate[] = [];
-    // console.log(jsonData.content[0].answers[49].answer);
     jsonData.content &&
       jsonData.content.forEach((submission: any) => {
         // if (id === 'nuestra') {
@@ -46,9 +46,6 @@ export default async function handler(
           acknowledgement: submission.answers[73].answer,
           fileUpload: submission.answers[127],
         };
-        // }else if ( id==='apida'){
-
-        // }
         specificDataObj.push(person);
         console.log(specificDataObj);
       });
