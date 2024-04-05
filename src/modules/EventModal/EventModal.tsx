@@ -1,4 +1,5 @@
-import { Divider, Image, Typography } from 'components';
+import { Divider, Typography } from 'components';
+import Image from 'next/image';
 import { useEffect } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -122,9 +123,12 @@ export const EventModal = ({
       <Main tabIndex={0}>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
-          alt={`Image of ${eventName}`}
-          width="100%"
-          marginBottom="24px"
+          alt={`${eventName}`}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: 'auto', marginBottom: '24px' }}
+          loading="lazy"
         />
         <Typography as="h2" variant="cta">
           {organizationName}
