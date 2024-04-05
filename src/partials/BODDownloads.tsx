@@ -84,6 +84,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/cnz3e3wp94omlfkcj4u6p/Agenda-U-SU-Board-of-Directors-March-15-2024.docx?rlkey=qmxqvmoo0r96sks46d1g1bbbj&dl=0',
             children: 'BOD Meeting Mar 15, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/4hyk3gsv8g6scr617l626/Agenda-Fiscal-Committee-April-12-2024.docx?rlkey=r9jrep7mkqwbucrymmwdjjy3u&dl=0',
+            children: 'BOD Fiscal Committee Meeting Apr 12, 2024',
+          },
         ]}
       />
     ),
