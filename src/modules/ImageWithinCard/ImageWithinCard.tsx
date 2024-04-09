@@ -116,18 +116,7 @@ export const ImageWithinCard = ({
             {isMobile ? (
               <>
                 <div>
-                  <Image
-                    src={iconSrc}
-                    alt={iconAlt}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                      height: 'auto',
-                      width: '100%',
-                      objectFit: 'scale-down',
-                    }}
-                  />
+                  <Image src={iconSrc} alt={iconAlt} width={100} height={100} />
                   <Typography variant="label" as="h3">
                     {title}
                   </Typography>
