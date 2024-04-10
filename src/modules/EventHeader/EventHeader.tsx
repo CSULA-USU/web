@@ -32,7 +32,7 @@ export const EventHeader = ({
       <Typography
         variant="pageHeader"
         margin={`0 auto`}
-        size="2xl"
+        size="3xl"
         color="greyDarker"
         as="h2"
       >

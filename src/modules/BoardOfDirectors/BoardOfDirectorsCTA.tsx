@@ -28,7 +28,7 @@ const BoardOfDirectorsCTAButtons = styled.div`
 export const BoardOfDirectorsCTA = () => (
   <BoardOfDirectorsCTAContainer>
     <BoardOfDirectorsCTAText>
-      <Typography as="h2" variant="pageHeader">
+      <Typography as="h2" variant="title" size="3xl">
         Board of Directors
       </Typography>
       <Typography margin="revert-layer">
