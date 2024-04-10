@@ -46,7 +46,7 @@ export const Nav = () => {
             width="200px"
             height="70"
             src="/usu-wordmark-white.png"
-            alt="Cal State LA University-Student Union Logo"
+            alt="Cal State LA University-Student Union"
           />
         </Link>
         <DesktopNav />
