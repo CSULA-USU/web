@@ -47,8 +47,7 @@ export default function CGCGrad() {
   return (
     <Page>
       <Head>
-        {/* include year in the title? */}
-        <title>{id} Graduation</title>
+        <title>Graduation</title>
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
@@ -86,7 +85,8 @@ export default function CGCGrad() {
             Array.isArray(jotformSubmissions) &&
             jotformSubmissions.filter(
               (person: any) =>
-                person.name.first.slice(0, 1).toUpperCase() === alphabet,
+                person.fullName.firstName.slice(0, 1).toUpperCase() ===
+                alphabet,
             );
           if (filteredSubmissions && filteredSubmissions.length > 0) {
             return (

@@ -21,31 +21,97 @@ export default async function handler(
       `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500`,
     );
     const jsonData = await data.json();
-    // console.log(jsonData.content[7].answers[49].answer.first);
+    // console.log(jsonData.content[10]);
     const specificDataObj: Graduate[] = [];
     jsonData.content &&
       jsonData.content.forEach((submission: any) => {
-        // if (id === 'nuestra') {
-        const person = {
-          name: {
-            first: submission.answers[49]?.answer.first,
-            last: submission.answers[49]?.answer.last,
-            middle: submission.answers[49]?.answer.middle,
-            prefix: submission.answers[49]?.answer.prefix,
-            suffix: submission.answers[49]?.answer.suffix,
-          },
-          pronoun: submission.answers[122]?.answer,
-          degree: submission.answers[58]?.answer,
-          major: submission.answers[60]?.answer,
-          minor: submission.answers[65]?.answer,
-          certificate: submission.answers[64].answer,
-          secondDegree: submission.answers[123].answer?.[0],
-          secondMajor: submission.answers[115].answer,
-          secondMinor: submission.answers[70].answer,
-          secondCertificate: submission.answers[69].answer,
-          acknowledgement: submission.answers[73].answer,
-          fileUpload: submission.answers[127],
-        };
+        let person;
+        if (id === 'apida') {
+          person = {
+            fullName: {
+              firstName: submission.answers[49]?.answer.first,
+              lastName: submission.answers[49]?.answer.last,
+              middleName: submission.answers[49]?.answer.middle,
+              prefix: submission.answers[49]?.answer.prefix,
+              suffix: submission.answers[49]?.answer.suffix,
+            },
+            pronouns: submission.answers[122].answer,
+            degree: submission.answers[58]?.answer,
+            major: submission.answers[60]?.answer,
+            minor: submission.answers[65]?.answer,
+            certificate: submission.answers[64].answer,
+            secondDegree: submission.answers[123].answer?.[0],
+            secondMajor: submission.answers[115].answer,
+            secondMinor: submission.answers[70].answer,
+            secondCertificate: submission.answers[69].answer,
+            acknowledgement: submission.answers[73].answer,
+            img: submission.answers[127].answer[0],
+          };
+        } else if (id === 'black') {
+          person = {
+            fullName: {
+              firstName: submission.answers[49]?.answer.first,
+              lastName: submission.answers[49]?.answer.last,
+              middleName: submission.answers[49]?.answer.middle,
+              prefix: submission.answers[49]?.answer.prefix,
+              suffix: submission.answers[49]?.answer.suffix,
+            },
+            pronouns: submission.answers[122].answer,
+            degree: submission.answers[58]?.answer,
+            major: submission.answers[60]?.answer,
+            minor: submission.answers[65]?.answer,
+            certificate: submission.answers[64].answer,
+            secondDegree: submission.answers[123].answer?.[0],
+            secondMajor: submission.answers[115].answer,
+            secondMinor: submission.answers[70].answer,
+            secondCertificate: submission.answers[69].answer,
+            acknowledgement: submission.answers[73].answer,
+            img: submission.answers[125].answer[0],
+          };
+        } else if (id === 'pride') {
+          person = {
+            fullName: {
+              firstName: submission.answers[49]?.answer.first,
+              lastName: submission.answers[49]?.answer.last,
+              middleName: submission.answers[49]?.answer.middle,
+              prefix: submission.answers[49]?.answer.prefix,
+              suffix: submission.answers[49]?.answer.suffix,
+            },
+            pronouns: submission.answers[120].answer,
+            degree: submission.answers[58]?.answer,
+            major: submission.answers[60]?.answer,
+            minor: submission.answers[65]?.answer,
+            certificate: submission.answers[64].answer,
+            secondDegree: submission.answers[122].answer?.[0],
+            secondMajor: submission.answers[71].answer,
+            secondMinor: submission.answers[70].answer,
+            secondCertificate: submission.answers[69].answer,
+            acknowledgement: submission.answers[73].answer,
+            img: submission.answers[123].answer[0],
+          };
+        } else {
+          //nuestra
+          person = {
+            fullName: {
+              firstName: submission.answers[49]?.answer.first,
+              lastName: submission.answers[49]?.answer.last,
+              middleName: submission.answers[49]?.answer.middle,
+              prefix: submission.answers[49]?.answer.prefix,
+              suffix: submission.answers[49]?.answer.suffix,
+            },
+            pronouns: submission.answers[122]?.answer,
+            degree: submission.answers[58]?.answer,
+            major: submission.answers[60]?.answer,
+            minor: submission.answers[65]?.answer,
+            certificate: submission.answers[64].answer,
+            secondDegree: submission.answers[123].answer?.[0],
+            secondMajor: submission.answers[115].answer,
+            secondMinor: submission.answers[70].answer,
+            secondCertificate: submission.answers[69].answer,
+            acknowledgement: submission.answers[73].answer,
+            img: submission.answers[127].answer[0],
+          };
+        }
         specificDataObj.push(person);
       });
     res.status(200).json(specificDataObj);

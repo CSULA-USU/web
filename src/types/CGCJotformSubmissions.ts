@@ -1,12 +1,12 @@
 export type Graduate = {
-  name: {
-    first: string;
-    last: string;
-    middle: string;
+  fullName: {
+    firstName: string;
+    lastName: string;
+    middleName: string;
     prefix: string;
     suffix: string;
   };
-  pronoun: string;
+  pronouns: string;
   degree: string;
   major: string;
   minor: string;
@@ -16,5 +16,5 @@ export type Graduate = {
   secondMinor: string;
   secondCertificate: string;
   acknowledgement: string;
-  fileUpload: string;
+  img: string;
 };
