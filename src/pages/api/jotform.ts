@@ -45,7 +45,7 @@ export default async function handler(
             secondMinor: submission.answers[70].answer,
             secondCertificate: submission.answers[69].answer,
             acknowledgement: submission.answers[73].answer,
-            img: submission.answers[127].answer[0],
+            img: submission.answers[125].answer[0],
           };
         } else if (id === 'black') {
           person = {
@@ -66,7 +66,7 @@ export default async function handler(
             secondMinor: submission.answers[70].answer,
             secondCertificate: submission.answers[69].answer,
             acknowledgement: submission.answers[73].answer,
-            img: submission.answers[125].answer[0],
+            img: submission.answers[124].answer[0],
           };
         } else if (id === 'pride') {
           person = {
