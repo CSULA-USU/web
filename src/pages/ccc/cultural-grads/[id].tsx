@@ -89,6 +89,32 @@ export default function CGCGrad() {
                 alphabet,
             );
           if (filteredSubmissions && filteredSubmissions.length > 0) {
+            console.log(
+              'ffsnew',
+              filteredSubmissions.sort(function (a: any, b: any) {
+                if (
+                  a.fullName.firstName +
+                    a.fullName.middleName +
+                    a.fullName.lastName <
+                  b.fullName.firstName +
+                    b.fullName.middleName +
+                    b.fullName.lastName
+                ) {
+                  return -1;
+                }
+                if (
+                  a.fullName.firstName +
+                    a.fullName.middleName +
+                    a.fullName.lastName <
+                  b.fullName.firstName +
+                    b.fullName.middleName +
+                    b.fullName.lastName
+                ) {
+                  return 1;
+                }
+                return 0;
+              }),
+            );
             return (
               <AlphabetSection key={i}>
                 <Typography key={i} as="h1" variant="title">
@@ -101,7 +127,7 @@ export default function CGCGrad() {
                       <CGCParticipantModal
                         participantData={submission}
                         key={j}
-                      ></CGCParticipantModal>
+                      />
                     ))}
                 </NameGrid>
               </AlphabetSection>

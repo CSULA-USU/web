@@ -60,10 +60,9 @@ const ModalContainer = styled.div`
 
 const PictureContainer = styled.div`
   margin-right: 24px;
-  ${media('desktop')(' width: 320px')}
-  ${media('mobile')(' margin: 0px 0px 16px 0px; width: 100%')}
+  width: 320px;
+  ${media('mobile')('margin: 0px 0px 16px 0px; width: 100%')}
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-shrink: 0;
 `;
