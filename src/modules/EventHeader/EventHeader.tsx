@@ -5,6 +5,7 @@ import { Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { useState } from 'react';
 import { EventModal } from 'modules/EventModal';
+import { useBreakpoint } from 'hooks';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ export const EventHeader = ({
   featuredEvent: PresenceEvent;
   title?: React.ReactNode;
 }) => {
+  const { isMobile } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -32,8 +34,8 @@ export const EventHeader = ({
       <Typography
         variant="pageHeader"
         margin={`0 auto`}
-        size="2xl"
         color="greyDarker"
+        size={isMobile ? '2xl' : '3xl'}
         as="h2"
       >
         {title}

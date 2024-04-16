@@ -126,7 +126,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/efawz3jni1jwgotvgt788/Org-Chart_2-2024.png?rlkey=qekbuhyoa4jqxq33y9jprw7ls&dl=0"
+                  href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
@@ -170,7 +170,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/efawz3jni1jwgotvgt788/Org-Chart_2-2024.png?rlkey=qekbuhyoa4jqxq33y9jprw7ls&dl=0"
+                  href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
