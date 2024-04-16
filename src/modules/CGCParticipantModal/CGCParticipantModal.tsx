@@ -81,12 +81,12 @@ const MobileModalStyle = {
 };
 
 const DesktopModalStyle = {
+  overflow: 'auto',
   overlay: {
     zIndex: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   content: {
-    overflow: 'scroll',
     padding: '40px',
     top: '50%',
     left: '50%',
