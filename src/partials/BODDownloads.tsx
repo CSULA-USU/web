@@ -97,7 +97,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/84w5cmuloskr3u19ncdwr/fy23-24.zip?rlkey=fi2cymy5mxbzif8p8vctr9al9&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/1by429rf99b01i1p6u75n/23-24.zip?rlkey=6knp2zgpmym479kkmon2k8967&dl=0',
       variant: 'black',
     },
   },
