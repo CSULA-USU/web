@@ -88,12 +88,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/4hyk3gsv8g6scr617l626/Agenda-Fiscal-Committee-April-12-2024.docx?rlkey=r9jrep7mkqwbucrymmwdjjy3u&dl=0',
             children: 'BOD Fiscal Committee Meeting Apr 12, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/a510b0d5tqlkjrc902x8l/Agenda-U-SU-Board-of-Directors-April-19-2024.pdf?rlkey=yadijvf4ov4wykum5armw23sv&dl=0',
+            children: 'BOD Meeting Apr 19, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/84w5cmuloskr3u19ncdwr/fy23-24.zip?rlkey=fi2cymy5mxbzif8p8vctr9al9&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/1by429rf99b01i1p6u75n/23-24.zip?rlkey=6knp2zgpmym479kkmon2k8967&dl=0',
       variant: 'black',
     },
   },
