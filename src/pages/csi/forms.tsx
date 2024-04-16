@@ -126,7 +126,7 @@ const banking = [
     button: {
       children: <NonBreakingSpan>View</NonBreakingSpan>,
       disabled: false,
-      href: 'https://www.dropbox.com/s/9ytgzwxf80fknsb/student-org-check-req.pdf?dl=0',
+      href: 'https://www.dropbox.com/scl/fi/3k4jrnljxjk1wwryo1aih/student-org-check-req.pdf?rlkey=54l7zskg79dvpbwdko0fvnvby&dl=0',
     },
   },
   {
