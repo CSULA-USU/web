@@ -99,14 +99,38 @@ export default function CGCGrad() {
                 <StyledDivider />
                 <NameGrid>
                   {filteredSubmissions &&
-                    filteredSubmissions.map((submission: any, j: number) => (
-                      <ParticipantModalContainer key={`${j}-pmc`}>
-                        <CGCParticipantModal
-                          participantData={submission}
-                          key={j}
-                        />
-                      </ParticipantModalContainer>
-                    ))}
+                    filteredSubmissions
+                      .sort(function (a: any, b: any) {
+                        if (
+                          a.fullName.firstName +
+                            a.fullName.middleName +
+                            a.fullName.lastName <
+                          b.fullName.firstName +
+                            b.fullName.middleName +
+                            b.fullName.lastName
+                        ) {
+                          return -1;
+                        }
+                        if (
+                          a.fullName.firstName +
+                            a.fullName.middleName +
+                            a.fullName.lastName <
+                          b.fullName.firstName +
+                            b.fullName.middleName +
+                            b.fullName.lastName
+                        ) {
+                          return 1;
+                        }
+                        return 0;
+                      })
+                      .map((submission: any, j: number) => (
+                        <ParticipantModalContainer key={`${j}-pmc`}>
+                          <CGCParticipantModal
+                            participantData={submission}
+                            key={j}
+                          />
+                        </ParticipantModalContainer>
+                      ))}
                 </NameGrid>
               </AlphabetSection>
             );
