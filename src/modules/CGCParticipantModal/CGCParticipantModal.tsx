@@ -76,7 +76,10 @@ const MobileModalStyle = {
   },
   content: {
     overflow: 'scroll',
-    padding: '40px',
+    padding: '35px',
+    top: '50%',
+    bottom: 'auto',
+    transform: 'translate(0%, -50%)',
   },
 };
 
