@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { FluidContainer, SearchInput, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
-import { Spaces, media } from 'theme';
+import { Spaces } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
 import { useCallback, useEffect, useState } from 'react';
@@ -20,10 +20,12 @@ const StyledDivider = styled.hr`
 `;
 
 const NameGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  ${media('desktop')(`grid-template-columns: repeat(2, 1fr);`)}
-  ${media('tablet')(`grid-template-columns: repeat(1, 1fr);`)}
+  display: flex;
+  flex-direction: column;
+`;
+
+const ParticipantModalContainer = styled.span`
+  max-width: 500px;
 `;
 
 export default function CGCGrad() {
@@ -89,32 +91,6 @@ export default function CGCGrad() {
                 alphabet,
             );
           if (filteredSubmissions && filteredSubmissions.length > 0) {
-            console.log(
-              'ffsnew',
-              filteredSubmissions.sort(function (a: any, b: any) {
-                if (
-                  a.fullName.firstName +
-                    a.fullName.middleName +
-                    a.fullName.lastName <
-                  b.fullName.firstName +
-                    b.fullName.middleName +
-                    b.fullName.lastName
-                ) {
-                  return -1;
-                }
-                if (
-                  a.fullName.firstName +
-                    a.fullName.middleName +
-                    a.fullName.lastName <
-                  b.fullName.firstName +
-                    b.fullName.middleName +
-                    b.fullName.lastName
-                ) {
-                  return 1;
-                }
-                return 0;
-              }),
-            );
             return (
               <AlphabetSection key={i}>
                 <Typography key={i} as="h1" variant="title">
@@ -124,10 +100,12 @@ export default function CGCGrad() {
                 <NameGrid>
                   {filteredSubmissions &&
                     filteredSubmissions.map((submission: any, j: number) => (
-                      <CGCParticipantModal
-                        participantData={submission}
-                        key={j}
-                      />
+                      <ParticipantModalContainer key={`${j}-pmc`}>
+                        <CGCParticipantModal
+                          participantData={submission}
+                          key={j}
+                        />
+                      </ParticipantModalContainer>
                     ))}
                 </NameGrid>
               </AlphabetSection>

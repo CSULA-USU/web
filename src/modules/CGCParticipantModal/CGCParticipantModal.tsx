@@ -249,7 +249,6 @@ export const CGCParticipantModal = ({
               ) : (
                 <></>
               )}
-
               <InfoContainer>
                 {participantData.acknowledgement &&
                   participantData.acknowledgement.toUpperCase() != 'N/A' && (
@@ -264,7 +263,9 @@ export const CGCParticipantModal = ({
       ) : (
         <>
           <Button variant="transparent" onClick={() => openModal()} padding="0">
-            <Typography>{`${participantData.fullName?.firstName}${
+            <Typography as="h3" variant="label">{`${
+              participantData.fullName?.firstName
+            }${
               participantData.fullName?.middleName
                 ? ' ' + participantData.fullName?.middleName
                 : ''
@@ -300,7 +301,6 @@ export const CGCParticipantModal = ({
               ) : (
                 <></>
               )}
-
               <InfoContainer>
                 <Typography as="h1" variant="pageHeader" size="3xl">{`${
                   participantData.fullName?.prefix

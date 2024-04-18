@@ -5,6 +5,7 @@ export type Graduate = {
     middleName: string;
     prefix: string;
     suffix: string;
+    pretty: string;
   };
   pronouns: string;
   degree: string;

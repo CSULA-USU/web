@@ -21,7 +21,6 @@ export default async function handler(
       `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500`,
     );
     const jsonData = await data.json();
-    // console.log(jsonData.content[10]);
     const specificDataObj: Graduate[] = [];
     jsonData.content &&
       jsonData.content.forEach((submission: any) => {
@@ -34,6 +33,7 @@ export default async function handler(
               middleName: submission.answers[49]?.answer.middle,
               prefix: submission.answers[49]?.answer.prefix,
               suffix: submission.answers[49]?.answer.suffix,
+              pretty: submission.answers[49]?.prettyFormat,
             },
             pronouns: submission.answers[122].answer,
             degree: submission.answers[58]?.answer,
@@ -55,6 +55,7 @@ export default async function handler(
               middleName: submission.answers[49]?.answer.middle,
               prefix: submission.answers[49]?.answer.prefix,
               suffix: submission.answers[49]?.answer.suffix,
+              pretty: submission.answers[49]?.prettyFormat,
             },
             pronouns: submission.answers[122].answer,
             degree: submission.answers[58]?.answer,
@@ -76,6 +77,7 @@ export default async function handler(
               middleName: submission.answers[49]?.answer.middle,
               prefix: submission.answers[49]?.answer.prefix,
               suffix: submission.answers[49]?.answer.suffix,
+              pretty: submission.answers[49]?.prettyFormat,
             },
             pronouns: submission.answers[120].answer,
             degree: submission.answers[58]?.answer,
@@ -98,6 +100,7 @@ export default async function handler(
               middleName: submission.answers[49]?.answer.middle,
               prefix: submission.answers[49]?.answer.prefix,
               suffix: submission.answers[49]?.answer.suffix,
+              pretty: submission.answers[49]?.prettyFormat,
             },
             pronouns: submission.answers[122]?.answer,
             degree: submission.answers[58]?.answer,
