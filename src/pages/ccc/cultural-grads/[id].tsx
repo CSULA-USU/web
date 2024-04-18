@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
 import { useCallback, useEffect, useState } from 'react';
 import { Graduate } from 'types';
+import { useBreakpoint } from 'hooks';
 
 const AlphabetSection = styled.div`
   margin-bottom: ${Spaces['xl']};
@@ -33,6 +34,7 @@ export default function CGCGrad() {
   const { id } = router.query;
   const [jotformSubmissions, setJotformSubmissions] = useState<Graduate[]>([]);
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const { isMobile } = useBreakpoint();
 
   console.log('jotform blep:', jotformSubmissions);
 
@@ -75,7 +77,10 @@ export default function CGCGrad() {
           width={0}
           height={0}
           sizes="100vh"
-          style={{ height: '30%', width: 'auto' }}
+          style={{
+            height: isMobile ? 'auto' : '80%',
+            width: isMobile ? '80%' : 'auto',
+          }}
         />
       </FluidContainer>
       <FluidContainer>
