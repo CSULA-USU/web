@@ -25,10 +25,6 @@ const NameGrid = styled.div`
   flex-direction: column;
 `;
 
-const ParticipantModalContainer = styled.span`
-  max-width: 500px;
-`;
-
 const SearchBar = styled.input.attrs({ type: 'text' })`
   ${media('mobile')('width: 80%')};
   width: 50%;
@@ -103,7 +99,7 @@ export default function CGCGrad() {
           onChange={searchInputHandler}
         />
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer padding="0 16px">
         {alphabets.split('').map((alphabet, i) => {
           const filteredSubmissions =
             Array.isArray(jotformSubmissions) &&
@@ -119,20 +115,48 @@ export default function CGCGrad() {
           if (filteredSubmissions && filteredSubmissions.length > 0) {
             return (
               <AlphabetSection key={i}>
-                <Typography key={i} as="h1" variant="title">
+                <Typography
+                  key={i}
+                  as="h1"
+                  variant="span"
+                  size="xl"
+                  margin="0 0 8px 0"
+                >
                   {alphabet}
                 </Typography>
                 <StyledDivider />
                 <NameGrid>
                   {filteredSubmissions &&
-                    filteredSubmissions.map((matching: any, j: number) => (
-                      <ParticipantModalContainer key={`${j}-pmc`}>
+                    filteredSubmissions
+                      .sort(function (a: any, b: any) {
+                        if (
+                          a.fullName.firstName +
+                            a.fullName.middleName +
+                            a.fullName.lastName <
+                          b.fullName.firstName +
+                            b.fullName.middleName +
+                            b.fullName.lastName
+                        ) {
+                          return -1;
+                        }
+                        if (
+                          a.fullName.firstName +
+                            a.fullName.middleName +
+                            a.fullName.lastName <
+                          b.fullName.firstName +
+                            b.fullName.middleName +
+                            b.fullName.lastName
+                        ) {
+                          return 1;
+                        }
+                        return 0;
+                      })
+                      .map((submission: any, j: number) => (
                         <CGCParticipantModal
-                          participantData={matching}
+                          participantData={submission}
                           key={j}
                         />
-                      </ParticipantModalContainer>
-                    ))}
+                      ))}
                 </NameGrid>
               </AlphabetSection>
             );

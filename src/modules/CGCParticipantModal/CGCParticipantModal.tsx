@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { Button, Typography } from '../../components';
 import { useBreakpoint } from 'hooks';
-import { media } from 'theme';
+import { Colors, media, Spaces } from 'theme';
+import { PiArrowSquareInFill } from 'react-icons/pi';
 
 interface FullName {
   firstName: string;
@@ -56,6 +57,17 @@ const MinorContainer = styled.div<{ hasCertificate?: string }>`
 const ModalContainer = styled.div`
   display: flex;
   max-width: 1440px;
+`;
+
+const Participant = styled.span`
+  background-color: ${Colors.greyLightest};
+  border: 1px solid ${Colors.greyLighter};
+  margin: ${Spaces.sm} 0;
+  padding: ${Spaces.sm};
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  filter: drop-shadow(0px 2px 2px rgb(0, 0, 0, 0.2));
 `;
 
 const PictureContainer = styled.div`
@@ -128,8 +140,10 @@ export const CGCParticipantModal = ({
     <>
       {isMobile || isTablet || isDesktop ? (
         <>
-          <Button variant="transparent" onClick={() => openModal()} padding="0">
-            <Typography>{`${participantData.fullName?.firstName}${
+          <Participant onClick={() => openModal()}>
+            <Typography variant="title" size="sm">{`${
+              participantData.fullName?.firstName
+            }${
               participantData.fullName?.middleName
                 ? ' ' + participantData.fullName?.middleName
                 : ''
@@ -138,7 +152,8 @@ export const CGCParticipantModal = ({
                 ? ' ' + participantData.fullName?.suffix
                 : ''
             }`}</Typography>
-          </Button>
+            <PiArrowSquareInFill size="24" style={{ height: '28px' }} />
+          </Participant>
           <Modal
             isOpen={showModal}
             onRequestClose={closeModal}
