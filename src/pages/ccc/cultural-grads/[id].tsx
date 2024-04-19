@@ -43,8 +43,6 @@ export default function CGCGrad() {
   const [searchInput, setSearchInput] = useState<string>('');
   const { isMobile } = useBreakpoint();
 
-  console.log('jotform blep:', jotformSubmissions);
-
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const input: string = e.target.value;
     setSearchInput(input);
