@@ -43,7 +43,7 @@ const SlideshowContent = styled.div`
 
 const InsideContainer = styled.div`
   display: flex;
-  z-index: 2;
+  z-index: 0;
 `;
 
 const MobileOuterContainer = styled.div`

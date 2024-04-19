@@ -21,3 +21,13 @@ export const fetchRequests = async () => {
     console.error('Error fetching data:', error);
   }
 };
+
+export const fetchJotform = async (id: any) => {
+  try {
+    const data = await fetch(`/api/jotform?id=${id}`);
+    const dataFeed = await data.json();
+    return dataFeed;
+  } catch (error) {
+    console.error('Error fetching jotform data:', error);
+  }
+};

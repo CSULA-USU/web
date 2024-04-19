@@ -1,5 +1,6 @@
 export * from './BoardOfDirectors';
 export * from './CallToAction';
+export * from './CGCParticipantModal';
 export * from './CulturalGradsHeader';
 export * from './EventCard';
 export * from './Footer';
