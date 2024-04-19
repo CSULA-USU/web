@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-// import { cache } from 'react-cache';
 import { Graduate } from 'types';
 
 const FormIDs = {
@@ -8,6 +7,8 @@ const FormIDs = {
   pride: 233464501150142,
   nuestra: 233465206027148,
 };
+
+const jotform = process.env.JOTFORM_SUBMISSIONS_API_KEY;
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,7 +19,7 @@ export default async function handler(
   try {
     const formID = FormIDs[id as keyof typeof FormIDs];
     let data = await fetch(
-      `https://api.jotform.com/form/${formID}/submissions?apiKey=fc4a91bbc9f53fd73d5934839ee8dcd1&limit=500`,
+      `https://api.jotform.com/form/${formID}/submissions?apiKey=${jotform}&limit=500`,
     );
     const jsonData = await data.json();
     const specificDataObj: Graduate[] = [];
