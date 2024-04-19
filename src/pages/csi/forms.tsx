@@ -120,7 +120,7 @@ const banking = [
       <Typography as="p">
         Check requisitions are forms completed to pay vendors, reimburse
         individuals, and to pay for services. <br />
-        Updated 7/19/22
+        Updated 4/16/24
       </Typography>
     ),
     button: {

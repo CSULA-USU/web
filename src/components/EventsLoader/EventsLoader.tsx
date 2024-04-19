@@ -10,6 +10,7 @@ export const EventsLoader = () => {
   const [_graphicRequests, setGraphicsRequests] = useRecoilState(
     graphicsRequestListState,
   );
+
   const getEvents = async () => {
     const data: PresenceEvent[] = await fetchEvents();
     const sortedData = data

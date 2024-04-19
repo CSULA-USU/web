@@ -1,0 +1,460 @@
+import { useState } from 'react';
+import Image from 'next/image';
+import styled from 'styled-components';
+import Modal from 'react-modal';
+import { Button, Typography } from '../../components';
+import { useBreakpoint } from 'hooks';
+import { Colors, media, Spaces } from 'theme';
+import { PiArrowSquareInFill } from 'react-icons/pi';
+
+interface FullName {
+  firstName: string;
+  lastName: string;
+  middleName?: string;
+  prefix?: string;
+  suffix?: string;
+}
+
+interface ParticipantModalProps {
+  fullName: FullName;
+  pronouns?: string;
+  degree: string;
+  major: string;
+  minor?: string;
+  certificate?: string;
+  secondDegree?: string;
+  secondMajor?: string;
+  secondMinor?: string;
+  secondCertificate?: string;
+  acknowledgement?: string;
+  img?: string;
+}
+
+const NameAndPronounsContainer = styled.div``;
+
+const CertificateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+`;
+
+const DegreeAndMajorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  row-gap: 16px;
+  flex-direction: column;
+`;
+
+const MinorContainer = styled.div<{ hasCertificate?: string }>`
+  justify-content: space-between;
+`;
+
+const ModalContainer = styled.div`
+  display: flex;
+  max-width: 1440px;
+`;
+
+const Participant = styled.span`
+  background-color: ${Colors.greyLightest};
+  border: 1px solid ${Colors.greyLighter};
+  margin: ${Spaces.sm} 0;
+  padding: ${Spaces.sm};
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  filter: drop-shadow(0px 2px 2px rgb(0, 0, 0, 0.2));
+`;
+
+const PictureContainer = styled.div`
+  margin-right: 24px;
+  width: 320px;
+  ${media('mobile')('width: 100%')}
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+`;
+/* flex-shrink property prevents picture container from shrinking */
+
+const AcknowledgementContainer = styled.div``;
+
+const MobileModalStyle = {
+  maxWidth: '1440px',
+  overflow: 'auto',
+  overlay: {
+    zIndex: 100,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+  },
+  content: {
+    maxWidth: '1440px',
+    overflow: 'auto',
+    padding: '35px',
+    top: '50%',
+    bottom: 'auto',
+    maxHeight: '90vh',
+    transform: 'translate(0%, -50%)',
+  },
+};
+
+const DesktopModalStyle = {
+  overflow: 'auto',
+  maxWidth: '40px',
+  overlay: {
+    zIndex: 100,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+  },
+  content: {
+    width: '880px',
+    padding: '40px',
+    top: '50%',
+    left: '50%',
+    bottom: 'auto',
+    maxHeight: '90vh',
+    right: 'auto',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+export const CGCParticipantModal = ({
+  participantData,
+}: {
+  participantData: ParticipantModalProps;
+}) => {
+  const [showModal, setShowModal] = useState(false);
+  function openModal() {
+    setShowModal(true);
+  }
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+
+  function closeModal() {
+    setShowModal(false);
+  }
+  return (
+    <>
+      {isMobile || isTablet || isDesktop ? (
+        <>
+          <Participant onClick={() => openModal()}>
+            <Typography variant="title" size="sm">{`${
+              participantData.fullName?.firstName
+            }${
+              participantData.fullName?.middleName
+                ? ' ' + participantData.fullName?.middleName
+                : ''
+            } ${participantData.fullName?.lastName}${
+              participantData.fullName?.suffix
+                ? ' ' + participantData.fullName?.suffix
+                : ''
+            }`}</Typography>
+            <PiArrowSquareInFill size="24" style={{ height: '28px' }} />
+          </Participant>
+          <Modal
+            isOpen={showModal}
+            onRequestClose={closeModal}
+            contentLabel="participant modal"
+            style={MobileModalStyle}
+          >
+            <ModalContainer>
+              <InfoContainer>
+                <NameAndPronounsContainer>
+                  <Typography
+                    as="h1"
+                    variant="pageHeader"
+                    size="xl"
+                    lineHeight="1"
+                  >{`${
+                    participantData.fullName?.prefix
+                      ? participantData.fullName?.prefix + ' '
+                      : ''
+                  }${participantData.fullName?.firstName}${
+                    participantData.fullName?.middleName
+                      ? ' ' + participantData.fullName?.middleName
+                      : ''
+                  } ${participantData.fullName?.lastName}${
+                    participantData.fullName?.suffix
+                      ? ' ' + participantData.fullName?.suffix
+                      : ''
+                  }`}</Typography>
+                  {participantData.pronouns &&
+                    participantData.pronouns.toUpperCase() != 'N/A' && (
+                      <em>
+                        <Typography variant="span" size="sm" as="h2">
+                          {participantData.pronouns}
+                        </Typography>
+                      </em>
+                    )}
+                </NameAndPronounsContainer>
+                {participantData.img ? (
+                  <>
+                    <PictureContainer>
+                      <Image
+                        src={`${participantData.img}`}
+                        alt="graduate participant"
+                        height={0}
+                        width={0}
+                        sizes="100vw"
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                        }}
+                      />
+                    </PictureContainer>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <DegreeAndMajorContainer>
+                  <div>
+                    <Typography size="md" as="h2">
+                      <strong>{participantData.degree.toUpperCase()}</strong>
+                    </Typography>
+                    <Typography size="md" as="h3">
+                      {participantData.major.toUpperCase()}
+                    </Typography>
+                  </div>
+                  {participantData.secondDegree && (
+                    <div>
+                      <Typography size="md" as="h2">
+                        <strong>
+                          {participantData.secondDegree.toUpperCase()}
+                        </strong>
+                      </Typography>
+                      {participantData.secondMajor &&
+                        participantData.secondMajor.toUpperCase() != 'N/A' && (
+                          <Typography size="md" as="h3">
+                            {participantData.secondMajor.toUpperCase()}
+                          </Typography>
+                        )}
+                    </div>
+                  )}
+                </DegreeAndMajorContainer>
+                {participantData.minor &&
+                  participantData.minor.toUpperCase() != 'N/A' && (
+                    <>
+                      <MinorContainer>
+                        <Typography
+                          size="md"
+                          as="h4"
+                          variant="span"
+                          lineHeight="1"
+                        >
+                          {`Minor:`}
+                        </Typography>
+                        <Typography
+                          size="md"
+                          as="h4"
+                          variant="span"
+                          lineHeight="1"
+                        >
+                          {`${participantData.minor?.toUpperCase()}`}
+                        </Typography>
+                        {participantData.secondMinor && (
+                          <Typography size="md" as="h4" variant="span">
+                            {`${participantData.secondMinor.toUpperCase()}`}
+                          </Typography>
+                        )}
+                      </MinorContainer>
+                    </>
+                  )}
+                {participantData.certificate &&
+                  participantData.certificate.toUpperCase() != 'N/A' && (
+                    <CertificateContainer>
+                      <Typography size="md" as="h4" variant="span">
+                        {`Certificate:`}
+                      </Typography>
+                      <Typography
+                        size="md"
+                        as="h4"
+                        variant="span"
+                        lineHeight="1"
+                      >
+                        {`${participantData.certificate.toUpperCase()}`}
+                      </Typography>
+                      {participantData.secondCertificate && (
+                        <Typography size="md" as="h4" variant="span">
+                          {`${participantData.secondCertificate.toUpperCase()}`}
+                        </Typography>
+                      )}
+                    </CertificateContainer>
+                  )}
+                {participantData.acknowledgement &&
+                  participantData.acknowledgement.toUpperCase() != 'N/A' && (
+                    <AcknowledgementContainer>
+                      <Typography variant="span" size="sm">
+                        {participantData.acknowledgement}
+                      </Typography>
+                    </AcknowledgementContainer>
+                  )}
+              </InfoContainer>
+            </ModalContainer>
+          </Modal>
+        </>
+      ) : (
+        <>
+          <Button variant="transparent" onClick={() => openModal()} padding="0">
+            <Typography as="h3" variant="label">{`${
+              participantData.fullName?.firstName
+            }${
+              participantData.fullName?.middleName
+                ? ' ' + participantData.fullName?.middleName
+                : ''
+            } ${participantData.fullName?.lastName}${
+              participantData.fullName?.suffix
+                ? ' ' + participantData.fullName?.suffix
+                : ''
+            }`}</Typography>
+          </Button>
+          <Modal
+            isOpen={showModal}
+            onRequestClose={closeModal}
+            contentLabel="participant modal"
+            style={DesktopModalStyle}
+          >
+            <ModalContainer>
+              {participantData.img ? (
+                <>
+                  <PictureContainer>
+                    <Image
+                      src={`${participantData.img}`}
+                      alt="graduate participant photo"
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                    />
+                  </PictureContainer>
+                </>
+              ) : (
+                <></>
+              )}
+              <InfoContainer>
+                <NameAndPronounsContainer>
+                  <Typography as="h1" variant="pageHeader" size="3xl">{` ${
+                    participantData.fullName?.prefix
+                      ? participantData.fullName?.prefix + ' '
+                      : ''
+                  }${participantData.fullName?.firstName}${
+                    participantData.fullName?.middleName
+                      ? ' ' + participantData.fullName?.middleName
+                      : ''
+                  } ${participantData.fullName?.lastName}${
+                    participantData.fullName?.suffix
+                      ? ' ' + participantData.fullName?.suffix
+                      : ''
+                  }`}</Typography>
+                  {participantData.pronouns &&
+                    participantData.pronouns.toUpperCase() != 'N/A' && (
+                      <em>
+                        <Typography variant="span" size="md" as="h2">
+                          {participantData.pronouns}
+                        </Typography>
+                      </em>
+                    )}
+                </NameAndPronounsContainer>
+                <DegreeAndMajorContainer>
+                  <Typography size="lg" as="h2">
+                    <strong>{participantData.degree.toUpperCase()}</strong>
+                  </Typography>
+                  <Typography size="lg" as="h3">
+                    {participantData.major.toUpperCase()}
+                  </Typography>
+                </DegreeAndMajorContainer>
+                <DegreeAndMajorContainer>
+                  {participantData.secondDegree && (
+                    <Typography size="lg" as="h2">
+                      <strong>
+                        {participantData.secondDegree.toUpperCase()}
+                      </strong>
+                    </Typography>
+                  )}
+                  {participantData.secondMajor &&
+                    participantData.secondMajor.toUpperCase() != 'N/A' && (
+                      <Typography size="lg" as="h3">
+                        {participantData.secondMajor.toUpperCase()}
+                      </Typography>
+                    )}
+                </DegreeAndMajorContainer>
+                {participantData.minor &&
+                  participantData.minor.toUpperCase() != 'N/A' && (
+                    <>
+                      <MinorContainer>
+                        <Typography
+                          size="lg"
+                          as="h4"
+                          variant="span"
+                          lineHeight="1"
+                        >
+                          {`Minor:`}
+                        </Typography>
+                        <Typography
+                          size="lg"
+                          as="h4"
+                          variant="span"
+                          lineHeight="1"
+                        >
+                          {`${participantData.minor?.toUpperCase()}`}
+                        </Typography>
+                        {participantData.secondMinor && (
+                          <Typography size="lg" as="h4" variant="span">
+                            {`${participantData.secondMinor.toUpperCase()}`}
+                          </Typography>
+                        )}
+                      </MinorContainer>
+                    </>
+                  )}
+                {participantData.certificate &&
+                  participantData.certificate.toUpperCase() != 'N/A' && (
+                    <CertificateContainer>
+                      <Typography
+                        size="lg"
+                        as="h4"
+                        variant="span"
+                        lineHeight="1"
+                      >
+                        {`Certificate:`}
+                      </Typography>
+                      <Typography
+                        size="lg"
+                        as="h4"
+                        variant="span"
+                        lineHeight="1"
+                      >
+                        {`${participantData.certificate.toUpperCase()}`}
+                      </Typography>
+                      {participantData.secondCertificate && (
+                        <Typography
+                          size="lg"
+                          as="h4"
+                          variant="span"
+                          lineHeight="1"
+                        >
+                          {`${participantData.secondCertificate.toUpperCase()}`}
+                        </Typography>
+                      )}
+                    </CertificateContainer>
+                  )}
+                {participantData.acknowledgement &&
+                  participantData.acknowledgement.toUpperCase() != 'N/A' && (
+                    <InfoContainer>
+                      <Typography variant="span" size="md">
+                        {participantData.acknowledgement}
+                      </Typography>
+                    </InfoContainer>
+                  )}
+              </InfoContainer>
+            </ModalContainer>
+          </Modal>
+        </>
+      )}
+    </>
+  );
+};
