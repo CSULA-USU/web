@@ -2,12 +2,12 @@ import { Page } from 'modules';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { FluidContainer, SearchInput, Typography } from 'components';
+import { FluidContainer, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
-import { Spaces } from 'theme';
+import { Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
-import { useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Graduate } from 'types';
 import { useBreakpoint } from 'hooks';
 
@@ -29,18 +29,32 @@ const ParticipantModalContainer = styled.span`
   max-width: 500px;
 `;
 
+const SearchBar = styled.input.attrs({ type: 'text' })`
+  ${media('mobile')('width: 80%')};
+  width: 50%;
+  height: 30%;
+  text-align: center;
+  border-radius: 40px;
+  padding: 12px 24px;
+  font-size: 16px;
+`;
+
 export default function CGCGrad() {
   const router = useRouter();
   const { id } = router.query;
   const [jotformSubmissions, setJotformSubmissions] = useState<Graduate[]>([]);
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const [searchInput, setSearchInput] = useState<string>('');
   const { isMobile } = useBreakpoint();
 
   console.log('jotform blep:', jotformSubmissions);
 
+  let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const input: string = e.target.value;
+    setSearchInput(input);
+  };
+
   const getJotformSubmissions = useCallback(async () => {
-    // const { data } = await fetchJotform(id);
-    // console.log('dsa', data);
     setJotformSubmissions(await fetchJotform(id));
   }, [id]);
 
@@ -83,18 +97,25 @@ export default function CGCGrad() {
           }}
         />
       </FluidContainer>
-      <FluidContainer>
-        <SearchInput />
+      <FluidContainer flex justifyContent="center">
+        <SearchBar
+          placeholder="Enter Graduate's Name"
+          onChange={searchInputHandler}
+        />
       </FluidContainer>
       <FluidContainer>
         {alphabets.split('').map((alphabet, i) => {
           const filteredSubmissions =
             Array.isArray(jotformSubmissions) &&
-            jotformSubmissions.filter(
-              (person: any) =>
-                person.fullName.firstName.slice(0, 1).toUpperCase() ===
-                alphabet,
-            );
+            jotformSubmissions
+              .filter((submissions) =>
+                submissions.fullName.pretty.toLowerCase().includes(searchInput),
+              )
+              .filter(
+                (person: any) =>
+                  person.fullName.firstName.slice(0, 1).toUpperCase() ===
+                  alphabet,
+              );
           if (filteredSubmissions && filteredSubmissions.length > 0) {
             return (
               <AlphabetSection key={i}>
@@ -104,10 +125,10 @@ export default function CGCGrad() {
                 <StyledDivider />
                 <NameGrid>
                   {filteredSubmissions &&
-                    filteredSubmissions.map((submission: any, j: number) => (
+                    filteredSubmissions.map((matching: any, j: number) => (
                       <ParticipantModalContainer key={`${j}-pmc`}>
                         <CGCParticipantModal
-                          participantData={submission}
+                          participantData={matching}
                           key={j}
                         />
                       </ParticipantModalContainer>

@@ -10,9 +10,6 @@ export const EventsLoader = () => {
   const [_graphicRequests, setGraphicsRequests] = useRecoilState(
     graphicsRequestListState,
   );
-  // const [_jotformSubmissions, setJotformSubmissions] = useRecoilState(
-  //   jotformSubmissionsListState,
-  // );
 
   const getEvents = async () => {
     const data: PresenceEvent[] = await fetchEvents();
@@ -37,15 +34,9 @@ export const EventsLoader = () => {
     setGraphicsRequests(requestData);
   };
 
-  // const getJotformSubmissions = async (id: any) => {
-  //   const submissionData: any = await fetchJotform(id);
-  //   setJotformSubmissions(submissionData);
-  // };
-
   useEffect(() => {
     getEvents();
     getGraphicsRequests();
-    // getJotformSubmissions();
   }, []); // eslint-disable-line
 
   return <></>;
