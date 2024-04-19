@@ -81,7 +81,7 @@ export default function CGCGrad() {
       <FluidContainer>
         <SearchInput />
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer padding="0 16px">
         {alphabets.split('').map((alphabet, i) => {
           const filteredSubmissions =
             Array.isArray(jotformSubmissions) &&
@@ -93,7 +93,13 @@ export default function CGCGrad() {
           if (filteredSubmissions && filteredSubmissions.length > 0) {
             return (
               <AlphabetSection key={i}>
-                <Typography key={i} as="h1" variant="title">
+                <Typography
+                  key={i}
+                  as="h1"
+                  variant="span"
+                  size="xl"
+                  margin="0 0 8px 0"
+                >
                   {alphabet}
                 </Typography>
                 <StyledDivider />
