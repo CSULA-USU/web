@@ -24,10 +24,6 @@ const NameGrid = styled.div`
   flex-direction: column;
 `;
 
-const ParticipantModalContainer = styled.span`
-  max-width: 500px;
-`;
-
 export default function CGCGrad() {
   const router = useRouter();
   const { id } = router.query;
@@ -75,7 +71,7 @@ export default function CGCGrad() {
           width={0}
           height={0}
           sizes="100vh"
-          style={{ height: '30%', width: 'auto' }}
+          style={{ height: 'auto', width: '100%' }}
         />
       </FluidContainer>
       <FluidContainer>
@@ -130,12 +126,10 @@ export default function CGCGrad() {
                         return 0;
                       })
                       .map((submission: any, j: number) => (
-                        <ParticipantModalContainer key={`${j}-pmc`}>
-                          <CGCParticipantModal
-                            participantData={submission}
-                            key={j}
-                          />
-                        </ParticipantModalContainer>
+                        <CGCParticipantModal
+                          participantData={submission}
+                          key={j}
+                        />
                       ))}
                 </NameGrid>
               </AlphabetSection>
