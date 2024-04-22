@@ -30,33 +30,33 @@ interface ParticipantModalProps {
   img?: string;
 }
 
-const NameAndPronounsContainer = styled.div``;
-
-const CertificateContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
+const CertificateContainer = styled.div<{ hasAcknowledgement?: string }>`
+  justify-content: space-between;
+  margin: ${(props) =>
+    props.hasAcknowledgement ? '0 0 24px 0' : '0px 0px 8px 0px'};
 `;
 
 const DegreeAndMajorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
+  justify-content: space-between;
+  margin-bottom: 8px;
 `;
 
 const InfoContainer = styled.div`
   display: flex;
-  row-gap: 16px;
   flex-direction: column;
 `;
 
 const MinorContainer = styled.div<{ hasCertificate?: string }>`
   justify-content: space-between;
+  margin: ${(props) =>
+    props.hasCertificate ? '0 0 8px 0' : '0px 0px 24px 0px'};
 `;
 
 const ModalContainer = styled.div`
   display: flex;
-  max-width: 1440px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const Participant = styled.span`
@@ -73,50 +73,36 @@ const Participant = styled.span`
 const PictureContainer = styled.div`
   margin-right: 24px;
   width: 320px;
-  ${media('mobile')('width: 100%')}
-  @media(max-width: 768px) {
-    width: 100%;
-  }
+  ${media('mobile')('margin: 0px 0px 16px 0px; width: 100%')}
   display: flex;
   align-items: center;
   flex-shrink: 0;
 `;
 /* flex-shrink property prevents picture container from shrinking */
 
-const AcknowledgementContainer = styled.div``;
-
 const MobileModalStyle = {
-  maxWidth: '1440px',
   overflow: 'auto',
   overlay: {
     zIndex: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   content: {
-    maxWidth: '1440px',
-    overflow: 'auto',
-    padding: '35px',
-    top: '50%',
-    bottom: 'auto',
-    maxHeight: '90vh',
-    transform: 'translate(0%, -50%)',
+    overflow: 'scroll',
+    padding: '40px',
   },
 };
 
 const DesktopModalStyle = {
   overflow: 'auto',
-  maxWidth: '40px',
   overlay: {
     zIndex: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   content: {
-    width: '880px',
     padding: '40px',
     top: '50%',
     left: '50%',
     bottom: 'auto',
-    maxHeight: '90vh',
     right: 'auto',
     transform: 'translate(-50%, -50%)',
   },
@@ -131,14 +117,14 @@ export const CGCParticipantModal = ({
   function openModal() {
     setShowModal(true);
   }
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
 
   function closeModal() {
     setShowModal(false);
   }
   return (
     <>
-      {isMobile || isTablet || isDesktop ? (
+      {isMobile ? (
         <>
           <Participant onClick={() => openModal()}>
             <Typography variant="title" size="sm">{`${
@@ -161,112 +147,70 @@ export const CGCParticipantModal = ({
             style={MobileModalStyle}
           >
             <ModalContainer>
-              <InfoContainer>
-                <NameAndPronounsContainer>
-                  <Typography
-                    as="h1"
-                    variant="pageHeader"
-                    size="xl"
-                    lineHeight="1"
-                  >{`${
-                    participantData.fullName?.prefix
-                      ? participantData.fullName?.prefix + ' '
-                      : ''
-                  }${participantData.fullName?.firstName}${
-                    participantData.fullName?.middleName
-                      ? ' ' + participantData.fullName?.middleName
-                      : ''
-                  } ${participantData.fullName?.lastName}${
-                    participantData.fullName?.suffix
-                      ? ' ' + participantData.fullName?.suffix
-                      : ''
-                  }`}</Typography>
-                  {participantData.pronouns &&
-                    participantData.pronouns.toUpperCase() != 'N/A' && (
-                      <em>
-                        <Typography variant="span" size="sm" as="h2">
-                          {participantData.pronouns}
-                        </Typography>
-                      </em>
-                    )}
-                </NameAndPronounsContainer>
-                {participantData.img ? (
-                  <>
-                    <PictureContainer>
-                      <Image
-                        src={`${participantData.img}`}
-                        alt="graduate participant"
-                        height={0}
-                        width={0}
-                        sizes="100vw"
-                        style={{
-                          width: '100%',
-                          height: 'auto',
-                        }}
-                      />
-                    </PictureContainer>
-                  </>
-                ) : (
-                  <></>
+              <Typography
+                as="h1"
+                variant="pageHeader"
+                size="2xl"
+                lineHeight="1"
+                margin="0 0 4px 0"
+              >{`${
+                participantData.fullName?.prefix
+                  ? participantData.fullName?.prefix + ' '
+                  : ''
+              }${participantData.fullName?.firstName}${
+                participantData.fullName?.middleName
+                  ? ' ' + participantData.fullName?.middleName
+                  : ''
+              } ${participantData.fullName?.lastName}${
+                participantData.fullName?.suffix
+                  ? ' ' + participantData.fullName?.suffix
+                  : ''
+              }`}</Typography>
+              {participantData.pronouns &&
+                participantData.pronouns.toUpperCase() != 'N/A' && (
+                  <em>
+                    <Typography
+                      variant="span"
+                      size="sm"
+                      margin="0 0 16px 0"
+                      as="h2"
+                    >
+                      {participantData.pronouns}
+                    </Typography>
+                  </em>
                 )}
-                <DegreeAndMajorContainer>
-                  <div>
-                    <Typography size="md" as="h2">
-                      <strong>{participantData.degree.toUpperCase()}</strong>
-                    </Typography>
+              <DegreeAndMajorContainer>
+                <Typography size="md" as="h2">
+                  <strong>{participantData.degree.toUpperCase()}</strong>
+                </Typography>
+                <Typography size="md" as="h3">
+                  {participantData.major.toUpperCase()}
+                </Typography>
+                {participantData.secondDegree && (
+                  <Typography size="md" as="h2">
+                    <strong>
+                      {participantData.secondDegree.toUpperCase()}
+                    </strong>
+                  </Typography>
+                )}
+                {participantData.secondMajor &&
+                  participantData.secondMajor.toUpperCase() != 'N/A' && (
                     <Typography size="md" as="h3">
-                      {participantData.major.toUpperCase()}
+                      {participantData.secondMajor.toUpperCase()}
                     </Typography>
-                  </div>
-                  {participantData.secondDegree && (
-                    <div>
-                      <Typography size="md" as="h2">
-                        <strong>
-                          {participantData.secondDegree.toUpperCase()}
-                        </strong>
-                      </Typography>
-                      {participantData.secondMajor &&
-                        participantData.secondMajor.toUpperCase() != 'N/A' && (
-                          <Typography size="md" as="h3">
-                            {participantData.secondMajor.toUpperCase()}
-                          </Typography>
-                        )}
-                    </div>
                   )}
-                </DegreeAndMajorContainer>
-                {participantData.minor &&
-                  participantData.minor.toUpperCase() != 'N/A' && (
-                    <>
-                      <MinorContainer>
-                        <Typography
-                          size="md"
-                          as="h4"
-                          variant="span"
-                          lineHeight="1"
-                        >
-                          {`Minor:`}
-                        </Typography>
-                        <Typography
-                          size="md"
-                          as="h4"
-                          variant="span"
-                          lineHeight="1"
-                        >
-                          {`${participantData.minor?.toUpperCase()}`}
-                        </Typography>
-                        {participantData.secondMinor && (
-                          <Typography size="md" as="h4" variant="span">
-                            {`${participantData.secondMinor.toUpperCase()}`}
-                          </Typography>
-                        )}
-                      </MinorContainer>
-                    </>
-                  )}
-                {participantData.certificate &&
-                  participantData.certificate.toUpperCase() != 'N/A' && (
-                    <CertificateContainer>
-                      <Typography size="md" as="h4" variant="span">
-                        {`Certificate:`}
+              </DegreeAndMajorContainer>
+              {participantData.minor &&
+                participantData.minor.toUpperCase() != 'N/A' && (
+                  <>
+                    <MinorContainer>
+                      <Typography
+                        size="md"
+                        as="h4"
+                        variant="span"
+                        lineHeight="1"
+                      >
+                        {`Minor:`}
                       </Typography>
                       <Typography
                         size="md"
@@ -274,22 +218,59 @@ export const CGCParticipantModal = ({
                         variant="span"
                         lineHeight="1"
                       >
-                        {`${participantData.certificate.toUpperCase()}`}
+                        {`${participantData.minor?.toUpperCase()}`}
                       </Typography>
-                      {participantData.secondCertificate && (
+                      {participantData.secondMinor && (
                         <Typography size="md" as="h4" variant="span">
-                          {`${participantData.secondCertificate.toUpperCase()}`}
+                          {`${participantData.secondMinor.toUpperCase()}`}
                         </Typography>
                       )}
-                    </CertificateContainer>
-                  )}
+                    </MinorContainer>
+                  </>
+                )}
+              {participantData.certificate &&
+                participantData.certificate.toUpperCase() != 'N/A' && (
+                  <CertificateContainer>
+                    <Typography size="md" as="h4" variant="span" lineHeight="1">
+                      {`Certificate:`}
+                    </Typography>
+                    <Typography size="md" as="h4" variant="span" lineHeight="1">
+                      {`${participantData.certificate.toUpperCase()}`}
+                    </Typography>
+                  </CertificateContainer>
+                )}
+              {participantData.secondCertificate && (
+                <CertificateContainer>
+                  <Typography size="md" as="h4" variant="span" lineHeight="1">
+                    {`${participantData.secondCertificate.toUpperCase()}`}
+                  </Typography>
+                </CertificateContainer>
+              )}
+              {participantData.img ? (
+                <>
+                  <PictureContainer>
+                    <Image
+                      src={`${participantData.img}`}
+                      alt="graduate participant"
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                    />
+                  </PictureContainer>
+                </>
+              ) : (
+                <></>
+              )}
+              <InfoContainer>
                 {participantData.acknowledgement &&
                   participantData.acknowledgement.toUpperCase() != 'N/A' && (
-                    <AcknowledgementContainer>
-                      <Typography variant="span" size="sm">
-                        {participantData.acknowledgement}
-                      </Typography>
-                    </AcknowledgementContainer>
+                    <Typography variant="span" size="sm">
+                      {participantData.acknowledgement}
+                    </Typography>
                   )}
               </InfoContainer>
             </ModalContainer>
@@ -337,29 +318,37 @@ export const CGCParticipantModal = ({
                 <></>
               )}
               <InfoContainer>
-                <NameAndPronounsContainer>
-                  <Typography as="h1" variant="pageHeader" size="3xl">{` ${
-                    participantData.fullName?.prefix
-                      ? participantData.fullName?.prefix + ' '
-                      : ''
-                  }${participantData.fullName?.firstName}${
-                    participantData.fullName?.middleName
-                      ? ' ' + participantData.fullName?.middleName
-                      : ''
-                  } ${participantData.fullName?.lastName}${
-                    participantData.fullName?.suffix
-                      ? ' ' + participantData.fullName?.suffix
-                      : ''
-                  }`}</Typography>
-                  {participantData.pronouns &&
-                    participantData.pronouns.toUpperCase() != 'N/A' && (
-                      <em>
-                        <Typography variant="span" size="md" as="h2">
-                          {participantData.pronouns}
-                        </Typography>
-                      </em>
-                    )}
-                </NameAndPronounsContainer>
+                <Typography
+                  as="h1"
+                  variant="pageHeader"
+                  size="3xl"
+                  margin="0 0 4px 0"
+                >{`${
+                  participantData.fullName?.prefix
+                    ? participantData.fullName?.prefix + ' '
+                    : ''
+                }${participantData.fullName?.firstName}${
+                  participantData.fullName?.middleName
+                    ? ' ' + participantData.fullName?.middleName
+                    : ''
+                } ${participantData.fullName?.lastName}${
+                  participantData.fullName?.suffix
+                    ? ' ' + participantData.fullName?.suffix
+                    : ''
+                }`}</Typography>
+                {participantData.pronouns &&
+                  participantData.pronouns.toUpperCase() != 'N/A' && (
+                    <em>
+                      <Typography
+                        variant="span"
+                        size="md"
+                        margin="0px 0px 24px 0px"
+                        as="h2"
+                      >
+                        {participantData.pronouns}
+                      </Typography>
+                    </em>
+                  )}
                 <DegreeAndMajorContainer>
                   <Typography size="lg" as="h2">
                     <strong>{participantData.degree.toUpperCase()}</strong>
@@ -430,25 +419,20 @@ export const CGCParticipantModal = ({
                       >
                         {`${participantData.certificate.toUpperCase()}`}
                       </Typography>
-                      {participantData.secondCertificate && (
-                        <Typography
-                          size="lg"
-                          as="h4"
-                          variant="span"
-                          lineHeight="1"
-                        >
-                          {`${participantData.secondCertificate.toUpperCase()}`}
-                        </Typography>
-                      )}
                     </CertificateContainer>
                   )}
+                {participantData.secondCertificate && (
+                  <CertificateContainer>
+                    <Typography size="lg" as="h4" variant="span" lineHeight="1">
+                      {`${participantData.secondCertificate.toUpperCase()}`}
+                    </Typography>
+                  </CertificateContainer>
+                )}
                 {participantData.acknowledgement &&
                   participantData.acknowledgement.toUpperCase() != 'N/A' && (
-                    <InfoContainer>
-                      <Typography variant="span" size="md">
-                        {participantData.acknowledgement}
-                      </Typography>
-                    </InfoContainer>
+                    <Typography variant="span" size="md">
+                      {participantData.acknowledgement}
+                    </Typography>
                   )}
               </InfoContainer>
             </ModalContainer>
