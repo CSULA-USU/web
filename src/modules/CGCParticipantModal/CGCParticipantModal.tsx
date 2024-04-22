@@ -114,10 +114,25 @@ export const CGCParticipantModal = ({
   participantData: ParticipantModalProps;
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const { isMobile } = useBreakpoint();
+
+  const regex = /\((.*?)\)/;
+  const matchedDegree =
+    participantData && participantData.degree.toUpperCase().match(regex);
+  const degree = matchedDegree
+    ? matchedDegree[1]
+    : participantData.degree.toUpperCase();
+  const matchedSecondDegree =
+    participantData.secondDegree &&
+    participantData.secondDegree.toUpperCase().match(regex);
+  const secondDegree = matchedSecondDegree
+    ? matchedSecondDegree[1]
+    : participantData.secondDegree &&
+      participantData.secondDegree.toUpperCase();
+
   function openModal() {
     setShowModal(true);
   }
-  const { isMobile } = useBreakpoint();
 
   function closeModal() {
     setShowModal(false);
@@ -152,7 +167,6 @@ export const CGCParticipantModal = ({
                 variant="pageHeader"
                 size="2xl"
                 lineHeight="1"
-                margin="0 0 4px 0"
               >{`${
                 participantData.fullName?.prefix
                   ? participantData.fullName?.prefix + ' '
@@ -172,7 +186,7 @@ export const CGCParticipantModal = ({
                     <Typography
                       variant="span"
                       size="sm"
-                      margin="0 0 16px 0"
+                      margin="4px 0 16px 0"
                       as="h2"
                     >
                       {participantData.pronouns}
@@ -181,16 +195,14 @@ export const CGCParticipantModal = ({
                 )}
               <DegreeAndMajorContainer>
                 <Typography size="md" as="h2">
-                  <strong>{participantData.degree.toUpperCase()}</strong>
+                  <strong>{degree}</strong>
                 </Typography>
                 <Typography size="md" as="h3">
                   {participantData.major.toUpperCase()}
                 </Typography>
                 {participantData.secondDegree && (
                   <Typography size="md" as="h2">
-                    <strong>
-                      {participantData.secondDegree.toUpperCase()}
-                    </strong>
+                    <strong>{secondDegree}</strong>
                   </Typography>
                 )}
                 {participantData.secondMajor &&
@@ -351,7 +363,7 @@ export const CGCParticipantModal = ({
                   )}
                 <DegreeAndMajorContainer>
                   <Typography size="lg" as="h2">
-                    <strong>{participantData.degree.toUpperCase()}</strong>
+                    <strong>{degree}</strong>
                   </Typography>
                   <Typography size="lg" as="h3">
                     {participantData.major.toUpperCase()}
@@ -360,9 +372,7 @@ export const CGCParticipantModal = ({
                 <DegreeAndMajorContainer>
                   {participantData.secondDegree && (
                     <Typography size="lg" as="h2">
-                      <strong>
-                        {participantData.secondDegree.toUpperCase()}
-                      </strong>
+                      <strong>{secondDegree}</strong>
                     </Typography>
                   )}
                   {participantData.secondMajor &&
