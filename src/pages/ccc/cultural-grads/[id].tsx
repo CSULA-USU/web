@@ -94,7 +94,7 @@ export default function CGCGrad() {
       <FluidContainer flex justifyContent="center">
         <SearchBar
           placeholder="Enter Graduate's Name"
-          onChange={searchInputHandler}
+          onInput={searchInputHandler}
         />
       </FluidContainer>
       <FluidContainer padding="0 16px">
