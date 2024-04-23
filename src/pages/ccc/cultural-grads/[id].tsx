@@ -44,7 +44,7 @@ export default function CGCGrad() {
   const { isMobile } = useBreakpoint();
 
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    setSearchInput(e.target.value.toLowerCase());
   };
 
   const getJotformSubmissions = useCallback(async () => {
