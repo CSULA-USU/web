@@ -44,8 +44,7 @@ export default function CGCGrad() {
   const { isMobile } = useBreakpoint();
 
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const input: string = e.target.value;
-    setSearchInput(input);
+    setSearchInput(e.target.value);
   };
 
   const getJotformSubmissions = useCallback(async () => {
@@ -94,7 +93,7 @@ export default function CGCGrad() {
       <FluidContainer flex justifyContent="center">
         <SearchBar
           placeholder="Enter Graduate's Name"
-          onInput={searchInputHandler}
+          onChange={searchInputHandler}
         />
       </FluidContainer>
       <FluidContainer padding="0 16px">
