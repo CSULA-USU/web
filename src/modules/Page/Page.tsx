@@ -20,14 +20,16 @@ interface PageProps {
 }
 
 export const Page = ({ children }: PageProps) => (
-  <PageContainer>
-    <Announcement
-      text="Out of an abundance of caution the U-SU is closed on Monday, Feb 5"
-      isVisible={false}
-    />
-    <Nav />
-    <main>{children}</main>
-    <BackToTop></BackToTop>
-    <Footer />
-  </PageContainer>
+  <>
+    <PageContainer>
+      <Announcement
+        text="Out of an abundance of caution the U-SU is closed on Monday, Feb 5"
+        isVisible={false}
+      />
+      <Nav />
+      <main>{children}</main>
+      <BackToTop />
+      <Footer />
+    </PageContainer>
+  </>
 );
