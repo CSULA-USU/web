@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
 import { Announcement, BackToTop } from 'components';
-import Head from 'next/head';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -28,16 +27,7 @@ export const Page = ({ children }: PageProps) => (
         isVisible={false}
       />
       <Nav />
-      <main>
-        <Head>
-          <meta
-            name="image"
-            property="og:image"
-            content="/departments/ccc/ccc-grad-banner.jpg"
-          />
-        </Head>
-        {children}
-      </main>
+      <main>{children}</main>
       <BackToTop />
       <Footer />
     </PageContainer>
