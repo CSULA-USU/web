@@ -27,7 +27,7 @@ export const Page = ({ children }: PageProps) => (
     />
     <Nav />
     <main>{children}</main>
-    <BackToTop></BackToTop>
+    <BackToTop />
     <Footer />
   </PageContainer>
 );

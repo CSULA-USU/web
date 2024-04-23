@@ -14,23 +14,25 @@ const NavWrapper = styled.div`
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
-    <FluidContainer
-      padding="24px"
-      backgroundColor="white"
-      justifyContent="space-between"
-      alignItems="center"
-      flex
-    >
-      <Link href="/">
-        <Image
-          tabIndex={0}
-          maxHeight={isMobile ? '64px' : '80px'}
-          src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
-          alt="Cal State LA University-Student Union Logo"
-        />
-      </Link>
-      <MobileNav />
-    </FluidContainer>
+    <NavWrapper>
+      <FluidContainer
+        padding="24px"
+        backgroundColor="white"
+        justifyContent="space-between"
+        alignItems="center"
+        flex
+      >
+        <Link href="/">
+          <Image
+            tabIndex={0}
+            maxHeight={isMobile ? '64px' : '80px'}
+            src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
+            alt="Cal State LA University-Student Union Logo"
+          />
+        </Link>
+        <MobileNav />
+      </FluidContainer>
+    </NavWrapper>
   ) : (
     <NavWrapper>
       <FluidContainer
