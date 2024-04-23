@@ -43,11 +43,8 @@ export default function CGCGrad() {
   const [searchInput, setSearchInput] = useState<string>('');
   const { isMobile } = useBreakpoint();
 
-  console.log('jotform blep:', jotformSubmissions);
-
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const input: string = e.target.value;
-    setSearchInput(input);
+    setSearchInput(e.target.value.toLowerCase());
   };
 
   const getJotformSubmissions = useCallback(async () => {
@@ -80,16 +77,24 @@ export default function CGCGrad() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer flex justifyContent="center" backgroundColor="primary">
+      <FluidContainer
+        flex
+        justifyContent="center"
+        backgroundColor={id === 'apida' ? 'white' : 'primary'}
+      >
         <Image
           alt="Cross Cultural Centers Cultural Grads Banner"
-          src="/departments/ccc/ccc-grad-banner.jpg"
+          src={
+            id === 'apida'
+              ? '/departments/ccc/apidaGrad_WebsiteCover-2024.png'
+              : '/departments/ccc/ccc-grad-banner.jpg'
+          }
           width={0}
           height={0}
           sizes="100vh"
           style={{
             height: isMobile ? 'auto' : '80%',
-            width: isMobile ? '80%' : 'auto',
+            width: isMobile ? '100%' : 'auto',
           }}
         />
       </FluidContainer>
