@@ -3,7 +3,6 @@ import {
   EventHeader,
   ModUpcomingEvents,
   BoardOfDirectorsCTA,
-  // BoardOfDirectorsCTAPromotion,
   Page,
   CallToActionImages,
 } from 'modules';
