@@ -22,20 +22,22 @@ interface PageProps {
 
 export const Page = ({ children }: PageProps) => (
   <>
-    <Head>
-      <meta
-        name="image"
-        property="og:image"
-        content="/departments/ccc/ccc-grad-banner.jpg"
-      />
-    </Head>
     <PageContainer>
       <Announcement
         text="Out of an abundance of caution the U-SU is closed on Monday, Feb 5"
         isVisible={false}
       />
       <Nav />
-      <main>{children}</main>
+      <main>
+        <Head>
+          <meta
+            name="image"
+            property="og:image"
+            content="/departments/ccc/ccc-grad-banner.jpg"
+          />
+        </Head>
+        {children}
+      </main>
       <BackToTop />
       <Footer />
     </PageContainer>
