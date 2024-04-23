@@ -38,7 +38,7 @@ export const Page = ({ children }: PageProps) => (
         </Head>
         {children}
       </main>
-      <BackToTop></BackToTop>
+      <BackToTop />
       <Footer />
     </PageContainer>
   </>
