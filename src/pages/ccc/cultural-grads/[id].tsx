@@ -58,7 +58,7 @@ export default function CGCGrad() {
   return (
     <Page>
       <Head>
-        <title>Graduation</title>
+        <title>Cultural Graduation</title>
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
@@ -74,6 +74,11 @@ export default function CGCGrad() {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+        />
+        <meta
+          name="image"
+          property="og:image"
+          content="/departments/ccc/ccc-grad-banner.jpg"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
