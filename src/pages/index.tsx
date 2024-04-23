@@ -58,7 +58,7 @@ export default function Home() {
         <meta
           name="image"
           property="og:image"
-          content="https://medium.com/nerd-for-tech/og-meta-tags-9cc121f5fec4"
+          content="/about/calstatela-hero.jpeg"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

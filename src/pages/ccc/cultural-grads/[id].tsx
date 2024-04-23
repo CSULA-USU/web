@@ -75,11 +75,6 @@ export default function CGCGrad() {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
         />
-        <meta
-          name="image"
-          property="og:image"
-          content="/departments/ccc/ccc-grad-banner.jpg"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer
