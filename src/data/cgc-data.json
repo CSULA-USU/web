@@ -204,5 +204,66 @@
       "question": "I have more questions about applying. Whom do I contact?",
       "answer": "Please get in touch with the respective center coordinator or the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call 323-343-5001."
     }
-  ]
+  ],
+  "grad-data": {
+    "native": [
+      {
+        "firstName": "Jennifer",
+        "lastName": "Sanchez",
+        "major": "Business & Economics, option Marketing Management",
+        "degree": "Bachelor of Science"
+      },
+      {
+        "firstName": "Adam",
+        "lastName": "Geldres",
+        "degree": "Bachelor of Arts",
+        "major": "Theater Art Performance ",
+        "acknowledgement": "I want to thank the Choctaw for continuing to provide scholarships during my academic career, my family and friends for their nonstop support in all my success.",
+        "tribe": "Choctaw"
+      },
+      {
+        "firstName": "Danielle",
+        "lastName": "Lizarraga",
+        "degree": "Bachelor of Science",
+        "major": "Criminal justice ",
+        "acknowledgement": "I would love to thank my parents for supporting me during my cultural endeavors and my guidance counselors, who have gone above and beyond to ensure a smooth transition as a first-generation student."
+      },
+      {
+        "firstName": "Alexandria",
+        "lastName": "Gradillas",
+        "degree": "Bachelor of Arts",
+        "major": "Psychology ",
+        "acknowledgement": "As a Native American woman, receiving honors with a Bachelor's degree in Psychology is a momentous occasion that fills me with pride and gratitude. This journey has been shaped by the support and guidance of many individuals and communities, for which I am deeply thankful. First and foremost, I want to express my heartfelt appreciation to my friends and family. Their unwavering love, encouragement, and sacrifices have been the foundation of my academic pursuits. ",
+        "tribe": "Luiseno"
+      },
+      {
+        "firstName": "Fernanda ",
+        "lastName": "Ortega",
+        "degree": "Bachelor of Arts",
+        "major": "Theater Art Performance",
+        "acknowledgement": "Thank you to my family and friends for providing me with guidance, and motivation. I am grateful for all the support!",
+        "tribe": "Tepehuán"
+      },
+      {
+        "firstName": "Hailey",
+        "lastName": "Fernandez",
+        "degree": "Bachelor of Science",
+        "major": "Criminal Justice",
+        "acknowledgement": "I first want to give glory to God because without him I would not be where I am today with all my trials and tribulations. I want to thank my family for everything and most importantly my mom for being my rock! And thank you to my extended family for being there for me."
+      },
+      {
+        "firstName": "Janneth",
+        "lastName": "Najera",
+        "degree": "Master of Art",
+        "major": "Chicanx Latinx Studies ",
+        "acknowledgement": "Thank you to my wife, without you none of this is possible. To Corina you have no idea the legacy you have, love you profe. To Kim I wanna be like you when I grow up. Love you"
+      },
+      {
+        "firstName": "AJ",
+        "lastName": "Chavez",
+        "degree": "Bachelor of Arts",
+        "major": "Theatre Arts"
+      }
+    ]
+  }
 }

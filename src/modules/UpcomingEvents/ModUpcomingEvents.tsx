@@ -15,7 +15,6 @@ interface UpcomingEventsProps {
 const UpcomingEventsHeading = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
   justify-content: space-between;
 `;
 
@@ -67,7 +66,7 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
       {!monthly && (
         <UpcomingEventsHeading>
           <Link href="/events">
-            <Typography as="h2" variant="subheader" margin="0 24px 0 0">
+            <Typography as="h2" variant="subheader">
               Upcoming Events
             </Typography>
           </Link>
