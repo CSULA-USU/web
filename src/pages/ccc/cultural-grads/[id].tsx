@@ -48,9 +48,11 @@ export default function CGCGrad() {
   };
 
   const getJotformSubmissions = useCallback(async () => {
+    if (!id) {
+      return;
+    }
     setJotformSubmissions(await fetchJotform(id));
   }, [id]);
-
   useEffect(() => {
     getJotformSubmissions();
   }, [getJotformSubmissions]);
