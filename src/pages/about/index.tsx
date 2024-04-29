@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Page, GenericModal } from 'modules';
+import { Page } from 'modules';
 import {
   Button,
   Card,
@@ -10,8 +10,7 @@ import {
 } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { useState } from 'react';
-import { media, Spaces } from 'theme';
+import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const ButtonContainer = styled.div`
@@ -24,10 +23,6 @@ const ButtonContainer = styled.div`
   }
   column-gap: ${Spaces.md};
   row-gap: ${Spaces.md};
-`;
-
-const HistoryContainer = styled.div`
-  ${media('mobile')(`width:300px;`)}
 `;
 
 const Title = styled.div`
@@ -81,7 +76,6 @@ const cards = [
 
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
-  const [modalIsOpen, setIsOpen] = useState(false);
 
   return (
     <Page>
@@ -170,7 +164,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
+                  href="https://www.dropbox.com/scl/fi/1himabywar6ahiys4syza/Org-Chart_4.29.24_11x17.jpg?rlkey=3rhkmv962i4cz27253hhauhyr&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
@@ -250,17 +244,6 @@ export default function About() {
         />
       </FluidContainer>
       <InstagramFeed department="usu" />
-      <GenericModal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setIsOpen(false)}
-      >
-        <HistoryContainer>
-          <Typography variant="title">U-SU History</Typography>
-          <video width="100%" controls>
-            <source src="/about/usu-opening.mp4" type="video/mp4" />
-          </video>
-        </HistoryContainer>
-      </GenericModal>
     </Page>
   );
 }
