@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
-import { Spaces, media } from 'theme';
+import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
@@ -42,6 +42,30 @@ export default function CGCGrad() {
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const [searchInput, setSearchInput] = useState<string>('');
   const { isMobile } = useBreakpoint();
+  let headerBackgroundColor: keyof typeof Colors = 'primary';
+  let headerImageSrc: any = '';
+  switch (id) {
+    case 'nuestra':
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/nvCMyv0.png';
+      } else {
+        headerImageSrc = 'https://i.imgur.com/0Nix4lZ.png';
+      }
+      headerBackgroundColor = 'nuestraOrange';
+      break;
+    case 'apida':
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/XfoLHSR.png';
+      } else {
+        headerImageSrc = '/departments/ccc/apidaGrad_WebsiteCover-2024.png';
+      }
+      break;
+    case 'pride':
+      headerImageSrc = 'https://i.imgur.com/88rCUGJ.png';
+      break;
+    default:
+      headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';
+  }
 
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value.toLowerCase());
@@ -87,15 +111,11 @@ export default function CGCGrad() {
       <FluidContainer
         flex
         justifyContent="center"
-        backgroundColor={id === 'apida' ? 'white' : 'primary'}
+        backgroundColor={headerBackgroundColor}
       >
         <Image
           alt="Cross Cultural Centers Cultural Grads Banner"
-          src={
-            id === 'apida'
-              ? '/departments/ccc/apidaGrad_WebsiteCover-2024.png'
-              : '/departments/ccc/ccc-grad-banner.jpg'
-          }
+          src={headerImageSrc}
           width={0}
           height={0}
           sizes="100vh"
@@ -103,6 +123,7 @@ export default function CGCGrad() {
             height: isMobile ? 'auto' : '80%',
             width: isMobile ? '100%' : 'auto',
           }}
+          priority
         />
       </FluidContainer>
       <FluidContainer flex justifyContent="center">

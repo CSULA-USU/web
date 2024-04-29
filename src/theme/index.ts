@@ -57,4 +57,5 @@ export const Colors = {
   greyLightest: '#F4F4F4',
   white: '#FFFFFF',
   transparent: 'transparent',
+  nuestraOrange: '#F4951C',
 } as const;

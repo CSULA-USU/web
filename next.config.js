@@ -6,7 +6,7 @@ const nextConfig = {
   },
   swcMinify: true,
   images: {
-    domains: ['calstatela-cdn.presence.io', 'www.jotform.com'],
+    domains: ['calstatela-cdn.presence.io', 'www.jotform.com', 'i.imgur.com'],
   },
 };
 
