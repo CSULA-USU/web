@@ -2,7 +2,8 @@ import { Page } from 'modules';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { FluidContainer, Typography } from 'components';
+import { keyframes } from 'styled-components';
+import { Button, FluidContainer, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
 import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
@@ -35,12 +36,29 @@ const SearchBar = styled.input.attrs({ type: 'text' })`
   font-size: 16px;
 `;
 
+const spin = keyframes`
+to {
+  transform: rotate(360deg);
+}
+`;
+
+const Loading = styled.div`
+  height: 100px;
+  width: 100px;
+  border: 6px solid;
+  border-color: black transparent black transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  animation-name: ${spin};
+`;
+
 export default function CGCGrad() {
   const router = useRouter();
   const { id } = router.query;
   const [jotformSubmissions, setJotformSubmissions] = useState<Graduate[]>([]);
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const [searchInput, setSearchInput] = useState<string>('');
+  const [loading, isLoading] = useState(true);
   const { isMobile } = useBreakpoint();
   let headerBackgroundColor: keyof typeof Colors = 'primary';
   let headerImageSrc: any = '';
@@ -83,8 +101,14 @@ export default function CGCGrad() {
     }
     setJotformSubmissions(await fetchJotform(id));
   }, [id]);
+
   useEffect(() => {
-    getJotformSubmissions();
+    const fetchData = async () => {
+      isLoading(true);
+      await getJotformSubmissions();
+      isLoading(false);
+    };
+    fetchData();
   }, [getJotformSubmissions]);
 
   return (
@@ -132,76 +156,131 @@ export default function CGCGrad() {
           priority
         />
       </FluidContainer>
-      <FluidContainer flex justifyContent="center">
-        <SearchBar
-          placeholder="Enter Graduate's Name"
-          onChange={searchInputHandler}
-        />
-      </FluidContainer>
-      <FluidContainer padding="0 16px">
-        {alphabets.split('').map((alphabet, i) => {
-          const filteredSubmissions =
-            Array.isArray(jotformSubmissions) &&
-            jotformSubmissions
-              .filter((submissions) =>
-                submissions.fullName.pretty.toLowerCase().includes(searchInput),
-              )
-              .filter(
-                (person: any) =>
-                  person.fullName.firstName.slice(0, 1).toUpperCase() ===
-                  alphabet,
-              );
-          if (filteredSubmissions && filteredSubmissions.length > 0) {
-            return (
-              <AlphabetSection key={i}>
-                <Typography
-                  key={i}
-                  as="h1"
-                  variant="span"
-                  size="xl"
-                  margin="0 0 8px 0"
-                >
-                  {alphabet}
+      {loading ? (
+        <FluidContainer flex justifyContent="center">
+          <Loading />
+        </FluidContainer>
+      ) : (
+        <>
+          {jotformSubmissions.length != 0 ? (
+            <>
+              <FluidContainer flex justifyContent="center">
+                <SearchBar
+                  placeholder="Enter Graduate's Name"
+                  onChange={searchInputHandler}
+                />
+              </FluidContainer>
+              <FluidContainer padding="0 16px">
+                {alphabets.split('').map((alphabet, i) => {
+                  const filteredSubmissions =
+                    Array.isArray(jotformSubmissions) &&
+                    jotformSubmissions
+                      .filter((submissions) =>
+                        submissions.fullName.pretty
+                          .toLowerCase()
+                          .includes(searchInput),
+                      )
+                      .filter(
+                        (person: any) =>
+                          person.fullName.firstName
+                            .slice(0, 1)
+                            .toUpperCase() === alphabet,
+                      );
+
+                  return filteredSubmissions &&
+                    filteredSubmissions.length == 0 ? (
+                    <>
+                      {/* <FluidContainer flex justifyContent="center">
+                        <Typography>No Matching Names</Typography>
+                      </FluidContainer> */}
+                    </>
+                  ) : (
+                    <>
+                      <AlphabetSection key={i}>
+                        <Typography
+                          key={i}
+                          as="h1"
+                          variant="span"
+                          size="xl"
+                          margin="0 0 8px 0"
+                        >
+                          {alphabet}
+                        </Typography>
+                        <StyledDivider />
+                        <NameGrid>
+                          {filteredSubmissions &&
+                            filteredSubmissions
+                              .sort(function (a: any, b: any) {
+                                if (
+                                  a.fullName.firstName +
+                                    a.fullName.middleName +
+                                    a.fullName.lastName <
+                                  b.fullName.firstName +
+                                    b.fullName.middleName +
+                                    b.fullName.lastName
+                                ) {
+                                  return -1;
+                                }
+                                if (
+                                  a.fullName.firstName +
+                                    a.fullName.middleName +
+                                    a.fullName.lastName <
+                                  b.fullName.firstName +
+                                    b.fullName.middleName +
+                                    b.fullName.lastName
+                                ) {
+                                  return 1;
+                                }
+                                return 0;
+                              })
+                              .map((submission: any, j: number) => (
+                                <CGCParticipantModal
+                                  participantData={submission}
+                                  key={j}
+                                />
+                              ))}
+                        </NameGrid>
+                      </AlphabetSection>
+                    </>
+                  );
+                })}
+              </FluidContainer>
+            </>
+          ) : (
+            <FluidContainer>
+              <FluidContainer flex justifyContent="center">
+                <Typography as="h1" variant="title">
+                  OOPS! We can&apos;t find the page you&apos;re looking for.
                 </Typography>
-                <StyledDivider />
-                <NameGrid>
-                  {filteredSubmissions &&
-                    filteredSubmissions
-                      .sort(function (a: any, b: any) {
-                        if (
-                          a.fullName.firstName +
-                            a.fullName.middleName +
-                            a.fullName.lastName <
-                          b.fullName.firstName +
-                            b.fullName.middleName +
-                            b.fullName.lastName
-                        ) {
-                          return -1;
-                        }
-                        if (
-                          a.fullName.firstName +
-                            a.fullName.middleName +
-                            a.fullName.lastName <
-                          b.fullName.firstName +
-                            b.fullName.middleName +
-                            b.fullName.lastName
-                        ) {
-                          return 1;
-                        }
-                        return 0;
-                      })
-                      .map((submission: any, j: number) => (
-                        <CGCParticipantModal
-                          participantData={submission}
-                          key={j}
-                        />
-                      ))}
-                </NameGrid>
-              </AlphabetSection>
-            );
-          }
-        })}
-      </FluidContainer>
+              </FluidContainer>
+              <FluidContainer flex justifyContent="center" padding="0">
+                <Image
+                  src="https://media.giphy.com/media/hqOIyGbkgZoQB7h3Pd/giphy.gif"
+                  alt="Eddie trying to figure out what you were looking for"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '50%', height: 'auto' }}
+                />
+              </FluidContainer>
+              <FluidContainer
+                flex
+                justifyContent="space-around"
+                alignItems="center"
+              >
+                <Typography as="h2" variant="subheader">
+                  Did you mean:
+                </Typography>
+                <Button href="/ccc/cultural-grads/apida">APIDA</Button>
+                <Button href="/ccc/cultural-grads/black">Black</Button>
+                <Button href="/ccc/cultural-grads/native">Native</Button>
+                <Button href="/ccc/cultural-grads/nuestra">Nuestra</Button>
+                <Button href="/ccc/cultural-grads/pride">Pride</Button>
+              </FluidContainer>
+            </FluidContainer>
+          )}
+        </>
+      )}
     </Page>
   );
 }
