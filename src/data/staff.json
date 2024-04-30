@@ -108,15 +108,6 @@
     "email": "jhered23@calstatela.edu"
   },
   {
-    "name": "Megan Bell",
-    "title": "Executive Director",
-    "src": "/staff/megan-bell.png",
-    "alt": "Megan Bell",
-    "tags": ["Administration", "Director"],
-    "department": "U-SU Administration",
-    "email": "mbell27@calstatela.edu"
-  },
-  {
     "name": "John Ortiz",
     "title": "Director, Operations",
     "src": "/staff/john-ortiz.png",
@@ -187,6 +178,15 @@
     "tags": ["Operations", "Director"],
     "department": "Operations",
     "email": "msandov@cslanet.calstatela.edu"
+  },
+  {
+    "name": "Megan Bell",
+    "title": "Executive Director",
+    "src": "/staff/megan-bell.png",
+    "alt": "Megan Bell",
+    "tags": ["Administration", "Director"],
+    "department": "U-SU Administration",
+    "email": "mbell27@calstatela.edu"
   },
   {
     "name": "Robert Gonzales",
