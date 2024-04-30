@@ -59,9 +59,15 @@ export default function CGCGrad() {
       } else {
         headerImageSrc = '/departments/ccc/apidaGrad_WebsiteCover-2024.png';
       }
+      headerBackgroundColor = 'white';
       break;
     case 'pride':
-      headerImageSrc = 'https://i.imgur.com/88rCUGJ.png';
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/88rCUGJ.png';
+      } else {
+        headerImageSrc = 'https://i.imgur.com/2Xo1BhW.png';
+      }
+      headerBackgroundColor = 'white';
       break;
     default:
       headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';
