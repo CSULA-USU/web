@@ -1,6 +1,6 @@
 import { Page, Header } from 'modules';
 import Head from 'next/head';
-import { FluidContainer, Typography, Button, Image } from 'components';
+import { FluidContainer, Typography, Button } from 'components';
 import styled from 'styled-components';
 import { StaffCard } from 'components/StaffCard';
 import { useEffect, useState } from 'react';
@@ -130,7 +130,7 @@ export default function Staff() {
           </StaffCard>
         ))}
       </FluidContainer>
-      <FluidContainer flex justifyContent="center">
+      {/* <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of full time usu staff"
           src="/staff/group-staff.jpg"
@@ -138,7 +138,7 @@ export default function Staff() {
           margin={`0px 500px ${Spaces.xl}`}
           borderRadius="12px"
         />
-      </FluidContainer>
+      </FluidContainer> */}
     </Page>
   );
 }

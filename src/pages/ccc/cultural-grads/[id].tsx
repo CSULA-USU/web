@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
-import { Spaces, media } from 'theme';
+import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
@@ -42,15 +42,47 @@ export default function CGCGrad() {
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const [searchInput, setSearchInput] = useState<string>('');
   const { isMobile } = useBreakpoint();
+  let headerBackgroundColor: keyof typeof Colors = 'primary';
+  let headerImageSrc: any = '';
+  switch (id) {
+    case 'nuestra':
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/nvCMyv0.png';
+      } else {
+        headerImageSrc = 'https://i.imgur.com/0Nix4lZ.png';
+      }
+      headerBackgroundColor = 'nuestraOrange';
+      break;
+    case 'apida':
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/XfoLHSR.png';
+      } else {
+        headerImageSrc = '/departments/ccc/apidaGrad_WebsiteCover-2024.png';
+      }
+      headerBackgroundColor = 'white';
+      break;
+    case 'pride':
+      if (isMobile) {
+        headerImageSrc = 'https://i.imgur.com/88rCUGJ.png';
+      } else {
+        headerImageSrc = 'https://i.imgur.com/2Xo1BhW.png';
+      }
+      headerBackgroundColor = 'white';
+      break;
+    default:
+      headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';
+  }
 
   let searchInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value.toLowerCase());
   };
 
   const getJotformSubmissions = useCallback(async () => {
+    if (!id) {
+      return;
+    }
     setJotformSubmissions(await fetchJotform(id));
   }, [id]);
-
   useEffect(() => {
     getJotformSubmissions();
   }, [getJotformSubmissions]);
@@ -58,37 +90,38 @@ export default function CGCGrad() {
   return (
     <Page>
       <Head>
-        <title>Cultural Graduation</title>
+        <title>Cultural Graduation Celebration</title>
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Nuestra, Chicana, Chicano, Chicanx, Latina, Latino, Latinx, Central American, South American"
+          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Nuestra, Chicana, Chicano, Chicanx, Latina, Latino, Latinx, Central American, South American, APIDA, Asian, Pacific Islander, South Asian, Desi-American, Black, African American, Pan-African Diaspora, Native, American Indian, Alaska Native, Native Hawaiian, Indigenous, Pride, Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual"
         />
         <meta
           name="description"
-          content="Look back into Cal State LA's Nuestra Graduation. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
+          content="Look back into Cal State LA's Cultural Graduations. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
         />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+        />
+        <meta
+          name="image"
+          property="og:image"
+          content="/departments/ccc/ccc-grad-banner.jpg"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer
         flex
         justifyContent="center"
-        backgroundColor={id === 'apida' ? 'white' : 'primary'}
+        backgroundColor={headerBackgroundColor}
       >
         <Image
           alt="Cross Cultural Centers Cultural Grads Banner"
-          src={
-            id === 'apida'
-              ? '/departments/ccc/apidaGrad_WebsiteCover-2024.png'
-              : '/departments/ccc/ccc-grad-banner.jpg'
-          }
+          src={headerImageSrc}
           width={0}
           height={0}
           sizes="100vh"
@@ -96,6 +129,7 @@ export default function CGCGrad() {
             height: isMobile ? 'auto' : '80%',
             width: isMobile ? '100%' : 'auto',
           }}
+          priority
         />
       </FluidContainer>
       <FluidContainer flex justifyContent="center">
