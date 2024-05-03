@@ -166,6 +166,82 @@
     ]
   },
   {
+    "title": "APIDA Grad",
+    "url": "/ccc/cultural-grads/apida",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "apida",
+      "grads",
+      "asian pacific islander",
+      "desi american",
+      "apisrc",
+      "graduation celebration"
+    ]
+  },
+  {
+    "title": "Black Grad",
+    "url": "/ccc/cultural-grads/black",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "africa",
+      "grads",
+      "black",
+      "pasrc",
+      "pan african"
+    ]
+  },
+  {
+    "title": "Nuestra Grad",
+    "url": "/ccc/cultural-grads/nuestra",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "mexican",
+      "grads",
+      "black",
+      "clsrc",
+      "chicano",
+      "graduation celebration",
+      "nuestra"
+    ]
+  },
+  {
+    "title": "Pride Grad",
+    "url": "/ccc/cultural-grads/pride",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "pride",
+      "grads",
+      "LGBT",
+      "gay",
+      "lesbian",
+      "queer",
+      "graduation celebration",
+      "gsrc"
+    ]
+  },
+  {
+    "title": "Native Grad",
+    "url": "/ccc/cultural-grads/native",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "native",
+      "grads",
+      "tribe",
+      "graduation celebration",
+      "american indian"
+    ]
+  },
+  {
     "title": "Gender and Sexuality Resource Center",
     "url": "/ccc/gsrc",
     "description": "The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.",

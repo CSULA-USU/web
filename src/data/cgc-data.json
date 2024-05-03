@@ -82,9 +82,9 @@
         "Email: motuhiv@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://form.jotform.com/233465396205156",
+        "buttonLink": "/ccc/cultural-grads/apida",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "Sign Up"
+        "buttonText": "View"
       },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
@@ -102,9 +102,9 @@
         "Email: dguzma91@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://form.jotform.com/233464461546156",
+        "buttonLink": "/ccc/cultural-grads/black",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "Sign Up"
+        "buttonText": "View"
       },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
@@ -122,9 +122,9 @@
         "Email: cjacks38@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://calstatela.co1.qualtrics.com/jfe/form/SV_6WNradBY6WLOZIq",
+        "buttonLink": "/ccc/cultural-grads/native",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "Sign Up"
+        "buttonText": "View"
       },
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
@@ -142,9 +142,9 @@
         "Email: ccc@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://form.jotform.com/233465206027148",
+        "buttonLink": "/ccc/cultural-grads/nuestra",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "Sign Up"
+        "buttonText": "View"
       },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
@@ -162,9 +162,9 @@
         "Email: mpizarr5@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://form.jotform.com/233464501150142",
+        "buttonLink": "/ccc/cultural-grads/pride",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "Sign Up"
+        "buttonText": "View"
       },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
@@ -219,14 +219,16 @@
         "degree": "Bachelor of Arts",
         "major": "Theater Art Performance ",
         "acknowledgement": "I want to thank the Choctaw for continuing to provide scholarships during my academic career, my family and friends for their nonstop support in all my success.",
-        "tribe": "Choctaw"
+        "tribe": "Choctaw",
+        "img": "/departments/ccc/native-grad/adam-geldres.jpeg"
       },
       {
         "firstName": "Danielle",
         "lastName": "Lizarraga",
         "degree": "Bachelor of Science",
         "major": "Criminal justice ",
-        "acknowledgement": "I would love to thank my parents for supporting me during my cultural endeavors and my guidance counselors, who have gone above and beyond to ensure a smooth transition as a first-generation student."
+        "acknowledgement": "I would love to thank my parents for supporting me during my cultural endeavors and my guidance counselors, who have gone above and beyond to ensure a smooth transition as a first-generation student.",
+        "img": "/departments/ccc/native-grad/Danielle Lizarraga.jpeg"
       },
       {
         "firstName": "Alexandria",
@@ -249,14 +251,16 @@
         "lastName": "Fernandez",
         "degree": "Bachelor of Science",
         "major": "Criminal Justice",
-        "acknowledgement": "I first want to give glory to God because without him I would not be where I am today with all my trials and tribulations. I want to thank my family for everything and most importantly my mom for being my rock! And thank you to my extended family for being there for me."
+        "acknowledgement": "I first want to give glory to God because without him I would not be where I am today with all my trials and tribulations. I want to thank my family for everything and most importantly my mom for being my rock! And thank you to my extended family for being there for me.",
+        "img": "/departments/ccc/native-grad/Hailey Fernandez.jpeg"
       },
       {
         "firstName": "Janneth",
         "lastName": "Najera",
         "degree": "Master of Art",
         "major": "Chicanx Latinx Studies ",
-        "acknowledgement": "Thank you to my wife, without you none of this is possible. To Corina you have no idea the legacy you have, love you profe. To Kim I wanna be like you when I grow up. Love you"
+        "acknowledgement": "Thank you to my wife, without you none of this is possible. To Corina you have no idea the legacy you have, love you profe. To Kim I wanna be like you when I grow up. Love you",
+        "img": "/departments/ccc/native-grad/Janneth Najera.jpeg"
       },
       {
         "firstName": "AJ",

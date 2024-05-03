@@ -78,7 +78,7 @@ export const Footer = () => (
             <Typography color="primary" size="sm" lineHeight="2.4">
               Sunday: Closed
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            {/* <Typography color="primary" size="sm" lineHeight="2.4">
               <Link
                 target="_blank"
                 href={
@@ -87,7 +87,7 @@ export const Footer = () => (
               >
                 Upcoming Building Hours
               </Link>
-            </Typography>
+            </Typography> */}
           </div>
           <div>
             <Typography as="h3" color="white">
