@@ -219,14 +219,16 @@
         "degree": "Bachelor of Arts",
         "major": "Theater Art Performance ",
         "acknowledgement": "I want to thank the Choctaw for continuing to provide scholarships during my academic career, my family and friends for their nonstop support in all my success.",
-        "tribe": "Choctaw"
+        "tribe": "Choctaw",
+        "img": "/departments/ccc/native-grad/adam-geldres.jpeg"
       },
       {
         "firstName": "Danielle",
         "lastName": "Lizarraga",
         "degree": "Bachelor of Science",
         "major": "Criminal justice ",
-        "acknowledgement": "I would love to thank my parents for supporting me during my cultural endeavors and my guidance counselors, who have gone above and beyond to ensure a smooth transition as a first-generation student."
+        "acknowledgement": "I would love to thank my parents for supporting me during my cultural endeavors and my guidance counselors, who have gone above and beyond to ensure a smooth transition as a first-generation student.",
+        "img": "/departments/ccc/native-grad/Danielle Lizarraga.jpeg"
       },
       {
         "firstName": "Alexandria",
@@ -249,14 +251,16 @@
         "lastName": "Fernandez",
         "degree": "Bachelor of Science",
         "major": "Criminal Justice",
-        "acknowledgement": "I first want to give glory to God because without him I would not be where I am today with all my trials and tribulations. I want to thank my family for everything and most importantly my mom for being my rock! And thank you to my extended family for being there for me."
+        "acknowledgement": "I first want to give glory to God because without him I would not be where I am today with all my trials and tribulations. I want to thank my family for everything and most importantly my mom for being my rock! And thank you to my extended family for being there for me.",
+        "img": "/departments/ccc/native-grad/Hailey Fernandez.jpeg"
       },
       {
         "firstName": "Janneth",
         "lastName": "Najera",
         "degree": "Master of Art",
         "major": "Chicanx Latinx Studies ",
-        "acknowledgement": "Thank you to my wife, without you none of this is possible. To Corina you have no idea the legacy you have, love you profe. To Kim I wanna be like you when I grow up. Love you"
+        "acknowledgement": "Thank you to my wife, without you none of this is possible. To Corina you have no idea the legacy you have, love you profe. To Kim I wanna be like you when I grow up. Love you",
+        "img": "/departments/ccc/native-grad/Janneth Najera.jpeg"
       },
       {
         "firstName": "AJ",

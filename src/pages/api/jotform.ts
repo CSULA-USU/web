@@ -48,6 +48,7 @@ export default async function handler(
             major: submission.major,
             pronouns: submission.tribe,
             acknowledgement: submission.acknowledgement,
+            img: submission.img,
           };
           specificDataObj.push(person);
         });
