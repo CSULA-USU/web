@@ -92,12 +92,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/a510b0d5tqlkjrc902x8l/Agenda-U-SU-Board-of-Directors-April-19-2024.pdf?rlkey=yadijvf4ov4wykum5armw23sv&dl=0',
             children: 'BOD Meeting Apr 19, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/wvyyr086oqawjlmr22chk/Agenda-U-SU-Board-of-Directors-May-10-2024.docx?rlkey=qxazyot5iqcxsxayv4oqahrrh&dl=0',
+            children: 'BOD Meeting May 10, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/1by429rf99b01i1p6u75n/23-24.zip?rlkey=6knp2zgpmym479kkmon2k8967&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/dtuittkhxaek7oubu0zu3/fy23-24.zip?rlkey=u1hmvjivlefx7k3yfhgrjthpw&dl=0',
       variant: 'black',
     },
   },
