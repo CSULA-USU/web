@@ -2,13 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Graduate } from 'types';
 import CGCData from '../../data/cgc-data.json';
 
-const FormIDs = {
-  apida: 233465396205156,
-  black: 233464461546156,
-  pride: 233464501150142,
-  nuestra: 233465206027148,
-};
-
 const jotform = process.env.JOTFORM_SUBMISSIONS_API_KEY;
 
 export default async function handler(
@@ -17,7 +10,23 @@ export default async function handler(
 ) {
   try {
     const { id } = req.query;
-    const formID = FormIDs[id as keyof typeof FormIDs];
+    let formID;
+    switch (id) {
+      case 'nuestra':
+        formID = process.env.NUESTRA_GRAD_FORM_ID;
+        break;
+      case 'black':
+        formID = process.env.BLACK_GRAD_FORM_ID;
+        break;
+      case 'apida':
+        formID = process.env.APIDA_GRAD_FORM_ID;
+        break;
+      case 'pride':
+        formID = process.env.PRIDE_GRAD_FORM_ID;
+        break;
+      default:
+        console.log('no cgc id detected at this time');
+    }
     let data = await fetch(
       `https://api.jotform.com/form/${formID}/submissions?apiKey=${jotform}&limit=500`,
     );
@@ -39,6 +48,7 @@ export default async function handler(
             major: submission.major,
             pronouns: submission.tribe,
             acknowledgement: submission.acknowledgement,
+            img: submission.img,
           };
           specificDataObj.push(person);
         });

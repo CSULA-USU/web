@@ -117,11 +117,7 @@ const descriptionCards = [
 const hours = [
   {
     title: 'Office Hours',
-    times: [
-      'Monday - Thursday: 8:00 AM - 7:00 PM',
-      'Friday: 8:00 AM - 5:00 PM',
-      'Saturday - Sunday: CLOSED',
-    ],
+    times: ['Monday - Thursday: 8:00 AM - 6:00 PM', 'Friday - Sunday: CLOSED'],
   },
 ];
 
