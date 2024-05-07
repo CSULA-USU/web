@@ -26,6 +26,7 @@ export const fetchJotform = async (id: any) => {
   try {
     const data = await fetch(`/api/jotform?id=${id}`);
     const dataFeed = await data.json();
+    console.log('PP');
     return dataFeed;
   } catch (error) {
     console.error('Error fetching jotform data:', error);
