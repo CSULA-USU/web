@@ -145,15 +145,16 @@ export const CGCParticipantModal = ({
       {isMobile ? (
         <>
           <Participant onClick={() => openModal()}>
-            <Typography variant="title" size="sm">{`${
-              participantData.fullName?.firstName
-            }${
+            <Typography
+              variant="title"
+              size="sm"
+            >{`${participantData.fullName?.firstName.toUpperCase()}${
               participantData.fullName?.middleName
-                ? ' ' + participantData.fullName?.middleName
+                ? ' ' + participantData.fullName?.middleName.toUpperCase()
                 : ''
-            } ${participantData.fullName?.lastName}${
+            } ${participantData.fullName?.lastName.toUpperCase()}${
               participantData.fullName?.suffix
-                ? ' ' + participantData.fullName?.suffix
+                ? ' ' + participantData.fullName?.suffix.toUpperCase()
                 : ''
             }`}</Typography>
             <PiArrowSquareInFill size="24" style={{ height: '28px' }} />
@@ -294,15 +295,16 @@ export const CGCParticipantModal = ({
       ) : (
         <>
           <Button variant="transparent" onClick={() => openModal()} padding="0">
-            <Typography as="h3" variant="label">{`${
-              participantData.fullName?.firstName
-            }${
+            <Typography
+              as="h3"
+              variant="label"
+            >{`${participantData.fullName?.firstName.toUpperCase()}${
               participantData.fullName?.middleName
-                ? ' ' + participantData.fullName?.middleName
+                ? ' ' + participantData.fullName?.middleName.toUpperCase()
                 : ''
-            } ${participantData.fullName?.lastName}${
+            } ${participantData.fullName?.lastName.toUpperCase()}${
               participantData.fullName?.suffix
-                ? ' ' + participantData.fullName?.suffix
+                ? ' ' + participantData.fullName?.suffix.toUpperCase()
                 : ''
             }`}</Typography>
           </Button>
