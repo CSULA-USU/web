@@ -87,6 +87,7 @@ const MobileModalStyle = {
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   content: {
+    maxHeight: '90%',
     overflow: 'scroll',
     padding: '40px',
     top: '50%',
