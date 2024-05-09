@@ -2,8 +2,7 @@ import { Page } from 'modules';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
-import { Button, FluidContainer, Typography } from 'components';
+import { Button, FluidContainer, Loading, Typography } from 'components';
 import { CGCParticipantModal } from 'modules';
 import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
@@ -34,22 +33,6 @@ const SearchBar = styled.input.attrs({ type: 'text' })`
   border-radius: 40px;
   padding: 12px 24px;
   font-size: 16px;
-`;
-
-const spin = keyframes`
-to {
-  transform: rotate(360deg);
-}
-`;
-
-const Loading = styled.div`
-  height: 100px;
-  width: 100px;
-  border: 6px solid;
-  border-color: black transparent black transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  animation-name: ${spin};
 `;
 
 export default function CGCGrad() {
@@ -157,9 +140,7 @@ export default function CGCGrad() {
         />
       </FluidContainer>
       {loading ? (
-        <FluidContainer flex justifyContent="center">
-          <Loading />
-        </FluidContainer>
+        <Loading load={loading} />
       ) : (
         <>
           {jotformSubmissions.length != 0 ? (
