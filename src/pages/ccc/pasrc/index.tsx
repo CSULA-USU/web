@@ -145,7 +145,7 @@ export default function PASRC() {
           <Image
             margin="auto"
             borderRadius="12px"
-            src="/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg"
+            src="/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
             alt="2022 black graduation celebration smiling face with flowers"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
