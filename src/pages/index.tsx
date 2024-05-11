@@ -6,10 +6,18 @@ import {
   Page,
   CallToActionImages,
 } from 'modules';
-import { NonBreakingSpan } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Image,
+  NonBreakingSpan,
+  Typography,
+} from 'components';
+import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
+import { Spaces } from 'theme';
 
 const images = [
   {
@@ -38,9 +46,21 @@ const images = [
   },
 ];
 
+const ButtonContainer = styled.div`
+  margin-top: ${Spaces['sm']};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  ./ > *:not(:last-child) {
+    margin-right: 8px;
+  }
+  column-gap: ${Spaces.md};
+  row-gap: ${Spaces.md};
+`;
+
 export default function Home() {
   const events = useRecoilValue(eventListState);
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
     <Page>
@@ -62,27 +82,197 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <EventHeader
-        title={
-          <>
-            {isMobile ? (
+      {events.length > 0 ? (
+        <>
+          <EventHeader
+            title={
               <>
-                Welcome to <NonBreakingSpan>the U-SU!</NonBreakingSpan>
+                {isMobile ? (
+                  <>
+                    Welcome to <NonBreakingSpan>the U-SU!</NonBreakingSpan>
+                  </>
+                ) : (
+                  <>
+                    Welcome to the{' '}
+                    <NonBreakingSpan>University-Student Union</NonBreakingSpan>
+                  </>
+                )}
+              </>
+            }
+            featuredEvent={events[0]}
+          />
+          {/* Toggle the line below if there is a promotion. */}
+          {/* <BoardOfDirectorsCTAPromotion /> */}
+          <ModUpcomingEvents events={events} />
+          <CallToActionImages
+            title={
+              <>
+                Join the
+                <br />
+                <strong>U-Krew!</strong>
+              </>
+            }
+            buttonHref="/employment"
+            buttonText="View Opportunities"
+            images={images}
+          >
+            Catalyze your professional development and build your network by
+            becoming a valued member of the{' '}
+            <NonBreakingSpan>U-SU</NonBreakingSpan>
+          </CallToActionImages>
+          {/* Toggle the line below if there is a promotion. */}
+          <BoardOfDirectorsCTA />
+        </>
+      ) : (
+        <>
+          <FluidContainer
+            flex
+            justifyContent="center"
+            backgroundImage="/backgrounds/subtle-background-2.jpg"
+          >
+            {isTablet || isMobile ? (
+              <>
+                <FluidContainer>
+                  <Typography
+                    as="h1"
+                    variant="pageHeader"
+                    size={isTablet ? '4xl' : '5xl'}
+                    lineHeight="1.3"
+                    style={{ textAlign: 'center' }}
+                  >
+                    We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                  </Typography>
+
+                  <FluidContainer
+                    flex
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Image
+                      alt="student union"
+                      src="/about/calstatela-hero.jpeg"
+                      width={0}
+                      height={0}
+                      style={{ width: '100%', height: '100%' }}
+                    ></Image>
+                  </FluidContainer>
+                  <ButtonContainer>
+                    <Button
+                      variant="black"
+                      href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
+                    >
+                      U-SU Organizational Chart
+                    </Button>
+                    <Button
+                      variant="outline"
+                      href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&dl=0"
+                    >
+                      Strategic Plan
+                    </Button>
+                  </ButtonContainer>
+                </FluidContainer>
               </>
             ) : (
               <>
-                Welcome to the{' '}
-                <NonBreakingSpan>University-Student Union</NonBreakingSpan>
+                <FluidContainer
+                  flex
+                  justifyContent="center"
+                  alignItems="center"
+                  padding="0"
+                >
+                  <Image
+                    alt="student union"
+                    src="/about/calstatela-hero.jpeg"
+                    style={{ width: '100%', height: 'auto' }}
+                  ></Image>
+                </FluidContainer>
+
+                <FluidContainer padding="18px 0px 18px 18px">
+                  <FluidContainer>
+                    <Typography
+                      as="h1"
+                      variant="pageHeader"
+                      size={isDesktop ? '4xl' : '5xl'}
+                      lineHeight="1.3"
+                      style={{ textAlign: 'center' }}
+                    >
+                      We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                    </Typography>
+                  </FluidContainer>
+
+                  <ButtonContainer>
+                    <Button
+                      variant="black"
+                      href="https://www.dropbox.com/scl/fi/1himabywar6ahiys4syza/Org-Chart_4.29.24_11x17.jpg?rlkey=3rhkmv962i4cz27253hhauhyr&dl=0"
+                    >
+                      U-SU Organizational Chart
+                    </Button>
+                    <Button
+                      variant="outline"
+                      href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&dl=0"
+                    >
+                      Strategic Plan
+                    </Button>
+                  </ButtonContainer>
+                </FluidContainer>
               </>
             )}
-          </>
-        }
-        featuredEvent={events[0]}
-      />
-      {/* Toggle the line below if there is a promotion. */}
-      {/* <BoardOfDirectorsCTAPromotion /> */}
-      <ModUpcomingEvents events={events} />
-      <CallToActionImages
+          </FluidContainer>
+          <FluidContainer
+            flex
+            flexDirection={isMobile ? 'column' : 'row'}
+            backgroundColor="primary"
+            padding="0"
+          >
+            <FluidContainer>
+              <Typography
+                variant="pageHeader"
+                as="span"
+                size={isDesktop ? 'lg' : 'xl'}
+                lineHeight="1.5"
+              >
+                With open doors and minds, we provide space and opportunities,
+                enabling Golden Eagles to soar. Our vision is to become Cal
+                State LA&apos;s hub for connection and growth.
+              </Typography>
+            </FluidContainer>
+            <FluidContainer>
+              <Typography
+                variant="pageHeader"
+                color="greyDarkest"
+                as="p"
+                size={isDesktop ? 'sm' : 'md'}
+                lineHeight="1.5"
+              >
+                The University-Student Union, or U-SU for short, is a great
+                one-stop location for students eager to learn about what&apos;s
+                happening on campus, collect student discounts or get involved.
+                It is the headquarters for the Alumni Center, student government
+                (Associated Students Incorporated) and campus organizations and
+                clubs.
+              </Typography>
+            </FluidContainer>
+          </FluidContainer>
+          <BoardOfDirectorsCTA />
+          <CallToActionImages
+            title={
+              <>
+                Join the
+                <br />
+                <strong>U-Krew!</strong>
+              </>
+            }
+            buttonHref="/employment"
+            buttonText="View Opportunities"
+            images={images}
+          >
+            Catalyze your professional development and build your network by
+            becoming a valued member of the{' '}
+            <NonBreakingSpan>U-SU</NonBreakingSpan>
+          </CallToActionImages>
+        </>
+      )}
+      {/* <CallToActionImages
         title={
           <>
             Join the
@@ -96,9 +286,9 @@ export default function Home() {
       >
         Catalyze your professional development and build your network by
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
-      </CallToActionImages>
+      </CallToActionImages> */}
       {/* Toggle the line below if there is a promotion. */}
-      <BoardOfDirectorsCTA />
+      {/* <BoardOfDirectorsCTA /> */}
     </Page>
   );
 }

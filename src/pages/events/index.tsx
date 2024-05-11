@@ -3,6 +3,8 @@ import { UpcomingEvents, Page, Header } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import styled from 'styled-components';
+import { FluidContainer, Loading, Typography } from 'components';
+import { useState, useEffect } from 'react';
 
 const BackgroundImage = styled.div`
   background: url(backgrounds/subtle-background-4.jpg);
@@ -11,6 +13,12 @@ const BackgroundImage = styled.div`
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
+  const [loading, isLoading] = useState(true);
+
+  useEffect(() => {
+    isLoading(false);
+  }, [events]);
+
   return (
     <Page>
       <Head>
@@ -32,7 +40,17 @@ export default function Home() {
           school year. Make sure to check back here to stay up to date with the
           latest events.
         </Header>
-        <UpcomingEvents monthly events={events} />
+        <Loading load={loading} />
+        {events.length < 1 ? (
+          <FluidContainer flex justifyContent="center">
+            <Typography as="h3" variant="label">
+              There are currently no upcoming events. Check back later for
+              updates!
+            </Typography>
+          </FluidContainer>
+        ) : (
+          <UpcomingEvents monthly events={events} />
+        )}
       </BackgroundImage>
     </Page>
   );
