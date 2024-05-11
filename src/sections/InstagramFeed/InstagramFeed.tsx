@@ -44,14 +44,14 @@ export const Component = ({
   const { isMobile } = useBreakpoint();
   const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
 
-  const getInstgramFeed = useCallback(async () => {
+  const getInstagramFeed = useCallback(async () => {
     const { data } = await fetchInstagramFeed(department);
     setInstagramPosts(data.data.slice(0, postsToShow));
   }, [department, postsToShow]);
 
   useEffect(() => {
-    getInstgramFeed();
-  }, [getInstgramFeed]);
+    getInstagramFeed();
+  }, [getInstagramFeed]);
 
   const username = instagramPosts[0]?.username;
   const url = `https://www.instagram.com/${username}`;

@@ -5,6 +5,7 @@ import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
+import { SiGroupme } from 'react-icons/si';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const OfferingsContainer = styled.div`
@@ -80,6 +81,15 @@ export default function PASRC() {
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
           <a
+            style={{ color: Colors.black, margin: `auto ${Spaces.sm}` }}
+            href="https://groupme.com/join_group/96687493/RA2NYgao"
+          >
+            <SiGroupme
+              fontSize={FontSizes['xl']}
+              aria-label="groupme link for pasrc"
+            />
+          </a>
+          <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/pasrc.ccc/"
           >
@@ -145,11 +155,11 @@ export default function PASRC() {
           <Image
             margin="auto"
             borderRadius="12px"
-            src="/departments/ccc/pasrc/black-grad/2022/grad-smile.jpg"
+            src="/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
             alt="2022 black graduation celebration smiling face with flowers"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
-          ></Image>
+          />
           <FluidContainer>
             <Typography variant="title" size={isMobile ? 'xl' : '2xl'} as="h2">
               Black Grad
