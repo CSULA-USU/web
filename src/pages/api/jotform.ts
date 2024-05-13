@@ -142,7 +142,14 @@ export default async function handler(
               secondMajor: submission.answers[71].answer,
               secondMinor: submission.answers[70].answer,
               secondCertificate: submission.answers[69].answer,
-              acknowledgement: submission.answers[73].answer,
+              acknowledgement:
+                submission.answers[73].answer.toLowerCase().trim() === 'n/a' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'na' ||
+                submission.answers[73].answer.toLowerCase().trim() ===
+                  'no answer' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'n a'
+                  ? ''
+                  : submission.answers[73].answer,
               img: submission.answers[123].answer[0],
             };
           }
