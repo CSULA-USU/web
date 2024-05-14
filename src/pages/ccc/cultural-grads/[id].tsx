@@ -50,7 +50,8 @@ export default function CGCGrad() {
       if (isMobile) {
         headerImageSrc = 'https://i.imgur.com/nvCMyv0.png';
       } else {
-        headerImageSrc = 'https://i.imgur.com/0Nix4lZ.png';
+        headerImageSrc =
+          'https://www.dropbox.com/scl/fi/5ptmdnrwf99d9auip3z5d/Nuestra_Web-01.png?rlkey=cy38xeqq0tubgtlsxj5iofozn&raw=1';
       }
       headerBackgroundColor = 'nuestraOrange';
       break;
