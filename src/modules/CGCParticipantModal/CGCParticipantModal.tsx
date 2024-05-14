@@ -283,12 +283,11 @@ export const CGCParticipantModal = ({
                 <></>
               )}
               <InfoContainer>
-                {participantData.acknowledgement &&
-                  participantData.acknowledgement.toUpperCase() != 'N/A' && (
-                    <Typography variant="span" size="sm">
-                      {participantData.acknowledgement}
-                    </Typography>
-                  )}
+                {participantData.acknowledgement && (
+                  <Typography variant="span" size="sm">
+                    {participantData.acknowledgement}
+                  </Typography>
+                )}
               </InfoContainer>
             </ModalContainer>
           </Modal>
@@ -444,12 +443,11 @@ export const CGCParticipantModal = ({
                     </Typography>
                   </CertificateContainer>
                 )}
-                {participantData.acknowledgement &&
-                  participantData.acknowledgement.toUpperCase() != 'N/A' && (
-                    <Typography variant="span" size="md">
-                      {participantData.acknowledgement}
-                    </Typography>
-                  )}
+                {participantData.acknowledgement && (
+                  <Typography variant="span" size="md">
+                    {participantData.acknowledgement}
+                  </Typography>
+                )}
               </InfoContainer>
             </ModalContainer>
           </Modal>
