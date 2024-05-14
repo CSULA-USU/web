@@ -81,6 +81,16 @@ export default function CGCGrad() {
       }
       headerBackgroundColor = 'blackMauve';
       break;
+    case 'native':
+      if (isMobile) {
+        headerImageSrc =
+          '/departments/ccc/native-grad/native-header-mobile.svg';
+      } else {
+        headerImageSrc =
+          '/departments/ccc/native-grad/native-header-desktop.svg';
+      }
+      headerBackgroundColor = 'nativeBeige';
+      break;
     default:
       headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';
   }
