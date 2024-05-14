@@ -70,6 +70,16 @@ export default function CGCGrad() {
       }
       headerBackgroundColor = 'white';
       break;
+    case 'black':
+      if (isMobile) {
+        headerImageSrc =
+          '/departments/ccc/pasrc/black-grad/2024/blackgrad-mobile.svg';
+      } else {
+        headerImageSrc =
+          '/departments/ccc/pasrc/black-grad/2024/blackgrad-desktop.svg';
+      }
+      headerBackgroundColor = 'blackMauve';
+      break;
     default:
       headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';
   }
