@@ -7,6 +7,12 @@ import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
+const buttons = [
+  {
+    text: '2024 Grad',
+    href: 'ccc/cultural-grads/clsrc',
+  },
+];
 const hours = [
   {
     title: 'Office Hours',
@@ -70,7 +76,10 @@ export default function CLSRC() {
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
-          <Header title="Chicana/o Latina/o Student Resource Center">
+          <Header
+            title="Chicana/o Latina/o Student Resource Center"
+            buttons={buttons}
+          >
             {isDesktop && (
               <Image
                 src="/departments/logos/clsrc-text-logo.svg"
@@ -78,7 +87,7 @@ export default function CLSRC() {
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
-              ></Image>
+              />
             )}
             The Chicana/o Latina/o Student Resource Center (CLSRC) was founded
             in 1993. The CLSRC provides services and support for students who
