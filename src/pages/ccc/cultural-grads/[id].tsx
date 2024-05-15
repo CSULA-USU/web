@@ -48,7 +48,8 @@ export default function CGCGrad() {
   switch (id) {
     case 'nuestra':
       if (isMobile) {
-        headerImageSrc = 'https://i.imgur.com/nvCMyv0.png';
+        headerImageSrc =
+          'https://www.dropbox.com/scl/fi/yxx85b51n80f1xkehqvj5/800px_Nuestra_Header-02-02.png?rlkey=iavf0lcnnq9y12v4xirrnj13t&raw=1';
       } else {
         headerImageSrc =
           'https://www.dropbox.com/scl/fi/5ptmdnrwf99d9auip3z5d/Nuestra_Web-01.png?rlkey=cy38xeqq0tubgtlsxj5iofozn&raw=1';
