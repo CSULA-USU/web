@@ -58,4 +58,6 @@ export const Colors = {
   white: '#FFFFFF',
   transparent: 'transparent',
   nuestraOrange: '#F4951C',
+  blackMauve: '#52284F',
+  nativeBeige: '#C6BA98',
 } as const;

@@ -13,6 +13,13 @@ const OfferingsContainer = styled.div`
   flex-direction: column;
 `;
 
+const buttons = [
+  {
+    text: '2024 Grad',
+    href: '/ccc/cultural-grads/black',
+  },
+];
+
 const hours = [
   {
     title: 'Office Hours',
@@ -111,7 +118,7 @@ export default function PASRC() {
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
-          <Header title="Pan African Student Resource Center">
+          <Header title="Pan African Student Resource Center" buttons={buttons}>
             {isDesktop && (
               <Image
                 src="/departments/logos/pasrc-icon.svg"
@@ -119,7 +126,7 @@ export default function PASRC() {
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
-              ></Image>
+              />
             )}
             The Pan African Student Resource Center (PASRC) was founded in 1990.
             The PASRC provides services and support for students who identify as

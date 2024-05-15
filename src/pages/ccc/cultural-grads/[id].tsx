@@ -48,9 +48,11 @@ export default function CGCGrad() {
   switch (id) {
     case 'nuestra':
       if (isMobile) {
-        headerImageSrc = 'https://i.imgur.com/nvCMyv0.png';
+        headerImageSrc =
+          'https://www.dropbox.com/scl/fi/yxx85b51n80f1xkehqvj5/800px_Nuestra_Header-02-02.png?rlkey=iavf0lcnnq9y12v4xirrnj13t&raw=1';
       } else {
-        headerImageSrc = 'https://i.imgur.com/0Nix4lZ.png';
+        headerImageSrc =
+          'https://www.dropbox.com/scl/fi/5ptmdnrwf99d9auip3z5d/Nuestra_Web-01.png?rlkey=cy38xeqq0tubgtlsxj5iofozn&raw=1';
       }
       headerBackgroundColor = 'nuestraOrange';
       break;
@@ -69,6 +71,26 @@ export default function CGCGrad() {
         headerImageSrc = 'https://i.imgur.com/2Xo1BhW.png';
       }
       headerBackgroundColor = 'white';
+      break;
+    case 'black':
+      if (isMobile) {
+        headerImageSrc =
+          '/departments/ccc/pasrc/black-grad/2024/blackgrad-mobile.svg';
+      } else {
+        headerImageSrc =
+          '/departments/ccc/pasrc/black-grad/2024/blackgrad-desktop.svg';
+      }
+      headerBackgroundColor = 'blackMauve';
+      break;
+    case 'native':
+      if (isMobile) {
+        headerImageSrc =
+          '/departments/ccc/native-grad/native-header-mobile.svg';
+      } else {
+        headerImageSrc =
+          '/departments/ccc/native-grad/native-header-desktop.svg';
+      }
+      headerBackgroundColor = 'nativeBeige';
       break;
     default:
       headerImageSrc = '/departments/ccc/ccc-grad-banner.jpg';

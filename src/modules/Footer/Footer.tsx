@@ -28,6 +28,7 @@ const FooterBottomContainer = styled(FooterTopContainer)`
   justify-content: space-between;
   ${media('mobile')(`justify-content: center`)}
 `;
+
 const FooterBottomInner = styled.div`
   display: flex;
   flex-direction: row;
@@ -78,16 +79,16 @@ export const Footer = () => (
             <Typography color="primary" size="sm" lineHeight="2.4">
               Sunday: Closed
             </Typography>
-            {/* <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="primary" size="sm" lineHeight="2.4">
               <Link
                 target="_blank"
                 href={
-                  'https://www.dropbox.com/scl/fi/a6novqm87pc9kvnm40x5l/closures-and-hours.docx?rlkey=fu3s0a23cjfga8qju5lx9qpsz&dl=0'
+                  'https://www.dropbox.com/scl/fi/t6t1hpjup7f37chdb2s0m/tenant-memo-5-13-24-letterhead.docx?rlkey=k7f0kbzht7qjw988sfzyg84g4&dl=0'
                 }
               >
                 Upcoming Building Hours
               </Link>
-            </Typography> */}
+            </Typography>
           </div>
           <div>
             <Typography as="h3" color="white">
