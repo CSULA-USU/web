@@ -13,6 +13,10 @@ const buttons = [
     text: 'Volunteer',
     href: 'https://forms.office.com/pages/responsepage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3SKXNpO6eVxLkvnb3NWEIOBUNjIzMUxQNjVERkhDWUY4NURMTjZLUEkwSC4u',
   },
+  {
+    text: '2024 Grad',
+    href: '/ccc/cultural-grads/apida',
+  },
 ];
 
 const hours = [
@@ -144,7 +148,7 @@ export default function APISRC() {
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
-              ></Image>
+              />
             )}
             The APISRC is one of the four identity-based centers within the
             Cross Cultural Centers at the University-Student Union. The APISRC

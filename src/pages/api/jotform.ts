@@ -75,7 +75,16 @@ export default async function handler(
               secondMajor: submission.answers[115].answer,
               secondMinor: submission.answers[70].answer,
               secondCertificate: submission.answers[69].answer,
-              acknowledgement: submission.answers[73].answer,
+              acknowledgement:
+                submission.answers[73].answer &&
+                (submission.answers[73].answer.toLowerCase().trim() === 'n/a' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'na' ||
+                submission.answers[73].answer.toLowerCase().trim() ===
+                  'no answer' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'n a' ||
+                submission.answers[73].answer.toLowerCase().trim() === '"n/a"'
+                  ? ''
+                  : submission.answers[73].answer),
               img: submission.answers[127].answer[0],
             };
           } else if (id === 'black') {
@@ -97,7 +106,16 @@ export default async function handler(
               secondMajor: submission.answers[115].answer,
               secondMinor: submission.answers[70].answer,
               secondCertificate: submission.answers[69].answer,
-              acknowledgement: submission.answers[73].answer,
+              acknowledgement:
+                submission.answers[73].answer &&
+                (submission.answers[73].answer.toLowerCase().trim() === 'n/a' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'na' ||
+                submission.answers[73].answer.toLowerCase().trim() ===
+                  'no answer' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'n a' ||
+                submission.answers[73].answer.toLowerCase().trim() === '"n/a"'
+                  ? ''
+                  : submission.answers[73].answer),
               img: submission.answers[124].answer[0],
             };
           } else if (id === 'apida') {
@@ -119,7 +137,16 @@ export default async function handler(
               secondMajor: submission.answers[115].answer,
               secondMinor: submission.answers[70].answer,
               secondCertificate: submission.answers[69].answer,
-              acknowledgement: submission.answers[73].answer,
+              acknowledgement:
+                submission.answers[73].answer &&
+                (submission.answers[73].answer.toLowerCase().trim() === 'n/a' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'na' ||
+                submission.answers[73].answer.toLowerCase().trim() ===
+                  'no answer' ||
+                submission.answers[73].answer.toLowerCase().trim() === 'n a' ||
+                submission.answers[73].answer.toLowerCase().trim() === '"n/a"'
+                  ? ''
+                  : submission.answers[73].answer),
               img: submission.answers[125].answer[0],
             };
           } else {
@@ -147,7 +174,8 @@ export default async function handler(
                 submission.answers[73].answer.toLowerCase().trim() === 'na' ||
                 submission.answers[73].answer.toLowerCase().trim() ===
                   'no answer' ||
-                submission.answers[73].answer.toLowerCase().trim() === 'n a'
+                submission.answers[73].answer.toLowerCase().trim() === 'n a' ||
+                submission.answers[73].answer.toLowerCase().trim() === '"n/a"'
                   ? ''
                   : submission.answers[73].answer,
               img: submission.answers[123].answer[0],

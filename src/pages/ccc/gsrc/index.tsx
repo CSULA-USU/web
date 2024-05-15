@@ -8,6 +8,12 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import Link from 'next/link';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
+const buttons = [
+  {
+    text: '2024 Grad',
+    href: '/ccc/cultural-grads/pride',
+  },
+];
 const hours = [
   {
     title: 'Office Hours',
@@ -139,7 +145,10 @@ export default function GSRC() {
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
-          <Header title="Gender and Sexuality Resource Center">
+          <Header
+            title="Gender and Sexuality Resource Center"
+            buttons={buttons}
+          >
             {isDesktop && (
               <Image
                 src="/departments/logos/gsrc-icon.svg"
@@ -147,7 +156,7 @@ export default function GSRC() {
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
-              ></Image>
+              />
             )}
             The Gender and Sexuality Resource Center at Cal State LA is
             dedicated to creating safe and respectful learning spaces, catering
