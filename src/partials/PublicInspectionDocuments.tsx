@@ -116,6 +116,10 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: 'https://www.dropbox.com/scl/fi/xjd25r7ejygo1urr91q2b/form-990-199-fy22-23.pdf?rlkey=2cidyn6j43gbgz9ht85ssoffl&dl=0',
+            children: 'FY 22-23',
+          },
+          {
             href: 'https://www.dropbox.com/s/1eu3uo97x0p2ju6/form-990-199-fy21-22.pdf?dl=0',
             children: 'FY 21-22',
           },
@@ -146,7 +150,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/s/t0tcybhjci4pidn/form-990-199.zip?dl=0',
+      href: 'https://www.dropbox.com/scl/fi/rehwzv64j4eurl8aj9uw9/form-990-199.zip?rlkey=sr1dru5jteyytkzf4zv2vmtdz&dl=0',
       variant: 'black',
     },
   },
