@@ -10,7 +10,7 @@ import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed
 const buttons = [
   {
     text: '2024 Grad',
-    href: 'ccc/cultural-grads/nuestra',
+    href: '/ccc/cultural-grads/nuestra',
   },
 ];
 const hours = [
