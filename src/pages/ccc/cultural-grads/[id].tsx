@@ -167,11 +167,27 @@ export default function CGCGrad() {
         <>
           {jotformSubmissions.length != 0 ? (
             <>
-              <FluidContainer flex justifyContent="center">
+              <FluidContainer flex justifyContent="center" padding="0">
                 <SearchBar
                   placeholder="Enter Graduate's Name"
                   onChange={searchInputHandler}
                 />
+              </FluidContainer>
+              <FluidContainer flex justifyContent="center" flexWrap="wrap">
+                {alphabets.split('').map((letter: string, i: number) => (
+                  <Button
+                    key={i}
+                    href={`#${letter}`}
+                    variant="transparent"
+                    notALink
+                    style={{
+                      padding: `${Spaces.sm} ${Spaces.md}`,
+                      textDecoration: 'underline',
+                    }}
+                  >
+                    {letter}
+                  </Button>
+                ))}
               </FluidContainer>
               <FluidContainer padding="0 16px">
                 {alphabets.split('').map((alphabet, i) => {
@@ -189,7 +205,6 @@ export default function CGCGrad() {
                             .slice(0, 1)
                             .toUpperCase() === alphabet,
                       );
-
                   return filteredSubmissions &&
                     filteredSubmissions.length == 0 ? (
                     <>
@@ -199,7 +214,7 @@ export default function CGCGrad() {
                     </>
                   ) : (
                     <>
-                      <AlphabetSection key={i}>
+                      <AlphabetSection key={i} id={alphabet}>
                         <Typography
                           key={i}
                           as="h1"
@@ -278,15 +293,41 @@ export default function CGCGrad() {
                 flex
                 justifyContent="space-around"
                 alignItems="center"
+                flexWrap="wrap"
               >
                 <Typography as="h2" variant="subheader">
                   Did you mean:
                 </Typography>
-                <Button href="/ccc/cultural-grads/apida">APIDA</Button>
-                <Button href="/ccc/cultural-grads/black">Black</Button>
-                <Button href="/ccc/cultural-grads/native">Native</Button>
-                <Button href="/ccc/cultural-grads/nuestra">Nuestra</Button>
-                <Button href="/ccc/cultural-grads/pride">Pride</Button>
+                <Button
+                  href="/ccc/cultural-grads/apida"
+                  margin={`${Spaces.sm}`}
+                >
+                  APIDA
+                </Button>
+                <Button
+                  href="/ccc/cultural-grads/black"
+                  margin={`${Spaces.sm}`}
+                >
+                  Black
+                </Button>
+                <Button
+                  href="/ccc/cultural-grads/native"
+                  margin={`${Spaces.sm}`}
+                >
+                  Native
+                </Button>
+                <Button
+                  href="/ccc/cultural-grads/nuestra"
+                  margin={`${Spaces.sm}`}
+                >
+                  Nuestra
+                </Button>
+                <Button
+                  href="/ccc/cultural-grads/pride"
+                  margin={`${Spaces.sm}`}
+                >
+                  Pride
+                </Button>
               </FluidContainer>
             </FluidContainer>
           )}
