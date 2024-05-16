@@ -215,22 +215,30 @@ export default function CGCGrad() {
                             filteredSubmissions
                               .sort(function (a: any, b: any) {
                                 if (
-                                  a.fullName.firstName +
+                                  (
+                                    a.fullName.firstName +
                                     a.fullName.middleName +
-                                    a.fullName.lastName <
-                                  b.fullName.firstName +
+                                    a.fullName.lastName
+                                  ).toUpperCase() <
+                                  (
+                                    b.fullName.firstName +
                                     b.fullName.middleName +
                                     b.fullName.lastName
+                                  ).toUpperCase()
                                 ) {
                                   return -1;
                                 }
                                 if (
-                                  a.fullName.firstName +
+                                  (
+                                    a.fullName.firstName +
                                     a.fullName.middleName +
-                                    a.fullName.lastName <
-                                  b.fullName.firstName +
+                                    a.fullName.lastName
+                                  ).toUpperCase() <
+                                  (
+                                    b.fullName.firstName +
                                     b.fullName.middleName +
                                     b.fullName.lastName
+                                  ).toUpperCase()
                                 ) {
                                   return 1;
                                 }
