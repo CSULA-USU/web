@@ -142,7 +142,6 @@ export default function Home() {
                   >
                     We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
                   </Typography>
-
                   <FluidContainer
                     flex
                     justifyContent="center"
@@ -154,12 +153,12 @@ export default function Home() {
                       width={0}
                       height={0}
                       style={{ width: '100%', height: '100%' }}
-                    ></Image>
+                    />
                   </FluidContainer>
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
+                      href="https://www.dropbox.com/scl/fi/cgiwan9u5j9cv18kefihp/current-org-chart.png?rlkey=wp4itrofnqsoyi8eijxz4weih&dl=0"
                     >
                       U-SU Organizational Chart
                     </Button>
@@ -184,7 +183,7 @@ export default function Home() {
                     alt="student union"
                     src="/about/calstatela-hero.jpeg"
                     style={{ width: '100%', height: 'auto' }}
-                  ></Image>
+                  />
                 </FluidContainer>
 
                 <FluidContainer padding="18px 0px 18px 18px">
@@ -203,7 +202,7 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/1himabywar6ahiys4syza/Org-Chart_4.29.24_11x17.jpg?rlkey=3rhkmv962i4cz27253hhauhyr&dl=0"
+                      href="https://www.dropbox.com/scl/fi/cgiwan9u5j9cv18kefihp/current-org-chart.png?rlkey=wp4itrofnqsoyi8eijxz4weih&dl=0"
                     >
                       U-SU Organizational Chart
                     </Button>
@@ -253,26 +252,10 @@ export default function Home() {
               </Typography>
             </FluidContainer>
           </FluidContainer>
-          <BoardOfDirectorsCTA />
-          <CallToActionImages
-            title={
-              <>
-                Join the
-                <br />
-                <strong>U-Krew!</strong>
-              </>
-            }
-            buttonHref="/employment"
-            buttonText="View Opportunities"
-            images={images}
-          >
-            Catalyze your professional development and build your network by
-            becoming a valued member of the{' '}
-            <NonBreakingSpan>U-SU</NonBreakingSpan>
-          </CallToActionImages>
         </>
       )}
-      {/* <CallToActionImages
+      <BoardOfDirectorsCTA />
+      <CallToActionImages
         title={
           <>
             Join the
@@ -286,7 +269,7 @@ export default function Home() {
       >
         Catalyze your professional development and build your network by
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
-      </CallToActionImages> */}
+      </CallToActionImages>
       {/* Toggle the line below if there is a promotion. */}
       {/* <BoardOfDirectorsCTA /> */}
     </Page>
