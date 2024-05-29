@@ -158,7 +158,7 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/cgiwan9u5j9cv18kefihp/current-org-chart.png?rlkey=wp4itrofnqsoyi8eijxz4weih&dl=0"
+                      href="https://www.dropbox.com/scl/fi/1bfj8xucgfpjladvxopho/current-org-chart.jpg?rlkey=luurd7zjqjo9roqwsb7v6hhrj&dl=0"
                     >
                       U-SU Organizational Chart
                     </Button>
@@ -202,7 +202,7 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/cgiwan9u5j9cv18kefihp/current-org-chart.png?rlkey=wp4itrofnqsoyi8eijxz4weih&dl=0"
+                      href="https://www.dropbox.com/scl/fi/1bfj8xucgfpjladvxopho/current-org-chart.jpg?rlkey=luurd7zjqjo9roqwsb7v6hhrj&dl=0"
                     >
                       U-SU Organizational Chart
                     </Button>
