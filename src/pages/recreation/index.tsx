@@ -24,6 +24,7 @@ const HoursSection = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -59,6 +60,7 @@ const NumberContainer = styled.div`
 
 const TimeContainer = styled.span`
   display: flex;
+  margin-bottom: 32px;
 `;
 
 export default function Recreation() {
@@ -137,6 +139,9 @@ export default function Recreation() {
             </NumberContainer>
           </PhoneSection>
         </HeaderSection>
+        <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Summer Hours:
+        </Typography>
         <HoursSection>
           <div>
             <Typography
@@ -144,7 +149,7 @@ export default function Recreation() {
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
-              Rec 1 & 2
+              Rec 1
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
@@ -161,7 +166,39 @@ export default function Recreation() {
               <Typography as="p">
                 <u>Monday – Friday</u>
                 <br />
-                7:00 AM to 9:30 PM
+                7:10 AM to 6:45 PM
+                <br />
+                <u>Saturday - Sunday</u>
+                <br />
+                Closed
+                <br />
+              </Typography>
+            </TimeContainer>
+          </div>
+          <div>
+            <Typography
+              as="h3"
+              variant="titleSmall"
+              size={!isTablet ? 'xl' : 'lg'}
+            >
+              Rec 2
+            </Typography>
+            <LocationContainer>
+              <MdLocationPin aria-hidden="true" size="24px" />
+              <Typography as="p" variant="label" size="md">
+                U-SU Basement
+              </Typography>
+            </LocationContainer>
+            <TimeContainer>
+              <BiTimeFive
+                aria-hidden="true"
+                style={{ margin: '2px 3px 0px 2px' }}
+                size="20px"
+              />
+              <Typography as="p">
+                <u>Monday – Friday</u>
+                <br />
+                Closed
                 <br />
                 <u>Saturday - Sunday</u>
                 <br />
@@ -194,7 +231,7 @@ export default function Recreation() {
               <Typography as="p">
                 <u>Monday – Thursday</u>
                 <br />
-                12:00 PM to 6:00 PM
+                Closed
                 <br />
                 <u>Friday - Sunday</u>
                 <br />
@@ -226,7 +263,7 @@ export default function Recreation() {
               <Typography as="p">
                 <u>Monday – Friday</u>
                 <br />
-                7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM
+                Closed
                 <br />
                 <u>Saturday - Sunday</u>
                 <br />
