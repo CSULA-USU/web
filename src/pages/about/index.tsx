@@ -31,44 +31,44 @@ const Title = styled.div`
 
 const cards = [
   {
-    title: 'Inclusiveness',
+    title: 'Accountability',
     children:
-      'We create a welcoming environment that acknowledges and respects everyone. Through our programs and services, we proactively respond to the evolving needs of our communities.',
+      'We are accountable to each other and to those we serve, acknowledging and reflecting on our actions, and identifying solutions to maximize our impact.',
     iconSrc: '/vectors/about/inclusive.svg',
     iconAlt: 'friends',
   },
   {
-    title: 'Growth',
+    title: 'Integrity',
     children:
-      'We are committed to expanding our intellectual and personal horizons. We evaluate our individual and shared experiences, reflect on them, and integrate new thoughts and ideas into our work, lives, and behaviors.',
+      'We show our integrity by leading, operating, and communicating openly with those we serve.',
     iconSrc: '/vectors/about/growth.svg',
     iconAlt: 'growth',
   },
   {
-    title: 'Empowerment',
+    title: 'Innovation',
     children:
-      'We enable our students to thrive by encouraging mindful conversations, supporting risk-taking, and providing new opportunities to lead and grow.',
+      'We actively seek opportunities to create and innovate to improve outcomes across our facilities, services, and activities.',
     iconSrc: '/vectors/about/leader.svg',
     iconAlt: 'empowerment',
   },
   {
-    title: 'Innovation',
+    title: 'Community',
     children:
-      'We constantly seek ways to improve, and strive to develop ideas and solutions in service of our students and our mission.',
+      'We identify the unique needs of our community and intentionally act to create a culture of belonging for all who enter our space.',
     iconSrc: '/vectors/about/ideas.svg',
     iconAlt: 'ideas',
   },
   {
-    title: 'Service-Oriented Leadership',
+    title: 'Fun',
     children:
-      'We promote friendly interactions and provide resources that create positive and joyful experiences for those we serve. We lead by example. We are caring, respectful and responsive.',
+      'We enjoy what we do. We strive to share our joy and passion with those around us to instill a fun, welcoming and positive environment in the U-SU.',
     iconSrc: '/vectors/about/service.svg',
     iconAlt: 'service',
   },
   {
-    title: 'Teamwork',
+    title: 'Connection',
     children:
-      'We build and foster relationships that enable us to learn from each other, have fun together, and collaborate seamlessly to make our greatest impact.',
+      'We prioritize genuine connections with all in our community, enabling us to appreciate the unique value in each other and amplify our successes as a team.',
     iconSrc: '/vectors/about/team.svg',
     iconAlt: 'team',
   },
@@ -120,7 +120,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/1tclm7yfngi306ic2ufyd/Org-Chart_04.10.24_11x17.png?rlkey=dn9p68e70fsoti57ycs0ft6dr&dl=0"
+                  href="https://www.dropbox.com/scl/fi/1bfj8xucgfpjladvxopho/current-org-chart.jpg?rlkey=luurd7zjqjo9roqwsb7v6hhrj&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
@@ -164,7 +164,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/1himabywar6ahiys4syza/Org-Chart_4.29.24_11x17.jpg?rlkey=3rhkmv962i4cz27253hhauhyr&dl=0"
+                  href="https://www.dropbox.com/scl/fi/1bfj8xucgfpjladvxopho/current-org-chart.jpg?rlkey=luurd7zjqjo9roqwsb7v6hhrj&dl=0"
                 >
                   U-SU Organizational Chart
                 </Button>
