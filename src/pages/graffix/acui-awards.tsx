@@ -107,7 +107,7 @@ export default function AcuiAwards() {
           >
             <Button margin="5px">
               <Typography lineHeight="1" variant="cta">
-                {item} fsafasfsa
+                {item}
               </Typography>
             </Button>
           </NavItemContainer>
