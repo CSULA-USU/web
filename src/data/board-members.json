@@ -1,24 +1,17 @@
 [
   {
-    "head": "Chair",
+    "head": "",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/037y82e326mxxcpnsm2gv/Aishwarya-Gupta.png?rlkey=tf3g0ze5f2ucmku7tm88ncdve&raw=1",
-    "name": "Ash Gupta",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Allie Blane",
     "credentials": "",
     "section": "student-representative"
   },
   {
-    "head": "Vice-Chair",
+    "head": "",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/47kafjpu5bsep91blfyyu/Negin.png?rlkey=45uykk9zu8nzjchmludc0g26z&raw=1",
-    "name": "Negin Dadmarz",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/sol65v3ih0t4uz3i9b20k/Andrea-Dominguez.png?rlkey=qin20jwwl53azmvljuvfopq48&raw=1",
-    "name": "Andrea Dominguez",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Eric Sena",
     "credentials": "",
     "section": "student-representative"
   },
@@ -31,6 +24,27 @@
   },
   {
     "title": "Student Director",
+    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
+    "name": "Jaqueline Fajardo",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
+    "src": "https://www.csulaelections.org/_next/image?url=https%3A%2F%2Fwww.dropbox.com%2Fscl%2Ffi%2Fqcrnns8zujkse59a29rqy%2FKristen.jpg%3Frlkey%3D56bt0l0r8n0mbluwi3ehbca5t%26raw%3D1&w=640&q=75",
+    "name": "Kristen Gaber",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
+    "src": "https://www.csulaelections.org/_next/image?url=https%3A%2F%2Fwww.dropbox.com%2Fscl%2Ffi%2Fhyrpc06ni9oaasrclfomn%2FMark.jpg%3Frlkey%3Di4ebsto9j22ghz61hih7nb8dx%26raw%3D1&w=640&q=75",
+    "name": "Mark Raspopov",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/orw9xey0e6s6mg2rcre6c/Melissa.png?rlkey=rh3ejf6cciqpg2rs8m92ps6z4&raw=1",
     "name": "Melissa Nicole Lopez",
     "credentials": "",
@@ -38,22 +52,8 @@
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Monica Sanchez",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/88e42jt58fqgj2jhwmt0p/Rahul-Bogale.png?rlkey=uodrgfveuw4alrconbt9v7iqx&raw=1",
-    "name": "Rahul Bhogale",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/meonq3kgjd80qtqpu7ugv/Victoria-Lozoya-Hernandez.png?rlkey=06evo42268kkifjeavskrtdpr&raw=1",
-    "name": "Victoria Lozoya-Hernandez",
+    "src": "https://www.csulaelections.org/_next/image?url=https%3A%2F%2Fwww.dropbox.com%2Fscl%2Ffi%2Fa0442nvl6595of9m6kjcg%2FVershaun.jpg%3Frlkey%3Dsdgm293djfghcyzv2x49s6pup%26raw%3D1&w=640&q=75",
+    "name": "Vershaun Evans",
     "credentials": "",
     "section": "student-representative"
   },
