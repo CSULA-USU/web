@@ -23,10 +23,10 @@ export const Page = ({ children }: PageProps) => (
   <>
     <PageContainer>
       <Announcement
-        text="Protest Action Alert: All operations at the U-SU are suspended until further notice."
-        isVisible={false}
-        linkText="Message from President Eanes: Student Services Building Incident, Encampment"
-        href="https://www.calstatela.edu/president/messages/eanes#june13-ssbincident"
+        text="Notice: All operations at the U-SU to return in person on Monday, June 24."
+        isVisible={true}
+        linkText="Message from President Eanes: Return to In-Person Classes and Operations"
+        href="https://www.calstatela.edu/president/messages/eanes#june18-return"
       />
       <Nav />
       <main>{children}</main>
