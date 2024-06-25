@@ -104,24 +104,6 @@ export default function Home() {
           {/* Toggle the line below if there is a promotion. */}
           {/* <BoardOfDirectorsCTAPromotion /> */}
           <ModUpcomingEvents events={events} />
-          <CallToActionImages
-            title={
-              <>
-                Join the
-                <br />
-                <strong>U-Krew!</strong>
-              </>
-            }
-            buttonHref="/employment"
-            buttonText="View Opportunities"
-            images={images}
-          >
-            Catalyze your professional development and build your network by
-            becoming a valued member of the{' '}
-            <NonBreakingSpan>U-SU</NonBreakingSpan>
-          </CallToActionImages>
-          {/* Toggle the line below if there is a promotion. */}
-          <BoardOfDirectorsCTA />
         </>
       ) : (
         <>
@@ -254,7 +236,6 @@ export default function Home() {
           </FluidContainer>
         </>
       )}
-      <BoardOfDirectorsCTA />
       <CallToActionImages
         title={
           <>
@@ -271,7 +252,7 @@ export default function Home() {
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
       {/* Toggle the line below if there is a promotion. */}
-      {/* <BoardOfDirectorsCTA /> */}
+      <BoardOfDirectorsCTA />
     </Page>
   );
 }
