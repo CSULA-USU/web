@@ -11,7 +11,7 @@
   {
     "name": "Ashley Lepe",
     "title": "Recreation Coordinator",
-    "src": "/staff/ashley-lepe.png",
+    "src": "/staff/ashley-lepe2.png",
     "alt": "Ashley Lepe",
     "tags": ["Recreation"],
     "department": "Recreation",
@@ -27,6 +27,15 @@
     "email": "cbalam2@calstatela.edu"
   },
   {
+    "name": "Christian Butler",
+    "title": "Recreation Coordinator",
+    "src": "/staff/christian-butler.png",
+    "alt": "Christian Butler",
+    "tags": ["Recreation"],
+    "department": "Recreation",
+    "email": "cbutle17@calstatela.edu"
+  },
+  {
     "name": "Christopher Jackson",
     "title": "Director, CCC",
     "src": "/staff/christopher-jackson.png",
@@ -34,6 +43,15 @@
     "tags": ["CCC", "Director"],
     "department": "Cross Cultural Centers",
     "email": "cjacks38@calstatela.edu"
+  },
+  {
+    "name": "Enzo Everett",
+    "title": "Recreation Coordinator",
+    "src": "/staff/enzo-everett.png",
+    "alt": "Enzo Everett",
+    "tags": ["Recreation"],
+    "department": "Recreation",
+    "email": "eeveret@calstatela.edu"
   },
   {
     "name": "Evita Soares",
