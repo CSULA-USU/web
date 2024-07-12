@@ -31,6 +31,9 @@ const GraphicContainer = styled.div`
   width: 100%;
   height: 75%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Details = styled.div`
@@ -104,7 +107,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           height={0}
           sizes="100vw"
           loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: 'auto' }}
         />
       </GraphicContainer>
       <Details>
