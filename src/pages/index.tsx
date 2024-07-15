@@ -85,8 +85,12 @@ export default function Home() {
       {events.length > 0 ? (
         <>
           <EventHeader
-            subheaderText="California State University, Los Angeles"
-            title="University-Student Union"
+            subheaderText={
+              isMobile
+                ? 'California State, Los Angeles'
+                : 'California State University, Los Angeles'
+            }
+            title={isMobile ? 'U-SU' : 'University-Student Union'}
             featuredEvent={events[0]}
           />
           {/* Toggle the line below if there is a promotion. */}

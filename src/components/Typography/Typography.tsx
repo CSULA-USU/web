@@ -5,7 +5,7 @@ import { FontSizes, Colors } from 'theme';
 interface TypeStyle {
   size?: keyof typeof FontSizes;
   color?: keyof typeof Colors;
-  weight?: '300' | '400' | '700';
+  weight?: '300' | '400' | '600' | '700';
   lineHeight?: string;
   margin?: string;
 }

@@ -10,7 +10,6 @@ import { useBreakpoint } from 'hooks';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: ${Spaces.md};
 `;
 
 export const EventHeader = ({
@@ -32,22 +31,23 @@ export const EventHeader = ({
       flex
       flexDirection="column"
       backgroundImage="/backgrounds/subtle-paint.jpg"
-      padding="0 auto"
+      padding={isMobile ? `0 ${Spaces.sm} ${Spaces.md}` : `0 0 ${Spaces.lg}`}
     >
       <Typography
         variant="labelTitle"
         color="greyDarker"
-        margin="48px auto 24px"
+        margin={isMobile ? '24px auto 0' : '48px auto 24px'}
+        size={isMobile ? 'md' : 'lg'}
       >
         {subheaderText}
       </Typography>
       <Typography
         variant="pageHeader"
         color="greyDarker"
-        size={isMobile ? '2xl' : '4xl'}
+        size={isMobile ? 'xl' : '4xl'}
         weight="600"
         as="h1"
-        margin="0 auto 48px"
+        margin={isMobile ? '0 auto 12px' : '0 auto 48px'}
       >
         {title}
       </Typography>
