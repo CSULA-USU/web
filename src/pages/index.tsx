@@ -85,20 +85,8 @@ export default function Home() {
       {events.length > 0 ? (
         <>
           <EventHeader
-            title={
-              <>
-                {isMobile ? (
-                  <>
-                    Welcome to <NonBreakingSpan>the U-SU!</NonBreakingSpan>
-                  </>
-                ) : (
-                  <>
-                    Welcome to the{' '}
-                    <NonBreakingSpan>University-Student Union</NonBreakingSpan>
-                  </>
-                )}
-              </>
-            }
+            subheaderText="California State University, Los Angeles"
+            title="University-Student Union"
             featuredEvent={events[0]}
           />
           {/* Toggle the line below if there is a promotion. */}

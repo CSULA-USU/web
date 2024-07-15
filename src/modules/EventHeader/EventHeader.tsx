@@ -16,9 +16,11 @@ const HeaderContainer = styled.div`
 export const EventHeader = ({
   featuredEvent,
   title,
+  subheaderText,
 }: {
   featuredEvent: PresenceEvent;
   title?: React.ReactNode;
+  subheaderText?: string;
 }) => {
   const { isMobile } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
@@ -30,13 +32,22 @@ export const EventHeader = ({
       flex
       flexDirection="column"
       backgroundImage="/backgrounds/subtle-paint.jpg"
+      padding="0 auto"
     >
       <Typography
-        variant="pageHeader"
-        margin={`0 auto`}
+        variant="labelTitle"
         color="greyDarker"
-        size={isMobile ? '2xl' : '3xl'}
-        as="h2"
+        margin="48px auto 24px"
+      >
+        {subheaderText}
+      </Typography>
+      <Typography
+        variant="pageHeader"
+        color="greyDarker"
+        size={isMobile ? '2xl' : '4xl'}
+        weight="600"
+        as="h1"
+        margin="0 auto 48px"
       >
         {title}
       </Typography>
