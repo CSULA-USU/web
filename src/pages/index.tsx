@@ -36,13 +36,13 @@ const images = [
     src: '/departments/operations/images/building-services.jpg',
     alt: 'building services',
     width: '275',
-    margin: '5px 0 0',
+    margin: '0',
   },
   {
     src: '/departments/operations/images/media-services.jpg',
     alt: 'media services',
     width: '275',
-    margin: '5px 0 0',
+    margin: '0',
   },
 ];
 
@@ -228,21 +228,24 @@ export default function Home() {
           </FluidContainer>
         </>
       )}
-      <CallToActionImages
-        title={
-          <>
-            Join the
-            <br />
-            <strong>U-Krew!</strong>
-          </>
-        }
-        buttonHref="/employment"
-        buttonText="View Opportunities"
-        images={images}
-      >
-        Catalyze your professional development and build your network by
-        becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
-      </CallToActionImages>
+      <FluidContainer>
+        <CallToActionImages
+          title={
+            <>
+              Join the
+              <br />
+              <strong>U-Krew!</strong>
+            </>
+          }
+          buttonHref="/employment"
+          buttonText="View Opportunities"
+          images={images}
+        >
+          Catalyze your professional development and build your network by
+          becoming a valued member of the{' '}
+          <NonBreakingSpan>U-SU</NonBreakingSpan>
+        </CallToActionImages>
+      </FluidContainer>
       {/* Toggle the line below if there is a promotion. */}
       <BoardOfDirectorsCTA />
     </Page>

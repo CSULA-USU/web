@@ -21,7 +21,6 @@ interface CallToActionImagesProps {
 }
 
 const CTAImagesContainer = styled.div`
-  margin-bottom: 40px;
   ${media('desktop')('margin-bottom: 0px;')}
 `;
 
@@ -64,7 +63,7 @@ export const CallToActionImages = ({
                 alt={i.alt}
                 width={i.width && i.width}
                 margin={i.margin && i.margin}
-              ></Image>
+              />
             ))}
           </FluidContainer>
         )}
