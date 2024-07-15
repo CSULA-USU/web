@@ -228,26 +228,25 @@ export default function Home() {
           </FluidContainer>
         </>
       )}
-      <FluidContainer>
-        <CallToActionImages
-          title={
-            <>
-              Join the
-              <br />
-              <strong>U-Krew!</strong>
-            </>
-          }
-          buttonHref="/employment"
-          buttonText="View Opportunities"
-          images={images}
-        >
-          Catalyze your professional development and build your network by
-          becoming a valued member of the{' '}
-          <NonBreakingSpan>U-SU</NonBreakingSpan>
-        </CallToActionImages>
-      </FluidContainer>
+      <CallToActionImages
+        title={
+          <>
+            Join the
+            <br />
+            <strong>U-Krew!</strong>
+          </>
+        }
+        buttonHref="/employment"
+        buttonText="View Opportunities"
+        images={images}
+      >
+        Catalyze your professional development and build your network by
+        becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
+      </CallToActionImages>
       {/* Toggle the line below if there is a promotion. */}
-      <BoardOfDirectorsCTA />
+      <FluidContainer>
+        <BoardOfDirectorsCTA />
+      </FluidContainer>
     </Page>
   );
 }

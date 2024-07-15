@@ -12,6 +12,7 @@ const BoardOfDirectorsCTAContainer = styled.div<BoardOfDirectorsCTAContainerProp
   background-position: center;
   background-size: cover;
   padding: ${(props) => (props.isMobile ? '60px 16px' : '120px 72px')};
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const BoardOfDirectorsCTAText = styled.div`
