@@ -95,7 +95,7 @@ export default function Home() {
           />
           {/* Toggle the line below if there is a promotion. */}
           {/* <BoardOfDirectorsCTAPromotion /> */}
-          <ModUpcomingEvents events={events} />
+          {events.length > 1 ? <ModUpcomingEvents events={events} /> : null}
         </>
       ) : (
         <>
