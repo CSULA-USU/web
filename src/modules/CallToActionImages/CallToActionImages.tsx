@@ -21,7 +21,6 @@ interface CallToActionImagesProps {
 }
 
 const CTAImagesContainer = styled.div`
-  margin-bottom: 40px;
   ${media('desktop')('margin-bottom: 0px;')}
 `;
 
@@ -32,13 +31,18 @@ export const CallToActionImages = ({
   buttonHref,
   buttonText,
 }: CallToActionImagesProps) => {
-  const { isDesktop } = useBreakpoint();
+  const { isDesktop, isMobile } = useBreakpoint();
   return (
     <CTAImagesContainer>
       <FluidContainer flex backgroundColor="primary" padding="0">
         <FluidContainer>
           <CenterText>
-            <Typography as="h2" variant="titleLarge" lineHeight="1">
+            <Typography
+              as="h2"
+              variant="titleLarge"
+              lineHeight="1"
+              size={isMobile ? 'xl' : '3xl'}
+            >
               {title}
             </Typography>
             <FluidContainer>
@@ -64,7 +68,7 @@ export const CallToActionImages = ({
                 alt={i.alt}
                 width={i.width && i.width}
                 margin={i.margin && i.margin}
-              ></Image>
+              />
             ))}
           </FluidContainer>
         )}
