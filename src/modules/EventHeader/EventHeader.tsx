@@ -31,7 +31,7 @@ export const EventHeader = ({
       flex
       flexDirection="column"
       backgroundImage="/backgrounds/subtle-paint.jpg"
-      padding={isMobile ? `0 ${Spaces.sm} ${Spaces.md}` : `0 0 ${Spaces.lg}`}
+      padding={isMobile ? `0 ${Spaces.sm} ${Spaces.md}` : `0 0 48px`}
     >
       <Typography
         variant="labelTitle"

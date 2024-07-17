@@ -21,7 +21,7 @@ interface CallToActionImagesProps {
 }
 
 const CTAImagesContainer = styled.div`
-  ${media('desktop')('margin-bottom: 0px;')}
+  ${media('desktop')('margin-bottom: 0px; margin-top: 36px;')}
 `;
 
 export const CallToActionImages = ({
