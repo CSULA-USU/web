@@ -8,9 +8,6 @@ interface BoardOfDirectorsCTAContainerProps {
 }
 
 const BoardOfDirectorsCTAContainer = styled.div<BoardOfDirectorsCTAContainerProps>`
-  background-image: url('/backgrounds/subtle-background-4.jpg');
-  background-position: center;
-  background-size: cover;
   padding: ${(props) => (props.isMobile ? '60px 16px' : '120px 72px')};
 `;
 
@@ -37,7 +34,7 @@ export const BoardOfDirectorsCTA = () => {
   return (
     <BoardOfDirectorsCTAContainer isMobile={isMobile}>
       <BoardOfDirectorsCTAText>
-        <Typography as="h2" variant="title" size="3xl">
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '3xl'}>
           Board of Directors
         </Typography>
         <Typography margin="revert-layer">

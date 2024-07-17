@@ -36,13 +36,13 @@ const images = [
     src: '/departments/operations/images/building-services.jpg',
     alt: 'building services',
     width: '275',
-    margin: '5px 0 0',
+    margin: '0',
   },
   {
     src: '/departments/operations/images/media-services.jpg',
     alt: 'media services',
     width: '275',
-    margin: '5px 0 0',
+    margin: '0',
   },
 ];
 
@@ -85,25 +85,17 @@ export default function Home() {
       {events.length > 0 ? (
         <>
           <EventHeader
-            title={
-              <>
-                {isMobile ? (
-                  <>
-                    Welcome to <NonBreakingSpan>the U-SU!</NonBreakingSpan>
-                  </>
-                ) : (
-                  <>
-                    Welcome to the{' '}
-                    <NonBreakingSpan>University-Student Union</NonBreakingSpan>
-                  </>
-                )}
-              </>
+            subheaderText={
+              isMobile
+                ? 'California State, Los Angeles'
+                : 'California State University, Los Angeles'
             }
+            title={isMobile ? 'U-SU' : 'University-Student Union'}
             featuredEvent={events[0]}
           />
           {/* Toggle the line below if there is a promotion. */}
           {/* <BoardOfDirectorsCTAPromotion /> */}
-          <ModUpcomingEvents events={events} />
+          {events.length > 1 ? <ModUpcomingEvents events={events} /> : null}
         </>
       ) : (
         <>
@@ -252,7 +244,9 @@ export default function Home() {
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
       {/* Toggle the line below if there is a promotion. */}
-      <BoardOfDirectorsCTA />
+      <FluidContainer>
+        <BoardOfDirectorsCTA />
+      </FluidContainer>
     </Page>
   );
 }
