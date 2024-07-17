@@ -36,7 +36,7 @@ export const EventHeader = ({
       <Typography
         variant="labelTitle"
         color="greyDarker"
-        margin={isMobile ? '24px auto 0' : '48px auto 24px'}
+        margin={isMobile ? '24px 0 0' : '48px auto 24px'}
         size={isMobile ? 'md' : 'lg'}
       >
         {subheaderText}
@@ -47,7 +47,7 @@ export const EventHeader = ({
         size={isMobile ? '2xl' : '4xl'}
         weight="600"
         as="h1"
-        margin={isMobile ? '0 auto 12px' : '0 auto 48px'}
+        margin={isMobile ? '' : '0 auto 48px'}
       >
         {title}
       </Typography>
