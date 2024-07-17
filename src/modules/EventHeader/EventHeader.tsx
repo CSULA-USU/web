@@ -44,7 +44,7 @@ export const EventHeader = ({
       <Typography
         variant="pageHeader"
         color="greyDarker"
-        size={isMobile ? 'xl' : '4xl'}
+        size={isMobile ? '2xl' : '4xl'}
         weight="600"
         as="h1"
         margin={isMobile ? '0 auto 12px' : '0 auto 48px'}

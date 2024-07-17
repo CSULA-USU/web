@@ -90,7 +90,16 @@ export default function Home() {
                 ? 'California State, Los Angeles'
                 : 'California State University, Los Angeles'
             }
-            title={isMobile ? 'U-SU' : 'University-Student Union'}
+            title={
+              isMobile ? (
+                <>
+                  <NonBreakingSpan>University-Student</NonBreakingSpan>
+                  Union
+                </>
+              ) : (
+                'University-Student Union'
+              )
+            }
             featuredEvent={events[0]}
           />
           {/* Toggle the line below if there is a promotion. */}
