@@ -30,13 +30,13 @@ export const EventHeader = ({
     <FluidContainer
       flex
       flexDirection="column"
-      backgroundImage="/backgrounds/subtle-paint.jpg"
-      padding={isMobile ? `0 ${Spaces.sm} ${Spaces.md}` : `0 0 48px`}
+      backgroundImage="/backgrounds/subtle-background-4.jpg"
+      padding={isMobile ? `0 ${Spaces.sm} ${Spaces['xl']}` : `0 0 48px`}
     >
       <Typography
         variant="labelTitle"
         color="greyDarker"
-        margin={isMobile ? '24px 0 0' : '48px auto 24px'}
+        margin={isMobile ? '36px auto 0' : '48px auto 24px'}
         size={isMobile ? 'md' : 'lg'}
       >
         {subheaderText}
@@ -45,9 +45,9 @@ export const EventHeader = ({
         variant="pageHeader"
         color="greyDarker"
         size={isMobile ? '2xl' : '4xl'}
-        weight="600"
+        weight={isMobile ? '700' : '600'}
         as="h1"
-        margin={isMobile ? '' : '0 auto 48px'}
+        margin={isMobile ? '0 auto' : '0 auto 48px'}
       >
         {title}
       </Typography>

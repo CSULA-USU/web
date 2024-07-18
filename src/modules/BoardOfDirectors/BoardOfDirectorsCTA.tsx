@@ -8,7 +8,7 @@ interface BoardOfDirectorsCTAContainerProps {
 }
 
 const BoardOfDirectorsCTAContainer = styled.div<BoardOfDirectorsCTAContainerProps>`
-  padding: ${(props) => (props.isMobile ? '60px 16px' : '120px 72px')};
+  padding: ${(props) => (props.isMobile ? '48px 16px' : '120px 72px')};
 `;
 
 const BoardOfDirectorsCTAText = styled.div`
@@ -48,11 +48,11 @@ export const BoardOfDirectorsCTA = () => {
             variant="black"
             href="https://form.jotform.com/240387162166154"
           >
-            U-SU Board of Directors Application
+            BOD Application
           </Button>
         </abbr>
         <Button variant="outline" href="/governance/meet-the-board">
-          View Current Board Members
+          View Current Members
         </Button>
       </BoardOfDirectorsCTAButtons>
     </BoardOfDirectorsCTAContainer>
