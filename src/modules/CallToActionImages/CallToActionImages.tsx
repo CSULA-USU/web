@@ -34,7 +34,11 @@ export const CallToActionImages = ({
   const { isDesktop, isMobile } = useBreakpoint();
   return (
     <CTAImagesContainer>
-      <FluidContainer flex backgroundColor="primary" padding="0">
+      <FluidContainer
+        flex
+        backgroundColor="primary"
+        padding={isMobile ? '48px 0' : '0'}
+      >
         <FluidContainer>
           <CenterText>
             <Typography
