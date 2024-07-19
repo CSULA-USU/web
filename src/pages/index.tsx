@@ -159,7 +159,6 @@ export default function Home() {
                     style={{ width: '100%', height: 'auto' }}
                   />
                 </FluidContainer>
-
                 <FluidContainer padding="18px 0px 18px 18px">
                   <FluidContainer>
                     <Typography
@@ -172,7 +171,6 @@ export default function Home() {
                       We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
                     </Typography>
                   </FluidContainer>
-
                   <ButtonContainer>
                     <Button
                       variant="black"
