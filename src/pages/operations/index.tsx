@@ -8,7 +8,7 @@ import {
   Image,
   NonBreakingSpan,
 } from 'components';
-import { Spaces } from 'theme';
+import { Spaces, Colors } from 'theme';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 
@@ -38,28 +38,40 @@ const ImageContainer = styled.div`
 
 const HeaderContainer = styled.div`
   position: relative;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  video {
-    position: relative;
-    z-index: 0;
-    filter: brightness(1.3);
+  overflow: hidden;
+  box-shadow: none;
+  background-color: ${Colors.black};
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: url('/departments/operations/videos/ops-loop.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+    z-index: 1;
   }
 `;
+
 const InnerHeaderContainer = styled.div`
-  position: absolute;
-  bottom: 5%;
-  left: 25%;
-  z-index: 1;
   width: 50%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 `;
 
 const InnerButtonContainer = styled.div`
@@ -70,6 +82,15 @@ const InnerButtonContainer = styled.div`
   gap: ${Spaces.sm};
 `;
 
+const MobileHeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: ${Spaces.md};
+  background-color: ${Colors.black};
+`;
 const OperationsPDFDescriptions = (props: any) => {
   return (
     <PDFDescriptionContainer>
@@ -189,24 +210,42 @@ export default function Operations() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer backgroundColor="black">
-        {isMobile ? (
-          <HeaderContainer>
+      {isMobile ? (
+        <MobileHeaderContainer>
+          <Typography
+            variant="pageHeader"
+            color="white"
+            as="h1"
+            margin={`${Spaces.md} 0`}
+            size={isMobile ? 'xl' : '4xl'}
+          >
+            Operations & Reservations
+          </Typography>
+          <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
+            {' '}
+            The Operations Team consists of five divisions: building
+            maintenance, building services, custodial services, media services,
+            and union meeting and event services.
+          </Typography>
+          <InnerButtonContainer>
+            {buttons.map((button) => (
+              <Button href={button.href} variant="grey" key={button.text}>
+                <NonBreakingSpan>{button.text}</NonBreakingSpan>
+              </Button>
+            ))}
+          </InnerButtonContainer>
+        </MobileHeaderContainer>
+      ) : (
+        <HeaderContainer>
+          <InnerHeaderContainer>
             <Typography
               variant="pageHeader"
               color="white"
               as="h1"
               margin={`${Spaces.md} 0`}
-              size={isMobile ? 'xl' : '4xl'}
             >
-              Operations & Reservations
+              Operations and Reservations
             </Typography>
-            <video width="100%" loop autoPlay muted>
-              <source
-                src="/departments/operations/videos/ops-loop.mp4"
-                type="video/mp4"
-              />
-            </video>
             <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
               {' '}
               The Operations Team consists of five divisions: building
@@ -214,62 +253,34 @@ export default function Operations() {
               services, and union meeting and event services.
             </Typography>
             <InnerButtonContainer>
-              {buttons.map((button) => (
-                <Button href={button.href} variant="grey" key={button.text}>
-                  <NonBreakingSpan>{button.text}</NonBreakingSpan>
-                </Button>
-              ))}
+              <NonBreakingSpan>
+                {buttons.map((button) => (
+                  <Button
+                    href={button.href}
+                    variant="grey"
+                    margin={`0 ${Spaces.sm}`}
+                    key={button.text}
+                  >
+                    <NonBreakingSpan>{button.text}</NonBreakingSpan>
+                  </Button>
+                ))}
+              </NonBreakingSpan>
             </InnerButtonContainer>
-          </HeaderContainer>
-        ) : (
-          <HeaderContainer>
-            <video width="100%" height="600px" loop autoPlay muted>
-              <source
-                src="/departments/operations/videos/ops-loop.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <InnerHeaderContainer>
-              <Typography
-                variant="pageHeader"
-                color="white"
-                as="h1"
-                margin={`${Spaces.md} 0`}
-              >
-                Operations and Reservations
-              </Typography>
-              <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
-                {' '}
-                The Operations Team consists of five divisions: building
-                maintenance, building services, custodial services, media
-                services, and union meeting and event services.
-              </Typography>
-
-              <InnerButtonContainer>
-                <NonBreakingSpan>
-                  {buttons.map((button) => (
-                    <Button
-                      href={button.href}
-                      variant="grey"
-                      margin={`0 ${Spaces.sm}`}
-                      key={button.text}
-                    >
-                      <NonBreakingSpan>{button.text}</NonBreakingSpan>
-                    </Button>
-                  ))}
-                </NonBreakingSpan>
-              </InnerButtonContainer>
-            </InnerHeaderContainer>
-          </HeaderContainer>
-        )}
-      </FluidContainer>
+          </InnerHeaderContainer>
+        </HeaderContainer>
+      )}
       <FluidContainer justifyContent="center">
         <TextCenter>
           <Typography variant="title" as="h2">
             Divisions
           </Typography>
         </TextCenter>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="18px 0px"
+        >
           {cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
@@ -285,7 +296,7 @@ export default function Operations() {
                   alt={props.iconAlt}
                   width="100%"
                   marginBottom={Spaces.sm}
-                ></Image>
+                />
               </ImageContainer>
               {props.children}
             </Card>
