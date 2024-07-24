@@ -162,6 +162,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/8mzpg98jvrmh3ikograio/Approved-Minutes-Board-of-Directors-March-15-2024-signed.pdf?rlkey=mywdwfmlx9q13lype6cgh793e&dl=0',
             children: 'BOD Special Meeting Minutes March 15, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/gukddkrpb9cgara5r4pfe/Minutes-Board-of-Directors-April-19-2024-signed.pdf?rlkey=2jht2n0nkcu3klffkx4sou2l4&dl=0',
+            children: 'BOD Special Meeting Minutes April 19, 2024',
+          },
         ]}
       />
     ),
