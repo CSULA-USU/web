@@ -59,7 +59,7 @@ const HeaderContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(5px);
+    filter: blur(4px);
     z-index: 1;
   }
 `;
@@ -275,7 +275,12 @@ export default function Operations() {
             Divisions
           </Typography>
         </TextCenter>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="18px 0px"
+        >
           {cards.map((props) => (
             <Card
               margin={`${Spaces.md}`}
