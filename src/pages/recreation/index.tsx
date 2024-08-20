@@ -149,7 +149,7 @@ export default function Recreation() {
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
-              Rec 1
+              Hi
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
