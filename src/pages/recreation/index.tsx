@@ -140,7 +140,7 @@ export default function Recreation() {
           </PhoneSection>
         </HeaderSection>
         <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Summer Hours:
+          Fall 2024 Hours:
         </Typography>
         <HoursSection>
           <div>
@@ -164,11 +164,19 @@ export default function Recreation() {
                 size="20px"
               />
               <Typography as="p">
-                <u>Monday – Friday</u>
+                <u>Monday – Thursday</u>
                 <br />
-                7:10 AM to 6:45 PM
+                7:10 AM to 9:45 PM
                 <br />
-                <u>Saturday - Sunday</u>
+                <u>Friday</u>
+                <br />
+                7:10 AM to 7:45 PM
+                <br />
+                <u>Saturday</u>
+                <br />
+                7:10 AM to 2:45 PM
+                <br />
+                <u>Sunday</u>
                 <br />
                 Closed
                 <br />
@@ -196,11 +204,11 @@ export default function Recreation() {
                 size="20px"
               />
               <Typography as="p">
-                <u>Monday – Friday</u>
+                <u>Monday – Thursday</u>
                 <br />
-                Closed
+                11:00 AM to 7:00 PM
                 <br />
-                <u>Saturday - Sunday</u>
+                <u>Friday - Sunday</u>
                 <br />
                 Closed
                 <br />
@@ -231,7 +239,7 @@ export default function Recreation() {
               <Typography as="p">
                 <u>Monday – Thursday</u>
                 <br />
-                Closed
+                12:00 PM to 6:00 PM
                 <br />
                 <u>Friday - Sunday</u>
                 <br />
@@ -261,11 +269,19 @@ export default function Recreation() {
                 size="20px"
               />
               <Typography as="p">
-                <u>Monday – Friday</u>
+                <u>Monday – Thursday</u>
                 <br />
-                Closed
+                7:00 AM to 9:30 PM
                 <br />
-                <u>Saturday - Sunday</u>
+                <u>Friday</u>
+                <br />
+                7:00 AM to 7:30 PM
+                <br />
+                <u>Saturday</u>
+                <br />
+                7:00 AM to 12:00 PM
+                <br />
+                <u>Sunday</u>
                 <br />
                 Closed
               </Typography>
