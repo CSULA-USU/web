@@ -67,16 +67,16 @@ export const Footer = () => (
             <Typography as="h2" color="white">
               Building Hours
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Monday to Thursday: 7 AM to 10 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Friday: 7 AM to 8 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Saturday: 7 AM to 3 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Sunday: Closed
             </Typography>
             {/* <Typography color="primary" size="sm" lineHeight="2.4">
