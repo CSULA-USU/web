@@ -29,13 +29,29 @@ const UnderlineHover = styled.a`
 `;
 
 const NoUnderlineHover = styled.a`
-  text-decoration: underline;
+  text-decoration: none;
   position: relative;
   color: inherit;
+  display: inline-block;
 
   &:hover {
-    text-decoration: none;
-    opacity: 0.8;
+    opacity: 0.85;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    opacity: 0;
   }
 `;
 
