@@ -8,6 +8,7 @@ export * from './EventsLoader';
 export * from './FluidContainer';
 export * from './Icon';
 export * from './Image';
+export * from './Link';
 export * from './Loading';
 export * from './NonBreakingSpan';
 export * from './Panel';
