@@ -67,28 +67,28 @@ export const Footer = () => (
             <Typography as="h2" color="white">
               Building Hours
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Monday to Thursday: 7 AM to 10 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Friday: 7 AM to 8 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Saturday: 7 AM to 3 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Sunday: Closed
             </Typography>
-            {/* <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="primary" size="sm" lineHeight="2.4">
               <Link
                 target="_blank"
                 href={
-                  'https://www.dropbox.com/scl/fi/t6t1hpjup7f37chdb2s0m/tenant-memo-5-13-24-letterhead.docx?rlkey=k7f0kbzht7qjw988sfzyg84g4&dl=0'
+                  'https://www.dropbox.com/scl/fi/s6eek5pluym965zpbjn97/tenant-memo-8-23-24-letterhead.docx?rlkey=wipoile2q0zk2m3bsrzeykv12&dl=0'
                 }
               >
                 Upcoming Building Hours
               </Link>
-            </Typography> */}
+            </Typography>
           </div>
           <div>
             <Typography as="h3" color="white">

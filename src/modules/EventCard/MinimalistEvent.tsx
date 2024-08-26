@@ -178,7 +178,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
           <MinimalistEventContainer>
             <LeftContainer>
               <abbr title={`${month} ${day}`}>
-                <Typography as="h3" variant="eventDetail" color="gold">
+                <Typography as="h3" variant="eventDetail" color="black">
                   {monthAbbr} {day}
                 </Typography>
               </abbr>
@@ -192,7 +192,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   <Typography
                     as="h3"
                     variant="eventTitle"
-                    color="black"
+                    color="gold"
                     size="md"
                   >
                     {eventName}
