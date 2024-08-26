@@ -197,7 +197,9 @@ export const BODDownloads = () => (
       <DownloadSection key={d.title} {...d} />
     ))}
     <StyledLink href="/governance/public-document-archives">
-      View All Documents
+      <Typography variant="span" color="gold">
+        View All Documents
+      </Typography>
     </StyledLink>
   </FluidContainer>
 );
