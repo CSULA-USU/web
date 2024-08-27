@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { NonBreakingSpan, Typography } from 'components';
+import {
+  Divider,
+  FluidContainer,
+  NonBreakingSpan,
+  StyledLink,
+  Typography,
+} from 'components';
 import { Colors, media, Spaces } from 'theme';
-import { FluidContainer, Divider } from 'components';
 import { AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
 import Link from 'next/link';
 
@@ -27,6 +32,10 @@ const FooterTopContainer = styled.div`
 const FooterBottomContainer = styled(FooterTopContainer)`
   justify-content: space-between;
   ${media('mobile')(`justify-content: center`)}
+`;
+
+const StyledLinkMargins = styled.div`
+  margin: '10px 0 0 0';
 `;
 
 const FooterBottomInner = styled.div`
@@ -64,84 +73,103 @@ export const Footer = () => (
         </FooterTopLogo>
         <FooterTopLinks>
           <div>
-            <Typography as="h2" color="white">
+            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Building Hours
             </Typography>
-            <Typography color="white" size="sm" lineHeight="2.4">
-              Monday to Thursday: 7 AM to 10 PM
-            </Typography>
-            <Typography color="white" size="sm" lineHeight="2.4">
-              Friday: 7 AM to 8 PM
-            </Typography>
-            <Typography color="white" size="sm" lineHeight="2.4">
-              Saturday: 7 AM to 3 PM
-            </Typography>
-            <Typography color="white" size="sm" lineHeight="2.4">
-              Sunday: Closed
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link
-                target="_blank"
-                href={
-                  'https://www.dropbox.com/scl/fi/s6eek5pluym965zpbjn97/tenant-memo-8-23-24-letterhead.docx?rlkey=wipoile2q0zk2m3bsrzeykv12&dl=0'
-                }
-              >
-                Upcoming Building Hours
-              </Link>
-            </Typography>
+            <StyledLinkMargins>
+              <Typography color="white" size="sm">
+                Monday to Thursday: 7 AM to 10 PM
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="white" size="sm">
+                Friday: 7 AM to 8 PM
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="white" size="sm">
+                Saturday: 7 AM to 3 PM
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="white" size="sm">
+                Sunday: Closed
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink
+                  href={
+                    'https://www.dropbox.com/scl/fi/s6eek5pluym965zpbjn97/tenant-memo-8-23-24-letterhead.docx?rlkey=wipoile2q0zk2m3bsrzeykv12&dl=0'
+                  }
+                >
+                  Upcoming Building Hours
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
           </div>
           <div>
-            <Typography as="h3" color="white">
+            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Involvement
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link target="_blank" href={'/events'}>
-                Calendar of Events
-              </Link>
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link target="_blank" href={'/csi/student-orgs'}>
-                Clubs & Orgs
-              </Link>
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link
-                target="_blank"
-                href={'https://form.jotform.com/210416532268047'}
-              >
-                U-SU Board of Directors Application
-              </Link>
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link target="_blank" href={'/employment'}>
-                U-SU Employment
-              </Link>
-            </Typography>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/events'}>Calendar of Events</StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/csi/student-orgs'}>Clubs & Orgs</StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'https://form.jotform.com/210416532268047'}>
+                  U-SU Board of Directors Application
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/employment'}>U-SU Employment</StyledLink>
+              </Typography>
+            </StyledLinkMargins>
           </div>
           <div>
-            <Typography as="h3" color="white">
+            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Resources
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link target="_blank" href={'https://www.calstatela.edu/'}>
-                Cal State LA Homepage
-              </Link>
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link
-                target="_blank"
-                href={
-                  'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
-                }
-              >
-                Strategic Plan
-              </Link>
-            </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
-              <Link target="_blank" href={'/governance/public-documents'}>
-                View Public Documents
-              </Link>
-            </Typography>
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'https://www.calstatela.edu/'}>
+                  Cal State LA Homepage
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink
+                  href={
+                    'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
+                  }
+                >
+                  Strategic Plan
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/governance/public-documents'}>
+                  View Public Documents
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
           </div>
         </FooterTopLinks>
       </FooterTopContainer>
