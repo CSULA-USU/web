@@ -67,23 +67,23 @@ export const Footer = () => (
             <Typography as="h2" color="white">
               Building Hours
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Monday to Thursday: 7 AM to 10 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Friday: 7 AM to 8 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Saturday: 7 AM to 3 PM
             </Typography>
-            <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="white" size="sm" lineHeight="2.4">
               Sunday: Closed
             </Typography>
             <Typography color="primary" size="sm" lineHeight="2.4">
               <Link
                 target="_blank"
                 href={
-                  'https://www.dropbox.com/scl/fi/t6t1hpjup7f37chdb2s0m/tenant-memo-5-13-24-letterhead.docx?rlkey=k7f0kbzht7qjw988sfzyg84g4&dl=0'
+                  'https://www.dropbox.com/scl/fi/s6eek5pluym965zpbjn97/tenant-memo-8-23-24-letterhead.docx?rlkey=wipoile2q0zk2m3bsrzeykv12&dl=0'
                 }
               >
                 Upcoming Building Hours
@@ -94,54 +94,54 @@ export const Footer = () => (
             <Typography as="h3" color="white">
               Involvement
             </Typography>
-            <Link target="_blank" href={'/events'}>
-              <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link target="_blank" href={'/events'}>
                 Calendar of Events
-              </Typography>
-            </Link>
-            <Link target="_blank" href={'/csi/student-orgs'}>
-              <Typography color="primary" size="sm" lineHeight="2.4">
+              </Link>
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link target="_blank" href={'/csi/student-orgs'}>
                 Clubs & Orgs
-              </Typography>
-            </Link>
-            <Link
-              target="_blank"
-              href={'https://form.jotform.com/210416532268047'}
-            >
-              <Typography color="primary" size="sm" lineHeight="2.4">
+              </Link>
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link
+                target="_blank"
+                href={'https://form.jotform.com/210416532268047'}
+              >
                 U-SU Board of Directors Application
-              </Typography>
-            </Link>
-            <Link target="_blank" href={'/employment'}>
-              <Typography color="primary" size="sm" lineHeight="2.4">
+              </Link>
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link target="_blank" href={'/employment'}>
                 U-SU Employment
-              </Typography>
-            </Link>
+              </Link>
+            </Typography>
           </div>
           <div>
             <Typography as="h3" color="white">
               Resources
             </Typography>
-            <Link target="_blank" href={'https://www.calstatela.edu/'}>
-              <Typography color="primary" size="sm" lineHeight="2.4">
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link target="_blank" href={'https://www.calstatela.edu/'}>
                 Cal State LA Homepage
-              </Typography>
-            </Link>
-            <Link
-              target="_blank"
-              href={
-                'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
-              }
-            >
-              <Typography color="primary" size="sm" lineHeight="2.4">
+              </Link>
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link
+                target="_blank"
+                href={
+                  'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
+                }
+              >
                 Strategic Plan
-              </Typography>
-            </Link>
-            <Link target="_blank" href={'/governance/public-documents'}>
-              <Typography color="primary" size="sm" lineHeight="2.4">
+              </Link>
+            </Typography>
+            <Typography color="primary" size="sm" lineHeight="2.4">
+              <Link target="_blank" href={'/governance/public-documents'}>
                 View Public Documents
-              </Typography>
-            </Link>
+              </Link>
+            </Typography>
           </div>
         </FooterTopLinks>
       </FooterTopContainer>
