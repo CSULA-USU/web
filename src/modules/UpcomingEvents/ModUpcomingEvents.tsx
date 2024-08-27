@@ -1,9 +1,14 @@
-import { Button, Divider, FluidContainer, Typography } from 'components';
+import {
+  Button,
+  Divider,
+  FluidContainer,
+  StyledLink,
+  Typography,
+} from 'components';
 import { PresenceEvent } from 'types';
 import { EventCard, MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
-import Link from 'next/link';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
 
@@ -65,11 +70,9 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
-          <Link href="/events">
-            <Typography as="h2" variant="subheader">
-              Upcoming Events
-            </Typography>
-          </Link>
+          <Typography as="h2" variant="subheader" color="gold">
+            <StyledLink href={'/events'}>Upcoming</StyledLink>
+          </Typography>
         </UpcomingEventsHeading>
       )}
       {monthly ? (
