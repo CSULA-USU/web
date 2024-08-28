@@ -61,7 +61,7 @@ export const Card = ({
         {iconElement && <IconContainer>{iconElement}</IconContainer>}
         <br />
         <Typography
-          as="h2"
+          as="h3"
           variant="titleSmall"
           margin="0 0 16px"
           size={isMobile ? 'lg' : 'xl'}
