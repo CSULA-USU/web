@@ -35,7 +35,7 @@ const FooterBottomContainer = styled(FooterTopContainer)`
 `;
 
 const StyledLinkMargins = styled.div`
-  margin: '10px 0 0 0';
+  margin: 10px 0 0 0;
 `;
 
 const FooterBottomInner = styled.div`
