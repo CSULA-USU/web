@@ -101,13 +101,14 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
     <Card onClick={onClick}>
       <GraphicContainer>
         <Image
-          alt={`${eventName}`}
+          alt=""
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           width={0}
           height={0}
           sizes="100vw"
           loading="lazy"
           style={{ width: '100%', height: 'auto' }}
+          aria-hidden="true"
         />
       </GraphicContainer>
       <Details>
