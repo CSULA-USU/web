@@ -3,6 +3,7 @@ export * from './CallToAction';
 export * from './CGCParticipantModal';
 export * from './CulturalGradsHeader';
 export * from './EventCard';
+export * from './FeaturedEvent';
 export * from './Footer';
 export * from './Header';
 export * from './EventHeader';
