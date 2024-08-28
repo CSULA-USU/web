@@ -33,7 +33,7 @@ const orgsCards = [
     children:
       'The APISRC was established in 1993 to address the growing needs and concerns of the Asian, Pacific Islander, and Desi-American student population while enriching and raising social awareness for the entire campus community.',
     imgSrc: '/departments/ccc/apisrc/apisrcHeader.png',
-    imgAlt: 'apisrc',
+    imgAlt: '',
     href: 'ccc/apisrc',
     linkText: 'Learn More',
   },
@@ -42,7 +42,7 @@ const orgsCards = [
     children:
       'The CLSRC provides services and support for students who identify as, or are interested in, Chicana/o and/or Latina/o community and cultural issues.',
     imgSrc: 'departments/ccc/clsrc/clsrcHeader.png',
-    imgAlt: 'CLSRC',
+    imgAlt: '',
     href: 'ccc/clsrc',
     linkText: 'Learn More',
   },
@@ -51,7 +51,7 @@ const orgsCards = [
     children:
       'The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.',
     imgSrc: 'departments/ccc/gsrc/gsrc.png',
-    imgAlt: 'GSRC',
+    imgAlt: '',
     href: 'ccc/gsrc',
     linkText: 'Learn More',
   },
@@ -60,7 +60,7 @@ const orgsCards = [
     children:
       'The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues.',
     imgSrc: '/departments/ccc/pasrc/pasrc.png',
-    imgAlt: 'PASRC',
+    imgAlt: '',
     href: 'ccc/pasrc',
     linkText: 'Learn More',
   },
@@ -69,46 +69,46 @@ const orgsCards = [
 const descriptionCards = [
   {
     imgSrc: 'icons/giving-hand-icon.png',
-    imgAlt: 'hand giving a heart',
+    imgAlt: '',
     children: 'Support groups and workshops',
   },
   {
     imgSrc: 'icons/book-icon.png',
-    imgAlt: 'Open Book',
+    imgAlt: '',
     children:
       'Library including books, journals, magazines, and website listings',
   },
   {
     imgSrc: 'icons/computer-icon.png',
-    imgAlt: 'Mac Desktop',
+    imgAlt: '',
     children:
       'Cross-cultural video, audio library, and media center for educational purposes',
   },
 
   {
     imgSrc: 'icons/open-door-icon.png',
-    imgAlt: 'Open Door',
+    imgAlt: '',
     children: 'Study spaces',
   },
   {
     imgSrc: 'icons/fridge-icon.png',
-    imgAlt: 'Fridge',
+    imgAlt: '',
     children: 'Microwaves and refrigerators',
   },
   {
     imgSrc: 'icons/calendar-icon.png',
-    imgAlt: 'calendar',
+    imgAlt: '',
     children: 'Culturally relevant programming events throughout the year',
   },
   {
     imgSrc: 'icons/resume-icon.png',
-    imgAlt: 'resume icon',
+    imgAlt: '',
     children:
       'Information on community organizations, job opportunities, and scholarships',
   },
   {
     imgSrc: 'icons/connecting-people-icon.png',
-    imgAlt: 'Connecting People',
+    imgAlt: '',
     children:
       'Friendly staff and volunteers to answer questions and discuss ideas',
   },
@@ -228,7 +228,7 @@ export default function CCC() {
               key={`${props.children}`}
               minHeight="280px"
               {...props}
-            ></DescriptionCard>
+            />
           ))}
         </FluidContainer>
       </FluidContainer>
@@ -247,7 +247,7 @@ export default function CCC() {
             alt="Nuestra Grad smiling while giving a hug"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
-          ></Image>
+          />
           <FluidContainer>
             <Typography variant="title" as="h2">
               Cultural Graduate Celebrations
