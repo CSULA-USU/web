@@ -55,7 +55,6 @@ export const Card = ({
               width={iconWidth ? iconWidth : Spaces['2xl']}
               marginBottom="24px"
               lazy
-              aria-hidden={iconAlt ? 'false' : 'true'}
             />
           </IconContainer>
         )}
