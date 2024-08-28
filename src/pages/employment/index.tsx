@@ -112,7 +112,12 @@ export default function Employment() {
         </JobListingContainer>
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
-        <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
+        <Typography
+          as="h2"
+          variant="titleLarge"
+          margin={`0 0 ${Spaces.md}`}
+          size="2xl"
+        >
           Applications
         </Typography>
         <Link
