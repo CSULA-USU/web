@@ -51,10 +51,11 @@ export const Card = ({
           <IconContainer>
             <Image
               src={iconSrc}
-              alt={iconAlt ? iconAlt : 'icon img'}
+              alt={iconAlt ? iconAlt : ''}
               width={iconWidth ? iconWidth : Spaces['2xl']}
               marginBottom="24px"
               lazy
+              aria-hidden={iconAlt ? 'false' : 'true'}
             />
           </IconContainer>
         )}
