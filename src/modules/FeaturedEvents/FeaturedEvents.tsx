@@ -105,9 +105,9 @@ export const FeaturedEvents = ({
                 combinedArray.map((event) => (
                   <div key={event.eventNoSqlId}>
                     <MinimalistEvent
-                      buttonText={event.buttonText}
+                      buttonText={event.buttonText ? event.buttonText : ''}
                       event={event}
-                      link={event.link}
+                      link={event.link ? event.link : ''}
                       onClick={() => selectEvent(event)}
                       isFeatured
                     />
