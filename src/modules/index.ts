@@ -9,7 +9,7 @@ export * from './DownloadSection';
 export * from './EditDrawer';
 export * from './EventCard';
 export * from './EventHeader';
-export * from './FeaturedEvent';
+export * from './FeaturedEvents';
 export * from './Footer';
 export * from './GenericModal';
 export * from './Header';
