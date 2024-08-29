@@ -7,9 +7,11 @@ import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { Colors, media } from 'theme';
 
 export interface MinimalistEventProps {
+  buttonText?: string;
   event: PresenceEvent;
-  onClick?: () => void;
   isFeatured?: boolean;
+  link?: string;
+  onClick?: () => void;
 }
 
 const InfoContainer = styled.button<{ color: string }>`
@@ -66,9 +68,11 @@ const TitleContainer = styled.span`
 `;
 
 export const MinimalistEvent = ({
+  buttonText,
   event,
-  onClick,
   isFeatured,
+  link,
+  onClick,
 }: MinimalistEventProps) => {
   const { isDesktop, isMobile } = useBreakpoint();
   if (!event) return null;
@@ -228,8 +232,9 @@ export const MinimalistEvent = ({
               <Button
                 variant={isFeatured ? 'greyDarker' : 'grey'}
                 onClick={onClick}
+                href={link ? link : undefined}
               >
-                View Event
+                {buttonText ? buttonText : 'View Event'}
               </Button>
             </RightContainer>
           </MinimalistEventContainer>

@@ -17,6 +17,18 @@ interface EventProps {
   buttonText?: string;
 }
 
+const YellowBoxUnderneath = styled.div`
+  background-color: ${Colors.primary};
+  height: 100%;
+  left: 12px;
+  position: absolute;
+  top: 12px;
+  transition: top 0.3s ease, left 0.3s ease;
+  width: 100%;
+  z-index: 0;
+  ${media('tablet')('top: 8px; left: 8px;')};
+`;
+
 const FeaturedEventsSection = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -33,20 +45,15 @@ const FeaturedEventsSection = styled.div`
   padding: 0 24px;
   position: relative;
   z-index: 2;
+  ${media('tablet')('padding: 0 16px;')};
 `;
 
 const RelativeContainer = styled.div`
   position: relative;
-`;
-
-const YellowBoxUnderneath = styled.div`
-  background-color: ${Colors.primary};
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
+  &:hover ${YellowBoxUnderneath} {
+    top: 8px;
+    left: 8px;
+  }
 `;
 
 const TertiaryContainer = styled.div`
@@ -71,10 +78,17 @@ export const FeaturedEvents = ({
           featuredEvents.some((featured) => featured.title === event.eventName),
         )
       : [];
+  const combinedArray = filteredEvents.length
+    ? filteredEvents.map((item, index) => ({
+        ...item,
+        ...featuredEvents[index],
+      }))
+    : [];
 
   useEffect(() => {
     console.log('fe', filteredEvents);
     console.log('events', events);
+    console.log('combined', combinedArray);
   }, [filteredEvents]);
 
   return !events.length ? null : (
@@ -87,11 +101,13 @@ export const FeaturedEvents = ({
           <YellowBoxUnderneath />
           <FeaturedEventsSection>
             <TertiaryContainer>
-              {filteredEvents.length &&
-                filteredEvents.map((event) => (
+              {combinedArray.length &&
+                combinedArray.map((event) => (
                   <div key={event.eventNoSqlId}>
                     <MinimalistEvent
+                      buttonText={event.buttonText ? event.buttonText : ''}
                       event={event}
+                      link={event.link ? event.link : ''}
                       onClick={() => selectEvent(event)}
                       isFeatured
                     />
