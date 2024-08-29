@@ -5,6 +5,7 @@ import {
   BoardOfDirectorsCTA,
   Page,
   CallToActionImages,
+  FeaturedEvents,
 } from 'modules';
 import {
   Button,
@@ -18,6 +19,7 @@ import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
+import featuredEvents from 'data/featured-events.json';
 
 const images = [
   {
@@ -95,6 +97,9 @@ export default function Home() {
           />
           {/* Toggle the line below if there is a promotion. */}
           {/* <BoardOfDirectorsCTAPromotion /> */}
+          {featuredEvents.length >= 1 ? (
+            <FeaturedEvents events={events} featuredEvents={featuredEvents} />
+          ) : null}
           {events.length > 1 ? <ModUpcomingEvents events={events} /> : null}
         </>
       ) : (

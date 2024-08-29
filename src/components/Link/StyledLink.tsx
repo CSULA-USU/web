@@ -61,7 +61,7 @@ const StyleSpan = styled.span`
 `;
 
 const IconStyling = {
-  marginLeft: '10px',
+  marginLeft: '4px',
   height: '100%',
   marginBottom: '1px',
 };

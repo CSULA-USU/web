@@ -330,7 +330,7 @@ export default function Recreation() {
         >
           <Image
             src="/departments/recreation/recreation-treadmill.jpg"
-            alt="todo:"
+            alt="students exercising in rec 2"
             width="100%"
           />
         </Card>
@@ -341,7 +341,7 @@ export default function Recreation() {
         >
           <Image
             src="/departments/recreation/recreation-bench.jpg"
-            alt="todo:"
+            alt="students working out using the bench press"
             width="100%"
           />
         </Card>
@@ -352,7 +352,7 @@ export default function Recreation() {
         >
           <Image
             src="/departments/recreation/recreation-floor-2.jpg"
-            alt="todo:"
+            alt="student performing floor exercises"
             width="100%"
           />
         </Card>

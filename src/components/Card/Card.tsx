@@ -51,7 +51,7 @@ export const Card = ({
           <IconContainer>
             <Image
               src={iconSrc}
-              alt={iconAlt ? iconAlt : 'icon img'}
+              alt={iconAlt ? iconAlt : ''}
               width={iconWidth ? iconWidth : Spaces['2xl']}
               marginBottom="24px"
               lazy
@@ -61,7 +61,7 @@ export const Card = ({
         {iconElement && <IconContainer>{iconElement}</IconContainer>}
         <br />
         <Typography
-          as="h2"
+          as="h3"
           variant="titleSmall"
           margin="0 0 16px"
           size={isMobile ? 'lg' : 'xl'}

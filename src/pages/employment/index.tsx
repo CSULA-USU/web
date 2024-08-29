@@ -74,7 +74,7 @@ export default function Employment() {
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <Link href={j.link || ''} target="_blank">
-                    <Typography as="h3" variant="labelTitle">
+                    <Typography variant="span" size="lg">
                       {j.title}
                     </Typography>
                   </Link>
@@ -93,7 +93,7 @@ export default function Employment() {
             {fulltimeJobs.length >= 1 ? (
               fulltimeJobs.map((j) => (
                 <JobItem key={`${j.department}_${j.title}`}>
-                  <Typography as="h3" variant="titleSmall" color="grey">
+                  <Typography variant="titleSmall" color="grey">
                     {j.department}
                   </Typography>
                   <Link href={j.href} target="_blank">
@@ -112,7 +112,12 @@ export default function Employment() {
         </JobListingContainer>
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
-        <Typography as="h3" variant="titleLarge" margin={`0 0 ${Spaces.md}`}>
+        <Typography
+          as="h2"
+          variant="titleLarge"
+          margin={`0 0 ${Spaces.md}`}
+          size="2xl"
+        >
           Applications
         </Typography>
         <Link
