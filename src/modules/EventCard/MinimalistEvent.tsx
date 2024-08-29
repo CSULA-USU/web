@@ -6,6 +6,12 @@ import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { Colors, media } from 'theme';
 
+export interface MinimalistEventProps {
+  event: PresenceEvent;
+  onClick?: () => void;
+  isFeatured?: boolean;
+}
+
 const InfoContainer = styled.button`
   background: transparent;
   border: none;
@@ -57,12 +63,12 @@ const MinimalistEventContainer = styled.div`
 const TitleContainer = styled.span`
   cursor: pointer;
 `;
-export interface MinimalistEventProps {
-  event: PresenceEvent;
-  onClick?: () => void;
-}
 
-export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
+export const MinimalistEvent = ({
+  event,
+  onClick,
+  isFeatured,
+}: MinimalistEventProps) => {
   const { isDesktop, isMobile } = useBreakpoint();
   if (!event) return null;
   const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
@@ -178,11 +184,20 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
           <MinimalistEventContainer>
             <LeftContainer>
               <abbr title={`${month} ${day}`}>
-                <Typography as="h3" variant="eventDetail" color="black">
+                <Typography
+                  as="h3"
+                  variant="eventDetail"
+                  color={isFeatured ? 'greyLighter' : 'black'}
+                >
                   {monthAbbr} {day}
                 </Typography>
               </abbr>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+              <Typography
+                as="h4"
+                variant="eventTime"
+                color={isFeatured ? 'greyLighter' : 'grey'}
+                weight="400"
+              >
                 {startTime} - {endTime}
               </Typography>
             </LeftContainer>
@@ -199,7 +214,12 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   </Typography>
                 </EventAndPreviewContainer>
               </TitleContainer>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+              <Typography
+                as="h4"
+                variant="eventTime"
+                color={isFeatured ? 'greyLighter' : 'grey'}
+                weight="400"
+              >
                 {location}
               </Typography>
             </MiddleContainer>
