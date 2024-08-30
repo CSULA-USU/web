@@ -22,6 +22,6 @@ a {
 a:focus {
   border: 2px inset #1565c0; /* green */
   display: inline-block;
-  outline: 2px outset #4caf50; /* blue */
+  outline: 2px outset # /* blue */
   text-decoration: underline;
 }
