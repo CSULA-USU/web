@@ -64,6 +64,8 @@ const IconStyling = {
   marginLeft: '4px',
   height: '100%',
   marginBottom: '1px',
+  fontSize: 'inherit',
+  color: 'currentColor',
 };
 
 interface StyledLinkProps {

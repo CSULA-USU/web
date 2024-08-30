@@ -17,9 +17,11 @@ export interface MinimalistEventProps {
 const InfoContainer = styled.button<{ color: string }>`
   background: transparent;
   border: none;
-  padding: 0;
-  cursor: pointer;
   color: ${(p) => p.color};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
 `;
 
 const MiddleContainer = styled.div`
@@ -42,6 +44,7 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   display: flex;
   align-items: center;
+  line-height: 1.6;
 `;
 
 const EventAndPreviewContainer = styled.div`
@@ -119,6 +122,7 @@ export const MinimalistEvent = ({
                   variant="eventTime"
                   color={isFeatured ? 'greyLighter' : 'grey'}
                   weight="400"
+                  margin="0 0 4px 0"
                 >
                   {startTime}
                 </Typography>
