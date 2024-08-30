@@ -1,5 +1,5 @@
-import { Button, Typography } from 'components';
 import { BsInfoCircle } from 'react-icons/bs';
+import { Button, StyledLink, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
 import styled from 'styled-components';
@@ -125,11 +125,21 @@ export const MinimalistEvent = ({
               </MiddleContainer>
               <RightContainer>
                 <InfoContainer color={isFeatured ? 'white' : 'black'}>
-                  <BsInfoCircle
-                    title="Learn More"
-                    size={isMobile ? '18px' : '30px'}
-                    onClick={onClick}
-                  />
+                  {isFeatured && link ? (
+                    <StyledLink href={link ? link : ''} isExternal>
+                      <BsInfoCircle
+                        title="Learn More"
+                        size={isMobile ? '18px' : '30px'}
+                        color="white"
+                      />
+                    </StyledLink>
+                  ) : (
+                    <BsInfoCircle
+                      title="Learn More"
+                      size={isMobile ? '18px' : '30px'}
+                      onClick={onClick}
+                    />
+                  )}
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
@@ -174,11 +184,21 @@ export const MinimalistEvent = ({
               </MiddleContainer>
               <RightContainer>
                 <InfoContainer color={isFeatured ? 'white' : 'black'}>
-                  <BsInfoCircle
-                    title="Learn More"
-                    size={isMobile ? '18px' : '30px'}
-                    onClick={onClick}
-                  />
+                  {isFeatured && link ? (
+                    <StyledLink href={link ? link : ''} isExternal>
+                      <BsInfoCircle
+                        title="Learn More"
+                        size={isMobile ? '18px' : '30px'}
+                        color="white"
+                      />
+                    </StyledLink>
+                  ) : (
+                    <BsInfoCircle
+                      title="Learn More"
+                      size={isMobile ? '18px' : '30px'}
+                      onClick={onClick}
+                    />
+                  )}
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
@@ -207,7 +227,7 @@ export const MinimalistEvent = ({
               </Typography>
             </LeftContainer>
             <MiddleContainer>
-              <TitleContainer onClick={onClick}>
+              <TitleContainer onClick={link ? undefined : onClick}>
                 <EventAndPreviewContainer>
                   <Typography
                     as="h3"
@@ -231,7 +251,7 @@ export const MinimalistEvent = ({
             <RightContainer>
               <Button
                 variant={isFeatured ? 'greyDarker' : 'grey'}
-                onClick={onClick}
+                onClick={link ? undefined : onClick}
                 href={link ? link : undefined}
               >
                 {buttonText ? buttonText : 'View Event'}
