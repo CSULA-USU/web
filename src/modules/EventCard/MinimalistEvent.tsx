@@ -1,16 +1,25 @@
-import { Button, Typography } from 'components';
 import { BsInfoCircle } from 'react-icons/bs';
+import { Button, StyledLink, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
 import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { Colors, media } from 'theme';
 
-const InfoContainer = styled.button`
+export interface MinimalistEventProps {
+  buttonText?: string;
+  event: PresenceEvent;
+  isFeatured?: boolean;
+  link?: string;
+  onClick?: () => void;
+}
+
+const InfoContainer = styled.button<{ color: string }>`
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
+  color: ${(p) => p.color};
 `;
 
 const MiddleContainer = styled.div`
@@ -57,12 +66,14 @@ const MinimalistEventContainer = styled.div`
 const TitleContainer = styled.span`
   cursor: pointer;
 `;
-export interface MinimalistEventProps {
-  event: PresenceEvent;
-  onClick?: () => void;
-}
 
-export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
+export const MinimalistEvent = ({
+  buttonText,
+  event,
+  isFeatured,
+  link,
+  onClick,
+}: MinimalistEventProps) => {
   const { isDesktop, isMobile } = useBreakpoint();
   if (!event) return null;
   const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
@@ -87,7 +98,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   <Typography
                     as="h3"
                     variant="eventTitle"
-                    color="black"
+                    color={isFeatured ? 'greyLighter' : 'black'}
                     size="md"
                   >
                     {eventName}
@@ -98,7 +109,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 <Typography
                   as="h4"
                   variant="eventTime"
-                  color="grey"
+                  color={isFeatured ? 'greyLighter' : 'grey'}
                   weight="400"
                 >
                   {location}
@@ -106,19 +117,29 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 <Typography
                   as="h4"
                   variant="eventTime"
-                  color="grey"
+                  color={isFeatured ? 'greyLighter' : 'grey'}
                   weight="400"
                 >
                   {startTime}
                 </Typography>
               </MiddleContainer>
               <RightContainer>
-                <InfoContainer>
-                  <BsInfoCircle
-                    title="Learn More"
-                    size={isMobile ? '18px' : '30px'}
-                    onClick={onClick}
-                  />
+                <InfoContainer color={isFeatured ? 'white' : 'black'}>
+                  {isFeatured && link ? (
+                    <StyledLink href={link ? link : ''} isExternal>
+                      <BsInfoCircle
+                        title="Learn More"
+                        size={isMobile ? '18px' : '30px'}
+                        color="white"
+                      />
+                    </StyledLink>
+                  ) : (
+                    <BsInfoCircle
+                      title="Learn More"
+                      size={isMobile ? '18px' : '30px'}
+                      onClick={onClick}
+                    />
+                  )}
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
@@ -135,7 +156,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 <Typography
                   as="h4"
                   variant="eventTime"
-                  color="grey"
+                  color={isFeatured ? 'greyLighter' : 'grey'}
                   weight="400"
                 >
                   {startTime}
@@ -146,7 +167,7 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   <Typography
                     as="h3"
                     variant="eventTitle"
-                    color="black"
+                    color={isFeatured ? 'greyLighter' : 'black'}
                     size="md"
                   >
                     {eventName}
@@ -155,19 +176,29 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                 <Typography
                   as="h4"
                   variant="eventTime"
-                  color="grey"
+                  color={isFeatured ? 'greyLighter' : 'grey'}
                   weight="400"
                 >
                   {location}
                 </Typography>
               </MiddleContainer>
               <RightContainer>
-                <InfoContainer>
-                  <BsInfoCircle
-                    title="Learn More"
-                    size={isMobile ? '18px' : '30px'}
-                    onClick={onClick}
-                  />
+                <InfoContainer color={isFeatured ? 'white' : 'black'}>
+                  {isFeatured && link ? (
+                    <StyledLink href={link ? link : ''} isExternal>
+                      <BsInfoCircle
+                        title="Learn More"
+                        size={isMobile ? '18px' : '30px'}
+                        color="white"
+                      />
+                    </StyledLink>
+                  ) : (
+                    <BsInfoCircle
+                      title="Learn More"
+                      size={isMobile ? '18px' : '30px'}
+                      onClick={onClick}
+                    />
+                  )}
                 </InfoContainer>
               </RightContainer>
             </MinimalistEventContainer>
@@ -178,16 +209,25 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
           <MinimalistEventContainer>
             <LeftContainer>
               <abbr title={`${month} ${day}`}>
-                <Typography as="h3" variant="eventDetail" color="black">
+                <Typography
+                  as="h3"
+                  variant="eventDetail"
+                  color={isFeatured ? 'greyLighter' : 'black'}
+                >
                   {monthAbbr} {day}
                 </Typography>
               </abbr>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+              <Typography
+                as="h4"
+                variant="eventTime"
+                color={isFeatured ? 'greyLighter' : 'grey'}
+                weight="400"
+              >
                 {startTime} - {endTime}
               </Typography>
             </LeftContainer>
             <MiddleContainer>
-              <TitleContainer onClick={onClick}>
+              <TitleContainer onClick={link ? undefined : onClick}>
                 <EventAndPreviewContainer>
                   <Typography
                     as="h3"
@@ -199,13 +239,22 @@ export const MinimalistEvent = ({ event, onClick }: MinimalistEventProps) => {
                   </Typography>
                 </EventAndPreviewContainer>
               </TitleContainer>
-              <Typography as="h4" variant="eventTime" color="grey" weight="400">
+              <Typography
+                as="h4"
+                variant="eventTime"
+                color={isFeatured ? 'greyLighter' : 'grey'}
+                weight="400"
+              >
                 {location}
               </Typography>
             </MiddleContainer>
             <RightContainer>
-              <Button variant="grey" onClick={onClick}>
-                View Event
+              <Button
+                variant={isFeatured ? 'greyDarker' : 'grey'}
+                onClick={link ? undefined : onClick}
+                href={link ? link : undefined}
+              >
+                {buttonText ? buttonText : 'View Event'}
               </Button>
             </RightContainer>
           </MinimalistEventContainer>
