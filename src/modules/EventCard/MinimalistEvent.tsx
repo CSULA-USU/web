@@ -227,7 +227,7 @@ export const MinimalistEvent = ({
               </Typography>
             </LeftContainer>
             <MiddleContainer>
-              <TitleContainer onClick={link ? undefined : onClick}>
+              <TitleContainer onClick={onClick}>
                 <EventAndPreviewContainer>
                   <Typography
                     as="h3"
