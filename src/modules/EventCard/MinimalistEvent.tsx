@@ -187,7 +187,10 @@ export const MinimalistEvent = ({
                 </Typography>
               </MiddleContainer>
               <RightContainer>
-                <InfoContainer color={isFeatured ? 'white' : 'black'}>
+                <InfoContainer
+                  color={isFeatured ? 'white' : 'black'}
+                  style={{ fontSize: '30px' }}
+                >
                   {isFeatured && link ? (
                     <StyledLink href={link ? link : ''} isExternal>
                       <BsInfoCircle
