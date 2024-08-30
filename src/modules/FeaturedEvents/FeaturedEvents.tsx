@@ -4,7 +4,7 @@ import { MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import { useEffect, useState } from 'react';
-import { media, Colors } from 'theme';
+import { media, Colors, Spaces } from 'theme';
 
 interface FeaturedEventsProps {
   featuredEvents: EventProps[];
@@ -93,7 +93,7 @@ export const FeaturedEvents = ({
 
   return !events.length ? null : (
     <FluidContainer>
-      <Typography as="h2" variant="title">
+      <Typography as="h2" variant="title" margin={`0 0 ${Spaces.lg} 0`}>
         Featured
       </Typography>
       <>
