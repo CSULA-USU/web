@@ -89,9 +89,15 @@ export const FeaturedEvents = ({
     console.log('fe', filteredEvents);
     console.log('events', events);
     console.log('combined', combinedArray);
+    console.log(
+      'equality',
+      combinedArray.every(
+        (element, index) => element === filteredEvents[index],
+      ),
+    );
   }, [filteredEvents]);
 
-  return !events.length ? null : (
+  return !combinedArray.length ? null : (
     <FluidContainer>
       <Typography as="h2" variant="title" margin={`0 0 ${Spaces.lg} 0`}>
         Featured
