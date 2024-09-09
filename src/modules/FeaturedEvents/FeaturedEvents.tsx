@@ -78,28 +78,26 @@ export const FeaturedEvents = ({
           featuredEvents.some((featured) => featured.title === event.eventName),
         )
       : [];
-
-  // Don't know why it's here. Seems to be copying an array?
-  // const filteredEvents = filteredEvents.length
-  //   ? filteredEvents.map((item, index) => ({
-  //       ...item,
-  //       ...featuredEvents[index],
-  //     }))
-  //   : [];
+  const combinedArray = filteredEvents.length
+    ? filteredEvents.map((item, index) => ({
+        ...item,
+        ...featuredEvents[index],
+      }))
+    : [];
 
   useEffect(() => {
     console.log('fe', filteredEvents);
     console.log('events', events);
-    console.log('combined', filteredEvents);
+    console.log('combined', combinedArray);
     console.log(
       'equality',
-      filteredEvents.every(
+      combinedArray.every(
         (element, index) => element === filteredEvents[index],
       ),
     );
   }, [filteredEvents]);
 
-  return !filteredEvents.length ? null : (
+  return !combinedArray.length ? null : (
     <FluidContainer>
       <Typography as="h2" variant="title" margin={`0 0 ${Spaces.lg} 0`}>
         Featured
@@ -109,8 +107,8 @@ export const FeaturedEvents = ({
           <YellowBoxUnderneath />
           <FeaturedEventsSection>
             <TertiaryContainer>
-              {filteredEvents.length &&
-                filteredEvents.map((event) => (
+              {combinedArray.length &&
+                combinedArray.map((event) => (
                   <div key={event.eventNoSqlId}>
                     <MinimalistEvent
                       buttonText={event.buttonText ? event.buttonText : ''}
