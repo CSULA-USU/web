@@ -6,6 +6,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   disabled?: boolean;
   href?: string;
   margin?: string;
+  isExternalLink?: boolean;
   notALink?: boolean;
   padding?: string;
   shadow?: boolean;
@@ -94,7 +95,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <ButtonComponent
       {...props}
-      target={props.notALink ? '' : '_blank'}
+      target={props.isExternalLink ? '_blank' : null}
       role={props.href ? '' : 'button'}
       rel="noopener noreferrer"
     />

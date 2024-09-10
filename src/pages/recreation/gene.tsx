@@ -107,7 +107,7 @@ export default function Gene() {
             changes.
           </Typography>
         </WelcomeContentContainer>
-        <Button variant="black" href="https://forms.office.com/r/GCaxAbqwQZ">
+        <Button variant="black" href="https://forms.office.com/r/YFfnjw0K1F">
           RSVP
         </Button>
       </FluidContainer>
