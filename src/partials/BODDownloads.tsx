@@ -24,12 +24,20 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&dl=0',
             children: 'BOD Meeting August 30, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/4bffzfcit7fmu4nkj8aby/Agenda-Fiscal-Committee-September-13-2024.docx?rlkey=nsh58bdlv6z32v5cze7laok2k&st=1c15fbgm&dl=0',
+            children: 'Fiscal Committee September 13, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/sv5wydj0gop9wtbbgtx5k/Agenda-Audit-Committee-September-13-2024.docx?rlkey=gywniga9axihrk9uhldlvpr6x&st=jp1e5atu&dl=0',
+            children: 'Audit Committee September 13, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/06bozfxo0oijt694vh5gd/Archive.zip?rlkey=9e0nhtzdotua1zuaaicwpdcgy&st=8ua40rsq&dl=0',
       variant: 'black',
     },
   },
