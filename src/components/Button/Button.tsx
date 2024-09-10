@@ -7,6 +7,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   href?: string;
   margin?: string;
   isExternalLink?: boolean;
+  notALink?: boolean;
   padding?: string;
   shadow?: boolean;
   variant?:
