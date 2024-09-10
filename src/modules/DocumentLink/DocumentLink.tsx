@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import { AiOutlineFileText } from 'react-icons/ai';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
-import { LuExternalLink } from 'react-icons/lu';
+import { StyledLink } from 'components';
 
 export interface DocumentLinkProps {
   children: string;
@@ -19,20 +18,11 @@ const LinkInner = styled.div`
   }
 `;
 
-const IconStyling = {
-  marginLeft: '4px',
-  height: '100%',
-  marginBottom: '1px',
-  fontSize: 'inherit',
-  color: 'currentColor',
-};
-
 export const DocumentLink = ({ href, children }: DocumentLinkProps) => (
-  <Link href={href}>
-    <LinkInner>
+  <LinkInner>
+    <StyledLink href={href} isExternal>
       <AiOutlineFileText size="18px" style={{ margin: '0 4px 0 0' }} />{' '}
       {children}
-      <LuExternalLink style={IconStyling} aria-hidden="true" />
-    </LinkInner>
-  </Link>
+    </StyledLink>
+  </LinkInner>
 );
