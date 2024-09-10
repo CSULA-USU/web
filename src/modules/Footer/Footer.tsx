@@ -18,6 +18,7 @@ const StyledInstagramIcon = styled(AiOutlineInstagram)`
   font-size: 32px;
   &:hover {
     color: ${Colors.primary};
+    transition: 0.4s ease-in-out;
   }
 `;
 
@@ -26,6 +27,7 @@ const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
   font-size: 32px;
   &:hover {
     color: ${Colors.primary};
+    transition: 0.4s ease-in-out;
   }
 `;
 
