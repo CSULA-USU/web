@@ -13,10 +13,27 @@ import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
 
+const StyledInstagramIcon = styled(AiOutlineInstagram)`
+  color: ${Colors.greyLighter};
+  font-size: 32px;
+  &:hover {
+    color: ${Colors.primary};
+  }
+`;
+
+const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
+  color: ${Colors.greyLighter};
+  font-size: 32px;
+  &:hover {
+    color: ${Colors.primary};
+  }
+`;
+
 const FooterTopLogo = styled.div`
   max-width: 1200px;
   margin-bottom: ${Spaces.xl};
 `;
+
 const FooterTopLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -216,10 +233,7 @@ export const Footer = () => (
             href={'https://www.instagram.com/usucalstatela/?hl=en'}
             aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
           >
-            <AiOutlineInstagram
-              color={Colors.greyLighter}
-              fontSize="32px"
-            ></AiOutlineInstagram>
+            <StyledInstagramIcon />
           </Link>
           <Link
             target="_blank"
@@ -228,10 +242,7 @@ export const Footer = () => (
             }
             aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
           >
-            <AiOutlineLinkedin
-              color={Colors.greyLighter}
-              fontSize="32px"
-            ></AiOutlineLinkedin>
+            <StyledLinkedinIcon />
           </Link>
         </div>
       </FooterBottomContainer>
