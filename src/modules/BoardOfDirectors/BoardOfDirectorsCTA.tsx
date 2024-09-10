@@ -45,8 +45,9 @@ export const BoardOfDirectorsCTA = () => {
       <BoardOfDirectorsCTAButtons>
         <abbr title="University Student Union Board of Directors Application">
           <Button
-            variant="black"
             href="https://form.jotform.com/240387162166154"
+            isExternalLink
+            variant="black"
           >
             BOD Application
           </Button>

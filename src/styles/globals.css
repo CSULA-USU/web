@@ -19,9 +19,17 @@ a {
   box-sizing: border-box;
 }
 
-a:focus {
-  border: 2px inset #1565c0; /* green */
+a:focus-visible,
+button:focus-visible,
+span:focus-visible {
+  border: 2px inset #1565c0; /* blue */
   display: inline-block;
-  outline: 2px outset #4caf50; /* blue */
+  outline: 2px outset #4caf50; /* green */
   text-decoration: underline;
+}
+
+input:focus-visible {
+  display: inline-block;
+  outline: 2px outset #4caf50;
+  box-shadow: 0 0 0 2px inset #1565c0;
 }
