@@ -225,10 +225,10 @@ export const BODDownloads = () => (
     {minutesDownloads.map((d) => (
       <DownloadSection key={d.title} {...d} />
     ))}
-    <StyledLink href="/governance/public-document-archives">
-      <Typography variant="span" color="gold">
+    <Typography variant="span" color="gold">
+      <StyledLink href="/governance/public-document-archives">
         View All Documents
-      </Typography>
-    </StyledLink>
+      </StyledLink>
+    </Typography>
   </FluidContainer>
 );
