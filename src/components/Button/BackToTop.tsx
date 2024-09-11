@@ -53,7 +53,7 @@ export const BackToTop = () => {
       style={{ display: visible ? 'flex' : 'none' }}
       onClick={scrollToTop}
       aria-label="Back to Top"
-      tabIndex={1}
+      tabIndex={0}
     >
       <TbCircleArrowUpFilled
         title="Back to Top"
