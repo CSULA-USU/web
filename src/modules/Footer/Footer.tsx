@@ -48,12 +48,17 @@ const FooterTopContainer = styled.div`
   justify-content: space-between;
 `;
 
+const FooterUnorderedList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
 const FooterBottomContainer = styled(FooterTopContainer)`
   justify-content: space-between;
   ${media('mobile')(`justify-content: center`)}
 `;
 
-const StyledLinkMargins = styled.div`
+const StyledLinkMargins = styled.li`
   margin: 10px 0 0 0;
 `;
 
@@ -91,7 +96,7 @@ export const Footer = () => (
           </Link>
         </FooterTopLogo>
         <FooterTopLinks>
-          <div>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Building Hours
             </Typography>
@@ -127,8 +132,8 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
-          <div>
+          </FooterUnorderedList>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Involvement
             </Typography>
@@ -161,8 +166,8 @@ export const Footer = () => (
                 <StyledLink href={'/employment'}>U-SU Employment</StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
-          <div>
+          </FooterUnorderedList>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Resources
             </Typography>
@@ -194,7 +199,7 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
+          </FooterUnorderedList>
         </FooterTopLinks>
       </FooterTopContainer>
       <Divider color="grey" margin={`${Spaces.xl}`} />
