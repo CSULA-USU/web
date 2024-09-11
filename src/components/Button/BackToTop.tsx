@@ -3,7 +3,7 @@ import { Colors } from 'theme';
 import { useState, useEffect } from 'react';
 import { TbCircleArrowUpFilled } from 'react-icons/tb';
 
-const Background = styled.div`
+const ButtonBackground = styled.button`
   background-color: white;
   border: none;
   border-radius: 35px;
@@ -22,14 +22,23 @@ const Background = styled.div`
 
 const scrollToTop = () => {
   document.body.scrollTop = 0; // Safari
-  document.documentElement.scrollTop = 0; // chrome, and others
+  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera and others
+
+  // programatically set focus on top-level item
+  const topElement = document.getElementById('main') || document.body;
+  topElement.focus();
 };
 
 export const BackToTop = () => {
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 600);
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const isBottom = scrollTop + windowHeight >= documentHeight;
+      setVisible(isBottom);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -38,8 +47,14 @@ export const BackToTop = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   return (
-    <Background style={{ display: visible ? 'flex' : 'none' }}>
+    <ButtonBackground
+      style={{ display: visible ? 'flex' : 'none' }}
+      onClick={scrollToTop}
+      aria-label="Back to Top"
+      tabIndex={1}
+    >
       <TbCircleArrowUpFilled
         title="Back to Top"
         size={50}
@@ -49,8 +64,7 @@ export const BackToTop = () => {
           bottom: '40px',
           right: '40px',
         }}
-        onClick={scrollToTop}
-      ></TbCircleArrowUpFilled>
-    </Background>
+      />
+    </ButtonBackground>
   );
 };
