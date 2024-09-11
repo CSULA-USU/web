@@ -25,7 +25,7 @@ const scrollToTop = () => {
   document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera and others
 
   // programatically set focus on top-level item
-  const topElement = document.getElementById('main') || document.body;
+  const topElement = document.getElementById('nav-logo') || document.body;
   topElement.focus();
 };
 
