@@ -24,106 +24,23 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&dl=0',
             children: 'BOD Meeting August 30, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/4bffzfcit7fmu4nkj8aby/Agenda-Fiscal-Committee-September-13-2024.docx?rlkey=nsh58bdlv6z32v5cze7laok2k&st=1c15fbgm&dl=0',
+            children: 'Fiscal Committee September 13, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/sv5wydj0gop9wtbbgtx5k/Agenda-Audit-Committee-September-13-2024.docx?rlkey=gywniga9axihrk9uhldlvpr6x&st=jp1e5atu&dl=0',
+            children: 'Audit Committee September 13, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/06bozfxo0oijt694vh5gd/Archive.zip?rlkey=9e0nhtzdotua1zuaaicwpdcgy&st=8ua40rsq&dl=0',
       variant: 'black',
     },
   },
-  // {
-  //   title: 'Fiscal Year 23-24',
-  //   children: (
-  //     <DocumentLinkContainer
-  //       stacked
-  //       links={[
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/hhke5ecmjflcs94emk24s/bod-aug-25-23.pdf?rlkey=xdpl14daz00mg10zapl6vvi45&dl=0',
-  //           children: 'BOD Meeting Aug 25, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/pn57mvy2705y74swssqf9/audit-committee-sep-8-23.docx?rlkey=0o3oqpizwqu72ospxtiu748hn&dl=0',
-  //           children: 'Audit Committee Sep 8, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/fq0gtfffhw4bqb490rrsz/bod-sep-15-23.pdf?rlkey=xk51yjktx91mxp8ac2zrch7s8&dl=0',
-  //           children: 'BOD Meeting Sep 15, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/dunyfe6dqhzf7kppdff59/bod-sep-29-23.pdf?rlkey=jwmjhq8z1kffyqqdjpm92h285&dl=0',
-  //           children: 'BOD Meeting Sep 29, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/io1lewa3ae6flsnl6m6uc/bod-oct-6-23.pdf?rlkey=wdop1s18s05ib7y0stc3uckjm&dl=0',
-  //           children: 'Personnel Committee Oct 6, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/tu6vye98c8ewuejci99l3/bod-oct-13-23.docx?rlkey=yopndir9ke3o1wwfnlemtpz2p&dl=0',
-  //           children: 'BOD Meeting Oct 13, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/8cjzpzbb66yvswsa6feoo/bod-nov-17-23.pdf?rlkey=floyjw88s8m3yz7e4l0ryzcdm&dl=0',
-  //           children: 'BOD Meeting Nov 17, 2023',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/ep6gvcd2n8p7b8z5beoeg/bod-jan-19-24.pdf?rlkey=czpkh0944thji08kka4r1vvbb&dl=0',
-  //           children: 'BOD Meeting Jan 19, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/d1q9iuy3fdrgai0oy52rd/bod-feb-9-24.docx?rlkey=xc1swg7cng5uu2qcixdxm4r0m&dl=0',
-  //           children: 'Fiscal Committee Feb 9, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/650k0sd6mjibmgwv3v7ca/nominating-feb-9-24.docx?rlkey=gp1fhsneqpntyjq2vbyzav3r2&dl=0',
-  //           children: 'Nominating Committee Feb 9, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/w1rrzq94dfhnfrif0hj0x/bod-feb-16-24.docx?rlkey=2es0rcl4diaw8mvasv0shwjc5&dl=0',
-  //           children: 'BOD Meeting Feb 16, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/did9ye71fj5zvatiop4k1/Nominating-Committee-March-1-2024.docx?rlkey=sa5uwwdblrwc79nmhuusyswrv&dl=0',
-  //           children: 'Nominating Committee Meeting Mar 1, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/yinettixdwa9805cof566/Agenda-U-SU-BOD-Special-Meeting-March-1-2024.docx?rlkey=8nzj3ba2rdddv3o4xbnkbdvdj&dl=0',
-  //           children: 'BOD Special Meeting Mar 1, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/etcuwrep4ffmnxl281d64/Audit-Committee-March-8-2024.docx?rlkey=cm1qcv6g88shzcq8gnki7tq90&dl=0',
-  //           children: 'BOD Audit Committee Meeting Mar 8, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/dzzvt3hvxgiwbzamhvzeo/BOD-Budget-Training-March-8-2024.docx?rlkey=yiki6arpd2t3nry2t46xmvvdi&dl=0',
-  //           children: 'BOD Budget Training Mar 8, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/cnz3e3wp94omlfkcj4u6p/Agenda-U-SU-Board-of-Directors-March-15-2024.docx?rlkey=qmxqvmoo0r96sks46d1g1bbbj&dl=0',
-  //           children: 'BOD Meeting Mar 15, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/4hyk3gsv8g6scr617l626/Agenda-Fiscal-Committee-April-12-2024.docx?rlkey=r9jrep7mkqwbucrymmwdjjy3u&dl=0',
-  //           children: 'BOD Fiscal Committee Meeting Apr 12, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/a510b0d5tqlkjrc902x8l/Agenda-U-SU-Board-of-Directors-April-19-2024.pdf?rlkey=yadijvf4ov4wykum5armw23sv&dl=0',
-  //           children: 'BOD Meeting Apr 19, 2024',
-  //         },
-  //         {
-  //           href: 'https://www.dropbox.com/scl/fi/wvyyr086oqawjlmr22chk/Agenda-U-SU-Board-of-Directors-May-10-2024.docx?rlkey=qxazyot5iqcxsxayv4oqahrrh&dl=0',
-  //           children: 'BOD Meeting May 10, 2024',
-  //         },
-  //       ]}
-  //     />
-  //   ),
-  //   button: {
-  //     children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-  //     href: 'https://www.dropbox.com/scl/fi/dtuittkhxaek7oubu0zu3/fy23-24.zip?rlkey=u1hmvjivlefx7k3yfhgrjthpw&dl=0',
-  //     variant: 'black',
-  //   },
-  // },
 ];
 
 const minutesDownloads: DownloadSectionProps[] = [
