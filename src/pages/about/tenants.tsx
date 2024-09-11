@@ -26,7 +26,7 @@ const cards = [
     children:
       'Cal State LA Alumni Association is dedicated to past and present students desiring to stay involved in the Cal State LA community. ',
     iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: '',
     number: '323-343-2586',
   },
   {
@@ -34,7 +34,7 @@ const cards = [
     children:
       'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA. Assisting in the protection of student rights and interests, ASI provides the means for effective input into the governance of the campus and is the official avenue through which student opinion is expressed. ASI offers students experience in responsible political participation, as they advocate for the protection of higher education at the state and federal level. With the support of professional staff, the Board sets strategic goals and policy priorities, while members represent student interests on ASI-internal and University-wide committees. The Board and Professional Staff manage the day-to-day operations of the corporation providing students, faculty and staff dynamic programming, support and services.',
     iconSrc: '/about/tenants/asi-logo.png',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: '',
     number: '323-343-4780',
   },
   {
@@ -42,7 +42,7 @@ const cards = [
     children:
       'The College of Professional and Global Education delivers innovative classes, certificates and degree programs to meet the educational needs of the citizens of Los Angeles and beyond. The college also provides services for international students and scholars and serves as the lead campus entity on all matters pertaining to global education.',
     iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: '',
     number: '323-343-4900',
   },
   {
@@ -51,7 +51,7 @@ const cards = [
       'Information Technology Services is one of five Open Access Labs (OALs) spread out on campus. These labs are made available to assist Cal State LA students to accomplish their academic goal for instruction and research, students must have a current student ID and a Network Information Services (NIS) account. Though all of the OALs provides identical services to the campus community, they offer slightly different equipments, hardware and software depending on various needs in each geographical area on campus.',
 
     iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Logo',
+    iconAlt: '',
     number: '',
   },
   {
@@ -60,7 +60,7 @@ const cards = [
       'You can open a Wells Fargo College Checking account at any Wells Fargo Banking location or visit the Wells Fargo Banking Branch on Campus! Located in the new University Student Union Building Room 103.',
 
     iconSrc: '/about/tenants/wells-fargo.png',
-    iconAlt: 'Wells Fargo Logo',
+    iconAlt: '',
     number: '323-224-3972',
   },
   {
@@ -69,7 +69,7 @@ const cards = [
       'Extraordinary food and atmosphere, time-honored family recipes and the finest quality ingredients are the hallmarks of the Sbarro brand. From the moment our customers walk through the door, they know that dining at Sbarro will be a distinctive Italian experience.',
 
     iconSrc: '/about/tenants/sbarro-logo.png',
-    iconAlt: 'Sbarro logo',
+    iconAlt: '',
     number: '323-225-1464',
   },
   {
@@ -77,7 +77,7 @@ const cards = [
     children:
       'It takes many hands to craft the perfect cup of coffee – from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
     iconSrc: '/about/tenants/starbucks-logo.png',
-    iconAlt: 'Starbucks Logo',
+    iconAlt: '',
     number: '323-343-6793',
   },
 ];
