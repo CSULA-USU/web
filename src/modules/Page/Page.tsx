@@ -30,8 +30,8 @@ export const Page = ({ children }: PageProps) => (
       />
       <Nav />
       <main>{children}</main>
-      <BackToTop />
       <Footer />
+      <BackToTop />
     </PageContainer>
   </>
 );
