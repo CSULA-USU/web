@@ -23,7 +23,7 @@ const NavWrapper = styled.div`
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
-    <NavWrapper>
+    <NavWrapper role="banner">
       <FluidContainer
         padding="24px"
         backgroundColor="white"
@@ -44,7 +44,7 @@ export const Nav = () => {
       </FluidContainer>
     </NavWrapper>
   ) : (
-    <NavWrapper>
+    <NavWrapper role="banner">
       <FluidContainer
         flex
         justifyContent="space-between"
