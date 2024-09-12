@@ -6,11 +6,11 @@ import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 import { Search } from 'modules/Search';
 
-const StyledLogo = styled.a`
+const LogoLink = styled(Link)`
   &:focus {
-    border: 2px inset #1565c0; /* blue */
+    border: 2px inset #1565c0;
     display: inline-block;
-    outline: 3px outset #4caf50; /* green */
+    outline: 3px outset #4caf50;
     text-decoration: underline;
   }
 `;
@@ -31,15 +31,13 @@ export const Nav = () => {
         alignItems="center"
         flex
       >
-        <Link href="/" passHref>
-          <StyledLogo id="nav-logo" tabIndex={0}>
-            <Image
-              maxHeight={isMobile ? '64px' : '80px'}
-              src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
-              alt="Cal State LA University-Student Union Logo"
-            />
-          </StyledLogo>
-        </Link>
+        <LogoLink href="/" id="nav-logo">
+          <Image
+            maxHeight={isMobile ? '64px' : '80px'}
+            src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
+            alt="Cal State LA University-Student Union Logo"
+          />
+        </LogoLink>
         <MobileNav />
       </FluidContainer>
     </NavWrapper>
@@ -53,16 +51,14 @@ export const Nav = () => {
         padding="24px"
         backgroundColor="greyDarkest"
       >
-        <Link href="/" passHref>
-          <StyledLogo id="nav-logo" tabIndex={0}>
-            <Image
-              width="200px"
-              height="70"
-              src="/usu-wordmark-white.png"
-              alt="Cal State LA University-Student Union"
-            />
-          </StyledLogo>
-        </Link>
+        <LogoLink href="/" id="nav-logo" tabIndex={0}>
+          <Image
+            width="200px"
+            height="70"
+            src="/usu-wordmark-white.png"
+            alt="Cal State LA University-Student Union"
+          />
+        </LogoLink>
         <DesktopNav />
         <Search />
       </FluidContainer>

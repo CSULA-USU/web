@@ -23,7 +23,7 @@ a:focus-visible,
 button:focus-visible,
 div:focus-visible,
 span:focus-visible {
-  border: 2px inset #1565c0; /* blue */
+  border: 3px inset #1565c0; /* blue */
   display: inline-block;
   outline: 3px outset #4caf50; /* green */
   text-decoration: underline;
