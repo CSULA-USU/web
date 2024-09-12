@@ -31,7 +31,7 @@ export const Nav = () => {
         alignItems="center"
         flex
       >
-        <LogoLink href="/" id="nav-logo">
+        <LogoLink href="/" id="nav-logo" tabIndex={0}>
           <Image
             maxHeight={isMobile ? '64px' : '80px'}
             src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
