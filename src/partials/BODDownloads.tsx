@@ -102,12 +102,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/gukddkrpb9cgara5r4pfe/Minutes-Board-of-Directors-April-19-2024-signed.pdf?rlkey=2jht2n0nkcu3klffkx4sou2l4&dl=0',
             children: 'BOD Special Meeting Minutes April 19, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/aicuc5dp5qjl5avqx7mn2/Minutes-Board-of-Directors-May-10-2024.pdf?rlkey=5sivgrvf1g0u7xssdmlsn1brq&dl=0',
+            children: 'BOD Special Meeting Minutes May 10, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/o208zd096xs6ftm4q5fbs/fy23-24-minutes.zip?rlkey=5w0eopyqjje3o3d1w23e0an4z&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/8rs0pip87oi8lcy9ajxnd/fy23-24.zip?rlkey=ozry91k5f2f21jmzpnbd9tj45&dl=0',
       variant: 'black',
     },
   },
