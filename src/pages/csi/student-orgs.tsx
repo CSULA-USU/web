@@ -117,7 +117,7 @@ export default function StudentOrgs() {
         buttonText="Learn More"
         text="Visit the Student Organization Handbook"
       >
-        <Typography as="h2" variant="label">
+        <Typography variant="label">
           Can&apos;t find an organization that interests you? Start your own!
           Read up on the policies and procedures governing student
           organizations, information about recognition processes for new and
@@ -152,7 +152,7 @@ export default function StudentOrgs() {
                 margin={`${Spaces.md} 0`}
                 key={`${props.title}`}
                 {...props}
-              ></Card>
+              />
             ))}
           </OrgsCategoriesCardsContainer>
         </PresenceInfoContainer>
@@ -233,7 +233,7 @@ export default function StudentOrgs() {
         backgroundColorProp="black"
         textColorProp="white"
       >
-        <Typography as="h2" variant="label" color="white">
+        <Typography variant="label" color="white">
           Read up on the Student Organization Conduct Code <br />
           or report an incident related to student organizations
         </Typography>
