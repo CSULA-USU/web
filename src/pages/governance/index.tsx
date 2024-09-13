@@ -229,7 +229,7 @@ export default function Governance() {
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
           <MdGroups size="48px" />
-          <Typography as="h4" variant="labelTitle">
+          <Typography as="h2" variant="labelTitle">
             Committees
           </Typography>
         </IconHeading>

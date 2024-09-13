@@ -176,13 +176,7 @@ export default function AcuiAwards() {
       </FluidContainer>
       <FluidContainer flex justifyContent="center" flexWrap="wrap">
         {awardYears.map((y) => (
-          <Image
-            key={y.alt}
-            src={y.src}
-            alt={y.alt}
-            width="100px"
-            margin="8px"
-          />
+          <Image key={y.alt} src={y.src} alt="" width="100px" margin="8px" />
         ))}
       </FluidContainer>
       <AwardsNav />
