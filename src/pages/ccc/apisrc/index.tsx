@@ -174,7 +174,7 @@ export default function APISRC() {
             address="5154 State University Dr, Los Angeles, CA 90032 Room 206"
             phoneNumber="(323)-343-5471"
             hours={hours}
-          ></OfficeHours>
+          />
         </FluidContainer>
       </HeaderContainer>
       <div id="apida-grad">

@@ -35,25 +35,25 @@ const offerings = [
     title: 'Programming',
     children: 'Programs centering on Black identity, history, and culture',
     imgSrc: '/departments/ccc/pasrc/vectors/calendar.svg',
-    imgAlt: 'pasrc events',
+    imgAlt: '',
   },
   {
     title: 'Knowledge',
     children: 'Books on Black identity and empowerment',
     imgSrc: '/departments/ccc/pasrc/vectors/writer.svg',
-    imgAlt: 'books and writing',
+    imgAlt: '',
   },
   {
     title: 'Dialogue',
     children: 'Space for open-minded dialogue',
     imgSrc: '/departments/ccc/pasrc/vectors/dialogue.svg',
-    imgAlt: 'dialogue groups',
+    imgAlt: '',
   },
   {
     title: 'Environment Enhancement',
     children: 'Microwave and community refrigerator',
     imgSrc: '/departments/ccc/pasrc/vectors/eat.svg',
-    imgAlt: 'food fridges microwaves ',
+    imgAlt: '',
   },
 ];
 
@@ -102,15 +102,16 @@ export default function PASRC() {
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}
-              aria-label="apisrc instagram icon"
+              aria-label="Visit the PASRC instagram"
             />
           </a>
           <a
             href="https://linktr.ee/cccatcalstatela"
             style={{ margin: `auto ${Spaces.sm}` }}
+            aria-label="Visit the CCC linktree"
           >
             <Image
-              alt="linktree icon"
+              alt=""
               src="/departments/logos/linktree.svg"
               height="29px"
               width="32px"
@@ -122,7 +123,7 @@ export default function PASRC() {
             {isDesktop && (
               <Image
                 src="/departments/logos/pasrc-icon.svg"
-                alt="clsrc logo"
+                alt=""
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
@@ -139,10 +140,10 @@ export default function PASRC() {
           {!isDesktop && (
             <Image
               src="/departments/logos/pasrc-icon.svg"
-              alt="clsrc logo"
+              alt=""
               width={400}
               height={500}
-            ></Image>
+            />
           )}
         </HeaderLeftContainer>
         <FluidContainer backgroundColor="transparent">
@@ -150,7 +151,7 @@ export default function PASRC() {
             address="5154 State University Dr, Los Angeles, CA 90032 Room 206"
             phoneNumber="(323)-343-5131"
             hours={hours}
-          ></OfficeHours>
+          />
         </FluidContainer>
       </HeaderContainer>
       <div id="pride-grad">
@@ -203,7 +204,7 @@ export default function PASRC() {
       {!isMobile && (
         <FluidContainer flex justifyContent="center">
           <Image
-            alt="pan african student resource center logo"
+            alt=""
             src="/departments/ccc/pasrc/pasrc.png"
             width="100%"
             margin={`0px 500px ${Spaces.xl}`}
