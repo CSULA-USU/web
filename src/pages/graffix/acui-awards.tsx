@@ -22,7 +22,7 @@ const NavItems = [
   'Honorable Mention',
 ];
 
-const InnerAwardContainer = styled.nav`
+const InnerAwardContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
