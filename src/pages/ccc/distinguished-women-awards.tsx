@@ -123,7 +123,7 @@ export default function CulturalGrads() {
           {' '}
           <Image
             src="/departments/ccc/distinguished-women-awards-header.png"
-            alt="distinguished women awards header"
+            alt="21st Annual Distinguished Women Awards nominations open"
             width={'100%'}
             height={'100%'}
             margin={`${Spaces.md} 0`}
