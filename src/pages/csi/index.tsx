@@ -193,16 +193,16 @@ export default function CSI() {
           </a>
           <a
             href="https://www.instagram.com/csicalstatela/?hl=en"
-            aria-label="link to the Center For Student Involvement's Instagram feed"
+            aria-label="Check out the U-SU CSI'"
           >
             <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
           </a>
           <a
             href="https://linktr.ee/csicalstatela"
-            aria-label="link to University-Student Union CSI's Linktree"
+            aria-label="visit the University-Student Union CSI Linktree"
           >
             <Image
-              alt="visit our linktree"
+              alt=""
               src="/departments/logos/linktree.svg"
               height="29px"
               width="32px"
@@ -244,7 +244,7 @@ export default function CSI() {
       <InstagramFeed department="csi" />
       <FluidContainer flex justifyContent="center">
         <Image
-          alt="center for student involvement logo"
+          alt=""
           src="/departments/logos/csi-logo.svg"
           height="400px"
           width="100%"
