@@ -35,7 +35,7 @@ const offerings = [
     children:
       'Provide scholarly and cultural education programs. Approaching cultural diversity from an academic perspective that provides the entire campus community with an opportunity to culturally engage and learn outside of the classroom.',
     imgSrc: '/vectors/ccc/teaching.svg',
-    imgAlt: 'man pointing to board',
+    imgAlt: '',
     href: 'ccc/apisrc',
   },
   {
@@ -43,7 +43,7 @@ const offerings = [
     children:
       'Provide opportunities for students, staff, faculty, and community members to be part of the practice, celebration, and demonstration of cultural celebration and joy.',
     imgSrc: '/vectors/ccc/winner.svg',
-    imgAlt: 'two people high fiving',
+    imgAlt: '',
     href: 'ccc/apisrc',
   },
   {
@@ -51,7 +51,7 @@ const offerings = [
     children:
       'Provide students with opportunities to develop their academic, professional, and personal growth during their undergraduate experience.',
     imgSrc: '/vectors/ccc/education.svg',
-    imgAlt: 'woman on books',
+    imgAlt: '',
     href: 'ccc/apisrc',
   },
   {
@@ -59,7 +59,7 @@ const offerings = [
     children:
       'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center.',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
-    imgAlt: 'girl reading a book on a bean bag chair under a lamp',
+    imgAlt: '',
     href: 'ccc/apisrc',
   },
 ];
@@ -102,38 +102,39 @@ export default function APISRC() {
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://discord.com/invite/quZwGJqsMm"
+            aria-label="Join our APISRC Discord server"
           >
-            <FaDiscord
-              fontSize={FontSizes['2xl']}
-              aria-label="apisrc discord icon"
-            />
+            <FaDiscord fontSize={FontSizes['2xl']} aria-hidden="true" />
           </a>
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.instagram.com/apisrc.ccc/"
-            aria-label="link to the Asian, Pacific Islander, Desi-American, Student Resource Center's Instagram feed"
+            aria-label="link to the APISRC Instagram feed"
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}
-              aria-label="apisrc instagram icon"
+              aria-hidden="true"
             />
           </a>
           <a
             href="https://linktr.ee/apisrc.ccc"
             style={{ margin: `auto ${Spaces.sm}` }}
+            aria-label="Visit our Linktree page"
           >
             <Image
               alt="linktree icon"
               src="/departments/logos/linktree.svg"
               height="29px"
               width="32px"
+              aria-hidden="true"
             />
           </a>
           <a
             style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
             href="https://www.tiktok.com/@apisrc.ccc"
+            aria-label="Follow us on TikTok"
           >
-            <FaTiktok fontSize={FontSizes.xl} aria-label="apisrc tiktok icon" />
+            <FaTiktok fontSize={FontSizes.xl} aria-hidden="true" />
           </a>
         </FluidContainer>
         <HeaderLeftContainer>
@@ -144,7 +145,7 @@ export default function APISRC() {
             {isDesktop && (
               <Image
                 src="/departments/ccc/apisrc/apisrc-sticker-2.svg"
-                alt="students"
+                alt=""
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
@@ -162,10 +163,10 @@ export default function APISRC() {
           {!isDesktop && (
             <Image
               src="/departments/ccc/apisrc/apisrc-sticker-2.svg"
-              alt="students"
+              alt=""
               width={400}
               height={500}
-            ></Image>
+            />
           )}
         </HeaderLeftContainer>
         <FluidContainer backgroundColor="transparent">
