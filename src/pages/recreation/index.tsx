@@ -209,7 +209,7 @@ export default function Recreation() {
                 style={{ margin: '2px 3px 0px 2px' }}
                 size="20px"
               />
-              <Typography as="h4">
+              <Typography as="p">
                 Monday – Thursday
                 <br />
                 11:00 AM to 7:00 PM
@@ -242,7 +242,7 @@ export default function Recreation() {
                 style={{ margin: '2px 3px 0px 2px' }}
                 size="20px"
               />
-              <Typography as="h4">
+              <Typography as="p">
                 Monday – Thursday
                 <br />
                 12:00 PM to 6:00 PM
