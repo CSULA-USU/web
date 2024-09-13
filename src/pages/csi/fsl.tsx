@@ -85,28 +85,28 @@ const NavItems = [
 const WhatIsGreekLifeDescriptionCards = [
   {
     imgSrc: '/icons/giving-hand-icon.png',
-    imgAlt: 'giving hand',
+    imgAlt: '',
     title: 'Friendship',
     children:
       ' The Greek Community provides a home-away-from-home environment you can proudly come back to after graduation. Being part of the Greek Community is a chance to be a part of something greater than yourself. You will also gain lifelong friendships, memories, and a strong sense of belonging.',
   },
   {
     imgSrc: '/icons/book-icon.png',
-    imgAlt: 'book',
+    imgAlt: '',
     title: 'Leadership',
     children:
       'The Greek Community offers endless opportunities for developing leadership skills in its members. Members hold positions within their chapter, ranging from chapter president to committee chair. Today, it takes more than a college degree to be successful. Employers want college graduates who have demonstrated leadership abilities and aren’t afraid to get involved. The Greek Community is able to provide its members with these opportunities.',
   },
   {
     imgSrc: '/icons/connecting-people-icon.png',
-    imgAlt: 'connecting people',
+    imgAlt: '',
     title: 'Philanthrophy and Service',
     children:
       'Greeks take pride in community service and philanthropy. Each chapter has a foundation or charity they sponsor through philanthropic events. Sororities and fraternities sponsor a multitude of activities each year to impact the local community and raise money.',
   },
   {
     imgSrc: '/icons/book-icon.png',
-    imgAlt: 'book',
+    imgAlt: '',
     title: 'Scholarship',
     children:
       'Fraternities and sororities strive for high scholarship and developing academic excellence among their chapter members. Fraternities and sororities offer time management, study skills, and other programming to help members be successful in the classroom.',
@@ -476,7 +476,7 @@ export default function FSL() {
           <h1>
             <Image
               src="/departments/csi/fsl/fsl-header.png"
-              alt="fsl header"
+              alt="Fraternity and Sorority Life California State University, Los Angeles"
               height={isMini ? 100 : isMobile ? 150 : 280}
               marginBottom={Spaces.lg}
             />
@@ -710,9 +710,9 @@ export default function FSL() {
                           <Image
                             marginBottom={Spaces.lg}
                             src={p.crest}
-                            alt="crest"
+                            alt=""
                             width="90%"
-                          ></Image>
+                          />
                           <Typography as="span">
                             <strong>Values: </strong>
                             {p.values.map((value: string) => value + ' ')}
