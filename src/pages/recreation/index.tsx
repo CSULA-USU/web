@@ -58,6 +58,10 @@ const NumberContainer = styled.div`
   gap: ${Spaces.lg};
 `;
 
+const StyledH1 = styled.h1`
+  padding: 0;
+  margin: 0;
+`;
 const TimeContainer = styled.span`
   display: flex;
   margin-bottom: 32px;
@@ -85,21 +89,23 @@ export default function Recreation() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FluidContainer
-        backgroundImage="/departments/recreation/recreation-hero-background.jpg"
-        flex
-        justifyContent="center"
-        alignItems="center"
-        innerMinHeight={isMobile ? '320px' : '640px'}
-        innerMaxWidth="640px"
-      >
-        <Image
-          src="/departments/recreation/recreation-hero.svg"
-          alt="recreation logo"
-          width="100%"
-          height="fit-content"
-        />
-      </FluidContainer>
+      <StyledH1>
+        <FluidContainer
+          backgroundImage="/departments/recreation/recreation-hero-background.jpg"
+          flex
+          justifyContent="center"
+          alignItems="center"
+          innerMinHeight={isMobile ? '320px' : '640px'}
+          innerMaxWidth="640px"
+        >
+          <Image
+            src="/departments/recreation/recreation-hero.svg"
+            alt="university-student union recreation play wellness connection"
+            width="100%"
+            height="fit-content"
+          />
+        </FluidContainer>
+      </StyledH1>
       <FluidContainer
         flex
         justifyContent="space-between"
@@ -153,7 +159,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="p" variant="label" size="md">
+              <Typography as="h4" variant="label" size="md">
                 U-SU Basement
               </Typography>
             </LocationContainer>
@@ -164,19 +170,19 @@ export default function Recreation() {
                 size="20px"
               />
               <Typography as="p">
-                <u>Monday – Thursday</u>
+                Monday &ndash; Thursday
                 <br />
                 7:10 AM to 9:45 PM
                 <br />
-                <u>Friday</u>
+                Friday
                 <br />
                 7:10 AM to 7:45 PM
                 <br />
-                <u>Saturday</u>
+                Saturday
                 <br />
                 7:10 AM to 2:45 PM
                 <br />
-                <u>Sunday</u>
+                Sunday
                 <br />
                 Closed
                 <br />
@@ -193,7 +199,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="p" variant="label" size="md">
+              <Typography as="h4" variant="label" size="md">
                 U-SU Basement
               </Typography>
             </LocationContainer>
@@ -203,12 +209,12 @@ export default function Recreation() {
                 style={{ margin: '2px 3px 0px 2px' }}
                 size="20px"
               />
-              <Typography as="p">
-                <u>Monday – Thursday</u>
+              <Typography as="h4">
+                Monday – Thursday
                 <br />
                 11:00 AM to 7:00 PM
                 <br />
-                <u>Friday - Sunday</u>
+                Friday - Sunday
                 <br />
                 Closed
                 <br />
@@ -226,7 +232,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="p" variant="label" size="md">
+              <Typography as="h4" variant="label" size="md">
                 U-SU Room 201
               </Typography>
             </LocationContainer>
@@ -236,12 +242,12 @@ export default function Recreation() {
                 style={{ margin: '2px 3px 0px 2px' }}
                 size="20px"
               />
-              <Typography as="p">
-                <u>Monday – Thursday</u>
+              <Typography as="h4">
+                Monday – Thursday
                 <br />
                 12:00 PM to 6:00 PM
                 <br />
-                <u>Friday - Sunday</u>
+                Friday - Sunday
                 <br />
                 Closed
               </Typography>
@@ -258,7 +264,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="p" variant="label" size="md">
+              <Typography as="h4" variant="label" size="md">
                 South Village Housing
               </Typography>
             </LocationContainer>
@@ -269,19 +275,19 @@ export default function Recreation() {
                 size="20px"
               />
               <Typography as="p">
-                <u>Monday – Thursday</u>
+                Monday – Thursday
                 <br />
                 7:00 AM to 9:30 PM
                 <br />
-                <u>Friday</u>
+                Friday
                 <br />
                 7:00 AM to 7:30 PM
                 <br />
-                <u>Saturday</u>
+                Saturday
                 <br />
                 7:00 AM to 12:00 PM
                 <br />
-                <u>Sunday</u>
+                Sunday
                 <br />
                 Closed
               </Typography>
