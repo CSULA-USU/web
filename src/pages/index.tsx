@@ -7,18 +7,10 @@ import {
   CallToActionImages,
   FeaturedEvents,
 } from 'modules';
-import {
-  Button,
-  FluidContainer,
-  Image,
-  NonBreakingSpan,
-  Typography,
-} from 'components';
-import styled from 'styled-components';
+import { FluidContainer, NonBreakingSpan } from 'components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
 import featuredEvents from 'data/featured-events.json';
 
 const images = [
@@ -48,21 +40,21 @@ const images = [
   },
 ];
 
-const ButtonContainer = styled.div`
-  margin-top: ${Spaces['sm']};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  ./ > *:not(:last-child) {
-    margin-right: 8px;
-  }
-  column-gap: ${Spaces.md};
-  row-gap: ${Spaces.md};
-`;
+// const ButtonContainer = styled.div`
+//   margin-top: ${Spaces['sm']};
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   ./ > *:not(:last-child) {
+//     margin-right: 8px;
+//   }
+//   column-gap: ${Spaces.md};
+//   row-gap: ${Spaces.md};
+// `;
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
 
   return (
     <Page>
@@ -84,25 +76,25 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {events.length > 0 ? (
-        <>
-          <EventHeader
-            subheaderText={
-              isMobile
-                ? 'California State, Los Angeles'
-                : 'California State University, Los Angeles'
-            }
-            title={isMobile ? 'U-SU' : 'University-Student Union'}
-            featuredEvent={events[0]}
-          />
-          {/* Toggle the line below if there is a promotion. */}
-          {/* <BoardOfDirectorsCTAPromotion /> */}
-          {featuredEvents.length >= 1 ? (
-            <FeaturedEvents events={events} featuredEvents={featuredEvents} />
-          ) : null}
-          {events.length > 1 ? <ModUpcomingEvents events={events} /> : null}
-        </>
-      ) : (
+      {/* {events.length > 0 ? ( */}
+      <>
+        <EventHeader
+          subheaderText={
+            isMobile
+              ? 'California State, Los Angeles'
+              : 'California State University, Los Angeles'
+          }
+          title={isMobile ? 'U-SU' : 'University-Student Union'}
+          featuredEvent={events[0]}
+        />
+        {/* Toggle the line below if there is a promotion. */}
+        {/* <BoardOfDirectorsCTAPromotion /> */}
+        {featuredEvents.length >= 1 ? (
+          <FeaturedEvents events={events} featuredEvents={featuredEvents} />
+        ) : null}
+        {events.length > 1 ? <ModUpcomingEvents events={events} /> : null}
+      </>
+      {/* ) : (
         <>
           <FluidContainer
             flex
@@ -230,7 +222,7 @@ export default function Home() {
             </FluidContainer>
           </FluidContainer>
         </>
-      )}
+      )} */}
       <CallToActionImages
         title={
           <>

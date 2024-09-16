@@ -36,7 +36,9 @@ const InstructionCard = (props: any) => {
   return (
     <Panel topBorder>
       {props.title && (
-        <Typography variant="titleSmall">{props.title}</Typography>
+        <Typography variant="titleSmall" as="h3">
+          {props.title}
+        </Typography>
       )}
       {props.content &&
         props.content.map((t: string) => <Typography key={t}>{t}</Typography>)}
@@ -119,9 +121,9 @@ export default function HowToVote() {
           alt="student leader header"
           margin={Spaces.sm}
           width={isTablet ? '100%' : '50%'}
-        ></Image>
+        />
       </FluidContainer>
-      <VotingNav></VotingNav>
+      <VotingNav />
       <FluidContainer>
         {buttonName === 'How to Vote on GET' ? (
           <div>

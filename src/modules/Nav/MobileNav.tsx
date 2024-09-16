@@ -76,59 +76,61 @@ const StyledButton = styled.button`
 `;
 
 export const MobileNav = () => (
-  <Drawer.Drawer>
-    <Drawer.Trigger>
-      <StyledButton aria-label="Navigation Menu">
-        <HiMenuAlt3 size={48} />
-      </StyledButton>
-    </Drawer.Trigger>
+  <div role="banner">
+    <Drawer.Drawer>
+      <Drawer.Trigger>
+        <StyledButton aria-label="Navigation Menu">
+          <HiMenuAlt3 size={48} />
+        </StyledButton>
+      </Drawer.Trigger>
 
-    <Drawer.Target preventScroll>
-      <Container>
-        <FluidContainer flex justifyContent="flex-start" alignItems="center">
-          <Search />
-          <Drawer.CloseButton>
-            <button
-              style={{
-                border: 0,
-                backgroundColor: 'transparent',
-                fontSize: 16,
-                position: 'absolute',
-                right: 16,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              CLOSE <MdCancel size={40} />
-            </button>
-          </Drawer.CloseButton>
-        </FluidContainer>
-        <T1Container>
-          {(navMap as navMapType[]).map((t1) => (
-            <React.Fragment key={`t1-${t1.href}`}>
-              <Link href={t1.href}>{t1.text}</Link>
-              {t1.sub?.length && (
-                <T2Container>
-                  {t1.sub?.map((t2) => (
-                    <React.Fragment key={`t2-${t2.href}`}>
-                      <Link href={t2.href}>{t2.text}</Link>
-                      {t2.sub?.length && (
-                        <T3Container>
-                          {t2.sub?.map((t3) => (
-                            <Link href={t3.href} key={`t3-${t3.href}`}>
-                              {t3.text}
-                            </Link>
-                          ))}
-                        </T3Container>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </T2Container>
-              )}
-            </React.Fragment>
-          ))}
-        </T1Container>
-      </Container>
-    </Drawer.Target>
-  </Drawer.Drawer>
+      <Drawer.Target preventScroll>
+        <Container>
+          <FluidContainer flex justifyContent="flex-start" alignItems="center">
+            <Search />
+            <Drawer.CloseButton>
+              <button
+                style={{
+                  border: 0,
+                  backgroundColor: 'transparent',
+                  fontSize: 16,
+                  position: 'absolute',
+                  right: 16,
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                CLOSE <MdCancel size={40} />
+              </button>
+            </Drawer.CloseButton>
+          </FluidContainer>
+          <T1Container>
+            {(navMap as navMapType[]).map((t1) => (
+              <React.Fragment key={`t1-${t1.href}`}>
+                <Link href={t1.href}>{t1.text}</Link>
+                {t1.sub?.length && (
+                  <T2Container>
+                    {t1.sub?.map((t2) => (
+                      <React.Fragment key={`t2-${t2.href}`}>
+                        <Link href={t2.href}>{t2.text}</Link>
+                        {t2.sub?.length && (
+                          <T3Container>
+                            {t2.sub?.map((t3) => (
+                              <Link href={t3.href} key={`t3-${t3.href}`}>
+                                {t3.text}
+                              </Link>
+                            ))}
+                          </T3Container>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </T2Container>
+                )}
+              </React.Fragment>
+            ))}
+          </T1Container>
+        </Container>
+      </Drawer.Target>
+    </Drawer.Drawer>
+  </div>
 );

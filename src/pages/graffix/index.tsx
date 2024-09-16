@@ -170,10 +170,10 @@ export default function Graffix() {
           {!isDesktop && (
             <Image
               src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-              alt="students"
+              alt=""
               width={600}
               height={700}
-            ></Image>
+            />
           )}
         </HeaderInnerContainer>
         <FluidContainer backgroundColor="transparent">
@@ -181,70 +181,74 @@ export default function Graffix() {
             address="5154 State University Dr, Los Angeles, CA 90032 Room 204B, Floor 2"
             phoneNumber="(323)-343-2464"
             hours={hours}
-          ></OfficeHours>
+          />
         </FluidContainer>
       </HeaderContainer>
-      <FluidContainer
-        flex
-        flexWrap="wrap"
-        backgroundColor="greyLightest"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <DesignsContainer>
-          {cards1.map((props) => (
-            <Graphic
-              key={props.title}
-              onClick={() => {
-                setModalData(props);
-                setIsOpen(true);
-              }}
-            >
-              <Image
-                src={props.src}
-                alt={props.title}
-                width="100%"
-                borderRadius="8px"
-              />
-            </Graphic>
-          ))}
-        </DesignsContainer>
-        <DesignsContainer>
-          {cards2.map((props) => (
-            <Graphic
-              key={props.title}
-              onClick={() => {
-                setModalData(props);
-                setIsOpen(true);
-              }}
-            >
-              <Image
-                src={props.src}
-                alt={props.title}
-                borderRadius="8px"
-                width="100%"
-              />
-            </Graphic>
-          ))}
-        </DesignsContainer>
-        <DesignsContainer>
-          {cards3.map((props) => (
-            <Graphic
-              key={props.title}
-              onClick={() => {
-                setModalData(props);
-                setIsOpen(true);
-              }}
-            >
-              <Image
-                src={props.src}
-                alt={props.title}
-                borderRadius="8px"
-                width="100%"
-              />
-            </Graphic>
-          ))}
-        </DesignsContainer>
+      <FluidContainer backgroundColor="greyLightest">
+        <Typography as="h2" variant="title" margin="0">
+          Works
+        </Typography>
+        <FluidContainer
+          flex
+          backgroundColor="greyLightest"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <DesignsContainer>
+            {cards1.map((props) => (
+              <Graphic
+                key={props.title}
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  width="100%"
+                  borderRadius="8px"
+                />
+              </Graphic>
+            ))}
+          </DesignsContainer>
+          <DesignsContainer>
+            {cards2.map((props) => (
+              <Graphic
+                key={props.title}
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  borderRadius="8px"
+                  width="100%"
+                />
+              </Graphic>
+            ))}
+          </DesignsContainer>
+          <DesignsContainer>
+            {cards3.map((props) => (
+              <Graphic
+                key={props.title}
+                onClick={() => {
+                  setModalData(props);
+                  setIsOpen(true);
+                }}
+              >
+                <Image
+                  src={props.src}
+                  alt={props.title}
+                  borderRadius="8px"
+                  width="100%"
+                />
+              </Graphic>
+            ))}
+          </DesignsContainer>
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer flex backgroundColor="primary" padding="0">
         <FluidContainer>
@@ -281,7 +285,7 @@ export default function Graffix() {
               <Image
                 key={y.alt}
                 src={y.src}
-                alt={y.alt}
+                alt=""
                 width="100px"
                 margin="8px"
               />
@@ -292,7 +296,7 @@ export default function Graffix() {
       <div id="acui-awards">
         <FluidContainer flex flexDirection="column" backgroundColor="black">
           <Typography variant="title" margin="16px 0" color="gold" as="h2">
-            ACUI Awards{' '}
+            ACUI Awards
           </Typography>
           <Typography color="greyLighter" variant="label" as="h3">
             Association of College Unions International (ACUI)
@@ -327,7 +331,6 @@ export default function Graffix() {
         </FluidContainer>
       </div>
       <InstagramFeed department="graffix" />
-
       {modalData && (
         <GenericModal
           isOpen={modalIsOpen}

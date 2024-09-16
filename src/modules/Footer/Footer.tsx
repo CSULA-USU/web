@@ -13,6 +13,15 @@ import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
 
+const LogoLink = styled(Link)`
+  &:focus-visible {
+    border: 2px inset #1565c0;
+    display: inline-block;
+    outline: 3px outset #4caf50;
+    text-decoration: underline;
+  }
+`;
+
 const StyledInstagramIcon = styled(AiOutlineInstagram)`
   color: ${Colors.greyLighter};
   font-size: 32px;
@@ -86,14 +95,14 @@ export const Footer = () => (
     <FluidContainer backgroundColor="greyDarkest">
       <FooterTopContainer>
         <FooterTopLogo>
-          <Link target="_blank" href={'https://www.calstatela.edu/'}>
+          <LogoLink target="_blank" href={'https://www.calstatela.edu/'}>
             <Image
               src="/calstatela-badge.svg"
               alt="Cal State LA Logo"
               width={90}
               height={90}
             />
-          </Link>
+          </LogoLink>
         </FooterTopLogo>
         <FooterTopLinks>
           <FooterUnorderedList>

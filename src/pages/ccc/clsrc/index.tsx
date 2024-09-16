@@ -60,15 +60,16 @@ export default function CLSRC() {
           >
             <AiOutlineInstagram
               fontSize={FontSizes['2xl']}
-              aria-label="apisrc instagram icon"
+              aria-label="visit the clsrc instagram"
             />
           </a>
           <a
             href="https://linktr.ee/cccatcalstatela"
             style={{ margin: `auto ${Spaces.sm}` }}
+            aria-label="visit ccc linktree"
           >
             <Image
-              alt="linktree icon"
+              alt=""
               src="/departments/logos/linktree.svg"
               height="29px"
               width="32px"
@@ -83,7 +84,7 @@ export default function CLSRC() {
             {isDesktop && (
               <Image
                 src="/departments/logos/clsrc-text-logo.svg"
-                alt="clsrc logo"
+                alt=""
                 width="100%"
                 height="300px"
                 margin={`${Spaces.md} auto`}
@@ -100,7 +101,7 @@ export default function CLSRC() {
           {!isDesktop && (
             <Image
               src="/departments/logos/clsrc-text-logo.svg"
-              alt="clsrc logo"
+              alt=""
               width={400}
               height={500}
             />
@@ -111,7 +112,7 @@ export default function CLSRC() {
             address="5154 State University Dr, Los Angeles, CA 90032 Room 206"
             phoneNumber="(323)-343-5047"
             hours={hours}
-          ></OfficeHours>
+          />
         </FluidContainer>
       </HeaderContainer>
       <div id="nuestra-grad">
@@ -127,7 +128,7 @@ export default function CLSRC() {
             alt="2022 nuestra graduation"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
-          ></Image>
+          />
           <FluidContainer>
             <Typography variant="title" size={isMobile ? 'xl' : '2xl'} as="h2">
               Nuestra Grad
@@ -150,7 +151,7 @@ export default function CLSRC() {
       {!isMobile && (
         <FluidContainer flex justifyContent="center">
           <Image
-            alt="chicana chicano latina latino student resource center logo"
+            alt=""
             src="/departments/ccc/clsrc/clsrc-header.png"
             width="100%"
             margin={`0px 500px ${Spaces.xl}`}

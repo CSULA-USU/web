@@ -3,7 +3,7 @@
     "title": "Login",
     "content": ["Log in to calstatela.edu"],
     "src": "/governance/how-to-vote/web-1.png",
-    "alt": "login",
+    "alt": "Cal State LA website nav",
     "width": "600"
   },
   {
@@ -14,21 +14,21 @@
       "(If you were enrolled in DUO authentication, follow the instructions to complete the DUO authentication process.)"
     ],
     "src": "/governance/how-to-vote/web-2.png",
-    "alt": "login",
+    "alt": "my cal state la login",
     "width": "300"
   },
   {
     "title": "CalState LA Elections Menu",
     "content": ["Click on the CalState LA Elections menu item below."],
     "src": "/governance/how-to-vote/web-3.png",
-    "alt": "login",
+    "alt": "cal state la elections menu items",
     "width": "400"
   },
   {
     "title": "Voting Options",
     "content": ["This brings up the Voting Options shown below."],
     "src": "/governance/how-to-vote/web-4.png",
-    "alt": "login",
+    "alt": "Voting options summary page",
     "width": "600"
   },
   {
@@ -38,7 +38,7 @@
       "For more information on the Candidates visit: http://www.calstatela.edu/asi/elections"
     ],
     "src": "/governance/how-to-vote/web-5.png",
-    "alt": "login",
+    "alt": "Voting summary page",
     "width": "500"
   },
   {
@@ -48,14 +48,14 @@
       "This will take you to the screen below which displays the candidates competing for the selected office."
     ],
     "src": "/governance/how-to-vote/web-6.png",
-    "alt": "login",
+    "alt": "office vote options",
     "width": "500"
   },
   {
     "title": "Elect Candidate",
     "content": ["Next, click on the Elect button for the chosen candidate."],
     "src": "/governance/how-to-vote/web-7.png",
-    "alt": "login",
+    "alt": "checked box next to chosen candidate",
     "width": "500"
   },
   {
@@ -66,7 +66,7 @@
       "Once you have voted, you will not be able to change your selection."
     ],
     "src": "/governance/how-to-vote/web-8.png",
-    "alt": "login",
+    "alt": "Voting status summary for respective positions",
     "width": "500"
   },
   {
@@ -76,14 +76,14 @@
       "Example: If you are student of the College of Natural and Social Sciences then you will be able to vote for the representative from your college."
     ],
     "src": "/governance/how-to-vote/web-9.png",
-    "alt": "login",
+    "alt": "Options for representatives for respective colleges",
     "width": "500"
   },
   {
     "title": "Board of Directors",
     "content": ["You can select and vote for up to 8 candidates."],
     "src": "/governance/how-to-vote/web-10.png",
-    "alt": "login",
+    "alt": "Board of directors voting with up to 8 options",
     "width": "500"
   },
   {
@@ -92,7 +92,7 @@
       "If you vote for more than eight candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-12.png",
-    "alt": "login",
+    "alt": "Error message if voting for more than 8 candidates",
     "width": "500"
   },
   {
@@ -101,7 +101,7 @@
       "If you select no candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-13.png",
-    "alt": "login",
+    "alt": "Error message if you neglect to select any candidates",
     "width": "500"
   }
 ]
