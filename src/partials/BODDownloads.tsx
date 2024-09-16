@@ -22,7 +22,7 @@ const agendaDownloads: DownloadSectionProps[] = [
         links={[
           {
             href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&dl=0',
-            children: 'BOD Meeting August 30, 2024',
+            children: 'Meeting August 30, 2024',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/4bffzfcit7fmu4nkj8aby/Agenda-Fiscal-Committee-September-13-2024.docx?rlkey=nsh58bdlv6z32v5cze7laok2k&st=1c15fbgm&dl=0',
@@ -32,12 +32,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/sv5wydj0gop9wtbbgtx5k/Agenda-Audit-Committee-September-13-2024.docx?rlkey=gywniga9axihrk9uhldlvpr6x&st=jp1e5atu&dl=0',
             children: 'Audit Committee September 13, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/hgwh281cms1qw6fnwzktw/Agenda-U-SU-Board-of-Directors-September-20-2024.docx?rlkey=8q3xoiagc81m1y19b2m7gvmet&dl=0',
+            children: 'Meeting September 20, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/06bozfxo0oijt694vh5gd/Archive.zip?rlkey=9e0nhtzdotua1zuaaicwpdcgy&st=8ua40rsq&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/c7lxj8214251r9c4rtzc6/Archive.zip?rlkey=zox1d8b3v5q57ku0x3gj3dq99&dl=0',
       variant: 'black',
     },
   },
@@ -102,12 +106,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/gukddkrpb9cgara5r4pfe/Minutes-Board-of-Directors-April-19-2024-signed.pdf?rlkey=2jht2n0nkcu3klffkx4sou2l4&dl=0',
             children: 'BOD Special Meeting Minutes April 19, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/aicuc5dp5qjl5avqx7mn2/Minutes-Board-of-Directors-May-10-2024.pdf?rlkey=5sivgrvf1g0u7xssdmlsn1brq&dl=0',
+            children: 'BOD Special Meeting Minutes May 10, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/o208zd096xs6ftm4q5fbs/fy23-24-minutes.zip?rlkey=5w0eopyqjje3o3d1w23e0an4z&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/8rs0pip87oi8lcy9ajxnd/fy23-24.zip?rlkey=ozry91k5f2f21jmzpnbd9tj45&dl=0',
       variant: 'black',
     },
   },

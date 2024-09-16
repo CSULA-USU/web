@@ -212,6 +212,7 @@ export const ModEventCard = ({
                 <MdLocationPin
                   size="20px"
                   style={{ margin: '0px 3px 0px 3px' }}
+                  aria-hidden="true"
                 />
                 <Typography
                   as="h4"

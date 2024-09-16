@@ -22,22 +22,22 @@ const TextCenter = styled.div`
 const descriptionCards = [
   {
     imgSrc: '/icons/open-door-icon.png',
-    imgAlt: 'open door',
+    imgAlt: '',
     children: 'Confident Communication Skills',
   },
   {
     imgSrc: '/icons/connecting-people-icon.png',
-    imgAlt: 'connecting people',
+    imgAlt: '',
     children: 'Building Relationships',
   },
   {
     imgSrc: '/icons/calendar-icon.png',
-    imgAlt: 'calendar',
+    imgAlt: '',
     children: 'Navigating large social settings',
   },
   {
     imgSrc: '/icons/giving-hand-icon.png',
-    imgAlt: 'giving hand',
+    imgAlt: '',
     children: 'Sense of belonging to the Cal State LA commmunity',
   },
 ];
@@ -72,7 +72,7 @@ export default function Geek() {
           <h1>
             <Image
               src="/departments/csi/geek/geek-header.jpg"
-              alt="geek header banner"
+              alt="Golden Eagle Event Krew Geek California State University Los Angeles"
               width={isDesktop ? '100%' : '80%'}
             />
           </h1>

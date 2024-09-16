@@ -145,7 +145,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 {/* <TeaserContainer /> */}
                 <Image
                   src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
-                  alt="nuestra graduate participants on stage"
+                  alt="2022 nuestra graduate participants on stage"
                   height={0}
                   width={0}
                   sizes="100vw"

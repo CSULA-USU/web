@@ -13,6 +13,15 @@ import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
 
+const LogoLink = styled(Link)`
+  &:focus-visible {
+    border: 2px inset #1565c0;
+    display: inline-block;
+    outline: 3px outset #4caf50;
+    text-decoration: underline;
+  }
+`;
+
 const StyledInstagramIcon = styled(AiOutlineInstagram)`
   color: ${Colors.greyLighter};
   font-size: 32px;
@@ -48,12 +57,17 @@ const FooterTopContainer = styled.div`
   justify-content: space-between;
 `;
 
+const FooterUnorderedList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
 const FooterBottomContainer = styled(FooterTopContainer)`
   justify-content: space-between;
   ${media('mobile')(`justify-content: center`)}
 `;
 
-const StyledLinkMargins = styled.div`
+const StyledLinkMargins = styled.li`
   margin: 10px 0 0 0;
 `;
 
@@ -81,17 +95,17 @@ export const Footer = () => (
     <FluidContainer backgroundColor="greyDarkest">
       <FooterTopContainer>
         <FooterTopLogo>
-          <Link target="_blank" href={'https://www.calstatela.edu/'}>
+          <LogoLink target="_blank" href={'https://www.calstatela.edu/'}>
             <Image
               src="/calstatela-badge.svg"
               alt="Cal State LA Logo"
               width={90}
               height={90}
             />
-          </Link>
+          </LogoLink>
         </FooterTopLogo>
         <FooterTopLinks>
-          <div>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Building Hours
             </Typography>
@@ -127,8 +141,8 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
-          <div>
+          </FooterUnorderedList>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Involvement
             </Typography>
@@ -161,8 +175,8 @@ export const Footer = () => (
                 <StyledLink href={'/employment'}>U-SU Employment</StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
-          <div>
+          </FooterUnorderedList>
+          <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
               Resources
             </Typography>
@@ -194,7 +208,7 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-          </div>
+          </FooterUnorderedList>
         </FooterTopLinks>
       </FooterTopContainer>
       <Divider color="grey" margin={`${Spaces.xl}`} />

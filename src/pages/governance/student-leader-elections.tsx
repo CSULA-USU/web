@@ -52,7 +52,7 @@ const TextCenter = styled.div`
 const ElectionUpdates = (props: any) => {
   return (
     <ElectionUpdatesCard>
-      <Typography variant="titleSmall" margin={`0 0 ${Spaces.md}`}>
+      <Typography as="h3" variant="titleSmall" margin={`0 0 ${Spaces.md}`}>
         {props.title}
       </Typography>
       {props.children}

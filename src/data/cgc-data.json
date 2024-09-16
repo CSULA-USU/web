@@ -2,72 +2,72 @@
   "header-images": [
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-cap.png",
-      "alt": "nuestra grad decorated graduation cap"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
-      "alt": "graduate celebrating with family"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png",
-      "alt": "nuestra 2022 graduate"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
-      "alt": "apida grad 2023 graduates"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
-      "alt": "nuestra grad 2023 graduates"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-performance.jpeg",
-      "alt": "nuestra grad 2023 performance"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/apisrc/apida-grad/apida-grads-smiling.jpeg",
-      "alt": "apida grad 2023 graduates"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.png",
-      "alt": "black grad 2022 performance"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
-      "alt": "apida grad 2023 performance"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/pasrc/black-grad/2022/grad-side.png",
-      "alt": "side profile of black grad participant"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/gsrc/pride-grad/pride-performance.jpg",
-      "alt": "2022 pride grad performance"
+      "alt": ""
     },
     {
       "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
-      "alt": "apida grads 2022 master graduates"
+      "alt": ""
     }
   ],
   "incentives": [
     {
       "src": "/departments/ccc/cultural-grads/mic-drop.svg",
-      "alt": "Mic Drop",
+      "alt": "",
       "description": "Specially curated lineup of speakers and entertainment during the ceremony"
     },
     {
       "src": "/departments/ccc/cultural-grads/wait-in-line.svg",
-      "alt": "Wait In Line",
+      "alt": "",
       "description": "Tickets for guests (guest ticket amounts may differ for each graduation)"
     },
     {
       "src": "/departments/ccc/cultural-grads/books.svg",
-      "alt": "Books",
+      "alt": "",
       "description": "Commemorative program to remember your special day"
     },
     {
       "src": "/departments/ccc/cultural-grads/graduation.svg",
-      "alt": "graduation sash",
+      "alt": "",
       "description": "Uniquely designed graduation sash"
     }
   ],
@@ -89,7 +89,7 @@
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
-      "imgAlt": "APIDA Graduates",
+      "imgAlt": "",
       "id": "apisrc"
     },
     {
@@ -109,7 +109,7 @@
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
-      "imgAlt": "PASRC Graduates",
+      "imgAlt": "",
       "id": "pasrc"
     },
     {
@@ -129,7 +129,7 @@
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
       "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
-      "imgAlt": "Native Graduates",
+      "imgAlt": "",
       "id": "native"
     },
     {
@@ -149,7 +149,7 @@
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
       "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
-      "imgAlt": "Nuestra Graduates",
+      "imgAlt": "",
       "id": "clsrc"
     },
     {
@@ -169,7 +169,7 @@
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
-      "imgAlt": "GSRC Graduates",
+      "imgAlt": "",
       "id": "gsrc"
     }
   ],

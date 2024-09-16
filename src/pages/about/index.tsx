@@ -35,42 +35,42 @@ const cards = [
     children:
       'We are accountable to each other and to those we serve, acknowledging and reflecting on our actions, and identifying solutions to maximize our impact.',
     iconSrc: '/vectors/about/business-deal.svg',
-    iconAlt: 'certificate, interview, agreement, business deal',
+    iconAlt: '',
   },
   {
     title: 'Integrity',
     children:
       'We show our integrity by leading, operating, and communicating openly with those we serve.',
     iconSrc: '/vectors/about/growth.svg',
-    iconAlt: 'mirror and self-reflection',
+    iconAlt: '',
   },
   {
     title: 'Innovation',
     children:
       'We actively seek opportunities to create and innovate to improve outcomes across our facilities, services, and activities.',
     iconSrc: '/vectors/about/upgrade.svg',
-    iconAlt: 'empowerment, upgrade, presentation',
+    iconAlt: '',
   },
   {
     title: 'Community',
     children:
       'We identify the unique needs of our community and intentionally act to create a culture of belonging for all who enter our space.',
     iconSrc: '/vectors/about/community.svg',
-    iconAlt: 'community, connected',
+    iconAlt: '',
   },
   {
     title: 'Fun',
     children:
       'We enjoy what we do. We strive to share our joy and passion with those around us to instill a fun, welcoming and positive environment in the U-SU.',
     iconSrc: '/vectors/about/fireworks.svg',
-    iconAlt: 'fun moments, fireworks',
+    iconAlt: '',
   },
   {
     title: 'Connection',
     children:
       'We prioritize genuine connections with all in our community, enabling us to appreciate the unique value in each other and amplify our successes as a team.',
     iconSrc: '/vectors/about/connection.svg',
-    iconAlt: 'connection, living, people, showing support, connected',
+    iconAlt: '',
   },
 ];
 

@@ -14,10 +14,10 @@ interface navMapType {
   href: string;
   sub?: navMapType[];
 }
-const Container = styled.nav`
-  * {
-    outline: none;
-  }
+
+const UnstyledUnorderedList = styled.ul`
+  list-style-type: none;
+  padding: 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -42,11 +42,8 @@ const Container = styled.nav`
       color: ${Colors.primary};
     }
   }
-  .szh-menu-container > ul {
-    transform: translate(16px, 8px);
-  }
   ul {
-    animation: fadeIn 0.2s;
+    animation: fadeIn 0.3s;
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -76,11 +73,13 @@ const Container = styled.nav`
       right: 4px;
     }
   }
+
   ul {
     padding: 4px 8px;
     list-style: none;
     background-color: ${Colors.greyDarker};
   }
+
   .szh-menu__item {
     padding: 8px;
     margin-right: 12px;
@@ -99,62 +98,69 @@ export const DesktopNav = () => {
   const router = useRouter();
 
   return (
-    <Container>
-      {(navMap as navMapType[]).map((t1, index) => {
-        if (t1.sub) {
-          return (
-            <Menu
-              key={index}
-              menuButton={
-                <MenuButton>
-                  <MainMenuItem>
-                    {t1.text}
-                    <FiChevronDown />
-                  </MainMenuItem>
-                </MenuButton>
-              }
-            >
-              {t1.sub.map((t2, index) => {
-                if (t2.sub) {
-                  return (
-                    <SubMenu key={`t2_${index}`} label={`${t2.text}`}>
-                      {t2.sub.map((t3, index) => (
+    <nav>
+      <UnstyledUnorderedList>
+        {(navMap as navMapType[]).map((t1, index) => {
+          if (t1.sub) {
+            return (
+              <li key={index}>
+                <Menu
+                  menuButton={
+                    <MenuButton>
+                      <MainMenuItem>
+                        {t1.text}
+                        <FiChevronDown />
+                      </MainMenuItem>
+                    </MenuButton>
+                  }
+                >
+                  {t1.sub.map((t2, index) => {
+                    if (t2.sub) {
+                      return (
+                        <li key={`t2_${index}`}>
+                          <SubMenu label={`${t2.text}`}>
+                            {t2.sub.map((t3, index) => (
+                              <li key={`t3_${index}`}>
+                                <MenuItem
+                                  onClick={() => {
+                                    router.push(`${t3.href}`);
+                                  }}
+                                >
+                                  <Link href={t3.href}>
+                                    <NonBreakingSpan>{t3.text}</NonBreakingSpan>
+                                  </Link>
+                                </MenuItem>
+                              </li>
+                            ))}
+                          </SubMenu>
+                        </li>
+                      );
+                    }
+                    return (
+                      <li key={`t2_${index}`}>
                         <MenuItem
-                          key={`t3_${index}`}
                           onClick={() => {
-                            router.push(`${t3.href}`);
+                            router.push(`${t2.href}`);
                           }}
                         >
-                          <Link href={t3.href}>
-                            <NonBreakingSpan>{t3.text}</NonBreakingSpan>
+                          <Link href={t2.href}>
+                            <NonBreakingSpan>{t2.text}</NonBreakingSpan>
                           </Link>
                         </MenuItem>
-                      ))}
-                    </SubMenu>
-                  );
-                }
-                return (
-                  <MenuItem
-                    key={`t2_${index}`}
-                    onClick={() => {
-                      router.push(`${t2.href}`);
-                    }}
-                  >
-                    <Link href={t2.href}>
-                      <NonBreakingSpan>{t2.text}</NonBreakingSpan>
-                    </Link>
-                  </MenuItem>
-                );
-              })}
-            </Menu>
+                      </li>
+                    );
+                  })}
+                </Menu>
+              </li>
+            );
+          }
+          return (
+            <li key={index}>
+              <Link href={t1.href}>{t1.text}</Link>
+            </li>
           );
-        }
-        return (
-          <Link key={index} href={t1.href}>
-            {t1.text}
-          </Link>
-        );
-      })}
-    </Container>
+        })}
+      </UnstyledUnorderedList>
+    </nav>
   );
 };

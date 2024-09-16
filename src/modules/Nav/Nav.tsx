@@ -6,6 +6,15 @@ import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 import { Search } from 'modules/Search';
 
+const LogoLink = styled(Link)`
+  &:focus {
+    border: 2px inset #1565c0;
+    display: inline-block;
+    outline: 3px outset #4caf50;
+    text-decoration: underline;
+  }
+`;
+
 const NavWrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   z-index: 99;
@@ -14,7 +23,7 @@ const NavWrapper = styled.div`
 export const Nav = () => {
   const { isMini, isMobile, isTablet } = useBreakpoint();
   return isTablet ? (
-    <NavWrapper>
+    <NavWrapper role="banner">
       <FluidContainer
         padding="24px"
         backgroundColor="white"
@@ -22,19 +31,18 @@ export const Nav = () => {
         alignItems="center"
         flex
       >
-        <Link href="/">
+        <LogoLink href="/" id="nav-logo" tabIndex={0}>
           <Image
-            tabIndex={0}
             maxHeight={isMobile ? '64px' : '80px'}
             src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
             alt="Cal State LA University-Student Union Logo"
           />
-        </Link>
+        </LogoLink>
         <MobileNav />
       </FluidContainer>
     </NavWrapper>
   ) : (
-    <NavWrapper>
+    <NavWrapper role="banner">
       <FluidContainer
         flex
         justifyContent="space-between"
@@ -43,14 +51,14 @@ export const Nav = () => {
         padding="24px"
         backgroundColor="greyDarkest"
       >
-        <Link href="/">
+        <LogoLink href="/" id="nav-logo" tabIndex={0}>
           <Image
             width="200px"
             height="70"
             src="/usu-wordmark-white.png"
             alt="Cal State LA University-Student Union"
           />
-        </Link>
+        </LogoLink>
         <DesktopNav />
         <Search />
       </FluidContainer>
