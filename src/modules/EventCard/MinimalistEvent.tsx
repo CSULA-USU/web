@@ -130,7 +130,7 @@ export const MinimalistEvent = ({
               <RightContainer>
                 <InfoContainer color={isFeatured ? 'white' : 'black'}>
                   {isFeatured && link ? (
-                    <StyledLink href={link ? link : ''} isExternal>
+                    <StyledLink href={link ? link : ''} isExternalLink>
                       <BsInfoCircle
                         title="Learn More"
                         size={isMobile ? '18px' : '30px'}
@@ -192,7 +192,7 @@ export const MinimalistEvent = ({
                   style={{ fontSize: '30px' }}
                 >
                   {isFeatured && link ? (
-                    <StyledLink href={link ? link : ''} isExternal>
+                    <StyledLink href={link ? link : ''} isExternalLink>
                       <BsInfoCircle
                         title="Learn More"
                         size={isMobile ? '18px' : '30px'}
