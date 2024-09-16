@@ -3,7 +3,7 @@ import { PresenceEvent } from 'types';
 import { MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { media, Colors, Spaces } from 'theme';
 
 interface FeaturedEventsProps {
@@ -84,18 +84,6 @@ export const FeaturedEvents = ({
         ...featuredEvents[index],
       }))
     : [];
-
-  useEffect(() => {
-    console.log('fe', filteredEvents);
-    console.log('events', events);
-    console.log('combined', combinedArray);
-    console.log(
-      'equality',
-      combinedArray.every(
-        (element, index) => element === filteredEvents[index],
-      ),
-    );
-  }, [filteredEvents]);
 
   return !combinedArray.length ? null : (
     <FluidContainer>

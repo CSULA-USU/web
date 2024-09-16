@@ -31,7 +31,10 @@ const UpcomingEventsContent = styled.div`
   }
 `;
 
-const TertiaryContainer = styled.div`
+const TertiaryContainer = styled.ul`
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -89,7 +92,7 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <UpcomingEventsContent>
             <TertiaryContainer>
               {events.slice(1, eventLimit).map((event, index, eventArray) => (
-                <div key={event.eventNoSqlId}>
+                <li key={event.eventNoSqlId}>
                   <MinimalistEvent
                     event={event}
                     onClick={() => selectEvent(event)}
@@ -99,7 +102,7 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                   ) : (
                     <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
                   )}
-                </div>
+                </li>
               ))}
               {events.length > eventLimit ? (
                 <Button
