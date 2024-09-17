@@ -135,7 +135,7 @@ export const Footer = () => (
                   href={
                     'https://www.dropbox.com/scl/fi/s6eek5pluym965zpbjn97/tenant-memo-8-23-24-letterhead.docx?rlkey=wipoile2q0zk2m3bsrzeykv12&dl=0'
                   }
-                  isExternal
+                  isExternalLink
                 >
                   Upcoming Building Hours
                 </StyledLink>
@@ -163,7 +163,7 @@ export const Footer = () => (
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={'https://form.jotform.com/210416532268047'}
-                  isExternal
+                  isExternalLink
                 >
                   U-SU Board of Directors Application
                 </StyledLink>
@@ -182,7 +182,7 @@ export const Footer = () => (
             </Typography>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'https://www.calstatela.edu/'} isExternal>
+                <StyledLink href={'https://www.calstatela.edu/'} isExternalLink>
                   Cal State LA Homepage
                 </StyledLink>
               </Typography>
@@ -194,7 +194,7 @@ export const Footer = () => (
                   href={
                     'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
                   }
-                  isExternal
+                  isExternalLink
                 >
                   Strategic Plan
                 </StyledLink>
