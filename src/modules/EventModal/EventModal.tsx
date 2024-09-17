@@ -1,6 +1,7 @@
 import { Divider, Typography } from 'components';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
@@ -62,6 +63,23 @@ const mobileCustomStyles = {
   },
 };
 
+const CloseButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+`;
+
+const CloseButtonIcon = styled(AiFillCloseCircle)`
+  color: red;
+  font-size: 24px;
+  &:hover,
+  &:focus {
+    color: ${Colors.black};
+    transition: 0.2s ease-in-out;
+  }
+`;
+
 const Main = styled.div`
   max-width: 100%;
   margin: ${Spaces.xs};
@@ -74,6 +92,7 @@ const Main = styled.div`
   }
   overflow-y: auto;
 `;
+
 export const EventModal = ({
   event,
   isOpen,
@@ -120,6 +139,9 @@ export const EventModal = ({
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
+      <CloseButton onClick={onRequestClose}>
+        <CloseButtonIcon />
+      </CloseButton>
       <Main tabIndex={0}>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
