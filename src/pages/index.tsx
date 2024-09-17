@@ -16,25 +16,25 @@ import featuredEvents from 'data/featured-events.json';
 const images = [
   {
     src: '/departments/operations/images/building-maintenance.jpg',
-    alt: 'building-maintenance',
+    alt: '',
     width: '275',
     margin: '0',
   },
   {
     src: '/departments/operations/images/information-event-services.jpg',
-    alt: 'information event services',
+    alt: '',
     width: '275',
     margin: '0',
   },
   {
     src: '/departments/operations/images/building-services.jpg',
-    alt: 'building services',
+    alt: '',
     width: '275',
     margin: '0',
   },
   {
     src: '/departments/operations/images/media-services.jpg',
-    alt: 'media services',
+    alt: '',
     width: '275',
     margin: '0',
   },

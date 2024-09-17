@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { LuExternalLink } from 'react-icons/lu';
 
-const UnderlineHover = styled.a`
+const UnderlineHover = styled(Link)`
   position: relative;
   text-decoration: none;
   color: inherit;
@@ -28,7 +28,7 @@ const UnderlineHover = styled.a`
   }
 `;
 
-const NoUnderlineHover = styled.a`
+const NoUnderlineHover = styled(Link)`
   text-decoration: none;
   position: relative;
   color: inherit;
@@ -71,41 +71,42 @@ const IconStyling = {
 interface StyledLinkProps {
   children: React.ReactNode;
   href: string;
-  isInverse?: boolean;
-  isExternal?: boolean;
+  isInverseUnderlineStyling?: boolean;
+  isExternalLink?: boolean;
 }
 
-// Usage:
 export const StyledLink = ({
   children,
   href,
-  isInverse,
-  isExternal,
+  isInverseUnderlineStyling,
+  isExternalLink,
 }: StyledLinkProps) => {
   return (
     <>
-      {isInverse ? (
-        <Link href={href} target={isExternal ? '_blank' : undefined} passHref>
-          <NoUnderlineHover>
-            <StyleSpan>
-              {children}
-              {isExternal ? (
-                <LuExternalLink style={IconStyling} aria-hidden="true" />
-              ) : null}
-            </StyleSpan>
-          </NoUnderlineHover>
-        </Link>
+      {isInverseUnderlineStyling ? (
+        <NoUnderlineHover
+          href={href}
+          target={isExternalLink ? '_blank' : undefined}
+        >
+          <StyleSpan>
+            {children}
+            {isExternalLink ? (
+              <LuExternalLink style={IconStyling} aria-hidden="true" />
+            ) : null}
+          </StyleSpan>
+        </NoUnderlineHover>
       ) : (
-        <Link href={href} target={isExternal ? '_blank' : undefined} passHref>
-          <UnderlineHover>
-            <StyleSpan>
-              {children}
-              {isExternal ? (
-                <LuExternalLink style={IconStyling} aria-hidden="true" />
-              ) : null}
-            </StyleSpan>
-          </UnderlineHover>
-        </Link>
+        <UnderlineHover
+          href={href}
+          target={isExternalLink ? '_blank' : undefined}
+        >
+          <StyleSpan>
+            {children}
+            {isExternalLink ? (
+              <LuExternalLink style={IconStyling} aria-hidden="true" />
+            ) : null}
+          </StyleSpan>
+        </UnderlineHover>
       )}
     </>
   );
