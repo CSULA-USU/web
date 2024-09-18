@@ -24,13 +24,13 @@ const HeaderContainer = styled.div<{ isOpen?: boolean }>`
     transition: 0.3s;
   }
 
-  button:last-child {
+  .indicator {
     rotate: ${(p) => (p.isOpen ? '90deg' : '0deg')};
   }
 
   &:hover {
     opacity: 0.8;
-    button:last-child {
+    .indicator {
       scale: 1.2;
       translate: ${(p) => (p.isOpen ? '0' : '4px')};
     }
@@ -51,6 +51,7 @@ const Button = styled.button`
   background: transparent;
   border: none;
   padding: 0;
+  rotate: '0deg';
 `;
 
 export const Expandable = ({
@@ -78,18 +79,19 @@ export const Expandable = ({
   const expandedState = isExpanded === undefined ? isOpen : isExpanded;
   return (
     <Container>
-      <HeaderContainer onClick={handleToggle} isOpen={isOpen}>
-        {header}
-        {indicator && (
-          <Button
-            role="button"
-            aria-expanded={isOpen}
-            aria-label="Toggle Accordion"
-          >
-            {indicator}
-          </Button>
-        )}
-      </HeaderContainer>
+      {indicator && (
+        <Button
+          aria-expanded={isOpen}
+          aria-label="Toggle Accordion"
+          onClick={handleToggle}
+          role="button"
+        >
+          <HeaderContainer isOpen={isOpen}>
+            {header}
+            <span className="indicator">{indicator}</span>
+          </HeaderContainer>
+        </Button>
+      )}
       <ContentContainer isOpen={expandedState} height={height} ref={ref}>
         {children}
       </ContentContainer>
