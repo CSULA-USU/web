@@ -151,7 +151,7 @@ export default function Recreation() {
         <HoursSection>
           <div>
             <Typography
-              as="h3"
+              as="h4"
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
@@ -159,7 +159,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="h4" variant="label" size="md">
+              <Typography variant="label" size="md">
                 U-SU Basement
               </Typography>
             </LocationContainer>
@@ -191,7 +191,7 @@ export default function Recreation() {
           </div>
           <div>
             <Typography
-              as="h3"
+              as="h4"
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
@@ -199,7 +199,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="h4" variant="label" size="md">
+              <Typography variant="label" size="md">
                 U-SU Basement
               </Typography>
             </LocationContainer>
@@ -224,7 +224,7 @@ export default function Recreation() {
           <br />
           <div>
             <Typography
-              as="h3"
+              as="h4"
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
@@ -232,7 +232,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="h4" variant="label" size="md">
+              <Typography variant="label" size="md">
                 U-SU Room 201
               </Typography>
             </LocationContainer>
@@ -256,7 +256,7 @@ export default function Recreation() {
           <br />
           <div>
             <Typography
-              as="h3"
+              as="h4"
               variant="titleSmall"
               size={!isTablet ? 'xl' : 'lg'}
             >
@@ -264,7 +264,7 @@ export default function Recreation() {
             </Typography>
             <LocationContainer>
               <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography as="h4" variant="label" size="md">
+              <Typography variant="label" size="md">
                 South Village Housing
               </Typography>
             </LocationContainer>
@@ -315,7 +315,7 @@ export default function Recreation() {
       </FluidContainer>
       <FluidContainer backgroundColor="greyLighter">
         <Typography
-          as="h3"
+          as="h2"
           variant="title"
           margin="24px 0 0 0"
           size={isMobile ? 'lg' : '2xl'}
