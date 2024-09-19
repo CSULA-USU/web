@@ -201,7 +201,7 @@ export default function APISRC() {
                 APIDA Grad
               </Typography>
             </abbr>
-            <Typography as="h3" margin="24px 0">
+            <Typography as="p" margin="24px 0">
               These ceremonies and celebrations are great opportunities to
               acknowledge your academic achievements, honor your families,
               communities, and other significant people in your lives, and to
