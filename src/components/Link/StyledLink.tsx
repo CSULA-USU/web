@@ -8,7 +8,7 @@ const UnderlineHover = styled(Link)`
   color: inherit;
   display: inline-block;
   &:hover {
-    opacity: 0.85;
+    opacity: 0.8;
   }
 
   &::after {
@@ -24,7 +24,7 @@ const UnderlineHover = styled(Link)`
   }
 
   &:hover::after {
-    opacity: 0.95;
+    opacity: 0.9;
   }
 `;
 
@@ -35,7 +35,7 @@ const NoUnderlineHover = styled(Link)`
   display: inline-block;
 
   &:hover {
-    opacity: 0.85;
+    opacity: 0.8;
   }
 
   &::after {
