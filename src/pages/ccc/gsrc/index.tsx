@@ -1,11 +1,16 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { Header, ImageAndCard, OfficeHours, Page } from 'modules';
-import { Button, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Image,
+  StyledLink,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { AiOutlineInstagram } from 'react-icons/ai';
-import Link from 'next/link';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const buttons = [
@@ -60,25 +65,32 @@ const offerings = [
     children: (
       <ul>
         <li>
-          <Link href="https://www.instagram.com/csula_wgsclub/">
-            <Typography variant="span" style={{ textDecoration: 'underline' }}>
+          <StyledLink
+            href="https://www.instagram.com/csula_wgsclub/"
+            isExternalLink
+          >
+            <Typography variant="span">
               Cal State LA Women&apos;s, Gender, and Sexualities Club
             </Typography>
-          </Link>
+          </StyledLink>
         </li>
         <li>
-          <Link href="https://www.instagram.com/swd_csula/">
-            <Typography variant="span" style={{ textDecoration: 'underline' }}>
+          <StyledLink
+            href="https://www.instagram.com/swd_csula/"
+            isExternalLink
+          >
+            <Typography variant="span">
               Students with Dependents at Cal State LA
             </Typography>
-          </Link>
+          </StyledLink>
         </li>
         <li>
-          <Link href="https://www.instagram.com/thetransqueerconnection">
-            <Typography variant="span" style={{ textDecoration: 'underline' }}>
-              Trans Queer Connection
-            </Typography>
-          </Link>
+          <StyledLink
+            href="https://www.instagram.com/thetransqueerconnection"
+            isExternalLink
+          >
+            <Typography variant="span">Trans Queer Connection</Typography>
+          </StyledLink>
         </li>
       </ul>
     ),
