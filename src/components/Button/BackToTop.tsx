@@ -16,6 +16,32 @@ const ButtonBackground = styled.button`
   position: fixed;
   bottom: 46px;
   right: 46px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${Colors.black};
+  }
+`;
+
+const StyledBackToTopIcon = styled(TbCircleArrowUpFilled)`
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  color: ${Colors.grey};
+  font-size: 50px;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &:hover {
+    color: ${Colors.primary};
+    transform: scale(1.1);
+  }
+
+  &:active {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transform: scale(1);
+  }
 `;
 
 const scrollToTop = () => {
@@ -34,16 +60,7 @@ export const BackToTop = () => {
       aria-label="Back to Top"
       tabIndex={0}
     >
-      <TbCircleArrowUpFilled
-        title="Back to Top"
-        size={50}
-        color={Colors.grey}
-        style={{
-          position: 'fixed',
-          bottom: '40px',
-          right: '40px',
-        }}
-      />
+      <StyledBackToTopIcon title="Back to Top" size={50} />
     </ButtonBackground>
   );
 };
