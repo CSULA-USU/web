@@ -6,7 +6,7 @@
       "If you were enrolled in DUO authentication, follow the instructions to complete the DUO authentication process."
     ],
     "src": "https://i.imgur.com/A1yL2gy.png",
-    "alt": "login",
+    "alt": "In GetMobile, under campus life, highlighted Cal State LA Voting section is shown",
     "width": "800"
   },
   {
@@ -16,7 +16,7 @@
       "For more information on the candidates and their platforms tap the link shown below."
     ],
     "src": "https://i.imgur.com/gJv7k2i.png",
-    "alt": "voting summary",
+    "alt": "Single column of information indicating positions and whether they have been voted for",
     "width": "800"
   },
   {
@@ -28,7 +28,7 @@
       "For example, If you are student of the College of Natural and Social Sciences, you will be able to vote for the representative from your respective college."
     ],
     "src": "https://i.imgur.com/Owhg02m.png",
-    "alt": "voting summary",
+    "alt": "Upon clicking on position, a list of candidates is shown with a checkbox to indicate which one students are voting for",
     "width": "800"
   }
 ]
