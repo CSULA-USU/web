@@ -206,7 +206,7 @@ export default function Governance() {
           </Button>
         }
       >
-        <Typography as="h2">
+        <Typography>
           The University-Student Union&apos;s Board of Directors is the
           governing board of the Union. The purpose of the Board is to establish
           policy for the Union as a student body center for the benefit of
@@ -214,17 +214,27 @@ export default function Governance() {
           <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
         </Typography>
       </Header>
-      <FluidContainer flex justifyContent="space-between" flexWrap="wrap">
-        {cards.map((props) => (
-          <Card
-            topBorder
-            key={`${props.title}`}
-            {...props}
-            width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
-            minHeight="280px"
-            margin={`${Spaces.md} 0`}
-          />
-        ))}
+      <FluidContainer>
+        <Typography as="h2" variant="title" lineHeight="1" margin="0 0 18px 0">
+          Student Leadership
+        </Typography>
+        <FluidContainer
+          flex
+          justifyContent="space-between"
+          flexWrap="wrap"
+          padding="0"
+        >
+          {cards.map((props) => (
+            <Card
+              topBorder
+              key={`${props.title}`}
+              {...props}
+              width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
+              minHeight="280px"
+              margin={`${Spaces.md} 0`}
+            />
+          ))}
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
