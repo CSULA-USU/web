@@ -170,7 +170,7 @@ export default function CCC() {
         wide variety of programs and services that explore both the shared and
         unique experiences, histories, and heritages of our diverse community.
       </DepartmentHeader>
-      <CallToAction
+      {/* <CallToAction
         backgroundColorProp="black"
         buttonVariantColor="primary"
         textColorProp="white"
@@ -187,7 +187,7 @@ export default function CCC() {
         >
           Keep up with the latest CCC events with our newsletter:
         </Typography>
-      </CallToAction>
+      </CallToAction> */}
       <FluidContainer
         flex
         justifyContent="flex-start"
