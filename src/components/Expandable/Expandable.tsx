@@ -80,12 +80,7 @@ export const Expandable = ({
   return (
     <Container>
       {indicator && (
-        <Button
-          aria-expanded={isOpen}
-          aria-label="Toggle Accordion"
-          onClick={handleToggle}
-          role="button"
-        >
+        <Button aria-expanded={isOpen} onClick={handleToggle}>
           <HeaderContainer isOpen={isOpen}>
             {header}
             <span className="indicator">{indicator}</span>
@@ -98,3 +93,4 @@ export const Expandable = ({
     </Container>
   );
 };
+6;

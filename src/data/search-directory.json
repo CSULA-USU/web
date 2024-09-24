@@ -100,7 +100,6 @@
       "graffix",
       "operations",
       "recreation",
-      "reservation",
       "reservation"
     ]
   },
@@ -123,7 +122,8 @@
       "queer",
       "cultural graduates",
       "pride",
-      "nuestra"
+      "nuestra",
+      "gender"
     ]
   },
   {
@@ -135,7 +135,8 @@
       "asian pacific islander",
       "cultural graduates",
       "ccc",
-      "cross cultural centers"
+      "cross cultural centers",
+      "desi"
     ]
   },
   {
@@ -253,14 +254,10 @@
       "gender and sexuality",
       "cultural graduates",
       "trans",
-      "queer"
+      "queer",
+      "women",
+      "sex"
     ]
-  },
-  {
-    "title": "Distinguished Women's Awards",
-    "url": "/ccc/distinguished-women-awards",
-    "description": "This event honors women from Cal State LA for their many outstanding achievements and contributions to the community.",
-    "tags": ["ccc", "distinguished women's awards"]
   },
   {
     "title": "Pan African Student Resource Center",

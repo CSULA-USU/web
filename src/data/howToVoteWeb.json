@@ -14,21 +14,21 @@
       "(If you were enrolled in DUO authentication, follow the instructions to complete the DUO authentication process.)"
     ],
     "src": "/governance/how-to-vote/web-2.png",
-    "alt": "my cal state la login",
+    "alt": "my cal state la login section",
     "width": "300"
   },
   {
     "title": "CalState LA Elections Menu",
     "content": ["Click on the CalState LA Elections menu item below."],
     "src": "/governance/how-to-vote/web-3.png",
-    "alt": "cal state la elections menu items",
+    "alt": "a search bar and 6 items in an unordered list, one of which is Cal State LA Elections",
     "width": "400"
   },
   {
     "title": "Voting Options",
     "content": ["This brings up the Voting Options shown below."],
     "src": "/governance/how-to-vote/web-4.png",
-    "alt": "Voting options summary page",
+    "alt": "Voting options are ASI referendum petition, Cal State LA voting summary, and Cal State LA voting eligibility",
     "width": "600"
   },
   {
@@ -38,17 +38,16 @@
       "For more information on the Candidates visit: http://www.calstatela.edu/asi/elections"
     ],
     "src": "/governance/how-to-vote/web-5.png",
-    "alt": "Voting summary page",
+    "alt": "Two columns of information; on the left is a list of positions and on the right is the voting status that indicates whether you have voted for that position yet or not",
     "width": "500"
   },
   {
     "title": "Office Vote",
     "content": [
-      "Once ready to vote, click on the office you would like to vote for.",
-      "This will take you to the screen below which displays the candidates competing for the selected office."
+      "Once ready to vote, click on the office you would like to vote for."
     ],
     "src": "/governance/how-to-vote/web-6.png",
-    "alt": "office vote options",
+    "alt": "The top indicates what position you are voting for. Underneath are two columns of information; on the left are names of the candidates for that position, and on the right is a check box for users to select their choice.",
     "width": "500"
   },
   {
@@ -76,7 +75,7 @@
       "Example: If you are student of the College of Natural and Social Sciences then you will be able to vote for the representative from your college."
     ],
     "src": "/governance/how-to-vote/web-9.png",
-    "alt": "Options for representatives for respective colleges",
+    "alt": "Options for representatives for students' respective colleges",
     "width": "500"
   },
   {
@@ -92,7 +91,7 @@
       "If you vote for more than eight candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-12.png",
-    "alt": "Error message if voting for more than 8 candidates",
+    "alt": "Error message if voting for more than 8 candidates reads: You can only vote for a maximum of eight candidates.",
     "width": "500"
   },
   {
@@ -101,7 +100,7 @@
       "If you select no candidates you will get the following error:"
     ],
     "src": "/governance/how-to-vote/web-13.png",
-    "alt": "Error message if you neglect to select any candidates",
+    "alt": "Error message if you neglect to select any candidates reads: You are trying to vote but you have not selected any candidates.",
     "width": "500"
   }
 ]
