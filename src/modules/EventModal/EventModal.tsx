@@ -65,9 +65,13 @@ const mobileCustomStyles = {
 
 const CloseButton = styled.button`
   background: transparent;
+  height: 24px;
+  width: 24px;
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-bottom: 12px;
+  align-self: flex-end;
 `;
 
 const CloseButtonIcon = styled(AiFillCloseCircle)`
@@ -139,10 +143,10 @@ export const EventModal = ({
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
-      <CloseButton onClick={onRequestClose}>
-        <CloseButtonIcon />
-      </CloseButton>
-      <Main tabIndex={0}>
+      <Main>
+        <CloseButton onClick={onRequestClose}>
+          <CloseButtonIcon />
+        </CloseButton>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`${eventName}`}

@@ -8,9 +8,8 @@ import { Search } from 'modules/Search';
 
 const LogoLink = styled(Link)`
   &:focus {
-    border: 2px inset #1565c0;
-    display: inline-block;
-    outline: 3px outset #4caf50;
+    box-shadow: 0 0 0 6px black;
+    outline: 3px solid #fece07;
     text-decoration: underline;
   }
 `;
