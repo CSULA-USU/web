@@ -144,7 +144,7 @@ export const EventModal = ({
       ariaHideApp={false}
     >
       <Main>
-        <CloseButton onClick={onRequestClose}>
+        <CloseButton onClick={onRequestClose} aria-label="close">
           <CloseButtonIcon />
         </CloseButton>
         <Image
