@@ -14,10 +14,12 @@ import Link from 'next/link';
 const currentYear = new Date().getFullYear();
 
 const LogoLink = styled(Link)`
-  &:focus-visible {
-    border: 2px inset #1565c0;
-    display: inline-block;
-    outline: 3px outset #4caf50;
+  max-width: 1200px;
+  max-height: 90px;
+  margin-bottom: ${Spaces.xl};
+  &:focus {
+    box-shadow: 0 0 0 6px black;
+    outline: 3px solid #fece07;
     text-decoration: underline;
   }
 `;
@@ -38,11 +40,6 @@ const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
     color: ${Colors.primary};
     transition: 0.4s ease-in-out;
   }
-`;
-
-const FooterTopLogo = styled.div`
-  max-width: 1200px;
-  margin-bottom: ${Spaces.xl};
 `;
 
 const FooterTopLinks = styled.div`
@@ -94,16 +91,18 @@ export const Footer = () => (
   <footer>
     <FluidContainer backgroundColor="greyDarkest">
       <FooterTopContainer>
-        <FooterTopLogo>
-          <LogoLink target="_blank" href={'https://www.calstatela.edu/'}>
-            <Image
-              src="/calstatela-badge.svg"
-              alt="Cal State LA Logo"
-              width={90}
-              height={90}
-            />
-          </LogoLink>
-        </FooterTopLogo>
+        <LogoLink
+          target="_blank"
+          href={'https://www.calstatela.edu/'}
+          tabIndex={0}
+        >
+          <Image
+            src="/calstatela-badge.svg"
+            alt="Cal State LA Homepage"
+            width={90}
+            height={90}
+          />
+        </LogoLink>
         <FooterTopLinks>
           <FooterUnorderedList>
             <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
@@ -244,13 +243,15 @@ export const Footer = () => (
           </Typography>
         </FooterBottomInner>
         <div>
-          <Link
-            target="_blank"
-            href={'https://www.instagram.com/usucalstatela/?hl=en'}
-            aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-          >
-            <StyledInstagramIcon />
-          </Link>
+          <span>
+            <Link
+              target="_blank"
+              href={'https://www.instagram.com/usucalstatela/?hl=en'}
+              aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
+            >
+              <StyledInstagramIcon />
+            </Link>
+          </span>
           <Link
             target="_blank"
             href={

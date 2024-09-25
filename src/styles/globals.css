@@ -22,13 +22,9 @@ a {
 a:focus-visible,
 button:focus-visible,
 div:focus-visible,
+svg:focus-visible,
 span:focus-visible {
-  box-shadow: 0 0 0 3px #1565c0; /* blue */
-  outline: 3px outset #4caf50; /* green */
+  box-shadow: 0 0 0 6px black;
+  outline: 3px solid #fece07;
   text-decoration: underline;
-}
-
-input:focus-visible {
-  outline: 2px outset #4caf50;
-  box-shadow: 0 0 0 2px inset #1565c0;
 }
