@@ -15,6 +15,7 @@ const currentYear = new Date().getFullYear();
 
 const LogoLink = styled(Link)`
   max-width: 1200px;
+  max-height: 90px;
   margin-bottom: ${Spaces.xl};
   &:focus {
     box-shadow: 0 0 0 6px black;
