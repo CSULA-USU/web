@@ -76,7 +76,7 @@ const StyledButton = styled.button`
 `;
 
 export const MobileNav = () => (
-  <div role="banner">
+  <div>
     <Drawer.Drawer>
       <Drawer.Trigger>
         <StyledButton aria-label="Navigation Menu">
