@@ -585,10 +585,10 @@ export default function FSL() {
                 </Typography>
               </AB524InfoSection>
               <AB524ReportContainer>
-                <DocumentLink href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&dl=0">
+                <DocumentLink href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&raw=1">
                   FY 22-23 Report
                 </DocumentLink>
-                <DocumentLink href="https://www.dropbox.com/scl/fi/26yu1niyp0kg73ntigdkl/2023-2024-AB-524-Report.pdf?rlkey=coc6owqcz78f1etbixhxzyf3v&st=54czmbd4&dl=0">
+                <DocumentLink href="/departments/csi/fsl/AB524/2023-2024 AB 524 Report.pdf">
                   FY 23-24 Report
                 </DocumentLink>
               </AB524ReportContainer>
