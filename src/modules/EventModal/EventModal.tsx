@@ -16,7 +16,7 @@ interface EventModalProps {
   onRequestClose: () => void;
 }
 
-const customStyles = {
+const desktopCustomStyles = {
   overlay: { zIndex: 100 },
   content: {
     top: '50%',
@@ -28,10 +28,11 @@ const customStyles = {
     border: `1px solid ${Colors.greyLightest}`,
     boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
     textDecoration: 'none',
+    padding: '20px 4px 0 0',
   },
 };
 
-const desktopCustomStyles = {
+const tabletCustomStyles = {
   overlay: { zIndex: 100 },
   content: {
     top: '50%',
@@ -44,6 +45,7 @@ const desktopCustomStyles = {
     border: `1px solid ${Colors.greyLightest}`,
     boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
     textDecoration: 'none',
+    padding: '12px 4px 0 0',
   },
 };
 
@@ -54,12 +56,13 @@ const mobileCustomStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
-    width: '85%',
+    width: '95%',
     transform: 'translate(-50%, -50%)',
     borderRadius: '12px',
     border: `1px solid ${Colors.greyLightest}`,
     boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
     textDecoration: 'none',
+    padding: '20px 0 0',
   },
 };
 
@@ -69,9 +72,13 @@ const CloseButton = styled.button`
   width: 24px;
   border: none;
   cursor: pointer;
-  padding: 0;
-  margin-bottom: 12px;
-  align-self: flex-end;
+  margin: 0 20px 20px;
+`;
+
+const CloseButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid ${Colors.greyLightest};
 `;
 
 const CloseButtonIcon = styled(AiFillCloseCircle)`
@@ -85,10 +92,10 @@ const CloseButtonIcon = styled(AiFillCloseCircle)`
 `;
 
 const Main = styled.div`
-  max-width: 100%;
-  margin: ${Spaces.xs};
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  padding: ${Spaces.md};
   max-height: 80vh;
   img {
     max-height: 600px;
@@ -137,16 +144,18 @@ export const EventModal = ({
         isMobile
           ? mobileCustomStyles
           : isDesktop
-          ? desktopCustomStyles
-          : customStyles
+          ? tabletCustomStyles
+          : desktopCustomStyles
       }
       onRequestClose={onRequestClose}
       ariaHideApp={false}
     >
-      <Main>
-        <CloseButton onClick={onRequestClose}>
+      <CloseButtonContainer>
+        <CloseButton onClick={onRequestClose} aria-label="close">
           <CloseButtonIcon />
         </CloseButton>
+      </CloseButtonContainer>
+      <Main>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`${eventName}`}

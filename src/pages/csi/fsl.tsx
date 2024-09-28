@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Colors, Spaces } from 'theme';
-import { Page } from 'modules';
+import { DocumentLink, Page } from 'modules';
 import { useBreakpoint } from 'hooks';
 import { useEffect, useState } from 'react';
 import { AiOutlineFileText } from 'react-icons/ai';
@@ -20,9 +20,16 @@ import {
 } from 'components';
 import chapters from 'data/fsl-chapters.json';
 
-const AB524 = styled.div`
+const AB524InfoSection = styled.div`
   margin: 0 0 ${Spaces.md} 0;
 `;
+
+const AB524ReportContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 ${Spaces.sm} 0;
+`;
+
 const TextCenter = styled.div`
   text-align: center;
 `;
@@ -559,7 +566,7 @@ export default function FSL() {
                 academic year, is now available. You can access the report here
                 by clicking the button below.
               </Typography>
-              <AB524>
+              <AB524InfoSection>
                 <Typography as="p">
                   This report is shared annually in October in compliance with{' '}
                   <Link
@@ -576,13 +583,15 @@ export default function FSL() {
                   each organization, including information about the
                   organizations, their members, and their conduct.
                 </Typography>
-              </AB524>
-              <Button
-                margin={`0 0 ${Spaces.sm} 0`}
-                href="/departments/csi/fsl/ab-524-report.pdf"
-              >
-                AB 524 Report
-              </Button>
+              </AB524InfoSection>
+              <AB524ReportContainer>
+                <DocumentLink href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&raw=1">
+                  FY 22-23 Report
+                </DocumentLink>
+                <DocumentLink href="/departments/csi/fsl/AB524/2023-2024 AB 524 Report.pdf">
+                  FY 23-24 Report
+                </DocumentLink>
+              </AB524ReportContainer>
               <Typography variant="subheader" as="h3">
                 Chapter Status
               </Typography>
