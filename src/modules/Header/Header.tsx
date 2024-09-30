@@ -47,7 +47,7 @@ export const Header = ({
   return (
     <header>
       <FluidContainer backgroundImage={backgroundImage}>
-        <HeaderContainer role="banner">
+        <HeaderContainer>
           <Typography
             as="h1"
             variant="pageHeader"

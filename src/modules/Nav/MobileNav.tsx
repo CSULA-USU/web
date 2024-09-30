@@ -23,11 +23,12 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
-const NavList = styled.menu`
+const NavList = styled.ul`
   padding-left: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+  list-style-type: none;
   > a {
     color: ${Colors.greyDarker};
     padding: 4px 0;
@@ -38,17 +39,17 @@ const NavList = styled.menu`
 `;
 
 const T1Container = styled(NavList)`
-  > a {
+  > li > a:first-child {
     text-transform: uppercase;
-    font-size: ${FontSizes['xl']};
+    font-size: ${FontSizes['lg']};
     font-weight: 700;
   }
 `;
 
 const T2Container = styled(NavList)`
-  > a {
+  > li > a {
     text-transform: uppercase;
-    font-size: ${FontSizes['lg']};
+    font-size: ${FontSizes['md']};
   }
 `;
 
@@ -56,11 +57,11 @@ const T3Container = styled(NavList).attrs(() => ({ as: 'li' }))`
   ${NavList};
   border-top: 1px solid ${Colors.greyDarker};
   padding-left: 24px;
-  > a {
+  > li > a {
     display: inline;
     &:first-child {
     }
-    font-size: ${FontSizes['md']};
+    font-size: ${FontSizes['sm']};
     margin: 0 0 4px;
   }
 `;
@@ -76,7 +77,7 @@ const StyledButton = styled.button`
 `;
 
 export const MobileNav = () => (
-  <div role="banner">
+  <div>
     <Drawer.Drawer>
       <Drawer.Trigger>
         <StyledButton aria-label="Navigation Menu">
@@ -99,6 +100,7 @@ export const MobileNav = () => (
                   display: 'flex',
                   alignItems: 'center',
                 }}
+                aria-label="Close Navigation"
               >
                 CLOSE <MdCancel size={40} />
               </button>
@@ -107,25 +109,29 @@ export const MobileNav = () => (
           <T1Container>
             {(navMap as navMapType[]).map((t1) => (
               <React.Fragment key={`t1-${t1.href}`}>
-                <Link href={t1.href}>{t1.text}</Link>
-                {t1.sub?.length && (
-                  <T2Container>
-                    {t1.sub?.map((t2) => (
-                      <React.Fragment key={`t2-${t2.href}`}>
-                        <Link href={t2.href}>{t2.text}</Link>
-                        {t2.sub?.length && (
-                          <T3Container>
-                            {t2.sub?.map((t3) => (
-                              <Link href={t3.href} key={`t3-${t3.href}`}>
-                                {t3.text}
-                              </Link>
-                            ))}
-                          </T3Container>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </T2Container>
-                )}
+                <li>
+                  <Link href={t1.href}>{t1.text}</Link>
+                  {t1.sub?.length && (
+                    <T2Container>
+                      {t1.sub?.map((t2) => (
+                        <React.Fragment key={`t2-${t2.href}`}>
+                          <li>
+                            <Link href={t2.href}>{t2.text}</Link>
+                            {t2.sub?.length && (
+                              <T3Container>
+                                {t2.sub?.map((t3) => (
+                                  <li key={`t3-${t3.href}`}>
+                                    <Link href={t3.href}>{t3.text}</Link>
+                                  </li>
+                                ))}
+                              </T3Container>
+                            )}
+                          </li>
+                        </React.Fragment>
+                      ))}
+                    </T2Container>
+                  )}
+                </li>
               </React.Fragment>
             ))}
           </T1Container>
