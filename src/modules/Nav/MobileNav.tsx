@@ -23,11 +23,12 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
-const NavList = styled.menu`
+const NavList = styled.ul`
   padding-left: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+  list-style-type: none;
   > a {
     color: ${Colors.greyDarker};
     padding: 4px 0;
@@ -75,6 +76,11 @@ const StyledButton = styled.button`
   }
 `;
 
+const UnstyledList = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+`;
+
 export const MobileNav = () => (
   <div>
     <Drawer.Drawer>
@@ -107,25 +113,31 @@ export const MobileNav = () => (
           <T1Container>
             {(navMap as navMapType[]).map((t1) => (
               <React.Fragment key={`t1-${t1.href}`}>
-                <Link href={t1.href}>{t1.text}</Link>
-                {t1.sub?.length && (
-                  <T2Container>
-                    {t1.sub?.map((t2) => (
-                      <React.Fragment key={`t2-${t2.href}`}>
-                        <Link href={t2.href}>{t2.text}</Link>
-                        {t2.sub?.length && (
-                          <T3Container>
-                            {t2.sub?.map((t3) => (
-                              <Link href={t3.href} key={`t3-${t3.href}`}>
-                                {t3.text}
-                              </Link>
-                            ))}
-                          </T3Container>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </T2Container>
-                )}
+                <li>
+                  <Link href={t1.href}>{t1.text}</Link>
+                  {t1.sub?.length && (
+                    <T2Container>
+                      {t1.sub?.map((t2) => (
+                        <React.Fragment key={`t2-${t2.href}`}>
+                          <li>
+                            <Link href={t2.href}>{t2.text}</Link>
+                            {t2.sub?.length && (
+                              <T3Container>
+                                <UnstyledList>
+                                  {t2.sub?.map((t3) => (
+                                    <li key={`t3-${t3.href}`}>
+                                      <Link href={t3.href}>{t3.text}</Link>
+                                    </li>
+                                  ))}
+                                </UnstyledList>
+                              </T3Container>
+                            )}
+                          </li>
+                        </React.Fragment>
+                      ))}
+                    </T2Container>
+                  )}
+                </li>
               </React.Fragment>
             ))}
           </T1Container>
