@@ -41,15 +41,15 @@ const NavList = styled.ul`
 const T1Container = styled(NavList)`
   > li > a:first-child {
     text-transform: uppercase;
-    font-size: ${FontSizes['xl']};
+    font-size: ${FontSizes['lg']};
     font-weight: 700;
   }
 `;
 
 const T2Container = styled(NavList)`
-  > a {
+  > li > a {
     text-transform: uppercase;
-    font-size: ${FontSizes['lg']};
+    font-size: ${FontSizes['md']};
   }
 `;
 
@@ -57,11 +57,11 @@ const T3Container = styled(NavList).attrs(() => ({ as: 'li' }))`
   ${NavList};
   border-top: 1px solid ${Colors.greyDarker};
   padding-left: 24px;
-  > a {
+  > li > a {
     display: inline;
     &:first-child {
     }
-    font-size: ${FontSizes['md']};
+    font-size: ${FontSizes['sm']};
     margin: 0 0 4px;
   }
 `;
@@ -74,11 +74,6 @@ const StyledButton = styled.button`
   &:hover {
     opacity: 0.7;
   }
-`;
-
-const UnstyledList = styled.ul`
-  list-style-type: none;
-  padding-left: 0;
 `;
 
 export const MobileNav = () => (
@@ -105,6 +100,7 @@ export const MobileNav = () => (
                   display: 'flex',
                   alignItems: 'center',
                 }}
+                aria-label="Close Navigation"
               >
                 CLOSE <MdCancel size={40} />
               </button>
@@ -123,13 +119,11 @@ export const MobileNav = () => (
                             <Link href={t2.href}>{t2.text}</Link>
                             {t2.sub?.length && (
                               <T3Container>
-                                <UnstyledList>
-                                  {t2.sub?.map((t3) => (
-                                    <li key={`t3-${t3.href}`}>
-                                      <Link href={t3.href}>{t3.text}</Link>
-                                    </li>
-                                  ))}
-                                </UnstyledList>
+                                {t2.sub?.map((t3) => (
+                                  <li key={`t3-${t3.href}`}>
+                                    <Link href={t3.href}>{t3.text}</Link>
+                                  </li>
+                                ))}
                               </T3Container>
                             )}
                           </li>
