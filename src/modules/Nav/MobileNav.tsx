@@ -39,7 +39,7 @@ const NavList = styled.ul`
 `;
 
 const T1Container = styled(NavList)`
-  > a {
+  > li > a:first-child {
     text-transform: uppercase;
     font-size: ${FontSizes['xl']};
     font-weight: 700;
