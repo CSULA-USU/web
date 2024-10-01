@@ -1,17 +1,24 @@
 [
   {
+    "title": "Chair",
+    "src": "https://www.dropbox.com/scl/fi/9bn21a6xqr3pzfslrrctt/Jaqueline-Fajardo.jpg?rlkey=an73j1rwxxvo7u2o1w90rlfyg&st=bfmf2g93&raw=1",
+    "name": "Jaqueline Fajardo",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
     "head": "",
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/hbac0fg8wm0gb7bh6fuff/Allie-Blane.jpg?rlkey=u4a1hg5q9559yz9k4zmbw1776&st=suhhwu3f&raw=1",
-    "name": "Allie Blane",
+    "title": "Vice Chair",
+    "src": "https://www.dropbox.com/scl/fi/8rmmdjoedhwykdpzbtwxv/Eric-Sena.jpg?rlkey=acxim1amguc9ruzluxvrdba68&st=w60ibe5f&raw=1",
+    "name": "Eric Sena",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "head": "",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/8rmmdjoedhwykdpzbtwxv/Eric-Sena.jpg?rlkey=acxim1amguc9ruzluxvrdba68&st=w60ibe5f&raw=1",
-    "name": "Eric Sena",
+    "src": "https://i.imgur.com/jlDT8Jx.jpg",
+    "name": "Allie Blane",
     "credentials": "",
     "section": "student-representative"
   },
@@ -19,13 +26,6 @@
     "title": "Student Director",
     "src": "https://www.dropbox.com/scl/fi/cypah798a2k3vu2au03jo/Haseena-Khaled.jpg?rlkey=s3f0lrzxd7vn2zagvcz3dvlxm&st=y8dr0ezy&raw=1",
     "name": "Haseena Khaled",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/9bn21a6xqr3pzfslrrctt/Jaqueline-Fajardo.jpg?rlkey=an73j1rwxxvo7u2o1w90rlfyg&st=bfmf2g93&raw=1",
-    "name": "Jaqueline Fajardo",
     "credentials": "",
     "section": "student-representative"
   },
