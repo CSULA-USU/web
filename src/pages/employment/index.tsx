@@ -2,10 +2,11 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Page } from 'modules';
 import { FluidContainer, Typography } from 'components';
-import jobs from 'data/employment.json';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import Link from 'next/link';
+// import jobs from 'data/employment.json';
+// used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
 
 const JobListingContainer = styled.div`
   display: flex;
@@ -26,17 +27,25 @@ const JobItem = styled.div`
 `;
 
 export default function Employment() {
-  const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
+  // const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
+  // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
 
   const [studentJobs, setStudentJobs] = useState([]);
+  const [fullTimeJobs, setFullTimeJobs] = useState([]);
 
   const fetchJobFeed = async () => {
+    // RSS feed for part-time student jobs
     const data = await fetch('/api/employment');
     const feed = await data.json();
     const partTimeResults = feed.items.filter(
       (item: any) => !item.contentSnippet.includes('5/40'),
     );
     setStudentJobs(partTimeResults);
+
+    // RSS feed API for full-time jobs
+    const fullTimeData = await fetch('/api/fullTimeEmployment');
+    const fullTimeFeed = await fullTimeData.json();
+    setFullTimeJobs(fullTimeFeed.items);
   };
 
   useEffect(() => {
@@ -50,7 +59,7 @@ export default function Employment() {
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="hiring,hire,opportunity,apply,The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
+          content="hiring, hire, opportunity, apply, The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
         />
         <meta
           name="description"
@@ -90,13 +99,13 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Full-time Positions
             </Typography>
-            {fulltimeJobs.length >= 1 ? (
-              fulltimeJobs.map((j) => (
-                <JobItem key={`${j.department}_${j.title}`}>
+            {fullTimeJobs.length >= 1 ? (
+              fullTimeJobs.map((j: any) => (
+                <JobItem key={`${j.title}`}>
                   <Typography variant="titleSmall" color="grey">
-                    {j.department}
+                    {j.title}
                   </Typography>
-                  <Link href={j.href} target="_blank">
+                  <Link href={j.link} target="_blank">
                     <Typography as="h4" variant="labelTitle">
                       {j.title}
                     </Typography>
