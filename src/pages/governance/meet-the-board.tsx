@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import { Header, Page } from 'modules';
-import { FluidContainer, NonBreakingSpan, Typography } from 'components';
+import { FluidContainer, Image, NonBreakingSpan, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import boardMembers from 'data/board-members.json';
 import { StaffCard } from 'components/StaffCard';
 import { GovernanceFooter } from 'partials';
+import { Spaces } from 'theme';
 
 export default function Governance() {
   const {} = useBreakpoint();
@@ -99,6 +100,15 @@ export default function Governance() {
             ),
           )}
         </FluidContainer>
+      </FluidContainer>
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="group photo of u-su board of directors "
+          src="https://www.dropbox.com/scl/fi/3q5zhre29d7rsx9zbw8dv/BOD_Group2024.jpg?rlkey=5l54adj0tr3x4hvm435zila3k&st=ffwcfqsa&raw=1"
+          width="100%"
+          margin={`0px 500px ${Spaces.xl}`}
+          borderRadius="12px"
+        />
       </FluidContainer>
       <GovernanceFooter />
     </Page>
