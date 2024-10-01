@@ -104,7 +104,7 @@ export default function Governance() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of u-su board of directors "
-          src="https://www.dropbox.com/scl/fi/3q5zhre29d7rsx9zbw8dv/BOD_Group2024.jpg?rlkey=5l54adj0tr3x4hvm435zila3k&st=ffwcfqsa&raw=1"
+          src="https://www.dropbox.com/scl/fi/82dsw2a92skpb14t1jbc1/BODGroup2_2024.jpg?rlkey=gh60f6n5b4z3y4hh5xj8qionb&st=gfn7ty85&raw=1"
           width="100%"
           margin={`0px 500px ${Spaces.xl}`}
           borderRadius="12px"
