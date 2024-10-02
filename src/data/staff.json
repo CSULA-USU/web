@@ -3,7 +3,7 @@
     "name": "Adam Guthrie",
     "title": "Event and Technical Services Coordinator",
     "src": "/staff/adam-guthrie.png",
-    "alt": "Adam Guthrie",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "aguthri2@calstatela.edu"
@@ -12,7 +12,7 @@
     "name": "Ashley Lepe",
     "title": "Recreation Coordinator",
     "src": "/staff/ashley-lepe2.png",
-    "alt": "Ashley Lepe",
+    "alt": "",
     "tags": ["Recreation"],
     "department": "Recreation",
     "email": "alepe14@calstatela.edu"
@@ -21,7 +21,7 @@
     "name": "Chris Balam",
     "title": "Director, Recreation",
     "src": "/staff/chris-balam.png",
-    "alt": "Chris Balam",
+    "alt": "",
     "tags": ["Recreation", "Director"],
     "department": "Recreation",
     "email": "cbalam2@calstatela.edu"
@@ -30,7 +30,7 @@
     "name": "Christian Butler",
     "title": "Recreation Coordinator",
     "src": "/staff/christian-butler.png",
-    "alt": "Christian Butler",
+    "alt": "",
     "tags": ["Recreation"],
     "department": "Recreation",
     "email": "cbutle17@calstatela.edu"
@@ -39,7 +39,7 @@
     "name": "Christopher Jackson",
     "title": "Director, CCC",
     "src": "/staff/christopher-jackson.png",
-    "alt": "Christopher Jackson",
+    "alt": "",
     "tags": ["CCC", "Director"],
     "department": "Cross Cultural Centers",
     "email": "cjacks38@calstatela.edu"
@@ -48,7 +48,7 @@
     "name": "Enzo Everett",
     "title": "Recreation Coordinator",
     "src": "/staff/enzo-everett.png",
-    "alt": "Enzo Everett",
+    "alt": "",
     "tags": ["Recreation"],
     "department": "Recreation",
     "email": "eeveret@calstatela.edu"
@@ -57,7 +57,7 @@
     "name": "Fabi Avina",
     "title": "Director, Center for Student Involvement",
     "src": "/staff/fabiola-avina.png",
-    "alt": "Fabi Avina",
+    "alt": "",
     "tags": ["CSI", "Director"],
     "department": "Center for Student Involvement",
     "email": "favina@calstatela.edu"
@@ -66,16 +66,25 @@
     "name": "Ian Prieto",
     "title": "Fraternity & Sorority Life Coordinator",
     "src": "/staff/ian-prieto.png",
-    "alt": "Ian Prieto the fraternity and sorority life coordinator",
+    "alt": "",
     "tags": ["CSI"],
     "department": "Center for Student Involvement",
     "email": "iprieto7@calstatela.edu"
   },
   {
+    "name": "Imani Thomas",
+    "title": "Pan-African Student Resource Center Coordinator",
+    "src": "https://www.dropbox.com/scl/fi/kfmq2487sq2yqbdber6vb/Imani.png?rlkey=sidmkqf2616ly6u2dz14rio9h&st=a1isaa8z&raw=1",
+    "alt": "",
+    "tags": ["CCC"],
+    "department": "Cross Cultural Centers",
+    "email": "ithoma10@calstatela.edu"
+  },
+  {
     "name": "Jaime Venegas",
     "title": "Maintenance Coordinator",
     "src": "/staff/jaime-venegas.png",
-    "alt": "Jaime Venegas",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "jveneg30@calstatela.edu"
@@ -84,7 +93,7 @@
     "name": "James Lui",
     "title": "Operations Coordinator",
     "src": "/staff/james-lui.png",
-    "alt": "James Lui",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "jlui2@calstatela.edu"
@@ -93,7 +102,7 @@
     "name": "Jasmine Heredia",
     "title": "Assistant to Executive Director",
     "src": "/staff/jasmine-heredia.png",
-    "alt": "Jasmine Heredia",
+    "alt": "",
     "tags": ["Administration"],
     "department": "U-SU Administration",
     "email": "jhered23@calstatela.edu"
@@ -102,7 +111,7 @@
     "name": "John Ortiz",
     "title": "Director, Operations",
     "src": "/staff/john-ortiz.png",
-    "alt": "John Ortiz",
+    "alt": "",
     "tags": ["Operations", "Director"],
     "department": "Operations",
     "email": "jortiz@cslanet.calstatela.edu"
@@ -111,7 +120,7 @@
     "name": "John Yasis",
     "title": "Web Designer",
     "src": "/staff/john-yasis2.png",
-    "alt": "John Yasis",
+    "alt": "",
     "tags": ["Graffix"],
     "department": "Graffix",
     "email": "jyasis@calstatela.edu"
@@ -120,7 +129,7 @@
     "name": "Joseph Sedlacek",
     "title": "Associate Director, Administration for Human Resources Management",
     "src": "/staff/joseph-sedlacek.png",
-    "alt": "Joseph Sedlacek",
+    "alt": "",
     "tags": ["Administration", "Director"],
     "department": "U-SU Administration",
     "email": "jsedlacek@cslanet.calstatela.edu"
@@ -129,7 +138,7 @@
     "name": "Lena Zeng",
     "title": "Accounting Technician",
     "src": "/staff/lena-zeng.png",
-    "alt": "Lena Zeng",
+    "alt": "",
     "tags": ["Administration"],
     "department": "U-SU Administration",
     "email": "lzeng@cslanet.calstatela.edu"
@@ -138,7 +147,7 @@
     "name": "Luisa Perales Ruiz",
     "title": "Operations Coordinator",
     "src": "/staff/luisa-perales.png",
-    "alt": "Luisa Perales",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "lperale4@calstatela.edu"
@@ -147,7 +156,7 @@
     "name": "Malia Otuhiva",
     "title": "Asian Pacific Islander Student Resource Center Coordinator",
     "src": "/staff/malia-otuhiva.png",
-    "alt": "malia otuhiva the asian pacific islander student resource center coordinator",
+    "alt": "malia otuhiva the asian pacific islander student resource ",
     "tags": ["CCC"],
     "department": "Cross Cultural Centers",
     "email": "motuhiv@calstatela.edu"
@@ -156,7 +165,7 @@
     "name": "Mario Pizarro Rojas",
     "title": "Gender and Sexuality Resource Center Coordinator",
     "src": "/staff/mario-rojas.png",
-    "alt": "Mario Pizarro Rojas",
+    "alt": "Mario ",
     "tags": ["CCC"],
     "department": "Cross Cultural Centers",
     "email": "mpizarr5@calstatela.edu"
@@ -165,7 +174,7 @@
     "name": "Martin Sandoval",
     "title": "Assistant Director of Operations",
     "src": "/staff/martin-sandoval.png",
-    "alt": "Martin Sandoval",
+    "alt": "",
     "tags": ["Operations", "Director"],
     "department": "Operations",
     "email": "msandov@cslanet.calstatela.edu"
@@ -174,7 +183,7 @@
     "name": "Megan Bell",
     "title": "Executive Director",
     "src": "/staff/megan-bell.png",
-    "alt": "Megan Bell",
+    "alt": "",
     "tags": ["Administration", "Director"],
     "department": "U-SU Administration",
     "email": "mbell27@calstatela.edu"
@@ -183,7 +192,7 @@
     "name": "Robert Gonzales",
     "title": "Director, Graphics and Marketing",
     "src": "/staff/robert-gonzales.png",
-    "alt": "Robert Gonzales",
+    "alt": "",
     "tags": ["Graffix", "Director"],
     "department": "Graffix",
     "email": "rgonz155@calstatela.edu"
@@ -192,7 +201,7 @@
     "name": "Ron Ruiz",
     "title": "Senior Events and Technical Services Coordinator",
     "src": "/staff/ron-ruiz.png",
-    "alt": "Ron Ruiz",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "rruiz@cslanet.calstatela.edu"
@@ -201,7 +210,7 @@
     "name": "Sam Juarez",
     "title": "Graphics Coordinator",
     "src": "/staff/samantha-juarez.jpg",
-    "alt": "Samantha Juarez",
+    "alt": "",
     "tags": ["Graffix"],
     "department": "Graffix",
     "email": "hjuare13@calstatela.edu"
@@ -210,7 +219,7 @@
     "name": "Sophia Shiau",
     "title": "Associate Executive Director U-SU/Director of Financial Services",
     "src": "/staff/sophia-shiau.png",
-    "alt": "Sophia Shiau",
+    "alt": "",
     "tags": ["Administration", "Director"],
     "department": "U-SU Administration",
     "email": "sshiau2@calstatela.edu"
@@ -219,16 +228,25 @@
     "name": "Taraneh Tabatabai",
     "title": "Student Engagement Coordinator",
     "src": "/staff/taraneh-tabatabai.png",
-    "alt": "Taraneh Tabatabai",
+    "alt": "",
     "tags": ["CSI"],
     "department": "Center for Student Involvement",
     "email": "ttabata3@calstatela.edu"
   },
   {
+    "name": "Valerie Tellez",
+    "title": "Chicanx Latinx Student Resource Center Coordinator",
+    "src": "https://www.dropbox.com/scl/fi/mcxf412k04gqqb8krux01/Valerie2.png?rlkey=dkcj089abrrenyiepectdu3za&st=k4ob363h&raw=1",
+    "alt": "",
+    "tags": ["CCC"],
+    "department": "Cross Cultural Centers",
+    "email": "vtelle10@calstatela.edu"
+  },
+  {
     "name": "Yaritza Rodriguez",
     "title": "Information and Reservations Coordinator",
     "src": "/staff/yaritza-rodriguez.png",
-    "alt": "Yaritza Rodriguez",
+    "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
     "email": "yrodri103@calstatela.edu"
