@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Page } from 'modules';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, StyledLink, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import Link from 'next/link';
@@ -82,11 +82,11 @@ export default function Employment() {
             {studentJobs.length >= 1 ? (
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <Link href={j.link || ''} target="_blank">
+                  <StyledLink isExternalLink href={j.link || ''}>
                     <Typography variant="span" size="lg">
                       {j.title}
                     </Typography>
-                  </Link>
+                  </StyledLink>
                 </JobItem>
               ))
             ) : (
@@ -102,14 +102,14 @@ export default function Employment() {
             {fullTimeJobs.length >= 1 ? (
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <Typography variant="titleSmall" color="grey">
-                    {j.title}
-                  </Typography>
-                  <Link href={j.link} target="_blank">
-                    <Typography as="h4" variant="labelTitle">
+                  <StyledLink isExternalLink href={j.link}>
+                    <Typography variant="span" size="lg">
                       {j.title}
                     </Typography>
-                  </Link>
+                    {/* <Typography as="h4" variant="labelTitle">
+                      {j.title}
+                    </Typography> */}
+                  </StyledLink>
                 </JobItem>
               ))
             ) : (
