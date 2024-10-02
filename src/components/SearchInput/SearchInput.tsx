@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
@@ -48,6 +47,13 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${Colors.grey};
   }
+`;
+
+const StyledSubmit = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 `;
 
 const Label = styled.label`
