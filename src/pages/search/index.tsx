@@ -78,7 +78,7 @@ export default function Search() {
 
     const { query } = router.query;
     setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     const options = {
