@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export interface SearchProps {
