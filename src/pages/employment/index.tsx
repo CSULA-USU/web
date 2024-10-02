@@ -102,13 +102,13 @@ export default function Employment() {
             {fullTimeJobs.length >= 1 ? (
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <Typography variant="titleSmall" color="grey">
-                    {j.title}
-                  </Typography>
                   <Link href={j.link} target="_blank">
-                    <Typography as="h4" variant="labelTitle">
+                    <Typography variant="span" size="lg">
                       {j.title}
                     </Typography>
+                    {/* <Typography as="h4" variant="labelTitle">
+                      {j.title}
+                    </Typography> */}
                   </Link>
                 </JobItem>
               ))
