@@ -78,7 +78,7 @@ export default function Search() {
 
     const { query } = router.query;
     setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     const options = {
@@ -172,9 +172,10 @@ export default function Search() {
         title="Search"
         backgroundImage="/backgrounds/subtle-background-2.jpg"
       >
-        Need help finding something?
         <form onSubmit={handleOnSubmit}>
+          <label htmlFor="searchInput">Need help finding something?</label>
           <SearchBig
+            id="searchInput"
             type="text"
             value={searchQuery}
             onChange={handleOnChange}
