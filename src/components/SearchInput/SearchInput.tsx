@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
@@ -46,6 +45,13 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledSubmit = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+`;
+
 const Label = styled.label`
   display: none;
 `;
@@ -90,15 +96,15 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
             )}
           </>
         )}
-        <Link href="/search" aria-label="Search the University Student Union">
-          {isMobile ? (
-            <></>
-          ) : (
-            <>
-              <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
-            </>
-          )}
-        </Link>
+        {/* <Link href="/search" aria-label="Search the University Student Union"> */}
+        {isMobile ? (
+          <></>
+        ) : (
+          <StyledSubmit type="submit">
+            <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
+          </StyledSubmit>
+        )}
+        {/* </Link> */}
       </InputContainerForm>
     </OuterContainer>
   );
