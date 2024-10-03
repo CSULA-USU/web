@@ -9,7 +9,7 @@ import { FluidContainer, Image, Typography } from 'components';
 import { searchResultState } from 'atoms';
 import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
-import { Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 
 const SearchBig = styled.input`
@@ -26,6 +26,10 @@ const SearchBig = styled.input`
   font-weight: 500;
   font-family: 'Bitter', serif;
   text-decoration: none;
+  ::selection {
+    background: ${Colors.greyDarker};
+    color: white;
+  }
   @media screen and (max-width: 768px) {
     width: 400px;
   }
