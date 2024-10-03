@@ -21,6 +21,9 @@ const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 10;
   overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const NavList = styled.ul`
@@ -39,6 +42,7 @@ const NavList = styled.ul`
 `;
 
 const T1Container = styled(NavList)`
+  margin-bottom: 50%;
   > li > a:first-child {
     text-transform: uppercase;
     font-size: ${FontSizes['lg']};

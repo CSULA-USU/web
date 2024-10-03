@@ -83,7 +83,7 @@ export default function Employment() {
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <StyledLink isExternalLink href={j.link || ''}>
-                    <Typography variant="span" size="lg">
+                    <Typography variant="subheader" size="lg" color="black">
                       {j.title}
                     </Typography>
                   </StyledLink>
@@ -103,7 +103,7 @@ export default function Employment() {
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <StyledLink isExternalLink href={j.link}>
-                    <Typography variant="span" size="lg">
+                    <Typography variant="subheader" size="lg" color="black">
                       {j.title}
                     </Typography>
                     {/* <Typography as="h4" variant="labelTitle">
