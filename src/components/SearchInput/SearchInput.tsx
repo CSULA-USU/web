@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useRef } from 'react';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
 import Link from 'next/link';
@@ -57,9 +57,11 @@ const Label = styled.label`
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
   const { isMobile, isTablet } = useBreakpoint();
   const [isReadOnly, setIsReadOnly] = useState(true);
+  const inputRef = useRef<HTMLInputElement>(null); // create the ref. Refs provide a way to access and interact with DOM elements or React component instances directly
 
   const handleSearchClick = () => {
     setIsReadOnly(false);
+    inputRef.current?.focus(); // programmatically focus the input field when the search icon is clicked
   };
 
   return (
@@ -81,6 +83,7 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
                 color: Colors.black,
                 border: '1px solid',
               }}
+              ref={inputRef}
             />
           </>
         ) : null}
