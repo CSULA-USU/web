@@ -188,7 +188,7 @@ export default function Search() {
         </form>
       </Header>
       <FluidContainer innerMaxWidth="1216px" innerMinHeight="50vh">
-        <Typography variant="title" as="h2">
+        <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
           Results:
         </Typography>
         {content}
