@@ -3,6 +3,8 @@ import { FaSearch } from 'react-icons/fa';
 import { ChangeEvent, FormEvent } from 'react';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export interface SearchProps {
   input?: string;
@@ -36,20 +38,16 @@ const StyledInput = styled.input`
   font-weight: 500;
   font-family: 'Bitter', serif;
   text-decoration: none;
+  ::selection {
+    background: ${Colors.greyDarker};
+    color: white;
+  }
   &:focus {
     border: 0;
-    border-style: none;
   }
   &::placeholder {
-    color: black;
+    color: ${Colors.grey};
   }
-`;
-
-const StyledSubmit = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
 `;
 
 const Label = styled.label`
@@ -57,7 +55,12 @@ const Label = styled.label`
 `;
 
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
+  const [isReadOnly, setIsReadOnly] = useState(true);
+
+  const handleSearchClick = () => {
+    setIsReadOnly(false);
+  };
 
   return (
     <OuterContainer>
@@ -71,6 +74,8 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               placeholder="Search"
               value={input}
               onChange={onChange}
+              readOnly={isReadOnly}
+              onClick={handleSearchClick}
               style={{
                 backgroundColor: Colors.greyLightest,
                 color: Colors.black,
@@ -78,33 +83,12 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               }}
             />
           </>
-        ) : (
-          <>
-            {isDesktop ? (
-              ''
-            ) : (
-              <>
-                <Label htmlFor="searchInput">Search</Label>
-                <StyledInput
-                  id="searchInput"
-                  aria-labelledby="searchInput"
-                  placeholder="Search"
-                  value={input}
-                  onChange={onChange}
-                />
-              </>
-            )}
-          </>
-        )}
-        {/* <Link href="/search" aria-label="Search the University Student Union"> */}
-        {isMobile ? (
-          <></>
-        ) : (
-          <StyledSubmit type="submit">
+        ) : null}
+        {isMobile ? null : (
+          <Link href="/search" aria-label="Search the University Student Union">
             <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
-          </StyledSubmit>
+          </Link>
         )}
-        {/* </Link> */}
       </InputContainerForm>
     </OuterContainer>
   );
