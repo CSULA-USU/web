@@ -1,6 +1,7 @@
-import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { FaSearch } from 'react-icons/fa';
+import { FluidContainer, Image } from 'components';
 import { useBreakpoint } from 'hooks';
 import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
@@ -14,9 +15,17 @@ const LogoLink = styled(Link)`
   }
 `;
 
+const MobileIconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const NavWrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   z-index: 99;
+`;
+
+const SearchIconLink = styled(FaSearch)`
+  font-size: 33px;
 `;
 
 export const Nav = () => {
@@ -37,7 +46,12 @@ export const Nav = () => {
             alt="Cal State LA University-Student Union Logo"
           />
         </LogoLink>
-        <MobileNav />
+        <MobileIconsContainer>
+          <Link href="/search" tabIndex={0}>
+            <SearchIconLink />
+          </Link>
+          <MobileNav />
+        </MobileIconsContainer>
       </FluidContainer>
     </NavWrapper>
   ) : (
