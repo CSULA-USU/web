@@ -1,9 +1,10 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useRef } from 'react';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export interface SearchProps {
   input?: string;
@@ -37,12 +38,15 @@ const StyledInput = styled.input`
   font-weight: 500;
   font-family: 'Bitter', serif;
   text-decoration: none;
+  ::selection {
+    background: ${Colors.greyDarker};
+    color: white;
+  }
   &:focus {
     border: 0;
-    border-style: none;
   }
   &::placeholder {
-    color: black;
+    color: ${Colors.grey};
   }
 `;
 
@@ -51,7 +55,14 @@ const Label = styled.label`
 `;
 
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
+  const [isReadOnly, setIsReadOnly] = useState(true);
+  const inputRef = useRef<HTMLInputElement>(null); // create the ref. Refs provide a way to access and interact with DOM elements or React component instances directly
+
+  const handleSearchClick = () => {
+    setIsReadOnly(false);
+    inputRef.current?.focus(); // programmatically focus the input field when the search icon is clicked
+  };
 
   return (
     <OuterContainer>
@@ -65,40 +76,22 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
               placeholder="Search"
               value={input}
               onChange={onChange}
+              readOnly={isReadOnly}
+              onClick={handleSearchClick}
               style={{
                 backgroundColor: Colors.greyLightest,
                 color: Colors.black,
                 border: '1px solid',
               }}
+              ref={inputRef}
             />
           </>
-        ) : (
-          <>
-            {isDesktop ? (
-              ''
-            ) : (
-              <>
-                <Label htmlFor="searchInput">Search</Label>
-                <StyledInput
-                  id="searchInput"
-                  aria-labelledby="searchInput"
-                  placeholder="Search"
-                  value={input}
-                  onChange={onChange}
-                />
-              </>
-            )}
-          </>
+        ) : null}
+        {isMobile ? null : (
+          <Link href="/search" aria-label="Search the University Student Union">
+            <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
+          </Link>
         )}
-        <Link href="/search" aria-label="Search the University Student Union">
-          {isMobile ? (
-            <></>
-          ) : (
-            <>
-              <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
-            </>
-          )}
-        </Link>
       </InputContainerForm>
     </OuterContainer>
   );

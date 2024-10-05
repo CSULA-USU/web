@@ -9,7 +9,7 @@ import { FluidContainer, Image, Typography } from 'components';
 import { searchResultState } from 'atoms';
 import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
-import { Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 
 const SearchBig = styled.input`
@@ -26,6 +26,10 @@ const SearchBig = styled.input`
   font-weight: 500;
   font-family: 'Bitter', serif;
   text-decoration: none;
+  ::selection {
+    background: ${Colors.greyDarker};
+    color: white;
+  }
   @media screen and (max-width: 768px) {
     width: 400px;
   }
@@ -78,7 +82,7 @@ export default function Search() {
 
     const { query } = router.query;
     setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     const options = {
@@ -184,7 +188,7 @@ export default function Search() {
         </form>
       </Header>
       <FluidContainer innerMaxWidth="1216px" innerMinHeight="50vh">
-        <Typography variant="title" as="h2">
+        <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
           Results:
         </Typography>
         {content}

@@ -1,4 +1,5 @@
 import { Button, Divider, FluidContainer, Typography } from 'components';
+import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
 import { EventCard, MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
@@ -48,6 +49,7 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     undefined,
   );
   const [eventLimit, setEventLimit] = useState<number>(6);
+  const { isMobile } = useBreakpoint();
   const onRequestClose = () => selectEvent(undefined);
   const [_, ...laterEvents] = events || [];
   const eventsByMonth = (monthly ? events : laterEvents).reduce(
@@ -67,7 +69,12 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
-          <Typography as="h2" variant="title" color="black">
+          <Typography
+            as="h2"
+            variant="title"
+            color="black"
+            size={isMobile ? 'xl' : '2xl'}
+          >
             Upcoming
           </Typography>
         </UpcomingEventsHeading>
