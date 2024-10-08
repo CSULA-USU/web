@@ -3,7 +3,7 @@ import Head from 'next/head';
 import {
   Page,
   DepartmentHeader,
-  CallToAction,
+  // CallToAction,
   OfficeHours,
   ImageAndCard,
 } from 'modules';
@@ -267,7 +267,7 @@ export default function CCC() {
         </FluidContainer>
       </FluidContainer>
       <InstagramFeed department="ccc" />
-      <CallToAction
+      {/* <CallToAction
         backgroundColorProp="black"
         buttonVariantColor="primary"
         textColorProp="white"
@@ -289,7 +289,7 @@ export default function CCC() {
             or Trainings
           </strong>
         </Typography>
-      </CallToAction>
+      </CallToAction> */}
     </Page>
   );
 }
