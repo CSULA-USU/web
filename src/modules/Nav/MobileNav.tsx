@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
 import styled from 'styled-components';
 import * as Drawer from '@accessible/drawer';
 import Link from 'next/link';
@@ -79,64 +80,101 @@ const StyledButton = styled.button`
   }
 `;
 
-export const MobileNav = () => (
-  <Drawer.Drawer>
-    <Drawer.Trigger>
-      <StyledButton aria-label="Navigation Menu">
-        <HiMenuAlt3 size={48} />
-      </StyledButton>
-    </Drawer.Trigger>
+export const MobileNav = () => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false); // create a state variable to manage the open state of the drawer
+  const drawerRef = useRef<HTMLDivElement>(null); // create a ref to the drawer element
 
-    <Drawer.Target preventScroll>
-      <Container>
-        <FluidContainer flex justifyContent="flex-start" alignItems="center">
-          <Drawer.CloseButton>
-            <button
-              style={{
-                border: 0,
-                backgroundColor: 'transparent',
-                fontSize: 16,
-                position: 'absolute',
-                right: 16,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              aria-label="Close Navigation"
-            >
-              CLOSE <MdCancel size={40} />
-            </button>
-          </Drawer.CloseButton>
-        </FluidContainer>
-        <T1Container>
-          {(navMap as navMapType[]).map((t1) => (
-            <React.Fragment key={`t1-${t1.href}`}>
-              <li>
-                <Link href={t1.href}>{t1.text}</Link>
-                {t1.sub?.length && (
-                  <T2Container>
-                    {t1.sub?.map((t2) => (
-                      <React.Fragment key={`t2-${t2.href}`}>
-                        <li>
-                          <Link href={t2.href}>{t2.text}</Link>
-                          {t2.sub?.length && (
-                            <T3Container>
-                              {t2.sub?.map((t3) => (
-                                <li key={`t3-${t3.href}`}>
-                                  <Link href={t3.href}>{t3.text}</Link>
-                                </li>
-                              ))}
-                            </T3Container>
-                          )}
-                        </li>
-                      </React.Fragment>
-                    ))}
-                  </T2Container>
-                )}
-              </li>
-            </React.Fragment>
-          ))}
-        </T1Container>
-      </Container>
-    </Drawer.Target>
-  </Drawer.Drawer>
-);
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileNavOpen(false);
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
+        setIsMobileNavOpen(false);
+      }
+    };
+
+    if (isMobileNavOpen) {
+      document.body.style.overflow = 'hidden'; //prevents scrolling when the drawer is open
+      document.addEventListener('keydown', handleEscape); // add event listener for the escape key
+      document.addEventListener('mousedown', handleClickOutside); // add event listener for clicking outside the drawer
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleEscape); // run handleEscape when the escape key is pressed
+      document.removeEventListener('mousedown', handleClickOutside); // run handleClickOutside when clicking outside the drawer
+    };
+  }, [isMobileNavOpen]);
+
+  return (
+    <Drawer.Drawer>
+      <Drawer.Trigger>
+        <StyledButton
+          aria-label="Navigation Menu"
+          onClick={() => setIsMobileNavOpen(true)}
+        >
+          <HiMenuAlt3 size={48} />
+        </StyledButton>
+      </Drawer.Trigger>
+
+      <Drawer.Target preventScroll>
+        <Container ref={drawerRef} /* assigns ref to Container */>
+          <FluidContainer flex justifyContent="flex-start" alignItems="center">
+            <Drawer.CloseButton>
+              <button
+                style={{
+                  border: 0,
+                  backgroundColor: 'transparent',
+                  fontSize: 16,
+                  position: 'absolute',
+                  right: 16,
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+                aria-label="Close Navigation"
+                onClick={() => setIsMobileNavOpen(false)}
+              >
+                CLOSE <MdCancel size={40} />
+              </button>
+            </Drawer.CloseButton>
+          </FluidContainer>
+          <T1Container>
+            {(navMap as navMapType[]).map((t1) => (
+              <React.Fragment key={`t1-${t1.href}`}>
+                <li>
+                  <Link href={t1.href}>{t1.text}</Link>
+                  {t1.sub?.length && (
+                    <T2Container>
+                      {t1.sub?.map((t2) => (
+                        <React.Fragment key={`t2-${t2.href}`}>
+                          <li>
+                            <Link href={t2.href}>{t2.text}</Link>
+                            {t2.sub?.length && (
+                              <T3Container>
+                                {t2.sub?.map((t3) => (
+                                  <li key={`t3-${t3.href}`}>
+                                    <Link href={t3.href}>{t3.text}</Link>
+                                  </li>
+                                ))}
+                              </T3Container>
+                            )}
+                          </li>
+                        </React.Fragment>
+                      ))}
+                    </T2Container>
+                  )}
+                </li>
+              </React.Fragment>
+            ))}
+          </T1Container>
+        </Container>
+      </Drawer.Target>
+    </Drawer.Drawer>
+  );
+};
