@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
 const LogoLink = styled(Link)`
   max-width: 1200px;
   max-height: 90px;
-  margin-bottom: ${Spaces.xl};
+  margin: ${Spaces.xl} 0;
   &:focus {
     box-shadow: 0 0 0 6px black;
     outline: 3px solid #fece07;
@@ -97,10 +97,10 @@ export const Footer = () => (
           tabIndex={0}
         >
           <Image
-            src="/calstatela-badge.svg"
+            src="/logos/calstatela.png"
             alt="Cal State LA Homepage"
-            width={90}
-            height={90}
+            width="250"
+            height="40"
           />
         </LogoLink>
         <FooterTopLinks>
