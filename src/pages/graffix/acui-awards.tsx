@@ -174,7 +174,12 @@ export default function AcuiAwards() {
           Graffix ACUI Awards
         </Typography>
       </FluidContainer>
-      <FluidContainer flex justifyContent="center" flexWrap="wrap">
+      <FluidContainer
+        flex
+        justifyContent="center"
+        flexWrap="wrap"
+        alt="22 ACUI banners dating back to 2007 occurring at major cities all over the United States"
+      >
         {awardYears.map((y) => (
           <Image key={y.alt} src={y.src} alt="" width="100px" margin="8px" />
         ))}

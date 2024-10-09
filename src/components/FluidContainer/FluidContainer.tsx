@@ -76,6 +76,7 @@ interface FluidInnerProps {
 }
 
 interface FluidContainerProps extends FluidInnerProps {
+  alt?: string;
   children?: React.ReactNode;
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
