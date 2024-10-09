@@ -82,11 +82,11 @@ export default function Employment() {
             {studentJobs.length >= 1 ? (
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <StyledLink isExternalLink href={j.link || ''}>
-                    <Typography variant="subheader" size="lg" color="black">
+                  <Typography variant="subheader" size="lg" color="black">
+                    <StyledLink isExternalLink href={j.link || ''}>
                       {j.title}
-                    </Typography>
-                  </StyledLink>
+                    </StyledLink>
+                  </Typography>
                 </JobItem>
               ))
             ) : (
@@ -102,14 +102,11 @@ export default function Employment() {
             {fullTimeJobs.length >= 1 ? (
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <StyledLink isExternalLink href={j.link}>
-                    <Typography variant="subheader" size="lg" color="black">
+                  <Typography variant="subheader" size="lg" color="black">
+                    <StyledLink isExternalLink href={j.link}>
                       {j.title}
-                    </Typography>
-                    {/* <Typography as="h4" variant="labelTitle">
-                      {j.title}
-                    </Typography> */}
-                  </StyledLink>
+                    </StyledLink>
+                  </Typography>
                 </JobItem>
               ))
             ) : (

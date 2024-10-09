@@ -280,6 +280,7 @@ export default function Graffix() {
             justifyContent="space-evenly"
             backgroundColor="white"
             padding="24px"
+            alt="22 ACUI banners dating back to 2007 occurring at major cities all over the United States"
           >
             {awardYears.map((y) => (
               <Image
