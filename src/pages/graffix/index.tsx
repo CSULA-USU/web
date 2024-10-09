@@ -40,18 +40,21 @@ const cards1 = [
     src: '/departments/graffix/student-designs/graffix-trick-or-tour.png',
     description:
       ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+    alt: 'Cutesy black and orange square instagram post that reads "Graffix Trick or Tour" with a pumpkin and a ghost',
   },
   {
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/larry-itliong.jpg',
     description: ' Larry Itliong Day',
+    alt: 'Tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day',
   },
   {
     title: 'Graffix Open House',
     designer: 'Hector Almaraz',
     src: '/departments/graffix/student-designs/graffix-job-fair.jpg',
     description: 'This design was inspired by retro scary movie posters.',
+    alt: 'Postcard to promote the Graffix open house and job fair with an image of the work office in the background',
   },
 ];
 const cards2 = [
@@ -61,6 +64,7 @@ const cards2 = [
     src: '/departments/graffix/student-designs/smash-league.png',
     description:
       'This is a design that takes modern e-sports aesthetics and combines them with Cal State LA colors.',
+    alt: 'An Instagram post to promote a super smash bros tournament with in-game characters on the foreground and information at the bottom',
   },
 
   {
@@ -68,12 +72,14 @@ const cards2 = [
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/student-designs/harvest-festival.png',
     description: ' Harvest Festival',
+    alt: 'A vertical tabloid-size poster featuring a mummified Eddy the Eagle and hand-drawn illustration of the U-SU at the bottom',
   },
   {
     title: 'Fluffy Friends',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/fluffy-friends.png',
     description: ' Fluffy Friends',
+    alt: 'An instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
   },
 ];
 const cards3 = [
@@ -82,18 +88,21 @@ const cards3 = [
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/brown-gay-la.png',
     description: ' Brown & Gay in LA',
+    alt: 'A vertical tabloid-size poster with a picture of the author of the book and the book',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/swim-in-the-sound.png',
     description: ' Swim in the Sounds',
+    alt: 'An instagram post with a digital image of a swimming pool to promote the music playlists of the student-staff at Graffix',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
     src: '/departments/graffix/student-designs/study-break-of-color.png',
     description: ' Study Break of Color',
+    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxing',
   },
 ];
 
