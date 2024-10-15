@@ -6,13 +6,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Button,
-  Divider,
+  // Divider,
   FlatCard,
   FluidContainer,
   Panel,
   Typography,
 } from 'components';
-import { BiChevronRight } from 'react-icons/bi';
+// import { BiChevronRight } from 'react-icons/bi';
 import { CulturalGradsHeader, Page } from 'modules';
 import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
@@ -30,13 +30,13 @@ const IncentiveCardsContainer = styled.div`
 
 const slideshowImages = CulturalGradsData['header-images'];
 const cards = CulturalGradsData['info-cards'];
-const questions = CulturalGradsData['questions'];
+// const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
-const DynamicExpandable = dynamic(
-  () => import('../../../components/Expandable').then((mod) => mod.Expandable),
-  { ssr: false },
-);
+// const DynamicExpandable = dynamic(
+//   () => import('../../../components/Expandable').then((mod) => mod.Expandable),
+//   { ssr: false },
+// );
 
 const DynamicImageWithinCard = dynamic(
   () =>
@@ -161,7 +161,7 @@ export default function CulturalGrads() {
           </Typography>
         </Panel>
       </FluidContainer>
-      <FluidContainer
+      {/* <FluidContainer
         innerMinHeight="216px"
         padding={isMobile ? '16px 36px 0px' : '36px 72px 0px'}
       >
@@ -180,23 +180,23 @@ export default function CulturalGrads() {
           </Typography>
           <br />
           <Typography>
-            Priority is given to spring 2024 graduates, but fall 2024 graduates
+            Priority is given to spring 2025 graduates, but fall 2025 graduates
             are welcome to apply as well.
           </Typography>
           <br />
           <Typography>
             This year&apos;s Cultural Graduation Celebrations are{' '}
             <strong>free</strong> to all graduating students who sign up. Please
-            make sure you sign up by the deadline.
+            make sure you sign up by the deadline (to be announced).
           </Typography>
           <br />
           <Typography>
             Spaces are limited for each Cultural Graduation Celebration.
           </Typography>
           <br />
-          <Typography>Deadline for applications: March 29 at 5 PM</Typography>
+          <Typography>Deadline for applications: TBD</Typography>
         </Typography>
-      </FluidContainer>
+      </FluidContainer> */}
       <div id="graduations-section">
         {showGraduations && (
           <FluidContainer>
@@ -259,13 +259,13 @@ export default function CulturalGrads() {
                 size={isMobile ? 'lg' : '2xl'}
                 color="primary"
               >
-                Graduate Participation Information
+                Graduate Participation Information (More to Come)
               </Typography>
             </div>
             {/* Render FAQ content */}
             {/* Replace questions.map with your FAQ content */}
             {/* Ensure to remove DynamicExpandable and use Expandable directly if you're not dynamically rendering */}
-            {questions.map((e, i) => (
+            {/* {questions.map((e, i) => (
               <React.Fragment key={i}>
                 <DynamicExpandable
                   indicator={<BiChevronRight color="white" size={48} />}
@@ -297,7 +297,7 @@ export default function CulturalGrads() {
                 </DynamicExpandable>
                 <Divider color="gold" />
               </React.Fragment>
-            ))}
+            ))} */}
           </FluidContainer>
         )}
       </div>
