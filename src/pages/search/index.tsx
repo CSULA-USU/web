@@ -176,9 +176,10 @@ export default function Search() {
         title="Search"
         backgroundImage="/backgrounds/subtle-background-2.jpg"
       >
-        Need help finding something?
+        <label htmlFor="search-input">Need help finding something?</label>
         <form onSubmit={handleOnSubmit}>
           <SearchBig
+            id="search-input"
             type="text"
             value={searchQuery}
             onChange={handleOnChange}
