@@ -57,7 +57,7 @@ const T2Container = styled(NavList)`
   }
 `;
 
-const T3Container = styled(NavList).attrs(() => ({ as: 'li' }))`
+const T3Container = styled(NavList).attrs(() => ({ as: 'ul' }))`
   ${NavList};
   border-top: 1px solid ${Colors.greyDarker};
   padding-left: 24px;
