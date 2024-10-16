@@ -54,6 +54,15 @@ const Label = styled.label`
   display: none;
 `;
 
+const StyledSearchIcon = styled(FaSearch)<{ color?: string }>`
+  font-size: 1.25em;
+  color: ${(props) => props.color || Colors.white};
+
+  &:hover {
+    color: ${Colors.primary};
+  }
+`;
+
 export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
   const { isMobile, isTablet } = useBreakpoint();
   const [isReadOnly, setIsReadOnly] = useState(true);
@@ -89,7 +98,7 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
         ) : null}
         {isMobile ? null : (
           <Link href="/search" aria-label="Search the University Student Union">
-            <FaSearch size={'1.25em'} color={isTablet ? 'black' : '#FFF'} />
+            <StyledSearchIcon color={isTablet ? 'black' : '#FFF'} />
           </Link>
         )}
       </InputContainerForm>
