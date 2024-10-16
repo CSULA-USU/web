@@ -33,7 +33,7 @@ export const NavItems = () => (
         { text: 'Contact', href: '/contact' },
         { text: 'Tenants', href: '/about/tenants' },
       ]}
-    ></DropdownNav>
+    />
     <Link href="/events">Events</Link>
     <DropdownNav
       title="Departments"
@@ -44,7 +44,7 @@ export const NavItems = () => (
         { text: 'Operations', href: '/operations' },
         { text: 'Recreation', href: '/recreation' },
       ]}
-    ></DropdownNav>
+    />
     <Link href="/employment">Employment</Link>
     <Link href="/governance">Governance</Link>
     <Search />
