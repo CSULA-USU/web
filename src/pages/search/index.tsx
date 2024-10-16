@@ -156,7 +156,7 @@ export default function Search() {
         />
       </FluidContainer>
     ) : (
-      'Please enter a search query!'
+      <p>Please enter a search query!</p>
     );
 
   return (
