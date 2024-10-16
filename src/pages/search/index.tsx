@@ -139,7 +139,7 @@ export default function Search() {
           }
         })}
       </>
-    ) : (
+    ) : searchQuery.length > 0 ? (
       <FluidContainer
         flex
         justifyContent="center"
@@ -155,6 +155,8 @@ export default function Search() {
           style={{ width: isMobile ? '70%' : '50%', height: 'auto' }}
         />
       </FluidContainer>
+    ) : (
+      'Please enter a search query!'
     );
 
   return (
