@@ -651,14 +651,6 @@ export default function FSL() {
                   FSL Scoresheet
                 </Button>
               </abbr>
-              <Image
-                src="https://www.dropbox.com/scl/fi/yqvpbwehonhndilfprcpx/climate-survey.jpg?rlkey=49mpoec6meksoxupu3wo4nx48&raw=1"
-                alt="Climate survey"
-                size="lg"
-                margin="16px 0px"
-                borderRadius="12px"
-                maxWidth="100%"
-              />
             </Expandable>
             <Divider margin={`${Spaces.md} 0`} />
             <Expandable
