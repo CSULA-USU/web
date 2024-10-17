@@ -39,14 +39,15 @@ const cards1 = [
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/graffix-trick-or-tour.png',
     description:
-      ' This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
+      'A graphic used on Instagram. This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
     alt: 'Cutesy black and orange square instagram post that reads "Graffix Trick or Tour" with a pumpkin and a ghost',
   },
   {
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/larry-itliong.jpg',
-    description: ' Larry Itliong Day',
+    description:
+      'A tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day. The design features a portrait of Larry Itliong, performances, food, activities, and a Filipino flag.',
     alt: 'Tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day',
   },
   {
@@ -63,7 +64,7 @@ const cards2 = [
     designer: 'Hector Almaraz',
     src: '/departments/graffix/student-designs/smash-league.png',
     description:
-      'This is a design that takes modern e-sports aesthetics and combines them with Cal State LA colors.',
+      'This is a design used on Instagram to promote a Super Smash Bros. video game tournament. It takes modern e-sports aesthetics and combines them with Cal State LA colors.',
     alt: 'An Instagram post to promote a super smash bros tournament with in-game characters on the foreground and information at the bottom',
   },
 
@@ -71,14 +72,16 @@ const cards2 = [
     title: 'Harvest Festival',
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/student-designs/harvest-festival.png',
-    description: ' Harvest Festival',
+    description:
+      'A vertical tabloid-sized poster that promotes a night event at the U-SU with spooky decorations and Halloween-themed activities.',
     alt: 'A vertical tabloid-size poster featuring a mummified Eddy the Eagle and hand-drawn illustration of the U-SU at the bottom',
   },
   {
     title: 'Fluffy Friends',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/fluffy-friends.png',
-    description: ' Fluffy Friends',
+    description:
+      'An instagram post to promote a pet therapy event with information on when and where.',
     alt: 'An instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
   },
 ];
@@ -87,21 +90,24 @@ const cards3 = [
     title: 'Brown & Gay in LA',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/brown-gay-la.png',
-    description: ' Brown & Gay in LA',
-    alt: 'A vertical tabloid-size poster with a picture of the author of the book and the book',
+    description:
+      'A vertical tabloid-sized poster image that promotes the APISRC and GSRC book event.',
+    alt: 'A vertical tabloid-size poster with a picture of the author and the book',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/swim-in-the-sound.png',
-    description: ' Swim in the Sounds',
-    alt: 'An instagram post with a digital image of a swimming pool to promote the music playlists of the student-staff at Graffix',
+    description:
+      ' An instagram post designed to promote the music playlists of the student-staff at Graffix.',
+    alt: 'An instagram post graphic with a digital image of a swimming pool to promote the music playlists of the student-staff at Graffix',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
     src: '/departments/graffix/student-designs/study-break-of-color.png',
-    description: ' Study Break of Color',
+    description:
+      'An instagram post graphic to promote a study break event with information on when and where.',
     alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxing',
   },
 ];
