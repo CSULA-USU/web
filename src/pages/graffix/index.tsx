@@ -132,6 +132,19 @@ const HeaderInnerContainer = styled.div`
   gap: ${Spaces.xl};
 `;
 
+const ScreenReaderOnly = styled.div`
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+`;
+
 export default function Graffix() {
   const { isMobile, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -278,6 +291,11 @@ export default function Graffix() {
             Are you an aspiring graphic designer/ web developer/ social media
             manager? Hone new skills and experiences here at Graffix!
           </Typography>
+          <ScreenReaderOnly id="acui-banner-descriptions">
+            A group of 22 banners representing the different years and cities
+            that hosted ACUI, the oldest taking place in 2007 and the most
+            recent in 2020.
+          </ScreenReaderOnly>
           <Button href="/employment" variant="black">
             Apply Now
           </Button>
@@ -289,7 +307,7 @@ export default function Graffix() {
             justifyContent="space-evenly"
             backgroundColor="white"
             padding="24px"
-            alt="22 ACUI banners dating back to 2007 occurring at major cities all over the United States"
+            aria-labelledby="acui-banner-descriptions"
           >
             {awardYears.map((y) => (
               <Image

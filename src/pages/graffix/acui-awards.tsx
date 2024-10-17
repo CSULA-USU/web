@@ -155,6 +155,20 @@ export default function AcuiAwards() {
   function handlePageClick({ selected: selectedPage }: any) {
     setCurrentPage(selectedPage);
   }
+
+  const ScreenReaderOnly = styled.div`
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+  `;
+
   return (
     <Page>
       <Head>
@@ -174,11 +188,16 @@ export default function AcuiAwards() {
           Graffix ACUI Awards
         </Typography>
       </FluidContainer>
+      <ScreenReaderOnly id="acui-banner-descriptions">
+        A group of 22 banners representing the different years and cities that
+        hosted ACUI, the oldest taking place in 2007 and the most recent in
+        2020.
+      </ScreenReaderOnly>
       <FluidContainer
         flex
         justifyContent="center"
         flexWrap="wrap"
-        alt="22 ACUI banners dating back to 2007 occurring at major cities all over the United States"
+        aria-labelledby="acui-banner-descriptions"
       >
         {awardYears.map((y) => (
           <Image key={y.alt} src={y.src} alt="" width="100px" margin="8px" />
