@@ -53,7 +53,7 @@ const UnstyledUnorderedList = styled.ul`
       }
     }
     border-left: 2px solid ${Colors.primary};
-    transform: translateX(20px);
+    transform: translate(8px, 8px);
     a,
     button,
     .szh-menu__item,
