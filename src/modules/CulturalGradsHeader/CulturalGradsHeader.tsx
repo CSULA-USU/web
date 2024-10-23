@@ -2,8 +2,9 @@ import Image from 'next/image';
 import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
+import { FaRegPauseCircle } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
-
+// FaRegPlayCircle for play button
 interface SlideshowData {
   src: string;
   alt: string;
@@ -22,6 +23,7 @@ const moveAnimation = keyframes`
 `;
 
 const SlideshowContainer = styled.div`
+  position: relative;
   width: 100%;
   overflow: hidden;
   margin-top: 4px;
@@ -38,6 +40,7 @@ const SlideshowContent = styled.div`
   display: flex;
   animation: ${moveAnimation} 120s linear infinite alternate;
   animation-delay: 2s;
+  animation-play-state: running;
   width: 100%;
 `;
 
@@ -84,6 +87,29 @@ const OuterContainer = styled.div`
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.8);
+  }
+`;
+
+const StyledPauseButton = styled(FaRegPauseCircle)`
+  position: absolute;
+  bottom: 12px;
+  left: 50%; // positions left edge of button at 50% of parent container
+  transform: translateX(
+    -50%
+  ); // shifts button left by 50% of its own width, centering it
+  z-index: 1;
+  background-color: ${Colors.greyDarker};
+  color: ${Colors.white};
+  opacity: 0.7;
+  border-radius: 50%;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
+  height: 48px;
+  width: 48px;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
   }
 `;
 
@@ -173,6 +199,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </OuterContainer>
           <SlideshowContainer>
+            <StyledPauseButton />
             <SlideshowContent>
               {imageList &&
                 imageList.map((img, i: number) => {
