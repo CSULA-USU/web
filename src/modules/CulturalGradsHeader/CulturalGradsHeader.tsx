@@ -11,7 +11,6 @@ interface SlideshowData {
 }
 interface CulturalGradsHeaderProps {
   images: SlideshowData[];
-  isPaused: boolean;
 }
 
 const moveAnimation = keyframes`
