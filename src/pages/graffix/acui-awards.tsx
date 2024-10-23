@@ -193,12 +193,7 @@ export default function AcuiAwards() {
         hosted ACUI, the oldest taking place in 2007 and the most recent in
         2020.
       </ScreenReaderOnly>
-      <FluidContainer
-        flex
-        justifyContent="center"
-        flexWrap="wrap"
-        aria-labelledby="acui-banner-descriptions"
-      >
+      <FluidContainer flex justifyContent="center" flexWrap="wrap">
         {awardYears.map((y) => (
           <Image key={y.alt} src={y.src} alt="" width="100px" margin="8px" />
         ))}
