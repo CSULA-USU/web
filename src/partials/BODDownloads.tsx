@@ -49,7 +49,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/c7lxj8214251r9c4rtzc6/Archive.zip?rlkey=zox1d8b3v5q57ku0x3gj3dq99&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/9brg9f24krmob5v62k57g/Archive.zip?rlkey=wiw2dc6smwm0yx7lm47ikl5o3&st=8psm7j2q&dl=1',
       variant: 'black',
     },
   },
@@ -66,17 +66,22 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/p95bxqarp97fy5ju737z4/Minutes-Board-of-Directors-August-30-2024-signed.pdf?rlkey=40neyyje6c1bwno80hdquz798&st=toduyfkj&raw=1',
             children: 'Board of Directors August 30, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/amhgbk3equplx20bz9lwm/Minutes-Board-of-Directors-September-20-2024.docx?rlkey=uxbqkqnimkpvxi5nm7etu3afr&st=cyopobwh&raw=1',
+            children: 'Board of Directors September 20, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/p95bxqarp97fy5ju737z4/Minutes-Board-of-Directors-August-30-2024-signed.pdf?rlkey=40neyyje6c1bwno80hdquz798&st=toduyfkj&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/gdl460nejf29har92w2tf/Archive.zip?rlkey=3tncfcy1s1obp0uhx6cgxhr3l&st=ve3gyhtf&dl=1',
       variant: 'black',
     },
   },
 ];
 
+// dl=1 is a Dropbox URL parameter that forces the browser to download the file instead of opening it in the browser.
 const typographyProps = {
   variant: 'titleSmall',
   as: 'h2',
