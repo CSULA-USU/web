@@ -66,6 +66,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/p95bxqarp97fy5ju737z4/Minutes-Board-of-Directors-August-30-2024-signed.pdf?rlkey=40neyyje6c1bwno80hdquz798&st=toduyfkj&raw=1',
             children: 'Board of Directors August 30, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/amhgbk3equplx20bz9lwm/Minutes-Board-of-Directors-September-20-2024.docx?rlkey=uxbqkqnimkpvxi5nm7etu3afr&st=cyopobwh&raw=1',
+            children: 'Board of Directors September 20, 2024',
+          },
         ]}
       />
     ),
