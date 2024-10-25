@@ -53,7 +53,7 @@ const UnstyledUnorderedList = styled.ul`
       }
     }
     border-left: 2px solid ${Colors.primary};
-    transform: translate(8px, 8px);
+    transform: translateY(8px);
     a,
     button,
     .szh-menu__item,
@@ -67,22 +67,30 @@ const UnstyledUnorderedList = styled.ul`
         color: ${Colors.primary};
       }
     }
+
+    // sets location of '+' icon for expandable menu items
     .szh-menu__item--submenu:after {
       content: '+';
       position: absolute;
-      right: 4px;
+      right: 0;
     }
   }
 
+  // styling for window expandable pop up
   ul {
     padding: 4px 8px;
     list-style: none;
     background-color: ${Colors.greyDarker};
   }
 
+  // creates space between menu items
   .szh-menu__item {
     padding: 8px;
     margin-right: 12px;
+  }
+
+  ul ul {
+    transform: translate(20px, -6px);
   }
 `;
 
@@ -117,37 +125,33 @@ export const DesktopNav = () => {
                   {t1.sub.map((t2, index) => {
                     if (t2.sub) {
                       return (
-                        <li key={`t2_${index}`}>
-                          <SubMenu label={`${t2.text}`}>
-                            {t2.sub.map((t3, index) => (
-                              <li key={`t3_${index}`}>
-                                <MenuItem
-                                  onClick={() => {
-                                    router.push(`${t3.href}`);
-                                  }}
-                                >
-                                  <Link href={t3.href}>
-                                    <NonBreakingSpan>{t3.text}</NonBreakingSpan>
-                                  </Link>
-                                </MenuItem>
-                              </li>
-                            ))}
-                          </SubMenu>
-                        </li>
+                        <SubMenu label={`${t2.text}`} key={`t2_${index}`}>
+                          {t2.sub.map((t3, index) => (
+                            <MenuItem
+                              key={`t3_${index}`}
+                              onClick={() => {
+                                router.push(`${t3.href}`);
+                              }}
+                            >
+                              <Link href={t3.href}>
+                                <NonBreakingSpan>{t3.text}</NonBreakingSpan>
+                              </Link>
+                            </MenuItem>
+                          ))}
+                        </SubMenu>
                       );
                     }
                     return (
-                      <li key={`t2_${index}`}>
-                        <MenuItem
-                          onClick={() => {
-                            router.push(`${t2.href}`);
-                          }}
-                        >
-                          <Link href={t2.href}>
-                            <NonBreakingSpan>{t2.text}</NonBreakingSpan>
-                          </Link>
-                        </MenuItem>
-                      </li>
+                      <MenuItem
+                        key={`t2_${index}`}
+                        onClick={() => {
+                          router.push(`${t2.href}`);
+                        }}
+                      >
+                        <Link href={t2.href}>
+                          <NonBreakingSpan>{t2.text}</NonBreakingSpan>
+                        </Link>
+                      </MenuItem>
                     );
                   })}
                 </Menu>
