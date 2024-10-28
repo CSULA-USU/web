@@ -197,8 +197,8 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="https://www.dropbox.com/s/kl1xc1uhm3ma2m2/students-1.png?raw=1"
-              alt=""
+              src="https://www.dropbox.com/s/heoyre5celakkg1/students-1.png?st=ntenkaq9&raw=1"
+              alt="two female students posing and  showcasing the Graffix department tote bags"
               width={600}
               height={700}
             />
@@ -313,7 +313,6 @@ export default function Graffix() {
             justifyContent="space-evenly"
             backgroundColor="white"
             padding="24px"
-            aria-labelledby="acui-banner-descriptions"
           >
             {awardYears.map((y) => (
               <Image

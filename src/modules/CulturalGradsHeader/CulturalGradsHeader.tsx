@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
+import { FaRegPauseCircle, FaRegPlayCircle } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
-
 interface SlideshowData {
   src: string;
   alt: string;
@@ -22,6 +23,7 @@ const moveAnimation = keyframes`
 `;
 
 const SlideshowContainer = styled.div`
+  position: relative;
   width: 100%;
   overflow: hidden;
   margin-top: 4px;
@@ -34,10 +36,11 @@ const SlideshowContainer = styled.div`
   );
 `;
 
-const SlideshowContent = styled.div`
+const SlideshowContent = styled.div<{ isPaused?: boolean }>`
   display: flex;
   animation: ${moveAnimation} 120s linear infinite alternate;
   animation-delay: 2s;
+  animation-play-state: ${(props) => (props.isPaused ? 'paused' : 'running')};
   width: 100%;
 `;
 
@@ -71,7 +74,7 @@ const OuterContainer = styled.div`
   height: 670px;
   background: url('/departments/ccc/clsrc/nuestra-grad/header-background.png')
     bottom/cover no-repeat;
-  background-color: ${Colors.grey};
+  background-color: ${Colors.black};
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -87,9 +90,51 @@ const OuterContainer = styled.div`
   }
 `;
 
+const PauseButton = styled.button`
+  position: absolute;
+  bottom: 12px;
+  left: 50%; // positions left edge of button at 50% of parent container
+  transform: translateX(
+    -50%
+  ); // shifts button left by 50% of its own width, centering it
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: ${Colors.black};
+  opacity: 0.5;
+  overflow: hidden;
+  padding: 2px;
+  height: 36px;
+  width: 36px;
+  transition: opacity 0.2s;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+`;
+
+const StyledPauseButton = styled(FaRegPauseCircle)`
+  color: ${Colors.white};
+  height: 100%;
+  width: auto;
+`;
+
+const StyledPlayButton = styled(FaRegPlayCircle)`
+  color: ${Colors.white};
+  height: 100%;
+  width: auto;
+  border-radius: 50%;
+`;
+
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
   const imageList = images;
   const { isDesktop } = useBreakpoint();
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handlePause = () => {
+    setIsPaused(!isPaused);
+  };
+
   return (
     <>
       {isDesktop ? (
@@ -109,7 +154,18 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </MobileOuterContainer>
           <SlideshowContainer>
-            <SlideshowContent>
+            <PauseButton
+              aria-label="Pause carousel"
+              aria-pressed={isPaused}
+              onClick={() => handlePause()}
+            >
+              {/* aria-label and aria-pressed are used to make the button
+              accessible. aria-pressed is used to indicate the toggle state of
+              the button, and aria-label is used to provide a label for the
+              button. */}
+              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
+            </PauseButton>
+            <SlideshowContent isPaused={isPaused}>
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
@@ -173,7 +229,14 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </OuterContainer>
           <SlideshowContainer>
-            <SlideshowContent>
+            <PauseButton
+              aria-label="Pause carousel"
+              aria-pressed={isPaused}
+              onClick={() => handlePause()}
+            >
+              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
+            </PauseButton>
+            <SlideshowContent isPaused={isPaused}>
               {imageList &&
                 imageList.map((img, i: number) => {
                   return (
