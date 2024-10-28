@@ -90,46 +90,40 @@ const OuterContainer = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+const PauseButton = styled.button`
   position: absolute;
   bottom: 12px;
   left: 50%; // positions left edge of button at 50% of parent container
   transform: translateX(
     -50%
   ); // shifts button left by 50% of its own width, centering it
+  cursor: pointer;
   z-index: 1;
   border-radius: 50%;
+  background-color: ${Colors.black};
+  opacity: 0.5;
+  overflow: hidden;
   padding: 2px;
+  height: 36px;
+  width: 36px;
+  transition: opacity 0.2s;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 `;
+
 const StyledPauseButton = styled(FaRegPauseCircle)`
-  background-color: ${Colors.black};
   color: ${Colors.white};
-  opacity: 0.65;
-  border-radius: 50%;
-  padding: 2px;
-  border: none;
-  cursor: pointer;
-  height: 36px;
-  width: 36px;
-  transition: opacity 0.3s;
-  &:hover {
-    opacity: 1;
-  }
+  height: 100%;
+  width: auto;
 `;
+
 const StyledPlayButton = styled(FaRegPlayCircle)`
-  background-color: ${Colors.black};
   color: ${Colors.white};
-  opacity: 0.65;
+  height: 100%;
+  width: auto;
   border-radius: 50%;
-  padding: 2px;
-  border: none;
-  cursor: pointer;
-  height: 36px;
-  width: 36px;
-  transition: opacity 0.3s;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
@@ -160,21 +154,17 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </MobileOuterContainer>
           <SlideshowContainer>
-            <ButtonContainer>
-              {isPaused ? (
-                <StyledPlayButton
-                  onClick={() => handlePause()}
-                  tabIndex={0}
-                  aria-label="Play carousel"
-                />
-              ) : (
-                <StyledPauseButton
-                  onClick={() => handlePause()}
-                  tabIndex={0}
-                  aria-label="Pause carousel"
-                />
-              )}
-            </ButtonContainer>
+            <PauseButton
+              aria-label="Pause carousel"
+              aria-pressed={isPaused}
+              onClick={() => handlePause()}
+            >
+              {/* aria-label and aria-pressed are used to make the button
+              accessible. aria-pressed is used to indicate the toggle state of
+              the button, and aria-label is used to provide a label for the
+              button. */}
+              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
+            </PauseButton>
             <SlideshowContent isPaused={isPaused}>
               {imageList &&
                 imageList.map((img, i: number) => {
@@ -239,21 +229,13 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </OuterContainer>
           <SlideshowContainer>
-            <ButtonContainer>
-              {isPaused ? (
-                <StyledPlayButton
-                  onClick={() => handlePause()}
-                  tabIndex={0}
-                  aria-label="Play carousel"
-                />
-              ) : (
-                <StyledPauseButton
-                  onClick={() => handlePause()}
-                  tabIndex={0}
-                  aria-label="Pause carousel"
-                />
-              )}
-            </ButtonContainer>
+            <PauseButton
+              aria-label="Pause carousel"
+              aria-pressed={isPaused}
+              onClick={() => handlePause()}
+            >
+              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
+            </PauseButton>
             <SlideshowContent isPaused={isPaused}>
               {imageList &&
                 imageList.map((img, i: number) => {
