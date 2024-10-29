@@ -67,7 +67,7 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors August 30, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/amhgbk3equplx20bz9lwm/Minutes-Board-of-Directors-September-20-2024.docx?rlkey=uxbqkqnimkpvxi5nm7etu3afr&st=cyopobwh&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/94w7xkjtj4e6zlts3h5it/Minutes-Board-of-Directors-September-20-2024-signed.pdf?rlkey=t8q7gnmtp4k9cg6boelxd6ag0&st=e0r3fho7&raw=1',
             children: 'Board of Directors September 20, 2024',
           },
         ]}
@@ -75,7 +75,7 @@ const minutesDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/gdl460nejf29har92w2tf/Archive.zip?rlkey=3tncfcy1s1obp0uhx6cgxhr3l&st=ve3gyhtf&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/gwgkr5rdgsaifdf17opk6/Archive.zip?rlkey=eurr56rnsewvfz0gj487840qd&st=6icik5ee&dl=1',
       variant: 'black',
     },
   },
