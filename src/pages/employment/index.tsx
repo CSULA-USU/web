@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Page } from 'modules';
-import { FluidContainer, StyledLink, Typography } from 'components';
+import { FluidContainer, StyledLink, Loading, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import Link from 'next/link';
@@ -29,6 +29,8 @@ const JobItem = styled.div`
 export default function Employment() {
   // const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
   // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
+  const [studentAssistantloading, setStudentAssistantLoading] = useState(true);
+  const [fullTimeloading, setFullTimeLoading] = useState(true);
 
   const [studentJobs, setStudentJobs] = useState([]);
   const [fullTimeJobs, setFullTimeJobs] = useState([]);
@@ -36,23 +38,27 @@ export default function Employment() {
   const fetchJobFeed = async () => {
     // RSS feed for part-time student jobs
     const data = await fetch('/api/employment');
-    const feed = await data.json();
-    const partTimeResults = feed.items.filter(
-      (item: any) => !item.contentSnippet.includes('5/40'),
-    );
-    setStudentJobs(partTimeResults);
+    await data.json().then((feed) => {
+      const partTimeResults = feed.items.filter(
+        (item: any) => !item.contentSnippet.includes('5/40'),
+      );
+      setStudentJobs(partTimeResults);
+      setStudentAssistantLoading(false);
+    });
 
     // RSS feed API for full-time jobs
     const fullTimeData = await fetch('/api/fullTimeEmployment');
-    const fullTimeFeed = await fullTimeData.json();
-    const fullTimeFeedFiltered = fullTimeFeed.items.filter((job: any) => {
-      let jobDesc: String = job['content:encodedSnippet'];
-      return (
-        jobDesc.toLowerCase().includes('university-student union') ||
-        jobDesc.toLowerCase().includes('university student union')
-      );
+    await fullTimeData.json().then((fullTimeFeed) => {
+      const fullTimeFeedFiltered = fullTimeFeed.items.filter((job: any) => {
+        const jobDesc: String = job['content:encodedSnippet'];
+        return (
+          jobDesc.toLowerCase().includes('university-student union') ||
+          jobDesc.toLowerCase().includes('university student union')
+        );
+      });
+      setFullTimeJobs(fullTimeFeedFiltered);
+      setFullTimeLoading(false);
     });
-    setFullTimeJobs(fullTimeFeedFiltered);
   };
 
   useEffect(() => {
@@ -86,7 +92,9 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Student Assistant Positions
             </Typography>
-            {studentJobs.length >= 1 ? (
+            {studentAssistantloading ? (
+              <Loading load={studentAssistantloading} />
+            ) : studentJobs.length >= 1 ? (
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <Typography variant="subheader" size="lg" color="black">
@@ -106,7 +114,9 @@ export default function Employment() {
             <Typography as="h2" variant="title" margin="16px 0 8px">
               Full-time Positions
             </Typography>
-            {fullTimeJobs.length >= 1 ? (
+            {fullTimeloading ? (
+              <Loading load={fullTimeloading} />
+            ) : fullTimeJobs.length >= 1 ? (
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
                   <Typography variant="subheader" size="lg" color="black">
