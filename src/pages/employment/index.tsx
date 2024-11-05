@@ -45,7 +45,14 @@ export default function Employment() {
     // RSS feed API for full-time jobs
     const fullTimeData = await fetch('/api/fullTimeEmployment');
     const fullTimeFeed = await fullTimeData.json();
-    setFullTimeJobs(fullTimeFeed.items);
+    const fullTimeFeedFiltered = fullTimeFeed.items.filter((job: any) => {
+      let jobDesc: String = job['content:encodedSnippet'];
+      return (
+        jobDesc.toLowerCase().includes('university-student union') ||
+        jobDesc.toLowerCase().includes('university student union')
+      );
+    });
+    setFullTimeJobs(fullTimeFeedFiltered);
   };
 
   useEffect(() => {
