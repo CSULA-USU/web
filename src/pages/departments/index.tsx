@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Header, ImageAndCard, Page } from 'modules';
-import { FluidContainer } from 'components';
+import { FluidContainer, Typography } from 'components';
 import departments from 'data/departments.json';
 
 export default function Departments() {
@@ -30,6 +30,9 @@ export default function Departments() {
         availability for on-the-go students.
       </Header>
       <FluidContainer>
+        <Typography as="h2" variant="title" lineHeight="1" margin="0 0 18px 0">
+          The U-SU is comprised of:
+        </Typography>
         {departments.map((props) => (
           <ImageAndCard key={props.title} {...props} />
         ))}
