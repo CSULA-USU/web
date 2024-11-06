@@ -58,11 +58,12 @@
     "watch": "^1.0.2"
   },
   "resolutions": {
-    "styled-components": "^5"
+    "styled-components": "^5",
+    "@babel/traverse": "7.25.9"
   },
   "devDependencies": {
-    "@babel/core": "7.23.3",
-    "@babel/traverse": "7.23.3",
+    "@babel/core": "7.26.0",
+    "@babel/traverse": "7.25.9",
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "5.1.30",
     "@types/styled-system": "5.1.22",
