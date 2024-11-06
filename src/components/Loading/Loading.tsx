@@ -17,7 +17,7 @@ const LoadingCircle = styled.div<LoadingProps>`
   height: ${({ size }) => {
     switch (size) {
       case 'sm':
-        return '20vw';
+        return '2vw';
       case 'lg':
         return '7vw';
       default:
@@ -27,7 +27,7 @@ const LoadingCircle = styled.div<LoadingProps>`
   width: ${({ size }) => {
     switch (size) {
       case 'sm':
-        return '20vw';
+        return '2vw';
       case 'lg':
         return '7vw';
       default:
