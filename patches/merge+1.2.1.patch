@@ -1,0 +1,55 @@
+diff --git a/node_modules/merge/merge.js b/node_modules/merge/merge.js
+index 1a9ac77..f3ba11a 100644
+--- a/node_modules/merge/merge.js
++++ b/node_modules/merge/merge.js
+@@ -1,6 +1,6 @@
+ /*!
+  * @name JavaScript/NodeJS Merge v1.2.1
+- * @author yeikos
++ * @autor yeikos
+  * @repository https://github.com/yeikos/js.merge
+ 
+  * Copyright 2014 yeikos - MIT license
+@@ -60,9 +60,11 @@
+ 
+ 			output = {};
+ 
+-			for (index in input)
+-
+-				output[index] = Public.clone(input[index]);
++			for (index in input) {
++				if (index !== '__proto__' && index !== 'constructor' && index !== 'prototype') {
++					output[index] = Public.clone(input[index]);
++				}
++			}
+ 
+ 		}
+ 
+@@ -84,21 +86,19 @@
+ 			return extend;
+ 
+ 		for (var key in extend) {
++			if (key !== '__proto__' && key !== 'constructor' && key !== 'prototype') {
++				if (typeOf(base[key]) === 'object' && typeOf(extend[key]) === 'object') {
+ 
+-			if (typeOf(base[key]) === 'object' && typeOf(extend[key]) === 'object') {
+-
+-				base[key] = merge_recursive(base[key], extend[key]);
++					base[key] = merge_recursive(base[key], extend[key]);
+ 
+-			} else {
++				} else {
+ 
+-				base[key] = extend[key];
++					base[key] = extend[key];
+ 
++				}
+ 			}
+-
+ 		}
+-
+ 		return base;
+-
+ 	}
+ 
+ 	/**
