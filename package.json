@@ -11,7 +11,8 @@
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit --incremental",
     "generate-section-schemas": "node src/scripts/generate-section-schemas",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@accessible/drawer": "^3.0.2",
@@ -38,6 +39,8 @@
     "lodash.throttle": "^4.1.1",
     "next": "13.0.5",
     "node-schedule": "^2.1.1",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.5.1",
     "radash": "^11.0.0",
     "react": "18.2.0",
