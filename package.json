@@ -62,13 +62,11 @@
   },
   "resolutions": {
     "@babel/traverse": "7.25.9",
-    "semver": "7.5.4",
     "styled-components": "^5"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
     "@babel/traverse": "7.25.9",
-    "@types/react-icons": "^3.0.0",
     "@types/styled-components": "5.1.30",
     "@types/styled-system": "5.1.22",
     "eslint-config-prettier": "^8.5.0",
