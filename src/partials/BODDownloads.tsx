@@ -44,6 +44,14 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/o5kfe6rt5y8y08nypjt1e/Agenda-Ad-hoc-Bylaws-Committee-October-25-2024.docx?rlkey=0294tig72y3tvu7nendd40qq8&st=qu06ylot&raw=1',
             children: 'Ad-hoc Bylaws Committee October 25, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/awu36ja3dbkstvqd1nu6w/Agenda-Bylaws-Committee-November-15-2024.pdf?rlkey=0ye4ga9a5aufud2utffhmr0nx&st=th40w88x&raw=1',
+            children: 'Bylaws Committee Meeting November 15, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/w9z5qm1d3unybtgh7sh3m/Agenda-Board-of-Directors-November-15-2024.pdf?rlkey=s0am8bq5nui55208kcyh6iy6a&st=t6dmsw7n&raw=1',
+            children: 'Meeting November 15, 2024',
+          },
         ]}
       />
     ),
@@ -75,7 +83,7 @@ const minutesDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/gwgkr5rdgsaifdf17opk6/Archive.zip?rlkey=eurr56rnsewvfz0gj487840qd&st=6icik5ee&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/s090gewyvjwuyxde5sxyd/fy24-25.zip?rlkey=zm2x4im6lrsos1zoobd640rbt&st=jz8vt33s&dl=1',
       variant: 'black',
     },
   },

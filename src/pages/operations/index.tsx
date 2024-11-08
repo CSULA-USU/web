@@ -164,30 +164,30 @@ const pdfDescriptionCards = [
     title: 'Meeting Room Manual Request Form',
     description:
       'Manual form to request and reserve a room and media services from the University-Student Union.',
-    href: 'https://www.dropbox.com/s/tepxskcnm4cie18/meeting-room-request.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/tepxskcnm4cie18/meeting-room-request.pdf?raw=1',
   },
   {
     title: 'Media Equipment Rental Chart',
     description: 'CSULA University-Student Union media equipment rental fees.',
-    href: 'https://www.dropbox.com/s/3ksbraj09bi07la/Media-Equipment-Fees-Chart.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/3ksbraj09bi07la/Media-Equipment-Fees-Chart.pdf?raw=1',
   },
   {
     title: 'MMRS Policies',
     description:
       'The Mind Matters Relaxation Station is designated space to support restorative wellness. The intended use is for brief napping in a semi-quiet environment. Access to the room is limited to Cal State LA enrolled students only.',
-    href: 'https://www.dropbox.com/s/iskp1a8hn7uj5qq/MMRS-Policies.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/iskp1a8hn7uj5qq/MMRS-Policies.pdf?raw=1',
   },
   {
     title: 'Meeting Space Rental Fees and Capacity Chart',
     description:
       'CSULA University-Student Union meeting space rental fees and capacity.',
-    href: '/departments/operations/meeting-space-capacity-chart.pdf',
+    href: 'https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&st=k5ykis0k&raw=1',
   },
   {
     title: 'Reservation Policies and Procedures (with Covid)',
     description:
       'Reservation policies and procedures go over guidelines of how the scheduling of U-SU facilities, equipment, sign-up process, and payments are arranged.',
-    href: 'https://www.dropbox.com/s/12vg3pe8ahf6jay/POLICIES-PROCEDURES-WITH-COVID-2021.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/12vg3pe8ahf6jay/POLICIES-PROCEDURES-WITH-COVID-2021.pdf?raw=1',
   },
 ];
 
