@@ -72,18 +72,20 @@ export default function About() {
                   alt="student union"
                   src="/about/calstatela-hero.jpeg"
                   style={{ width: '100%', height: '100%' }}
-                ></Image>
+                />
               </FluidContainer>
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/7zmr92oynrv2y4j4mccbj/Org-Chart_07.29.24.png?rlkey=lnnf8egd53zymo3evsz9l4bt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/3kox50i298djniap0r1dd/Org-Chart_11.8.24.jpg?rlkey=55zs57yjlg9qkubmx2eyddlsm&st=8ikpgvd1&raw=1"
+                  isExternalLink
                 >
                   U-SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&dl=0"
+                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
+                  isExternalLink
                 >
                   Strategic Plan
                 </Button>
@@ -121,13 +123,15 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/7zmr92oynrv2y4j4mccbj/Org-Chart_07.29.24.png?rlkey=lnnf8egd53zymo3evsz9l4bt9&dl=0"
+                  href="https://www.dropbox.com/scl/fi/3kox50i298djniap0r1dd/Org-Chart_11.8.24.jpg?rlkey=55zs57yjlg9qkubmx2eyddlsm&st=8ikpgvd1&raw=1"
+                  isExternalLink
                 >
                   U-SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
-                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&dl=0"
+                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
+                  isExternalLink
                 >
                   Strategic Plan
                 </Button>
