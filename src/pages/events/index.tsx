@@ -13,10 +13,15 @@ const BackgroundImage = styled.div`
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
-  const [loading, isLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    isLoading(false);
+    if (count != 0) {
+      setLoading(false);
+    } else {
+      setCount(count + 1);
+    }
   }, [events]);
 
   return (
@@ -40,14 +45,17 @@ export default function Home() {
           school year. Make sure to check back here to stay up to date with the
           latest events.
         </Header>
-        <Loading load={loading} />
-        {events.length < 1 ? (
-          <FluidContainer flex justifyContent="center">
-            <Typography as="h3" variant="label">
-              There are currently no upcoming events. Check back later for
-              updates!
-            </Typography>
-          </FluidContainer>
+        {loading ? (
+          <Loading load={loading} />
+        ) : events.length < 1 ? (
+          <>
+            <FluidContainer flex justifyContent="center">
+              <Typography as="h3" variant="label">
+                There are currently no upcoming events. Check back later for
+                updates!
+              </Typography>
+            </FluidContainer>
+          </>
         ) : (
           <UpcomingEvents monthly events={events} />
         )}

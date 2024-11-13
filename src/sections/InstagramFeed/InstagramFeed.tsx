@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import Link from 'next/link';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, SkeletonWrapper, Typography } from 'components';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchInstagramFeed } from 'api';
 import { InstagramPost } from 'types';
@@ -28,6 +28,28 @@ const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   margin: ${Spaces.sm};
   border-radius: 8px;
 `;
+
+const InstagramCardsContainerSkeleton = styled(SkeletonWrapper)`
+  width: 320px;
+  height: 320px;
+  margin: ${Spaces.sm};
+  border-radius: 8px;
+`;
+
+const InstagramCardsSkeleton = () => {
+  const { isMobile } = useBreakpoint();
+  return (
+    <>
+      {isMobile ? (
+        <InstagramCardsContainerSkeleton />
+      ) : (
+        Array.from({ length: 12 }).map((_, index) => (
+          <InstagramCardsContainerSkeleton key={index} />
+        ))
+      )}
+    </>
+  );
+};
 
 const InstagramLinkContainer = styled.span`
   :hover {
@@ -69,40 +91,42 @@ export const Component = ({
         </Typography>
       </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {isMobile
-          ? instagramPosts.length > 0 && (
-              <Link
-                href={
-                  instagramPosts[0].permalink && instagramPosts[0].permalink
+        {instagramPosts.length == 0 ? (
+          <InstagramCardsSkeleton />
+        ) : isMobile ? (
+          instagramPosts.length > 0 && (
+            <Link
+              href={instagramPosts[0].permalink && instagramPosts[0].permalink}
+              aria-label="view instagram post"
+            >
+              <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
+              <InstagramCardsContainer
+                src={
+                  instagramPosts[0].media_type === 'VIDEO'
+                    ? instagramPosts[0].thumbnail_url
+                    : instagramPosts[0].media_url
                 }
-                aria-label="view instagram post"
-              >
-                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
-                <InstagramCardsContainer
-                  src={
-                    instagramPosts[0].media_type === 'VIDEO'
-                      ? instagramPosts[0].thumbnail_url
-                      : instagramPosts[0].media_url
-                  }
-                ></InstagramCardsContainer>
-              </Link>
-            )
-          : instagramPosts.map((post, index) => (
-              <Link
-                href={post.permalink}
-                key={`${index}_${post.username}`}
-                aria-label="view instagram post"
-              >
-                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
-                <InstagramCardsContainer
-                  src={
-                    post.media_type === 'VIDEO'
-                      ? post.thumbnail_url
-                      : post.media_url
-                  }
-                ></InstagramCardsContainer>
-              </Link>
-            ))}
+              ></InstagramCardsContainer>
+            </Link>
+          )
+        ) : (
+          instagramPosts.map((post, index) => (
+            <Link
+              href={post.permalink}
+              key={`${index}_${post.username}`}
+              aria-label="view instagram post"
+            >
+              <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
+              <InstagramCardsContainer
+                src={
+                  post.media_type === 'VIDEO'
+                    ? post.thumbnail_url
+                    : post.media_url
+                }
+              ></InstagramCardsContainer>
+            </Link>
+          ))
+        )}
       </FluidContainer>
     </>
   );

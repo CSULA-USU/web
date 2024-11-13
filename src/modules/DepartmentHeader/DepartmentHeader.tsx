@@ -1,5 +1,5 @@
 import { Typography, FluidContainer } from 'components';
-import { EventCard } from '../../modules/EventCard';
+import { EventCard, EventSkeleton } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { eventListState } from 'atoms';
@@ -55,12 +55,14 @@ export const DepartmentHeader = ({
             </Typography>
             <Typography>{children}</Typography>
           </HeaderContent>
-          {departmentEvent && (
+          {departmentEvent ? (
             <EventCard
               onClick={() => selectEvent(departmentEvent)}
               featured
               event={departmentEvent}
             />
+          ) : (
+            <EventSkeleton />
           )}
         </HeaderContainer>
         {infoSection}

@@ -1,4 +1,4 @@
-import { Button, Typography } from 'components';
+import { Button, SkeletonWrapper, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
@@ -100,6 +100,21 @@ const EventDetails = styled.div`
 
 const EventDate = styled.div``;
 
+export const EventSkeleton = styled(SkeletonWrapper)`
+  box-sizing: border-box;
+  padding: 32px;
+  overflow: hidden;
+  ${media('desktop')(`
+    padding: 24px;
+  `)}
+  ${media('tablet')(`
+    padding: 16px;
+  `)}
+  width: 100%;
+  height: 560px;
+  border: 1px solid transparent;
+`;
+
 export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
   if (!event) return null;
   const {
@@ -116,7 +131,9 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
   const month = getMonth(startDateTimeUtc);
   const day = getDay(startDateTimeUtc);
 
-  return !eventName ? null : (
+  return !eventName ? (
+    <EventSkeleton />
+  ) : (
     <EventCardContainer
       onClick={onClick}
       featured={featured}
