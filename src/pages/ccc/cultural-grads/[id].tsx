@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { Button, FluidContainer, Loading, Typography } from 'components';
-import { CGCParticipantModal } from 'modules';
+import { CGCParticipantModal } from 'modules/Modals';
 import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
 import { fetchJotform } from 'api';

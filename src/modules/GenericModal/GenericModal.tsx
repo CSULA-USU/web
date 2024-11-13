@@ -30,7 +30,7 @@ const Main = styled.div`
 export const GenericModal = ({
   children,
   isOpen,
-  onRequestClose,
+  onRequestClose, //expects a function
 }: GenericModalProps) => {
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onRequestClose}>

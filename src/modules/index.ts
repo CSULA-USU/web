@@ -1,7 +1,6 @@
 export * from './BoardOfDirectors';
 export * from './CallToAction';
 export * from './CallToActionImages';
-export * from './CGCParticipantModal';
 export * from './CulturalGradsHeader';
 export * from './DepartmentHeader';
 export * from './DocumentLink';
@@ -16,6 +15,7 @@ export * from './Header';
 export * from './ImageAndCard';
 export * from './ImageWithinCard';
 export * from './LogosDisplay';
+export * from './Modals';
 export * from './Nav';
 export * from './OfficeHours';
 export * from './Page';
