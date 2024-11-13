@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { fetchInstagramFeed } from 'api';
 import { InstagramPost } from 'types';
 import { InstagramFeedProps } from './props';
+import { truncateString } from 'utils/stringhelpers';
 
 interface InstagramFeedStyleProps {
   src?: string;
@@ -75,7 +76,7 @@ export const Component = ({
                 href={
                   instagramPosts[0].permalink && instagramPosts[0].permalink
                 }
-                aria-label="view instagram post"
+                aria-label={truncateString(instagramPosts[0].caption, 125)}
               >
                 <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
                 <InstagramCardsContainer
@@ -84,14 +85,14 @@ export const Component = ({
                       ? instagramPosts[0].thumbnail_url
                       : instagramPosts[0].media_url
                   }
-                ></InstagramCardsContainer>
+                />
               </Link>
             )
           : instagramPosts.map((post, index) => (
               <Link
                 href={post.permalink}
                 key={`${index}_${post.username}`}
-                aria-label="view instagram post"
+                aria-label={truncateString(post.caption, 125)}
               >
                 <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
                 <InstagramCardsContainer
@@ -100,7 +101,7 @@ export const Component = ({
                       ? post.thumbnail_url
                       : post.media_url
                   }
-                ></InstagramCardsContainer>
+                />
               </Link>
             ))}
       </FluidContainer>
