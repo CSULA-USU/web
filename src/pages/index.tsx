@@ -7,11 +7,12 @@ import {
   CallToActionImages,
   FeaturedEvents,
 } from 'modules';
-import { FluidContainer, NonBreakingSpan } from 'components';
+import { FluidContainer, NonBreakingSpan, Typography } from 'components';
 import { useRecoilValue } from 'recoil';
-import { eventListState } from 'atoms';
+import { eventListState, eventListStatusState } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import featuredEvents from 'data/featured-events.json';
+import { useEffect, useState } from 'react';
 
 const images = [
   {
@@ -54,7 +55,15 @@ const images = [
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
+  const eventsStatus = useRecoilValue(eventListStatusState);
+  const [loading, setLoading] = useState(true);
   const { isMobile } = useBreakpoint();
+
+  useEffect(() => {
+    if (eventsStatus != 'undefined') {
+      setLoading(false);
+    }
+  }, [events]);
 
   return (
     <Page>
@@ -79,6 +88,7 @@ export default function Home() {
       {/* {events.length > 0 ? ( */}
       <>
         <EventHeader
+          loading={loading}
           subheaderText={
             isMobile
               ? 'California State, Los Angeles'
@@ -87,13 +97,21 @@ export default function Home() {
           title={isMobile ? 'U-SU' : 'University-Student Union'}
           featuredEvent={events[0]}
         />
-        {/* Toggle the line below if there is a promotion. */}
-        {/* <BoardOfDirectorsCTAPromotion /> */}
+        {!loading && eventsStatus == 'failed' ? (
+          <Typography as="h3" variant="label">
+            Resources failed to load. Please try refreshing your page.
+          </Typography>
+        ) : (
+          <>
+            {/* Toggle the line below if there is a promotion. */}
+            {/* <BoardOfDirectorsCTAPromotion /> */}
 
-        {featuredEvents.length >= 1 ? (
-          <FeaturedEvents events={events} featuredEvents={featuredEvents} />
-        ) : null}
-        <ModUpcomingEvents events={events} />
+            {featuredEvents.length >= 1 ? (
+              <FeaturedEvents events={events} featuredEvents={featuredEvents} />
+            ) : null}
+            <ModUpcomingEvents loading={loading} events={events} />
+          </>
+        )}
       </>
       {/* ) : (
         <>

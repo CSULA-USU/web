@@ -42,6 +42,15 @@ const EventCardSkeletonContainer = styled(SkeletonWrapper)`
   }
 `;
 
+export const ModEventCardSkeleton = () => {
+  return (
+    <EventContainer>
+      <EventCardSkeletonContainer />
+      <HeroEventDetailsSkeleton />
+    </EventContainer>
+  );
+};
+
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   cursor: pointer;
   box-sizing: border-box;
@@ -171,14 +180,7 @@ export const ModEventCard = ({
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
-  if (!event) {
-    return (
-      <EventContainer>
-        <EventCardSkeletonContainer />
-        <HeroEventDetailsSkeleton />
-      </EventContainer>
-    );
-  }
+  if (!event) return null;
   const {
     organizationName,
     eventName,
@@ -195,7 +197,7 @@ export const ModEventCard = ({
 
   const day = getDay(startDateTimeUtc);
 
-  return !eventName ? null : (
+  return (
     <EventContainer>
       <EventCardContainer
         onClick={onClick}

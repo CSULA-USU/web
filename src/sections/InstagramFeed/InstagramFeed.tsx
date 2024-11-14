@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { fetchInstagramFeed } from 'api';
 import { InstagramPost } from 'types';
 import { InstagramFeedProps } from './props';
+import { StatusType } from 'atoms';
 
 interface InstagramFeedStyleProps {
   src?: string;
@@ -64,11 +65,23 @@ export const Component = ({
   postsToShow = 12,
 }: InstagramFeedProps) => {
   const { isMobile } = useBreakpoint();
+  const [loading, setLoading] = useState(true);
   const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
+  const [instagramResponseStatus, setInstagramResponseStatus] =
+    useState<StatusType>('undefined');
 
   const getInstagramFeed = useCallback(async () => {
-    const { data } = await fetchInstagramFeed(department);
-    setInstagramPosts(data.data.slice(0, postsToShow));
+    await fetchInstagramFeed(setInstagramResponseStatus, department).then(
+      (res) => {
+        if (res != null) {
+          const posts = res?.data?.data?.slice(0, postsToShow);
+          if (posts) {
+            setInstagramPosts(posts);
+          }
+        }
+        setLoading(false);
+      },
+    );
   }, [department, postsToShow]);
 
   useEffect(() => {
@@ -91,8 +104,18 @@ export const Component = ({
         </Typography>
       </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {instagramPosts.length == 0 ? (
+        {loading ? (
           <InstagramCardsSkeleton />
+        ) : instagramResponseStatus == 'failed' ? (
+          <Typography as="h3" variant="label">
+            Failed to fetch data from instagram. Please try refreshing your
+            page.
+          </Typography>
+        ) : instagramResponseStatus == 'success' &&
+          instagramPosts.length == 0 ? (
+          <Typography as="h3" variant="label">
+            This account currently has no posts. Check back later for updates!
+          </Typography>
         ) : isMobile ? (
           instagramPosts.length > 0 && (
             <Link

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { UpcomingEvents, Page, Header } from 'modules';
 import { useRecoilValue } from 'recoil';
-import { eventListState } from 'atoms';
+import { eventListState, eventListStatusState } from 'atoms';
 import styled from 'styled-components';
 import { FluidContainer, Loading, Typography } from 'components';
 import { useState, useEffect } from 'react';
@@ -13,14 +13,12 @@ const BackgroundImage = styled.div`
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
+  const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (count != 0) {
+    if (eventsStatus != 'undefined') {
       setLoading(false);
-    } else {
-      setCount(count + 1);
     }
   }, [events]);
 

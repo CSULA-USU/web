@@ -18,6 +18,7 @@ import { useState } from 'react';
 import { media, Spaces } from 'theme';
 
 interface UpcomingEventsProps {
+  loading: boolean;
   events: PresenceEvent[];
   monthly?: boolean;
 }
@@ -54,7 +55,11 @@ const TertiaryContainer = styled.ul`
 const getMonth = (date: string) =>
   new Date(date).toLocaleString('default', { month: 'long' });
 
-export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
+export const ModUpcomingEvents = ({
+  loading,
+  events,
+  monthly,
+}: UpcomingEventsProps) => {
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -120,8 +125,12 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           </Typography>
         </UpcomingEventsHeading>
       )}
-      {!events.length ? (
+      {loading ? (
         <UpcomingEventsSkeleton monthly={monthly} />
+      ) : !events.length ? (
+        <Typography as="h3" variant="label">
+          No events Available.
+        </Typography>
       ) : (
         <>
           {monthly ? (
