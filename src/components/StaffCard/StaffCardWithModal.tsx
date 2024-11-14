@@ -75,6 +75,7 @@ const InfoContainer = styled.div`
 
 const QRContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: blue;
@@ -84,10 +85,25 @@ const IconAndInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  margin-top: ${Spaces.sm};
 `;
 
 const IconAndInfoContainerRight = styled.div`
   text-align: left;
+  display: flex;
+  align-items: center;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin-right: ${Spaces.sm};
+  flex-shrink: 0;
 `;
 
 export const StaffCardWithModal = ({
@@ -159,7 +175,11 @@ export const StaffCardWithModal = ({
           </CenterWord>
         </Panel>
       </StaffCard>
-      <GenericModal isOpen={showModal} onRequestClose={() => closeModal()}>
+      <GenericModal
+        isOpen={showModal}
+        onRequestClose={() => closeModal()}
+        width="95%"
+      >
         <StaffModalContainer>
           <UpperContainer>
             <ImageContainer>
@@ -187,30 +207,32 @@ export const StaffCardWithModal = ({
                 {title}
               </Typography>
               <IconAndInfoContainer>
-                <MdEmail
-                  style={{
-                    marginTop: '3px',
-                    height: '18px',
-                    width: '18px',
-                    flexShrink: 0,
-                    marginRight: Spaces.sm,
-                  }}
-                />
+                <IconContainer>
+                  <MdEmail
+                    style={{
+                      height: '18px',
+                      width: '18px',
+                      flexShrink: 0,
+                      color: 'white',
+                    }}
+                  />
+                </IconContainer>
                 <IconAndInfoContainerRight>
                   <Typography>{email}</Typography>
                 </IconAndInfoContainerRight>
               </IconAndInfoContainer>
               {phone && (
                 <IconAndInfoContainer>
-                  <BiSolidPhone
-                    style={{
-                      marginTop: '3px',
-                      height: '18px',
-                      width: '18px',
-                      flexShrink: 0,
-                      marginRight: Spaces.sm,
-                    }}
-                  />
+                  <IconContainer>
+                    <BiSolidPhone
+                      style={{
+                        height: '18px',
+                        width: '18px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
                   <IconAndInfoContainerRight>
                     <Typography>{phone}</Typography>
                   </IconAndInfoContainerRight>
@@ -218,15 +240,16 @@ export const StaffCardWithModal = ({
               )}
               {bio && (
                 <IconAndInfoContainer>
-                  <BiSolidUserDetail
-                    style={{
-                      marginTop: '3px',
-                      height: '18px',
-                      width: '18px',
-                      flexShrink: 0,
-                      marginRight: Spaces.sm,
-                    }}
-                  />
+                  <IconContainer>
+                    <BiSolidUserDetail
+                      style={{
+                        height: '18px',
+                        width: '18px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
                   <IconAndInfoContainerRight>
                     <Typography>{bio}</Typography>
                   </IconAndInfoContainerRight>

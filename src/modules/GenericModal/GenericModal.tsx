@@ -7,7 +7,7 @@ import { Colors, Spaces } from 'theme';
 interface GenericModalProps {
   isOpen: boolean;
   children: React.ReactNode;
-  maxWidth?: string;
+  width?: string;
   onRequestClose: () => void;
 }
 
@@ -37,22 +37,7 @@ const CloseButtonIcon = styled(AiFillCloseCircle)`
   }
 `;
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '12px',
-    border: `1px solid ${Colors.greyLightest}`,
-    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
-    width: '95%',
-  },
-};
-
-const Main = styled.div<{ maxWidth?: string; height?: string }>`
-  max-width: ${(props) => props.maxWidth || '100%'};
+const Main = styled.div<{ width?: string; height?: string }>`
   margin: ${Spaces.xs};
   text-align: center;
   overflow-y: auto;
@@ -61,9 +46,23 @@ const Main = styled.div<{ maxWidth?: string; height?: string }>`
 export const GenericModal = ({
   children,
   isOpen,
-  maxWidth,
+  width,
   onRequestClose, //expects a function
 }: GenericModalProps) => {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '12px',
+      border: `1px solid ${Colors.greyLightest}`,
+      boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+      width: width ? width : 'auto',
+    },
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -79,7 +78,7 @@ export const GenericModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main maxWidth={maxWidth}>{children}</Main>
+      <Main width={width}>{children}</Main>
     </Modal>
   );
 };
