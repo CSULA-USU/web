@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { MdEmail } from 'react-icons/md';
+import { QRCodeSVG } from 'qrcode.react';
 import { BiSolidUserDetail, BiSolidPhone } from 'react-icons/bi';
+import { toKebabCase } from 'utils/stringhelpers';
 import { Typography } from '../Typography';
-import { Image, Panel } from 'components';
+import { Image, Panel, StyledLink } from 'components';
 import { GenericModal } from 'modules';
 import { Spaces } from 'theme';
 
@@ -78,14 +80,13 @@ const QRContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: blue;
 `;
 
 const IconAndInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  margin-top: ${Spaces.sm};
+  margin-bottom: ${Spaces.sm};
 `;
 
 const IconAndInfoContainerRight = styled.div`
@@ -100,8 +101,8 @@ const IconContainer = styled.div`
   justify-content: center;
   background-color: black;
   border-radius: 50%;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
   margin-right: ${Spaces.sm};
   flex-shrink: 0;
 `;
@@ -178,7 +179,8 @@ export const StaffCardWithModal = ({
       <GenericModal
         isOpen={showModal}
         onRequestClose={() => closeModal()}
-        width="95%"
+        height="90vh"
+        width="95vw"
       >
         <StaffModalContainer>
           <UpperContainer>
@@ -210,15 +212,15 @@ export const StaffCardWithModal = ({
                 <IconContainer>
                   <MdEmail
                     style={{
-                      height: '18px',
-                      width: '18px',
+                      height: '16px',
+                      width: '16px',
                       flexShrink: 0,
                       color: 'white',
                     }}
                   />
                 </IconContainer>
                 <IconAndInfoContainerRight>
-                  <Typography>{email}</Typography>
+                  <Typography color="greyDarker">{email}</Typography>
                 </IconAndInfoContainerRight>
               </IconAndInfoContainer>
               {phone && (
@@ -226,15 +228,15 @@ export const StaffCardWithModal = ({
                   <IconContainer>
                     <BiSolidPhone
                       style={{
-                        height: '18px',
-                        width: '18px',
+                        height: '16px',
+                        width: '16px',
                         flexShrink: 0,
                         color: 'white',
                       }}
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <Typography>{phone}</Typography>
+                    <Typography color="greyDarker">{phone}</Typography>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
@@ -243,21 +245,37 @@ export const StaffCardWithModal = ({
                   <IconContainer>
                     <BiSolidUserDetail
                       style={{
-                        height: '18px',
-                        width: '18px',
+                        height: '16px',
+                        width: '16px',
                         flexShrink: 0,
                         color: 'white',
                       }}
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <Typography>{bio}</Typography>
+                    <Typography color="greyDarker">{bio}</Typography>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
             </InfoContainer>
           </UpperContainer>
-          <QRContainer>qr</QRContainer>
+          <QRContainer>
+            <StyledLink
+              isInverseUnderlineStyling
+              href={`/staff/${toKebabCase(name)}`}
+            >
+              <Typography
+                color="greyDarker"
+                variant="span"
+                margin={`0 0 ${Spaces.sm} 0`}
+              >
+                View Card
+              </Typography>
+            </StyledLink>
+            <QRCodeSVG
+              value={`https://www.calstatelausu.org/staff/${toKebabCase(name)}`}
+            />
+          </QRContainer>
         </StaffModalContainer>
       </GenericModal>
     </>

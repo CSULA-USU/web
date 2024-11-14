@@ -7,6 +7,7 @@ import { Colors, Spaces } from 'theme';
 interface GenericModalProps {
   isOpen: boolean;
   children: React.ReactNode;
+  height?: string;
   width?: string;
   onRequestClose: () => void;
 }
@@ -46,6 +47,7 @@ const Main = styled.div<{ width?: string; height?: string }>`
 export const GenericModal = ({
   children,
   isOpen,
+  height,
   width,
   onRequestClose, //expects a function
 }: GenericModalProps) => {
@@ -59,7 +61,9 @@ export const GenericModal = ({
       borderRadius: '12px',
       border: `1px solid ${Colors.greyLightest}`,
       boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+      height: height ? height : 'auto',
       width: width ? width : 'auto',
+      overflow: 'auto',
     },
   };
 
