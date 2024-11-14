@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { MdEmail } from 'react-icons/md';
+import { BiSolidUserDetail, BiSolidPhone } from 'react-icons/bi';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
 import { GenericModal } from 'modules';
+import { Spaces } from 'theme';
 
 interface CardStyles {
   margin?: string;
@@ -19,9 +22,13 @@ interface CardProps extends CardStyles {
   children?: React.ReactNode;
   department?: string;
   head?: string;
+  img?: string;
   phone?: string;
+  pronouns?: string;
   tags?: string[];
   url?: string;
+  bio?: string;
+  email?: string;
 }
 const CenterWord = styled.div`
   text-align: center;
@@ -36,9 +43,53 @@ const NameSection = styled.div`
   height: 80px;
 `;
 
-const StaffCard = styled.div`
+const StaffCard = styled.button`
+  background: transparent;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none;
 `;
+
+const StaffModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: ${Spaces.sm} 0 0 0;
+`;
+
+const UpperContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ImageContainer = styled.div`
+  margin: 0 0 ${Spaces.sm} 0;
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+`;
+
+const QRContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+`;
+
+const IconAndInfoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+const IconAndInfoContainerRight = styled.div`
+  text-align: left;
+`;
+
 export const StaffCardWithModal = ({
   name,
   head,
@@ -46,6 +97,10 @@ export const StaffCardWithModal = ({
   children,
   src,
   alt,
+  pronouns,
+  phone,
+  email,
+  bio,
   ...props
 }: CardProps) => {
   const [showModal, setShowModal] = useState(false);
@@ -60,7 +115,7 @@ export const StaffCardWithModal = ({
 
   return (
     <>
-      <StaffCard onClick={() => openModal()}>
+      <StaffCard onClick={() => openModal()} aria-label="open modal">
         <Panel {...props} width={'304px'} height="512px">
           <CenterWord>
             <div>
@@ -72,7 +127,6 @@ export const StaffCardWithModal = ({
                     variant="copy"
                     weight="700"
                     size="md"
-                    margin="0 0 0 0"
                     style={{ display: 'block' }}
                   >
                     {head}
@@ -88,7 +142,6 @@ export const StaffCardWithModal = ({
                 variant="copy"
                 weight="700"
                 size="md"
-                margin="0 0 0 0"
               >
                 {title}
               </Typography>
@@ -97,12 +150,7 @@ export const StaffCardWithModal = ({
             <div>
               <Image src={src} alt={alt} width="220px" height="245px" />
               <NameSection>
-                <Typography
-                  size="sm"
-                  weight="700"
-                  margin="8px 0px 0px"
-                  variant="labelTitle"
-                >
+                <Typography size="sm" weight="700" variant="labelTitle">
                   {name}
                 </Typography>
                 {children}
@@ -112,7 +160,82 @@ export const StaffCardWithModal = ({
         </Panel>
       </StaffCard>
       <GenericModal isOpen={showModal} onRequestClose={() => closeModal()}>
-        hwmodal
+        <StaffModalContainer>
+          <UpperContainer>
+            <ImageContainer>
+              <Image src={src} alt={alt} width="220px" height="245px" />
+            </ImageContainer>
+            <InfoContainer>
+              <Typography as="h1" variant="pageHeader" size="xl" lineHeight="1">
+                {name}
+              </Typography>
+              {pronouns && (
+                <em>
+                  <Typography size="sm" margin="4px 0 16px 0" as="p">
+                    {pronouns}
+                  </Typography>
+                </em>
+              )}
+              <Typography
+                as="p"
+                variant="cta"
+                color="gold"
+                size="md"
+                weight="700"
+                margin="0"
+              >
+                {title}
+              </Typography>
+              <IconAndInfoContainer>
+                <MdEmail
+                  style={{
+                    marginTop: '3px',
+                    height: '18px',
+                    width: '18px',
+                    flexShrink: 0,
+                    marginRight: Spaces.sm,
+                  }}
+                />
+                <IconAndInfoContainerRight>
+                  <Typography>{email}</Typography>
+                </IconAndInfoContainerRight>
+              </IconAndInfoContainer>
+              {phone && (
+                <IconAndInfoContainer>
+                  <BiSolidPhone
+                    style={{
+                      marginTop: '3px',
+                      height: '18px',
+                      width: '18px',
+                      flexShrink: 0,
+                      marginRight: Spaces.sm,
+                    }}
+                  />
+                  <IconAndInfoContainerRight>
+                    <Typography>{phone}</Typography>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
+              {bio && (
+                <IconAndInfoContainer>
+                  <BiSolidUserDetail
+                    style={{
+                      marginTop: '3px',
+                      height: '18px',
+                      width: '18px',
+                      flexShrink: 0,
+                      marginRight: Spaces.sm,
+                    }}
+                  />
+                  <IconAndInfoContainerRight>
+                    <Typography>{bio}</Typography>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
+            </InfoContainer>
+          </UpperContainer>
+          <QRContainer>qr</QRContainer>
+        </StaffModalContainer>
       </GenericModal>
     </>
   );

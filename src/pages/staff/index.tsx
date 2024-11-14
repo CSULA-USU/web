@@ -119,6 +119,10 @@ export default function Staff() {
             alt={s.alt}
             tags={s.tags}
             margin={`${Spaces.sm}`}
+            pronouns={s.pronouns}
+            email={s.email}
+            phone={s.phone}
+            bio={s.bio}
             rounded
           >
             <Typography size="xs" as="p">

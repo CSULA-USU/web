@@ -120,10 +120,15 @@
     "name": "John Yasis",
     "title": "Web Designer",
     "src": "/staff/john-yasis2.png",
+    "img": "/staff/john-yasis2.png",
     "alt": "",
-    "tags": ["Graffix"],
+    "bio": "A nurse by trade, John has been the web developer for the U-SU since September 2021. He enjoys snowboarding and playing board games in his spare time.",
     "department": "Graffix",
-    "email": "jyasis@calstatela.edu"
+    "email": "jyasis@calstatela.edu",
+    "phone": "(323) 343-2488",
+    "pronouns": "",
+    "tags": ["Graffix"],
+    "url": "https://www.linkedin.com/in/yasis/"
   },
   {
     "name": "Joseph Sedlacek",
