@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import styled from 'styled-components';
+import { MdEmail } from 'react-icons/md';
+import { BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import Image from 'next/image';
 import staff from 'data/staff.json';
-import { Typography } from 'components';
+import { StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 import { toTitleCase } from 'utils/stringhelpers';
 
@@ -14,7 +15,11 @@ const OutsideContainer = styled.div`
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-color: ${Colors.greyLightest};
+  background: linear-gradient(
+    135deg,
+    ${Colors.greyDarker} 50%,
+    ${Colors.greyLightest} 50%
+  );
 `;
 
 const CardContainer = styled.div`
@@ -34,6 +39,7 @@ const CardContainerBottom = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   padding: 48px 24px 24px 24px;
   background-color: ${Colors.white};
 `;
@@ -68,6 +74,35 @@ const CardContainerTop = styled.div`
   }
 `;
 
+const IconAndInfoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: ${Spaces.sm};
+`;
+
+const IconAndInfoContainerRight = styled.div`
+  text-align: left;
+  display: flex;
+  align-items: center;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  margin-right: ${Spaces.sm};
+  flex-shrink: 0;
+`;
+
+const ProfessionalInfoContainer = styled.div`
+  margin-bottom: ${Spaces.sm};
+`;
+
 const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
   display: flex;
   align-items: center;
@@ -89,6 +124,7 @@ const ShadowWrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   border-radius: 16px;
 `;
+
 export default function StaffBusinessCard() {
   const router = useRouter();
   const { id } = router.query;
@@ -112,32 +148,88 @@ export default function StaffBusinessCard() {
             />
           </CardContainerTop>
           <CardContainerBottom>
-            <Typography as="h1" variant="eventTitle" color="gold">
-              {staffData && staffData.name}
-            </Typography>
-            <Typography variant="eventDetail" size="xs" color="black">
-              {staffData && staffData.title}
-            </Typography>
-            <Typography variant="eventDetail" size="xs" color="black">
-              {staffData && staffData.department}
-            </Typography>
-            <Typography variant="eventDetail" size="xs" color="black">
-              {staffData && staffData.phone}
-            </Typography>
-            <Typography variant="eventDetail" size="xs" color="black">
-              {staffData && staffData.email}
-            </Typography>
-            {staffData && staffData.url && (
-              <Link href={String(staffData.url)}>
-                <Typography
-                  variant="eventDetail"
-                  size="xs"
-                  color="black"
-                  as="p"
-                >
-                  Linkedin
+            <ProfessionalInfoContainer>
+              <Typography as="h1" variant="eventTitle" color="gold" size="lg">
+                {staffData && staffData.name}
+              </Typography>
+              <Typography
+                variant="titleSmall"
+                size="2xs"
+                color="black"
+                weight="600"
+                lineHeight="1"
+              >
+                {staffData && staffData.title}
+              </Typography>
+              <Typography
+                variant="eventTime"
+                size="2xs"
+                color="black"
+                weight="400"
+              >
+                {staffData && staffData.department}
+              </Typography>
+            </ProfessionalInfoContainer>
+            <IconAndInfoContainer>
+              <IconContainer>
+                <BiSolidPhone
+                  style={{
+                    height: '16px',
+                    width: '16px',
+                    flexShrink: 0,
+                    color: 'white',
+                  }}
+                />
+              </IconContainer>
+              <IconAndInfoContainerRight>
+                <Typography variant="span" size="xs" color="greyDarkest">
+                  {staffData && staffData.phone}
                 </Typography>
-              </Link>
+              </IconAndInfoContainerRight>
+            </IconAndInfoContainer>
+            <IconAndInfoContainer>
+              <IconContainer>
+                <MdEmail
+                  style={{
+                    height: '16px',
+                    width: '16px',
+                    flexShrink: 0,
+                    color: 'white',
+                  }}
+                />
+              </IconContainer>
+              <IconAndInfoContainerRight>
+                <Typography variant="span" size="xs" color="greyDarkest">
+                  {staffData && staffData.email}
+                </Typography>
+              </IconAndInfoContainerRight>
+            </IconAndInfoContainer>
+
+            {staffData && staffData.url && (
+              <IconAndInfoContainer>
+                <IconContainer>
+                  <BiLogoLinkedin
+                    style={{
+                      height: '16px',
+                      width: '16px',
+                      flexShrink: 0,
+                      color: 'white',
+                    }}
+                  />
+                </IconContainer>
+                <IconAndInfoContainerRight>
+                  <StyledLink href={String(staffData.url)} isExternalLink>
+                    <Typography
+                      variant="span"
+                      size="xs"
+                      color="greyDarkest"
+                      as="p"
+                    >
+                      Linkedin
+                    </Typography>
+                  </StyledLink>
+                </IconAndInfoContainerRight>
+              </IconAndInfoContainer>
             )}
           </CardContainerBottom>
         </CardContainer>

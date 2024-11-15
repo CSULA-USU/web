@@ -33,7 +33,7 @@ export const Spaces: {
 } as const;
 
 export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
-  '2xs': '10px',
+  '2xs': '12px',
   xs: '14px',
   sm: '16px',
   md: '18px',
