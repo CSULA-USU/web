@@ -2,7 +2,7 @@ import { Page, Header } from 'modules';
 import Head from 'next/head';
 import { FluidContainer, Image, Typography, Button } from 'components';
 import styled from 'styled-components';
-import { StaffCard } from 'components/StaffCard';
+import { StaffCardWithModal } from 'components/StaffCard';
 import { useEffect, useState } from 'react';
 import staff from 'data/staff.json';
 import { Colors, Spaces } from 'theme';
@@ -111,7 +111,7 @@ export default function Staff() {
       <StaffNav></StaffNav>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {staffCards.map((s) => (
-          <StaffCard
+          <StaffCardWithModal
             key={s.name}
             name={s.name}
             title={s.title}
@@ -119,6 +119,10 @@ export default function Staff() {
             alt={s.alt}
             tags={s.tags}
             margin={`${Spaces.sm}`}
+            pronouns={s.pronouns}
+            email={s.email}
+            phone={s.phone}
+            bio={s.bio}
             rounded
           >
             <Typography size="xs" as="p">
@@ -127,7 +131,7 @@ export default function Staff() {
             <Typography size="xs" as="p">
               {s.email}
             </Typography>
-          </StaffCard>
+          </StaffCardWithModal>
         ))}
       </FluidContainer>
       <FluidContainer flex justifyContent="center">

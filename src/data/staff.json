@@ -96,7 +96,9 @@
     "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
-    "email": "jlui2@calstatela.edu"
+    "email": "jlui2@calstatela.edu",
+    "bio": "James Lui is an Operations Coordinator at the University Student Union (U-SU) at California State University, Los Angeles. James has a strong commitment to keeping the building accessible, safe, and engaging, he ensures seamless daily operations across the U-SU facility. He oversees a group of student workers and collaborates with campus partners to support efficient, well maintained spaces that serve the diverse needs of students, faculty, and guest.",
+    "url": "https://www.linkedin.com/in/james-lui-1b1b3b1b/"
   },
   {
     "name": "Jasmine Heredia",
@@ -120,10 +122,15 @@
     "name": "John Yasis",
     "title": "Web Designer",
     "src": "/staff/john-yasis2.png",
+    "img": "/staff/john-yasis2.png",
     "alt": "",
-    "tags": ["Graffix"],
+    "bio": "A nurse by trade, John has been the web developer for the U-SU since September 2021. When he's not coding, he enjoys snowboarding and playing Magic the Gathering.",
     "department": "Graffix",
-    "email": "jyasis@calstatela.edu"
+    "email": "jyasis@calstatela.edu",
+    "phone": "(323) 343-2488",
+    "pronouns": "",
+    "tags": ["Graffix"],
+    "url": "https://www.linkedin.com/in/yasis/"
   },
   {
     "name": "Joseph Sedlacek",
@@ -240,6 +247,7 @@
     "alt": "",
     "tags": ["Operations"],
     "department": "Operations",
-    "email": "yrodri103@calstatela.edu"
+    "email": "yrodri103@calstatela.edu",
+    "url": "https://www.linkedin.com/in/yaritza-rodriguez-3232101a5"
   }
 ]
