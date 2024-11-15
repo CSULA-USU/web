@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { MdEmail } from 'react-icons/md';
 import { QRCodeSVG } from 'qrcode.react';
 import { BiSolidUserDetail, BiSolidPhone } from 'react-icons/bi';
+import { MdEmail } from 'react-icons/md';
 import { toKebabCase } from 'utils/stringhelpers';
 import { Typography } from '../Typography';
 import { Image, Panel, StyledLink } from 'components';
