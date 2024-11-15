@@ -27,4 +27,5 @@ span:focus-visible {
   box-shadow: 0 0 0 6px black;
   outline: 3px solid #fece07;
   text-decoration: underline;
+  z-index: 99;
 }
