@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import Image from 'next/image';
 import staff from 'data/staff.json';
@@ -17,8 +17,10 @@ const OutsideContainer = styled.div`
   width: 100%;
   background: linear-gradient(
     135deg,
-    ${Colors.greyLightest} 50%,
-    ${Colors.greyDarker} 50%
+    ${Colors.greyLightest} 52%,
+    ${Colors.primary} 52%,
+    ${Colors.primary} 54%,
+    ${Colors.greyDarkest} 54%
   );
 `;
 
@@ -40,7 +42,7 @@ const CardContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 72px 24px 24px 24px;
+  padding: 80px 24px 24px 24px;
   background-color: ${Colors.white};
 `;
 
@@ -86,7 +88,8 @@ const IconAndInfoContainer = styled.div`
 const IconAndInfoContainerRight = styled.div`
   text-align: left;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const IconContainer = styled.div`
@@ -106,6 +109,7 @@ const ProfessionalInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
@@ -154,7 +158,13 @@ export default function StaffBusinessCard() {
           </CardContainerTop>
           <CardContainerBottom>
             <ProfessionalInfoContainer>
-              <Typography as="h1" variant="eventTitle" color="gold" size="lg">
+              <Typography
+                as="h1"
+                variant="eventTitle"
+                color="gold"
+                size="lg"
+                lineHeight="1"
+              >
                 {staffData && staffData.name}
               </Typography>
               <Typography
@@ -162,7 +172,7 @@ export default function StaffBusinessCard() {
                 size="2xs"
                 color="black"
                 weight="600"
-                lineHeight="1"
+                lineHeight="1.5"
               >
                 {staffData && staffData.title}
               </Typography>
@@ -171,6 +181,7 @@ export default function StaffBusinessCard() {
                 size="2xs"
                 color="black"
                 weight="400"
+                lineHeight="1"
               >
                 {staffData && staffData.department}
               </Typography>
@@ -276,6 +287,36 @@ export default function StaffBusinessCard() {
                       https://www.calstatelausu.org/
                     </Typography>
                   </StyledLink>
+                </IconAndInfoContainerRight>
+              </IconAndInfoContainer>
+              <IconAndInfoContainer>
+                <IconContainer>
+                  <MdLocationOn
+                    style={{
+                      height: '16px',
+                      width: '16px',
+                      flexShrink: 0,
+                      color: 'white',
+                    }}
+                  />
+                </IconContainer>
+                <IconAndInfoContainerRight>
+                  <Typography
+                    variant="span"
+                    size="xs"
+                    color="greyDarker"
+                    as="p"
+                  >
+                    5154 State University Dr.
+                  </Typography>
+                  <Typography
+                    variant="span"
+                    size="xs"
+                    color="greyDarker"
+                    as="p"
+                  >
+                    Los Angeles, CA 90032
+                  </Typography>
                 </IconAndInfoContainerRight>
               </IconAndInfoContainer>
             </ContactInfoContainer>
