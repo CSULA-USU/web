@@ -66,6 +66,7 @@ const IconStyling = {
   marginBottom: '1px',
   fontSize: 'inherit',
   color: 'currentColor',
+  flexShrink: 0,
 };
 
 interface StyledLinkProps {
