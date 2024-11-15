@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { MdEmail } from 'react-icons/md';
-import { BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
+import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import Image from 'next/image';
 import staff from 'data/staff.json';
 import { StyledLink, Typography } from 'components';
@@ -17,8 +17,8 @@ const OutsideContainer = styled.div`
   width: 100%;
   background: linear-gradient(
     135deg,
-    ${Colors.greyDarker} 50%,
-    ${Colors.greyLightest} 50%
+    ${Colors.greyLightest} 50%,
+    ${Colors.greyDarker} 50%
   );
 `;
 
@@ -39,15 +39,15 @@ const CardContainerBottom = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 48px 24px 24px 24px;
+  align-items: center;
+  padding: 72px 24px 24px 24px;
   background-color: ${Colors.white};
 `;
 
 const CardContainerTop = styled.div`
-  height: 240px;
+  height: 400px;
   width: 100%;
-  background-image: url('/about/calstatela-hero.jpeg');
+  background-image: url('/about/calstatela-hero-business-card.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -73,6 +73,8 @@ const CardContainerTop = styled.div`
     z-index: 2; /* Ensure the content is above the overlay */
   }
 `;
+
+const ContactInfoContainer = styled.div``;
 
 const IconAndInfoContainer = styled.div`
   display: flex;
@@ -100,7 +102,10 @@ const IconContainer = styled.div`
 `;
 
 const ProfessionalInfoContainer = styled.div`
-  margin-bottom: ${Spaces.sm};
+  margin-bottom: ${Spaces.md};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
@@ -111,13 +116,13 @@ const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
   background-size: cover;
   background-position: top;
   border-radius: 50%;
-  height: 72px;
-  width: 72px;
-  margin-right: ${Spaces.sm};
+  height: 120px;
+  width: 120px;
   flex-shrink: 0;
   position: absolute;
-  bottom: -36px;
-  left: 24px;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 const ShadowWrapper = styled.div`
@@ -170,45 +175,88 @@ export default function StaffBusinessCard() {
                 {staffData && staffData.department}
               </Typography>
             </ProfessionalInfoContainer>
-            <IconAndInfoContainer>
-              <IconContainer>
-                <BiSolidPhone
-                  style={{
-                    height: '16px',
-                    width: '16px',
-                    flexShrink: 0,
-                    color: 'white',
-                  }}
-                />
-              </IconContainer>
-              <IconAndInfoContainerRight>
-                <Typography variant="span" size="xs" color="greyDarkest">
-                  {staffData && staffData.phone}
-                </Typography>
-              </IconAndInfoContainerRight>
-            </IconAndInfoContainer>
-            <IconAndInfoContainer>
-              <IconContainer>
-                <MdEmail
-                  style={{
-                    height: '16px',
-                    width: '16px',
-                    flexShrink: 0,
-                    color: 'white',
-                  }}
-                />
-              </IconContainer>
-              <IconAndInfoContainerRight>
-                <Typography variant="span" size="xs" color="greyDarkest">
-                  {staffData && staffData.email}
-                </Typography>
-              </IconAndInfoContainerRight>
-            </IconAndInfoContainer>
-
-            {staffData && staffData.url && (
+            <ContactInfoContainer>
+              {staffData && staffData.phone && (
+                <IconAndInfoContainer>
+                  <IconContainer>
+                    <BiSolidPhone
+                      style={{
+                        height: '16px',
+                        width: '16px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
+                  <IconAndInfoContainerRight>
+                    <StyledLink
+                      href={`tel:${staffData.phone}`}
+                      isInverseUnderlineStyling
+                    >
+                      <Typography variant="span" size="xs" color="greyDarkest">
+                        {staffData && staffData.phone}
+                      </Typography>
+                    </StyledLink>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
+              {staffData && staffData.email && (
+                <IconAndInfoContainer>
+                  <IconContainer>
+                    <MdEmail
+                      style={{
+                        height: '16px',
+                        width: '16px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
+                  <IconAndInfoContainerRight>
+                    <StyledLink
+                      href={`mailto:${staffData.email}`}
+                      isInverseUnderlineStyling
+                    >
+                      <Typography variant="span" size="xs" color="greyDarkest">
+                        {staffData.email}
+                      </Typography>
+                    </StyledLink>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
+              {staffData && staffData.url && (
+                <IconAndInfoContainer>
+                  <IconContainer>
+                    <BiLogoLinkedin
+                      style={{
+                        height: '16px',
+                        width: '16px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
+                  <IconAndInfoContainerRight>
+                    <StyledLink
+                      href={String(staffData.url)}
+                      isExternalLink
+                      isInverseUnderlineStyling
+                    >
+                      <Typography
+                        variant="span"
+                        size="xs"
+                        color="greyDarkest"
+                        as="p"
+                      >
+                        Linkedin
+                      </Typography>
+                    </StyledLink>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
               <IconAndInfoContainer>
                 <IconContainer>
-                  <BiLogoLinkedin
+                  <BiGlobe
                     style={{
                       height: '16px',
                       width: '16px',
@@ -218,19 +266,19 @@ export default function StaffBusinessCard() {
                   />
                 </IconContainer>
                 <IconAndInfoContainerRight>
-                  <StyledLink href={String(staffData.url)} isExternalLink>
+                  <StyledLink href={'/'} isInverseUnderlineStyling>
                     <Typography
                       variant="span"
                       size="xs"
-                      color="greyDarkest"
+                      color="greyDarker"
                       as="p"
                     >
-                      Linkedin
+                      https://www.calstatelausu.org/
                     </Typography>
                   </StyledLink>
                 </IconAndInfoContainerRight>
               </IconAndInfoContainer>
-            )}
+            </ContactInfoContainer>
           </CardContainerBottom>
         </CardContainer>
       </ShadowWrapper>
