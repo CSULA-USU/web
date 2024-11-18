@@ -2,17 +2,22 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { fetchEvents, fetchRequests } from 'api';
 import { PresenceEvent } from 'types';
-import { eventListState, graphicsRequestListState } from 'atoms';
+import {
+  eventListState,
+  eventListStatusState,
+  graphicsRequestListState,
+} from 'atoms';
 import { USU_ORGS } from 'utils/constants';
 
 export const EventsLoader = () => {
   const [_, setEvents] = useRecoilState(eventListState);
+  const [_eventsStatus, setEventsStatus] = useRecoilState(eventListStatusState);
   const [_graphicRequests, setGraphicsRequests] = useRecoilState(
     graphicsRequestListState,
   );
 
   const getEvents = async () => {
-    const data: PresenceEvent[] = await fetchEvents();
+    const data: PresenceEvent[] = await fetchEvents(setEventsStatus);
     const sortedData = data
       .filter(
         (event) =>

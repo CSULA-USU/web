@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
-import { ModEventCard } from 'modules';
+import { ModEventCard, ModEventCardSkeleton } from 'modules';
 import { Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { useState } from 'react';
@@ -13,10 +13,12 @@ const HeaderContainer = styled.div`
 `;
 
 export const EventHeader = ({
+  loading,
   featuredEvent,
   title,
   subheaderText,
 }: {
+  loading: boolean;
   featuredEvent: PresenceEvent;
   title?: React.ReactNode;
   subheaderText?: string;
@@ -52,11 +54,15 @@ export const EventHeader = ({
         {title}
       </Typography>
       <HeaderContainer>
-        <ModEventCard
-          featured
-          event={featuredEvent}
-          onClick={() => selectEvent(featuredEvent)}
-        />
+        {loading ? (
+          <ModEventCardSkeleton />
+        ) : (
+          <ModEventCard
+            featured
+            event={featuredEvent}
+            onClick={() => selectEvent(featuredEvent)}
+          />
+        )}
       </HeaderContainer>
       <EventModal
         isOpen={!!selectedEvent}

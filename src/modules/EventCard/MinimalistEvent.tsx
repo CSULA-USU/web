@@ -1,5 +1,5 @@
 import { BsInfoCircle } from 'react-icons/bs';
-import { Button, StyledLink, Typography } from 'components';
+import { Button, Skeleton, StyledLink, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
 import styled from 'styled-components';
@@ -69,6 +69,23 @@ const MinimalistEventContainer = styled.div`
 const TitleContainer = styled.span`
   cursor: pointer;
 `;
+
+export const MinimalistEventSkeleton = () => {
+  const { isDesktop, isMobile } = useBreakpoint();
+  return (
+    <MinimalistEventContainer>
+      {isDesktop ? (
+        isMobile ? (
+          <Skeleton height="200px" />
+        ) : (
+          <Skeleton height="96px" />
+        )
+      ) : (
+        <Skeleton height="96px" />
+      )}
+    </MinimalistEventContainer>
+  );
+};
 
 export const MinimalistEvent = ({
   buttonText,

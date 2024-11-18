@@ -1,13 +1,24 @@
-import { Button, Divider, FluidContainer, Typography } from 'components';
+import {
+  Button,
+  Divider,
+  FluidContainer,
+  Skeleton,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import { PresenceEvent } from 'types';
-import { EventCard, MinimalistEvent } from 'modules/EventCard';
+import {
+  EventCard,
+  MinimalistEvent,
+  MinimalistEventSkeleton,
+} from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
 
 interface UpcomingEventsProps {
+  loading: boolean;
   events: PresenceEvent[];
   monthly?: boolean;
 }
@@ -44,7 +55,11 @@ const TertiaryContainer = styled.ul`
 const getMonth = (date: string) =>
   new Date(date).toLocaleString('default', { month: 'long' });
 
-export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
+export const ModUpcomingEvents = ({
+  loading,
+  events,
+  monthly,
+}: UpcomingEventsProps) => {
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -65,7 +80,38 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
     {},
   );
   const eventMonths = Object.keys(eventsByMonth);
-  return !events.length ? null : (
+
+  const UpcomingEventsSkeleton = ({ monthly }: { monthly?: boolean }) => {
+    return monthly ? (
+      <div>
+        <Divider label="Month" />
+        <UpcomingEventsContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Skeleton height="400px" key={index} />
+          ))}
+        </UpcomingEventsContent>
+      </div>
+    ) : (
+      <>
+        <UpcomingEventsContent>
+          <TertiaryContainer>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <li key={index}>
+                <MinimalistEventSkeleton />
+                {index === 4 ? (
+                  ''
+                ) : (
+                  <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+                )}
+              </li>
+            ))}
+          </TertiaryContainer>
+        </UpcomingEventsContent>
+      </>
+    );
+  };
+
+  return (
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
@@ -79,60 +125,75 @@ export const ModUpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           </Typography>
         </UpcomingEventsHeading>
       )}
-      {monthly ? (
-        eventMonths.map((eventMonth) => (
-          <div key={`${eventMonth} Events`}>
-            <Divider label={eventMonth} />
-            <UpcomingEventsContent>
-              {eventsByMonth[eventMonth].map((event) => (
-                <EventCard
-                  key={event.eventNoSqlId}
-                  event={event}
-                  onClick={() => selectEvent(event)}
-                />
-              ))}
-            </UpcomingEventsContent>
-          </div>
-        ))
+      {loading ? (
+        <UpcomingEventsSkeleton monthly={monthly} />
+      ) : !events.length ? (
+        <Typography as="h3" variant="label">
+          No events Available.
+        </Typography>
       ) : (
         <>
-          <UpcomingEventsContent>
-            <TertiaryContainer>
-              {events.slice(1, eventLimit).map((event, index, eventArray) => (
-                <li key={event.eventNoSqlId}>
-                  <MinimalistEvent
-                    event={event}
-                    onClick={() => selectEvent(event)}
-                  />
-                  {index === eventArray.length - 1 ? (
-                    ''
+          {monthly ? (
+            eventMonths.map((eventMonth) => (
+              <div key={`${eventMonth} Events`}>
+                <Divider label={eventMonth} />
+                <UpcomingEventsContent>
+                  {eventsByMonth[eventMonth].map((event) => (
+                    <EventCard
+                      key={event.eventNoSqlId}
+                      event={event}
+                      onClick={() => selectEvent(event)}
+                    />
+                  ))}
+                </UpcomingEventsContent>
+              </div>
+            ))
+          ) : (
+            <>
+              <UpcomingEventsContent>
+                <TertiaryContainer>
+                  {events
+                    .slice(1, eventLimit)
+                    .map((event, index, eventArray) => (
+                      <li key={event.eventNoSqlId}>
+                        <MinimalistEvent
+                          event={event}
+                          onClick={() => selectEvent(event)}
+                        />
+                        {index === eventArray.length - 1 ? (
+                          ''
+                        ) : (
+                          <Divider
+                            color="greyLighter"
+                            margin={`${Spaces.md} 0`}
+                          />
+                        )}
+                      </li>
+                    ))}
+                  {events.length > eventLimit ? (
+                    <Button
+                      margin="16px auto 0px"
+                      onClick={() => {
+                        setEventLimit(eventLimit + 3);
+                      }}
+                      variant="outline"
+                    >
+                      Load More
+                    </Button>
                   ) : (
-                    <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+                    ''
                   )}
-                </li>
-              ))}
-              {events.length > eventLimit ? (
-                <Button
-                  margin="16px auto 0px"
-                  onClick={() => {
-                    setEventLimit(eventLimit + 3);
-                  }}
-                  variant="outline"
-                >
-                  Load More
-                </Button>
-              ) : (
-                ''
-              )}
-            </TertiaryContainer>
-          </UpcomingEventsContent>
+                </TertiaryContainer>
+              </UpcomingEventsContent>
+            </>
+          )}
+          <EventModal
+            isOpen={!!selectedEvent}
+            event={selectedEvent}
+            onRequestClose={onRequestClose}
+          />
         </>
       )}
-      <EventModal
-        isOpen={!!selectedEvent}
-        event={selectedEvent}
-        onRequestClose={onRequestClose}
-      />
     </FluidContainer>
   );
 };

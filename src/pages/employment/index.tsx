@@ -5,6 +5,7 @@ import { FluidContainer, StyledLink, Loading, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import Link from 'next/link';
+import { StatusType } from 'atoms';
 // import jobs from 'data/employment.json';
 // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
 
@@ -35,30 +36,60 @@ export default function Employment() {
   const [studentJobs, setStudentJobs] = useState([]);
   const [fullTimeJobs, setFullTimeJobs] = useState([]);
 
+  const [studentStatus, setStudentStatus] = useState<StatusType>('undefined');
+  const [fullTimeStatus, setFullTimeStatus] = useState<StatusType>('undefined');
+
   const fetchJobFeed = async () => {
-    // RSS feed for part-time student jobs
-    const data = await fetch('/api/employment');
-    await data.json().then((feed) => {
-      const partTimeResults = feed.items.filter(
-        (item: any) => !item.contentSnippet.includes('5/40'),
-      );
-      setStudentJobs(partTimeResults);
-      setStudentAssistantLoading(false);
-    });
+    await fetch('/api/employment')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            'Failed to receive a valid response from student assistant employment API.',
+          );
+        }
+        return res.json();
+      })
+      .then((feed) => {
+        const partTimeResults = feed.items.filter(
+          (item: any) => !item.contentSnippet.includes('5/40'),
+        );
+        setStudentJobs(partTimeResults);
+        setStudentStatus('success');
+      })
+      .catch(() => {
+        setStudentStatus('failed');
+      })
+      .finally(() => {
+        setStudentAssistantLoading(false);
+      });
 
     // RSS feed API for full-time jobs
-    const fullTimeData = await fetch('/api/fullTimeEmployment');
-    await fullTimeData.json().then((fullTimeFeed) => {
-      const fullTimeFeedFiltered = fullTimeFeed.items.filter((job: any) => {
-        const jobDesc: String = job['content:encodedSnippet'];
-        return (
-          jobDesc.toLowerCase().includes('university-student union') ||
-          jobDesc.toLowerCase().includes('university student union')
-        );
+    await fetch('/api/fullTimeEmployment')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            'Failed to receive a valid response from fullTimeEmployment API.',
+          );
+        }
+        return res.json();
+      })
+      .then((fullTimeFeed) => {
+        const jobsFiltered = fullTimeFeed?.items.filter((job: any) => {
+          const jobDesc: String = job['content:encodedSnippet'];
+          return (
+            jobDesc.toLowerCase().includes('university-student union') ||
+            jobDesc.toLowerCase().includes('university student union')
+          );
+        });
+        setFullTimeJobs(jobsFiltered);
+        setFullTimeStatus('success');
+      })
+      .catch(() => {
+        setFullTimeStatus('failed');
+      })
+      .finally(() => {
+        setFullTimeLoading(false);
       });
-      setFullTimeJobs(fullTimeFeedFiltered);
-      setFullTimeLoading(false);
-    });
   };
 
   useEffect(() => {
@@ -104,8 +135,13 @@ export default function Employment() {
                   </Typography>
                 </JobItem>
               ))
+            ) : studentStatus == 'failed' ? (
+              <Typography variant="subheader" size="lg" color="black">
+                An error occurred when fetching the jobs. Please try reloading
+                your page.
+              </Typography>
             ) : (
-              <Typography>
+              <Typography variant="subheader" size="lg" color="black">
                 No available student assistant positions at this time.
               </Typography>
             )}
@@ -126,8 +162,13 @@ export default function Employment() {
                   </Typography>
                 </JobItem>
               ))
+            ) : fullTimeStatus == 'failed' ? (
+              <Typography variant="subheader" size="lg" color="black">
+                An error occurred when fetching the jobs. Please try reloading
+                your page.
+              </Typography>
             ) : (
-              <Typography>
+              <Typography variant="subheader" size="lg" color="black">
                 No available full-time positions at this time.
               </Typography>
             )}

@@ -18,6 +18,7 @@ export * from './Typography';
 export * from './VerticalLine';
 export * from './Expandable';
 export * from './SideImageHeader';
+export * from './Skeleton';
 export * from './SearchInput';
 export * from './Input';
 export * from './Label';
