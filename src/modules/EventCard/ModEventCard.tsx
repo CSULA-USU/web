@@ -1,4 +1,4 @@
-import { Button, Typography } from 'components';
+import { Button, Skeleton, SkeletonWrapper, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
@@ -17,6 +17,39 @@ export interface ModEventCardProps {
   featured?: boolean;
   onClick?: () => void;
 }
+
+const EventCardSkeletonContainer = styled(SkeletonWrapper)`
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  margin: 0px auto ${Spaces.lg};
+  max-width: 800px;
+  min-height: 480px;
+  @media (max-width: 1024px) {
+    min-height: 480px;
+  }
+  @media (max-width: 768px) {
+    min-height: 400px;
+  }
+  @media (max-width: 600px) {
+    min-height: 320px;
+  }
+  @media (max-width: 540px) {
+    min-height: 272px;
+  }
+  @media (max-width: 320px) {
+    min-height: 240px;
+  }
+`;
+
+export const ModEventCardSkeleton = () => {
+  return (
+    <EventContainer>
+      <EventCardSkeletonContainer />
+      <HeroEventDetailsSkeleton />
+    </EventContainer>
+  );
+};
 
 const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   cursor: pointer;
@@ -134,6 +167,10 @@ const MobileBottom = styled.div`
   justify-content: space-between;
 `;
 
+const HeroEventDetailsSkeleton = () => {
+  return <Skeleton height="100px" />;
+};
+
 export const ModEventCard = ({
   event,
   featured,
@@ -160,7 +197,7 @@ export const ModEventCard = ({
 
   const day = getDay(startDateTimeUtc);
 
-  return !eventName ? null : (
+  return (
     <EventContainer>
       <EventCardContainer
         onClick={onClick}

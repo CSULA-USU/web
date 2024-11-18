@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import Link from 'next/link';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, SkeletonWrapper, Typography } from 'components';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchInstagramFeed } from 'api';
 import { InstagramPost } from 'types';
 import { InstagramFeedProps } from './props';
 import { truncateString } from 'utils/stringhelpers';
+import { StatusType } from 'atoms';
 
 interface InstagramFeedStyleProps {
   src?: string;
@@ -30,6 +31,28 @@ const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   border-radius: 8px;
 `;
 
+const InstagramCardsContainerSkeleton = styled(SkeletonWrapper)`
+  width: 320px;
+  height: 320px;
+  margin: ${Spaces.sm};
+  border-radius: 8px;
+`;
+
+const InstagramCardsSkeleton = () => {
+  const { isMobile } = useBreakpoint();
+  return (
+    <>
+      {isMobile ? (
+        <InstagramCardsContainerSkeleton />
+      ) : (
+        Array.from({ length: 12 }).map((_, index) => (
+          <InstagramCardsContainerSkeleton key={index} />
+        ))
+      )}
+    </>
+  );
+};
+
 const InstagramLinkContainer = styled.span`
   :hover {
     color: ${Colors.gold};
@@ -43,11 +66,23 @@ export const Component = ({
   postsToShow = 12,
 }: InstagramFeedProps) => {
   const { isMobile } = useBreakpoint();
+  const [loading, setLoading] = useState(true);
   const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
+  const [instagramResponseStatus, setInstagramResponseStatus] =
+    useState<StatusType>('undefined');
 
   const getInstagramFeed = useCallback(async () => {
-    const { data } = await fetchInstagramFeed(department);
-    setInstagramPosts(data.data.slice(0, postsToShow));
+    await fetchInstagramFeed(setInstagramResponseStatus, department).then(
+      (res) => {
+        if (res != null) {
+          const posts = res?.data?.data?.slice(0, postsToShow);
+          if (posts) {
+            setInstagramPosts(posts);
+          }
+        }
+        setLoading(false);
+      },
+    );
   }, [department, postsToShow]);
 
   useEffect(() => {
@@ -70,40 +105,53 @@ export const Component = ({
         </Typography>
       </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {isMobile
-          ? instagramPosts.length > 0 && (
-              <Link
-                href={
-                  instagramPosts[0].permalink && instagramPosts[0].permalink
+        {loading ? (
+          <InstagramCardsSkeleton />
+        ) : instagramResponseStatus == 'failed' ? (
+          <Typography as="h3" variant="label">
+            Failed to fetch data from instagram. Please try refreshing your
+            page.
+          </Typography>
+        ) : instagramResponseStatus == 'success' &&
+          instagramPosts.length == 0 ? (
+          <Typography as="h3" variant="label">
+            This account currently has no posts. Check back later for updates!
+          </Typography>
+        ) : isMobile ? (
+          instagramPosts.length > 0 && (
+            <Link
+              href={instagramPosts[0].permalink && instagramPosts[0].permalink}
+              aria-label="view instagram post"
+            >
+              <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
+              <InstagramCardsContainer
+                src={
+                  instagramPosts[0].media_type === 'VIDEO'
+                    ? instagramPosts[0].thumbnail_url
+                    : instagramPosts[0].media_url
                 }
-                aria-label={truncateString(instagramPosts[0].caption, 125)}
-              >
-                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
-                <InstagramCardsContainer
-                  src={
-                    instagramPosts[0].media_type === 'VIDEO'
-                      ? instagramPosts[0].thumbnail_url
-                      : instagramPosts[0].media_url
-                  }
-                />
-              </Link>
-            )
-          : instagramPosts.map((post, index) => (
-              <Link
-                href={post.permalink}
-                key={`${index}_${post.username}`}
+              />
+            </Link>
+          )
+        ) : (
+          instagramPosts.map((post, index) => (
+            <Link
+              href={post.permalink}
+              key={`${index}_${post.username}`}
+              aria-label="view instagram post"
+            >
+              <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
+              <InstagramCardsContainer
+                src={
+                  post.media_type === 'VIDEO'
+                    ? post.thumbnail_url
+                    : post.media_url
+                }
                 aria-label={truncateString(post.caption, 125)}
-              >
-                <HiddenSpan aria-hidden="true">Instagram thumbnail</HiddenSpan>
-                <InstagramCardsContainer
-                  src={
-                    post.media_type === 'VIDEO'
-                      ? post.thumbnail_url
-                      : post.media_url
-                  }
-                />
-              </Link>
-            ))}
+              />
+            </Link>
+          ))
+        )}
       </FluidContainer>
     </>
   );
