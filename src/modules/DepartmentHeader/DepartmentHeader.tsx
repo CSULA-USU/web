@@ -1,9 +1,9 @@
 import { Typography, FluidContainer } from 'components';
-import { EventCard } from '../../modules/EventCard';
+import { EventCard, EventSkeleton } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { eventListState } from 'atoms';
-import { useState } from 'react';
+import { eventListState, eventListStatusState } from 'atoms';
+import { useEffect, useState } from 'react';
 import { PresenceEvent } from 'types';
 import { EventModal } from 'modules/EventModal';
 
@@ -29,7 +29,9 @@ export const DepartmentHeader = ({
   children,
   infoSection,
 }: DepartmentHeaderProps) => {
+  const [loading, setLoading] = useState(true);
   const events = useRecoilValue(eventListState);
+  const eventsStatus = useRecoilValue(eventListStatusState);
   const departmentEvent = events.find(
     (event) => event.organizationName === title,
   );
@@ -37,6 +39,13 @@ export const DepartmentHeader = ({
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);
+
+  useEffect(() => {
+    if (eventsStatus != 'undefined') {
+      setLoading(false);
+    }
+  }, [events]);
+
   return (
     <>
       <FluidContainer backgroundImage="/backgrounds/subtle-background-3.jpg">
@@ -55,12 +64,14 @@ export const DepartmentHeader = ({
             </Typography>
             <Typography>{children}</Typography>
           </HeaderContent>
-          {departmentEvent && (
+          {departmentEvent ? (
             <EventCard
               onClick={() => selectEvent(departmentEvent)}
               featured
               event={departmentEvent}
             />
+          ) : (
+            loading && <EventSkeleton />
           )}
         </HeaderContainer>
         {infoSection}

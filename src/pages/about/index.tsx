@@ -31,6 +31,13 @@ const Title = styled.div`
   text-align: center;
 `;
 
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 128.5%;
+  overflow: hidden;
+`;
+
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
@@ -198,11 +205,14 @@ export default function About() {
             Map
           </Typography>
         </Title>
-        <Image
-          src="https://www.dropbox.com/scl/fi/drgfh9sry5evvs4hg05tp/USU-Floor-Plan-Inside.jpg?rlkey=w2180m5xqn5tlabvulsk2i3v8&raw=1"
-          alt="map of the university student union"
-          maxWidth="100%"
-        />
+        <ImageContainer>
+          <Image
+            src="https://www.dropbox.com/scl/fi/drgfh9sry5evvs4hg05tp/USU-Floor-Plan-Inside.jpg?rlkey=w2180m5xqn5tlabvulsk2i3v8&raw=1"
+            alt="map of the university student union"
+            maxWidth="100%"
+            style={{ position: 'absolute' }}
+          />
+        </ImageContainer>
       </FluidContainer>
       <InstagramFeed department="usu" />
     </Page>
