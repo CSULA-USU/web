@@ -116,23 +116,23 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fi/xjd25r7ejygo1urr91q2b/form-990-199-fy22-23.pdf?rlkey=2cidyn6j43gbgz9ht85ssoffl&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/4k4iacs81u8gnvkxgpjuj/form-990-199-fy22-23.pdf?rlkey=5yqetxj3y6tq1nqb51vrkk8le&st=gxspheul&raw=1',
             children: 'FY 22-23',
           },
           {
-            href: 'https://www.dropbox.com/s/1eu3uo97x0p2ju6/form-990-199-fy21-22.pdf?raw=1',
+            href: 'https://www.dropbox.com/scl/fi/ltytq9mxfyebip5bqunb2/form-990-199-fy21-22.pdf?rlkey=a8ur6q3xopokyyztqdlm1dm60&st=eenp0m83&raw=1',
             children: 'FY 21-22',
           },
           {
-            href: 'https://www.dropbox.com/s/svt4v48qeu703dy/form-990-199-fy20-21.pdf?raw=1',
+            href: 'https://www.dropbox.com/scl/fi/d0sfu9emywcmcyoy5a4rg/form-990-199-fy20-21.pdf?rlkey=hvgnwe64y5xvq0vquunwb8ggw&st=y8kj4vhi&raw=1',
             children: 'FY 20-21',
           },
           {
-            href: 'https://www.dropbox.com/s/kqt1gjaxki4vwrm/form-990-199-fy19-20.pdf?raw=1',
+            href: 'https://www.dropbox.com/scl/fi/88pbigkpbdkijm2i6v4h0/form-990-199-fy19-20.pdf?rlkey=jhoxy0vvfcpqnygkuhzkp2ic7&st=s8urwwmv&raw=1',
             children: 'FY 19-20',
           },
           {
-            href: 'https://www.dropbox.com/s/fi0uvb8qh4c7u27/form-990-199-fy18-19.pdf?raw=1',
+            href: 'https://www.dropbox.com/scl/fi/495yh6ccvw6rjpkja8a9a/form-990-199-fy18-19.pdf?rlkey=9tp8jkif2d3nkgoz0blyion2j&st=tn2px8y2&raw=1',
             children: 'FY 18-19',
           },
           {
@@ -150,7 +150,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/scl/fi/rehwzv64j4eurl8aj9uw9/form-990-199.zip?rlkey=sr1dru5jteyytkzf4zv2vmtdz&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/bqu5cs6p22q2uekj9l94w/form-990-2012-2023.zip?rlkey=qytabxucqw2cn9bubnxsr611y&st=08f0ui0t&raw=1',
       variant: 'black',
     },
   },
