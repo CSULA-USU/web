@@ -88,7 +88,7 @@ const FooterBottomInner = styled.div`
 `;
 
 export const Footer = () => (
-  <footer>
+  <footer role="contentinfo">
     <FluidContainer backgroundColor="greyDarkest">
       <FooterTopContainer>
         <LogoLink
@@ -105,9 +105,11 @@ export const Footer = () => (
         </LogoLink>
         <FooterTopLinks>
           <FooterUnorderedList>
-            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-              Building Hours
-            </Typography>
+            <li>
+              <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
+                Building Hours
+              </Typography>
+            </li>
             <StyledLinkMargins>
               <Typography color="white" size="sm">
                 Monday to Thursday: 7 AM to 10 PM
@@ -142,10 +144,11 @@ export const Footer = () => (
             </StyledLinkMargins>
           </FooterUnorderedList>
           <FooterUnorderedList>
-            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-              Involvement
-            </Typography>
-
+            <li>
+              <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
+                Involvement
+              </Typography>
+            </li>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink href={'/events'}>Calendar of Events</StyledLink>
@@ -176,9 +179,11 @@ export const Footer = () => (
             </StyledLinkMargins>
           </FooterUnorderedList>
           <FooterUnorderedList>
-            <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-              Resources
-            </Typography>
+            <li>
+              <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
+                Resources
+              </Typography>
+            </li>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink href={'https://www.calstatela.edu/'} isExternalLink>
@@ -186,7 +191,6 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink
