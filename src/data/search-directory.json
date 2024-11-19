@@ -378,7 +378,7 @@
   },
   {
     "title": "Governance",
-    "url": "governance",
+    "url": "/governance",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
       "governance",
@@ -399,7 +399,7 @@
   },
   {
     "title": "Meet the Board",
-    "url": "governance/meet-the-board",
+    "url": "/governance/meet-the-board",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
       "board members",
@@ -413,7 +413,7 @@
   },
   {
     "title": "Public Documents",
-    "url": "governance/public-documents",
+    "url": "/governance/public-documents",
     "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
     "tags": [
       "public documents",
@@ -445,7 +445,7 @@
   },
   {
     "title": "Student Leader Elections",
-    "url": "governance/student-leader-elections",
+    "url": "/governance/student-leader-elections",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
       "student leader",
