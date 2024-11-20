@@ -78,12 +78,20 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/94w7xkjtj4e6zlts3h5it/Minutes-Board-of-Directors-September-20-2024-signed.pdf?rlkey=t8q7gnmtp4k9cg6boelxd6ag0&st=e0r3fho7&raw=1',
             children: 'Board of Directors September 20, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/rip35bl3fl53q55mvk5t0/Minutes-Ad-hoc-Bylaws-Committee-October-25-2024.pdf?rlkey=xzsool8vco5he3xc3imr6cpbx&st=0u9iyalq&raw=1',
+            children: 'Ad-hoc Bylaws Committee October 25, 2024',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/t0dthpyhivzksdfvks8pc/Minutes-Board-of-Directors-October-25-2024.pdf?rlkey=upvkzzqs7kj5ghpubff5wf4tb&st=ww1w9fw8&raw=1',
+            children: 'Board of Directors October 25, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/s090gewyvjwuyxde5sxyd/fy24-25.zip?rlkey=zm2x4im6lrsos1zoobd640rbt&st=jz8vt33s&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/de0idcl8ctllvbw3i0sit/minutes-24-25.zip?rlkey=w1ewzwjbgmsis0amdrwp6xg10&st=oo0x88uk&dl=1',
       variant: 'black',
     },
   },
