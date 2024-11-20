@@ -92,6 +92,7 @@ export const StyledLink = ({
           <NoUnderlineHover
             href={href}
             target={isExternalLink ? '_blank' : undefined}
+            rel={isExternalLink ? 'noopener noreferrer' : undefined}
           >
             <StyleSpan>{children}</StyleSpan>
           </NoUnderlineHover>
