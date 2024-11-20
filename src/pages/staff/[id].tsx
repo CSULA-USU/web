@@ -2,8 +2,10 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
+import { QRCodeSVG } from 'qrcode.react';
 import Image from 'next/image';
 import staff from 'data/staff.json';
+import { toKebabCase } from 'utils/stringhelpers';
 import { StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 import { toTitleCase } from 'utils/stringhelpers';
@@ -13,7 +15,8 @@ const OutsideContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  position: fixed;
+  height: 100%;
   width: 100%;
   background: linear-gradient(
     135deg,
@@ -22,13 +25,14 @@ const OutsideContainer = styled.div`
     ${Colors.primary} 54%,
     ${Colors.greyDarkest} 54%
   );
+  overflow: auto;
 `;
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 95vh;
   width: 95vw;
+  max-width: 400px;
   border-radius: 16px;
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   overflow: hidden;
@@ -42,12 +46,12 @@ const CardContainerBottom = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 24px 24px 24px;
+  padding: 68px 24px 12px 24px;
   background-color: ${Colors.white};
 `;
 
 const CardContainerTop = styled.div`
-  height: 400px;
+  min-height: 200px;
   width: 100%;
   background-image: url('/about/calstatela-hero-business-card.jpeg');
   background-size: cover;
@@ -120,13 +124,20 @@ const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
   background-size: cover;
   background-position: top;
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
+  height: 112px;
+  width: 112px;
   flex-shrink: 0;
   position: absolute;
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
+`;
+
+const QRContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: ${Spaces.md};
 `;
 
 const ShadowWrapper = styled.div`
@@ -300,25 +311,39 @@ export default function StaffBusinessCard() {
                     }}
                   />
                 </IconContainer>
-                <IconAndInfoContainerRight>
-                  <Typography
-                    variant="span"
-                    size="xs"
-                    color="greyDarker"
-                    as="p"
-                  >
-                    5154 State University Dr.
-                  </Typography>
-                  <Typography
-                    variant="span"
-                    size="xs"
-                    color="greyDarker"
-                    as="p"
-                  >
-                    Los Angeles, CA 90032
-                  </Typography>
-                </IconAndInfoContainerRight>
+                <StyledLink
+                  href={
+                    'https://www.google.com/maps/search/?api=1&query=5154+State+University+Dr,+Los+Angeles,+CA+90032'
+                  }
+                  isInverseUnderlineStyling
+                >
+                  <IconAndInfoContainerRight>
+                    <Typography
+                      variant="span"
+                      size="xs"
+                      color="greyDarker"
+                      as="p"
+                    >
+                      5154 State University Dr.
+                    </Typography>
+                    <Typography
+                      variant="span"
+                      size="xs"
+                      color="greyDarker"
+                      as="p"
+                    >
+                      Los Angeles, CA 90032
+                    </Typography>
+                  </IconAndInfoContainerRight>
+                </StyledLink>
               </IconAndInfoContainer>
+              <QRContainer>
+                <QRCodeSVG
+                  value={`https://www.calstatelausu.org/staff/${
+                    staffData && toKebabCase(staffData.name)
+                  }`}
+                />
+              </QRContainer>
             </ContactInfoContainer>
           </CardContainerBottom>
         </CardContainer>
