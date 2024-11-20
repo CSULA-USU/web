@@ -268,11 +268,11 @@ const FamilyAndFriendsCostFAQs = [
 
 const MembershipIntakeForms = [
   {
-    href: 'https://www.dropbox.com/s/rwykmlhr6g552ld/membership-intake-checklist.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/wr90x4ndg7mvrlr/membership-intake-checklist.pdf?e=1&raw=1',
     title: 'Membership Intake Check List',
   },
   {
-    href: 'https://www.dropbox.com/s/3orhkpx63xfbwbl/notice-of-membership-intake.pdf?dl=0',
+    href: 'https://www.dropbox.com/s/3hawv1fwjq25z5z/notice-of-membership-intake.pdf?e=1&raw=1',
     title: 'Notice of Membership Intake',
   },
 ];
