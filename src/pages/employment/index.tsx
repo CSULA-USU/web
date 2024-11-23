@@ -128,7 +128,7 @@ export default function Employment() {
             ) : studentJobs.length >= 1 ? (
               studentJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <Typography variant="subheader" size="lg" color="black">
+                  <Typography variant="subheader" size="md" color="black">
                     <StyledLink isExternalLink href={j.link || ''}>
                       {j.title}
                     </StyledLink>
@@ -136,12 +136,12 @@ export default function Employment() {
                 </JobItem>
               ))
             ) : studentStatus == 'failed' ? (
-              <Typography variant="subheader" size="lg" color="black">
+              <Typography variant="subheader" size="md" color="black">
                 An error occurred when fetching the jobs. Please try reloading
                 your page.
               </Typography>
             ) : (
-              <Typography variant="subheader" size="lg" color="black">
+              <Typography variant="subheader" size="md" color="black">
                 No available student assistant positions at this time.
               </Typography>
             )}
@@ -155,7 +155,7 @@ export default function Employment() {
             ) : fullTimeJobs.length >= 1 ? (
               fullTimeJobs.map((j: any) => (
                 <JobItem key={`${j.title}`}>
-                  <Typography variant="subheader" size="lg" color="black">
+                  <Typography variant="subheader" size="md" color="black">
                     <StyledLink isExternalLink href={j.link}>
                       {j.title}
                     </StyledLink>
@@ -163,12 +163,12 @@ export default function Employment() {
                 </JobItem>
               ))
             ) : fullTimeStatus == 'failed' ? (
-              <Typography variant="subheader" size="lg" color="black">
+              <Typography variant="subheader" size="md" color="black">
                 An error occurred when fetching the jobs. Please try reloading
                 your page.
               </Typography>
             ) : (
-              <Typography variant="subheader" size="lg" color="black">
+              <Typography variant="subheader" size="md" color="black">
                 No available full-time positions at this time.
               </Typography>
             )}

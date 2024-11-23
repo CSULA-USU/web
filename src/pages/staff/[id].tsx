@@ -137,7 +137,7 @@ const QRContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: ${Spaces.md};
+  margin: ${Spaces.lg} 0 ${Spaces.md} 0;
 `;
 
 const ShadowWrapper = styled.div`
@@ -215,7 +215,7 @@ export default function StaffBusinessCard() {
                       href={`tel:${staffData.phone}`}
                       isInverseUnderlineStyling
                     >
-                      <Typography variant="span" size="xs" color="greyDarkest">
+                      <Typography variant="span" size="2xs" color="greyDarkest">
                         {staffData && staffData.phone}
                       </Typography>
                     </StyledLink>
@@ -239,7 +239,7 @@ export default function StaffBusinessCard() {
                       href={`mailto:${staffData.email}`}
                       isInverseUnderlineStyling
                     >
-                      <Typography variant="span" size="xs" color="greyDarkest">
+                      <Typography variant="span" size="2xs" color="greyDarkest">
                         {staffData.email}
                       </Typography>
                     </StyledLink>
@@ -266,7 +266,7 @@ export default function StaffBusinessCard() {
                     >
                       <Typography
                         variant="span"
-                        size="xs"
+                        size="2xs"
                         color="greyDarkest"
                         as="p"
                       >
@@ -291,7 +291,7 @@ export default function StaffBusinessCard() {
                   <StyledLink href={'/'} isInverseUnderlineStyling>
                     <Typography
                       variant="span"
-                      size="xs"
+                      size="2xs"
                       color="greyDarker"
                       as="p"
                     >
@@ -320,7 +320,7 @@ export default function StaffBusinessCard() {
                   <IconAndInfoContainerRight>
                     <Typography
                       variant="span"
-                      size="xs"
+                      size="2xs"
                       color="greyDarker"
                       as="p"
                     >
@@ -328,7 +328,7 @@ export default function StaffBusinessCard() {
                     </Typography>
                     <Typography
                       variant="span"
-                      size="xs"
+                      size="2xs"
                       color="greyDarker"
                       as="p"
                     >

@@ -8,6 +8,7 @@ import { Typography } from '../Typography';
 import { Image, Panel, StyledLink } from 'components';
 import { GenericModal } from 'modules';
 import { Spaces } from 'theme';
+import { useBreakpoint } from 'hooks';
 
 interface CardStyles {
   margin?: string;
@@ -37,7 +38,6 @@ const CenterWord = styled.div`
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
 `;
 
@@ -55,13 +55,16 @@ const StaffCard = styled.button`
 
 const StaffModalContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   margin: ${Spaces.sm} 0 0 0;
 `;
 
-const UpperContainer = styled.div`
+const UpperContainer = styled.div<{ screenSize: boolean }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ screenSize }) => (screenSize ? 'column' : 'row')};
+  max-width: 800px;
 `;
 
 const ImageContainer = styled.div`
@@ -73,6 +76,7 @@ const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  max-width: 400px;
 `;
 
 const QRContainer = styled.div`
@@ -121,6 +125,9 @@ export const StaffCardWithModal = ({
   ...props
 }: CardProps) => {
   const [showModal, setShowModal] = useState(false);
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  console.log('ismobile', isMobile);
+  console.log('istablet', isTablet);
 
   function openModal() {
     setShowModal(true);
@@ -179,35 +186,42 @@ export const StaffCardWithModal = ({
       <GenericModal
         isOpen={showModal}
         onRequestClose={() => closeModal()}
-        height="90vh"
-        width="95vw"
+        height={isDesktop ? '90vh' : 'auto'}
+        width={isDesktop ? '95vw' : 'auto'}
       >
         <StaffModalContainer>
-          <UpperContainer>
+          <UpperContainer screenSize={isDesktop}>
             <ImageContainer>
               <Image src={src} alt={alt} width="220px" height="245px" />
             </ImageContainer>
             <InfoContainer>
-              <Typography as="h1" variant="pageHeader" size="xl" lineHeight="1">
-                {name}
-              </Typography>
-              {pronouns && (
-                <em>
-                  <Typography size="sm" margin="4px 0 16px 0" as="p">
-                    {pronouns}
-                  </Typography>
-                </em>
-              )}
-              <Typography
-                as="p"
-                variant="cta"
-                color="gold"
-                size="md"
-                weight="700"
-                margin="0"
-              >
-                {title}
-              </Typography>
+              <div>
+                <Typography
+                  as="h1"
+                  variant="pageHeader"
+                  size="xl"
+                  lineHeight="1"
+                >
+                  {name}
+                </Typography>
+                {pronouns && (
+                  <em>
+                    <Typography size="sm" margin="4px 0 16px 0" as="p">
+                      {pronouns}
+                    </Typography>
+                  </em>
+                )}
+                <Typography
+                  as="p"
+                  variant="cta"
+                  color="gold"
+                  size="md"
+                  weight="700"
+                  margin={`0 0 ${Spaces.sm} 0`}
+                >
+                  {title}
+                </Typography>
+              </div>
               <IconAndInfoContainer>
                 <IconContainer>
                   <MdEmail
@@ -261,17 +275,14 @@ export const StaffCardWithModal = ({
           </UpperContainer>
           <QRContainer>
             <StyledLink
-              isInverseUnderlineStyling
               href={`/staff/${toKebabCase(name)}`}
+              isInverseUnderlineStyling
             >
-              <Typography
-                color="greyDarker"
-                variant="span"
-                margin={`0 0 ${Spaces.sm} 0`}
-              >
-                View Card
+              <Typography color="greyDarker" variant="span">
+                View Virtual Card
               </Typography>
             </StyledLink>
+            <br />
             <QRCodeSVG
               value={`https://www.calstatelausu.org/staff/${toKebabCase(name)}`}
             />
