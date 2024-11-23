@@ -108,7 +108,7 @@ export default function Staff() {
         coalition of parts or members. A confederation of independent
         individuals for some common purpose.
       </Header>
-      <StaffNav></StaffNav>
+      <StaffNav />
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {staffCards.map((s) => (
           <StaffCardWithModal
