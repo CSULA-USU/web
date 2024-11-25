@@ -120,12 +120,14 @@ const DesignsContainer = styled.div`
   margin: 0 24px 0 0;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 const Graphic = styled.button`
   background: transparent;
   padding: 0;
   border: none;
+  cursor: pointer;
 `;
 
 const HeaderContainer = styled.div`
