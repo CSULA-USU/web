@@ -62,7 +62,9 @@ export const GenericModal = ({
       border: `1px solid ${Colors.greyLightest}`,
       boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
       height: height ? height : 'auto',
+      maxHeight: '90vh',
       width: width ? width : 'auto',
+      maxWidth: '90vw',
       overflow: 'auto',
     },
   };
