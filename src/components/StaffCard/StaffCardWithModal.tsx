@@ -247,7 +247,7 @@ export const StaffCardWithModal = ({
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <Typography color="greyDarker">{email}</Typography>
+                    <Typography color="greyDarker">{email}test</Typography>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
                 {phone && (
