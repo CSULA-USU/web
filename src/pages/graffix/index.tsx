@@ -58,7 +58,6 @@ const cards1 = [
     alt: 'Postcard to promote the Graffix open house and job fair with an image of the work office in the background',
   },
 ];
-
 const cards2 = [
   {
     title: 'Smash League Tournament',
@@ -86,7 +85,6 @@ const cards2 = [
     alt: 'An instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
   },
 ];
-
 const cards3 = [
   {
     title: 'Brown & Gay in LA',
@@ -122,14 +120,12 @@ const DesignsContainer = styled.div`
   margin: 0 24px 0 0;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 `;
 
 const Graphic = styled.button`
   background: transparent;
   padding: 0;
   border: none;
-  cursor: pointer;
 `;
 
 const HeaderContainer = styled.div`
@@ -202,7 +198,7 @@ export default function Graffix() {
           {!isDesktop && (
             <Image
               src="https://www.dropbox.com/s/heoyre5celakkg1/students-1.png?st=ntenkaq9&raw=1"
-              alt="two female Graffix students posing and showcasing the Graffix department tote bags"
+              alt="two female students posing and  showcasing the Graffix department tote bags"
               width={600}
               height={700}
             />
@@ -372,7 +368,6 @@ export default function Graffix() {
         <GenericModal
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
-          width="600px"
         >
           <Typography variant="titleSmall" margin="16px 0">
             {modalData.title}
@@ -380,8 +375,8 @@ export default function Graffix() {
           <Image
             src={modalData.src}
             alt={modalData.title}
-            width="100%"
-            height="auto"
+            width="80%"
+            height="80%"
           />
           <Typography weight="700">{modalData.designer}</Typography>
           <Typography variant="copy" margin="12px 0 0 0">
