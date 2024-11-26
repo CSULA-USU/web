@@ -38,7 +38,6 @@ const CenterWord = styled.div`
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
 `;
 
@@ -75,7 +74,6 @@ const ImageContainer = styled.div`
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-decoration: none;
   max-width: 400px;
@@ -127,7 +125,9 @@ export const StaffCardWithModal = ({
   ...props
 }: CardProps) => {
   const [showModal, setShowModal] = useState(false);
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  console.log('ismobile', isMobile);
+  console.log('istablet', isTablet);
 
   function openModal() {
     setShowModal(true);
@@ -170,6 +170,7 @@ export const StaffCardWithModal = ({
                 {title}
               </Typography>
             </div>
+
             <div>
               <Image src={src} alt={alt} width="220px" height="245px" />
               <NameSection>
