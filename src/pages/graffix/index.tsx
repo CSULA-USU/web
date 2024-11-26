@@ -108,7 +108,7 @@ const cards3 = [
     src: '/departments/graffix/student-designs/study-break-of-color.png',
     description:
       'An instagram post graphic to promote a study break event with information on when and where.',
-    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxing',
+    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxingTEST',
   },
 ];
 
