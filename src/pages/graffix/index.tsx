@@ -108,14 +108,15 @@ const cards3 = [
     src: '/departments/graffix/student-designs/study-break-of-color.png',
     description:
       'An instagram post graphic to promote a study break event with information on when and where.',
-    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxingTEST',
+    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxing',
   },
 ];
 
 const DesignsContainer = styled.div`
   width: calc(33.33% - 24px);
   ${media('tablet')(`
-   width: 100%
+   width: 100%;
+   margin: 0;
    `)}
   margin: 0 24px 0 0;
   display: flex;
@@ -153,7 +154,7 @@ const ScreenReaderOnly = styled.div`
 `;
 
 export default function Graffix() {
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<DesignCardData | null>(null);
 
@@ -199,7 +200,7 @@ export default function Graffix() {
           {!isDesktop && (
             <Image
               src="https://www.dropbox.com/s/heoyre5celakkg1/students-1.png?st=ntenkaq9&raw=1"
-              alt="two female students posing and  showcasing the Graffix department tote bags"
+              alt="two female students posing and showcasing the Graffix department tote bags"
               width={600}
               height={700}
             />
@@ -222,6 +223,7 @@ export default function Graffix() {
           backgroundColor="greyLightest"
           justifyContent="center"
           alignItems="center"
+          flexDirection={isTablet ? 'column' : 'row'}
         >
           <DesignsContainer>
             {cards1.map((props) => (
@@ -367,7 +369,7 @@ export default function Graffix() {
       <InstagramFeed department="graffix" />
       {modalData && (
         <GenericModal
-          width="600px"
+          width={isDesktop ? '90%' : '600px'}
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
