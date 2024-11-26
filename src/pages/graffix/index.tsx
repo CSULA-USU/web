@@ -58,6 +58,7 @@ const cards1 = [
     alt: 'Postcard to promote the Graffix open house and job fair with an image of the work office in the background',
   },
 ];
+
 const cards2 = [
   {
     title: 'Smash League Tournament',
@@ -85,6 +86,7 @@ const cards2 = [
     alt: 'An instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
   },
 ];
+
 const cards3 = [
   {
     title: 'Brown & Gay in LA',
@@ -200,7 +202,7 @@ export default function Graffix() {
           {!isDesktop && (
             <Image
               src="https://www.dropbox.com/s/heoyre5celakkg1/students-1.png?st=ntenkaq9&raw=1"
-              alt="two female students posing and  showcasing the Graffix department tote bags"
+              alt="two female Graffix students posing and showcasing the Graffix department tote bags"
               width={600}
               height={700}
             />
@@ -370,6 +372,7 @@ export default function Graffix() {
         <GenericModal
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
+          width="600px"
         >
           <Typography variant="titleSmall" margin="16px 0">
             {modalData.title}
@@ -377,8 +380,8 @@ export default function Graffix() {
           <Image
             src={modalData.src}
             alt={modalData.title}
-            width="80%"
-            height="80%"
+            width="100%"
+            height="auto"
           />
           <Typography weight="700">{modalData.designer}</Typography>
           <Typography variant="copy" margin="12px 0 0 0">
