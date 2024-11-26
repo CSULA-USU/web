@@ -33,6 +33,7 @@ interface CardProps extends CardStyles {
   bio?: string;
   email?: string;
 }
+
 const CenterWord = styled.div`
   text-align: center;
   word-wrap: break-word;
@@ -68,16 +69,16 @@ const UpperContainer = styled.div<{ screenSize: boolean }>`
   max-width: 800px;
 `;
 
-const ImageContainer = styled.div`
-  margin: 0 0 ${Spaces.sm} 0;
+const ImageContainer = styled.div<{ screenSize: boolean }>`
+  margin: 0 ${({ screenSize }) => (screenSize ? 0 : Spaces.md)} ${Spaces.sm} 0;
 `;
 
-const InfoContainer = styled.div`
+const InfoContainer = styled.div<{ screenSize: boolean }>`
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   max-width: 400px;
 `;
 
@@ -86,13 +87,19 @@ const QRContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: ${Spaces.sm};
 `;
 
 const IconAndInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  width: 100%;
   margin-bottom: ${Spaces.sm};
+`;
+
+const InfoContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const IconAndInfoContainerRight = styled.div`
@@ -111,6 +118,12 @@ const IconContainer = styled.div`
   width: 24px;
   margin-right: ${Spaces.sm};
   flex-shrink: 0;
+`;
+
+const InfoNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const StaffCardWithModal = ({
@@ -190,11 +203,11 @@ export const StaffCardWithModal = ({
       >
         <StaffModalContainer>
           <UpperContainer screenSize={isDesktop}>
-            <ImageContainer>
+            <ImageContainer screenSize={isDesktop}>
               <Image src={src} alt={alt} width="220px" height="245px" />
             </ImageContainer>
-            <InfoContainer>
-              <div>
+            <InfoContainer screenSize={isDesktop}>
+              <InfoNameContainer>
                 <Typography
                   as="h1"
                   variant="pageHeader"
@@ -220,26 +233,11 @@ export const StaffCardWithModal = ({
                 >
                   {title}
                 </Typography>
-              </div>
-              <IconAndInfoContainer>
-                <IconContainer>
-                  <MdEmail
-                    style={{
-                      height: '16px',
-                      width: '16px',
-                      flexShrink: 0,
-                      color: 'white',
-                    }}
-                  />
-                </IconContainer>
-                <IconAndInfoContainerRight>
-                  <Typography color="greyDarker">{email}</Typography>
-                </IconAndInfoContainerRight>
-              </IconAndInfoContainer>
-              {phone && (
+              </InfoNameContainer>
+              <InfoContactContainer>
                 <IconAndInfoContainer>
                   <IconContainer>
-                    <BiSolidPhone
+                    <MdEmail
                       style={{
                         height: '16px',
                         width: '16px',
@@ -249,27 +247,44 @@ export const StaffCardWithModal = ({
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <Typography color="greyDarker">{phone}</Typography>
+                    <Typography color="greyDarker">{email}</Typography>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
-              )}
-              {bio && (
-                <IconAndInfoContainer>
-                  <IconContainer>
-                    <BiSolidUserDetail
-                      style={{
-                        height: '16px',
-                        width: '16px',
-                        flexShrink: 0,
-                        color: 'white',
-                      }}
-                    />
-                  </IconContainer>
-                  <IconAndInfoContainerRight>
-                    <Typography color="greyDarker">{bio}</Typography>
-                  </IconAndInfoContainerRight>
-                </IconAndInfoContainer>
-              )}
+                {phone && (
+                  <IconAndInfoContainer>
+                    <IconContainer>
+                      <BiSolidPhone
+                        style={{
+                          height: '16px',
+                          width: '16px',
+                          flexShrink: 0,
+                          color: 'white',
+                        }}
+                      />
+                    </IconContainer>
+                    <IconAndInfoContainerRight>
+                      <Typography color="greyDarker">{phone}</Typography>
+                    </IconAndInfoContainerRight>
+                  </IconAndInfoContainer>
+                )}
+                {bio && (
+                  <IconAndInfoContainer>
+                    <IconContainer>
+                      <BiSolidUserDetail
+                        style={{
+                          height: '16px',
+                          width: '16px',
+                          flexShrink: 0,
+                          color: 'white',
+                        }}
+                      />
+                    </IconContainer>
+                    <IconAndInfoContainerRight>
+                      <Typography color="greyDarker">{bio}</Typography>
+                    </IconAndInfoContainerRight>
+                  </IconAndInfoContainer>
+                )}
+              </InfoContactContainer>
             </InfoContainer>
           </UpperContainer>
           <QRContainer>
