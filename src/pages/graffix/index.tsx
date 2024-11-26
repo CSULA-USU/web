@@ -126,6 +126,7 @@ const Graphic = styled.button`
   background: transparent;
   padding: 0;
   border: none;
+  cursor: pointer;
 `;
 
 const HeaderContainer = styled.div`
@@ -366,6 +367,7 @@ export default function Graffix() {
       <InstagramFeed department="graffix" />
       {modalData && (
         <GenericModal
+          width="600px"
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
