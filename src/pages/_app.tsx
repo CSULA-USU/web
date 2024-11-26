@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { EventsLoader } from 'components';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <EventsLoader />
       <Component {...pageProps} />
       <Analytics />
+      <SpeedInsights />
     </RecoilRoot>
   );
 }
