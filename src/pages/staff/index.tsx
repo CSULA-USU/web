@@ -35,6 +35,7 @@ export default function Staff() {
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: 'center',
+              padding: '0',
             }}
           >
             {TabItems.map((item, index) => (
