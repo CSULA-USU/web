@@ -1,89 +1,90 @@
-import { Page, Header } from 'modules';
+import { useState } from 'react';
 import Head from 'next/head';
-import { FluidContainer, Image, Typography, Button } from 'components';
-import styled from 'styled-components';
-import { StaffCardWithModal } from 'components/StaffCard';
-import { useEffect, useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {
+  FluidContainer,
+  Image,
+  Typography,
+  Button,
+  StaffCardWithModal,
+} from 'components';
 import staff from 'data/staff.json';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
+import { Page, Header } from 'modules';
 
-const NavItemContainer = styled.div`
-  *:hover {
-    color: ${Colors.primary};
-  }
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const NavItems = [
+const TabItems = [
   'All',
   'Directors',
   'Administration',
-  'Center for Student Involvement',
-  'Cross Cultural Centers',
+  'CSI',
+  'CCC',
   'Graffix',
   'Operations',
   'Recreation',
 ];
 
 export default function Staff() {
-  const [buttonType, setButtonType] = useState('');
-  const [staffCards, setStaffCards] = useState(staff);
-  useEffect(() => {
-    switch (buttonType) {
-      case 'All':
-        setStaffCards(staff);
-        break;
-      case 'Directors':
-        const directors = staff.filter((s) => s.tags.includes('Director'));
-        setStaffCards(directors);
-        break;
-      case 'Administration':
-        const administration = staff.filter((s) =>
-          s.tags.includes('Administration'),
-        );
-        setStaffCards(administration);
-        break;
-      case 'Center for Student Involvement':
-        const csi = staff.filter((s) => s.tags.includes('CSI'));
-        setStaffCards(csi);
-        break;
-      case 'Cross Cultural Centers':
-        const ccc = staff.filter((s) => s.tags.includes('CCC'));
-        setStaffCards(ccc);
-        break;
-      case 'Graffix':
-        const graffix = staff.filter((s) => s.tags.includes('Graffix'));
-        setStaffCards(graffix);
-        break;
-      case 'Operations':
-        const operations = staff.filter((s) => s.tags.includes('Operations'));
-        setStaffCards(operations);
-        break;
-      case 'Recreation':
-        const recreations = staff.filter((s) => s.tags.includes('Recreation'));
-        setStaffCards(recreations);
-        break;
-    }
-  }, [buttonType]);
-
-  const StaffNav = () => {
+  const StaffTabs = () => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
     return (
       <FluidContainer flex justifyContent="space-evenly" flexWrap="wrap">
-        {NavItems.map((item) => (
-          <NavItemContainer
-            key={item}
-            onClick={() => {
-              setButtonType(item);
+        <Tabs defaultIndex={0} onSelect={(index) => setSelectedIndex(index)}>
+          <TabList
+            style={{
+              listStyleType: 'none',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
             }}
           >
-            <Button margin="5px" variant="black">
-              <Typography lineHeight="1" variant="cta" color="white" size="xs">
-                {item}
-              </Typography>
-            </Button>
-          </NavItemContainer>
-        ))}
+            {TabItems.map((item, index) => (
+              <Tab key={item}>
+                <Button margin="5px" variant="black">
+                  <Typography
+                    lineHeight="1"
+                    variant="cta"
+                    color={selectedIndex === index ? 'primary' : 'white'}
+                    size="xs"
+                  >
+                    {item}
+                  </Typography>
+                </Button>
+              </Tab>
+            ))}
+          </TabList>
+          {TabItems.map((item) => (
+            <TabPanel key={item}>
+              <FluidContainer flex flexWrap="wrap" justifyContent="center">
+                {staff.map(
+                  (s) =>
+                    (item === 'All' || s.tags.includes(item)) && (
+                      <StaffCardWithModal
+                        key={s.name}
+                        name={s.name}
+                        title={s.title}
+                        src={s.src}
+                        alt={s.alt}
+                        tags={s.tags}
+                        margin={`${Spaces.sm}`}
+                        pronouns={s.pronouns}
+                        email={s.email}
+                        phone={s.phone}
+                        bio={s.bio}
+                        rounded
+                      >
+                        <Typography size="xs" as="p">
+                          {s.department}
+                        </Typography>
+                        <Typography size="xs" as="p">
+                          {s.email}
+                        </Typography>
+                      </StaffCardWithModal>
+                    ),
+                )}
+              </FluidContainer>
+            </TabPanel>
+          ))}
+        </Tabs>
       </FluidContainer>
     );
   };
@@ -92,10 +93,10 @@ export default function Staff() {
     <Page>
       <Head>
         <title>U-SU Staff</title>
-        <meta name="author" content="Recreation" />
+        <meta name="author" content="Graffix" />
         <meta
           name="keywords"
-          content="Cal State LA, CSULA, U-SU, University Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive"
+          content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -108,32 +109,7 @@ export default function Staff() {
         coalition of parts or members. A confederation of independent
         individuals for some common purpose.
       </Header>
-      <StaffNav />
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {staffCards.map((s) => (
-          <StaffCardWithModal
-            key={s.name}
-            name={s.name}
-            title={s.title}
-            src={s.src}
-            alt={s.alt}
-            tags={s.tags}
-            margin={`${Spaces.sm}`}
-            pronouns={s.pronouns}
-            email={s.email}
-            phone={s.phone}
-            bio={s.bio}
-            rounded
-          >
-            <Typography size="xs" as="p">
-              {s.department}
-            </Typography>
-            <Typography size="xs" as="p">
-              {s.email}
-            </Typography>
-          </StaffCardWithModal>
-        ))}
-      </FluidContainer>
+      <StaffTabs />
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of full time u-su staff"
