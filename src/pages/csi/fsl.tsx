@@ -1,22 +1,24 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import styled from 'styled-components';
+import { AiOutlineFileText } from 'react-icons/ai';
+import { BiChevronRight } from 'react-icons/bi';
+// import { Panel } from 'react-tabs';
 import { Colors, Spaces } from 'theme';
 import { DocumentLink, Page } from 'modules';
 import { useBreakpoint } from 'hooks';
-import { useEffect, useState } from 'react';
-import { AiOutlineFileText } from 'react-icons/ai';
-import { BiChevronRight } from 'react-icons/bi';
 import {
-  FluidContainer,
-  Typography,
-  Image,
-  Expandable,
-  Divider,
-  DescriptionCard,
   Button,
   Card,
+  DescriptionCard,
+  Divider,
+  Expandable,
+  FluidContainer,
+  Image,
   Panel,
+  TabCluster,
+  Typography,
 } from 'components';
 import chapters from 'data/fsl-chapters.json';
 
@@ -178,8 +180,7 @@ const FamilyAndFriendsCostOfMembershipConent = [
 
 const FamilyAndFriendsCostFAQs = [
   {
-    header:
-      'What is Fraternity and Sorority Life? What is involved in Membership?',
+    header: 'What is involved in Membership?',
     children:
       'Joining a fraternity or sorority is a lifelong commitment and an excellent investment for your child’s future. Our students are leaders on campus and are often heavily involved in community service and philanthropic projects. Fraternity and sorority members enjoy the friendship of their “brothers” and “sisters” for life. They are highly involved, academically committed, and well-rounded.',
   },
@@ -203,7 +204,7 @@ const FamilyAndFriendsCostFAQs = [
             and philanthropic donations.
           </li>
           <li>
-            Increases the student’s involvement on campus and within the
+            Increases the student&apos;s involvement on campus and within the
             community.
           </li>
           <li>
@@ -503,6 +504,7 @@ export default function FSL() {
           </Typography>
         </TextCenter>
       </FluidContainer>
+      <TabCluster tabItems={NavItems}></TabCluster>
       <FSLNav />
       {displayContent === 'AboutSection' && (
         <AboutSection>
@@ -805,17 +807,17 @@ export default function FSL() {
               can about Greek life by asking questions of your student as they
               meet members in fraternities and sororities. If you have questions
               about what your student is saying, call the Center for Student
-              Involvement. We’re happy to answer any questions.
+              Involvement. We&apos;re happy to answer any questions.
               <br />
               <br />
               Keep an open mind. Greek life is not for everyone. Just because
-              you may have been a fraternity or sorority member doesn’t mean
-              that it is the right choice for your student and vice versa.
+              you may have been a fraternity or sorority member doesn&apos;t
+              mean that it is the right choice for your student and vice versa.
               Fraternities and sororities are different on every campus. Groups
               that may have been strong on the campus where you attended school
-              or that you’ve experienced may not have the same reputation at Cal
-              State LA. Let your student choose the group that they feel the
-              most comfortable joining.
+              or that you&apos;ve experienced may not have the same reputation
+              at Cal State LA. Let your student choose the group that they feel
+              the most comfortable joining.
               <br />
               <br />
               Talk to your student beforehand about the financial obligation.
@@ -823,9 +825,10 @@ export default function FSL() {
               <br />
               <br />
               You do not want to become too involved in the sorority and
-              fraternity recruitment/intake process - this is your student’s
-              decision. There will be plenty of activities and events for you to
-              attend once your student joins one of our organizations.
+              fraternity recruitment/intake process - this is your
+              student&apos;s decision. There will be plenty of activities and
+              events for you to attend once your student joins one of our
+              organizations.
               <br />
               <br />
               Too often, parents do not give their students the autonomy to
@@ -836,7 +839,7 @@ export default function FSL() {
               <br />
               <br />
               If you have any questions or concerns about Greek Life on Cal
-              State LA’s campus, please contact us!
+              State LA&apos;s campus, please contact us!
             </Typography>
             <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0`}>
               Contact Us
@@ -855,32 +858,6 @@ export default function FSL() {
                 topBorder
                 margin={`${Spaces.md} 0`}
               />
-            ))}
-          </FluidContainer>
-          <FluidContainer backgroundColor="black">
-            <Typography
-              variant="title"
-              color="gold"
-              as="h2"
-              margin={`0 0 ${Spaces.md} `}
-            >
-              Frequently Asked Questions
-            </Typography>
-            {FamilyAndFriendsCostFAQs.map((faq) => (
-              <div key={faq.header}>
-                <Expandable
-                  header={
-                    <Typography color="white" variant="titleSmall">
-                      {faq.header}
-                    </Typography>
-                  }
-                >
-                  <Typography color="white" margin={`${Spaces.md} 0`}>
-                    {faq.children}
-                  </Typography>
-                </Expandable>
-                <Divider color="gold" margin={`${Spaces.md} 0`} />
-              </div>
             ))}
           </FluidContainer>
         </FamilyAndFriendsSection>
@@ -996,6 +973,33 @@ export default function FSL() {
           </FluidContainer>
         </ResourcesSection>
       )}
+      <FluidContainer backgroundColor="black">
+        <Typography
+          variant="title"
+          color="gold"
+          as="h2"
+          margin={`0 0 ${Spaces.md} `}
+        >
+          Frequently Asked Questions
+        </Typography>
+        {FamilyAndFriendsCostFAQs.map((faq) => (
+          <div key={faq.header}>
+            <Expandable
+              indicator={<BiChevronRight size={36} color="white" />}
+              header={
+                <Typography color="white" variant="titleSmall">
+                  {faq.header}
+                </Typography>
+              }
+            >
+              <Typography color="white" margin={`${Spaces.md} 0`}>
+                {faq.children}
+              </Typography>
+            </Expandable>
+            <Divider color="gold" margin={`${Spaces.md} 0`} />
+          </div>
+        ))}
+      </FluidContainer>
     </Page>
   );
 }
