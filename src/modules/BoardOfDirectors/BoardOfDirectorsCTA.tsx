@@ -39,7 +39,7 @@ export const BoardOfDirectorsCTA = () => {
         </Typography>
         <Typography margin="revert-layer">
           Apply to be on the board of directors to make a difference while
-          developing your leadership skills.
+          developing your leadership skills
         </Typography>
       </BoardOfDirectorsCTAText>
       <BoardOfDirectorsCTAButtons>
