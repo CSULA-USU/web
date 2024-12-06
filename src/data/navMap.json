@@ -142,32 +142,32 @@
     ]
   },
   {
-    "text": "Governance",
-    "href": "/governance",
+    "text": "Board Of Directors",
+    "href": "/board-of-directors",
     "sub": [
       {
-        "text": "Governance",
-        "href": "/governance"
+        "text": "Become a Director",
+        "href": "/board-of-directors"
       },
       {
-        "text": "How to Vote",
-        "href": "/governance/how-to-vote"
+        "text": "Roster",
+        "href": "/board-of-directors/roster"
       },
       {
-        "text": "Meet The Board",
-        "href": "/governance/meet-the-board"
+        "text": "Meeting Schedule",
+        "href": "/board-of-directors/meeting-schedule"
       },
       {
         "text": "Public Documents",
-        "href": "/governance/public-documents"
+        "href": "/board-of-directors/public-documents"
       },
       {
         "text": "Archives",
-        "href": "/governance/public-document-archives"
+        "href": "/board-of-directors/public-document-archives"
       },
       {
         "text": "Student Leader Elections",
-        "href": "/governance/student-leader-elections"
+        "href": "/board-of-directors/student-leader-elections"
       }
     ]
   },

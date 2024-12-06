@@ -6,12 +6,10 @@ import {
   Card,
   Typography,
   Tabs,
-  Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
-import { AiOutlineFileText } from 'react-icons/ai';
 import { GovernanceFooter } from 'partials';
 import { useBreakpoint } from 'hooks';
 
@@ -19,14 +17,6 @@ const IconHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${Spaces.md};
-`;
-
-const LinkInner = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    margin-right: ${Spaces.sm};
-  }
 `;
 
 const TabContent = styled(Typography)`
@@ -173,13 +163,13 @@ const tabItems = [
   { title: 'Personnel', children: <Personnel /> },
 ];
 
-export default function Governance() {
+export default function BoardOfDirectors() {
   const { isDesktop } = useBreakpoint();
 
   return (
     <Page>
       <Head>
-        <title>U-SU Governance</title>
+        <title>Board of Directors</title>
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
@@ -192,19 +182,18 @@ export default function Governance() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
-        title="Governance"
+        title="Become a Director"
         backgroundImage="/backgrounds/subtle-background-2.jpg"
-        extra={
-          <Button
-            variant="black"
-            href="/governance/public-documents"
-            margin={Spaces.md}
-          >
-            <LinkInner>
-              <AiOutlineFileText size="24px" /> Public Documents
-            </LinkInner>
-          </Button>
-        }
+        buttons={[
+          {
+            text: 'Public Documents',
+            href: '/board-of-directors/public-documents',
+          },
+          {
+            text: 'Archives',
+            href: '/board-of-directors/public-document-archives',
+          },
+        ]}
       >
         <Typography>
           The University-Student Union&apos;s Board of Directors is the
