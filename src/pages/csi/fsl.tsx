@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { AiOutlineFileText } from 'react-icons/ai';
 import { BiChevronRight } from 'react-icons/bi';
-// import { Panel } from 'react-tabs';
-import { Colors, Spaces } from 'theme';
+import { TabPanel } from 'react-tabs';
+import { Spaces } from 'theme';
 import { DocumentLink, Page } from 'modules';
 import { useBreakpoint } from 'hooks';
 import {
@@ -34,15 +33,6 @@ const AB524ReportContainer = styled.div`
 
 const TextCenter = styled.div`
   text-align: center;
-`;
-const NavItemContainer = styled.button`
-  background: transparent;
-  border: none;
-  padding: 0;
-  *:hover {
-    cursor: pointer;
-    color: ${Colors.gold};
-  }
 `;
 
 const AboutSection = styled.div``;
@@ -208,8 +198,8 @@ const FamilyAndFriendsCostFAQs = [
             community.
           </li>
           <li>
-            Provides leadership skills, activities and experiences that aren’t
-            available to non-affiliated students.
+            Provides leadership skills, activities and experiences that
+            aren&apos;t available to non-affiliated students.
           </li>
           <li>
             Gives members an advantage of networking with distinguished alumni.
@@ -263,7 +253,7 @@ const FamilyAndFriendsCostFAQs = [
   {
     header: "Who is in charge of my student's fraternity/sorority?",
     children:
-      'At Cal State LA, Fraternity and Sorority Life is staffed by Rebekah Galvan, Interim FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
+      'At Cal State LA, Fraternity and Sorority Life is staffed by Ian Prieto, FSL Coordinator and supported by the Center for Student Involvement. In addition to the support provided by CSI, chapters also elect undergraduate chapter officers to run the day-to-day operations, have alumni advisors, and are responsible to report to a(n) (inter)national headquarters.',
   },
 ];
 
@@ -398,62 +388,6 @@ const ResourceButtons = [
 
 export default function FSL() {
   const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
-  const [isNavButton, setIsNavButton] = useState('');
-  const [displayContent, setDisplayContent] = useState('');
-
-  useEffect(() => {
-    switch (isNavButton) {
-      case 'About Us':
-        setDisplayContent('AboutSection');
-        break;
-      case 'How to Join':
-        setDisplayContent('HowToJoinSection');
-        break;
-      case 'Chapters':
-        setDisplayContent('ChaptersSection');
-        break;
-      case 'Family and Friends':
-        setDisplayContent('FamilyAndFriendsSection');
-        break;
-      case 'Chapters':
-        setDisplayContent('ChaptersSection');
-        break;
-      case 'Family and Friends':
-        setDisplayContent('FamilyAndFriendsSection');
-        break;
-      case 'Current Members':
-        setDisplayContent('CurrentMembersSection');
-        break;
-      case 'Resources':
-        setDisplayContent('ResourcesSection');
-        break;
-      default:
-        setDisplayContent('AboutSection');
-    }
-  }, [isNavButton]);
-  const FSLNav = () => {
-    return (
-      <FluidContainer
-        backgroundColor="greyDarkest"
-        flex
-        justifyContent="space-evenly"
-        flexWrap="wrap"
-      >
-        {NavItems.map((item) => (
-          <NavItemContainer
-            key={item}
-            onClick={() => {
-              setIsNavButton(item);
-            }}
-          >
-            <Typography color="white" variant="labelTitleSmall">
-              {item}
-            </Typography>
-          </NavItemContainer>
-        ))}
-      </FluidContainer>
-    );
-  };
 
   return (
     <Page>
@@ -504,452 +438,466 @@ export default function FSL() {
           </Typography>
         </TextCenter>
       </FluidContainer>
-      <TabCluster tabItems={NavItems}></TabCluster>
-      <FSLNav />
-      {displayContent === 'AboutSection' && (
-        <AboutSection>
-          <FluidContainer>
-            <Expandable
-              indicator={<BiChevronRight size={36} />}
-              header={
-                <Typography variant="titleSmall" as="h2">
-                  What is Greek Life?
+      <TabCluster tabItems={NavItems}>
+        <TabPanel>
+          <AboutSection>
+            <FluidContainer>
+              <Expandable
+                indicator={<BiChevronRight size={36} />}
+                header={
+                  <Typography variant="titleSmall" as="h2">
+                    What is Greek Life?
+                  </Typography>
+                }
+              >
+                <Typography as="p" margin={`${Spaces.md} 0 `}>
+                  Fraternities and sororities provide an enriching student
+                  experience that helps individuals to grow and develop as
+                  students who have leadership and social skills, who prioritize
+                  their academics and service to community. Membership in a
+                  fraternity or sorority is life-long and provides connections
+                  long after graduation. Membership experiences focus around the
+                  following pillars of fraternity/sorority life
                 </Typography>
-              }
-            >
-              <Typography as="p" margin={`${Spaces.md} 0 `}>
-                Fraternities and sororities provide an enriching student
-                experience that helps individuals to grow and develop as
-                students who have leadership and social skills, who prioritize
-                their academics and service to community. Membership in a
-                fraternity or sorority is life-long and provides connections
-                long after graduation. Membership experiences focus around the
-                following pillars of fraternity/sorority life
-              </Typography>
-              <FluidContainer flex flexWrap="wrap" justifyContent="center">
-                {WhatIsGreekLifeDescriptionCards.map((props) => (
-                  <DescriptionCard
-                    rounded
-                    hoverable
-                    margin="24px 8px"
-                    key={`${props.children}`}
-                    width={!isTablet ? 'calc(45%)' : '100%'}
-                    minHeight="280px"
-                    imgSrc={props.imgSrc}
-                    imgAlt={props.imgAlt}
-                  >
-                    <Typography weight="700">{props.title}</Typography>
-                    <Typography>{props.children}</Typography>
-                  </DescriptionCard>
-                ))}
-              </FluidContainer>
-            </Expandable>
-            <Divider margin={`${Spaces.md} 0`} />
-            <Expandable
-              indicator={<BiChevronRight size={36} />}
-              header={
-                <Typography variant="titleSmall" as="h2">
-                  Community Reports
+                <FluidContainer flex flexWrap="wrap" justifyContent="center">
+                  {WhatIsGreekLifeDescriptionCards.map((props) => (
+                    <DescriptionCard
+                      rounded
+                      hoverable
+                      margin="24px 8px"
+                      key={`${props.children}`}
+                      width={!isTablet ? 'calc(45%)' : '100%'}
+                      minHeight="280px"
+                      imgSrc={props.imgSrc}
+                      imgAlt={props.imgAlt}
+                    >
+                      <Typography weight="700">{props.title}</Typography>
+                      <Typography>{props.children}</Typography>
+                    </DescriptionCard>
+                  ))}
+                </FluidContainer>
+              </Expandable>
+              <Divider margin={`${Spaces.md} 0`} />
+              <Expandable
+                indicator={<BiChevronRight size={36} />}
+                header={
+                  <Typography variant="titleSmall" as="h2">
+                    Community Reports
+                  </Typography>
+                }
+              >
+                <Typography as="p" margin={`0 0 ${Spaces.md} 0 `}>
+                  Community reports are created to demonstrate academic,
+                  service, and philanthropic efforts of the Greek community.
                 </Typography>
-              }
-            >
-              <Typography as="p" margin={`0 0 ${Spaces.md} 0 `}>
-                Community reports are created to demonstrate academic, service,
-                and philanthropic efforts of the Greek community.
-              </Typography>
-              <Typography variant="subheader" as="h3">
-                Campus-Recognized Sorority And Fraternity Transparency Act -
-                AB524
-              </Typography>
-              <Typography as="p" margin={`0 0 ${Spaces.md} 0`}>
-                The Annual Campus-Recognized Sorority and Fraternity
-                Transparency Report, which offers insights about recognized
-                fraternities and sororities Cal State LA during the previous
-                academic year, is now available. You can access the report here
-                by clicking the button below.
-              </Typography>
-              <AB524InfoSection>
+                <Typography variant="subheader" as="h3">
+                  Campus-Recognized Sorority And Fraternity Transparency Act -
+                  AB524
+                </Typography>
+                <Typography as="p" margin={`0 0 ${Spaces.md} 0`}>
+                  The Annual Campus-Recognized Sorority and Fraternity
+                  Transparency Report, which offers insights about recognized
+                  fraternities and sororities Cal State LA during the previous
+                  academic year, is now available. You can access the report
+                  here by clicking the button below.
+                </Typography>
+                <AB524InfoSection>
+                  <Typography as="p">
+                    This report is shared annually in October in compliance with{' '}
+                    <Link
+                      href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202120220AB524"
+                      aria-label="AB-524 Postsecondary education: Campus-Recognized Sorority and Fraternity Transparency Act information"
+                    >
+                      <strong>
+                        Assembly Bill 524; Sections 66310-66312 of the
+                        California Education Code
+                      </strong>
+                    </Link>
+                    , which requires that institutions in California with
+                    fraternities and sororities compile and maintain details
+                    about each organization, including information about the
+                    organizations, their members, and their conduct.
+                  </Typography>
+                </AB524InfoSection>
+                <AB524ReportContainer>
+                  <DocumentLink href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&raw=1">
+                    FY 22-23 Report
+                  </DocumentLink>
+                  <DocumentLink href="/departments/csi/fsl/AB524/2023-2024 AB 524 Report.pdf">
+                    FY 23-24 Report
+                  </DocumentLink>
+                </AB524ReportContainer>
+                <Typography variant="subheader" as="h3">
+                  Chapter Status
+                </Typography>
                 <Typography as="p">
-                  This report is shared annually in October in compliance with{' '}
-                  <Link
-                    href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202120220AB524"
-                    aria-label="AB-524 Postsecondary education: Campus-Recognized Sorority and Fraternity Transparency Act information"
-                  >
-                    <strong>
-                      Assembly Bill 524; Sections 66310-66312 of the California
-                      Education Code
-                    </strong>
-                  </Link>
-                  , which requires that institutions in California with
-                  fraternities and sororities compile and maintain details about
-                  each organization, including information about the
-                  organizations, their members, and their conduct.
+                  In an effort to be as transparent as possible with our
+                  community, the Center for Student Involvement has published
+                  the chapter status of each chapter chartered at California
+                  State University, Los Angeles.
                 </Typography>
-              </AB524InfoSection>
-              <AB524ReportContainer>
-                <DocumentLink href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&raw=1">
-                  FY 22-23 Report
-                </DocumentLink>
-                <DocumentLink href="/departments/csi/fsl/AB524/2023-2024 AB 524 Report.pdf">
-                  FY 23-24 Report
-                </DocumentLink>
-              </AB524ReportContainer>
-              <Typography variant="subheader" as="h3">
-                Chapter Status
+                <Typography weight="700" as="h4" margin={`${Spaces.sm} 0 0`}>
+                  <strong>University Status Key for FSl Groups</strong>
+                </Typography>
+                <ul>
+                  <li>
+                    <Typography as="p">
+                      <strong>Good Standing: </strong> the organization is
+                      officially recognized by the university. These
+                      organizations have the privileges of using University
+                      facilities and equipment, holding meetings and programs on
+                      campus, recruiting members that will be recognized by the
+                      University, participating in University-sponsored
+                      activities and events, and other benefits outlined in the
+                      Cal State LA Student Organization Handbook.
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography as="p">
+                      <strong>Unrecognized: </strong> the organization is not in
+                      good standing and is no longer associated with the
+                      University, their HQs, or council. The organization and
+                      its members do not receive any support or advisement from
+                      the University. Unrecognized organizations may not
+                      participate in any university-sponsored activity and may
+                      not utilize any property owned, operated, leased, or
+                      managed by Cal State LA. The University has severed its
+                      relationship with these organizations due to significant
+                      and serious concerns over the health and safety of our
+                      students and university community, and the University
+                      would strongly discourage maintaining or seeking
+                      membership in these organizations.
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography as="p">
+                      <strong>Probation: </strong>places the organization on
+                      probation for a period of time during which the
+                      organization is expected to demonstrate exemplary
+                      compliance with University policies. Probation may include
+                      conditions that the organization must meet to be removed
+                      from probation. The probationary conditions may specify
+                      the sanctions to be imposed should the organization not
+                      comply with the term(s) of probation.
+                    </Typography>
+                  </li>
+                </ul>
+                <abbr title="Fraternity and Sorority Scoresheet">
+                  <Button href="https://csula.sharepoint.com/:x:/s/CenterForStudentInvolvement/EVRwQIqtOeFAnArKx6PdXiwBT0QETtyq41vdycvduqprgQ?e=CEVBdS">
+                    FSL Scoresheet
+                  </Button>
+                </abbr>
+              </Expandable>
+              <Divider margin={`${Spaces.md} 0`} />
+              <Expandable
+                indicator={<BiChevronRight size={36} />}
+                header={
+                  <Typography variant="titleSmall" as="h2">
+                    Visit Us
+                  </Typography>
+                }
+              >
+                <Typography as="p" margin={`${Spaces.md} 0 `}>
+                  The CSI staff is available during the work week and can be
+                  seen on campus at night and weekends for meetings and programs
+                  to assist you in your fraternity and sorority experience.
+                  Please email us or stop by our office for more information.
+                </Typography>
+                <Typography weight="700" as="h3">
+                  Contact Us
+                </Typography>
+                <Typography as="p">Phone: 323-343-5113</Typography>
+                <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
+              </Expandable>
+              <Divider margin={`${Spaces.md} 0`} />
+            </FluidContainer>
+          </AboutSection>
+        </TabPanel>
+        <TabPanel>
+          <ChaptersSection>
+            <FluidContainer>
+              {chapters.map((obj: any) =>
+                Object.keys(obj).map((item) => (
+                  <>
+                    <Expandable
+                      indicator={<BiChevronRight size={36} />}
+                      header={
+                        <Typography variant="titleSmall"> {item}</Typography>
+                      }
+                    >
+                      <FluidContainer
+                        flex
+                        justifyContent="center"
+                        flexWrap="wrap"
+                      >
+                        {obj[item].map((p: any) => (
+                          <Card
+                            rounded
+                            title={p.name}
+                            key={p.name}
+                            width={
+                              isMobile
+                                ? '100%'
+                                : isTablet
+                                ? 'calc(45%)'
+                                : 'calc(33.33% - 8px)'
+                            }
+                            margin={` 0 ${Spaces.xs} ${Spaces.sm}`}
+                          >
+                            <Image
+                              marginBottom={Spaces.lg}
+                              src={p.crest}
+                              alt=""
+                              width="90%"
+                            />
+                            <Typography as="span">
+                              <strong>Values: </strong>
+                              {p.values.map((value: string) => value + ' ')}
+                              <br />
+                              <strong>Founding: </strong>
+                              {p.founding}
+                              <br />
+                              {p.communityService && (
+                                <Typography as="span">
+                                  <strong>Community Service:</strong>
+                                  {p.communityService.map(
+                                    (service: string) => service + ' ',
+                                  )}
+                                </Typography>
+                              )}
+                              <strong>Colors:</strong>
+                              {p.colors.map((color: string) => color + ' ')}
+                              <br />
+                              <strong>Symbol:</strong>
+                              {p.symbol}
+                            </Typography>
+                          </Card>
+                        ))}
+                      </FluidContainer>
+                    </Expandable>
+                    <Divider margin={`${Spaces.md} 0`} />
+                  </>
+                )),
+              )}
+            </FluidContainer>
+          </ChaptersSection>
+        </TabPanel>
+        <TabPanel>
+          <HowToJoinSection>
+            <FluidContainer>
+              <Typography as="p" color="white" margin={`${Spaces.sm} 0`}>
+                At Cal State LA, the joining process for each organization is
+                based on their governing council and their National and Regional
+                Offices. The process to join an organization is different for
+                each governing council.
+              </Typography>
+              {HowToJoinContent.map((item) => (
+                <FluidContainer flex flexWrap="wrap" key={item.title}>
+                  <Card title={item.title} width="100%" topBorder>
+                    {item.content}
+                  </Card>
+                </FluidContainer>
+              ))}
+            </FluidContainer>
+          </HowToJoinSection>
+        </TabPanel>
+        <TabPanel>
+          <FamilyAndFriendsSection>
+            <FluidContainer>
+              <Typography
+                variant="titleSmall"
+                color="gold"
+                as="h2"
+                margin={`${Spaces.md} 0`}
+              >
+                Welcome to Fraternity & Sorority Life at Cal State LA!
               </Typography>
               <Typography as="p">
-                In an effort to be as transparent as possible with our
-                community, the Center for Student Involvement has published the
-                chapter status of each chapter chartered at California State
-                University, Los Angeles.
+                Your student has embarked upon a great adventure and opportunity
+                by choosing to attend California State University, Los Angeles.
+                Your student has many opportunities ahead of them while at Cal
+                State LA. By joining a fraternity or sorority, they are joining
+                a number of other new members in their search for a sense of
+                community at the university. Being in a new environment can
+                cause students to feel overwhelmed. and for many parents, the
+                Greek community conjures up images of Animal House. That’s
+                simply not the reality! There are many myths about the Greek
+                community, but the reality is that men and women in fraternities
+                and sororities are committed to their academics, volunteer time
+                in the community, develop and strengthen their leadership
+                skills, and form a campus network with other Greeks. Our Greek
+                community consists of over 20 different organizations and over
+                500 students. As the Center for Student Involvement staff, we
+                work closely with the recognized organizations to enhance the
+                overall Greek experience by upholding their values, community
+                standards and university Policies.
               </Typography>
-              <Typography weight="700" as="h4" margin={`${Spaces.sm} 0 0`}>
-                <strong>University Status Key for FSl Groups</strong>
+              <Typography
+                variant="titleSmall"
+                as="h2"
+                margin={`${Spaces.md} 0`}
+              >
+                Your Role as a Parent/Family Member. Get Connected, Stay
+                Informed, Support Your Students.
               </Typography>
-              <ul>
-                <li>
-                  <Typography as="p">
-                    <strong>Good Standing: </strong> the organization is
-                    officially recognized by the university. These organizations
-                    have the privileges of using University facilities and
-                    equipment, holding meetings and programs on campus,
-                    recruiting members that will be recognized by the
-                    University, participating in University-sponsored activities
-                    and events, and other benefits outlined in the Cal State LA
-                    Student Organization Handbook.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography as="p">
-                    <strong>Unrecognized: </strong> the organization is not in
-                    good standing and is no longer associated with the
-                    University, their HQs, or council. The organization and its
-                    members do not receive any support or advisement from the
-                    University. Unrecognized organizations may not participate
-                    in any university-sponsored activity and may not utilize any
-                    property owned, operated, leased, or managed by Cal State
-                    LA. The University has severed its relationship with these
-                    organizations due to significant and serious concerns over
-                    the health and safety of our students and university
-                    community, and the University would strongly discourage
-                    maintaining or seeking membership in these organizations.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography as="p">
-                    <strong>Probation: </strong>places the organization on
-                    probation for a period of time during which the organization
-                    is expected to demonstrate exemplary compliance with
-                    University policies. Probation may include conditions that
-                    the organization must meet to be removed from probation. The
-                    probationary conditions may specify the sanctions to be
-                    imposed should the organization not comply with the term(s)
-                    of probation.
-                  </Typography>
-                </li>
-              </ul>
-              <abbr title="Fraternity and Sorority Scoresheet">
-                <Button href="https://csula.sharepoint.com/:x:/s/CenterForStudentInvolvement/EVRwQIqtOeFAnArKx6PdXiwBT0QETtyq41vdycvduqprgQ?e=CEVBdS">
-                  FSL Scoresheet
-                </Button>
-              </abbr>
-            </Expandable>
-            <Divider margin={`${Spaces.md} 0`} />
-            <Expandable
-              indicator={<BiChevronRight size={36} />}
-              header={
-                <Typography variant="titleSmall" as="h2">
-                  Visit Us
-                </Typography>
-              }
-            >
-              <Typography as="p" margin={`${Spaces.md} 0 `}>
-                The CSI staff is available during the work week and can be seen
-                on campus at night and weekends for meetings and programs to
-                assist you in your fraternity and sorority experience. Please
-                email us or stop by our office for more information.
+              <Typography as="p">
+                Students need support throughout the process of
+                recruitment/intake and new member education. Be supportive and
+                learn as much as you can about Greek life by asking questions of
+                your student as they meet members in fraternities and
+                sororities. If you have questions about what your student is
+                saying, call the Center for Student Involvement. We&apos;re
+                happy to answer any questions.
+                <br />
+                <br />
+                Keep an open mind. Greek life is not for everyone. Just because
+                you may have been a fraternity or sorority member doesn&apos;t
+                mean that it is the right choice for your student and vice
+                versa. Fraternities and sororities are different on every
+                campus. Groups that may have been strong on the campus where you
+                attended school or that you&apos;ve experienced may not have the
+                same reputation at Cal State LA. Let your student choose the
+                group that they feel the most comfortable joining.
+                <br />
+                <br />
+                Talk to your student beforehand about the financial obligation.
+                Determine who will pay for what and where the limits are.
+                <br />
+                <br />
+                You do not want to become too involved in the sorority and
+                fraternity recruitment/intake process - this is your
+                student&apos;s decision. There will be plenty of activities and
+                events for you to attend once your student joins one of our
+                organizations.
+                <br />
+                <br />
+                Too often, parents do not give their students the autonomy to
+                navigate their own experience as a college student. It helps the
+                student mature and gain some assertiveness when they feel the
+                need to call various offices with questions or concerns about
+                their decision to go Greek.
+                <br />
+                <br />
+                If you have any questions or concerns about Greek Life on Cal
+                State LA&apos;s campus, please contact us!
               </Typography>
-              <Typography weight="700" as="h3">
+              <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0`}>
                 Contact Us
               </Typography>
-              <Typography as="p">Phone: 323-343-5113</Typography>
-              <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
-            </Expandable>
-            <Divider margin={`${Spaces.md} 0`} />
-          </FluidContainer>
-        </AboutSection>
-      )}
-      {displayContent === 'ChaptersSection' && (
-        <ChaptersSection>
-          <FluidContainer>
-            {chapters.map((obj: any) =>
-              Object.keys(obj).map((item) => (
-                <>
-                  <Expandable
-                    indicator={<BiChevronRight size={36} />}
-                    header={
-                      <Typography variant="titleSmall"> {item}</Typography>
-                    }
-                  >
-                    <FluidContainer
-                      flex
-                      justifyContent="center"
-                      flexWrap="wrap"
-                    >
-                      {obj[item].map((p: any) => (
-                        <Card
-                          rounded
-                          title={p.name}
-                          key={p.name}
-                          width={
-                            isMobile
-                              ? '100%'
-                              : isTablet
-                              ? 'calc(45%)'
-                              : 'calc(33.33% - 8px)'
-                          }
-                          margin={` 0 ${Spaces.xs} ${Spaces.sm}`}
-                        >
-                          <Image
-                            marginBottom={Spaces.lg}
-                            src={p.crest}
-                            alt=""
-                            width="90%"
-                          />
-                          <Typography as="span">
-                            <strong>Values: </strong>
-                            {p.values.map((value: string) => value + ' ')}
-                            <br />
-                            <strong>Founding: </strong>
-                            {p.founding}
-                            <br />
-                            {p.communityService && (
-                              <Typography as="span">
-                                <strong>Community Service:</strong>
-                                {p.communityService.map(
-                                  (service: string) => service + ' ',
-                                )}
-                              </Typography>
-                            )}
-                            <strong>Colors:</strong>
-                            {p.colors.map((color: string) => color + ' ')}
-                            <br />
-                            <strong>Symbol:</strong>
-                            {p.symbol}
-                          </Typography>
-                        </Card>
-                      ))}
-                    </FluidContainer>
-                  </Expandable>
-                  <Divider margin={`${Spaces.md} 0`} />
-                </>
-              )),
-            )}
-          </FluidContainer>
-        </ChaptersSection>
-      )}
-      {displayContent === 'HowToJoinSection' && (
-        <HowToJoinSection>
-          <FluidContainer>
-            <Typography as="p" color="white" margin={`${Spaces.sm} 0`}>
-              At Cal State LA, the joining process for each organization is
-              based on their governing council and their National and Regional
-              Offices. The process to join an organization is different for each
-              governing council.
-            </Typography>
-            {HowToJoinContent.map((item) => (
-              <FluidContainer flex flexWrap="wrap" key={item.title}>
-                <Card title={item.title} width="100%" topBorder>
-                  {item.content}
-                </Card>
-              </FluidContainer>
-            ))}
-          </FluidContainer>
-        </HowToJoinSection>
-      )}
-      {displayContent === 'FamilyAndFriendsSection' && (
-        <FamilyAndFriendsSection>
-          <FluidContainer>
-            <Typography
-              variant="titleSmall"
-              color="gold"
-              as="h2"
-              margin={`${Spaces.md} 0`}
-            >
-              Welcome to Fraternity & Sorority Life at Cal State LA!
-            </Typography>
-            <Typography as="p">
-              Your student has embarked upon a great adventure and opportunity
-              by choosing to attend California State University, Los Angeles.
-              Your student has many opportunities ahead of them while at Cal
-              State LA. By joining a fraternity or sorority, they are joining a
-              number of other new members in their search for a sense of
-              community at the university. Being in a new environment can cause
-              students to feel overwhelmed. and for many parents, the Greek
-              community conjures up images of Animal House. That’s simply not
-              the reality! There are many myths about the Greek community, but
-              the reality is that men and women in fraternities and sororities
-              are committed to their academics, volunteer time in the community,
-              develop and strengthen their leadership skills, and form a campus
-              network with other Greeks. Our Greek community consists of over 20
-              different organizations and over 500 students. As the Center for
-              Student Involvement staff, we work closely with the recognized
-              organizations to enhance the overall Greek experience by upholding
-              their values, community standards and university Policies.
-            </Typography>
-            <Typography variant="titleSmall" as="h2" margin={`${Spaces.md} 0`}>
-              Your Role as a Parent/Family Member. Get Connected, Stay Informed,
-              Support Your Students.
-            </Typography>
-            <Typography as="p">
-              Students need support throughout the process of recruitment/intake
-              and new member education. Be supportive and learn as much as you
-              can about Greek life by asking questions of your student as they
-              meet members in fraternities and sororities. If you have questions
-              about what your student is saying, call the Center for Student
-              Involvement. We&apos;re happy to answer any questions.
-              <br />
-              <br />
-              Keep an open mind. Greek life is not for everyone. Just because
-              you may have been a fraternity or sorority member doesn&apos;t
-              mean that it is the right choice for your student and vice versa.
-              Fraternities and sororities are different on every campus. Groups
-              that may have been strong on the campus where you attended school
-              or that you&apos;ve experienced may not have the same reputation
-              at Cal State LA. Let your student choose the group that they feel
-              the most comfortable joining.
-              <br />
-              <br />
-              Talk to your student beforehand about the financial obligation.
-              Determine who will pay for what and where the limits are.
-              <br />
-              <br />
-              You do not want to become too involved in the sorority and
-              fraternity recruitment/intake process - this is your
-              student&apos;s decision. There will be plenty of activities and
-              events for you to attend once your student joins one of our
-              organizations.
-              <br />
-              <br />
-              Too often, parents do not give their students the autonomy to
-              navigate their own experience as a college student. It helps the
-              student mature and gain some assertiveness when they feel the need
-              to call various offices with questions or concerns about their
-              decision to go Greek.
-              <br />
-              <br />
-              If you have any questions or concerns about Greek Life on Cal
-              State LA&apos;s campus, please contact us!
-            </Typography>
-            <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0`}>
-              Contact Us
-            </Typography>
-            <Typography as="p">
-              Phone: 323-343-5709 <br /> Email: rgalvan2@calstatela.edu
-            </Typography>
-            <Typography variant="titleSmall" as="h2" margin={`${Spaces.md} 0`}>
-              Cost of Membership
-            </Typography>
-
-            {FamilyAndFriendsCostOfMembershipConent.map((card) => (
-              <Card
-                key={card.title}
-                {...card}
-                topBorder
+              <Typography as="p">
+                Phone: 323-343-5709 <br /> Email: iprieto7@calstatela.edu
+              </Typography>
+              <Typography
+                variant="titleSmall"
+                as="h2"
                 margin={`${Spaces.md} 0`}
-              />
-            ))}
-          </FluidContainer>
-        </FamilyAndFriendsSection>
-      )}
-      {displayContent === 'CurrentMembersSection' && (
-        <CurrentMembersSection>
-          <FluidContainer>
-            <Typography variant="title" as="h2">
-              Membership Intake Forms
-            </Typography>
-            <FluidContainer
-              flex
-              flexWrap="wrap"
-              justifyContent="center"
-              alignItems="center"
-              padding="0"
-            >
-              {MembershipIntakeForms.map((form) => (
-                <Button
-                  variant="outline"
-                  href={form.href}
-                  key={form.title}
-                  margin={Spaces.sm}
-                >
-                  <LinkInner>
-                    <AiOutlineFileText size="24px" />
-                    {form.title}
-                  </LinkInner>
-                </Button>
-              ))}
-            </FluidContainer>
-            <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
-              Policies
-            </Typography>
-            <Typography variant="cta" as="h3">
-              California Hazing Law
-            </Typography>
-            <Typography>
-              <strong>
-                Hazing is not permitted on Cal State LA&apos;s campus.{' '}
-              </strong>
-              This is in accordance with California law; the policies of
-              California State University, Los Angeles, including the bylaws of
-              all inter/national organizations represented on our campus, hazing
-              is not permitted. All acts of hazing by any organization, member,
-              and/or alumni are specifically forbidden. Refer to the Student
-              Handbook for information concerning Cal State LA&apos;s definition
-              of hazing, California State law, and possible sanctions.
-            </Typography>
-            <Typography as="p" margin={`${Spaces.md} 0`}>
-              At Cal State LA, the sanctions for hazing include:
-            </Typography>
-            <HazingPoliciesContentSection>
-              {HazingPoliciesContent.map((policy) => (
+              >
+                Cost of Membership
+              </Typography>
+
+              {FamilyAndFriendsCostOfMembershipConent.map((card) => (
                 <Card
-                  key={policy.name}
+                  key={card.title}
+                  {...card}
                   topBorder
-                  title={policy.name}
-                  margin={`${Spaces.sm}`}
-                  width={!isDesktop ? 'calc(30%)' : '100%'}
-                >
-                  {policy.content}
-                </Card>
-              ))}
-            </HazingPoliciesContentSection>
-            <FluidContainer
-              flex
-              flexWrap="wrap"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {PolicyButtons.map((policy) => (
-                <Button href={policy.href} margin={Spaces.sm} key={policy.href}>
-                  {policy.children}
-                </Button>
+                  margin={`${Spaces.md} 0`}
+                />
               ))}
             </FluidContainer>
-            <Typography variant="title" as="h2">
-              {' '}
-              Expansion of New Fraternities and Sororities
-            </Typography>
-            {FSLExpansionContent.map((item) => (
-              <Panel key={item.content} margin={`${Spaces.md} 0`}>
-                <Typography>{item.content}</Typography>
-              </Panel>
-            ))}
-          </FluidContainer>
-        </CurrentMembersSection>
-      )}
-      {displayContent === 'ResourcesSection' && (
-        <ResourcesSection>
-          <FluidContainer>
+          </FamilyAndFriendsSection>
+        </TabPanel>
+        <TabPanel>
+          <CurrentMembersSection>
+            <FluidContainer>
+              <Typography variant="title" as="h2">
+                Membership Intake Forms
+              </Typography>
+              <FluidContainer
+                flex
+                flexWrap="wrap"
+                justifyContent="center"
+                alignItems="center"
+                padding="0"
+              >
+                {MembershipIntakeForms.map((form) => (
+                  <Button
+                    variant="outline"
+                    href={form.href}
+                    key={form.title}
+                    margin={Spaces.sm}
+                  >
+                    <LinkInner>
+                      <AiOutlineFileText size="24px" />
+                      {form.title}
+                    </LinkInner>
+                  </Button>
+                ))}
+              </FluidContainer>
+              <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
+                Policies
+              </Typography>
+              <Typography variant="cta" as="h3">
+                California Hazing Law
+              </Typography>
+              <Typography>
+                <strong>
+                  Hazing is not permitted on Cal State LA&apos;s campus.{' '}
+                </strong>
+                This is in accordance with California law; the policies of
+                California State University, Los Angeles, including the bylaws
+                of all inter/national organizations represented on our campus,
+                hazing is not permitted. All acts of hazing by any organization,
+                member, and/or alumni are specifically forbidden. Refer to the
+                Student Handbook for information concerning Cal State LA&apos;s
+                definition of hazing, California State law, and possible
+                sanctions.
+              </Typography>
+              <Typography as="p" margin={`${Spaces.md} 0`}>
+                At Cal State LA, the sanctions for hazing include:
+              </Typography>
+              <HazingPoliciesContentSection>
+                {HazingPoliciesContent.map((policy) => (
+                  <Card
+                    key={policy.name}
+                    topBorder
+                    title={policy.name}
+                    margin={`${Spaces.sm}`}
+                    width={!isDesktop ? 'calc(30%)' : '100%'}
+                  >
+                    {policy.content}
+                  </Card>
+                ))}
+              </HazingPoliciesContentSection>
+              <FluidContainer
+                flex
+                flexWrap="wrap"
+                justifyContent="center"
+                alignItems="center"
+              >
+                {PolicyButtons.map((policy) => (
+                  <Button
+                    href={policy.href}
+                    margin={Spaces.sm}
+                    key={policy.href}
+                  >
+                    {policy.children}
+                  </Button>
+                ))}
+              </FluidContainer>
+              <Typography variant="title" as="h2">
+                {' '}
+                Expansion of New Fraternities and Sororities
+              </Typography>
+              {FSLExpansionContent.map((item) => (
+                <Panel key={item.content} margin={`${Spaces.md} 0`}>
+                  <Typography>{item.content}</Typography>
+                </Panel>
+              ))}
+            </FluidContainer>
+          </CurrentMembersSection>
+        </TabPanel>
+        <TabPanel>
+          <ResourcesSection>
             <Typography variant="title" as="h1">
               Resources
             </Typography>
@@ -970,9 +918,9 @@ export default function FSL() {
                 </ResourceButtonsSection>
               ))}
             </FluidContainer>
-          </FluidContainer>
-        </ResourcesSection>
-      )}
+          </ResourcesSection>
+        </TabPanel>
+      </TabCluster>
       <FluidContainer backgroundColor="black">
         <Typography
           variant="title"
