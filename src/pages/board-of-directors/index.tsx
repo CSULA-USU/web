@@ -10,13 +10,32 @@ import {
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
-import { GovernanceFooter } from 'partials';
+import { BODDownloads, GovernanceFooter } from 'partials';
 import { useBreakpoint } from 'hooks';
 
 const IconHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${Spaces.md};
+`;
+
+const List = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+`;
+
+const ListItem = styled.li`
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+
+  &::before {
+    content: '✓';
+    color: #ffd700;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
 `;
 
 const TabContent = styled(Typography)`
@@ -53,6 +72,89 @@ const cards = [
   },
 ];
 
+const ResponsibilitiesAndRequirements = () => (
+  <List>
+    <ListItem>
+      <Typography>
+        Be available to meet in person every Friday during the semester from
+        1:00 p.m. &ndash; 4:00 p.m.
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        Attend monthly Board of Director meetings and Committees
+        (2&ndash;3x/month)
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        Attend Board Orientation (August prior to class starting) and monthly
+        trainings (1&ndash;2x/month)
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>Serve on at least two assigned sub-committees</Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        Run for Chair and/or Vice Chair (meet weekly with the Executive
+        Director)
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        As an undergraduate member, you must maintain a 2.0 GPA each semester of
+        each term
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        As a graduate member, you must maintain a 3.0 GPA each semester of each
+        term
+      </Typography>
+    </ListItem>
+  </List>
+);
+
+const BenefitsOfServing = () => (
+  <List>
+    <ListItem>
+      <Typography>Develop leadership and career skills</Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>Build your academic and professional resume</Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        Network with peers, faculty, and staff members who also serve on the
+        Board
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>
+        Influence the future of the U-SU by providing opinions on existing
+        programs, services, and policies
+      </Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>Sponsorships to professional conferences</Typography>
+    </ListItem>
+    <ListItem>
+      <Typography>Semesterly reimbursement for educational expenses</Typography>
+      <ul>
+        <li>
+          <Typography>$295 per semester for the Board Chair</Typography>
+        </li>
+        <li>
+          <Typography>
+            $250 per semester for all other Student Directors
+          </Typography>
+        </li>
+      </ul>
+    </ListItem>
+  </List>
+);
+
 const AuditTab = () => (
   <TabContent>
     The Audit Committee recommends to the Board of Directors the retention and
@@ -72,15 +174,15 @@ const AuditTab = () => (
     organization contracted to provide financial services to the
     University-Student Union.
     <ol>
-      <li>Voting - Five (5) voting, and two (2) non-voting.</li>
+      <li>Voting &ndash; Five (5) voting, and two (2) non&ndash;voting.</li>
       <li>
-        Voting - Three (3) students, one of whom shall be a student-voting
-        member of the Board and shall chair the committee.
+        Voting &ndash; Three (3) students, one of whom shall be a
+        student&ndash;voting member of the Board and shall chair the committee.
       </li>
-      <li>Liaisons - U-SU Executive Director or designee.</li>
+      <li>Liaisons &ndash; U&ndash;SU Executive Director or designee.</li>
       <li>
-        Liaisons - Representative from the organization contracted to provide
-        financial services to the U-SU.
+        Liaisons &ndash; Representative from the organization contracted to
+        provide financial services to the U-SU.
       </li>
     </ol>
   </TabContent>
@@ -123,7 +225,7 @@ const Fiscal = () => (
   </TabContent>
 );
 
-const Nomination = () => (
+const Nominations = () => (
   <TabContent>
     The Nominating Committee shall interview eligible candidates and nominate a
     replacement student member to the Board. A Nominating Committee shall be
@@ -156,11 +258,14 @@ const Personnel = () => (
   </TabContent>
 );
 
+const AdHoc = () => <TabContent></TabContent>;
+
 const tabItems = [
   { title: 'Audit', children: <AuditTab /> },
   { title: 'Fiscal', children: <Fiscal /> },
-  { title: 'Nomination', children: <Nomination /> },
   { title: 'Personnel', children: <Personnel /> },
+  { title: 'Nominations', children: <Nominations /> },
+  { title: 'Ad Hoc', children: <AdHoc /> },
 ];
 
 export default function BoardOfDirectors() {
@@ -196,13 +301,28 @@ export default function BoardOfDirectors() {
         ]}
       >
         <Typography>
-          The University-Student Union&apos;s Board of Directors is the
-          governing board of the Union. The purpose of the Board is to establish
-          policy for the Union as a student body center for the benefit of
-          students, faculty, staff and alumni at{' '}
-          <NonBreakingSpan>Cal State Los Angeles.</NonBreakingSpan>
+          The Board of Directors is the governing board for the{' '}
+          <NonBreakingSpan>University-Student Union</NonBreakingSpan>,
+          consisting of 8 student directors and 11
+          faculty/staff/administrator/alumni members who help shape policy,
+          structure and are responsible for all financial & legal
+          responsibilities of running a non-profit organization. Directors are
+          expected to serve on the board for one academic year
+          (Fall&ndash;Spring).
         </Typography>
       </Header>
+      <FluidContainer>
+        <Typography as="h2" variant="title" lineHeight="1">
+          Responsibilities and Requirements
+        </Typography>
+        <ResponsibilitiesAndRequirements />
+      </FluidContainer>
+      <FluidContainer>
+        <Typography as="h2" variant="title" lineHeight="1">
+          Benefits of Serving on the Board of Directors
+        </Typography>
+        <BenefitsOfServing />
+      </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" lineHeight="1" margin="0 0 18px 0">
           Student Leadership
@@ -225,6 +345,7 @@ export default function BoardOfDirectors() {
           ))}
         </FluidContainer>
       </FluidContainer>
+      <BODDownloads />
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
           <MdGroups size="48px" />

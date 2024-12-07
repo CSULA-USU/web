@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import { Header, Page } from 'modules';
 import {
-  BODDownloads,
   GeneralInformation,
   GovernanceFooter,
   PublicInspectionDocuments,
 } from 'partials';
 
-export default function Governance() {
+export default function PublicDocuments() {
   return (
     <Page>
       <Head>
@@ -36,7 +35,6 @@ export default function Governance() {
       </Header>
       <PublicInspectionDocuments />
       <GeneralInformation />
-      <BODDownloads />
       <GovernanceFooter />
     </Page>
   );
