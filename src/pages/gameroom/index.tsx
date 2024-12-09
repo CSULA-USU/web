@@ -355,7 +355,7 @@ export default function Gameroom() {
       <ContactsBar>
         <li>
           <Image
-            alt=""
+            alt="Envelope icon for game room's email address."
             src="/gameroom/icons/envelope.svg"
             height="18px"
             width="18px"
@@ -366,7 +366,7 @@ export default function Gameroom() {
         </li>
         <li>
           <Image
-            alt=""
+            alt="Flag icon for game room's room number."
             src="/gameroom/icons/flag.svg"
             height="18px"
             width="18px"
@@ -377,7 +377,7 @@ export default function Gameroom() {
         </li>
         <li>
           <Image
-            alt=""
+            alt="Phone icon for game room's phone number."
             src="/gameroom/icons/phone.svg"
             height="18px"
             width="18px"
@@ -388,7 +388,7 @@ export default function Gameroom() {
         </li>
         <li>
           <Image
-            alt=""
+            alt="Calendar icon for game room's availability time."
             src="/gameroom/icons/calendar.svg"
             height="18px"
             width="18px"
@@ -408,31 +408,34 @@ export default function Gameroom() {
 
       <ScrollingContent height="50px">
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/paddle.svg"></Image>
+          <Image alt="paddle svg icon" src="/gameroom/icons/paddle.svg"></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/disk.svg"></Image>
+          <Image alt="disk svg icon" src="/gameroom/icons/disk.svg"></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/ball.svg"></Image>
+          <Image alt="ball svg icon" src="/gameroom/icons/ball.svg"></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/controller.svg"></Image>
+          <Image
+            alt="controller svg icon"
+            src="/gameroom/icons/controller.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/soccer.svg"></Image>
+          <Image alt="soccer svg icon" src="/gameroom/icons/soccer.svg"></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -443,31 +446,34 @@ export default function Gameroom() {
 
       <ScrollingContent height="50px">
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/paddle.svg"></Image>
+          <Image alt="paddle svg icon" src="/gameroom/icons/paddle.svg"></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/disk.svg"></Image>
+          <Image alt="disk svg icon" src="/gameroom/icons/disk.svg"></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/ball.svg"></Image>
+          <Image alt="ball svg icon" src="/gameroom/icons/ball.svg"></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/controller.svg"></Image>
+          <Image
+            alt="controller svg icon"
+            src="/gameroom/icons/controller.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="" src="/gameroom/icons/soccer.svg"></Image>
+          <Image alt="soccer svg icon" src="/gameroom/icons/soccer.svg"></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
