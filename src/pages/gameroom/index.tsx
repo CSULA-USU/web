@@ -326,24 +326,26 @@ export default function Gameroom() {
               />
             </Typography>
 
-            <Button style={{ borderRadius: '4px' }}>Join a Tournament</Button>
+            <Button style={{ display: 'none', borderRadius: '4px' }}>
+              Join a Tournament
+            </Button>
 
             <HorizontalContainer style={{ gap: Spaces.md }}>
               <SocialIconLink
                 Icon={FaDiscord}
-                iconLink="https://discord.gg"
+                iconLink="https://discord.gg/W5JM6vrbAa"
                 size="40px"
                 ariaLabel="visit recreation game room's discord"
               />
               <SocialIconLink
                 Icon={BiLogoInstagramAlt}
-                iconLink="https://instagram.com"
+                iconLink="https://www.instagram.com/calstatela_recreation"
                 size="40px"
                 ariaLabel="visit recreation game room's instagram"
               />
               <SocialIconLink
                 Icon={BiLogoTwitch}
-                iconLink="https://twitch.tv"
+                iconLink="https://www.twitch.tv/calstatela_recreation"
                 size="40px"
                 ariaLabel="visit recreation game room's twitch"
               />
@@ -500,14 +502,42 @@ export default function Gameroom() {
             </Typography>
           }
         >
-          <Typography as="h3" color="white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea magni
-            quos velit, nobis repellendus dolor aliquam. Dolor tempore
-            laudantium error veniam sed quas laborum ex, asperiores quasi
-            necessitatibus earum aperiam at ad iusto, cupiditate consequuntur
-            veritatis aliquam quis voluptatibus, dignissimos et impedit modi.
-            Incidunt minus totam vel ullam, tempore sint.
-          </Typography>
+          <ul>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Be courteous to fellow players. Take turns and share the
+                equipment fairly.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Treat all game room equipment gently to ensure its longevity for
+                everyone’s enjoyment.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Avoid rough play or running in the game room for safety reasons.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Notify staff immediately if equipment is damaged or not
+                functioning properly.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Only use equipment provided by the game room unless authorized.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Tidy up after yourself and ensure the space is ready for the
+                next user.
+              </Typography>
+            </WhiteListItem>
+          </ul>
         </Expandable>
         <Divider color="gold" margin={`${Spaces.md} 0`} />
 
@@ -519,14 +549,34 @@ export default function Gameroom() {
             </Typography>
           }
         >
-          <Typography as="h3" color="white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea magni
-            quos velit, nobis repellendus dolor aliquam. Dolor tempore
-            laudantium error veniam sed quas laborum ex, asperiores quasi
-            necessitatibus earum aperiam at ad iusto, cupiditate consequuntur
-            veritatis aliquam quis voluptatibus, dignissimos et impedit modi.
-            Incidunt minus totam vel ullam, tempore sint.
-          </Typography>
+          <ul>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Sanitize hands before and after using game equipment.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                No food or drinks near gaming stations or tables.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Wipe down equipment (e.g., controllers, paddles, cues) after
+                use.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Wear clean footwear; no bare feet allowed.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Dispose of trash in designated bins to maintain cleanliness.
+              </Typography>
+            </WhiteListItem>
+          </ul>
         </Expandable>
         <Divider color="gold" margin={`${Spaces.md} 0`} />
 
@@ -555,17 +605,17 @@ export default function Gameroom() {
           <ul>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                50$ U-SU Giftcard
+                TBD
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Street cred
+                TBD
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                A house and lot
+                TBD
               </Typography>
             </WhiteListItem>
           </ul>
