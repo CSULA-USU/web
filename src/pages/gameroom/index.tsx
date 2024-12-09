@@ -1,4 +1,4 @@
-import { Colors, FontSizes, Spaces } from 'theme';
+import { Colors, FontSizes, media, Spaces } from 'theme';
 import {
   Button,
   Divider,
@@ -19,14 +19,8 @@ import TypingAnimation from 'components/TypingAnimation/TypingAnimation';
 import { FaDiscord } from 'react-icons/fa';
 import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
 import { IconType } from 'react-icons';
-// import { useBreakpoint } from 'hooks';
+import { useBreakpoint } from 'hooks';
 import { ReactNode } from 'react';
-
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${FontSizes['5xl']};
-`;
 
 const VerticalContainer = styled.div`
   display: flex;
@@ -42,40 +36,56 @@ const WhiteListItem = styled.li`
   color: white;
 `;
 
-const ContactsBar = ({ children }: { children: ReactNode }) => {
-  const ContactsBarWrapper = styled.ul`
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
+interface SocialIconLinkProps {
+  Icon: IconType;
+  iconLink: string;
+  size: string;
+  ariaLabel: string;
+}
 
-    li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 1rem;
-      white-space: nowrap;
-    }
-  `;
-  return (
-    <FluidContainer backgroundColor="primary" height="50px">
-      <ContactsBarWrapper>{children}</ContactsBarWrapper>
-    </FluidContainer>
-  );
-};
+interface GameFontProps {
+  text: string;
+  size?: keyof typeof FontSizes;
+  letterSpacing?: string;
+  color?: keyof typeof Colors;
+  weight?: '300' | '400' | '600' | '700';
+  lineHeight?: keyof typeof FontSizes;
+  margin?: string;
+}
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${FontSizes['5xl']};
+  ${() =>
+    media('desktop')(`
+      gap: ${FontSizes['2xl']};
+    `)}
+  ${() =>
+    media('tablet')(`
+      gap: ${FontSizes['md']};
+    `)}
+  ${() =>
+    media('mobile')(`
+      gap: ${FontSizes['2xs']};
+    `)}
+`;
 
 const GameRoomStats = ({ children }: { children: ReactNode }) => {
   const GameRoomStatsWrapper = styled.div`
     background: radial-gradient(circle at top, rgb(18, 1, 23) 15%, black 85%);
-    height: 420px;
+    /* min-height: 420px; */
+    min-height: 200px;
   `;
 
   return (
     <GameRoomStatsWrapper>
-      <FluidContainer flex={true} flexDirection="row" height="100%">
+      <FluidContainer
+        flex={true}
+        flexDirection="row"
+        height="100%"
+        flexWrap="wrap"
+      >
         {children}
       </FluidContainer>
     </GameRoomStatsWrapper>
@@ -93,6 +103,15 @@ const GameRoomStatsCard = ({
     display: flex;
     flex-direction: column;
     flex: 1 1 25%;
+    ${() =>
+      media('tablet')(`
+      flex: 1 1 50%;
+    `)}
+    ${() =>
+      media('mobile')(`
+      flex: 1 1 100%;
+    `)}
+    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -124,13 +143,6 @@ const GameRoomStatsCard = ({
   );
 };
 
-interface SocialIconLinkProps {
-  Icon: IconType;
-  iconLink: string;
-  size: string;
-  ariaLabel: string;
-}
-
 const SocialIconLink = ({
   Icon,
   iconLink,
@@ -159,18 +171,10 @@ const SocialIconLink = ({
   );
 };
 
-interface GameFontProps {
-  text: string;
-  size?: keyof typeof FontSizes;
-  color?: keyof typeof Colors;
-  weight?: '300' | '400' | '600' | '700';
-  lineHeight?: string;
-  margin?: string;
-}
-
 const GameFont = ({
   text,
   size,
+  letterSpacing,
   color,
   weight,
   lineHeight,
@@ -179,17 +183,61 @@ const GameFont = ({
   const GameFontWrapper = styled.h1`
     font-family: 'Press Start 2P', system-ui;
     font-size: ${FontSizes[size || 'md']};
-    letter-spacing: ${FontSizes['xs']};
+    letter-spacing: ${letterSpacing};
     color: ${Colors[color || 'black']};
     font-weight: ${weight};
-    line-height: ${lineHeight};
+    line-height: ${FontSizes[lineHeight || 'xl']};
     margin: ${margin || 0};
   `;
   return <GameFontWrapper>{text}</GameFontWrapper>;
 };
 
 export default function Gameroom() {
-  // const { isMobile, isTablet, isDesktop, isWidescreen } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+
+  const ContactsBar = ({ children }: { children: ReactNode }) => {
+    const ContactsBarWrapper = styled.ul`
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0.5rem;
+      margin: 0;
+      flex-wrap: wrap;
+
+      ${() =>
+        media('tablet')(`
+          width: 300px;
+          margin: 0 auto;
+        `)}
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        white-space: nowrap;
+        ${() =>
+          media('desktop')(`
+            justify-content: center;
+            flex: 1 1 50%;
+          `)}
+        ${() =>
+          media('tablet')(`
+            justify-content: start;
+            flex: 1 1 100%;
+          `)}
+      }
+    `;
+    return (
+      <FluidContainer
+        backgroundColor="primary"
+        padding={isMobile ? '0 16px' : isDesktop ? '0 36px' : '12px 72px'}
+      >
+        <ContactsBarWrapper>{children}</ContactsBarWrapper>
+      </FluidContainer>
+    );
+  };
 
   return (
     <Page>
@@ -220,7 +268,7 @@ export default function Gameroom() {
 
       <FluidContainer
         // height="660px"
-        height="80vh"
+        height={isDesktop ? '60vh' : '80vh'}
         backgroundImage="/gameroom/gameroom_video.gif"
         backgroundColor="transparent"
       >
@@ -228,15 +276,25 @@ export default function Gameroom() {
           <VerticalContainer>
             <GameFont
               text="Recreation"
-              size="5xl"
-              lineHeight={FontSizes['5xl']}
+              size={
+                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+              }
+              letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
+              lineHeight={
+                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+              }
               weight="400"
               color="white"
             />
             <GameFont
               text="Game room"
-              size="5xl"
-              lineHeight={FontSizes['5xl']}
+              size={
+                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+              }
+              letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
+              lineHeight={
+                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+              }
               weight="400"
               color="primary"
             ></GameFont>
@@ -248,7 +306,9 @@ export default function Gameroom() {
               as="h2"
               variant="title"
               weight="400"
-              size="2xl"
+              size={
+                isMobile ? 'md' : isTablet ? 'lg' : isDesktop ? 'xl' : '2xl'
+              }
               lineHeight="2xl"
               color="white"
             >
@@ -257,7 +317,9 @@ export default function Gameroom() {
                 as="h2"
                 variant="title"
                 weight="600"
-                size="2xl"
+                size={
+                  isMobile ? 'md' : isTablet ? 'lg' : isDesktop ? 'xl' : '2xl'
+                }
                 lineHeight="2xl"
                 color="white"
                 words={['triumph', 'prevail', 'win', 'conquer']}
@@ -332,7 +394,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            M - Th 12 PM - 6 PM
+            Mon - Thurs: 12PM to 6PM
           </Typography>
         </li>
       </ContactsBar>
