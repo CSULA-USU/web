@@ -81,18 +81,25 @@ const WhiteListItem = styled.li`
 `;
 
 interface GameTitleProps {
-  text: string;
   game_id: number;
+  text: string;
+  selected: boolean;
   onClickHandler: Function;
 }
 
-const GameTitle = ({ text, game_id, onClickHandler }: GameTitleProps) => {
+const GameTitle = ({
+  text,
+  game_id,
+  selected,
+  onClickHandler,
+}: GameTitleProps) => {
   const GameTitleWrapper = styled.h2`
-    color: ${Colors.white};
+    color: ${selected ? Colors.primary : Colors.white};
     font-size: ${FontSizes['5xl']};
-    font-weight: 200;
+    font-weight: ${selected ? 400 : 200};
     margin: 0;
     padding: 0;
+    user-select: none;
     cursor: pointer;
     &:hover {
       color: ${Colors.primary};
@@ -179,8 +186,9 @@ export const GameTypes = () => {
             return (
               <React.Fragment key={game.id}>
                 <GameTitle
-                  text={game.gameName}
                   game_id={game.id}
+                  text={game.gameName}
+                  selected={selectedGame === game.id}
                   onClickHandler={clickGameHandler}
                 />
 
