@@ -54,6 +54,10 @@ export const ScrollingContent = ({
     animation: ${scroll} 10s linear infinite;
     white-space: nowrap;
     display: flex;
+
+    &:hover {
+      animation-play-state: paused;
+    }
   `;
 
   return (
