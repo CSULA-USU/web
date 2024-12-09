@@ -57,6 +57,8 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${FontSizes['5xl']};
+  position: relative;
+  z-index: 98;
   ${() =>
     media('desktop')(`
       gap: ${FontSizes['2xl']};
@@ -195,6 +197,28 @@ const GameFont = ({
 export default function Gameroom() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
+  const TitleScreenWrapper = styled.div`
+    display: flex;
+    height: ${isDesktop ? '60vh' : '80vh'};
+    background-color: ${Colors.black};
+    background-image: url('/gameroom/gameroom_video.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+  `;
+
   const ContactsBar = ({ children }: { children: ReactNode }) => {
     const ContactsBarWrapper = styled.ul`
       list-style-type: none;
@@ -266,93 +290,90 @@ export default function Gameroom() {
         />
       </Head>
 
-      <FluidContainer
-        // height="660px"
-        height={isDesktop ? '60vh' : '80vh'}
-        backgroundImage="/gameroom/gameroom_video.gif"
-        backgroundColor="transparent"
-      >
-        <TitleContainer>
-          <VerticalContainer>
-            <GameFont
-              text="Recreation"
-              size={
-                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
-              }
-              letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
-              lineHeight={
-                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
-              }
-              weight="400"
-              color="white"
-            />
-            <GameFont
-              text="Game room"
-              size={
-                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
-              }
-              letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
-              lineHeight={
-                isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
-              }
-              weight="400"
-              color="primary"
-            ></GameFont>
-          </VerticalContainer>
-          <VerticalContainer
-            style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
-          >
-            <Typography
-              as="h2"
-              variant="title"
-              weight="400"
-              size={
-                isMobile ? 'md' : isTablet ? 'lg' : isDesktop ? 'xl' : '2xl'
-              }
-              lineHeight="2xl"
-              color="white"
+      <TitleScreenWrapper>
+        <FluidContainer>
+          <TitleContainer>
+            <VerticalContainer>
+              <GameFont
+                text="Recreation"
+                size={
+                  isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+                }
+                letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
+                lineHeight={
+                  isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+                }
+                weight="400"
+                color="white"
+              />
+              <GameFont
+                text="Game room"
+                size={
+                  isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+                }
+                letterSpacing={isMobile ? '2px' : isTablet ? '8px' : '12px'}
+                lineHeight={
+                  isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
+                }
+                weight="400"
+                color="primary"
+              ></GameFont>
+            </VerticalContainer>
+            <VerticalContainer
+              style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
             >
-              Do you have what it takes to&nbsp;
-              <TypingAnimation
+              <Typography
                 as="h2"
                 variant="title"
-                weight="600"
+                weight="400"
                 size={
                   isMobile ? 'md' : isTablet ? 'lg' : isDesktop ? 'xl' : '2xl'
                 }
                 lineHeight="2xl"
                 color="white"
-                words={['triumph', 'prevail', 'win', 'conquer']}
-              />
-            </Typography>
+              >
+                Do you have what it takes to&nbsp;
+                <TypingAnimation
+                  as="h2"
+                  variant="title"
+                  weight="600"
+                  size={
+                    isMobile ? 'md' : isTablet ? 'lg' : isDesktop ? 'xl' : '2xl'
+                  }
+                  lineHeight="2xl"
+                  color="white"
+                  words={['triumph', 'prevail', 'win', 'conquer']}
+                />
+              </Typography>
 
-            <Button style={{ display: 'none', borderRadius: '4px' }}>
-              Join a Tournament
-            </Button>
+              <Button style={{ display: 'none', borderRadius: '4px' }}>
+                Join a Tournament
+              </Button>
 
-            <HorizontalContainer style={{ gap: Spaces.md }}>
-              <SocialIconLink
-                Icon={FaDiscord}
-                iconLink="https://discord.gg/W5JM6vrbAa"
-                size="40px"
-                ariaLabel="visit recreation game room's discord"
-              />
-              <SocialIconLink
-                Icon={BiLogoInstagramAlt}
-                iconLink="https://www.instagram.com/calstatela_recreation"
-                size="40px"
-                ariaLabel="visit recreation game room's instagram"
-              />
-              <SocialIconLink
-                Icon={BiLogoTwitch}
-                iconLink="https://www.twitch.tv/calstatela_recreation"
-                size="40px"
-                ariaLabel="visit recreation game room's twitch"
-              />
-            </HorizontalContainer>
-          </VerticalContainer>
-        </TitleContainer>
-      </FluidContainer>
+              <HorizontalContainer style={{ gap: Spaces.md }}>
+                <SocialIconLink
+                  Icon={FaDiscord}
+                  iconLink="https://discord.gg/W5JM6vrbAa"
+                  size="40px"
+                  ariaLabel="visit recreation game room's discord"
+                />
+                <SocialIconLink
+                  Icon={BiLogoInstagramAlt}
+                  iconLink="https://www.instagram.com/calstatela_recreation"
+                  size="40px"
+                  ariaLabel="visit recreation game room's instagram"
+                />
+                <SocialIconLink
+                  Icon={BiLogoTwitch}
+                  iconLink="https://www.twitch.tv/calstatela_recreation"
+                  size="40px"
+                  ariaLabel="visit recreation game room's twitch"
+                />
+              </HorizontalContainer>
+            </VerticalContainer>
+          </TitleContainer>
+        </FluidContainer>
+      </TitleScreenWrapper>
 
       <ContactsBar>
         <li>
@@ -404,7 +425,7 @@ export default function Gameroom() {
       <GameRoomStats>
         <GameRoomStatsCard quantity="50+" title="Daily Visitors" />
         <GameRoomStatsCard quantity="12" title="Nintendo Switch Titles" />
-        <GameRoomStatsCard quantity="3" title="Weekly Tournaments" />
+        <GameRoomStatsCard quantity="4" title="Days of Fun" />
         <GameRoomStatsCard quantity="1" title="School Champion" />
       </GameRoomStats>
 

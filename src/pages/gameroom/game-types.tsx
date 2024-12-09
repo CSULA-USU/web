@@ -40,7 +40,7 @@ const games: gameProps[] = [
     gameName: 'Ping Pong',
     gameDescription:
       'Ping pong, also known as table tennis, is a racket sport where players use small rackets to hit a ball back and forth across a table. The ball is usually orange or white and weighs about 2.7 grams. The game is played on a hard, rectangular table divided into two halves by a net. Players can play individually or in teams of two, taking turns hitting the ball over the net onto the other side of the table. The first player to 11 points wins, but they must beat their opponent by at least two points.',
-    gameImgSrc: '/gameroom/gametypes/pingPong.png',
+    gameImgSrc: '/gameroom/gametypes/pingPong2.png',
   },
   {
     id: 2,
@@ -51,10 +51,10 @@ const games: gameProps[] = [
   },
   {
     id: 3,
-    gameName: 'Fooseball',
+    gameName: 'Foosball',
     gameDescription:
       "Foosball, also known as table football or table soccer, is a tabletop game where players use rods to move small figures of players to hit a ball into the opponent's goal. The game is similar to soccer and is loosely based on association football.",
-    gameImgSrc: '/gameroom/gametypes/fooseball.png',
+    gameImgSrc: '/gameroom/gametypes/foosball.png',
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ const games: gameProps[] = [
       'Mario Kart: Race against each other on imaginative tracks and prove your driving prowess in this beloved kart racing game.',
       'Additional Games: Explore a variety of other exciting titles that cater to every gaming taste.',
     ],
-    gameImgSrc: '/gameroom/gametypes/videoGames.jpg',
+    gameImgSrc: '/gameroom/gametypes/videoGames2.png',
   },
 ];
 
