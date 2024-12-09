@@ -1,8 +1,9 @@
 import { FluidContainer, Typography, Image } from 'components';
+import { useBreakpoint } from 'hooks';
 import React, { ReactElement, useEffect } from 'react';
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, media, Spaces } from 'theme';
 
 const slideDown = keyframes`
   from {
@@ -22,6 +23,8 @@ const GameTypesWrapper = styled.div`
   background-image: url('/gameroom/brickwall.jpg');
   background-image: url('/gameroom/gameroom_background2.svg');
   background-size: cover;
+  display: flex;
+  justify-content: center;
 `;
 
 interface gameProps {
@@ -86,7 +89,7 @@ interface GameTitleProps {
 const GameTitle = ({ text, game_id, onClickHandler }: GameTitleProps) => {
   const GameTitleWrapper = styled.h2`
     color: ${Colors.white};
-    font-size: 72px;
+    font-size: ${FontSizes['5xl']};
     font-weight: 200;
     margin: 0;
     padding: 0;
@@ -94,6 +97,15 @@ const GameTitle = ({ text, game_id, onClickHandler }: GameTitleProps) => {
     &:hover {
       color: ${Colors.primary};
     }
+
+    ${() =>
+      media('widescreen')(`
+      font-size: ${FontSizes['4xl']};
+    `)}
+    ${() =>
+      media('desktop')(`
+      font-size: ${FontSizes['2xl']};
+    `)}
   `;
   return (
     <GameTitleWrapper onClick={() => onClickHandler(game_id)}>
@@ -123,17 +135,6 @@ const GameDescription = ({
   return <GameDescriptionWrapper>{children}</GameDescriptionWrapper>;
 };
 
-const GameTypesContainer = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  padding: ${Spaces.lg};
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
-`;
-
 const GameImageContainer = styled.div`
   width: 50%;
   height: 100%;
@@ -144,6 +145,8 @@ const GameImageContainer = styled.div`
 `;
 
 export const GameTypes = () => {
+  const { isTablet, isDesktop } = useBreakpoint();
+
   const [selectedGame, setSelectedGame] = useState<number>(1);
   const [gameImg, setGameImg] = useState<string>(games[0].gameImgSrc);
 
@@ -153,18 +156,24 @@ export const GameTypes = () => {
     }
   }, [selectedGame]);
 
+  const GameTypesContainer = styled.div`
+    width: ${isTablet ? '100%' : '50%'};
+    height: 100%;
+    display: flex;
+    padding: ${Spaces.lg};
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+  `;
+
   const clickGameHandler = (game_id: number) => {
     setSelectedGame(game_id != selectedGame ? game_id : 0);
   };
 
   return (
     <GameTypesWrapper>
-      <FluidContainer
-        flex={true}
-        flexDirection="row"
-        alignItems="center"
-        height={`calc(100vh - 100px)`}
-      >
+      <FluidContainer flex={true} flexDirection="row" alignItems="center">
         <GameTypesContainer>
           {games.map((game) => {
             return (
@@ -177,7 +186,11 @@ export const GameTypes = () => {
 
                 <GameDescription display={selectedGame === game.id}>
                   {typeof game.gameDescription === 'string' ? (
-                    <Typography weight="400" size="md" color="white">
+                    <Typography
+                      weight="400"
+                      size={isDesktop ? 'sm' : 'md'}
+                      color="white"
+                    >
                       {game.gameDescription}
                     </Typography>
                   ) : (
@@ -189,7 +202,7 @@ export const GameTypes = () => {
                               <WhiteListItem key={idx}>
                                 <Typography
                                   weight="400"
-                                  size="md"
+                                  size={isDesktop ? 'sm' : 'md'}
                                   color="white"
                                 >
                                   {gameDescriptionBulletPoint}
@@ -206,15 +219,17 @@ export const GameTypes = () => {
           })}
         </GameTypesContainer>
 
-        <GameImageContainer>
-          <Image
-            // height="600px"
-            width="75%"
-            src={gameImg}
-            borderRadius="12px"
-            alt="test"
-          ></Image>
-        </GameImageContainer>
+        {!isTablet && (
+          <GameImageContainer>
+            <Image
+              // height="600px"
+              width="75%"
+              src={gameImg}
+              borderRadius="12px"
+              alt="test"
+            ></Image>
+          </GameImageContainer>
+        )}
       </FluidContainer>
     </GameTypesWrapper>
   );
