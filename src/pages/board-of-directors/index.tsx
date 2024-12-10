@@ -73,86 +73,92 @@ const cards = [
 ];
 
 const ResponsibilitiesAndRequirements = () => (
-  <List>
-    <ListItem>
-      <Typography>
-        Be available to meet in person every Friday during the semester from
-        1:00 p.m. &ndash; 4:00 p.m.
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        Attend monthly Board of Director meetings and Committees
-        (2&ndash;3x/month)
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        Attend Board Orientation (August prior to class starting) and monthly
-        trainings (1&ndash;2x/month)
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>Serve on at least two assigned sub-committees</Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        Run for Chair and/or Vice Chair (meet weekly with the Executive
-        Director)
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        As an undergraduate member, you must maintain a 2.0 GPA each semester of
-        each term
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        As a graduate member, you must maintain a 3.0 GPA each semester of each
-        term
-      </Typography>
-    </ListItem>
-  </List>
+  <FluidContainer padding="0 0 24px 0">
+    <List>
+      <ListItem>
+        <Typography>
+          Be available to meet in person every Friday during the semester from
+          1:00 p.m. &ndash; 4:00 p.m.
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Attend monthly Board of Director meetings and Committees
+          (2&ndash;3x/month)
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Attend Board Orientation (August prior to class starting) and monthly
+          trainings (1&ndash;2x/month)
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>Serve on at least two assigned sub-committees</Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Run for Chair and/or Vice Chair (meet weekly with the Executive
+          Director)
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          As an undergraduate member, you must maintain a 2.0 GPA each semester
+          of each term
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          As a graduate member, you must maintain a 3.0 GPA each semester of
+          each term
+        </Typography>
+      </ListItem>
+    </List>
+  </FluidContainer>
 );
 
 const BenefitsOfServing = () => (
-  <List>
-    <ListItem>
-      <Typography>Develop leadership and career skills</Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>Build your academic and professional resume</Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        Network with peers, faculty, and staff members who also serve on the
-        Board
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>
-        Influence the future of the U-SU by providing opinions on existing
-        programs, services, and policies
-      </Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>Sponsorships to professional conferences</Typography>
-    </ListItem>
-    <ListItem>
-      <Typography>Semesterly reimbursement for educational expenses</Typography>
-      <ul>
-        <li>
-          <Typography>$295 per semester for the Board Chair</Typography>
-        </li>
-        <li>
-          <Typography>
-            $250 per semester for all other Student Directors
-          </Typography>
-        </li>
-      </ul>
-    </ListItem>
-  </List>
+  <FluidContainer padding="0">
+    <List>
+      <ListItem>
+        <Typography>Develop leadership and career skills</Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>Build your academic and professional resume</Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Network with peers, faculty, and staff members who also serve on the
+          Board
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Influence the future of the U-SU by providing opinions on existing
+          programs, services, and policies
+        </Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>Sponsorships to professional conferences</Typography>
+      </ListItem>
+      <ListItem>
+        <Typography>
+          Semesterly reimbursement for educational expenses
+        </Typography>
+        <ul>
+          <li>
+            <Typography>$295 per semester for the Board Chair</Typography>
+          </li>
+          <li>
+            <Typography>
+              $250 per semester for all other Student Directors
+            </Typography>
+          </li>
+        </ul>
+      </ListItem>
+    </List>
+  </FluidContainer>
 );
 
 const AuditTab = () => (
@@ -258,7 +264,19 @@ const Personnel = () => (
   </TabContent>
 );
 
-const AdHoc = () => <TabContent></TabContent>;
+const AdHoc = () => (
+  <TabContent>
+    The Board may establish ad&ndash;hoc committees at its discretion, upon the
+    approval of a majority of the members present and voting. The Chair of the
+    Board of Directors of the University-Student Union will assign the
+    membership of an ad&ndash;hoc committee. Ad&ndash;hoc committees may make
+    recommendations to the Board, but may not take action for the Board. The
+    Vice&ndash;Chair or designee shall chair ad&ndash;hoc committees.
+    Ad&ndash;hoc committees may incluude: Bylaws, Programs and Student Services
+    (PASS), Space Allocation and Building Use (SABU), and, Retirement Plan
+    committees.
+  </TabContent>
+);
 
 const tabItems = [
   { title: 'Audit', children: <AuditTab /> },
@@ -311,19 +329,8 @@ export default function BoardOfDirectors() {
           (Fall&ndash;Spring).
         </Typography>
       </Header>
-      <FluidContainer>
-        <Typography as="h2" variant="title" lineHeight="1">
-          Responsibilities and Requirements
-        </Typography>
-        <ResponsibilitiesAndRequirements />
-      </FluidContainer>
-      <FluidContainer>
-        <Typography as="h2" variant="title" lineHeight="1">
-          Benefits of Serving on the Board of Directors
-        </Typography>
-        <BenefitsOfServing />
-      </FluidContainer>
-      <FluidContainer>
+
+      <FluidContainer padding="36px 72px 0">
         <Typography as="h2" variant="title" lineHeight="1" margin="0 0 18px 0">
           Student Leadership
         </Typography>
@@ -331,7 +338,7 @@ export default function BoardOfDirectors() {
           flex
           justifyContent="space-between"
           flexWrap="wrap"
-          padding="0"
+          padding={`0 0 ${Spaces.lg} 0`}
         >
           {cards.map((props) => (
             <Card
@@ -344,6 +351,19 @@ export default function BoardOfDirectors() {
             />
           ))}
         </FluidContainer>
+        <Typography as="h2" variant="title" lineHeight="1">
+          Responsibilities and Requirements
+        </Typography>
+        <ResponsibilitiesAndRequirements />
+        <Typography as="h2" variant="title" lineHeight="1">
+          Benefits of Serving on the Board of Directors
+        </Typography>
+        <BenefitsOfServing />
+      </FluidContainer>
+      <FluidContainer padding="36px 0 0">
+        <Typography as="h2" variant="title" lineHeight="1">
+          Schedules
+        </Typography>
       </FluidContainer>
       <BODDownloads />
       <FluidContainer backgroundColor="greyLightest">

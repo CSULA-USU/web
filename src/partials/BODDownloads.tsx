@@ -106,7 +106,7 @@ const typographyProps = {
 } as TypeProps;
 
 export const BODDownloads = () => (
-  <FluidContainer>
+  <FluidContainer padding="0 72px 36px">
     <Typography {...typographyProps}>Meeting Calendar</Typography>
     <Divider color="grey" margin={`${Spaces.xl} 0`} />
     <DownloadSection
