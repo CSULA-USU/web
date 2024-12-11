@@ -1,17 +1,18 @@
 import { Colors, FontSizes, media, Spaces } from 'theme';
 import {
+  BannerItem,
   Button,
   Divider,
   Expandable,
   FluidContainer,
   Image,
+  ScrollingContent,
   Typography,
 } from 'components';
 import { Page } from 'modules';
 import styled from 'styled-components';
 
-import { ScrollingContent, BannerItem } from './scrolling-content';
-import { GameTypes } from './game-types';
+import { GameTypes } from '../../partials/game-types';
 import Head from 'next/head';
 import { BiChevronRight } from 'react-icons/bi';
 import TypingAnimation from 'components/TypingAnimation/TypingAnimation';
