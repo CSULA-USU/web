@@ -33,10 +33,12 @@ export const ScrollingContent = ({
   children,
   height,
   bgColor = Colors['primary'],
+  direction = 'left',
 }: {
   children: ReactNode;
   height: string;
   bgColor?: string;
+  direction?: 'left' | 'right';
 }) => {
   const Banner = styled.div`
     height: ${height};
@@ -51,7 +53,8 @@ export const ScrollingContent = ({
 
   const ScrollingContentWrapper = styled.div`
     display: inline-block;
-    animation: ${scroll} 10s linear infinite;
+    animation: ${scroll} 10s linear infinite
+      ${direction == 'right' && 'reverse'};
     white-space: nowrap;
     display: flex;
 

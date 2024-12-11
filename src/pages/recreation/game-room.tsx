@@ -429,7 +429,7 @@ export default function Gameroom() {
         <GameRoomStatsCard quantity="1" title="School Champion" />
       </GameRoomStats>
 
-      <ScrollingContent height="50px">
+      <ScrollingContent height="50px" direction="right">
         <BannerItem>
           <Image
             alt="paddle svg icon"
