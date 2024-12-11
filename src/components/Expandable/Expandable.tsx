@@ -20,6 +20,7 @@ const HeaderContainer = styled.div<{ isOpen?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   > * {
     transition: 0.3s;
   }
