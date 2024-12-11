@@ -307,7 +307,7 @@ export default function Gameroom() {
                 color="white"
               />
               <GameFont
-                text="Game room"
+                text="Game Room"
                 size={
                   isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
                 }
