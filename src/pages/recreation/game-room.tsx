@@ -199,13 +199,12 @@ export default function Gameroom() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const TitleScreenWrapper = styled.div`
-    display: flex;
     height: ${isDesktop ? '60vh' : '80vh'};
+    position: relative;
     background-color: ${Colors.black};
-    background-image: url('/gameroom/gameroom_video.gif');
+    background-image: url('/departments/recreation/game-room/game-room_video.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
     z-index: 1;
 
     &::before {
@@ -292,7 +291,7 @@ export default function Gameroom() {
       </Head>
 
       <TitleScreenWrapper>
-        <FluidContainer>
+        <FluidContainer height="100%">
           <TitleContainer>
             <VerticalContainer>
               <GameFont
@@ -380,7 +379,7 @@ export default function Gameroom() {
         <li>
           <Image
             alt="Envelope icon for game room's email address."
-            src="/gameroom/icons/envelope.svg"
+            src="/departments/recreation/game-room/icons/envelope.svg"
             height="18px"
             width="18px"
           />
@@ -391,7 +390,7 @@ export default function Gameroom() {
         <li>
           <Image
             alt="Flag icon for game room's room number."
-            src="/gameroom/icons/flag.svg"
+            src="/departments/recreation/game-room/icons/flag.svg"
             height="18px"
             width="18px"
           />
@@ -402,7 +401,7 @@ export default function Gameroom() {
         <li>
           <Image
             alt="Phone icon for game room's phone number."
-            src="/gameroom/icons/phone.svg"
+            src="/departments/recreation/game-room/icons/phone.svg"
             height="18px"
             width="18px"
           />
@@ -413,7 +412,7 @@ export default function Gameroom() {
         <li>
           <Image
             alt="Calendar icon for game room's availability time."
-            src="/gameroom/icons/calendar.svg"
+            src="/departments/recreation/game-room/icons/calendar.svg"
             height="18px"
             width="18px"
           />
@@ -432,19 +431,28 @@ export default function Gameroom() {
 
       <ScrollingContent height="50px">
         <BannerItem>
-          <Image alt="paddle svg icon" src="/gameroom/icons/paddle.svg"></Image>
+          <Image
+            alt="paddle svg icon"
+            src="/departments/recreation/game-room/icons/paddle.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="disk svg icon" src="/gameroom/icons/disk.svg"></Image>
+          <Image
+            alt="disk svg icon"
+            src="/departments/recreation/game-room/icons/disk.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="ball svg icon" src="/gameroom/icons/ball.svg"></Image>
+          <Image
+            alt="ball svg icon"
+            src="/departments/recreation/game-room/icons/ball.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -452,14 +460,17 @@ export default function Gameroom() {
         <BannerItem>
           <Image
             alt="controller svg icon"
-            src="/gameroom/icons/controller.svg"
+            src="/departments/recreation/game-room/icons/controller.svg"
           ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="soccer svg icon" src="/gameroom/icons/soccer.svg"></Image>
+          <Image
+            alt="soccer svg icon"
+            src="/departments/recreation/game-room/icons/soccer.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -470,19 +481,28 @@ export default function Gameroom() {
 
       <ScrollingContent height="50px">
         <BannerItem>
-          <Image alt="paddle svg icon" src="/gameroom/icons/paddle.svg"></Image>
+          <Image
+            alt="paddle svg icon"
+            src="/departments/recreation/game-room/icons/paddle.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="disk svg icon" src="/gameroom/icons/disk.svg"></Image>
+          <Image
+            alt="disk svg icon"
+            src="/departments/recreation/game-room/icons/disk.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="ball svg icon" src="/gameroom/icons/ball.svg"></Image>
+          <Image
+            alt="ball svg icon"
+            src="/departments/recreation/game-room/icons/ball.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -490,14 +510,17 @@ export default function Gameroom() {
         <BannerItem>
           <Image
             alt="controller svg icon"
-            src="/gameroom/icons/controller.svg"
+            src="/departments/recreation/game-room/icons/controller.svg"
           ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
         </BannerItem>
         <BannerItem>
-          <Image alt="soccer svg icon" src="/gameroom/icons/soccer.svg"></Image>
+          <Image
+            alt="soccer svg icon"
+            src="/departments/recreation/game-room/icons/soccer.svg"
+          ></Image>
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
