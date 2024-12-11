@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Header, Page } from 'modules';
+import { ShadedImageHeader, Page } from 'modules';
 import {
   FluidContainer,
   NonBreakingSpan,
@@ -54,21 +54,21 @@ const cards = [
     children:
       "Learn more about the University Student Union's Board of Directors!",
     linkText: 'Learn More',
-    href: 'governance/meet-the-board',
+    href: 'board-of-directors/roster',
   },
   {
     title: 'Be a Student Leader',
     children:
       'See how the elections are going and check out the upcoming events!',
     linkText: 'Learn More',
-    href: 'governance/student-leader-elections',
+    href: 'https://www.csulaelections.org/usu',
   },
   {
     title: 'Learn How to Vote',
     children:
       'Confused or uncertain on how to vote for your favorite candidates? Click below for instructions!',
     linkText: 'Learn More',
-    href: '/governance/how-to-vote',
+    href: 'https://www.csulaelections.org/vote',
   },
 ];
 
@@ -287,7 +287,7 @@ const tabItems = [
 ];
 
 export default function BoardOfDirectors() {
-  const { isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
 
   return (
     <Page>
@@ -296,7 +296,7 @@ export default function BoardOfDirectors() {
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Committees, Audit, Fiscal, Nomination"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Committees, Audit, Fiscal, Nomination."
         />
         <meta
           name="description"
@@ -304,13 +304,13 @@ export default function BoardOfDirectors() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        title="Become a Director"
-        backgroundImage="/backgrounds/subtle-background-2.jpg"
+      <ShadedImageHeader
+        title="Board of Directors"
+        backgroundImage="https://www.dropbox.com/scl/fi/82dsw2a92skpb14t1jbc1/BODGroup2_2024.jpg?rlkey=gh60f6n5b4z3y4hh5xj8qionb&st=gfn7ty85&raw=1"
         buttons={[
           {
-            text: 'Public Documents',
-            href: '/board-of-directors/public-documents',
+            text: 'Meeting Schedule',
+            href: 'https://www.dropbox.com/scl/fi/bnxxquo4d6hob0jp45avu/U-SU-2024-25-BOD-Meeting-Schedule.xlsx.pdf?rlkey=thadfs2lylcbeaq82ujuhsqib&st=7vsafaru&raw=1',
           },
           {
             text: 'Archives',
@@ -328,10 +328,16 @@ export default function BoardOfDirectors() {
           expected to serve on the board for one academic year
           (Fall&ndash;Spring).
         </Typography>
-      </Header>
+      </ShadedImageHeader>
 
-      <FluidContainer padding="36px 72px 0">
-        <Typography as="h2" variant="title" lineHeight="1" margin="0 0 18px 0">
+      <FluidContainer padding={isDesktop ? '0 36px' : '36px 72px 0'}>
+        <Typography
+          as="h2"
+          variant="title"
+          lineHeight="1"
+          margin="0 0 18px 0"
+          size={isMobile ? 'lg' : '2xl'}
+        >
           Student Leadership
         </Typography>
         <FluidContainer
@@ -351,25 +357,30 @@ export default function BoardOfDirectors() {
             />
           ))}
         </FluidContainer>
-        <Typography as="h2" variant="title" lineHeight="1">
+        <Typography
+          as="h2"
+          variant="title"
+          lineHeight="1"
+          size={isMobile ? 'lg' : '2xl'}
+        >
           Responsibilities and Requirements
         </Typography>
         <ResponsibilitiesAndRequirements />
-        <Typography as="h2" variant="title" lineHeight="1">
-          Benefits of Serving on the Board of Directors
+        <Typography
+          as="h2"
+          variant="title"
+          lineHeight="1"
+          size={isMobile ? 'lg' : '2xl'}
+        >
+          Benefits of Serving
         </Typography>
         <BenefitsOfServing />
-      </FluidContainer>
-      <FluidContainer padding="36px 0 0">
-        <Typography as="h2" variant="title" lineHeight="1">
-          Schedules
-        </Typography>
       </FluidContainer>
       <BODDownloads />
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
           <MdGroups size="48px" />
-          <Typography as="h2" variant="labelTitle">
+          <Typography as="h2" variant="labelTitle" margin="0px 8px">
             Committees
           </Typography>
         </IconHeading>
