@@ -48,6 +48,13 @@ const event = [
   },
 ];
 
+const CSIFormsButton = [
+  {
+    text: 'Club Banking Forms',
+    href: 'https://asicalstatela.org/student-org-banking',
+  },
+];
+
 export default function CSIForms() {
   return (
     <Page>
@@ -70,8 +77,11 @@ export default function CSIForms() {
       <Header
         title="Center for Student Involvement Forms"
         backgroundImage="/subtle-background-2.jpg"
+        buttons={CSIFormsButton}
       >
-        Forms that pertain to the Center for Student Involvement
+        Forms that pertain to the Center for Student Involvement. Recognized
+        Student Organization banking forms have been moved to the Associated
+        Students Inc. website.
       </Header>
       {/* <FormsSection forms={account} sectionTitle="Account Update Forms" /> */}
       {/* <FormsSection forms={banking} sectionTitle="Club Banking" /> */}
