@@ -41,7 +41,7 @@ const cards = [
     children:
       'Be on the lookout for flyers, banners, or postcards that advertise student group meetings and events. Attending these activities is a great and easy way to start your on-campus involvement.',
     linkText: 'See Forms',
-    href: '/csi/forms',
+    href: 'https://asicalstatela.org/student-org-banking',
   },
   {
     title: 'Officer Change Form',
@@ -98,7 +98,7 @@ export default function StudentOrgs() {
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Constitution, ODC Info and Videos, Club Banking Forms, Officer Change Form, clubs, organization"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Constitution, ODC Info and Videos, Club Banking Forms, Officer Change Form, clubs, organization, orgs"
         />
         <meta
           name="description"

@@ -38,14 +38,6 @@ const cards = [
     number: '323-343-4780',
   },
   {
-    title: 'College of Professional and Global Education',
-    children:
-      'The College of Professional and Global Education delivers innovative classes, certificates and degree programs to meet the educational needs of the citizens of Los Angeles and beyond. The college also provides services for international students and scholars and serves as the lead campus entity on all matters pertaining to global education.',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: '',
-    number: '323-343-4900',
-  },
-  {
     title: 'Information Technology Services',
     children:
       'Information Technology Services is one of five Open Access Labs (OALs) spread out on campus. These labs are made available to assist Cal State LA students to accomplish their academic goal for instruction and research, students must have a current student ID and a Network Information Services (NIS) account. Though all of the OALs provides identical services to the campus community, they offer slightly different equipments, hardware and software depending on various needs in each geographical area on campus.',
