@@ -11,7 +11,7 @@ import {
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
-import { BODDownloads, GovernanceFooter } from 'partials';
+import { GovernanceFooter } from 'partials';
 import { useBreakpoint } from 'hooks';
 
 interface CardProps {
@@ -416,7 +416,6 @@ export default function BoardOfDirectors() {
         </Typography>
         <BenefitsOfServing screenSize={isMobile} />
       </FluidContainer>
-      <BODDownloads />
       <FluidContainer backgroundColor="greyLightest">
         <IconHeading>
           <MdGroups size="48px" />
