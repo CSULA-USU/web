@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { ShadedImageHeader, Page } from 'modules';
 import {
   FluidContainer,
+  Image,
   NonBreakingSpan,
   Card,
   Typography,
@@ -12,6 +13,17 @@ import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { BODDownloads, GovernanceFooter } from 'partials';
 import { useBreakpoint } from 'hooks';
+
+interface CardProps {
+  screenSize: boolean;
+}
+
+const CenteredContainer = styled.div<{ screenSize?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${(props) => (props.screenSize ? '100%' : '50%')};
+`;
 
 const IconHeading = styled.div`
   display: flex;
@@ -72,8 +84,13 @@ const cards = [
   },
 ];
 
-const ResponsibilitiesAndRequirements = () => (
-  <FluidContainer padding="0 0 24px 0">
+const ResponsibilitiesAndRequirements = (props: CardProps) => (
+  <FluidContainer
+    padding="0 0 24px 0"
+    flex
+    justifyContent="space-between"
+    flexDirection={props.screenSize ? 'column-reverse' : 'row'}
+  >
     <List>
       <ListItem>
         <Typography>
@@ -115,11 +132,24 @@ const ResponsibilitiesAndRequirements = () => (
         </Typography>
       </ListItem>
     </List>
+    <CenteredContainer screenSize={props.screenSize}>
+      <Image
+        src="vectors/board-of-directors/completed-tasks.svg"
+        alt=""
+        height="256px"
+        width="auto"
+      />
+    </CenteredContainer>
   </FluidContainer>
 );
 
-const BenefitsOfServing = () => (
-  <FluidContainer padding="0">
+const BenefitsOfServing = (props: CardProps) => (
+  <FluidContainer
+    padding="0 0 24px 0"
+    flex
+    justifyContent="space-between"
+    flexDirection={props.screenSize ? 'column-reverse' : 'row'}
+  >
     <List>
       <ListItem>
         <Typography>Develop leadership and career skills</Typography>
@@ -158,6 +188,14 @@ const BenefitsOfServing = () => (
         </ul>
       </ListItem>
     </List>
+    <CenteredContainer screenSize={props.screenSize}>
+      <Image
+        src="vectors/board-of-directors/career-progress.svg"
+        alt=""
+        height="256px"
+        width="auto"
+      />
+    </CenteredContainer>
   </FluidContainer>
 );
 
@@ -362,19 +400,21 @@ export default function BoardOfDirectors() {
           variant="title"
           lineHeight="1"
           size={isMobile ? 'lg' : '2xl'}
+          margin={isMobile ? '0 0 24px 0' : ''}
         >
           Responsibilities and Requirements
         </Typography>
-        <ResponsibilitiesAndRequirements />
+        <ResponsibilitiesAndRequirements screenSize={isMobile} />
         <Typography
           as="h2"
           variant="title"
           lineHeight="1"
           size={isMobile ? 'lg' : '2xl'}
+          margin={isMobile ? '0 0 24px 0' : ''}
         >
           Benefits of Serving
         </Typography>
-        <BenefitsOfServing />
+        <BenefitsOfServing screenSize={isMobile} />
       </FluidContainer>
       <BODDownloads />
       <FluidContainer backgroundColor="greyLightest">
