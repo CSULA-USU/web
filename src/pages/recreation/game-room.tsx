@@ -342,7 +342,14 @@ export default function Gameroom() {
                   }
                   lineHeight="2xl"
                   color="white"
-                  words={['triumph', 'prevail', 'win', 'conquer']}
+                  words={[
+                    'win?',
+                    'prevail?',
+                    'conquer?',
+                    'triumph?',
+                    'overcome?',
+                    'succeed?',
+                  ]}
                 />
               </Typography>
 
