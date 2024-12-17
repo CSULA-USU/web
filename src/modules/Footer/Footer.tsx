@@ -134,11 +134,11 @@ export const Footer = () => (
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={
-                    'https://www.dropbox.com/scl/fi/mteiil0zzrsxulra5cgjy/fall-2024-hours.pdf?rlkey=qartuzboqc3gyodv64f0sgupn&st=7loe04es&raw=1'
+                    'https://www.dropbox.com/scl/fi/75nxe902k92lnpiljv65l/winter-session-2024-hours.docx?rlkey=s00z0b0lk82b4hupytz9ukr7k&st=nputfg90&raw=1'
                   }
                   isExternalLink
                 >
-                  Upcoming Building Hours
+                  2024 Winter Session Building Hours
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
