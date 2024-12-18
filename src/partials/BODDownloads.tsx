@@ -118,7 +118,7 @@ export const BODDownloads = () => {
         title="Fiscal Year 24-25"
         button={{
           children: <NonBreakingSpan>See Schedule</NonBreakingSpan>,
-          href: 'https://www.dropbox.com/scl/fi/bnxxquo4d6hob0jp45avu/U-SU-2024-25-BOD-Meeting-Schedule.xlsx.pdf?rlkey=thadfs2lylcbeaq82ujuhsqib&raw=1',
+          href: 'https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1',
           variant: 'black',
         }}
       />
