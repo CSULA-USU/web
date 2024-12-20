@@ -12,7 +12,7 @@ const FYContainer = styled.div`
   margin: 8px;
 `;
 
-export default function Governance() {
+export default function PublicDocumentArchives() {
   const { isMobile } = useBreakpoint();
   return (
     <Page>

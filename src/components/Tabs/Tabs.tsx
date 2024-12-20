@@ -26,7 +26,11 @@ const TabTitles = styled.div`
   > *:not(:last-child) {
     margin-right: ${Spaces.md};
   }
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
+
 const Tab = styled.button`
   background: transparent;
   border: none;

@@ -11,6 +11,7 @@ import {
   DownloadSection,
   DownloadSectionProps,
 } from 'modules';
+import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 
 const agendaDownloads: DownloadSectionProps[] = [
@@ -105,32 +106,41 @@ const typographyProps = {
   margin: `${Spaces.xl} 0 0`,
 } as TypeProps;
 
-export const BODDownloads = () => (
-  <FluidContainer>
-    <Typography {...typographyProps}>Meeting Calendar</Typography>
-    <Divider color="grey" margin={`${Spaces.xl} 0`} />
-    <DownloadSection
-      title="Fiscal Year 24-25"
-      button={{
-        children: <NonBreakingSpan>See Schedule</NonBreakingSpan>,
-        href: 'https://www.dropbox.com/scl/fi/bnxxquo4d6hob0jp45avu/U-SU-2024-25-BOD-Meeting-Schedule.xlsx.pdf?rlkey=thadfs2lylcbeaq82ujuhsqib&raw=1',
-        variant: 'black',
-      }}
-    />
-    <Typography {...typographyProps}>Agenda</Typography>
-    <Divider color="grey" margin={`${Spaces.xl} 0`} />
-    {agendaDownloads.map((d) => (
-      <DownloadSection key={d.title} {...d} />
-    ))}
-    <Typography {...typographyProps}>Minutes</Typography>
-    <Divider color="grey" margin={`${Spaces.xl} 0`} />
-    {minutesDownloads.map((d) => (
-      <DownloadSection key={d.title} {...d} />
-    ))}
-    <Typography variant="span" color="gold">
-      <StyledLink href="/governance/public-document-archives">
-        View All Documents
-      </StyledLink>
-    </Typography>
-  </FluidContainer>
-);
+export const BODDownloads = () => {
+  const { isMobile, isDesktop } = useBreakpoint();
+  return (
+    <FluidContainer padding={isDesktop ? '0 36px 24px' : '0 72px 36px'}>
+      <Typography {...typographyProps} size={isMobile ? 'lg' : '2xl'}>
+        Meeting Calendar
+      </Typography>
+      <Divider color="grey" margin={`${Spaces.xl} 0`} />
+      <DownloadSection
+        title="Fiscal Year 24-25"
+        button={{
+          children: <NonBreakingSpan>See Schedule</NonBreakingSpan>,
+          href: 'https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1',
+          variant: 'black',
+        }}
+      />
+      <Typography {...typographyProps} size={isMobile ? 'lg' : '2xl'}>
+        Agenda
+      </Typography>
+      <Divider color="grey" margin={`${Spaces.xl} 0`} />
+      {agendaDownloads.map((d) => (
+        <DownloadSection key={d.title} {...d} />
+      ))}
+      <Typography {...typographyProps} size={isMobile ? 'lg' : '2xl'}>
+        Minutes
+      </Typography>
+      <Divider color="grey" margin={`${Spaces.xl} 0`} />
+      {minutesDownloads.map((d) => (
+        <DownloadSection key={d.title} {...d} />
+      ))}
+      <Typography variant="span" color="gold">
+        <StyledLink href="/board-of-directors/public-document-archives">
+          View All Documents
+        </StyledLink>
+      </Typography>
+    </FluidContainer>
+  );
+};
