@@ -317,7 +317,7 @@ export default function Gameroom() {
                 }
                 weight="400"
                 color="primary"
-              ></GameFont>
+              />
             </VerticalContainer>
             <VerticalContainer
               style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
