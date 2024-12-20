@@ -7,6 +7,7 @@ import {
   FluidContainer,
   Image,
   ScrollingContent,
+  StyledLink,
   Typography,
 } from 'components';
 import { Page } from 'modules';
@@ -317,7 +318,7 @@ export default function Gameroom() {
                 }
                 weight="400"
                 color="primary"
-              ></GameFont>
+              />
             </VerticalContainer>
             <VerticalContainer
               style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
@@ -383,17 +384,22 @@ export default function Gameroom() {
       </TitleScreenWrapper>
 
       <ContactsBar>
-        <li>
-          <Image
-            alt="Envelope icon for game room's email address."
-            src="/departments/recreation/game-room/icons/envelope.svg"
-            height="18px"
-            width="18px"
-          />
-          <Typography variant="cta" color="black">
-            gamesroom@calstatela.edu
-          </Typography>
-        </li>
+        {/* <li>
+          <StyledLink
+            href="gamesroom@calstatela.edu"
+            isInverseUnderlineStyling
+          >
+            <Image
+              alt="Envelope icon for game room's email address."
+              src="/departments/recreation/game-room/icons/envelope.svg"
+              height="18px"
+              width="18px"
+            />
+            <Typography variant="cta" color="black">
+              gamesroom@calstatela.edu
+            </Typography>
+          </StyledLink>
+        </li> */}
         <li>
           <Image
             alt="Flag icon for game room's room number."
@@ -402,7 +408,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            U-SU Room 201
+            U-SU 2nd floor, Room 201
           </Typography>
         </li>
         <li>
@@ -412,9 +418,11 @@ export default function Gameroom() {
             height="18px"
             width="18px"
           />
-          <Typography variant="cta" color="black">
-            (323) 343-2488
-          </Typography>
+          <StyledLink href="tel:13233436909">
+            <Typography variant="cta" color="black">
+              (323) 343-6909
+            </Typography>
+          </StyledLink>
         </li>
         <li>
           <Image
@@ -441,7 +449,7 @@ export default function Gameroom() {
           <Image
             alt="paddle svg icon"
             src="/departments/recreation/game-room/icons/paddle.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -450,7 +458,7 @@ export default function Gameroom() {
           <Image
             alt="disk svg icon"
             src="/departments/recreation/game-room/icons/disk.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -459,7 +467,7 @@ export default function Gameroom() {
           <Image
             alt="ball svg icon"
             src="/departments/recreation/game-room/icons/ball.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -468,7 +476,7 @@ export default function Gameroom() {
           <Image
             alt="controller svg icon"
             src="/departments/recreation/game-room/icons/controller.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -477,7 +485,7 @@ export default function Gameroom() {
           <Image
             alt="soccer svg icon"
             src="/departments/recreation/game-room/icons/soccer.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Activities
           </Typography>
@@ -491,7 +499,7 @@ export default function Gameroom() {
           <Image
             alt="paddle svg icon"
             src="/departments/recreation/game-room/icons/paddle.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -527,7 +535,7 @@ export default function Gameroom() {
           <Image
             alt="soccer svg icon"
             src="/departments/recreation/game-room/icons/soccer.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -558,35 +566,35 @@ export default function Gameroom() {
             <WhiteListItem>
               <Typography as="h3" color="white">
                 Be courteous to fellow players. Take turns and share the
-                equipment fairly.
+                equipment fairly
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
                 Treat all game room equipment gently to ensure its longevity for
-                everyone’s enjoyment.
+                everyone&apos;s enjoyment
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Avoid rough play or running in the game room for safety reasons.
+                Avoid rough play or running in the game room for safety reasons
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
                 Notify staff immediately if equipment is damaged or not
-                functioning properly.
+                functioning properly
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Only use equipment provided by the game room unless authorized.
+                Only use equipment provided by the game room unless authorized
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
                 Tidy up after yourself and ensure the space is ready for the
-                next user.
+                next user
               </Typography>
             </WhiteListItem>
           </ul>
@@ -604,28 +612,27 @@ export default function Gameroom() {
           <ul>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Sanitize hands before and after using game equipment.
+                Sanitize hands before and after using game equipment
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                No food or drinks near gaming stations or tables.
+                No food or drinks near gaming stations or tables
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Wipe down equipment (e.g., controllers, paddles, cues) after
-                use.
+                Wipe down equipment (e.g., controllers, paddles, cues) after use
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Wear clean footwear; no bare feet allowed.
+                Wear clean footwear; no bare feet allowed
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                Dispose of trash in designated bins to maintain cleanliness.
+                Dispose of trash in designated bins to maintain cleanliness
               </Typography>
             </WhiteListItem>
           </ul>
@@ -636,13 +643,38 @@ export default function Gameroom() {
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
             <Typography as="h2" variant="label" color="white">
-              How do I keep John Y. from destroying me in Smash?
+              Requirements and procedures for Game Room equipment
             </Typography>
           }
         >
-          <Typography as="h3" color="white">
-            Lol git gud.
-          </Typography>
+          <ul>
+            <WhiteListItem>
+              <Typography color="white">
+                Has the guest filled out the semester waiver?
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography color="white">
+                Has the guest filled out the daily sign-in?
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography color="white">
+                Has the guest requested what equipment to use?
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography color="white">
+                Has the guest provided a Golden Eagle ONE card? (Only 1 game
+                controller per ONE card)
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography color="white">
+                Does the guest know how to use the facility properly?
+              </Typography>
+            </WhiteListItem>
+          </ul>
         </Expandable>
         <Divider color="gold" margin={`${Spaces.md} 0`} />
 
@@ -650,24 +682,39 @@ export default function Gameroom() {
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
             <Typography as="h2" variant="label" color="white">
-              What can I win at the tournaments?{' '}
+              Tournament prizes as of Fall 2024
             </Typography>
           }
         >
           <ul>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                TBD
+                Duffel Bag (1st Place winner only)
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                TBD
+                Towels
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
               <Typography as="h3" color="white">
-                TBD
+                Hot/Cold Pack
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Notebook
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Pens
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Camper Hat
               </Typography>
             </WhiteListItem>
           </ul>
@@ -678,18 +725,83 @@ export default function Gameroom() {
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
             <Typography as="h2" variant="label" color="white">
-              I have more questions about competing. Who do I contact?
+              Procedure for reservations
+            </Typography>
+          }
+        >
+          <ul>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Same-day request only
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Show proof of Golden Eagle ONE card
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Only one student can reserve one hour at a time
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Can only reserve one hour before reservation
+              </Typography>
+            </WhiteListItem>
+          </ul>
+        </Expandable>
+        <Divider color="gold" margin={`${Spaces.md} 0`} />
+
+        <Expandable
+          indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
+          header={
+            <Typography as="h2" variant="label" color="white">
+              Can I bring a friend?
             </Typography>
           }
         >
           <Typography as="h3" color="white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea magni
-            quos velit, nobis repellendus dolor aliquam. Dolor tempore
-            laudantium error veniam sed quas laborum ex, asperiores quasi
-            necessitatibus earum aperiam at ad iusto, cupiditate consequuntur
-            veritatis aliquam quis voluptatibus, dignissimos et impedit modi.
-            Incidunt minus totam vel ullam, tempore sint.
+            The Games Room is open to all Cal State LA students, staff, and
+            faculty. Proof of ONE card will be needed for all equipment usage.
+            Friends not enrolled in Cal State LA cannot use the Games Room
           </Typography>
+        </Expandable>
+        <Divider color="gold" margin={`${Spaces.md} 0`} />
+
+        <Expandable
+          indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
+          header={
+            <Typography as="h2" variant="label" color="white">
+              Can I bring my own stuff?
+            </Typography>
+          }
+        >
+          <ul>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                You can bring your own device to stream onto the TV with the
+                HDMI cable
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Rooms are &quot;first come, first served&quot;
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Based on demand and total usage, we may ask for long sessions to
+                conclude to accommodate waiting guests.
+              </Typography>
+            </WhiteListItem>
+            <WhiteListItem>
+              <Typography as="h3" color="white">
+                Can only reserve one hour before reservation
+              </Typography>
+            </WhiteListItem>
+          </ul>
         </Expandable>
       </FluidContainer>
     </Page>
