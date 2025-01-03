@@ -6,6 +6,7 @@ import {
   FaMapMarkerAlt,
   FaStickyNote,
 } from 'react-icons/fa';
+import { useBreakpoint } from 'hooks';
 import meetingSchedule from 'data/bod-meeting-schedule.json';
 
 interface Meeting {
@@ -75,9 +76,16 @@ export const BODMeetingCalendar = () => {
   const filteredMeetings = filterPastMeetings(meetingSchedule);
   const groupedMeetings = groupMeetingsByType(filteredMeetings);
 
+  const { isMobile } = useBreakpoint();
+
   return (
     <FluidContainer>
-      <Typography variant="title" as="h2" margin={`0`}>
+      <Typography
+        variant="title"
+        as="h2"
+        margin={`0`}
+        size={isMobile ? 'xl' : '2xl'}
+      >
         Upcoming Meetings
       </Typography>
       {Object.keys(groupedMeetings).map((meetingType, index) => (

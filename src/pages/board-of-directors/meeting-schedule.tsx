@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Header, Page } from 'modules';
+import { HeaderWithImage, Page } from 'modules';
 import { BODDownloads, BODMeetingCalendar, GovernanceFooter } from 'partials';
 
 export default function MeetingSchedule() {
@@ -18,9 +18,12 @@ export default function MeetingSchedule() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Board of Directors Meeting Schedule" />
-      <BODDownloads />
+      <HeaderWithImage
+        title="Board of Directors Meeting Schedule"
+        heroImage="/vectors/board-of-directors/schedule.svg"
+      />
       <BODMeetingCalendar />
+      <BODDownloads />
       <GovernanceFooter />
     </Page>
   );
