@@ -12,6 +12,7 @@ export * from './FeaturedEvents';
 export * from './Footer';
 export * from './GenericModal';
 export * from './Header';
+export * from './HeaderWithImage';
 export * from './ImageAndCard';
 export * from './ImageWithinCard';
 export * from './LogosDisplay';
