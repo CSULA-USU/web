@@ -78,7 +78,7 @@ export const BODMeetingCalendar = () => {
   return (
     <FluidContainer>
       <Typography variant="title" as="h2" margin={`0`}>
-        Schedule
+        Upcoming Meetings
       </Typography>
       {Object.keys(groupedMeetings).map((meetingType, index) => (
         <SectionContainer key={index}>
