@@ -4,6 +4,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Colors, FontSizes, media, Spaces } from 'theme';
+import { Game } from 'types';
 
 const slideDown = keyframes`
   from {
@@ -26,14 +27,7 @@ const GameTypesWrapper = styled.div`
   justify-content: center;
 `;
 
-interface gameProps {
-  id: number;
-  gameName: string;
-  gameDescription: string | string[];
-  gameImgSrc: string;
-}
-
-const games: gameProps[] = [
+const games: Game[] = [
   {
     id: 1,
     gameName: 'Ping Pong',
