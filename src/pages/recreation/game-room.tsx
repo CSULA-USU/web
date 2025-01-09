@@ -46,7 +46,6 @@ interface SocialIconLinkProps {
 }
 
 interface GameFontProps {
-  text: string;
   size?: keyof typeof FontSizes;
   letterSpacing?: string;
   color?: keyof typeof Colors;
@@ -75,13 +74,12 @@ const TitleContainer = styled.div`
     `)}
 `;
 
-const GameRoomStats = ({ children }: { children: ReactNode }) => {
-  const GameRoomStatsWrapper = styled.div`
-    background: radial-gradient(circle at top, rgb(18, 1, 23) 15%, black 85%);
-    /* min-height: 420px; */
-    min-height: 200px;
-  `;
+const GameRoomStatsWrapper = styled.div`
+  background: radial-gradient(circle at top, rgb(18, 1, 23) 15%, black 85%);
+  min-height: 200px;
+`;
 
+const GameRoomStats = ({ children }: { children: ReactNode }) => {
   return (
     <GameRoomStatsWrapper>
       <FluidContainer
@@ -96,6 +94,24 @@ const GameRoomStats = ({ children }: { children: ReactNode }) => {
   );
 };
 
+const GameRoomStatsCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 25%;
+  ${() =>
+    media('tablet')(`
+      flex: 1 1 50%;
+    `)}
+  ${() =>
+    media('mobile')(`
+      flex: 1 1 100%;
+    `)}
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+`;
+
 const GameRoomStatsCard = ({
   quantity,
   title,
@@ -103,24 +119,6 @@ const GameRoomStatsCard = ({
   quantity: String;
   title: String;
 }) => {
-  const GameRoomStatsCardWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 25%;
-    ${() =>
-      media('tablet')(`
-      flex: 1 1 50%;
-    `)}
-    ${() =>
-      media('mobile')(`
-      flex: 1 1 100%;
-    `)}
-    /* flex-wrap: wrap; */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-  `;
   return (
     <GameRoomStatsCardWrapper>
       <Typography
@@ -147,23 +145,23 @@ const GameRoomStatsCard = ({
   );
 };
 
+const SocialIconLinkWrapper = styled.a`
+  svg {
+    color: ${Colors.primary};
+    transition: transform 200ms ease;
+  }
+  svg:hover {
+    color: white;
+    transform: translateY(-4px);
+  }
+`;
+
 const SocialIconLink = ({
   Icon,
   iconLink,
   size,
   ariaLabel,
 }: SocialIconLinkProps) => {
-  const SocialIconLinkWrapper = styled.a`
-    svg {
-      color: ${Colors.primary};
-      transition: transform 200ms ease;
-    }
-    svg:hover {
-      color: white;
-      transform: translateY(-4px);
-    }
-  `;
-
   return (
     <SocialIconLinkWrapper
       href={iconLink}
@@ -175,94 +173,90 @@ const SocialIconLink = ({
   );
 };
 
-const GameFont = ({
-  text,
-  size,
-  letterSpacing,
-  color,
-  weight,
-  lineHeight,
-  margin,
-}: GameFontProps) => {
-  const GameFontWrapper = styled.h1`
-    font-family: 'Press Start 2P', system-ui;
-    font-size: ${FontSizes[size || 'md']};
-    letter-spacing: ${letterSpacing};
-    color: ${Colors[color || 'black']};
-    font-weight: ${weight};
-    line-height: ${FontSizes[lineHeight || 'xl']};
-    margin: ${margin || 0};
-  `;
-  return <GameFontWrapper>{text}</GameFontWrapper>;
-};
+const GameFont = styled.h1<GameFontProps>`
+  font-family: 'Press Start 2P', system-ui;
+  font-size: ${(p) => FontSizes[p.size || 'md']};
+  letter-spacing: ${(p) => p.letterSpacing};
+  color: ${(p) => Colors[p.color || 'black']};
+  font-weight: ${(p) => p.weight};
+  line-height: ${(p) => FontSizes[p.lineHeight || 'xl']};
+  margin: ${(p) => p.margin || 0};
+`;
 
-export default function Gameroom() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+const TitleScreen = styled.div<{ isDesktop: boolean }>`
+  height: ${(p) => (p.isDesktop ? '60vh' : '80vh')};
+  position: relative;
+  background-color: ${Colors.black};
+  background-image: url('/departments/recreation/game-room/game-room_video.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
 
-  const TitleScreenWrapper = styled.div`
-    height: ${isDesktop ? '60vh' : '80vh'};
-    position: relative;
-    background-color: ${Colors.black};
-    background-image: url('/departments/recreation/game-room/game-room_video.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
+`;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 0;
-    }
-  `;
+const ContactsBarWrapper = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin: 0;
+  flex-wrap: wrap;
 
-  const ContactsBar = ({ children }: { children: ReactNode }) => {
-    const ContactsBarWrapper = styled.ul`
-      list-style-type: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0.5rem;
-      margin: 0;
-      flex-wrap: wrap;
-
-      ${() =>
-        media('tablet')(`
+  ${() =>
+    media('tablet')(`
           width: 300px;
           margin: 0 auto;
         `)}
 
-      li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-        white-space: nowrap;
-        ${() =>
-          media('desktop')(`
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+    ${() =>
+      media('desktop')(`
             justify-content: center;
             flex: 1 1 50%;
           `)}
-        ${() =>
-          media('tablet')(`
+    ${() =>
+      media('tablet')(`
             justify-content: start;
             flex: 1 1 100%;
           `)}
-      }
-    `;
-    return (
-      <FluidContainer
-        backgroundColor="primary"
-        padding={isMobile ? '0 16px' : isDesktop ? '0 36px' : '12px 72px'}
-      >
-        <ContactsBarWrapper>{children}</ContactsBarWrapper>
-      </FluidContainer>
-    );
-  };
+  }
+`;
+
+interface ContactsBarProps {
+  children: ReactNode;
+  isMobile: boolean;
+  isDesktop: boolean;
+}
+
+const ContactsBar = ({ children, isMobile, isDesktop }: ContactsBarProps) => {
+  return (
+    <FluidContainer
+      backgroundColor="primary"
+      padding={isMobile ? '0 16px' : isDesktop ? '0 36px' : '12px 72px'}
+    >
+      <ContactsBarWrapper>{children}</ContactsBarWrapper>
+    </FluidContainer>
+  );
+};
+
+export default function Gameroom() {
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
     <Page>
@@ -291,12 +285,11 @@ export default function Gameroom() {
         />
       </Head>
 
-      <TitleScreenWrapper>
+      <TitleScreen isDesktop={isDesktop}>
         <FluidContainer height="100%">
           <TitleContainer>
             <VerticalContainer>
               <GameFont
-                text="Recreation"
                 size={
                   isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
                 }
@@ -306,9 +299,10 @@ export default function Gameroom() {
                 }
                 weight="400"
                 color="white"
-              />
+              >
+                Recreation
+              </GameFont>
               <GameFont
-                text="Game Room"
                 size={
                   isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
                 }
@@ -318,7 +312,9 @@ export default function Gameroom() {
                 }
                 weight="400"
                 color="primary"
-              />
+              >
+                Game Room
+              </GameFont>
             </VerticalContainer>
             <VerticalContainer
               style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
@@ -381,9 +377,9 @@ export default function Gameroom() {
             </VerticalContainer>
           </TitleContainer>
         </FluidContainer>
-      </TitleScreenWrapper>
+      </TitleScreen>
 
-      <ContactsBar>
+      <ContactsBar isMobile={isMobile} isDesktop={isDesktop}>
         {/* <li>
           <StyledLink
             href="gamesroom@calstatela.edu"
