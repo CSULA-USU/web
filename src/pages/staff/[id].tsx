@@ -28,6 +28,10 @@ const OutsideContainer = styled.div`
   overflow: auto;
 `;
 
+const CardBlurbContainer = styled.div`
+  margin-bottom: ${Spaces.sm};
+`;
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -109,7 +113,7 @@ const IconContainer = styled.div`
 `;
 
 const ProfessionalInfoContainer = styled.div`
-  margin-bottom: ${Spaces.md};
+  margin-bottom: ${Spaces.sm};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,6 +181,7 @@ export default function StaffBusinessCard() {
                 lineHeight="1"
               >
                 {staffData && staffData.name}
+                {staffData && ', ' + staffData.suffix}
               </Typography>
               <Typography
                 variant="titleSmall"
@@ -197,6 +202,17 @@ export default function StaffBusinessCard() {
                 {staffData && staffData.department}
               </Typography>
             </ProfessionalInfoContainer>
+            <CardBlurbContainer>
+              <Typography
+                variant="eventTime"
+                size="2xs"
+                color="black"
+                weight="400"
+                lineHeight="1"
+              >
+                {staffData && staffData.cardBlurb}
+              </Typography>
+            </CardBlurbContainer>
             <ContactInfoContainer>
               {staffData && staffData.phone && (
                 <IconAndInfoContainer>
