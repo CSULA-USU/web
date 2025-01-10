@@ -77,7 +77,7 @@ export default function About() {
               <FluidContainer flex justifyContent="center" alignItems="center">
                 <Image
                   alt="student union"
-                  src="/about/calstatela-hero.jpeg"
+                  src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                   style={{ width: '100%', height: '100%' }}
                 />
               </FluidContainer>
@@ -109,7 +109,7 @@ export default function About() {
             >
               <Image
                 alt="student union"
-                src="/about/calstatela-hero.jpeg"
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                 style={{ width: '100%', height: 'auto' }}
               />
             </FluidContainer>
@@ -207,7 +207,7 @@ export default function About() {
         </Title>
         <ImageContainer>
           <Image
-            src="https://www.dropbox.com/scl/fi/drgfh9sry5evvs4hg05tp/USU-Floor-Plan-Inside.jpg?rlkey=w2180m5xqn5tlabvulsk2i3v8&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/USU-Floor-Plan-Inside.jpg"
             alt="map of the university student union"
             maxWidth="100%"
             style={{ position: 'absolute' }}
