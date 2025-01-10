@@ -4,12 +4,11 @@ import styled from 'styled-components';
 
 import { TypingAnimationProps } from './TypingAnimation';
 
-export const AnimatedText = ({ words, ...props }: TypingAnimationProps) => {
-  const TextContainer = styled.div`
-    color: ${props.color};
-    display: inline-block;
-  `;
+const TextContainer = styled.div`
+  display: inline-block;
+`;
 
+export const AnimatedText = ({ words, ...props }: TypingAnimationProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);

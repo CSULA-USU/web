@@ -13,9 +13,11 @@ interface DepartmentHeaderProps {
   children: React.ReactNode;
   infoSection: React.ReactNode;
 }
+
 const HeaderContent = styled.div`
   padding: 48px;
 `;
+
 const HeaderContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -24,6 +26,7 @@ const HeaderContainer = styled.div`
     flex: 1;
   }
 `;
+
 export const DepartmentHeader = ({
   title,
   children,

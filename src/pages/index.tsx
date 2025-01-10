@@ -16,25 +16,25 @@ import { useEffect, useState } from 'react';
 
 const images = [
   {
-    src: '/departments/operations/images/building-maintenance.jpg',
+    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg',
     alt: '',
     width: '275',
     margin: '0',
   },
   {
-    src: '/departments/operations/images/information-event-services.jpg',
+    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg',
     alt: '',
     width: '275',
     margin: '0',
   },
   {
-    src: '/departments/operations/images/building-services.jpg',
+    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg',
     alt: '',
     width: '275',
     margin: '0',
   },
   {
-    src: '/departments/operations/images/media-services.jpg',
+    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg',
     alt: '',
     width: '275',
     margin: '0',
@@ -81,7 +81,7 @@ export default function Home() {
         <meta
           name="image"
           property="og:image"
-          content="/about/calstatela-hero.jpeg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -139,7 +139,7 @@ export default function Home() {
                   >
                     <Image
                       alt="student union"
-                      src="/about/calstatela-hero.jpeg"
+                      src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                       width={0}
                       height={0}
                       style={{ width: '100%', height: '100%' }}
@@ -171,7 +171,7 @@ export default function Home() {
                 >
                   <Image
                     alt="student union"
-                    src="/about/calstatela-hero.jpeg"
+                    src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                     style={{ width: '100%', height: 'auto' }}
                   />
                 </FluidContainer>

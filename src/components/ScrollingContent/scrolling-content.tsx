@@ -12,22 +12,36 @@ const scroll = keyframes`
   }
 `;
 
-export const BannerItem = ({
-  children,
-  gap = '2rem',
-}: {
-  children: ReactNode;
-  gap?: string;
-}) => {
-  const BannerItemWrapper = styled.span`
-    display: inline-flex;
-    align-items: center;
-    display: flex;
-    margin-right: ${gap};
-    gap: ${gap};
-  `;
-  return <BannerItemWrapper>{children}</BannerItemWrapper>;
-};
+export const BannerItem = styled.span<{ gap?: string }>`
+  display: inline-flex;
+  align-items: center;
+  display: flex;
+  margin-right: ${(p) => (p.gap ? p.gap : '2rem')};
+  gap: ${(p) => (p.gap ? p.gap : '2rem')};
+`;
+
+const Banner = styled.div<{ height: string; bgColor?: string }>`
+  height: ${(p) => p.height};
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: ${(p) => p.bgColor};
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const ScrollingContentWrapper = styled.div<{ direction: 'left' | 'right' }>`
+  display: inline-block;
+  animation: ${scroll} 10s linear infinite
+    ${(p) => p.direction == 'right' && 'reverse'};
+  white-space: nowrap;
+  display: flex;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+`;
 
 export const ScrollingContent = ({
   children,
@@ -40,32 +54,9 @@ export const ScrollingContent = ({
   bgColor?: string;
   direction?: 'left' | 'right';
 }) => {
-  const Banner = styled.div`
-    height: ${height};
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    background-color: ${bgColor};
-    position: relative;
-    display: flex;
-    align-items: center;
-  `;
-
-  const ScrollingContentWrapper = styled.div`
-    display: inline-block;
-    animation: ${scroll} 10s linear infinite
-      ${direction == 'right' && 'reverse'};
-    white-space: nowrap;
-    display: flex;
-
-    &:hover {
-      animation-play-state: paused;
-    }
-  `;
-
   return (
-    <Banner>
-      <ScrollingContentWrapper>
+    <Banner height={height} bgColor={bgColor}>
+      <ScrollingContentWrapper direction={direction}>
         {[...Array(4)].map((_, idx) => {
           return <React.Fragment key={idx}>{children}</React.Fragment>;
         })}

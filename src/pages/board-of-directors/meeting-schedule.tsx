@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { Page } from 'modules';
-import { BODDownloads, GovernanceFooter } from 'partials';
+import { HeaderWithImage, Page } from 'modules';
+import { BODDownloads, BODMeetingCalendar, GovernanceFooter } from 'partials';
 
 export default function MeetingSchedule() {
   return (
@@ -10,7 +10,7 @@ export default function MeetingSchedule() {
         <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Elections, Student Government, Application, Candidate"
+          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Elections, Student Government, Application, Candidate, Voting, Vote, Meeting, Schedule, Calendar, Agenda, Minutes"
         />
         <meta
           name="description"
@@ -18,6 +18,11 @@ export default function MeetingSchedule() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <HeaderWithImage
+        title="Board of Directors Meeting Schedule"
+        heroImage="/vectors/board-of-directors/schedule.svg"
+      />
+      <BODMeetingCalendar />
       <BODDownloads />
       <GovernanceFooter />
     </Page>

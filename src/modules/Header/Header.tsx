@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { Typography, Button, FluidContainer, VerticalLine } from 'components';
+import { Typography, Button, FluidContainer } from 'components';
 import { Spaces } from 'theme';
 
 interface ButtonProps {
@@ -44,6 +44,9 @@ export const Header = ({
   buttons,
 }: HeaderProps) => {
   const { isMobile } = useBreakpoint();
+  const hasChildren =
+    children !== undefined && children !== null && children !== false;
+
   return (
     <header>
       <FluidContainer backgroundImage={backgroundImage}>
@@ -52,12 +55,12 @@ export const Header = ({
             as="h1"
             variant="pageHeader"
             size={isMobile ? '2xl' : '4xl'}
+            margin={hasChildren ? `0 0 ${Spaces['2xl']}` : ''}
           >
             {title}
           </Typography>
-          {children && (
+          {children !== undefined && children !== null && (
             <>
-              <VerticalLine />
               {typeof children === 'string' ? (
                 <Typography as="p" margin="24px 0">
                   {children}

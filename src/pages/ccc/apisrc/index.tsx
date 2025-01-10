@@ -190,7 +190,7 @@ export default function APISRC() {
             alt="2022 apida graduation graduates"
             width={isMobile ? '100%' : '45%'}
             height={isMobile ? '100%' : '45%'}
-          ></Image>
+          />
           <FluidContainer>
             <abbr title="Asian, Pacific Islander, South Asian, Desi-American Graduation">
               <Typography
