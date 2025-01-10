@@ -82,7 +82,7 @@ export default function Staff() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of full time u-su staff"
-          src="https://www.dropbox.com/scl/fi/vkk3wycsbj2n2yzz86ej5/u-su-group.jpg?rlkey=caamb37ujdbjul4ovg4l4qfwj&raw=1"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/u-su-group.jpg"
           width="100%"
           margin={`0px 500px ${Spaces.xl}`}
           borderRadius="12px"
