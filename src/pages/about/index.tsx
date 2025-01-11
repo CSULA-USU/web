@@ -31,12 +31,12 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  padding-bottom: 128.5%;
-  overflow: hidden;
-`;
+// const ImageContainer = styled.div`
+//   position: relative;
+//   width: 100%;
+//   padding-bottom: 128.5%;
+//   overflow: hidden;
+// `;
 
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
@@ -196,10 +196,10 @@ export default function About() {
             topBorder
             margin="16px 8px"
             iconWidth="112px"
-          ></Card>
+          />
         ))}
       </FluidContainer>
-      <FluidContainer>
+      {/* <FluidContainer>
         <Title>
           <Typography variant="title" as="h2">
             Map
@@ -213,7 +213,7 @@ export default function About() {
             style={{ position: 'absolute' }}
           />
         </ImageContainer>
-      </FluidContainer>
+      </FluidContainer> */}
       <InstagramFeed department="usu" />
     </Page>
   );
