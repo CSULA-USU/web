@@ -196,7 +196,7 @@ export default function About() {
             topBorder
             margin="16px 8px"
             iconWidth="112px"
-          ></Card>
+          />
         ))}
       </FluidContainer>
       <FluidContainer>
