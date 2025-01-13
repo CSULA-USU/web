@@ -23,7 +23,7 @@ export const Page = ({ children }: PageProps) => (
   <>
     <PageContainer>
       <Announcement
-        text="Due to the fires and current campus conditions, the U-SU is closed until further notice to ensure everyone's safety."
+        text="Due to the fires and current campus conditions, the U-SU is closed until further notice to ensure everyone's safety. We’ll share updates as soon as possible."
         isVisible={true}
         linkText="Cal State LA Alerts"
         href="https://www.calstatela.edu/alerts"
