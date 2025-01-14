@@ -28,9 +28,26 @@ interface studentOrganizationAwardsProps {
   };
 }
 
+type PastAwardKeys =
+  | 'Student Organization of the Year'
+  | 'Outstanding Student Organization Advisor(s)'
+  | 'Community Service Award'
+  | 'Outstanding New Student Organization'
+  | 'Commitment to Social Justice'
+  | 'Program of the Year'
+  | 'Collaborative Program Award'
+  | 'Outstanding Student Leader(s)'
+  | 'Creative Marketing Award'
+  | 'Greek Member of the Year'
+  | 'Greek Chapter of the Year';
+
+type PastAwardsHashMap = {
+  [_ in PastAwardKeys]: string;
+};
+
 interface pastAwardsProps {
   year: number;
-  awards: Object;
+  awards: PastAwardsHashMap;
 }
 
 const studentOrganizationAwards: studentOrganizationAwardsProps[] = [
@@ -344,6 +361,13 @@ const VerticalContainer = styled.div`
   flex-direction: column;
 `;
 
+const capitalize = (s: string) => {
+  if (s.length > 0) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  return '';
+};
+
 export default function StudentOrganizationAwards() {
   const sortAwardsByYear = () => {
     pastAwards.sort((a, b) => b.year - a.year);
@@ -392,7 +416,9 @@ export default function StudentOrganizationAwards() {
           positive change!
         </Typography>
         <Typography as="p" variant="copy" margin="0 0 8px">
-          Applications open on January 1st and close on December 30th.
+          <strong>
+            Applications open on January 1st and close on December 30th.
+          </strong>
         </Typography>
 
         <Image
@@ -404,59 +430,87 @@ export default function StudentOrganizationAwards() {
       </FluidContainer>
 
       {/* Yellow Banner - Looking to join a Student Organization */}
-      <CallToAction
+      {/* <CallToAction
         href="https://calstatela.presence.io/organizations"
         buttonText="Learn More"
         text="Looking to join a Student Organization?"
       >
         <></>
-      </CallToAction>
+      </CallToAction> */}
 
       {/* Golden Eagle Awards section */}
       <FluidContainer>
         <Typography as="h2" variant="title">
           Golden Eagle Awards:
         </Typography>
-        {studentOrganizationAwards.map((award) => {
-          return (
-            <Fragment key={award.title}>
-              <Expandable
-                indicator={<BiChevronRight size={36} />}
-                header={
-                  <Typography variant="labelTitle" as="h2">
-                    {award.title}
-                  </Typography>
-                }
-              >
-                {Object.entries(award).map(([key, val], idx) => {
-                  if (typeof val === 'string') {
-                    return (
-                      <Typography key={`${key}-${idx}`}>
-                        {key}: {val}
-                      </Typography>
-                    );
-                  } else if (typeof val === 'object') {
-                    return (
-                      <div key={`${key}-${idx}`}>
-                        <Typography>
-                          {key}: {val.text}
-                        </Typography>
-                        <ul>
-                          {val.values &&
-                            val.values.map((item: string, idx: number) => {
-                              return <li key={idx}>{item}</li>;
-                            })}
-                        </ul>
-                      </div>
-                    );
+
+        {studentOrganizationAwards.map(
+          (award: studentOrganizationAwardsProps) => {
+            return (
+              <Fragment key={award.title}>
+                <Expandable
+                  indicator={<BiChevronRight size={36} />}
+                  header={
+                    <Typography variant="labelTitle" as="h2">
+                      {award.title}
+                    </Typography>
                   }
-                })}
-              </Expandable>
-              <Divider margin={`${Spaces.sm} 0`} />
-            </Fragment>
-          );
-        })}
+                >
+                  {Object.entries(award).map(([key, val], idx) => {
+                    if (key == 'title') return;
+                    if (typeof val === 'string') {
+                      return (
+                        <Typography
+                          as="h3"
+                          variant="copy"
+                          key={`${key}-${idx}`}
+                        >
+                          <strong>{capitalize(key)}</strong>: {val}
+                        </Typography>
+                      );
+                    } else if (typeof val === 'object') {
+                      return (
+                        <VerticalContainer key={`${key}-${idx}`}>
+                          <Typography as="h3" variant="copy">
+                            <strong>{capitalize(key)}</strong>: {val.text}
+                          </Typography>
+                          <ul style={{ margin: '0 0 16px' }}>
+                            {val.values?.length > 0 ? (
+                              val.values.map((item: string, idx: number) => {
+                                return (
+                                  <li key={idx}>
+                                    <Typography variant="copy">
+                                      {item}
+                                    </Typography>
+                                  </li>
+                                );
+                              })
+                            ) : (
+                              <li>
+                                <Typography variant="copy">N/A</Typography>
+                              </li>
+                            )}
+                          </ul>
+                        </VerticalContainer>
+                      );
+                    }
+                  })}
+                </Expandable>
+                <Divider margin={`${Spaces.sm} 0`} />
+              </Fragment>
+            );
+          },
+        )}
       </FluidContainer>
+
+      {/* Yellow Banner - Looking to join a Student Organization */}
+      <CallToAction
+        href=""
+        buttonText="Apply Now"
+        text="Think you deserve a Golden Eagle Award?"
+      >
+        <></>
+      </CallToAction>
 
       {/* Past Golden Eagles section */}
       <FluidContainer>
@@ -477,7 +531,11 @@ export default function StudentOrganizationAwards() {
                 <VerticalContainer>
                   {Object.entries(award.awards).map(([title, organization]) => {
                     return (
-                      <Typography as="p" margin={`${Spaces.xs} 0 `} key={title}>
+                      <Typography
+                        margin={`${Spaces.xs} 0 `}
+                        variant="copy"
+                        key={title}
+                      >
                         <strong>{title}:</strong> {organization}
                       </Typography>
                     );
