@@ -11,6 +11,7 @@ import {
   Image,
 } from 'components';
 import { Fragment } from 'react';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 
 interface studentOrganizationAwardsProps {
   title: string;
@@ -369,6 +370,7 @@ const capitalize = (s: string) => {
 };
 
 export default function StudentOrganizationAwards() {
+  const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
   const sortAwardsByYear = () => {
     pastAwards.sort((a, b) => b.year - a.year);
   };
@@ -400,7 +402,13 @@ export default function StudentOrganizationAwards() {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography as="h1" variant="pageHeader" margin="0 0 16px">
+        <Typography
+          as="h1"
+          variant="pageHeader"
+          margin="0 0 16px"
+          size={isMobile ? '2xl' : '4xl'}
+          style={{ textAlign: 'center' }}
+        >
           Golden Eagle Awards
         </Typography>
         <Typography
@@ -424,23 +432,28 @@ export default function StudentOrganizationAwards() {
         <Image
           src="/departments/csi/csi-student-organization-awards.png"
           alt="CSI Student Organization Awards California State University Los Angeles"
-          maxWidth="800px"
-          maxHeight="500px"
+          maxWidth={isTablet ? '100%' : isDesktop ? '700px' : '800px'}
         />
       </FluidContainer>
 
       {/* Yellow Banner - Looking to join a Student Organization */}
-      {/* <CallToAction
+      <CallToAction
         href="https://calstatela.presence.io/organizations"
         buttonText="Learn More"
-        text="Looking to join a Student Organization?"
+        text=""
       >
-        <></>
-      </CallToAction> */}
+        <Typography variant="titleLarge" size={isMobile ? 'xl' : '2xl'}>
+          Looking to join a Student Organization?
+        </Typography>
+      </CallToAction>
 
       {/* Golden Eagle Awards section */}
       <FluidContainer>
-        <Typography as="h2" variant="title">
+        <Typography
+          as="h2"
+          variant="title"
+          size={isMini ? 'lg' : isMobile ? 'xl' : '2xl'}
+        >
           Golden Eagle Awards:
         </Typography>
 
@@ -504,17 +517,21 @@ export default function StudentOrganizationAwards() {
       </FluidContainer>
 
       {/* Yellow Banner - Looking to join a Student Organization */}
-      <CallToAction
-        href=""
-        buttonText="Apply Now"
-        text="Think you deserve a Golden Eagle Award?"
-      >
-        <></>
-      </CallToAction>
+      <div style={{ textOverflow: 'ellipsis' }}>
+        <CallToAction href="" buttonText="Apply Now" text="">
+          <Typography variant="titleLarge" size={isMobile ? 'xl' : '2xl'}>
+            Think you deserve a Golden Eagle Award?
+          </Typography>
+        </CallToAction>
+      </div>
 
       {/* Past Golden Eagles section */}
       <FluidContainer>
-        <Typography as="h2" variant="title">
+        <Typography
+          as="h2"
+          variant="title"
+          size={isMini ? 'lg' : isMobile ? 'xl' : '2xl'}
+        >
           Past Golden Eagles:
         </Typography>
         {pastAwards.map((award) => {
