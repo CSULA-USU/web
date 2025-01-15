@@ -131,7 +131,7 @@ export const Footer = () => (
               </Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="primary" size="sm">
+              {/* <Typography color="primary" size="sm">
                 <StyledLink
                   href={
                     'https://www.dropbox.com/scl/fi/75nxe902k92lnpiljv65l/winter-session-2024-hours.docx?rlkey=s00z0b0lk82b4hupytz9ukr7k&st=nputfg90&raw=1'
@@ -140,7 +140,7 @@ export const Footer = () => (
                 >
                   2024 Winter Session Building Hours
                 </StyledLink>
-              </Typography>
+              </Typography> */}
             </StyledLinkMargins>
           </FooterUnorderedList>
           <FooterUnorderedList>
