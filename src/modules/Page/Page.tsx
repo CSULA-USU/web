@@ -23,7 +23,7 @@ export const Page = ({ children }: PageProps) => (
   <>
     <PageContainer>
       <Announcement
-        text="Due to the fires and current campus conditions, the U-SU is closed until further notice to ensure everyone's safety. We’ll share updates as soon as possible."
+        text="We will reopen tomorrow, Thursday, January 16 from 7am to 5pm. Please note that some departments will continue operating remotely."
         isVisible={true}
         linkText="Cal State LA Alerts"
         href="https://www.calstatela.edu/alerts"
