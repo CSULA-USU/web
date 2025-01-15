@@ -42,6 +42,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta
+            name="image"
+            property="og:image"
+            content="/about/calstatela-hero.jpeg"
+          />
           <link
             rel="preload"
             href="font.woff2"
