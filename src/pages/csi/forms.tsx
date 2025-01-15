@@ -62,17 +62,19 @@ export default function CSIForms() {
         <title>U-SU CSI Forms</title>
         <meta
           name="author"
-          content="The University-Student Union Center for Student Involvement at Cal State LA "
+          content="The University-Student Union Center for Student Involvement at Cal State LA"
+          key="author"
         />
         <meta
           name="keywords"
           content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, USU, University Student, Forms, Form, Student Organization Form, Student Organization, Club Banking, Payment Advance Check Requisition, Payment Advance Procedures, Student Organization Check Requisition, Student Orgnization Deposit Slip, Student Organization Sale Receipt Log, Student Clubs and Orgs Event Fundraising Request Form, Student Organization External Private Fundraising Approval Formm, Amplified Sound Request, Event Registration, Student Organization Temporary Food Permit"
+          key="keywords"
         />
         <meta
           name="description"
           content="All the forms relevant to the Center for Student Involvement"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
         title="Center for Student Involvement Forms"

@@ -33,9 +33,10 @@ export default function Gene() {
     <Page>
       <Head>
         <title>Recreation GENE</title>
-        <meta name="author" content="Recreation" />
+        <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
+          key="keywords"
           content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition"
         />
         <meta
@@ -44,8 +45,8 @@ export default function Gene() {
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer flex flexDirection="row" padding="0px">
         <Header

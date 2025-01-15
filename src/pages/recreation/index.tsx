@@ -78,16 +78,12 @@ export default function Recreation() {
     <Page>
       <Head>
         <title>U-SU Recreation</title>
-        <meta name="author" content="Recreation" />
+        <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
           content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam, Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition, hours, locations, schedule, muscle, buff, fitness, center, housing, south village, exercise, dumbbell, weights, sports, esports, game room"
+          key="keywords"
         />
-        <meta
-          name="description"
-          content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
-        />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledH1>
         <FluidContainer

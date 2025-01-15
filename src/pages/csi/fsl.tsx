@@ -396,16 +396,18 @@ export default function FSL() {
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
+          key="author"
         />
         <meta
           name="keywords"
           content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment"
+          key="keywords"
         />
         <meta
           name="description"
           content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <FluidContainer
         flex
