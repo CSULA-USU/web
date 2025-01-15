@@ -121,16 +121,17 @@ export default function GSRC() {
     <Page>
       <Head>
         <title>U-SU GSRC</title>
-        <meta name="author" content="gsrc coordinator" />
+        <meta name="author" content="gsrc coordinator" key="author" />
         <meta
           name="keywords"
           content="csula cal state la student union cross cultural centers the gender sexuality student queer questioning trans transgender womyn lesbian gay lgbt bi curious feminist resource center resource ccc u-su university-student"
+          key="keywords"
         />
         <meta
           name="description"
           content="The Gender and Sexuality Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">

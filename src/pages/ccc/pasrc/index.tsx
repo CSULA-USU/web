@@ -74,16 +74,17 @@ export default function PASRC() {
     <Page>
       <Head>
         <title>U-SU PASRC</title>
-        <meta name="author" content="pasrc coordinator director" />
+        <meta name="author" content="pasrc coordinator director" key="author" />
         <meta
           name="keywords"
           content="csula cal state la student union cross cultural centers africa african black resource center resource ccc u-su university-student programs events "
+          key="keywords"
         />
         <meta
           name="description"
           content="The Pan African Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">

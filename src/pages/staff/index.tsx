@@ -29,12 +29,16 @@ export default function Staff() {
     <Page>
       <Head>
         <title>U-SU Staff</title>
-        <meta name="author" content="University-Student Union, Cal State LA" />
+        <meta
+          name="author"
+          content="University-Student Union, Cal State LA"
+          key="author"
+        />
         <meta
           name="keywords"
           content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
+          key="keywords"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
         title="Meet the Staff"

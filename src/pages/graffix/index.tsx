@@ -165,12 +165,13 @@ export default function Graffix() {
         <meta
           name="author"
           content="The University Student Union Graffix Department"
+          key="author"
         />
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
+          key="keywords"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">

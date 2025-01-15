@@ -252,7 +252,6 @@ export default function GraphicsRequests() {
     <Page>
       <Head>
         <title>Graphics Requests</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       {department ? (
         <>
