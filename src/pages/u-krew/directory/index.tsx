@@ -1,3 +1,3 @@
-export const Directory = () => {
+export default function Directory() {
   return <>helloworlddirectory</>;
-};
+}
