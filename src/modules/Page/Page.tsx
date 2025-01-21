@@ -23,7 +23,7 @@ export const Page = ({ children }: PageProps) => (
   <>
     <PageContainer>
       <Announcement
-        text="We will reopen tomorrow, Thursday, January 16 from 7 AM to 5 PM. Please note that some departments will continue operating remotely."
+        text="We will reopen Thursday, January 16 from 7 AM to 5 PM. Please note that some departments will continue operating remotely."
         isVisible={true}
         linkText="Cal State LA Alerts"
         href="https://www.calstatela.edu/alerts"
