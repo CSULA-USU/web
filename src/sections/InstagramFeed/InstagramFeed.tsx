@@ -147,7 +147,7 @@ export const Component = ({
                     ? post.thumbnail_url
                     : post.media_url
                 }
-                aria-label={truncateString(post.caption, 125)}
+                aria-label={post.caption && truncateString(post.caption, 125)}
               />
             </Link>
           ))

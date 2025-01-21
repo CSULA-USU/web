@@ -304,15 +304,14 @@ const Personnel = () => (
 
 const AdHoc = () => (
   <TabContent>
-    The Board may establish ad&ndash;hoc committees at its discretion, upon the
+    The Board may establish ad hoc committees at its discretion, upon the
     approval of a majority of the members present and voting. The Chair of the
-    Board of Directors of the University-Student Union will assign the
-    membership of an ad&ndash;hoc committee. Ad&ndash;hoc committees may make
-    recommendations to the Board, but may not take action for the Board. The
-    Vice&ndash;Chair or designee shall chair ad&ndash;hoc committees.
-    Ad&ndash;hoc committees may incluude: Bylaws, Programs and Student Services
-    (PASS), Space Allocation and Building Use (SABU), and, Retirement Plan
-    committees.
+    Board of Directors of the University&ndash;Student Union will assign the
+    membership of an ad hoc committee. Ad hoc committees may make
+    recommendations to the Board but may not take action for the Board. The
+    Vice&ndash;Chair or designee shall chair ad hoc committees. Ad hoc
+    committees may include: Bylaws, Programs and Student Services (PASS), Space
+    Allocation and Building Use (SABU), and Retirement Plan committees.
   </TabContent>
 );
 

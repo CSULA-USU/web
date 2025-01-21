@@ -31,12 +31,12 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  padding-bottom: 128.5%;
-  overflow: hidden;
-`;
+// const ImageContainer = styled.div`
+//   position: relative;
+//   width: 100%;
+//   padding-bottom: 128.5%;
+//   overflow: hidden;
+// `;
 
 export default function About() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
@@ -77,7 +77,7 @@ export default function About() {
               <FluidContainer flex justifyContent="center" alignItems="center">
                 <Image
                   alt="student union"
-                  src="/about/calstatela-hero.jpeg"
+                  src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                   style={{ width: '100%', height: '100%' }}
                 />
               </FluidContainer>
@@ -109,7 +109,7 @@ export default function About() {
             >
               <Image
                 alt="student union"
-                src="/about/calstatela-hero.jpeg"
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
                 style={{ width: '100%', height: 'auto' }}
               />
             </FluidContainer>
@@ -196,10 +196,10 @@ export default function About() {
             topBorder
             margin="16px 8px"
             iconWidth="112px"
-          ></Card>
+          />
         ))}
       </FluidContainer>
-      <FluidContainer>
+      {/* <FluidContainer>
         <Title>
           <Typography variant="title" as="h2">
             Map
@@ -207,13 +207,13 @@ export default function About() {
         </Title>
         <ImageContainer>
           <Image
-            src="https://www.dropbox.com/scl/fi/drgfh9sry5evvs4hg05tp/USU-Floor-Plan-Inside.jpg?rlkey=w2180m5xqn5tlabvulsk2i3v8&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/USU-Floor-Plan-Inside.jpg"
             alt="map of the university student union"
             maxWidth="100%"
             style={{ position: 'absolute' }}
           />
         </ImageContainer>
-      </FluidContainer>
+      </FluidContainer> */}
       <InstagramFeed department="usu" />
     </Page>
   );

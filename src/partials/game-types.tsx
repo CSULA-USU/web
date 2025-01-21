@@ -1,9 +1,10 @@
 import { FluidContainer, Typography, Image } from 'components';
 import { useBreakpoint } from 'hooks';
-import React, { ReactElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Colors, FontSizes, media, Spaces } from 'theme';
+import { Game } from 'types';
 
 const slideDown = keyframes`
   from {
@@ -26,14 +27,7 @@ const GameTypesWrapper = styled.div`
   justify-content: center;
 `;
 
-interface gameProps {
-  id: number;
-  gameName: string;
-  gameDescription: string | string[];
-  gameImgSrc: string;
-}
-
-const games: gameProps[] = [
+const games: Game[] = [
   {
     id: 1,
     gameName: 'Ping Pong',
@@ -86,60 +80,55 @@ interface GameTitleProps {
   onClickHandler: Function;
 }
 
+const GameTitleWrapper = styled.h2<{ selected: boolean }>`
+  color: ${(p) => (p.selected ? Colors.primary : Colors.white)};
+  font-size: ${FontSizes['5xl']};
+  font-weight: ${(p) => (p.selected ? 400 : 200)};
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    color: ${Colors.primary};
+  }
+
+  ${() =>
+    media('widescreen')(`
+    font-size: ${FontSizes['4xl']};
+  `)}
+  ${() =>
+    media('desktop')(`
+    font-size: ${FontSizes['2xl']};
+  `)}
+`;
+
 const GameTitle = ({
   text,
   game_id,
   selected,
   onClickHandler,
 }: GameTitleProps) => {
-  const GameTitleWrapper = styled.h2`
-    color: ${selected ? Colors.primary : Colors.white};
-    font-size: ${FontSizes['5xl']};
-    font-weight: ${selected ? 400 : 200};
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    cursor: pointer;
-    &:hover {
-      color: ${Colors.primary};
-    }
-
-    ${() =>
-      media('widescreen')(`
-      font-size: ${FontSizes['4xl']};
-    `)}
-    ${() =>
-      media('desktop')(`
-      font-size: ${FontSizes['2xl']};
-    `)}
-  `;
   return (
-    <GameTitleWrapper onClick={() => onClickHandler(game_id)}>
+    <GameTitleWrapper
+      selected={selected}
+      onClick={() => onClickHandler(game_id)}
+    >
       {text}
     </GameTitleWrapper>
   );
 };
 
-const GameDescription = ({
-  display,
-  children,
-}: {
-  display: boolean;
-  children: ReactElement;
-}) => {
-  const GameDescriptionWrapper = styled.div`
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-    animation: ${display ? slideDown : ''} 0.3s forwards;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-left: 2px solid ${Colors.primary};
-  `;
-  return <GameDescriptionWrapper>{children}</GameDescriptionWrapper>;
-};
+const GameDescription = styled.div<{ display: boolean }>`
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: ${(p) => (p.display ? slideDown : '')} 0.3s forwards;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 2px solid ${Colors.primary};
+`;
 
 const GameImageContainer = styled.div`
   width: 50%;
@@ -148,6 +137,17 @@ const GameImageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const GameTypesContainer = styled.div<{ isTablet: boolean }>`
+  width: ${(p) => (p.isTablet ? '100%' : '50%')};
+  height: 100%;
+  display: flex;
+  padding: ${Spaces.lg};
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
 `;
 
 export const GameTypes = () => {
@@ -162,17 +162,6 @@ export const GameTypes = () => {
     }
   }, [selectedGame]);
 
-  const GameTypesContainer = styled.div`
-    width: ${isTablet ? '100%' : '50%'};
-    height: 100%;
-    display: flex;
-    padding: ${Spaces.lg};
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 12px;
-  `;
-
   const clickGameHandler = (game_id: number) => {
     setSelectedGame(game_id != selectedGame ? game_id : 0);
   };
@@ -180,7 +169,7 @@ export const GameTypes = () => {
   return (
     <GameTypesWrapper>
       <FluidContainer flex={true} flexDirection="row" alignItems="center">
-        <GameTypesContainer>
+        <GameTypesContainer isTablet={isTablet}>
           {games.map((game) => {
             return (
               <React.Fragment key={game.id}>
