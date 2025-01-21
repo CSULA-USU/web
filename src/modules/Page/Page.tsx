@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
-import { BackToTop } from 'components';
+import { Announcement, BackToTop } from 'components';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -22,12 +22,12 @@ interface PageProps {
 export const Page = ({ children }: PageProps) => (
   <>
     <PageContainer>
-      {/* <Announcement
+      <Announcement
         text="We will reopen Thursday, January 16 from 7 AM to 5 PM. Please note that some departments will continue operating remotely."
-        isVisible={true}
+        isVisible={false}
         linkText="Cal State LA Alerts"
         href="https://www.calstatela.edu/alerts"
-      /> */}
+      />
       <Nav />
       <main>{children}</main>
       <Footer />
