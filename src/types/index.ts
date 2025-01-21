@@ -29,3 +29,21 @@ export interface PresenceEvent {
   tags: string[];
   uri: string;
 }
+
+export interface UKrewStudent {
+  firstName: string;
+  middleName?: string;
+  lastName?: string;
+  email?: string;
+  department: string;
+  role: string;
+  major: string;
+  phoneNumber: string;
+  linkedIn: string;
+  photoUpload?: string;
+  image?: string;
+  graduationSemester: string;
+  graduationYear: string;
+  portfolioLink?: string;
+  session: string;
+}
