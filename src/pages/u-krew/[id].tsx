@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { MdEmail, MdLocationOn } from 'react-icons/md';
+import { MdEmail } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import Image from 'next/image';
-import staff from 'data/staff.json';
-import { toKebabCase } from 'utils/stringhelpers';
 import { StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 import { toTitleCase } from 'utils/stringhelpers';
+import { useEffect, useState } from 'react';
+import { UKrewStudent } from 'types';
 
 const OutsideContainer = styled.div`
   display: flex;
@@ -28,9 +28,9 @@ const OutsideContainer = styled.div`
   overflow: auto;
 `;
 
-const CardBlurbContainer = styled.div`
-  margin-bottom: ${Spaces.sm};
-`;
+// const CardBlurbContainer = styled.div`
+//   margin-bottom: ${Spaces.sm};
+// `;
 
 const CardContainer = styled.div`
   display: flex;
@@ -150,11 +150,26 @@ const ShadowWrapper = styled.div`
 `;
 
 export default function StudentBusinessCard() {
-  const router = useRouter();
-  const { id } = router.query;
-  const staffData = staff.find(
-    (staffMember) => staffMember.name === toTitleCase(String(id)),
+  const [studentData, setStudentData] = useState<UKrewStudent | undefined>(
+    undefined,
   );
+  const router = useRouter();
+  let id = router.query.id;
+
+  useEffect(() => {
+    if (!id) return;
+    const fetchStudentData = async () => {
+      await fetch(`/api/jotformUKrew?user_id=${id}`).then(async (res) => {
+        if (!res.ok) {
+          console.log('Error when fetching user data.');
+          router.push('directory');
+          return;
+        }
+        setStudentData(await res.json());
+      });
+    };
+    fetchStudentData();
+  }, [id]);
 
   return (
     <OutsideContainer>
@@ -168,7 +183,7 @@ export default function StudentBusinessCard() {
               height="80"
             />
             <ProfileImageContainer
-              profilePicture={staffData && staffData.src}
+              profilePicture={studentData && studentData?.photoUpload}
             />
           </CardContainerTop>
           <CardContainerBottom>
@@ -180,8 +195,11 @@ export default function StudentBusinessCard() {
                 size="lg"
                 lineHeight="1"
               >
-                {staffData && staffData.name}
-                {staffData && ', ' + staffData.suffix}
+                {studentData &&
+                  `${toTitleCase(studentData.firstName)} ${toTitleCase(
+                    studentData.lastName,
+                  )}`}
+                {/* {studentData && ', ' + studentData.suffix} */}
               </Typography>
               <Typography
                 variant="titleSmall"
@@ -190,7 +208,7 @@ export default function StudentBusinessCard() {
                 weight="600"
                 lineHeight="1.5"
               >
-                {staffData && staffData.title}
+                {studentData && studentData.role}
               </Typography>
               <Typography
                 variant="eventTime"
@@ -199,10 +217,10 @@ export default function StudentBusinessCard() {
                 weight="400"
                 lineHeight="1"
               >
-                {staffData && staffData.department}
+                {studentData && studentData.department}
               </Typography>
             </ProfessionalInfoContainer>
-            <CardBlurbContainer>
+            {/* <CardBlurbContainer>
               <Typography
                 variant="eventTime"
                 size="2xs"
@@ -210,11 +228,11 @@ export default function StudentBusinessCard() {
                 weight="400"
                 lineHeight="1"
               >
-                {staffData && staffData.cardBlurb}
+                {studentData && studentData.cardBlurb}
               </Typography>
-            </CardBlurbContainer>
+            </CardBlurbContainer> */}
             <ContactInfoContainer>
-              {staffData && staffData.phone && (
+              {studentData && studentData.phoneNumber && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiSolidPhone
@@ -228,17 +246,17 @@ export default function StudentBusinessCard() {
                   </IconContainer>
                   <IconAndInfoContainerRight>
                     <StyledLink
-                      href={`tel:${staffData.phone}`}
+                      href={`tel:${studentData.phoneNumber}`}
                       isInverseUnderlineStyling
                     >
                       <Typography variant="span" size="2xs" color="greyDarkest">
-                        {staffData && staffData.phone}
+                        {studentData && studentData.phoneNumber}
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.email && (
+              {studentData && studentData.email && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <MdEmail
@@ -252,17 +270,17 @@ export default function StudentBusinessCard() {
                   </IconContainer>
                   <IconAndInfoContainerRight>
                     <StyledLink
-                      href={`mailto:${staffData.email}`}
+                      href={`mailto:${studentData.email}`}
                       isInverseUnderlineStyling
                     >
                       <Typography variant="span" size="2xs" color="greyDarkest">
-                        {staffData.email}
+                        {studentData.email}
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.url && (
+              {studentData && studentData.linkedIn && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiLogoLinkedin
@@ -276,7 +294,7 @@ export default function StudentBusinessCard() {
                   </IconContainer>
                   <IconAndInfoContainerRight>
                     <StyledLink
-                      href={String(staffData.url)}
+                      href={String(studentData.linkedIn)}
                       isExternalLink
                       isInverseUnderlineStyling
                     >
@@ -292,31 +310,33 @@ export default function StudentBusinessCard() {
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              <IconAndInfoContainer>
-                <IconContainer>
-                  <BiGlobe
-                    style={{
-                      height: '16px',
-                      width: '16px',
-                      flexShrink: 0,
-                      color: 'white',
-                    }}
-                  />
-                </IconContainer>
-                <IconAndInfoContainerRight>
-                  <StyledLink href={'/'} isInverseUnderlineStyling>
-                    <Typography
-                      variant="span"
-                      size="2xs"
-                      color="greyDarker"
-                      as="p"
-                    >
-                      https://www.calstatelausu.org/
-                    </Typography>
-                  </StyledLink>
-                </IconAndInfoContainerRight>
-              </IconAndInfoContainer>
-              <IconAndInfoContainer>
+              {studentData && studentData.portfolioLink && (
+                <IconAndInfoContainer>
+                  <IconContainer>
+                    <BiGlobe
+                      style={{
+                        height: '16px',
+                        width: '16px',
+                        flexShrink: 0,
+                        color: 'white',
+                      }}
+                    />
+                  </IconContainer>
+                  <IconAndInfoContainerRight>
+                    <StyledLink href={'/'} isInverseUnderlineStyling>
+                      <Typography
+                        variant="span"
+                        size="2xs"
+                        color="greyDarker"
+                        as="p"
+                      >
+                        {studentData && studentData?.portfolioLink}
+                      </Typography>
+                    </StyledLink>
+                  </IconAndInfoContainerRight>
+                </IconAndInfoContainer>
+              )}
+              {/* <IconAndInfoContainer>
                 <IconContainer>
                   <MdLocationOn
                     style={{
@@ -352,11 +372,11 @@ export default function StudentBusinessCard() {
                     </Typography>
                   </IconAndInfoContainerRight>
                 </StyledLink>
-              </IconAndInfoContainer>
+              </IconAndInfoContainer> */}
               <QRContainer>
                 <QRCodeSVG
                   value={`https://www.calstatelausu.org/staff/${
-                    staffData && toKebabCase(staffData.name)
+                    studentData && studentData?.email.split('@')[0]
                   }`}
                 />
               </QRContainer>

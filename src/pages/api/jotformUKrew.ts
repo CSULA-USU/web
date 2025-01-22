@@ -41,7 +41,7 @@ export default async function handler(
           major: questions?.['11']?.answer,
           phoneNumber: questions?.['12']?.answer?.full,
           linkedIn: questions?.['18']?.answer,
-          photoUpload: questions?.['19']?.answer,
+          photoUpload: questions?.['19']?.answer[0],
           image: questions?.['20']?.answer,
           graduationSemester: questions?.['22']?.answer,
           graduationYear: questions?.['24']?.answer,
