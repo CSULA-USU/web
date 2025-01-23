@@ -323,7 +323,10 @@ export default function StudentBusinessCard() {
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <StyledLink href={'/'} isInverseUnderlineStyling>
+                    <StyledLink
+                      href={studentData?.portfolioLink}
+                      isInverseUnderlineStyling
+                    >
                       <Typography
                         variant="span"
                         size="2xs"
