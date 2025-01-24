@@ -22,6 +22,11 @@
       {
         "text": "Tenants",
         "href": "/about/tenants"
+      },
+      {
+        "text": "U-Krew",
+        "href": "/u-krew",
+        "sub": [{ "text": "Directory", "href": "/u-krew/directory" }]
       }
     ]
   },
