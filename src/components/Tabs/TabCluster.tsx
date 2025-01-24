@@ -19,6 +19,7 @@ export const TabCluster = (props: TabClusterProps) => {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
+            paddingLeft: 0,
           }}
         >
           {props.tabItems.map((item, index) => (

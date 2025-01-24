@@ -47,7 +47,7 @@ export const DepartmentHeader = ({
     if (eventsStatus != 'undefined') {
       setLoading(false);
     }
-  }, [events]);
+  }, [events, eventsStatus]);
 
   return (
     <>
