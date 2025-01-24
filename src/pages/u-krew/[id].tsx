@@ -378,7 +378,7 @@ export default function StudentBusinessCard() {
               </IconAndInfoContainer> */}
               <QRContainer>
                 <QRCodeSVG
-                  value={`https://www.calstatelausu.org/staff/${
+                  value={`https://www.calstatelausu.org/u-krew/${
                     studentData && studentData?.email.split('@')[0]
                   }`}
                 />
