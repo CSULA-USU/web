@@ -53,6 +53,14 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/w9z5qm1d3unybtgh7sh3m/Agenda-Board-of-Directors-November-15-2024.pdf?rlkey=s0am8bq5nui55208kcyh6iy6a&st=t6dmsw7n&raw=1',
             children: 'Meeting November 15, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/8z4yn6933zgoxpvfr9b6g/Agenda-Bylaws-Committee-January-24-2025.docx?rlkey=jtznxpvgd5iixo4or9p9e0pgn&e=1&st=bt6xgpbj&raw=1',
+            children: 'Bylaws Committee Meeting January 24, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/o3og18r3sf9r53wd0eyh6/Agenda-Board-of-Directors-January-31-2025-1.docx?rlkey=lfk3oqakaqplia4jp9ox821f8&e=1&st=0vbtz2yw&raw=1',
+            children: 'Meeting January 31, 2025',
+          },
         ]}
       />
     ),
