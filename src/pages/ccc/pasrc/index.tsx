@@ -24,8 +24,9 @@ const hours = [
   {
     title: 'Office Hours',
     times: [
-      'Monday - Thursday: 8:30 AM - 7:00 PM',
-      'Friday: 8:30 AM - 4:00 PM',
+      'Monday - Thursday: 8:00 AM - 6:00 PM',
+      'Friday: 8:00 AM - 5:00 PM',
+      'Saturday - Sunday: CLOSED',
     ],
   },
 ];
