@@ -161,6 +161,93 @@ const Loading = styled.div<{ visible?: boolean }>`
 
 type RequestsMap = Record<string, { title: string; data: any[] }>;
 
+const GraffixRequest = ({
+  request,
+  isMobile,
+}: {
+  request: any;
+  isMobile: boolean;
+}) => {
+  return (
+    <ExpandableContainer>
+      <Expandable
+        indicator={<BiChevronRight size={48} />}
+        header={
+          <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+            {request.properties.Item.title[0]?.plain_text}
+          </Typography>
+        }
+      >
+        <RequestInfoContainer>
+          <RequestLabel>Submission Date</RequestLabel>:{' '}
+          {request.properties['Submission Date']?.date?.start}
+        </RequestInfoContainer>
+        <RequestInfoContainer>
+          <RequestLabel>Requestor</RequestLabel>:{' '}
+          {request.properties.Contact.rich_text[0]?.plain_text}
+        </RequestInfoContainer>
+        {isMobile ? (
+          <>
+            <RequestInfoContainer>
+              <RequestLabel>Digital Delivery</RequestLabel>:{' '}
+              {request.properties['Digital Delivery']?.date?.start}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Send to Print</RequestLabel>:{' '}
+              {request.properties['Send to Print']?.formula?.date?.start}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Print Delivery</RequestLabel>:{' '}
+              {request.properties['Print Delivery']?.formula?.date?.start}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Event Date</RequestLabel>:{' '}
+              {request.properties['Event Date']?.formula?.date?.start}
+            </RequestInfoContainer>
+          </>
+        ) : (
+          <>
+            <InnerRequestContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Digital Delivery</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {request.properties['Digital Delivery']?.formula?.date?.start}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Send To Print</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {request.properties['Send to Print']?.formula?.date?.start}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Print Delivery</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {request.properties['Print Delivery']?.formula?.date?.start}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Event Date</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {request.properties['Event Date']?.date?.start}
+                </Typography>
+              </RequestInfoContainer>
+            </InnerRequestContainer>
+          </>
+        )}
+        <ButtonContainer>
+          <Button
+            variant="primary"
+            href={request.properties['Project Brief']?.url}
+          >
+            View Request
+          </Button>
+        </ButtonContainer>
+      </Expandable>
+    </ExpandableContainer>
+  );
+};
+
 export default function GraphicsRequests() {
   const requestsList: RequestsMap = useMemo(
     () => ({
@@ -339,114 +426,11 @@ export default function GraphicsRequests() {
                       {status.title}: {status.data.length || 0}
                     </Typography>
                     {status.data.map((request, index) => (
-                      <ExpandableContainer key={index}>
-                        <Expandable
-                          indicator={<BiChevronRight size={48} />}
-                          header={
-                            <Typography
-                              variant="label"
-                              as="h3"
-                              margin={`${Spaces.sm} 0`}
-                            >
-                              {request.properties.Item.title[0]?.plain_text}
-                            </Typography>
-                          }
-                        >
-                          <RequestInfoContainer>
-                            <RequestLabel>Submission Date</RequestLabel>:{' '}
-                            {request.properties['Submission Date']?.date?.start}
-                          </RequestInfoContainer>
-                          <RequestInfoContainer>
-                            <RequestLabel>Requestor</RequestLabel>:{' '}
-                            {
-                              request.properties.Contact.rich_text[0]
-                                ?.plain_text
-                            }
-                          </RequestInfoContainer>
-                          {isMobile ? (
-                            <>
-                              <RequestInfoContainer>
-                                <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-                                {
-                                  request.properties['Digital Delivery']?.date
-                                    ?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Send to Print</RequestLabel>:{' '}
-                                {
-                                  request.properties['Send to Print']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Print Delivery</RequestLabel>:{' '}
-                                {
-                                  request.properties['Print Delivery']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Event Date</RequestLabel>:{' '}
-                                {
-                                  request.properties['Event Date']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                            </>
-                          ) : (
-                            <>
-                              <InnerRequestContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Digital Delivery</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Digital Delivery']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Send To Print</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Send to Print']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Print Delivery</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Print Delivery']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Event Date</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Event Date']?.date
-                                        ?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                              </InnerRequestContainer>
-                            </>
-                          )}
-
-                          <ButtonContainer>
-                            <Button
-                              variant="primary"
-                              href={request.properties['Project Brief']?.url}
-                            >
-                              View Request
-                            </Button>
-                          </ButtonContainer>
-                        </Expandable>
-                      </ExpandableContainer>
+                      <GraffixRequest
+                        request={request}
+                        isMobile={isMobile}
+                        key={index}
+                      />
                     ))}
                   </div>
                 ))}
@@ -465,122 +449,13 @@ export default function GraphicsRequests() {
                 <Typography as="h1" variant="title">
                   {currentStatus}: {requestsList[currentStatus].data.length}
                 </Typography>
-                {graffixRequests
-                  .filter(
-                    (request) =>
-                      request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-                      department?.id,
-                  )
-                  .filter(
-                    (request) =>
-                      request.properties.Status.status.name === currentStatus,
-                  )
-                  .map((request, index) => (
-                    <ExpandableContainer key={index}>
-                      <Expandable
-                        indicator={<BiChevronRight size={48} />}
-                        header={
-                          <Typography
-                            variant="label"
-                            as="h3"
-                            margin={`${Spaces.sm} 0`}
-                          >
-                            {request.properties.Item.title[0]?.plain_text}
-                          </Typography>
-                        }
-                      >
-                        <RequestInfoContainer>
-                          <RequestLabel>Submission Date</RequestLabel>:{' '}
-                          {request.properties['Submission Date']?.date?.start}
-                        </RequestInfoContainer>
-                        <RequestInfoContainer>
-                          <RequestLabel>Requestor</RequestLabel>:{' '}
-                          {request.properties.Contact.rich_text[0]?.plain_text}
-                        </RequestInfoContainer>
-                        {isMobile ? (
-                          <>
-                            <RequestInfoContainer>
-                              <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-                              {
-                                request.properties['Digital Delivery']?.date
-                                  ?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Send to Print</RequestLabel>:{' '}
-                              {
-                                request.properties['Send to Print']?.formula
-                                  ?.date?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Print Delivery</RequestLabel>:{' '}
-                              {
-                                request.properties['Print Delivery']?.formula
-                                  ?.date?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Event Date</RequestLabel>:{' '}
-                              {
-                                request.properties['Event Date']?.formula?.date
-                                  ?.start
-                              }
-                            </RequestInfoContainer>
-                          </>
-                        ) : (
-                          <>
-                            <InnerRequestContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Digital Delivery</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Digital Delivery']
-                                      ?.formula?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Send To Print</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Send to Print']?.formula
-                                      ?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Print Delivery</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Print Delivery']
-                                      ?.formula?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Event Date</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Event Date']?.date
-                                      ?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                            </InnerRequestContainer>
-                          </>
-                        )}
-                        <ButtonContainer>
-                          <Button
-                            variant="primary"
-                            href={request.properties['Project Brief']?.url}
-                          >
-                            View Request
-                          </Button>
-                        </ButtonContainer>
-                      </Expandable>
-                    </ExpandableContainer>
-                  ))}
+                {requestsList[currentStatus]?.data.map((request, index) => (
+                  <GraffixRequest
+                    request={request}
+                    isMobile={isMobile}
+                    key={index}
+                  />
+                ))}
               </>
             )}
           </FluidContainer>
