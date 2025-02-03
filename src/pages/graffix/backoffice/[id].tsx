@@ -120,7 +120,7 @@ const ExpandableContainer = styled.div`
 `;
 
 const RequestLabel = styled.span`
-  text-decoration: underline;
+  font-weight: bold;
 `;
 
 const InnerRequestContainer = styled.div`
@@ -182,29 +182,29 @@ const GraffixRequestCard = ({
       >
         <RequestInfoContainer>
           <RequestLabel>Submission Date</RequestLabel>:{' '}
-          {graffixRequest?.submissionDate}
+          {graffixRequest?.submissionDate ?? 'N/A'}
         </RequestInfoContainer>
         <RequestInfoContainer>
           <RequestLabel>Requestor</RequestLabel>:{' '}
-          {graffixRequest?.requestorName}
+          {graffixRequest?.requestorName ?? 'N/A'}
         </RequestInfoContainer>
         {isMobile ? (
           <>
             <RequestInfoContainer>
               <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-              {graffixRequest?.digitalDeliveryDate}
+              {graffixRequest?.digitalDeliveryDate ?? 'N/A'}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Send to Print</RequestLabel>:{' '}
-              {graffixRequest?.sendToPrintDate}
+              {graffixRequest?.sendToPrintDate ?? 'N/A'}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Print Delivery</RequestLabel>:{' '}
-              {graffixRequest?.printDeliveryDate}
+              {graffixRequest?.printDeliveryDate ?? 'N/A'}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Event Date</RequestLabel>:{' '}
-              {graffixRequest?.eventDate}
+              {graffixRequest?.eventDate ?? 'N/A'}
             </RequestInfoContainer>
           </>
         ) : (
@@ -213,35 +213,37 @@ const GraffixRequestCard = ({
               <RequestInfoContainer>
                 <RequestLabel>Digital Delivery</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {graffixRequest?.digitalDeliveryDate}
+                  {graffixRequest?.digitalDeliveryDate ?? 'N/A'}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Send To Print</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {graffixRequest?.sendToPrintDate}
+                  {graffixRequest?.sendToPrintDate ?? 'N/A'}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Print Delivery</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {graffixRequest?.printDeliveryDate}
+                  {graffixRequest?.printDeliveryDate ?? 'N/A'}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Event Date</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {graffixRequest?.eventDate}
+                  {graffixRequest?.eventDate ?? 'N/A'}
                 </Typography>
               </RequestInfoContainer>
             </InnerRequestContainer>
           </>
         )}
-        <ButtonContainer>
-          <Button variant="primary" href={graffixRequest?.projectBriefURL}>
-            View Request
-          </Button>
-        </ButtonContainer>
+        {graffixRequest?.projectBriefURL && (
+          <ButtonContainer>
+            <Button variant="primary" href={graffixRequest?.projectBriefURL}>
+              View Request
+            </Button>
+          </ButtonContainer>
+        )}
       </Expandable>
     </ExpandableContainer>
   );
