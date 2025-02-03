@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -9,14 +9,13 @@ import {
 } from 'components';
 import { Header, Page } from 'modules';
 import styled, { css } from 'styled-components';
-import { graphicsRequestListState } from 'atoms';
-import { useRecoilValue } from 'recoil';
 import departments from 'data/departments.json';
 import { BiChevronRight } from 'react-icons/bi';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { GraffixRequest } from 'types';
 
 interface StatusButtonProps {
   color?:
@@ -161,11 +160,11 @@ const Loading = styled.div<{ visible?: boolean }>`
 
 type RequestsMap = Record<string, { title: string; data: any[] }>;
 
-const GraffixRequest = ({
-  request,
+const GraffixRequestCard = ({
+  graffixRequest,
   isMobile,
 }: {
-  request: any;
+  graffixRequest: GraffixRequest;
   isMobile: boolean;
 }) => {
   return (
@@ -174,35 +173,35 @@ const GraffixRequest = ({
         indicator={<BiChevronRight size={48} />}
         header={
           <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-            {request.properties.Item.title[0]?.plain_text}
+            {graffixRequest.title}
           </Typography>
         }
       >
         <RequestInfoContainer>
           <RequestLabel>Submission Date</RequestLabel>:{' '}
-          {request.properties['Submission Date']?.date?.start}
+          {graffixRequest?.submissionDate}
         </RequestInfoContainer>
         <RequestInfoContainer>
           <RequestLabel>Requestor</RequestLabel>:{' '}
-          {request.properties.Contact.rich_text[0]?.plain_text}
+          {graffixRequest?.requestorName}
         </RequestInfoContainer>
         {isMobile ? (
           <>
             <RequestInfoContainer>
               <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-              {request.properties['Digital Delivery']?.date?.start}
+              {graffixRequest?.digitalDeliveryDate}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Send to Print</RequestLabel>:{' '}
-              {request.properties['Send to Print']?.formula?.date?.start}
+              {graffixRequest?.sendToPrintDate}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Print Delivery</RequestLabel>:{' '}
-              {request.properties['Print Delivery']?.formula?.date?.start}
+              {graffixRequest?.printDeliveryDate}
             </RequestInfoContainer>
             <RequestInfoContainer>
               <RequestLabel>Event Date</RequestLabel>:{' '}
-              {request.properties['Event Date']?.formula?.date?.start}
+              {graffixRequest?.eventDate}
             </RequestInfoContainer>
           </>
         ) : (
@@ -211,35 +210,32 @@ const GraffixRequest = ({
               <RequestInfoContainer>
                 <RequestLabel>Digital Delivery</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {request.properties['Digital Delivery']?.formula?.date?.start}
+                  {graffixRequest?.digitalDeliveryDate}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Send To Print</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {request.properties['Send to Print']?.formula?.date?.start}
+                  {graffixRequest?.sendToPrintDate}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Print Delivery</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {request.properties['Print Delivery']?.formula?.date?.start}
+                  {graffixRequest?.printDeliveryDate}
                 </Typography>
               </RequestInfoContainer>
               <RequestInfoContainer>
                 <RequestLabel>Event Date</RequestLabel>:
                 <Typography as="p" variant="cta" weight="400">
-                  {request.properties['Event Date']?.date?.start}
+                  {graffixRequest?.eventDate}
                 </Typography>
               </RequestInfoContainer>
             </InnerRequestContainer>
           </>
         )}
         <ButtonContainer>
-          <Button
-            variant="primary"
-            href={request.properties['Project Brief']?.url}
-          >
+          <Button variant="primary" href={graffixRequest?.projectBriefURL}>
             View Request
           </Button>
         </ButtonContainer>
@@ -248,76 +244,66 @@ const GraffixRequest = ({
   );
 };
 
+const requestsListTemplate: RequestsMap = {
+  'Not Started': {
+    title: 'Not Started',
+    data: [],
+  },
+  'In Progress': {
+    title: 'In Progress',
+    data: [],
+  },
+  Approved: {
+    title: 'Approved',
+    data: [],
+  },
+  'Send to Print': {
+    title: 'Send to Print',
+    data: [],
+  },
+  'Waiting for Approval': {
+    title: 'Waiting for Approval',
+    data: [],
+  },
+  'On Hold': {
+    title: 'On Hold',
+    data: [],
+  },
+  Complete: {
+    title: 'Complete',
+    data: [],
+  },
+  Cancelled: {
+    title: 'Cancelled',
+    data: [],
+  },
+};
+
 export default function GraphicsRequests() {
-  const requestsList: RequestsMap = useMemo(
-    () => ({
-      'Not Started': {
-        title: 'Not Started',
-        data: [],
-      },
-      'In Progress': {
-        title: 'In Progress',
-        data: [],
-      },
-      Approved: {
-        title: 'Approved',
-        data: [],
-      },
-      'Send to Print': {
-        title: 'Send to Print',
-        data: [],
-      },
-      'Waiting for Approval': {
-        title: 'Waiting for Approval',
-        data: [],
-      },
-      'On Hold': {
-        title: 'On Hold',
-        data: [],
-      },
-      Complete: {
-        title: 'Complete',
-        data: [],
-      },
-      Cancelled: {
-        title: 'Cancelled',
-        data: [],
-      },
-    }),
-    [],
-  );
+  const [requestsList, setRequestsList] = useState(requestsListTemplate);
 
   const router = useRouter();
   const { id } = router.query;
   const { isMobile } = useBreakpoint();
   const [currentStatus, setCurrentStatus] = useState('All');
-  const graffixRequests = useRecoilValue(graphicsRequestListState);
   const [loading, setLoading] = useState(true);
-  const [useEffectCounter, setEffectCounter] = useState(0);
   const [department, setDepartment] = useState<(typeof departments)[number]>();
 
+  const [graffixRequests, setGraffixRequests] = useState<
+    GraffixRequest[] | undefined
+  >(undefined);
+
   const populateRequestsList = () => {
-    if (graffixRequests) {
-      Object.values(requestsList).forEach((status) => {
-        const filteredRequests = graffixRequests
-          .filter(
-            (request) =>
-              request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-              department?.id,
-          )
-          .filter(
-            (request) => request.properties.Status.status.name === status.title,
-          );
+    if (!graffixRequests) return;
 
-        status.data = [...filteredRequests];
-      });
-    }
-  };
+    let tempRequestList: RequestsMap = { ...requestsListTemplate };
+    graffixRequests.map((graffixRequest) => {
+      if (graffixRequest?.status && graffixRequest?.status in tempRequestList) {
+        tempRequestList[graffixRequest.status].data.push(graffixRequest);
+      }
+    });
 
-  const toggleLoading = () => {
-    if (loading) {
-      setLoading(false);
-    }
+    setRequestsList(tempRequestList);
   };
 
   const changeStatus = (status: string) => {
@@ -325,15 +311,35 @@ export default function GraphicsRequests() {
   };
 
   useEffect(() => {
+    if (id == undefined) return;
     const d = departments.find((d) => d.id === id);
     setDepartment(d);
+
+    const fetchGraffixRequestsFromNotion = async () => {
+      await fetch(`/api/notion?department_id=${id}`)
+        .then((res) => {
+          if (!res.ok) {
+            setLoading(false);
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data != undefined && data.length > 0) {
+            setGraffixRequests(data);
+            setLoading(false);
+          }
+        })
+        .catch(() => {
+          console.log('Failed to fetch Graffix Requests.');
+        });
+    };
+    fetchGraffixRequestsFromNotion();
+  }, [id]);
+
+  useEffect(() => {
     populateRequestsList();
-    if (useEffectCounter === 2) {
-      toggleLoading();
-    } else {
-      setEffectCounter(useEffectCounter + 1);
-    }
-  }, [graffixRequests, id]);
+  }, [graffixRequests]);
 
   return (
     <Page>
@@ -426,8 +432,8 @@ export default function GraphicsRequests() {
                       {status.title}: {status.data.length || 0}
                     </Typography>
                     {status.data.map((request, index) => (
-                      <GraffixRequest
-                        request={request}
+                      <GraffixRequestCard
+                        graffixRequest={request}
                         isMobile={isMobile}
                         key={index}
                       />
@@ -450,8 +456,8 @@ export default function GraphicsRequests() {
                   {currentStatus}: {requestsList[currentStatus].data.length}
                 </Typography>
                 {requestsList[currentStatus]?.data.map((request, index) => (
-                  <GraffixRequest
-                    request={request}
+                  <GraffixRequestCard
+                    graffixRequest={request}
                     isMobile={isMobile}
                     key={index}
                   />
@@ -459,12 +465,10 @@ export default function GraphicsRequests() {
               </>
             )}
           </FluidContainer>
-          {loading ? (
+          {loading && (
             <>
               <Loading>Loading...</Loading>
             </>
-          ) : (
-            <></>
           )}
         </>
       ) : (

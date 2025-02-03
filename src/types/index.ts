@@ -47,3 +47,16 @@ export interface UKrewStudent {
   image?: string;
   portfolioLink?: string;
 }
+
+export interface GraffixRequest {
+  title: string;
+  departmentID: string;
+  status?: string;
+  submissionDate?: string;
+  requestorName?: string;
+  digitalDeliveryDate?: string;
+  sendToPrintDate?: string;
+  printDeliveryDate?: string;
+  eventDate?: string;
+  projectBriefURL?: string;
+}
