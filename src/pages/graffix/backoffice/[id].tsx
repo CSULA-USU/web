@@ -158,7 +158,10 @@ const Loading = styled.div<{ visible?: boolean }>`
   font-size: 36px;
 `;
 
-type RequestsMap = Record<string, { title: string; data: any[] }>;
+type RequestsMap = Record<
+  string,
+  { title: string; color: StatusButtonProps['color']; data: any[] }
+>;
 
 const GraffixRequestCard = ({
   graffixRequest,
@@ -247,34 +250,42 @@ const GraffixRequestCard = ({
 const requestsListTemplate: RequestsMap = {
   'Not Started': {
     title: 'Not Started',
+    color: 'grey',
     data: [],
   },
   'In Progress': {
     title: 'In Progress',
+    color: 'orange',
     data: [],
   },
   Approved: {
     title: 'Approved',
+    color: 'purple',
     data: [],
   },
   'Send to Print': {
     title: 'Send to Print',
+    color: 'blue',
     data: [],
   },
   'Waiting for Approval': {
     title: 'Waiting for Approval',
+    color: 'pink',
     data: [],
   },
   'On Hold': {
     title: 'On Hold',
+    color: 'red',
     data: [],
   },
   Complete: {
     title: 'Complete',
+    color: 'green',
     data: [],
   },
   Cancelled: {
     title: 'Cancelled',
+    color: 'brown',
     data: [],
   },
 };
@@ -366,62 +377,20 @@ export default function GraphicsRequests() {
             >
               All
             </StatusButton>
-            <StatusButton
-              color="grey"
-              active={currentStatus === 'Not Started'}
-              onClick={() => changeStatus('Not Started')}
-            >
-              Not Started
-            </StatusButton>
-            <StatusButton
-              color="orange"
-              active={currentStatus === 'In Progress'}
-              onClick={() => changeStatus('In Progress')}
-            >
-              In Progress
-            </StatusButton>
-            <StatusButton
-              color="purple"
-              active={currentStatus === 'Approved'}
-              onClick={() => changeStatus('Approved')}
-            >
-              Approved
-            </StatusButton>
-            <StatusButton
-              color="blue"
-              active={currentStatus === 'Send to Print'}
-              onClick={() => changeStatus('Send to Print')}
-            >
-              Send to Print
-            </StatusButton>
-            <StatusButton
-              color="pink"
-              active={currentStatus === 'Waiting for Approval'}
-              onClick={() => changeStatus('Waiting for Approval')}
-            >
-              Waiting for Approval
-            </StatusButton>
-            <StatusButton
-              color="red"
-              active={currentStatus === 'On Hold'}
-              onClick={() => changeStatus('On Hold')}
-            >
-              On Hold
-            </StatusButton>
-            <StatusButton
-              color="green"
-              active={currentStatus === 'Complete'}
-              onClick={() => changeStatus('Complete')}
-            >
-              Complete
-            </StatusButton>
-            <StatusButton
-              color="brown"
-              active={currentStatus === 'Cancelled'}
-              onClick={() => changeStatus('Cancelled')}
-            >
-              Cancelled
-            </StatusButton>
+            {Object.entries(requestsListTemplate).map(
+              ([graffixStatusName, graffixStatusValue]) => {
+                return (
+                  <StatusButton
+                    key={graffixStatusName}
+                    color={graffixStatusValue.color}
+                    active={currentStatus === graffixStatusName}
+                    onClick={() => changeStatus(graffixStatusName)}
+                  >
+                    {graffixStatusName}
+                  </StatusButton>
+                );
+              },
+            )}
           </StatusNav>
           <FluidContainer>
             {currentStatus === 'All' ? (
