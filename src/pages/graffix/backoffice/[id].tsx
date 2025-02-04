@@ -292,8 +292,16 @@ const requestsListTemplate: RequestsMap = {
   },
 };
 
+const createDeepCopy = (object: any) => {
+  // Traditional spread operator {...obj} is a shallow copy. The nested values are still referenced.
+  // Returns a deep copy.
+  return JSON.parse(JSON.stringify(object));
+};
+
 export default function GraphicsRequests() {
-  const [requestsList, setRequestsList] = useState(requestsListTemplate);
+  const [requestsList, setRequestsList] = useState<RequestsMap>(
+    createDeepCopy(requestsListTemplate),
+  );
 
   const router = useRouter();
   const { id } = router.query;
@@ -308,8 +316,7 @@ export default function GraphicsRequests() {
 
   const populateRequestsList = () => {
     if (!graffixRequests) return;
-
-    let tempRequestList: RequestsMap = { ...requestsListTemplate };
+    let tempRequestList: RequestsMap = createDeepCopy(requestsListTemplate);
     graffixRequests.map((graffixRequest) => {
       if (graffixRequest?.status && graffixRequest?.status in tempRequestList) {
         tempRequestList[graffixRequest.status].data.push(graffixRequest);
@@ -324,7 +331,9 @@ export default function GraphicsRequests() {
   };
 
   useEffect(() => {
+    setRequestsList(createDeepCopy(requestsListTemplate));
     if (id == undefined) return;
+    setLoading(true);
     const d = departments.find((d) => d.id === id);
     setDepartment(d);
 
