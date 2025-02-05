@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -9,14 +9,13 @@ import {
 } from 'components';
 import { Header, Page } from 'modules';
 import styled, { css } from 'styled-components';
-import { graphicsRequestListState } from 'atoms';
-import { useRecoilValue } from 'recoil';
 import departments from 'data/departments.json';
 import { BiChevronRight } from 'react-icons/bi';
 import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { GraffixRequest } from 'types';
 
 interface StatusButtonProps {
   color?:
@@ -121,7 +120,7 @@ const ExpandableContainer = styled.div`
 `;
 
 const RequestLabel = styled.span`
-  text-decoration: underline;
+  font-weight: bold;
 `;
 
 const InnerRequestContainer = styled.div`
@@ -159,78 +158,172 @@ const Loading = styled.div<{ visible?: boolean }>`
   font-size: 36px;
 `;
 
-type RequestsMap = Record<string, { title: string; data: any[] }>;
+type RequestsMap = Record<
+  string,
+  { title: string; color: StatusButtonProps['color']; data: any[] }
+>;
+
+const GraffixRequestCard = ({
+  graffixRequest,
+  isMobile,
+}: {
+  graffixRequest: GraffixRequest;
+  isMobile: boolean;
+}) => {
+  return (
+    <ExpandableContainer>
+      <Expandable
+        indicator={<BiChevronRight size={48} />}
+        header={
+          <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+            {graffixRequest.title}
+          </Typography>
+        }
+      >
+        <RequestInfoContainer>
+          <RequestLabel>Submission Date</RequestLabel>:{' '}
+          {graffixRequest?.submissionDate ?? 'N/A'}
+        </RequestInfoContainer>
+        <RequestInfoContainer>
+          <RequestLabel>Requestor</RequestLabel>:{' '}
+          {graffixRequest?.requestorName ?? 'N/A'}
+        </RequestInfoContainer>
+        {isMobile ? (
+          <>
+            <RequestInfoContainer>
+              <RequestLabel>Digital Delivery</RequestLabel>:{' '}
+              {graffixRequest?.digitalDeliveryDate ?? 'N/A'}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Send to Print</RequestLabel>:{' '}
+              {graffixRequest?.sendToPrintDate ?? 'N/A'}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Print Delivery</RequestLabel>:{' '}
+              {graffixRequest?.printDeliveryDate ?? 'N/A'}
+            </RequestInfoContainer>
+            <RequestInfoContainer>
+              <RequestLabel>Event Date</RequestLabel>:{' '}
+              {graffixRequest?.eventDate ?? 'N/A'}
+            </RequestInfoContainer>
+          </>
+        ) : (
+          <>
+            <InnerRequestContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Digital Delivery</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {graffixRequest?.digitalDeliveryDate ?? 'N/A'}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Send To Print</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {graffixRequest?.sendToPrintDate ?? 'N/A'}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Print Delivery</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {graffixRequest?.printDeliveryDate ?? 'N/A'}
+                </Typography>
+              </RequestInfoContainer>
+              <RequestInfoContainer>
+                <RequestLabel>Event Date</RequestLabel>:
+                <Typography as="p" variant="cta" weight="400">
+                  {graffixRequest?.eventDate ?? 'N/A'}
+                </Typography>
+              </RequestInfoContainer>
+            </InnerRequestContainer>
+          </>
+        )}
+        {graffixRequest?.projectBriefURL && (
+          <ButtonContainer>
+            <Button variant="primary" href={graffixRequest?.projectBriefURL}>
+              View Request
+            </Button>
+          </ButtonContainer>
+        )}
+      </Expandable>
+    </ExpandableContainer>
+  );
+};
+
+const requestsListTemplate: RequestsMap = {
+  'Not Started': {
+    title: 'Not Started',
+    color: 'grey',
+    data: [],
+  },
+  'In Progress': {
+    title: 'In Progress',
+    color: 'orange',
+    data: [],
+  },
+  Approved: {
+    title: 'Approved',
+    color: 'purple',
+    data: [],
+  },
+  'Send to Print': {
+    title: 'Send to Print',
+    color: 'blue',
+    data: [],
+  },
+  'Waiting for Approval': {
+    title: 'Waiting for Approval',
+    color: 'pink',
+    data: [],
+  },
+  'On Hold': {
+    title: 'On Hold',
+    color: 'red',
+    data: [],
+  },
+  Complete: {
+    title: 'Complete',
+    color: 'green',
+    data: [],
+  },
+  Cancelled: {
+    title: 'Cancelled',
+    color: 'brown',
+    data: [],
+  },
+};
+
+const createDeepCopy = (object: any) => {
+  // Traditional spread operator {...obj} is a shallow copy. The nested values are still referenced.
+  // Returns a deep copy.
+  return JSON.parse(JSON.stringify(object));
+};
 
 export default function GraphicsRequests() {
-  const requestsList: RequestsMap = useMemo(
-    () => ({
-      'Not Started': {
-        title: 'Not Started',
-        data: [],
-      },
-      'In Progress': {
-        title: 'In Progress',
-        data: [],
-      },
-      Approved: {
-        title: 'Approved',
-        data: [],
-      },
-      'Send to Print': {
-        title: 'Send to Print',
-        data: [],
-      },
-      'Waiting for Approval': {
-        title: 'Waiting for Approval',
-        data: [],
-      },
-      'On Hold': {
-        title: 'On Hold',
-        data: [],
-      },
-      Complete: {
-        title: 'Complete',
-        data: [],
-      },
-      Cancelled: {
-        title: 'Cancelled',
-        data: [],
-      },
-    }),
-    [],
+  const [requestsList, setRequestsList] = useState<RequestsMap>(
+    createDeepCopy(requestsListTemplate),
   );
 
   const router = useRouter();
   const { id } = router.query;
   const { isMobile } = useBreakpoint();
   const [currentStatus, setCurrentStatus] = useState('All');
-  const graffixRequests = useRecoilValue(graphicsRequestListState);
   const [loading, setLoading] = useState(true);
-  const [useEffectCounter, setEffectCounter] = useState(0);
   const [department, setDepartment] = useState<(typeof departments)[number]>();
 
+  const [graffixRequests, setGraffixRequests] = useState<
+    GraffixRequest[] | undefined
+  >(undefined);
+
   const populateRequestsList = () => {
-    if (graffixRequests) {
-      Object.values(requestsList).forEach((status) => {
-        const filteredRequests = graffixRequests
-          .filter(
-            (request) =>
-              request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-              department?.id,
-          )
-          .filter(
-            (request) => request.properties.Status.status.name === status.title,
-          );
+    if (!graffixRequests) return;
+    let tempRequestList: RequestsMap = createDeepCopy(requestsListTemplate);
+    graffixRequests.map((graffixRequest) => {
+      if (graffixRequest?.status && graffixRequest?.status in tempRequestList) {
+        tempRequestList[graffixRequest.status].data.push(graffixRequest);
+      }
+    });
 
-        status.data = [...filteredRequests];
-      });
-    }
-  };
-
-  const toggleLoading = () => {
-    if (loading) {
-      setLoading(false);
-    }
+    setRequestsList(tempRequestList);
   };
 
   const changeStatus = (status: string) => {
@@ -238,15 +331,37 @@ export default function GraphicsRequests() {
   };
 
   useEffect(() => {
+    setRequestsList(createDeepCopy(requestsListTemplate));
+    if (id == undefined) return;
+    setLoading(true);
     const d = departments.find((d) => d.id === id);
     setDepartment(d);
+
+    const fetchGraffixRequestsFromNotion = async () => {
+      await fetch(`/api/notion?department_id=${id}`)
+        .then((res) => {
+          if (!res.ok) {
+            setLoading(false);
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data != undefined && data.length > 0) {
+            setGraffixRequests(data);
+            setLoading(false);
+          }
+        })
+        .catch(() => {
+          console.log('Failed to fetch Graffix Requests.');
+        });
+    };
+    fetchGraffixRequestsFromNotion();
+  }, [id]);
+
+  useEffect(() => {
     populateRequestsList();
-    if (useEffectCounter === 2) {
-      toggleLoading();
-    } else {
-      setEffectCounter(useEffectCounter + 1);
-    }
-  }, [graffixRequests, id]);
+  }, [graffixRequests]);
 
   return (
     <Page>
@@ -273,62 +388,20 @@ export default function GraphicsRequests() {
             >
               All
             </StatusButton>
-            <StatusButton
-              color="grey"
-              active={currentStatus === 'Not Started'}
-              onClick={() => changeStatus('Not Started')}
-            >
-              Not Started
-            </StatusButton>
-            <StatusButton
-              color="orange"
-              active={currentStatus === 'In Progress'}
-              onClick={() => changeStatus('In Progress')}
-            >
-              In Progress
-            </StatusButton>
-            <StatusButton
-              color="purple"
-              active={currentStatus === 'Approved'}
-              onClick={() => changeStatus('Approved')}
-            >
-              Approved
-            </StatusButton>
-            <StatusButton
-              color="blue"
-              active={currentStatus === 'Send to Print'}
-              onClick={() => changeStatus('Send to Print')}
-            >
-              Send to Print
-            </StatusButton>
-            <StatusButton
-              color="pink"
-              active={currentStatus === 'Waiting for Approval'}
-              onClick={() => changeStatus('Waiting for Approval')}
-            >
-              Waiting for Approval
-            </StatusButton>
-            <StatusButton
-              color="red"
-              active={currentStatus === 'On Hold'}
-              onClick={() => changeStatus('On Hold')}
-            >
-              On Hold
-            </StatusButton>
-            <StatusButton
-              color="green"
-              active={currentStatus === 'Complete'}
-              onClick={() => changeStatus('Complete')}
-            >
-              Complete
-            </StatusButton>
-            <StatusButton
-              color="brown"
-              active={currentStatus === 'Cancelled'}
-              onClick={() => changeStatus('Cancelled')}
-            >
-              Cancelled
-            </StatusButton>
+            {Object.entries(requestsListTemplate).map(
+              ([graffixStatusName, graffixStatusValue]) => {
+                return (
+                  <StatusButton
+                    key={graffixStatusName}
+                    color={graffixStatusValue.color}
+                    active={currentStatus === graffixStatusName}
+                    onClick={() => changeStatus(graffixStatusName)}
+                  >
+                    {graffixStatusName}
+                  </StatusButton>
+                );
+              },
+            )}
           </StatusNav>
           <FluidContainer>
             {currentStatus === 'All' ? (
@@ -339,114 +412,11 @@ export default function GraphicsRequests() {
                       {status.title}: {status.data.length || 0}
                     </Typography>
                     {status.data.map((request, index) => (
-                      <ExpandableContainer key={index}>
-                        <Expandable
-                          indicator={<BiChevronRight size={48} />}
-                          header={
-                            <Typography
-                              variant="label"
-                              as="h3"
-                              margin={`${Spaces.sm} 0`}
-                            >
-                              {request.properties.Item.title[0]?.plain_text}
-                            </Typography>
-                          }
-                        >
-                          <RequestInfoContainer>
-                            <RequestLabel>Submission Date</RequestLabel>:{' '}
-                            {request.properties['Submission Date']?.date?.start}
-                          </RequestInfoContainer>
-                          <RequestInfoContainer>
-                            <RequestLabel>Requestor</RequestLabel>:{' '}
-                            {
-                              request.properties.Contact.rich_text[0]
-                                ?.plain_text
-                            }
-                          </RequestInfoContainer>
-                          {isMobile ? (
-                            <>
-                              <RequestInfoContainer>
-                                <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-                                {
-                                  request.properties['Digital Delivery']?.date
-                                    ?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Send to Print</RequestLabel>:{' '}
-                                {
-                                  request.properties['Send to Print']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Print Delivery</RequestLabel>:{' '}
-                                {
-                                  request.properties['Print Delivery']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Event Date</RequestLabel>:{' '}
-                                {
-                                  request.properties['Event Date']?.formula
-                                    ?.date?.start
-                                }
-                              </RequestInfoContainer>
-                            </>
-                          ) : (
-                            <>
-                              <InnerRequestContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Digital Delivery</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Digital Delivery']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Send To Print</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Send to Print']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Print Delivery</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Print Delivery']
-                                        ?.formula?.date?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                                <RequestInfoContainer>
-                                  <RequestLabel>Event Date</RequestLabel>:
-                                  <Typography as="p" variant="cta" weight="400">
-                                    {
-                                      request.properties['Event Date']?.date
-                                        ?.start
-                                    }
-                                  </Typography>
-                                </RequestInfoContainer>
-                              </InnerRequestContainer>
-                            </>
-                          )}
-
-                          <ButtonContainer>
-                            <Button
-                              variant="primary"
-                              href={request.properties['Project Brief']?.url}
-                            >
-                              View Request
-                            </Button>
-                          </ButtonContainer>
-                        </Expandable>
-                      </ExpandableContainer>
+                      <GraffixRequestCard
+                        graffixRequest={request}
+                        isMobile={isMobile}
+                        key={index}
+                      />
                     ))}
                   </div>
                 ))}
@@ -465,131 +435,20 @@ export default function GraphicsRequests() {
                 <Typography as="h1" variant="title">
                   {currentStatus}: {requestsList[currentStatus].data.length}
                 </Typography>
-                {graffixRequests
-                  .filter(
-                    (request) =>
-                      request.properties.Department.rich_text[0]?.plain_text.toLowerCase() ===
-                      department?.id,
-                  )
-                  .filter(
-                    (request) =>
-                      request.properties.Status.status.name === currentStatus,
-                  )
-                  .map((request, index) => (
-                    <ExpandableContainer key={index}>
-                      <Expandable
-                        indicator={<BiChevronRight size={48} />}
-                        header={
-                          <Typography
-                            variant="label"
-                            as="h3"
-                            margin={`${Spaces.sm} 0`}
-                          >
-                            {request.properties.Item.title[0]?.plain_text}
-                          </Typography>
-                        }
-                      >
-                        <RequestInfoContainer>
-                          <RequestLabel>Submission Date</RequestLabel>:{' '}
-                          {request.properties['Submission Date']?.date?.start}
-                        </RequestInfoContainer>
-                        <RequestInfoContainer>
-                          <RequestLabel>Requestor</RequestLabel>:{' '}
-                          {request.properties.Contact.rich_text[0]?.plain_text}
-                        </RequestInfoContainer>
-                        {isMobile ? (
-                          <>
-                            <RequestInfoContainer>
-                              <RequestLabel>Digital Delivery</RequestLabel>:{' '}
-                              {
-                                request.properties['Digital Delivery']?.date
-                                  ?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Send to Print</RequestLabel>:{' '}
-                              {
-                                request.properties['Send to Print']?.formula
-                                  ?.date?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Print Delivery</RequestLabel>:{' '}
-                              {
-                                request.properties['Print Delivery']?.formula
-                                  ?.date?.start
-                              }
-                            </RequestInfoContainer>
-                            <RequestInfoContainer>
-                              <RequestLabel>Event Date</RequestLabel>:{' '}
-                              {
-                                request.properties['Event Date']?.formula?.date
-                                  ?.start
-                              }
-                            </RequestInfoContainer>
-                          </>
-                        ) : (
-                          <>
-                            <InnerRequestContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Digital Delivery</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Digital Delivery']
-                                      ?.formula?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Send To Print</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Send to Print']?.formula
-                                      ?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Print Delivery</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Print Delivery']
-                                      ?.formula?.date?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                              <RequestInfoContainer>
-                                <RequestLabel>Event Date</RequestLabel>:
-                                <Typography as="p" variant="cta" weight="400">
-                                  {
-                                    request.properties['Event Date']?.date
-                                      ?.start
-                                  }
-                                </Typography>
-                              </RequestInfoContainer>
-                            </InnerRequestContainer>
-                          </>
-                        )}
-                        <ButtonContainer>
-                          <Button
-                            variant="primary"
-                            href={request.properties['Project Brief']?.url}
-                          >
-                            View Request
-                          </Button>
-                        </ButtonContainer>
-                      </Expandable>
-                    </ExpandableContainer>
-                  ))}
+                {requestsList[currentStatus]?.data.map((request, index) => (
+                  <GraffixRequestCard
+                    graffixRequest={request}
+                    isMobile={isMobile}
+                    key={index}
+                  />
+                ))}
               </>
             )}
           </FluidContainer>
-          {loading ? (
+          {loading && (
             <>
               <Loading>Loading...</Loading>
             </>
-          ) : (
-            <></>
           )}
         </>
       ) : (
