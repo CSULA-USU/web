@@ -20,6 +20,7 @@ import { media, Spaces } from 'theme';
 interface UpcomingEventsProps {
   loading: boolean;
   events: PresenceEvent[];
+  hideFirstEvent: boolean;
   monthly?: boolean;
 }
 
@@ -58,6 +59,7 @@ const getMonth = (date: string) =>
 export const ModUpcomingEvents = ({
   loading,
   events,
+  hideFirstEvent,
   monthly,
 }: UpcomingEventsProps) => {
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
@@ -153,7 +155,7 @@ export const ModUpcomingEvents = ({
               <UpcomingEventsContent>
                 <TertiaryContainer>
                   {events
-                    .slice(1, eventLimit)
+                    .slice(hideFirstEvent ? 1 : 0, eventLimit)
                     .map((event, index, eventArray) => (
                       <li key={event.eventNoSqlId}>
                         <MinimalistEvent

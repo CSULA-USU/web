@@ -57,7 +57,22 @@ export default function Home() {
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
+
+  const [specialEventGif, setSpecialEventGif] = useState<string | undefined>(
+    undefined,
+  );
+
+  useEffect(() => {
+    // Comment out useEffect to turn off specialEventGif.
+    if (isMobile) {
+      setSpecialEventGif('/backgrounds/lunarNewYearsBackground-low.gif');
+    } else if (isDesktop) {
+      setSpecialEventGif('/backgrounds/lunarNewYearsBackground-med.gif');
+    } else {
+      setSpecialEventGif('/backgrounds/lunarNewYearsBackground-high.gif');
+    }
+  }, [isMobile, isDesktop]);
 
   useEffect(() => {
     if (eventsStatus != 'undefined') {
@@ -96,6 +111,7 @@ export default function Home() {
           }
           title={isMobile ? 'U-SU' : 'University-Student Union'}
           featuredEvent={events[0]}
+          specialEventGif={specialEventGif}
         />
         {!loading && eventsStatus == 'failed' ? (
           <Typography as="h3" variant="label">
@@ -109,7 +125,11 @@ export default function Home() {
             {featuredEvents.length >= 1 ? (
               <FeaturedEvents events={events} featuredEvents={featuredEvents} />
             ) : null}
-            <ModUpcomingEvents loading={loading} events={events} />
+            <ModUpcomingEvents
+              loading={loading}
+              events={events}
+              hideFirstEvent={specialEventGif == undefined}
+            />
           </>
         )}
       </>
