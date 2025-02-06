@@ -46,6 +46,11 @@ const HiddenLabel = styled.label`
   border: 0;
 `;
 
+const AlphabetButtonStyling = {
+  padding: `${Spaces.sm} ${Spaces.md}`,
+  textDecoration: 'underline',
+};
+
 export default function CGCGrad() {
   const router = useRouter();
   const { id } = router.query;
@@ -161,18 +166,20 @@ export default function CGCGrad() {
         justifyContent="center"
         backgroundColor={headerBackgroundColor}
       >
-        <Image
-          alt="Cross Cultural Centers Cultural Grads Banner"
-          src={headerImageSrc}
-          width={0}
-          height={0}
-          sizes="100vh"
-          style={{
-            height: isMobile ? 'auto' : '80%',
-            width: isMobile ? '100%' : 'auto',
-          }}
-          priority
-        />
+        <h1 style={{ margin: 0 }}>
+          <Image
+            alt="Cross Cultural Centers Cultural Grads Banner"
+            src={headerImageSrc}
+            width={0}
+            height={0}
+            sizes="100vh"
+            style={{
+              height: isMobile ? 'auto' : '80%',
+              width: isMobile ? '100%' : 'auto',
+            }}
+            priority
+          />
+        </h1>
       </FluidContainer>
       {loading ? (
         <Loading load={loading} />
@@ -197,10 +204,7 @@ export default function CGCGrad() {
                     href={`#${letter}`}
                     variant="transparent"
                     notALink
-                    style={{
-                      padding: `${Spaces.sm} ${Spaces.md}`,
-                      textDecoration: 'underline',
-                    }}
+                    style={AlphabetButtonStyling}
                   >
                     {letter}
                   </Button>
@@ -234,7 +238,7 @@ export default function CGCGrad() {
                       <AlphabetSection key={i} id={alphabet}>
                         <Typography
                           key={i}
-                          as="h1"
+                          as="h2"
                           variant="span"
                           size="xl"
                           margin="0 0 8px 0"
