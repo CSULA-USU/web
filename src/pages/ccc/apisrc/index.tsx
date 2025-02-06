@@ -87,16 +87,17 @@ export default function APISRC() {
     <Page>
       <Head>
         <title>U-SU APISRC</title>
-        <meta name="author" content="apisrc coordinator" />
+        <meta name="author" content="apisrc coordinator" key="author" />
         <meta
           name="keywords"
           content="CSULA, Cal State LA Student Union, Cross Cultural Centers, CCC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Cultural Graduation, Cultural Grads, Asian, Pacific Islander, Desi-American, U-SU, University Student"
+          key="keywords"
         />
         <meta
           name="description"
           content="The Asian Pacific Islander Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">

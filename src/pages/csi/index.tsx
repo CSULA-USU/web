@@ -135,16 +135,18 @@ export default function CSI() {
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
+          key="author"
         />
         <meta
           name="keywords"
           content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, GEEK, Golden Eagle Event Krew, FSL, Greek Life, Sorority, Fraternity, Student Organizations, Leadership Enrichment Advocacy and Development, LEAD, Leadership Library, On Campus Programs, Off Campus Programs, Presence"
+          key="keywords"
         />
         <meta
           name="description"
           content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <DepartmentHeader
         title="Center for Student Involvement"
