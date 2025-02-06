@@ -33,7 +33,23 @@ const SearchBar = styled.input.attrs({ type: 'text' })`
   border-radius: 40px;
   padding: 12px 24px;
   font-size: 16px;
+  margin-top: ${Spaces.md};
 `;
+
+const HiddenLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+`;
+
+const AlphabetButtonStyling = {
+  padding: `${Spaces.sm} ${Spaces.md}`,
+  textDecoration: 'underline',
+};
 
 export default function CGCGrad() {
   const router = useRouter();
@@ -150,18 +166,20 @@ export default function CGCGrad() {
         justifyContent="center"
         backgroundColor={headerBackgroundColor}
       >
-        <Image
-          alt="Cross Cultural Centers Cultural Grads Banner"
-          src={headerImageSrc}
-          width={0}
-          height={0}
-          sizes="100vh"
-          style={{
-            height: isMobile ? 'auto' : '80%',
-            width: isMobile ? '100%' : 'auto',
-          }}
-          priority
-        />
+        <h1 style={{ margin: 0 }}>
+          <Image
+            alt="Cross Cultural Centers Cultural Grads Banner"
+            src={headerImageSrc}
+            width={0}
+            height={0}
+            sizes="100vh"
+            style={{
+              height: isMobile ? 'auto' : '80%',
+              width: isMobile ? '100%' : 'auto',
+            }}
+            priority
+          />
+        </h1>
       </FluidContainer>
       {loading ? (
         <Loading load={loading} />
@@ -170,7 +188,11 @@ export default function CGCGrad() {
           {jotformSubmissions.length != 0 ? (
             <>
               <FluidContainer flex justifyContent="center" padding="0">
+                <HiddenLabel htmlFor="gradSearchInput">
+                  Search for a graduate
+                </HiddenLabel>
                 <SearchBar
+                  id="gradSearchInput"
                   placeholder="Enter Graduate's Name"
                   onChange={searchInputHandler}
                 />
@@ -182,10 +204,7 @@ export default function CGCGrad() {
                     href={`#${letter}`}
                     variant="transparent"
                     notALink
-                    style={{
-                      padding: `${Spaces.sm} ${Spaces.md}`,
-                      textDecoration: 'underline',
-                    }}
+                    style={AlphabetButtonStyling}
                   >
                     {letter}
                   </Button>
@@ -219,7 +238,7 @@ export default function CGCGrad() {
                       <AlphabetSection key={i} id={alphabet}>
                         <Typography
                           key={i}
-                          as="h1"
+                          as="h2"
                           variant="span"
                           size="xl"
                           margin="0 0 8px 0"
