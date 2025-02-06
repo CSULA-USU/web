@@ -275,7 +275,7 @@ export default function MeetingRoom() {
           type="application/pdf"
           width="80%"
           height={600}
-          src="/departments/operations/meeting-space-capacity-chart.pdf"
+          src="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
         />
       </FluidContainer>
     </Page>
