@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  Button,
   // Divider,
   FlatCard,
   FluidContainer,
@@ -124,21 +123,14 @@ export default function CulturalGrads() {
         >
           {cards.map((e, i) => (
             <GradButtonContainer key={i}>
-              <Button
-                href={`#${e.id}`}
-                variant="transparent"
-                padding="0px"
-                notALink
-              >
-                <Image
-                  src={e.iconSrc}
-                  alt={e.iconAlt}
-                  style={{ objectFit: 'scale-down' }}
-                  width={100}
-                  height={100}
-                  loading="lazy"
-                />
-              </Button>
+              <Image
+                src={e.iconSrc}
+                alt=""
+                style={{ objectFit: 'scale-down' }}
+                width={100}
+                height={100}
+                loading="lazy"
+              />
             </GradButtonContainer>
           ))}
         </FluidContainer>
@@ -212,7 +204,7 @@ export default function CulturalGrads() {
             </Typography>
             {cards.map((card, i) => {
               return (
-                <div id={card.id} key={`${card.id}-${i}`}>
+                <div key={`${card.id}-${i}`}>
                   <DynamicImageWithinCard
                     index={i}
                     title={card.title}
