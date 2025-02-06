@@ -29,7 +29,7 @@ export const Page = ({ children }: PageProps) => (
         href="https://www.calstatela.edu/alerts"
       />
       <Nav />
-      <main>{children}</main>
+      <main role="main">{children}</main>
       <Footer />
       <BackToTop />
     </PageContainer>

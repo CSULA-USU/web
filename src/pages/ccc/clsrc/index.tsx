@@ -41,16 +41,17 @@ export default function CLSRC() {
     <Page>
       <Head>
         <title>U-SU CLSRC</title>
-        <meta name="author" content="clsrc coordinator" />
+        <meta name="author" content="clsrc coordinator" key="author" />
         <meta
           name="keywords"
           content="csula cal state la student union cross cultural centers the chicana chicano chicanx latina latino latinx student resource center resource ccc u-su university-student"
+          key="keywords"
         />
         <meta
           name="description"
           content="The Chicana/o Latina/o Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">

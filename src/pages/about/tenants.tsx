@@ -82,16 +82,12 @@ export default function Tenants() {
     <Page>
       <Head>
         <title>U-SU Tenants</title>
-        <meta name="author" content="Tenants" />
+        <meta name="author" content="Tenants" key="author" />
         <meta
           name="keywords"
           content="Alumni Association, Associated Students Incorporated, ASI, College of Professional and Global Education, PAGE, Information Technology Services, Open Access Labs, OAL, Wells Fargo, Sbarro, Starbucks"
+          key="keywords"
         />
-        <meta
-          name="description"
-          content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
-        />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header title="Tenants">
         The University-Student Union mission is to provide a unique and friendly

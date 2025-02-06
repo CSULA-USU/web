@@ -100,16 +100,16 @@ export default function Employment() {
     <Page>
       <Head>
         <title>U-SU Employment</title>
-        <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
           content="hiring, hire, opportunity, apply, The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
+          key="keywords"
         />
         <meta
           name="description"
           content="Explore work opportunities and job positions at the University-Student Union at Cal State LA, and help contribute to its mission of encouraging broad social, cultural, recreational, and informal educational programming for the university and its surroundings"
+          key="description"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">

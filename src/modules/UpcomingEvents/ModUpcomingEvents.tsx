@@ -170,20 +170,20 @@ export const ModUpcomingEvents = ({
                         )}
                       </li>
                     ))}
-                  {events.length > eventLimit ? (
-                    <Button
-                      margin="16px auto 0px"
-                      onClick={() => {
-                        setEventLimit(eventLimit + 3);
-                      }}
-                      variant="outline"
-                    >
-                      Load More
-                    </Button>
-                  ) : (
-                    ''
-                  )}
                 </TertiaryContainer>
+                {events.length > eventLimit ? (
+                  <Button
+                    margin="16px auto 0px"
+                    onClick={() => {
+                      setEventLimit(eventLimit + 3);
+                    }}
+                    variant="outline"
+                  >
+                    Load More
+                  </Button>
+                ) : (
+                  ''
+                )}
               </UpcomingEventsContent>
             </>
           )}

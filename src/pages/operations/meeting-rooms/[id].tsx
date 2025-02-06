@@ -116,12 +116,11 @@ export default function MeetingRoom() {
     <Page>
       <Head>
         <title>U-SU Meeting Rooms</title>
-        <meta name="author" content="The University Student Union" />
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
+          key="keywords"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <MeetingRoomsNav></MeetingRoomsNav>
       <FluidContainer
@@ -276,7 +275,7 @@ export default function MeetingRoom() {
           type="application/pdf"
           width="80%"
           height={600}
-          src="/departments/operations/meeting-space-capacity-chart.pdf"
+          src="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
         />
       </FluidContainer>
     </Page>
