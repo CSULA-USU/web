@@ -33,6 +33,17 @@ const SearchBar = styled.input.attrs({ type: 'text' })`
   border-radius: 40px;
   padding: 12px 24px;
   font-size: 16px;
+  margin-top: ${Spaces.md};
+`;
+
+const HiddenLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 `;
 
 export default function CGCGrad() {
@@ -170,7 +181,11 @@ export default function CGCGrad() {
           {jotformSubmissions.length != 0 ? (
             <>
               <FluidContainer flex justifyContent="center" padding="0">
+                <HiddenLabel htmlFor="gradSearchInput">
+                  Search for a graduate
+                </HiddenLabel>
                 <SearchBar
+                  id="gradSearchInput"
                   placeholder="Enter Graduate's Name"
                   onChange={searchInputHandler}
                 />
