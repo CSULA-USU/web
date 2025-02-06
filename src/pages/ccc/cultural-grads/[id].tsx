@@ -52,15 +52,26 @@ const AlphabetButtonStyling = {
 };
 
 export default function CGCGrad() {
-  const router = useRouter();
-  const { id } = router.query;
   const [jotformSubmissions, setJotformSubmissions] = useState<Graduate[]>([]);
-  const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const [searchInput, setSearchInput] = useState<string>('');
   const [loading, isLoading] = useState(true);
+  const router = useRouter();
+  const { id } = router.query;
+  const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  // Filter alphabets to only include those with corresponding entries
+  const filteredAlphabets = alphabets.split('').filter((alphabet) => {
+    return (
+      Array.isArray(jotformSubmissions) &&
+      jotformSubmissions.some(
+        (submission) =>
+          submission.fullName.firstName.slice(0, 1).toUpperCase() === alphabet,
+      )
+    );
+  });
   const { isMobile } = useBreakpoint();
   let headerBackgroundColor: keyof typeof Colors = 'primary';
   let headerImageSrc: any = '';
+
   switch (id) {
     case 'nuestra':
       if (isMobile) {
@@ -161,12 +172,12 @@ export default function CGCGrad() {
           content="/departments/ccc/ccc-grad-banner.jpg"
         />
       </Head>
-      <FluidContainer
-        flex
-        justifyContent="center"
-        backgroundColor={headerBackgroundColor}
-      >
-        <h1 style={{ margin: 0 }}>
+      <h1 style={{ margin: 0 }}>
+        <FluidContainer
+          flex
+          justifyContent="center"
+          backgroundColor={headerBackgroundColor}
+        >
           <Image
             alt="Cross Cultural Centers Cultural Grads Banner"
             src={headerImageSrc}
@@ -179,8 +190,8 @@ export default function CGCGrad() {
             }}
             priority
           />
-        </h1>
-      </FluidContainer>
+        </FluidContainer>
+      </h1>
       {loading ? (
         <Loading load={loading} />
       ) : (
@@ -198,7 +209,7 @@ export default function CGCGrad() {
                 />
               </FluidContainer>
               <FluidContainer flex justifyContent="center" flexWrap="wrap">
-                {alphabets.split('').map((letter: string, i: number) => (
+                {filteredAlphabets.map((letter: string, i: number) => (
                   <Button
                     key={i}
                     href={`#${letter}`}
@@ -228,11 +239,7 @@ export default function CGCGrad() {
                       );
                   return filteredSubmissions &&
                     filteredSubmissions.length == 0 ? (
-                    <>
-                      {/* <FluidContainer flex justifyContent="center">
-                        <Typography>No Matching Names</Typography>
-                      </FluidContainer> */}
-                    </>
+                    <></>
                   ) : (
                     <>
                       <AlphabetSection key={i} id={alphabet}>
