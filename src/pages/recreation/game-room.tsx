@@ -544,35 +544,35 @@ export default function Gameroom() {
         >
           <ul>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Be courteous to fellow players. Take turns and share the
                 equipment fairly
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Treat all game room equipment gently to ensure its longevity for
                 everyone&apos;s enjoyment
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Avoid rough play or running in the game room for safety reasons
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Notify staff immediately if equipment is damaged or not
                 functioning properly
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Only use equipment provided by the game room unless authorized
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Tidy up after yourself and ensure the space is ready for the
                 next user
               </Typography>
@@ -591,27 +591,27 @@ export default function Gameroom() {
         >
           <ul>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Sanitize hands before and after using game equipment
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 No food or drinks near gaming stations or tables
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Wipe down equipment (e.g., controllers, paddles, cues) after use
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Wear clean footwear; no bare feet allowed
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Dispose of trash in designated bins to maintain cleanliness
               </Typography>
             </WhiteListItem>
@@ -668,34 +668,24 @@ export default function Gameroom() {
         >
           <ul>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Duffel Bag (1st Place winner only)
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Towels
-              </Typography>
+              <Typography color="white">Towels</Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Hot/Cold Pack
-              </Typography>
+              <Typography color="white">Hot/Cold Pack</Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Notebook
-              </Typography>
+              <Typography color="white">Notebook</Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Pens
-              </Typography>
+              <Typography color="white">Pens</Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Camper Hat
-              </Typography>
+              <Typography color="white">Camper Hat</Typography>
             </WhiteListItem>
           </ul>
         </Expandable>
@@ -711,22 +701,20 @@ export default function Gameroom() {
         >
           <ul>
             <WhiteListItem>
-              <Typography as="h3" color="white">
-                Same-day request only
-              </Typography>
+              <Typography color="white">Same-day request only</Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Show proof of Golden Eagle ONE card
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Only one student can reserve one hour at a time
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Can only reserve one hour before reservation
               </Typography>
             </WhiteListItem>
@@ -742,7 +730,7 @@ export default function Gameroom() {
             </Typography>
           }
         >
-          <Typography as="h3" color="white">
+          <Typography color="white">
             The Games Room is open to all Cal State LA students, staff, and
             faculty. Proof of ONE card will be needed for all equipment usage.
             Friends not enrolled in Cal State LA cannot use the Games Room
@@ -760,24 +748,24 @@ export default function Gameroom() {
         >
           <ul>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 You can bring your own device to stream onto the TV with the
                 HDMI cable
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Rooms are &quot;first come, first served&quot;
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Based on demand and total usage, we may ask for long sessions to
                 conclude to accommodate waiting guests.
               </Typography>
             </WhiteListItem>
             <WhiteListItem>
-              <Typography as="h3" color="white">
+              <Typography color="white">
                 Can only reserve one hour before reservation
               </Typography>
             </WhiteListItem>
