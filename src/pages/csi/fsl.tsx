@@ -937,7 +937,7 @@ export default function FSL() {
             <Expandable
               indicator={<BiChevronRight size={36} color="white" />}
               header={
-                <Typography color="white" variant="titleSmall">
+                <Typography color="white" variant="titleSmall" as="h3">
                   {faq.header}
                 </Typography>
               }
