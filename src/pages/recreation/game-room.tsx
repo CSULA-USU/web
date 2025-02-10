@@ -488,7 +488,7 @@ export default function Gameroom() {
           <Image
             alt="disk svg icon"
             src="/departments/recreation/game-room/icons/disk.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -497,7 +497,7 @@ export default function Gameroom() {
           <Image
             alt="ball svg icon"
             src="/departments/recreation/game-room/icons/ball.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -506,7 +506,7 @@ export default function Gameroom() {
           <Image
             alt="controller svg icon"
             src="/departments/recreation/game-room/icons/controller.svg"
-          ></Image>
+          />
           <Typography variant="cta" color="black">
             Tournaments
           </Typography>
@@ -537,7 +537,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               General rules and guidelines
             </Typography>
           }
@@ -584,7 +584,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Hygiene expectations
             </Typography>
           }
@@ -622,7 +622,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Requirements and procedures for Game Room equipment
             </Typography>
           }
@@ -661,7 +661,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Tournament prizes as of Fall 2024
             </Typography>
           }
@@ -704,7 +704,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Procedure for reservations
             </Typography>
           }
@@ -737,7 +737,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Can I bring a friend?
             </Typography>
           }
@@ -753,7 +753,7 @@ export default function Gameroom() {
         <Expandable
           indicator={<BiChevronRight size={36} style={{ color: 'white' }} />}
           header={
-            <Typography as="h2" variant="label" color="white">
+            <Typography as="h3" variant="label" color="white">
               Can I bring my own stuff?
             </Typography>
           }
