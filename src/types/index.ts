@@ -49,6 +49,7 @@ export interface UKrewStudent {
 }
 
 export interface GraffixRequest {
+  id: string;
   title: string;
   departmentID: string;
   status?: string;
