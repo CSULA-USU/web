@@ -95,12 +95,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/t0dthpyhivzksdfvks8pc/Minutes-Board-of-Directors-October-25-2024.pdf?rlkey=upvkzzqs7kj5ghpubff5wf4tb&st=ww1w9fw8&raw=1',
             children: 'Board of Directors October 25, 2024',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/47lz4fwe622znkpoza7qp/Minutes-Board-of-Directors-November-15-2024-Updated.pdf?rlkey=wp3asr82xgz0qfrk63czpts43&st=kgapdh11&raw=1',
+            children: 'Board of Directors November 15 Updated, 2024',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/de0idcl8ctllvbw3i0sit/minutes-24-25.zip?rlkey=w1ewzwjbgmsis0amdrwp6xg10&st=oo0x88uk&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/3nkk1zq3bb7zpfmr4qpq4/fy24-25.zip?rlkey=58lkwsrfnm0vul7uh5sc5lfhn&st=e1hhlbq2&dl=1',
       variant: 'black',
     },
   },
