@@ -1,22 +1,22 @@
 import { Typography } from 'components';
 import styled from 'styled-components';
 import { ContentBoardCellProps } from './ContentBoardTypes';
+import { Dispatch, SetStateAction } from 'react';
+import { FontSizes } from 'theme';
 
 const ContentBoardCellContainer = styled.div<{ color: string }>`
-  width: 300px;
-  height: 200px;
-  border: 1px solid black;
+  width: 240px;
   border-top: 16px solid ${(p) => p.color};
   border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   & > :first-child {
     height: 20%;
     width: 100%;
-    padding: 0 0.5rem;
-    border-bottom: 1px solid black;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0.5rem 0.5rem 0 0.5rem;
     display: flex;
     align-items: center;
   }
@@ -32,14 +32,29 @@ const ContentBoardCellContainer = styled.div<{ color: string }>`
 export const ContentBoardCell = ({
   cell,
   color,
+  setSelectedCellID,
 }: {
   cell: ContentBoardCellProps;
   color: string;
+  setSelectedCellID: Dispatch<SetStateAction<string>>;
 }) => {
   return (
-    <ContentBoardCellContainer color={color}>
+    <ContentBoardCellContainer
+      color={color}
+      onClick={() => {
+        setSelectedCellID(cell.cellID);
+      }}
+    >
       <div>
-        <Typography as="h3">{cell.cellTitle}</Typography>
+        <Typography
+          as="h2"
+          variant="labelTitle"
+          weight="400"
+          size="sm"
+          lineHeight={FontSizes['lg']}
+        >
+          {cell.cellTitle}
+        </Typography>
       </div>
       <div>
         {cell.cellDescription && (
