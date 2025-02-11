@@ -36,6 +36,7 @@ export default async function handler(req: any, res: NextApiResponse<any>) {
     let compressedGraffixRequestFeed: any[] = [];
     accumulatedFeed.map((graffixRequestObj) => {
       const graffixRequest: GraffixRequest = {
+        id: graffixRequestObj?.id,
         title:
           graffixRequestObj?.properties?.Item?.title?.[0]?.plain_text ??
           'Untitled',
