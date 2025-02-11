@@ -43,8 +43,8 @@ const contentBoardTemplate: any = {
     columnTitle: 'Waiting for Approval',
     columnData: [],
   },
-  'On Hold': { color: 'red', columnTitle: 'On Hold', columnData: [] },
   Complete: { color: 'green', columnTitle: 'Complete', columnData: [] },
+  'On Hold': { color: 'red', columnTitle: 'On Hold', columnData: [] },
   Cancelled: { color: 'brown', columnTitle: 'Cancelled', columnData: [] },
 };
 
