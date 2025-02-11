@@ -9,3 +9,7 @@ export interface ContentBoardColumnProps {
   columnTitle: string;
   columnData: ContentBoardCellProps[];
 }
+
+export interface KeyValueProps {
+  [key: string]: any;
+}
