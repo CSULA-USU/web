@@ -64,14 +64,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <noscript>
-            <div>
-              <p>
-                Javascript is disabled in your browser. Please enable Javascript
-                to view this content.
-              </p>
-            </div>
-          </noscript>
         </body>
       </Html>
     );
