@@ -101,6 +101,7 @@ export default function GraphicsRequests() {
   };
 
   useEffect(() => {
+    // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
     setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
     if (id == undefined) return;
     setLoading(true);
@@ -110,7 +111,6 @@ export default function GraphicsRequests() {
       await fetch(`/api/notion?department_id=${id}`)
         .then((res) => {
           if (!res.ok) {
-            setLoading(false);
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
           return res.json();
@@ -118,17 +118,23 @@ export default function GraphicsRequests() {
         .then((data) => {
           if (data != undefined && data.length > 0) {
             setGraffixRequests(data);
-            setLoading(false);
+          } else {
+            throw new Error(`Content Error! Status: ${data.status}`);
           }
         })
         .catch(() => {
           console.log('Failed to fetch Graffix Requests.');
+          router.push('/backoffice/graffix-requests');
+        })
+        .finally(() => {
+          setLoading(false);
         });
     };
     fetchGraffixRequestsFromNotion();
   }, [id]);
 
   useEffect(() => {
+    // When Graffix-Requests resources change, update Content Board and Cell Map
     populateContentBoard();
     populateCellIDMap();
   }, [graffixRequests]);
