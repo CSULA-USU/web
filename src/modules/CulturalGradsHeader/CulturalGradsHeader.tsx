@@ -5,10 +5,12 @@ import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
 import { FaRegPauseCircle, FaRegPlayCircle } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
+
 interface SlideshowData {
   src: string;
   alt: string;
 }
+
 interface CulturalGradsHeaderProps {
   images: SlideshowData[];
 }
@@ -90,40 +92,33 @@ const OuterContainer = styled.div`
   }
 `;
 
-const PauseButton = styled.button`
+const ButtonContainer = styled.div`
   position: absolute;
   bottom: 12px;
-  left: 50%; // positions left edge of button at 50% of parent container
-  transform: translateX(
-    -50%
-  ); // shifts button left by 50% of its own width, centering it
-  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
   border-radius: 50%;
-  background-color: ${Colors.black};
-  opacity: 0.5;
-  overflow: hidden;
   padding: 2px;
+`;
+
+const StyledPauseButton = styled.button`
+  background-color: ${Colors.black};
+  color: ${Colors.white};
+  opacity: 0.65;
+  border-radius: 50%;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
   height: 36px;
   width: 36px;
-  transition: opacity 0.2s;
-  &:hover,
-  &:focus {
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
     opacity: 1;
   }
-`;
-
-const StyledPauseButton = styled(FaRegPauseCircle)`
-  color: ${Colors.white};
-  height: 100%;
-  width: auto;
-`;
-
-const StyledPlayButton = styled(FaRegPlayCircle)`
-  color: ${Colors.white};
-  height: 100%;
-  width: auto;
-  border-radius: 50%;
 `;
 
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
@@ -138,6 +133,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
   return (
     <>
       {isDesktop ? (
+        // confusingly; this is the mobile view
         <>
           <MobileOuterContainer>
             <InsideContainer>
@@ -154,40 +150,42 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </MobileOuterContainer>
           <SlideshowContainer>
-            <PauseButton
-              aria-label="Pause carousel"
-              aria-pressed={isPaused}
-              onClick={() => handlePause()}
-            >
-              {/* aria-label and aria-pressed are used to make the button
-              accessible. aria-pressed is used to indicate the toggle state of
-              the button, and aria-label is used to provide a label for the
-              button. */}
-              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
-            </PauseButton>
+            <ButtonContainer>
+              <StyledPauseButton
+                onClick={handlePause}
+                tabIndex={0}
+                aria-label="Pause carousel"
+                aria-pressed={isPaused}
+              >
+                {isPaused ? (
+                  <FaRegPlayCircle size="100%" />
+                ) : (
+                  <FaRegPauseCircle size="100%" />
+                )}
+              </StyledPauseButton>
+            </ButtonContainer>
             <SlideshowContent isPaused={isPaused}>
               {imageList &&
-                imageList.map((img, i: number) => {
-                  return (
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      key={i}
-                      height={200}
-                      width={0}
-                      sizes="100vw"
-                      style={{
-                        width: 'auto',
-                        marginRight: '4px',
-                      }}
-                      loading={i < 5 ? 'eager' : 'lazy'}
-                    />
-                  );
-                })}
+                imageList.map((img, i: number) => (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    key={i}
+                    height={200}
+                    width={0}
+                    sizes="100vw"
+                    style={{
+                      width: 'auto',
+                      marginRight: '4px',
+                    }}
+                    loading={i < 5 ? 'eager' : 'lazy'}
+                  />
+                ))}
             </SlideshowContent>
           </SlideshowContainer>
         </>
       ) : (
+        // desktop view
         <>
           <OuterContainer>
             <InsideContainer>
@@ -198,7 +196,6 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 innerMaxWidth="500px"
                 alignItems="flex-end"
               >
-                {/* <TeaserContainer /> */}
                 <Image
                   src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
                   alt="2022 nuestra graduate participants on stage"
@@ -229,32 +226,37 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             </InsideContainer>
           </OuterContainer>
           <SlideshowContainer>
-            <PauseButton
-              aria-label="Pause carousel"
-              aria-pressed={isPaused}
-              onClick={() => handlePause()}
-            >
-              {isPaused ? <StyledPlayButton /> : <StyledPauseButton />}
-            </PauseButton>
+            <ButtonContainer>
+              <StyledPauseButton
+                onClick={handlePause}
+                tabIndex={0}
+                aria-label="Pause carousel"
+                aria-pressed={isPaused}
+              >
+                {isPaused ? (
+                  <FaRegPlayCircle size="100%" />
+                ) : (
+                  <FaRegPauseCircle size="100%" />
+                )}
+              </StyledPauseButton>
+            </ButtonContainer>
             <SlideshowContent isPaused={isPaused}>
               {imageList &&
-                imageList.map((img, i: number) => {
-                  return (
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      key={i}
-                      height={276}
-                      width={0}
-                      sizes="100vw"
-                      style={{
-                        width: 'auto',
-                        marginRight: '4px',
-                      }}
-                      loading={i < 5 ? 'eager' : 'lazy'}
-                    />
-                  );
-                })}
+                imageList.map((img, i: number) => (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    key={i}
+                    height={276}
+                    width={0}
+                    sizes="100vw"
+                    style={{
+                      width: 'auto',
+                      marginRight: '4px',
+                    }}
+                    loading={i < 5 ? 'eager' : 'lazy'}
+                  />
+                ))}
             </SlideshowContent>
           </SlideshowContainer>
         </>
