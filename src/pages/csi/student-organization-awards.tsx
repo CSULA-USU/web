@@ -520,7 +520,11 @@ export default function StudentOrganizationAwards() {
 
       {/* Yellow Banner - Looking to join a Student Organization */}
       <div style={{ textOverflow: 'ellipsis' }}>
-        <CallToAction href="" buttonText="Apply Now" text="">
+        <CallToAction
+          href="https://forms.office.com/r/VHy8UdVtPZ"
+          buttonText="Apply Now"
+          text=""
+        >
           <Typography variant="titleLarge" size={isMobile ? 'xl' : '2xl'}>
             Think you deserve a Golden Eagle Award?
           </Typography>
@@ -528,7 +532,7 @@ export default function StudentOrganizationAwards() {
       </div>
 
       {/* Past Golden Eagles section */}
-      <FluidContainer>
+      {/* <FluidContainer>
         <Typography
           as="h2"
           variant="title"
@@ -565,7 +569,7 @@ export default function StudentOrganizationAwards() {
             </>
           );
         })}
-      </FluidContainer>
+      </FluidContainer> */}
     </Page>
   );
 }
