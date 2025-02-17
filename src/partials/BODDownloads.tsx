@@ -22,7 +22,7 @@ const agendaDownloads: DownloadSectionProps[] = [
         stacked
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fi/9swbxe510wvl5ppttcyvc/Agenda-U-SU-Board-of-Directors-August-30-2024.docx?rlkey=90ttu2o7qmu1zeiqt7fpdfyzn&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/w2nyhsjbqkozpywnddgbt/Agenda-U-SU-Board-of-Directors-August-30-2024.pdf?rlkey=tg7fw41qv0syx3ghvuz145jp0&st=709hvjpc&raw=1',
             children: 'Meeting August 30, 2024',
           },
           {
@@ -30,19 +30,19 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Fiscal Committee September 13, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/sv5wydj0gop9wtbbgtx5k/Agenda-Audit-Committee-September-13-2024.docx?rlkey=gywniga9axihrk9uhldlvpr6x&st=jp1e5atu&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/93iezggm4qo4xca0l99ba/Agenda-Fiscal-Committee-September-13-2024.pdf?rlkey=8viny9dr6slfnvykuzeuvia3o&st=lpbad2wg&raw=1',
             children: 'Audit Committee September 13, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/hgwh281cms1qw6fnwzktw/Agenda-U-SU-Board-of-Directors-September-20-2024.docx?rlkey=8q3xoiagc81m1y19b2m7gvmet&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/krif2ix2f4pxfz58raucx/Agenda-U-SU-Board-of-Directors-September-20-2024.pdf?rlkey=zwixo00atn93l0f531lbge32z&st=ex8fklaz&raw=1',
             children: 'Meeting September 20, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/7dv75v6rxqb2atdrpdspe/Agenda-Board-of-Directors-October-25-2024.docx?rlkey=95jru0v5leqm3njjpoddat6gd&st=sga0hzg0&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/zy423o8ueoggkygthsh2s/Agenda-Board-of-Directors-October-25-2024.pdf?rlkey=7myrj8xld5ocd8yoosux3tsz9&st=qc5snz5j&raw=1',
             children: 'Meeting October 25, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/o5kfe6rt5y8y08nypjt1e/Agenda-Ad-hoc-Bylaws-Committee-October-25-2024.docx?rlkey=0294tig72y3tvu7nendd40qq8&st=qu06ylot&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/p7mjatek898q16u562nnu/Agenda-Ad-hoc-Bylaws-Committee-October-25-2024.pdf?rlkey=i6futigbmmgqpcx8tmk73j22a&st=vh2bwahy&raw=1',
             children: 'Ad-hoc Bylaws Committee October 25, 2024',
           },
           {
@@ -54,19 +54,23 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Meeting November 15, 2024',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/8z4yn6933zgoxpvfr9b6g/Agenda-Bylaws-Committee-January-24-2025.docx?rlkey=jtznxpvgd5iixo4or9p9e0pgn&e=1&st=bt6xgpbj&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/m4kvevpjmwdhg26vpzj31/Agenda-Bylaws-Committee-January-24-2025.pdf?rlkey=qq9p3jx4c1x7pz4bv5ziv5hsb&st=gcf6ylv3&raw=1',
             children: 'Bylaws Committee Meeting January 24, 2025',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/o3og18r3sf9r53wd0eyh6/Agenda-Board-of-Directors-January-31-2025-1.docx?rlkey=lfk3oqakaqplia4jp9ox821f8&e=1&st=0vbtz2yw&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/3hcx7auj7scag9qs4mpb7/Agenda-Board-of-Directors-January-31-2025-1.pdf?rlkey=0v9cji2byh05yezrp7iirn34i&st=bphrwt1l&raw=1',
             children: 'Meeting January 31, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/iw0malrs4hvra1653p22x/Agenda-Audit-Committee-February-21-2025.pdf?rlkey=akv0x5dc285vf4g4c5gywdl8o&st=8uvrxf6q&raw=1',
+            children: 'Audit Committee February 21, 2025',
           },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/9brg9f24krmob5v62k57g/Archive.zip?rlkey=wiw2dc6smwm0yx7lm47ikl5o3&st=8psm7j2q&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/mbx43dfcglsap2hqodntk/fy24-25.zip?rlkey=8dg4fuclu49zijonf6zzala3y&st=gi4ofi7b&dl=1',
       variant: 'black',
     },
   },
