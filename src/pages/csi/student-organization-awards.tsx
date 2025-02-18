@@ -427,7 +427,7 @@ export default function StudentOrganizationAwards() {
         </Typography>
         <Typography as="p" variant="copy" margin="0 0 8px">
           <strong>
-            Applications open on January 1st and close on December 30th.
+            Applications open on January 1st and close on March 28th.
           </strong>
         </Typography>
 
