@@ -2,46 +2,58 @@
   "gene": {
     "educators": [
       {
-        "title": "Coach Ricky",
-        "children": "is a passionate individual who likes to stay active in and out of the gym. He loves to eat and can make a great milkshake. Coach Ricky is always laughing and having great conversations with everyone he meets. One thing is certain: he likes to listen deeply and looks forward to listening to YOU.",
+        "title": "Coach Peter",
+        "children": "is a nutrition coach dedicated to helping you find practical, sustainable nutrition strategies that fit your unique lifestyle. He believes that nutrition should be adaptable, evidence-based, and empowering, rather than restrictive. With a tailored approach, Coach Peter will work to meet you where you are, guiding you toward lasting, meaningful change.",
+        "iconAlt": "",
+        "iconName": "FaIceCream"
+      },
+      {
+        "title": "Coach Kayli",
+        "children": "is a passionate dietetics student with a strong background in youth education. Her passion is to create a lasting impact on our future generations' well-being.  As your dedicated coach and biggest cheerleader, she is committed to helping you reach your health and wellness goals. Beyond her love for food and nutrition, Coach Kayli is an animal lover, avid ocean dipper, swimmer, gym enthusiast, hiker, and proud mom of three. She strives to empower you to embrace healthier lifestyles and break cycles of poor dietary habits.",
+        "iconAlt": "",
+        "iconName": "FaUmbrellaBeach"
+      },
+      {
+        "title": "Coach Han",
+        "children": "is a nutritionist at WIC with a love for food and travel. She has traveled to Asia and Europe. Always open to conversation, Coach Han enjoys connecting with people.  Friendly and a great listener, she is always ready for a chat!",
+        "iconAlt": "",
+        "iconName": "FaPaperPlane"
+      },
+      {
+        "title": "Coach Angelica",
+        "children": "is a nutrition coach passionate about coffee, cooking, travel, tacos, and exploring LA’s stair hikes. She enjoys helping others achieve their nutrition goals through favorite recipes and practical, budget-friendly strategies. Need support with balanced, affordable nutrition? Let’s chat!",
+        "iconAlt": "",
+        "iconName": "TbStairsUp"
+      },
+      {
+        "title": "Coach Rowena",
+        "children": "loves fruit, matcha, and coffee. She enjoys exploring new cafes and places with friends and family. She loves to spend time with friends, talking about anything (especially food!) Community and family is an important part of her life, and she wants to include that as she works toward becoming an RDN. Coach Rowena understands that change can be complex, and wellness is so important. She believes that empathy helps with change and is ready to talk to you!",
         "iconAlt": "",
         "iconName": "BiCoffeeTogo"
       },
       {
-        "title": "Coach Christopher",
-        "children": "is an exercise and gym fanatic with a passion for talking about nutrition, supplementation, and overall health and wellness. He loves debating and comparing fad diets with great diets like the Mediterranean. Coach Christopher is easy to talk to and welcomes you sharing your goals and what is valuable to you. He also loves anime, PC gaming, and cars. ",
+        "title": "Coach Isabel",
+        "children": "began her dietetic journey at Cal State LA after transferring from Pasadena City College. She firmly believes that small steps can achieve big goals and strives to be someone approachable, trustworthy, and easy to talk to. Outside of school, Coach Isabel enjoys eating good food, shopping, watching K-dramas, streaming her favorite K-pop group, and going to Disneyland. Coach Isabel can encourage you to accomplish your goals while creating a safe place to express yourself.",
         "iconAlt": "",
-        "iconName": "FaGamepad"
+        "iconName": "TbMickeyFilled"
       },
       {
-        "title": "Coach Shauna",
-        "children": "is passionate about the power of nutrition and fitness as preventative medicine, while still honoring the pleasurable, social, and cultural aspects of food. She understands the barriers that can get in the way of reaching health goals, and she can help you feel empowered to include nutrition and fitness in a way that is customized to your life. Coach Shauna’s goal is to see you reach your goals.",
+        "title": "Coach Corrine",
+        "children": "Corrine is a graduate student in the Nutritional Science program and is eager to learn and help others. She has over six years of experience working with adolescents at an eating disorder treatment center. She provides therapeutic groups to teach effective coping skills and help her patients heal their relationship with food and themselves. Coach Corrine provides empathic listening and assists her clients with menu planning and challenges them to overcome fear foods. She is excited to guide you and help you explore your relationship with food, too.",
         "iconAlt": "",
-        "iconName": "MdSoupKitchen"
+        "iconName": "FaPlateWheat"
       },
       {
-        "title": "Coach Rivka",
-        "children": "is a dedicated health coach with a true passion for nourishing both the body and soul through healthy, flavorful cooking. She is here to inspire and support you on your journey to better health, helping you cultivate a positive and balanced relationship with food. Coach Rivka focuses on empowering you to achieve your wellness goals in a way that feels natural and sustainable. Ready to embrace a healthier lifestyle? Coach Rivka is here to guide you every step of the way!",
+        "title": "Coach Sam",
+        "children": "is passionate about matcha, fresh fruits, and nutritious meals that are both healthy and delicious. She loves sharing her knowledge of nutrition and raising awareness about the importance of a balanced lifestyle. More than anything, she values listening to others’ stories and aspirations. As your coach, Sam is dedicated to helping you move closer to your health goals by guiding you in discovering your own motivation for success. She is a committed weightlifter, a skilled baker and cook, and a devoted animal lover. Coach Sam looks forward to making your time with her a rewarding and enriching experience.",
         "iconAlt": "",
-        "iconName": "ImSpoonKnife"
+        "iconName": "FaBalanceScale"
       },
       {
-        "title": "Coach Sydney",
-        "children": "loves fitness, fruits, smoothies, matcha, and helping others with a compassionate heart! As your coach, she can help you tap into your inner self-motivating cheerleader and support you in getting closer to your desired goals. Besides her interests in food and nutrition, Coach Sydney is a nature lover, sunset catcher, baker, swimmer, hiker, and current real estate agent. She hopes to one day open up her own business and help others achieve their fitness, diet, and lifestyle goals in order to prevent chronic diseases like Type 2 Diabetes.",
+        "title": "Coach Carole",
+        "children": "is enthusiastic about helping individuals defy the odds and achieve their best. She is an adventurous spirit who thrives on challenges, loves sports, runs for the thrill, and never says no to pizza. Ready to collaborate and create amazing things? Let’s make this year unforgettable! As Steve Jobs says, “The only way to do great work is to love what you do.",
         "iconAlt": "",
-        "iconName": "FaMountainSun"
-      },
-      {
-        "title": "Coach Anthony",
-        "children": "is a Registered Dietician Nutritionist, CrossFit Level-2 Coach, entrepreneur, and chef. He loves helping you with your nutrition and fitness journey by meeting you wherever you are in life. Whether it’s with a grocery list, meal prep ideas, training regimen, or creating a schedule, Coach Anthony is all in on your goals. Let's get going!",
-        "iconAlt": "",
-        "iconName": "FaDumbbell"
-      },
-      {
-        "title": "Coach Takia",
-        "children": " is a proud mother of a 9-year-old boy and 1-year-old girl who share the same birthday! She desires work in the field of community nutrition.  She is a vegan foodie and loves to make homemade fudge. She has excellent tips for meal planning. Coach Takia loves visiting museums, dancing to 60’s, 70’s and 80’s music, shopping, and going for walks.  She can encourage you to reach your goals and can relate to you whether you are struggling with emotional eating or body insecurities.  She has walked many tough roads in her life, so Coach Takia has the sympathy and experience to welcome whatever questions or issues you want to discuss.",
-        "iconAlt": "",
-        "iconName": "FaMusic"
+        "iconName": "FaPizzaSlice"
       }
     ],
     "cards": [
