@@ -1,12 +1,23 @@
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from './auth/[...nextauth]';
+
 import type { NextApiResponse } from 'next';
 import { GraffixRequest } from 'types';
 const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_GRDB_API_KEY });
 
 export default async function handler(req: any, res: NextApiResponse<any>) {
+  const session = await getServerSession(req, res, authOptions);
   const { department_id } = req.query;
   const databaseId = 'db271c187a834f21b054560172689260';
   let accumulatedFeed: any = [];
+
+  if (!session) {
+    return res.send({
+      error:
+        'You must be signed in to view the protected content on this page.',
+    });
+  }
 
   const getMoreFeed = async (hasMore: boolean, startCursor?: string) => {
     if (hasMore) {

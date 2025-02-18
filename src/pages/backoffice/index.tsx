@@ -1,11 +1,19 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
+'use client';
+import { useSession, signOut } from 'next-auth/react';
 
 import { Button, FluidContainer, Typography } from 'components';
 import { Page } from 'modules';
 import Head from 'next/head';
+// import { useRouter } from 'next/router';
 
 export default function Backoffice() {
+  // const router = useRouter();
   const { data: session } = useSession();
+
+  if (!session) {
+    // router.push('/backoffice/signin');
+    return <>Please Sign in</>;
+  }
 
   return (
     <Page>
@@ -15,19 +23,12 @@ export default function Backoffice() {
       </Head>
       <FluidContainer>
         <Typography as="h2" variant="titleLarge">
-          Hello Backoffice!
+          Welcome {session?.user?.name} to the Backoffice!
         </Typography>
-        {session ? (
-          <>
-            <Typography>Welcome {session?.user?.email}</Typography>
-            <Button onClick={() => signOut()}>Sign Out</Button>
-          </>
-        ) : (
-          <>
-            <Typography>Please Sign in to continue.</Typography>
-            <Button onClick={() => signIn()}>Sign in!</Button>
-          </>
-        )}
+        <>
+          <Typography>Clocking out?</Typography>
+          <Button onClick={() => signOut()}>Sign Out</Button>
+        </>
       </FluidContainer>
     </Page>
   );

@@ -4,6 +4,12 @@ import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
 import { FontSizes } from 'theme';
 
+import departmentsData from 'data/departments.json';
+const departmentIDs: string[] = departmentsData.reduce((acc, cur) => {
+  acc.push(cur?.id);
+  return acc;
+}, new Array<string>());
+
 const ContentBarNavContainer = styled.div`
   height: 64px;
   width: 100%;
@@ -60,10 +66,14 @@ export const ContentBoardNav = ({
   title,
   filterInput,
   setFilterInput,
+  selectedDepartment,
+  setSelectedDepartment,
 }: {
   title: string;
   filterInput: string;
   setFilterInput: Dispatch<SetStateAction<string>>;
+  selectedDepartment: string;
+  setSelectedDepartment: Dispatch<SetStateAction<string>>;
 }) => {
   return (
     <ContentBarNavContainer>
@@ -76,6 +86,21 @@ export const ContentBoardNav = ({
       >
         {title}
       </Typography>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Typography color="white">Department: </Typography>
+        <select
+          defaultValue={selectedDepartment}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+        >
+          {departmentIDs.map((departmentID) => {
+            return (
+              <option key={departmentID} value={departmentID}>
+                {departmentID.toUpperCase()}
+              </option>
+            );
+          })}
+        </select>
+      </div>
       <SearchBar filterInput={filterInput} setFilterInput={setFilterInput} />
     </ContentBarNavContainer>
   );

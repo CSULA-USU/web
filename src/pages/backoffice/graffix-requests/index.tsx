@@ -1,74 +1,160 @@
-import { FluidContainer, Typography, Image } from 'components';
-import { Page } from 'modules';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+import { ContentBoard, Page } from 'modules';
 import styled from 'styled-components';
-import { Colors, Spaces } from 'theme';
+import { GraffixRequest } from 'types';
+import {
+  ContentBoardCellProps,
+  ContentBoardColumnProps,
+  KeyValueProps,
+} from 'modules/ContentBoard/ContentBoardTypes';
+import { BackOfficeTemplate } from 'partials/Backoffice';
 
-const StatusButton = styled.button<{ color: string }>`
+const Loading = styled.div<{ visible: boolean }>`
+  height: 100vh;
+  width: 100vw;
+  display: ${(p) => (p.visible ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 16px;
-  margin: ${Spaces.md};
-  font-size: 16px;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: fixed;
   font-weight: 700;
-  cursor: pointer;
-  color: #fff;
-  box-shadow: 3px 3px 5px ${Colors.greyDarkest};
-  background-color: ${({ color }) => color};
-
-  &:hover {
-    opacity: 0.7;
-  }
+  font-size: 36px;
 `;
 
+const contentBoardTemplate: any = {
+  'Not Started': { color: 'grey', columnTitle: 'Not Started', columnData: [] },
+  'In Progress': {
+    color: 'orange',
+    columnTitle: 'In Progress',
+    columnData: [],
+  },
+  Approved: { color: 'purple', columnTitle: 'Approved', columnData: [] },
+  'Send to Print': {
+    color: 'blue',
+    columnTitle: 'Send to Print',
+    columnData: [],
+  },
+  'Waiting for Approval': {
+    color: 'pink',
+    columnTitle: 'Waiting for Approval',
+    columnData: [],
+  },
+  Complete: { color: 'green', columnTitle: 'Complete', columnData: [] },
+  'On Hold': { color: 'red', columnTitle: 'On Hold', columnData: [] },
+  Cancelled: { color: 'brown', columnTitle: 'Cancelled', columnData: [] },
+};
+
+const createDeepCopy = (object: any) => {
+  // Traditional spread operator {...obj} is a shallow copy. The nested values are still referenced.
+  // Returns a deep copy.
+  return JSON.parse(JSON.stringify(object));
+};
+
 export default function GraphicsRequests() {
+  const [loading, setLoading] = useState(true);
+  const [selectedDepartment, setSelectedDepartment] =
+    useState<string>('graffix');
+
+  const [graffixRequests, setGraffixRequests] = useState<
+    GraffixRequest[] | undefined
+  >(undefined);
+  const [cellMap, setCellMap] = useState<KeyValueProps>({});
+
+  const [contentBoardData, setContentBoardData] = useState<
+    ContentBoardColumnProps[]
+  >(createDeepCopy(Object.values(contentBoardTemplate)));
+
+  const populateContentBoard = () => {
+    if (!graffixRequests) return;
+
+    let tempContentBoardData = createDeepCopy(contentBoardTemplate);
+    graffixRequests.map((graffixRequest) => {
+      if (
+        graffixRequest?.status &&
+        graffixRequest?.status in tempContentBoardData
+      ) {
+        const contentBoardCell: ContentBoardCellProps = {
+          cellID: graffixRequest.id,
+          cellTitle: graffixRequest.title,
+        };
+        tempContentBoardData[graffixRequest.status].columnData.push(
+          contentBoardCell,
+        );
+      }
+    });
+    setContentBoardData(Object.values(tempContentBoardData));
+  };
+
+  const populateCellIDMap = () => {
+    if (!graffixRequests) return;
+
+    let tempMap: KeyValueProps = {};
+    graffixRequests.map((graffixRequest) => {
+      tempMap[graffixRequest?.id] = graffixRequest;
+    });
+    setCellMap(tempMap);
+  };
+
+  useEffect(() => {
+    // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
+    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
+    if (selectedDepartment == '') return;
+    setLoading(true);
+
+    const fetchGraffixRequestsFromNotion = async () => {
+      await fetch(`/api/notion?department_id=${selectedDepartment}`, {
+        method: 'GET',
+        credentials: 'include',
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data != undefined && data.length > 0) {
+            setGraffixRequests(data);
+          } else {
+            throw new Error(`Content Error! Status: ${data.status}`);
+          }
+        })
+        .catch(() => {
+          console.log('Failed to fetch Graffix Requests.');
+          // router.push('/backoffice/graffix-requests');
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    };
+    fetchGraffixRequestsFromNotion();
+  }, [selectedDepartment]);
+
+  useEffect(() => {
+    // When Graffix-Requests resources change, update Content Board and Cell Map
+    populateContentBoard();
+    populateCellIDMap();
+  }, [graffixRequests]);
+
   return (
     <Page>
       <Head>
-        <title>Graphics Requests - 404</title>
+        <title>Graphics Requests</title>
       </Head>
-      <FluidContainer>
-        <FluidContainer flex justifyContent="center" alignItems="center">
-          <Typography as="h1" variant="title">
-            OOPS! We can&apos;t find the page you&apos;re looking for.
-          </Typography>
-        </FluidContainer>
-        <FluidContainer flex justifyContent="center" alignItems="center">
-          <Image
-            alt="Eddie the Eagle figuring out what you were thinking"
-            src="https://media.giphy.com/media/Ihn3KpMcpCMamJdI30/giphy.gif"
-            style={{ width: '70%' }}
-          ></Image>
-        </FluidContainer>
+      <Loading visible={loading}>Loading...</Loading>
 
-        <FluidContainer
-          flex
-          justifyContent="center"
-          alignItems="center"
-          flexWrap="wrap"
-        >
-          <Typography as="h2" variant="subheader">
-            Did you mean:{' '}
-          </Typography>
-          <Link href="/backoffice/graffix-requests/csi">
-            <StatusButton color="blue">CSI</StatusButton>
-          </Link>
-          <Link href="/backoffice/graffix-requests/ccc">
-            <StatusButton color="green">CCC</StatusButton>
-          </Link>
-          <Link href="/backoffice/graffix-requests/graffix">
-            <StatusButton color="orange">Graffix</StatusButton>
-          </Link>
-          <Link href="/backoffice/graffix-requests/operations">
-            <StatusButton color="purple">Operations</StatusButton>
-          </Link>
-          <Link href="/backoffice/graffix-requests/recreation">
-            <StatusButton color="red">Recreation</StatusButton>
-          </Link>
-        </FluidContainer>
-      </FluidContainer>
+      <BackOfficeTemplate>
+        <ContentBoard
+          title={`Graffix Requests - ${selectedDepartment.toUpperCase()}`}
+          columns={contentBoardData}
+          cellMap={cellMap}
+          selectedDepartment={selectedDepartment}
+          setSelectedDepartment={setSelectedDepartment}
+        />
+      </BackOfficeTemplate>
     </Page>
   );
 }
