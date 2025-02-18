@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ContentBoardColumn } from './ContentBoardColumn';
 import { ContentBoardNav } from './ContentBoardNav';
 import { ContentBoardColumnProps, KeyValueProps } from './ContentBoardTypes';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ContentBoardSidebar } from './ContentBoardSidebar';
 
 const deepCopyArray = (arr: any) => {
@@ -39,10 +39,14 @@ export const ContentBoard = ({
   title,
   columns,
   cellMap,
+  selectedDepartment,
+  setSelectedDepartment,
 }: {
   title: string;
   columns: ContentBoardColumnProps[];
   cellMap: KeyValueProps;
+  selectedDepartment: string;
+  setSelectedDepartment: Dispatch<SetStateAction<string>>;
 }) => {
   const [selectedCellID, setSelectedCellID] = useState<string>('');
   const [filterInput, setFilterInput] = useState<string>('');
@@ -75,11 +79,13 @@ export const ContentBoard = ({
   }, [filterInput, columns]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', width: '100%' }}>
       <ContentBoardNav
         title={title}
         filterInput={filterInput}
         setFilterInput={setFilterInput}
+        selectedDepartment={selectedDepartment}
+        setSelectedDepartment={setSelectedDepartment}
       />
       <ContentBoardContainer>
         {filteredColumns.map((column: ContentBoardColumnProps, idx: number) => {
