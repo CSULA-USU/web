@@ -37,7 +37,7 @@ export default function Gene() {
         <meta
           name="keywords"
           key="keywords"
-          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition"
+          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Nutrition, Gym, GENE, Golden Eagle Nutrition Education, diet, eating, junk food"
         />
         <meta
           name="description"
@@ -46,6 +46,12 @@ export default function Gene() {
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
           key="description"
+        />
+        <meta
+          name="image"
+          property="og:image"
+          content="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+          key="image"
         />
       </Head>
       <FluidContainer flex flexDirection="row" padding="0px">
