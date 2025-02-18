@@ -69,6 +69,7 @@ export default function Gene() {
           </Typography>
         </Header>
         {!isDesktop && (
+          // desktop
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
             alt="young man using gene services"
@@ -77,6 +78,7 @@ export default function Gene() {
           />
         )}
         {!isMobile && isDesktop && (
+          // mobile
           <Image
             src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
             alt="a young man using gene services eating an apple"
@@ -108,13 +110,13 @@ export default function Gene() {
             changes.
           </Typography>
         </WelcomeContentContainer>
-        <Button variant="black" href="https://forms.office.com/r/YFfnjw0K1F">
+        <Button variant="black" href="https://forms.office.com/r/gi1ECss9xA">
           RSVP
         </Button>
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Fall 2024:
+          <abbr title="gene">GENE</abbr> Bios Spring 2025:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish
