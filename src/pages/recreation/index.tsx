@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Page } from 'modules';
 import {
   Image,
   Typography,
@@ -8,8 +7,9 @@ import {
   FluidContainer,
   NonBreakingSpan,
 } from 'components';
-import { BiPhone, BiTimeFive } from 'react-icons/bi';
-import { MdLocationPin } from 'react-icons/md';
+import { Page } from 'modules';
+import { RecreationHoursSection } from 'partials';
+import { BiPhone } from 'react-icons/bi';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
@@ -43,11 +43,6 @@ const PhoneSection = styled.div`
   }
 `;
 
-const LocationContainer = styled.span`
-  display: flex;
-  align-items: center;
-`;
-
 const NumberInnerContainer = styled.div`
   display: flex;
   gap: ${Spaces.sm};
@@ -62,10 +57,45 @@ const StyledH1 = styled.h1`
   padding: 0;
   margin: 0;
 `;
-const TimeContainer = styled.span`
-  display: flex;
-  margin-bottom: 32px;
-`;
+
+const locations = [
+  {
+    title: 'Rec 1',
+    location: 'U-SU Basement',
+    hours: [
+      { day: 'Monday to Thursday', time: '7:10 AM to 9:45 PM' },
+      { day: 'Friday', time: '7:10 AM to 7:45 PM' },
+      { day: 'Saturday', time: '7:10 AM to 2:45 PM' },
+      { day: 'Sunday', time: 'Closed' },
+    ],
+  },
+  {
+    title: 'Rec 2',
+    location: 'U-SU Basement',
+    hours: [
+      { day: 'Monday – Thursday', time: '11:00 AM to 7:00 PM' },
+      { day: 'Friday - Sunday', time: 'Closed' },
+    ],
+  },
+  {
+    title: 'Game Room',
+    location: 'U-SU Room 201',
+    hours: [
+      { day: 'Monday – Thursday', time: '12:00 PM to 6:00 PM' },
+      { day: 'Friday - Sunday', time: 'Closed' },
+    ],
+  },
+  {
+    title: 'South Village Wellness Zone',
+    location: 'South Village Housing',
+    hours: [
+      { day: 'Monday – Thursday', time: '7:00 AM to 9:30 PM' },
+      { day: 'Friday', time: '7:00 AM to 7:30 PM' },
+      { day: 'Saturday', time: '7:00 AM to 12:00 PM' },
+      { day: 'Sunday', time: 'Closed' },
+    ],
+  },
+];
 
 export default function Recreation() {
   const { isMobile, isTablet, returnByBreakpoint } = useBreakpoint();
@@ -81,7 +111,7 @@ export default function Recreation() {
         <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
-          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Chris Balam, Jay San Luis, Gym, GENE, Golden Eagle Nutrition Education, Nutrition, hours, locations, schedule, muscle, buff, fitness, center, housing, south village, exercise, dumbbell, weights, sports, esports, game room"
+          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Gym, GENE, Golden Eagle Nutrition Education, Nutrition, hours, locations, schedule, muscle, buff, fitness, center, housing, south village, exercise, dumbbell, weights, sports, esports, game room, video games"
           key="keywords"
         />
       </Head>
@@ -141,10 +171,20 @@ export default function Recreation() {
             </NumberContainer>
           </PhoneSection>
         </HeaderSection>
-        <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
+        {/* <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Fall 2024 Hours:
-        </Typography>
+        </Typography> */}
         <HoursSection>
+          {locations.map((location, index) => (
+            <RecreationHoursSection
+              key={index}
+              title={location.title}
+              location={location.location}
+              hours={location.hours}
+              isTablet={isTablet}
+            />
+          ))}
+          {/* 
           <div>
             <Typography
               as="h4"
@@ -289,6 +329,7 @@ export default function Recreation() {
               </Typography>
             </TimeContainer>
           </div>
+          */}
         </HoursSection>
       </FluidContainer>
       <FluidContainer
@@ -305,8 +346,9 @@ export default function Recreation() {
         <Typography as="p">
           Recreation is comprised of the Recreation Fitness Center Center and
           Recreation Esports. The Recreation Fitness Center is located on the
-          basement level of the U-SU, and will be open to all students, staff
-          and faculty.
+          basement level of the U-SU and the Recreation Game Room is located on
+          the second floor at room 201. They are open to all students, staff and
+          faculty.
         </Typography>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLighter">
