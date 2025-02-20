@@ -27,7 +27,7 @@ const DayTimeEntry = styled.div`
 interface LocationHoursSectionProps {
   title: string;
   location: string;
-  hours: { day: string; time: string }[];
+  hours: { day: string; time: string; afternoonTime?: string }[];
   isTablet: boolean;
 }
 
@@ -56,8 +56,13 @@ export const RecreationHoursSection: React.FC<LocationHoursSectionProps> = ({
       <TimeInnerContainer>
         {hours.map((hour, index) => (
           <DayTimeEntry key={index}>
-            <Typography as="p">{hour.day}</Typography>
+            <Typography as="p" variant="label" size="sm">
+              {hour.day}
+            </Typography>
             <Typography as="p">{hour.time}</Typography>
+            {hour.afternoonTime && (
+              <Typography as="p">{hour.afternoonTime}</Typography>
+            )}
           </DayTimeEntry>
         ))}
       </TimeInnerContainer>

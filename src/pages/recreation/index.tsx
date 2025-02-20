@@ -73,24 +73,32 @@ const locations = [
     title: 'Rec 2',
     location: 'U-SU Basement',
     hours: [
-      { day: 'Monday – Thursday', time: '11:00 AM to 7:00 PM' },
-      { day: 'Friday - Sunday', time: 'Closed' },
+      { day: 'Monday to Thursday', time: '11:00 AM to 7:00 PM' },
+      { day: 'Friday to Sunday', time: 'Closed' },
     ],
   },
   {
     title: 'Game Room',
     location: 'U-SU Room 201',
     hours: [
-      { day: 'Monday – Thursday', time: '12:00 PM to 6:00 PM' },
-      { day: 'Friday - Sunday', time: 'Closed' },
+      { day: 'Monday to Thursday', time: '12:00 PM to 6:00 PM' },
+      { day: 'Friday to Sunday', time: 'Closed' },
     ],
   },
   {
-    title: 'South Village Wellness Zone',
+    title: 'South Village Housing Wellness Zone',
     location: 'South Village Housing',
     hours: [
-      { day: 'Monday – Thursday', time: '7:00 AM to 9:30 PM' },
-      { day: 'Friday', time: '7:00 AM to 7:30 PM' },
+      {
+        day: 'Monday to Thursday',
+        time: '7:00 AM to 12:00 PM',
+        afternoonTime: '4:30 PM to 9:30 PM',
+      },
+      {
+        day: 'Friday',
+        time: '7:00 AM to 12:00 PM',
+        afternoonTime: '2:30 PM to 7:30 PM',
+      },
       { day: 'Saturday', time: '7:00 AM to 12:00 PM' },
       { day: 'Sunday', time: 'Closed' },
     ],
@@ -171,165 +179,19 @@ export default function Recreation() {
             </NumberContainer>
           </PhoneSection>
         </HeaderSection>
-        {/* <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Fall 2024 Hours:
-        </Typography> */}
+        <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Spring 2025 Hours:
+        </Typography>
         <HoursSection>
           {locations.map((location, index) => (
             <RecreationHoursSection
               key={index}
               title={location.title}
               location={location.location}
-              hours={location.hours}
               isTablet={isTablet}
+              hours={location.hours}
             />
           ))}
-          {/* 
-          <div>
-            <Typography
-              as="h4"
-              variant="titleSmall"
-              size={!isTablet ? 'xl' : 'lg'}
-            >
-              Rec 1
-            </Typography>
-            <LocationContainer>
-              <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography variant="label" size="md">
-                U-SU Basement
-              </Typography>
-            </LocationContainer>
-            <TimeContainer>
-              <BiTimeFive
-                aria-hidden="true"
-                style={{ margin: '2px 3px 0px 2px' }}
-                size="20px"
-              />
-              <Typography as="p">
-                Monday &ndash; Thursday
-                <br />
-                7:10 AM to 9:45 PM
-                <br />
-                Friday
-                <br />
-                7:10 AM to 7:45 PM
-                <br />
-                Saturday
-                <br />
-                7:10 AM to 2:45 PM
-                <br />
-                Sunday
-                <br />
-                Closed
-                <br />
-              </Typography>
-            </TimeContainer>
-          </div>
-          <div>
-            <Typography
-              as="h4"
-              variant="titleSmall"
-              size={!isTablet ? 'xl' : 'lg'}
-            >
-              Rec 2
-            </Typography>
-            <LocationContainer>
-              <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography variant="label" size="md">
-                U-SU Basement
-              </Typography>
-            </LocationContainer>
-            <TimeContainer>
-              <BiTimeFive
-                aria-hidden="true"
-                style={{ margin: '2px 3px 0px 2px' }}
-                size="20px"
-              />
-              <Typography as="p">
-                Monday – Thursday
-                <br />
-                11:00 AM to 7:00 PM
-                <br />
-                Friday - Sunday
-                <br />
-                Closed
-                <br />
-              </Typography>
-            </TimeContainer>
-          </div>
-          <br />
-          <div>
-            <Typography
-              as="h4"
-              variant="titleSmall"
-              size={!isTablet ? 'xl' : 'lg'}
-            >
-              Game Room
-            </Typography>
-            <LocationContainer>
-              <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography variant="label" size="md">
-                U-SU Room 201
-              </Typography>
-            </LocationContainer>
-            <TimeContainer>
-              <BiTimeFive
-                aria-hidden="true"
-                style={{ margin: '2px 3px 0px 2px' }}
-                size="20px"
-              />
-              <Typography as="p">
-                Monday – Thursday
-                <br />
-                12:00 PM to 6:00 PM
-                <br />
-                Friday - Sunday
-                <br />
-                Closed
-              </Typography>
-            </TimeContainer>
-          </div>
-          <br />
-          <div>
-            <Typography
-              as="h4"
-              variant="titleSmall"
-              size={!isTablet ? 'xl' : 'lg'}
-            >
-              South Village Wellness Zone
-            </Typography>
-            <LocationContainer>
-              <MdLocationPin aria-hidden="true" size="24px" />
-              <Typography variant="label" size="md">
-                South Village Housing
-              </Typography>
-            </LocationContainer>
-            <TimeContainer>
-              <BiTimeFive
-                aria-hidden="true"
-                style={{ margin: '2px 3px 0px 2px' }}
-                size="20px"
-              />
-              <Typography as="p">
-                Monday – Thursday
-                <br />
-                7:00 AM to 9:30 PM
-                <br />
-                Friday
-                <br />
-                7:00 AM to 7:30 PM
-                <br />
-                Saturday
-                <br />
-                7:00 AM to 12:00 PM
-                <br />
-                Sunday
-                <br />
-                Closed
-              </Typography>
-            </TimeContainer>
-          </div>
-          */}
         </HoursSection>
       </FluidContainer>
       <FluidContainer
