@@ -3,19 +3,37 @@ import { authOptions } from './auth/[...nextauth]';
 
 import type { NextApiResponse } from 'next';
 import { GraffixRequest } from 'types';
+import { getUserFromSupabaseByEmail } from './user';
+import { withAuth } from 'lib/authMiddleWare';
+import { hasPermission } from 'lib/supabase';
 const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_GRDB_API_KEY });
 
-export default async function handler(req: any, res: NextApiResponse<any>) {
+async function handler(req: any, res: NextApiResponse<any>) {
   const session = await getServerSession(req, res, authOptions);
   const { department_id } = req.query;
   const databaseId = 'db271c187a834f21b054560172689260';
   let accumulatedFeed: any = [];
 
-  if (!session) {
-    return res.send({
-      error:
-        'You must be signed in to view the protected content on this page.',
+  const { userData, error } = await getUserFromSupabaseByEmail(
+    session?.user?.email,
+  );
+  if (error) {
+    return res.status(500).send({ error: error.message });
+  } else if (!userData) {
+    return res.status(404).send({ error: 'User not found.' });
+  }
+
+  if (
+    !(
+      hasPermission(userData, 'graffixRequests:view:*') ||
+      (hasPermission(userData, 'graffixRequests:view:ownDepartment') &&
+        userData.department.toLowerCase() == department_id)
+    )
+  ) {
+    // If user does not have admin view and they don't have the permission to view their own department, return a forbidden response.
+    return res.status(403).send({
+      error: `You do not have access to view the protected content on this page.`,
     });
   }
 
@@ -119,3 +137,5 @@ export default async function handler(req: any, res: NextApiResponse<any>) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
+export default withAuth(handler);

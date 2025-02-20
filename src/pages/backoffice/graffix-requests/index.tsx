@@ -55,8 +55,7 @@ const createDeepCopy = (object: any) => {
 
 export default function GraphicsRequests() {
   const [loading, setLoading] = useState(true);
-  const [selectedDepartment, setSelectedDepartment] =
-    useState<string>('graffix');
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('csi');
 
   const [graffixRequests, setGraffixRequests] = useState<
     GraffixRequest[] | undefined

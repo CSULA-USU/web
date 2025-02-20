@@ -16,6 +16,7 @@ const ContentBoardContainer = styled.div`
   overflow-x: scroll;
   gap: 1rem;
   justify-content: center;
+  width: 100%;
 
   ::-webkit-scrollbar {
     width: 10px;
