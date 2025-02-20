@@ -1,13 +1,10 @@
 import Head from 'next/head';
 import { Page } from 'modules';
-// import { useRouter } from 'next/router';
 
 import { FluidContainer, Typography } from 'components';
 import Link from 'next/link';
 
 export default function GraphicsRequests() {
-  // const router = useRouter();
-
   return (
     <Page>
       <Head>

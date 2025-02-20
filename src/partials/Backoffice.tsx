@@ -11,11 +11,11 @@ interface LinksProps {
 const links: LinksProps[] = [
   {
     title: 'Graffix Requests',
-    url: '/backoffice/graffix-requests/ccc',
+    url: '/backoffice/graffix-requests',
   },
   {
     title: 'Maintenance Orders',
-    url: '/backoffice/graffix-requests/graffix',
+    url: '/backoffice/graffix-requests',
   },
 ];
 
@@ -29,12 +29,9 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #2b2b2b;
-  /* gap: 1rem; */
-  /* padding: 1rem; */
 `;
 
 const LinkContainer = styled.div`
-  /* border: 1px solid white; */
   box-shadow: rgba(255, 255, 255, 0.14) 0px 3px 8px;
   padding: 2rem 1rem;
 `;
@@ -60,7 +57,7 @@ const Sidebar = () => {
 export const BackOfficeTemplate = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
-      <Sidebar></Sidebar>
+      <Sidebar />
       {children}
     </Container>
   );
