@@ -39,22 +39,22 @@ const cards1 = [
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/graffix-trick-or-tour.png',
     description:
-      'A graphic used on Instagram. This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff.',
-    alt: 'Cutesy black and orange square instagram post that reads "Graffix Trick or Tour" with a pumpkin and a ghost',
+      'A graphic used on Instagram. This design coincided with Halloween and the Graffix open house. We decided to merge the two and add symbols inspired by Graffix staff',
+    alt: 'Cutesy black and orange square Instagram post that reads "Graffix Trick or Tour" with a pumpkin and a ghost',
   },
   {
     title: 'Larry Itliong Day',
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/larry-itliong.jpg',
     description:
-      'A tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day. The design features a portrait of Larry Itliong, performances, food, activities, and a Filipino flag.',
+      'A tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day. The design features a portrait of Larry Itliong, performances, food, activities, and a Filipino flag',
     alt: 'Tabloid size vertical poster that highlights Filipino-American history month and Larry Itliong Day',
   },
   {
     title: 'Graffix Open House',
     designer: 'Hector Almaraz',
     src: '/departments/graffix/student-designs/graffix-job-fair.jpg',
-    description: 'This design was inspired by retro scary movie posters.',
+    description: 'This design was inspired by retro scary movie posters',
     alt: 'Postcard to promote the Graffix open house and job fair with an image of the work office in the background',
   },
 ];
@@ -64,8 +64,8 @@ const cards2 = [
     designer: 'Hector Almaraz',
     src: '/departments/graffix/student-designs/smash-league.png',
     description:
-      'This is a design used on Instagram to promote a Super Smash Bros. video game tournament. It takes modern e-sports aesthetics and combines them with Cal State LA colors.',
-    alt: 'An Instagram post to promote a super smash bros tournament with in-game characters on the foreground and information at the bottom',
+      'This is a design used on Instagram to promote a Super Smash Bros. video game tournament. It takes modern e-sports aesthetics and combines them with Cal State LA colors',
+    alt: 'An Instagram post to promote the Super Smash Bros Ultimate Smash League for Fall 2022, which was a 1v1 tournament. The image features popular in-game characters Fox, Cloud, Kirby, Mario, Ryu, and Shulk on the foreground with location and time information at the bottom. It combines e-sports aesthetics and combines them with Cal State LA colors',
   },
 
   {
@@ -73,7 +73,7 @@ const cards2 = [
     designer: 'Anthony (Tony) Villa',
     src: '/departments/graffix/student-designs/harvest-festival.png',
     description:
-      'A vertical tabloid-sized poster that promotes a night event at the U-SU with spooky decorations and Halloween-themed activities.',
+      'A vertical tabloid-sized poster that promotes a night event at the U-SU with spooky decorations and Halloween-themed activities',
     alt: 'A vertical tabloid-size poster featuring a mummified Eddy the Eagle and hand-drawn illustration of the U-SU at the bottom',
   },
   {
@@ -81,8 +81,8 @@ const cards2 = [
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/fluffy-friends.png',
     description:
-      'An instagram post to promote a pet therapy event with information on when and where.',
-    alt: 'An instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
+      'An Instagram post to promote a pet therapy event with information on when and where.',
+    alt: 'An Instagram post featuring a notebook and paw prints to promote a pet therapy event with information on when and where',
   },
 ];
 const cards3 = [
@@ -91,24 +91,24 @@ const cards3 = [
     designer: 'P Dacayan',
     src: '/departments/graffix/student-designs/brown-gay-la.png',
     description:
-      'A vertical tabloid-sized poster image that promotes the APISRC and GSRC book event.',
-    alt: 'A vertical tabloid-size poster with a picture of the author and the book',
+      'A vertical tabloid-sized poster image that promotes the APISRC and GSRC book event. The predominant use of yellow and red is a throwback to the popular Filipino fast food chain, Jollibee',
+    alt: 'A predominantly yellow vertical tabloid-size poster with red text and a picture of the author Dr. Anthony Ocampo with the book Brown and Gay in LA',
   },
   {
     title: 'Swim in the Sounds',
     designer: 'Sebastian Lopez',
     src: '/departments/graffix/student-designs/swim-in-the-sound.png',
     description:
-      ' An instagram post designed to promote the music playlists of the student-staff at Graffix.',
-    alt: 'An instagram post graphic with a digital image of a swimming pool to promote the music playlists of the student-staff at Graffix',
+      ' An Instagram post designed to promote the music playlists of the student-staff at Graffix. The use of blue heavily contrasts with the red beach ball, drawing attention on the post',
+    alt: 'An Instagram post graphic with a digital image of a swimming pool to promote the music playlists of the student-staff at Graffix. The use of blue heavily contrasts with the red beach ball, drawing the eyes.',
   },
   {
     title: 'Study Break of Color',
     designer: 'Frankie Sandoval',
     src: '/departments/graffix/student-designs/study-break-of-color.png',
     description:
-      'An instagram post graphic to promote a study break event with information on when and where.',
-    alt: 'An instagram post depicting a student wearing headphones laying on a bean bag relaxing',
+      'An Instagram post graphic to promote a study break event with information on when and where',
+    alt: 'An Instagram post depicting a student wearing headphones laying on a bean bag relaxing with a book in the corner to promote a study break event with information on when and where',
   },
 ];
 
