@@ -42,12 +42,14 @@ export const ContentBoard = ({
   cellMap,
   selectedDepartment,
   setSelectedDepartment,
+  accessibleDepartment,
 }: {
   title: string;
   columns: ContentBoardColumnProps[];
   cellMap: KeyValueProps;
   selectedDepartment: string;
   setSelectedDepartment: Dispatch<SetStateAction<string>>;
+  accessibleDepartment: string;
 }) => {
   const [selectedCellID, setSelectedCellID] = useState<string>('');
   const [filterInput, setFilterInput] = useState<string>('');
@@ -87,6 +89,7 @@ export const ContentBoard = ({
         setFilterInput={setFilterInput}
         selectedDepartment={selectedDepartment}
         setSelectedDepartment={setSelectedDepartment}
+        accessibleDepartment={accessibleDepartment}
       />
       <ContentBoardContainer>
         {filteredColumns.map((column: ContentBoardColumnProps, idx: number) => {

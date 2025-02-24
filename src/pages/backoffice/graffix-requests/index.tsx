@@ -55,7 +55,8 @@ const createDeepCopy = (object: any) => {
 
 export default function GraphicsRequests() {
   const [loading, setLoading] = useState(true);
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('csi');
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('N/A');
+  const [accessibleDepartment, setAccessibleDepartment] = useState('');
 
   const [graffixRequests, setGraffixRequests] = useState<
     GraffixRequest[] | undefined
@@ -96,6 +97,33 @@ export default function GraphicsRequests() {
     });
     setCellMap(tempMap);
   };
+
+  useEffect(() => {
+    const fetchDepartmentsUserHasAccessTo = async () => {
+      await fetch('/api/user/department')
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(
+              `HTTP error! Status: ${res.status}. User does not belong to any department.`,
+            );
+          }
+          return res.json();
+        })
+        .then((res) => {
+          setAccessibleDepartment(res?.department?.toLowerCase());
+        })
+        .catch(() => {
+          console.log('User does not belong to any department.');
+        });
+    };
+    fetchDepartmentsUserHasAccessTo();
+  }, []);
+
+  useEffect(() => {
+    if (accessibleDepartment != 'all') {
+      setSelectedDepartment(accessibleDepartment);
+    }
+  }, [accessibleDepartment]);
 
   useEffect(() => {
     // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
@@ -152,6 +180,7 @@ export default function GraphicsRequests() {
           cellMap={cellMap}
           selectedDepartment={selectedDepartment}
           setSelectedDepartment={setSelectedDepartment}
+          accessibleDepartment={accessibleDepartment}
         />
       </BackOfficeTemplate>
     </Page>

@@ -4,6 +4,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
 import { withAuth } from 'lib/authMiddleWare';
 import { getUserFromSupabaseByEmail } from '.';
+import { hasPermission } from 'lib/supabase';
 
 async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   const session = await getServerSession(req, res, authOptions);
@@ -17,7 +18,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     return res.status(404).send({ error: 'User not found.' });
   }
 
-  res.status(200).json({ department: userData.department });
+  if (hasPermission(userData, 'graffixRequests:view:*')) {
+    res.status(200).json({ department: 'all' });
+  } else {
+    res.status(200).json({ department: userData.department });
+  }
 }
 
 export default withAuth(handler);
