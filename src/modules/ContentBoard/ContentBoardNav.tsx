@@ -68,12 +68,14 @@ export const ContentBoardNav = ({
   setFilterInput,
   selectedDepartment,
   setSelectedDepartment,
+  accessibleDepartment,
 }: {
   title: string;
   filterInput: string;
   setFilterInput: Dispatch<SetStateAction<string>>;
   selectedDepartment: string;
   setSelectedDepartment: Dispatch<SetStateAction<string>>;
+  accessibleDepartment: string;
 }) => {
   return (
     <ContentBarNavContainer>
@@ -89,12 +91,20 @@ export const ContentBoardNav = ({
       <div style={{ display: 'flex', gap: '1rem' }}>
         <Typography color="white">Department: </Typography>
         <select
-          defaultValue={selectedDepartment}
+          // defaultValue={selectedDepartment}
+          value={selectedDepartment}
           onChange={(e) => setSelectedDepartment(e.target.value)}
         >
           {departmentIDs.map((departmentID) => {
             return (
-              <option key={departmentID} value={departmentID}>
+              <option
+                key={departmentID}
+                value={departmentID}
+                disabled={
+                  accessibleDepartment != 'all' &&
+                  accessibleDepartment != departmentID
+                }
+              >
                 {departmentID.toUpperCase()}
               </option>
             );
