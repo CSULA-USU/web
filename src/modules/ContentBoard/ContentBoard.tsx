@@ -86,19 +86,13 @@ export const ContentBoard = ({
     setFilteredColumns(tempColumns);
   }, [filterInput, columns]);
 
-  useEffect(() => {
-    console.log(`isMobile: ${isMobile}`);
-    console.log(`isTablet: ${isTablet}`);
-    console.log(`isDesktop: ${isDesktop}`);
-  }, [isMobile, isTablet, isDesktop]);
-
-  const Randombox = styled.div<{ isTablet: boolean }>`
+  const ContentBoardContainer = styled.div<{ isTablet: boolean }>`
     position: relative;
     width: ${isTablet ? '100%' : 'calc(100% - 120px)'};
   `;
 
   return (
-    <Randombox isTablet={isTablet}>
+    <ContentBoardContainer isTablet={isTablet}>
       <ContentBoardNav
         title={title}
         filterInput={filterInput}
@@ -127,6 +121,6 @@ export const ContentBoard = ({
         setSelectedCellID={setSelectedCellID}
         cellMap={cellMap}
       />
-    </Randombox>
+    </ContentBoardContainer>
   );
 };
