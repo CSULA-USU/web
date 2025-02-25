@@ -7,25 +7,28 @@ import { FontSizes } from 'theme';
 
 const ContentBoardColumnContainer = styled.div`
   height: 70vh;
-  width: 240px;
-  /* overflow-y: scroll; */
-`;
-
-const ContentBoardColumnHeaderContainer = styled.div`
-  height: 3rem;
-  width: 240px;
-  display: flex;
-  align-items: center;
-  /* padding-left: 0.5rem; */
+  width: 200px;
+  max-width: 240px;
 `;
 
 const ContentBoardColumnHeader = ({
   columnTitle,
+  columnCellCount,
   color,
 }: {
   columnTitle: string;
+  columnCellCount: number;
   color: string;
 }) => {
+  const ContentBoardColumnHeaderContainer = styled.div`
+    height: 3rem;
+    width: 200px;
+    max-width: 240px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  `;
+
   return (
     <ContentBoardColumnHeaderContainer>
       <Typography
@@ -34,9 +37,16 @@ const ContentBoardColumnHeader = ({
         weight="400"
         size="md"
         lineHeight={FontSizes['lg']}
-        style={{ borderBottom: `2px solid ${color}`, margin: '0 auto' }}
+        style={{
+          borderBottom: `2px solid ${color}`,
+          margin: '0 auto',
+          textAlign: 'center',
+        }}
       >
         <strong>{columnTitle}</strong>
+      </Typography>
+      <Typography as="span" margin="0 0 0 0rem">
+        {columnCellCount}
       </Typography>
     </ContentBoardColumnHeaderContainer>
   );
@@ -49,12 +59,13 @@ export const ContentBoardColumn = ({
   column: ContentBoardColumnProps;
   setSelectedCellID: Dispatch<SetStateAction<string>>;
 }) => {
-  if (column?.columnData.length == 0) return <></>;
+  // if (column?.columnData.length == 0) return <></>;
 
   return (
     <ContentBoardColumnContainer>
       <ContentBoardColumnHeader
         columnTitle={column.columnTitle}
+        columnCellCount={column.columnData.length}
         color={column.color}
       />
       {column?.columnData.map((cell) => {

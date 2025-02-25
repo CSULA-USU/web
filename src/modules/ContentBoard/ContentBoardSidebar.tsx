@@ -10,13 +10,13 @@ const Sidebar = styled.div<{ visible: boolean }>`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  width: 50vh;
+  width: 500px;
+  max-width: 60vw;
   height: 100%;
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
-  /* padding: 1rem; */
 
   transform-origin: right;
   transform: ${({ visible }) => (visible ? 'scaleX(1)' : 'scaleX(0)')};
@@ -85,6 +85,7 @@ const printContentRecursively = (data: any) => {
           target="_blank"
           style={{
             textDecoration: 'underline',
+            wordWrap: 'break-word',
             margin: '0 0 0.5rem 0',
             display: 'block',
           }}

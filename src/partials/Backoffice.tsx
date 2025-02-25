@@ -1,23 +1,14 @@
 import { Typography } from 'components';
+import { useBreakpoint } from 'hooks';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
+import backOfficeLinks from 'data/backOfficeLinks.json';
 
 interface LinksProps {
   title: string;
   url: string;
 }
-
-const links: LinksProps[] = [
-  {
-    title: 'Graffix Requests',
-    url: '/backoffice/graffix-requests',
-  },
-  {
-    title: 'Maintenance Orders',
-    url: '/backoffice/graffix-requests',
-  },
-];
 
 const Container = styled.div`
   display: flex;
@@ -25,10 +16,11 @@ const Container = styled.div`
 `;
 
 const SidebarContainer = styled.div`
-  width: 240px;
+  width: 120px;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
-  background-color: #2b2b2b;
+  background-color: #1b1a1a;
 `;
 
 const LinkContainer = styled.div`
@@ -37,9 +29,11 @@ const LinkContainer = styled.div`
 `;
 
 const Sidebar = () => {
+  const { isTablet } = useBreakpoint();
+  if (isTablet) return <></>;
   return (
     <SidebarContainer>
-      {links.map((link: LinksProps) => {
+      {backOfficeLinks.map((link: LinksProps) => {
         return (
           <Link key={link.title} href={link.url}>
             <LinkContainer>

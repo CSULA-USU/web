@@ -5,7 +5,8 @@ import { Dispatch, SetStateAction } from 'react';
 import { FontSizes } from 'theme';
 
 const ContentBoardCellContainer = styled.div<{ color: string }>`
-  width: 240px;
+  width: 200px;
+  max-width: 240px;
   border-top: 16px solid ${(p) => p.color};
   border-radius: 0.5rem;
   margin-bottom: 1rem;

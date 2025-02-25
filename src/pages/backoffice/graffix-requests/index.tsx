@@ -9,6 +9,8 @@ import {
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
 import { BackOfficeTemplate } from 'partials/Backoffice';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const Loading = styled.div<{ visible: boolean }>`
   height: 100vh;
@@ -54,6 +56,14 @@ const createDeepCopy = (object: any) => {
 };
 
 export default function GraphicsRequests() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Needs to make sure the page mounts for the router to work.
+    if (!session) router.push('/backoffice/signin');
+  }, []);
+
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState<string>('N/A');
   const [accessibleDepartment, setAccessibleDepartment] = useState('');
@@ -67,37 +77,6 @@ export default function GraphicsRequests() {
     ContentBoardColumnProps[]
   >(createDeepCopy(Object.values(contentBoardTemplate)));
 
-  const populateContentBoard = () => {
-    if (!graffixRequests) return;
-
-    let tempContentBoardData = createDeepCopy(contentBoardTemplate);
-    graffixRequests.map((graffixRequest) => {
-      if (
-        graffixRequest?.status &&
-        graffixRequest?.status in tempContentBoardData
-      ) {
-        const contentBoardCell: ContentBoardCellProps = {
-          cellID: graffixRequest.id,
-          cellTitle: graffixRequest.title,
-        };
-        tempContentBoardData[graffixRequest.status].columnData.push(
-          contentBoardCell,
-        );
-      }
-    });
-    setContentBoardData(Object.values(tempContentBoardData));
-  };
-
-  const populateCellIDMap = () => {
-    if (!graffixRequests) return;
-
-    let tempMap: KeyValueProps = {};
-    graffixRequests.map((graffixRequest) => {
-      tempMap[graffixRequest?.id] = graffixRequest;
-    });
-    setCellMap(tempMap);
-  };
-
   useEffect(() => {
     const fetchDepartmentsUserHasAccessTo = async () => {
       await fetch('/api/user/department')
@@ -110,7 +89,11 @@ export default function GraphicsRequests() {
           return res.json();
         })
         .then((res) => {
-          setAccessibleDepartment(res?.department?.toLowerCase());
+          const user_department = res?.department?.toLowerCase();
+          setAccessibleDepartment(user_department);
+          setSelectedDepartment(
+            user_department == 'all' ? 'csi' : user_department,
+          );
         })
         .catch(() => {
           console.log('User does not belong to any department.');
@@ -120,15 +103,9 @@ export default function GraphicsRequests() {
   }, []);
 
   useEffect(() => {
-    if (accessibleDepartment != 'all') {
-      setSelectedDepartment(accessibleDepartment);
-    }
-  }, [accessibleDepartment]);
-
-  useEffect(() => {
     // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
     setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
-    if (selectedDepartment == '') return;
+    if (selectedDepartment == 'N/A' || selectedDepartment == '') return;
     setLoading(true);
 
     const fetchGraffixRequestsFromNotion = async () => {
@@ -162,6 +139,35 @@ export default function GraphicsRequests() {
 
   useEffect(() => {
     // When Graffix-Requests resources change, update Content Board and Cell Map
+    if (!graffixRequests) return;
+
+    const populateContentBoard = () => {
+      let tempContentBoardData = createDeepCopy(contentBoardTemplate);
+      graffixRequests.map((graffixRequest) => {
+        if (
+          graffixRequest?.status &&
+          graffixRequest?.status in tempContentBoardData
+        ) {
+          const contentBoardCell: ContentBoardCellProps = {
+            cellID: graffixRequest.id,
+            cellTitle: graffixRequest.title,
+          };
+          tempContentBoardData[graffixRequest.status].columnData.push(
+            contentBoardCell,
+          );
+        }
+      });
+      setContentBoardData(Object.values(tempContentBoardData));
+    };
+
+    const populateCellIDMap = () => {
+      let tempMap: KeyValueProps = {};
+      graffixRequests.map((graffixRequest) => {
+        tempMap[graffixRequest?.id] = graffixRequest;
+      });
+      setCellMap(tempMap);
+    };
+
     populateContentBoard();
     populateCellIDMap();
   }, [graffixRequests]);
@@ -175,7 +181,7 @@ export default function GraphicsRequests() {
 
       <BackOfficeTemplate>
         <ContentBoard
-          title={`Graffix Requests - ${selectedDepartment.toUpperCase()}`}
+          title={`Graffix Requests`}
           columns={contentBoardData}
           cellMap={cellMap}
           selectedDepartment={selectedDepartment}
