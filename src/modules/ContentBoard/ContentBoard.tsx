@@ -4,19 +4,23 @@ import { ContentBoardNav } from './ContentBoardNav';
 import { ContentBoardColumnProps, KeyValueProps } from './ContentBoardTypes';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ContentBoardSidebar } from './ContentBoardSidebar';
+import { useBreakpoint } from 'hooks';
 
 const deepCopyArray = (arr: any) => {
   return JSON.parse(JSON.stringify(arr));
 };
 
-const ContentBoardContainer = styled.div`
+const ContentBoardColumnsContainer = styled.div<{
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
+}>`
   display: flex;
   flex-direction: row;
   height: 75vh;
-  overflow-x: scroll;
+  overflow-x: auto;
   gap: 1rem;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-around;
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -51,6 +55,7 @@ export const ContentBoard = ({
   setSelectedDepartment: Dispatch<SetStateAction<string>>;
   accessibleDepartment: string;
 }) => {
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [selectedCellID, setSelectedCellID] = useState<string>('');
   const [filterInput, setFilterInput] = useState<string>('');
   const [filteredColumns, setFilteredColumns] =
@@ -81,8 +86,19 @@ export const ContentBoard = ({
     setFilteredColumns(tempColumns);
   }, [filterInput, columns]);
 
+  useEffect(() => {
+    console.log(`isMobile: ${isMobile}`);
+    console.log(`isTablet: ${isTablet}`);
+    console.log(`isDesktop: ${isDesktop}`);
+  }, [isMobile, isTablet, isDesktop]);
+
+  const Randombox = styled.div<{ isTablet: boolean }>`
+    position: relative;
+    width: ${isTablet ? '100%' : 'calc(100% - 120px)'};
+  `;
+
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <Randombox isTablet={isTablet}>
       <ContentBoardNav
         title={title}
         filterInput={filterInput}
@@ -91,7 +107,11 @@ export const ContentBoard = ({
         setSelectedDepartment={setSelectedDepartment}
         accessibleDepartment={accessibleDepartment}
       />
-      <ContentBoardContainer>
+      <ContentBoardColumnsContainer
+        isMobile={isMobile}
+        isTablet={isTablet}
+        isDesktop={isDesktop}
+      >
         {filteredColumns.map((column: ContentBoardColumnProps, idx: number) => {
           return (
             <ContentBoardColumn
@@ -101,12 +121,12 @@ export const ContentBoard = ({
             />
           );
         })}
-      </ContentBoardContainer>
+      </ContentBoardColumnsContainer>
       <ContentBoardSidebar
         selectedCellID={selectedCellID}
         setSelectedCellID={setSelectedCellID}
         cellMap={cellMap}
       />
-    </div>
+    </Randombox>
   );
 };
