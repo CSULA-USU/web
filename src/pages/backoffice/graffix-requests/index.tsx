@@ -97,6 +97,10 @@ export default function GraphicsRequests() {
         })
         .catch(() => {
           console.log('User does not belong to any department.');
+          alert(
+            "Sorry you aren't assigned to any departments currently. Please contact the Graffix Web team if this problem persists. Thank you",
+          );
+          router.push('/backoffice');
         });
     };
     fetchDepartmentsUserHasAccessTo();
