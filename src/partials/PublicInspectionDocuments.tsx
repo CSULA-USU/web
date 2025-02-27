@@ -203,6 +203,22 @@ const downloads: DownloadSectionProps[] = [
     },
   },
   {
+    title: 'Review of Auxiliary Organization Operations',
+    children: (
+      <Typography>
+        The annual review of the operations of the U-SU is conducted by the
+        campus president or designee to determine whether operating agreements
+        are current and that the U-SU&apos;s activities are in compliance.
+      </Typography>
+    ),
+    button: {
+      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
+      disabled: false,
+      variant: 'black',
+      href: 'https://www.dropbox.com/scl/fi/vwl8kn0776p9vp0ri90qs/review-of-auxiliary-organization-operations.pdf?rlkey=l26fp4y5gpxsi1veh7xkdnudc&st=r5zcrlad&raw=1',
+    },
+  },
+  {
     title: 'Statement of Information (SI-100)',
     children: (
       <Typography>
