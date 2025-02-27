@@ -13,22 +13,6 @@ import { Spaces } from 'theme';
 
 const downloads: DownloadSectionProps[] = [
   {
-    title: 'Tax Exemption Application (Form 1023)',
-    children: <Typography>Can be provided upon written request.</Typography>,
-    button: {
-      children: <NonBreakingSpan>Request Access</NonBreakingSpan>,
-      disabled: true,
-    },
-  },
-  {
-    title: 'IRS Determination Letter',
-    children: <Typography>Can be provided upon written request.</Typography>,
-    button: {
-      children: <NonBreakingSpan>Request Access</NonBreakingSpan>,
-      disabled: true,
-    },
-  },
-  {
     title: 'Annual Registration Renewal (RRF-1)',
     children: (
       <Typography>
@@ -155,6 +139,14 @@ const downloads: DownloadSectionProps[] = [
     },
   },
   {
+    title: 'IRS Determination Letter',
+    children: <Typography>Can be provided upon written request.</Typography>,
+    button: {
+      children: <NonBreakingSpan>Request Access</NonBreakingSpan>,
+      disabled: true,
+    },
+  },
+  {
     title: 'Latest Audited Financial Statements',
     children: (
       <DocumentLinkContainer
@@ -230,6 +222,14 @@ const downloads: DownloadSectionProps[] = [
       disabled: false,
       variant: 'black',
       href: 'https://www.dropbox.com/s/eoqbdugnic8y3ut/statement-of-information.pdf?raw=1',
+    },
+  },
+  {
+    title: 'Tax Exemption Application (Form 1023)',
+    children: <Typography>Can be provided upon written request.</Typography>,
+    button: {
+      children: <NonBreakingSpan>Request Access</NonBreakingSpan>,
+      disabled: true,
     },
   },
   {
