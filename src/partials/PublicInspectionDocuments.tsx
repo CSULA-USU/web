@@ -47,18 +47,25 @@ const downloads: DownloadSectionProps[] = [
   {
     title: 'Auxiliary Operating Agreement',
     children: (
-      <Typography>
-        This agreement is made and entered into by and between the Trustees of
-        the California State University by their duly qualified Chancellor (CSU)
-        and the University-Student Union Board (Auxiliary) serving California
-        State University Los Angeles (Campus).
-      </Typography>
+      <DocumentLinkContainer
+        links={[
+          {
+            href: 'https://www.dropbox.com/s/cj7f7q9r9tde4gr/auxiliary-operating-agreement.pdf?raw=1',
+            children: 'Operating Agreement',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/vwl8kn0776p9vp0ri90qs/review-of-auxiliary-organization-operations.pdf?rlkey=l26fp4y5gpxsi1veh7xkdnudc&st=r5zcrlad&raw=1',
+            children: 'Review of Auxiliary Organization Operations',
+          },
+        ]}
+      />
     ),
     button: {
-      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
-      disabled: false,
+      children: (
+        <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
+      ),
+      href: 'https://www.dropbox.com/scl/fi/dv45xzrkmzf17dmo46znc/auxiliary-operating-agreement.zip?rlkey=yxn2z65hu07wt3hjpxd3a6z27&st=rhna9qep&dl=0',
       variant: 'black',
-      href: 'https://www.dropbox.com/s/cj7f7q9r9tde4gr/auxiliary-operating-agreement.pdf?raw=1',
     },
   },
   {
@@ -192,22 +199,6 @@ const downloads: DownloadSectionProps[] = [
       ),
       href: 'https://www.dropbox.com/scl/fi/rim4pmvso9job81yqxfkr/latest-audited-financial-statements.zip?rlkey=d1a1re9xltqljw1me8qa8f8xe&st=81bf23pw&raw=1',
       variant: 'black',
-    },
-  },
-  {
-    title: 'Review of Auxiliary Organization Operations',
-    children: (
-      <Typography>
-        The annual review of the operations of the U-SU is conducted by the
-        campus president or designee to determine whether operating agreements
-        are current and that the U-SU&apos;s activities are in compliance.
-      </Typography>
-    ),
-    button: {
-      children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
-      disabled: false,
-      variant: 'black',
-      href: 'https://www.dropbox.com/scl/fi/vwl8kn0776p9vp0ri90qs/review-of-auxiliary-organization-operations.pdf?rlkey=l26fp4y5gpxsi1veh7xkdnudc&st=r5zcrlad&raw=1',
     },
   },
   {
