@@ -21,7 +21,10 @@ const LinkInner = styled.div`
 export const DocumentLink = ({ href, children }: DocumentLinkProps) => (
   <LinkInner>
     <StyledLink href={href} isExternalLink>
-      <AiOutlineFileText size="16px" style={{ margin: '0 4px 0 0' }} />{' '}
+      <AiOutlineFileText
+        size="16px"
+        style={{ margin: '0 4px 0 0', flexShrink: '0' }}
+      />{' '}
       {children}
     </StyledLink>
   </LinkInner>
