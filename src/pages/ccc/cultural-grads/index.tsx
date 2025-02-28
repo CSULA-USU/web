@@ -244,7 +244,11 @@ export default function CulturalGrads() {
               ))}
             </IncentiveCardsContainer>
             <FluidContainer flex justifyContent="center">
-              <Typography>
+              <Typography
+                as="h2"
+                variant="title"
+                size={isMobile ? 'lg' : '2xl'}
+              >
                 Open to all who are interested to participate regardless of
                 race, sex, color, ethnicity, or national origin
               </Typography>
@@ -301,10 +305,6 @@ export default function CulturalGrads() {
                 <Divider color="gold" />
               </React.Fragment>
             ))} */}
-            <Typography as="p" variant="copy" color="white">
-              Open to all who are interested to participate regardless of race,
-              sex, color, ethnicity, or national origin.
-            </Typography>
           </FluidContainer>
         )}
       </div>
