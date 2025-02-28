@@ -245,7 +245,7 @@ export default function GSRC() {
       </FluidContainer>
       <InstagramFeed department="gsrc" />
       <FluidContainer flex justifyContent="center">
-        <Typography>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Open to all who are interested to participate regardless of race, sex,
           color, ethnicity, or national origin
         </Typography>
