@@ -151,7 +151,7 @@ export default function CLSRC() {
       </div>
       <InstagramFeed department="clsrc" />
       <FluidContainer flex justifyContent="center">
-        <Typography>
+        <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
           Open to all who are interested to participate regardless of race, sex,
           color, ethnicity, or national origin
         </Typography>
