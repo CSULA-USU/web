@@ -21,6 +21,7 @@ const HiddenSpan = styled.span`
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 `;
+
 const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   width: 320px;
   height: 320px;
@@ -36,6 +37,12 @@ const InstagramCardsContainerSkeleton = styled(SkeletonWrapper)`
   height: 320px;
   margin: ${Spaces.sm};
   border-radius: 8px;
+`;
+
+const InstagramPostsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const InstagramCardsSkeleton = () => {
@@ -93,18 +100,20 @@ export const Component = ({
   const url = `https://www.instagram.com/${username}`;
 
   return (
-    <>
-      <FluidContainer>
-        <Typography variant={isMobile ? 'titleSmall' : 'title'} as="h2">
-          Follow Us on Instagram{' '}
-          <InstagramLinkContainer>
-            <Link href={url}>
-              <strong>@{username}</strong>
-            </Link>{' '}
-          </InstagramLinkContainer>
-        </Typography>
-      </FluidContainer>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
+    <FluidContainer>
+      <Typography
+        variant={isMobile ? 'titleSmall' : 'title'}
+        as="h2"
+        margin={`0 0 ${Spaces.sm} 0`}
+      >
+        Follow Us on Instagram{' '}
+        <InstagramLinkContainer>
+          <Link href={url}>
+            <strong>@{username}</strong>
+          </Link>{' '}
+        </InstagramLinkContainer>
+      </Typography>
+      <InstagramPostsContainer>
         {loading ? (
           <InstagramCardsSkeleton />
         ) : instagramResponseStatus == 'failed' ? (
@@ -152,7 +161,7 @@ export const Component = ({
             </Link>
           ))
         )}
-      </FluidContainer>
-    </>
+      </InstagramPostsContainer>
+    </FluidContainer>
   );
 };

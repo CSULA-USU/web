@@ -58,7 +58,7 @@ const offerings = [
   {
     title: 'Cultural Environment Enhancement',
     children:
-      'Provide a safe space on campus for APIDA-identified students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center.',
+      'Provide a safe space on campus for students where they see themselves reflected, embraced, celebrated, and validated. Resources are available within the center',
     imgSrc: '/vectors/ccc/reading-lounge.svg',
     imgAlt: '',
     href: 'ccc/apisrc',
@@ -159,8 +159,9 @@ export default function APISRC() {
             the Asian, Pacific Islander, and Desi American student population
             while enriching and raising social awareness for the entire campus
             community. The APISRC provides services and support for students who
-            identity as, or are interested in, Asian American, Pacific Islander,
-            and South Asian/Desi community cultural issues.
+            identify as, and/or any students who are interested in learning more
+            about, Asian American, Pacific Islander, and South Asian/Desi
+            community cultural issues.
           </Header>
           {!isDesktop && (
             <Image
@@ -232,6 +233,12 @@ export default function APISRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="apisrc" />
+      <FluidContainer flex justifyContent="center">
+        <Typography>
+          Open to all who are interested to participate regardless of race, sex,
+          color, ethnicity, or national origin
+        </Typography>
+      </FluidContainer>
       {!isMobile && (
         <FluidContainer flex justifyContent="center">
           <Image
