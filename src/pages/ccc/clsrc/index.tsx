@@ -94,11 +94,11 @@ export default function CLSRC() {
             )}
             The Chicana/o Latina/o Student Resource Center (CLSRC) was founded
             in 1993. The CLSRC provides services and support for students who
-            identify as, or are interested in, Chicana/o and/or Latina/o
-            community and cultural issues. The CLSRC also develops long and
-            short term programs and events focusing on issues of importance to
-            the Chicana/o Latina/o community in the U.S., Central and South
-            America, the Caribbean and worldwide.
+            identify as, and/or any students who are interested in learning more
+            about Chicana/o and/or Latina/o community and cultural issues. The
+            CLSRC also develops long and short term programs and events focusing
+            on issues of importance to the Chicana/o Latina/o community in the
+            U.S., Central and South America, the Caribbean and worldwide.
           </Header>
           {!isDesktop && (
             <Image
@@ -150,6 +150,12 @@ export default function CLSRC() {
         </FluidContainer>
       </div>
       <InstagramFeed department="clsrc" />
+      <FluidContainer flex justifyContent="center">
+        <Typography>
+          Open to all who are interested to participate regardless of race, sex,
+          color, ethnicity, or national origin
+        </Typography>
+      </FluidContainer>
       {!isMobile && (
         <FluidContainer flex justifyContent="center">
           <Image

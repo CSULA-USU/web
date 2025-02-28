@@ -147,11 +147,14 @@ export default function CulturalGrads() {
             These celebrations are great opportunities to acknowledge your
             academic achievements, honor your families, communities, and other
             significant people in your lives, and to celebrate the cultural
-            influences that have contributed to your academic success. The
-            celebrations are open to all students who would like to sign up and
-            participate. You deserve to celebrate your achievements with
-            cultural influences that are integral to your being and important to
-            you and your community! Apply now!
+            influences that have contributed to your academic success. You
+            deserve to celebrate your achievements with cultural influences that
+            are integral to your being and important to you and your community!
+            Apply now!
+          </Typography>
+          <Typography as="p" variant="copy" color="primary">
+            The celebrations are open to all students who would like to sign up
+            and participate.
           </Typography>
         </Panel>
       </FluidContainer>
@@ -240,6 +243,12 @@ export default function CulturalGrads() {
                 </FlatCard>
               ))}
             </IncentiveCardsContainer>
+            <FluidContainer flex justifyContent="center">
+              <Typography>
+                Open to all who are interested to participate regardless of
+                race, sex, color, ethnicity, or national origin
+              </Typography>
+            </FluidContainer>
           </FluidContainer>
         )}
       </div>
@@ -292,6 +301,10 @@ export default function CulturalGrads() {
                 <Divider color="gold" />
               </React.Fragment>
             ))} */}
+            <Typography as="p" variant="copy" color="white">
+              Open to all who are interested to participate regardless of race,
+              sex, color, ethnicity, or national origin.
+            </Typography>
           </FluidContainer>
         )}
       </div>

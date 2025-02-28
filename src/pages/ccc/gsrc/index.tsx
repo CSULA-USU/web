@@ -244,6 +244,12 @@ export default function GSRC() {
         </OfferingsContainer>
       </FluidContainer>
       <InstagramFeed department="gsrc" />
+      <FluidContainer flex justifyContent="center">
+        <Typography>
+          Open to all who are interested to participate regardless of race, sex,
+          color, ethnicity, or national origin
+        </Typography>
+      </FluidContainer>
       {!isMobile && (
         <FluidContainer flex justifyContent="center">
           <Image
