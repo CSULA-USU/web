@@ -119,23 +119,6 @@
     "web": ""
   },
   {
-    "name": "Enzo Everett",
-    "suffix": "",
-    "cardBlurb": "",
-    "title": "Recreation Coordinator",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/enzo-everett.png",
-    "img": "",
-    "alt": "",
-    "bio": "",
-    "department": "Recreation",
-    "email": "eeveret@calstatela.edu",
-    "phone": "",
-    "pronouns": "",
-    "tags": ["All", "Recreation"],
-    "url": "",
-    "web": ""
-  },
-  {
     "name": "Fabi Avina",
     "suffix": "",
     "cardBlurb": "",
@@ -251,6 +234,23 @@
     "phone": "",
     "pronouns": "",
     "tags": ["All", "Administration"],
+    "url": "",
+    "web": ""
+  },
+  {
+    "name": "Javier Morales",
+    "suffix": "",
+    "cardBlurb": "",
+    "title": "Operations Coordinator",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/javier-morales.jpg",
+    "img": "",
+    "alt": "",
+    "bio": "",
+    "department": "Operations",
+    "email": "jmoral285@csula.onmicrosoft.com",
+    "phone": "",
+    "pronouns": "",
+    "tags": ["All", "Operations"],
     "url": "",
     "web": ""
   },
