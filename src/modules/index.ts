@@ -1,6 +1,7 @@
 export * from './BoardOfDirectors';
 export * from './CallToAction';
 export * from './CallToActionImages';
+export * from './ContentBoard';
 export * from './CulturalGradsHeader';
 export * from './DepartmentHeader';
 export * from './DocumentLink';
