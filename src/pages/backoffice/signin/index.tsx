@@ -25,7 +25,7 @@ export default function SignIn() {
 
         <>
           <Typography>Please Sign in to continue.</Typography>
-          <Button onClick={() => signIn()}>Sign in!</Button>
+          <Button onClick={() => signIn('azure-ad')}>Sign in!</Button>
         </>
       </FluidContainer>
     </Page>
