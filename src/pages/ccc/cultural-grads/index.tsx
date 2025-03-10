@@ -203,7 +203,7 @@ export default function CulturalGrads() {
               variant="title"
               size={isMobile ? 'lg' : '2xl'}
             >
-              Graduations
+              Graduation Celebrations
             </Typography>
             {cards.map((card, i) => {
               return (
