@@ -8,7 +8,7 @@ import {
   NonBreakingSpan,
 } from 'components';
 import { Page } from 'modules';
-import { RecreationHoursSection } from 'partials';
+import { PhotoVideoDisclaimer, RecreationHoursSection } from 'partials';
 import { BiPhone } from 'react-icons/bi';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
@@ -307,6 +307,7 @@ export default function Recreation() {
           diversity, accessibility, and equal opportunity for all.
         </Typography>
       </FluidContainer>
+      <PhotoVideoDisclaimer />
     </Page>
   );
 }
