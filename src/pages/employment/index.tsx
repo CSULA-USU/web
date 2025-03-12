@@ -4,7 +4,6 @@ import { Page } from 'modules';
 import { FluidContainer, StyledLink, Loading, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
-import Link from 'next/link';
 import { StatusType } from 'atoms';
 // import jobs from 'data/employment.json';
 // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
@@ -184,12 +183,13 @@ export default function Employment() {
         >
           Applications
         </Typography>
-        <Link
-          href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application (2023).pdf"
-          target="_blank"
+        <StyledLink
+          href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application FORM 2025.pdf"
+          aria-label="Open Full-time Professional Appointment Application PDF form in a new tab"
+          isInverseUnderlineStyling
         >
           Full-time Professional Appointment
-        </Link>
+        </StyledLink>
       </FluidContainer>
     </Page>
   );
