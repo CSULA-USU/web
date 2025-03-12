@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import {
-  Page,
-  DepartmentHeader,
-  // CallToAction,
-  OfficeHours,
-  ImageAndCard,
-} from 'modules';
-import {
   Typography,
   FluidContainer,
   Image,
   DescriptionCard,
   Button,
 } from 'components';
+import {
+  Page,
+  DepartmentHeader,
+  // CallToAction,
+  OfficeHours,
+  ImageAndCard,
+} from 'modules';
+import { PhotoVideoDisclaimer } from 'partials';
 import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
@@ -312,6 +313,7 @@ export default function CCC() {
           diversity, accessibility, and equal opportunity for all.
         </Typography>
       </FluidContainer>
+      <PhotoVideoDisclaimer />
       {/* <CallToAction
         backgroundColorProp="black"
         buttonVariantColor="primary"

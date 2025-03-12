@@ -19,6 +19,7 @@ import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
+import { PhotoVideoDisclaimer } from 'partials';
 
 const descriptionCards = [
   {
@@ -287,6 +288,7 @@ export default function CSI() {
           diversity, accessibility, and equal opportunity for all.
         </Typography>
       </FluidContainer>
+      <PhotoVideoDisclaimer />
       <FluidContainer flex justifyContent="center">
         <Image
           alt=""
