@@ -6,6 +6,7 @@ import { eventListState, eventListStatusState } from 'atoms';
 import { useEffect, useState } from 'react';
 import { PresenceEvent } from 'types';
 import { EventModal } from 'modules/EventModal';
+import { Spaces } from 'theme';
 
 interface DepartmentHeaderProps {
   title: string;
@@ -16,6 +17,10 @@ interface DepartmentHeaderProps {
 
 const HeaderContent = styled.div`
   padding: 48px;
+
+  @media (max-width: 768px) {
+    padding: ${Spaces.sm};
+  }
 `;
 
 const HeaderContainer = styled.div`

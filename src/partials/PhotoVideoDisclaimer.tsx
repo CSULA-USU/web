@@ -1,7 +1,7 @@
 import { FluidContainer, Typography } from '../components';
 export const PhotoVideoDisclaimer = () => (
   <FluidContainer>
-    <Typography variant="title" as="h2">
+    <Typography variant="title" as="h2" margin="0 0 Spaces.md">
       Photo and Video Disclaimer
     </Typography>
     <FluidContainer backgroundColor="greyLightest">
