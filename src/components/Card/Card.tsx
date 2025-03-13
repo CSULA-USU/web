@@ -30,6 +30,10 @@ const IconContainer = styled.div`
   height: 80px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin: 16px 0;
+  }
 `;
 
 export const Card = ({

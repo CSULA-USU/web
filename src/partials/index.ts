@@ -3,6 +3,7 @@ export * from './BODMeetingCalendar';
 export * from './FormsSection';
 export * from './GeneralInformation';
 export * from './GovernanceFooter';
+export * from './NonDiscriminationPolicy';
 export * from './PhotoVideoDisclaimer';
 export * from './PublicInspectionDocuments';
 export * from './RecreationHoursSection';
