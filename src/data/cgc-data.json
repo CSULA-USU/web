@@ -129,7 +129,7 @@
     },
     {
       "title": "Nuestra Grad",
-      "subheader": "Chicanx, Latinx, Central American, South American",
+      "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "copy": [
         ["Date: Saturday, May 17", "Time: 11:00 AM to 12:30 PM"],
         "Location: University Gym",
@@ -178,26 +178,22 @@
     },
     {
       "question": "What should I wear?",
-      "answer": "Semi-formal attire is preferred for picture-taking and the graduation celebration. We encourage you to dress in your culture's traditional wear!"
-    },
-    {
-      "question": "How will I receive my sash?",
-      "answer": "You will receive your sash the day of your respective cultural graduation inside the venue."
+      "answer": "We encourage you to wear business casual, graduation regalia, or cultural regalia."
     },
     {
       "question": "How many guest tickets do I get?",
       "answer": [
         "ALL Graduations are open seating (not reserved). First come, first served.",
-        "APIDA Grad # of Guest Tickets: TBD",
-        "Black Grad # of Guest Tickets: 1TBD",
-        "Native Grad # of Guest Tickets: TBD",
-        "Nuestra Grad # of Guest Tickets: TBD",
-        "Pride Grad # of Guest Tickets: TBD"
+        "APIDA Grad # of Guest Tickets: 10",
+        "Black Grad # of Guest Tickets: 10",
+        "IndigiGrad # of Guest Tickets: 10",
+        "Nuestra Grad # of Guest Tickets: 6",
+        "Pride Grad # of Guest Tickets: 10"
       ]
     },
     {
       "question": "I have more questions about applying. Whom do I contact?",
-      "answer": "Please get in touch with the respective center coordinator or the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call 323-343-5001."
+      "answer": "Please email the respective center coordinator or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
     }
   ],
   "grad-data": {
