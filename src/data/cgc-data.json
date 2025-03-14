@@ -68,7 +68,7 @@
   ],
   "info-cards": [
     {
-      "title": "APIDA Grad",
+      "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
         ["Date: Friday, May 16", "Time: 7:30 PM to 9:00 PM"],
@@ -77,9 +77,9 @@
         "Email: motuhiv@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/apida",
+        "buttonLink": "https://form.jotform.com/250716777359167",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
@@ -88,7 +88,7 @@
       "id": "apisrc"
     },
     {
-      "title": "Black Grad",
+      "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
         ["Date: Saturday, May 17", "Time: 3:00 PM to 4:30 PM"],
@@ -97,9 +97,9 @@
         "Email: ithoma10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/black",
+        "buttonLink": "https://form.jotform.com/250717024177151",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
@@ -108,7 +108,7 @@
       "id": "pasrc"
     },
     {
-      "title": "IndigiGrad",
+      "title": "IndigiGrad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
         ["Date: Friday, May 16", "Time: 10:30 AM to 12:00 PM"],
@@ -117,9 +117,9 @@
         "Email: cjacks38@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/native",
+        "buttonLink": "https://form.jotform.com/250717543706155",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
@@ -128,7 +128,7 @@
       "id": "native"
     },
     {
-      "title": "Nuestra Grad",
+      "title": "Nuestra Grad Celebration",
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "copy": [
         ["Date: Saturday, May 17", "Time: 11:00 AM to 12:30 PM"],
@@ -137,9 +137,9 @@
         "Email: vtelle10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/nuestra",
+        "buttonLink": "https://form.jotform.com/250706862491158",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
@@ -148,7 +148,7 @@
       "id": "clsrc"
     },
     {
-      "title": "Pride Grad",
+      "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
         ["Date: Friday, May 16", "Time: 4:30 PM to 6:00 PM"],
@@ -157,9 +157,9 @@
         "Email: mpizarr5@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/pride",
+        "buttonLink": "https://form.jotform.com/250717467041152",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
