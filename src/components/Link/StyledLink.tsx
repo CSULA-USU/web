@@ -77,7 +77,6 @@ interface StyledLinkProps {
   href: string;
   isInverseUnderlineStyling?: boolean;
   isExternalLink?: boolean;
-  ariaLabel?: string;
 }
 
 export const StyledLink = ({
@@ -85,7 +84,6 @@ export const StyledLink = ({
   href,
   isInverseUnderlineStyling,
   isExternalLink,
-  ariaLabel,
 }: StyledLinkProps) => {
   return (
     <>
@@ -95,7 +93,6 @@ export const StyledLink = ({
             href={href}
             target={isExternalLink ? '_blank' : undefined}
             rel={isExternalLink ? 'noopener noreferrer' : undefined}
-            aria-label={ariaLabel ? ariaLabel : undefined}
           >
             <StyleSpan>{children}</StyleSpan>
           </NoUnderlineHover>
@@ -108,7 +105,6 @@ export const StyledLink = ({
           <UnderlineHover
             href={href}
             target={isExternalLink ? '_blank' : undefined}
-            aria-label={ariaLabel ? ariaLabel : undefined}
           >
             <StyleSpan>{children}</StyleSpan>
           </UnderlineHover>

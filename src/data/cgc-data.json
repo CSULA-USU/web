@@ -68,7 +68,7 @@
   ],
   "info-cards": [
     {
-      "title": "APIDA Grad",
+      "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
         ["Date: Friday, May 16", "Time: 7:30 PM to 9:00 PM"],
@@ -77,9 +77,9 @@
         "Email: motuhiv@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/apida",
+        "buttonLink": "https://form.jotform.com/250716777359167",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
@@ -88,7 +88,7 @@
       "id": "apisrc"
     },
     {
-      "title": "Black Grad",
+      "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
         ["Date: Saturday, May 17", "Time: 3:00 PM to 4:30 PM"],
@@ -97,9 +97,9 @@
         "Email: ithoma10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/black",
+        "buttonLink": "https://form.jotform.com/250717024177151",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
@@ -108,7 +108,7 @@
       "id": "pasrc"
     },
     {
-      "title": "IndigiGrad",
+      "title": "IndigiGrad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
         ["Date: Friday, May 16", "Time: 10:30 AM to 12:00 PM"],
@@ -117,9 +117,9 @@
         "Email: cjacks38@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/native",
+        "buttonLink": "https://form.jotform.com/250717543706155",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
@@ -128,8 +128,8 @@
       "id": "native"
     },
     {
-      "title": "Nuestra Grad",
-      "subheader": "Chicanx, Latinx, Central American, South American",
+      "title": "Nuestra Grad Celebration",
+      "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "copy": [
         ["Date: Saturday, May 17", "Time: 11:00 AM to 12:30 PM"],
         "Location: University Gym",
@@ -137,9 +137,9 @@
         "Email: vtelle10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/nuestra",
+        "buttonLink": "https://form.jotform.com/250706862491158",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
@@ -148,7 +148,7 @@
       "id": "clsrc"
     },
     {
-      "title": "Pride Grad",
+      "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
         ["Date: Friday, May 16", "Time: 4:30 PM to 6:00 PM"],
@@ -157,9 +157,9 @@
         "Email: mpizarr5@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "/ccc/cultural-grads/pride",
+        "buttonLink": "https://form.jotform.com/250717467041152",
         "buttonPlaceholder": "Applications will open soon",
-        "buttonText": "View"
+        "buttonText": "Apply"
       },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
@@ -170,7 +170,7 @@
   ],
   "questions": [
     {
-      "question": "What do I need to submit to participate in the Graduation Celebration?",
+      "question": "What do I need to submit in order to participate?",
       "answer": [
         "Submit the Cultural Graduation Application.",
         "Submit your 75-word personal narrative and picture in the application."
@@ -178,26 +178,22 @@
     },
     {
       "question": "What should I wear?",
-      "answer": "Semi-formal attire is preferred for picture-taking and the graduation celebration. We encourage you to dress in your culture's traditional wear!"
-    },
-    {
-      "question": "How will I receive my sash?",
-      "answer": "You will receive your sash the day of your respective cultural graduation inside the venue."
+      "answer": "We encourage you to wear business casual, graduation regalia, or cultural regalia."
     },
     {
       "question": "How many guest tickets do I get?",
       "answer": [
         "ALL Graduations are open seating (not reserved). First come, first served.",
-        "APIDA Grad # of Guest Tickets: TBD",
-        "Black Grad # of Guest Tickets: 1TBD",
-        "Native Grad # of Guest Tickets: TBD",
-        "Nuestra Grad # of Guest Tickets: TBD",
-        "Pride Grad # of Guest Tickets: TBD"
+        "APIDA Grad # of Guest Tickets: 10",
+        "Black Grad # of Guest Tickets: 10",
+        "IndigiGrad # of Guest Tickets: 10",
+        "Nuestra Grad # of Guest Tickets: 6",
+        "Pride Grad # of Guest Tickets: 10"
       ]
     },
     {
-      "question": "I have more questions about applying. Whom do I contact?",
-      "answer": "Please get in touch with the respective center coordinator or the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union. You may also email the CCC at ccc@calstatela.edu or call 323-343-5001."
+      "question": "I have more questions. Who do I contact?",
+      "answer": "Please email the respective center coordinator or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
     }
   ],
   "grad-data": {
