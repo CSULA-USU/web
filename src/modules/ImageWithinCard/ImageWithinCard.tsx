@@ -177,7 +177,7 @@ export const ImageWithinCard = ({
               </>
             ) : (
               <>
-                <Button href={buttonLink} variant="primary">
+                <Button href={buttonLink} variant="primary" isExternalLink>
                   {buttonText}
                 </Button>
               </>
@@ -250,7 +250,7 @@ export const ImageWithinCard = ({
               </>
             ) : (
               <>
-                <Button href={buttonLink} variant="primary">
+                <Button href={buttonLink} variant="primary" isExternalLink>
                   {buttonText}
                 </Button>
               </>

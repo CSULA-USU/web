@@ -5,17 +5,18 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  // Divider,
+  Divider,
   FlatCard,
   FluidContainer,
   Panel,
   Typography,
 } from 'components';
-// import { BiChevronRight } from 'react-icons/bi';
+import { BiChevronRight } from 'react-icons/bi';
 import { CulturalGradsHeader, Page } from 'modules';
 import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
 import { useBreakpoint } from 'hooks';
+import { PhotoVideoDisclaimer } from 'partials';
 
 const GradButtonContainer = styled.div`
   height: 100px;
@@ -29,13 +30,13 @@ const IncentiveCardsContainer = styled.div`
 
 const slideshowImages = CulturalGradsData['header-images'];
 const cards = CulturalGradsData['info-cards'];
-// const questions = CulturalGradsData['questions'];
+const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
-// const DynamicExpandable = dynamic(
-//   () => import('../../../components/Expandable').then((mod) => mod.Expandable),
-//   { ssr: false },
-// );
+const DynamicExpandable = dynamic(
+  () => import('../../../components/Expandable').then((mod) => mod.Expandable),
+  { ssr: false },
+);
 
 const DynamicImageWithinCard = dynamic(
   () =>
@@ -243,6 +244,7 @@ export default function CulturalGrads() {
                 </FlatCard>
               ))}
             </IncentiveCardsContainer>
+            <PhotoVideoDisclaimer />
             <FluidContainer flex justifyContent="center">
               <Typography
                 as="h2"
@@ -266,13 +268,13 @@ export default function CulturalGrads() {
                 size={isMobile ? 'lg' : '2xl'}
                 color="primary"
               >
-                Graduate Participation Information (More to Come)
+                Graduate Participation Information
               </Typography>
             </div>
             {/* Render FAQ content */}
             {/* Replace questions.map with your FAQ content */}
             {/* Ensure to remove DynamicExpandable and use Expandable directly if you're not dynamically rendering */}
-            {/* {questions.map((e, i) => (
+            {questions.map((e, i) => (
               <React.Fragment key={i}>
                 <DynamicExpandable
                   indicator={<BiChevronRight color="white" size={48} />}
@@ -304,7 +306,7 @@ export default function CulturalGrads() {
                 </DynamicExpandable>
                 <Divider color="gold" />
               </React.Fragment>
-            ))} */}
+            ))}
           </FluidContainer>
         )}
       </div>
