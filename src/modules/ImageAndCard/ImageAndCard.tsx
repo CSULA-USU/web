@@ -29,7 +29,7 @@ export const ImageAndCard = ({
           )}
           <Card
             iconSrc={isTablet ? imgSrc : undefined}
-            iconWidth={isTablet ? '50px' : '150px'}
+            iconWidth={isTablet ? '100%' : '150px'}
             hoverable
             width="100%"
             minHeight="160px"
