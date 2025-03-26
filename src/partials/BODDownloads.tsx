@@ -92,6 +92,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors August 30, 2024',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/qs2z3f91tobya4ofdlumk/Minutes-Audit-Committee-September-13-2024-signed.pdf?rlkey=hnxizdehq6ee5g37sss582qf6&st=1tzvusfc&raw=1',
+            children: 'Audit Committee September 13, 2024',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/94w7xkjtj4e6zlts3h5it/Minutes-Board-of-Directors-September-20-2024-signed.pdf?rlkey=t8q7gnmtp4k9cg6boelxd6ag0&st=e0r3fho7&raw=1',
             children: 'Board of Directors September 20, 2024',
           },
@@ -112,15 +116,23 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'Bylaws Committee November 15 Updated, 2024',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/gc46pw6ycxaohxvnnolcn/Minutes-Bylaws-Committee-January-24-2025.pdf?rlkey=e88bkudssvff35q042bbqt897&st=6mzp18f6&raw=1',
+            children: 'Bylaws Committee January 24, 2025',
+          },
+          {
             href: 'https://www.dropbox.com/s/0qbxps2y2znhvxe/Minutes%20Board%20of%20Directors%20January%2031%2C%202025.pdf?st=0zyj2un5&raw=1',
             children: 'Board of Directors January 31, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/le8vuwzxojm5yu2mj05ov/Minutes-Board-of-Directors-February-28-2025-signed.pdf?rlkey=er36nhlq3yodsyvx4153p96dc&st=yksmnylj&raw=1',
+            children: 'Board of Directors February 28, 2025',
           },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/s/nkjvjpnpaz75cnu/fy24-25.zip?st=38sxn6pg&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/9ys7r6n3kr5wafii2l0j8/fy24-25.zip?rlkey=0nl1jzsdbe5kwrxa0jrw52nj0&st=lkgab293&dl=1',
       variant: 'black',
     },
   },
