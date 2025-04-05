@@ -82,7 +82,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: 'https://www.dropbox.com/s/eacdospdxu4pzv8/code-of-procedures.pdf?raw=1',
+      href: 'https://www.dropbox.com/scl/fi/onx9afkwpl0tuklm8ag3s/Approved-Code-of-Procedures-March-2025.pdf?rlkey=t93unfl3rklea6ymd9n10lg0m&st=rp9f91fi&raw=1',
     },
   },
   {
@@ -235,7 +235,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: 'https://www.dropbox.com/s/5adaiwdjcy7hned/bylaws.pdf?raw=1',
+      href: 'https://www.dropbox.com/scl/fi/52mwnnf7rjzv9z5vqd7z2/Approved-U-SU-Bylaws-February-2025.pdf?rlkey=ul39d6egnl0qdab5ay8b23ce8&st=eossc2jo&raw=1',
     },
   },
 ];
