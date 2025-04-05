@@ -62,6 +62,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Meeting January 31, 2025',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/tv8vzpavw2n385eol74cx/Agenda-Board-of-Directors-February-28-2025.pdf?rlkey=i78gu15h05my82dkwo3y2m7fy&st=ielnb1ks&raw=1',
+            children: 'Board of Directors February 28, 2025',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/iw0malrs4hvra1653p22x/Agenda-Audit-Committee-February-21-2025.pdf?rlkey=akv0x5dc285vf4g4c5gywdl8o&st=8uvrxf6q&raw=1',
             children: 'Audit Committee February 21, 2025',
           },
@@ -69,12 +73,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/ox59rxw4rmv0c0e28k7vn/Agenda-Board-of-Directors-March-21-2025.pdf?rlkey=wcxiyudot0dkaj0vvc5uwvbd4&st=yin0hl6b&raw=1',
             children: 'Board of Directors March 21, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/1ee85ad260ofp286bqtv3/Agenda-Fiscal-Committee-April-11-2025.pdf?rlkey=zgrkwuzmfr3vk42amsx2dm6cj&st=qg6wjxhg&raw=1',
+            children: 'Fiscal Committee April 1, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/fyb1imt1fwkxribwui13s/fy24-25.zip?rlkey=rw7p9150gou5wqk2nqwy23f7a&st=1afg0au0&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/clxklo5599fz8lzyck8t3/fy24-25.zip?rlkey=5l545ej9w5waoty7jql0lofay&st=tpbx3vqb&dl=1',
       variant: 'black',
     },
   },
