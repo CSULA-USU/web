@@ -38,7 +38,7 @@
     "fuse.js": "^6.6.2",
     "jotform": "^1.0.1",
     "lodash.throttle": "^4.1.1",
-    "next": "13.0.5",
+    "next": "14.2.26",
     "next-auth": "^4.24.11",
     "node-schedule": "^2.1.1",
     "patch-package": "^8.0.0",
