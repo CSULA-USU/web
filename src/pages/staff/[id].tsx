@@ -74,7 +74,8 @@ const CardContainerTop = styled.div`
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    backdrop-filter: blur(0.5px); /* Blur effect */
+    -webkit-backdrop-filter: blur(0.5px); /* For Safari */
+
     z-index: 1; /* Ensure the overlay is above the background image */
   }
 
@@ -125,6 +126,7 @@ const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
   align-items: center;
   justify-content: center;
   background-image: url(${(props) => props.profilePicture});
+  background-color: ${Colors.white};
   background-size: cover;
   background-position: top;
   border-radius: 50%;
