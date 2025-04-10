@@ -9,7 +9,7 @@ import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
 import { useRecoilState } from 'recoil';
 import { editorPageState } from 'atoms/EditorAtom';
-import { savePageSections } from 'api';
+// import { savePageSections } from 'api';
 import { Divider, PushDrawer, Typography } from 'components';
 import { Colors } from 'theme';
 
@@ -64,7 +64,7 @@ export const EditDrawer = ({ children }: { children: React.ReactNode }) => {
 
   const handleSave = async () => {
     if (!page?.sections) return;
-    await savePageSections(page.sections);
+    // await savePageSections(page.sections);
     setPage({
       ...page,
       sections: page.sections.filter((section) => !section.stagedDelete),
