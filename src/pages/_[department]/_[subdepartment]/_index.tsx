@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-// import { fetchPageSections } from 'api';
+import { fetchPageSections } from 'api';
 import { Page } from 'modules';
 import PageSections from 'modules/PageSections/PageSections';
 import { SupaPage } from 'types';
@@ -16,7 +16,7 @@ export default function DynamicPage() {
         ? `${department}/${subdepartment}`
         : String(department);
       if (!slug) return; //todo: send to 404 page
-      // const page = await fetchPageSections(slug);
+      const page = await fetchPageSections(slug);
       setPage(page);
     }
   };
