@@ -2,7 +2,7 @@ import { StatusType } from 'atoms';
 import { Dispatch, SetStateAction } from 'react';
 import { SetterOrUpdater } from 'recoil';
 
-// export * from './supabase';
+export * from './supabase';
 
 export const fetchEvents = async (
   setEventsStatus: SetterOrUpdater<StatusType>,
