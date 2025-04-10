@@ -1,1 +1,1 @@
-export { default as default } from './[subdepartment]';
+// export { default as default } from './_[subdepartment]/_index';
