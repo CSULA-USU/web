@@ -135,6 +135,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/le8vuwzxojm5yu2mj05ov/Minutes-Board-of-Directors-February-28-2025-signed.pdf?rlkey=er36nhlq3yodsyvx4153p96dc&st=yksmnylj&raw=1',
             children: 'Board of Directors February 28, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/3g4yc74dx8av8ijiasy0c/Minutes-Board-of-Directors-March-21-2025.pdf?rlkey=joxzk6ct32lvm2nv4i1pb7lws&st=ybumvcke&raw=1',
+            children: 'Board of Directors March 21, 2025',
+          },
         ]}
       />
     ),
