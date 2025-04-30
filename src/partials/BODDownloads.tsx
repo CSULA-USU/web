@@ -136,6 +136,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors February 28, 2025',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/mg8mnw7m7fw16pvd4mlp9/Minutes-Fiscal-Committee-March-14-2025.pdf?rlkey=m75sqp6jgcra9essrgx436m49&st=2qklo1mi&raw=1',
+            children: 'Board of Directors March 14, 2025',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/3g4yc74dx8av8ijiasy0c/Minutes-Board-of-Directors-March-21-2025.pdf?rlkey=joxzk6ct32lvm2nv4i1pb7lws&st=ybumvcke&raw=1',
             children: 'Board of Directors March 21, 2025',
           },
