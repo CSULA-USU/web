@@ -77,12 +77,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/1ee85ad260ofp286bqtv3/Agenda-Fiscal-Committee-April-11-2025.pdf?rlkey=zgrkwuzmfr3vk42amsx2dm6cj&st=qg6wjxhg&raw=1',
             children: 'Fiscal Committee April 1, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/mm3zrfdwjpgofdxob2k8i/Agenda-Board-of-Directors-May-9-2025.pdf?rlkey=finzhhdudhosoww5zlf6siska&st=zdj6td4u&raw=1',
+            children: 'Fiscal Committee May 9, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/clxklo5599fz8lzyck8t3/fy24-25.zip?rlkey=5l545ej9w5waoty7jql0lofay&st=tpbx3vqb&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/1p5gut4b0nfc2mv11fw0r/fy24-25.zip?rlkey=qhbmpqspthqkd9cj1bkpilsj5&st=r9sdt259&dl=1',
       variant: 'black',
     },
   },
