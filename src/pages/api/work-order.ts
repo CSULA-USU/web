@@ -34,21 +34,23 @@ export default async function handler(
       return res.status(500).json({ error: 'Error parsing form data' });
     }
 
-    // console.log('Parsed Fields:', fields);
+    // console.log(
+    //   '==================== Parsed Fields: ====================',
+    //   fields,
+    // );
 
     // Extract the raw JSON from the "rawRequest" field
     const rawRequest = Array.isArray(fields.rawRequest)
       ? fields.rawRequest[0]
       : fields.rawRequest || '';
 
-    const submissionId = Array.isArray(fields.submissionId)
-      ? fields.submissionId[0]
-      : fields.submissionId || '';
+    const parsedSubmissionID = Array.isArray(fields.submissionID)
+      ? fields.submissionID[0]
+      : fields.submissionID || '';
 
-    const parsedSubmissionId = submissionId;
     const parsedRequest = JSON.parse(rawRequest);
 
-    console.log('Parsed Jotform Payload:', parsedRequest);
+    // console.log('Parsed Jotform Payload:', parsedRequest);
 
     // Extract fields from the parsed JSON
     const {
@@ -63,6 +65,7 @@ export default async function handler(
       q17_preferredCompletion: dueDate,
       q18_urgencyLevel: urgency,
       q20_department20: department,
+      fileUpload: files,
     } = parsedRequest;
 
     // Convert categories to multi-select format for Notion
@@ -77,21 +80,31 @@ export default async function handler(
         )}-${dueDate.day.padStart(2, '0')}`
       : '';
 
+    const formattedFiles = files?.length
+      ? files.map((url: string) => ({
+          name: url.split('/').pop() || 'Uploaded File',
+          type: 'external',
+          external: { url },
+        }))
+      : [];
+
     const formattedPhone = phone ? phone.full : '';
 
     const formattedStartTime = startTime
       ? `${startTime.timeInput} ${startTime.ampm}`
-      : '';
+      : // resolve gracefully if time is not provided
+        '00:00 AM';
 
     const formattedSubmissionDate = submissionDate
       ? `${submissionDate.year}-${submissionDate.month.padStart(
           2,
           '0',
         )}-${submissionDate.day.padStart(2, '0')}`
-      : '';
+      : // resolve gracefully if date is not provided
+        '00000-00-00';
 
+    // Create a new page in Notion
     try {
-      // Create a new page in Notion
       const response = await notion.pages.create({
         parent: { database_id: WORKORDER_DB_ID },
         properties: {
@@ -219,11 +232,11 @@ export default async function handler(
           },
           Attachments: {
             type: 'files',
-            files: [],
+            files: formattedFiles,
           },
           'Project Brief': {
             type: 'url',
-            url: `https://www.jotform.com/submission/${parsedSubmissionId}`,
+            url: `https://www.jotform.com/submission/${parsedSubmissionID}`,
           },
           'Due Date': {
             type: 'date',
