@@ -35,6 +35,7 @@
     "concurrently": "8.2.2",
     "eslint": "8.54.0",
     "eslint-config-next": "13.0.5",
+    "formidable": "^3.5.4",
     "fuse.js": "^6.6.2",
     "jotform": "^1.0.1",
     "lodash.throttle": "^4.1.1",
@@ -71,11 +72,13 @@
   "devDependencies": {
     "@babel/core": "7.26.0",
     "@babel/traverse": "7.25.9",
+    "@types/formidable": "^3.4.5",
     "@types/styled-components": "5.1.30",
     "@types/styled-system": "5.1.22",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "8.0.3",
-    "lint-staged": "^13.1.0"
+    "lint-staged": "^13.1.0",
+    "ngrok": "^5.0.0-beta.2"
   }
 }

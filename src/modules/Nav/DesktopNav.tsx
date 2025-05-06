@@ -90,7 +90,7 @@ const UnstyledUnorderedList = styled.ul`
   }
 
   ul ul {
-    transform: translate(20px, -6px);
+    transform: translate(20px, -4px);
   }
 `;
 
