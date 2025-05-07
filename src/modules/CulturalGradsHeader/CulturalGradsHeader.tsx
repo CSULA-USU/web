@@ -164,7 +164,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                 )}
               </StyledPauseButton>
             </ButtonContainer>
-            <SlideshowContent isPaused={isPaused}>
+            {/* <SlideshowContent isPaused={isPaused}>
               {imageList &&
                 imageList.map((img, i: number) => (
                   <Image
@@ -181,7 +181,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                     loading={i < 5 ? 'eager' : 'lazy'}
                   />
                 ))}
-            </SlideshowContent>
+            </SlideshowContent> */}
           </SlideshowContainer>
         </>
       ) : (
