@@ -29,7 +29,10 @@ const IncentiveCardsContainer = styled.div`
 `;
 
 const slideshowImages = CulturalGradsData['header-images'];
-const cards = CulturalGradsData['info-cards'];
+const cards = CulturalGradsData['info-cards'].filter(
+  (card) => card.title.toLowerCase() !== 'pride'
+);
+
 const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
