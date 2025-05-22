@@ -27,10 +27,6 @@ const ButtonContainer = styled.div`
   row-gap: ${Spaces.md};
 `;
 
-const Title = styled.div`
-  text-align: center;
-`;
-
 // const ImageContainer = styled.div`
 //   position: relative;
 //   width: 100%;
@@ -182,11 +178,11 @@ export default function About() {
         </FluidContainer>
       </FluidContainer>
 
-      <Title>
+      <FluidContainer>
         <Typography variant="title" as="h2" margin="48px 0 0 0 ">
           Values
         </Typography>
-      </Title>
+      </FluidContainer>
       <FluidContainer flex flexWrap="wrap" justifyContent="center">
         {cards.map((props) => (
           <Card
