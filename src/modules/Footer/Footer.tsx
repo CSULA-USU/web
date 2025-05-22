@@ -107,15 +107,15 @@ export const Footer = () => (
           <FooterUnorderedList>
             <li>
               <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-                Building Hours
+                Summer Building Hours
               </Typography>
             </li>
             <StyledLinkMargins>
               <Typography color="white" size="sm">
-                Monday to Thursday: 7 AM to 10 PM
+                Monday to Friday: 7 AM to 7 PM
               </Typography>
             </StyledLinkMargins>
-            <StyledLinkMargins>
+            {/* <StyledLinkMargins>
               <Typography color="white" size="sm">
                 Friday: 7 AM to 8 PM
               </Typography>
@@ -124,23 +124,23 @@ export const Footer = () => (
               <Typography color="white" size="sm">
                 Saturday: 7 AM to 3 PM
               </Typography>
-            </StyledLinkMargins>
+            </StyledLinkMargins> */}
             <StyledLinkMargins>
               <Typography color="white" size="sm">
-                Sunday: Closed
+                Saturday & Sunday: Closed
               </Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              {/* <Typography color="primary" size="sm">
+              <Typography color="primary" size="sm">
                 <StyledLink
                   href={
-                    'https://www.dropbox.com/scl/fi/75nxe902k92lnpiljv65l/winter-session-2024-hours.docx?rlkey=s00z0b0lk82b4hupytz9ukr7k&st=nputfg90&raw=1'
+                    'https://www.dropbox.com/scl/fi/ay4j0punhu09nb1s5ruy3/2025-Summer-Hours.pdf?rlkey=8b8zb21wc39uqnk8m66n6jhvl&st=vh88vivd&raw=1'
                   }
                   isExternalLink
                 >
-                  2024 Winter Session Building Hours
+                  2025 Summer Building Hours
                 </StyledLink>
-              </Typography> */}
+              </Typography>
             </StyledLinkMargins>
           </FooterUnorderedList>
           <FooterUnorderedList>
