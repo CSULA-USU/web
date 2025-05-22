@@ -143,13 +143,13 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/g49qrggbfireevbvysk8j/06.13.24_Org-Chart.pdf?rlkey=tx5udmki1dxf2n6vnfsz54fzh&e=1&dl=0"
+                      href="https://www.dropbox.com/scl/fi/i12nn95g7jxt0zho3616e/Org-Chart_2.28.25.png?rlkey=iu8sxz2vdqj4dlmyo8lkuo1td&st=hk2exwkl&raw=1"
                     >
                       U-SU Organizational Chart
                     </Button>
                     <Button
                       variant="outline"
-                      href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&dl=0"
+                      href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
                     >
                       Strategic Plan
                     </Button>
