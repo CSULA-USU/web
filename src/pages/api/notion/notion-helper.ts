@@ -1,6 +1,13 @@
-import { notion } from './notion-client';
+import { Client } from '@notionhq/client';
 
-export async function createNotionPage(databaseId: string, properties: any) {
+export async function createNotionPage(
+  databaseId: string,
+  properties: any,
+  auth: string,
+) {
+  const notion = new Client({
+    auth,
+  });
   const response = await notion.pages.create({
     parent: { database_id: databaseId },
     properties,

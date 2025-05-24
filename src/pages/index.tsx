@@ -21,6 +21,7 @@ import { eventListState, eventListStatusState } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import featuredEvents from 'data/featured-events.json';
+
 const images = [
   {
     src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg',

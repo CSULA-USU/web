@@ -34,11 +34,6 @@ export default async function handler(
       return res.status(500).json({ error: 'Error parsing form data' });
     }
 
-    // console.log(
-    //   '==================== Parsed Fields: ====================',
-    //   fields,
-    // );
-
     // Extract the raw JSON from the "rawRequest" field
     const rawRequest = Array.isArray(fields.rawRequest)
       ? fields.rawRequest[0]
