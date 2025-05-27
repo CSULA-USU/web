@@ -67,10 +67,8 @@ const locations = [
     title: 'Rec 1',
     location: 'U-SU Basement',
     hours: [
-      { day: 'Monday to Thursday', time: '7:10 AM to 9:45 PM' },
-      { day: 'Friday', time: '7:10 AM to 7:45 PM' },
-      { day: 'Saturday', time: '7:10 AM to 2:45 PM' },
-      { day: 'Sunday', time: 'Closed' },
+      { day: 'Monday to Friday', time: '7:10 AM to 6:45 PM' },
+      { day: 'Saturday to Sunday', time: 'Closed' },
     ],
   },
   {
