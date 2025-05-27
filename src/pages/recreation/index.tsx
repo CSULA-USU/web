@@ -74,36 +74,17 @@ const locations = [
   {
     title: 'Rec 2',
     location: 'U-SU Basement',
-    hours: [
-      { day: 'Monday to Thursday', time: '11:00 AM to 7:00 PM' },
-      { day: 'Friday to Sunday', time: 'Closed' },
-    ],
+    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
   },
   {
     title: 'Game Room',
     location: 'U-SU Room 201',
-    hours: [
-      { day: 'Monday to Thursday', time: '12:00 PM to 6:00 PM' },
-      { day: 'Friday to Sunday', time: 'Closed' },
-    ],
+    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
   },
   {
     title: 'South Village Housing Wellness Zone',
     location: 'South Village Housing',
-    hours: [
-      {
-        day: 'Monday to Thursday',
-        time: '7:00 AM to 12:00 PM',
-        afternoonTime: '4:30 PM to 9:30 PM',
-      },
-      {
-        day: 'Friday',
-        time: '7:00 AM to 12:00 PM',
-        afternoonTime: '2:30 PM to 7:30 PM',
-      },
-      { day: 'Saturday', time: '7:00 AM to 12:00 PM' },
-      { day: 'Sunday', time: 'Closed' },
-    ],
+    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
   },
 ];
 
@@ -182,7 +163,7 @@ export default function Recreation() {
           </PhoneSection>
         </HeaderSection>
         <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Spring 2025 Hours:
+          Summer 2025 Hours:
         </Typography>
         <HoursSection>
           {locations.map((location, index) => (
