@@ -47,15 +47,6 @@ const cards = [
     number: '',
   },
   {
-    title: 'Wells Fargo',
-    children:
-      'You can open a Wells Fargo College Checking account at any Wells Fargo Banking location or visit the Wells Fargo Banking Branch on Campus! Located in the new University Student Union Building Room 103.',
-
-    iconSrc: '/about/tenants/wells-fargo.png',
-    iconAlt: '',
-    number: '323-224-3972',
-  },
-  {
     title: 'Sbarro',
     children:
       'Extraordinary food and atmosphere, time-honored family recipes and the finest quality ingredients are the hallmarks of the Sbarro brand. From the moment our customers walk through the door, they know that dining at Sbarro will be a distinctive Italian experience.',
