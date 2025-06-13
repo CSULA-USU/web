@@ -98,7 +98,7 @@ const downloads: DownloadSectionProps[] = [
       children: <NonBreakingSpan>Download PDF</NonBreakingSpan>,
       disabled: false,
       variant: 'black',
-      href: 'https://www.dropbox.com/s/ccvwpkpjxa2h1en/conflict-of-interest-policy.pdf?raw=1',
+      href: 'https://www.dropbox.com/scl/fi/ye4sn7isp07f0ydtjfol0/conflict-of-interest-policy-2025?rlkey=gue9qxyv6l68iuauy50d1ffmw&st=4dn7w9tk&dl=1',
     },
   },
   {
