@@ -88,7 +88,6 @@ export default function Staff() {
           alt="group photo of full time u-su staff"
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/u-su-group.jpg"
           width="100%"
-          margin={`0px 500px ${Spaces.xl}`}
           borderRadius="12px"
         />
       </FluidContainer>
