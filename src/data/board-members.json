@@ -1,59 +1,59 @@
 [
   {
-    "title": "Chair",
-    "src": "https://www.dropbox.com/scl/fi/smeettyy0e7h3dgtdqf7j/Jaqueline-Fajardo.jpg?rlkey=wuh8g2nxm74jdvimjwlha9dt1&st=el82ykoa&raw=1",
+    "title": "Student Director",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/jaqueline-bod.webp",
     "name": "Jaqueline Fajardo",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "head": "",
-    "title": "Vice Chair",
-    "src": "https://www.dropbox.com/scl/fi/77usbo10ejgpjf5xpfjl8/Eric-Sena.jpg?rlkey=vcfvlrgjmwblfp8au6ksuwnhs&st=v1i0w26t&raw=1",
-    "name": "Eric Sena",
+    "title": "Student Director",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/reine-bod.webp",
+    "name": "Reine Santos Saavedra",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "head": "",
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/4jkh2zpe7miq5rn4owueq/Allie-Blane.jpg?rlkey=nn6b34diroxhfo4nh0jt19585&st=8fyt81y5&raw=1",
-    "name": "Allie Blane",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/brian-bod.webp",
+    "name": "Brian Pham",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/xcjykma7pq7kssfilc8yq/Haseena-Khaled.jpg?rlkey=ak8t6ge7q84ndyw9co3gtr8rm&st=criy9ifa&raw=1",
-    "name": "Haseena Khaled",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/giovanni-bod.webp",
+    "name": "Giovanni Torres",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/5rmm36z6wzxagbur6a0m4/Kristen-Gaber.jpg?rlkey=v01kfkfbncevmudsqrotwljs5&st=8pfx4tut&raw=1",
-    "name": "Kristen Gaber",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/emily-bod.webp",
+    "name": "Emily Webb",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/kgoxk2rwsjsuxogohezuv/Mark-Raspopov.jpg?rlkey=wex1fulhoe9w2f415067kbbh0&st=n1rvu0d9&raw=1",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/mark-bod.webp",
     "name": "Mark Raspopov",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/pj2vlgtfweiw94jf28rvb/Melissa-Lopez.jpg?rlkey=5busxmmhkuyljz3yrf5yxl0ai&st=icyxfnq0&raw=1",
-    "name": "Melissa Nicole Lopez",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/martin-bod.webp",
+    "name": "Martin Camacho",
     "credentials": "",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://www.dropbox.com/scl/fi/cwb02u38gpcydsq67n20g/Vershaun-Evans.jpg?rlkey=2733rm9khb9x2rezuglm5aha0&st=jypg975s&raw=1",
-    "name": "Vershaun Evans",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/eder-bod.webp",
+    "name": "Eder Perdomo Hernandez",
     "credentials": "",
     "section": "student-representative"
   },
@@ -74,7 +74,7 @@
   {
     "title": "President's Designee",
     "src": "https://www.dropbox.com/scl/fi/6u713rym2rl0awcpxmx06/stephen-trzaskoma.jpg?rlkey=z2yglczjehsmf78yyeh25u31t&raw=1",
-    "name": "Stephen Trzakoma",
+    "name": "Stephen Trzaskoma",
     "credentials": "Dean, College Arts and Letters",
     "section": "pro-board-member"
   },
@@ -130,7 +130,7 @@
   {
     "title": "Advisor",
     "src": "https://www.dropbox.com/scl/fi/uet6pphxgnsycawm1ssfc/yahir-flores.jpeg?rlkey=3c397xtom1jpqoq53ksevr0sf&raw=1",
-    "name": "Yahir Flores",
+    "name": "Arwa Hammad",
     "credentials": "President of Associated Students, Inc.",
     "section": "advisors"
   }
