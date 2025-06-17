@@ -5,7 +5,6 @@ import { useBreakpoint } from 'hooks';
 import boardMembers from 'data/board-members.json';
 import { StaffCard } from 'components/StaffCard';
 import { GovernanceFooter } from 'partials';
-import { Spaces } from 'theme';
 
 export default function Governance() {
   const {} = useBreakpoint();
@@ -101,7 +100,7 @@ export default function Governance() {
           alt="group photo of u-su board of directors "
           src="https://www.dropbox.com/scl/fi/82dsw2a92skpb14t1jbc1/BODGroup2_2024.jpg?rlkey=gh60f6n5b4z3y4hh5xj8qionb&st=gfn7ty85&raw=1"
           width="100%"
-          margin={`0px 500px ${Spaces.xl}`}
+          height="auto"
           borderRadius="12px"
         />
       </FluidContainer>
