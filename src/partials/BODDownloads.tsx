@@ -104,6 +104,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors August 30, 2024',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/qjdf6whh9d53lny0ii5zt/Minutes-Fiscal-Committee-September-13-2024.pdf?rlkey=17h5xwjd2q018wsv6giypeetu&st=8vwxa5wl&raw=1',
+            children: 'Fiscal Committee September 13, 2024',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/qs2z3f91tobya4ofdlumk/Minutes-Audit-Committee-September-13-2024-signed.pdf?rlkey=hnxizdehq6ee5g37sss582qf6&st=1tzvusfc&raw=1',
             children: 'Audit Committee September 13, 2024',
           },
@@ -147,12 +151,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/3g4yc74dx8av8ijiasy0c/Minutes-Board-of-Directors-March-21-2025.pdf?rlkey=joxzk6ct32lvm2nv4i1pb7lws&st=ybumvcke&raw=1',
             children: 'Board of Directors March 21, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/j09rkgny0ig5szg813b9w/Minutes-Board-of-Directors-April-18-2025.pdf?rlkey=qi1ehz0tyus3n3q7z7squy3n0&st=ebufnylt&raw=1',
+            children: 'Board of Directors April 18, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/9ys7r6n3kr5wafii2l0j8/fy24-25.zip?rlkey=0nl1jzsdbe5kwrxa0jrw52nj0&st=lkgab293&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/trkt9rnvwxbtti0a19cro/minutes-fy24-25.zip?rlkey=6hpx0nsw1hna8yfb6j6uzra0x&st=0o1n6kpj&dl=1',
       variant: 'black',
     },
   },
