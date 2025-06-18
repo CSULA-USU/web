@@ -126,7 +126,7 @@ export default function Home() {
                     lineHeight="1.3"
                     style={{ textAlign: 'center' }}
                   >
-                    We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                    We are me <NonBreakingSpan>the U-SU</NonBreakingSpan>
                   </Typography>
                   <FluidContainer
                     flex
@@ -144,7 +144,7 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/i12nn95g7jxt0zho3616e/Org-Chart_2.28.25.png?rlkey=iu8sxz2vdqj4dlmyo8lkuo1td&st=hk2exwkl&raw=1"
+                      href="https://www.dropbox.com/scl/fi/92l1g0nv0v3pv3n75t7bj/Org-Chart_6.16.25.png?rlkey=q8j70t5aq2jlx47qf4z596n70&raw=1"
                       isExternalLink
                     >
                       U-SU Organizational Chart
@@ -188,7 +188,7 @@ export default function Home() {
                   <ButtonContainer>
                     <Button
                       variant="black"
-                      href="https://www.dropbox.com/scl/fi/g49qrggbfireevbvysk8j/06.13.24_Org-Chart.pdf?rlkey=tx5udmki1dxf2n6vnfsz54fzh&e=1&raw=1"
+                      href="https://www.dropbox.com/scl/fi/92l1g0nv0v3pv3n75t7bj/Org-Chart_6.16.25.png?rlkey=q8j70t5aq2jlx47qf4z596n70&raw=1"
                       isExternalLink
                     >
                       U-SU Organizational Chart
