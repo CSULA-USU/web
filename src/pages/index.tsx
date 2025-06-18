@@ -126,7 +126,7 @@ export default function Home() {
                     lineHeight="1.3"
                     style={{ textAlign: 'center' }}
                   >
-                    We are me <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                    We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
                   </Typography>
                   <FluidContainer
                     flex
