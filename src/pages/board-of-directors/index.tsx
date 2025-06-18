@@ -95,23 +95,25 @@ const ResponsibilitiesAndRequirements = (props: CardProps) => (
       <ListItem>
         <Typography>
           Be available to meet in person every Friday during the semester from
-          1:00 p.m. &ndash; 4:00 p.m.
+          10:00 AM &ndash; 12:00 PM.
         </Typography>
       </ListItem>
       <ListItem>
         <Typography>
-          Attend monthly Board of Director meetings and Committees
-          (2&ndash;3x/month)
+          Attend monthly Board of Director meetings and Committees (two to three
+          times a month)
         </Typography>
       </ListItem>
       <ListItem>
         <Typography>
           Attend Board Orientation (August prior to class starting) and monthly
-          trainings (1&ndash;2x/month)
+          trainings (one to two times a month)
         </Typography>
       </ListItem>
       <ListItem>
-        <Typography>Serve on at least two assigned sub-committees</Typography>
+        <Typography>
+          Serve on at least two assigned sub&ndash;committees
+        </Typography>
       </ListItem>
       <ListItem>
         <Typography>
