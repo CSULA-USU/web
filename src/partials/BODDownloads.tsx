@@ -160,7 +160,7 @@ const minutesDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/trkt9rnvwxbtti0a19cro/minutes-fy24-25.zip?rlkey=6hpx0nsw1hna8yfb6j6uzra0x&st=7kv3a4ir&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/trkt9rnvwxbtti0a19cro/minutes-fy24-25.zip?rlkey=6hpx0nsw1hna8yfb6j6uzra0x&st=0o1n6kpj&dl=1',
       variant: 'black',
     },
   },
