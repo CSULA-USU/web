@@ -70,12 +70,28 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Audit Committee February 21, 2025',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/jz15pzzj2xelihky6oh59/Agenda-Bylaws-Committee-February-28-2025.pdf?rlkey=140mfzlnrgtic7bdz6vm1c0kw&st=dsf2cncw&raw=1',
+            children: 'Bylaws Committee February 28, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/wl7fko0rjhav53ivf2tnl/Agenda-Fiscal-Committee-March-14-2025.pdf?rlkey=lfdfn4ykjr6th2eid0bf10tsp&st=nweyll44&raw=1',
+            children: 'Fiscal Committee March 14, 2025',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/ox59rxw4rmv0c0e28k7vn/Agenda-Board-of-Directors-March-21-2025.pdf?rlkey=wcxiyudot0dkaj0vvc5uwvbd4&st=yin0hl6b&raw=1',
             children: 'Board of Directors March 21, 2025',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/1ee85ad260ofp286bqtv3/Agenda-Fiscal-Committee-April-11-2025.pdf?rlkey=zgrkwuzmfr3vk42amsx2dm6cj&st=qg6wjxhg&raw=1',
             children: 'Fiscal Committee April 11, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/xft7w8ehhuysar1bzwjmi/Agenda-Board-of-Directors-April-18-2025.pdf?rlkey=ccuepfvbl2an416rxn02ws79y&st=2gp1yfrx&raw=1',
+            children: 'Board of Directors April 18, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/2qga0nw547bgcmib7fqfd/Agenda-Personnel-Committee-April-18-2025.pdf?rlkey=ixu19zdwz3bm1hp0aefu7grca&st=2r5jmutq&raw=1',
+            children: 'Personnel Committee April 18, 2025',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/mm3zrfdwjpgofdxob2k8i/Agenda-Board-of-Directors-May-9-2025.pdf?rlkey=finzhhdudhosoww5zlf6siska&st=zdj6td4u&raw=1',
@@ -86,7 +102,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/1p5gut4b0nfc2mv11fw0r/fy24-25.zip?rlkey=qhbmpqspthqkd9cj1bkpilsj5&st=r9sdt259&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/xeby7u6s8r548jgisvq9v/fy24-25.zip?rlkey=iy5nym04buyyqf01gwiol6ovs&st=928zcq1p&dl=1',
       variant: 'black',
     },
   },
