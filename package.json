@@ -40,6 +40,7 @@
     "fuse.js": "^6.6.2",
     "jotform": "^1.0.1",
     "lodash.throttle": "^4.1.1",
+    "lucide-react": "^0.517.0",
     "next": "13.5.9",
     "next-auth": "^4.24.11",
     "node-schedule": "^2.1.1",
