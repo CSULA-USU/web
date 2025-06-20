@@ -199,10 +199,10 @@ export const BODDownloads = () => {
       </Typography>
       <Divider color="grey" margin={`${Spaces.xl} 0`} />
       <DownloadSection
-        title="Fiscal Year 24-25"
+        title="Fiscal Year 25-26"
         button={{
           children: <NonBreakingSpan>See Schedule</NonBreakingSpan>,
-          href: 'https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1',
+          href: 'https://www.dropbox.com/scl/fi/qoti96w0h1n34qaqqv86t/Calendar-BOD-Meetings-FY-2025-2026.pdf?rlkey=mrm017dkuhf6evz6ls0ccyvo2&st=jilw4z5t&raw=1',
           variant: 'black',
         }}
       />
