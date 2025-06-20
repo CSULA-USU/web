@@ -462,5 +462,21 @@
         }
       ]
     }
-  ]
+  ],
+  "schedules": {
+    "calendar": [
+      {
+        "href": "https://www.dropbox.com/scl/fi/wyn9rptz0e9zz1s120vcx/Fall-2024-U-SU-2024-25-BOD-Meeting-Schedule.pdf?rlkey=ozcs11z04b6w2fmz6rcdwhqn6&st=0u6fv9sl&raw=1",
+        "children": "Fall FY 24-25"
+      },
+      {
+        "href": "https://www.dropbox.com/scl/fi/9cs09cqv3xm4ki88m24g5/Spring-2025-U-SU-2024-25-BOD-Meeting-Schedule.pdf?rlkey=nt702c9y6mn6s4mxg4mkpklel&st=87b5kev7&raw=1",
+        "children": "Spring FY 24-25"
+      },
+      {
+        "href": "https://www.dropbox.com/scl/fi/22jbi5sjx0fl5eucxfgq9/U-SU-2024-25-BOD-Meeting-Schedule.xlsx.pdf?rlkey=fls7bmsw6ytezq0ae80l2auou&st=a93mdzzv&raw=1",
+        "children": "FY 24-25"
+      }
+    ]
+  }
 }

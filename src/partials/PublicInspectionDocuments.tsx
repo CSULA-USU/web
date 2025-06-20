@@ -243,7 +243,7 @@ const downloads: DownloadSectionProps[] = [
 export const PublicInspectionDocuments = () => (
   <FluidContainer>
     <Typography variant="titleSmall" as="h2">
-      Public Inspection Of University-Student Union (U-SU) Documents
+      Public Inspection Of University-Student Union (U&ndash;SU) Documents
     </Typography>
     <Divider color="grey" margin={`${Spaces.xl} 0`} />
     {downloads.map((d) => (

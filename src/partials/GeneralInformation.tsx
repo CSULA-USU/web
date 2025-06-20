@@ -5,7 +5,7 @@ const sections = [
   {
     title: 'U-SU Guidelines For Public Records Access',
     body: [
-      'Direct your requests to the U-SU Executive Director. At the direction of the U-SU Executive Director, the staff designees will facilitate the response to public records requests. Mail your request to the Executive Director, University-Student Union, 5154 State University Dr. U-SU 306, Los Angeles, CA 90032 or call for questions call 323-343-2450.',
+      'Direct your requests to the U-SU Executive Director. At the direction of the U-SU Executive Director, the staff designees will facilitate the response to public records requests. Mail your request to the Executive Director, University-Student Union, 5154 State University Dr. U-SU 306, Los Angeles, CA 90032 or call for questions call (323) 343-2450.',
     ],
   },
   {
