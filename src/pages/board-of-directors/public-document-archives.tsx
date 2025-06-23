@@ -75,7 +75,7 @@ export default function PublicDocumentArchives() {
                       justifyContent="space-between"
                       padding={isMobile ? '0px' : ''}
                     >
-                      <DocumentLinkContainer links={fymeet.data} />
+                      <DocumentLinkContainer links={fymeet.data} grid />
                     </FluidContainer>
                   </Expandable>
                 </FluidContainer>
@@ -108,7 +108,7 @@ export default function PublicDocumentArchives() {
                       justifyContent="space-between"
                       padding={isMobile ? '0px' : ''}
                     >
-                      <DocumentLinkContainer links={fyminutes.data} />
+                      <DocumentLinkContainer links={fyminutes.data} grid />
                     </FluidContainer>
                   </Expandable>
                 </FluidContainer>
