@@ -206,7 +206,7 @@ export const BODMeetingCalendar = () => {
               onClick={() => setMeetingView(option)}
               onFocus={() => setFocusedIndex(index)}
               role="radio"
-              variant="grey"
+              variant={focusedIndex === index ? 'primary' : 'grey'}
               ref={(el) => (buttonRefs.current[index] = el)}
               tabIndex={meetingView === option ? 0 : -1}
             >
