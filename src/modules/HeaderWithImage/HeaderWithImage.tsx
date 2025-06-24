@@ -13,18 +13,19 @@ interface HeaderProps {
   title: string;
   address?: string;
   backgroundImage?: string;
-  heroImage?: string;
-  hours?: [{ title: string; times: string[] }];
+  buttons?: ButtonProps[];
+  centered?: boolean;
   children?: React.ReactNode;
   extra?: React.ReactNode;
+  heroImage?: string;
+  hours?: [{ title: string; times: string[] }];
   phoneNumber?: string;
-  buttons?: ButtonProps[];
 }
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.div<{ centered?: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${({ centered }) => (centered ? 'center' : 'space-between')};
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -56,6 +57,7 @@ export const HeaderWithImage = ({
   extra,
   backgroundImage,
   buttons,
+  centered,
   heroImage,
   hours,
   phoneNumber,
@@ -66,7 +68,7 @@ export const HeaderWithImage = ({
   return (
     <header>
       <FluidContainer>
-        <HeaderContainer>
+        <HeaderContainer centered={centered}>
           <HeaderLeftContainer>
             <Header
               title={title}

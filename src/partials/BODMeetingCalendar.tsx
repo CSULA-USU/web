@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import meetingSchedule from 'data/bod-meeting-schedule.json';
-import { Colors } from 'theme';
+import { Colors, Spaces } from 'theme';
 
 interface Meeting {
   meeting: string;
@@ -177,8 +177,13 @@ export const BODMeetingCalendar = () => {
   };
 
   return (
-    <FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="center">
+    <FluidContainer padding={`0 0 ${Spaces.xl}`}>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        padding={`0 0 ${Spaces.xl}`}
+      >
         <Typography
           variant="title"
           as="h2"
