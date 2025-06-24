@@ -23,7 +23,7 @@ type GroupedMeetings = {
   [key: string]: Meeting[];
 };
 
-type GroupedMeetingsByMonth = {
+type _GroupedMeetingsByMonth = {
   [key: string]: Meeting[];
 };
 
@@ -91,7 +91,7 @@ const MeetingDetail = styled.p`
 `;
 
 // output is an object where keys are meeting type names and values are arrays of meetings sorted by the meeting type
-const groupMeetingsByType = (meetings: Meeting[]): GroupedMeetings => {
+const _groupMeetingsByType = (meetings: Meeting[]): GroupedMeetings => {
   return meetings.reduce((acc: GroupedMeetings, meeting: Meeting) => {
     if (!acc[meeting.meeting]) {
       acc[meeting.meeting] = [];
@@ -102,8 +102,10 @@ const groupMeetingsByType = (meetings: Meeting[]): GroupedMeetings => {
 };
 
 // output is an object where keys are month names and values are arrays of meetings sorted by month of meeting date
-const groupMeetingsByMonth = (meetings: Meeting[]): GroupedMeetingsByMonth => {
-  return meetings.reduce((acc: GroupedMeetingsByMonth, meeting: Meeting) => {
+const _groupMeetingsByMonth = (
+  meetings: Meeting[],
+): _GroupedMeetingsByMonth => {
+  return meetings.reduce((acc: _GroupedMeetingsByMonth, meeting: Meeting) => {
     const month = new Date(meeting.date).toLocaleString('default', {
       month: 'long',
     });
@@ -121,27 +123,27 @@ const filterPastMeetings = (meetings: Meeting[]): Meeting[] => {
 };
 
 const filteredMeetings = filterPastMeetings(meetingSchedule);
-const groupedMeetings = groupMeetingsByType(filteredMeetings);
-const monthlyMeetings = groupMeetingsByMonth(filteredMeetings);
+const groupedMeetings = _groupMeetingsByType(filteredMeetings);
+const monthlyMeetings = _groupMeetingsByMonth(filteredMeetings);
 
 // eslint-disable-next-line no-unused-vars
 export enum MeetingView {
-  ByMonth = 'By Month',
-  ByType = 'By Type',
+  _ByMonth = 'By Month',
+  _ByType = 'By Type',
 }
 
 export const BODMeetingCalendar = () => {
   const [meetingView, setMeetingView] = useState<MeetingView>(
-    MeetingView.ByMonth,
+    MeetingView._ByMonth,
   );
   const { isMobile } = useBreakpoint();
 
-  let chosenView;
+  let chosenView: { [key: string]: Meeting[] };
   switch (meetingView) {
-    case MeetingView.ByMonth:
+    case MeetingView._ByMonth:
       chosenView = monthlyMeetings;
       break;
-    case MeetingView.ByType:
+    case MeetingView._ByType:
       chosenView = groupedMeetings;
       break;
     default:
