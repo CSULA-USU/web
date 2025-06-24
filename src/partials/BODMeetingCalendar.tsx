@@ -1,4 +1,5 @@
-import { FluidContainer, Typography } from 'components';
+import { useState } from 'react';
+import { Button, FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
 import {
   FaCalendarAlt,
@@ -8,6 +9,7 @@ import {
 } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import meetingSchedule from 'data/bod-meeting-schedule.json';
+import { Colors } from 'theme';
 
 interface Meeting {
   meeting: string;
@@ -21,6 +23,15 @@ type GroupedMeetings = {
   [key: string]: Meeting[];
 };
 
+type GroupedMeetingsByMonth = {
+  [key: string]: Meeting[];
+};
+
+const ButtonCluster = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+`;
 const MeetingColors = {
   purple: '#a04b9e',
   red: '#fb0200',
@@ -58,12 +69,11 @@ interface GridItemProps {
 }
 
 const GridItem = styled.div<GridItemProps>`
-  background-color: black;
-  color: white;
-  padding: 16px;
-  border: 1px solid white;
-  border-top: 16px solid ${(p) => p.borderTopColor || 'grey'};
+  background-color: ${Colors.greyLightest};
   border-radius: 8px;
+  border-top: 16px solid ${(p) => p.borderTopColor || 'grey'};
+  color: black;
+  padding: 16px;
 `;
 
 const MeetingDetail = styled.p`
@@ -71,7 +81,6 @@ const MeetingDetail = styled.p`
   display: flex;
   align-items: start;
   margin: 4px 0;
-  color: white;
 
   svg {
     margin-right: 8px;
@@ -81,48 +90,98 @@ const MeetingDetail = styled.p`
   }
 `;
 
+// output is an object where keys are meeting type names and values are arrays of meetings sorted by the meeting type
+const groupMeetingsByType = (meetings: Meeting[]): GroupedMeetings => {
+  return meetings.reduce((acc: GroupedMeetings, meeting: Meeting) => {
+    if (!acc[meeting.meeting]) {
+      acc[meeting.meeting] = [];
+    }
+    acc[meeting.meeting].push(meeting);
+    return acc;
+  }, {});
+};
+
+// output is an object where keys are month names and values are arrays of meetings sorted by month of meeting date
+const groupMeetingsByMonth = (meetings: Meeting[]): GroupedMeetingsByMonth => {
+  return meetings.reduce((acc: GroupedMeetingsByMonth, meeting: Meeting) => {
+    const month = new Date(meeting.date).toLocaleString('default', {
+      month: 'long',
+    });
+    if (!acc[month]) {
+      acc[month] = [];
+    }
+    acc[month].push(meeting);
+    return acc;
+  }, {});
+};
+
+const filterPastMeetings = (meetings: Meeting[]): Meeting[] => {
+  const currentDate = new Date();
+  return meetings.filter((meeting) => new Date(meeting.date) >= currentDate);
+};
+
+const filteredMeetings = filterPastMeetings(meetingSchedule);
+const groupedMeetings = groupMeetingsByType(filteredMeetings);
+const monthlyMeetings = groupMeetingsByMonth(filteredMeetings);
+
+export enum MeetingView {
+  _ByMonth = 'By Month',
+  _ByType = 'By Type',
+}
 export const BODMeetingCalendar = () => {
-  const groupMeetingsByType = (meetings: Meeting[]): GroupedMeetings => {
-    return meetings.reduce((acc: GroupedMeetings, meeting: Meeting) => {
-      if (!acc[meeting.meeting]) {
-        acc[meeting.meeting] = [];
-      }
-      acc[meeting.meeting].push(meeting);
-      return acc;
-    }, {});
-  };
-
-  const filterPastMeetings = (meetings: Meeting[]): Meeting[] => {
-    const currentDate = new Date();
-    return meetings.filter((meeting) => new Date(meeting.date) >= currentDate);
-  };
-
-  const filteredMeetings = filterPastMeetings(meetingSchedule);
-  const groupedMeetings = groupMeetingsByType(filteredMeetings);
-
+  const [meetingView, setMeetingView] = useState<MeetingView>(
+    MeetingView._ByMonth,
+  );
   const { isMobile } = useBreakpoint();
+
+  let chosenView;
+  switch (meetingView) {
+    case MeetingView._ByMonth:
+      chosenView = monthlyMeetings;
+      break;
+    case MeetingView._ByType:
+      chosenView = groupedMeetings;
+      break;
+    default:
+      chosenView = groupedMeetings;
+  }
 
   return (
     <FluidContainer>
-      <Typography
-        variant="title"
-        as="h2"
-        margin={`0`}
-        size={isMobile ? 'xl' : '2xl'}
-      >
-        Upcoming Meetings
-      </Typography>
-      {Object.keys(groupedMeetings).map((meetingType, index) => (
+      <FluidContainer flex flexDirection="column" alignItems="center">
+        <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
+          Upcoming Meetings
+        </Typography>
+        <ButtonCluster>
+          {Object.values(MeetingView).map((option, index) => (
+            <Button
+              key={index}
+              onClick={() => setMeetingView(option)}
+              variant="grey"
+            >
+              {option}
+            </Button>
+          ))}
+        </ButtonCluster>
+      </FluidContainer>
+      {Object.keys(chosenView).map((meetingType, index) => (
         <SectionContainer key={index}>
           <Typography as="h3" variant="labelTitle">
             {meetingType}
           </Typography>
           <GridContainer>
-            {groupedMeetings[meetingType].map((meeting, idx) => (
+            {chosenView[meetingType].map((meeting, idx) => (
               <GridItem
                 key={idx}
                 borderTopColor={MeetingColorsMap.get(meeting.meeting)}
               >
+                {chosenView === monthlyMeetings ? (
+                  <Typography variant="labelTitleSmall">
+                    {meeting.meeting}
+                  </Typography>
+                ) : (
+                  ''
+                )}
                 <MeetingDetail>
                   <FaCalendarAlt />
                   {meeting.date}
