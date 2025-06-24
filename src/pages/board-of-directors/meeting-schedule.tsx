@@ -16,6 +16,7 @@ export default function MeetingSchedule() {
       <HeaderWithImage
         title="Board of Directors Meeting Schedule"
         heroImage="/vectors/board-of-directors/schedule.svg"
+        centered
       />
       <BODMeetingCalendar />
       <BODDownloads />

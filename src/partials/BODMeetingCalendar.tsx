@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, FluidContainer, Typography } from 'components';
 import styled from 'styled-components';
 import {
@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import meetingSchedule from 'data/bod-meeting-schedule.json';
-import { Colors } from 'theme';
+import { Colors, Spaces } from 'theme';
 
 interface Meeting {
   meeting: string;
@@ -133,6 +133,7 @@ export enum MeetingView {
 }
 
 export const BODMeetingCalendar = () => {
+  const [focusedIndex, setFocusedIndex] = useState(0);
   const [meetingView, setMeetingView] = useState<MeetingView>(
     MeetingView._ByMonth,
   );
@@ -150,18 +151,64 @@ export const BODMeetingCalendar = () => {
       chosenView = groupedMeetings;
   }
 
+  // Refs for buttons
+  const buttonRefs = useRef<(HTMLButtonElement | HTMLAnchorElement | null)[]>(
+    [],
+  );
+
+  const options = Object.values(MeetingView);
+
+  // Handle arrow key navigation
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    let newIndex = focusedIndex;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      newIndex = (focusedIndex + 1) % options.length;
+      setFocusedIndex(newIndex);
+      buttonRefs.current[newIndex]?.focus();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      newIndex = (focusedIndex - 1 + options.length) % options.length;
+      setFocusedIndex(newIndex);
+      buttonRefs.current[newIndex]?.focus();
+    } else if (e.key === ' ' || e.key === 'Enter') {
+      setMeetingView(options[newIndex]);
+    }
+  };
+
   return (
-    <FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="center">
-        <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
+    <FluidContainer padding={`0 0 ${Spaces.xl}`}>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        padding={`0 0 ${Spaces.xl}`}
+      >
+        <Typography
+          variant="title"
+          as="h2"
+          size={isMobile ? 'xl' : '2xl'}
+          margin={`${isMobile ? '0 0 16px' : '0 0 32px'}`}
+        >
           Upcoming Meetings
         </Typography>
-        <ButtonCluster>
+        <ButtonCluster
+          role="radiogroup"
+          aria-label="sort meeting schedule"
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
+        >
           {Object.values(MeetingView).map((option, index) => (
             <Button
               key={index}
+              aria-checked={meetingView === option}
+              color={meetingView === option ? 'primary' : 'grey'}
               onClick={() => setMeetingView(option)}
+              onFocus={() => setFocusedIndex(index)}
+              role="radio"
               variant="grey"
+              ref={(el) => (buttonRefs.current[index] = el)}
+              tabIndex={meetingView === option ? 0 : -1}
             >
               {option}
             </Button>
