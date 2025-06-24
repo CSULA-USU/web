@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { Colors } from 'theme';
 
@@ -90,14 +91,19 @@ const StyledButton = styled.button`
   ${getCSS}
 `;
 
-export const Button = (props: ButtonProps) => {
+export const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>((props, ref) => {
   const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
   return (
     <ButtonComponent
       {...props}
+      ref={ref}
       target={props.isExternalLink ? '_blank' : null}
       role={props.href ? '' : 'button'}
       rel="noopener noreferrer"
     />
   );
-};
+});
+Button.displayName = 'Button';
