@@ -124,22 +124,24 @@ const filteredMeetings = filterPastMeetings(meetingSchedule);
 const groupedMeetings = groupMeetingsByType(filteredMeetings);
 const monthlyMeetings = groupMeetingsByMonth(filteredMeetings);
 
+// eslint-disable-next-line no-unused-vars
 export enum MeetingView {
-  _ByMonth = 'By Month',
-  _ByType = 'By Type',
+  ByMonth = 'By Month',
+  ByType = 'By Type',
 }
+
 export const BODMeetingCalendar = () => {
   const [meetingView, setMeetingView] = useState<MeetingView>(
-    MeetingView._ByMonth,
+    MeetingView.ByMonth,
   );
   const { isMobile } = useBreakpoint();
 
   let chosenView;
   switch (meetingView) {
-    case MeetingView._ByMonth:
+    case MeetingView.ByMonth:
       chosenView = monthlyMeetings;
       break;
-    case MeetingView._ByType:
+    case MeetingView.ByType:
       chosenView = groupedMeetings;
       break;
     default:
