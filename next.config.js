@@ -11,7 +11,7 @@ const nextConfig = {
       'www.jotform.com',
       'i.imgur.com',
       'media.giphy.com',
-      'www.dropbox.com'
+      'www.dropbox.com',
     ],
   },
 };

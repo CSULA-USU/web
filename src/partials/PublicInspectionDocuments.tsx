@@ -16,10 +16,10 @@ const downloads: DownloadSectionProps[] = [
     title: 'Annual Registration Renewal (RRF-1)',
     children: (
       <Typography>
-        The purpose of the Annual Registration Renewal Fee Report (Form RRF-1)
-        is to assist the Attorney General&apos;s Office with early detection of
-        charity fiscal mismanagement and unlawful diversion of charitable
-        assets.
+        The purpose of the Annual Registration Renewal Fee Report (Form
+        RRF&ndash;1) is to assist the Attorney General&apos;s Office with early
+        detection of charity fiscal mismanagement and unlawful diversion of
+        charitable assets.
       </Typography>
     ),
     button: {
@@ -91,7 +91,7 @@ const downloads: DownloadSectionProps[] = [
       <Typography>
         The conflict of interest policy is to protect the exclusive right and
         integrity of information, services, and various interests of the CSULA
-        University-Student Union, Board (U-SU).
+        University-Student Union, Board (U&ndash;SU).
       </Typography>
     ),
     button: {
@@ -243,7 +243,7 @@ const downloads: DownloadSectionProps[] = [
 export const PublicInspectionDocuments = () => (
   <FluidContainer>
     <Typography variant="titleSmall" as="h2">
-      Public Inspection Of University-Student Union (U-SU) Documents
+      Public Inspection Of University-Student Union (U&ndash;SU) Documents
     </Typography>
     <Divider color="grey" margin={`${Spaces.xl} 0`} />
     {downloads.map((d) => (
