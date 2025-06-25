@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react';
-import { Button, FluidContainer, Typography } from 'components';
+import { useState } from 'react';
 import styled from 'styled-components';
 import {
   FaCalendarAlt,
@@ -7,9 +6,11 @@ import {
   FaMapMarkerAlt,
   FaStickyNote,
 } from 'react-icons/fa';
+import { FluidContainer, Typography } from 'components';
+import { ButtonCluster } from 'modules';
 import { useBreakpoint } from 'hooks';
-import meetingSchedule from 'data/bod-meeting-schedule.json';
 import { Colors, Spaces } from 'theme';
+import meetingSchedule from 'data/bod-meeting-schedule.json';
 
 interface Meeting {
   meeting: string;
@@ -27,11 +28,6 @@ type _GroupedMeetingsByMonth = {
   [key: string]: Meeting[];
 };
 
-const ButtonCluster = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-`;
 const MeetingColors = {
   purple: '#a04b9e',
   red: '#fb0200',
@@ -133,7 +129,6 @@ export enum MeetingView {
 }
 
 export const BODMeetingCalendar = () => {
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const [meetingView, setMeetingView] = useState<MeetingView>(
     MeetingView._ByMonth,
   );
@@ -150,31 +145,6 @@ export const BODMeetingCalendar = () => {
     default:
       chosenView = groupedMeetings;
   }
-
-  // Refs for buttons
-  const buttonRefs = useRef<(HTMLButtonElement | HTMLAnchorElement | null)[]>(
-    [],
-  );
-
-  const options = Object.values(MeetingView);
-
-  // Handle arrow key navigation
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    let newIndex = focusedIndex;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      newIndex = (focusedIndex + 1) % options.length;
-      setFocusedIndex(newIndex);
-      buttonRefs.current[newIndex]?.focus();
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      newIndex = (focusedIndex - 1 + options.length) % options.length;
-      setFocusedIndex(newIndex);
-      buttonRefs.current[newIndex]?.focus();
-    } else if (e.key === ' ' || e.key === 'Enter') {
-      setMeetingView(options[newIndex]);
-    }
-  };
 
   return (
     <FluidContainer padding={`0 0 ${Spaces.xl}`}>
@@ -193,27 +163,11 @@ export const BODMeetingCalendar = () => {
           Upcoming Meetings
         </Typography>
         <ButtonCluster
-          role="radiogroup"
-          aria-label="sort meeting schedule"
-          tabIndex={0}
-          onKeyDown={handleKeyDown}
-        >
-          {Object.values(MeetingView).map((option, index) => (
-            <Button
-              key={index}
-              aria-checked={meetingView === option}
-              color={meetingView === option ? 'primary' : 'grey'}
-              onClick={() => setMeetingView(option)}
-              onFocus={() => setFocusedIndex(index)}
-              role="radio"
-              variant={focusedIndex === index ? 'primary' : 'grey'}
-              ref={(el) => (buttonRefs.current[index] = el)}
-              tabIndex={meetingView === option ? 0 : -1}
-            >
-              {option}
-            </Button>
-          ))}
-        </ButtonCluster>
+          options={MeetingView}
+          value={meetingView}
+          onChange={setMeetingView}
+          ariaLabel="sort meeting schedule"
+        />
       </FluidContainer>
       {Object.keys(chosenView).map((meetingType, index) => (
         <SectionContainer key={index}>

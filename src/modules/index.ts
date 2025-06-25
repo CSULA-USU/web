@@ -1,4 +1,5 @@
 export * from './BoardOfDirectors';
+export * from './ButtonCluster';
 export * from './CallToAction';
 export * from './CallToActionImages';
 export * from './ContentBoard';
