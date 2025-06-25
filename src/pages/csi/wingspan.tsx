@@ -9,8 +9,10 @@ import { CiMedal } from 'react-icons/ci';
 import { FiMessageCircle } from 'react-icons/fi';
 import { useBreakpoint } from 'hooks';
 import { QuoteBanner } from 'components/QuoteBanner';
+import { ImCheckmark } from 'react-icons/im';
 import {
   FaRegHandshake,
+  FaAward,
   FaNetworkWired,
   FaRegLightbulb,
   FaUser,
@@ -137,7 +139,6 @@ const TableHeaderRow = styled.div`
 
   @media (min-width: 768px) {
     display: table-header-group;
-    background-color: #f3f4f6;
     font-weight: bold;
   }
 `;
@@ -148,8 +149,9 @@ const TableHeaderCell = styled.div`
   @media (min-width: 768px) {
     display: table-cell;
     padding: 16px;
-    color: #374151;
+    color: ${Colors.black};
     font-size: 0.875rem;
+    background-color: ${Colors.greyLightest};
   }
 `;
 
@@ -168,21 +170,8 @@ const PathwayRow = styled.div`
   margin-bottom: ${Spaces.lg};
 `;
 
-const CircleNumber = styled.div`
-  border-radius: 10px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  color: white;
-  flex-shrink: 0;
-  margin-right: ${Spaces.sm};
-`;
-
 const LearningOutcomesSection = styled(FluidContainer)`
-  padding: ${Spaces.xl} ${Spaces.md};
+  padding: 0 16px;
 `;
 
 const HeroSection = styled(FluidContainer)`
@@ -241,9 +230,7 @@ const ButtonGroup = styled.div`
 
 const GradientSection = styled.section`
   background: linear-gradient(to bottom, white, ${Colors.primary});
-  padding: 0;
-  margin: 0; // ⬅️ remove outer margin
-  border: 0; // just in case
+  padding="0 16px 0 16px"
 `;
 
 export default function Wingspan() {
@@ -339,16 +326,31 @@ export default function Wingspan() {
             in the campus community, and beyond.
           </Typography>
         </FluidContainer>
-        <Image
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
-          alt="Large group of students gathered outdoors under an arch of black, white, and gold balloons"
-          className="object-cover object-center"
-          width={isMobile ? '100%' : '45%'}
-          height={isMobile ? '100%' : '45%'}
-        />
+        <div
+          style={{
+            width: isMobile ? '100%' : 'auto',
+            maxWidth: isMobile ? '430px' : '100%',
+            height: isMobile ? '550px' : 'auto',
+            overflow: isMobile ? 'hidden' : 'visible',
+            borderRadius: '8px',
+            position: 'relative',
+          }}
+        >
+          <img
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
+            alt="Large group of students gathered outdoors under an arch of black, white, and gold balloons"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover', // 🔥 forces crop to fill box
+              objectPosition: 'center',
+              display: 'block',
+            }}
+          />
+        </div>
       </FluidContainer>
 
-      <FluidContainer backgroundColor="greyLightest">
+      <FluidContainer backgroundColor="greyLightest" padding="0 32px 36px 32px">
         <CenteredText>
           <SectionTitle>What You&apos;ll Gain</SectionTitle>
           <Typography
@@ -398,7 +400,11 @@ export default function Wingspan() {
                         marginBottom: '0.75rem',
                       }}
                     >
-                      <Icon size={24} color={Colors.primary} />
+                      <Icon
+                        size={24}
+                        color={Colors.primary}
+                        aria-hidden="true"
+                      />
                     </div>
                     <strong
                       style={{ display: 'block', marginBottom: '0.25rem' }}
@@ -450,17 +456,15 @@ export default function Wingspan() {
               imgAlt=""
             >
               <CardContentLeft>
-                <CircleNumber>
-                  <Typography
-                    as="span"
-                    variant="label"
-                    weight="700"
-                    size="sm"
-                    color="white"
-                  >
-                    {number}
-                  </Typography>
-                </CircleNumber>
+                <Typography
+                  as="span"
+                  variant="label"
+                  weight="700"
+                  size="sm"
+                  color="black"
+                >
+                  {number} .
+                </Typography>
                 <Typography as="p" variant="copy" size="sm" lineHeight="1.4">
                   {text}
                 </Typography>
@@ -476,12 +480,14 @@ export default function Wingspan() {
         flexDirection={isMobile ? 'column' : 'row'}
         gap="36px"
         alignItems="center" // center both items vertically on desktop
+        padding="0 16px 36px 16px"
       >
         {/* Left column: stacked images */}
         <FluidContainer
           flex
           flexDirection="column"
           gap="24px"
+          padding={`${Spaces['xl']} 0 0 0`}
           width={isMobile ? '100%' : '45%'}
         >
           <Image
@@ -537,7 +543,7 @@ export default function Wingspan() {
       </FluidContainer>
 
       {/* Pathways Section */}
-      <FluidContainer>
+      <FluidContainer padding="0 16px 36px 16px">
         <SectionTitle>Pathways</SectionTitle>
         {pathways.map(({ number, title, description, bullets }) => (
           <PathwayRow key={number}>
@@ -567,10 +573,53 @@ export default function Wingspan() {
             </div>
           </PathwayRow>
         ))}
+        {/* Images Below the Pathways Text */}
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '960px',
+            margin: '32px 0 0 0',
+            padding: isMobile ? '0' : '0 32px',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '24px',
+            }}
+          >
+            <img
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-pathways-three-women-holding-award.webp"
+              alt="Students holding award"
+              style={{
+                width: isMobile ? '100%' : '600px',
+                height: isMobile ? 'auto' : '337.5px',
+                objectFit: 'cover',
+                borderRadius: '8px',
+              }}
+            />
+            <img
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-pathways-group-with-mascot.webp"
+              alt="Group with mascot"
+              style={{
+                width: isMobile ? '100%' : '600px',
+                height: isMobile ? 'auto' : '337.5px',
+                objectFit: 'cover',
+                borderRadius: '8px',
+              }}
+            />
+          </div>
+        </div>
       </FluidContainer>
 
       {/* Events */}
-      <FluidContainer backgroundColor="greyLightest">
+      <FluidContainer
+        backgroundColor="greyLightest"
+        padding={`0 16px ${Spaces['xl']} 16px`}
+      >
         <CenteredText>
           <SectionTitle>Upcoming Events</SectionTitle>
         </CenteredText>
@@ -588,7 +637,7 @@ export default function Wingspan() {
         <WingspanMeetingCalendar meetings={meetings} />
       </FluidContainer>
 
-      <FluidContainer>
+      <FluidContainer padding="0 16px 0 16px">
         <CenteredText>
           <SectionTitle>
             The Seven &quot;C&quot;s of the Social Change Model
@@ -653,7 +702,7 @@ export default function Wingspan() {
                         marginBottom: '0.75rem',
                       }}
                     >
-                      <Icon size={24} color="primary" />
+                      <Icon size={24} color="primary" aria-hidden="true" />
                     </div>
                     <strong
                       style={{ display: 'block', marginBottom: '0.25rem' }}
@@ -678,7 +727,9 @@ export default function Wingspan() {
               variant="subheader"
               size="md"
               margin={
-                isMobile ? `0 0 ${Spaces.lg} 0` : `0 250px ${Spaces.lg} 250px`
+                isMobile
+                  ? `0 0 ${Spaces.lg} 0`
+                  : `0 250px ${Spaces['2xl']} 250px`
               }
             >
               Students will participate in various training events to achieve
@@ -703,14 +754,32 @@ export default function Wingspan() {
                 <TableRow key={level}>
                   <TableCell>
                     <Typography as="span" variant="labelTitle">
-                      <Badge color={color} />
+                      <Badge color={color} aria-hidden="true" />
                       {level}
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <ul style={{ margin: 0, paddingLeft: '1rem' }}>
+                    <ul
+                      style={{
+                        margin: 0,
+                        paddingLeft: '1rem',
+                        listStyle: 'none',
+                      }}
+                    >
                       {requirements.map((req, i) => (
-                        <li key={i}>
+                        <li
+                          key={i}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px', // 👈 This controls spacing between icon and text
+                            marginBottom: '8px', // optional vertical spacing between items
+                          }}
+                        >
+                          <ImCheckmark
+                            color={Colors.primary}
+                            aria-hidden="true"
+                          />
                           <Typography as="span" variant="copy">
                             {req}
                           </Typography>
@@ -719,9 +788,24 @@ export default function Wingspan() {
                     </ul>
                   </TableCell>
                   <TableCell>
-                    <ul style={{ margin: 0, paddingLeft: '1rem' }}>
+                    <ul
+                      style={{
+                        margin: 0,
+                        paddingLeft: '1rem',
+                        listStyle: 'none',
+                      }}
+                    >
                       {perks.map((perk, i) => (
-                        <li key={i}>
+                        <li
+                          key={i}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px', // 👈 This controls spacing between icon and text
+                            marginBottom: '8px', // optional vertical spacing between items
+                          }}
+                        >
+                          <FaAward color={Colors.primary} aria-hidden="true" />
                           <Typography as="span" variant="copy">
                             {perk}
                           </Typography>
@@ -749,7 +833,6 @@ export default function Wingspan() {
             The Wingspan Leadership Program is put together by the collaborative
             efforts of on-campus organizations dedicated to student development.
           </Typography>
-          <SectionTitle>Ready to Spread Your Wings?</SectionTitle>
           <FluidContainer
             flex
             flexWrap="wrap"
@@ -784,60 +867,63 @@ export default function Wingspan() {
               ),
             )}
           </FluidContainer>
+          <SectionTitle>Ready to Spread Your Wings?</SectionTitle>
         </CenteredText>
-        <FluidContainer flex justifyContent="center" padding="0">
-          <DescriptionCard
-            rounded
-            backgroundColor="white"
-            width={descriptionCardWidth}
-            minHeight="auto"
-            imgSrc=""
-            imgAlt=""
-            margin={isMobile ? `0 0 100px 0` : `0 0 100px 0`}
-          >
-            <Typography
-              as="h1"
-              variant="title"
-              style={{
-                fontFamily: "'Bitter', serif",
-                fontWeight: 700,
-                fontSize: 20,
-              }}
+        <div style={{ marginTop: Spaces.lg }}>
+          <FluidContainer flex justifyContent="center" padding="0">
+            <DescriptionCard
+              rounded
+              backgroundColor="white"
+              width={descriptionCardWidth}
+              minHeight="auto"
+              imgSrc=""
+              imgAlt=""
+              margin={isMobile ? `0 0 100px 0` : `0 0 100px 0`}
             >
-              Get Started Today
-            </Typography>
-
-            <Typography variant="span">
-              Fill out the form to start developing your leadership potential
-              here at Cal State LA
-            </Typography>
-
-            <FluidContainer
-              flex
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              height="100px"
-            >
-              <Button
-                href="https://forms.office.com/r/fpLZipPcJK"
-                isExternalLink
+              <Typography
+                as="h1"
+                variant="title"
                 style={{
                   fontFamily: "'Bitter', serif",
                   fontWeight: 700,
+                  fontSize: 20,
                 }}
               >
-                Join Wingspan →
-              </Button>
-            </FluidContainer>
+                Get Started Today
+              </Typography>
 
-            <Typography variant="copy" margin={`0 0 ${Spaces.sm}`}>
-              By adding your contact info on this form, you will receive further
-              information about the program and next steps for signing up! You
-              may join at any point in the year.
-            </Typography>
-          </DescriptionCard>
-        </FluidContainer>
+              <Typography variant="span">
+                Fill out the form to start developing your leadership potential
+                here at Cal State LA
+              </Typography>
+
+              <FluidContainer
+                flex
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                height="100px"
+              >
+                <Button
+                  href="https://forms.office.com/r/fpLZipPcJK"
+                  isExternalLink
+                  style={{
+                    fontFamily: "'Bitter', serif",
+                    fontWeight: 700,
+                  }}
+                >
+                  Join Wingspan →
+                </Button>
+              </FluidContainer>
+
+              <Typography variant="copy" margin={`0 0 ${Spaces.sm}`}>
+                By adding your contact info on this form, you will receive
+                further information about the program and next steps for signing
+                up! You may join at any point in the year.
+              </Typography>
+            </DescriptionCard>
+          </FluidContainer>
+        </div>
       </GradientSection>
     </Page>
   );
