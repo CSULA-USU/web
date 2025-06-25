@@ -70,20 +70,20 @@ export const WingspanMeetingCalendar = ({
           return (
             <GridItem key={key} borderTopColor={meeting.borderTopColor}>
               <MeetingDetail>
-                <FaCalendarAlt />
+                <FaCalendarAlt aria-hidden="true" />
                 {meeting.date}
               </MeetingDetail>
               <MeetingDetail>
-                <FaClock />
+                <FaClock aria-hidden="true" />
                 {meeting.time}
               </MeetingDetail>
               <MeetingDetail>
-                <FaMapMarkerAlt />
+                <FaMapMarkerAlt aria-hidden="true" />
                 {meeting.location}
               </MeetingDetail>
               {meeting.note && (
                 <MeetingDetail>
-                  <FaStickyNote />
+                  <FaStickyNote aria-hidden="true" />
                   {meeting.note}
                 </MeetingDetail>
               )}
