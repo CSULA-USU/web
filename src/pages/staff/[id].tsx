@@ -175,6 +175,7 @@ export default function StaffBusinessCard() {
             />
             <ProfileImageContainer
               profilePicture={staffData && staffData.src}
+              aria-hidden
             />
           </CardContainerTop>
           <CardContainerBottom>
@@ -227,6 +228,7 @@ export default function StaffBusinessCard() {
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiSolidPhone
+                      aria-hidden
                       style={{
                         height: '16px',
                         width: '16px',
@@ -251,6 +253,7 @@ export default function StaffBusinessCard() {
                 <IconAndInfoContainer>
                   <IconContainer>
                     <MdEmail
+                      aria-hidden
                       style={{
                         height: '16px',
                         width: '16px',
@@ -275,6 +278,7 @@ export default function StaffBusinessCard() {
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiLogoLinkedin
+                      aria-hidden
                       style={{
                         height: '16px',
                         width: '16px',
@@ -304,6 +308,7 @@ export default function StaffBusinessCard() {
               <IconAndInfoContainer>
                 <IconContainer>
                   <BiGlobe
+                    aria-hidden
                     style={{
                       height: '16px',
                       width: '16px',
@@ -328,6 +333,7 @@ export default function StaffBusinessCard() {
               <IconAndInfoContainer>
                 <IconContainer>
                   <MdLocationOn
+                    aria-hidden
                     style={{
                       height: '16px',
                       width: '16px',
@@ -341,6 +347,7 @@ export default function StaffBusinessCard() {
                     'https://www.google.com/maps/search/?api=1&query=5154+State+University+Dr,+Los+Angeles,+CA+90032'
                   }
                   isInverseUnderlineStyling
+                  aria-label="Open U-SU address in Google Maps: 5154 State University Dr, Los Angeles, CA 90032"
                 >
                   <IconAndInfoContainerRight>
                     <Typography
