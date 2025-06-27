@@ -217,11 +217,15 @@ export const StaffCardWithModal = ({
                   {name}
                 </Typography>
                 {pronouns && (
-                  <em>
-                    <Typography size="sm" margin="4px 0 16px 0" as="p">
-                      {pronouns}
-                    </Typography>
-                  </em>
+                  <Typography
+                    size="sm"
+                    as="p"
+                    margin={`0 0 ${Spaces.sm} 0`}
+                    color="grey"
+                    variant="span"
+                  >
+                    {pronouns}
+                  </Typography>
                 )}
                 <Typography
                   as="p"

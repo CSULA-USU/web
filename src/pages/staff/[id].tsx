@@ -29,7 +29,11 @@ const OutsideContainer = styled.div`
 `;
 
 const CardBlurbContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: ${Spaces.sm};
+  text-align: center;
 `;
 
 const CardContainer = styled.div`
@@ -183,7 +187,10 @@ export default function StaffBusinessCard() {
                 lineHeight="1"
               >
                 {staffData && staffData.name}
-                {staffData && ', ' + staffData.suffix}
+                {staffData && staffData.suffix && ', ' + staffData.suffix}
+              </Typography>
+              <Typography variant="span" size="2xs" color="grey">
+                {staffData && staffData.pronouns}
               </Typography>
               <Typography
                 variant="titleSmall"
