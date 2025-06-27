@@ -29,7 +29,11 @@ const OutsideContainer = styled.div`
 `;
 
 const CardBlurbContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: ${Spaces.sm};
+  text-align: center;
 `;
 
 const CardContainer = styled.div`
