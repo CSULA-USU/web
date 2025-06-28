@@ -61,7 +61,7 @@ const CardContainerBottom = styled.div`
 const CardContainerTop = styled.div`
   min-height: 200px;
   width: 100%;
-  background-image: url('/about/calstatela-hero-business-card.jpeg');
+  background-image: url('https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero-business-card.webp');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -123,16 +123,14 @@ const ProfessionalInfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
-const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
+const ProfileImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(${(props) => props.profilePicture});
   background-color: ${Colors.white};
-  background-size: cover;
-  background-position: top;
   border-radius: 50%;
   height: 112px;
   width: 112px;
@@ -141,6 +139,7 @@ const ProfileImageContainer = styled.div<{ profilePicture?: string }>`
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
+  overflow: hidden; // ensures the image stays circular
 `;
 
 const QRContainer = styled.div`
@@ -173,10 +172,19 @@ export default function StaffBusinessCard() {
               width="224"
               height="80"
             />
-            <ProfileImageContainer
-              profilePicture={staffData && staffData.src}
-              aria-hidden
-            />
+            <ProfileImageContainer>
+              {staffData?.src && (
+                <Image
+                  src={staffData.src}
+                  alt="" // or alt={staffData.name} if not decorative
+                  fill // or width={112} height={112}
+                  style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  sizes="112px"
+                  priority // if you want to preload
+                  aria-hidden
+                />
+              )}
+            </ProfileImageContainer>
           </CardContainerTop>
           <CardContainerBottom>
             <ProfessionalInfoContainer>
@@ -190,7 +198,13 @@ export default function StaffBusinessCard() {
                 {staffData && staffData.name}
                 {staffData && staffData.suffix && ', ' + staffData.suffix}
               </Typography>
-              <Typography variant="span" size="2xs" color="grey">
+              <Typography
+                variant="span"
+                size="2xs"
+                color="grey"
+                lineHeight="1.2"
+                margin={`0 0 ${Spaces.sm} 0`}
+              >
                 {staffData && staffData.pronouns}
               </Typography>
               <Typography
@@ -198,7 +212,7 @@ export default function StaffBusinessCard() {
                 size="2xs"
                 color="black"
                 weight="600"
-                lineHeight="1.5"
+                lineHeight="1"
               >
                 {staffData && staffData.title}
               </Typography>
@@ -218,7 +232,7 @@ export default function StaffBusinessCard() {
                 size="2xs"
                 color="black"
                 weight="400"
-                lineHeight="1"
+                lineHeight="1.1"
               >
                 {staffData && staffData.cardBlurb}
               </Typography>

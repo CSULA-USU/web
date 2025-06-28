@@ -57,7 +57,7 @@ const CardContainerBottom = styled.div`
 const CardContainerTop = styled.div`
   min-height: 200px;
   width: 100%;
-  background-image: url('/about/calstatela-hero-business-card.jpeg');
+  background-image: url('https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero-business-card.webp');
   background-size: cover;
   background-position: center;
   display: flex;
