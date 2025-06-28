@@ -176,7 +176,6 @@ export const StaffCardWithModal = ({
               ) : (
                 <></>
               )}
-
               <Typography
                 as="h2"
                 color="gold"
@@ -238,6 +237,7 @@ export const StaffCardWithModal = ({
                   size="md"
                   weight="700"
                   margin={`0 0 ${Spaces.sm} 0`}
+                  lineHeight="1.2"
                 >
                   {title}
                 </Typography>

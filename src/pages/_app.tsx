@@ -5,10 +5,14 @@ import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
-import { EventsLoader } from 'components';
 import Head from 'next/head';
-
+import Modal from 'react-modal';
 import { SessionProvider } from 'next-auth/react';
+import { EventsLoader } from 'components';
+
+if (typeof window !== 'undefined') {
+  Modal.setAppElement('#__next');
+}
 
 export default function App({
   Component,
