@@ -82,14 +82,6 @@ const InfoContainer = styled.div<{ screenSize: boolean }>`
   max-width: 400px;
 `;
 
-const QRContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: ${Spaces.sm};
-`;
-
 const IconAndInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -124,6 +116,18 @@ const InfoNameContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const QRContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: ${Spaces.sm};
+`;
+
+const QRLinkContainer = styled.div`
+  margin-bottom: ${Spaces.sm};
 `;
 
 export const StaffCardWithModal = ({
@@ -172,7 +176,6 @@ export const StaffCardWithModal = ({
               ) : (
                 <></>
               )}
-
               <Typography
                 as="h2"
                 color="gold"
@@ -234,6 +237,7 @@ export const StaffCardWithModal = ({
                   size="md"
                   weight="700"
                   margin={`0 0 ${Spaces.sm} 0`}
+                  lineHeight="1.2"
                 >
                   {title}
                 </Typography>
@@ -292,15 +296,16 @@ export const StaffCardWithModal = ({
             </InfoContainer>
           </UpperContainer>
           <QRContainer>
-            <StyledLink
-              href={`/staff/${toKebabCase(name)}`}
-              isInverseUnderlineStyling
-            >
-              <Typography color="greyDarker" variant="span">
-                View Virtual Card
-              </Typography>
-            </StyledLink>
-            <br />
+            <QRLinkContainer>
+              <StyledLink
+                href={`/staff/${toKebabCase(name)}`}
+                isInverseUnderlineStyling
+              >
+                <Typography color="greyDarker" variant="span">
+                  View Virtual Card
+                </Typography>
+              </StyledLink>
+            </QRLinkContainer>
             <QRCodeSVG
               value={`https://www.calstatelausu.org/staff/${toKebabCase(name)}`}
             />

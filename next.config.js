@@ -12,6 +12,7 @@ const nextConfig = {
       'i.imgur.com',
       'media.giphy.com',
       'www.dropbox.com',
+      'bubqscxokeycpuuoqphp.supabase.co'
     ],
   },
 };
