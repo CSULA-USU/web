@@ -225,17 +225,17 @@
   "organizations": [
     {
       "name": "Center for Student Involvement",
-      "logo": "/logos/csi-logo.png",
+      "logo": "/departments/logos/csi-logo.svg",
       "website": "https://www.calstatelausu.org/csi"
     },
     {
       "name": "University-Student Union",
-      "logo": "/logos/usu-dark-logo.png",
+      "logo": "/logos/usu-dark-logo.webp",
       "website": "https://calstatelausu.org"
     },
     {
       "name": "Associated Students, Inc.",
-      "logo": "/logos/asi-dark-logo.png",
+      "logo": "/logos/asi-dark-logo.webp",
       "website": "https://asicalstatela.org/"
     }
   ]

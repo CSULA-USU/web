@@ -1,1 +1,1 @@
-export * from './WingpsanMeetingCalendar';
+export * from './WingspanMeetingCalendar';

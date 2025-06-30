@@ -31,6 +31,48 @@ import {
   Typography,
 } from 'components';
 
+const ImageLayoutWrapper = styled.div`
+  width: 100%;
+  padding: 0 16px;
+  margin-top: 32px;
+`;
+
+const TwoColumnLayout = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  padding: 0 16px 36px 16px;
+`;
+
+const ResponsiveColumn = styled.div`
+  flex: 1 1 350px;
+  max-width: 600px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const ImageGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: ${Spaces.xl};
+`;
+
+const ResponsiveImage = styled.img`
+  flex: 1 1 350px;
+  min-width: 350px;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+`;
+
 const { benefits, learningOutcomes, pathways, socialChangeValues } =
   wingspanData;
 
@@ -81,8 +123,8 @@ const OrgCard = styled.div`
 
 const LogoContainer = styled.div`
   position: relative;
+  height: clamp(80px, 20vw, 200px);
   width: 100%;
-  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,7 +344,7 @@ export default function Wingspan() {
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
           >
-            Learn More
+            View Site
           </Button>
         </ButtonGroup>
       </HeroSection>
@@ -343,7 +385,7 @@ export default function Wingspan() {
             position: 'relative',
           }}
         >
-          <img
+          <Image
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
             alt="Large group of students gathered outdoors under an arch of black, white, and gold balloons"
             style={{
@@ -352,6 +394,7 @@ export default function Wingspan() {
               objectFit: 'cover', // 🔥 forces crop to fill box
               objectPosition: 'center',
               display: 'block',
+              borderRadius: '8px',
             }}
           />
         </div>
@@ -363,10 +406,12 @@ export default function Wingspan() {
           <Typography
             as="h2"
             variant="subheader"
-            size={isMobile ? 'md' : 'lg'}
-            margin={
-              isMobile ? `0 auto ${Spaces.lg}` : `0 250px ${Spaces.lg} 250px`
-            }
+            size={isMobile || isTablet ? 'md' : 'lg'}
+            style={{
+              maxWidth: '940px',
+              margin: '0 auto', // centers it horizontally
+              paddingBottom: Spaces.xl, // optional for spacing below
+            }}
           >
             Participation provides you with valuable skills, experiences, and
             opportunities that will benefit you throughout your academic and
@@ -481,44 +526,21 @@ export default function Wingspan() {
         </FluidContainer>
       </LearningOutcomesSection>
 
-      <FluidContainer
-        flex
-        flexWrap="wrap"
-        flexDirection={isMobile ? 'column' : 'row'}
-        gap="36px"
-        alignItems="center" // center both items vertically on desktop
-        padding="0 16px 36px 16px"
-      >
-        {/* Left column: stacked images */}
-        <FluidContainer
-          flex
-          flexDirection="column"
-          gap="24px"
-          padding={`${Spaces['xl']} 0 0 0`}
-          width={isMobile ? '100%' : '45%'}
-        >
-          <Image
+      <TwoColumnLayout>
+        {/* Left: Stacked Images */}
+        <ResponsiveColumn>
+          <ResponsiveImage
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-students-seated-at-table.webp"
             alt="Students seated at a banquet table during a leadership event"
-            width="100%"
-            height="auto"
           />
-          <Image
+          <ResponsiveImage
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-audience-listening-to-speaker.webp"
-            alt="Audience seated at banquet tables listening to a keynote speaker during a leadership event"
-            width="100%"
-            height="auto"
+            alt="Audience seated at banquet tables listening to a keynote speaker"
           />
-        </FluidContainer>
+        </ResponsiveColumn>
 
-        {/* Right column: text */}
-        <FluidContainer
-          flex
-          flexDirection="column"
-          justifyContent="center"
-          gap="16px"
-          width={isMobile ? '100%' : '50%'}
-        >
+        {/* Right: Text Content */}
+        <ResponsiveColumn style={{ justifyContent: 'center' }}>
           <Typography
             as="h2"
             variant="subheader"
@@ -546,8 +568,8 @@ export default function Wingspan() {
             <li>Completing online learning modules assigned on Canvas</li>
             <li>Joining student organization(s)</li>
           </ul>
-        </FluidContainer>
-      </FluidContainer>
+        </ResponsiveColumn>
+      </TwoColumnLayout>
 
       {/* Pathways Section */}
       <FluidContainer padding="0 16px 36px 16px">
@@ -581,45 +603,18 @@ export default function Wingspan() {
           </PathwayRow>
         ))}
         {/* Images Below the Pathways Text */}
-        <div
-          style={{
-            width: '100%',
-            maxWidth: '960px',
-            margin: '32px auto 0 auto', // 🔥 centers the whole image row container
-            padding: isMobile ? '0' : '0 16px', // optional: reduce side padding to avoid pushing content
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '24px',
-            }}
-          >
-            <img
+        <ImageLayoutWrapper>
+          <ImageGrid>
+            <ResponsiveImage
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-pathways-three-women-holding-award.webp"
               alt="Students holding award"
-              style={{
-                width: isMobile ? '100%' : '600px',
-                height: isMobile ? 'auto' : '337.5px',
-                objectFit: 'cover',
-                borderRadius: '8px',
-              }}
             />
-            <img
+            <ResponsiveImage
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/outcomes-pathways-group-with-mascot.webp"
               alt="Group with mascot"
-              style={{
-                width: isMobile ? '100%' : '600px',
-                height: isMobile ? 'auto' : '337.5px',
-                objectFit: 'cover',
-                borderRadius: '8px',
-              }}
             />
-          </div>
-        </div>
+          </ImageGrid>
+        </ImageLayoutWrapper>
       </FluidContainer>
 
       {/* Events */}
@@ -637,7 +632,10 @@ export default function Wingspan() {
                 as="h2"
                 variant="subheader"
                 size={isMobile ? 'md' : 'lg'}
-                margin={isMobile ? `0 0 ${Spaces.lg} 0` : `0 250px 0 250px`}
+                style={{
+                  maxWidth: '940px',
+                  margin: '0 auto', // centers it horizontally
+                }}
               >
                 Take part in thoughtful events that support your growth,
                 celebrate your identity, and empower you to lead with
@@ -661,9 +659,11 @@ export default function Wingspan() {
             variant="subheader"
             size="md"
             color="grey"
-            margin={
-              isMobile ? `0 0 ${Spaces.lg} 0` : `0 250px ${Spaces.lg} 250px`
-            }
+            style={{
+              maxWidth: '940px',
+              margin: '0 auto', // centers it horizontally
+              paddingBottom: Spaces.lg, // optional for spacing below
+            }}
           >
             Grounded in the Social Change Model of Leadership (SCM), the
             Wingspan Leadership Program incorporates leadership development,
@@ -738,11 +738,11 @@ export default function Wingspan() {
               as="h2"
               variant="subheader"
               size="md"
-              margin={
-                isMobile
-                  ? `0 0 ${Spaces.lg} 0`
-                  : `0 250px ${Spaces['2xl']} 250px`
-              }
+              style={{
+                maxWidth: '940px',
+                margin: '0 auto', // centers it horizontally
+                paddingBottom: Spaces.xl, // optional for spacing below
+              }}
             >
               Students will participate in various training events to achieve
               the designations of Rising Leader, Soaring Leader, and Golden
@@ -856,11 +856,11 @@ export default function Wingspan() {
             as="h2"
             variant="subheader"
             size="md"
-            margin={
-              isMobile
-                ? `0 ${Spaces.md} ${Spaces.xl} ${Spaces.md}`
-                : `0 700px ${Spaces.lg} 700px`
-            }
+            style={{
+              maxWidth: '940px',
+              margin: '0 auto', // centers it horizontally
+              paddingBottom: Spaces.xl, // optional for spacing below
+            }}
           >
             The Wingspan Leadership Program is put together by the collaborative
             efforts of on-campus organizations dedicated to student development.
@@ -885,12 +885,19 @@ export default function Wingspan() {
                       <Image
                         src={logo || '/placeholder.svg'}
                         alt={`${name} logo`}
-                        width="200px"
-                        height="80px"
+                        height="100%"
+                        width="auto"
                         style={{
-                          maxWidth: '100%',
-                          maxHeight: '100%',
                           objectFit: 'contain',
+                          maxHeight: '100%',
+                          maxWidth: '100%',
+                          transform:
+                            name === 'Center for Student Involvement' &&
+                            isMobile
+                              ? 'scale(2.2)' // try 2.0–2.2 for best mobile balance
+                              : 'none',
+
+                          transformOrigin: 'center',
                         }}
                       />
                     </LogoContainer>
