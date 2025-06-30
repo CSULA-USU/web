@@ -31,7 +31,7 @@ import {
   Typography,
 } from 'components';
 
-const { benefits, meetings, learningOutcomes, pathways, socialChangeValues } =
+const { benefits, learningOutcomes, pathways, socialChangeValues } =
   wingspanData;
 
 const iconMap = {
@@ -230,8 +230,13 @@ const ButtonGroup = styled.div`
 
 const GradientSection = styled.section`
   background: linear-gradient(to bottom, white, ${Colors.primary});
-  padding="0 16px 0 16px"
+  padding: 0 16px;
 `;
+
+const filterUpcomingMeetings = (meetings: any[]) => {
+  const today = new Date();
+  return meetings.filter((meeting) => new Date(meeting.date) >= today);
+};
 
 export default function Wingspan() {
   const { returnByBreakpoint, isMobile, isTablet } = useBreakpoint();
@@ -242,13 +247,15 @@ export default function Wingspan() {
     widescreen: 'calc(30% - 12px)',
   });
 
+  const upcomingMeetings = filterUpcomingMeetings(wingspanData.meetings);
+
   return (
     <Page>
       <Head>
         <title>U-SU CSI Wingspan</title>
         <meta
           name="author"
-          content="The University-Student Union Center for Student Involvement at Cal State LA"
+          content="The University-Student Union Center for Student Involvement at Cal State LA Wingspan Leadership Program"
           key="author"
         />
         <meta
@@ -578,8 +585,8 @@ export default function Wingspan() {
           style={{
             width: '100%',
             maxWidth: '960px',
-            margin: '32px 0 0 0',
-            padding: isMobile ? '0' : '0 32px',
+            margin: '32px auto 0 auto', // 🔥 centers the whole image row container
+            padding: isMobile ? '0' : '0 16px', // optional: reduce side padding to avoid pushing content
           }}
         >
           <div
@@ -616,28 +623,33 @@ export default function Wingspan() {
       </FluidContainer>
 
       {/* Events */}
-      <FluidContainer
-        backgroundColor="greyLightest"
-        padding={`0 16px ${Spaces['xl']} 16px`}
-      >
-        <CenteredText>
-          <SectionTitle>Upcoming Events</SectionTitle>
-        </CenteredText>
-        <CenteredText>
-          <Typography
-            as="h2"
-            variant="subheader"
-            size={isMobile ? 'md' : 'lg'}
-            margin={isMobile ? `0 0 ${Spaces.lg} 0` : `0 250px 0 250px`}
+      <>
+        {upcomingMeetings.length > 0 && (
+          <FluidContainer
+            backgroundColor="greyLightest"
+            padding={`0 16px ${Spaces['xl']} 16px`}
           >
-            Take part in thoughtful events that support your growth, celebrate
-            your identity, and empower you to lead with confidence.
-          </Typography>
-        </CenteredText>
-        <WingspanMeetingCalendar meetings={meetings} />
-      </FluidContainer>
+            <CenteredText>
+              <SectionTitle>Upcoming Events</SectionTitle>
+            </CenteredText>
+            <CenteredText>
+              <Typography
+                as="h2"
+                variant="subheader"
+                size={isMobile ? 'md' : 'lg'}
+                margin={isMobile ? `0 0 ${Spaces.lg} 0` : `0 250px 0 250px`}
+              >
+                Take part in thoughtful events that support your growth,
+                celebrate your identity, and empower you to lead with
+                confidence.
+              </Typography>
+            </CenteredText>
+            <WingspanMeetingCalendar meetings={upcomingMeetings} />
+          </FluidContainer>
+        )}
+      </>
 
-      <FluidContainer padding="0 16px 0 16px">
+      <FluidContainer padding="0 16px">
         <CenteredText>
           <SectionTitle>
             The Seven &quot;C&quot;s of the Social Change Model
@@ -766,6 +778,15 @@ export default function Wingspan() {
                         listStyle: 'none',
                       }}
                     >
+                      {isMobile && (
+                        <Typography
+                          as="p"
+                          variant="labelTitleSmall"
+                          style={{ marginBottom: '4px' }}
+                        >
+                          Requirements
+                        </Typography>
+                      )}
                       {requirements.map((req, i) => (
                         <li
                           key={i}
@@ -795,6 +816,15 @@ export default function Wingspan() {
                         listStyle: 'none',
                       }}
                     >
+                      {isMobile && (
+                        <Typography
+                          as="p"
+                          variant="labelTitleSmall"
+                          style={{ marginBottom: '4px' }}
+                        >
+                          Perks
+                        </Typography>
+                      )}
                       {perks.map((perk, i) => (
                         <li
                           key={i}
@@ -827,7 +857,9 @@ export default function Wingspan() {
             variant="subheader"
             size="md"
             margin={
-              isMobile ? `0 0 ${Spaces.lg} 0` : `0 700px ${Spaces.lg} 700px`
+              isMobile
+                ? `0 ${Spaces.md} ${Spaces.xl} ${Spaces.md}`
+                : `0 700px ${Spaces.lg} 700px`
             }
           >
             The Wingspan Leadership Program is put together by the collaborative
@@ -836,9 +868,9 @@ export default function Wingspan() {
           <FluidContainer
             flex
             flexWrap="wrap"
-            justifyContent="center"
+            justifyContent="space-between"
             gap="24px"
-            padding="0"
+            padding={`${Spaces['xl']} 0 ${Spaces['2xl']} 0`}
           >
             {wingspanData.organizations.map(
               ({ name, logo, website }, index) => (
@@ -878,7 +910,11 @@ export default function Wingspan() {
               minHeight="auto"
               imgSrc=""
               imgAlt=""
-              margin={isMobile ? `0 0 100px 0` : `0 0 100px 0`}
+              margin={
+                isMobile
+                  ? `0 ${Spaces.md} ${Spaces.xl} ${Spaces.md}`
+                  : `0 0 100px 0`
+              }
             >
               <Typography
                 as="h1"
@@ -892,7 +928,7 @@ export default function Wingspan() {
                 Get Started Today
               </Typography>
 
-              <Typography variant="span">
+              <Typography as="span" variant="copy">
                 Fill out the form to start developing your leadership potential
                 here at Cal State LA
               </Typography>

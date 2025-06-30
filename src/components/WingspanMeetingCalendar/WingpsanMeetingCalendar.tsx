@@ -1,5 +1,4 @@
 // WingspanMeetingCalendar.tsx
-
 import { FluidContainer } from 'components';
 import styled from 'styled-components';
 import {
@@ -48,7 +47,7 @@ const MeetingDetail = styled.p`
 `;
 
 interface ManualMeeting {
-  date: string;
+  date: string; // Assume date string like "2025-07-15"
   time: string;
   location: string;
   note?: string;
@@ -59,19 +58,35 @@ interface WingspanMeetingCalendarProps {
   meetings: ManualMeeting[];
 }
 
+const filterUpcomingMeetings = (meetings: ManualMeeting[]): ManualMeeting[] => {
+  const today = new Date();
+  return meetings.filter((meeting) => {
+    const meetingDate = new Date(meeting.date);
+    return meetingDate >= today;
+  });
+};
+
 export const WingspanMeetingCalendar = ({
   meetings,
 }: WingspanMeetingCalendarProps) => {
+  const upcomingMeetings = filterUpcomingMeetings(meetings);
+
+  if (upcomingMeetings.length === 0) return null; // 👈 hide if no meetings
+
   return (
     <FluidContainer>
       <GridContainer>
-        {meetings.map((meeting) => {
+        {upcomingMeetings.map((meeting) => {
           const key = `${meeting.date}-${meeting.time}-${meeting.location}`;
           return (
             <GridItem key={key} borderTopColor={meeting.borderTopColor}>
               <MeetingDetail>
                 <FaCalendarAlt aria-hidden="true" />
-                {meeting.date}
+                {new Date(meeting.date).toLocaleDateString(undefined, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
               </MeetingDetail>
               <MeetingDetail>
                 <FaClock aria-hidden="true" />
