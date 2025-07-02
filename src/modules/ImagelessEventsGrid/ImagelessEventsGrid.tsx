@@ -1,4 +1,3 @@
-// WingspanMeetingCalendar.tsx
 import { FluidContainer } from 'components';
 import styled from 'styled-components';
 import {
@@ -46,14 +45,14 @@ const MeetingDetail = styled.p`
 `;
 
 interface ManualMeeting {
-  date: string; // Assume date string like "2025-07-15"
+  date: string;
   time: string;
   location: string;
   note?: string;
   borderTopColor?: string;
 }
 
-interface WingspanMeetingCalendarProps {
+interface ImagelessEventsGridProps {
   meetings: ManualMeeting[];
 }
 
@@ -65,9 +64,7 @@ const filterUpcomingMeetings = (meetings: ManualMeeting[]): ManualMeeting[] => {
   });
 };
 
-export const WingspanMeetingCalendar = ({
-  meetings,
-}: WingspanMeetingCalendarProps) => {
+export const ImagelessEventsGrid = ({ meetings }: ImagelessEventsGridProps) => {
   const upcomingMeetings = filterUpcomingMeetings(meetings);
 
   if (upcomingMeetings.length === 0) return null; // 👈 hide if no meetings

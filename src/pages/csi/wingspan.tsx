@@ -1,14 +1,9 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import wingspanData from 'data/wingspan.json';
-import { Page } from 'modules';
-import { Colors, media, Spaces } from 'theme';
-import { WingspanMeetingCalendar } from 'components/WingspanMeetingCalendar';
 import { BsBriefcase } from 'react-icons/bs';
 import { CiMedal } from 'react-icons/ci';
 import { FiMessageCircle } from 'react-icons/fi';
 import { useBreakpoint } from 'hooks';
-import { QuoteBanner } from 'components/QuoteBanner';
 import { ImCheckmark } from 'react-icons/im';
 import { IoMailOutline } from 'react-icons/io5';
 import {
@@ -23,15 +18,19 @@ import {
   FaRegComments,
   FaGlobeAmericas,
 } from 'react-icons/fa';
+import { IconType } from 'react-icons';
+import wingspanData from 'data/wingspan.json';
+import { Colors, media, Spaces } from 'theme';
 import {
   Button,
   DescriptionCard,
   FluidContainer,
   Image,
   NonBreakingSpan,
+  QuoteBanner,
   Typography,
 } from 'components';
-import { IconType } from 'react-icons';
+import { Page, ImagelessEventsGrid } from 'modules';
 
 const iconMap = {
   FaRegHandshake,
@@ -446,7 +445,8 @@ export default function Wingspan() {
           content="Wingspan Leadership Program, Wingspan, Wingspan CSULA, wingspan csula, Wingspanla CSULA, wingspanla csula, wingspan la, wingspan cal state la, wingspan la leadership, Cal State LA leadership, csula lead,
           csula leadership, cal state la leadership program, student leadership development, college student leadership programs, public speaking workshops, leadership conference, teamwork and communication skills,
           social change model, leadership program, the university student union, California State University Los Angeles, student union, csula, cal state la, u-su, usu, student organizations, center for student involvement,
-          events, csi, graffix, college, student, union, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles, asi, associated students inc., csula wingspan, csula wingspanla"
+          events, csi, graffix, college, student, union, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles, asi, associated students inc., csula wingspan, csula wingspanla,
+          cal state la wingspan, cal state la wingspanla"
         />
 
         <meta
@@ -754,7 +754,7 @@ export default function Wingspan() {
                 celebrate your identity, and empower you to lead with
                 confidence."
             />
-            <WingspanMeetingCalendar meetings={upcomingMeetings} />
+            <ImagelessEventsGrid meetings={upcomingMeetings} />
           </FluidContainer>
         )}
       </>
