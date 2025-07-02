@@ -10,9 +10,9 @@ import { FiMessageCircle } from 'react-icons/fi';
 import { useBreakpoint } from 'hooks';
 import { QuoteBanner } from 'components/QuoteBanner';
 import { ImCheckmark } from 'react-icons/im';
+import { IoMailOutline } from 'react-icons/io5';
 import {
   FaRegHandshake,
-  FaAward,
   FaNetworkWired,
   FaRegLightbulb,
   FaUser,
@@ -28,53 +28,10 @@ import {
   DescriptionCard,
   FluidContainer,
   Image,
+  NonBreakingSpan,
   Typography,
 } from 'components';
-
-const ImageLayoutWrapper = styled.div`
-  width: 100%;
-  padding: 0 16px;
-  margin-top: 32px;
-`;
-
-const TwoColumnLayout = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 36px;
-  padding: 0 16px 36px 16px;
-`;
-
-const ResponsiveColumn = styled.div`
-  flex: 1 1 350px;
-  max-width: 600px;
-  min-width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const ImageGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  padding-bottom: ${Spaces.xl};
-`;
-
-const ResponsiveImage = styled.img`
-  flex: 1 1 350px;
-  min-width: 350px;
-  max-width: 600px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-`;
-
-const { benefits, learningOutcomes, pathways, socialChangeValues } =
-  wingspanData;
+import { IconType } from 'react-icons';
 
 const iconMap = {
   FaRegHandshake,
@@ -92,16 +49,59 @@ const iconMap = {
   FaGlobeAmericas,
 };
 
+const { benefits, learningOutcomes, pathways, socialChangeValues } =
+  wingspanData;
+
 type IconName = keyof typeof iconMap;
+
+const ImageLayoutWrapper = styled.div`
+  width: 100%;
+  margin-top: 32px;
+`;
+
+const TwoColumnLayout = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px; // smaller default for mobile
+  padding: ${`${Spaces['2xl']} 16px 0 16px`};
+
+  @media (min-width: 768px) {
+    gap: 32px; // match Tailwind's gap-8 (32px)
+  }
+`;
+
+const ResponsiveColumn = styled.div`
+  flex: 1 1 312px;
+  max-width: 600px;
+  min-width: 312px;
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces['md']};
+`;
+
+const ImageGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: ${Spaces.xl};
+  width: 100%;
+`;
+
+const ResponsiveImage = styled.img`
+  flex: 1 1 0;
+  min-width: 312px;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+`;
 
 const CenteredText = styled.div`
   text-align: center;
-`;
-
-const CardContentLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 `;
 
 const OrgCard = styled.div`
@@ -109,25 +109,38 @@ const OrgCard = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${Spaces.md};
-  transition: transform 0.3s ease;
   width: 200px;
+  height: 64px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: scale(1.05);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    width: 25vw;
+  }
+
+  @media (max-width: 767px) {
     width: 100%;
+    height: auto;
+    flex-direction: column;
   }
 `;
 
 const LogoContainer = styled.div`
-  position: relative;
-  height: clamp(80px, 20vw, 200px);
   width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 767px) {
+    margin: 0 auto;
+  }
 `;
 
 const ResponsiveLevels = styled.div`
@@ -212,16 +225,11 @@ const PathwayRow = styled.div`
   margin-bottom: ${Spaces.lg};
 `;
 
-const LearningOutcomesSection = styled(FluidContainer)`
-  padding: 0 16px;
-`;
-
 const HeroSection = styled(FluidContainer)`
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 16px 16px;
 `;
 
 const HeroTitle = styled.h1`
@@ -275,6 +283,111 @@ const GradientSection = styled.section`
   padding: 0 16px;
 `;
 
+const StyledDescription = styled.span`
+  line-height: 1.4;
+  max-width: 48ch;
+`;
+
+const StyledTitle = styled.strong`
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+`;
+
+const StyledIconContainer = styled.div`
+  background-color: #fef3c7;
+  padding: 12px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+`;
+
+interface StyledDescriptionCardProps {
+  Icon?: IconType;
+  title?: string;
+  description: string;
+  prefix?: React.ReactNode;
+}
+
+const StyledDescriptionCard = ({
+  Icon,
+  title,
+  description,
+  prefix,
+}: StyledDescriptionCardProps) => {
+  return (
+    <Typography as="span" variant="copy">
+      <CenteredText>
+        {Icon && (
+          <StyledIconContainer>
+            <Icon size={24} color={Colors.primary} aria-hidden="true" />
+          </StyledIconContainer>
+        )}
+        {prefix && (
+          <Typography
+            as="span"
+            variant="label"
+            weight="700"
+            size="sm"
+            color="black"
+            style={{ display: 'block', marginBottom: '4px' }}
+          >
+            {prefix}
+          </Typography>
+        )}
+        {title && <StyledTitle>{title}</StyledTitle>}
+        <StyledDescription>{description}</StyledDescription>
+      </CenteredText>
+    </Typography>
+  );
+};
+
+const IconList = ({
+  items,
+  icon: Icon,
+  label,
+}: {
+  items: string[];
+  icon: IconType;
+  label?: string;
+}) => (
+  <ul
+    style={{
+      margin: 0,
+      paddingLeft: '1rem',
+      listStyle: 'none',
+    }}
+  >
+    {label && (
+      <Typography
+        as="p"
+        variant="labelTitleSmall"
+        style={{ marginBottom: '4px' }}
+      >
+        {label}
+      </Typography>
+    )}
+    {items.map((text, i) => (
+      <li
+        key={i}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+          marginBottom: '8px',
+        }}
+      >
+        <Icon color={Colors.primary} style={{ flexShrink: 0 }} aria-hidden />
+        <Typography as="span" variant="copy">
+          {text}
+        </Typography>
+      </li>
+    ))}
+  </ul>
+);
+
 const filterUpcomingMeetings = (meetings: any[]) => {
   const today = new Date();
   return meetings.filter((meeting) => new Date(meeting.date) >= today);
@@ -282,6 +395,34 @@ const filterUpcomingMeetings = (meetings: any[]) => {
 
 export default function Wingspan() {
   const { returnByBreakpoint, isMobile, isTablet } = useBreakpoint();
+
+  const ResponsiveSubheader = ({ children }: { children: React.ReactNode }) => (
+    <Typography
+      as="h2"
+      variant="subheader"
+      size={isMobile ? 'md' : 'lg'}
+      style={{
+        maxWidth: '940px',
+        margin: '0 auto',
+        paddingBottom: Spaces.xl,
+      }}
+    >
+      {children}
+    </Typography>
+  );
+
+  const SectionHeader = ({
+    title,
+    subtitle,
+  }: {
+    title: string;
+    subtitle?: string;
+  }) => (
+    <CenteredText>
+      <SectionTitle>{title}</SectionTitle>
+      {subtitle && <ResponsiveSubheader>{subtitle}</ResponsiveSubheader>}
+    </CenteredText>
+  );
 
   const descriptionCardWidth = returnByBreakpoint({
     tablet: '100%',
@@ -302,10 +443,10 @@ export default function Wingspan() {
         />
         <meta
           name="keywords"
-          content="Wingspan Leadership Program, Wingspan, Wingspan CSULA, wingspan csula, Wingspanla CSULA, wingspanla csula, wingspan la, wingspan cal state la, wingspan la leadership, Cal State LA leadership, csula lead, 
-          csula leadership, cal state la leadership program, student leadership development, college student leadership programs, public speaking workshops, leadership conference, teamwork and communication skills, 
-          social change model, leadership program, the university student union, California State University Los Angeles, student union, csula, cal state la, u-su, usu, student organizations, center for student involvement, 
-          student organizations, events, csi, graffix, college, student, union, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles"
+          content="Wingspan Leadership Program, Wingspan, Wingspan CSULA, wingspan csula, Wingspanla CSULA, wingspanla csula, wingspan la, wingspan cal state la, wingspan la leadership, Cal State LA leadership, csula lead,
+          csula leadership, cal state la leadership program, student leadership development, college student leadership programs, public speaking workshops, leadership conference, teamwork and communication skills,
+          social change model, leadership program, the university student union, California State University Los Angeles, student union, csula, cal state la, u-su, usu, student organizations, center for student involvement,
+          events, csi, graffix, college, student, union, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles, asi, associated students inc., csula wingspan, csula wingspanla"
         />
 
         <meta
@@ -313,6 +454,42 @@ export default function Wingspan() {
           content="The Wingspan Leadership Program strives to enhance our students' experience at Cal State LA through meaningful opportunities to cultivate leadership skills, social responsibility, and holistic development of students."
           key="description"
         />
+
+        {/* Open Graph Meta Tags (Facebook, LinkedIn, etc.) */}
+        <meta property="og:title" content="U-SU CSI Wingspan" />
+        <meta
+          property="og:description"
+          content="The Wingspan Leadership Program at Cal State LA empowers students through leadership, teamwork, and social responsibility."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/wingspan"
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//overview-event.webp"
+        />
+        <meta
+          property="og:image:alt"
+          content="Group of Cal State LA students at a Wingspan Leadership event"
+        />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="U-SU CSI Wingspan" />
+        <meta
+          name="twitter:description"
+          content="Empowering Cal State LA students through leadership, service, and holistic development."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//overview-event.webp"
+        />
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <HeroSection>
@@ -359,8 +536,13 @@ export default function Wingspan() {
       </CenteredText>
 
       <FluidContainer flex flexWrap={isTablet ? 'wrap' : 'nowrap'}>
-        <FluidContainer>
-          <Typography as="h2" variant="subheader" size={isMobile ? 'md' : 'lg'}>
+        <FluidContainer padding={isMobile ? '0' : '0 20px 0 0'}>
+          <Typography
+            as="h2"
+            variant="subheader"
+            weight="600"
+            size={isMobile ? 'md' : 'lg'}
+          >
             Cal State LA Wants You to Lead
           </Typography>
           <Typography margin="24px 0" as="p">
@@ -391,7 +573,7 @@ export default function Wingspan() {
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover', // 🔥 forces crop to fill box
+              objectFit: 'cover',
               objectPosition: 'center',
               display: 'block',
               borderRadius: '8px',
@@ -400,25 +582,13 @@ export default function Wingspan() {
         </div>
       </FluidContainer>
 
-      <FluidContainer backgroundColor="greyLightest" padding="0 32px 36px 32px">
-        <CenteredText>
-          <SectionTitle>What You&apos;ll Gain</SectionTitle>
-          <Typography
-            as="h2"
-            variant="subheader"
-            size={isMobile || isTablet ? 'md' : 'lg'}
-            style={{
-              maxWidth: '940px',
-              margin: '0 auto', // centers it horizontally
-              paddingBottom: Spaces.xl, // optional for spacing below
-            }}
-          >
-            Participation provides you with valuable skills, experiences, and
+      <FluidContainer backgroundColor="greyLightest" padding="0 16px 36px 16px">
+        <SectionHeader
+          title="What You'll Gain"
+          subtitle="Participation provides you with valuable skills, experiences, and
             opportunities that will benefit you throughout your academic and
-            professional careers.
-          </Typography>
-        </CenteredText>
-
+            professional careers."
+        />
         <FluidContainer
           flex
           flexWrap="wrap"
@@ -426,7 +596,6 @@ export default function Wingspan() {
           padding="0"
         >
           {benefits.map(({ icon, title, description }, index) => {
-            const Icon = iconMap[icon as IconName];
             return (
               <DescriptionCard
                 key={index}
@@ -439,56 +608,22 @@ export default function Wingspan() {
                 imgSrc=""
                 imgAlt=""
               >
-                <Typography as="span" variant="copy">
-                  <div style={{ textAlign: 'center' }}>
-                    <div
-                      style={{
-                        backgroundColor: '#fef3c7',
-                        padding: '12px',
-                        borderRadius: '9999px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '0.75rem',
-                      }}
-                    >
-                      <Icon
-                        size={24}
-                        color={Colors.primary}
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <strong
-                      style={{ display: 'block', marginBottom: '0.25rem' }}
-                    >
-                      {title}
-                    </strong>
-                    <span style={{ fontSize: '0.9rem', lineHeight: 1.4 }}>
-                      {description}
-                    </span>
-                  </div>
-                </Typography>
+                <StyledDescriptionCard
+                  Icon={iconMap[icon as IconName]}
+                  title={title}
+                  description={description}
+                />
               </DescriptionCard>
             );
           })}
         </FluidContainer>
       </FluidContainer>
 
-      <LearningOutcomesSection>
-        <CenteredText>
-          <SectionTitle>Learning Outcomes</SectionTitle>
-        </CenteredText>
-        <CenteredText>
-          <Typography
-            as="h2"
-            variant="subheader"
-            size={isMobile ? 'md' : 'lg'}
-            margin={`0 auto ${Spaces.lg}`}
-          >
-            By participating in the Wingspan Leadership Program, students will:
-          </Typography>
-        </CenteredText>
-
+      <FluidContainer>
+        <SectionHeader
+          title="Learning Outcomes"
+          subtitle="By participating in the Wingspan Leadership Program, students will:"
+        />
         <FluidContainer
           flex
           flexWrap="wrap"
@@ -507,24 +642,11 @@ export default function Wingspan() {
               imgSrc=""
               imgAlt=""
             >
-              <CardContentLeft>
-                <Typography
-                  as="span"
-                  variant="label"
-                  weight="700"
-                  size="sm"
-                  color="black"
-                >
-                  {number} .
-                </Typography>
-                <Typography as="p" variant="copy" size="sm" lineHeight="1.4">
-                  {text}
-                </Typography>
-              </CardContentLeft>
+              <StyledDescriptionCard description={text} prefix={`${number}.`} />
             </DescriptionCard>
           ))}
         </FluidContainer>
-      </LearningOutcomesSection>
+      </FluidContainer>
 
       <TwoColumnLayout>
         {/* Left: Stacked Images */}
@@ -544,30 +666,32 @@ export default function Wingspan() {
           <Typography
             as="h2"
             variant="subheader"
+            weight="600"
             size={isMobile ? 'md' : 'lg'}
-            margin={`0 0 ${Spaces.lg}`}
           >
             Students can participate through:
           </Typography>
-          <ul
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: Spaces.lg,
-              paddingLeft: '1.5rem',
-              listStyle: 'disc',
-            }}
-          >
-            <li>Attendance at LEAD Series workshops</li>
-            <li>Attendance at the annual Student Leadership Conference</li>
-            <li>
-              Participation in trainings available at Cal State LA (Undocually,
-              VetNet Ally, Mental Health First Aid, etc.)
-            </li>
-            <li>Participation in service projects/service hours</li>
-            <li>Completing online learning modules assigned on Canvas</li>
-            <li>Joining student organization(s)</li>
-          </ul>
+          <Typography as="p" variant="copy">
+            <ul
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: Spaces.md,
+                paddingLeft: '1.5rem',
+                listStyle: 'disc',
+              }}
+            >
+              <li>Attendance at LEAD Series workshops</li>
+              <li>Attendance at the annual Student Leadership Conference</li>
+              <li>
+                Participation in trainings available at Cal State LA
+                (Undocually, VetNet Ally, Mental Health First Aid, etc.)
+              </li>
+              <li>Participation in service projects/service hours</li>
+              <li>Completing online learning modules assigned on Canvas</li>
+              <li>Joining student organization(s)</li>
+            </ul>
+          </Typography>
         </ResponsiveColumn>
       </TwoColumnLayout>
 
@@ -624,134 +748,92 @@ export default function Wingspan() {
             backgroundColor="greyLightest"
             padding={`0 16px ${Spaces['xl']} 16px`}
           >
-            <CenteredText>
-              <SectionTitle>Upcoming Events</SectionTitle>
-            </CenteredText>
-            <CenteredText>
-              <Typography
-                as="h2"
-                variant="subheader"
-                size={isMobile ? 'md' : 'lg'}
-                style={{
-                  maxWidth: '940px',
-                  margin: '0 auto', // centers it horizontally
-                }}
-              >
-                Take part in thoughtful events that support your growth,
+            <SectionHeader
+              title="Upcoming Events"
+              subtitle="Take part in thoughtful events that support your growth,
                 celebrate your identity, and empower you to lead with
-                confidence.
-              </Typography>
-            </CenteredText>
+                confidence."
+            />
             <WingspanMeetingCalendar meetings={upcomingMeetings} />
           </FluidContainer>
         )}
       </>
 
-      <FluidContainer padding="0 16px">
-        <CenteredText>
-          <SectionTitle>
-            The Seven &quot;C&quot;s of the Social Change Model
-          </SectionTitle>
-        </CenteredText>
-        <CenteredText>
-          <Typography
-            as="h2"
-            variant="subheader"
-            size="md"
-            color="grey"
-            style={{
-              maxWidth: '940px',
-              margin: '0 auto', // centers it horizontally
-              paddingBottom: Spaces.lg, // optional for spacing below
-            }}
-          >
-            Grounded in the Social Change Model of Leadership (SCM), the
+      <FluidContainer padding="0  16px">
+        <SectionHeader
+          title='The Seven "C"s of the Social Change Model'
+          subtitle="Grounded in the Social Change Model of Leadership (SCM), the
             Wingspan Leadership Program incorporates leadership development,
             educational awareness, and civic engagement. Social responsibility
             and change for the common good are achieved through the development
-            of 7 core values targeted at enhancing students&apos; levels of
-            self–awareness and ability to work with others.
-          </Typography>
-          <Image
-            margin="auto"
-            borderRadius="12px"
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/values-model.webp"
-            alt="Nuestra Grad smiling while giving a hug"
-            width={isMobile ? '100%' : '45%'}
-            height={isMobile ? '100%' : '45%'}
-          />
-        </CenteredText>
+            of 7 core values targeted at enhancing students' levels of
+            self–awareness and ability to work with others."
+        />
+        <Image
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/values-model.webp"
+          alt="Nuestra Grad smiling while giving a hug"
+          style={{
+            width: '100%',
+            maxWidth: '576px',
+            height: 'auto',
+            display: 'block',
+            margin: `0 auto 36px auto`,
+            borderRadius: '12px',
+          }}
+        />
 
         <FluidContainer
           flex
           flexWrap="wrap"
-          justifyContent="center"
+          justifyContent="space-between"
           padding="0"
         >
           {socialChangeValues.map(({ icon, title, description }, index) => {
             const Icon = iconMap[icon as keyof typeof iconMap];
+            const isLastOdd =
+              socialChangeValues.length % 2 !== 0 &&
+              index === socialChangeValues.length - 1;
+
             return (
-              <DescriptionCard
+              <div
                 key={index}
-                rounded
-                hoverable
-                backgroundColor="white"
-                width={descriptionCardWidth}
-                minHeight="auto"
-                imgSrc=""
-                imgAlt=""
+                style={{
+                  width: descriptionCardWidth,
+                  marginBottom: '24px',
+                  marginLeft: isLastOdd ? 'auto' : undefined,
+                  marginRight: isLastOdd ? 'auto' : undefined,
+                }}
               >
-                <Typography as="span" variant="copy">
-                  <div style={{ textAlign: 'center' }}>
-                    <div
-                      style={{
-                        backgroundColor: '#fef3c7',
-                        padding: '12px',
-                        borderRadius: '9999px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '0.75rem',
-                      }}
-                    >
-                      <Icon size={24} color="primary" aria-hidden="true" />
-                    </div>
-                    <strong
-                      style={{ display: 'block', marginBottom: '0.25rem' }}
-                    >
-                      {title}
-                    </strong>
-                    <span style={{ fontSize: '0.9rem', lineHeight: 1.4 }}>
-                      {description}
-                    </span>
-                  </div>
-                </Typography>
-              </DescriptionCard>
+                <DescriptionCard
+                  rounded
+                  hoverable
+                  backgroundColor="white"
+                  width="100%"
+                  minHeight="auto"
+                  imgSrc=""
+                  imgAlt=""
+                >
+                  <StyledDescriptionCard
+                    Icon={Icon}
+                    title={title}
+                    description={description}
+                  />
+                </DescriptionCard>
+              </div>
             );
           })}
         </FluidContainer>
 
-        <FluidContainer>
-          <CenteredText>
-            <SectionTitle>Leadership Milestones</SectionTitle>
-            <Typography
-              as="h2"
-              variant="subheader"
-              size="md"
-              style={{
-                maxWidth: '940px',
-                margin: '0 auto', // centers it horizontally
-                paddingBottom: Spaces.xl, // optional for spacing below
-              }}
-            >
-              Students will participate in various training events to achieve
+        <FluidContainer padding="0">
+          <SectionHeader
+            title="Leadership Milestones"
+            subtitle="Students will participate in various training events to achieve
               the designations of Rising Leader, Soaring Leader, and Golden
               Leader. Throughout the program, students will have opportunities
               to connect with peers and build community through in-person and
               online engagement. Transfer students may be able to apply their
-              prior leadership experience toward these levels.
-            </Typography>
-          </CenteredText>
+              prior leadership experience toward these levels."
+          />
           <ResponsiveLevels>
             <TableHeaderRow>
               <TableRow>
@@ -771,77 +853,19 @@ export default function Wingspan() {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <ul
-                      style={{
-                        margin: 0,
-                        paddingLeft: '1rem',
-                        listStyle: 'none',
-                      }}
-                    >
-                      {isMobile && (
-                        <Typography
-                          as="p"
-                          variant="labelTitleSmall"
-                          style={{ marginBottom: '4px' }}
-                        >
-                          Requirements
-                        </Typography>
-                      )}
-                      {requirements.map((req, i) => (
-                        <li
-                          key={i}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '5px', // 👈 This controls spacing between icon and text
-                            marginBottom: '8px', // optional vertical spacing between items
-                          }}
-                        >
-                          <ImCheckmark
-                            color={Colors.primary}
-                            aria-hidden="true"
-                          />
-                          <Typography as="span" variant="copy">
-                            {req}
-                          </Typography>
-                        </li>
-                      ))}
-                    </ul>
+                    <IconList
+                      items={requirements}
+                      icon={ImCheckmark}
+                      label={isMobile ? 'Requirements' : undefined}
+                    />
                   </TableCell>
+
                   <TableCell>
-                    <ul
-                      style={{
-                        margin: 0,
-                        paddingLeft: '1rem',
-                        listStyle: 'none',
-                      }}
-                    >
-                      {isMobile && (
-                        <Typography
-                          as="p"
-                          variant="labelTitleSmall"
-                          style={{ marginBottom: '4px' }}
-                        >
-                          Perks
-                        </Typography>
-                      )}
-                      {perks.map((perk, i) => (
-                        <li
-                          key={i}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '5px', // 👈 This controls spacing between icon and text
-                            marginBottom: '8px', // optional vertical spacing between items
-                          }}
-                        >
-                          <FaAward color={Colors.primary} aria-hidden="true" />
-                          <Typography as="span" variant="copy">
-                            {perk}
-                          </Typography>
-                        </li>
-                      ))}
-                    </ul>
+                    <IconList
+                      items={perks}
+                      icon={ImCheckmark}
+                      label={isMobile ? 'Requirements' : undefined}
+                    />
                   </TableCell>
                 </TableRow>
               ),
@@ -885,19 +909,10 @@ export default function Wingspan() {
                       <Image
                         src={logo || '/placeholder.svg'}
                         alt={`${name} logo`}
-                        height="100%"
-                        width="auto"
                         style={{
+                          width: '200px',
+                          height: '64px',
                           objectFit: 'contain',
-                          maxHeight: '100%',
-                          maxWidth: '100%',
-                          transform:
-                            name === 'Center for Student Involvement' &&
-                            isMobile
-                              ? 'scale(2.2)' // try 2.0–2.2 for best mobile balance
-                              : 'none',
-
-                          transformOrigin: 'center',
                         }}
                       />
                     </LogoContainer>
@@ -914,31 +929,16 @@ export default function Wingspan() {
               rounded
               backgroundColor="white"
               width={descriptionCardWidth}
-              minHeight="auto"
+              margin={isMobile ? `0 0 ${Spaces.xl} 0` : `0 0 100px 0`}
               imgSrc=""
               imgAlt=""
-              margin={
-                isMobile
-                  ? `0 ${Spaces.md} ${Spaces.xl} ${Spaces.md}`
-                  : `0 0 100px 0`
-              }
+              contentNotText
             >
-              <Typography
-                as="h1"
-                variant="title"
-                style={{
-                  fontFamily: "'Bitter', serif",
-                  fontWeight: 700,
-                  fontSize: 20,
-                }}
-              >
-                Get Started Today
-              </Typography>
-
-              <Typography as="span" variant="copy">
-                Fill out the form to start developing your leadership potential
-                here at Cal State LA
-              </Typography>
+              <StyledDescriptionCard
+                Icon={IoMailOutline}
+                title="Get Started Today"
+                description="Fill out the form to start developing your leadership potential here at Cal State LA"
+              />
 
               <FluidContainer
                 flex
@@ -949,13 +949,10 @@ export default function Wingspan() {
               >
                 <Button
                   href="https://forms.office.com/r/fpLZipPcJK"
+                  variant="primary"
                   isExternalLink
-                  style={{
-                    fontFamily: "'Bitter', serif",
-                    fontWeight: 700,
-                  }}
                 >
-                  Join Wingspan →
+                  <NonBreakingSpan>Join Wingspan →</NonBreakingSpan>
                 </Button>
               </FluidContainer>
 

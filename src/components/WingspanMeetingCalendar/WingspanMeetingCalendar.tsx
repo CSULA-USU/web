@@ -12,7 +12,6 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  padding: 16px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -74,7 +73,7 @@ export const WingspanMeetingCalendar = ({
   if (upcomingMeetings.length === 0) return null; // 👈 hide if no meetings
 
   return (
-    <FluidContainer>
+    <FluidContainer padding="0">
       <GridContainer>
         {upcomingMeetings.map((meeting) => {
           const key = `${meeting.date}-${meeting.time}-${meeting.location}`;
