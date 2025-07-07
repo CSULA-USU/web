@@ -9,6 +9,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
+  overflow-x: hidden;
   background-color: ${Colors.white};
   abbr {
     text-decoration: none;
@@ -20,18 +21,16 @@ interface PageProps {
 }
 
 export const Page = ({ children }: PageProps) => (
-  <>
-    <PageContainer>
-      <Announcement
-        text="We will reopen Thursday, January 16 from 7 AM to 5 PM. Please note that some departments will continue operating remotely."
-        isVisible={false}
-        linkText="Cal State LA Alerts"
-        href="https://www.calstatela.edu/alerts"
-      />
-      <Nav />
-      <main role="main">{children}</main>
-      <Footer />
-      <BackToTop />
-    </PageContainer>
-  </>
+  <PageContainer>
+    <Announcement
+      text="We will reopen Thursday, January 16 from 7 AM to 5 PM. Please note that some departments will continue operating remotely."
+      isVisible={false}
+      linkText="Cal State LA Alerts"
+      href="https://www.calstatela.edu/alerts"
+    />
+    <Nav />
+    <main role="main">{children}</main>
+    <Footer />
+    <BackToTop />
+  </PageContainer>
 );

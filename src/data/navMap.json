@@ -74,8 +74,7 @@
         "sub": [
           { "text": "CSI Home", "href": "/csi" },
           { "text": "Forms", "href": "/csi/forms" },
-          { "text": "FSL", "href": "/csi/fsl" },
-          { "text": "GEEK", "href": "/csi/geek" },
+          { "text": "Fraternity & Sorority Life", "href": "/csi/fsl" },
           {
             "text": "Recognized Student Organizations",
             "href": "/csi/student-orgs"
@@ -83,7 +82,8 @@
           {
             "text": "Student Organization Awards",
             "href": "/csi/student-organization-awards"
-          }
+          },
+          { "text": "Wingspan", "href": "/csi/wingspan" }
         ]
       },
       {
