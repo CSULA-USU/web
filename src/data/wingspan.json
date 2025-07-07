@@ -1,0 +1,250 @@
+{
+  "benefits": [
+    {
+      "icon": "FaRegHandshake",
+      "title": "Hands-On Leadership Experience",
+      "description": "Tutoring, college prep, scholarship opportunities, and academic mentorship to help you succeed in school and beyond."
+    },
+    {
+      "icon": "BsBriefcase",
+      "title": "Personal and Professional Development",
+      "description": "Hands-on leadership training, public speaking workshops, and opportunities to lead community projects."
+    },
+    {
+      "icon": "FaNetworkWired",
+      "title": "Supportive Network of Emerging Leaders",
+      "description": "Internship placements, job readiness training, resume building, and networking with industry professionals."
+    },
+    {
+      "icon": "CiMedal",
+      "title": "Clarity on Strengths and Leadership Style",
+      "description": "Achievement certificates, scholarship opportunities, and public recognition for your contributions and growth."
+    },
+    {
+      "icon": "FiMessageCircle",
+      "title": "Practical Skills in Communication...",
+      "description": "Build confidence, develop emotional intelligence, and discover your passions through supportive mentorship."
+    },
+    {
+      "icon": "FaRegLightbulb",
+      "title": "Stronger Campus and Community Connections",
+      "description": "Learn creative problem-solving, design thinking, and entrepreneurship skills for the modern world."
+    }
+  ],
+  "meetings": [
+    {
+      "date": "Sep 4, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "Respectfully, No: Setting Boundaries Guilt-Free\n\nSaying “no” doesn’t make you mean, it makes you mindful. Join this LEAD Series workshop to help you build the confidence to set healthy boundaries in your personal, academic, and professional life without guilt. Through real-life scenarios, reflective activities, and practical tools, you’ll learn how to communicate your needs clearly, protect your energy, and maintain strong relationships.",
+      "borderTopColor": "#facc15"
+    },
+    {
+      "date": "Sep 18, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "Lead Your Way: Embracing Neurodiversity in Leadership\n\nJoin this LEAD Series workshop as we highlight how neurodivergent perspectives can drive creativity, empathy, and innovation in leadership spaces. You’ll explore your individual strengths, learn how to navigate challenges, and gain tools to lead in ways that feel authentic to you.",
+      "borderTopColor": "#facc15"
+    },
+    {
+      "date": "Oct 9, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "Flop Era to Glow Up: Turning Failure into Fuel\n\nFailure happens, and that’s okay! This LEAD Series workshop creates space to reflect on setbacks without shame, reframe what it means to “fail,” and learn how to bounce back stronger. Through honest conversations and practical strategies, you’ll explore how to grow from challenges and build resilience.",
+      "borderTopColor": "#facc15"
+    },
+    {
+      "date": "Oct 23, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "Say It With Your Chest: Speaking Up & Standing Strong\n\nFinding your voice and speaking up can be challenging, but it is key to advocating for yourself and others. You’ll learn practical communication skills and ways to overcome fear or hesitation so you can say what matters with confidence.",
+      "borderTopColor": "#facc15"
+    },
+    {
+      "date": "Nov 6, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "End the Beef: How to Disagree Without Disrespect\n\nThis LEAD Series workshop teaches you how to manage disagreements respectfully. You’ll build emotional intelligence and active listening skills to turn conflict into positive collaboration.",
+      "borderTopColor": "#facc15"
+    },
+    {
+      "date": "Nov 20, 2025",
+      "time": "12:00 PM – 1:30 PM",
+      "location": "Alhambra Room",
+      "note": "Main Character Energy: A Workshop on Self-Love\n\nThis LEAD Series workshop is all about stepping into your main character energy by embracing self-love and self-care. You’ll explore ways to build confidence, set boundaries, and nurture a positive relationship with yourself.",
+      "borderTopColor": "#facc15"
+    }
+  ],
+  "learningOutcomes": [
+    {
+      "number": 1,
+      "text": "Articulate their own leadership philosophy in the context of their multiple identities and values (i.e. school, professional, and community life)."
+    },
+    {
+      "number": 2,
+      "text": "Identify and apply key skills to effectively work with others in academic, professional, and community settings."
+    },
+    {
+      "number": 3,
+      "text": "Identify and demonstrate strategies for how to enact change in various educational, professional, and community environments."
+    }
+  ],
+  "pathways": [
+    {
+      "number": 1,
+      "title": "Leadership Engagement",
+      "description": "Participants take on roles that require active commitment and development, including involvement in campus organizations and service initiatives.",
+      "bullets": [
+        "Opportunities include ASI, U-SU Board, Student Health Advisory Committee, Student Athlete Advisor Committee, Orientation Leader, Tour Guide, Resident Assistants, RHA, Greek Life, and mentorship programs (RISE, Peer Leader Program, etc.).",
+        "Many also contribute through campus committees, Recognized Student Organizations, and College Corps."
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Student-Led Innovation",
+      "description": "Encouraged to propose projects, initiatives, or leadership roles aligned with the Social Change Model, participants shape their own development pathways.",
+      "bullets": []
+    },
+    {
+      "number": 3,
+      "title": "Ongoing Involvement",
+      "description": "Continued participation in leadership development opportunities throughout the year reinforces growth and aligns with Wingspan's mission.",
+      "bullets": []
+    },
+    {
+      "number": 4,
+      "title": "Milestone Reflection",
+      "description": "Completion of a final project—such as a reflection, essay, or video—demonstrates leadership growth and the impact made.",
+      "bullets": []
+    }
+  ],
+  "socialChangeValues": [
+    {
+      "icon": "FaUser",
+      "title": "Consciousness of Self",
+      "description": "Awareness of the beliefs, values, attitudes and emotions that motivate one to take action."
+    },
+    {
+      "icon": "FaRegSmile",
+      "title": "Congruence",
+      "description": "Thinking, feeling and behaving with consistency, genuineness, authenticity and honesty towards others."
+    },
+    {
+      "icon": "FaFire",
+      "title": "Commitment",
+      "description": "The motivational energy that drives individuals to serve the collective effort; implies passion, intensity and duration."
+    },
+    {
+      "icon": "FaUsers",
+      "title": "Collaboration",
+      "description": "Working with others in a common effort. It empowers self and others through trust."
+    },
+    {
+      "icon": "FaBullseye",
+      "title": "Common Purpose",
+      "description": "Facilitates the group’s ability to engage in collective analysis of issues at hand and the task to be undertaken."
+    },
+    {
+      "icon": "FaRegComments",
+      "title": "Controversy with Civility",
+      "description": "Respect for others, a willingness to hear each other's views, and accepting differences in viewpoints."
+    },
+    {
+      "icon": "FaGlobeAmericas",
+      "title": "Citizenship",
+      "description": "Fostering connections to society. Working for positive change on the behalf of others and the community."
+    }
+  ],
+  "leadershipLevels": [
+    {
+      "level": "Rising Leader",
+      "color": "#f97316",
+      "requirements": [
+        "Pre-Assessment",
+        "Attend 3 LEAD Workshops OR the Student Leadership Conference",
+        "Become a member of at least 1 student organization",
+        "Complete 2 Online Learning Modules",
+        "Complete 5 hours of Volunteer/Service Hours",
+        "Contribute Positive Change on campus (Optional)",
+        "End of Level Assessment",
+        "Approximately 15 hours required for completion"
+      ],
+      "perks": [
+        "Rising Leader cord for graduation",
+        "Rising Leader medal for graduation",
+        "Certificate of Completion",
+        "A Wingspan Leadership Program sweater",
+        "Recognition at the annual Golden Eagle Awards"
+      ]
+    },
+    {
+      "level": "Soaring Leader",
+      "color": "#6b7280",
+      "requirements": [
+        "Pre-Assessment",
+        "Attend 5 LEAD Workshops",
+        "Student Leadership Conference",
+        "Become a member of at least 1 student organization",
+        "Complete 4 Online Learning Modules",
+        "Complete 10 hours of Volunteer/Service Hours",
+        "Contribute Positive Change on campus (Optional)",
+        "End of Level Assessment",
+        "Approximately 25 hours required for completion"
+      ],
+      "perks": [
+        "Soaring Leader cord for graduation",
+        "Soaring Leader medal for graduation",
+        "Certificate of Completion",
+        "A Wingspan Leadership Program sweater",
+        "Recognition at the annual Golden Eagle Awards"
+      ]
+    },
+    {
+      "level": "Golden Leader",
+      "color": "#facc15",
+      "requirements": [
+        "Pre-Assessment",
+        "Attend 7 LEAD Workshops",
+        "Student Leadership Conference",
+        "Become a member of at least 1 student organization",
+        "Complete 6 Online Learning Modules",
+        "Complete 10 hours of Volunteer/Service Hours",
+        "Contribute Positive Change on campus",
+        "End of Level Assessment",
+        "Approximately 40 hours required for completion"
+      ],
+      "perks": [
+        "Golden Leader cord for graduation",
+        "Golden Leader medal for graduation",
+        "Certificate of Completion",
+        "A Wingspan Leadership Program sweater",
+        "Recognition at the annual Golden Eagle Awards"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "name": "Center for Student Involvement",
+      "logo": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//csi-logo.webp",
+      "website": "https://www.calstatelausu.org/csi"
+    },
+    {
+      "name": "University-Student Union",
+      "logo": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//usu-dark-logo.webp",
+      "website": "https://calstatelausu.org"
+    },
+    {
+      "name": "Associated Students, Inc.",
+      "logo": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//asi-dark-logo.webp",
+      "website": "https://asicalstatela.org/"
+    }
+  ],
+  "participationMethods": [
+    "Attendance at LEAD Series workshops",
+    "Attendance at the annual Student Leadership Conference",
+    "Participation in trainings available at Cal State LA (Undocually, VetNet Ally, Mental Health First Aid, etc.)",
+    "Participation in service projects/service hours",
+    "Completing online learning modules assigned on Canvas",
+    "Joining student organization(s)"
+  ]
+}

@@ -16,6 +16,7 @@ export * from './GenericModal';
 export * from './Header';
 export * from './HeaderWithImage';
 export * from './ImageAndCard';
+export * from './ImagelessEventsGrid';
 export * from './ImageWithinCard';
 export * from './LogosDisplay';
 export * from './Modals';

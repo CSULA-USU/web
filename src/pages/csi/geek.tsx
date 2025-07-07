@@ -119,7 +119,7 @@ export default function Geek() {
               width={isTablet ? '100%' : 'calc(25% - 24px)'}
               minHeight="280px"
               {...props}
-            ></DescriptionCard>
+            />
           ))}
         </FluidContainer>
       </FluidContainer>

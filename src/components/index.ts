@@ -27,3 +27,4 @@ export * from './Label';
 export * from './Select';
 export * from './Popover';
 export * from './PushDrawer';
+export * from './QuoteBanner';

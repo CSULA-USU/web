@@ -12,6 +12,7 @@ interface CardStyles {
 }
 
 interface CardProps extends CardStyles {
+  contentNotText?: boolean;
   imgSrc: string;
   imgAlt: string;
   children?: React.ReactNode;
@@ -54,6 +55,7 @@ export const DescriptionCard = ({
   children,
   imgSrc,
   imgAlt,
+  contentNotText,
   ...props
 }: CardProps) => (
   <StyledCard {...props}>
@@ -61,9 +63,13 @@ export const DescriptionCard = ({
       <IconContainer>
         <Image src={imgSrc} alt={imgAlt} />
       </IconContainer>
-      <Typography margin="24px 0" weight="300">
-        {children}
-      </Typography>
+      {contentNotText ? (
+        <>{children}</>
+      ) : (
+        <Typography margin="24px 0" weight="300">
+          {children}
+        </Typography>
+      )}
     </div>
   </StyledCard>
 );
