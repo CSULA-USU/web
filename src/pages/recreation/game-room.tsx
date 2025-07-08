@@ -412,14 +412,13 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            Summer Hours - Closed
+            Summer Hours &mdash; Closed
           </Typography>
         </li>
       </ContactsBar>
 
       <GameRoomStats>
         <GameRoomStatsCard quantity="50+" title="Daily Visitors" />
-        <GameRoomStatsCard quantity="12" title="Nintendo Switch Titles" />
         <GameRoomStatsCard quantity="4" title="Days of Fun" />
         <GameRoomStatsCard quantity="1" title="School Champion" />
       </GameRoomStats>

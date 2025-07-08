@@ -1,12 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import {
-  Image,
-  Typography,
-  Card,
-  FluidContainer,
-  NonBreakingSpan,
-} from 'components';
+import { Image, Typography, Card, FluidContainer } from 'components';
 import { Page } from 'modules';
 import {
   NonDiscriminationPolicy,
@@ -29,6 +23,13 @@ const HoursSection = styled.div`
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const LongDescriptionSection = styled.div`
+  display: flex;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -130,17 +131,6 @@ export default function Recreation() {
         flexWrap="wrap"
       >
         <HeaderSection>
-          <div style={{ maxWidth: '800px', marginBottom: '32px' }}>
-            <Typography
-              as="h2"
-              variant="pageHeader"
-              lineHeight="1"
-              size={isMobile ? '2xl' : '4xl'}
-            >
-              The Recreation <NonBreakingSpan>Fitness Center</NonBreakingSpan>{' '}
-              <NonBreakingSpan>is now open!</NonBreakingSpan>
-            </Typography>
-          </div>
           <PhoneSection>
             <NumberContainer>
               <NumberInnerContainer>
@@ -176,35 +166,21 @@ export default function Recreation() {
             />
           ))}
         </HoursSection>
-      </FluidContainer>
-      <FluidContainer
-        flex
-        justifyContent="space-between"
-        flexWrap={isMobile ? 'wrap' : 'nowrap'}
-      >
-        <Typography as="p" margin="0 72px 24px 0">
-          Recreation at Cal State LA provides Golden Eagles with opportunities
-          to play, exercise and engage their campus community through
-          programming and events aimed toward enhancing the experience of all
-          who participate.
-        </Typography>
-        <Typography as="p">
-          Recreation is comprised of the Recreation Fitness Center Center and
-          Recreation Esports. The Recreation Fitness Center is located on the
-          basement level of the U-SU and the Recreation Game Room is located on
-          the second floor at room 201. They are open to all students, staff and
-          faculty.
-        </Typography>
-      </FluidContainer>
-      <FluidContainer backgroundColor="greyLighter">
-        <Typography
-          as="h2"
-          variant="title"
-          margin="24px 0 0 0"
-          size={isMobile ? 'lg' : '2xl'}
-        >
-          Our Newly Renovated Fitness Center is Ready For You!
-        </Typography>
+        <LongDescriptionSection>
+          <Typography as="p" margin="0 72px 0 0">
+            Recreation at Cal State LA provides Golden Eagles with opportunities
+            to play, exercise and engage their campus community through
+            programming and events aimed toward enhancing the experience of all
+            who participate.
+          </Typography>
+          <Typography as="p">
+            Recreation is comprised of the Recreation Fitness Center Center and
+            Recreation Esports. The Recreation Fitness Center is located on the
+            basement level of the U&ndash;SU and the Recreation Game Room is
+            located on the second floor at room 201. They are open to all
+            students, staff and faculty.
+          </Typography>
+        </LongDescriptionSection>
       </FluidContainer>
       <FluidContainer
         backgroundColor="greyLighter"
