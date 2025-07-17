@@ -38,6 +38,7 @@ export const EventHeader = ({
       <Typography
         variant="labelTitle"
         color="greyDarker"
+        as="h1"
         margin={isMobile ? '36px auto 0' : '48px auto 24px'}
         size={isMobile ? 'md' : 'lg'}
       >

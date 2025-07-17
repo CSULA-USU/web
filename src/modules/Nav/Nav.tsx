@@ -47,7 +47,7 @@ export const Nav = () => {
           />
         </LogoLink>
         <MobileIconsContainer>
-          <Link href="/search" tabIndex={0}>
+          <Link href="/search" aria-label="Search" tabIndex={0}>
             <SearchIconLink />
           </Link>
           <MobileNav />
