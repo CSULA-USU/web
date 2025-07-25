@@ -289,7 +289,7 @@ export const ModEventCard = ({
         <MobileDetails>
           <MobileRight>
             <Typography
-              as="h3"
+              as="h2"
               variant="eventDetail"
               lineHeight="1.2"
               color="black"
@@ -299,7 +299,7 @@ export const ModEventCard = ({
             </Typography>
             <InfoContainer>
               <BiCalendar size="20px" style={{ margin: '0px 8px 2px 0px' }} />
-              <Typography as="h4" variant="eventDetail" color="black">
+              <Typography as="h3" variant="eventDetail" color="black">
                 <abbr title={month}>{monthAbbr}</abbr> {day}
               </Typography>
             </InfoContainer>
@@ -309,7 +309,7 @@ export const ModEventCard = ({
                 size="20px"
                 style={{ margin: '0px 8px 2px 0px' }}
               />
-              <Typography as="h4" variant="eventTime" color="black">
+              <Typography as="h3" variant="eventTime" color="black">
                 {startTime} - {endTime}
               </Typography>
             </InfoContainer>
@@ -319,7 +319,7 @@ export const ModEventCard = ({
                 style={{ margin: '0px 8px 0px 0px' }}
               />
               <Typography
-                as="h5"
+                as="h4"
                 variant="eventDetail"
                 style={{ overflowWrap: 'anywhere' }}
                 color="black"

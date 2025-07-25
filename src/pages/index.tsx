@@ -78,7 +78,9 @@ export default function Home() {
       <Head>
         <title>University-Student Union</title>
       </Head>
-      {events.length > 0 ? (
+      {loading ? (
+        <></>
+      ) : events.length > 0 ? (
         <>
           <EventHeader
             loading={loading}
@@ -243,9 +245,6 @@ export default function Home() {
         </>
       )}
       {/* Toggle the line below if there is a promotion. */}
-      <FluidContainer>
-        <BoardOfDirectorsCTA />
-      </FluidContainer>
       <CallToActionImages
         title={
           <>
@@ -261,6 +260,9 @@ export default function Home() {
         Catalyze your professional development and build your network by
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>
       </CallToActionImages>
+      <FluidContainer>
+        <BoardOfDirectorsCTA />
+      </FluidContainer>
     </Page>
   );
 }
