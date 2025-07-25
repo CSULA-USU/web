@@ -35,8 +35,10 @@ export default function Home() {
       <BackgroundImage>
         <Header title="Upcoming Events">
           The University-Student Union hosts various events throughout the
-          school year. Make sure to check back here to stay up to date with the
-          latest events.
+          school year.
+          <br />
+          U&ndash;SU programs and activities are open and available to all
+          regardless of race, sex, color, ethnicity or national origin.
         </Header>
         {loading ? (
           <Loading load={loading} />

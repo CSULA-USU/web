@@ -39,12 +39,6 @@ const descriptionCards = [
     children:
       'Develop your leadership potential by attending an interactive workshop!',
   },
-  {
-    imgSrc: 'icons/calendar-icon.png',
-    imgAlt: '',
-    children:
-      'Interested in helping during CSI events? Sign up for the Golden Eagle Event Krew (GEEK)!',
-  },
 ];
 
 const clubCards = [
@@ -67,12 +61,13 @@ const clubCards = [
     linkText: 'Learn More',
   },
   {
-    title: 'GEEK (Golden Eagle Event Krew)',
+    title: 'Wingspan Leadership Program',
     children:
-      'GEEK is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for CSI events. The volunteer program offers many opportunities to develop professional and leadership skills in a fun, fast-paced environment by working with vendors, campus administrators and CSI staff to make events come to life!',
-    imgSrc: '/vectors/csi/friends.svg',
+      "The Wingspan Leadership Program strives to enhance our students' experience at Cal State LA through meaningful opportunities to cultivate leadership skills, social responsibility, and holistic development.",
+    imgSrc: '/vectors/csi/superhero.svg',
     imgAlt: '',
-    href: 'csi/geek',
+    href: 'https://www.wingspanla.org/',
+    isExternalLink: true,
     linkText: 'Learn More',
   },
   {
