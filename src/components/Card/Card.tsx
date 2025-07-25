@@ -24,6 +24,7 @@ interface CardProps extends CardStyles {
   iconSrc?: string;
   iconAlt?: string;
   iconElement?: React.ReactNode;
+  isExternalLink?: boolean;
 }
 
 const IconContainer = styled.div`
@@ -44,6 +45,7 @@ export const Card = ({
   iconAlt,
   iconElement,
   iconWidth,
+  isExternalLink = false,
   ...props
 }: CardProps) => {
   const { isMobile } = useBreakpoint();
@@ -75,7 +77,9 @@ export const Card = ({
       </div>
       {linkText && (
         <Typography variant="cta">
-          <Link href={href || '#'}>{linkText}</Link>
+          <Link href={href || '#'} target={isExternalLink ? '_blank' : '_self'}>
+            {linkText}
+          </Link>
         </Typography>
       )}
     </Panel>
