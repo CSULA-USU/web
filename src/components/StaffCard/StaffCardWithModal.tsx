@@ -302,7 +302,7 @@ export const StaffCardWithModal = ({
                 isInverseUnderlineStyling
               >
                 <Typography color="greyDarker" variant="span">
-                  View Virtual Card
+                  View Virtual Cardasdf
                 </Typography>
               </StyledLink>
             </QRLinkContainer>
