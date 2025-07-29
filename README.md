@@ -15,7 +15,7 @@ yarn
 
 Then, use the correct version of node:
 
-```
+```bash
 nvm use
 ```
 
