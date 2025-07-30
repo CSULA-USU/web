@@ -1,52 +1,12 @@
 {
   "stories": [
     {
-      "name": "Jaqueline",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
-    },
-    {
-      "name": "John",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
-    },
-    {
-      "name": "David",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
-    },
-    {
-      "name": "Doug",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
-    },
-    {
-      "name": "Jaqueline",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
-    },
-    {
-      "name": "Jaqueline",
-      "department": "Center for Student Involvement",
-      "major": "Sociology",
-      "position": "Student Engagement Assistant",
-      "quote": "Working at the U-SU literally changed my life.",
-      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+      "name": "Isaiah",
+      "department": "Graffix",
+      "major": "Computer Science",
+      "position": "Web Developer",
+      "quote": "Working at the U-SU is a great learning experience!",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Isaiah.webp"
     }
   ],
   "cards": [
@@ -89,16 +49,100 @@
   ],
   "positions": [
     {
-      "positionName": "Front Desk",
-      "description": "Responsible for greeting visitors, answering phones, managing appointments, and providing general administrative support to ensure smooth front office operations.",
-      "department": "Graffix",
-      "location": "Admin 306",
-      "requirements": "Currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a minimum G.P.A. of 2.0, or graduate student with at least 4 graduate units and a minimum Cal State LA cumulative G.P.A. of 3.0;",
-      "hours": "Up to 20 per week",
+      "positionName": "Operations Assistant",
+      "description": "Responsible for maintaining the cleanliness and functionality of the U-SU facility, including cleaning, setting up equipment, and performing non-technical repairs.",
+      "department": "Operations",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Able to lift 70 pounds and perform regular physical tasks. Experience with maintenance tools and customer service is preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$18.09",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg",
+      "alt": "Operations assistant fixing light",
+      "link": "https://calstatela.joinhandshake.com/jobs/9889946/share_preview"
+    },
+    {
+      "positionName": "Event Services Aide",
+      "description": "Responsible for setting up and breaking down event equipment, supporting programs and activities, and maintaining facility readiness for events.",
+      "department": "Operations",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Able to lift 70 pounds, adapt to changing operational needs, and work effectively with a diverse campus community. Customer service experience preferred.",
+      "hours": "Up to 20 hours/week",
       "hourlyRate": "$17.87",
-      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//front-desk.webp",
-      "alt": "U-Krew 1",
-      "link": "https://asicalstatela.org/jobs/front-desk"
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg",
+      "alt": "Student setting up for an event",
+      "link": "https://calstatela.joinhandshake.com/jobs/9995445/share_preview"
+    },
+    {
+      "positionName": "Student Engagement Assistant",
+      "description": "Responsible for supporting the planning, execution, and evaluation of student engagement programs, leadership development, and student organization support within the Center for Student Involvement.",
+      "department": "Center for Student Involvement",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong communication, organization, and customer service skills. Familiarity with social media and willingness to work with student organizations, including fraternities and sororities, required. Previous customer service experience preferred.",
+      "hours": "15–20 hours/week",
+      "hourlyRate": "$18.09",
+      "img": "https://dl.dropboxusercontent.com/scl/fi/vl2jqtnlitl9wk3tw4dk8/IMG_5148.JPG?rlkey=oc1dgzahtg1gg7kui255nhh5t",
+      "alt": "CSI student engagement event",
+      "link": "https://calstatela.joinhandshake.com/jobs/9973322/share_preview"
+    },
+    {
+      "positionName": "Information & Reservations Aide",
+      "description": "Responsible for providing clerical support, greeting guests, managing event reservations, and offering quality customer service at the U-SU front desk.",
+      "department": "Operations",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong communication, organizational, and customer service skills. Familiarity with office software and equipment preferred. Previous customer service experience preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$17.87",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg",
+      "alt": "Student providing clerical support",
+      "link": "https://calstatela.joinhandshake.com/jobs/9992670/share_preview"
+    },
+    {
+      "positionName": "Junior Graphics Designer Assistant",
+      "description": "Responsible for supporting the Graphics team with design tasks, creating digital assets, assisting with print production, and contributing to marketing projects and events.",
+      "department": "Graffix",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Proficient in Adobe Creative Suite, Microsoft Office, and Mac applications. Strong organizational, communication, and customer service skills required. Experience with social media platforms and printing preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$17.50",
+      "img": "https://dl.dropboxusercontent.com/scl/fi/8s1dhcgt64bx0lyry6stg/IMG_5204.JPG?rlkey=mulrm3h5cewm0glp27n6ik3so",
+      "alt": "Graphics team working on design projects",
+      "link": "https://calstatela.joinhandshake.com/jobs/9753101/share_preview"
+    },
+    {
+      "positionName": "Media Services Assistant",
+      "description": "Responsible for providing technical support for events and performances, operating audio-visual equipment, and assisting with event setup and facility maintenance at the U-SU.",
+      "department": "Operations",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Able to lift 70 pounds and operate audio-visual equipment. Demonstrates strong communication, organizational, and customer service skills. Experience with technical equipment and event support preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$18.09",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg",
+      "alt": "Student operating audio-visual equipment",
+      "link": "https://calstatela.joinhandshake.com/jobs/9979314/share_preview"
+    },
+    {
+      "positionName": "Production Aide",
+      "description": "Responsible for supporting the Graphics team by distributing promotional materials, organizing supplies, archiving artwork, and assisting with print production and signage installation.",
+      "department": "Graffix",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong organizational, communication, and customer service skills. Willing to learn hands-on production techniques and use distribution tools. Experience with Adobe Creative Suite, Microsoft Office, and basic printing preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$17.87",
+      "img": "https://dl.dropboxusercontent.com/scl/fi/yoeamjvgpcmi5clws98xk/IMG_5207.JPG?rlkey=7gp2ptx14dbwsrzo9qg2p6g5k",
+      "alt": "Students working in Graffix department",
+      "link": "https://calstatela.joinhandshake.com/jobs/10043526/share_preview"
+    },
+    {
+      "positionName": "Accounting/Administrative Assistant",
+      "description": "Responsible for supporting financial and administrative operations by maintaining records, assisting with payroll, reconciling transactions, preparing reports, and organizing office documentation.",
+      "department": "Administration",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong organizational, communication, and clerical skills. Familiarity with financial systems, cash handling, and Microsoft Office preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$18.09",
+      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
+      "alt": "Student working on financial reports and administrative paperwork at a desk",
+      "link": "https://calstatela.joinhandshake.com/jobs/9992972/share_preview"
     }
   ]
 }

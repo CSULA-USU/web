@@ -10,6 +10,7 @@ interface CardStyles {
   minHeight?: string;
   margin?: string;
   iconWidth?: string;
+  iconHeight?: string;
   topBorder?: boolean;
   rounded?: boolean;
   hoverable?: boolean;
@@ -45,6 +46,7 @@ export const Card = ({
   iconAlt,
   iconElement,
   iconWidth,
+  iconHeight,
   isExternalLink = false,
   ...props
 }: CardProps) => {
@@ -58,6 +60,7 @@ export const Card = ({
               src={iconSrc}
               alt={iconAlt ? iconAlt : ''}
               width={iconWidth ? iconWidth : Spaces['2xl']}
+              height={iconHeight ? iconHeight : Spaces['2xl']}
               marginBottom="24px"
               lazy
             />
