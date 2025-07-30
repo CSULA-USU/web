@@ -1,0 +1,104 @@
+{
+  "stories": [
+    {
+      "name": "Jaqueline",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    },
+    {
+      "name": "John",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    },
+    {
+      "name": "David",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    },
+    {
+      "name": "Doug",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    },
+    {
+      "name": "Jaqueline",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    },
+    {
+      "name": "Jaqueline",
+      "department": "Center for Student Involvement",
+      "major": "Sociology",
+      "position": "Student Engagement Assistant",
+      "quote": "Working at the U-SU literally changed my life.",
+      "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//Jaqueline.webp"
+    }
+  ],
+  "cards": [
+    {
+      "title": "Culture Fit",
+      "children": "Those who enjoy what they do and share their passion",
+      "iconSrc": "/vectors/about/work-friends.svg",
+      "iconAlt": ""
+    },
+    {
+      "title": "Innovators",
+      "children": "Students who see opportunities for improvement",
+      "iconSrc": "/vectors/about/upgrade.svg",
+      "iconAlt": ""
+    },
+    {
+      "title": "Responsible",
+      "children": "Team members who take ownership of their work",
+      "iconSrc": "/vectors/about/business-deal.svg",
+      "iconAlt": ""
+    },
+    {
+      "title": "Supporters",
+      "children": "Uplifting self and others in the community, creating a sense of belonging",
+      "iconSrc": "/vectors/about/collaborators.svg",
+      "iconAlt": ""
+    },
+    {
+      "title": "Team Players",
+      "children": "Being a catalyst and amplifying team impact",
+      "iconSrc": "/vectors/about/teamwork.svg",
+      "iconAlt": ""
+    },
+    {
+      "title": "Upstanding",
+      "children": "Operating with honesty and communicating openly",
+      "iconSrc": "/vectors/about/growth.svg",
+      "iconAlt": ""
+    }
+  ],
+  "positions": [
+    {
+      "positionName": "Front Desk",
+      "description": "Responsible for greeting visitors, answering phones, managing appointments, and providing general administrative support to ensure smooth front office operations.",
+      "department": "Graffix",
+      "location": "Admin 306",
+      "requirements": "Currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a minimum G.P.A. of 2.0, or graduate student with at least 4 graduate units and a minimum Cal State LA cumulative G.P.A. of 3.0;",
+      "hours": "Up to 20 per week",
+      "hourlyRate": "$17.87",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//front-desk.webp",
+      "alt": "U-Krew 1",
+      "link": "https://asicalstatela.org/jobs/front-desk"
+    }
+  ]
+}
