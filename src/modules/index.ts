@@ -15,6 +15,7 @@ export * from './Footer';
 export * from './GenericModal';
 export * from './Header';
 export * from './HeaderWithImage';
+export * from './HeaderWithVideo';
 export * from './ImageAndCard';
 export * from './ImagelessEventsGrid';
 export * from './ImageWithinCard';

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Page, Header } from 'modules';
+import { Page, HeaderWithVideo } from 'modules';
 
 export default function UKrew() {
   return (
@@ -14,12 +14,7 @@ export default function UKrew() {
         <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        title="U-Krew"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
-      >
-        u-krew page filler
-      </Header>
+      <HeaderWithVideo playbackID="N5VjsPqN5InBMEEBTLXNHT3iP02j01m00eQ5eZGOWWXUP00" />
     </Page>
   );
 }
