@@ -252,7 +252,7 @@ export default function UKrew() {
         <DescriptionSection>
           <Image
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
-            alt="Operations team working fixing light"
+            alt="Staff recieving his award."
             width="100%"
             maxWidth={isDesktop ? '100%' : '500px'}
             height="auto"
