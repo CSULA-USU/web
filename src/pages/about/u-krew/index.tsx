@@ -108,13 +108,49 @@ export default function UKrew() {
   return (
     <Page>
       <Head>
-        <title>U-Krew</title>
+        <title>
+          U-Krew | Student Jobs at Cal State LA University-Student Union
+        </title>
+        <meta
+          name="description"
+          content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
+        />
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
+          content="Cal State LA, California State University Los Angeles, CSULA, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
         />
-        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+
+        {/* Open Graph for social sharing */}
+        <meta property="og:title" content="Join U-Krew at Cal State LA U-SU" />
+        <meta
+          property="og:description"
+          content="Browse open student job opportunities at Cal State LA's University-Student Union. Learn about U-Krew positions in media, operations, events, and more."
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+        />
+        <meta property="og:url" content="https://usu.calstatela.edu/u-krew" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="U-Krew | Student Jobs at Cal State LA U-SU"
+        />
+        <meta
+          name="twitter:description"
+          content="Apply for U-Krew student jobs at Cal State LA U-SU. Opportunities available across departments like Graffix, Recreation, CCC, and more."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
