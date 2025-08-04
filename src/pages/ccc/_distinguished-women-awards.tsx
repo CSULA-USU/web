@@ -53,7 +53,7 @@ const Thousands = () => calculateYears(2000, 2010);
 
 const Tens = () => calculateYears(2010, 2020);
 
-const calculateYears = (startYear: Number, endYear: Number) => {
+const calculateYears = (startYear: number, endYear: number) => {
   const container: any[] = [];
   honorees.map(function (obj) {
     let k: keyof typeof obj;
