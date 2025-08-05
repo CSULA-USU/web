@@ -2,6 +2,7 @@ import { Colors, FontSizes, media, Spaces } from 'theme';
 import {
   BannerItem,
   Button,
+  CountUp,
   Divider,
   Expandable,
   FluidContainer,
@@ -115,22 +116,26 @@ const GameRoomStatsCardWrapper = styled.div`
 const GameRoomStatsCard = ({
   quantity,
   title,
+  plus,
 }: {
-  quantity: String;
+  quantity: number;
   title: String;
+  plus?: boolean;
 }) => {
   return (
     <GameRoomStatsCardWrapper>
-      <Typography
-        as="h2"
+      <CountUp
+        end={quantity}
+        duration={3000}
         variant="span"
+        as="h2"
         size="5xl"
         weight="400"
         lineHeight="5xl"
         color="white"
-      >
-        {quantity}
-      </Typography>
+        showPlus={plus}
+        format={(n) => n.toLocaleString()}
+      />
       <Typography
         as="h3"
         variant="span"
@@ -418,9 +423,9 @@ export default function Gameroom() {
       </ContactsBar>
 
       <GameRoomStats>
-        <GameRoomStatsCard quantity="50+" title="Daily Visitors" />
-        <GameRoomStatsCard quantity="4" title="Days of Fun" />
-        <GameRoomStatsCard quantity="1" title="School Champion" />
+        <GameRoomStatsCard quantity={50} plus title="Daily Visitors" />
+        <GameRoomStatsCard quantity={4} title="Days of Fun" />
+        <GameRoomStatsCard quantity={1} title="School Champion" />
       </GameRoomStats>
 
       <ScrollingContent height="50px" direction="right">
