@@ -28,3 +28,4 @@ export * from './Select';
 export * from './Popover';
 export * from './PushDrawer';
 export * from './QuoteBanner';
+export * from './CountUp';
