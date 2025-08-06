@@ -12,12 +12,10 @@ export const withAuth = (
     const session = await getServerSession(req, res, authOptions);
 
     if (!session) {
-      return res
-        .status(401)
-        .json({
-          error:
-            'Unauthorized. Please sign in with your outlook account at https://www.calstatela.edu/backoffice/signin',
-        });
+      return res.status(401).json({
+        error:
+          'Unauthorized. Please sign in with your outlook account at https://www.calstatela.edu/backoffice/signin',
+      });
     }
 
     return handler(req, res);

@@ -60,7 +60,9 @@ export function ButtonCluster<T extends string>({
           onFocus={() => setFocusedIndex(index)}
           role="radio"
           variant={focusedIndex === index ? 'primary' : 'grey'}
-          ref={(el) => (buttonRefs.current[index] = el)}
+          ref={(el) => {
+            buttonRefs.current[index] = el;
+          }}
           tabIndex={value === option ? 0 : -1}
         >
           {option}

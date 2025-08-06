@@ -13,8 +13,7 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   switch (req.method) {
-    case 'POST':
-      // split sections into toDelete and toUpdate
+    case 'POST': {
       const { toDelete, toUpdate } = req.body.reduce(
         (acc: SplitSections, section: SupaSection) => {
           if (section.stagedDelete) {
@@ -29,37 +28,47 @@ export default async function handler(
         { toDelete: [], toUpdate: [] },
       );
 
-      // process deletes
+      // Process inserts/updates
       const responses = await Promise.all(
-        await toUpdate.map(async (section: SupaSection, order: number) => {
-          const method = section.id ? 'upsert' : 'insert';
-          return await supabase.from('sections')[method]({ ...section, order });
+        toUpdate.map(async (section: SupaSection, order: number) => {
+          const record = { ...section, order };
+          if (section.id) {
+            return await supabase.from('sections').upsert(record);
+          } else {
+            return await supabase.from('sections').insert(record);
+          }
         }),
       );
 
-      // process deletes
-      responses.push(
-        await supabase.from('sections').delete().in('id', toDelete),
-      );
+      // Process deletes
+      if (toDelete.length > 0) {
+        responses.push(
+          await supabase.from('sections').delete().in('id', toDelete),
+        );
+      }
 
       const hasErrors = responses.some((r) => r.error);
-      if (hasErrors) res.status(500).json(responses.filter((r) => r.error));
+      if (hasErrors) {
+        return res.status(500).json(responses.filter((r) => r.error));
+      }
 
-      res.status(200).json({ message: 'success' });
-      break;
-    case 'DELETE':
+      return res.status(200).json({ message: 'success' });
+    }
+
+    case 'DELETE': {
       const { error: deleteError } = await supabase
         .from('sections')
         .delete()
         .eq('id', req.body.id);
 
       if (deleteError) {
-        res.status(500).json(deleteError);
+        return res.status(500).json(deleteError);
       } else {
-        res.status(200).json({ message: 'success' });
+        return res.status(200).json({ message: 'success' });
       }
-      break;
-    default:
+    }
+
+    default: {
       const { data: sections, error: getError } = await supabase
         .from('pages')
         .select('id, slug, sections(id, page_id, name, order, data)')
@@ -67,10 +76,10 @@ export default async function handler(
         .order('order', { foreignTable: 'sections', ascending: true });
 
       if (getError) {
-        res.status(500).json(getError);
+        return res.status(500).json(getError);
       } else {
-        res.status(200).json(sections?.[0]);
+        return res.status(200).json(sections?.[0]);
       }
-      break;
+    }
   }
 }

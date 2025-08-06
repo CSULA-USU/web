@@ -1,7 +1,5 @@
 import Head from 'next/head';
-import { Page, HeaderWithVideo } from 'modules';
-import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
-import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
+import { Page } from 'modules';
 
 export default function UKrew() {
   return (
@@ -16,10 +14,6 @@ export default function UKrew() {
         <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeaderWithVideo
-        desktopSrc={OPSHeroVideo}
-        mobileSrc={MobileOPSHeroVideo}
-      />
     </Page>
   );
 }
