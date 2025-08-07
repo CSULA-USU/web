@@ -20,7 +20,7 @@ export const media = (key: keyof typeof breakpoints) => {
 };
 
 export const Spaces: {
-  [_ in Exclude<Sizes, '2xs' | '4xl' | '5xl'>]: string;
+  [_ in Exclude<Sizes, '2xs' | '4xl' | '5xl' | '6xl'>]: string;
 } = {
   zero: '0px',
   xs: '4px',
@@ -43,6 +43,7 @@ export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
   '3xl': '48px',
   '4xl': '54px',
   '5xl': '72px',
+  '6xl': '96px',
 } as const;
 
 export const Colors = {

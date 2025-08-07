@@ -91,6 +91,11 @@ const ImageGrid = styled.div`
   }
 `;
 
+const YellowGlow = styled.span`
+  color: ${Colors.primary};
+  text-shadow: 0 4px 40px rgba(255, 206, 4, 0.5);
+`;
+
 export default function UKrew() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
@@ -108,9 +113,7 @@ export default function UKrew() {
   return (
     <Page>
       <Head>
-        <title>
-          U-Krew | Student Jobs at Cal State LA University-Student Union
-        </title>
+        <title>U-Krew</title>
         <meta
           name="description"
           content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
@@ -118,7 +121,7 @@ export default function UKrew() {
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="Cal State LA, California State University Los Angeles, CSULA, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
+          content="Cal State LA, California State University Los Angeles, CSULA, campus jobs, student union, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -153,18 +156,22 @@ export default function UKrew() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeaderWithVideo
-        desktopSrc={OPSHeroVideo}
-        mobileSrc={MobileOPSHeroVideo}
-      />
-      <FluidContainer>
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
-          What is U&ndash;Krew?
-        </Typography>
-      </FluidContainer>
+      <HeaderWithVideo desktopSrc={OPSHeroVideo} mobileSrc={MobileOPSHeroVideo}>
+        <h1>
+          <Typography variant="titleLargest" color="white">
+            We put the <YellowGlow>us</YellowGlow>
+          </Typography>
+          <Typography variant="titleLargest" color="white">
+            in
+          </Typography>
+        </h1>
+      </HeaderWithVideo>
       <FluidContainer>
         <DescriptionSection>
           <FluidContainer padding="0">
+            <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+              U&ndash;Krew
+            </Typography>
             <Typography
               as="h3"
               variant="labelTitle"
@@ -193,7 +200,7 @@ export default function UKrew() {
               size={isMobile ? 'sm' : 'lg'}
               lineHeight="1.2"
             >
-              Working with U-Krew isn&apos;t just a job; it&apos;s an
+              Working with U&ndash;Krew isn&apos;t just a job; it&apos;s an
               opportunity to develop real&ndash;world skills, build lasting
               friendships, gain confidence, and make a meaningful impact on your
               fellow students&apos; campus experience.
@@ -246,7 +253,6 @@ export default function UKrew() {
           </Card>
         ))}
       </FluidContainer>
-
       <FluidContainer>
         <div id="positions">
           <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
@@ -260,13 +266,11 @@ export default function UKrew() {
           selectedTabKey={selectedTab}
           onSelectTab={setSelectedTab}
         />
-
         <PositionsDescriptions
           data={positions}
           filterByDepartment={departmentTabs[selectedTab]}
         />
       </FluidContainer>
-
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Student Stories
@@ -275,7 +279,6 @@ export default function UKrew() {
       <FluidContainer>
         <ImageCardCarousel stories={stories} />
       </FluidContainer>
-
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           U&ndash;Awards
@@ -348,7 +351,6 @@ export default function UKrew() {
           </FluidContainer>
         </DescriptionSection>
       </FluidContainer>
-
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Directory
@@ -415,7 +417,6 @@ export default function UKrew() {
             </DirectorySquares> */}
         </DirectorySection>
       </FluidContainer>
-
       <FluidContainer
         flex
         justify-content="space-between"
