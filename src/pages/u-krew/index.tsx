@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Page, HeaderWithVideo } from 'modules';
+import { Page } from 'modules';
 
 export default function UKrew() {
   return (
@@ -14,7 +14,6 @@ export default function UKrew() {
         <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeaderWithVideo playbackID="N5VjsPqN5InBMEEBTLXNHT3iP02j01m00eQ5eZGOWWXUP00" />
     </Page>
   );
 }

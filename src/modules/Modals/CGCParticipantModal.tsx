@@ -29,6 +29,7 @@ interface ParticipantModalProps {
   acknowledgement?: string;
   img?: string;
 }
+const FixedModal = Modal as unknown as React.FC<any>;
 
 const CertificateContainer = styled.div<{ hasAcknowledgement?: string }>`
   justify-content: space-between;
@@ -160,7 +161,7 @@ export const CGCParticipantModal = ({
             }`}</Typography>
             <PiArrowSquareInFill size="24" style={{ height: '28px' }} />
           </Participant>
-          <Modal
+          <FixedModal
             isOpen={showModal}
             onRequestClose={closeModal}
             contentLabel="participant modal"
@@ -290,7 +291,7 @@ export const CGCParticipantModal = ({
                 )}
               </InfoContainer>
             </ModalContainer>
-          </Modal>
+          </FixedModal>
         </>
       ) : (
         <>
@@ -308,7 +309,7 @@ export const CGCParticipantModal = ({
                 : ''
             }`}</Typography>
           </Button>
-          <Modal
+          <FixedModal
             isOpen={showModal}
             onRequestClose={closeModal}
             contentLabel="participant modal"
@@ -450,7 +451,7 @@ export const CGCParticipantModal = ({
                 )}
               </InfoContainer>
             </ModalContainer>
-          </Modal>
+          </FixedModal>
         </>
       )}
     </>

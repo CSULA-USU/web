@@ -1,28 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { layout, space, LayoutProps } from 'styled-system';
-
-import { ElementType, ReactNode } from 'react';
-import { CSSObject } from 'styled-components';
-import { SpaceProps } from 'styled-system';
+import styled, { CSSObject } from 'styled-components';
+import { layout, space, LayoutProps, SpaceProps } from 'styled-system';
+import { ReactNode } from 'react';
 
 export interface BaseComponentProps
   extends SpaceProps,
     Partial<Pick<HTMLElement, 'title' | 'id' | 'tabIndex'>> {
-  as?: ElementType;
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   children?: ReactNode;
   className?: string;
   'data-qa'?: string;
   role?: string;
   style?: CSSObject;
 }
-
-export const StyledImage = styled.img<ImageProps>`
-  border-radius: ${(p) => (p.round ? `50%` : p.borderRadius || 0)};
-  ${layout}
-  ${space}
-`;
 
 export interface ImageProps extends BaseComponentProps, LayoutProps {
   alt: string;
@@ -35,6 +26,12 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   round?: boolean;
   lazy?: boolean;
 }
+
+export const StyledImage = styled('img')<ImageProps>`
+  border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
+  ${layout}
+  ${space}
+`;
 
 export const Image: FC<ImageProps> = ({
   alt,
@@ -53,9 +50,14 @@ export const Image: FC<ImageProps> = ({
   }, [src]);
 
   const handleError = () => {
-    placeholder && setImageSrc(placeholder);
-    onError && onError();
+    if (placeholder) setImageSrc(placeholder);
+    onError?.();
   };
+
+  // Filter out any null values to satisfy strict types (e.g., height, width)
+  const filteredProps = Object.fromEntries(
+    Object.entries(rest).filter(([_, v]) => v != null),
+  );
 
   return (
     <StyledImage
@@ -64,8 +66,8 @@ export const Image: FC<ImageProps> = ({
       sizes={sizes}
       src={imageSrc}
       srcSet={srcset}
-      {...rest}
       loading={lazy ? 'lazy' : 'eager'}
+      {...filteredProps}
     />
   );
 };
