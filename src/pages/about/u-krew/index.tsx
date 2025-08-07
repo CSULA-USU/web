@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import { Page, Header } from 'modules';
-import { ImageCardCarousel } from 'modules/ImageCardCarousel/ImageCardCarousel';
+import { useState } from 'react';
 import {
   FluidContainer,
   Typography,
@@ -10,16 +9,17 @@ import {
   Button,
   StyledLink,
 } from 'components';
+import { Page, HeaderWithVideo, ImageCardCarousel } from 'modules';
 import styled from 'styled-components';
 import { Colors, Spaces, media } from 'theme';
 import { useBreakpoint } from 'hooks';
 import UKrewData from 'data/aboutUKrew.json';
-import { useState } from 'react';
 import {
   PositionsDescriptions,
   TabClusterControlled,
 } from 'modules/UKrewCardList';
-
+import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
+import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
 const { cards, stories, positions } = UKrewData;
 
 const DescriptionSection = styled.div`
@@ -153,13 +153,10 @@ export default function UKrew() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        title="U-Krew"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
-      >
-        u-krew page filler
-      </Header>
-
+      <HeaderWithVideo
+        desktopSrc={OPSHeroVideo}
+        mobileSrc={MobileOPSHeroVideo}
+      />
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           What is U&ndash;Krew?

@@ -17,6 +17,7 @@ export * from './Header';
 export * from './HeaderWithImage';
 export * from './HeaderWithVideo';
 export * from './ImageAndCard';
+export * from './ImageCardCarousel';
 export * from './ImagelessEventsGrid';
 export * from './ImageWithinCard';
 export * from './LogosDisplay';
