@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import {
-  FluidContainer,
-  Typography,
-  Image,
-  Card,
-  NonBreakingSpan,
   Button,
+  Card,
+  FluidContainer,
+  Image,
+  NonBreakingSpan,
   StyledLink,
+  Typography,
+  WordCycler,
 } from 'components';
 import { Page, HeaderWithVideo, ImageCardCarousel } from 'modules';
 import styled from 'styled-components';
@@ -69,6 +70,15 @@ const DirectorySquares = styled.button`
   }
 `;
 
+const HeroButtonContainer = styled.div`
+  display: flex;
+  gap: ${Spaces.lg};
+  margin-top: ${Spaces.xl};
+`;
+
+const HeroDescriptionContainer = styled.div`
+  max-width: 680px;
+`;
 const ImageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -98,6 +108,28 @@ const YellowGlow = styled.span`
 
 export default function UKrew() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const [selectedTab, setSelectedTab] = useState('All');
+
+  const listOfCycledWords = [
+    <Typography variant="titleLargest" color="white" key="campus">
+      camp<YellowGlow>us</YellowGlow>
+    </Typography>,
+    <Typography variant="titleLargest" color="white" key="campus">
+      <YellowGlow>u-s</YellowGlow>u
+    </Typography>,
+    <Typography variant="titleLargest" color="white" key="campus">
+      incl<YellowGlow>us</YellowGlow>ive
+    </Typography>,
+    <Typography variant="titleLargest" color="white" key="campus">
+      j<YellowGlow>us</YellowGlow>tice
+    </Typography>,
+    <Typography variant="titleLargest" color="white" key="campus">
+      curio<YellowGlow>us</YellowGlow>
+    </Typography>,
+    <Typography variant="titleLargest" color="white" key="campus">
+      ambitio<YellowGlow>us</YellowGlow>
+    </Typography>,
+  ];
 
   const departmentTabs: { [key: string]: string } = {
     All: 'All',
@@ -108,12 +140,11 @@ export default function UKrew() {
     Operations: 'Operations',
     Recreation: 'Recreation',
   };
-  const [selectedTab, setSelectedTab] = useState('All');
 
   return (
     <Page>
       <Head>
-        <title>U-Krew</title>
+        <title>U&ndash;Krew</title>
         <meta
           name="description"
           content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
@@ -157,26 +188,36 @@ export default function UKrew() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderWithVideo desktopSrc={OPSHeroVideo} mobileSrc={MobileOPSHeroVideo}>
-        <h1>
-          <Typography variant="titleLargest" color="white">
-            We put the <YellowGlow>us</YellowGlow>
-          </Typography>
-          <Typography variant="titleLargest" color="white">
-            in
-          </Typography>
-        </h1>
+        <FluidContainer flex flexDirection="column">
+          <h1>
+            <Typography variant="titleLargest" color="white">
+              We put the <YellowGlow>us</YellowGlow>
+            </Typography>
+            <Typography variant="titleLargest" color="white">
+              in
+            </Typography>
+            <WordCycler words={listOfCycledWords} animation="slideDown" />
+          </h1>
+          <HeroDescriptionContainer>
+            <Typography variant="span" color="white" size="lg" lineHeight="1">
+              U&ndash;Krew is our dedicated team of student staff who keep the
+              University&ndash;Student Union at Cal State LA running.
+            </Typography>
+          </HeroDescriptionContainer>
+          <HeroButtonContainer>
+            <Button variant="grey">Employment</Button>
+            <Button variant="whiteOutline">Directory</Button>
+          </HeroButtonContainer>
+        </FluidContainer>
       </HeaderWithVideo>
       <FluidContainer>
         <DescriptionSection>
           <FluidContainer padding="0">
-            <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
-              U&ndash;Krew
-            </Typography>
             <Typography
-              as="h3"
-              variant="labelTitle"
+              as="h2"
+              variant="title"
               weight="700"
-              size={isMobile ? 'md' : '2xl'}
+              size={isMobile ? 'lg' : '3xl'}
               lineHeight="1.2"
               margin="0 0 18px 0"
             >
@@ -212,55 +253,61 @@ export default function UKrew() {
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg"
               alt="Operations assistant fixing light"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg"
               alt="Student providing clerical support"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg"
               alt="Student setting up for an event"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg"
               alt="Student operating audio-visual equipment"
+              lazy
             />
           </ImageGrid>
         </DescriptionSection>
       </FluidContainer>
-
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           We&apos;re Looking For
         </Typography>
-      </FluidContainer>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {cards.map(({ iconSrc, iconAlt, title, children }) => (
-          <Card
-            key={title}
-            title={title}
-            iconSrc={iconSrc}
-            iconAlt={iconAlt}
-            topBorder
-            width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
-            margin="16px 8px"
-            iconWidth="112px"
-          >
-            {children}
-          </Card>
-        ))}
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="0"
+        >
+          {cards.map(({ iconSrc, iconAlt, title, children }) => (
+            <Card
+              key={title}
+              title={title}
+              iconSrc={iconSrc}
+              iconAlt={iconAlt}
+              topBorder
+              width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
+              margin="16px 8px"
+              iconWidth="112px"
+            >
+              {children}
+            </Card>
+          ))}
+        </FluidContainer>
       </FluidContainer>
       <FluidContainer>
-        <div id="positions">
+        <span id="positions">
           <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
             Positions
           </Typography>
-        </div>
-      </FluidContainer>
-      <FluidContainer>
+        </span>
         <TabClusterControlled
           tabItems={Object.keys(departmentTabs)}
           selectedTabKey={selectedTab}
@@ -272,11 +319,14 @@ export default function UKrew() {
         />
       </FluidContainer>
       <FluidContainer>
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+        <Typography
+          variant="title"
+          as="h2"
+          size={isMobile ? 'lg' : '3xl'}
+          margin={isMobile ? '' : `0 0 ${Spaces.lg} 0`}
+        >
           Student Stories
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <ImageCardCarousel stories={stories} />
       </FluidContainer>
       <FluidContainer>
@@ -355,12 +405,10 @@ export default function UKrew() {
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Directory
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <Typography
           variant="labelTitle"
           weight="700"
-          size={isMobile ? 'md' : '2xl'}
+          size={isMobile ? 'md' : 'xl'}
           lineHeight="1.2"
         >
           Connect with current and former U&ndash;Krew members. Build your

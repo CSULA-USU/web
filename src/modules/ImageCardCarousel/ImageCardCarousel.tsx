@@ -169,6 +169,7 @@ export const ImageCardCarousel = ({ stories }: ImageCardCarouselProps) => {
               <ProfileImage
                 src={stories[index].image}
                 alt={stories[index].name}
+                loading="lazy"
               />
             </ImageWrapper>
             <TextWrapper>
