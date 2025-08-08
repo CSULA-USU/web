@@ -74,6 +74,9 @@ const HeroButtonContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
   margin-top: ${Spaces.xl};
+  ${media('mobile')(`
+    margin-top: ${Spaces.lg};
+  `)};
 `;
 
 const HeroDescriptionContainer = styled.div`
@@ -107,26 +110,62 @@ const YellowGlow = styled.span`
 `;
 
 export default function UKrew() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
   const [selectedTab, setSelectedTab] = useState('All');
 
   const listOfCycledWords = [
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       camp<YellowGlow>us</YellowGlow>
     </Typography>,
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       <YellowGlow>u-s</YellowGlow>u
     </Typography>,
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       incl<YellowGlow>us</YellowGlow>ive
     </Typography>,
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       j<YellowGlow>us</YellowGlow>tice
     </Typography>,
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       curio<YellowGlow>us</YellowGlow>
     </Typography>,
-    <Typography variant="titleLargest" color="white" key="campus">
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+    >
       ambitio<YellowGlow>us</YellowGlow>
     </Typography>,
   ];
@@ -190,23 +229,39 @@ export default function UKrew() {
       <HeaderWithVideo desktopSrc={OPSHeroVideo} mobileSrc={MobileOPSHeroVideo}>
         <FluidContainer flex flexDirection="column">
           <h1>
-            <Typography variant="titleLargest" color="white">
-              We put the <YellowGlow>us</YellowGlow>
+            <Typography
+              variant="titleLargest"
+              color="white"
+              size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+              lineHeight={isMini ? '1' : '1.2'}
+            >
+              We put the <YellowGlow>us</YellowGlow> in
             </Typography>
-            <Typography variant="titleLargest" color="white">
-              in
-            </Typography>
-            <WordCycler words={listOfCycledWords} animation="slideDown" />
+            <WordCycler
+              words={listOfCycledWords}
+              animation="slideUp"
+              interval={4000}
+            />
           </h1>
           <HeroDescriptionContainer>
-            <Typography variant="span" color="white" size="lg" lineHeight="1">
-              U&ndash;Krew is our dedicated team of student staff who keep the
-              University&ndash;Student Union at Cal State LA running.
+            <Typography
+              variant="span"
+              color="white"
+              size={isMobile ? 'sm' : 'lg'}
+              lineHeight={isDesktop ? '1' : '1.5'}
+            >
+              U&ndash;Krew is our dedicated team of student staff who keep the{' '}
+              <NonBreakingSpan>University&ndash;Student Union</NonBreakingSpan>{' '}
+              at <NonBreakingSpan>Cal State LA</NonBreakingSpan> running.
             </Typography>
           </HeroDescriptionContainer>
           <HeroButtonContainer>
-            <Button variant="grey">Employment</Button>
-            <Button variant="whiteOutline">Directory</Button>
+            <Button variant="grey" href="/employment">
+              Apply
+            </Button>
+            <Button variant="whiteOutline" href="#directory">
+              Directory
+            </Button>
           </HeroButtonContainer>
         </FluidContainer>
       </HeaderWithVideo>
@@ -221,10 +276,10 @@ export default function UKrew() {
               lineHeight="1.2"
               margin="0 0 18px 0"
             >
-              The Heart of Student Union Operations
+              U&ndash;Krew: The Heart of Student Union Operations
             </Typography>
             <Typography
-              margin="24px 0"
+              margin={isMobile ? '0 0 24px 0' : '0 0 36px 0'}
               as="p"
               variant="span"
               size={isMobile ? 'sm' : 'lg'}
@@ -235,7 +290,6 @@ export default function UKrew() {
               everything we do.
             </Typography>
             <Typography
-              margin="24px 0"
               as="p"
               variant="span"
               size={isMobile ? 'sm' : 'lg'}
@@ -247,7 +301,6 @@ export default function UKrew() {
               fellow students&apos; campus experience.
             </Typography>
           </FluidContainer>
-
           <ImageGrid>
             <Image
               className="square-image"
@@ -335,12 +388,11 @@ export default function UKrew() {
         </Typography>
         <DescriptionSection>
           <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards.webp"
             alt="Staff recieving his award."
             width="100%"
             maxWidth={isDesktop ? '100%' : '500px'}
             height="auto"
-            borderRadius="12px"
             lazy
           />
           <FluidContainer backgroundColor="greyLightest">
@@ -400,7 +452,7 @@ export default function UKrew() {
           </FluidContainer>
         </DescriptionSection>
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer id="directory">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Directory
         </Typography>

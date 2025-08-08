@@ -139,3 +139,5 @@ export const WordCycler = ({
     </AnimatedSpan>
   );
 };
+
+// see use case in about/u-krew home page

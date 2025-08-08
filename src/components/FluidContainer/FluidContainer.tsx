@@ -83,6 +83,7 @@ interface FluidContainerProps extends FluidInnerProps {
   padding?: string;
   width?: string;
   height?: string;
+  id?: string;
 }
 
 export const FluidContainer = ({
