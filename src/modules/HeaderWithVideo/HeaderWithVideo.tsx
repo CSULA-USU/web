@@ -44,6 +44,7 @@ export const HeaderWithVideo = ({
         muted
         loop
         playsInline
+        poster="https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.png?time=23&fit_mode=preserve"
         preload="metadata"
         onError={(e) => console.error('Video error:', e)}
       />
