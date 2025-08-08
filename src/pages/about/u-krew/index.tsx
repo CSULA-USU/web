@@ -276,7 +276,7 @@ export default function UKrew() {
           </ImageGrid>
         </DescriptionSection>
       </FluidContainer>
-      <FluidContainer>
+      <FluidContainer backgroundColor="greyLightest">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           We&apos;re Looking For
         </Typography>
@@ -333,8 +333,6 @@ export default function UKrew() {
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           U&ndash;Awards
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <DescriptionSection>
           <Image
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
@@ -343,8 +341,9 @@ export default function UKrew() {
             maxWidth={isDesktop ? '100%' : '500px'}
             height="auto"
             borderRadius="12px"
+            lazy
           />
-          <FluidContainer padding="0">
+          <FluidContainer backgroundColor="greyLightest">
             <FluidContainer padding="0">
               <Typography
                 variant="labelTitle"
