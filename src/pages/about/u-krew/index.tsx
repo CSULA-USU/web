@@ -73,14 +73,18 @@ const DirectorySquares = styled.button`
 const HeroButtonContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
-  margin-top: ${Spaces.xl};
+  margin-top: ${Spaces.md};
   ${media('mobile')(`
     margin-top: ${Spaces.lg};
+    
   `)};
 `;
 
 const HeroDescriptionContainer = styled.div`
   max-width: 680px;
+  ${media('mobile')(`
+    margin-top: ${Spaces.lg};
+  `)};
 `;
 const ImageGrid = styled.div`
   display: grid;
@@ -120,6 +124,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       camp<YellowGlow>us</YellowGlow>
     </Typography>,
@@ -129,6 +134,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       <YellowGlow>u-s</YellowGlow>u
     </Typography>,
@@ -138,6 +144,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       incl<YellowGlow>us</YellowGlow>ive
     </Typography>,
@@ -147,6 +154,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       j<YellowGlow>us</YellowGlow>tice
     </Typography>,
@@ -156,6 +164,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       curio<YellowGlow>us</YellowGlow>
     </Typography>,
@@ -165,6 +174,7 @@ export default function UKrew() {
       key="campus"
       size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
       lineHeight={isMobile ? '1' : ''}
+      as="h1"
     >
       ambitio<YellowGlow>us</YellowGlow>
     </Typography>,
@@ -226,23 +236,26 @@ export default function UKrew() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeaderWithVideo desktopSrc={OPSHeroVideo} mobileSrc={MobileOPSHeroVideo}>
+      <HeaderWithVideo
+        desktopSrc={OPSHeroVideo}
+        mobileSrc={MobileOPSHeroVideo}
+        thumbnail="https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.png?time=23&fit_mode=preserve"
+      >
         <FluidContainer flex flexDirection="column">
-          <h1>
-            <Typography
-              variant="titleLargest"
-              color="white"
-              size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
-              lineHeight={isMini ? '1' : '1.2'}
-            >
-              We put the <YellowGlow>us</YellowGlow> in
-            </Typography>
-            <WordCycler
-              words={listOfCycledWords}
-              animation="slideUp"
-              interval={4000}
-            />
-          </h1>
+          <Typography
+            variant="titleLargest"
+            color="white"
+            size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+            lineHeight={isMini ? '1' : '1.2'}
+            as="h1"
+          >
+            We put the <YellowGlow>us</YellowGlow> in
+          </Typography>
+          <WordCycler
+            words={listOfCycledWords}
+            animation="slideUp"
+            interval={4000}
+          />
           <HeroDescriptionContainer>
             <Typography
               variant="span"

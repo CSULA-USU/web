@@ -6,6 +6,7 @@ interface HeaderWithVideoProps {
   children?: React.ReactNode;
   desktopSrc: any;
   mobileSrc?: any;
+  thumbnail?: string;
 }
 
 const VideoContainer = styled.div`
@@ -32,9 +33,11 @@ export const HeaderWithVideo = ({
   children,
   desktopSrc,
   mobileSrc,
+  thumbnail,
 }: HeaderWithVideoProps) => {
   const { isTablet } = useBreakpoint();
   const videoSrc = isTablet ? mobileSrc : desktopSrc;
+
   return (
     <VideoContainer>
       <Video
@@ -43,8 +46,8 @@ export const HeaderWithVideo = ({
         autoPlay
         muted
         loop
+        poster={thumbnail}
         playsInline
-        poster="https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.png?time=23&fit_mode=preserve"
         preload="metadata"
         onError={(e) => console.error('Video error:', e)}
       />
