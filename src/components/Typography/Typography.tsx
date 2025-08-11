@@ -47,6 +47,12 @@ const styles = {
     lineHeight: FontSizes['3xl'],
     fontFamily: serif,
   },
+  titleLargest: {
+    size: '6xl',
+    weight: '700',
+    lineHeight: FontSizes['6xl'],
+    textTransform: 'uppercase',
+  },
   title: { size: '2xl', weight: '700' },
   titleSmall: {
     size: 'xl',

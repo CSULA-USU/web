@@ -1,15 +1,15 @@
 // pages/_document.js
 import Document, {
-  DocumentContext,
-  DocumentInitialProps,
   Html,
   Head,
   Main,
   NextScript,
+  DocumentContext,
+  DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext,
   ): Promise<DocumentInitialProps> {
@@ -18,9 +18,11 @@ class MyDocument extends Document {
 
     try {
       ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+        (originalRenderPage as any)({
+          enhanceApp: (App: any) =>
+            function EnhancedApp(props: any) {
+              return sheet.collectStyles(<App {...props} />);
+            },
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -69,5 +71,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;

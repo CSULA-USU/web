@@ -1,26 +1,27 @@
 import Head from 'next/head';
-import { Page, Header } from 'modules';
-import { ImageCardCarousel } from 'modules/ImageCardCarousel/ImageCardCarousel';
+import { useState } from 'react';
 import {
-  FluidContainer,
-  Typography,
-  Image,
-  Card,
-  NonBreakingSpan,
   Button,
-  StyledLink,
+  Card,
   CountUp,
+  FluidContainer,
+  Image,
+  NonBreakingSpan,
+  StyledLink,
+  Typography,
+  WordCycler,
 } from 'components';
+import { Page, HeaderWithVideo, ImageCardCarousel } from 'modules';
 import styled from 'styled-components';
 import { Colors, Spaces, media } from 'theme';
 import { useBreakpoint } from 'hooks';
 import UKrewData from 'data/aboutUKrew.json';
-import { useState } from 'react';
 import {
   PositionsDescriptions,
   TabClusterControlled,
 } from 'modules/UKrewCardList';
-
+import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
+import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
 const { cards, stories, positions } = UKrewData;
 
 const DescriptionSection = styled.div`
@@ -70,6 +71,22 @@ const DirectorySquares = styled.button`
   }
 `;
 
+const HeroButtonContainer = styled.div`
+  display: flex;
+  gap: ${Spaces.lg};
+  margin-top: ${Spaces.md};
+  ${media('mobile')(`
+    margin-top: ${Spaces.lg};
+    
+  `)};
+`;
+
+const HeroDescriptionContainer = styled.div`
+  max-width: 680px;
+  ${media('mobile')(`
+    margin-top: ${Spaces.lg};
+  `)};
+`;
 const ImageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -92,8 +109,77 @@ const ImageGrid = styled.div`
   }
 `;
 
+const YellowGlow = styled.span`
+  color: ${Colors.primary};
+  text-shadow: 0 4px 40px rgba(255, 206, 4, 0.5);
+`;
+
 export default function UKrew() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
+  const [selectedTab, setSelectedTab] = useState('All');
+
+  const listOfCycledWords = [
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      camp<YellowGlow>us</YellowGlow>
+    </Typography>,
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      <YellowGlow>u-s</YellowGlow>u
+    </Typography>,
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      incl<YellowGlow>us</YellowGlow>ive
+    </Typography>,
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      j<YellowGlow>us</YellowGlow>tice
+    </Typography>,
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      curio<YellowGlow>us</YellowGlow>
+    </Typography>,
+    <Typography
+      variant="titleLargest"
+      color="white"
+      key="campus"
+      size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+      lineHeight={isMobile ? '1' : ''}
+      as="h1"
+    >
+      ambitio<YellowGlow>us</YellowGlow>
+    </Typography>,
+  ];
 
   const departmentTabs: { [key: string]: string } = {
     All: 'All',
@@ -104,14 +190,11 @@ export default function UKrew() {
     Operations: 'Operations',
     Recreation: 'Recreation',
   };
-  const [selectedTab, setSelectedTab] = useState('All');
 
   return (
     <Page>
       <Head>
-        <title>
-          U-Krew | Student Jobs at Cal State LA University-Student Union
-        </title>
+        <title>U&ndash;Krew</title>
         <meta
           name="description"
           content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
@@ -119,7 +202,7 @@ export default function UKrew() {
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="Cal State LA, California State University Los Angeles, CSULA, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
+          content="Cal State LA, California State University Los Angeles, CSULA, campus jobs, student union, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -154,33 +237,63 @@ export default function UKrew() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header
-        title="U-Krew"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
+      <HeaderWithVideo
+        desktopSrc={OPSHeroVideo}
+        mobileSrc={MobileOPSHeroVideo}
+        thumbnail="https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.png?time=23&fit_mode=preserve"
       >
-        u-krew page filler
-      </Header>
-
-      <FluidContainer>
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
-          What is U&ndash;Krew?
-        </Typography>
-      </FluidContainer>
+        <FluidContainer flex flexDirection="column">
+          <Typography
+            variant="titleLargest"
+            color="white"
+            size={isDesktop ? (isMini ? 'xl' : '4xl') : '6xl'}
+            lineHeight={isMini ? '1' : '1.2'}
+            as="h1"
+          >
+            We put the <YellowGlow>us</YellowGlow> in
+          </Typography>
+          <WordCycler
+            words={listOfCycledWords}
+            animation="slideUp"
+            interval={4000}
+          />
+          <HeroDescriptionContainer>
+            <Typography
+              variant="span"
+              color="white"
+              size={isMobile ? 'sm' : 'lg'}
+              lineHeight={isDesktop ? '1' : '1.5'}
+            >
+              U&ndash;Krew is our dedicated team of student staff who keep the{' '}
+              <NonBreakingSpan>University&ndash;Student Union</NonBreakingSpan>{' '}
+              at <NonBreakingSpan>Cal State LA</NonBreakingSpan> running.
+            </Typography>
+          </HeroDescriptionContainer>
+          <HeroButtonContainer>
+            <Button variant="grey" href="/employment">
+              Apply
+            </Button>
+            <Button variant="whiteOutline" href="#directory">
+              Directory
+            </Button>
+          </HeroButtonContainer>
+        </FluidContainer>
+      </HeaderWithVideo>
       <FluidContainer>
         <DescriptionSection>
           <FluidContainer padding="0">
             <Typography
-              as="h3"
-              variant="labelTitle"
+              as="h2"
+              variant="title"
               weight="700"
-              size={isMobile ? 'md' : '2xl'}
+              size={isMobile ? 'lg' : '3xl'}
               lineHeight="1.2"
               margin="0 0 18px 0"
             >
-              The Heart of Student Union Operations
+              U&ndash;Krew: The Heart of Student Union Operations
             </Typography>
             <Typography
-              margin="24px 0"
+              margin={isMobile ? '0 0 24px 0' : '0 0 36px 0'}
               as="p"
               variant="span"
               size={isMobile ? 'sm' : 'lg'}
@@ -191,111 +304,112 @@ export default function UKrew() {
               everything we do.
             </Typography>
             <Typography
-              margin="24px 0"
               as="p"
               variant="span"
               size={isMobile ? 'sm' : 'lg'}
               lineHeight="1.2"
             >
-              Working with U-Krew isn&apos;t just a job; it&apos;s an
+              Working with U&ndash;Krew isn&apos;t just a job; it&apos;s an
               opportunity to develop real&ndash;world skills, build lasting
               friendships, gain confidence, and make a meaningful impact on your
               fellow students&apos; campus experience.
             </Typography>
           </FluidContainer>
-
           <ImageGrid>
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg"
               alt="Operations assistant fixing light"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg"
               alt="Student providing clerical support"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg"
               alt="Student setting up for an event"
+              lazy
             />
             <Image
               className="square-image"
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg"
               alt="Student operating audio-visual equipment"
+              lazy
             />
           </ImageGrid>
         </DescriptionSection>
       </FluidContainer>
-
-      <FluidContainer>
+      <FluidContainer backgroundColor="greyLightest">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           We&apos;re Looking For
         </Typography>
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="0"
+        >
+          {cards.map(({ iconSrc, iconAlt, title, children }) => (
+            <Card
+              key={title}
+              title={title}
+              iconSrc={iconSrc}
+              iconAlt={iconAlt}
+              topBorder
+              width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
+              margin="16px 8px"
+              iconWidth="112px"
+            >
+              {children}
+            </Card>
+          ))}
+        </FluidContainer>
       </FluidContainer>
-      <FluidContainer flex flexWrap="wrap" justifyContent="center">
-        {cards.map(({ iconSrc, iconAlt, title, children }) => (
-          <Card
-            key={title}
-            title={title}
-            iconSrc={iconSrc}
-            iconAlt={iconAlt}
-            topBorder
-            width={isDesktop ? '100%' : 'calc(33.33% - 24px)'}
-            margin="16px 8px"
-            iconWidth="112px"
-          >
-            {children}
-          </Card>
-        ))}
-      </FluidContainer>
-
       <FluidContainer>
-        <div id="positions">
+        <span id="positions">
           <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
             Positions
           </Typography>
-        </div>
-      </FluidContainer>
-      <FluidContainer>
+        </span>
         <TabClusterControlled
           tabItems={Object.keys(departmentTabs)}
           selectedTabKey={selectedTab}
           onSelectTab={setSelectedTab}
         />
-
         <PositionsDescriptions
           data={positions}
           filterByDepartment={departmentTabs[selectedTab]}
         />
       </FluidContainer>
-
       <FluidContainer>
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+        <Typography
+          variant="title"
+          as="h2"
+          size={isMobile ? 'lg' : '3xl'}
+          margin={isMobile ? '' : `0 0 ${Spaces.lg} 0`}
+        >
           Student Stories
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <ImageCardCarousel stories={stories} />
       </FluidContainer>
-
       <FluidContainer>
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           U&ndash;Awards
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <DescriptionSection>
           <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards.webp"
             alt="Staff recieving his award."
             width="100%"
             maxWidth={isDesktop ? '100%' : '500px'}
             height="auto"
-            borderRadius="12px"
+            lazy
           />
-          <FluidContainer padding="0">
+          <FluidContainer backgroundColor="greyLightest">
             <FluidContainer padding="0">
               <Typography
                 variant="labelTitle"
@@ -352,17 +466,14 @@ export default function UKrew() {
           </FluidContainer>
         </DescriptionSection>
       </FluidContainer>
-
-      <FluidContainer>
+      <FluidContainer id="directory">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Directory
         </Typography>
-      </FluidContainer>
-      <FluidContainer>
         <Typography
           variant="labelTitle"
           weight="700"
-          size={isMobile ? 'md' : '2xl'}
+          size={isMobile ? 'md' : 'xl'}
           lineHeight="1.2"
         >
           Connect with current and former U&ndash;Krew members. Build your
@@ -419,7 +530,6 @@ export default function UKrew() {
             </DirectorySquares> */}
         </DirectorySection>
       </FluidContainer>
-
       <FluidContainer
         flex
         justify-content="space-between"

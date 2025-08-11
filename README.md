@@ -1,11 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Prerequisites
+
+- [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm)
+- [Yarn](https://yarnpkg.com/)
+
 ## Getting Started
 
 First, install packages
 
 ```bash
 yarn
+```
+
+Then, use the correct version of node:
+
+```bash
+nvm use
 ```
 
 Then, run the development server:

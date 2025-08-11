@@ -1,0 +1,23 @@
+{
+  "status": "ready",
+  "originalFilePath": "videos/mobile-u-krew-header-video.mp4",
+  "provider": "mux",
+  "providerMetadata": {
+    "mux": {
+      "uploadId": "YuA2ZkeFdAJZ7nGmfIpvnbFtSo5bhuNX1eFhHiCSNNw",
+      "assetId": "x1UvARin1jaudhbaBhoV9sdslO5Bj00k016JCpXTyYxfQ",
+      "playbackId": "01W4NeBFLjmpH029RcfvA1JQUuEzsX3jsnCSJSBKq02lpo"
+    }
+  },
+  "createdAt": 1754444467337,
+  "updatedAt": 1754444475044,
+  "size": 7296091,
+  "sources": [
+    {
+      "src": "https://stream.mux.com/01W4NeBFLjmpH029RcfvA1JQUuEzsX3jsnCSJSBKq02lpo.m3u8",
+      "type": "application/x-mpegURL"
+    }
+  ],
+  "poster": "https://image.mux.com/01W4NeBFLjmpH029RcfvA1JQUuEzsX3jsnCSJSBKq02lpo/thumbnail.webp",
+  "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQABAAAQAcJZwCdAEQTUgdl2+AAP7+wXkdBA5Z96fnouJeFuuyMQet7kgDAu0FCO0jqtNtdKW33pkY7aRb1GcQ/ahSQiv4kdjCGD8qrNvTdIuGgAA="
+}
