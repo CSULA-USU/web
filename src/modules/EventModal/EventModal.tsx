@@ -15,6 +15,7 @@ interface EventModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
+const FixedModal = Modal as unknown as React.FC<any>;
 
 const desktopCustomStyles = {
   overlay: { zIndex: 100 },
@@ -136,7 +137,7 @@ export const EventModal = ({
   const year = getYear(startDateTimeUtc);
 
   return (
-    <Modal
+    <FixedModal
       role="dialog"
       contentLabel="Event Details"
       isOpen={isOpen}
@@ -197,6 +198,6 @@ export const EventModal = ({
         </Typography>
       </Main>
       {/* <ShareLink></ShareLink> */}
-    </Modal>
+    </FixedModal>
   );
 };

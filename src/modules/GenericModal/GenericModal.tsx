@@ -11,6 +11,7 @@ interface GenericModalProps {
   width?: string;
   onRequestClose: () => void;
 }
+const FixedModal = Modal as unknown as React.FC<any>;
 
 const CloseButton = styled.button`
   background: transparent;
@@ -78,13 +79,17 @@ export const GenericModal = ({
   }, [isOpen]);
 
   return (
-    <Modal isOpen={isOpen} style={customStyles} onRequestClose={onRequestClose}>
+    <FixedModal
+      isOpen={isOpen}
+      style={customStyles}
+      onRequestClose={onRequestClose}
+    >
       <CloseButtonContainer>
         <CloseButton onClick={onRequestClose} aria-label="close">
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
       <Main width={width}>{children}</Main>
-    </Modal>
+    </FixedModal>
   );
 };
