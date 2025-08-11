@@ -26,7 +26,10 @@
       {
         "text": "U-Krew",
         "href": "/u-krew",
-        "sub": [{ "text": "Directory", "href": "/u-krew/directory" }]
+        "sub": [
+          { "text": "U-Krew Home", "href": "/about/u-krew" },
+          { "text": "Directory", "href": "/u-krew/directory" }
+        ]
       }
     ]
   },

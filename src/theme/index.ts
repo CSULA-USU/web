@@ -20,7 +20,7 @@ export const media = (key: keyof typeof breakpoints) => {
 };
 
 export const Spaces: {
-  [_ in Exclude<Sizes, '2xs' | '4xl' | '5xl'>]: string;
+  [_ in Exclude<Sizes, '2xs' | '4xl' | '5xl' | '6xl'>]: string;
 } = {
   zero: '0px',
   xs: '4px',
@@ -43,21 +43,23 @@ export const FontSizes: { [_ in Exclude<Sizes, 'zero'>]: string } = {
   '3xl': '48px',
   '4xl': '54px',
   '5xl': '72px',
+  '6xl': '96px',
 } as const;
 
 export const Colors = {
-  primary: '#FFCE04',
-  gold: '#8C6A14',
+  primary: '#ffce04',
+  gold: '#8c6a14',
   black: '#000000',
   greyDarkest: '#2b2b2b',
   greyDarker: '#323232',
-  greyDark: '#6E6E6E',
+  greyDark: '#6e6e6e',
   grey: '#757575',
-  greyLighter: '#DEDEDE',
-  greyLightest: '#F4F4F4',
-  white: '#FFFFFF',
+  greyLighter: '#dedede',
+  greyLightest: '#f4f4f4',
+  white: '#ffffff',
   transparent: 'transparent',
-  nuestraOrange: '#F4951C',
-  blackMauve: '#52284F',
-  nativeBeige: '#C6BA98',
+  nuestraOrange: '#f4951c',
+  blackMauve: '#52284f',
+  nativeBeige: '#c6ba98',
+  pastelYellow: '#fef9c3',
 } as const;

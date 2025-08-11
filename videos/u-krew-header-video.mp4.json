@@ -1,0 +1,23 @@
+{
+  "status": "ready",
+  "originalFilePath": "videos/u-krew-header-video.mp4",
+  "provider": "mux",
+  "providerMetadata": {
+    "mux": {
+      "uploadId": "J8vkOpY005tDQYrZBZFj5iimsmDNcVHF7eQqd02pEgZbM",
+      "assetId": "HTnoMl00cRXaprt5HKmVQR7fV00adcvgRSXbBTcRs401wE",
+      "playbackId": "5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ"
+    }
+  },
+  "createdAt": 1754325116036,
+  "updatedAt": 1754325493877,
+  "size": 47132616,
+  "sources": [
+    {
+      "src": "https://stream.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ.m3u8",
+      "type": "application/x-mpegURL"
+    }
+  ],
+  "poster": "https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.webp",
+  "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoQAAkAAQAcJZwCdAEVvM2QgNVAAP7/Dzj8ciAu+5P2YUZPM8DqIuIRZId3K921g8Q4O7Q47eZGJALIYjg8fAAA"
+}

@@ -20,7 +20,7 @@ export async function parseAndExtractFormData(req: IncomingMessage) {
             const parsedRequest = JSON.parse(rawRequest);
 
             resolve({ submissionID, parsedRequest });
-          } catch (error) {
+          } catch {
             reject(new Error('Error parsing rawRequest JSON'));
           }
         }

@@ -1,13 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import {
-  Button,
-  FluidContainer,
-  Image,
-  NonBreakingSpan,
-  Typography,
-} from 'components';
+// import styled from 'styled-components';
+import { FluidContainer, NonBreakingSpan, Typography } from 'components';
 import {
   EventHeader,
   ModUpcomingEvents,
@@ -19,7 +13,7 @@ import {
 import { useRecoilValue } from 'recoil';
 import { eventListState, eventListStatusState } from 'atoms';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
+// import { Spaces } from 'theme';
 import featuredEvents from 'data/featured-events.json';
 
 const images = [
@@ -49,23 +43,23 @@ const images = [
   },
 ];
 
-const ButtonContainer = styled.div`
-  margin-top: ${Spaces['sm']};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  ./ > *:not(:last-child) {
-    margin-right: 8px;
-  }
-  column-gap: ${Spaces.md};
-  row-gap: ${Spaces.md};
-`;
+// const ButtonContainer = styled.div`
+//   margin-top: ${Spaces['sm']};
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   ./ > *:not(:last-child) {
+//     margin-right: 8px;
+//   }
+//   column-gap: ${Spaces.md};
+//   row-gap: ${Spaces.md};
+// `;
 
 export default function Home() {
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (eventsStatus != 'undefined') {
@@ -76,42 +70,39 @@ export default function Home() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>University&ndash;Student Union</title>
       </Head>
-      {loading ? (
+      {/* {loading ? (
         <></>
-      ) : events.length > 0 ? (
-        <>
-          <EventHeader
-            loading={loading}
-            subheaderText={
-              isMobile
-                ? 'California State, Los Angeles'
-                : 'California State University, Los Angeles'
-            }
-            title={isMobile ? 'U-SU' : 'University-Student Union'}
-            featuredEvent={events[0]}
-          />
-          {!loading && eventsStatus == 'failed' ? (
-            <Typography as="h3" variant="label">
-              Resources failed to load. Please try refreshing your page.
-            </Typography>
-          ) : (
-            <>
-              {/* Toggle the line below if there is a promotion. */}
-              {/* <BoardOfDirectorsCTAPromotion /> */}
+      ) : events.length > 0 ? ( */}
+      <>
+        <EventHeader
+          loading={loading}
+          subheaderText={
+            isMobile
+              ? 'California State, Los Angeles'
+              : 'California State University, Los Angeles'
+          }
+          title={isMobile ? 'U-SU' : 'University-Student Union'}
+          featuredEvent={events[0]}
+        />
+        {!loading && eventsStatus == 'failed' ? (
+          <Typography as="h3" variant="label">
+            Resources failed to load. Please try refreshing your page.
+          </Typography>
+        ) : (
+          <>
+            {/* Toggle the line below if there is a promotion. */}
+            {/* <BoardOfDirectorsCTAPromotion /> */}
 
-              {featuredEvents.length >= 1 ? (
-                <FeaturedEvents
-                  events={events}
-                  featuredEvents={featuredEvents}
-                />
-              ) : null}
-              <ModUpcomingEvents loading={loading} events={events} />
-            </>
-          )}
-        </>
-      ) : (
+            {featuredEvents.length >= 1 ? (
+              <FeaturedEvents events={events} featuredEvents={featuredEvents} />
+            ) : null}
+            <ModUpcomingEvents loading={loading} events={events} />
+          </>
+        )}
+      </>
+      {/* ) : (
         <>
           <FluidContainer
             flex
@@ -243,7 +234,7 @@ export default function Home() {
             </FluidContainer>
           </FluidContainer>
         </>
-      )}
+      )} */}
       {/* Toggle the line below if there is a promotion. */}
       <CallToActionImages
         title={
