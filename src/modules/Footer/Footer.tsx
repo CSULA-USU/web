@@ -97,7 +97,7 @@ export const Footer = () => (
           tabIndex={0}
         >
           <Image
-            src="/logos/calstatela.png"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-logo.webp"
             alt="Cal State LA Homepage"
             width="250"
             height="40"
