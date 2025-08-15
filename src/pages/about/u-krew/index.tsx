@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   Button,
   Card,
+  CountUp,
   FluidContainer,
   Image,
   NonBreakingSpan,
@@ -578,14 +579,16 @@ export default function UKrew() {
             alignItems="center"
             justifyContent="center"
           >
-            <Typography
+            <CountUp
+              end={80}
+              duration={3000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
               color="primary"
-            >
-              80+
-            </Typography>
+              showPlus
+              format={(n) => n.toLocaleString()}
+            />
             <Typography
               as="h3"
               variant="span"
@@ -603,14 +606,15 @@ export default function UKrew() {
             alignItems="center"
             justifyContent="center"
           >
-            <Typography
+            <CountUp
+              end={6}
+              duration={3000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
               color="primary"
-            >
-              6
-            </Typography>
+              format={(n) => n.toLocaleString()}
+            />
             <Typography
               as="h3"
               variant="span"
@@ -628,14 +632,15 @@ export default function UKrew() {
             alignItems="center"
             justifyContent="center"
           >
-            <Typography
+            <CountUp
+              end={50}
+              duration={3000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
               color="primary"
-            >
-              50
-            </Typography>
+              format={(n) => n.toLocaleString()}
+            />
             <Typography
               as="h3"
               variant="span"

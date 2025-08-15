@@ -2,6 +2,7 @@ export * from './Announcement';
 export * from './Button';
 export * from './Card';
 export * from './Carousel';
+export * from './CountUp';
 export * from './DescriptionCard';
 export * from './Divider';
 export * from './EventsLoader';
