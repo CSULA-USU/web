@@ -17,6 +17,7 @@ const ButtonBackground = styled.button`
   bottom: 46px;
   right: 46px;
   transition: background-color 0.3s ease-in-out;
+  z-index: 99;
 
   &:hover {
     background-color: ${Colors.black};
