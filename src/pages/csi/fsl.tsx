@@ -22,8 +22,9 @@ import {
 } from 'components';
 import fslData from 'data/fsl-full-content.json';
 import staff from 'data/staff.json';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
+import { Modal } from 'modules/UKrewCardList';
 
 const {
   chapters,
@@ -110,7 +111,7 @@ const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
 const HeroContainer = styled.section`
   position: relative;
   width: 100%;
-  height: 84vh;
+  height: 84.5vh;
   min-height: 600px;
   overflow: hidden;
   display: flex;
@@ -120,7 +121,7 @@ const HeroContainer = styled.section`
 
 const BackgroundImage = styled(Image)`
   position: absolute;
-  top: 0;
+  top: -25px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -143,11 +144,11 @@ const Overlay = styled.div`
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(255, 255, 255, 0.75) 50%,
-    rgba(255, 255, 255, 0.9) 100%
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.7) 100%
   );
-  z-index: 2;
+  z-index: 1;
 `;
 
 const ContentWrapper = styled.div`
@@ -166,20 +167,11 @@ const ContentWrapper = styled.div`
 const TitleImage = styled(Image)`
   max-width: 100%;
   height: auto;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
 
   filter: drop-shadow(2px 4px 12px rgba(0, 0, 0, 0.25))
     drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.8));
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    margin-bottom: 1rem;
-  }
 `;
 
 const TitleContainer = styled.div`
@@ -254,7 +246,7 @@ const LogoCropWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 140px;
+    max-height: 250px;
     margin-bottom: 1.5rem;
   }
 
@@ -315,14 +307,6 @@ const ContactsBarWrapper = styled.ul`
   }
 `;
 
-const DescriptionWrapper = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  min-height: 200px; /* adjust as needed for balance */
-`;
-
 const CrestImageWrapper = styled.div`
   width: 100%;
   height: 120px; /* consistent height */
@@ -338,12 +322,36 @@ const CrestImageWrapper = styled.div`
   }
 `;
 
+const ChaptersGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${Spaces.sm};
+  margin: ${Spaces.md} 0;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const ChapterCardWrapper = styled.div`
+  cursor: pointer;
+  width: 100%;
+`;
+
+const CrestImageContainer = styled.div`
+  width: 100%;
+  height: 160px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  min-height: 500px; /* or adjust as needed */
+  align-items: center;
+  justify-content: center;
+  img {
+    max-height: 100%;
+    object-fit: contain;
+  }
 `;
 
 interface ContactsBarProps {
@@ -363,7 +371,9 @@ const ContactsBar = ({ children, isMobile, isDesktop }: ContactsBarProps) => {
 };
 
 export default function FSL() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState<any | null>(null);
 
   return (
     <Page>
@@ -388,28 +398,33 @@ export default function FSL() {
 
       <HeroContainer>
         <BackgroundImage
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nO2sN9zZzneJFfWIiEHIpRS2BqomCh.png"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/fsl-header.webp"
           alt="Cal State LA Fraternity and Sorority students"
         />
         <Overlay />
         <ContentWrapper>
           <TitleContainer>
             <LogoCropWrapper>
-              <TitleImage
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png"
-                alt="Fraternity & Sorority Life - California State University, Los Angeles"
-              />
+              <h1>
+                <TitleImage
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png"
+                  alt="Fraternity & Sorority Life - California State University, Los Angeles"
+                />
+              </h1>
             </LogoCropWrapper>
           </TitleContainer>
-          <TitleContainer>
-            <FluidContainer flex flexDirection="column" gap="24px">
-              <Typography as="h2" variant="subheader" weight="600">
-                The fraternity and sorority community at California State
-                University, Los Angeles has been a vibrant and engaged community
-                since 1948.
-              </Typography>
-            </FluidContainer>
-          </TitleContainer>
+          <FluidContainer
+            flex
+            flexDirection="column"
+            padding="0 0 80px 0"
+            innerMaxWidth="800px"
+          >
+            <Typography as="h2" variant="subheader" weight="600">
+              The fraternity and sorority community at California State
+              University, Los Angeles has been a vibrant and engaged community
+              since 1948.
+            </Typography>
+          </FluidContainer>
           <ButtonGroup>
             <Button
               href="https://www.instagram.com/calstatelagreeks/?hl=en"
@@ -418,7 +433,9 @@ export default function FSL() {
             >
               Join Our Community
             </Button>
-            <Button variant="black">Learn More</Button>
+            <Button variant="black" href="#learn-more">
+              Learn More
+            </Button>
           </ButtonGroup>
         </ContentWrapper>
       </HeroContainer>
@@ -456,6 +473,7 @@ export default function FSL() {
       </ContactsBar>
 
       {/* Drop-Down Menus */}
+      <div id="learn-more"></div>
       <TabCluster tabItems={NavItems}>
         {/* About Us*/}
         <TabPanel>
@@ -475,36 +493,53 @@ export default function FSL() {
             </Typography>
           </FluidContainer>
           {/* MISSION */}
-          <FluidContainer flex flexDirection="column" alignItems="flex-start">
-            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Our Mission
-            </Typography>
-            <Typography as="p" variant="copy">
-              The Center for Student Involvement empowers Golden Eagles to
-              engage in transformative opportunities, build community, and
-              create positive change.
-            </Typography>
-          </FluidContainer>
+          <FluidContainer
+            flex
+            flexDirection="row"
+            padding="0"
+            alignItems="flex-start"
+          >
+            <FluidContainer flex flexDirection="column" alignItems="flex-start">
+              <Typography
+                as="h2"
+                variant="title"
+                size={isMobile ? 'xl' : '2xl'}
+              >
+                Our Mission
+              </Typography>
+              <Typography as="p" variant="copy">
+                The Center for Student Involvement empowers Golden Eagles to
+                engage in transformative opportunities, build community, and
+                create positive change.
+              </Typography>
+            </FluidContainer>
 
-          {/* VALUES */}
-          <FluidContainer flex flexDirection="column" alignItems="flex-start">
-            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Our Values
-            </Typography>
-            <Typography as="p" variant="copy">
-              Fraternities and sororities offer an enriching college experience
-              that helps students grow into leaders, develop valuable social
-              skills, and stay committed to academics and community service.
-            </Typography>
-            <Typography as="p" variant="copy">
-              Joining a fraternity or sorority is more than just a college club
-              or organization—it&apos;s a lifelong connection that continues to
-              open doors and build friendships long after graduation.
-            </Typography>
-            <Typography as="p" variant="copy">
-              At Cal State LA, membership is centered around four key pillars of
-              fraternity and sorority life:
-            </Typography>
+            {/* VALUES */}
+            <FluidContainer flex flexDirection="column" alignItems="flex-start">
+              <Typography
+                as="h2"
+                variant="title"
+                size={isMobile ? 'xl' : '2xl'}
+              >
+                Our Values
+              </Typography>
+              <Typography as="p" variant="copy">
+                Fraternities and sororities offer an enriching college
+                experience that helps students grow into leaders, develop
+                valuable social skills, and stay committed to academics and
+                community service.
+              </Typography>
+              <Typography as="p" variant="copy">
+                Joining a fraternity or sorority is more than just a college
+                club or organization—it&apos;s a lifelong connection that
+                continues to open doors and build friendships long after
+                graduation.
+              </Typography>
+              <Typography as="p" variant="copy">
+                At Cal State LA, membership is centered around four key pillars
+                of fraternity and sorority life:
+              </Typography>
+            </FluidContainer>
           </FluidContainer>
 
           {/* Pillars Accordian */}
@@ -718,69 +753,50 @@ export default function FSL() {
                       <Typography variant="titleSmall"> {item}</Typography>
                     }
                   >
-                    <FluidContainer
-                      flex
-                      justifyContent="center"
-                      flexWrap="wrap"
-                    >
+                    <ChaptersGrid>
                       {obj[item].map((p: any) => (
-                        <ChapterCardWrapper key={p.name}>
-                          <Card
-                            rounded
-                            title={p.name}
-                            width={
-                              isMobile
-                                ? '100%'
-                                : isTablet
-                                ? 'calc(45%)'
-                                : 'calc(33.33% - 8px)'
+                        <ChapterCardWrapper
+                          key={p.name}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => {
+                            setSelectedChapter(p);
+                            setIsModalOpen(true);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedChapter(p);
+                              setIsModalOpen(true);
                             }
-                            margin={`0 ${Spaces.xs} ${Spaces.sm}`}
+                          }}
+                        >
+                          <FluidContainer
+                            flex
+                            flexDirection="column"
+                            alignItems="center"
+                            padding="16px"
+                            backgroundColor="white"
                           >
-                            <CrestImageWrapper>
+                            <CrestImageContainer>
                               <Image
                                 src={p.crest}
                                 alt={`${p.name} crest`}
                                 width="auto"
                                 height="auto"
                               />
-                            </CrestImageWrapper>
-
-                            <DescriptionWrapper>
-                              <Typography as="span">
-                                <strong>Values: </strong>
-                                {p.values.map((value: string, idx: number) => (
-                                  <span key={`val-${idx}`}>{value} </span>
-                                ))}
-                                <br />
-                                <strong>Founding: </strong>
-                                {p.founding}
-                                <br />
-                                {p.communityService && (
-                                  <Typography as="span">
-                                    <strong>Community Service:</strong>
-                                    {p.communityService.map(
-                                      (service: string, idx: number) => (
-                                        <span key={`cs-${idx}`}>
-                                          {service}{' '}
-                                        </span>
-                                      ),
-                                    )}
-                                  </Typography>
-                                )}
-                                <strong>Colors:</strong>
-                                {p.colors.map((color: string, idx: number) => (
-                                  <span key={`color-${idx}`}>{color} </span>
-                                ))}
-                                <br />
-                                <strong>Symbol:</strong>
-                                {p.symbol}
-                              </Typography>
-                            </DescriptionWrapper>
-                          </Card>
+                            </CrestImageContainer>
+                            <Typography
+                              as="h3"
+                              variant="titleSmall"
+                              margin="16px 0 0"
+                            >
+                              {p.name}
+                            </Typography>
+                          </FluidContainer>
                         </ChapterCardWrapper>
                       ))}
-                    </FluidContainer>
+                    </ChaptersGrid>
                   </Expandable>
                   <Divider margin={`${Spaces.md} 0`} />
                 </>
@@ -788,6 +804,73 @@ export default function FSL() {
             )}
           </FluidContainer>
         </TabPanel>
+
+        {isModalOpen && selectedChapter && (
+          <Modal
+            isOpen={isModalOpen}
+            onClose={() => {
+              setIsModalOpen(false);
+              setSelectedChapter(null);
+            }}
+          >
+            <FluidContainer flex flexDirection="column" gap="24px">
+              <FluidContainer
+                flex
+                flexDirection="row"
+                justifyContent="space-between"
+                padding="0"
+              >
+                <CrestImageWrapper>
+                  <Image
+                    src={selectedChapter.crest}
+                    alt={`${selectedChapter.name} crest`}
+                    width="auto"
+                    height="auto"
+                  />
+                </CrestImageWrapper>
+                <FluidContainer
+                  flex
+                  alignItems="center"
+                  flexDirection="column"
+                  padding="0"
+                >
+                  <Typography variant="titleSmall">
+                    {selectedChapter.fullName?.trim() || selectedChapter.name}
+                  </Typography>
+                </FluidContainer>
+              </FluidContainer>
+              <FluidContainer padding="0">
+                <Typography as="span">
+                  <strong>Values: </strong>
+                  {selectedChapter.values.map((value: string, idx: number) => (
+                    <span key={`val-${idx}`}>{value} </span>
+                  ))}
+                  <br />
+                  <strong>Founding: </strong>
+                  {selectedChapter.founding}
+                  <br />
+                  {selectedChapter.communityService && (
+                    <>
+                      <strong>Community Service:</strong>{' '}
+                      {selectedChapter.communityService.map(
+                        (service: string, idx: number) => (
+                          <span key={`cs-${idx}`}>{service} </span>
+                        ),
+                      )}
+                      <br />
+                    </>
+                  )}
+                  <strong>Colors:</strong>{' '}
+                  {selectedChapter.colors.map((color: string, idx: number) => (
+                    <span key={`color-${idx}`}>{color} </span>
+                  ))}
+                  <br />
+                  <strong>Symbol:</strong> {selectedChapter.symbol}
+                </Typography>
+              </FluidContainer>
+            </FluidContainer>
+          </Modal>
+        )}
 
         {/* How to Join */}
         <TabPanel>

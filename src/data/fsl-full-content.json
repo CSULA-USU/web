@@ -168,7 +168,8 @@
     {
       "Co-Ed": [
         {
-          "name": "Delta Sigma Chi Co-Ed Fraternity",
+          "name": "Delta Sigma Chi",
+          "fullName": "Delta Sigma Chi Co-Ed Fraternity",
           "crest": "/departments/csi/fsl/dsc.png",
           "values": [
             "Brotherhood, Sisterhood, Community, Service, Scholarship"
@@ -219,7 +220,8 @@
           "symbol": "Lion"
         },
         {
-          "name": "Sigma Lambda Beta International Fraternity",
+          "name": "Sigma Lambda Beta",
+          "fullName": "Sigma Lambda Beta International Fraternity",
           "crest": "/departments/csi/fsl/slb.png",
           "values": [
             "Brotherhood",
