@@ -107,15 +107,15 @@ export const Footer = () => (
           <FooterUnorderedList>
             <li>
               <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-                Summer Building Hours
+                Building Hours
               </Typography>
             </li>
             <StyledLinkMargins>
               <Typography color="white" size="sm">
-                Monday to Friday: 7 AM to 7 PM
+                Monday to Thursday: 7 AM to 10 PM
               </Typography>
             </StyledLinkMargins>
-            {/* <StyledLinkMargins>
+            <StyledLinkMargins>
               <Typography color="white" size="sm">
                 Friday: 7 AM to 8 PM
               </Typography>
@@ -124,21 +124,21 @@ export const Footer = () => (
               <Typography color="white" size="sm">
                 Saturday: 7 AM to 3 PM
               </Typography>
-            </StyledLinkMargins> */}
+            </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="white" size="sm">
-                Saturday & Sunday: Closed
+                Sunday: Closed
               </Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={
-                    'https://www.dropbox.com/scl/fi/ay4j0punhu09nb1s5ruy3/2025-Summer-Hours.pdf?rlkey=8b8zb21wc39uqnk8m66n6jhvl&st=vh88vivd&raw=1'
+                    'https://www.dropbox.com/scl/fi/32f2ttnx421m6f8p0w47c/fall-2025-hours.docx?rlkey=dghcrwg3rf2w63gw2ks9ghxm1&st=4ljddxow&raw=1'
                   }
                   isExternalLink
                 >
-                  2025 Summer Building Hours
+                  2025 Fall Schedule
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
