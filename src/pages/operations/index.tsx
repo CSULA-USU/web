@@ -1,16 +1,11 @@
-import { Page } from 'modules';
+import { HeaderWithVideo, Page } from 'modules';
 import Head from 'next/head';
-import {
-  Button,
-  Card,
-  FluidContainer,
-  Typography,
-  Image,
-  NonBreakingSpan,
-} from 'components';
-import { Spaces, Colors } from 'theme';
+import { Button, Card, FluidContainer, Typography, Image } from 'components';
+import { Spaces, media } from 'theme';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
+import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
+import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
 
 const PDFDescriptionContainer = styled.div`
   display: flex;
@@ -36,61 +31,23 @@ const ImageContainer = styled.div`
   height: 10%;
 `;
 
-const HeaderContainer = styled.div`
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-  box-shadow: none;
-  background-color: ${Colors.black};
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-image: url('/departments/operations/videos/ops-loop.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    filter: blur(4px);
-    z-index: 1;
-  }
+const HeroDescriptionContainer = styled.div`
+  max-width: 680px;
+  ${media('mobile')(`
+    margin-top: ${Spaces.lg};
+  `)};
 `;
 
-const InnerHeaderContainer = styled.div`
-  width: 50%;
-  text-align: center;
+const HeroButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+  gap: ${Spaces.lg};
+  margin-top: ${Spaces.md};
+  ${media('mobile')(`
+    flex-direction: column;
+    margin: ${Spaces.lg} ${Spaces['xl']};
+  `)};
 `;
 
-const InnerButtonContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: ${Spaces.sm};
-`;
-
-const MobileHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: ${Spaces.md};
-  background-color: ${Colors.black};
-`;
 const OperationsPDFDescriptions = (props: any) => {
   return (
     <PDFDescriptionContainer>
@@ -197,7 +154,7 @@ const pdfDescriptionCards = [
 
 export default function Operations() {
   const { returnByBreakpoint } = useBreakpoint();
-  const { isMobile } = useBreakpoint();
+  const { isMini, isMobile, isDesktop } = useBreakpoint();
   const cardWidth = returnByBreakpoint({
     tablet: '100%',
     desktop: 'calc(50% - 32px)',
@@ -213,65 +170,42 @@ export default function Operations() {
           key="keywords"
         />
       </Head>
-      {isMobile ? (
-        <MobileHeaderContainer>
+      <HeaderWithVideo
+        desktopSrc={OPSHeroVideo}
+        mobileSrc={MobileOPSHeroVideo}
+        thumbnail="https://image.mux.com/5006jkrbON0102GtWswHvULvNts6fBCS1HngiHL011spHuQ/thumbnail.png?time=23&fit_mode=preserve"
+      >
+        <FluidContainer flex flexDirection="column">
           <Typography
-            variant="pageHeader"
+            variant="titleLargest"
             color="white"
+            size={isDesktop ? (isMini ? 'xl' : '3xl') : '6xl'}
+            lineHeight={isMini ? '1' : '1.2'}
             as="h1"
-            margin={`${Spaces.md} 0`}
-            size={isMobile ? 'xl' : '4xl'}
           >
             Operations & Reservations
           </Typography>
-          <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
-            {' '}
-            The Operations Team consists of five divisions: building
-            maintenance, building services, custodial services, media services,
-            and union meeting and event services.
-          </Typography>
-          <InnerButtonContainer>
-            {buttons.map((button) => (
-              <Button href={button.href} variant="grey" key={button.text}>
-                <NonBreakingSpan>{button.text}</NonBreakingSpan>
-              </Button>
-            ))}
-          </InnerButtonContainer>
-        </MobileHeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <InnerHeaderContainer>
+          <HeroDescriptionContainer>
             <Typography
-              variant="pageHeader"
+              variant="span"
               color="white"
-              as="h1"
-              margin={`${Spaces.md} 0`}
+              size={isMobile ? 'sm' : 'lg'}
+              lineHeight={isDesktop ? '1' : '1.5'}
             >
-              Operations and Reservations
-            </Typography>
-            <Typography color="white" as="p" margin={`${Spaces.md} 0`}>
-              {' '}
               The Operations Team consists of five divisions: building
               maintenance, building services, custodial services, media
               services, and union meeting and event services.
             </Typography>
-            <InnerButtonContainer>
-              <NonBreakingSpan>
-                {buttons.map((button) => (
-                  <Button
-                    href={button.href}
-                    variant="grey"
-                    margin={`0 ${Spaces.sm}`}
-                    key={button.text}
-                  >
-                    <NonBreakingSpan>{button.text}</NonBreakingSpan>
-                  </Button>
-                ))}
-              </NonBreakingSpan>
-            </InnerButtonContainer>
-          </InnerHeaderContainer>
-        </HeaderContainer>
-      )}
+          </HeroDescriptionContainer>
+          <HeroButtonContainer>
+            {buttons.map((button) => (
+              <Button key={button.href} variant="grey" href={button.href}>
+                {button.text}
+              </Button>
+            ))}
+          </HeroButtonContainer>
+        </FluidContainer>
+      </HeaderWithVideo>
       <FluidContainer justifyContent="center">
         <TextCenter>
           <Typography variant="title" as="h2">
