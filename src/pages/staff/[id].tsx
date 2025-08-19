@@ -177,12 +177,11 @@ export default function StaffBusinessCard() {
                 <Image
                   src={staffData.src}
                   alt="" // or alt={staffData.name} if not decorative
-                  fill // or width={112} height={112}
                   style={{ objectFit: 'cover', objectPosition: 'top' }}
-                  sizes="112px"
+                  width={112}
+                  height={112}
                   priority // if you want to preload
                   aria-hidden
-                  unoptimized
                 />
               )}
             </ProfileImageContainer>
