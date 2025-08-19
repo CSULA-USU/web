@@ -28,7 +28,7 @@ export default function Staff() {
   return (
     <Page>
       <Head>
-        <title>U-SU Staff</title>
+        <title>U&ndash;SU Staff</title>
         <meta
           name="author"
           content="University-Student Union, Cal State LA"
