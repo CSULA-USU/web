@@ -182,6 +182,7 @@ export default function StaffBusinessCard() {
                   sizes="112px"
                   priority // if you want to preload
                   aria-hidden
+                  unoptimized
                 />
               )}
             </ProfileImageContainer>
