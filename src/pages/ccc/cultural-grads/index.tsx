@@ -1,7 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Image from 'next/image';
+import { Image } from 'components';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
@@ -154,7 +154,7 @@ export default function CulturalGrads() {
                 style={{ objectFit: 'scale-down' }}
                 width={100}
                 height={100}
-                loading="lazy"
+                lazy
               />
             </GradButtonContainer>
           ))}

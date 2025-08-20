@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import { Image } from 'components';
 import { Button, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
