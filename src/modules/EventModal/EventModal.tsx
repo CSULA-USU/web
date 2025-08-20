@@ -1,5 +1,5 @@
 import { Divider, Typography } from 'components';
-import Image from 'next/image';
+import { Image } from 'components';
 import { useEffect } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Modal from 'react-modal';
@@ -164,7 +164,7 @@ export const EventModal = ({
           height={0}
           sizes="100vw"
           style={{ width: '100%', height: 'auto', marginBottom: '24px' }}
-          loading="lazy"
+          lazy
         />
         <Typography as="h2" variant="cta">
           {organizationName}

@@ -22,7 +22,6 @@ import {
 } from 'modules/UKrewCardList';
 import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
 import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
-const { cards, stories, positions } = UKrewData;
 
 const DescriptionSection = styled.div`
   display: flex;
@@ -71,6 +70,18 @@ const DirectorySquares = styled.button`
   }
 `;
 
+const ImageGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .square-image {
+    width: 100%;
+    height: auto;
+    max-width: 480px;
+  }
+`;
+
 const HeroButtonContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
@@ -87,27 +98,6 @@ const HeroDescriptionContainer = styled.div`
     margin-top: ${Spaces.lg};
   `)};
 `;
-const ImageGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  justify-items: center;
-  width: 100%;
-
-  .square-image {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: 12px;
-  }
-
-  @media screen and (min-width: 1025px) {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-`;
 
 const YellowGlow = styled.span`
   color: ${Colors.primary};
@@ -115,6 +105,7 @@ const YellowGlow = styled.span`
 `;
 
 export default function UKrew() {
+  const { cards, stories, positions } = UKrewData;
   const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
   const [selectedTab, setSelectedTab] = useState('All');
 
@@ -318,26 +309,8 @@ export default function UKrew() {
           <ImageGrid>
             <Image
               className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg"
-              alt="Operations assistant fixing light"
-              lazy
-            />
-            <Image
-              className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg"
-              alt="Student providing clerical support"
-              lazy
-            />
-            <Image
-              className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg"
-              alt="Student setting up for an event"
-              lazy
-            />
-            <Image
-              className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg"
-              alt="Student operating audio-visual equipment"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/U-Krew-Grid.webp"
+              alt="Operations collage showing maintenance, clerical support, building services, and media services"
               lazy
             />
           </ImageGrid>
@@ -402,11 +375,14 @@ export default function UKrew() {
         </Typography>
         <DescriptionSection>
           <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards.webp"
-            alt="Staff recieving his award."
-            width="100%"
-            maxWidth={isDesktop ? '100%' : '500px'}
-            height="auto"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-800.webp"
+            srcset="
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-500.webp 500w,
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-800.webp 800w,
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-1200.webp 1200w
+  "
+            sizes="(min-width:1025px) 500px, 100vw"
+            alt="Staff receiving his award."
             lazy
           />
           <FluidContainer backgroundColor="greyLightest">

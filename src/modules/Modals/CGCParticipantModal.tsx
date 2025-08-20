@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import { Image } from 'components';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import { Button, Typography } from '../../components';

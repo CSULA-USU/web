@@ -4,6 +4,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, Spaces, media } from 'theme';
 
+const sized = (src: string, size: 300 | 600) =>
+  src.replace(/(-300|-600)?(\.\w+)$/, `-${size}$2`);
+
 const CarouselWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -166,11 +169,20 @@ export const ImageCardCarousel = ({ stories }: ImageCardCarouselProps) => {
         <Card>
           <LeftColumn>
             <ImageWrapper>
-              <ProfileImage
-                src={stories[index].image}
-                alt={stories[index].name}
-                loading="lazy"
-              />
+              {(() => {
+                const base = stories[index].image ?? '';
+                const src300 = sized(base, 300);
+                const src600 = sized(base, 600);
+                return (
+                  <ProfileImage
+                    src={src300}
+                    srcSet={`${src300} 300w, ${src600} 600w`}
+                    sizes="(min-width:768px) 300px, 80vw"
+                    alt={stories[index].name}
+                    loading="lazy"
+                  />
+                );
+              })()}
             </ImageWrapper>
             <TextWrapper>
               <Typography variant="labelTitleSmall" weight="400" as="p">
