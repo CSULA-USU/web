@@ -78,8 +78,7 @@ const ImageGrid = styled.div`
   .square-image {
     width: 100%;
     height: auto;
-    max-width: 480px; /* prevents it from blowing up on desktop */
-    border-radius: 12px;
+    max-width: 480px;
   }
 `;
 
