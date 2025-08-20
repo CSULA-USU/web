@@ -2,7 +2,7 @@ import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
-import Image from 'next/image';
+import { Image } from 'components';
 import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
@@ -106,7 +106,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           width={0}
           height={0}
           sizes="100vw"
-          loading="lazy"
+          lazy
           style={{ width: '100%', height: 'auto' }}
           aria-hidden="true"
         />

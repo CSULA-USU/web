@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Image } from 'components';
 import styled from 'styled-components';
 import {
   Divider,

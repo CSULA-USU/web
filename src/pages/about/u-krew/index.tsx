@@ -310,7 +310,7 @@ export default function UKrew() {
           <ImageGrid>
             <Image
               className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/U-Krew-Grid.webp"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/U-Krew-Grid.webp"
               alt="Operations collage showing maintenance, clerical support, building services, and media services"
               lazy
             />
@@ -378,9 +378,9 @@ export default function UKrew() {
           <Image
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-800.webp"
             srcset="
-    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-500.webp 500w,
-    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-800.webp 800w,
-    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-1200.webp 1200w
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-500.webp 500w,
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-800.webp 800w,
+    https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/awards-1200.webp 1200w
   "
             sizes="(min-width:1025px) 500px, 100vw"
             alt="Staff receiving his award."

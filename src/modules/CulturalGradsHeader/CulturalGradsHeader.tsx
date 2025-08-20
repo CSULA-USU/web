@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import { Image } from 'components';
 import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { FluidContainer, Typography } from 'components';
@@ -254,7 +254,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
                       width: 'auto',
                       marginRight: '4px',
                     }}
-                    loading={i < 5 ? 'eager' : 'lazy'}
+                    lazy
                   />
                 ))}
             </SlideshowContent>

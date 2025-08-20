@@ -59,7 +59,7 @@ export const CallToActionImages = ({
           >
             <Image
               className="square-image"
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/U-Krew-Grid.webp"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/U-Krew-Grid.webp"
               alt="Operations collage showing maintenance, clerical support, building services, and media services"
               width="480"
               lazy
