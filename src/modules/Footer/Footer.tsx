@@ -111,24 +111,20 @@ export const Footer = () => (
               </Typography>
             </li>
             <StyledLinkMargins>
-              <Typography color="white" size="sm">
-                Monday to Thursday: 7 AM to 10 PM
-              </Typography>
+              <Typography color="white">Monday to Thursday</Typography>
+              <Typography color="white">7 AM to 10 PM</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white" size="sm">
-                Friday: 7 AM to 8 PM
-              </Typography>
+              <Typography color="white">Friday</Typography>
+              <Typography color="white">7 AM to 8 PM</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white" size="sm">
-                Saturday: 7 AM to 3 PM
-              </Typography>
+              <Typography color="white">Saturday</Typography>
+              <Typography color="white">7 AM to 3 PM</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white" size="sm">
-                Sunday: Closed
-              </Typography>
+              <Typography color="white">Sunday</Typography>
+              <Typography color="white">Closed</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
@@ -206,7 +202,7 @@ export const Footer = () => (
 
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'/governance/public-documents'}>
+                <StyledLink href={'/board-of-directors/public-documents'}>
                   View Public Documents
                 </StyledLink>
               </Typography>
