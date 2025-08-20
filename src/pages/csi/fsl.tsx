@@ -398,7 +398,7 @@ export default function FSL() {
 
       <HeroContainer>
         <BackgroundImage
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/fsl-header.webp"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
           alt="Cal State LA Fraternity and Sorority students"
         />
         <Overlay />
