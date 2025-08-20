@@ -76,5 +76,104 @@
         "iconAlt": ""
       }
     ]
+  },
+  "home": {
+    "cards": [
+      {
+        "title": "Major Expansion",
+        "alt": "students exercising in rec 2",
+        "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-treadmill-mobile.webp",
+        "desktopSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-treadmill-desktop.webp",
+        "tabletSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-treadmill-tablet.webp"
+      },
+      {
+        "title": "Strength Equipment",
+        "alt": "students working out using the bench press",
+        "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-bench-mobile.webp",
+        "desktopSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-bench-desktop.webp",
+        "tabletSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-bench-tablet.webp"
+      },
+      {
+        "title": "Floor Exercises",
+        "alt": "students performing floor exercises",
+        "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-floor-mobile.webp",
+        "desktopSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-floor-desktop.webp",
+        "tabletSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-floor-tablet.webp"
+      }
+    ],
+    "locations": [
+      {
+        "title": "Rec 1",
+        "location": "U-SU Basement",
+        "hours": [
+          {
+            "day": "Monday to Thursday",
+            "time": "7:10 AM to 9:45 PM"
+          },
+          {
+            "day": "Friday",
+            "time": "7:10 AM to 7:45 PM"
+          },
+          {
+            "day": "Saturday",
+            "time": "7:10 AM to 2:45 PM"
+          },
+          {
+            "day": "Sunday",
+            "time": "Closed"
+          }
+        ]
+      },
+      {
+        "title": "Rec 2",
+        "location": "U-SU Basement",
+        "hours": [
+          {
+            "day": "Monday to Thursday",
+            "time": "11:00 AM to 7:00 PM"
+          },
+          {
+            "day": "Friday to Sunday",
+            "time": "Closed"
+          }
+        ]
+      },
+      {
+        "title": "Game Room",
+        "location": "U-SU Room 201",
+        "hours": [
+          {
+            "day": "Monday to Thursday",
+            "time": "12:00 PM to 6:00 PM"
+          },
+          {
+            "day": "Friday to Sunday",
+            "time": "Closed"
+          }
+        ]
+      },
+      {
+        "title": "South Village Housing Wellness Zone",
+        "location": "South Village Housing",
+        "hours": [
+          {
+            "day": "Monday to Thursday",
+            "time": "7:00 AM to 12:00 PM, 4:30 PM to 9:30 PM"
+          },
+          {
+            "day": "Friday",
+            "time": "7:00 AM to 12:00 PM, 2:30 PM to 7:30 PM"
+          },
+          {
+            "day": "Saturday",
+            "time": "7:00 AM to 12:00 PM"
+          },
+          {
+            "day": "Sunday",
+            "time": "Closed"
+          }
+        ]
+      }
+    ]
   }
 }
