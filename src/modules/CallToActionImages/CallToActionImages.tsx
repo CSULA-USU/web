@@ -55,7 +55,7 @@ export const CallToActionImages = ({
             flexWrap="wrap"
             justifyContent="space-evenly"
             backgroundColor="white"
-            padding="0 5px"
+            padding="0 4px"
           >
             <Image
               className="square-image"
