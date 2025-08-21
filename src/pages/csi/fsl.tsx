@@ -307,21 +307,6 @@ const ContactsBarWrapper = styled.ul`
   }
 `;
 
-const CrestImageWrapper = styled.div`
-  width: 100%;
-  height: 120px; /* consistent height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${Spaces.lg};
-
-  img {
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
-  }
-`;
-
 const ChaptersGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -649,13 +634,13 @@ export default function FSL() {
             </AB524InfoSection>
             <AB524ReportContainer>
               <DocumentLink
-                href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=y05rbrpi&raw=1"
+                href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=4k6sbdlb&raw=1"
                 aria-label="FY 22&mdash;23 Report"
               >
                 FY 22&mdash;23 Report
               </DocumentLink>
               <DocumentLink
-                href="https://www.dropbox.com/scl/fi/26yu1niyp0kg73ntigdkl/2023-2024-AB-524-Report.pdf?rlkey=coc6owqcz78f1etbixhxzyf3v&st=jwrbzkyd&dl=0"
+                href="https://www.dropbox.com/scl/fi/26yu1niyp0kg73ntigdkl/2023-2024-AB-524-Report.pdf?rlkey=coc6owqcz78f1etbixhxzyf3v&st=w0suj43l&raw=1"
                 aria-label="FY 23&mdash;24 Report"
               >
                 FY 23&mdash;24 Report
@@ -816,30 +801,24 @@ export default function FSL() {
             <FluidContainer flex flexDirection="column" gap="24px">
               <FluidContainer
                 flex
-                flexDirection="row"
-                justifyContent="space-between"
-                padding="0"
+                flexDirection="column"
+                alignItems="center"
+                padding="16px"
+                backgroundColor="white"
               >
-                <CrestImageWrapper>
+                <CrestImageContainer>
                   <Image
                     src={selectedChapter.crest}
                     alt={`${selectedChapter.name} crest`}
                     width="auto"
                     height="auto"
                   />
-                </CrestImageWrapper>
-                <FluidContainer
-                  flex
-                  alignItems="center"
-                  flexDirection="column"
-                  padding="0"
-                >
-                  <Typography variant="titleSmall">
-                    {selectedChapter.fullName?.trim() || selectedChapter.name}
-                  </Typography>
-                </FluidContainer>
+                </CrestImageContainer>
+                <Typography as="h3" variant="titleSmall" margin="16px 0 0">
+                  {selectedChapter.name}
+                </Typography>
               </FluidContainer>
-              <FluidContainer padding="0">
+              <FluidContainer padding="0" innerMaxWidth="400px">
                 <Typography as="span">
                   <strong>Values: </strong>
                   {selectedChapter.values.map((value: string, idx: number) => (
