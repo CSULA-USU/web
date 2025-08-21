@@ -5,17 +5,10 @@ import { media } from 'theme';
 const CenterText = styled.div`
   text-align: center;
 `;
-interface ImageProps {
-  src: string;
-  alt: string;
-  width?: string;
-  margin?: string;
-}
 
 interface CallToActionImagesProps {
   title: React.ReactNode;
   children: React.ReactNode;
-  images: ImageProps[];
   buttonHref: string;
   buttonText: string;
 }
@@ -27,7 +20,6 @@ const CTAImagesContainer = styled.div`
 export const CallToActionImages = ({
   title,
   children,
-  images,
   buttonHref,
   buttonText,
 }: CallToActionImagesProps) => {
@@ -63,17 +55,15 @@ export const CallToActionImages = ({
             flexWrap="wrap"
             justifyContent="space-evenly"
             backgroundColor="white"
-            padding="0"
+            padding="0 4px"
           >
-            {images.map((i) => (
-              <Image
-                key={i.alt}
-                src={i.src}
-                alt={i.alt}
-                width={i.width && i.width}
-                margin={i.margin && i.margin}
-              />
-            ))}
+            <Image
+              className="square-image"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/U-Krew-Grid.webp"
+              alt="Operations collage showing maintenance, clerical support, building services, and media services"
+              width="480"
+              lazy
+            />
           </FluidContainer>
         )}
       </FluidContainer>

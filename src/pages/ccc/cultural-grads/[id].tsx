@@ -1,6 +1,6 @@
 import { Page } from 'modules';
 import Head from 'next/head';
-import Image from 'next/image';
+import { Image } from 'components';
 import styled from 'styled-components';
 import { Button, FluidContainer, Loading, Typography } from 'components';
 import { CGCParticipantModal } from 'modules/Modals';
@@ -171,6 +171,7 @@ export default function CGCGrad() {
           property="og:image"
           content="/departments/ccc/ccc-grad-banner.jpg"
         />
+        <link rel="preload" as="image" href={headerImageSrc} />
       </Head>
       <h1 style={{ margin: 0 }}>
         <FluidContainer
@@ -188,7 +189,6 @@ export default function CGCGrad() {
               height: isMobile ? 'auto' : '80%',
               width: isMobile ? '100%' : 'auto',
             }}
-            priority
           />
         </FluidContainer>
       </h1>

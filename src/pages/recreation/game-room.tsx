@@ -417,7 +417,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            Summer Hours &mdash; Closed
+            Mon to Thu: 12 PM to 6 PM
           </Typography>
         </li>
       </ContactsBar>

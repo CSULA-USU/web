@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
-import Image from 'next/image';
 import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
-import { StyledLink, Typography } from 'components';
+import { Image, StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 import { toTitleCase } from 'utils/stringhelpers';
 
@@ -176,11 +175,10 @@ export default function StaffBusinessCard() {
               {staffData?.src && (
                 <Image
                   src={staffData.src}
-                  alt="" // or alt={staffData.name} if not decorative
-                  fill // or width={112} height={112}
+                  alt=""
                   style={{ objectFit: 'cover', objectPosition: 'top' }}
-                  sizes="112px"
-                  priority // if you want to preload
+                  width={112}
+                  height={112}
                   aria-hidden
                 />
               )}

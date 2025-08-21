@@ -16,33 +16,6 @@ import { useBreakpoint } from 'hooks';
 // import { Spaces } from 'theme';
 import featuredEvents from 'data/featured-events.json';
 
-const images = [
-  {
-    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg',
-    alt: '',
-    width: '275',
-    margin: '0',
-  },
-  {
-    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg',
-    alt: '',
-    width: '275',
-    margin: '0',
-  },
-  {
-    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg',
-    alt: '',
-    width: '275',
-    margin: '0',
-  },
-  {
-    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/media-services.jpg',
-    alt: '',
-    width: '275',
-    margin: '0',
-  },
-];
-
 // const ButtonContainer = styled.div`
 //   margin-top: ${Spaces['sm']};
 //   display: flex;
@@ -246,7 +219,6 @@ export default function Home() {
         }
         buttonHref="/employment"
         buttonText="View Opportunities"
-        images={images}
       >
         Catalyze your professional development and build your network by
         becoming a valued member of the <NonBreakingSpan>U-SU</NonBreakingSpan>

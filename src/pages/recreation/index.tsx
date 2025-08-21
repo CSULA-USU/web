@@ -1,5 +1,9 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import { BiPhone } from 'react-icons/bi';
+import RecData from '../../data/recreation.json';
+import { useBreakpoint } from 'hooks';
+import { Spaces } from 'theme';
 import { Image, Typography, Card, FluidContainer } from 'components';
 import { Page } from 'modules';
 import {
@@ -7,9 +11,6 @@ import {
   PhotoVideoDisclaimer,
   RecreationHoursSection,
 } from 'partials';
-import { BiPhone } from 'react-icons/bi';
-import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const HeaderSection = styled.div`
@@ -63,32 +64,6 @@ const StyledH1 = styled.h1`
   margin: 0;
 `;
 
-const locations = [
-  {
-    title: 'Rec 1',
-    location: 'U-SU Basement',
-    hours: [
-      { day: 'Monday to Friday', time: '7:10 AM to 6:45 PM' },
-      { day: 'Saturday to Sunday', time: 'Closed' },
-    ],
-  },
-  {
-    title: 'Rec 2',
-    location: 'U-SU Basement',
-    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
-  },
-  {
-    title: 'Game Room',
-    location: 'U-SU Room 201',
-    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
-  },
-  {
-    title: 'South Village Housing Wellness Zone',
-    location: 'South Village Housing',
-    hours: [{ day: 'Monday to Sunday', time: 'Closed' }],
-  },
-];
-
 export default function Recreation() {
   const { isMobile, isTablet, returnByBreakpoint } = useBreakpoint();
   const cardWidth = returnByBreakpoint({
@@ -99,7 +74,7 @@ export default function Recreation() {
   return (
     <Page>
       <Head>
-        <title>U-SU Recreation</title>
+        <title>U&ndash;SU Recreation</title>
         <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
@@ -136,27 +111,27 @@ export default function Recreation() {
               <NumberInnerContainer>
                 <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
                 <Typography as="p" variant="labelTitleSmall">
-                  Recreation 1:{' '}
+                  Recreation 1:
                 </Typography>
-                <Typography as="p">(323) 343-7546</Typography>
+                <Typography as="p">(323) 343&ndash;7546</Typography>
               </NumberInnerContainer>
             </NumberContainer>
             <NumberContainer>
               <NumberInnerContainer>
                 <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
                 <Typography as="p" variant="labelTitleSmall">
-                  Recreation 2:{' '}
+                  Recreation 2:
                 </Typography>
-                <Typography as="p">(323) 343-2520</Typography>
+                <Typography as="p">(323) 343&ndash;2520</Typography>
               </NumberInnerContainer>
             </NumberContainer>
           </PhoneSection>
         </HeaderSection>
         <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Summer 2025 Hours:
+          Fall 2025 Hours:
         </Typography>
         <HoursSection>
-          {locations.map((location, index) => (
+          {RecData.home.locations.map((location, index) => (
             <RecreationHoursSection
               key={index}
               title={location.title}
@@ -188,39 +163,22 @@ export default function Recreation() {
         flex
         flexWrap="wrap"
       >
-        <Card
-          margin={`0 0 ${Spaces.md}`}
-          width={cardWidth}
-          title="Major Expansion&nbsp;&nbsp;&nbsp;"
-        >
-          <Image
-            src="/departments/recreation/recreation-treadmill.jpg"
-            alt="students exercising in rec 2"
-            width="100%"
-          />
-        </Card>
-        <Card
-          margin={`0 0 ${Spaces.md}`}
-          width={cardWidth}
-          title="Strength Equipment"
-        >
-          <Image
-            src="/departments/recreation/recreation-bench.jpg"
-            alt="students working out using the bench press"
-            width="100%"
-          />
-        </Card>
-        <Card
-          margin={`0 0 ${Spaces.md}`}
-          width={cardWidth}
-          title="Rubber Flooring"
-        >
-          <Image
-            src="/departments/recreation/recreation-floor-2.jpg"
-            alt="student performing floor exercises"
-            width="100%"
-          />
-        </Card>
+        {RecData.home.cards.map((card, index) => (
+          <Card
+            key={index}
+            margin={`0 0 ${Spaces.md}`}
+            width={cardWidth}
+            title={card.title}
+          >
+            <Image
+              alt={card.alt}
+              sizes="(min-width: 768px) 624px, (min-width: 1024px) 400px, 100vw" // Match your breakpoints
+              src={card.src}
+              srcset={`${card.src} 271w, ${card.desktopSrc} 400w, ${card.tabletSrc} 624w`}
+              width="100%"
+            />
+          </Card>
+        ))}
       </FluidContainer>
       <InstagramFeed department="recreation" />
       <NonDiscriminationPolicy />
