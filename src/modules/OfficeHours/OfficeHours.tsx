@@ -2,18 +2,15 @@ import { Typography, Divider } from 'components';
 import styled from 'styled-components';
 import { Spaces } from 'theme';
 import { BiPhone } from 'react-icons/bi';
-import { HiOutlineMailOpen } from 'react-icons/hi';
 
 interface HourProps {
   title: string;
   times: string[];
-  email?: string;
 }
 interface OfficeHourProps {
   address: React.ReactNode;
   phoneNumber?: string;
   hours?: HourProps[];
-  email?: string;
 }
 const OfficeHoursContentContainer = styled.div`
   display: flex;
@@ -42,7 +39,6 @@ export const OfficeHours = ({
   address,
   phoneNumber,
   hours,
-  email,
 }: OfficeHourProps) => (
   <>
     <Divider margin="24px 0" color="grey" />
@@ -51,21 +47,10 @@ export const OfficeHours = ({
         <Typography>{address}</Typography>
         <Divider color="greyLighter" margin="12px 0" />
         <NumberContainer>
-          {phoneNumber && (
-            <NumberInnerContainer>
-              <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
-              <Typography as="p">{phoneNumber}</Typography>
-            </NumberInnerContainer>
-          )}
-
-          {email && (
-            <NumberInnerContainer>
-              <HiOutlineMailOpen aria-hidden="true" fontSize={Spaces.lg} />
-              <Typography as="p">
-                <a href={`mailto:${email}`}>{email}</a>
-              </Typography>
-            </NumberInnerContainer>
-          )}
+          <NumberInnerContainer>
+            <BiPhone aria-hidden="true" fontSize={Spaces.lg} />
+            <Typography as="p">{phoneNumber}</Typography>
+          </NumberInnerContainer>
         </NumberContainer>
       </div>
 
