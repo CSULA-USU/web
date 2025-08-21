@@ -29,3 +29,13 @@ span:focus-visible {
   text-decoration: underline;
   z-index: 99;
 }
+
+::selection {
+  background: #fece07;
+  color: black;
+}
+
+::-moz-selection {
+  background: #fece07;
+  color: black;
+}
