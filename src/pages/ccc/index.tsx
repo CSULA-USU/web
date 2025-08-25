@@ -237,8 +237,6 @@ export default function CCC() {
             <DescriptionCard
               rounded
               hoverable
-              // width={descriptionCardWidth}   <-- remove this
-              // margin="0 0 24px"             <-- gap handles spacing
               key={`${props.children}`}
               minHeight="280px"
               {...props}
