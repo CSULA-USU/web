@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import styled from 'styled-components';
 import { AiOutlineFileText } from 'react-icons/ai';
 import { BiChevronRight } from 'react-icons/bi';
@@ -19,12 +18,14 @@ import {
   TabCluster,
   Typography,
   StyledLink,
+  CountUp,
 } from 'components';
 import fslData from 'data/fsl-full-content.json';
 import staff from 'data/staff.json';
 import { ReactNode, useState } from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
 import { Modal } from 'modules/UKrewCardList';
+import Link from 'next/link';
 
 const {
   chapters,
@@ -121,7 +122,7 @@ const HeroContainer = styled.section`
 
 const BackgroundImage = styled(Image)`
   position: absolute;
-  top: -25px;
+  top: -15px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -356,9 +357,10 @@ const ContactsBar = ({ children, isMobile, isDesktop }: ContactsBarProps) => {
 };
 
 export default function FSL() {
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop, isWidescreen } = useBreakpoint();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState<any | null>(null);
+  const year = new Date().getFullYear();
 
   return (
     <Page>
@@ -467,7 +469,7 @@ export default function FSL() {
               Welcome!
             </Typography>
             <Typography as="p" variant="copy">
-              With 12+ organizations and over 300 fraternity and sorority
+              With 14 organizations and over 300 fraternity and sorority
               members, Cal State LA&apos;s Greek community truly has it all—from
               culturally based and service&mdash;driven groups to social
               organizations and everything in between. No matter what
@@ -552,46 +554,203 @@ export default function FSL() {
             ))}
           </FluidContainer>
 
-          {/* STAFF */}
-          <FluidContainer
-            backgroundColor="greyLightest"
-            flex
-            flexDirection="column"
-          >
-            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Meet Our Staff
-            </Typography>
+          {/* Register */}
+          <FluidContainer flex justifyContent="center" padding="0">
             <FluidContainer
               flex
-              flexWrap="wrap"
+              alignItems="center"
               justifyContent="center"
+              flexDirection={isMobile ? 'column' : 'row'}
+              innerMaxWidth="850px"
+              backgroundColor="primary"
+              gap={isMobile ? '0' : '20px'}
+            >
+              <Typography as="p">
+                Register here for Sorority Formal Recruitment with Panhellenic.
+                For more information about the Panhellenic community, visit{' '}
+                <StyledLink
+                  href="https://www.instagram.com/csulbpanhellenic"
+                  isInverseUnderlineStyling
+                  isExternalLink
+                >
+                  @csulapanhellenic
+                </StyledLink>{' '}
+                on Instagram
+              </Typography>
+              <span>
+                <Typography as="p" margin={`${Spaces.sm} 0`}></Typography>
+              </span>
+              <FluidContainer padding="0" innerMaxWidth="200px">
+                <Button
+                  href="http://csula.mycampusdirector2.com/"
+                  isExternalLink
+                  variant="black"
+                >
+                  Register
+                </Button>
+              </FluidContainer>
+            </FluidContainer>
+          </FluidContainer>
+
+          {/* Count-Up */}
+          <FluidContainer
+            flex
+            justifyContent="center"
+            gap={isMobile ? '35px' : isTablet ? '35px' : '150px'}
+            alignItems="flex-start"
+          >
+            <FluidContainer
+              flex
+              flexDirection="column"
+              padding="0"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <CountUp
+                end={300}
+                duration={1000}
+                variant="title"
+                as="h2"
+                size={isMobile ? 'lg' : '3xl'}
+                color="gold"
+                showPlus
+                format={(n) => n.toLocaleString()}
+              />
+              <Typography
+                as="h3"
+                variant="span"
+                size={isMobile ? 'sm' : 'lg'}
+                lineHeight="1.2"
+              >
+                Members
+              </Typography>
+            </FluidContainer>
+            <FluidContainer
+              flex
+              flexDirection="column"
+              padding="0"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <CountUp
+                end={14}
+                duration={1000}
+                variant="title"
+                as="h2"
+                size={isMobile ? 'lg' : '3xl'}
+                color="gold"
+                format={(n) => n.toLocaleString()}
+              />
+              <Typography
+                as="h3"
+                variant="span"
+                size={isMobile ? 'sm' : 'lg'}
+                lineHeight="1.2"
+              >
+                Chapters
+              </Typography>
+            </FluidContainer>
+            <FluidContainer
+              flex
+              flexDirection="column"
+              padding="0"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <CountUp
+                end={year - 1948}
+                duration={1000}
+                variant="title"
+                as="h2"
+                size={isMobile ? 'lg' : '3xl'}
+                color="gold"
+                format={(n) => n.toLocaleString()}
+              />
+              <Typography
+                as="h3"
+                variant="span"
+                size={isMobile ? 'sm' : 'lg'}
+                lineHeight="1.2"
+              >
+                Years of Service
+              </Typography>
+            </FluidContainer>
+          </FluidContainer>
+
+          {/* STAFF */}
+          <FluidContainer
+            flex
+            flexDirection={isWidescreen ? 'column' : 'row'}
+            backgroundColor="greyLightest"
+          >
+            <FluidContainer
+              innerMaxWidth={isWidescreen ? '100%' : '50%'}
+              padding={isWidescreen ? '18px' : '0'}
+            >
+              <Typography
+                as="h2"
+                variant="title"
+                size={isMobile ? 'xl' : '2xl'}
+              >
+                Meet Our Staff
+              </Typography>
+              <Typography as="p" margin={`${Spaces.md} 0 `}>
+                The CSI staff is available during the work week and can be seen
+                on campus at night and weekends for meetings and programs to
+                assist you in your fraternity and sorority experience. Please
+                email us or stop by our office for more information.
+              </Typography>
+              <Typography weight="700" as="h3">
+                Contact Us
+              </Typography>
+              <Typography as="p">Phone: 323&ndash;343&ndash;5113</Typography>
+              <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
+            </FluidContainer>
+
+            <FluidContainer
+              flex
+              flexDirection="column"
+              alignItems={isWidescreen ? 'center' : 'flex-start'}
               padding="0"
             >
-              {staff
-                .filter((s) => s.tags.includes('CSI'))
-                .map((s) => (
-                  <StaffCardWithModal
-                    key={s.name}
-                    name={s.name}
-                    title={s.title}
-                    src={s.src}
-                    alt={s.alt}
-                    tags={s.tags}
-                    margin={`${Spaces.sm}`}
-                    pronouns={s.pronouns}
-                    email={s.email}
-                    phone={s.phone}
-                    bio={s.bio}
-                    rounded
-                  >
-                    <Typography size="xs" as="p">
-                      {s.department}
-                    </Typography>
-                    <Typography size="xs" as="p">
-                      {s.email}
-                    </Typography>
-                  </StaffCardWithModal>
-                ))}
+              <FluidContainer
+                flex
+                justifyContent="center"
+                padding="0"
+                flexDirection={
+                  isMobile ? 'column' : isTablet ? 'column' : 'row'
+                }
+              >
+                {staff
+                  .filter(
+                    (s) =>
+                      s.name.includes('Ian Prieto') ||
+                      s.name.includes('Fabi Avina'),
+                  )
+                  .map((s) => (
+                    <StaffCardWithModal
+                      key={s.name}
+                      name={s.name}
+                      title={s.title}
+                      src={s.src}
+                      alt={s.alt}
+                      tags={s.tags}
+                      margin={isMobile ? `${Spaces.sm} 0` : `${Spaces.sm}`}
+                      pronouns={s.pronouns}
+                      email={s.email}
+                      phone={s.phone}
+                      bio={s.bio}
+                      rounded
+                    >
+                      <Typography size="xs" as="p">
+                        {s.department}
+                      </Typography>
+                      <Typography size="xs" as="p">
+                        {s.email}
+                      </Typography>
+                    </StaffCardWithModal>
+                  ))}
+              </FluidContainer>
             </FluidContainer>
           </FluidContainer>
 
@@ -705,24 +864,6 @@ export default function FSL() {
                 FSL Scoresheet
               </Button>
             </abbr>
-          </FluidContainer>
-
-          {/* Visit Us */}
-          <FluidContainer>
-            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Visit Us
-            </Typography>
-            <Typography as="p" margin={`${Spaces.md} 0 `}>
-              The CSI staff is available during the work week and can be seen on
-              campus at night and weekends for meetings and programs to assist
-              you in your fraternity and sorority experience. Please email us or
-              stop by our office for more information.
-            </Typography>
-            <Typography weight="700" as="h3">
-              Contact Us
-            </Typography>
-            <Typography as="p">Phone: 323&ndash;343&ndash;5113</Typography>
-            <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
           </FluidContainer>
         </TabPanel>
 
@@ -891,7 +1032,7 @@ export default function FSL() {
               sororities are committed to their academics, volunteer time in the
               community, develop and strengthen their leadership skills, and
               form a campus network with other Greeks. Our Greek community
-              consists of over 20 different organizations and over 500 students.
+              consists of over 14 different organizations and over 300 students.
               As the Center for Student Involvement staff, we work closely with
               the recognized organizations to enhance the overall Greek
               experience by upholding their values, community standards and
