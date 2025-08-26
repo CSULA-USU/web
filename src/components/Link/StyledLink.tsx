@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { LuExternalLink } from 'react-icons/lu';
 
-const LinkContainer = styled.span`
-  display: flex;
-  align-items: center;
-`;
 const UnderlineHover = styled(Link)`
   position: relative;
   text-decoration: none;
@@ -19,7 +15,7 @@ const UnderlineHover = styled(Link)`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -1px;
+    bottom: -0.1px;
     width: 100%;
     height: 1px;
     background-color: currentColor;
@@ -59,7 +55,7 @@ const NoUnderlineHover = styled(Link)`
   }
 `;
 
-const StyleSpan = styled.span`
+const StyledSpan = styled.span`
   display: flex;
   align-items: center;
 `;
@@ -75,6 +71,7 @@ const IconStyling = {
 interface StyledLinkProps {
   children: React.ReactNode;
   href: string;
+  inline?: false;
   isInverseUnderlineStyling?: boolean;
   isExternalLink?: boolean;
 }
@@ -88,30 +85,30 @@ export const StyledLink = ({
   return (
     <>
       {isInverseUnderlineStyling ? (
-        <LinkContainer>
+        <>
           <NoUnderlineHover
             href={href}
             target={isExternalLink ? '_blank' : undefined}
             rel={isExternalLink ? 'noopener noreferrer' : undefined}
           >
-            <StyleSpan>{children}</StyleSpan>
+            <StyledSpan>{children}</StyledSpan>
           </NoUnderlineHover>
           {isExternalLink ? (
             <LuExternalLink style={IconStyling} aria-hidden="true" />
           ) : null}
-        </LinkContainer>
+        </>
       ) : (
-        <LinkContainer>
+        <>
           <UnderlineHover
             href={href}
             target={isExternalLink ? '_blank' : undefined}
           >
-            <StyleSpan>{children}</StyleSpan>
+            <StyledSpan>{children}</StyledSpan>
           </UnderlineHover>
           {isExternalLink ? (
             <LuExternalLink style={IconStyling} aria-hidden="true" />
           ) : null}
-        </LinkContainer>
+        </>
       )}
     </>
   );

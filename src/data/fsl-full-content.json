@@ -1,0 +1,369 @@
+{
+  "whatIsGreekLife": [
+    {
+      "imgSrc": "/icons/giving-hand-icon.png",
+      "imgAlt": "",
+      "title": "Friendship",
+      "children": "The Greek Community provides a home-away-from-home environment you can proudly come back to after graduation. Being part of the Greek Community is a chance to be a part of something greater than yourself. You will also gain lifelong friendships, memories, and a strong sense of belonging."
+    },
+    {
+      "imgSrc": "/icons/book-icon.png",
+      "imgAlt": "",
+      "title": "Leadership",
+      "children": "The Greek Community offers endless opportunities for developing leadership skills in its members. Members hold positions within their chapter, ranging from chapter president to committee chair. Today, it takes more than a college degree to be successful. Employers want college graduates who have demonstrated leadership abilities and aren\u2019t afraid to get involved. The Greek Community is able to provide its members with these opportunities."
+    },
+    {
+      "imgSrc": "/icons/connecting-people-icon.png",
+      "imgAlt": "",
+      "title": "Philanthrophy and Service",
+      "children": "Greeks take pride in community service and philanthropy. Each chapter has a foundation or charity they sponsor through philanthropic events. Sororities and fraternities sponsor a multitude of activities each year to impact the local community and raise money."
+    },
+    {
+      "imgSrc": "/icons/book-icon.png",
+      "imgAlt": "",
+      "title": "Scholarship",
+      "children": "Fraternities and sororities strive for high scholarship and developing academic excellence among their chapter members. Fraternities and sororities offer time management, study skills, and other programming to help members be successful in the classroom."
+    }
+  ],
+  "howToJoin": [
+    {
+      "title": "IFC Recruitment",
+      "content": "The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC and then make decisions of who they would like to get to know further and join..."
+    },
+    {
+      "title": "MGC Membership Intake",
+      "content": "Each chapter within MGC conducts their own membership intake after their National or Regional Office approves the process for bringing in new members..."
+    },
+    {
+      "title": "NPHC Membership Intake",
+      "content": "NPHC organization host membership intake after their National or Regional Office approves the process for bringing in new members..."
+    },
+    {
+      "title": "Panhellenic Recruitment",
+      "content": "The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester..."
+    }
+  ],
+  "costOfMembership": [
+    {
+      "title": "What are the financial obligations?",
+      "children": "Your student will have financial responsibilities when it comes to joining a fraternity or sorority..."
+    },
+    {
+      "title": "Recruitment/Intake Rules",
+      "children": "At Cal State LA, the joining process for each organization is based on their governing council and their National and Regional Offices..."
+    },
+    {
+      "title": "IFC Recruitment",
+      "children": "The formal recruitment process is strongly encouraged. This is an opportunity for men to meet all of the fraternities within IFC..."
+    },
+    {
+      "title": "MGC Membership Intake",
+      "children": "Each chapter within MGC conducts their own membership intake after their National or Regional Office approves..."
+    },
+    {
+      "title": "NPHC Membership Intake",
+      "children": "NPHC organization host membership intake after their National or Regional Office approves the process..."
+    },
+    {
+      "title": "Panhellenic",
+      "children": "The organizations within the Panhellenic Association will host recruitment primarily early in the fall semester..."
+    }
+  ],
+  "membershipIntakeForms": [
+    {
+      "href": "https://www.dropbox.com/s/wr90x4ndg7mvrlr/membership-intake-checklist.pdf?e=1&raw=1",
+      "title": "Membership Intake Check List"
+    },
+    {
+      "href": "https://www.dropbox.com/s/3hawv1fwjq25z5z/notice-of-membership-intake.pdf?e=1&raw=1",
+      "title": "Notice of Membership Intake"
+    }
+  ],
+  "hazingPolicies": [
+    {
+      "name": "Individual",
+      "content": "No less than disciplinary probation for one academic year, no more than permanent separation from the university..."
+    },
+    {
+      "name": "Organizations",
+      "content": "No less than suspension of privileges for one academic year, no more than indefinite disbanding of the organization..."
+    },
+    {
+      "name": "Hazing",
+      "content": "California Penal Code \u00a7245.6 states the following: any method of initiative or preinitiation into a student body or organization..."
+    }
+  ],
+  "expansion": [
+    {
+      "content": "National or International fraternity and sorority headquarters may not solicit or recruit Cal State LA students to establish new chapters..."
+    },
+    {
+      "content": "New fraternities and sororities must be approved for expansion by the appropriate governing council in accordance with established expansion policies..."
+    },
+    {
+      "content": "Once a group has membership and is granted permission to expand from the appropriate governing council and/or Cal State LA..."
+    },
+    {
+      "content": "Expansion for Interfraternity Council fraternities must be in accordance with the standards of the North American Interfraternity conference..."
+    }
+  ],
+  "resources": [
+    {
+      "href": "http://www.calstatela.edu/univ/advise/",
+      "title": "Academic Advisement",
+      "children": "The University Academic Advisement Center serves as a great source of information for general education and course selection. There you can get help regarding university policies and procedures, transfer credits, and general education petitions."
+    },
+    {
+      "href": "http://www.calstatela.edu/univ/admiss/",
+      "title": "Admissions",
+      "children": "Through this office, you can get expert advice and information specifically targeted for students interested in being admitted to Cal State LA and those who were recently admitted."
+    },
+    {
+      "href": "http://calstate-la.bncollege.com/webapp/wcs/stores/servlet/TBWizardView?catalogId=10001&storeId=30556&langId=-1",
+      "title": "Bookstore",
+      "children": "The university bookstore is a great place to begin searching for course materials that you will need including textbooks."
+    },
+    {
+      "href": "http://www.calstatela.edu/univ/cdc/",
+      "title": "Career Center",
+      "children": "At the Career Center, they will help you establish goals, plan for your future career and aid in getting and keeping a job."
+    },
+    {
+      "href": "http://www.calstatela.edu/studenthealthcenter/caps",
+      "title": "Couseling & Psychological Services (CAPS)",
+      "children": "CAPS offers professional and non-judgmental help with your personal growth and psychological wellness. They specialize in mental health services which can help you express thoughts and feelings, gain perspective, alleviate emotional symptoms, improve coping skills, and make healthy changes in your life."
+    },
+    {
+      "href": "http://www.calstatela.edu/univ/finaid/",
+      "title": "Financial Aid",
+      "children": "At the Center for Financial Aid, you can receive help finding available federal, state, and institutional sources for financing your education."
+    },
+    {
+      "href": "http://www.calstatela.edu/univ/hlth_ctr/",
+      "title": "Health Center",
+      "children": "The Student Health Center serves as the primary health resource for the campus community. Here you can find high-quality health care and health education in order to maximize your potential for academic success and personal development."
+    },
+    {
+      "href": "http://www.calstatela.edu/univ/housing/",
+      "title": "Housing Services",
+      "children": "Housing Services serves as a source of comfortable living for many Cal State LA students. Here you can find applications, deadlines, and services offered for students that live on campus."
+    },
+    {
+      "href": "https://www.calstatela.edu/academic-success",
+      "title": "Tutoring Services",
+      "children": "At the University Tutorial Center you can benefit from different services such as subject-area appointment tutoring, math walk-in tutoring, study skills presentations, and coaching projects."
+    },
+    {
+      "href": "https://www.calstatela.edu/academic-success",
+      "title": "Center for Academic Success",
+      "children": "At the writing center they aim to help students become better writers by helping you understand assignments, organize, and revise your paper at any stage of the writing process. This can be best accomplished by having a one-on-one appointment."
+    },
+    {
+      "href": "https://www.calstatela.edu/vets",
+      "title": "Veteran's Resources Center",
+      "children": "This center is aimed to help veteran and active duty students navigate the certification and application processes, make the transition to university life easier, and prepare them to reach their career and life goals. Through this program one can find help beginning the enrollment process, applying for educational benefits, and completing the enrollment certification process."
+    }
+  ],
+  "chapters": [
+    {
+      "Co-Ed": [
+        {
+          "name": "Delta Sigma Chi",
+          "fullName": "Delta Sigma Chi Co-Ed Fraternity",
+          "crest": "/departments/csi/fsl/dsc.png",
+          "values": [
+            "Brotherhood, Sisterhood, Community, Service, Scholarship"
+          ],
+          "founding": "2005",
+          "communityService": ["Heart Cancer Toy Drive", "Relay for Life"],
+          "colors": ["Red", "Black", "Gold"],
+          "symbol": "Black Panther"
+        },
+        {
+          "name": "Alpha Phi Omega",
+          "crest": "/departments/csi/fsl/APO.png",
+          "values": ["Leadership", "Friendship", "Service"],
+          "founding": "1925",
+          "colors": ["Old Glory Gold", "Royal Blue"],
+          "symbol": ["Golden Eagle", "Oak Tree", "Diamond", "Forget-me-not"]
+        }
+      ]
+    },
+    {
+      "Fraternities": [
+        {
+          "name": "Alpha Phi Alpha",
+          "crest": "/departments/csi/fsl/apa.png",
+          "values": ["Manly Deeds", "Scholarship", "Love for All Mankind"],
+          "founding": "1906",
+          "colors": ["Black", "Old Gold"],
+          "symbol": "Sphinx"
+        },
+        {
+          "name": "Beta Gamma Nu",
+          "crest": "/departments/csi/fsl/bgn.png",
+          "values": [
+            "Pride in Culture",
+            "Brotherhood in Arms",
+            "Respect for Life"
+          ],
+          "founding": "2016",
+          "colors": ["Brown", "Cream"],
+          "symbol": "Black Panther"
+        },
+        {
+          "name": "Sigma Alpha Epsilon",
+          "crest": "/departments/csi/fsl/sae.png",
+          "values": ["Friendship", "Scholarship", "Service"],
+          "founding": "1956",
+          "colors": ["Royal Purple", "Old Gold"],
+          "symbol": "Lion"
+        },
+        {
+          "name": "Sigma Lambda Beta",
+          "fullName": "Sigma Lambda Beta International Fraternity",
+          "crest": "/departments/csi/fsl/slb.png",
+          "values": [
+            "Brotherhood",
+            "Scholarship",
+            "Community Service",
+            "Cultural Awareness"
+          ],
+          "founding": "1997",
+          "communityService": ["CPR Awareness Day for Victor Correa"],
+          "colors": ["Royal Purple", "Purest White"],
+          "symbol": "White Stallion Mustang"
+        },
+        {
+          "name": "Sigma Nu",
+          "crest": "/departments/csi/fsl/sn.png",
+          "values": ["Love", "Truth", "Honor"],
+          "founding": "1966",
+          "communityService": ["Helping Hand Initiative"],
+          "colors": ["Black", "Gold", "White"],
+          "symbol": "Sword"
+        }
+      ]
+    },
+    {
+      "Sororities": [
+        {
+          "name": "Alpha Sigma Tau",
+          "crest": "/departments/csi/fsl/ast.png",
+          "values": [
+            "Intellect",
+            "Excellence",
+            "Graciousness",
+            "Respect",
+            "Connections"
+          ],
+          "founding": "1993",
+          "communityService": [
+            "Pine Mountain Settlement School",
+            "Habitat for Humanity"
+          ],
+          "colors": ["Brown", "Cream"],
+          "symbol": "Anchor"
+        },
+        {
+          "name": "Alpha Theta Pi",
+          "crest": "/departments/csi/fsl/atp.png",
+          "values": ["Sisterhood", "Scholastic", "Service", "Social", "Sports"],
+          "founding": "1948",
+          "communityService": [
+            "AIDS Walk",
+            "MS Walk",
+            "Beach Clean Ups",
+            "Holiday Caroling",
+            "Toy, Food, and Clothing Drives"
+          ],
+          "colors": ["Red", "White", "Black"],
+          "symbol": "Pegasus"
+        },
+        {
+          "name": "Delta Phi Epsilon",
+          "crest": "/departments/csi/fsl/dpe.png",
+          "values": ["Sisterhood", "Scholarship", "Self", "Service", "Social"],
+          "founding": "2016",
+          "communityService": [
+            "Cystic Fibrosis Foundation",
+            "National Association of Anorexia Nervosa and Associated Disorders",
+            "Delta Phi Epsilon Educational Foundation"
+          ],
+          "colors": ["Royal Purple", "Pure Gold"],
+          "symbol": "Unicorn"
+        },
+        {
+          "name": "Delta Sigma Theta",
+          "crest": "/departments/csi/fsl/dst.png",
+          "values": ["Scholarship", "Sisterhood", "Service"],
+          "founding": "1962",
+          "communityService": [
+            "Five-Point Program Thrust of Economic Development",
+            "Educational Development",
+            "International Awareness and Involvement",
+            "Physical and Mental Health",
+            "Political Awareness and Involvement"
+          ],
+          "colors": ["Crimson", "Cream"],
+          "symbol": "Fortitude"
+        },
+        {
+          "name": "Delta Zeta",
+          "crest": "/departments/csi/fsl/dz.png",
+          "values": ["Sisterhood", "Philanthropy", "Scholarship"],
+          "founding": "1966",
+          "communityService": [
+            "Painted Turtle Camp",
+            "Starkey Hearing Foundation"
+          ],
+          "colors": ["Rose", "Green"],
+          "symbol": "Roman Lamp"
+        },
+        {
+          "name": "Sigma Lambda Gamma",
+          "crest": "/departments/csi/fsl/slg.png",
+          "values": [
+            "Academics",
+            "Community Service",
+            "Cultural Awareness",
+            "Morals and Ethics",
+            "Social Interaction"
+          ],
+          "founding": "2012",
+          "communityService": ["Breast Cancer Awareness", "TRIO Program"],
+          "colors": ["Shocking Pink", "Majestic Purple"],
+          "symbol": "Pink Rose, Purple Panther"
+        }
+      ]
+    }
+  ],
+  "policyButtons": [
+    {
+      "href": "https://www.calstatela.edu/academicsenate/handbook/ch5a#honesty",
+      "children": "Academic Policies"
+    },
+    {
+      "href": "https://www.calstatela.edu/studentservices/california-code-regulations-standards-student-conduct",
+      "children": "University Code of Conduct"
+    }
+  ],
+  "pillarsAccordion": [
+    {
+      "title": "Scholarship",
+      "content": "Fraternities and sororities have always been rooted in the pursuit of academic success, and that tradition is alive and well today. Chapters at Cal State LA place a high value on scholarship by offering academic resources, mentoring, and programming on study skills and time management to help members thrive in the classroom. Membership itself is tied to academic achievement, encouraging students to stay focused and excel as they navigate the challenges of university life."
+    },
+    {
+      "title": "Leadership",
+      "content": "Fraternity and sorority life at Cal State LA offers countless opportunities to develop and practice leadership skills that go beyond the classroom. Members can serve as chapter officers, lead committees, or represent their organizations at local, regional, and national conferences. These experiences help students grow as leaders—something employers highly value in college graduates. Whether you're leading a project, planning an event, or chairing a committee, Greek life provides real-world opportunities to build confidence, responsibility, and leadership that lasts long after graduation."
+    },
+    {
+      "title": "Philanthropy & Service",
+      "content": "Fraternities and sororities at Cal State LA take pride in giving back through community service and philanthropy. Each chapter supports a local, national, or international cause by organizing service projects and hosting philanthropic events throughout the year. Together, our Greek community dedicates thousands of volunteer hours and raises funds to make a positive impact both on campus and in the greater Los Angeles area."
+    },
+    {
+      "title": "Friendship",
+      "content": "Fraternity and sorority life at Cal State LA offers so much more than membership—it's truly a home away from home. In our Greek community, you'll meet people from all walks of life, form lifelong friendships, and be part of something greater than yourself. Members support and encourage each other through every challenge, creating bonds that go beyond college years. And with strong alumni networks, those friendships and connections continue to grow long after graduation, helping you adjust to new communities, build your career, and stay connected to a shared legacy."
+    }
+  ]
+}
