@@ -508,7 +508,7 @@ export default function UKrew() {
       </FluidContainer>
       <FluidContainer flex justifyContent="center">
         <Image
-          alt="group photo of full time u-su staff"
+          alt="group photo of all u-krew staff"
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/Group%20Photo.webp"
           width="100%"
           borderRadius="12px"
