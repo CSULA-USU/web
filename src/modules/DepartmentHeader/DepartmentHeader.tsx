@@ -49,10 +49,10 @@ const ImgBox = styled.div`
 `;
 
 const ImgReset = styled(Image)`
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 `;
 
