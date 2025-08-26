@@ -111,20 +111,18 @@ export const Footer = () => (
               </Typography>
             </li>
             <StyledLinkMargins>
-              <Typography color="white">Monday to Thursday</Typography>
-              <Typography color="white">7 AM to 10 PM</Typography>
+              <Typography color="white">
+                Mon&ndash;Thu: 7 AM to 10 PM
+              </Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white">Friday</Typography>
-              <Typography color="white">7 AM to 8 PM</Typography>
+              <Typography color="white">Fri: 7 AM to 8 PM</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white">Saturday</Typography>
-              <Typography color="white">7 AM to 3 PM</Typography>
+              <Typography color="white">Sat: 7 AM to 3 PM </Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white">Sunday</Typography>
-              <Typography color="white">Closed</Typography>
+              <Typography color="white">Sun: Closed</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">

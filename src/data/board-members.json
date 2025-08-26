@@ -1,5 +1,20 @@
 [
   {
+    "head": "",
+    "title": "U-SU Chair",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/brian-bod.webp",
+    "name": "Brian Pham",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
+    "title": "Vice Chair",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/eder-bod.webp",
+    "name": "Eder Perdomo Hernandez",
+    "credentials": "",
+    "section": "student-representative"
+  },
+  {
     "title": "Student Director",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/jaqueline-bod.webp",
     "name": "Jaqueline Fajardo",
@@ -11,14 +26,6 @@
     "title": "Student Director",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/reine-bod.webp",
     "name": "Reine Santos Saavedra",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "head": "",
-    "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/brian-bod.webp",
-    "name": "Brian Pham",
     "credentials": "",
     "section": "student-representative"
   },
@@ -47,13 +54,6 @@
     "title": "Student Director",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/martin-bod.webp",
     "name": "Martin Camacho",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/eder-bod.webp",
-    "name": "Eder Perdomo Hernandez",
     "credentials": "",
     "section": "student-representative"
   },
@@ -123,8 +123,8 @@
   {
     "title": "Advisor",
     "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
-    "name": "Lisa Chavez",
-    "credentials": "Interim Executive Director, University Auxiliary Services",
+    "name": "Timothy Chang",
+    "credentials": "Executive Director, University Auxiliary Services",
     "section": "advisors"
   },
   {
