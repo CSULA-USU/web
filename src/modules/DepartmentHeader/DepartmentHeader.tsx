@@ -1,4 +1,4 @@
-import { Typography, FluidContainer } from 'components';
+import { Typography, FluidContainer, Image } from 'components';
 import { EventCard, EventSkeleton } from '../../modules/EventCard';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
@@ -13,6 +13,8 @@ interface DepartmentHeaderProps {
   backgroundImage?: string;
   children: React.ReactNode;
   infoSection: React.ReactNode;
+  placeholderImageSrc?: string;
+  placeholderImageAlt?: string;
 }
 
 const HeaderContent = styled.div`
@@ -26,30 +28,56 @@ const HeaderContent = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  height: 550px;
+
+  @media (max-width: 711px) {
+    height: 850px;
+  }
+
   > * {
     min-width: 320px;
     flex: 1;
   }
 `;
 
+const ImgBox = styled.div`
+  display: grid;
+  place-items: center;
+  max-height: 550px; /* adjust if you want */
+  max-width: 100%;
+  overflow: hidden;
+`;
+
+const ImgReset = styled(Image)`
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+`;
+
 export const DepartmentHeader = ({
   title,
   children,
   infoSection,
+  placeholderImageSrc,
+  placeholderImageAlt,
 }: DepartmentHeaderProps) => {
   const [loading, setLoading] = useState(true);
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
+
   const departmentEvent = events.find(
     (event) => event.organizationName === title,
   );
+
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);
 
   useEffect(() => {
-    if (eventsStatus != 'undefined') {
+    if (eventsStatus !== 'undefined') {
       setLoading(false);
     }
   }, [events, eventsStatus]);
@@ -78,9 +106,13 @@ export const DepartmentHeader = ({
               featured
               event={departmentEvent}
             />
-          ) : (
-            loading && <EventSkeleton />
-          )}
+          ) : loading ? (
+            <EventSkeleton />
+          ) : placeholderImageSrc && placeholderImageAlt ? (
+            <ImgBox>
+              <ImgReset src={placeholderImageSrc} alt={placeholderImageAlt} />
+            </ImgBox>
+          ) : null}
         </HeaderContainer>
         {infoSection}
       </FluidContainer>
