@@ -11,7 +11,7 @@ export default function Governance() {
   return (
     <Page>
       <Head>
-        <title>U-SU Board Members</title>
+        <title>U&ndash;SU Board Members</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Representative, Chair, Alumni, President, Faculty, Apointee, Advisor, Dean"
@@ -23,7 +23,7 @@ export default function Governance() {
         backgroundImage="/backgrounds/subtle-background-3.jpg"
       >
         <Typography as="h2">
-          The University-Student Union&apos;s Board of Directors is the
+          The University&ndash;Student Union&apos;s Board of Directors is the
           governing board of the Union. The purpose of the Board is to establish
           policy for the Union as a student body center for the benefit of
           students, faculty, staff and alumni at{' '}
