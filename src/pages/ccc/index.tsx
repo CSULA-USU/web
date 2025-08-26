@@ -15,7 +15,7 @@ import {
   ImageAndCard,
 } from 'modules';
 import { NonDiscriminationPolicy, PhotoVideoDisclaimer } from 'partials';
-import { Spaces } from 'theme';
+import { media, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
@@ -26,6 +26,18 @@ const StudentOrgsCategoriesContentContainer = styled.div`
 const OrgsCategoriesCardsContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const DescriptionCardsGrid = styled.div`
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  gap: ${Spaces.lg};
+  ${media('widescreen')(`
+    grid-template-columns: repeat(2, 1fr);
+    `)}
+  ${media('mobile')(`
+    grid-template-columns: repeat(1, 1fr);
+    `)}
 `;
 
 const orgsCards = [
@@ -127,17 +139,12 @@ const hours = [
 ];
 
 export default function CCC() {
-  const { returnByBreakpoint, isTablet, isMobile } = useBreakpoint();
-  const descriptionCardWidth = returnByBreakpoint({
-    tablet: '100%',
-    desktop: 'calc(50% - 16px)',
-    widescreen: 'calc(25% - 16px)',
-  });
+  const { isTablet, isMobile } = useBreakpoint();
 
   return (
     <Page>
       <Head>
-        <title>U-SU CCC</title>
+        <title>U&ndash;SU CCC</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
@@ -156,6 +163,8 @@ export default function CCC() {
       </Head>
       <DepartmentHeader
         title="Cross Cultural Centers"
+        placeholderImageAlt="Cross cultural center's logo"
+        placeholderImageSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp"
         infoSection={
           <OfficeHours
             address="5154 State University Drive Los Angeles, CA 90032
@@ -208,7 +217,12 @@ export default function CCC() {
           </Typography>
           <OrgsCategoriesCardsContainer>
             {orgsCards.map((props) => (
-              <ImageAndCard key={props.title} imageWidth="300px" {...props} />
+              <ImageAndCard
+                key={props.title}
+                imageWidth="300px"
+                imageHeight="auto"
+                {...props}
+              />
             ))}
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCategoriesContentContainer>
@@ -217,19 +231,18 @@ export default function CCC() {
         <Typography variant="title" as="h2">
           We Provide:
         </Typography>
-        <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
+
+        <DescriptionCardsGrid>
           {descriptionCards.map((props) => (
             <DescriptionCard
               rounded
               hoverable
-              width={descriptionCardWidth}
-              margin="0 0 24px"
               key={`${props.children}`}
               minHeight="280px"
               {...props}
             />
           ))}
-        </FluidContainer>
+        </DescriptionCardsGrid>
       </FluidContainer>
       <FluidContainer
         flex

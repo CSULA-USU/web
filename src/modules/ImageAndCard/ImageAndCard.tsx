@@ -5,6 +5,7 @@ export const ImageAndCard = ({
   imgSrc,
   imgAlt,
   imageWidth = '150px',
+  imageHeight,
   imageOnRight,
   ...props
 }: any) => {
@@ -30,6 +31,7 @@ export const ImageAndCard = ({
           <Card
             iconSrc={isTablet ? imgSrc : undefined}
             iconWidth={isTablet ? '100%' : '150px'}
+            iconHeight={imageHeight}
             hoverable
             width="100%"
             minHeight="160px"
@@ -41,6 +43,7 @@ export const ImageAndCard = ({
           <Card
             iconSrc={isTablet ? imgSrc : undefined}
             iconWidth={isTablet ? '100%' : '150px'}
+            iconHeight={imageHeight}
             hoverable
             width="100%"
             minHeight="160px"

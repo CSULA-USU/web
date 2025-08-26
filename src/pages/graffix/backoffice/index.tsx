@@ -236,7 +236,7 @@ export default function Backoffice() {
       </Head>
       <SideImageHeader
         imgAlt="future graffix office"
-        imgSrc="/departments/graffix/backoffice/graffix-future.png"
+        imgSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/graffix-future.webp"
         imgWidth={isDesktop ? '100%' : '50%'}
       >
         <HeaderContainer>

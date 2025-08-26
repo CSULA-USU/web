@@ -1,47 +1,47 @@
 [
   {
     "title": "A Frame",
-    "src": "/departments/graffix/backoffice/item-selection/a-frame.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/a-frame.webp",
     "alt": "A-Frame 24 inches by 36 inches"
   },
   {
     "title": "Buttons",
-    "src": "/departments/graffix/backoffice/item-selection/buttons.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/buttons.webp",
     "alt": "Buttons 1.5 inches, 2.25 inches, 3 inches"
   },
   {
     "title": "Foam Board",
-    "src": "/departments/graffix/backoffice/item-selection/foamboard.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/foamboard.webp",
     "alt": "foam board 20 inches by 30 inches"
   },
   {
     "title": "Half-Page Postcard",
-    "src": "/departments/graffix/backoffice/item-selection/half-page-postcard.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/half-page-postcard.webp",
     "alt": "half inch page postcard 8.5 inches by 5.25 inches"
   },
   {
     "title": "Large Poster",
-    "src": "/departments/graffix/backoffice/item-selection/large-poster.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/large-poster.webp",
     "alt": "large poster 22 inches by 28 inches"
   },
   {
     "title": "Large Vinyl Banner",
-    "src": "/departments/graffix/backoffice/item-selection/large-vinyl-banner.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/large-vinyl-banner.webp",
     "alt": "large vinyl banner 144 inches by 48 inches"
   },
   {
     "title": "Poster",
-    "src": "/departments/graffix/backoffice/item-selection/poster.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/poster.webp",
     "alt": "poster 11 inches by 17 inches"
   },
   {
     "title": "Quarter-Page Postcard",
-    "src": "/departments/graffix/backoffice/item-selection/qtr-page-postcard.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/qtr-page-postcard.webp",
     "alt": "quarter inch page postcard 4.25 inches by 5.25 inches"
   },
   {
     "title": "Window Decal",
-    "src": "/departments/graffix/backoffice/item-selection/window-decal.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/window-decal.webp",
     "alt": "text"
   }
 ]

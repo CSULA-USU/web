@@ -506,6 +506,14 @@ export default function UKrew() {
             </DirectorySquares> */}
         </DirectorySection>
       </FluidContainer>
+      <FluidContainer flex justifyContent="center">
+        <Image
+          alt="group photo of all u-krew staff"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/Group%20Photo.webp"
+          width="100%"
+          borderRadius="12px"
+        />
+      </FluidContainer>
       <FluidContainer
         flex
         justify-content="space-between"
