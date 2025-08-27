@@ -126,7 +126,7 @@ const GameRoomStatsCard = ({
     <GameRoomStatsCardWrapper>
       <CountUp
         end={quantity}
-        duration={3000}
+        duration={1000}
         variant="span"
         as="h2"
         size="5xl"

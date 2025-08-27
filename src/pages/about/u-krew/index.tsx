@@ -565,7 +565,7 @@ export default function UKrew() {
           >
             <CountUp
               end={80}
-              duration={3000}
+              duration={1000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
@@ -592,7 +592,7 @@ export default function UKrew() {
           >
             <CountUp
               end={6}
-              duration={3000}
+              duration={1000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
@@ -618,7 +618,7 @@ export default function UKrew() {
           >
             <CountUp
               end={50}
-              duration={3000}
+              duration={1000}
               variant="title"
               as="h2"
               size={isMobile ? 'lg' : '3xl'}
