@@ -420,9 +420,6 @@ export default function FSL() {
             >
               Join Our Community
             </Button>
-            <Button variant="black" href="#learn-more">
-              Learn More
-            </Button>
           </ButtonGroup>
         </ContentWrapper>
       </HeroContainer>
@@ -447,7 +444,7 @@ export default function FSL() {
           />
           <StyledLink href="tel:13233436909">
             <Typography variant="cta" color="black">
-              323&ndash;343&ndash;5113
+              (323) 343&ndash;5113
             </Typography>
           </StyledLink>
         </li>
@@ -460,11 +457,13 @@ export default function FSL() {
       </ContactsBar>
 
       {/* Drop-Down Menus */}
-      <div id="learn-more"></div>
       <TabCluster tabItems={NavItems}>
         {/* About Us*/}
         <TabPanel>
-          <FluidContainer backgroundColor="greyLightest">
+          <FluidContainer
+            backgroundColor="greyLightest"
+            margin={isWidescreen ? '18px 0' : '36px 0'}
+          >
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
               Welcome!
             </Typography>
@@ -476,9 +475,50 @@ export default function FSL() {
               you&apos;re looking for, there&apos;s a place for you in our
               fraternity and sorority community! Build lifelong friendships,
               grow as a leader, give back to the community, and make
-              unforgettable memories along the way... go greek!
+              unforgettable memories along the way... go Greek!
             </Typography>
           </FluidContainer>
+
+          {/* Register */}
+          <FluidContainer
+            flex
+            justifyContent="center"
+            padding="0"
+            margin={isWidescreen ? '18px 0 0 0' : '36px 0 0 0'}
+          >
+            <FluidContainer
+              flex
+              alignItems="center"
+              justifyContent="center"
+              flexDirection={isMobile ? 'column' : 'row'}
+              innerMaxWidth="850px"
+              backgroundColor="primary"
+              gap={isMobile ? '0' : '20px'}
+            >
+              <Typography as="p">
+                Register here for Sorority Formal Recruitment with Panhellenic.
+                For more information about the Panhellenic community, visit{' '}
+                <StyledLink
+                  href="https://www.instagram.com/csulbpanhellenic"
+                  isInverseUnderlineStyling
+                  isExternalLink
+                >
+                  @csulapanhellenic
+                </StyledLink>{' '}
+                on Instagram
+              </Typography>
+              <FluidContainer padding="0" innerMaxWidth="200px">
+                <Button
+                  href="http://csula.mycampusdirector2.com/"
+                  isExternalLink
+                  variant="black"
+                >
+                  Register
+                </Button>
+              </FluidContainer>
+            </FluidContainer>
+          </FluidContainer>
+
           {/* MISSION */}
           <FluidContainer
             flex
@@ -510,13 +550,13 @@ export default function FSL() {
               >
                 Our Values
               </Typography>
-              <Typography as="p" variant="copy">
+              <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
                 Fraternities and sororities offer an enriching college
                 experience that helps students grow into leaders, develop
                 valuable social skills, and stay committed to academics and
                 community service.
               </Typography>
-              <Typography as="p" variant="copy">
+              <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
                 Joining a fraternity or sorority is more than just a college
                 club or organization—it&apos;s a lifelong connection that
                 continues to open doors and build friendships long after
@@ -552,44 +592,6 @@ export default function FSL() {
                 <Divider margin={`${Spaces.md} 0`} />
               </FluidContainer>
             ))}
-          </FluidContainer>
-
-          {/* Register */}
-          <FluidContainer flex justifyContent="center" padding="0">
-            <FluidContainer
-              flex
-              alignItems="center"
-              justifyContent="center"
-              flexDirection={isMobile ? 'column' : 'row'}
-              innerMaxWidth="850px"
-              backgroundColor="primary"
-              gap={isMobile ? '0' : '20px'}
-            >
-              <Typography as="p">
-                Register here for Sorority Formal Recruitment with Panhellenic.
-                For more information about the Panhellenic community, visit{' '}
-                <StyledLink
-                  href="https://www.instagram.com/csulbpanhellenic"
-                  isInverseUnderlineStyling
-                  isExternalLink
-                >
-                  @csulapanhellenic
-                </StyledLink>{' '}
-                on Instagram
-              </Typography>
-              <span>
-                <Typography as="p" margin={`${Spaces.sm} 0`}></Typography>
-              </span>
-              <FluidContainer padding="0" innerMaxWidth="200px">
-                <Button
-                  href="http://csula.mycampusdirector2.com/"
-                  isExternalLink
-                  variant="black"
-                >
-                  Register
-                </Button>
-              </FluidContainer>
-            </FluidContainer>
           </FluidContainer>
 
           {/* Count-Up */}
@@ -703,7 +705,7 @@ export default function FSL() {
               <Typography weight="700" as="h3">
                 Contact Us
               </Typography>
-              <Typography as="p">Phone: 323&ndash;343&ndash;5113</Typography>
+              <Typography as="p">Phone: (323) 343&ndash;5113</Typography>
               <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
             </FluidContainer>
 
@@ -805,6 +807,7 @@ export default function FSL() {
                 FY 23&mdash;24 Report
               </DocumentLink>
             </AB524ReportContainer>
+            {/*
             <Typography variant="subheader" as="h3">
               Chapter Status
             </Typography>
@@ -864,6 +867,7 @@ export default function FSL() {
                 FSL Scoresheet
               </Button>
             </abbr>
+            */}
           </FluidContainer>
         </TabPanel>
 

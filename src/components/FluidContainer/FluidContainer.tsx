@@ -16,8 +16,10 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
 const FluidOuter = styled.div<FluidContainerProps>`
   display: flex;
   align-items: center;
+  border: ${(p) => `1px solid ${p.border}`};
   justify-content: center;
   padding: ${(p) => p.padding || '36px 72px'};
+  margin: ${(p) => p.margin};
   height: ${(p) => p.height};
   width: ${(p) => p.width};
   ${(p) =>
@@ -77,13 +79,15 @@ interface FluidInnerProps {
 
 interface FluidContainerProps extends FluidInnerProps {
   alt?: string;
-  children?: React.ReactNode;
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
-  padding?: string;
-  width?: string;
+  border?: keyof typeof Colors;
+  children?: React.ReactNode;
   height?: string;
   id?: string;
+  padding?: string;
+  width?: string;
+  margin?: string;
 }
 
 export const FluidContainer = ({
