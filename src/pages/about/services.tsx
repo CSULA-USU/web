@@ -95,6 +95,7 @@ export default function Services() {
             <ImageAndCard
               key={props.title}
               imageWidth={isMobile ? '80%' : isTablet ? '60%' : '20%'}
+              imageHeight="auto"
               {...props}
             />
           ))}

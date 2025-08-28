@@ -493,20 +493,23 @@ export default function FSL() {
               flexDirection={isMobile ? 'column' : 'row'}
               innerMaxWidth="850px"
               backgroundColor="primary"
-              gap={isMobile ? '0' : '20px'}
+              gap={'16px'}
             >
-              <Typography as="p">
-                Register here for Sorority Formal Recruitment with Panhellenic.
-                For more information about the Panhellenic community, visit{' '}
-                <StyledLink
-                  href="https://www.instagram.com/csulbpanhellenic"
-                  isInverseUnderlineStyling
-                  isExternalLink
-                >
-                  @csulapanhellenic
-                </StyledLink>{' '}
-                on Instagram
-              </Typography>
+              <FluidContainer padding="0">
+                <Typography as="p">
+                  Register here for Sorority Formal Recruitment with
+                  Panhellenic. For more information about the Panhellenic
+                  community, visit on{' '}
+                  <StyledLink
+                    href="https://www.instagram.com/csulbpanhellenic"
+                    isInverseUnderlineStyling
+                    isExternalLink
+                  >
+                    @csulapanhellenic
+                  </StyledLink>{' '}
+                  Instagram
+                </Typography>
+              </FluidContainer>
               <FluidContainer padding="0" innerMaxWidth="200px">
                 <Button
                   href="http://csula.mycampusdirector2.com/"
@@ -522,7 +525,7 @@ export default function FSL() {
           {/* MISSION */}
           <FluidContainer
             flex
-            flexDirection="row"
+            flexDirection={isMobile ? 'column' : 'row'}
             padding="0"
             alignItems="flex-start"
           >
