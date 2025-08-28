@@ -9,7 +9,7 @@ import {
 import { FluidContainer, Typography } from 'components';
 import { ButtonCluster } from 'modules';
 import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Colors } from 'theme';
 import meetingSchedule from 'data/bod-meeting-schedule.json';
 
 interface Meeting {
@@ -147,13 +147,8 @@ export const BODMeetingCalendar = () => {
   }
 
   return (
-    <FluidContainer padding={`0 0 ${Spaces.xl}`}>
-      <FluidContainer
-        flex
-        flexDirection="column"
-        alignItems="center"
-        padding={`0 0 ${Spaces.xl}`}
-      >
+    <FluidContainer>
+      <FluidContainer flex flexDirection="column" alignItems="center">
         <Typography
           variant="title"
           as="h2"
