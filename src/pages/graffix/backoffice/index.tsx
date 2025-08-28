@@ -7,7 +7,6 @@ import {
   Expandable,
   FluidContainer,
   Image,
-  SideImageHeader,
   Typography,
 } from 'components';
 import items from 'data/backoffice.json';
@@ -36,15 +35,28 @@ const RequestContainer = styled.div`
   font-decoration: none;
 `;
 
-const HeaderContainer = styled.div`
-  width: 50%;
-  ${media('tablet')(`width:50%;`)}
-  ${media('desktop')(`width:50%;`)}
+const SideImageHeaderRoot = styled.header`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 360px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ImageSlot = styled.div`
+  aspect-ratio: 1;
+  width: 100%;
+  overflow: hidden;
+`;
+
+const ContentSlot = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  padding: 24px;
 `;
 
 const requests = [
@@ -234,12 +246,18 @@ export default function Backoffice() {
         <title>Graffix Backoffice</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <SideImageHeader
-        imgAlt="future graffix office"
-        imgSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/graffix-future.webp"
-        imgWidth={isDesktop ? '100%' : '50%'}
-      >
-        <HeaderContainer>
+      <SideImageHeaderRoot>
+        <ImageSlot>
+          <Image
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/graffix-future.webp"
+            alt="future graffix office"
+            width="1600"
+            height="900"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </ImageSlot>
+
+        <ContentSlot>
           <Typography
             as="h1"
             variant="pageHeader"
@@ -252,17 +270,22 @@ export default function Backoffice() {
             as="p"
             variant="title"
             size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
-            margin={`0 0 ${Spaces.lg} 0`}
           >
             Requests for Graphics
-            <br />
+          </Typography>
+          <Typography
+            as="p"
+            variant="title"
+            size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
+            margin={`0 0 ${Spaces.lg} 0`}
+          >
             Spring and Summer 2025
           </Typography>
           <Button href="https://form.jotform.com/231835701552150" margin="3%">
             Request Form
           </Button>
-        </HeaderContainer>
-      </SideImageHeader>
+        </ContentSlot>
+      </SideImageHeaderRoot>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Marketing Packages

@@ -1,12 +1,43 @@
 import { Page, Header, ImageAndCard } from 'modules';
 import Head from 'next/head';
 import { Card, FluidContainer, Image, Typography } from 'components';
-import { Spaces } from 'theme';
+import { media, Spaces } from 'theme';
 import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
-import { useBreakpoint } from 'hooks';
+import styled from 'styled-components';
+
+const RoomCard = styled(Card)`
+  margin: ${Spaces.sm};
+  width: 400px; /* desktop & up */
+
+  ${media('tablet')(`
+    width: 100%;
+  `)}
+
+  ${media('mobile')(`
+    width: 100%;
+  `)}
+`;
+
+const CardImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* avoid inline-img whitespace wiggles */
+`;
+
+const DynamicRatioBox = styled.div<{ ratio: number }>`
+  width: 100%;
+  aspect-ratio: ${({ ratio }) => ratio};
+  overflow: hidden;
+  display: block;
+`;
+
+const TopSection = styled(FluidContainer)`
+  min-height: 240px; /* reserve enough space to avoid jump */
+`;
+
 export default function MeetingRooms() {
-  const { isDesktop } = useBreakpoint();
   const cards = [
     {
       title: 'Attendees',
@@ -48,7 +79,7 @@ export default function MeetingRooms() {
           key="keywords"
         />
       </Head>
-      <FluidContainer>
+      <TopSection>
         <Header title="Meeting Rooms">
           Rent out a meeting space at CSULA U-SU. Current locations available to
           book are Los Angeles A/B/C, Theater, Alhambra, San Gabriel, U-SU Plaza
@@ -56,7 +87,7 @@ export default function MeetingRooms() {
           sponsors. Click an individual room for more information regarding
           layout, features, and fees.
         </Header>
-      </FluidContainer>
+      </TopSection>
       <FluidContainer
         flex
         flexDirection="column"
@@ -65,23 +96,24 @@ export default function MeetingRooms() {
         <Typography as="h2" variant="title">
           Available Spaces
         </Typography>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          margin="18px 0 0 0"
+          padding="0"
+        >
           {meetingRoomsData.map((props: any) => (
-            <Card
-              key={props.title}
-              margin={`${Spaces.sm}`}
-              width={isDesktop ? 'calc(75%)' : 'calc(32%)'}
-              title={props.title}
-            >
-              <Link key={props.title} href={'./meeting-rooms/' + props.id}>
-                {' '}
-                <Image
-                  src={props.mainImageSrc}
-                  alt={props.mainImageAlt}
-                  width="100%"
-                />
+            <RoomCard key={props.title} title={props.title}>
+              <Link href={'./meeting-rooms/' + props.id}>
+                <DynamicRatioBox ratio={props.aspect ?? 4 / 3}>
+                  <CardImage
+                    src={props.mainImageSrc}
+                    alt={props.mainImageAlt}
+                  />
+                </DynamicRatioBox>
               </Link>
-            </Card>
+            </RoomCard>
           ))}
         </FluidContainer>
       </FluidContainer>

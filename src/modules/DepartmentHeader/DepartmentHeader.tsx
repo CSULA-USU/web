@@ -26,34 +26,42 @@ const HeaderContent = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 550px;
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 1fr);
+  align-items: start;
+  gap: ${Spaces.lg};
+  /* Reserve initial space to avoid CLS without capping height */
+  min-height: 550px;
 
   @media (max-width: 711px) {
-    height: 850px;
-  }
-
-  > * {
-    min-width: 320px;
-    flex: 1;
+    grid-template-columns: 1fr;
+    min-height: 0;
   }
 `;
 
+/* A wrapper that reserves predictable space while content loads,
+   but allows the column to grow if the card is taller. */
+const FeatureSlot = styled.div`
+  /* Reserve space to prevent layout shift when swapping Skeleton -> Card */
+  min-height: 360px; /* match your EventSkeleton's height */
+  /* Remove hard caps so the container grows instead of overlapping */
+  /* If you *must* cap, use max-height: 550px; overflow: auto; */
+`;
+
+/* If you're showing a placeholder image, give it a stable box */
 const ImgBox = styled.div`
+  width: 100%;
+  /* Stable aspect ratio prevents CLS */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   display: grid;
   place-items: center;
-  max-height: 550px; /* adjust if you want */
-  max-width: 100%;
-  overflow: hidden;
 `;
 
 const ImgReset = styled(Image)`
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover = fills box nicely */
 `;
 
 export const DepartmentHeader = ({
@@ -100,20 +108,24 @@ export const DepartmentHeader = ({
             </Typography>
             <Typography>{children}</Typography>
           </HeaderContent>
-          {departmentEvent ? (
-            <EventCard
-              onClick={() => selectEvent(departmentEvent)}
-              featured
-              event={departmentEvent}
-            />
-          ) : loading ? (
-            <EventSkeleton />
-          ) : placeholderImageSrc && placeholderImageAlt ? (
-            <ImgBox>
-              <ImgReset src={placeholderImageSrc} alt={placeholderImageAlt} />
-            </ImgBox>
-          ) : null}
+
+          <FeatureSlot>
+            {departmentEvent ? (
+              <EventCard
+                onClick={() => selectEvent(departmentEvent)}
+                featured
+                event={departmentEvent}
+              />
+            ) : loading ? (
+              <EventSkeleton />
+            ) : placeholderImageSrc && placeholderImageAlt ? (
+              <ImgBox>
+                <ImgReset src={placeholderImageSrc} alt={placeholderImageAlt} />
+              </ImgBox>
+            ) : null}
+          </FeatureSlot>
         </HeaderContainer>
+
         {infoSection}
       </FluidContainer>
       <EventModal
