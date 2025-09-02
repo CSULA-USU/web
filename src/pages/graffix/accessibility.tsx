@@ -130,11 +130,11 @@ export default function Accessibility() {
           </Typography>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <MdOutlineEmail />
-            <Typography as="p">usu@calstatela.edu</Typography>
+            <Typography as="p">graffixwebteam@gmail.com</Typography>
           </FluidContainer>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <FiPhone />
-            <Typography as="p">(323) 343-2450</Typography>
+            <Typography as="p">(323)&ndash;343&ndash;2464</Typography>
           </FluidContainer>
           <Typography as="p">
             We welcome your feedback and will work to address issues promptly.
