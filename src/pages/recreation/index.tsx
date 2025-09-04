@@ -4,7 +4,13 @@ import { BiPhone } from 'react-icons/bi';
 import RecData from '../../data/recreation.json';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
-import { Image, Typography, Card, FluidContainer } from 'components';
+import {
+  Image,
+  Typography,
+  Card,
+  FluidContainer,
+  StyledLink,
+} from 'components';
 import { Page } from 'modules';
 import {
   NonDiscriminationPolicy,
@@ -156,6 +162,15 @@ export default function Recreation() {
             students, staff and faculty.
           </Typography>
         </LongDescriptionSection>
+      </FluidContainer>
+      <FluidContainer>
+        <StyledLink
+          href="https://www.dropbox.com/scl/fi/77otth0tcc69v2j6yz4lr/USU_Recreation_Facilities_General_Policies_8-19-25.pdf?rlkey=sp0iijyxc83ywk4c1dnnizbur&st=zlnqf6hq&raw=1"
+          isExternalLink
+          isInverseUnderlineStyling
+        >
+          Recreation General Policies
+        </StyledLink>
       </FluidContainer>
       <FluidContainer
         backgroundColor="greyLighter"
