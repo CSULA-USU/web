@@ -71,11 +71,11 @@ export default function Accessibility() {
       </FluidContainer>
       <FluidContainer>
         <Typography margin="0 0 24px 0" as="p">
-          The Cal State LA University&ndash;Student Union (U&ndash;SU) is
-          committed to ensuring that our website is accessible to all users,
-          including individuals with disabilities. We strive to follow best
-          practices and compliance standards that support equal access to
-          information and digital resources.
+          The University&ndash;Student Union at Cal State LA is committed to
+          ensuring that our website is accessible to all users, including
+          individuals with disabilities. We strive to follow best practices and
+          compliance standards that support equal access to information and
+          digital resources.
         </Typography>
         <Typography>
           Our website follows the guidelines outlined by the{' '}
@@ -142,8 +142,8 @@ export default function Accessibility() {
             <Typography as="p">
               <ul>
                 <li>
-                  Alternative text for meaningful non-text elements (such as
-                  images).
+                  Alternative text for meaningful non&ndash;text elements (such
+                  as images).
                 </li>
                 <li>Captions and transcripts for videos and multimedia.</li>
                 <li>
@@ -185,11 +185,19 @@ export default function Accessibility() {
           </Typography>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <MdOutlineEmail />
-            <Typography as="p">graffixwebteam@gmail.com</Typography>
+            <Typography as="p">
+              <StyledLink
+                isExternalLink
+                isInverseUnderlineStyling
+                href="mailto:graffixwebteam@gmail.com"
+              >
+                graffixwebteam@gmail.com
+              </StyledLink>
+            </Typography>
           </FluidContainer>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <FiPhone />
-            <Typography as="p">(323)&ndash;343&ndash;2464</Typography>
+            <Typography as="p">(323) 343&ndash;2464</Typography>
           </FluidContainer>
           <Typography as="p">
             We welcome your feedback and will work to address issues promptly.
