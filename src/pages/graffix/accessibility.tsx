@@ -8,7 +8,62 @@ export default function Accessibility() {
   const { isMobile, isTablet } = useBreakpoint();
   return (
     <Page>
-      <title>U-SU Graffix Accessibility Statement</title>
+      <head>
+        <title>U&ndash;SU Accessibility Statement</title>
+        <meta
+          name="description"
+          content="Learn about Accessibility at Cal State LA's University-Student Union. Explore resources, ADA compliance, inclusive design, and services that ensure all students can fully participate in campus life."
+        />
+        <meta name="author" content="University-Student Union, Cal State LA" />
+        <meta
+          name="keywords"
+          content="Cal State LA, California State University Los Angeles, CSULA, accessibility, ADA compliance, disability services, inclusive design, Cal State LA U-SU, Cal State LA University Student Union, accessibility resources, accessible campus, assistive technology, student accessibility, universal design, equity inclusion Cal State LA"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+
+        <meta
+          property="og:title"
+          content="Accessibility | Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:description"
+          content="Discover how the University-Student Union at Cal State LA promotes accessibility and inclusion through ADA compliance, resources, and accessible facilities."
+        />
+        <meta
+          property="og:image"
+          content="https://live-csu-northridge.pantheonsite.io/sites/default/files/2023-02/Accessibility_Statement.png"
+        />
+        <meta
+          property="og:image:alt"
+          content="Accessibility Statement graphic representing accessibility and inclusion at Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:url"
+          content="https://usu.calstatela.edu/accessibility"
+        />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Accessibility at Cal State LA U-SU"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn about accessibility and inclusion at the University-Student Union, Cal State LA. Explore ADA compliance, resources, and accessible services."
+        />
+        <meta
+          name="twitter:image"
+          content="https://live-csu-northridge.pantheonsite.io/sites/default/files/2023-02/Accessibility_Statement.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Accessibility Statement graphic representing accessibility and inclusion at Cal State LA University-Student Union"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+
       <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
         <Typography variant="pageHeader" as="h1">
           Accessibility Statement
@@ -16,11 +71,11 @@ export default function Accessibility() {
       </FluidContainer>
       <FluidContainer>
         <Typography margin="0 0 24px 0" as="p">
-          The Cal State LA University-Student Union (U-SU) is committed to
-          ensuring that our website is accessible to all users, including
-          individuals with disabilities. We strive to follow best practices and
-          compliance standards that support equal access to information and
-          digital resources.
+          The Cal State LA University&ndash;Student Union (U&ndash;SU) is
+          committed to ensuring that our website is accessible to all users,
+          including individuals with disabilities. We strive to follow best
+          practices and compliance standards that support equal access to
+          information and digital resources.
         </Typography>
         <Typography>
           Our website follows the guidelines outlined by the{' '}
