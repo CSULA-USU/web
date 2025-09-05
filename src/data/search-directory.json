@@ -503,5 +503,26 @@
       "student stories",
       "u-awards"
     ]
+  },
+  {
+    "title": "Accessibility",
+    "url": "/graffix/accessibility",
+    "description": "“The Cal State LA University-Student Union (U-SU) is committed to digital accessibility for all. Our website follows ADA, Section 504, Section 508, and WCAG 2.1 standards to ensure equal access. Features include screen reader compatibility, captions, alternative text, keyboard navigation, and more. Report accessibility issues at graffixwebteam@gmail.com or (323) 343-2464.”",
+    "tags": [
+      "accessibility",
+      "accessibility statement",
+      "digital accessibility",
+      "ADA compliance",
+      "Section 504",
+      "Section 508",
+      "WCAG 2.1",
+      "screen reader",
+      "captions and transcripts",
+      "keyboard navigation",
+      "color contrast",
+      "Cal State LA accessibility",
+      "U-SU accessibility",
+      "inclusive web design"
+    ]
   }
 ]

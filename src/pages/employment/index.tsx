@@ -183,13 +183,15 @@ export default function Employment() {
         >
           Applications
         </Typography>
-        <StyledLink
-          href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application FORM 2025.pdf"
-          aria-label="Open Full-time Professional Appointment Application PDF form in a new tab"
-          isInverseUnderlineStyling
-        >
-          Full-time Professional Appointment
-        </StyledLink>
+        <FluidContainer padding="0">
+          <StyledLink
+            href="/employment/forms/University-Student Union at Cal State LA Full-time Staff Employment Application FORM 2025.pdf"
+            aria-label="Open Full-time Professional Appointment Application PDF form in a new tab"
+            isInverseUnderlineStyling
+          >
+            Full&ndash;time Professional Appointment
+          </StyledLink>
+        </FluidContainer>
       </FluidContainer>
     </Page>
   );
