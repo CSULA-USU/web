@@ -1,5 +1,6 @@
+import Head from 'next/head';
 import { FluidContainer, StyledLink, Typography, Image } from 'components';
-import { Page } from 'modules';
+import { Header, Page } from 'modules';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
 import { useBreakpoint } from 'hooks';
@@ -8,7 +9,7 @@ export default function Accessibility() {
   const { isMobile, isTablet } = useBreakpoint();
   return (
     <Page>
-      <head>
+      <Head>
         <title>U&ndash;SU Accessibility Statement</title>
         <meta
           name="description"
@@ -21,14 +22,13 @@ export default function Accessibility() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
-
         <meta
           property="og:title"
-          content="Accessibility | Cal State LA University-Student Union"
+          content="Accessibility | University-Student Union at Cal State LA"
         />
         <meta
           property="og:description"
-          content="Discover how the University-Student Union at Cal State LA promotes accessibility and inclusion through ADA compliance, resources, and accessible facilities."
+          content="Discover how the University-Student Union at Cal State LA promotes web accessibility and inclusion through ADA compliance, and resources."
         />
         <meta
           property="og:image"
@@ -40,14 +40,13 @@ export default function Accessibility() {
         />
         <meta
           property="og:url"
-          content="https://usu.calstatela.edu/accessibility"
+          content="https://calstatelausu.org/graffix/web-team/accessibility"
         />
         <meta property="og:type" content="website" />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Accessibility at Cal State LA U-SU"
+          content="U-SU at Cal State LA Web Accessibiility"
         />
         <meta
           name="twitter:description"
@@ -62,14 +61,11 @@ export default function Accessibility() {
           content="Accessibility Statement graphic representing accessibility and inclusion at Cal State LA University-Student Union"
         />
         <link rel="icon" href="/favicon.ico" />
-      </head>
-
-      <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
-        <Typography variant="pageHeader" as="h1">
-          Accessibility Statement
-        </Typography>
-      </FluidContainer>
-      <FluidContainer>
+      </Head>
+      <Header
+        title="Accessibility Statement"
+        backgroundImage="/backgrounds/subtle-background-2.jpg"
+      >
         <Typography margin="0 0 24px 0" as="p">
           The University&ndash;Student Union at Cal State LA is committed to
           ensuring that our website is accessible to all users, including
@@ -77,97 +73,111 @@ export default function Accessibility() {
           compliance standards that support equal access to information and
           digital resources.
         </Typography>
-        <Typography>
-          Our website follows the guidelines outlined by the{' '}
-          <StyledLink
-            href="https://www.ada.gov/"
-            isInverseUnderlineStyling
-            isExternalLink
-          >
-            Americans with Disabilities Act
-          </StyledLink>
-          ,{' '}
-          <StyledLink
-            href="https://www2.ed.gov/policy/rights/reg/ocr/edlite-34cfr104.html"
-            isExternalLink
-            isInverseUnderlineStyling
-          >
-            Section 504 of the Rehabilitation Act of 1973
-          </StyledLink>{' '}
-          and{' '}
-          <StyledLink
-            href="https://www.section508.gov/manage/laws-and-policies/"
-            isExternalLink
-            isInverseUnderlineStyling
-          >
-            Section 508 of the Rehabilitation Act
-          </StyledLink>
-          , as well as the{' '}
-          <StyledLink
-            href="https://www.w3.org/TR/WCAG21/"
-            isExternalLink
-            isInverseUnderlineStyling
-          >
-            Web Content Accessibility Guidelines 2.1
-          </StyledLink>
-          . These standards are designed to remove barriers in information
-          technology and promote inclusive access.
-        </Typography>
-      </FluidContainer>
+      </Header>
       <FluidContainer
         flex
-        flexDirection={isMobile || isTablet ? 'column' : 'row'}
-        justifyContent="space-between"
-        alignItems="center"
-        gap="24px"
+        flexDirection={isTablet ? 'column' : 'row'}
+        gap="32px"
+        justifyContent="space-evenly"
       >
         <FluidContainer
-          padding="0"
-          flex
           flexDirection="column"
           gap="24px"
-          alignItems="flex-start"
+          innerMaxWidth="640px"
+          padding="0"
         >
-          <FluidContainer padding="0">
-            <Typography
-              as="h2"
-              variant="title"
-              size={isMobile ? 'xl' : '2xl'}
-              margin=""
-            >
-              Key accessibility features website include:
-            </Typography>
-          </FluidContainer>
           <Typography>
-            <Typography as="p">
-              <ul>
-                <li>
-                  Alternative text for meaningful non&ndash;text elements (such
-                  as images).
-                </li>
-                <li>Captions and transcripts for videos and multimedia.</li>
-                <li>
-                  Compatibility with keyboard navigation (no mouse required).
-                </li>
-                <li>
-                  Content that is not dependent on color, with sufficient color
-                  contrast.
-                </li>
-                <li>Scalable and legible text.</li>
-                <li>
-                  Properly structured headings, lists, and form labels for
-                  screen reader navigation.
-                </li>
-              </ul>
-            </Typography>
+            Our website follows the guidelines outlined by the{' '}
+            <StyledLink
+              href="https://www.ada.gov/"
+              isInverseUnderlineStyling
+              isExternalLink
+            >
+              Americans with Disabilities Act
+            </StyledLink>
+            ,{' '}
+            <StyledLink
+              href="https://www2.ed.gov/policy/rights/reg/ocr/edlite-34cfr104.html"
+              isExternalLink
+              isInverseUnderlineStyling
+            >
+              Section 504 of the Rehabilitation Act of 1973
+            </StyledLink>{' '}
+            and{' '}
+            <StyledLink
+              href="https://www.section508.gov/manage/laws-and-policies/"
+              isExternalLink
+              isInverseUnderlineStyling
+            >
+              Section 508 of the Rehabilitation Act
+            </StyledLink>
+            , as well as the{' '}
+            <StyledLink
+              href="https://www.w3.org/TR/WCAG21/"
+              isExternalLink
+              isInverseUnderlineStyling
+            >
+              Web Content Accessibility Guidelines 2.1
+            </StyledLink>
+            . These standards are designed to remove barriers in information
+            technology and promote inclusive access.
           </Typography>
         </FluidContainer>
         <Image
-          src="https://live-csu-northridge.pantheonsite.io/sites/default/files/2023-02/Accessibility_Statement.png"
-          alt="Keyboard with Accesibility statement as the enter button"
-          width={'400px'}
-          height={'400px'}
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/accessibility/accessibility-stock.webp"
+          alt=""
+          maxWidth="424px"
+          borderRadius="12px"
         />
+      </FluidContainer>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="flex-start"
+        gap="16px"
+        backgroundColor="greyLightest"
+      >
+        <Typography
+          as="h2"
+          variant="title"
+          size={isMobile ? 'xl' : '2xl'}
+          margin=""
+        >
+          Key accessibility features website include:
+        </Typography>
+        <ul>
+          <li>
+            <Typography>
+              Alternative text for meaningful non&ndash;text elements (such as
+              images).
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Captions and transcripts for videos and multimedia.
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Compatibility with keyboard navigation (no mouse required).
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Content that is not dependent on color, with sufficient color
+              contrast.
+            </Typography>
+          </li>
+          <li>
+            <Typography>Scalable and legible text.</Typography>
+          </li>
+          <li>
+            <Typography>
+              Properly structured headings, lists, and form labels for screen
+              reader navigation.
+            </Typography>
+          </li>
+        </ul>
       </FluidContainer>
       <FluidContainer>
         <Typography
@@ -185,9 +195,8 @@ export default function Accessibility() {
           </Typography>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <MdOutlineEmail />
-            <Typography as="p">
+            <Typography as="p" lineHeight="1.1">
               <StyledLink
-                isExternalLink
                 isInverseUnderlineStyling
                 href="mailto:graffixwebteam@gmail.com"
               >
@@ -197,7 +206,7 @@ export default function Accessibility() {
           </FluidContainer>
           <FluidContainer flex alignItems="center" padding="0" gap="5px">
             <FiPhone />
-            <Typography as="p">(323) 343&ndash;2464</Typography>
+            <Typography as="p">(323) 343&ndash;2488</Typography>
           </FluidContainer>
           <Typography as="p">
             We welcome your feedback and will work to address issues promptly.
