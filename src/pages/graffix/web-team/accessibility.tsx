@@ -1,9 +1,19 @@
 import Head from 'next/head';
-import { FluidContainer, StyledLink, Typography, Image } from 'components';
-import { Header, Page } from 'modules';
+import styled from 'styled-components';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
 import { useBreakpoint } from 'hooks';
+import { FluidContainer, StyledLink, Typography, Image } from 'components';
+import { Header, Page } from 'modules';
+import { Colors } from 'theme';
+
+const SectionContainer = styled.section`
+  background-color: ${Colors.greyLightest};
+  border-radius: 12px;
+  height: 100%;
+  padding: 36px 72px;
+  width: 100%;
+`;
 
 export default function Accessibility() {
   const { isMobile, isTablet } = useBreakpoint();
@@ -80,49 +90,54 @@ export default function Accessibility() {
         gap="32px"
         justifyContent="space-evenly"
       >
-        <FluidContainer
-          flexDirection="column"
-          gap="24px"
-          innerMaxWidth="640px"
-          padding="0"
-        >
-          <Typography>
-            Our website follows the guidelines outlined by the{' '}
-            <StyledLink
-              href="https://www.ada.gov/"
-              isInverseUnderlineStyling
-              isExternalLink
-            >
-              Americans with Disabilities Act
-            </StyledLink>
-            ,{' '}
-            <StyledLink
-              href="https://www2.ed.gov/policy/rights/reg/ocr/edlite-34cfr104.html"
-              isExternalLink
-              isInverseUnderlineStyling
-            >
-              Section 504 of the Rehabilitation Act of 1973
-            </StyledLink>{' '}
-            and{' '}
-            <StyledLink
-              href="https://www.section508.gov/manage/laws-and-policies/"
-              isExternalLink
-              isInverseUnderlineStyling
-            >
-              Section 508 of the Rehabilitation Act
-            </StyledLink>
-            , as well as the{' '}
-            <StyledLink
-              href="https://www.w3.org/TR/WCAG21/"
-              isExternalLink
-              isInverseUnderlineStyling
-            >
-              Web Content Accessibility Guidelines 2.1
-            </StyledLink>
-            . These standards are designed to remove barriers in information
-            technology and promote inclusive access.
-          </Typography>
-        </FluidContainer>
+        <SectionContainer>
+          <FluidContainer
+            flexDirection="column"
+            gap="24px"
+            innerMaxWidth="720px"
+            padding="0"
+          >
+            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+              Guidelines
+            </Typography>
+            <Typography>
+              Our website follows the guidelines outlined by the{' '}
+              <StyledLink
+                href="https://www.ada.gov/"
+                isInverseUnderlineStyling
+                isExternalLink
+              >
+                Americans with Disabilities Act
+              </StyledLink>
+              ,{' '}
+              <StyledLink
+                href="https://www2.ed.gov/policy/rights/reg/ocr/edlite-34cfr104.html"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Section 504 of the Rehabilitation Act of 1973
+              </StyledLink>{' '}
+              and{' '}
+              <StyledLink
+                href="https://www.section508.gov/manage/laws-and-policies/"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Section 508 of the Rehabilitation Act
+              </StyledLink>
+              , as well as the{' '}
+              <StyledLink
+                href="https://www.w3.org/TR/WCAG21/"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Web Content Accessibility Guidelines 2.1
+              </StyledLink>
+              . These standards are designed to remove barriers in information
+              technology and promote inclusive access.
+            </Typography>
+          </FluidContainer>
+        </SectionContainer>
         <Image
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/accessibility/accessibility-stock.webp"
           alt=""
@@ -130,99 +145,87 @@ export default function Accessibility() {
           borderRadius="12px"
         />
       </FluidContainer>
-      <FluidContainer
-        flex
-        flexDirection="column"
-        alignItems="flex-start"
-        gap="16px"
-        backgroundColor="greyLightest"
-      >
-        <Typography
-          as="h2"
-          variant="title"
-          size={isMobile ? 'xl' : '2xl'}
-          margin=""
-        >
-          Key accessibility features website include:
-        </Typography>
-        <ul>
-          <li>
-            <Typography>
-              Alternative text for meaningful non&ndash;text elements (such as
-              images).
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Captions and transcripts for videos and multimedia.
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Compatibility with keyboard navigation (no mouse required).
-            </Typography>
-          </li>
-          <li>
-            <Typography>
-              Content that is not dependent on color, with sufficient color
-              contrast.
-            </Typography>
-          </li>
-          <li>
-            <Typography>Scalable and legible text.</Typography>
-          </li>
-          <li>
-            <Typography>
-              Properly structured headings, lists, and form labels for screen
-              reader navigation.
-            </Typography>
-          </li>
-        </ul>
+      <FluidContainer flex flexDirection="column" alignItems="flex-start">
+        <SectionContainer>
+          <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+            Key Accessibility Features
+          </Typography>
+          <ul>
+            <li>
+              <Typography>
+                Alternative text for meaningful non&ndash;text elements (such as
+                images).
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                Compatibility with keyboard navigation (no mouse required).
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                Content that is not dependent on color, with sufficient color
+                contrast.
+              </Typography>
+            </li>
+            <li>
+              <Typography>Scalable and legible text.</Typography>
+            </li>
+            <li>
+              <Typography>
+                Properly structured headings, lists, and form labels for screen
+                reader navigation.
+              </Typography>
+            </li>
+          </ul>
+        </SectionContainer>
       </FluidContainer>
       <FluidContainer>
-        <Typography
-          margin="0 0 24px 0"
-          as="h2"
-          variant="title"
-          size={isMobile ? 'xl' : '2xl'}
-        >
-          Reporting Accessibility Issues
-        </Typography>
-        <FluidContainer flex gap="10px" flexDirection="column" padding="0">
-          <Typography as="p">
-            If you encounter any accessibility barriers on our website or have
-            suggestions for improvement, please contact us at:
+        <SectionContainer>
+          <Typography
+            margin="0 0 24px 0"
+            as="h2"
+            variant="title"
+            size={isMobile ? 'xl' : '2xl'}
+          >
+            Reporting Accessibility Issues
           </Typography>
-          <FluidContainer flex alignItems="center" padding="0" gap="5px">
-            <MdOutlineEmail />
-            <Typography as="p" lineHeight="1.1">
+          <FluidContainer flex gap="10px" flexDirection="column" padding="0">
+            <Typography as="p">
+              If you encounter any accessibility barriers on our website or have
+              suggestions for improvement, please contact us at:
+            </Typography>
+            <FluidContainer flex alignItems="center" padding="0" gap="5px">
+              <MdOutlineEmail />
+              <Typography as="p" lineHeight="1.1">
+                <StyledLink
+                  isInverseUnderlineStyling
+                  href="mailto:graffixwebteam@gmail.com"
+                >
+                  graffixwebteam@gmail.com
+                </StyledLink>
+              </Typography>
+            </FluidContainer>
+            <FluidContainer flex alignItems="center" padding="0" gap="5px">
+              <FiPhone />
+              <Typography as="p">(323) 343&ndash;2488</Typography>
+            </FluidContainer>
+            <Typography as="p">
+              We welcome your feedback and will work to address issues promptly.
+            </Typography>
+            <Typography as="p">
+              For more information about accessibility requirements, visit the
+              U.S. Department of Justice ADA regulations page:{' '}
               <StyledLink
+                href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/#-35201-exceptions"
+                isExternalLink
                 isInverseUnderlineStyling
-                href="mailto:graffixwebteam@gmail.com"
               >
-                graffixwebteam@gmail.com
+                ADA Title II Regulations
               </StyledLink>
             </Typography>
           </FluidContainer>
-          <FluidContainer flex alignItems="center" padding="0" gap="5px">
-            <FiPhone />
-            <Typography as="p">(323) 343&ndash;2488</Typography>
-          </FluidContainer>
-          <Typography as="p">
-            We welcome your feedback and will work to address issues promptly.
-          </Typography>
-          <Typography as="p">
-            For more information about accessibility requirements, visit the
-            U.S. Department of Justice ADA regulations page:{' '}
-            <StyledLink
-              href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/#-35201-exceptions"
-              isExternalLink
-              isInverseUnderlineStyling
-            >
-              ADA Title II Regulations
-            </StyledLink>
-          </Typography>
-        </FluidContainer>
+        </SectionContainer>
       </FluidContainer>
     </Page>
   );
