@@ -13,6 +13,7 @@ export interface BaseComponentProps
   'data-qa'?: string;
   role?: string;
   style?: CSSObject;
+  noShrink?: boolean; // Prevent shrinking in flex containers
 }
 
 export interface ImageProps extends BaseComponentProps, LayoutProps {
@@ -29,6 +30,7 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
 
 export const StyledImage = styled('img')<ImageProps>`
   border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
+  flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
   ${layout}
   ${space}
 `;

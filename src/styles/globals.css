@@ -31,11 +31,11 @@ span:focus-visible {
 }
 
 ::selection {
-  background: #fece07;
+  background: #95e0ff;
   color: black;
 }
 
 ::-moz-selection {
-  background: #fece07;
+  background: #95e0ff;
   color: black;
 }

@@ -121,18 +121,27 @@ export const WordCycler = ({
   animation = 'fade',
 }: WordCyclerProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHydrated, setIsHydrated] = useState(false); // ← Add hydration check
+  const [hasStartedCycling, setHasStartedCycling] = useState(false);
 
   useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return; // ← Only run if hydrated
+
     const timer = setInterval(() => {
+      setHasStartedCycling(true);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, interval);
     return () => clearInterval(timer);
-  }, [words.length, interval]);
+  }, [words.length, interval, isHydrated]);
 
   return (
     <AnimatedSpan
-      key={currentIndex}
-      animation={animation}
+      key={hasStartedCycling ? currentIndex : 'initial'}
+      animation={hasStartedCycling ? animation : undefined}
       className={className}
     >
       {words[currentIndex]}

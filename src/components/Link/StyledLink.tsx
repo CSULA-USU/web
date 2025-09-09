@@ -58,11 +58,11 @@ const NoUnderlineHover = styled(Link)`
 const StyledSpan = styled.span`
   display: flex;
   align-items: center;
+  line-height: 1.1;
 `;
 
 const IconStyling = {
   marginLeft: '4px',
-  height: '100%',
   fontSize: 'inherit',
   color: 'currentColor',
   flexShrink: 0,
@@ -91,23 +91,28 @@ export const StyledLink = ({
             target={isExternalLink ? '_blank' : undefined}
             rel={isExternalLink ? 'noopener noreferrer' : undefined}
           >
-            <StyledSpan>{children}</StyledSpan>
+            <StyledSpan>
+              {children}
+              {isExternalLink ? (
+                <LuExternalLink style={IconStyling} aria-hidden="true" />
+              ) : null}
+            </StyledSpan>
           </NoUnderlineHover>
-          {isExternalLink ? (
-            <LuExternalLink style={IconStyling} aria-hidden="true" />
-          ) : null}
         </>
       ) : (
         <>
           <UnderlineHover
             href={href}
             target={isExternalLink ? '_blank' : undefined}
+            rel={isExternalLink ? 'noopener noreferrer' : undefined}
           >
-            <StyledSpan>{children}</StyledSpan>
+            <StyledSpan>
+              {children}
+              {isExternalLink ? (
+                <LuExternalLink style={IconStyling} aria-hidden="true" />
+              ) : null}
+            </StyledSpan>
           </UnderlineHover>
-          {isExternalLink ? (
-            <LuExternalLink style={IconStyling} aria-hidden="true" />
-          ) : null}
         </>
       )}
     </>
