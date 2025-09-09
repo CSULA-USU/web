@@ -34,29 +34,44 @@ const FluidOuter = styled.div<FluidContainerProps>`
 `;
 
 const FluidInner = styled.div<FluidInnerProps>`
-  width: 100%;
+  border-radius: ${(p) => (p.innerRounded ? '12px' : '0px')};
+  background-color: ${(p) => Colors[p.innerBackgroundColor || 'transparent']};
   max-width: 1440px;
+  padding: ${(p) => p.innerPadding};
+  width: 100%;
   ${(p) => p.innerMaxWidth && `max-width: ${p.innerMaxWidth};`}
   ${(p) => p.innerMinHeight && `min-height: ${p.innerMinHeight};`}
   ${(p) =>
     p.flex
       ? css`
+          align-items: ${p.alignItems || 'stretch'};
           display: flex;
           flex-wrap: ${p.flexWrap || 'nowrap'};
           flex-direction: ${p.flexDirection || 'row'};
           justify-content: ${p.justifyContent || 'flex-start'};
-          align-items: ${p.alignItems || 'stretch'};
           gap: ${p.gap || 'initial'};
         `
       : css``};
 `;
 
 interface FluidInnerProps {
+  alignItems?:
+    | 'stretch'
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'initial'
+    | 'inherit';
+  flex?: boolean;
+  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+  gap?: string;
+  innerBackgroundColor?: keyof typeof Colors;
   innerMaxWidth?: string;
   innerMinHeight?: string;
-  flex?: boolean;
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  innerRounded?: boolean;
+  innerPadding?: string;
   justifyContent?:
     | 'flex-start'
     | 'flex-end'
@@ -66,15 +81,6 @@ interface FluidInnerProps {
     | 'space-evenly'
     | 'initial'
     | 'inherit';
-  alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
-  gap?: string;
 }
 
 interface FluidContainerProps extends FluidInnerProps {
