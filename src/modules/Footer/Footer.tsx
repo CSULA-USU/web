@@ -199,8 +199,8 @@ export const Footer = () => (
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'/graffix/accessibility'} isExternalLink>
-                  Accessibility
+                <StyledLink href={'/graffix/web-team/accessibility'}>
+                  Digital Accessibility
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
