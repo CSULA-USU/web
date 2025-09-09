@@ -24,6 +24,12 @@ const SectionContainer = styled.section`
   background-color: ${Colors.greyLightest};
   border-radius: 12px;
   padding: 36px 72px;
+  @media (max-width: 1024px) {
+    padding: 18px 36px;
+  }
+  @media (max-width: 580px) {
+    padding: 18px 16px;
+  }
   width: 100%;
 `;
 
@@ -130,211 +136,231 @@ export default function Accessibility() {
           noShrink
         />
       </FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="flex-start">
-        <SectionContainer>
-          <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-            Guidelines
-          </Typography>
-          <Typography>
-            Our website follows the guidelines outlined by the:
-          </Typography>
-          <ul>
-            <li>
-              <Typography>
-                <StyledLink
-                  href="https://www.ada.gov/"
-                  isInverseUnderlineStyling
-                  isExternalLink
-                >
-                  Americans with Disabilities Act
-                </StyledLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                <StyledLink
-                  href="https://www.dol.gov/agencies/oasam/centers-offices/civil-rights-center/statutes/section-504-rehabilitation-act-of-1973"
-                  isExternalLink
-                  isInverseUnderlineStyling
-                >
-                  Section 504 of the Rehabilitation Act of 1973
-                </StyledLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                <StyledLink
-                  href="https://www.section508.gov/manage/laws-and-policies/"
-                  isExternalLink
-                  isInverseUnderlineStyling
-                >
-                  Section 508 of the Rehabilitation Act
-                </StyledLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                <StyledLink
-                  href="https://www.w3.org/TR/WCAG21/"
-                  isExternalLink
-                  isInverseUnderlineStyling
-                >
-                  Web Content Accessibility Guidelines 2.1
-                </StyledLink>
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                <StyledLink
-                  href="https://www.calstatela.edu/accessibility/ada-title-ii-update"
-                  isExternalLink
-                  isInverseUnderlineStyling
-                >
-                  Cal State LA Title II Update
-                </StyledLink>
-              </Typography>
-            </li>
-          </ul>
-        </SectionContainer>
-      </FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="flex-start">
-        <SectionContainer>
-          <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-            Key Features
-          </Typography>
-          <ul>
-            <li>
-              <Typography>
-                Alternative text for meaningful non&ndash;text elements (such as
-                images).
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Compatibility with keyboard navigation (no mouse required).
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Content that is not dependent on color, with sufficient color
-                contrast.
-              </Typography>
-            </li>
-            <li>
-              <Typography>Focus indicators for keyboard users</Typography>
-            </li>
-            <li>
-              <Typography>
-                Keyboard navigation support for all interactive elements.
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Responsive design that works across different devices and screen
-                sizes.
-              </Typography>
-            </li>
-            <li>
-              <Typography>Scalable and legible text.</Typography>
-            </li>
-            <li>
-              <Typography>
-                Semantic HTML markup for proper structure and screen reader
-                navigation.
-              </Typography>
-            </li>
-          </ul>
-        </SectionContainer>
-      </FluidContainer>
-      <FluidContainer>
-        <SectionContainer>
-          <Typography
-            margin="0 0 24px 0"
-            as="h2"
-            variant="title"
-            size={isMobile ? 'xl' : '2xl'}
-          >
-            Feedback and Support
-          </Typography>
-          <FluidContainer flex gap="10px" flexDirection="column" padding="0">
-            <Typography as="p">
-              If you encounter any accessibility barriers on our website or have
-              suggestions, please contact the web administrator at:
-            </Typography>
-            <FluidContainer flex alignItems="center" padding="0" gap="5px">
-              <MdOutlineEmail />
-              <Typography as="p">
-                <StyledLink
-                  isInverseUnderlineStyling
-                  href="mailto:graffixwebteam@gmail.com"
-                >
-                  graffixwebteam@gmail.com
-                </StyledLink>
-              </Typography>
-            </FluidContainer>
-            <FluidContainer flex alignItems="center" padding="0" gap="5px">
-              <FiPhone />
-              <Typography>
-                <StyledLink href="tel:+13233432488" isInverseUnderlineStyling>
-                  (323) 343&ndash;2488
-                </StyledLink>
-              </Typography>
-            </FluidContainer>
-            <Typography as="p">
-              We welcome your feedback and will work to address issues promptly.
-            </Typography>
-            <Typography as="p">
-              For more information, visit the U.S. Department of Justice ADA
-              regulations page:{' '}
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="flex-start"
+        innerRounded
+        innerBackgroundColor="greyLightest"
+        innerPadding={
+          isMobile ? '18px 16px' : isTablet ? '18px 36px' : '36px 72px'
+        }
+      >
+        <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+          Guidelines
+        </Typography>
+        <Typography>
+          Our website follows the guidelines outlined by the:
+        </Typography>
+        <ul>
+          <li>
+            <Typography>
               <StyledLink
-                href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/#-35201-exceptions"
+                href="https://www.ada.gov/"
+                isInverseUnderlineStyling
+                isExternalLink
+              >
+                Americans with Disabilities Act
+              </StyledLink>
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              <StyledLink
+                href="https://www.dol.gov/agencies/oasam/centers-offices/civil-rights-center/statutes/section-504-rehabilitation-act-of-1973"
                 isExternalLink
                 isInverseUnderlineStyling
               >
-                ADA Title II Regulations
+                Section 504 of the Rehabilitation Act of 1973
+              </StyledLink>
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              <StyledLink
+                href="https://www.section508.gov/manage/laws-and-policies/"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Section 508 of the Rehabilitation Act
+              </StyledLink>
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              <StyledLink
+                href="https://www.w3.org/TR/WCAG21/"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Web Content Accessibility Guidelines 2.1
+              </StyledLink>
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              <StyledLink
+                href="https://www.calstatela.edu/accessibility/ada-title-ii-update"
+                isExternalLink
+                isInverseUnderlineStyling
+              >
+                Cal State LA Title II Update
+              </StyledLink>
+            </Typography>
+          </li>
+        </ul>
+      </FluidContainer>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="flex-start"
+        innerRounded
+        innerPadding={
+          isMobile ? '18px 16px' : isTablet ? '18px 36px' : '36px 72px'
+        }
+        innerBackgroundColor="greyLightest"
+      >
+        <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+          Key Features
+        </Typography>
+        <ul>
+          <li>
+            <Typography>
+              Alternative text for meaningful non&ndash;text elements (such as
+              images).
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Compatibility with keyboard navigation (no mouse required).
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Content that is not dependent on color, with sufficient color
+              contrast.
+            </Typography>
+          </li>
+          <li>
+            <Typography>Focus indicators for keyboard users</Typography>
+          </li>
+          <li>
+            <Typography>
+              Keyboard navigation support for all interactive elements.
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              Responsive design that works across different devices and screen
+              sizes.
+            </Typography>
+          </li>
+          <li>
+            <Typography>Scalable and legible text.</Typography>
+          </li>
+          <li>
+            <Typography>
+              Semantic HTML markup for proper structure and screen reader
+              navigation.
+            </Typography>
+          </li>
+        </ul>
+      </FluidContainer>
+      <FluidContainer
+        innerRounded
+        innerPadding={
+          isMobile ? '18px 16px' : isTablet ? '18px 36px' : '36px 72px'
+        }
+        innerBackgroundColor="greyLightest"
+      >
+        <Typography
+          margin="0 0 24px 0"
+          as="h2"
+          variant="title"
+          size={isMobile ? 'xl' : '2xl'}
+        >
+          Feedback and Support
+        </Typography>
+        <FluidContainer flex gap="10px" flexDirection="column" padding="0">
+          <Typography as="p">
+            If you encounter any accessibility barriers on our website or have
+            suggestions, please contact the web administrator at:
+          </Typography>
+          <FluidContainer flex alignItems="center" padding="0" gap="5px">
+            <MdOutlineEmail />
+            <Typography as="p">
+              <StyledLink
+                isInverseUnderlineStyling
+                href="mailto:graffixwebteam@gmail.com"
+              >
+                graffixwebteam@gmail.com
               </StyledLink>
             </Typography>
           </FluidContainer>
-        </SectionContainer>
+          <FluidContainer flex alignItems="center" padding="0" gap="5px">
+            <FiPhone />
+            <Typography>
+              <StyledLink href="tel:+13233432488" isInverseUnderlineStyling>
+                (323) 343&ndash;2488
+              </StyledLink>
+            </Typography>
+          </FluidContainer>
+          <Typography as="p">
+            We welcome your feedback and will work to address issues promptly.
+          </Typography>
+          <Typography as="p">
+            For more information, visit the U.S. Department of Justice ADA
+            regulations page:{' '}
+            <StyledLink
+              href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/#-35201-exceptions"
+              isExternalLink
+              isInverseUnderlineStyling
+            >
+              ADA Title II Regulations
+            </StyledLink>
+          </Typography>
+        </FluidContainer>
       </FluidContainer>
-      <FluidContainer>
-        <SectionContainer>
-          <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-            Technical Specifications
-          </Typography>
-          <Typography>
-            This website relies on the following technologies to work with
-            assistive technologies:
-          </Typography>
-          <ul>
-            <li>
-              <Typography>
-                ARIA attributes with appropriate alternative text
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                CSS3 for visual presentation and responsive design
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                HTML5 for semantic structure and proper document outline
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Javascript (ES6) for enhanced functionality
-              </Typography>
-            </li>
-            <li>
-              <Typography>
-                Popetech, WAVE, and Google Lighthouse for automatic
-                accessibility testing
-              </Typography>
-            </li>
-          </ul>
-        </SectionContainer>
+      <FluidContainer
+        innerRounded
+        innerPadding={
+          isMobile ? '18px 16px' : isTablet ? '18px 36px' : '36px 72px'
+        }
+        innerBackgroundColor="greyLightest"
+      >
+        <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+          Technical Specifications
+        </Typography>
+        <Typography>
+          This website relies on the following technologies to work with
+          assistive technologies:
+        </Typography>
+        <ul>
+          <li>
+            <Typography>
+              ARIA attributes with appropriate alternative text
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              CSS3 for visual presentation and responsive design
+            </Typography>
+          </li>
+          <li>
+            <Typography>
+              HTML5 for semantic structure and proper document outline
+            </Typography>
+          </li>
+          <li>
+            <Typography>Javascript (ES6) for enhanced functionality</Typography>
+          </li>
+          <li>
+            <Typography>
+              Popetech, WAVE, and Google Lighthouse for automatic accessibility
+              testing
+            </Typography>
+          </li>
+        </ul>
       </FluidContainer>
       <FluidContainer>
         <Divider color="greyLighter" />
