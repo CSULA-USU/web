@@ -161,14 +161,16 @@ export const Footer = () => (
                   href={'https://form.jotform.com/210416532268047'}
                   isExternalLink
                 >
-                  U-SU Board of Directors Application
+                  U&ndash;SU Board of Directors Application
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
 
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'/employment'}>U-SU Employment</StyledLink>
+                <StyledLink href={'/employment'}>
+                  U&ndash;SU Employment
+                </StyledLink>
               </Typography>
             </StyledLinkMargins>
           </FooterUnorderedList>
@@ -219,7 +221,7 @@ export const Footer = () => (
         <FooterBottomInner>
           <Typography color="greyLighter" size="sm" lineHeight="2.4">
             © {currentYear}{' '}
-            <NonBreakingSpan>University-Student Union</NonBreakingSpan>{' '}
+            <NonBreakingSpan>University&ndash;Student Union</NonBreakingSpan>{' '}
             <NonBreakingSpan>at Cal State LA</NonBreakingSpan>
           </Typography>
           <Typography
@@ -243,7 +245,7 @@ export const Footer = () => (
             |
           </Typography>
           <Typography color="greyLighter" size="sm" lineHeight="2.4">
-            (323) 343-2465
+            (323) 343&ndash;2465
           </Typography>
         </FooterBottomInner>
         <div>
@@ -258,9 +260,7 @@ export const Footer = () => (
           </span>
           <Link
             target="_blank"
-            href={
-              'https://www.linkedin.com/company/university-student-union-at-california-state-university-los-angeles'
-            }
+            href={'https://www.linkedin.com/company/usu-cal-state-la/'}
             aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
           >
             <StyledLinkedinIcon />

@@ -27,7 +27,7 @@ const cards = [
     children:
       'This document is intended to serve as the model to follow when writing the constitution of your organization.',
     linkText: 'View PDF',
-    href: 'https://www.dropbox.com/s/tj7m2njk5cod8c7/csi-sample-constitution.pdf?dl=0',
+    href: 'https://www.dropbox.com/scl/fi/t7gcv0qxjarwasfjise7j/csi-sample-constitution.pdf?rlkey=lpjuxkhuofjbvklxb904n9xjm&st=ktobc3oq&raw=1',
   },
   {
     title: 'ODC Info and Videos',
@@ -91,7 +91,7 @@ export default function StudentOrgs() {
   return (
     <Page>
       <Head>
-        <title>U-SU Recognized Student Organizations</title>
+        <title>U&ndash;SU Recognized Student Organizations</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement Student Organizations"
