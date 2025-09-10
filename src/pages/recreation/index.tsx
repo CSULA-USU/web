@@ -203,14 +203,14 @@ export default function Recreation() {
           >
             <StyledLink href="https://apps.apple.com/us/app/cal-state-la-recreation/">
               <Image
-                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/App_Store_Badge.png"
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/App_Store_Badge.webp"
                 alt="Download on the App Store"
                 width={150}
               />
             </StyledLink>
             <StyledLink href="https://play.google.com/store/apps/details?id=com.innosoftfusiongo.californiastateuniversitylosangeles&pcampaignid=web_share">
               <Image
-                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Google_Play_Store_badge.png"
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Google_Play_Store_badge.webp"
                 alt="Get it on Google Play"
                 width={150}
               />
