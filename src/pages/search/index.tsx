@@ -162,7 +162,7 @@ export default function Search() {
   return (
     <Page>
       <Head>
-        <title>U-SU Search</title>
+        <title>U&ndash;SU Search</title>
         <meta name="author" content="Search" key="author" />
         <meta
           name="keywords"
@@ -172,7 +172,7 @@ export default function Search() {
       </Head>
       <Header
         title="Search"
-        backgroundImage="/backgrounds/subtle-background-2.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt.webp"
       >
         <label htmlFor="search-input">Need help finding something?</label>
         <form onSubmit={handleOnSubmit}>
