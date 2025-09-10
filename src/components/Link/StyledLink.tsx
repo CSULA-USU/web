@@ -3,62 +3,40 @@ import Link from 'next/link';
 import { LuExternalLink } from 'react-icons/lu';
 
 const UnderlineHover = styled(Link)`
-  position: relative;
-  text-decoration: none;
   color: inherit;
-  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s ease-in-out;
+
   &:hover {
     opacity: 0.8;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.1px;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    opacity: 0.9;
+    text-decoration-color: currentColor;
   }
 `;
 
 const NoUnderlineHover = styled(Link)`
-  text-decoration: none;
-  position: relative;
   color: inherit;
-  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: currentColor;
+  transition: text-decoration-color 0.3s ease-in-out;
 
   &:hover {
     opacity: 0.8;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    opacity: 0;
+    text-decoration-color: transparent;
   }
 `;
 
 const StyledSpan = styled.span`
-  display: flex;
-  align-items: center;
-  line-height: 1.1;
+  line-height: 1;
+`;
+
+const StyledDiv = styled.span`
+  position: absolute;
+  transform: translateY(2px);
 `;
 
 const IconStyling = {
@@ -94,7 +72,9 @@ export const StyledLink = ({
             <StyledSpan>
               {children}
               {isExternalLink ? (
-                <LuExternalLink style={IconStyling} aria-hidden="true" />
+                <StyledDiv>
+                  <LuExternalLink style={IconStyling} aria-hidden="true" />
+                </StyledDiv>
               ) : null}
             </StyledSpan>
           </NoUnderlineHover>
@@ -109,7 +89,9 @@ export const StyledLink = ({
             <StyledSpan>
               {children}
               {isExternalLink ? (
-                <LuExternalLink style={IconStyling} aria-hidden="true" />
+                <StyledDiv>
+                  <LuExternalLink style={IconStyling} aria-hidden="true" />
+                </StyledDiv>
               ) : null}
             </StyledSpan>
           </UnderlineHover>
