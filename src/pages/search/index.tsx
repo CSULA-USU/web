@@ -2,11 +2,16 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Page, Header } from 'modules';
 import { FluidContainer, Image, Typography } from 'components';
-import { searchResultState } from 'atoms';
 import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
 import { Colors, Spaces } from 'theme';
@@ -17,7 +22,7 @@ const SearchBig = styled.input`
   margin: 0 auto;
   color: black;
   border-radius: 40px;
-  border: 1 rem solid black;
+  border: 1px solid black;
   gap: 36px;
   width: 500px;
   margin-top: 36px;
@@ -36,23 +41,25 @@ const SearchBig = styled.input`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
-  &:placeholder {
+  &::placeholder {
     color: #2b2b2b;
   }
 `;
 
 const SearchCard = styled.div`
-  border: 1 rem solid black;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
   margin-top: 32px;
   padding: 16px;
-  :hover {
+  transition: all 0.2s ease;
+
+  &:hover {
     border-radius: 16px;
-    border: 1px solid black;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
+
   @media screen and (max-width: 480px) {
     height: 100%;
   }
@@ -68,49 +75,58 @@ interface SearchResult {
 type ResultsType = Fuse.FuseResult<SearchResult>;
 
 export default function Search() {
-  const searchResults = useRecoilValue<ResultsType[]>(searchResultState);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [results, setResults] = useState<ResultsType[]>(searchResults);
+  const [results, setResults] = useState<ResultsType[]>([]);
   const router = useRouter();
   const { isMobile } = useBreakpoint();
 
+  // ✅ Memoize Fuse instance - creates only once!
+  const fuseInstance = useMemo(() => {
+    const options = {
+      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
+      minMatchCharLength: 2,
+      threshold: 0.1,
+    };
+    return new Fuse(data, options);
+  }, []); // Empty dependency array = only runs once
+
+  // Focus input and handle URL query
   useEffect(() => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
 
     const { query } = router.query;
-    setSearchQuery((prevQuery) => (query || prevQuery || '') as string);
-  }, [router.query]);
+    if (query) {
+      const queryString = query as string;
+      setSearchQuery(queryString);
 
-  useEffect(() => {
-    const options = {
-      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
-      minMatchCharLength: 2,
-      threshold: 0.1,
-    };
+      // Use memoized instance for initial search
+      if (queryString.length > 1) {
+        setResults(fuseInstance.search(queryString));
+      }
+    }
+  }, [router.query, fuseInstance]);
 
-    const fuse = new Fuse(data, options);
-    const queryString = typeof searchQuery === 'string' ? searchQuery : '';
-
-    setResults(fuse.search(queryString));
-  }, [searchQuery]);
-
+  // ✅ Optimized search handler
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    // Use memoized Fuse instance
+    if (query.length > 1) {
+      setResults(fuseInstance.search(query));
+    } else {
+      setResults([]);
+    }
   };
 
+  // ✅ Simplified form submission
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const options = {
-      keys: ['title', 'url', 'description', { name: 'tags', weight: 2 }],
-      minMatchCharLength: 2,
-      threshold: 0.1,
-    };
-    const fuse = new Fuse(data, options);
-    const queryString = typeof searchQuery === 'string' ? searchQuery : '';
-    setResults(fuse.search(queryString));
+    // Form submission already handled by onChange
+    // No need to duplicate search logic
   };
 
   const content: JSX.Element | null =
@@ -156,7 +172,9 @@ export default function Search() {
         />
       </FluidContainer>
     ) : (
-      <p>Please enter a search query!</p>
+      <Typography as="p" margin="32px 0">
+        Please enter a search query to get started!
+      </Typography>
     );
 
   return (
@@ -168,6 +186,12 @@ export default function Search() {
           name="keywords"
           content="search find query u-su student union look"
           key="keywords"
+        />
+        {/* Preload background image for better LCP */}
+        <link
+          rel="preload"
+          href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt3.webp"
+          as="image"
         />
       </Head>
       <Header
