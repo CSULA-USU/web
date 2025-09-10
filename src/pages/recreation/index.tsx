@@ -113,12 +113,14 @@ export default function Recreation() {
           innerMinHeight={isMobile ? '320px' : '640px'}
           innerMaxWidth="640px"
         >
-          <Image
-            src="/departments/recreation/recreation-hero.svg"
-            alt="university-student union recreation play wellness connection"
-            width="100%"
-            height="fit-content"
-          />
+          <FluidContainer backgroundColor="white">
+            <Image
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
+              alt="university-student union recreation play wellness connection"
+              width="100%"
+              height="fit-content"
+            />
+          </FluidContainer>
         </FluidContainer>
       </StyledH1>
       <FluidContainer
@@ -257,9 +259,9 @@ export default function Recreation() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt=""
-          src="departments/recreation/recreation-hero.svg"
-          height="232px"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
           width="100%"
+          maxWidth={'1000px'}
         />
       </FluidContainer>
     </Page>
