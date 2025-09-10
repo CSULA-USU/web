@@ -38,12 +38,12 @@ export const RecreationHoursSection: React.FC<LocationHoursSectionProps> = ({
   isTablet,
 }) => (
   <div>
-    <Typography as="h4" variant="titleSmall" size={!isTablet ? 'xl' : 'lg'}>
+    <Typography as="h2" variant="titleSmall" size={!isTablet ? 'xl' : 'lg'}>
       {title}
     </Typography>
     <LocationContainer>
       <MdLocationPin aria-hidden="true" size="24px" />
-      <Typography variant="label" size="md">
+      <Typography as="h3" variant="label" size="md">
         {location}
       </Typography>
     </LocationContainer>
