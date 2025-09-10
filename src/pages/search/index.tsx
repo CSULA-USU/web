@@ -172,7 +172,7 @@ export default function Search() {
       </Head>
       <Header
         title="Search"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt.webp"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt3.webp"
       >
         <label htmlFor="search-input">Need help finding something?</label>
         <form onSubmit={handleOnSubmit}>
