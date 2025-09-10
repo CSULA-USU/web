@@ -379,8 +379,8 @@
     ]
   },
   {
-    "title": "Governance",
-    "url": "/governance",
+    "title": "Board of Directors",
+    "url": "/board-of-directors",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
       "governance",
@@ -390,18 +390,19 @@
       "committees",
       "student leader",
       "elections",
-      "archives"
+      "bod",
+      "sle"
     ]
   },
   {
     "title": "How to Vote",
-    "url": "/governance/how-to-vote",
+    "url": "/board-of-directors/how-to-vote",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": ["vote", "board of directors", "governance", "elections"]
   },
   {
     "title": "Meet the Board",
-    "url": "/governance/meet-the-board",
+    "url": "/board-of-directors/meet-the-board",
     "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
       "board members",
@@ -410,12 +411,14 @@
       "dean",
       "faculty",
       "alumni",
-      "advisor"
+      "advisor",
+      "governance",
+      "roster"
     ]
   },
   {
     "title": "Public Documents",
-    "url": "/governance/public-documents",
+    "url": "/board-of-directors/public-documents",
     "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
     "tags": [
       "public documents",
@@ -430,42 +433,33 @@
       "auxiliary operating agreement",
       "code of procedures",
       "form 990",
-      "199"
+      "199",
+      "governance"
     ]
   },
   {
     "title": "Public Document Archives",
-    "url": "/governance/public-document-archives",
+    "url": "/board-of-directors/public-document-archives",
     "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
     "tags": [
       "archives",
       "agenda",
       "minutes",
       "board meeting",
+      "governance",
       "public documents"
-    ]
-  },
-  {
-    "title": "Student Leader Elections",
-    "url": "/governance/student-leader-elections",
-    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
-    "tags": [
-      "student leader",
-      "elections",
-      "government",
-      "asi",
-      "associated students, incorporated",
-      "board of directors",
-      "candidate",
-      "campaign",
-      "vote"
     ]
   },
   {
     "title": "Events",
     "url": "/events",
     "description": "The University-Student Union hosts various events throughout the school year. Make sure to check back here to stay up to date with the latest events.",
-    "tags": ["events", "calendar", "csi", "center for student involvement"]
+    "tags": [
+      "events",
+      "calendar",
+      "csi",
+      "center for student involvement, ccc, programs, recreation"
+    ]
   },
   {
     "title": "Employment",
@@ -477,7 +471,10 @@
       "student-assistant",
       "jobs",
       "applications",
-      "handshake"
+      "handshake",
+      "hire",
+      "availability",
+      "work"
     ]
   },
   {
@@ -503,7 +500,8 @@
       "positions",
       "student",
       "student stories",
-      "u-awards"
+      "u-awards",
+      "directory"
     ]
   },
   {
