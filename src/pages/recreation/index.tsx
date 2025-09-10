@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BiPhone } from 'react-icons/bi';
 import RecData from '../../data/recreation.json';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 import {
   Image,
   Typography,
@@ -70,6 +70,22 @@ const StyledH1 = styled.h1`
   margin: 0;
 `;
 
+const CTA = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(255, 244, 200), ${Colors.primary});
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 48px 24px;
+  text-align: center;
+  border-radius: 12px;
+`;
+
 export default function Recreation() {
   const { isMobile, isTablet, returnByBreakpoint } = useBreakpoint();
   const cardWidth = returnByBreakpoint({
@@ -133,7 +149,7 @@ export default function Recreation() {
             </NumberContainer>
           </PhoneSection>
         </HeaderSection>
-        <Typography as="h3" variant="title" size={isMobile ? 'lg' : '2xl'}>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Fall 2025 Hours:
         </Typography>
         <HoursSection>
@@ -163,6 +179,46 @@ export default function Recreation() {
           </Typography>
         </LongDescriptionSection>
       </FluidContainer>
+
+      <FluidContainer>
+        <CTA>
+          <Typography
+            variant="labelTitle"
+            as="h2"
+            color="black"
+            size={isMobile ? 'lg' : '2xl'}
+            lineHeight="1.5"
+          >
+            Get the Cal State LA Recreation App
+          </Typography>
+          <Typography margin="0 0 10px 0">
+            Download our free app to sign up for workout classes and gain access
+            to our recreation facilities.
+          </Typography>
+          <FluidContainer
+            flex
+            flexDirection={isMobile ? 'column' : 'row'}
+            gap="24px"
+            padding="0"
+          >
+            <StyledLink href="https://apps.apple.com/us/app/cal-state-la-recreation/">
+              <Image
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/App_Store_Badge.png"
+                alt="Download on the App Store"
+                width={150}
+              />
+            </StyledLink>
+            <StyledLink href="https://play.google.com/store/apps/details?id=com.innosoftfusiongo.californiastateuniversitylosangeles&pcampaignid=web_share">
+              <Image
+                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Google_Play_Store_badge.png"
+                alt="Get it on Google Play"
+                width={150}
+              />
+            </StyledLink>
+          </FluidContainer>
+        </CTA>
+      </FluidContainer>
+
       <FluidContainer>
         <StyledLink
           href="https://www.dropbox.com/scl/fi/77otth0tcc69v2j6yz4lr/USU_Recreation_Facilities_General_Policies_8-19-25.pdf?rlkey=sp0iijyxc83ywk4c1dnnizbur&st=zlnqf6hq&raw=1"
