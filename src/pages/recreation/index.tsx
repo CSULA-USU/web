@@ -258,7 +258,7 @@ export default function Recreation() {
       <PhotoVideoDisclaimer />
       <FluidContainer flex justifyContent="center">
         <Image
-          alt=""
+          alt="university-student union recreation play wellness connection"
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
           width="100%"
           maxWidth={'1000px'}
