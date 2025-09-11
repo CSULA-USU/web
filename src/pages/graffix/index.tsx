@@ -131,7 +131,8 @@ const Graphic = styled.button`
 `;
 
 const HeaderContainer = styled.div`
-  background: url(/backgrounds/subtle-background-1.jpg) no-repeat;
+  background: url(https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp)
+    no-repeat;
 `;
 
 const HeaderInnerContainer = styled.div`

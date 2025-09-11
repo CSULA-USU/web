@@ -78,7 +78,7 @@ export default function CSIForms() {
       </Head>
       <Header
         title="Center for Student Involvement Forms"
-        backgroundImage="/subtle-background-2.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
         buttons={CSIFormsButton}
       >
         Forms that pertain to the Center for Student Involvement. Recognized

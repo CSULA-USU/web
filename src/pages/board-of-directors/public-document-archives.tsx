@@ -47,7 +47,7 @@ export default function PublicDocumentArchives() {
       </Head>
       <Header
         title="Archives"
-        backgroundImage="/backgrounds/subtle-background-3.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"
       />
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>

@@ -32,7 +32,7 @@ export default function Contact() {
         />
       </Head>
 
-      <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
+      <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp">
         <Typography variant="titleLarge" weight="700" as="h1">
           Contact Us
         </Typography>

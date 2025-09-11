@@ -227,7 +227,7 @@ export default function CCC() {
           </OrgsCategoriesCardsContainer>
         </StudentOrgsCategoriesContentContainer>
       </FluidContainer>
-      <FluidContainer backgroundImage="/backgrounds/subtle-background-4.jpg">
+      <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp">
         <Typography variant="title" as="h2">
           We Provide:
         </Typography>
