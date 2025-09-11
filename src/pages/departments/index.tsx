@@ -22,7 +22,7 @@ export default function Departments() {
 
       <Header
         title="Departments"
-        backgroundImage="/backgrounds/subtle-background-2.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
       >
         The University-Student Union mission is to provide a unique and friendly
         environment for the campus community to interact informally. Our

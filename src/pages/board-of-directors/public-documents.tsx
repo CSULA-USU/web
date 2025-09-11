@@ -19,7 +19,7 @@ export default function PublicDocuments() {
       </Head>
       <Header
         title="Public Documents"
-        backgroundImage="/backgrounds/subtle-background-2.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
       >
         As a tax-exempt organization, the University-Student Union (U-SU) must
         make the appropriate organizational documents available for inspection

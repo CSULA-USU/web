@@ -20,7 +20,7 @@ export default function Governance() {
       </Head>
       <Header
         title="Meet the Board of Directors"
-        backgroundImage="/backgrounds/subtle-background-3.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"
       >
         <Typography as="h2">
           The University&ndash;Student Union&apos;s Board of Directors is the

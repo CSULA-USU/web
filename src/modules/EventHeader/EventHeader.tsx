@@ -32,7 +32,7 @@ export const EventHeader = ({
     <FluidContainer
       flex
       flexDirection="column"
-      backgroundImage="/backgrounds/subtle-background-4.jpg"
+      backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       padding={isMobile ? `0 ${Spaces.sm} ${Spaces['xl']}` : `0 0 48px`}
     >
       <Typography

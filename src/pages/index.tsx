@@ -80,7 +80,7 @@ export default function Home() {
           <FluidContainer
             flex
             justifyContent="center"
-            backgroundImage="/backgrounds/subtle-background-2.jpg"
+            backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
           >
             {isTablet || isMobile ? (
               <>
