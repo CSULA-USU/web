@@ -73,7 +73,7 @@ export default function Services() {
 
       <Header
         title="Services"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
         <Image
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/about.png"

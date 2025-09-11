@@ -111,7 +111,7 @@ export default function Employment() {
         />
       </Head>
 
-      <FluidContainer backgroundImage="/backgrounds/subtle-background-2.jpg">
+      <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp">
         <Typography as="h1" variant="pageHeader">
           Employment
         </Typography>

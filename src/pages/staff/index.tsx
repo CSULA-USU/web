@@ -42,7 +42,7 @@ export default function Staff() {
       </Head>
       <Header
         title="Meet the Staff"
-        backgroundImage="/backgrounds/subtle-background-1.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
         Union: An act or instance of uniting or joining two or more things into
         one. Something that is made one : something formed by a combination or

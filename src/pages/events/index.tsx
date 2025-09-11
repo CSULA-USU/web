@@ -7,7 +7,7 @@ import { FluidContainer, Loading, Typography } from 'components';
 import { useState, useEffect } from 'react';
 
 const BackgroundImage = styled.div`
-  background: url(backgrounds/subtle-background-4.jpg);
+  background: url(https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp);
   height: 100%;
 `;
 
