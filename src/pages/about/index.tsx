@@ -40,7 +40,7 @@ export default function About() {
   return (
     <Page>
       <Head>
-        <title>About The U-SU</title>
+        <title>About The U&ndash;SU</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Associate Students Incorported, ASI, Cross Cultural Centers, CCC, Center For Student Involvement, CSI, Fraternity, Sorority, GEEK, Presence, Graffix, Fitness Center, Student Orgnizations, Calendar, Events, Gender and Sexuality Resource Center, Pan African Resource Center, PASRC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Asian, Pacific Islander, Desi-American, Chicana/o Latina/o Student Resource Center, CLSRC, Chicana, Latina, Chicano, Latino, Latinx, Information and Event Services, Distinguished Women, Awards, Cultural Graduate Celebrations, Employment Opportunities, Board of Directors, Jobs, University Student"
@@ -67,7 +67,7 @@ export default function About() {
                 lineHeight="1.3"
                 style={{ textAlign: 'center' }}
               >
-                We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                We are <NonBreakingSpan>the U&ndash;SU</NonBreakingSpan>
               </Typography>
 
               <FluidContainer flex justifyContent="center" alignItems="center">
@@ -80,10 +80,10 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/92l1g0nv0v3pv3n75t7bj/Org-Chart_6.16.25.png?rlkey=q8j70t5aq2jlx47qf4z596n70&raw=1"
+                  href="https://www.dropbox.com/scl/fi/91war0t6twupdvu2fk551/Org-Chart_9.10.25.jpg?rlkey=7jrh9u7l6t69jwqv5836gsps6&st=xove4bzu&raw=1"
                   isExternalLink
                 >
-                  U-SU Organizational Chart
+                  U&ndash;SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
@@ -126,10 +126,10 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/92l1g0nv0v3pv3n75t7bj/Org-Chart_6.16.25.png?rlkey=q8j70t5aq2jlx47qf4z596n70&raw=1"
+                  href="https://www.dropbox.com/scl/fi/91war0t6twupdvu2fk551/Org-Chart_9.10.25.jpg?rlkey=7jrh9u7l6t69jwqv5836gsps6&st=a13vvh7z&raw=1"
                   isExternalLink
                 >
-                  U-SU Organizational Chart
+                  U&ndash;SU Organizational Chart
                 </Button>
                 <Button
                   variant="outline"
