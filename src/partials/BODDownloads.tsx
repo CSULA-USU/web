@@ -26,15 +26,23 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors August 22, 2025',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/lno74rhp8e42v4mze1jwn/Agenda-Board-of-Directors-September-12-2025.docx?rlkey=78ypckh8tn6u80osgkgljhlba&st=tu431nqk&dl=1',
+            href: 'https://www.dropbox.com/scl/fi/lno74rhp8e42v4mze1jwn/Agenda-Board-of-Directors-September-12-2025.docx?rlkey=78ypckh8tn6u80osgkgljhlba&st=tu431nqk&raw=1',
             children: 'Board of Directors September 12, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/sftxiucm7oxbc2ajrxaqf/Agenda-Personnel-Committee-September-19-2025OCR.pdf?rlkey=gdvzutqb5hczp57cwc6csuq8y&st=u38hilj7&raw=1',
+            children: 'Personnel Committee September 19, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/31n4ez7azdgr3cv1a5yh4/Agenda-Fiscal-Committee-September-19-2025.pdf?rlkey=nlg1pm6e86z6hw9f9ay4yvpzk&st=unz1fuh4&raw=1',
+            children: 'Fiscal Committee September 19, 2025',
           },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/as1ujw4aexagcf03117b5/all-agenda.zip?rlkey=hl7fea3pc090x9vizn0pmc4fl&st=rdekkjsx&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/cbfc66h6qm4lgdu0874cx/agenda-25-26.zip?rlkey=ll109bmweh0rpvmfxfcfttr85&st=l5kf4645&dl=1',
       variant: 'black',
     },
   },
