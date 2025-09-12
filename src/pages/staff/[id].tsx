@@ -300,20 +300,20 @@ export default function StaffBusinessCard() {
                     />
                   </IconContainer>
                   <IconAndInfoContainerRight>
-                    <StyledLink
-                      href={String(staffData.url)}
-                      isExternalLink
-                      isInverseUnderlineStyling
+                    <Typography
+                      variant="span"
+                      size="2xs"
+                      color="greyDarkest"
+                      as="p"
                     >
-                      <Typography
-                        variant="span"
-                        size="2xs"
-                        color="greyDarkest"
-                        as="p"
+                      <StyledLink
+                        href={String(staffData.url)}
+                        isExternalLink
+                        isInverseUnderlineStyling
                       >
                         Linkedin
-                      </Typography>
-                    </StyledLink>
+                      </StyledLink>
+                    </Typography>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
