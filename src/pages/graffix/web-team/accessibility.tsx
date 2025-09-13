@@ -92,7 +92,7 @@ export default function Accessibility() {
       </Head>
       <Header
         title="Web Accessibility Statement"
-        backgroundImage="/backgrounds/subtle-background-2.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
       >
         <Typography margin="0 0 24px 0" as="p">
           The University&ndash;Student Union at Cal State LA is committed to

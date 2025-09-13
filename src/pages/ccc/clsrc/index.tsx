@@ -25,7 +25,8 @@ const hours = [
 ];
 
 const HeaderContainer = styled.div`
-  background: url(/backgrounds/subtle-background-4.jpg) no-repeat;
+  background: url(https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp)
+    no-repeat;
 `;
 
 const HeaderLeftContainer = styled.div`

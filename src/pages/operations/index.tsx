@@ -145,7 +145,7 @@ const pdfDescriptionCards = [
     href: 'https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&st=k5ykis0k&raw=1',
   },
   {
-    title: 'Reservation Policies and Procedures (with Covid)',
+    title: 'Reservation Policies and Procedures',
     description:
       'Reservation policies and procedures go over guidelines of how the scheduling of U-SU facilities, equipment, sign-up process, and payments are arranged.',
     href: 'https://www.dropbox.com/s/12vg3pe8ahf6jay/POLICIES-PROCEDURES-WITH-COVID-2021.pdf?raw=1',
@@ -163,7 +163,7 @@ export default function Operations() {
   return (
     <Page>
       <Head>
-        <title>U-SU Operations</title>
+        <title>U&ndash;SU Operations</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations, Reservations, Building Maintenance, Building Services, Custodial Services, Media Services, Media Equipment Rental Chart, MMRS Policies, MMRS, Meeting Space Rental Fees, Capacity Charts, COVID"

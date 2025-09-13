@@ -127,7 +127,7 @@ export default function MeetingRoom() {
         flex
         alignItems="center"
         justifyContent="center"
-        backgroundImage="/subtle-background-1.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
         <h1>
           <Image

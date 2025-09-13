@@ -190,13 +190,13 @@ export default function Search() {
         {/* Preload background image for better LCP */}
         <link
           rel="preload"
-          href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt3.webp"
+          href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
           as="image"
         />
       </Head>
       <Header
         title="Search"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2-opt3.webp"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
       >
         <label htmlFor="search-input">Need help finding something?</label>
         <form onSubmit={handleOnSubmit}>
