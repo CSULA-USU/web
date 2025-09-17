@@ -25,7 +25,13 @@ const FYContainer = styled.div`
 
 const scheduleSection: DownloadSectionProps = {
   title: 'Meeting Calendar',
-  children: <DocumentLinkContainer links={archiveData.schedules.calendar} />,
+  children: (
+    <DocumentLinkContainer
+      links={archiveData.schedules.calendar}
+      autoGrid
+      minColumnWidth="600px"
+    />
+  ),
   button: {
     children: <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>,
     href: 'https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=ddcdkwgq&dl=1',
