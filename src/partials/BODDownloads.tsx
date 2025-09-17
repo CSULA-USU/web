@@ -63,6 +63,10 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/m61csa33yftdg1dg1pbjm/Board-of-Directors-May-9-2025.pdf?rlkey=ps67jkk1ft32a0romtbii9bn0&st=06aerr6n&raw=1',
             children: 'BOD May 9, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/xrh2wtrn4fncopggiyldt/Board-of-Directors-August-22-2025-signed.pdf?rlkey=aux3w475pcriois56anskoz56&st=dsweay6y&raw=1',
+            children: 'BOD August 22, 2025',
+          },
         ]}
       />
     ),
