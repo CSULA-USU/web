@@ -91,7 +91,7 @@ const downloads: DownloadSectionProps[] = [
       <Typography>
         The conflict of interest policy is to protect the exclusive right and
         integrity of information, services, and various interests of the CSULA
-        University-Student Union, Board (U&ndash;SU).
+        University&ndash;Student Union, Board (U&ndash;SU).
       </Typography>
     ),
     button: {
@@ -205,7 +205,7 @@ const downloads: DownloadSectionProps[] = [
     title: 'Statement of Information (SI-100)',
     children: (
       <Typography>
-        Filed to divulge the U-SU&apos;s activities over the prior year.
+        Filed to divulge the U&ndash;SU&apos;s activities over the prior year.
       </Typography>
     ),
     button: {
@@ -243,7 +243,7 @@ const downloads: DownloadSectionProps[] = [
 export const PublicInspectionDocuments = () => (
   <FluidContainer>
     <Typography variant="titleSmall" as="h2">
-      Public Inspection Of University-Student Union (U&ndash;SU) Documents
+      Public Inspection Of University&ndash;Student Union (U&ndash;SU) Documents
     </Typography>
     <Divider color="grey" margin={`${Spaces.xl} 0`} />
     {downloads.map((d) => (
