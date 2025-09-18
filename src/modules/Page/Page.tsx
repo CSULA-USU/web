@@ -9,7 +9,8 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  overflow-x: hidden;
+  overflow-x: hidden
+  overflow-x: clip;
   background-color: ${Colors.white};
   abbr {
     text-decoration: none;
