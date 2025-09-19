@@ -432,7 +432,7 @@ export default function FSL() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            U-SU 2nd floor, Room 206
+            U&ndash;SU 2nd floor, Room 206
           </Typography>
         </li>
         <li>
@@ -480,7 +480,7 @@ export default function FSL() {
           </FluidContainer>
 
           {/* Register */}
-          <FluidContainer
+          {/* <FluidContainer
             flex
             justifyContent="center"
             padding="0"
@@ -520,7 +520,7 @@ export default function FSL() {
                 </Button>
               </FluidContainer>
             </FluidContainer>
-          </FluidContainer>
+          </FluidContainer> */}
 
           {/* MISSION */}
           <FluidContainer
