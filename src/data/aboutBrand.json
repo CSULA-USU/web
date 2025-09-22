@@ -7,7 +7,8 @@
     { "id": "typography", "title": "Typography" },
     { "id": "locations", "title": "U-SU Location Directory" },
     { "id": "voice", "title": "Brand Voice and Messaging" },
-    { "id": "social", "title": "Social Media" }
+    { "id": "social", "title": "Social Media" },
+    { "id": "final_thoughts", "title": "Final Thoughts and Brand Consistency" }
   ],
   "colors": [
     {

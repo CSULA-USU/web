@@ -6,9 +6,10 @@ import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import aboutBrand from 'data/aboutBrand.json';
-// ADD (top of the Brand page file)
 import { Montserrat, Merriweather, Bitter, Roboto } from 'next/font/google';
 import cards from 'data/about.json';
+import { FaRegCopy } from 'react-icons/fa6';
+import { IoIosCheckmark } from 'react-icons/io';
 
 const montserrat = Montserrat({
   weight: ['100', '300', '400', '500', '600', '700', '800', '900'],
@@ -62,7 +63,6 @@ const SampleLabelBold = styled(SampleLabel)`
   font-weight: 700;
 `;
 
-// 2) helper to grab the font class from the JSON name
 const getFontClass = (name: string) => fontClassByName[name] ?? '';
 
 const RoundedFluidContainer = styled(FluidContainer)`
@@ -83,7 +83,7 @@ const MainContent = styled(FluidContainer)`
   align-items: flex-start;
   gap: ${Spaces.xl};
   @media (max-width: 1024px) {
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
     gap: ${Spaces.lg};
     margin-top: 0;
   }
@@ -94,15 +94,10 @@ const TOCWrapper = styled.aside`
   position: sticky;
   top: 100px;
   align-self: flex-start;
-  height: max-content;
-  z-index: 1;
 
   @media (max-width: 1024px) {
-    position: static; /* no sticky on mobile */
-    top: auto;
-    flex: none; /* override fixed 250px */
-    width: 100%; /* take full width */
-    order: -1; /* appear before content if you want it at the top */
+    position: static;
+    width: 100%;
   }
 `;
 
@@ -141,7 +136,7 @@ const TOCLink = styled.a<{ $active?: boolean }>`
 
 const Section = styled.section`
   margin-bottom: ${Spaces['2xl']};
-  scroll-margin-top: 25px;
+  scroll-margin-top: 20px;
 `;
 
 const ColorGrid = styled.div`
@@ -246,27 +241,43 @@ const SocialGrid = styled.div`
   }
 `;
 
-const SocialCard = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${Spaces.sm};
-  padding: ${Spaces.md};
-  border: 1px solid ${Colors.greyLighter};
-  border-radius: 8px;
-  background: ${Colors.white};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
-  width: 225px;
-`;
-
 const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
 
+const SocialCard = styled.div<{ $copied?: boolean }>`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: ${Spaces.sm};
+  padding: ${Spaces.md};
+  border: 1px solid ${Colors.greyLighter};
+  border-radius: 8px;
+  background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.white)};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  width: 250px;
+  &:hover {
+    background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.greyLightest)};
+    border-color: ${Colors.greyLighter};
+  }
+
+  &:focus {
+    outline: 2px solid ${Colors.primary};
+    outline-offset: 2px;
+  }
+`;
+
+const CopyHint = styled.span`
+  font-size: 0.75rem;
+  color: ${Colors.grey};
+`;
+
 export default function Brand() {
   const { sections, colors, fonts, locations, socialMedia } = aboutBrand;
-  const [activeSection, setActiveSection] = useState('mission');
+  const [activeSection, setActiveSection] = useState('brand');
   const [copiedValue, setCopiedValue] = useState<string | null>(null);
   const { isMobile, isDesktop, isWidescreen } = useBreakpoint();
 
@@ -288,79 +299,99 @@ export default function Brand() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-80px 0px -150px 0px',
-        threshold: 0,
-      },
-    );
+    const ids = sections.map((s) => s.id);
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) {
-        observer.observe(element);
+    // Keep DOM order
+    const ordered = [...els].sort((a, b) => a.offsetTop - b.offsetTop);
+
+    const onScroll = () => {
+      const triggerY = window.scrollY + window.innerHeight * 0.5;
+
+      // “Last section whose top is above the trigger line”
+      let current = ordered[0]?.id ?? '';
+      for (const el of ordered) {
+        if (el.offsetTop <= triggerY) current = el.id;
+        else break;
       }
-    });
-
-    return () => {
-      sections.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
+      if (current && current !== activeSection) setActiveSection(current);
     };
-  });
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sections]);
 
   return (
     <Page>
       <Head>
-        <title>U&ndash;Krew</title>
+        <title>U–SU Brand Guidelines</title>
         <meta
           name="description"
-          content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
+          content="Official brand guidelines for the University-Student Union (U&ndash;SU) at Cal State LA — logos, colors, typography, voice, and usage examples for consistent communications."
         />
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="Cal State LA, California State University Los Angeles, CSULA, campus jobs, student union, Cal State LA U-SU, Cal State LA University Student Union, U-Krew jobs, U-Krew Cal State LA, student employment Cal State LA, student jobs CSULA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Information & Reservations Aide, Junior Graphics Designer Assistant, Media Services Assistant, Production Aide, Accounting Assistant, Administrative Assistant"
+          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
 
-        {/* Open Graph for social sharing */}
-        <meta property="og:title" content="Join U-Krew at Cal State LA U-SU" />
+        {/* Open Graph */}
+        <meta property="og:title" content="U&ndash;SU Brand Guidelines" />
         <meta
           property="og:description"
-          content="Browse open student job opportunities at Cal State LA's University-Student Union. Learn about U-Krew positions in media, operations, events, and more."
+          content="Logos, colors, typography, and voice for the University-Student Union (U&ndash;SU) at Cal State LA."
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
         />
-        <meta property="og:url" content="https://usu.calstatela.edu/u-krew" />
+        <meta
+          property="og:url"
+          content="https://usu.calstatela.edu/about/brand"
+        />
         <meta property="og:type" content="website" />
 
-        {/* Twitter Card */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="U-Krew | Student Jobs at Cal State LA U-SU"
-        />
+        <meta name="twitter:title" content="U&ndash;SU Brand Guidelines" />
         <meta
           name="twitter:description"
-          content="Apply for U-Krew student jobs at Cal State LA U-SU. Opportunities available across departments like Graffix, Recreation, CCC, and more."
+          content="Official guidelines for U-SU brand usage at Cal State LA."
         />
         <meta
           name="twitter:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//awards.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
+        />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'U–SU Brand Guidelines',
+              description:
+                'Official brand guidelines for the University-Student Union (U–SU) at Cal State LA — logos, colors, typography, voice, and usage examples.',
+              url: 'https://usu.calstatela.edu/about/brand',
+              publisher: {
+                '@type': 'Organization',
+                name: 'University-Student Union, Cal State LA',
+                url: 'https://usu.calstatela.edu',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp',
+                },
+              },
+              inLanguage: 'en-US',
+            }),
+          }}
         />
 
         <link rel="icon" href="/favicon.ico" />
@@ -406,7 +437,7 @@ export default function Brand() {
             alignItems="center"
             margin="0 0 24px 0"
           >
-            <Typography variant="title" size="4xl">
+            <Typography variant="title" size="4xl" as="h1">
               U&ndash;SU Brand Guidelines
             </Typography>
             <Typography
@@ -579,7 +610,7 @@ export default function Brand() {
               <GuidelineCallout>
                 <FluidContainer flex flexDirection="column" padding="0">
                   <Typography
-                    as="p"
+                    as="h3"
                     variant="span"
                     size={isMobile ? 'sm' : 'md'}
                     lineHeight="1.6"
@@ -598,6 +629,7 @@ export default function Brand() {
                     the full name or acronym, both requires a hyphen.
                   </Typography>
                   <Typography
+                    as="h3"
                     variant="span"
                     size="md"
                     lineHeight="1.6"
@@ -681,7 +713,7 @@ export default function Brand() {
             <FluidContainer>
               <Image
                 src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
-                alt="USU logo black"
+                alt="USU logo black with measurements"
                 width={isWidescreen ? '100%' : '1000px'}
               />
             </FluidContainer>
@@ -1082,7 +1114,7 @@ export default function Brand() {
 
               <FluidContainer padding="0" flex flexDirection="column">
                 <Typography
-                  as="p"
+                  as="h4"
                   variant="span"
                   size={isMobile ? 'md' : 'lg'}
                   lineHeight="1.6"
@@ -1092,7 +1124,7 @@ export default function Brand() {
                   &quot;Where Connections Take Flight&quot;
                 </Typography>
                 <Typography
-                  as="p"
+                  as="h4"
                   variant="span"
                   size={isMobile ? 'md' : 'lg'}
                   lineHeight="1.6"
@@ -1102,7 +1134,7 @@ export default function Brand() {
                   &quot;Empowering Golden Eagles Every Day&quot;
                 </Typography>
                 <Typography
-                  as="p"
+                  as="h4"
                   variant="span"
                   size={isMobile ? 'md' : 'lg'}
                   lineHeight="1.6"
@@ -1121,7 +1153,19 @@ export default function Brand() {
             <FluidContainer padding="0">
               <SocialGrid>
                 {socialMedia.map((social) => (
-                  <SocialCard key={social.department}>
+                  <SocialCard
+                    key={social.department}
+                    onClick={() => copyToClipboard(social.handle)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        copyToClipboard(social.handle);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    $copied={copiedValue === social.handle}
+                  >
                     <FluidContainer
                       padding="0"
                       flex
@@ -1129,31 +1173,27 @@ export default function Brand() {
                       alignItems="flex-start"
                       gap="8px"
                     >
-                      <Typography
-                        as="h3"
-                        variant="labelTitle"
-                        weight="700"
-                        margin="0"
-                      >
+                      <Typography as="h3" variant="labelTitle" weight="700">
                         {social.department}
                       </Typography>
-                      <Typography
-                        as="p"
-                        variant="span"
-                        size="sm"
-                        color="grey"
-                        margin="0"
-                      >
+                      <Typography as="p" variant="span" size="sm" color="grey">
                         {social.handle}
                       </Typography>
                     </FluidContainer>
+                    <CopyHint>
+                      {copiedValue === social.handle ? (
+                        <IoIosCheckmark color="green" size={'40px'} />
+                      ) : (
+                        <FaRegCopy color={Colors.greyLighter} size={'20px'} />
+                      )}
+                    </CopyHint>
                   </SocialCard>
                 ))}
               </SocialGrid>
             </FluidContainer>
           </Section>
 
-          <Section>
+          <Section id="final_thoughts">
             <HeaderWithDivider text="Final Thoughts and Brand Consistency" />
             <Typography
               as="p"
