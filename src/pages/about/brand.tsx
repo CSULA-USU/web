@@ -328,7 +328,7 @@ export default function Brand() {
   return (
     <Page>
       <Head>
-        <title>U–SU Brand Guidelines</title>
+        <title>U&ndash;SU Brand Guidelines</title>
         <meta
           name="description"
           content="Official brand guidelines for the University-Student Union (U&ndash;SU) at Cal State LA — logos, colors, typography, voice, and usage examples for consistent communications."
@@ -448,8 +448,8 @@ export default function Brand() {
               margin="0 0 24px 0"
               style={{ textAlign: 'center' }}
             >
-              The University-Student Union (U&ndash;SU) brand at Cal State LA
-              represents community, connection, and growth. To maintain a
+              The University&ndash;Student Union (U&ndash;SU) brand at Cal State
+              LA represents community, connection, and growth. To maintain a
               consistent and recognizable brand across all our communications
               and materials, please follow these simple guidelines. These
               instructions are designed for non-designers to ensure you&apos;re
@@ -479,8 +479,8 @@ export default function Brand() {
               lineHeight="1.6"
               weight="700"
             >
-              For the University-Student Union (U-SU) at Cal State LA, branding
-              is about:
+              For the University-Student Union (U&ndash;SU) at Cal State LA,
+              branding is about:
             </Typography>
             <List>
               <li>
@@ -515,8 +515,8 @@ export default function Brand() {
               lineHeight="1.6"
               weight="700"
             >
-              Let&apos;s explore the University-Student Union brand and how it
-              creates a strong, connected campus experience.
+              Let&apos;s explore the University&ndash;Student Union brand and
+              how it creates a strong, connected campus experience.
             </Typography>
           </Section>
 
@@ -538,13 +538,13 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
-                The University&ndash;Student Union (U-SU) is your campus hub for
-                connection, growth, and success. From recreation and events to
-                leadership opportunities and essential resources, the U&ndash;SU
-                empowers students and partners alike to create a thriving campus
-                experience. Your place, your future, your U&ndash;SU. Ready to
-                get involved and make the most of your student experience? Visit
-                U&ndash;SU today and start exploring!
+                The University&ndash;Student Union (U&ndash;SU) is your campus
+                hub for connection, growth, and success. From recreation and
+                events to leadership opportunities and essential resources, the
+                U&ndash;SU empowers students and partners alike to create a
+                thriving campus experience. Your place, your future, your
+                U&ndash;SU. Ready to get involved and make the most of your
+                student experience? Visit U&ndash;SU today and start exploring!
               </Typography>
               <Typography as="h3" variant="title" size="xl" weight="600">
                 Mission
@@ -570,7 +570,7 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
-                The vision of the U-SU is to become the central hub for
+                The vision of the U&ndash;SU is to become the central hub for
                 connection and growth.
               </Typography>
 
@@ -616,7 +616,7 @@ export default function Brand() {
                     lineHeight="1.6"
                     weight="700"
                   >
-                    Always use the official U-SU Logo
+                    Always use the official U&ndash;SU Logo
                   </Typography>
                   <Typography
                     as="p"
@@ -635,8 +635,8 @@ export default function Brand() {
                     lineHeight="1.6"
                     weight="700"
                   >
-                    • University-Student Union
-                    <br />• U-SU
+                    • University&ndash;Student Union
+                    <br />• U&ndash;SU
                   </Typography>
                 </FluidContainer>
               </GuidelineCallout>
@@ -729,9 +729,9 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
-                Stick to the official U-SU colors to keep all communications
-                consistent. When creating any documents, presentations, or
-                emails, use these colors as much as possible.
+                Stick to the official U&ndash;SU colors to keep all
+                communications consistent. When creating any documents,
+                presentations, or emails, use these colors as much as possible.
               </Typography>
 
               <ColorGrid>
@@ -921,10 +921,11 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
-                The University-Student Union (U-SU) building at Cal State LA
-                offers various resources and spaces that foster community
-                involvement, student support, and engagement. Use the following
-                directory when referencing specific locations in communications.
+                The University&ndash;Student Union (U&ndash;SU) building at Cal
+                State LA offers various resources and spaces that foster
+                community involvement, student support, and engagement. Use the
+                following directory when referencing specific locations in
+                communications.
               </Typography>
 
               <LocationGrid>
@@ -1084,7 +1085,7 @@ export default function Brand() {
                 </Typography>
 
                 <Typography as="h4" variant="title" size="md" weight="600">
-                  Call-to-Actions
+                  Call&ndash;to&ndash;Actions
                 </Typography>
                 <Typography
                   as="p"
@@ -1202,8 +1203,8 @@ export default function Brand() {
               lineHeight="1.6"
               margin="0 0 24px 0"
             >
-              To ensure that the U-SU brand remains cohesive, recognizable, and
-              impactful across all materials
+              To ensure that the U&ndash;SU brand remains cohesive,
+              recognizable, and impactful across all materials
             </Typography>
             <FluidContainer
               padding="0"
@@ -1256,7 +1257,7 @@ export default function Brand() {
                   lineHeight="1.6"
                   margin="0 0 24px 0"
                 >
-                  Remember that the U-SU brand is more than just logos and
+                  Remember that the U&ndash;SU brand is more than just logos and
                   fonts—it&apos;s about fostering a vibrant, inclusive, and
                   connected community at Cal State LA.
                 </Typography>
