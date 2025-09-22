@@ -80,7 +80,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/91war0t6twupdvu2fk551/Org-Chart_9.10.25.jpg?rlkey=7jrh9u7l6t69jwqv5836gsps6&st=xove4bzu&raw=1"
+                  href="https://www.dropbox.com/scl/fi/ilqryvwvq5fgrxn1jwjvt/Org-Chart_9.17.25.jpg?rlkey=o2w6m4cmqj2vskvn8fy36iljp&st=m7xnxsft&raw=1"
                   isExternalLink
                 >
                   U&ndash;SU Organizational Chart
@@ -119,14 +119,14 @@ export default function About() {
                   lineHeight="1.3"
                   style={{ textAlign: 'center' }}
                 >
-                  We are <NonBreakingSpan>the U-SU</NonBreakingSpan>
+                  We are <NonBreakingSpan>the U&ndash;SU</NonBreakingSpan>
                 </Typography>
               </FluidContainer>
 
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/91war0t6twupdvu2fk551/Org-Chart_9.10.25.jpg?rlkey=7jrh9u7l6t69jwqv5836gsps6&st=a13vvh7z&raw=1"
+                  href="https://www.dropbox.com/scl/fi/ilqryvwvq5fgrxn1jwjvt/Org-Chart_9.17.25.jpg?rlkey=o2w6m4cmqj2vskvn8fy36iljp&st=m7xnxsft&raw=1"
                   isExternalLink
                 >
                   U&ndash;SU Organizational Chart
@@ -213,7 +213,7 @@ export default function About() {
       <InstagramFeed department="usu" />
       <FluidContainer>
         <Typography variant="title" as="h2">
-          University Non-Discrimination Policy
+          University Non&ndash;Discrimination Policy
         </Typography>
         <Typography margin={`0 0 Spaces.md`}>
           All university programs and activities are open and available to all
