@@ -338,7 +338,7 @@ export default function Brand() {
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility"
+          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility, branding, logo usage, color palette, font styles, social media guidelines, location branding, marketing materials"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -828,9 +828,8 @@ export default function Brand() {
                   lineHeight="1.6"
                   margin="0"
                 >
-                  Contact the Graffix department for more information on how to
-                  access, install, or utilize these fonts at
-                  usugraffix@gmail.com.
+                  Contact usugraffix@gmail.com for more information on how to
+                  access, install, or utilize these fonts.
                 </Typography>
               </GuidelineCallout>
 
