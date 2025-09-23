@@ -726,8 +726,8 @@ export default function Brand() {
             <FluidContainer padding="0" margin="0 0 24px 0">
               <Typography
                 as="p"
-                variant="copy"
-                size="lg"
+                variant="span"
+                size={isMobile ? 'sm' : 'md'}
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
@@ -807,10 +807,10 @@ export default function Brand() {
             <FluidContainer padding="0">
               <Typography
                 as="p"
-                variant="copy"
-                size="lg"
+                variant="span"
+                size={isMobile ? 'sm' : 'md'}
                 lineHeight="1.6"
-                margin="0 0 16px 0"
+                margin="0 0 24px 0"
               >
                 Use these fonts in your documents, emails, and presentations
               </Typography>
@@ -892,8 +892,8 @@ export default function Brand() {
             <FluidContainer padding="0" margin="0 0 24px 0">
               <Typography
                 as="p"
-                variant="copy"
-                size="lg"
+                variant="span"
+                size={isMobile ? 'sm' : 'md'}
                 lineHeight="1.6"
                 margin="0 0 24px 0"
               >
