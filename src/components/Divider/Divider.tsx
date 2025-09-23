@@ -6,6 +6,7 @@ interface DividerProps {
   color?: keyof typeof Colors;
   margin?: string;
   label?: string;
+  size?: string;
   variant?:
     | 'label'
     | 'title'
@@ -30,7 +31,7 @@ const DividerContainer = styled.div`
 
 const StyledDivider = styled.div<DividerProps>`
   flex-grow: 1;
-  border-bottom: 1px solid ${(p) => Colors[p.color || 'black']};
+  border-bottom: ${(p) => p.size} solid ${(p) => Colors[p.color || 'black']};
   ${(p) => p.margin && `margin: ${p.margin}`};
 `;
 
