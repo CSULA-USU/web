@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FluidContainer, Typography, Divider, Image, Card } from 'components';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import aboutBrand from 'data/aboutBrand.json';
@@ -74,6 +74,7 @@ const RoundedFluidContainer = styled(FluidContainer)`
 const RoundedWrapper = styled.div`
   border: 1px solid ${Colors.greyLighter};
   border-radius: 8px;
+  margin-top: ${Spaces.sm};
   overflow: hidden; /* optional if you want children clipped */
   padding: ${Spaces.md};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -263,6 +264,7 @@ const SocialCard = styled.div<{ $copied?: boolean }>`
   &:hover {
     background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.greyLightest)};
     border-color: ${Colors.greyLighter};
+    cursor: pointer;
   }
 
   &:focus {
@@ -337,7 +339,7 @@ export default function Brand() {
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
-          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility"
+          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility, branding, logo usage, color palette, font styles, social media guidelines, location branding, marketing materials"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
@@ -503,12 +505,6 @@ export default function Brand() {
                   social media to in&ndash;person experiences.
                 </Typography>
               </li>
-              <li>
-                <Typography as="p" variant="span" size="md">
-                  Creating a recognizable identity for students, staff, and the
-                  university.
-                </Typography>
-              </li>
             </List>
             <Typography
               as="p"
@@ -653,7 +649,7 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 16px 0"
               >
-                The logo should always have space around it so that it&aspos;s
+                The logo should always have space around it so that it&apos;s
                 clearly visible and not crowded by other elements. Avoid placing
                 it on busy or patterned backgrounds.
               </Typography>
@@ -827,9 +823,8 @@ export default function Brand() {
                   lineHeight="1.6"
                   margin="0"
                 >
-                  Contact the Graffix department for more information on how to
-                  access, install, or utilize these fonts at
-                  usugraffix@gmail.com.
+                  Contact usugraffix@gmail.com for more information on how to
+                  access, install, or utilize these fonts.
                 </Typography>
               </GuidelineCallout>
 
@@ -838,11 +833,14 @@ export default function Brand() {
 
                 return (
                   <FluidContainer key={font.name}>
-                    <Typography as="h3" variant="title" size="xl" weight="600">
-                      <span className={fontClass}>{font.name}</span>
-                      {/* ... rest of heading */}
-                    </Typography>
-
+                    <SampleP
+                      className={fontClass}
+                      fontName={font.name}
+                      size={FontSizes['2xl']}
+                      weight={400}
+                    >
+                      {font.name}
+                    </SampleP>
                     <RoundedWrapper>
                       {/* LIGHT */}
                       <FluidContainer
