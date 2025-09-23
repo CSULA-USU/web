@@ -1,14 +1,41 @@
 {
   "sections": [
-    { "id": "branding", "title": "Branding" },
-    { "id": "mission", "title": "Mission" },
-    { "id": "logo", "title": "Logo Usage" },
-    { "id": "colors", "title": "Color Palette" },
-    { "id": "typography", "title": "Typography" },
-    { "id": "locations", "title": "Location Directory" },
-    { "id": "voice", "title": "Brand Messaging" },
-    { "id": "social", "title": "Social Media" },
-    { "id": "final_thoughts", "title": "Final Thoughts" }
+    {
+      "id": "branding",
+      "title": "Branding"
+    },
+    {
+      "id": "mission",
+      "title": "Mission"
+    },
+    {
+      "id": "logo",
+      "title": "Logo Usage"
+    },
+    {
+      "id": "colors",
+      "title": "Color Palette"
+    },
+    {
+      "id": "typography",
+      "title": "Typography"
+    },
+    {
+      "id": "locations",
+      "title": "Location Directory"
+    },
+    {
+      "id": "voice",
+      "title": "Brand Messaging"
+    },
+    {
+      "id": "social",
+      "title": "Social Media"
+    },
+    {
+      "id": "final_thoughts",
+      "title": "Final Thoughts"
+    }
   ],
   "colors": [
     {
@@ -46,19 +73,19 @@
       "isPaid": true
     },
     {
-      "name": "Merriweather",
-      "type": "Secondary Font",
-      "weights": ["Light", "Bold"],
-      "description": "Merriweather is a workhorse text type family made specifically for screens. Print use was not a significant consideration in the design.",
-      "usage": "This is perfect for longer text sections like reports or newsletters.",
-      "isPaid": false
-    },
-    {
       "name": "Bitter",
       "type": "Web Font",
       "weights": ["Light", "Bold"],
       "description": "Sol Matas designed Bitter for comfortably reading on any computer or device.",
       "usage": "For any web content, this ensures easy readability.",
+      "isPaid": false
+    },
+    {
+      "name": "Merriweather",
+      "type": "Secondary Font",
+      "weights": ["Light", "Bold"],
+      "description": "Merriweather is a workhorse text type family made specifically for screens. Print use was not a significant consideration in the design.",
+      "usage": "This is perfect for longer text sections like reports or newsletters.",
       "isPaid": false
     },
     {
@@ -120,8 +147,14 @@
         "Los Angeles Room ABC",
         {
           "subRooms": [
-            { "name": "When 1 Room", "alt": "LA Room A" },
-            { "name": "When 2 Room", "alt": "LA Room AB" }
+            {
+              "name": "When 1 Room",
+              "alt": "LA Room A"
+            },
+            {
+              "name": "When 2 Room",
+              "alt": "LA Room AB"
+            }
           ]
         },
         "Montebello Room",
@@ -131,14 +164,41 @@
     }
   ],
   "socialMedia": [
-    { "department": "U-SU", "handle": "@usucalstatela" },
-    { "department": "CCC", "handle": "@cccatcalstatela" },
-    { "department": "Graffix", "handle": "@usugraffix" },
-    { "department": "CSI", "handle": "@csicalstatela" },
-    { "department": "Recreation", "handle": "@calstatela_recreation" },
-    { "department": "CLSRC", "handle": "@clsrc.ccc" },
-    { "department": "PASRC", "handle": "@pasrc.ccc" },
-    { "department": "GSRC", "handle": "@gsrc.ccc" },
-    { "department": "APISRC", "handle": "@apisrc.ccc" }
+    {
+      "department": "U-SU",
+      "handle": "@usucalstatela"
+    },
+    {
+      "department": "CCC",
+      "handle": "@cccatcalstatela"
+    },
+    {
+      "department": "Graffix",
+      "handle": "@usugraffix"
+    },
+    {
+      "department": "CSI",
+      "handle": "@csicalstatela"
+    },
+    {
+      "department": "Recreation",
+      "handle": "@calstatela_recreation"
+    },
+    {
+      "department": "CLSRC",
+      "handle": "@clsrc.ccc"
+    },
+    {
+      "department": "PASRC",
+      "handle": "@pasrc.ccc"
+    },
+    {
+      "department": "GSRC",
+      "handle": "@gsrc.ccc"
+    },
+    {
+      "department": "APISRC",
+      "handle": "@apisrc.ccc"
+    }
   ]
 }

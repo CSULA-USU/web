@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FluidContainer, Typography, Divider, Image, Card } from 'components';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import aboutBrand from 'data/aboutBrand.json';
@@ -263,6 +263,7 @@ const SocialCard = styled.div<{ $copied?: boolean }>`
   &:hover {
     background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.greyLightest)};
     border-color: ${Colors.greyLighter};
+    cursor: pointer;
   }
 
   &:focus {
@@ -838,11 +839,14 @@ export default function Brand() {
 
                 return (
                   <FluidContainer key={font.name}>
-                    <Typography as="h3" variant="title" size="xl" weight="600">
-                      <span className={fontClass}>{font.name}</span>
-                      {/* ... rest of heading */}
-                    </Typography>
-
+                    <SampleP
+                      className={fontClass}
+                      fontName={font.name}
+                      size={FontSizes['2xl']}
+                      weight={400}
+                    >
+                      {font.name}
+                    </SampleP>
                     <RoundedWrapper>
                       {/* LIGHT */}
                       <FluidContainer
