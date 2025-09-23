@@ -6,24 +6,12 @@ import { Colors, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import aboutBrand from 'data/aboutBrand.json';
-import { Montserrat, Merriweather, Bitter, Roboto } from 'next/font/google';
+import { Merriweather, Roboto } from 'next/font/google';
 import cards from 'data/about.json';
 import { FaRegCopy } from 'react-icons/fa6';
 import { IoIosCheckmark } from 'react-icons/io';
 
-const montserrat = Montserrat({
-  weight: ['100', '300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
 const merriweather = Merriweather({
-  weight: ['300', '400', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const bitter = Bitter({
   weight: ['300', '400', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -36,18 +24,31 @@ const roboto = Roboto({
 });
 
 const fontClassByName: Record<string, string> = {
-  Roboto: roboto.className,
-  Montserrat: montserrat.className,
+  Bitter: '',
   Merriweather: merriweather.className,
-  Bitter: bitter.className,
+  Montserrat: '',
   'Akzidenz-Grotesk': roboto.className, // alias → Roboto
+  Roboto: roboto.className,
 };
 
-const SampleP = styled.p<{ $size?: string; $weight?: number }>`
-  margin: 0;
+const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
+  font-size: ${({ size }) => size ?? '1.5rem'};
+  font-weight: ${({ weight }) => weight ?? 400};
   line-height: 1.4;
-  font-size: ${({ $size }) => $size ?? '1.125rem'}; /* ~18px */
-  font-weight: ${({ $weight }) => $weight ?? 400};
+  margin: 0;
+
+  ${({ fontName }) => {
+    const className = fontClassByName[fontName];
+
+    // For Next.js fonts (Merriweather, Roboto)
+    if (className) {
+      // Don't use CSS variables, use the className directly
+      return ''; // The className will be applied via the className prop
+    }
+
+    // For CSS-loaded fonts (Montserrat, Bitter)
+    return `font-family: '${fontName}', Arial, sans-serif;`;
+  }}
 `;
 
 const SampleLabel = styled.p`
@@ -837,20 +838,9 @@ export default function Brand() {
 
                 return (
                   <FluidContainer key={font.name}>
-                    {/* Keep your heading however you like; if Typography forces a family, wrap only the name */}
                     <Typography as="h3" variant="title" size="xl" weight="600">
                       <span className={fontClass}>{font.name}</span>
-                      {font.isPaid && ' (PAID FONT)'}
-                      <Typography
-                        as="span"
-                        variant="span"
-                        size="sm"
-                        weight="600"
-                        color="grey"
-                        margin="0 0 0 8px"
-                      >
-                        - {font.type}
-                      </Typography>
+                      {/* ... rest of heading */}
                     </Typography>
 
                     <RoundedWrapper>
@@ -862,9 +852,10 @@ export default function Brand() {
                       >
                         <SampleLabel>Light</SampleLabel>
                         <SampleP
-                          className={fontClass}
-                          $size="1.125rem"
-                          $weight={300}
+                          className={fontClass} // ← Apply Next.js font class here
+                          fontName={font.name} // ← Pass font name for CSS fonts
+                          size="1.125rem"
+                          weight={300}
                         >
                           A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
                           <br />a b c d e f g h i j k l m n o p q r s t u v w x
@@ -880,9 +871,10 @@ export default function Brand() {
                       >
                         <SampleLabelBold>Bold</SampleLabelBold>
                         <SampleP
-                          className={fontClass}
-                          $size="1.125rem"
-                          $weight={700}
+                          className={fontClass} // ← Apply Next.js font class here
+                          fontName={font.name} // ← Pass font name for CSS fonts
+                          size="1.125rem"
+                          weight={700}
                         >
                           A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
                           <br />a b c d e f g h i j k l m n o p q r s t u v w x
@@ -890,26 +882,6 @@ export default function Brand() {
                         </SampleP>
                       </FluidContainer>
                     </RoundedWrapper>
-
-                    {/* descriptions can stay as Typography since font choice isn't critical there */}
-                    <Typography
-                      as="p"
-                      variant="span"
-                      size="md"
-                      lineHeight="1.6"
-                      margin="16px 0 0 0"
-                    >
-                      {font.description}
-                    </Typography>
-                    <Typography
-                      as="p"
-                      variant="span"
-                      size="md"
-                      lineHeight="1.6"
-                      margin="8px 0 0 0"
-                    >
-                      {font.usage}
-                    </Typography>
                   </FluidContainer>
                 );
               })}
@@ -917,7 +889,7 @@ export default function Brand() {
           </Section>
 
           <Section id="locations">
-            <HeaderWithDivider text="U-SU Location Directory" />
+            <HeaderWithDivider text="U&ndash;SU Location Directory" />
 
             <FluidContainer padding="0" margin="0 0 24px 0">
               <Typography
