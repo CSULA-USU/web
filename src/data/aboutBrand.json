@@ -1,14 +1,14 @@
 {
   "sections": [
     { "id": "branding", "title": "Branding" },
-    { "id": "mission", "title": "Mission, Vision, and Values" },
+    { "id": "mission", "title": "Mission" },
     { "id": "logo", "title": "Logo Usage" },
     { "id": "colors", "title": "Color Palette" },
     { "id": "typography", "title": "Typography" },
-    { "id": "locations", "title": "U-SU Location Directory" },
-    { "id": "voice", "title": "Brand Voice and Messaging" },
+    { "id": "locations", "title": "Location Directory" },
+    { "id": "voice", "title": "Brand Messaging" },
     { "id": "social", "title": "Social Media" },
-    { "id": "final_thoughts", "title": "Final Thoughts and Brand Consistency" }
+    { "id": "final_thoughts", "title": "Final Thoughts" }
   ],
   "colors": [
     {

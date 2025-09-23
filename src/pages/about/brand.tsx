@@ -437,7 +437,7 @@ export default function Brand() {
             alignItems="center"
             margin="0 0 24px 0"
           >
-            <Typography variant="title" size="4xl" as="h1">
+            <Typography variant="title" size={isMobile ? '3xl' : '4xl'} as="h1">
               U&ndash;SU Brand Guidelines
             </Typography>
             <Typography
@@ -452,13 +452,14 @@ export default function Brand() {
               LA represents community, connection, and growth. To maintain a
               consistent and recognizable brand across all our communications
               and materials, please follow these simple guidelines. These
-              instructions are designed for non-designers to ensure you&apos;re
-              using the U&ndash;SU&apos;s visual and written elements correctly.
+              instructions are designed for non&ndash;designers to ensure
+              you&apos;re using the U&ndash;SU&apos;s visual and written
+              elements correctly.
             </Typography>
           </RoundedFluidContainer>
 
           <Section id="branding">
-            <HeaderWithDivider text="What is branding?" />
+            <HeaderWithDivider text="What is Branding?" />
             <Typography
               as="p"
               variant="span"
@@ -678,7 +679,8 @@ export default function Brand() {
                 margin="0 0 16px 0"
                 weight="700"
               >
-                If you need access to the logo files, contact the Graffix team.
+                If you need access to the logo files, contact the Graffix team
+                at usugraffix@gmail.com.
               </Typography>
               <Typography as="h3" variant="title" size="xl" weight="600">
                 Do Not
@@ -825,7 +827,8 @@ export default function Brand() {
                   margin="0"
                 >
                   Contact the Graffix department for more information on how to
-                  access, install, or utilize these fonts.
+                  access, install, or utilize these fonts at
+                  usugraffix@gmail.com.
                 </Typography>
               </GuidelineCallout>
 
