@@ -279,7 +279,7 @@ export default function Brand() {
   const { sections, colors, fonts, locations, socialMedia } = aboutBrand;
   const [activeSection, setActiveSection] = useState('brand');
   const [copiedValue, setCopiedValue] = useState<string | null>(null);
-  const { isMobile, isDesktop, isWidescreen } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
 
   type HeaderWithDividerProps = { text: string };
 
@@ -699,14 +699,16 @@ export default function Brand() {
                 <Image
                   src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp"
                   alt="USU logo white"
-                  width={isWidescreen ? '100%' : '500px'}
+                  width="100%"
+                  maxWidth={'500px'}
                 />
               </FluidContainer>
               <FluidContainer backgroundColor="greyLighter">
                 <Image
                   src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp"
                   alt="USU logo black"
-                  width={isWidescreen ? '100%' : '500px'}
+                  width="100%"
+                  maxWidth={'500px'}
                 />
               </FluidContainer>
             </FluidContainer>
@@ -714,13 +716,14 @@ export default function Brand() {
               <Image
                 src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
                 alt="USU logo black with measurements"
-                width={isWidescreen ? '100%' : '1000px'}
+                width="100%"
+                maxWidth={'1000px'}
               />
             </FluidContainer>
           </Section>
 
           <Section id="colors">
-            <HeaderWithDivider text="Color Pallete" />
+            <HeaderWithDivider text="Color Palette" />
             <FluidContainer padding="0" margin="0 0 24px 0">
               <Typography
                 as="p"
