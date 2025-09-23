@@ -74,6 +74,7 @@ const RoundedFluidContainer = styled(FluidContainer)`
 const RoundedWrapper = styled.div`
   border: 1px solid ${Colors.greyLighter};
   border-radius: 8px;
+  margin-top: ${Spaces.sm};
   overflow: hidden; /* optional if you want children clipped */
   padding: ${Spaces.md};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -504,12 +505,6 @@ export default function Brand() {
                   social media to in&ndash;person experiences.
                 </Typography>
               </li>
-              <li>
-                <Typography as="p" variant="span" size="md">
-                  Creating a recognizable identity for students, staff, and the
-                  university.
-                </Typography>
-              </li>
             </List>
             <Typography
               as="p"
@@ -654,7 +649,7 @@ export default function Brand() {
                 lineHeight="1.6"
                 margin="0 0 16px 0"
               >
-                The logo should always have space around it so that it&aspos;s
+                The logo should always have space around it so that it&apos;s
                 clearly visible and not crowded by other elements. Avoid placing
                 it on busy or patterned backgrounds.
               </Typography>
