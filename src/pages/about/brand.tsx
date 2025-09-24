@@ -185,16 +185,11 @@ const ColorValue = styled.div`
 
 const CopyButton = styled.button`
   background: none;
-  border: 1px solid ${Colors.black};
+  border: 0;
   padding: 2px 6px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.75rem;
-
-  &:hover {
-    background-color: ${Colors.black};
-    color: ${Colors.white};
-  }
 `;
 
 const GuidelineCallout = styled.div`
@@ -261,6 +256,8 @@ const SocialCard = styled.div<{ $copied?: boolean }>`
   background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.white)};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
   width: 250px;
+  cursor: pointer;
+
   &:hover {
     background: ${({ $copied }) => ($copied ? '#e6f9e6' : Colors.greyLightest)};
     border-color: ${Colors.greyLighter};
@@ -764,7 +761,14 @@ export default function Brand() {
                           HEX: {color.hex}
                         </Typography>
                         <CopyButton onClick={() => copyToClipboard(color.hex)}>
-                          {copiedValue === color.hex ? '✓' : 'Copy'}
+                          <FaRegCopy
+                            color={
+                              copiedValue === color.hex
+                                ? Colors.black
+                                : Colors.greyLighter
+                            }
+                            size={'20px'}
+                          />
                         </CopyButton>
                       </ColorValue>
 
@@ -773,7 +777,14 @@ export default function Brand() {
                           RGB: {color.rgb}
                         </Typography>
                         <CopyButton onClick={() => copyToClipboard(color.rgb)}>
-                          {copiedValue === color.rgb ? '✓' : 'Copy'}
+                          <FaRegCopy
+                            color={
+                              copiedValue === color.rgb
+                                ? Colors.black
+                                : Colors.greyLighter
+                            }
+                            size={'20px'}
+                          />
                         </CopyButton>
                       </ColorValue>
 
@@ -782,7 +793,14 @@ export default function Brand() {
                           CMYK: {color.cmyk}
                         </Typography>
                         <CopyButton onClick={() => copyToClipboard(color.cmyk)}>
-                          {copiedValue === color.cmyk ? '✓' : 'Copy'}
+                          <FaRegCopy
+                            color={
+                              copiedValue === color.cmyk
+                                ? Colors.black
+                                : Colors.greyLighter
+                            }
+                            size={'20px'}
+                          />
                         </CopyButton>
                       </ColorValue>
 
@@ -791,7 +809,14 @@ export default function Brand() {
                           HSL: {color.hsl}
                         </Typography>
                         <CopyButton onClick={() => copyToClipboard(color.hsl)}>
-                          {copiedValue === color.hsl ? '✓' : 'Copy'}
+                          <FaRegCopy
+                            color={
+                              copiedValue === color.hsl
+                                ? Colors.black
+                                : Colors.greyLighter
+                            }
+                            size={'20px'}
+                          />
                         </CopyButton>
                       </ColorValue>
                     </ColorInfo>
