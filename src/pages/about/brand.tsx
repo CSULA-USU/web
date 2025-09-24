@@ -810,7 +810,7 @@ export default function Brand() {
                           <FaRegCopy
                             color={
                               copiedValue === color.rgb
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -829,7 +829,7 @@ export default function Brand() {
                           <FaRegCopy
                             color={
                               copiedValue === color.cmyk
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -848,7 +848,7 @@ export default function Brand() {
                           <FaRegCopy
                             color={
                               copiedValue === color.hsl
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
