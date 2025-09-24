@@ -8,6 +8,10 @@
         "href": "/about"
       },
       {
+        "text": "Brand",
+        "href": "/about/brand"
+      },
+      {
         "text": "Contact",
         "href": "/contact"
       },
@@ -27,8 +31,14 @@
         "text": "U-Krew",
         "href": "/u-krew",
         "sub": [
-          { "text": "U-Krew Home", "href": "/about/u-krew" },
-          { "text": "Directory", "href": "/u-krew/directory" }
+          {
+            "text": "U-Krew Home",
+            "href": "/about/u-krew"
+          },
+          {
+            "text": "Directory",
+            "href": "/u-krew/directory"
+          }
         ]
       }
     ]
@@ -75,9 +85,18 @@
         "text": "CSI",
         "href": "/csi",
         "sub": [
-          { "text": "CSI Home", "href": "/csi" },
-          { "text": "Forms", "href": "/csi/forms" },
-          { "text": "Fraternity & Sorority Life", "href": "/csi/fsl" },
+          {
+            "text": "CSI Home",
+            "href": "/csi"
+          },
+          {
+            "text": "Forms",
+            "href": "/csi/forms"
+          },
+          {
+            "text": "Fraternity & Sorority Life",
+            "href": "/csi/fsl"
+          },
           {
             "text": "Recognized Student Organizations",
             "href": "/csi/student-orgs"
@@ -86,15 +105,24 @@
             "text": "Student Organization Awards",
             "href": "/csi/student-organization-awards"
           },
-          { "text": "Wingspan", "href": "/csi/wingspan" }
+          {
+            "text": "Wingspan",
+            "href": "/csi/wingspan"
+          }
         ]
       },
       {
         "text": "Graffix",
         "href": "/graffix",
         "sub": [
-          { "text": "Graffix Home", "href": "/graffix" },
-          { "text": "ACUI Awards", "href": "/graffix/acui-awards" }
+          {
+            "text": "Graffix Home",
+            "href": "/graffix"
+          },
+          {
+            "text": "ACUI Awards",
+            "href": "/graffix/acui-awards"
+          }
         ]
       },
       {

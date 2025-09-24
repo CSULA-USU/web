@@ -809,6 +809,12 @@ export default function FSL() {
               >
                 FY 23&mdash;24 Report
               </DocumentLink>
+              <DocumentLink
+                href="https://www.dropbox.com/scl/fi/m9pp7o7jeakk3aswg4s4f/2024-2025-AB-524-Report.pdf?rlkey=db01rxsfu3oldh1p3alwo2y4h&st=ywm14ay6&raw=1"
+                aria-label="FY 24&mdash;25 Report"
+              >
+                FY 24&mdash;25 Report
+              </DocumentLink>
             </AB524ReportContainer>
             {/*
             <Typography variant="subheader" as="h3">
