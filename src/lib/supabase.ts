@@ -14,7 +14,7 @@ export const hasPermission = (user: BackOfficeUser, permission: string) => {
   const universalPermission = `${category}:${action}:*`;
 
   return (
-    user.polices.includes(universalPermission) ||
-    user.polices.includes(permission)
+    user.policies.includes(universalPermission) ||
+    user.policies.includes(permission)
   );
 };
