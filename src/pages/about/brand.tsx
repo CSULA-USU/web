@@ -51,6 +51,30 @@ const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
   }}
 `;
 
+const SampleH3 = styled.h3<{
+  fontName: string;
+  size?: string;
+  weight?: number;
+}>`
+  font-size: ${({ size }) => size ?? '1.5rem'};
+  font-weight: ${({ weight }) => weight ?? 400};
+  line-height: 1.4;
+  margin: 0;
+
+  ${({ fontName }) => {
+    const className = fontClassByName[fontName];
+
+    // For Next.js fonts (Merriweather, Roboto)
+    if (className) {
+      // Don't use CSS variables, use the className directly
+      return ''; // The className will be applied via the className prop
+    }
+
+    // For CSS-loaded fonts (Montserrat, Bitter)
+    return `font-family: '${fontName}', Arial, sans-serif;`;
+  }}
+`;
+
 const SampleLabel = styled.p`
   margin: 0 0 4px 0;
   line-height: 1.2;
@@ -758,13 +782,16 @@ export default function Brand() {
 
                       <ColorValue>
                         <Typography as="span" variant="span" size="xs">
-                          HEX: {color.hex}
+                          Hex: {color.hex}
                         </Typography>
-                        <CopyButton onClick={() => copyToClipboard(color.hex)}>
+                        <CopyButton
+                          onClick={() => copyToClipboard(color.hex)}
+                          aria-label={`Copy ${color} hex value to clipboard`}
+                        >
                           <FaRegCopy
                             color={
                               copiedValue === color.hex
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -776,11 +803,14 @@ export default function Brand() {
                         <Typography as="span" variant="span" size="xs">
                           RGB: {color.rgb}
                         </Typography>
-                        <CopyButton onClick={() => copyToClipboard(color.rgb)}>
+                        <CopyButton
+                          onClick={() => copyToClipboard(color.rgb)}
+                          aria-label={`Copy ${color} RGB value to clipboard`}
+                        >
                           <FaRegCopy
                             color={
                               copiedValue === color.rgb
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -792,11 +822,14 @@ export default function Brand() {
                         <Typography as="span" variant="span" size="xs">
                           CMYK: {color.cmyk}
                         </Typography>
-                        <CopyButton onClick={() => copyToClipboard(color.cmyk)}>
+                        <CopyButton
+                          onClick={() => copyToClipboard(color.cmyk)}
+                          aria-label={`Copy ${color} CMYK value to clipboard`}
+                        >
                           <FaRegCopy
                             color={
                               copiedValue === color.cmyk
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -808,11 +841,14 @@ export default function Brand() {
                         <Typography as="span" variant="span" size="xs">
                           HSL: {color.hsl}
                         </Typography>
-                        <CopyButton onClick={() => copyToClipboard(color.hsl)}>
+                        <CopyButton
+                          onClick={() => copyToClipboard(color.hsl)}
+                          aria-label={`Copy ${color} HSL value to clipboard`}
+                        >
                           <FaRegCopy
                             color={
                               copiedValue === color.hsl
-                                ? Colors.black
+                                ? Colors.grey
                                 : Colors.greyLighter
                             }
                             size={'20px'}
@@ -858,14 +894,14 @@ export default function Brand() {
 
                 return (
                   <FluidContainer key={font.name}>
-                    <SampleP
+                    <SampleH3
                       className={fontClass}
                       fontName={font.name}
                       size={FontSizes['2xl']}
                       weight={400}
                     >
                       {font.name}
-                    </SampleP>
+                    </SampleH3>
                     <RoundedWrapper>
                       {/* LIGHT */}
                       <FluidContainer
