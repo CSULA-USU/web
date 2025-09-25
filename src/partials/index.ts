@@ -1,5 +1,6 @@
 export * from './BODDownloads';
 export * from './BODMeetingCalendar';
+export * from './EmploymentInfo';
 export * from './FormsSection';
 export * from './GeneralInformation';
 export * from './GovernanceFooter';

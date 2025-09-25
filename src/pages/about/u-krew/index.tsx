@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import styled from 'styled-components';
 import {
   Button,
   Card,
@@ -11,14 +11,10 @@ import {
   WordCycler,
 } from 'components';
 import { Page, HeaderWithVideo, ImageCardCarousel } from 'modules';
-import styled from 'styled-components';
+import { EmploymentInfo } from 'partials';
 import { Colors, Spaces, media } from 'theme';
 import { useBreakpoint } from 'hooks';
 import UKrewData from 'data/aboutUKrew.json';
-import {
-  PositionsDescriptions,
-  TabClusterControlled,
-} from 'modules/UKrewCardList';
 import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
 import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
 
@@ -32,42 +28,6 @@ const DescriptionSection = styled.div`
     align-items: center;
   `)};
 `;
-
-// const DirectorySection = styled.div`
-//   display: flex;
-//   justify-content: center;
-
-//   ${media('tablet')(`
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 16px;
-//   `)}
-// `;
-
-// const DirectorySquares = styled.button`
-//   width: 240px;
-//   height: 120px;
-//   border: 2px solid grey;
-//   border-radius: 8px;
-//   background: transparent;
-//   padding: 0;
-//   cursor: pointer;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   transition: background-color 0.2s ease;
-
-//   &:hover {
-//     background-color: ${Colors.greyLightest};
-//   }
-
-//   img {
-//     max-width: 100%;
-//     max-height: 100%;
-//     object-fit: contain;
-//     border-radius: 8px;
-//   }
-// `;
 
 const ImageGrid = styled.div`
   display: flex;
@@ -104,9 +64,8 @@ const YellowGlow = styled.span`
 `;
 
 export default function UKrew() {
-  const { cards, stories, positions } = UKrewData;
+  const { cards, stories } = UKrewData;
   const { isMini, isMobile, isTablet, isDesktop } = useBreakpoint();
-  const [selectedTab, setSelectedTab] = useState('All');
 
   const listOfCycledWords = [
     <Typography
@@ -127,7 +86,7 @@ export default function UKrew() {
       lineHeight={isMobile ? '1' : ''}
       as="h1"
     >
-      <YellowGlow>u-s</YellowGlow>u
+      <YellowGlow>u&ndash;s</YellowGlow>u
     </Typography>,
     <Typography
       variant="titleLargest"
@@ -170,16 +129,6 @@ export default function UKrew() {
       ambitio<YellowGlow>us</YellowGlow>
     </Typography>,
   ];
-
-  const departmentTabs: { [key: string]: string } = {
-    All: 'All',
-    Admin: 'Administration',
-    CCC: 'Cross Cultural Centers',
-    CSI: 'Center for Student Involvement',
-    Graffix: 'Graffix',
-    Operations: 'Operations',
-    Recreation: 'Recreation',
-  };
 
   return (
     <Page>
@@ -276,11 +225,11 @@ export default function UKrew() {
               as="h2"
               variant="title"
               weight="700"
-              size={isMobile ? 'lg' : '3xl'}
+              size={isMobile ? 'lg' : '2xl'}
               lineHeight="1.2"
               margin="0 0 18px 0"
             >
-              U&ndash;Krew: The Heart of Student Union Operations
+              The Heart of U&ndash;SU Operations
             </Typography>
             <Typography
               margin={isMobile ? '0 0 24px 0' : '0 0 36px 0'}
@@ -316,7 +265,7 @@ export default function UKrew() {
         </DescriptionSection>
       </FluidContainer>
       <FluidContainer backgroundColor="greyLightest">
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '2xl'}>
           We&apos;re Looking For
         </Typography>
         <FluidContainer
@@ -341,27 +290,12 @@ export default function UKrew() {
           ))}
         </FluidContainer>
       </FluidContainer>
-      <FluidContainer>
-        <span id="positions">
-          <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
-            Positions
-          </Typography>
-        </span>
-        <TabClusterControlled
-          tabItems={Object.keys(departmentTabs)}
-          selectedTabKey={selectedTab}
-          onSelectTab={setSelectedTab}
-        />
-        <PositionsDescriptions
-          data={positions}
-          filterByDepartment={departmentTabs[selectedTab]}
-        />
-      </FluidContainer>
+      <EmploymentInfo />
       <FluidContainer>
         <Typography
           variant="title"
           as="h2"
-          size={isMobile ? 'lg' : '3xl'}
+          size={isMobile ? 'lg' : '2xl'}
           margin={isMobile ? '' : `0 0 ${Spaces.lg} 0`}
         >
           Student Stories
@@ -369,7 +303,7 @@ export default function UKrew() {
         <ImageCardCarousel stories={stories} />
       </FluidContainer>
       <FluidContainer>
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '2xl'}>
           U&ndash;Awards
         </Typography>
         <DescriptionSection>
@@ -442,7 +376,7 @@ export default function UKrew() {
         </DescriptionSection>
       </FluidContainer>
       {/* <FluidContainer id="directory">
-        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
+        <Typography variant="title" as="h2" size={isMobile ? 'lg' : '2xl'}>
           Directory
         </Typography>
         <Typography
@@ -524,10 +458,10 @@ export default function UKrew() {
         <Typography
           variant="title"
           as="h2"
-          size={isMobile ? 'lg' : '3xl'}
+          size={isMobile ? 'lg' : '2xl'}
           color="primary"
         >
-          Ready to Join <NonBreakingSpan>U&ndash;Krew?</NonBreakingSpan>
+          Ready to Join?
         </Typography>
         <FluidContainer innerMaxWidth="800px">
           <Typography
@@ -567,7 +501,7 @@ export default function UKrew() {
               duration={1000}
               variant="title"
               as="h2"
-              size={isMobile ? 'lg' : '3xl'}
+              size={isMobile ? 'lg' : '2xl'}
               color="primary"
               showPlus
               format={(n) => n.toLocaleString()}
@@ -594,7 +528,7 @@ export default function UKrew() {
               duration={1000}
               variant="title"
               as="h2"
-              size={isMobile ? 'lg' : '3xl'}
+              size={isMobile ? 'lg' : '2xl'}
               color="primary"
               format={(n) => n.toLocaleString()}
             />
@@ -620,7 +554,7 @@ export default function UKrew() {
               duration={1000}
               variant="title"
               as="h2"
-              size={isMobile ? 'lg' : '3xl'}
+              size={isMobile ? 'lg' : '2xl'}
               color="primary"
               format={(n) => n.toLocaleString()}
             />
