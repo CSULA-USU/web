@@ -161,16 +161,14 @@ export const Footer = () => (
                   href={'https://form.jotform.com/210416532268047'}
                   isExternalLink
                 >
-                  U&ndash;SU Board of Directors Application
+                  Board of Directors Application
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
 
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'/employment'}>
-                  U&ndash;SU Employment
-                </StyledLink>
+                <StyledLink href={'/employment'}>Employment</StyledLink>
               </Typography>
             </StyledLinkMargins>
           </FooterUnorderedList>

@@ -7,7 +7,6 @@ import {
   FluidContainer,
   Image,
   NonBreakingSpan,
-  StyledLink,
   Typography,
   WordCycler,
 } from 'components';
@@ -34,41 +33,41 @@ const DescriptionSection = styled.div`
   `)};
 `;
 
-const DirectorySection = styled.div`
-  display: flex;
-  justify-content: center;
+// const DirectorySection = styled.div`
+//   display: flex;
+//   justify-content: center;
 
-  ${media('tablet')(`
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  `)}
-`;
+//   ${media('tablet')(`
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 16px;
+//   `)}
+// `;
 
-const DirectorySquares = styled.button`
-  width: 240px;
-  height: 120px;
-  border: 2px solid grey;
-  border-radius: 8px;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease;
+// const DirectorySquares = styled.button`
+//   width: 240px;
+//   height: 120px;
+//   border: 2px solid grey;
+//   border-radius: 8px;
+//   background: transparent;
+//   padding: 0;
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   transition: background-color 0.2s ease;
 
-  &:hover {
-    background-color: ${Colors.greyLightest};
-  }
+//   &:hover {
+//     background-color: ${Colors.greyLightest};
+//   }
 
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-`;
+//   img {
+//     max-width: 100%;
+//     max-height: 100%;
+//     object-fit: contain;
+//     border-radius: 8px;
+//   }
+// `;
 
 const ImageGrid = styled.div`
   display: flex;
@@ -264,8 +263,8 @@ export default function UKrew() {
             <Button variant="grey" href="/employment">
               Apply
             </Button>
-            <Button variant="whiteOutline" href="#directory">
-              Directory
+            <Button variant="whiteOutline" href="#positions">
+              Positions
             </Button>
           </HeroButtonContainer>
         </FluidContainer>
@@ -442,7 +441,7 @@ export default function UKrew() {
           </FluidContainer>
         </DescriptionSection>
       </FluidContainer>
-      <FluidContainer id="directory">
+      {/* <FluidContainer id="directory">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '3xl'}>
           Directory
         </Typography>
@@ -482,7 +481,7 @@ export default function UKrew() {
               </FluidContainer>
             </DirectorySquares>
           </StyledLink>
-          {/* <DirectorySquares>
+          <DirectorySquares>
               <Typography
                 as="h3"
                 variant="span"
@@ -503,12 +502,12 @@ export default function UKrew() {
               >
                 2023
               </Typography>
-            </DirectorySquares> */}
+            </DirectorySquares>
         </DirectorySection>
-      </FluidContainer>
+      </FluidContainer> */}
       <FluidContainer flex justifyContent="center">
         <Image
-          alt="group photo of all u-krew staff"
+          alt="group photo of all u-krew and full-time staff"
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/Group%20Photo.webp"
           width="100%"
           borderRadius="12px"

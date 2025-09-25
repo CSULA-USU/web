@@ -432,7 +432,7 @@ export default function FSL() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            U-SU 2nd floor, Room 206
+            U&ndash;SU 2nd floor, Room 206
           </Typography>
         </li>
         <li>
@@ -480,7 +480,7 @@ export default function FSL() {
           </FluidContainer>
 
           {/* Register */}
-          <FluidContainer
+          {/* <FluidContainer
             flex
             justifyContent="center"
             padding="0"
@@ -520,7 +520,7 @@ export default function FSL() {
                 </Button>
               </FluidContainer>
             </FluidContainer>
-          </FluidContainer>
+          </FluidContainer> */}
 
           {/* MISSION */}
           <FluidContainer
@@ -808,6 +808,12 @@ export default function FSL() {
                 aria-label="FY 23&mdash;24 Report"
               >
                 FY 23&mdash;24 Report
+              </DocumentLink>
+              <DocumentLink
+                href="https://www.dropbox.com/scl/fi/m9pp7o7jeakk3aswg4s4f/2024-2025-AB-524-Report.pdf?rlkey=db01rxsfu3oldh1p3alwo2y4h&st=ywm14ay6&raw=1"
+                aria-label="FY 24&mdash;25 Report"
+              >
+                FY 24&mdash;25 Report
               </DocumentLink>
             </AB524ReportContainer>
             {/*

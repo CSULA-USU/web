@@ -26,6 +26,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             children: 'Board of Directors August 22, 2025',
           },
           {
+            href: 'https://www.dropbox.com/scl/fi/knyqgk8gxc1hk23fl9g0g/Agenda-Audit-Committee-September-5-2025.docx?rlkey=5pvkzsfjlq05zbd1j0knf8kqu&st=87glw3e7&dl=1',
+            children: 'Audit Committee September 5, 2025',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/lno74rhp8e42v4mze1jwn/Agenda-Board-of-Directors-September-12-2025.docx?rlkey=78ypckh8tn6u80osgkgljhlba&st=tu431nqk&raw=1',
             children: 'Board of Directors September 12, 2025',
           },
@@ -42,7 +46,7 @@ const agendaDownloads: DownloadSectionProps[] = [
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/cbfc66h6qm4lgdu0874cx/agenda-25-26.zip?rlkey=ll109bmweh0rpvmfxfcfttr85&st=l5kf4645&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/fec2wqzx7imk06omxhr56/agenda-fy25-26.zip?rlkey=19kxw7hfhinzg7w2kvycl5bv9&st=ndzhk6px&dl=1',
       variant: 'black',
     },
   },
@@ -56,8 +60,8 @@ const minutesDownloads: DownloadSectionProps[] = [
         stacked
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fi/m61csa33yftdg1dg1pbjm/Board-of-Directors-May-9-2025.pdf?rlkey=ps67jkk1ft32a0romtbii9bn0&st=06aerr6n&raw=1',
-            children: 'BOD May 9, 2025',
+            href: 'https://www.dropbox.com/scl/fi/xrh2wtrn4fncopggiyldt/Board-of-Directors-August-22-2025-signed.pdf?rlkey=aux3w475pcriois56anskoz56&st=dsweay6y&raw=1',
+            children: 'Board of Directors August 22, 2025',
           },
         ]}
       />

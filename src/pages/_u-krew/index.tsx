@@ -5,7 +5,7 @@ export default function UKrew() {
   return (
     <Page>
       <Head>
-        <title>U-Krew</title>
+        <title>U&ndash;Krew</title>
         <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
