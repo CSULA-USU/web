@@ -57,16 +57,16 @@
   ],
   "positions": [
     {
-      "positionName": "Operations Assistant",
-      "description": "Responsible for maintaining the cleanliness and functionality of the U-SU facility, including cleaning, setting up equipment, and performing non-technical repairs.",
-      "department": "Operations",
+      "positionName": "Accounting/Administrative Assistant",
+      "description": "Responsible for supporting financial and administrative operations by maintaining records, assisting with payroll, reconciling transactions, preparing reports, and organizing office documentation.",
+      "department": "Administration",
       "location": "University-Student Union, Cal State LA",
-      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Able to lift 70 pounds and perform regular physical tasks. Experience with maintenance tools and customer service is preferred.",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong organizational, communication, and clerical skills. Familiarity with financial systems, cash handling, and Microsoft Office preferred.",
       "hours": "Up to 20 hours/week",
       "hourlyRate": "$18.09",
-      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg",
-      "alt": "Operations assistant fixing light",
-      "link": "https://calstatela.joinhandshake.com/jobs/9889946/share_preview"
+      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
+      "alt": "Student working on financial reports and administrative paperwork at a desk",
+      "link": "https://calstatela.joinhandshake.com/jobs/9992972/share_preview"
     },
     {
       "positionName": "Event Services Aide",
@@ -79,18 +79,6 @@
       "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-services.jpg",
       "alt": "Student setting up for an event",
       "link": "https://calstatela.joinhandshake.com/jobs/9995445/share_preview"
-    },
-    {
-      "positionName": "Student Engagement Assistant",
-      "description": "Responsible for supporting the planning, execution, and evaluation of student engagement programs, leadership development, and student organization support within the Center for Student Involvement.",
-      "department": "Center for Student Involvement",
-      "location": "University-Student Union, Cal State LA",
-      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong communication, organization, and customer service skills. Familiarity with social media and willingness to work with student organizations, including fraternities and sororities, required. Previous customer service experience preferred.",
-      "hours": "15–20 hours/week",
-      "hourlyRate": "$18.09",
-      "img": "https://dl.dropboxusercontent.com/scl/fi/vl2jqtnlitl9wk3tw4dk8/IMG_5148.JPG?rlkey=oc1dgzahtg1gg7kui255nhh5t",
-      "alt": "CSI student engagement event",
-      "link": "https://calstatela.joinhandshake.com/jobs/9973322/share_preview"
     },
     {
       "positionName": "Information & Reservations Aide",
@@ -117,6 +105,18 @@
       "link": "https://calstatela.joinhandshake.com/jobs/9753101/share_preview"
     },
     {
+      "positionName": "Operations Assistant",
+      "description": "Responsible for maintaining the cleanliness and functionality of the U-SU facility, including cleaning, setting up equipment, and performing non-technical repairs.",
+      "department": "Operations",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Able to lift 70 pounds and perform regular physical tasks. Experience with maintenance tools and customer service is preferred.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$18.09",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg",
+      "alt": "Operations assistant fixing light",
+      "link": "https://calstatela.joinhandshake.com/jobs/9889946/share_preview"
+    },
+    {
       "positionName": "Media Services Assistant",
       "description": "Responsible for providing technical support for events and performances, operating audio-visual equipment, and assisting with event setup and facility maintenance at the U-SU.",
       "department": "Operations",
@@ -141,16 +141,16 @@
       "link": "https://calstatela.joinhandshake.com/jobs/10043526/share_preview"
     },
     {
-      "positionName": "Accounting/Administrative Assistant",
-      "description": "Responsible for supporting financial and administrative operations by maintaining records, assisting with payroll, reconciling transactions, preparing reports, and organizing office documentation.",
-      "department": "Administration",
+      "positionName": "Student Engagement Assistant",
+      "description": "Responsible for supporting the planning, execution, and evaluation of student engagement programs, leadership development, and student organization support within the Center for Student Involvement.",
+      "department": "Center for Student Involvement",
       "location": "University-Student Union, Cal State LA",
-      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong organizational, communication, and clerical skills. Familiarity with financial systems, cash handling, and Microsoft Office preferred.",
-      "hours": "Up to 20 hours/week",
+      "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Demonstrates strong communication, organization, and customer service skills. Familiarity with social media and willingness to work with student organizations, including fraternities and sororities, required. Previous customer service experience preferred.",
+      "hours": "15–20 hours/week",
       "hourlyRate": "$18.09",
-      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
-      "alt": "Student working on financial reports and administrative paperwork at a desk",
-      "link": "https://calstatela.joinhandshake.com/jobs/9992972/share_preview"
+      "img": "https://dl.dropboxusercontent.com/scl/fi/vl2jqtnlitl9wk3tw4dk8/IMG_5148.JPG?rlkey=oc1dgzahtg1gg7kui255nhh5t",
+      "alt": "CSI student engagement event",
+      "link": "https://calstatela.joinhandshake.com/jobs/9973322/share_preview"
     }
   ]
 }
