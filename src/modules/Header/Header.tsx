@@ -6,6 +6,7 @@ import { Spaces } from 'theme';
 interface ButtonProps {
   text: string;
   href: string;
+  isExternal?: boolean;
   handleClick?: () => void;
 }
 interface HeaderProps {
@@ -79,6 +80,7 @@ export const Header = ({
                   href={b.href}
                   variant={i > 0 ? 'outline' : 'black'}
                   margin="8px"
+                  isExternalLink={b.isExternal}
                 >
                   {b.text}
                 </Button>
