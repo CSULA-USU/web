@@ -15,6 +15,7 @@ import data from 'data/recreation.json';
 import React from 'react';
 
 const WelcomeContentContainer = styled.div`
+  max-width: 760px;
   text-align: center;
 `;
 
@@ -62,7 +63,7 @@ export default function Gene() {
           {isDesktop && isMobile && (
             <Image
               src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-              alt="young man using gene services on mobile"
+              alt="young man using gene services"
               height="232px"
               margin="0px auto"
             />
@@ -71,7 +72,7 @@ export default function Gene() {
             At GENE, we believe we all can benefit from learning new skills and
             receiving support to live our best lives. We are your partner in
             change and want to support you in fostering new possibilities and
-            discovering habits of well-being that will last a lifetime.
+            discovering habits of well&ndash;being that will last a lifetime.
           </Typography>
         </Header>
         {!isDesktop && (
@@ -116,13 +117,17 @@ export default function Gene() {
             changes.
           </Typography>
         </WelcomeContentContainer>
-        <Button variant="black" href="https://forms.office.com/r/gi1ECss9xA">
+        <Button
+          variant="black"
+          href="https://forms.office.com/r/0pTZzbkdj6"
+          isExternalLink
+        >
           RSVP
         </Button>
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Spring 2025:
+          <abbr title="gene">GENE</abbr> Bios Fall 2025:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish
