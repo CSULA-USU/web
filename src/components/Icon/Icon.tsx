@@ -1,7 +1,7 @@
 import { createElement, ReactElement } from 'react';
 import { BiCoffeeTogo } from 'react-icons/bi';
 import { BsSignpost2Fill } from 'react-icons/bs';
-import { CgPokemon } from 'react-icons/cg';
+import { CgPill, CgPokemon } from 'react-icons/cg';
 import {
   FaBalanceScale,
   FaDumbbell,
@@ -14,11 +14,17 @@ import {
   FaUmbrellaBeach,
 } from 'react-icons/fa';
 import { FaMountainSun, FaPlateWheat } from 'react-icons/fa6';
-import { GiBabyBottle, GiRollerSkate, GiStrawberry } from 'react-icons/gi';
+import {
+  GiBabyBottle,
+  GiRiceCooker,
+  GiRollerSkate,
+  GiStrawberry,
+} from 'react-icons/gi';
+import { IoMdFlower } from 'react-icons/io';
 import { ImSpoonKnife } from 'react-icons/im';
 import { LuCakeSlice, LuSoup } from 'react-icons/lu';
 import { MdCake, MdSoupKitchen, MdSportsBasketball } from 'react-icons/md';
-import { TbStairsUp, TbMickeyFilled } from 'react-icons/tb';
+import { TbMickeyFilled, TbStairsUp } from 'react-icons/tb';
 interface IconProps {
   iconName: string;
   size?: string;
@@ -29,6 +35,7 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
   const iconComponents: { [key: string]: ReactElement } = {
     BiCoffeeTogo: createElement(BiCoffeeTogo, { size }),
     BsSignpost2Fill: createElement(BsSignpost2Fill, { size }),
+    CgPill: createElement(CgPill, { size }),
     CgPokemon: createElement(CgPokemon, { size }),
     FaBalanceScale: createElement(FaBalanceScale, { size }),
     FaIceCream: createElement(FaIceCream, { size }),
@@ -42,9 +49,11 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     FaPlateWheat: createElement(FaPlateWheat, { size }),
     FaRunning: createElement(FaRunning, { size }),
     GiBabyBottle: createElement(GiBabyBottle, { size }),
+    GiRiceCooker: createElement(GiRiceCooker, { size }),
     GiRollerSkate: createElement(GiRollerSkate, { size }),
     GiStrawberry: createElement(GiStrawberry, { size }),
     ImSpoonKnife: createElement(ImSpoonKnife, { size }),
+    IoMdFlower: createElement(IoMdFlower, { size }),
     LuCakeSlice: createElement(LuCakeSlice, { size }),
     LuSoup: createElement(LuSoup, { size }),
     MdCake: createElement(MdCake, { size }),

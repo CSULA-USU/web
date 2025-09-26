@@ -2,58 +2,94 @@
   "gene": {
     "educators": [
       {
-        "title": "Coach Peter",
-        "children": "is a nutrition coach dedicated to helping you find practical, sustainable nutrition strategies that fit your unique lifestyle. He believes that nutrition should be adaptable, evidence-based, and empowering, rather than restrictive. With a tailored approach, Coach Peter will work to meet you where you are, guiding you toward lasting, meaningful change.",
+        "title": "Coach Celeste",
+        "children": "will help you find the best methods to enjoy foods that fit your life and build a healthier future. With a focus on including cultural foods and building self-confidence, Coach Celeste guides you through the waves of information to create your personal nutrition plan. Everyone’s health journey is unique, yet figuring out the best ways to nourish yourself shouldn’t be rocket science. Schedule an appointment and get excited to explore your food world like you’ve never done before!",
         "iconAlt": "",
         "iconName": "FaIceCream"
       },
       {
-        "title": "Coach Kayli",
-        "children": "is a passionate dietetics student with a strong background in youth education. Her passion is to create a lasting impact on our future generations' well-being.  As your dedicated coach and biggest cheerleader, she is committed to helping you reach your health and wellness goals. Beyond her love for food and nutrition, Coach Kayli is an animal lover, avid ocean dipper, swimmer, gym enthusiast, hiker, and proud mom of three. She strives to empower you to embrace healthier lifestyles and break cycles of poor dietary habits.",
-        "iconAlt": "",
-        "iconName": "FaUmbrellaBeach"
-      },
-      {
-        "title": "Coach Han",
-        "children": "is a nutritionist at WIC with a love for food and travel. She has traveled to Asia and Europe. Always open to conversation, Coach Han enjoys connecting with people.  Friendly and a great listener, she is always ready for a chat!",
-        "iconAlt": "",
-        "iconName": "FaPaperPlane"
-      },
-      {
-        "title": "Coach Angelica",
-        "children": "is a nutrition coach passionate about coffee, cooking, travel, tacos, and exploring LA’s stair hikes. She enjoys helping others achieve their nutrition goals through favorite recipes and practical, budget-friendly strategies. Need support with balanced, affordable nutrition? Let’s chat!",
-        "iconAlt": "",
-        "iconName": "TbStairsUp"
-      },
-      {
-        "title": "Coach Rowena",
-        "children": "loves fruit, matcha, and coffee. She enjoys exploring new cafes and places with friends and family. She loves to spend time with friends, talking about anything (especially food!) Community and family is an important part of her life, and she wants to include that as she works toward becoming an RDN. Coach Rowena understands that change can be complex, and wellness is so important. She believes that empathy helps with change and is ready to talk to you!",
+        "title": "Coach Maria",
+        "children": "has over 6 years of experience working with adults in an eating disorder facility as a dietary aide.  She loves helping people rebuild their relationship with food by supporting them in a safe, non-judgmental space—always with a smile on her face. Coach Maria is passionate, empathetic, and caring, and she enjoys spreading happiness wherever she goes. When she is not working, you can usually find her sipping coffee, enjoying good food, or spending time outdoors hiking, fishing, and relaxing by lakes. Are you looking for someone who listens and helps guide you at your own pace to make the change you’ve been thinking about? Let’s meet.",
         "iconAlt": "",
         "iconName": "BiCoffeeTogo"
       },
       {
-        "title": "Coach Isabel",
-        "children": "began her dietetic journey at Cal State LA after transferring from Pasadena City College. She firmly believes that small steps can achieve big goals and strives to be someone approachable, trustworthy, and easy to talk to. Outside of school, Coach Isabel enjoys eating good food, shopping, watching K-dramas, streaming her favorite K-pop group, and going to Disneyland. Coach Isabel can encourage you to accomplish your goals while creating a safe place to express yourself.",
+        "title": "Coach Ely",
+        "children": "is completing her Masters in Nutrition and graduated with her Bachelors in Nutrition from Cal State Long Beach. Coach Ely loves incorporating new nutrition tips and tricks into busy schedules, and she can find ways to come up with plans that will best fit your needs. She enjoys creating culturally-appropriate nutrition suggestions and exploring what nutrition looks like in different cultures around the world. Fun fact: her favorite food is a poke bowl, especially a three-scoop bowl with salmon spicy tuna and shrimp with extra sauces.",
         "iconAlt": "",
-        "iconName": "TbMickeyFilled"
+        "iconName": "FaUmbrellaBeach"
       },
       {
-        "title": "Coach Corrine",
-        "children": "Corrine is a graduate student in the Nutritional Science program and is eager to learn and help others. She has over six years of experience working with adolescents at an eating disorder treatment center. She provides therapeutic groups to teach effective coping skills and help her patients heal their relationship with food and themselves. Coach Corrine provides empathic listening and assists her clients with menu planning and challenges them to overcome fear foods. She is excited to guide you and help you explore your relationship with food, too.",
+        "title": "Coach Eduardo",
+        "children": "aims to become a Registered Dietitian Nutritionist (RDN) and is passionate about contributing to future public health initiatives, engaging athletes through performance nutrition, and exploring clinical practice in a hospital setting. His hands-on experiences through volunteering at food pantries and food banks across Los Angeles, has deepened his understanding of nutritional needs in different settings. Coach Eduardo is a cook who enjoys the entire cooking process, from shopping at the market to working in the kitchen. When he is not focused in the world of nutrition, he is most likely to be spending his time at a football or basketball game. What's your favorite team?",
+        "iconAlt": "",
+        "iconName": "MdSportsBasketball"
+      },
+      {
+        "title": "Coach Melissa",
+        "children": "is a graduate student in Nutrition with a special interest in prenatal and maternal nutrition. She is passionate about helping you build healthy, balanced, and open-minded relationships with food that support any and every stage of life. Believing that nutrition should be approachable and enjoyable—yes, chilaquiles and enchiladas included! —Coach Melissa strives to empower you to nourish both body and mind while creating sustainable habits that promote lifelong wellness.",
+        "iconAlt": "",
+        "iconName": "GiBabyBottle"
+      },
+      {
+        "title": "Coach Leslie",
+        "children": "is passionate about helping you achieve your health goals through evidence-based, personalized guidance. With a background in nutrition and experience in fitness settings, she blends science with practical strategies that are realistic and sustainable. Coach Leslie is recognized for her supportive, client-centered approach, making nutrition simple, motivating, and empowering.",
         "iconAlt": "",
         "iconName": "FaPlateWheat"
       },
       {
-        "title": "Coach Sam",
-        "children": "is passionate about matcha, fresh fruits, and nutritious meals that are both healthy and delicious. She loves sharing her knowledge of nutrition and raising awareness about the importance of a balanced lifestyle. More than anything, she values listening to others’ stories and aspirations. As your coach, Sam is dedicated to helping you move closer to your health goals by guiding you in discovering your own motivation for success. She is a committed weightlifter, a skilled baker and cook, and a devoted animal lover. Coach Sam looks forward to making your time with her a rewarding and enriching experience.",
+        "title": "Coach Raquel",
+        "children": " is a graduate student in Nutrition with a passion for making healthy living simple, realistic, and fun. She enjoys experimenting in the kitchen with budget-friendly recipes that nourish her family while bringing joy to the table. As a mom of two, Coach Raquel understands the everyday challenges of balancing wellness with a busy lifestyle. In her free time, she loves practicing yoga, doing Pilates, or heading out for a brisk walk. Her goal is to share practical tips that make healthy eating feel achievable for families on the go. She can’t wait to get to know you.",
         "iconAlt": "",
-        "iconName": "FaBalanceScale"
+        "iconName": "FaRunning"
       },
       {
-        "title": "Coach Carole",
-        "children": "is enthusiastic about helping individuals defy the odds and achieve their best. She is an adventurous spirit who thrives on challenges, loves sports, runs for the thrill, and never says no to pizza. Ready to collaborate and create amazing things? Let’s make this year unforgettable! As Steve Jobs says, “The only way to do great work is to love what you do.",
+        "title": "Coach Adrienne",
+        "children": "is an LA native with Louisiana Creole roots and a love for traditional Filipino dishes. She envisions a world where science-based nutrition, cultural heritage, and community connections come together to empower every individual to live a healthier, more joyful, and sustainable life. Coach Adrienne believes food should be accessible, adaptable, and rooted in both evidence-based science and the realities of everyday life. She aims to celebrate nutrition and health as a lifestyle, not a strict rulebook.",
         "iconAlt": "",
-        "iconName": "FaPizzaSlice"
+        "iconName": "GiRiceCooker"
+      },
+      {
+        "title": "Coach Adina",
+        "children": " is pursuing her master’s degree in Nutrition with a background in clinical medicine. She is here to support you with warmth and kindness as you work toward your health and well-being goals. With a respectful and caring approach, Coach Adina will walk alongside you to explore how to build a balanced and positive relationship with food that truly fits your lifestyle. Are you interested in starting this journey? Let’s talk.",
+        "iconAlt": "",
+        "iconName": "CgPill"
+      },
+      {
+        "title": "Coach Celica",
+        "children": "is a friendly and caring coach who enjoys gardening, art, and spending time in nature. She’s empathetic, easy to talk to, and believes in creating a safe, judgment-free space where you can feel comfortable sharing your food journey. Passionate about helping others build a positive connection with food, Coach Celica is here to support, inspire, and have fun working toward your nutrition goals.",
+        "iconAlt": "",
+        "iconName": "IoMdFlower"
+      },
+      {
+        "title": "Coach Janki",
+        "children": "is working toward becoming a Registered Dietitian Nutritionist. She is passionate about pediatric nutrition and loves supporting newborns and their beautiful moms, helping them create a joyful and nourishing start to life. Outside of school, Coach Janki loves exploring different cuisines, especially vegetarian foods at Indian restaurants—from South Indian dosas to flavorful North Indian curries. Her goal is to use her nutrition degree to support families in building healthier and happier lives. Ready to embrace a healthier, happier you? Let’s chat.",
+        "iconAlt": "",
+        "iconName": "MdSoupKitchen"
+      },
+      {
+        "title": "Coach Bethany",
+        "children": "is a graduate student studying Nutrition, with a passion to enter a community-based nutrition practice. With her past experiences in leadership roles in the Cal State LA Food Pantry, Student Dietetic Association, and College Corps, she brings warmth, dedication, and a community-first approach to her work. As a strong believer in mindful eating, Coach Bethany loves to enjoy traditional Mexican dishes with her family. Need help to reach your health goals with some culturally mindful nutrition guidance? Waste no time and book a session.",
+        "iconAlt": "",
+        "iconName": "ImSpoonKnife"
+      },
+      {
+        "title": "Coach Desiree",
+        "children": "knows that life can sometimes be overwhelming, and she will cheer you on, listen, and provide support as you reach your health and personal goals. Coach Desiree grew a love for food when she needed a change from being afraid of food. She loves all things nutrition, food, exercise, mental health, and overall taking care of yourselves and loving others. She can't wait to get to know you and support you along your journey.",
+        "iconAlt": "",
+        "iconName": "FaDumbbell"
+      },
+      {
+        "title": "Coach Irina",
+        "children": "is a graduate student in Nutrition who is focused on building healthy eating habits. She keeps nutrition simple and science-based, making lots of room for the foods you enjoy.  Coach Irina loves connecting with people (and cultures) through travel, and she is happiest when she helps others feel better through food. Her goal is to make healthy eating easy, joyful, and sustainable for every family.",
+        "iconAlt": "",
+        "iconName": "FaPaperPlane"
+      },
+      {
+        "title": "Coach Ines",
+        "children": "is a Master's student in Nutrition who believes food should be nourishing, enjoyable, and personal to your story. She loves helping clients feel empowered in their choices by blending health with culture and traditions. Compassionate and supportive, Coach Ines takes the time to understand what makes you unique so you can build a plan that truly works for your lifestyle. She speaks English and Spanish and would be honored to be part of your journey toward feeling your best.",
+        "iconAlt": "",
+        "iconName": "TbStairsUp"
       }
     ],
     "cards": [
