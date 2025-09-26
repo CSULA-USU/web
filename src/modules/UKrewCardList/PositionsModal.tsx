@@ -43,23 +43,7 @@ const ModalContent = styled.div`
   z-index: 40;
 `;
 
-const Label = styled(Typography).attrs({
-  variant: 'label',
-  color: 'black',
-  size: 'sm',
-  weight: '400',
-})`
-  margin-bottom: 4px;
-`;
-
-const SubLabel = styled(Typography).attrs({
-  variant: 'label',
-  color: 'black',
-  size: 'sm',
-  weight: '700',
-})`
-  margin-bottom: 4px;
-`;
+// Removed styled Typography components - using regular Typography instead
 
 const StyledImage = styled(Image)`
   flex-shrink: 0;
@@ -211,38 +195,110 @@ export const PositionModal = ({
               <InfoColumn>
                 <HiOutlineBuildingOffice2 size={24} />
                 <div>
-                  <Label>Department</Label>
-                  <SubLabel>{department}</SubLabel>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="400"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    Department
+                  </Typography>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="700"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    {department}
+                  </Typography>
                 </div>
               </InfoColumn>
 
               <InfoColumn>
                 <MdLocationOn size={24} />
                 <div>
-                  <Label>Location</Label>
-                  <SubLabel>{location}</SubLabel>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="400"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    Location
+                  </Typography>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="700"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    {location}
+                  </Typography>
                 </div>
               </InfoColumn>
 
               <InfoColumn>
                 <MdAccessTime size={24} />
                 <div>
-                  <Label>Hours</Label>
-                  <SubLabel>{hours}</SubLabel>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="400"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    Hours
+                  </Typography>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="700"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    {hours}
+                  </Typography>
                 </div>
               </InfoColumn>
 
               <InfoColumn>
                 <MdAttachMoney size={24} />
                 <div>
-                  <Label>Hourly Rate</Label>
-                  <SubLabel>{hourlyRate}</SubLabel>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="400"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    Hourly Rate
+                  </Typography>
+                  <Typography
+                    variant="label"
+                    color="black"
+                    size="sm"
+                    weight="700"
+                    style={{ marginBottom: '4px' }}
+                  >
+                    {hourlyRate}
+                  </Typography>
                 </div>
               </InfoColumn>
             </InfoGrid>
           </FluidContainer>
           <CustomContainer>
-            <SubLabel>Required:</SubLabel>
+            <Typography
+              variant="label"
+              color="black"
+              size="sm"
+              weight="700"
+              style={{ marginBottom: '4px' }}
+            >
+              Required:
+            </Typography>
             <Typography>{requirements}</Typography>
           </CustomContainer>
         </ModalContent>

@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Page } from 'modules';
-import { FluidContainer, StyledLink, Loading, Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, media, Spaces } from 'theme';
 import { StatusType } from 'atoms';
+import { useBreakpoint } from 'hooks';
+import { Colors, media, Spaces } from 'theme';
+import { FluidContainer, StyledLink, Loading, Typography } from 'components';
+import { Page } from 'modules';
+import { EmploymentInfo } from 'partials';
 // import jobs from 'data/employment.json';
 // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
 
@@ -38,6 +40,7 @@ export default function Employment() {
   const [studentStatus, setStudentStatus] = useState<StatusType>('undefined');
   const [fullTimeStatus, setFullTimeStatus] = useState<StatusType>('undefined');
 
+  const { isMobile } = useBreakpoint();
   const fetchJobFeed = async () => {
     await fetch('/api/employment')
       .then((res) => {
@@ -98,7 +101,7 @@ export default function Employment() {
   return (
     <Page>
       <Head>
-        <title>U-SU Employment</title>
+        <title>U&ndash;SU Employment</title>
         <meta
           name="keywords"
           content="hiring, hire, opportunity, apply, The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Employment Opportunities, Board of Directors, Jobs, Full-time Positions, Student Assistant Positions, Administration, Applications"
@@ -119,8 +122,13 @@ export default function Employment() {
       <FluidContainer>
         <JobListingContainer>
           <div>
-            <Typography as="h2" variant="title" margin="16px 0 8px">
-              Student Assistant Positions
+            <Typography
+              as="h2"
+              variant="title"
+              size={isMobile ? 'lg' : '2xl'}
+              margin="16px 0 8px"
+            >
+              Student Assistants
             </Typography>
             {studentAssistantloading ? (
               <Loading load={studentAssistantloading} />
@@ -141,13 +149,18 @@ export default function Employment() {
               </Typography>
             ) : (
               <Typography variant="subheader" size="md" color="black">
-                No available student assistant positions at this time.
+                No available student assistant positions.
               </Typography>
             )}
           </div>
           <div>
-            <Typography as="h2" variant="title" margin="16px 0 8px">
-              Full-time Positions
+            <Typography
+              as="h2"
+              variant="title"
+              margin="16px 0 8px"
+              size={isMobile ? 'lg' : '2xl'}
+            >
+              Full&ndash;Time Positions
             </Typography>
             {fullTimeloading ? (
               <Loading load={fullTimeloading} />
@@ -168,11 +181,14 @@ export default function Employment() {
               </Typography>
             ) : (
               <Typography variant="subheader" size="md" color="black">
-                No available full-time positions at this time.
+                No available full&ndash;time positions at this time.
               </Typography>
             )}
           </div>
         </JobListingContainer>
+      </FluidContainer>
+      <FluidContainer>
+        <EmploymentInfo />
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
         <Typography
@@ -189,7 +205,7 @@ export default function Employment() {
             aria-label="Open Full-time Professional Appointment Application PDF form in a new tab"
             isInverseUnderlineStyling
           >
-            Full&ndash;time Professional Appointment
+            Full&ndash;Time Professional Appointment
           </StyledLink>
         </FluidContainer>
       </FluidContainer>
