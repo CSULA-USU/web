@@ -148,7 +148,7 @@ const pdfDescriptionCards = [
     title: 'Reservation Policies and Procedures',
     description:
       'Reservation policies and procedures go over guidelines of how the scheduling of U-SU facilities, equipment, sign-up process, and payments are arranged.',
-    href: 'https://www.dropbox.com/s/12vg3pe8ahf6jay/POLICIES-PROCEDURES-WITH-COVID-2021.pdf?raw=1',
+    href: 'https://www.dropbox.com/scl/fi/ap2nhg75x69zf4hrkriff/POLICIES-PROCEDURES-Updated-07.25.docx?rlkey=qqz8pa269bm3e1yc14vdsgwwo&st=n456ua3l&dl=1',
   },
 ];
 

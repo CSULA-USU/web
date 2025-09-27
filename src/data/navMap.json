@@ -16,10 +16,6 @@
         "href": "/contact"
       },
       {
-        "text": "Services",
-        "href": "/about/services"
-      },
-      {
         "text": "Staff",
         "href": "/staff"
       },
@@ -36,6 +32,20 @@
             "href": "/about/u-krew"
           }
         ]
+      }
+    ]
+  },
+  {
+    "text": "Services",
+    "href": "/about/services",
+    "sub": [
+      {
+        "text": "Services",
+        "href": "/about/services"
+      },
+      {
+        "text": "Reservations",
+        "href": "/operations/meeting-rooms"
       }
     ]
   },

@@ -37,6 +37,14 @@ const TopSection = styled(FluidContainer)`
   min-height: 240px; /* reserve enough space to avoid jump */
 `;
 
+const meetingRoomButtons = [
+  {
+    text: 'Make Room Reservation',
+    href: 'https://form.jotform.com/221578153228053',
+    isExternal: true,
+  },
+];
+
 export default function MeetingRooms() {
   const cards = [
     {
@@ -72,7 +80,7 @@ export default function MeetingRooms() {
   return (
     <Page>
       <Head>
-        <title>U-SU Meeting Rooms</title>
+        <title>U&ndash;SU Meeting Rooms</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
@@ -80,12 +88,15 @@ export default function MeetingRooms() {
         />
       </Head>
       <TopSection>
-        <Header title="Meeting Rooms">
-          Rent out a meeting space at CSULA U-SU. Current locations available to
-          book are Los Angeles A/B/C, Theater, Alhambra, San Gabriel, U-SU Plaza
-          rooms. We are currently not accepting reservations from off-campus
-          sponsors. Click an individual room for more information regarding
-          layout, features, and fees.
+        <Header
+          title="Meeting Rooms"
+          buttons={meetingRoomButtons}
+          backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+        >
+          Rent out a meeting space at CSULA U&ndash;SU. Current locations
+          available to book are Los Angeles A/B/C, Theater, Alhambra, San
+          Gabriel, U&ndash;SU Plaza Space. Click an individual room for more
+          information regarding layout, features, and fees.
         </Header>
       </TopSection>
       <FluidContainer
