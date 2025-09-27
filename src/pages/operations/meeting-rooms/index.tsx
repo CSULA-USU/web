@@ -88,7 +88,11 @@ export default function MeetingRooms() {
         />
       </Head>
       <TopSection>
-        <Header title="Meeting Rooms" buttons={meetingRoomButtons}>
+        <Header
+          title="Meeting Rooms"
+          buttons={meetingRoomButtons}
+          backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+        >
           Rent out a meeting space at CSULA U&ndash;SU. Current locations
           available to book are Los Angeles A/B/C, Theater, Alhambra, San
           Gabriel, U&ndash;SU Plaza Space. Click an individual room for more

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { CallToAction, Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { useRouter } from 'next/router';
-import { FluidContainer, Typography, Image } from 'components';
+import { Button, FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
@@ -125,9 +125,10 @@ export default function MeetingRoom() {
       <MeetingRoomsNav />
       <FluidContainer
         flex
+        flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
         <h1>
           <Image
@@ -137,6 +138,13 @@ export default function MeetingRoom() {
             alt={selectedRoom.mainImageAlt || 'banner image'}
           />
         </h1>
+        <Button
+          href="https://form.jotform.com/221578153228053"
+          isExternalLink
+          aria-label="Events Request Form - opens in new tab on Jotform website"
+        >
+          Events Request Form
+        </Button>
       </FluidContainer>
 
       <FluidContainer>
@@ -281,8 +289,11 @@ export default function MeetingRoom() {
           text="Make a reservation today!"
           buttonText="Events Request Form"
           href="https://form.jotform.com/221578153228053"
+          margin={`${Spaces['xl']} 0`}
+          isExternalLink
+          linkAria="Events Request Form - opens in new tab on Jotform website"
         >
-          Interested in{' '}
+          Ready for your next meeting, event, or workshop?
         </CallToAction>
       </FluidContainer>
     </Page>
