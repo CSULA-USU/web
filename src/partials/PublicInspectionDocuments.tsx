@@ -159,6 +159,10 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: 'https://www.dropbox.com/scl/fo/2ftmybbzaryecejcpc39m/AF0kIjnzMCD7JfppAodgovY?rlkey=6csl7yqra0ic50jlm7g0vc4ng&st=65ii921h&raw=1',
+            children: 'FY 24-25',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/1p777gxi7ml8x711zbjws/afs-fy-23-24.zip?rlkey=tmsu2vwfpbkc0uub2zw81hir3&st=hzdjqpla&raw=1',
             children: 'FY 23-24',
           },
@@ -197,7 +201,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/scl/fi/rim4pmvso9job81yqxfkr/latest-audited-financial-statements.zip?rlkey=d1a1re9xltqljw1me8qa8f8xe&st=81bf23pw&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/m8r0521qdo9labkh150ua/all-afs-2025.zip?rlkey=55fk1mdan1lzwfbltyt6bnqmw&st=x6o3seog&raw=1',
       variant: 'black',
     },
   },

@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { Colors } from 'theme';
 
 type CTAProps = {
-  children: React.ReactNode;
-  text: string;
-  textColorProp?: keyof typeof Colors;
-  buttonText: string;
-  href: string;
   backgroundColorProp?: keyof typeof Colors;
+  buttonText?: string;
   buttonVariantColor?: 'primary' | 'black' | 'grey' | 'outline';
+  children?: React.ReactNode;
+  href?: string;
+  isExternalLink?: boolean;
+  linkAria?: string;
+  margin?: string;
+  text?: string;
+  textColorProp?: keyof typeof Colors;
 };
 
 const CTAContainer = styled.div`
@@ -27,16 +30,20 @@ const CTAContainer = styled.div`
 `;
 
 export const CallToAction = ({
+  backgroundColorProp,
+  buttonText,
+  buttonVariantColor,
   children,
+  href,
+  isExternalLink,
+  linkAria,
+  margin,
   text,
   textColorProp,
-  buttonText,
-  href,
-  backgroundColorProp,
-  buttonVariantColor,
 }: CTAProps) => (
   <FluidContainer
     backgroundColor={backgroundColorProp ? backgroundColorProp : 'primary'}
+    margin={margin ? margin : '0'}
   >
     <CTAContainer>
       {children}
@@ -57,6 +64,8 @@ export const CallToAction = ({
         <Button
           variant={buttonVariantColor ? buttonVariantColor : 'black'}
           href={href}
+          aria-label={linkAria}
+          isExternalLink={isExternalLink}
         >
           {buttonText}
         </Button>

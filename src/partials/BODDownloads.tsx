@@ -41,6 +41,14 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/31n4ez7azdgr3cv1a5yh4/Agenda-Fiscal-Committee-September-19-2025.pdf?rlkey=nlg1pm6e86z6hw9f9ay4yvpzk&st=unz1fuh4&raw=1',
             children: 'Fiscal Committee September 19, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/jttvpqe64sb4v41xpzts7/Agenda-Facilities-Committee-October-3-2025.pdf?rlkey=fz0letg18hwdlk6a9a1dfe78q&st=9ihitx06&raw=1',
+            children: 'Facilities Committee October 3, 2025',
+          },
+          {
+            href: 'https://www.dropbox.com/scl/fi/g3tr26lgf6u9ltmdiwiq3/Agenda-Nominating-Committee-October-3-2025.docx?rlkey=34cj858ig7guur0epxrquibl7&st=ti7a65pw&raw=1',
+            children: 'Nominating Committee October 3, 2025',
+          },
         ]}
       />
     ),

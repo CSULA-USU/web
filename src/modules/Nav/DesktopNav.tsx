@@ -21,6 +21,7 @@ const UnstyledUnorderedList = styled.ul`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  line-height: 1.5;
   z-index: 10;
   > * {
     &:not(:last-child) {
