@@ -4,6 +4,7 @@ export * from './EmploymentInfo';
 export * from './FormsSection';
 export * from './GeneralInformation';
 export * from './GovernanceFooter';
+export * from './Hazing';
 export * from './NonDiscriminationPolicy';
 export * from './PhotoVideoDisclaimer';
 export * from './PublicInspectionDocuments';
