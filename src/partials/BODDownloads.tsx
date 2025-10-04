@@ -49,6 +49,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/g3tr26lgf6u9ltmdiwiq3/Agenda-Nominating-Committee-October-3-2025.docx?rlkey=34cj858ig7guur0epxrquibl7&st=ti7a65pw&raw=1',
             children: 'Nominating Committee October 3, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/xathkyrwrtz19y65esfn6/Agenda-Board-of-Directors-October-10-2025.docx?rlkey=7bt1jrqs208n2t1lrtsjg900g&st=pwn3di1h&dl=1',
+            children: 'Board of Directors October 10, 2025',
+          },
         ]}
       />
     ),
