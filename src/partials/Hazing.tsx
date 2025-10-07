@@ -65,6 +65,14 @@ const HazeCard = styled.div`
   padding: 1.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 `;
+
+const HazingList = styled.ul`
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #374151;
+  margin: 0 0 ${Spaces.md} 0;
+`;
+
 const HazingPoliciesContentSection = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -72,7 +80,7 @@ const HazingPoliciesContentSection = styled.div`
 `;
 
 export const Hazing = () => {
-  const { isDesktop, isMobile } = useBreakpoint();
+  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
   const {
     hazingPolicies: HazingPoliciesContent,
     policyButtons: PolicyButtons,
@@ -82,11 +90,16 @@ export const Hazing = () => {
       <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
         Stand Against Hazing
       </Typography>
-      <Typography as="p" color="black">
-        Here at Cal State LA, we create a safe, inclusive community where every
-        member can thrive without fear. Hazing has no place in our organizations
-        or on our campus.
-      </Typography>
+      <FluidContainer
+        backgroundColor="greyLightest"
+        margin={isWidescreen ? '18px 0' : '36px 0'}
+      >
+        <Typography as="p" color="black">
+          Here at Cal State LA, we create a safe, inclusive community where
+          every member can thrive without fear. Hazing has no place in our
+          organizations or on our campus.
+        </Typography>
+      </FluidContainer>
       <AlertBox role="alert" aria-live="polite">
         <FiAlertTriangle
           style={{
@@ -116,13 +129,23 @@ export const Hazing = () => {
           </AlertDescription>
         </AlertContent>
       </AlertBox>
-      <Typography as="h3" variant="titleSmall" margin={`${Spaces.lg} 0`}>
+      <Typography
+        as="h3"
+        variant="titleSmall"
+        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+      >
         What Constitutes as Hazing?
       </Typography>
-      <Typography as="p" color="black">
+      <br />
+      <Typography
+        as="p"
+        color="black"
+        variant="span"
+        margin={`0 0 ${Spaces.md}`}
+      >
         Hazing includes, but is not limited to:
       </Typography>
-      <ul>
+      <HazingList>
         <li>
           Physical abuse, sleep deprivation, or forced consumption of alcohol or
           drugs
@@ -133,9 +156,13 @@ export const Hazing = () => {
         </li>
         <li>Any activity that creates risk of physical or emotional harm</li>
         <li>Activities that violate federal, state, or local laws</li>
-      </ul>
-      <Typography as="h3" variant="titleSmall" margin={`${Spaces.md} 0`}>
-        Real Dangers:
+      </HazingList>
+      <Typography
+        as="h3"
+        variant="titleSmall"
+        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+      >
+        Dangers
       </Typography>
       <CardGrid>
         <HazeCard>
@@ -184,13 +211,25 @@ export const Hazing = () => {
           </CardDescription>
         </HazeCard>
       </CardGrid>
-      <Typography as="h3" variant="titleSmall" margin={`${Spaces.md} 0`}>
+      <Typography
+        as="h3"
+        variant="titleSmall"
+        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+      >
         Resources and Support
       </Typography>
-      <Typography as="h3" variant="titleSmall" margin={`${Spaces.md} 0`}>
-        Sanctions:
-      </Typography>
       <Typography as="p">
+        If you or someone you know has experienced hazing, help is available.
+        You are not alone, and reporting is confidential.
+      </Typography>
+      <Typography
+        as="h3"
+        variant="titleSmall"
+        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+      >
+        Sanctions
+      </Typography>
+      <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
         If you or someone you know has experienced hazing, help is available.
         You are not alone and reporting is confidential.
       </Typography>

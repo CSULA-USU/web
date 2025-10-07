@@ -1015,12 +1015,18 @@ export default function FSL() {
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
               How to Join
             </Typography>
-            <Typography as="p" color="black" margin={`${Spaces.sm} 0`}>
-              At Cal State LA, the joining process for each organization is
-              based on their governing council and their National and Regional
-              Offices. The process to join an organization is different for each
-              governing council.
-            </Typography>
+            <FluidContainer
+              backgroundColor="greyLightest"
+              padding="16px"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
+              <Typography as="p" color="black" margin={`${Spaces.sm} 0`}>
+                At Cal State LA, the joining process for each organization is
+                based on their governing council and their National and Regional
+                Offices. The process to join an organization is different for
+                each governing council.
+              </Typography>
+            </FluidContainer>
             {HowToJoinContent.map((item) => (
               <FluidContainer
                 flex
@@ -1042,7 +1048,10 @@ export default function FSL() {
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
               Family and Friends
             </Typography>
-            <FluidContainer backgroundColor="greyLightest">
+            <FluidContainer
+              backgroundColor="greyLightest"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
               <Typography as="p">
                 Your student has embarked upon a great adventure and opportunity
                 by choosing to attend California State University, Los Angeles.
@@ -1138,7 +1147,10 @@ export default function FSL() {
             <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
               Membership Intake Forms
             </Typography>
-            <FluidContainer backgroundColor="greyLightest">
+            <FluidContainer
+              backgroundColor="greyLightest"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
               <FluidContainer
                 flex
                 flexWrap="wrap"
