@@ -15,7 +15,7 @@ export default function SignIn() {
   return (
     <Page>
       <Head>
-        <title>U-SU Backoffice - Sign In</title>
+        <title>U&ndash;SU Backoffice Sign In</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <FluidContainer>

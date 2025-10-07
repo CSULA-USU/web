@@ -18,5 +18,5 @@ export interface BackOfficeUser {
   email: string;
   role: string;
   department: string;
-  polices: string[];
+  policies: string[];
 }
