@@ -4,6 +4,7 @@ import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { LuHeart, LuUsers } from 'react-icons/lu';
+import { MdPhone } from 'react-icons/md';
 import FSLData from 'data/fsl-full-content.json';
 
 const AlertBox = styled.div`
@@ -24,7 +25,7 @@ const AlertContent = styled.div`
 
 const AlertTitle = styled.h3`
   font-weight: 600;
-  color: #dc2626;
+  color: #b91c1c;
   margin: 0; /* Reset margin to avoid extra space */
 `;
 
@@ -33,7 +34,7 @@ const AlertDescription = styled.p`
   font-size: 0.875rem;
 `;
 
-const CardGrid = styled.div`
+const ResourceCardGrid = styled.div`
   display: grid;
   gap: 1.5rem;
 
@@ -77,6 +78,40 @@ const HazingPoliciesContentSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`;
+
+const ResourceGrid = styled.div`
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const ResourceItem = styled.div`
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const ResourceLabel = styled.p`
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+`;
+
+const StyledPhoneContainer = styled.span`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledPhoneIcon = styled(MdPhone)`
+  margin-right: 0.5rem; /* mr-2 = 0.5rem */
+  flex-shrink: 0; /* Prevent icon from shrinking */
 `;
 
 export const Hazing = () => {
@@ -130,41 +165,55 @@ export const Hazing = () => {
         </AlertContent>
       </AlertBox>
       <Typography
-        as="h3"
-        variant="titleSmall"
+        as="h2"
+        variant="title"
+        size={isMobile ? 'xl' : '2xl'}
         margin={`${Spaces.lg} 0 ${Spaces.md}`}
       >
         What Constitutes as Hazing?
       </Typography>
       <br />
-      <Typography
-        as="p"
-        color="black"
-        variant="span"
-        margin={`0 0 ${Spaces.md}`}
-      >
+      <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
         Hazing includes, but is not limited to:
       </Typography>
       <HazingList>
         <li>
-          Physical abuse, sleep deprivation, or forced consumption of alcohol or
-          drugs
+          <Typography>
+            Physical abuse, sleep deprivation, or forced consumption of alcohol
+            or drugs
+          </Typography>
         </li>
-        <li>Psychological abuse, humiliation, or degradation</li>
         <li>
-          Forced or coerced activities that interfere with academic performance
+          <Typography>
+            Psychological abuse, humiliation, or degradation
+          </Typography>
         </li>
-        <li>Any activity that creates risk of physical or emotional harm</li>
-        <li>Activities that violate federal, state, or local laws</li>
+        <li>
+          <Typography>
+            Forced or coerced activities that interfere with academic
+            performance
+          </Typography>
+        </li>
+        <li>
+          <Typography>
+            Any activity that creates risk of physical or emotional harm
+          </Typography>
+        </li>
+        <li>
+          <Typography>
+            Activities that violate federal, state, or local laws
+          </Typography>
+        </li>
       </HazingList>
       <Typography
-        as="h3"
-        variant="titleSmall"
-        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+        as="h2"
+        variant="title"
+        size={isMobile ? 'xl' : '2xl'}
+        margin={`${Spaces.xl} 0 ${Spaces.md}`}
       >
         Dangers
       </Typography>
-      <CardGrid>
+      <ResourceCardGrid>
         <HazeCard>
           <CardTitle>
             <FiAlertTriangle
@@ -210,11 +259,14 @@ export const Hazing = () => {
             the Greek community.
           </CardDescription>
         </HazeCard>
-      </CardGrid>
+      </ResourceCardGrid>
+
+      {/* Resources and Support Section */}
       <Typography
-        as="h3"
-        variant="titleSmall"
-        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+        as="h2"
+        variant="title"
+        size={isMobile ? 'xl' : '2xl'}
+        margin={`${Spaces['2xl']} 0 ${Spaces.md}`}
       >
         Resources and Support
       </Typography>
@@ -222,16 +274,102 @@ export const Hazing = () => {
         If you or someone you know has experienced hazing, help is available.
         You are not alone, and reporting is confidential.
       </Typography>
+      <FluidContainer padding="0">
+        <ResourceGrid>
+          <Card title="Emergency Assistance">
+            <ResourceItem>
+              <ResourceLabel>Campus Police</ResourceLabel>
+              <Button
+                variant="primary"
+                href="tel:911"
+                aria-label="Call 911 for emergency assistance"
+              >
+                <StyledPhoneContainer>
+                  <StyledPhoneIcon aria-hidden="true" />
+                  Call 911 (Emergency)
+                </StyledPhoneContainer>
+              </Button>
+            </ResourceItem>
+            <ResourceItem>
+              <ResourceLabel>Campus Safety</ResourceLabel>
+              <Button
+                href="tel:555-0100"
+                aria-label="Call Campus Safety at 555-010-0100"
+              >
+                <StyledPhoneContainer>
+                  <StyledPhoneIcon aria-hidden="true" />
+                  (555) 010-0100
+                </StyledPhoneContainer>
+              </Button>
+            </ResourceItem>
+          </Card>
+
+          <Card title="Confidential Reporting">
+            <ResourceItem>
+              <ResourceLabel>Student Affairs Office</ResourceLabel>
+              <Button
+                href="mailto:studentaffairs@university.edu"
+                aria-label="Email Student Affairs to report an incident"
+              >
+                Report Incident
+              </Button>
+            </ResourceItem>
+            <ResourceItem>
+              <ResourceLabel>Anonymous Hotline</ResourceLabel>
+              <Button
+                href="tel:555-0200"
+                aria-label="Call anonymous hotline at 555-020-0200"
+              >
+                <StyledPhoneContainer>
+                  <StyledPhoneIcon aria-hidden="true" />
+                  (555) 020-0200
+                </StyledPhoneContainer>
+              </Button>
+            </ResourceItem>
+          </Card>
+
+          <Card title="Counseling Services">
+            <CardDescription style={{ marginBottom: '1rem' }}>
+              Free, confidential counseling available to all students affected
+              by hazing.
+            </CardDescription>
+            <Button
+              href="tel:555-0300"
+              aria-label="Call Counseling Services at 555-030-0300"
+            >
+              <StyledPhoneContainer>
+                <StyledPhoneIcon aria-hidden="true" />
+                (555) 030-0300
+              </StyledPhoneContainer>
+            </Button>
+          </Card>
+
+          <Card title="National Resources">
+            <ResourceItem>
+              <ResourceLabel>HazingPrevention.org</ResourceLabel>
+              <Button
+                href="https://hazingprevention.org"
+                aria-label="Visit HazingPrevention.org website (opens in new tab)"
+                isExternalLink
+              >
+                Visit Website
+              </Button>
+            </ResourceItem>
+          </Card>
+        </ResourceGrid>
+      </FluidContainer>
       <Typography
-        as="h3"
-        variant="titleSmall"
-        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+        as="h2"
+        variant="title"
+        size={isMobile ? 'xl' : '2xl'}
+        margin={`${Spaces['2xl']} 0 ${Spaces.md}`}
       >
         Sanctions
       </Typography>
       <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
-        If you or someone you know has experienced hazing, help is available.
-        You are not alone and reporting is confidential.
+        Sanctions for hazing will be determined based on the severity of the
+        violation, whether bodily harm occurred, and the degree of
+        responsibility of the individuals and/or organization involved.
       </Typography>
       <HazingPoliciesContentSection>
         {HazingPoliciesContent.map((policy) => (
