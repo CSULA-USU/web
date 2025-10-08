@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { Button, Card, FluidContainer, Typography } from 'components';
+import {
+  Button,
+  Card,
+  FluidContainer,
+  StyledLink,
+  Typography,
+} from 'components';
 import { Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { FiAlertTriangle } from 'react-icons/fi';
@@ -179,29 +185,35 @@ export const Hazing = () => {
       <HazingList>
         <li>
           <Typography>
-            Physical abuse, sleep deprivation, or forced consumption of alcohol
-            or drugs
+            Physical harm (beating, striking, shocking, harmful substances)
           </Typography>
         </li>
         <li>
           <Typography>
-            Psychological abuse, humiliation, or degradation
+            Forced exhaustion (sleep deprivation, extreme exercise, confinement,
+            exposure to elements)
           </Typography>
         </li>
         <li>
           <Typography>
-            Forced or coerced activities that interfere with academic
-            performance
+            Forced consumption (food, alcohol, drugs, or other substances)
           </Typography>
         </li>
         <li>
-          <Typography>
-            Any activity that creates risk of physical or emotional harm
-          </Typography>
+          <Typography>Sexual acts or coercion</Typography>
+        </li>
+        <li>
+          <Typography>Threats, intimidation, or criminal activity</Typography>
         </li>
         <li>
           <Typography>
-            Activities that violate federal, state, or local laws
+            <StyledLink
+              href="https://www.calstatela.edu/deanofstudents/hazing-federal-definition"
+              isExternalLink
+              isInverseUnderlineStyling
+            >
+              Federal definition of hazing
+            </StyledLink>
           </Typography>
         </li>
       </HazingList>
@@ -270,9 +282,8 @@ export const Hazing = () => {
       >
         Resources and Support
       </Typography>
-      <Typography as="p">
+      <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
         If you or someone you know has experienced hazing, help is available.
-        You are not alone, and reporting is confidential.
       </Typography>
       <FluidContainer padding="0">
         <ResourceGrid>
@@ -293,60 +304,48 @@ export const Hazing = () => {
             <ResourceItem>
               <ResourceLabel>Campus Safety</ResourceLabel>
               <Button
-                href="tel:555-0100"
-                aria-label="Call Campus Safety at 555-010-0100"
+                href="tel:323-343-3700"
+                aria-label="Call Campus Safety at 323-343-3700"
               >
                 <StyledPhoneContainer>
                   <StyledPhoneIcon aria-hidden="true" />
-                  (555) 010-0100
+                  (323) 343&ndash;3700
                 </StyledPhoneContainer>
               </Button>
             </ResourceItem>
           </Card>
 
-          <Card title="Confidential Reporting">
+          <Card title="Reporting">
             <ResourceItem>
-              <ResourceLabel>Student Affairs Office</ResourceLabel>
+              <ResourceLabel>Hazing Incident Report Form</ResourceLabel>
               <Button
-                href="mailto:studentaffairs@university.edu"
-                aria-label="Email Student Affairs to report an incident"
+                href="https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcm.maxient.com%2Freportingform.php%3FCSULosAngeles%26layout_id%3D14&data=05%7C02%7Cjyasis%40calstatela.edu%7Ca32cc2977b3848ec1e1a08ddfc49d6b3%7Cce8a2002448f4f5882b1d86f73e3afdd%7C0%7C0%7C638944116238621158%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=je8Hrn5cfLimX5RbqZ56k1V2%2FMFyeNdMN3E90oHudFk%3D&reserved=0"
+                aria-label="Link to hazing incident report form (opens in new tab)"
+                isExternalLink
               >
                 Report Incident
               </Button>
             </ResourceItem>
-            <ResourceItem>
-              <ResourceLabel>Anonymous Hotline</ResourceLabel>
-              <Button
-                href="tel:555-0200"
-                aria-label="Call anonymous hotline at 555-020-0200"
-              >
-                <StyledPhoneContainer>
-                  <StyledPhoneIcon aria-hidden="true" />
-                  (555) 020-0200
-                </StyledPhoneContainer>
-              </Button>
-            </ResourceItem>
           </Card>
 
-          <Card title="Counseling Services">
+          <Card title="Information">
             <CardDescription style={{ marginBottom: '1rem' }}>
-              Free, confidential counseling available to all students affected
-              by hazing.
+              Click to learn more about hazing.
             </CardDescription>
             <Button
-              href="tel:555-0300"
-              aria-label="Call Counseling Services at 555-030-0300"
+              href="https://www.calstatela.edu/deanofstudents/anti-hazing-information"
+              aria-label="external link to anti-hazing information"
+              isExternalLink
             >
-              <StyledPhoneContainer>
-                <StyledPhoneIcon aria-hidden="true" />
-                (555) 030-0300
-              </StyledPhoneContainer>
+              Anti-hazing Info
             </Button>
           </Card>
 
           <Card title="National Resources">
             <ResourceItem>
-              <ResourceLabel>HazingPrevention.org</ResourceLabel>
+              <CardDescription style={{ marginBottom: '1rem' }}>
+                HazingPrevention.org
+              </CardDescription>
               <Button
                 href="https://hazingprevention.org"
                 aria-label="Visit HazingPrevention.org website (opens in new tab)"
