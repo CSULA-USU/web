@@ -136,9 +136,8 @@ export const Hazing = () => {
         margin={isWidescreen ? '18px 0' : '36px 0'}
       >
         <Typography as="p" color="black">
-          Here at Cal State LA, we create a safe, inclusive community where
-          every member can thrive without fear. Hazing has no place in our
-          organizations or on our campus.
+          At Cal State LA, we create a safe, inclusive community where every
+          member can thrive without fear. Hazing has no place on our campus.
         </Typography>
       </FluidContainer>
       <AlertBox role="alert" aria-live="polite">
@@ -282,6 +281,7 @@ export const Hazing = () => {
       >
         Resources and Support
       </Typography>
+      <br />
       <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
         If you or someone you know has experienced hazing, help is available.
       </Typography>
@@ -337,18 +337,40 @@ export const Hazing = () => {
               aria-label="external link to anti-hazing information"
               isExternalLink
             >
-              Anti-hazing Info
+              Anti&ndash;hazing Info
+            </Button>
+            <CardDescription style={{ marginBottom: '1rem' }}>
+              Standards of conduct
+            </CardDescription>
+            <Button
+              href="https://www.calstatela.edu/deanofstudents/cal-state-la-standards-conduct-and-disciplinary-procedures-university-recognized"
+              aria-label="external link to anti-hazing information"
+              isExternalLink
+            >
+              Disciplinary Procedures
             </Button>
           </Card>
 
           <Card title="National Resources">
             <ResourceItem>
               <CardDescription style={{ marginBottom: '1rem' }}>
-                HazingPrevention.org
+                hazingprevention.org
               </CardDescription>
               <Button
                 href="https://hazingprevention.org"
                 aria-label="Visit HazingPrevention.org website (opens in new tab)"
+                isExternalLink
+              >
+                Visit Website
+              </Button>
+            </ResourceItem>
+            <ResourceItem>
+              <CardDescription style={{ marginBottom: '1rem' }}>
+                stophazing.org
+              </CardDescription>
+              <Button
+                href="https://stophazing.org"
+                aria-label="Visit StopHazing.org website (opens in new tab)"
                 isExternalLink
               >
                 Visit Website
@@ -390,7 +412,12 @@ export const Hazing = () => {
         alignItems="center"
       >
         {PolicyButtons.map((policy) => (
-          <Button href={policy.href} margin={Spaces.sm} key={policy.href}>
+          <Button
+            href={policy.href}
+            margin={Spaces.sm}
+            key={policy.href}
+            isExternalLink
+          >
             {policy.children}
           </Button>
         ))}
