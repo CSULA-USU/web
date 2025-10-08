@@ -82,15 +82,15 @@
   "hazingPolicies": [
     {
       "name": "Individual",
-      "content": "No less than disciplinary probation for one academic year, no more than permanent separation from the university..."
+      "content": "No less than disciplinary probation for one academic year, no more than permanent separation from the university."
     },
     {
       "name": "Organizations",
-      "content": "No less than suspension of privileges for one academic year, no more than indefinite disbanding of the organization..."
+      "content": "No less than suspension of privileges for one academic year, no more than indefinite disbanding of the organization."
     },
     {
       "name": "Hazing",
-      "content": "California Penal Code \u00a7245.6 states the following: any method of initiative or preinitiation into a student body or organization..."
+      "content": "California Penal Code \u00a7245.6 describes hazing as: any method of initiative or preinitiation into a student body or organization, or any pastime or amusement engaged in with respect to such an organization, that causes, or is likely to cause, serious bodily injury to any former, current, or prospective student of any school, community college, college, university, or other educational institution in this state."
     }
   ],
   "expansion": [

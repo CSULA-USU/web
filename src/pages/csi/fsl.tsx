@@ -1,10 +1,11 @@
+import { ReactNode, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { AiOutlineFileText } from 'react-icons/ai';
 import { BiChevronRight } from 'react-icons/bi';
 import { TabPanel } from 'react-tabs';
 import { media, Spaces } from 'theme';
-import { DocumentLink, Page } from 'modules';
 import { useBreakpoint } from 'hooks';
 import {
   Button,
@@ -20,21 +21,18 @@ import {
   StyledLink,
   CountUp,
 } from 'components';
+import { DocumentLink, Page, Modal } from 'modules';
+import { Hazing } from 'partials';
 import fslData from 'data/fsl-full-content.json';
 import staff from 'data/staff.json';
-import { ReactNode, useState } from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
-import { Modal } from 'modules/UKrewCardList';
-import Link from 'next/link';
 
 const {
   chapters,
   howToJoin: HowToJoinContent,
-  costOfMembership: FamilyAndFriendsCostOfMembershipConent,
+  costOfMembership: FamilyAndFriendsCostOfMembershipContent,
   membershipIntakeForms: MembershipIntakeForms,
-  hazingPolicies: HazingPoliciesContent,
   expansion: FSLExpansionContent,
-  policyButtons: PolicyButtons,
   resources: ResourceButtons,
   pillarsAccordion: PillarsAccordion,
 } = fslData;
@@ -57,12 +55,6 @@ const LinkInner = styled.div`
   }
 `;
 
-const HazingPoliciesContentSection = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
 const ResourceButtonsSection = styled.div`
   width: calc(30%);
   @media (max-width: 900px) {
@@ -80,6 +72,7 @@ const NavItems = [
   'How to Join',
   'Family and Friends',
   'Current Members',
+  'Hazing',
   'Resources',
 ];
 
@@ -373,16 +366,15 @@ export default function FSL() {
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment"
+          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment, hazing prevention"
           key="keywords"
         />
         <meta
           name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
+          content="The Fraternity and Sorority community at California State University, Los Angeles has been a vibrant and engaged community since 1948."
           key="description"
         />
       </Head>
-
       <HeroContainer>
         <BackgroundImage
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
@@ -417,6 +409,7 @@ export default function FSL() {
               href="https://www.instagram.com/calstatelagreeks/?hl=en"
               aria-label="Link to the Fraternities and Sororities Instagram feed"
               variant="primary"
+              isExternalLink
             >
               Join Our Community
             </Button>
@@ -460,23 +453,25 @@ export default function FSL() {
       <TabCluster tabItems={NavItems}>
         {/* About Us*/}
         <TabPanel>
-          <FluidContainer
-            backgroundColor="greyLightest"
-            margin={isWidescreen ? '18px 0' : '36px 0'}
-          >
+          <FluidContainer>
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
               Welcome!
             </Typography>
-            <Typography as="p" variant="copy">
-              With 14 organizations and over 300 fraternity and sorority
-              members, Cal State LA&apos;s Greek community truly has it all—from
-              culturally based and service&mdash;driven groups to social
-              organizations and everything in between. No matter what
-              you&apos;re looking for, there&apos;s a place for you in our
-              fraternity and sorority community! Build lifelong friendships,
-              grow as a leader, give back to the community, and make
-              unforgettable memories along the way... go Greek!
-            </Typography>
+            <FluidContainer
+              backgroundColor="greyLightest"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
+              <Typography as="p" variant="copy">
+                With 14 organizations and over 300 fraternity and sorority
+                members, Cal State LA&apos;s Greek community truly has it
+                all—from culturally based and service&mdash;driven groups to
+                social organizations and everything in between. No matter what
+                you&apos;re looking for, there&apos;s a place for you in our
+                fraternity and sorority community! Build lifelong friendships,
+                grow as a leader, give back to the community, and make
+                unforgettable memories along the way... go Greek!
+              </Typography>
+            </FluidContainer>
           </FluidContainer>
 
           {/* Register */}
@@ -765,11 +760,12 @@ export default function FSL() {
               Community Reports
             </Typography>
             <Typography as="p" margin={`0 0 ${Spaces.md} 0 `}>
-              Community reports are created to demonstrate academic, service,
-              and philanthropic efforts of the Greek community.
+              Created to demonstrate academic, service, and philanthropic
+              efforts of the Greek community.
             </Typography>
             <Typography variant="subheader" as="h3">
-              Campus-Recognized Sorority And Fraternity Transparency Act - AB524
+              Campus&ndash;Recognized Sorority And Fraternity Transparency Act
+              &ndash; AB524
             </Typography>
             <Typography as="p" margin={`0 0 ${Spaces.md} 0`}>
               The Annual Campus-Recognized Sorority and Fraternity Transparency
@@ -883,6 +879,14 @@ export default function FSL() {
         {/* Chapters */}
         <TabPanel>
           <FluidContainer>
+            <Typography
+              as="h2"
+              variant="title"
+              size={isMobile ? 'xl' : '2xl'}
+              margin={`0 0 ${Spaces.md} 0`}
+            >
+              Chapters
+            </Typography>
             {chapters.map((obj: any) =>
               Object.keys(obj).map((item) => (
                 <>
@@ -1008,14 +1012,28 @@ export default function FSL() {
         {/* How to Join */}
         <TabPanel>
           <FluidContainer>
-            <Typography as="p" color="black" margin={`${Spaces.sm} 0`}>
-              At Cal State LA, the joining process for each organization is
-              based on their governing council and their National and Regional
-              Offices. The process to join an organization is different for each
-              governing council.
+            <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
+              How to Join
             </Typography>
+            <FluidContainer
+              backgroundColor="greyLightest"
+              padding="16px"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
+              <Typography as="p" color="black" margin={`${Spaces.sm} 0`}>
+                At Cal State LA, the joining process for each organization is
+                based on their governing council and their National and Regional
+                Offices. The process to join an organization is different for
+                each governing council.
+              </Typography>
+            </FluidContainer>
             {HowToJoinContent.map((item) => (
-              <FluidContainer flex flexWrap="wrap" key={item.title}>
+              <FluidContainer
+                flex
+                flexWrap="wrap"
+                key={item.title}
+                padding={`${Spaces.md} 0 0`}
+              >
                 <Card title={item.title} width="100%" topBorder>
                   {item.content}
                 </Card>
@@ -1026,36 +1044,39 @@ export default function FSL() {
 
         {/* Family and Friends */}
         <TabPanel>
-          <FluidContainer backgroundColor="greyLightest">
+          <FluidContainer>
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Welcome to Fraternity & Sorority Life at Cal State LA!
+              Family and Friends
             </Typography>
-
-            <Typography as="p">
-              Your student has embarked upon a great adventure and opportunity
-              by choosing to attend California State University, Los Angeles.
-              Your student has many opportunities ahead of them while at Cal
-              State LA. By joining a fraternity or sorority, they are joining a
-              number of other new members in their search for a sense of
-              community at the university. Being in a new environment can cause
-              students to feel overwhelmed. and for many parents, the Greek
-              community conjures up images of Animal House. That&apos;s simply
-              not the reality! There are many myths about the Greek community,
-              but the reality is that men and women in fraternities and
-              sororities are committed to their academics, volunteer time in the
-              community, develop and strengthen their leadership skills, and
-              form a campus network with other Greeks. Our Greek community
-              consists of over 14 different organizations and over 300 students.
-              As the Center for Student Involvement staff, we work closely with
-              the recognized organizations to enhance the overall Greek
-              experience by upholding their values, community standards and
-              university Policies.
-            </Typography>
+            <FluidContainer
+              backgroundColor="greyLightest"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
+            >
+              <Typography as="p">
+                Your student has embarked upon a great adventure and opportunity
+                by choosing to attend California State University, Los Angeles.
+                Your student has many opportunities ahead of them while at Cal
+                State LA. By joining a fraternity or sorority, they are joining
+                a number of other new members in their search for a sense of
+                community at the university. Being in a new environment can
+                cause students to feel overwhelmed. and for many parents, the
+                Greek community conjures up images of Animal House. That&apos;s
+                simply not the reality! There are many myths about the Greek
+                community, but the reality is that men and women in fraternities
+                and sororities are committed to their academics, volunteer time
+                in the community, develop and strengthen their leadership
+                skills, and form a campus network with other Greeks. Our Greek
+                community consists of over 14 different organizations and over
+                300 students. As the Center for Student Involvement staff, we
+                work closely with the recognized organizations to enhance the
+                overall Greek experience by upholding their values, community
+                standards and university Policies.
+              </Typography>
+            </FluidContainer>
           </FluidContainer>
           <FluidContainer>
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
-              Your Role as a Parent/Family Member. Get Connected, Stay Informed,
-              Support Your Students.
+              Your Role
             </Typography>
             <Typography as="p">
               Students need support throughout the process of recruitment/intake
@@ -1105,12 +1126,11 @@ export default function FSL() {
               iprieto7@calstatela.edu
             </Typography>
           </FluidContainer>
-          <FluidContainer backgroundColor="greyLightest">
+          <FluidContainer>
             <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
               Cost of Membership
             </Typography>
-
-            {FamilyAndFriendsCostOfMembershipConent.map((card) => (
+            {FamilyAndFriendsCostOfMembershipContent.map((card) => (
               <Card
                 key={card.title}
                 {...card}
@@ -1123,81 +1143,38 @@ export default function FSL() {
 
         {/* Current Members */}
         <TabPanel>
-          <FluidContainer backgroundColor="greyLightest">
+          <FluidContainer>
             <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
               Membership Intake Forms
             </Typography>
             <FluidContainer
-              flex
-              flexWrap="wrap"
-              justifyContent="center"
-              alignItems="center"
-              padding="0"
+              backgroundColor="greyLightest"
+              margin={isWidescreen ? '18px 0' : '36px 0'}
             >
-              {MembershipIntakeForms.map((form) => (
-                <Button
-                  variant="outline"
-                  href={form.href}
-                  key={form.title}
-                  margin={Spaces.sm}
-                >
-                  <LinkInner>
-                    <AiOutlineFileText size="24px" />
-                    {form.title}
-                  </LinkInner>
-                </Button>
-              ))}
+              <FluidContainer
+                flex
+                flexWrap="wrap"
+                justifyContent="center"
+                alignItems="center"
+                padding="0"
+              >
+                {MembershipIntakeForms.map((form) => (
+                  <Button
+                    variant="outline"
+                    href={form.href}
+                    key={form.title}
+                    margin={Spaces.sm}
+                  >
+                    <LinkInner>
+                      <AiOutlineFileText size="24px" />
+                      {form.title}
+                    </LinkInner>
+                  </Button>
+                ))}
+              </FluidContainer>
             </FluidContainer>
           </FluidContainer>
           <FluidContainer>
-            <Typography variant="title" as="h2" margin={`${Spaces.sm} 0`}>
-              Policies
-            </Typography>
-            <Typography as="p" variant="copy" weight="700">
-              California Hazing Law
-            </Typography>
-            <Typography>
-              <strong>
-                Hazing is not permitted on Cal State LA&apos;s campus.{' '}
-              </strong>
-              This is in accordance with California law; the policies of
-              California State University, Los Angeles, including the bylaws of
-              all inter/national organizations represented on our campus, hazing
-              is not permitted. All acts of hazing by any organization, member,
-              and/or alumni are specifically forbidden. Refer to the Student
-              Handbook for information concerning Cal State LA&apos;s definition
-              of hazing, California State law, and possible sanctions.
-            </Typography>
-            <Typography as="p" margin={`${Spaces.md} 0`}>
-              At Cal State LA, the sanctions for hazing include:
-            </Typography>
-          </FluidContainer>
-          <HazingPoliciesContentSection>
-            {HazingPoliciesContent.map((policy) => (
-              <Card
-                key={policy.name}
-                topBorder
-                title={policy.name}
-                margin={`${Spaces.sm}`}
-                width={!isDesktop ? 'calc(30%)' : '100%'}
-              >
-                {policy.content}
-              </Card>
-            ))}
-          </HazingPoliciesContentSection>
-          <FluidContainer
-            flex
-            flexWrap="wrap"
-            justifyContent="center"
-            alignItems="center"
-          >
-            {PolicyButtons.map((policy) => (
-              <Button href={policy.href} margin={Spaces.sm} key={policy.href}>
-                {policy.children}
-              </Button>
-            ))}
-          </FluidContainer>
-          <FluidContainer backgroundColor="greyLightest">
             <Typography variant="title" as="h2">
               {' '}
               Expansion of New Fraternities and Sororities
@@ -1210,13 +1187,18 @@ export default function FSL() {
           </FluidContainer>
         </TabPanel>
 
+        {/*Hazing */}
+        <TabPanel>
+          <Hazing />
+        </TabPanel>
+
         {/* Resources */}
         <TabPanel>
           <FluidContainer>
             <Typography variant="title" as="h1">
               Resources
             </Typography>
-            <FluidContainer justifyContent="center" flex flexWrap="wrap">
+            <FluidContainer flex flexWrap="wrap" padding="0">
               {ResourceButtons.map((resource) => (
                 <ResourceButtonsSection key={resource.title}>
                   <a href={resource.href}>
