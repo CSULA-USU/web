@@ -280,7 +280,7 @@ export const Hazing = () => {
         <ResourceGrid>
           <Card title="Emergency Assistance">
             <ResourceItem>
-              <ResourceLabel>Campus Police</ResourceLabel>
+              <ResourceLabel>Emergency</ResourceLabel>
               <Button
                 variant="primary"
                 href="tel:911"
@@ -288,7 +288,7 @@ export const Hazing = () => {
               >
                 <StyledPhoneContainer>
                   <StyledPhoneIcon aria-hidden="true" />
-                  Call 911 (Emergency)
+                  Call 911
                 </StyledPhoneContainer>
               </Button>
             </ResourceItem>
