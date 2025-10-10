@@ -48,7 +48,7 @@ export const getUserFromSupabaseByEmail = async (
     email: user.email,
     role: user.backoffice_roles.role_name,
     department: user.backoffice_departments.department_name,
-    polices: [...user.policies, ...user.backoffice_roles.policies],
+    policies: [...user.policies, ...user.backoffice_roles.policies],
   };
 
   return { userData: backOfficeUser, error: null };
