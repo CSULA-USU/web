@@ -80,12 +80,6 @@ const HazingList = styled.ul`
   margin: 0 0 ${Spaces.md} 0;
 `;
 
-const HazingPoliciesContentSection = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
 const ResourceGrid = styled.div`
   display: grid;
   gap: 1.5rem;
@@ -121,11 +115,8 @@ const StyledPhoneIcon = styled(MdPhone)`
 `;
 
 export const Hazing = () => {
-  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
-  const {
-    hazingPolicies: HazingPoliciesContent,
-    policyButtons: PolicyButtons,
-  } = FSLData;
+  const { isMobile, isWidescreen } = useBreakpoint();
+  const { policyButtons: PolicyButtons } = FSLData;
   return (
     <FluidContainer>
       <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
@@ -251,8 +242,8 @@ export const Hazing = () => {
           </CardTitle>
           <CardDescription>
             Psychological trauma from hazing can lead to anxiety, depression,
-            PTSD, and long-lasting emotional damage that affects academic and
-            personal life.
+            PTSD, and long&ndash;lasting emotional damage that affects academic
+            and personal life.
           </CardDescription>
         </HazeCard>
         <HazeCard>
@@ -304,8 +295,8 @@ export const Hazing = () => {
             <ResourceItem>
               <ResourceLabel>Campus Safety</ResourceLabel>
               <Button
-                href="tel:323-343-3700"
-                aria-label="Call Campus Safety at 323-343-3700"
+                href="tel:323&ndash;343&ndash;3700"
+                aria-label="Call Campus Safety at 323&ndash;343&ndash;3700"
               >
                 <StyledPhoneContainer>
                   <StyledPhoneIcon aria-hidden="true" />
@@ -328,7 +319,7 @@ export const Hazing = () => {
             </ResourceItem>
           </Card>
 
-          <Card title="Information">
+          <Card title="Anti&ndash;Hazing Policy and Resources">
             <CardDescription style={{ marginBottom: '1rem' }}>
               Click to learn more about hazing.
             </CardDescription>
@@ -385,37 +376,21 @@ export const Hazing = () => {
         size={isMobile ? 'xl' : '2xl'}
         margin={`${Spaces['2xl']} 0 ${Spaces.md}`}
       >
-        Sanctions
+        Policies
       </Typography>
-      <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
-        Sanctions for hazing will be determined based on the severity of the
-        violation, whether bodily harm occurred, and the degree of
-        responsibility of the individuals and/or organization involved.
-      </Typography>
-      <HazingPoliciesContentSection>
-        {HazingPoliciesContent.map((policy) => (
-          <Card
-            key={policy.name}
-            topBorder
-            title={policy.name}
-            margin={`${Spaces.sm}`}
-            width={!isDesktop ? 'calc(30%)' : '100%'}
-          >
-            {policy.content}
-          </Card>
-        ))}
-      </HazingPoliciesContentSection>
       <FluidContainer
         flex
         flexWrap="wrap"
         justifyContent="center"
         alignItems="center"
+        padding="0"
       >
         {PolicyButtons.map((policy) => (
           <Button
             href={policy.href}
             margin={Spaces.sm}
             key={policy.href}
+            variant="black"
             isExternalLink
           >
             {policy.children}
