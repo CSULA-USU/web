@@ -33,6 +33,21 @@ const scheduleSection: DownloadSectionProps = {
   },
 };
 
+const formSection: DownloadSectionProps = {
+  title: '990 & 199',
+  children: (
+    <DocumentLinkContainer links={archiveData['Form 990 & 199'].data} />
+  ),
+};
+
+const latestAuditedSection: DownloadSectionProps = {
+  children: (
+    <DocumentLinkContainer
+      links={archiveData['Latest Audited Financial Statements'].data}
+    />
+  ),
+};
+
 export default function PublicDocumentArchives() {
   const { isMobile } = useBreakpoint();
   return (
@@ -50,6 +65,14 @@ export default function PublicDocumentArchives() {
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"
       />
       <FluidContainer>
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Forms
+        </Typography>
+        <DownloadSection {...formSection} />
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Latest Audited Financial Statements
+        </Typography>
+        <DownloadSection {...latestAuditedSection} />
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           Agenda
         </Typography>
