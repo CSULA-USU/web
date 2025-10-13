@@ -72,7 +72,7 @@ const NavItems = [
   'How to Join',
   'Family and Friends',
   'Current Members',
-  'Hazing',
+  'Hazing Prevention',
   'Resources',
 ];
 
