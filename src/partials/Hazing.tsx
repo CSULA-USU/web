@@ -378,6 +378,12 @@ export const Hazing = () => {
       >
         Policies
       </Typography>
+      <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
+        True brotherhood and sisterhood is built on respect, trust, and mutual
+        support&ndash;not through harmful traditions. Let&apos;s create
+        organizations where every member feels valued, safe, and empowered to
+        reach their full potential.
+      </Typography>
       <FluidContainer
         flex
         flexWrap="wrap"
