@@ -21,11 +21,12 @@ const CTAContainer = styled.div`
   text-align: center;
   width: 100%;
   max-width: 1080px;
-  margin: 0 auto;
   align-items: center;
   justify-content: center;
   > div:first-child {
-    white-space: nowrap;
+    @media (min-width: 768px) {
+      white-space: nowrap;
+    }
   }
 `;
 
