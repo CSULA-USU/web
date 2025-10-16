@@ -10,8 +10,11 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith('/api/auth')) return NextResponse.next();
   if (pathname.startsWith('/backoffice/signin')) return NextResponse.next();
 
-  // Guard everything under /backoffice/*
-  if (pathname.startsWith('/backoffice')) {
+  // Guard everything
+  if (
+    pathname.startsWith('/backoffice') ||
+    pathname.startsWith('/graffix/backoffice')
+  ) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
     // No session? -> send to /backoffice/signin with the original URL as callback
@@ -37,7 +40,10 @@ export async function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Apply only to /backoffice/* routes
 export const config = {
-  matcher: ['/backoffice/:path*'],
+  matcher: [
+    '/backoffice/:path*',
+    '/graffix/backoffice',
+    '/graffix/backoffice/:path*',
+  ],
 };
