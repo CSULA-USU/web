@@ -1,22 +1,25 @@
 'use client';
+import { useEffect, useRef } from 'react';
 import { useSession, signIn } from 'next-auth/react';
-
-import { Button, FluidContainer, Typography } from 'components';
 import { Page } from 'modules';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useRef, useEffect } from 'react';
+import { FluidContainer, Typography } from 'components';
 
 export default function SignIn() {
   const router = useRouter();
   const { status } = useSession(); // 'loading' | 'authenticated' | 'unauthenticated'
   const tried = useRef(false);
 
-  // Extract callbackUrl from query string or default to /backoffice
-  const callbackUrl = (router.query.callbackUrl as string) || '/backoffice';
+  // Wait for the router to be ready so query params exist
+  const callbackUrl =
+    router.isReady && typeof router.query.callbackUrl === 'string'
+      ? router.query.callbackUrl
+      : '/backoffice';
 
   // If already signed in → go directly to callbackUrl
   useEffect(() => {
+    if (!router.isReady) return;
     if (status === 'authenticated') {
       router.replace(callbackUrl);
     }
@@ -24,10 +27,11 @@ export default function SignIn() {
 
   // Auto-start Azure AD sign-in only when unauthenticated
   useEffect(() => {
+    if (!router.isReady) return;
     if (status !== 'unauthenticated' || tried.current) return;
     tried.current = true;
     signIn('azure-ad', { callbackUrl });
-  }, [status, callbackUrl]);
+  }, [status, callbackUrl, router.isReady]);
 
   return (
     <Page>
@@ -37,13 +41,9 @@ export default function SignIn() {
       </Head>
       <FluidContainer>
         <Typography as="h2" variant="titleLarge">
-          Welcome to the Backoffice!
+          Redirecting to sign in…
         </Typography>
-
-        <>
-          <Typography>Please Sign in to continue.</Typography>
-          <Button onClick={() => signIn()}>Sign in!</Button>
-        </>
+        <Typography>Please wait while we connect to Microsoft.</Typography>
       </FluidContainer>
     </Page>
   );

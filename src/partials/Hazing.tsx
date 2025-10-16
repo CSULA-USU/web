@@ -80,12 +80,6 @@ const HazingList = styled.ul`
   margin: 0 0 ${Spaces.md} 0;
 `;
 
-const HazingPoliciesContentSection = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
 const ResourceGrid = styled.div`
   display: grid;
   gap: 1.5rem;
@@ -121,11 +115,8 @@ const StyledPhoneIcon = styled(MdPhone)`
 `;
 
 export const Hazing = () => {
-  const { isDesktop, isMobile, isWidescreen } = useBreakpoint();
-  const {
-    hazingPolicies: HazingPoliciesContent,
-    policyButtons: PolicyButtons,
-  } = FSLData;
+  const { isMobile, isWidescreen } = useBreakpoint();
+  const { policyButtons: PolicyButtons } = FSLData;
   return (
     <FluidContainer>
       <Typography variant="title" as="h2" size={isMobile ? 'xl' : '2xl'}>
@@ -136,9 +127,8 @@ export const Hazing = () => {
         margin={isWidescreen ? '18px 0' : '36px 0'}
       >
         <Typography as="p" color="black">
-          Here at Cal State LA, we create a safe, inclusive community where
-          every member can thrive without fear. Hazing has no place in our
-          organizations or on our campus.
+          At Cal State LA, we create a safe, inclusive community where every
+          member can thrive without fear. Hazing has no place on our campus.
         </Typography>
       </FluidContainer>
       <AlertBox role="alert" aria-live="polite">
@@ -252,8 +242,8 @@ export const Hazing = () => {
           </CardTitle>
           <CardDescription>
             Psychological trauma from hazing can lead to anxiety, depression,
-            PTSD, and long-lasting emotional damage that affects academic and
-            personal life.
+            PTSD, and long&ndash;lasting emotional damage that affects academic
+            and personal life.
           </CardDescription>
         </HazeCard>
         <HazeCard>
@@ -282,6 +272,7 @@ export const Hazing = () => {
       >
         Resources and Support
       </Typography>
+      <br />
       <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
         If you or someone you know has experienced hazing, help is available.
       </Typography>
@@ -289,7 +280,7 @@ export const Hazing = () => {
         <ResourceGrid>
           <Card title="Emergency Assistance">
             <ResourceItem>
-              <ResourceLabel>Campus Police</ResourceLabel>
+              <ResourceLabel>Emergency</ResourceLabel>
               <Button
                 variant="primary"
                 href="tel:911"
@@ -297,15 +288,15 @@ export const Hazing = () => {
               >
                 <StyledPhoneContainer>
                   <StyledPhoneIcon aria-hidden="true" />
-                  Call 911 (Emergency)
+                  Call 911
                 </StyledPhoneContainer>
               </Button>
             </ResourceItem>
             <ResourceItem>
               <ResourceLabel>Campus Safety</ResourceLabel>
               <Button
-                href="tel:323-343-3700"
-                aria-label="Call Campus Safety at 323-343-3700"
+                href="tel:323&ndash;343&ndash;3700"
+                aria-label="Call Campus Safety at 323&ndash;343&ndash;3700"
               >
                 <StyledPhoneContainer>
                   <StyledPhoneIcon aria-hidden="true" />
@@ -328,7 +319,7 @@ export const Hazing = () => {
             </ResourceItem>
           </Card>
 
-          <Card title="Information">
+          <Card title="Anti&ndash;Hazing Policy and Resources">
             <CardDescription style={{ marginBottom: '1rem' }}>
               Click to learn more about hazing.
             </CardDescription>
@@ -337,18 +328,40 @@ export const Hazing = () => {
               aria-label="external link to anti-hazing information"
               isExternalLink
             >
-              Anti-hazing Info
+              Anti&ndash;hazing Info
+            </Button>
+            <CardDescription style={{ marginBottom: '1rem' }}>
+              Standards of conduct
+            </CardDescription>
+            <Button
+              href="https://www.calstatela.edu/deanofstudents/cal-state-la-standards-conduct-and-disciplinary-procedures-university-recognized"
+              aria-label="external link to anti-hazing information"
+              isExternalLink
+            >
+              Disciplinary Procedures
             </Button>
           </Card>
 
           <Card title="National Resources">
             <ResourceItem>
               <CardDescription style={{ marginBottom: '1rem' }}>
-                HazingPrevention.org
+                hazingprevention.org
               </CardDescription>
               <Button
                 href="https://hazingprevention.org"
                 aria-label="Visit HazingPrevention.org website (opens in new tab)"
+                isExternalLink
+              >
+                Visit Website
+              </Button>
+            </ResourceItem>
+            <ResourceItem>
+              <CardDescription style={{ marginBottom: '1rem' }}>
+                stophazing.org
+              </CardDescription>
+              <Button
+                href="https://stophazing.org"
+                aria-label="Visit StopHazing.org website (opens in new tab)"
                 isExternalLink
               >
                 Visit Website
@@ -363,34 +376,29 @@ export const Hazing = () => {
         size={isMobile ? 'xl' : '2xl'}
         margin={`${Spaces['2xl']} 0 ${Spaces.md}`}
       >
-        Sanctions
+        Policies
       </Typography>
       <Typography as="p" color="black" margin={`0 0 ${Spaces.md}`}>
-        Sanctions for hazing will be determined based on the severity of the
-        violation, whether bodily harm occurred, and the degree of
-        responsibility of the individuals and/or organization involved.
+        True brotherhood and sisterhood is built on respect, trust, and mutual
+        support&ndash;not through harmful traditions. Let&apos;s create
+        organizations where every member feels valued, safe, and empowered to
+        reach their full potential.
       </Typography>
-      <HazingPoliciesContentSection>
-        {HazingPoliciesContent.map((policy) => (
-          <Card
-            key={policy.name}
-            topBorder
-            title={policy.name}
-            margin={`${Spaces.sm}`}
-            width={!isDesktop ? 'calc(30%)' : '100%'}
-          >
-            {policy.content}
-          </Card>
-        ))}
-      </HazingPoliciesContentSection>
       <FluidContainer
         flex
         flexWrap="wrap"
         justifyContent="center"
         alignItems="center"
+        padding="0"
       >
         {PolicyButtons.map((policy) => (
-          <Button href={policy.href} margin={Spaces.sm} key={policy.href}>
+          <Button
+            href={policy.href}
+            margin={Spaces.sm}
+            key={policy.href}
+            variant="black"
+            isExternalLink
+          >
             {policy.children}
           </Button>
         ))}

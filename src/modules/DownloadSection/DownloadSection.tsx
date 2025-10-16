@@ -39,9 +39,7 @@ export const DownloadSection = ({
         </Typography>
       </Title>
       <Content>{children}</Content>
-      <div>
-        <Button {...button} isExternalLink />
-      </div>
+      <div>{button ? <Button {...button} isExternalLink /> : null}</div>
     </Container>
     <Divider color="greyLighter" margin={`${Spaces.lg} 0`} />
   </>

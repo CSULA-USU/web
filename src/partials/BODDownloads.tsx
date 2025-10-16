@@ -53,6 +53,10 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/xathkyrwrtz19y65esfn6/Agenda-Board-of-Directors-October-10-2025.docx?rlkey=7bt1jrqs208n2t1lrtsjg900g&st=pwn3di1h&dl=1',
             children: 'Board of Directors October 10, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/ois9tkjpqpd1jx1yisbxm/Agenda-Fiscal-Committee-October-17-2025.docx?rlkey=wyrbnz4mhyih4dl0ecznfvi4n&st=nvmxoxk8&dl=1',
+            children: 'Fiscal Committee October 17, 2025',
+          },
         ]}
       />
     ),
