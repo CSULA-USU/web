@@ -79,12 +79,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/xrh2wtrn4fncopggiyldt/Board-of-Directors-August-22-2025-signed.pdf?rlkey=aux3w475pcriois56anskoz56&st=dsweay6y&raw=1',
             children: 'Board of Directors August 22, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/peqoimwoy2x9v3vlecq1s/Minutes-Board-of-Directors-September-12-2025-signed.pdf?rlkey=on8lfsfctxoa1fux1314evrhx&st=xx6n3kfp&raw=1',
+            children: 'Board of Directors September 12, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/m61csa33yftdg1dg1pbjm/Board-of-Directors-May-9-2025.pdf?rlkey=ps67jkk1ft32a0romtbii9bn0&st=06aerr6n&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/90khb45zj9zho4l5rza5k/minutes-fy25-26.zip?rlkey=ysz6jtkn2w0wg00qf26e158jf&st=vdbnkk73&dl=1',
       variant: 'black',
     },
   },
