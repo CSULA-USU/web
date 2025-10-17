@@ -8,23 +8,30 @@ import { FluidContainer, Typography } from 'components';
 
 export default function SignIn() {
   const router = useRouter();
-  const { status } = useSession();
+  const { status } = useSession(); // 'loading' | 'authenticated' | 'unauthenticated'
   const tried = useRef(false);
 
-  // 1) If already signed in, go to destination (once)
-  useEffect(() => {
-    if (status !== 'authenticated') return;
-    const dest = (router.query.callbackUrl as string) || '/backoffice';
-    router.replace(dest);
-  }, [status, router, router.query.callbackUrl]);
+  // Wait for the router to be ready so query params exist
+  const callbackUrl =
+    router.isReady && typeof router.query.callbackUrl === 'string'
+      ? router.query.callbackUrl
+      : '/backoffice';
 
-  // 2) If NOT signed in, start Azure flow (once)
+  // If already signed in → go directly to callbackUrl
   useEffect(() => {
+    if (!router.isReady) return;
+    if (status === 'authenticated') {
+      router.replace(callbackUrl);
+    }
+  }, [status, router, callbackUrl]);
+
+  // Auto-start Azure AD sign-in only when unauthenticated
+  useEffect(() => {
+    if (!router.isReady) return;
     if (status !== 'unauthenticated' || tried.current) return;
     tried.current = true;
-    const dest = (router.query.callbackUrl as string) || '/backoffice';
-    signIn('azure-ad', { callbackUrl: dest });
-  }, [status, router.query.callbackUrl]);
+    signIn('azure-ad', { callbackUrl });
+  }, [status, callbackUrl, router.isReady]);
 
   return (
     <Page>
