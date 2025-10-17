@@ -57,12 +57,16 @@ const agendaDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/ois9tkjpqpd1jx1yisbxm/Agenda-Fiscal-Committee-October-17-2025.docx?rlkey=wyrbnz4mhyih4dl0ecznfvi4n&st=nvmxoxk8&dl=1',
             children: 'Fiscal Committee October 17, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/j3dtbuxcm5m1juupl2t0w/Agenda-Personnel-Committee-October-24-2025.docx?rlkey=bllpo50mm44lpzcgjebuul67n&st=c134ix0m&dl=1',
+            children: 'Personnel Committee October 24, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/fec2wqzx7imk06omxhr56/agenda-fy25-26.zip?rlkey=19kxw7hfhinzg7w2kvycl5bv9&st=ndzhk6px&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/fec2wqzx7imk06omxhr56/agenda-fy25-26.zip?rlkey=19kxw7hfhinzg7w2kvycl5bv9&st=g8mpshg9&dl=1',
       variant: 'black',
     },
   },
