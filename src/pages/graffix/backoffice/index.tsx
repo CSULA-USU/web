@@ -279,7 +279,7 @@ export default function Backoffice() {
             size={isDesktop ? 'lg' : isTablet ? 'xl' : '2xl'}
             margin={`0 0 ${Spaces.lg} 0`}
           >
-            Spring and Summer 2025
+            Spring 2026
           </Typography>
           <Button href="https://form.jotform.com/231835701552150" margin="3%">
             Request Form
