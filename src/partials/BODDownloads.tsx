@@ -87,12 +87,16 @@ const minutesDownloads: DownloadSectionProps[] = [
             href: 'https://www.dropbox.com/scl/fi/peqoimwoy2x9v3vlecq1s/Minutes-Board-of-Directors-September-12-2025-signed.pdf?rlkey=on8lfsfctxoa1fux1314evrhx&st=xx6n3kfp&raw=1',
             children: 'Board of Directors September 12, 2025',
           },
+          {
+            href: 'https://www.dropbox.com/scl/fi/ggrom3b0obh09fdm86xvu/Minutes-Fiscal-Committee-September-19-2025-signed.pdf?rlkey=0gko5fim5ai6dbycjdo613u3d&st=83pg85z4&raw=1',
+            children: 'Fiscal Committee September 19, 2025',
+          },
         ]}
       />
     ),
     button: {
       children: <NonBreakingSpan>Download All</NonBreakingSpan>,
-      href: 'https://www.dropbox.com/scl/fi/90khb45zj9zho4l5rza5k/minutes-fy25-26.zip?rlkey=ysz6jtkn2w0wg00qf26e158jf&st=vdbnkk73&dl=1',
+      href: 'https://www.dropbox.com/scl/fi/flvhc8hbecb4fopu5bkm3/minutes-fy25-26.zip?rlkey=viwvj8rm6iix06p3ns4fh47dt&st=m97nbujg&dl=1',
       variant: 'black',
     },
   },
