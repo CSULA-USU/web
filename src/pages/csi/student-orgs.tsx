@@ -74,9 +74,9 @@ const orgsCategoriesCards = [
   {
     title: 'Explore Student Organizations',
     href: 'https://calstatela.presence.io/',
-    linkText: 'Visit Presence',
+    linkText: 'Visit',
     children:
-      'Find a recognized student organization on Presence, Cal State LA’s hub for student organizations and events. ',
+      'Find a recognized student organization on The Nest, Cal State LA’s hub for student organizations and events. ',
   },
 ];
 
@@ -131,19 +131,19 @@ export default function StudentOrgs() {
           {isTablet ? (
             <TextCenter>
               <Typography margin="auto 24px 24px" variant="title" as="h2">
-                Presence
+                The Nest
               </Typography>
             </TextCenter>
           ) : (
             <Typography margin="auto 24px 24px" variant="title" as="h2">
-              Presence
+              The Nest
             </Typography>
           )}
           <Image
             margin="auto"
             size="100%"
-            src="/departments/csi/presence-screen.png"
-            alt="screenshot of presence homepage"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+            alt="screenshot of The Nest homepage"
             borderRadius="12px"
           />
         </FluidContainer>
