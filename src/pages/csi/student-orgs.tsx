@@ -126,38 +126,47 @@ export default function StudentOrgs() {
           returning orgs, and conduct procedures.
         </Typography>
       </CallToAction>
-      <FluidContainer flex flexDirection={isTablet ? 'column' : 'row'}>
-        <FluidContainer flex flexDirection="column">
-          {isTablet ? (
-            <TextCenter>
-              <Typography margin="auto 24px 24px" variant="title" as="h2">
-                The Nest
-              </Typography>
-            </TextCenter>
-          ) : (
+      <FluidContainer flex flexDirection="column">
+        {isTablet ? (
+          <TextCenter>
             <Typography margin="auto 24px 24px" variant="title" as="h2">
               The Nest
             </Typography>
-          )}
+          </TextCenter>
+        ) : (
+          <TextCenter>
+            <Typography margin="auto 24px 24px" variant="title" as="h2">
+              The Nest
+            </Typography>
+          </TextCenter>
+        )}
+        <FluidContainer
+          flex
+          flexDirection={isTablet ? 'column' : 'row'}
+          gap={Spaces.lg}
+          padding="0"
+          flexWrap={isTablet ? 'wrap' : 'nowrap'}
+        >
           <Image
-            margin="auto"
-            size="100%"
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
             alt="screenshot of The Nest homepage"
             borderRadius="12px"
+            width="100%"
+            maxWidth="800px"
+            height="auto"
           />
+          <PresenceInfoContainer>
+            <OrgsCategoriesCardsContainer>
+              {orgsCategoriesCards.map((props) => (
+                <Card
+                  margin={`${Spaces.md} 0`}
+                  key={`${props.title}`}
+                  {...props}
+                />
+              ))}
+            </OrgsCategoriesCardsContainer>
+          </PresenceInfoContainer>
         </FluidContainer>
-        <PresenceInfoContainer>
-          <OrgsCategoriesCardsContainer>
-            {orgsCategoriesCards.map((props) => (
-              <Card
-                margin={`${Spaces.md} 0`}
-                key={`${props.title}`}
-                {...props}
-              />
-            ))}
-          </OrgsCategoriesCardsContainer>
-        </PresenceInfoContainer>
       </FluidContainer>
 
       <FluidContainer
@@ -187,7 +196,7 @@ export default function StudentOrgs() {
               }
               minHeight="280px"
               margin={`${Spaces.sm} 0`}
-            ></Card>
+            />
           ))}
         </FluidContainer>
         <TextCenter>
