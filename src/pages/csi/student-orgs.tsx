@@ -108,7 +108,6 @@ export default function StudentOrgs() {
           key="description"
         />
       </Head>
-
       <Header title="Recognized Student Organizations" buttons={buttons}>
         Cal State LA is home to over 120 recognized student organizations that
         host events and meetings to engage students in community building,
