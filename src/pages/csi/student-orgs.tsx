@@ -167,7 +167,23 @@ export default function StudentOrgs() {
           </PresenceInfoContainer>
         </FluidContainer>
       </FluidContainer>
-
+      <FluidContainer
+        flex
+        flexDirection="column"
+        backgroundColor="greyLightest"
+      >
+        <TextCenter id="meeting-spaces">
+          <Typography margin="auto" variant="title" as="h2">
+            Reserve Your Perfect Meeting Space
+          </Typography>
+        </TextCenter>
+        <TextCenter>
+          <Typography margin={`${Spaces.md} auto 0 0`}>
+            Streamlined room reservations for student organizations. Book your
+            space in minutes and focus on what matters most.
+          </Typography>
+        </TextCenter>
+      </FluidContainer>
       <FluidContainer
         flex
         flexDirection="column"
