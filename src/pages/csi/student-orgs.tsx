@@ -291,9 +291,12 @@ export default function StudentOrgs() {
             space in minutes and focus on what matters most.
           </Typography>
         </TextCenter>
-        <FluidContainer flex justifyContent="center">
+        <FluidContainer flex justifyContent="center" gap={Spaces.md}>
           <Button href="/operations/meeting-rooms" variant="black">
             Reserve a Room
+          </Button>
+          <Button href="/operations/meeting-rooms" variant="outline">
+            Reservation Policies
           </Button>
         </FluidContainer>
         <CardsGrid role="region" aria-label="Meeting types">
