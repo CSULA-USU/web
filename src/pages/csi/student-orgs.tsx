@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Head from 'next/head';
+import { GoChecklist } from 'react-icons/go';
 import { ImCalendar, ImCheckmark, ImUsers } from 'react-icons/im';
 import { Colors, Spaces } from 'theme';
 import { CallToAction, Page, Header } from 'modules';
@@ -281,7 +282,7 @@ export default function StudentOrgs() {
       >
         <TextCenter id="meeting-spaces">
           <Typography margin="auto" variant="title" as="h2">
-            Reserve Your Perfect Meeting Space
+            Reserve Your Perfect Meeting/Event Space
           </Typography>
         </TextCenter>
         <TextCenter>
@@ -290,54 +291,42 @@ export default function StudentOrgs() {
             space in minutes and focus on what matters most.
           </Typography>
         </TextCenter>
-        <FluidContainer flex justifyContent="center">
+        <FluidContainer flex justifyContent="center" gap={Spaces.md}>
           <Button href="/operations/meeting-rooms" variant="black">
             Reserve a Room
+          </Button>
+          <Button href="/operations/meeting-rooms" variant="outline">
+            Reservation Policies
           </Button>
         </FluidContainer>
         <CardsGrid role="region" aria-label="Meeting types">
           <ReservationCards>
             <CardHeader>
-              <IconWrapper $color={Colors.primary} aria-hidden="true">
+              <IconWrapper $color={Colors.grey} aria-hidden="true">
                 <ImCalendar size={24} />
               </IconWrapper>
-              <CardTitle>Weekly/Bi&ndash;Weekly Meetings</CardTitle>
+              <CardTitle>Meetings</CardTitle>
             </CardHeader>
             <CardDescription>
-              Perfect for recurring organizational meetings. Submit your request
-              one month before ODC for Fall or Spring semester.
+              Perfect for recurring weekly/bi&ndash;weekly organizational
+              meetings. Submit request one month before ODC for Fall or Spring
+              semester.
             </CardDescription>
             <FeatureList aria-label="Weekly/Bi-Weekly meeting features">
               <FeatureItem>
-                <ImCheckmark
-                  size={20}
-                  color={Colors.primary}
-                  aria-hidden="true"
-                />
+                <ImCheckmark size={20} color={Colors.grey} aria-hidden="true" />
                 <span>Same day, time, and location, based on availability</span>
               </FeatureItem>
               <FeatureItem>
-                <ImCheckmark
-                  size={20}
-                  color={Colors.primary}
-                  aria-hidden="true"
-                />
+                <ImCheckmark size={20} color={Colors.grey} aria-hidden="true" />
                 <span>Must be held in one meeting space only</span>
               </FeatureItem>
               <FeatureItem>
-                <ImCheckmark
-                  size={20}
-                  color={Colors.primary}
-                  aria-hidden="true"
-                />
+                <ImCheckmark size={20} color={Colors.grey} aria-hidden="true" />
                 <span>Cannot exceed two (2) hours in duration</span>
               </FeatureItem>
               <FeatureItem>
-                <ImCheckmark
-                  size={20}
-                  color={Colors.primary}
-                  aria-hidden="true"
-                />
+                <ImCheckmark size={20} color={Colors.grey} aria-hidden="true" />
                 <span>Cannot be co&ndash;sponsored events</span>
               </FeatureItem>
             </FeatureList>
@@ -376,60 +365,124 @@ export default function StudentOrgs() {
               </FeatureItem>
               <FeatureItem>
                 <ImCheckmark size={20} color={Colors.gold} aria-hidden="true" />
-                <span>Submit 15 business days or less before meeting date</span>
+                <span>
+                  Submit minimum 15 business days in advance before meeting date
+                </span>
+              </FeatureItem>
+            </FeatureList>
+          </ReservationCards>
+          <ReservationCards>
+            <CardHeader>
+              <IconWrapper $color={Colors.primary} aria-hidden="true">
+                <ImUsers size={24} />
+              </IconWrapper>
+              <CardTitle>Event Reservations</CardTitle>
+            </CardHeader>
+            <CardDescription>
+              Reservations are applicable for single use rooms and
+              one&ndash;time single events. Based on availability.
+            </CardDescription>
+            <FeatureList aria-label="event reservations features">
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.primary}
+                  aria-hidden="true"
+                />
+                <span>
+                  Maximum of eight (8) complimentary event reservations per
+                  semester.
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.primary}
+                  aria-hidden="true"
+                />
+                <span>
+                  One&ndash;time single events are allowed up to a max of four
+                  (4) meeting rooms and cannot exceed four (4) hours in
+                  duration.
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.primary}
+                  aria-hidden="true"
+                />
+                <span>
+                  If the one&ndash;time single event occurs on two (2)
+                  consecutive days, then the two (2) days are considered as two
+                  (2) event reservations.
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.primary}
+                  aria-hidden="true"
+                />
+                <span>Cannot be carried over to the next semester.</span>
+              </FeatureItem>
+            </FeatureList>
+          </ReservationCards>
+
+          <ReservationCards>
+            <CardHeader>
+              <IconWrapper $color={Colors.black} aria-hidden="true">
+                <GoChecklist size={24} />
+              </IconWrapper>
+              <CardTitle>Eligibility Requirements</CardTitle>
+            </CardHeader>
+            <FeatureList aria-label="General meeting features">
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.black}
+                  aria-hidden="true"
+                />
+                <span>
+                  Organization must be in good standing with the university
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.black}
+                  aria-hidden="true"
+                />
+                <span>
+                  Only designated members on Officer Information Form can make
+                  reservations
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.black}
+                  aria-hidden="true"
+                />
+                <span>
+                  Officially recognized through the Center for Student
+                  Involvement
+                </span>
+              </FeatureItem>
+              <FeatureItem>
+                <ImCheckmark
+                  size={20}
+                  color={Colors.black}
+                  aria-hidden="true"
+                />
+                <span>
+                  Completed Event Registration Form required for all events and
+                  meetings
+                </span>
               </FeatureItem>
             </FeatureList>
           </ReservationCards>
         </CardsGrid>
-        <ReservationCards>
-          <CardHeader>
-            <CardTitle>Eligibility Requirements</CardTitle>
-          </CardHeader>
-          <FeatureList aria-label="General meeting features">
-            <FeatureItem>
-              <ImCheckmark
-                size={20}
-                color={Colors.primary}
-                aria-hidden="true"
-              />
-              <span>
-                Organization must be in good standing with the university
-              </span>
-            </FeatureItem>
-            <FeatureItem>
-              <ImCheckmark
-                size={20}
-                color={Colors.primary}
-                aria-hidden="true"
-              />
-              <span>
-                Only designated members on Officer Information Form can make
-                reservations
-              </span>
-            </FeatureItem>
-            <FeatureItem>
-              <ImCheckmark
-                size={20}
-                color={Colors.primary}
-                aria-hidden="true"
-              />
-              <span>
-                Officially recognized through the Center for Student Involvement
-              </span>
-            </FeatureItem>
-            <FeatureItem>
-              <ImCheckmark
-                size={20}
-                color={Colors.primary}
-                aria-hidden="true"
-              />
-              <span>
-                Completed Event Registration Form required (except general
-                meetings and walkway tables)
-              </span>
-            </FeatureItem>
-          </FeatureList>
-        </ReservationCards>
       </FluidContainer>
       <FluidContainer
         flex
