@@ -340,7 +340,7 @@ export default function StudentOrgs() {
               <IconWrapper $color={Colors.gold} aria-hidden="true">
                 <ImUsers size={24} />
               </IconWrapper>
-              <CardTitle>1&ndash;Time Meetings</CardTitle>
+              <CardTitle>One&ndash;Time Meetings</CardTitle>
             </CardHeader>
             <CardDescription>
               Flexible one&ndash;time meetings for your organization. Submit
