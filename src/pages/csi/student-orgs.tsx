@@ -295,7 +295,10 @@ export default function StudentOrgs() {
           <Button href="/operations/meeting-rooms" variant="black">
             Reserve a Room
           </Button>
-          <Button href="/operations/meeting-rooms" variant="outline">
+          <Button
+            href="https://www.dropbox.com/scl/fi/ap2nhg75x69zf4hrkriff/POLICIES-PROCEDURES-Updated-07.25.docx?rlkey=qqz8pa269bm3e1yc14vdsgwwo&st=n456ua3l&dl=1"
+            variant="outline"
+          >
             Reservation Policies
           </Button>
         </FluidContainer>
@@ -305,14 +308,14 @@ export default function StudentOrgs() {
               <IconWrapper $color={Colors.grey} aria-hidden="true">
                 <ImCalendar size={24} />
               </IconWrapper>
-              <CardTitle>Meetings</CardTitle>
+              <CardTitle>Recurring Meetings</CardTitle>
             </CardHeader>
             <CardDescription>
               Perfect for recurring weekly/bi&ndash;weekly organizational
               meetings. Submit request one month before ODC for Fall or Spring
               semester.
             </CardDescription>
-            <FeatureList aria-label="Weekly/Bi-Weekly meeting features">
+            <FeatureList aria-label="Weekly/Bi&ndash;Weekly meeting features">
               <FeatureItem>
                 <ImCheckmark size={20} color={Colors.grey} aria-hidden="true" />
                 <span>Same day, time, and location, based on availability</span>
@@ -337,7 +340,7 @@ export default function StudentOrgs() {
               <IconWrapper $color={Colors.gold} aria-hidden="true">
                 <ImUsers size={24} />
               </IconWrapper>
-              <CardTitle>General Meetings</CardTitle>
+              <CardTitle>1&ndash;Time Meetings</CardTitle>
             </CardHeader>
             <CardDescription>
               Flexible one&ndash;time meetings for your organization. Submit
