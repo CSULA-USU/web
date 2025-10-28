@@ -311,9 +311,8 @@ export default function StudentOrgs() {
               <CardTitle>Recurring Meetings</CardTitle>
             </CardHeader>
             <CardDescription>
-              Perfect for recurring weekly/bi&ndash;weekly organizational
-              meetings. Submit request one month before ODC for Fall or Spring
-              semester.
+              Perfect for weekly/bi&ndash;weekly organizational meetings. Submit
+              request one month before ODC for Fall or Spring semester.
             </CardDescription>
             <FeatureList aria-label="Weekly/Bi&ndash;Weekly meeting features">
               <FeatureItem>
@@ -439,6 +438,11 @@ export default function StudentOrgs() {
               </IconWrapper>
               <CardTitle>Eligibility Requirements</CardTitle>
             </CardHeader>
+            <CardDescription>
+              In order to make room reservations at the U&ndash;SU as a
+              recognized student organization, the following requirements must
+              be met:
+            </CardDescription>
             <FeatureList aria-label="General meeting features">
               <FeatureItem>
                 <ImCheckmark
