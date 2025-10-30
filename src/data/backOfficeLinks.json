@@ -6,5 +6,9 @@
   {
     "url": "/backoffice/graffix-requests",
     "title": "Graffix Requests"
+  },
+  {
+    "url": "/backoffice/bod",
+    "title": "BOD"
   }
 ]

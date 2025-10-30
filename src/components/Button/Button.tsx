@@ -11,6 +11,8 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   notALink?: boolean;
   padding?: string;
   shadow?: boolean;
+  fontSize?: string;
+  fontWeight?: string;
   variant?:
     | 'primary'
     | 'black'
@@ -64,13 +66,13 @@ const getCSS = (p: ButtonProps) => {
   return css`
     cursor: pointer;
     text-align: center;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: ${p.fontSize ?? p.fontSize ?? '16px'};
+    font-weight: ${p.fontWeight ?? p.fontWeight ?? '700'};
     filter: ${p.shadow ? 'drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25))' : ''};
     border: ${border ? `1px solid ${border}` : 'none'};
     border-radius: 8px;
     display: inline-block;
-    padding: ${p.padding ? `${padding}` : '18px 36px'};
+    padding: ${p.padding ?? padding ?? '18px 36px'};
     background-color: ${Colors[backgroundColor]};
     color: ${Colors[color]};
     margin: ${p.margin || 0};

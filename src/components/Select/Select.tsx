@@ -15,25 +15,24 @@ interface SelectProps extends RadixSelect.SelectProps {
 }
 
 const SelectTrigger = styled(RadixSelect.SelectTrigger)`
-  display: inline-flex;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 13px;
-  line-height: 1;
-  height: 35px;
-  gap: 5px;
-  background-color: white;
-  color: black;
+  gap: 8px;
   &:hover {
-    background-color: white;
+    background-color: ${Colors.greyLighter};
   }
   *:focus {
     box-shadow: 0 0 0 2px black;
   }
   &[data-placeholder] {
-    color: ${Colors.grey};
+    color: ${Colors.greyLighter};
   }
 `;
 
