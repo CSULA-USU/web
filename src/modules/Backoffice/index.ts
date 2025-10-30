@@ -1,5 +1,5 @@
-export * from './ArchiveConfirmDialog';
-export * from './DeleteConfirmDialog';
+export * from './DeleteConfirmDialogue';
+export * from './ArchiveConfirmDialogue';
 export * from './DocumentManager';
 export * from './DocumentModal';
 export * from './Toast';

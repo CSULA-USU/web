@@ -138,7 +138,7 @@ export const EventModal = ({
 
   return (
     <FixedModal
-      role="dialog"
+      role="Dialogue"
       contentLabel="Event Details"
       isOpen={isOpen}
       style={

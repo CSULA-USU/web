@@ -261,7 +261,7 @@ export function DocumentModal({
   };
   return (
     <Overlay onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <Modal role="dialog" aria-labelledby="modal-title" aria-modal="true">
+      <Modal role="Dialogue" aria-labelledby="modal-title" aria-modal="true">
         <ModalHeader>
           <ModalTitle id="modal-title">
             {document ? 'Edit Document' : 'Add New Document'}

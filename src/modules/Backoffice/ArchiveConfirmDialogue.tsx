@@ -1,7 +1,7 @@
 import type React from 'react';
 import styled from 'styled-components';
 
-interface DeleteConfirmDialogProps {
+interface DeleteConfirmDialogueProps {
   title: string;
   onConfirm: () => void;
   onCancel: () => void;
@@ -21,7 +21,7 @@ const Overlay = styled.div`
   padding: 16px;
 `;
 
-const Dialog = styled.div`
+const Dialogue = styled.div`
   background-color: #ffffff;
   border-radius: 8px;
   width: 100%;
@@ -29,18 +29,18 @@ const Dialog = styled.div`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 `;
 
-const DialogHeader = styled.div`
+const DialogueHeader = styled.div`
   padding: 24px 24px 16px;
 `;
 
-const DialogTitle = styled.h2`
+const DialogueTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
   color: #1a1a1a;
   margin: 0 0 12px 0;
 `;
 
-const DialogMessage = styled.p`
+const DialogueMessage = styled.p`
   font-size: 14px;
   color: #666666;
   margin: 0;
@@ -57,7 +57,7 @@ const DocumentTitle = styled.strong`
   word-break: break-word;
 `;
 
-const DialogFooter = styled.div`
+const DialogueFooter = styled.div`
   padding: 16px 24px 24px;
   display: flex;
   justify-content: flex-end;
@@ -103,11 +103,11 @@ const Button = styled.button<{ variant?: 'danger' | 'secondary' }>`
   }
 `;
 
-export function DeleteConfirmDialog({
+export function ArchiveConfirmDialogue({
   title,
   onConfirm,
   onCancel,
-}: DeleteConfirmDialogProps) {
+}: DeleteConfirmDialogueProps) {
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onCancel();
@@ -116,20 +116,20 @@ export function DeleteConfirmDialog({
 
   return (
     <Overlay onClick={handleOverlayClick}>
-      <Dialog
-        role="alertdialog"
-        aria-labelledby="dialog-title"
+      <Dialogue
+        role="alertDialogue"
+        aria-labelledby="Dialogue-title"
         aria-modal="true"
       >
-        <DialogHeader>
-          <DialogTitle id="dialog-title">Confirm Deletion</DialogTitle>
-          <DialogMessage>
-            Are you sure you want to delete this document? This action cannot be
-            undone.
+        <DialogueHeader>
+          <DialogueTitle id="Dialogue-title">Confirm Archival</DialogueTitle>
+          <DialogueMessage>
+            Are you sure you want to archive all documents in this section? This
+            action cannot be undone.
             <DocumentTitle>{title}</DocumentTitle>
-          </DialogMessage>
-        </DialogHeader>
-        <DialogFooter>
+          </DialogueMessage>
+        </DialogueHeader>
+        <DialogueFooter>
           <Button onClick={onCancel} aria-label="Cancel deletion">
             Cancel
           </Button>
@@ -138,10 +138,10 @@ export function DeleteConfirmDialog({
             onClick={onConfirm}
             aria-label="Confirm deletion"
           >
-            Delete
+            Archive
           </Button>
-        </DialogFooter>
-      </Dialog>
+        </DialogueFooter>
+      </Dialogue>
     </Overlay>
   );
 }
