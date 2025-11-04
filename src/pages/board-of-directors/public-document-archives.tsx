@@ -3,6 +3,7 @@ import {
   NonBreakingSpan,
   Typography,
   Expandable,
+  StyledLink,
 } from 'components';
 import {
   DocumentLinkContainer,
@@ -64,7 +65,7 @@ export default function PublicDocumentArchives() {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [calendarDownloadAll, setCalendarDownloadAll] =
     useState<Document | null>(null);
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const agendas = useMemo(
     () => documents.filter((d) => d.category === 'Agenda').sort(sortByDateAsc),
@@ -129,6 +130,31 @@ export default function PublicDocumentArchives() {
         title="Archives"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"
       />
+
+      <FluidContainer
+        flex
+        flexDirection="row"
+        gap="5px"
+        alignItems="center"
+        padding={
+          isDesktop
+            ? '18px 16px 0 16px'
+            : isTablet
+            ? '18px 36px 0 36px'
+            : '36px 72px 0 72px'
+        }
+      >
+        <Typography variant="title" weight="400" size={isMobile ? 'sm' : 'md'}>
+          Files on this page are for historic reference. If you need an
+          accessible version, please contact
+        </Typography>
+        <StyledLink
+          href="mailto:Accessibility@calstatela.edu"
+          isInverseUnderlineStyling
+        >
+          Accessibility@calstatela.edu
+        </StyledLink>
+      </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           990 & 199
