@@ -260,9 +260,15 @@ export function DocumentTable({
             <LabelCell>Actions</LabelCell>
             <ValueCell>
               <ActionButtons>
-                <ActionButton onClick={() => onEdit(doc)}>Edit</ActionButton>
+                <ActionButton type="button" onClick={() => onEdit(doc)}>
+                  Edit
+                </ActionButton>
                 {!doc.is_download_all && doc.category !== 'Calendar' && (
-                  <ActionButton variant="delete" onClick={() => onDelete(doc)}>
+                  <ActionButton
+                    type="button"
+                    variant="delete"
+                    onClick={() => onDelete(doc)}
+                  >
                     Delete
                   </ActionButton>
                 )}

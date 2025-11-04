@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Head from 'next/head';
 import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
-import { DocumentManager, Toast } from 'modules';
-import type { Category, Document, ToastMessage } from 'types/Backoffice';
+import { DocumentManager } from 'modules';
+import type { Category, Document } from 'types/Backoffice';
 import {
   getMeetingDocuments,
   createMeetingDocument,
@@ -11,6 +11,7 @@ import {
   updateMeetingDocument,
   archiveMeetingDocument,
 } from 'api';
+import { useToast } from 'context/ToastContext';
 
 function sortByDateAsc(a: Document, b: Document) {
   const da = a.date ?? '';
@@ -26,58 +27,64 @@ export default function BoardMeetingsAdmin({
   const [documents, setDocuments] = useState<Document[]>(
     [...initialDocuments].sort(sortByDateAsc),
   );
-  const [toast, setToast] = useState<ToastMessage | null>(null);
-  const toastTimerRef = useRef<number | null>(null);
 
-  const showToast = useCallback(
-    (message: string, type: 'success' | 'error') => {
-      setToast({ message, type });
-      if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = window.setTimeout(() => setToast(null), 4000);
-    },
-    [],
-  );
-
-  useEffect(() => {
-    return () => {
-      if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
-    };
-  }, []);
+  const { showToast } = useToast();
 
   const handleCreate = useCallback(
     async (doc: Omit<Document, 'id'>) => {
-      const newDoc = await createMeetingDocument(doc);
-      setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
-      showToast('Document added successfully', 'success');
+      try {
+        const newDoc = await createMeetingDocument(doc);
+        setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
+        showToast('Document added successfully', 'success');
+      } catch (err) {
+        console.error('createMeetingDocument failed', err);
+        showToast('Failed to add document', 'error');
+      }
     },
     [showToast],
   );
 
   const handleUpdate = useCallback(
     async (id: string, updates: Partial<Document>) => {
-      const updated = await updateMeetingDocument(id, updates);
-      setDocuments((prev) =>
-        prev.map((d) => (d.id === id ? updated : d)).sort(sortByDateAsc),
-      );
+      try {
+        const updated = await updateMeetingDocument(id, updates);
+        setDocuments((prev) =>
+          prev.map((d) => (d.id === id ? updated : d)).sort(sortByDateAsc),
+        );
+        showToast('Document updated successfully', 'success');
+      } catch (err) {
+        console.error('updateMeetingDocument failed', err);
+        showToast('Failed to update document', 'error');
+      }
     },
     [showToast],
   );
 
   const handleDelete = useCallback(
     async (id: string) => {
-      await deleteMeetingDocument(id);
-      setDocuments((prev) => prev.filter((d) => d.id !== id));
-      showToast('Document deleted successfully', 'success');
+      try {
+        await deleteMeetingDocument(id);
+        setDocuments((prev) => prev.filter((d) => d.id !== id));
+        showToast('Document deleted successfully', 'success');
+      } catch (err) {
+        console.error('deleteMeetingDocument failed', err);
+        showToast('Failed to delete document', 'error');
+      }
     },
     [showToast],
   );
 
   const handleArchive = useCallback(
     async (category: Category) => {
-      await archiveMeetingDocument(category);
-      const rows = await getMeetingDocuments({ isArchived: false });
-      setDocuments(rows);
-      showToast('Documents archived successfully', 'success');
+      try {
+        await archiveMeetingDocument(category);
+        const rows = await getMeetingDocuments({ isArchived: false });
+        setDocuments(rows.sort(sortByDateAsc));
+        showToast('Documents archived successfully', 'success');
+      } catch (err) {
+        console.error('archiveMeetingDocument failed', err);
+        showToast('Failed to archive documents', 'error');
+      }
     },
     [showToast],
   );
@@ -96,7 +103,6 @@ export default function BoardMeetingsAdmin({
           onArchive={handleArchive}
         />
       </BackOfficeTemplate>
-      {toast && <Toast message={toast.message} type={toast.type} />}
     </Page>
   );
 }

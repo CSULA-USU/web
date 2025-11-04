@@ -1,11 +1,11 @@
-export type Category = 'Calendar' | 'Agenda' | 'Minutes';
+export type Category = 'Agenda' | 'Minutes' | 'Calendar';
 
 export interface Document {
   id: string;
   title: string;
   url: string;
   category: Category;
-  date?: string;
+  date?: string | null;
   is_archived?: boolean;
   fy: string;
   is_download_all?: boolean;

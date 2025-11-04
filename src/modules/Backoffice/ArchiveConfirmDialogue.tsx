@@ -1,7 +1,7 @@
 import type React from 'react';
 import styled from 'styled-components';
 
-interface DeleteConfirmDialogueProps {
+interface ArchiveConfirmDialogueProps {
   title: string;
   onConfirm: () => void;
   onCancel: () => void;
@@ -107,7 +107,7 @@ export function ArchiveConfirmDialogue({
   title,
   onConfirm,
   onCancel,
-}: DeleteConfirmDialogueProps) {
+}: ArchiveConfirmDialogueProps) {
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onCancel();

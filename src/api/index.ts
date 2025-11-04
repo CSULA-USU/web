@@ -64,16 +64,6 @@ export const fetchJotform = async (id: any) => {
 
 /* --------------------------- Meeting documents DB -------------------------- */
 
-/** Normalize to YYYY-MM-DD (no TZ shift) */
-const normalizeDateISO = (input?: string | null) => {
-  if (!input) return null;
-  // Accept "YYYY-MM-DD" or any Date-parsable string; store YYYY-MM-DD
-  const justDate = input.length >= 10 ? input.slice(0, 10) : input;
-  // Basic sanity: 4-2-2 digits
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(justDate)) return justDate;
-  return justDate;
-};
-
 type GetDocsOptions = {
   category?: Category;
   fy?: string | null;
@@ -135,9 +125,32 @@ export const getDownloadAllDoc = async (
 };
 
 export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
+  // Decide if this doc turns the row into "no date" cases
+  const willBeCalendar = doc.category === 'Calendar';
+  const willBeDownloadAll = doc.is_download_all === true;
+
+  // Compute the next date only if we must (either flags require null,
+  // or the caller explicitly provided a date field)
+  let nextDate: string | null | undefined;
+
+  if (willBeCalendar || willBeDownloadAll) {
+    nextDate = null; // force null for these categories
+  } else if ('date' in doc) {
+    const raw = doc.date as unknown as string | null | undefined;
+    if (raw == null || raw === '') {
+      nextDate = null;
+    } else {
+      // your helper only accepts string/undefined, so coerce safely
+      nextDate = normalizeDateISO(raw) || null; // normalize -> '' means null
+    }
+  } else {
+    // leave undefined => don't update the column
+    nextDate = undefined;
+  }
+
   const payload = {
     ...doc,
-    date: normalizeDateISO((doc as any).date),
+    ...(nextDate !== undefined ? { date: nextDate } : {}),
   };
 
   const { data, error } = await supabase
@@ -154,9 +167,33 @@ export const updateMeetingDocument = async (
   id: string,
   updates: Partial<Document>,
 ) => {
+  // Decide if this update turns the row into "no date" cases
+  const willBeCalendar = updates.category === 'Calendar';
+  const willBeDownloadAll = updates.is_download_all === true;
+
+  // Compute the next date only if we must (either flags require null,
+  // or the caller explicitly provided a date field)
+  let nextDate: string | null | undefined;
+
+  if (willBeCalendar || willBeDownloadAll) {
+    nextDate = null; // force null for these categories
+  } else if ('date' in updates) {
+    const raw = updates.date as unknown as string | null | undefined;
+    if (raw == null || raw === '') {
+      nextDate = null;
+    } else {
+      // your helper only accepts string/undefined, so coerce safely
+      nextDate = normalizeDateISO(raw) || null; // normalize -> '' means null
+    }
+  } else {
+    // leave undefined => don't update the column
+    nextDate = undefined;
+  }
+
+  // Build payload without accidentally sending undefined fields
   const payload = {
     ...updates,
-    date: normalizeDateISO((updates as any).date ?? undefined),
+    ...(nextDate !== undefined ? { date: nextDate } : {}),
   };
 
   const { data, error } = await supabase
@@ -197,6 +234,7 @@ export const deleteMeetingDocument = async (id: string) => {
 /* ------------------------------ Pages & CMS ------------------------------ */
 
 import { SupaPage, SupaSection } from 'types';
+import { normalizeDateISO } from 'utils/dates';
 
 export const fetchPages = async (): Promise<SupaPage[]> => {
   const res = await fetch('/api/pages');
