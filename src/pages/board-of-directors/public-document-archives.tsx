@@ -90,12 +90,13 @@ export default function PublicDocumentArchives() {
     () =>
       documents
         .filter((d) => d.category === 'Calendar' && !d.is_download_all)
-        .map((d) => ({ href: d.url, children: d.title })),
+        .map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [documents],
   );
 
   const toLinks = useCallback(
-    (docs: Document[]) => docs.map((d) => ({ href: d.url, children: d.title })),
+    (docs: Document[]) =>
+      docs.map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [],
   );
 
