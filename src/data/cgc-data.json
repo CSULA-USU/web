@@ -71,7 +71,7 @@
       "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: Friday, May 16", "Time: 7:30 PM to 9:00 PM"],
+        ["Date: Friday, May 15", "Time: TBD"],
         "Location: University Gym",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
@@ -91,7 +91,7 @@
       "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
-        ["Date: Saturday, May 17", "Time: 3:00 PM to 4:30 PM"],
+        ["Date: Saturday, May 16", "Time: TBD"],
         "Location: University Gym",
         "Contact: Imani Thomas, Pan African Student Resource Center Coordinator",
         "Email: ithoma10@calstatela.edu"
@@ -108,13 +108,13 @@
       "id": "pasrc"
     },
     {
-      "title": "IndigiGrad Celebration",
+      "title": "Native Grad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: Friday, May 16", "Time: 10:30 AM to 12:00 PM"],
+        ["Date: Friday, May 15", "Time: TBD"],
         "Location: U-SU Theater",
-        "Contact: Dr. Christopher Jackson, Cross Cultural Centers Director",
-        "Email: cjacks38@calstatela.edu"
+        "Contact: Fabi Avina, Center for Student Involvement Director",
+        "Email: favina@calstatela.edu"
       ],
       "button": {
         "buttonLink": "https://drive.google.com/file/d/19J2Q9p7-rOucyZKYEUw6tZv8Ka3KFCoL/preview",
@@ -131,10 +131,10 @@
       "title": "Nuestra Grad Celebration",
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "copy": [
-        ["Date: Saturday, May 17", "Time: 11:00 AM to 12:30 PM"],
+        ["Date: Saturday, May 16", "Time: TBD"],
         "Location: University Gym",
-        "Contact: Valerie Tellez, Chicanx Latinx Student Resource Center Coordinator",
-        "Email: vtelle10@calstatela.edu"
+        "Contact: Emily Urrutia, Chicanx Latinx Student Resource Center Coordinator",
+        "Email: eurruti8@calstatela.edu"
       ],
       "button": {
         "buttonLink": "https://drive.google.com/file/d/1GnG2nNUGMgCFSTRF9xQ9m07Q9y9Z41eS/preview",
@@ -151,7 +151,7 @@
       "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: Friday, May 16", "Time: 4:30 PM to 6:00 PM"],
+        ["Date: Friday, May 15", "Time: TBD"],
         "Location: University Gym",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
