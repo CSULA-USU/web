@@ -27,7 +27,7 @@ export default function App({
         <ToastProvider>
           <RecoilRoot>
             <Head>
-              <title>University-Student Union</title>
+              <title>University&ndash;Student Union</title>
               <meta
                 name="author"
                 content="The University Student Union"

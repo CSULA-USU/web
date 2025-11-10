@@ -16,7 +16,7 @@ export default function Custom404() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union</title>
+        <title>University&ndash;Student Union</title>
       </Head>
       <FluidContainer
         flex

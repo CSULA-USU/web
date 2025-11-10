@@ -185,11 +185,6 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
     transform: translateY(1px);
   }
 `;
-interface DocumentModalProps {
-  document: Document | null;
-  onClose: () => void;
-  onSubmit: (data: Omit<Document, 'id'>) => void;
-}
 
 export function DocumentModal({
   document,
