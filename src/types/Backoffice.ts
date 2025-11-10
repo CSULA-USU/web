@@ -15,3 +15,12 @@ export interface ToastMessage {
   message: string;
   type: 'success' | 'error';
 }
+
+export type GetDocsOptions = {
+  category?: Category;
+  fy?: string | null;
+  isArchived?: boolean;
+  isDownloadAll?: boolean;
+  limit?: number;
+  order?: 'asc' | 'desc';
+};

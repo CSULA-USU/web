@@ -3,7 +3,7 @@ import { StatusType } from 'atoms';
 import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';
 import { SetterOrUpdater } from 'recoil';
-import type { Document, Category } from 'types/Backoffice';
+import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
 
 export * from './supabase';
 
@@ -63,15 +63,6 @@ export const fetchJotform = async (id: any) => {
 };
 
 /* --------------------------- Meeting documents DB -------------------------- */
-
-type GetDocsOptions = {
-  category?: Category;
-  fy?: string | null;
-  isArchived?: boolean;
-  isDownloadAll?: boolean;
-  limit?: number;
-  order?: 'asc' | 'desc';
-};
 
 /**
  * Fetch meeting documents with optional filters.
