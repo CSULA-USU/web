@@ -213,6 +213,7 @@ export function DocumentTable({
                 <TableDataCell>
                   <ActionButtons>
                     <ActionButton
+                      type="button"
                       onClick={() => onEdit(doc)}
                       aria-label={`Edit ${doc.title}`}
                     >
@@ -220,6 +221,7 @@ export function DocumentTable({
                     </ActionButton>
                     {!doc.is_download_all && doc.category !== 'Calendar' && (
                       <ActionButton
+                        type="button"
                         variant="delete"
                         onClick={() => onDelete(doc)}
                         aria-label={`Delete ${doc.title}`}
@@ -260,12 +262,12 @@ export function DocumentTable({
             <LabelCell>Actions</LabelCell>
             <ValueCell>
               <ActionButtons>
-                <ActionButton type="submit" onClick={() => onEdit(doc)}>
+                <ActionButton type="button" onClick={() => onEdit(doc)}>
                   Edit
                 </ActionButton>
                 {!doc.is_download_all && doc.category !== 'Calendar' && (
                   <ActionButton
-                    type="submit"
+                    type="button"
                     variant="delete"
                     onClick={() => onDelete(doc)}
                   >
