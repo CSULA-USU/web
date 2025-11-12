@@ -56,3 +56,24 @@ export const fetchJotform = async (id: any) => {
     console.error('Error fetching jotform data:', error);
   }
 };
+
+export const postJotform = async (formData: any) => {
+  try {
+    const res = await fetch('/api/jotformContact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || 'Failed to submit form');
+    }
+
+    const result = await res.json();
+    return result;
+  } catch (error) {
+    console.error('Error submitting to Jotform:', error);
+    throw error;
+  }
+};
