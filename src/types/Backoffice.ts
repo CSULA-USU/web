@@ -7,7 +7,7 @@ export interface Document {
   category: Category;
   date?: string | null;
   is_archived?: boolean;
-  fy: string;
+  fy?: string | null;
   is_download_all?: boolean;
 }
 

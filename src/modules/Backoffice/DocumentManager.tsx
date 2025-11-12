@@ -5,8 +5,8 @@ import type { Document, Category } from 'types/Backoffice';
 import {
   DocumentTable,
   DocumentModal,
-  ArchiveConfirmDialogue,
-  DeleteConfirmDialogue,
+  ArchiveConfirmDialog,
+  DeleteConfirmDialog,
 } from 'modules';
 import { IoMdDownload } from 'react-icons/io';
 import { IoDocumentSharp } from 'react-icons/io5';
@@ -238,7 +238,7 @@ export function DocumentManager({
       )}
 
       {deleteConfirm && (
-        <DeleteConfirmDialogue
+        <DeleteConfirmDialog
           title={deleteConfirm.title}
           onConfirm={handleDeleteConfirm}
           onCancel={() => setDeleteConfirm(null)}
@@ -246,7 +246,7 @@ export function DocumentManager({
       )}
 
       {archiveConfirm && (
-        <ArchiveConfirmDialogue
+        <ArchiveConfirmDialog
           title={archiveConfirm.category}
           onConfirm={handleArchiveConfirm}
           onCancel={() => setArchiveConfirm(null)}

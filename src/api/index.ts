@@ -4,6 +4,8 @@ import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';
 import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
+import { SupaPage, SupaSection } from 'types';
+import { normalizeDateISO } from 'utils/dates';
 
 export * from './supabase';
 
@@ -223,9 +225,6 @@ export const deleteMeetingDocument = async (id: string) => {
 };
 
 /* ------------------------------ Pages & CMS ------------------------------ */
-
-import { SupaPage, SupaSection } from 'types';
-import { normalizeDateISO } from 'utils/dates';
 
 export const fetchPages = async (): Promise<SupaPage[]> => {
   const res = await fetch('/api/pages');
