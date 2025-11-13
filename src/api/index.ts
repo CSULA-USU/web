@@ -11,8 +11,6 @@ export * from './supabase';
 
 /* --------------------------------- Helpers ---------------------------------- */
 
-// Supabase helpers (super small + flexible)
-
 // Use when you expect a row or rows (non-null on success)
 async function handleSupa<T>(q: any): Promise<T> {
   const { data, error } = await q;
