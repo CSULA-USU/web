@@ -9,6 +9,30 @@ import { normalizeDateISO } from 'utils/dates';
 
 export * from './supabase';
 
+/* --------------------------------- Helpers ---------------------------------- */
+
+// Supabase helpers (super small + flexible)
+
+// Use when you expect a row or rows (non-null on success)
+async function handleSupa<T>(q: any): Promise<T> {
+  const { data, error } = await q;
+  if (error) throw error;
+  return data as T;
+}
+
+// Use when you expect possibly null (e.g., .maybeSingle())
+async function handleSupaMaybe<T>(q: any): Promise<T | null> {
+  const { data, error } = await q;
+  if (error) throw error;
+  return (data ?? null) as T | null;
+}
+
+// Use when you don't care about returned data (e.g., delete)
+async function handleSupaVoid(q: any): Promise<void> {
+  const { error } = await q;
+  if (error) throw error;
+}
+
 /* ------------------------------ External APIs ------------------------------ */
 
 export const fetchEvents = async (
@@ -70,9 +94,7 @@ export const fetchJotform = async (id: any) => {
  * Fetch meeting documents with optional filters.
  * Defaults to newest first (date desc). Public pages can call this safely (anon client + RLS select).
  */
-export const getMeetingDocuments = async (
-  opts: GetDocsOptions = {},
-): Promise<Document[]> => {
+export const getMeetingDocuments = async (opts: GetDocsOptions = {}) => {
   const {
     category,
     fy,
@@ -81,40 +103,35 @@ export const getMeetingDocuments = async (
     limit,
     order = 'desc',
   } = opts;
-
-  let query = supabase
+  let q = supabase
     .from('meeting_documents')
     .select('id, title, url, date, category, fy, is_archived, is_download_all')
     .order('date', { ascending: order === 'asc' });
 
-  if (category) query = query.eq('category', category);
-  if (fy !== undefined) {
-    if (fy === null) query = query.is('fy', null);
-    else query = query.eq('fy', fy);
-  }
-  if (typeof isArchived === 'boolean')
-    query = query.eq('is_archived', isArchived);
+  if (category) q = q.eq('category', category);
+  if (fy !== undefined) q = fy === null ? q.is('fy', null) : q.eq('fy', fy);
+  if (typeof isArchived === 'boolean') q = q.eq('is_archived', isArchived);
   if (typeof isDownloadAll === 'boolean')
-    query = query.eq('is_download_all', isDownloadAll);
-  if (typeof limit === 'number') query = query.limit(limit);
+    q = q.eq('is_download_all', isDownloadAll);
+  if (typeof limit === 'number') q = q.limit(limit);
 
-  const { data } = await query;
-  return (data ?? []) as Document[];
+  return await handleSupa<Document[]>(q);
 };
 
 export const getDownloadAllDoc = async (
   category: Category,
   opts?: { isArchived?: boolean },
-): Promise<Document | null> => {
+) => {
   const isArchived = opts?.isArchived ?? false;
-  const { data } = await supabase
-    .from('meeting_documents')
-    .select('id, title, url, category, is_download_all, is_archived')
-    .eq('category', category)
-    .eq('is_download_all', true)
-    .eq('is_archived', isArchived)
-    .maybeSingle();
-  return data as Document | null;
+  return await handleSupaMaybe<Document>(
+    supabase
+      .from('meeting_documents')
+      .select('id, title, url, category, is_download_all, is_archived')
+      .eq('category', category)
+      .eq('is_download_all', true)
+      .eq('is_archived', isArchived)
+      .maybeSingle(),
+  );
 };
 
 export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
@@ -146,14 +163,9 @@ export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
     ...(nextDate !== undefined ? { date: nextDate } : {}),
   };
 
-  const { data, error } = await supabase
-    .from('meeting_documents')
-    .insert(payload)
-    .select()
-    .single();
-
-  if (error) throw error;
-  return data as Document;
+  return await handleSupa<Document>(
+    supabase.from('meeting_documents').insert(payload).select().single(),
+  );
 };
 
 export const updateMeetingDocument = async (
@@ -189,39 +201,33 @@ export const updateMeetingDocument = async (
     ...(nextDate !== undefined ? { date: nextDate } : {}),
   };
 
-  const { data, error } = await supabase
-    .from('meeting_documents')
-    .update(payload)
-    .eq('id', id)
-    .select()
-    .single();
-
-  if (error) throw error;
-  return data as Document;
+  return await handleSupa<Document>(
+    supabase
+      .from('meeting_documents')
+      .update(payload)
+      .eq('id', id)
+      .select()
+      .single(),
+  );
 };
 
 export const archiveMeetingDocument = async (category: Category) => {
-  const payload = {
-    is_archived: true,
-  };
+  const payload = { is_archived: true };
 
-  const { data, error } = await supabase
-    .from('meeting_documents')
-    .update(payload)
-    .eq('category', category)
-    .neq('is_download_all', true)
-    .select();
-
-  if (error) throw error;
-  return data;
+  return await handleSupa<Document[]>(
+    supabase
+      .from('meeting_documents')
+      .update(payload)
+      .eq('category', category)
+      .neq('is_download_all', true)
+      .select(),
+  );
 };
 
 export const deleteMeetingDocument = async (id: string) => {
-  const { error } = await supabase
-    .from('meeting_documents')
-    .delete()
-    .eq('id', id);
-  if (error) throw error;
+  await handleSupaVoid(
+    supabase.from('meeting_documents').delete().eq('id', id),
+  );
 };
 
 /* ------------------------------ Pages & CMS ------------------------------ */
