@@ -21,8 +21,8 @@ const fontClassByName: Record<string, string> = {
   Bitter: '',
   Merriweather: merriweather.className,
   Montserrat: '',
-  'Akzidenz-Grotesk': '', // Use system Roboto
-  Roboto: '', // Roboto is loaded via Next.js font
+  'Akzidenz-Grotesk': 'use-roboto', // Use system Roboto
+  Roboto: 'use-roboto', // Roboto is loaded via Next.js font
 };
 
 const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
@@ -35,9 +35,13 @@ const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
     const className = fontClassByName[fontName];
 
     // For Next.js fonts (Merriweather, Roboto)
-    if (className) {
+    if (className && className !== 'use-roboto') {
       // Don't use CSS variables, use the className directly
       return ''; // The className will be applied via the className prop
+    }
+
+    if (className === 'use-roboto') {
+      return `font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`;
     }
 
     // For CSS-loaded fonts (Montserrat, Bitter)
@@ -59,12 +63,16 @@ const SampleH3 = styled.h3<{
     const className = fontClassByName[fontName];
 
     // For Next.js fonts (Merriweather, Roboto)
-    if (className) {
+    if (className && className !== 'use-roboto') {
       // Don't use CSS variables, use the className directly
       return ''; // The className will be applied via the className prop
     }
 
-    // For CSS-loaded fonts (Montserrat, Bitter) and system fonts (Roboto)
+    if (className === 'use-roboto') {
+      return `font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`;
+    }
+
+    // For CSS-loaded fonts (Montserrat, Bitter)
     return `font-family: '${fontName}', Arial, sans-serif;`;
   }}
 `;
