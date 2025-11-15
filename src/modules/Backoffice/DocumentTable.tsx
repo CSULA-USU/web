@@ -192,6 +192,7 @@ export function DocumentTable({
                     <StyledLink
                       href={doc.url}
                       aria-label={`Open ${doc.title} in new tab`}
+                      isExternalLink
                     >
                       {doc.url.length > 40
                         ? isDesktop

@@ -240,7 +240,19 @@ export function DocumentModal({
     const uiDate = normalizeDateISO(formData.date ?? '');
 
     try {
-      new URL(formData.url);
+      const urlObj = new URL(formData.url);
+
+      // Require HTTPS
+      if (urlObj.protocol !== 'https:') {
+        showToast('Please use a secure HTTPS URL.', 'error');
+        return;
+      }
+
+      // Ensure valid hostname
+      if (!urlObj.hostname || urlObj.hostname.length < 3) {
+        showToast('Please enter a valid URL with a proper domain.', 'error');
+        return;
+      }
     } catch {
       showToast('Please enter a valid URL.', 'error');
       return;
