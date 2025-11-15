@@ -98,7 +98,14 @@ export const getMeetingDocuments = async (
     query = query.eq('is_download_all', isDownloadAll);
   if (typeof limit === 'number') query = query.limit(limit);
 
-  const { data } = await query;
+  const { data, error } = await query;
+
+  if (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch meeting documents:', error);
+    throw error; // Let caller handle it
+  }
+
   return (data ?? []) as Document[];
 };
 
@@ -107,13 +114,20 @@ export const getDownloadAllDoc = async (
   opts?: { isArchived?: boolean },
 ): Promise<Document | null> => {
   const isArchived = opts?.isArchived ?? false;
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('meeting_documents')
     .select('id, title, url, category, is_download_all, is_archived')
     .eq('category', category)
     .eq('is_download_all', true)
     .eq('is_archived', isArchived)
     .maybeSingle();
+
+  if (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch download all document:', error);
+    throw error;
+  }
+
   return data as Document | null;
 };
 
