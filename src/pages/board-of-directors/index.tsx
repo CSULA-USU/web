@@ -358,7 +358,7 @@ export default function BoardOfDirectors() {
       >
         <Typography>
           The Board of Directors is the governing board for the{' '}
-          <NonBreakingSpan>University-Student Union</NonBreakingSpan>,
+          <NonBreakingSpan>University&ndash;Student Union</NonBreakingSpan>,
           consisting of 8 student directors and 11
           faculty/staff/administrator/alumni members who help shape policy,
           structure and are responsible for all financial & legal
