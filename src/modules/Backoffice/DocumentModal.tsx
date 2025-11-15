@@ -147,6 +147,11 @@ const ModalFooter = styled.div`
   gap: 12px;
 `;
 
+const RedAsterisk = styled.span`
+  color: red;
+  margin-left: 2px;
+`;
+
 const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
   padding: 10px 20px;
   border: none;
@@ -270,7 +275,9 @@ export function DocumentModal({
 
         <ModalBody onSubmit={handleSubmit}>
           <FormGroup>
-            <Label htmlFor="title">Document Title *</Label>
+            <Label htmlFor="title">
+              Document Title<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="title"
               type="text"
@@ -284,7 +291,9 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="url">Link URL *</Label>
+            <Label htmlFor="url">
+              Link URL<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="url"
               type="url"
@@ -299,7 +308,9 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="category">Category *</Label>
+            <Label htmlFor="category">
+              Category<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Select
               id="category"
               value={formData.category}
@@ -321,7 +332,7 @@ export function DocumentModal({
           {formData.category !== 'Calendar' && !formData.is_download_all && (
             <FormGroup>
               <Label htmlFor="date">
-                Meeting Date * (date the meeting occurred)
+                Meeting Date* (date the meeting occurred)
               </Label>
               <Input
                 id="date"
