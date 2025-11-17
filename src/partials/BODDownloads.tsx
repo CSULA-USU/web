@@ -1,6 +1,7 @@
 import {
   Divider,
   FluidContainer,
+  Loading,
   NonBreakingSpan,
   Typography,
   TypeProps,
@@ -22,6 +23,8 @@ const typographyProps = {
 
 export const BODDownloads = () => {
   const [documents, setDocuments] = useState<Document[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { isMobile, isDesktop } = useBreakpoint();
 
   const sortByDateAsc = (a: Document, b: Document) =>
@@ -30,31 +33,29 @@ export const BODDownloads = () => {
   const agendas = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Agenda' && !d.is_download_all)
+        .filter((d) => d.category === 'Agenda' && !d.isDownloadAll)
         .sort(sortByDateAsc),
     [documents],
   );
   const calendarLink = useMemo(
-    () =>
-      documents.find((d) => d.category === 'Calendar' && !d.is_download_all),
+    () => documents.find((d) => d.category === 'Calendar' && !d.isDownloadAll),
     [documents],
   );
   const minutes = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Minutes' && !d.is_download_all)
+        .filter((d) => d.category === 'Minutes' && !d.isDownloadAll)
         .sort(sortByDateAsc),
     [documents],
   );
   const agendaDownloadAll = useMemo(
     () =>
-      documents.find((d) => d.category === 'Agenda' && d.is_download_all) ??
-      null,
+      documents.find((d) => d.category === 'Agenda' && d.isDownloadAll) ?? null,
     [documents],
   );
   const minutesDownloadAll = useMemo(
     () =>
-      documents.find((d) => d.category === 'Minutes' && d.is_download_all) ??
+      documents.find((d) => d.category === 'Minutes' && d.isDownloadAll) ??
       null,
     [documents],
   );
@@ -65,19 +66,56 @@ export const BODDownloads = () => {
 
   useEffect(() => {
     let alive = true;
+
     (async () => {
-      const rows = await getMeetingDocuments({
-        isArchived: false,
-        order: 'asc',
-      });
-      if (!alive) return;
-      const sorted = [...rows].sort(sortByDateAsc);
-      setDocuments(sorted);
+      try {
+        setLoading(true);
+        setError(null);
+
+        const rows = await getMeetingDocuments({
+          isArchived: false,
+          order: 'asc',
+        });
+
+        if (!alive) return;
+
+        const sorted = [...rows].sort(sortByDateAsc);
+        setDocuments(sorted);
+      } catch (error) {
+        if (!alive) return;
+
+        console.error('Failed to fetch meeting documents:', error);
+        setError('Unable to load documents. Please refresh the page.');
+      } finally {
+        if (alive) {
+          setLoading(false);
+        }
+      }
     })();
+
     return () => {
       alive = false;
     };
   }, []);
+
+  if (loading) {
+    return (
+      <FluidContainer padding={isDesktop ? '0 36px 24px' : '0 72px 36px'}>
+        <Loading size="lg" load={loading} />
+      </FluidContainer>
+    );
+  }
+
+  if (error) {
+    return (
+      <FluidContainer padding={isDesktop ? '0 36px 24px' : '0 72px 36px'}>
+        <Typography variant="span" size="md">
+          {error}
+        </Typography>
+      </FluidContainer>
+    );
+  }
+
   return (
     <FluidContainer padding={isDesktop ? '0 36px 24px' : '0 72px 36px'}>
       <Typography {...typographyProps} size={isMobile ? 'lg' : '2xl'}>

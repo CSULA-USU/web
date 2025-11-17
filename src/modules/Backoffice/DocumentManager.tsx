@@ -88,11 +88,11 @@ export function DocumentManager({
   } | null>(null);
 
   const filteredDocuments = documents.filter(
-    (doc) => doc.category === selectedCategory && !doc.is_download_all,
+    (doc) => doc.category === selectedCategory && !doc.isDownloadAll,
   );
 
   const downloadAllLinks = documents.filter(
-    (doc) => doc.is_download_all && doc.category === selectedCategory,
+    (doc) => doc.isDownloadAll && doc.category === selectedCategory,
   );
 
   const handleEdit = (doc: Document) => {

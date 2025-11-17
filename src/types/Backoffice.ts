@@ -6,9 +6,9 @@ export interface Document {
   url: string;
   category: Category;
   date?: string | null;
-  is_archived?: boolean;
+  isArchived?: boolean;
   fy?: string | null;
-  is_download_all?: boolean;
+  isDownloadAll?: boolean;
 }
 
 export interface ToastMessage {

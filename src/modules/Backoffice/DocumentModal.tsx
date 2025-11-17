@@ -147,6 +147,11 @@ const ModalFooter = styled.div`
   gap: 12px;
 `;
 
+const RedAsterisk = styled.span`
+  color: red;
+  margin-left: 2px;
+`;
+
 const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
   padding: 10px 20px;
   border: none;
@@ -202,7 +207,7 @@ export function DocumentModal({
         : initialCategory,
     date: '',
     fy: '',
-    is_download_all: false,
+    isDownloadAll: false,
   });
 
   useEffect(() => {
@@ -213,7 +218,7 @@ export function DocumentModal({
         category: document.category,
         date: normalizeDateISO(document.date ?? ''),
         fy: document.fy,
-        is_download_all: document.is_download_all,
+        isDownloadAll: document.isDownloadAll,
       });
     } else {
       setFormData({
@@ -222,7 +227,7 @@ export function DocumentModal({
         category: !initialCategory ? 'Agenda' : initialCategory,
         date: '',
         fy: '',
-        is_download_all: false,
+        isDownloadAll: false,
       });
     }
   }, [document, initialCategory]);
@@ -230,20 +235,32 @@ export function DocumentModal({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const isCalendar = formData.category === 'Calendar';
-    const isDownloadAll = !!formData.is_download_all;
+    const isDownloadAll = !!formData.isDownloadAll;
     const requiresDate = !isCalendar && !isDownloadAll;
     const uiDate = normalizeDateISO(formData.date ?? '');
 
     try {
-      new URL(formData.url);
+      const urlObj = new URL(formData.url);
+
+      // Require HTTPS
+      if (urlObj.protocol !== 'https:') {
+        showToast('Please use a secure HTTPS URL', 'error');
+        return;
+      }
+
+      // Ensure valid hostname
+      if (!urlObj.hostname || urlObj.hostname.length < 3) {
+        showToast('Please enter a valid URL with a proper domain', 'error');
+        return;
+      }
     } catch {
-      showToast('Please enter a valid URL.', 'error');
+      showToast('Please enter a valid URL', 'error');
       return;
     }
 
     const isIsoDate = /^\d{4}-\d{2}-\d{2}$/.test(uiDate);
     if (requiresDate && !isIsoDate) {
-      showToast('Please select the meeting date (YYYY-MM-DD).', 'error');
+      showToast('Please select the meeting date (YYYY-MM-DD)', 'error');
       return;
     }
 
@@ -270,7 +287,9 @@ export function DocumentModal({
 
         <ModalBody onSubmit={handleSubmit}>
           <FormGroup>
-            <Label htmlFor="title">Document Title *</Label>
+            <Label htmlFor="title">
+              Document Title<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="title"
               type="text"
@@ -284,7 +303,9 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="url">Link URL *</Label>
+            <Label htmlFor="url">
+              Link URL<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="url"
               type="url"
@@ -299,7 +320,9 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="category">Category *</Label>
+            <Label htmlFor="category">
+              Category<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Select
               id="category"
               value={formData.category}
@@ -318,10 +341,10 @@ export function DocumentModal({
             </Select>
           </FormGroup>
 
-          {formData.category !== 'Calendar' && !formData.is_download_all && (
+          {formData.category !== 'Calendar' && !formData.isDownloadAll && (
             <FormGroup>
               <Label htmlFor="date">
-                Meeting Date * (date the meeting occurred)
+                Meeting Date* (date the meeting occurred)
               </Label>
               <Input
                 id="date"

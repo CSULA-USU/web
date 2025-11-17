@@ -77,11 +77,11 @@ export default function PublicDocumentArchives() {
   );
 
   const agendasNoAll = useMemo(
-    () => agendas.filter((d) => !d.is_download_all).sort(sortByDateAsc),
+    () => agendas.filter((d) => !d.isDownloadAll).sort(sortByDateAsc),
     [agendas],
   );
   const minutesNoAll = useMemo(
-    () => minutes.filter((d) => !d.is_download_all).sort(sortByDateAsc),
+    () => minutes.filter((d) => !d.isDownloadAll).sort(sortByDateAsc),
     [minutes],
   );
 
@@ -90,7 +90,7 @@ export default function PublicDocumentArchives() {
   const calendarLinks = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Calendar' && !d.is_download_all)
+        .filter((d) => d.category === 'Calendar' && !d.isDownloadAll)
         .map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [documents],
   );

@@ -150,9 +150,7 @@ export function DocumentTable({
   if (documents.length === 0) {
     const hasCalendarDownloadAll =
       selectedCategory === 'Calendar' &&
-      documents.some(
-        (doc) => doc.category === 'Calendar' && doc.is_download_all,
-      );
+      documents.some((doc) => doc.category === 'Calendar' && doc.isDownloadAll);
 
     if (selectedCategory !== 'Calendar' || !hasCalendarDownloadAll) {
       return (
@@ -192,6 +190,7 @@ export function DocumentTable({
                     <StyledLink
                       href={doc.url}
                       aria-label={`Open ${doc.title} in new tab`}
+                      isExternalLink
                     >
                       {doc.url.length > 40
                         ? isDesktop
@@ -219,7 +218,7 @@ export function DocumentTable({
                     >
                       Edit
                     </ActionButton>
-                    {!doc.is_download_all && doc.category !== 'Calendar' && (
+                    {!doc.isDownloadAll && doc.category !== 'Calendar' && (
                       <ActionButton
                         type="button"
                         variant="delete"
@@ -265,7 +264,7 @@ export function DocumentTable({
                 <ActionButton type="button" onClick={() => onEdit(doc)}>
                   Edit
                 </ActionButton>
-                {!doc.is_download_all && doc.category !== 'Calendar' && (
+                {!doc.isDownloadAll && doc.category !== 'Calendar' && (
                   <ActionButton
                     type="button"
                     variant="delete"

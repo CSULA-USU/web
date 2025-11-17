@@ -134,7 +134,7 @@ export const getDownloadAllDoc = async (
 export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
   // Decide if this doc turns the row into "no date" cases
   const willBeCalendar = doc.category === 'Calendar';
-  const willBeDownloadAll = doc.is_download_all === true;
+  const willBeDownloadAll = doc.isDownloadAll === true;
 
   // Compute the next date only if we must (either flags require null,
   // or the caller explicitly provided a date field)
@@ -171,7 +171,7 @@ export const updateMeetingDocument = async (
 ) => {
   // Decide if this update turns the row into "no date" cases
   const willBeCalendar = updates.category === 'Calendar';
-  const willBeDownloadAll = updates.is_download_all === true;
+  const willBeDownloadAll = updates.isDownloadAll === true;
 
   // Compute the next date only if we must (either flags require null,
   // or the caller explicitly provided a date field)
