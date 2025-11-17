@@ -132,7 +132,7 @@ export default function GraphicsRequests() {
         })
         .catch(() => {
           console.log('Failed to fetch Graffix Requests.');
-          // router.push('/backoffice/graffix-requests');
+          // router.push('/backoffice/dashboard');
         })
         .finally(() => {
           setLoading(false);

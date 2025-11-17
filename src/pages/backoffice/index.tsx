@@ -41,10 +41,10 @@ export default function Backoffice() {
         <Typography as="h3" variant="label">
           Graphics Requests:{' '}
           <Link
-            href="/backoffice/graffix-requests"
+            href="/backoffice/dashboard"
             style={{ textDecoration: 'underline', color: 'blue' }}
           >
-            /backoffice/graffix&ndash;requests
+            /backoffice/dashboard
           </Link>
         </Typography>
         <Button onClick={() => signOut()}>Sign Out</Button>

@@ -15,14 +15,14 @@ export default function GraphicsRequests() {
           Hi! This page has been moved to:
         </Typography>
         <Link
-          href={`/backoffice/graffix-requests`}
+          href={`/backoffice/dashboard`}
           style={{
             textDecoration: 'underline',
             marginTop: '1rem',
             display: 'block',
           }}
         >
-          https://www.calstatela.edu/backoffice/graffix-requests
+          https://www.calstatela.edu/backoffice/dashboard
         </Link>
       </FluidContainer>
     </Page>
