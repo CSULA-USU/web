@@ -76,6 +76,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   }
   @media (max-width: 540px) {
     min-height: 272px;
+    margin: 0px auto ${Spaces.md};
   }
   @media (max-width: 320px) {
     min-height: 240px;
