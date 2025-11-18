@@ -132,10 +132,6 @@ export default function PublicDocumentArchives() {
       />
 
       <FluidContainer
-        flex
-        flexDirection="row"
-        gap="5px"
-        alignItems="center"
         padding={
           isDesktop
             ? '18px 16px 0 16px'
@@ -146,14 +142,14 @@ export default function PublicDocumentArchives() {
       >
         <Typography variant="title" weight="400" size={isMobile ? 'sm' : 'md'}>
           Files on this page are for historic reference. If you need an
-          accessible version, please contact
+          accessible version, please contact{' '}
+          <StyledLink
+            href="mailto:Accessibility@calstatela.edu"
+            isInverseUnderlineStyling
+          >
+            Accessibility@calstatela.edu
+          </StyledLink>
         </Typography>
-        <StyledLink
-          href="mailto:Accessibility@calstatela.edu"
-          isInverseUnderlineStyling
-        >
-          Accessibility@calstatela.edu
-        </StyledLink>
       </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
