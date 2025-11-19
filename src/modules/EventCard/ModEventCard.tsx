@@ -76,6 +76,7 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   }
   @media (max-width: 540px) {
     min-height: 272px;
+    margin: 0px auto ${Spaces.md};
   }
   @media (max-width: 320px) {
     min-height: 240px;
@@ -96,6 +97,10 @@ const EventContainer = styled.div`
 flex;
 flex-direction: column;
 width: 1080px;
+@media (max-width: 1100px) and (min-width: 600px) {
+  midth: 100%;
+  padding: 0 18px;
+}
 `;
 
 const EventDetails = styled.div`
@@ -149,6 +154,7 @@ const MobileDetails = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 0 10px;
 `;
 
 const MobileRight = styled.div`
@@ -164,7 +170,10 @@ const InfoContainer = styled.div`
 
 const MobileBottom = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 5px;
 `;
 
 const HeroEventDetailsSkeleton = () => {
@@ -345,7 +354,7 @@ export const ModEventCard = ({
                 <Button
                   onClick={() => selectEvent(event)}
                   variant="transparent"
-                  padding="500px"
+                  padding="0"
                 >
                   <BsInfoCircle
                     aria-label="Learn More"
