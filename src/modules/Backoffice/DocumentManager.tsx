@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { FluidContainer, Typography, Select, Button } from 'components';
-import type { Document, Category } from 'types/Backoffice';
+import type { BODMeetingDocs, Category } from 'types/Backoffice';
 import {
   DocumentTable,
   DocumentModal,
@@ -12,9 +12,9 @@ import { IoMdDownload } from 'react-icons/io';
 import { IoDocumentSharp } from 'react-icons/io5';
 
 interface DocumentManagerProps {
-  documents: Document[];
-  onCreate: (doc: Omit<Document, 'id'>) => void;
-  onUpdate: (id: string, updates: Partial<Document>) => void;
+  meetingDocs: BODMeetingDocs[];
+  onCreate: (doc: Omit<BODMeetingDocs, 'id'>) => void;
+  onUpdate: (id: string, updates: Partial<BODMeetingDocs>) => void;
   onDelete: (id: string) => void;
   onArchive: (category: Category) => void;
 }
@@ -70,7 +70,7 @@ export const categoryLabels: Record<Category, string> = {
 };
 
 export function DocumentManager({
-  documents,
+  meetingDocs,
   onCreate,
   onUpdate,
   onDelete,
@@ -79,7 +79,9 @@ export function DocumentManager({
   const [selectedCategory, setSelectedCategory] =
     useState<Category>('Calendar');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingDocument, setEditingDocument] = useState<Document | null>(null);
+  const [editingDocument, setEditingDocument] = useState<BODMeetingDocs | null>(
+    null,
+  );
   const [deleteConfirm, setDeleteConfirm] = useState<{
     id: string;
     title: string;
@@ -88,20 +90,20 @@ export function DocumentManager({
     category: Category;
   } | null>(null);
 
-  const filteredDocuments = documents.filter(
-    (doc) => doc.category === selectedCategory && !doc.is_download_all,
+  const filteredDocuments = meetingDocs.filter(
+    (doc) => doc.category === selectedCategory && !doc.isDownloadAll,
   );
 
-  const downloadAllLinks = documents.filter(
-    (doc) => doc.is_download_all && doc.category === selectedCategory,
+  const downloadAllLinks = meetingDocs.filter(
+    (doc) => doc.isDownloadAll && doc.category === selectedCategory,
   );
 
-  const handleEdit = (doc: Document) => {
+  const handleEdit = (doc: BODMeetingDocs) => {
     setEditingDocument(doc);
     setIsModalOpen(true);
   };
 
-  const handleDeleteClick = (doc: Document) => {
+  const handleDeleteClick = (doc: BODMeetingDocs) => {
     setDeleteConfirm({ id: doc.id, title: doc.title });
   };
 
@@ -128,7 +130,7 @@ export function DocumentManager({
     setEditingDocument(null);
   };
 
-  const handleModalSubmit = (data: Omit<Document, 'id'>) => {
+  const handleModalSubmit = (data: Omit<BODMeetingDocs, 'id'>) => {
     if (editingDocument) {
       onUpdate(editingDocument.id, data);
     } else {
@@ -189,6 +191,7 @@ export function DocumentManager({
             </Button>
           </Controls>
         </SectionHeader>
+
         <FluidContainer padding="0" flex flexDirection="column" gap="24px">
           <FluidContainer
             padding="0"
@@ -202,12 +205,14 @@ export function DocumentManager({
               Download All Links
             </Typography>
           </FluidContainer>
+
           <DocumentTable
-            documents={downloadAllLinks}
+            meetingDocs={downloadAllLinks}
             onEdit={handleEdit}
             onDelete={handleDeleteClick}
             selectedCategory={selectedCategory}
           />
+
           <FluidContainer
             padding="0"
             flex
@@ -220,8 +225,9 @@ export function DocumentManager({
               Documents
             </Typography>
           </FluidContainer>
+
           <DocumentTable
-            documents={filteredDocuments}
+            meetingDocs={filteredDocuments}
             onEdit={handleEdit}
             onDelete={handleDeleteClick}
           />
@@ -231,7 +237,7 @@ export function DocumentManager({
       {isModalOpen && (
         <DocumentModal
           key={editingDocument ? editingDocument.id : selectedCategory}
-          document={editingDocument}
+          meetingDocs={editingDocument}
           initialCategory={selectedCategory}
           onClose={handleModalClose}
           onSubmit={handleModalSubmit}
@@ -253,10 +259,11 @@ export function DocumentManager({
           onCancel={() => setArchiveConfirm(null)}
         />
       )}
-      <FluidContainer padding=" 0 0 32px 0" flex justifyContent="flex-end">
+
+      <FluidContainer padding="0 0 32px 0" flex justifyContent="flex-end">
         <Button
           variant="outline"
-          onClick={() => handleArchiveClick()}
+          onClick={handleArchiveClick}
           aria-label={`Archive ${selectedCategory}`}
         >
           Archive All {selectedCategory} Documents

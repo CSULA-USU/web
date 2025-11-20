@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
 import { DocumentManager, Toast } from 'modules';
-import type { Category, Document, ToastMessage } from 'types/Backoffice';
+import type { Category, BODMeetingDocs, ToastMessage } from 'types/Backoffice';
 import {
   getMeetingDocuments,
   createMeetingDocument,
@@ -12,7 +12,7 @@ import {
   archiveMeetingDocument,
 } from 'api';
 
-function sortByDateAsc(a: Document, b: Document) {
+function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
   const da = a.date ?? '';
   const db = b.date ?? '';
   return da.localeCompare(db);
@@ -21,9 +21,9 @@ function sortByDateAsc(a: Document, b: Document) {
 export default function BoardMeetingsAdmin({
   initialDocuments,
 }: {
-  initialDocuments: Document[];
+  initialDocuments: BODMeetingDocs[];
 }) {
-  const [documents, setDocuments] = useState<Document[]>(
+  const [documents, setDocuments] = useState<BODMeetingDocs[]>(
     [...initialDocuments].sort(sortByDateAsc),
   );
   const [toast, setToast] = useState<ToastMessage | null>(null);
@@ -45,7 +45,7 @@ export default function BoardMeetingsAdmin({
   }, []);
 
   const handleCreate = useCallback(
-    async (doc: Omit<Document, 'id'>) => {
+    async (doc: Omit<BODMeetingDocs, 'id'>) => {
       const newDoc = await createMeetingDocument(doc);
       setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
       showToast('Document added successfully', 'success');
@@ -89,7 +89,7 @@ export default function BoardMeetingsAdmin({
       </Head>
       <BackOfficeTemplate>
         <DocumentManager
-          documents={documents}
+          meetingDocs={documents}
           onCreate={handleCreate}
           onUpdate={handleUpdate}
           onDelete={handleDelete}

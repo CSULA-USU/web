@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { StyledLink, Typography } from 'components';
-import type { Document } from 'types/Backoffice';
+import type { BODMeetingDocs } from 'types/Backoffice';
 import { formatDate } from 'utils/dates';
 import { useBreakpoint } from 'hooks';
 
 interface DocumentTableProps {
-  documents: Document[];
-  onEdit: (doc: Document) => void;
-  onDelete: (doc: Document) => void;
+  meetingDocs: BODMeetingDocs[];
+  onEdit: (doc: BODMeetingDocs) => void;
+  onDelete: (doc: BODMeetingDocs) => void;
   selectedCategory?: string;
 }
 
@@ -141,17 +141,17 @@ const ValueCell = styled.div`
 `;
 
 export function DocumentTable({
-  documents,
+  meetingDocs,
   onEdit,
   onDelete,
   selectedCategory,
 }: DocumentTableProps) {
   const { isDesktop, isWidescreen } = useBreakpoint();
-  if (documents.length === 0) {
+  if (meetingDocs.length === 0) {
     const hasCalendarDownloadAll =
       selectedCategory === 'Calendar' &&
-      documents.some(
-        (doc) => doc.category === 'Calendar' && doc.is_download_all,
+      meetingDocs.some(
+        (doc) => doc.category === 'Calendar' && doc.isDownloadAll,
       );
 
     if (selectedCategory !== 'Calendar' || !hasCalendarDownloadAll) {
@@ -164,7 +164,7 @@ export function DocumentTable({
       return null;
     }
   }
-  const showDateColumn = documents.some((doc) => !!doc.date);
+  const showDateColumn = meetingDocs.some((doc) => !!doc.date);
   return (
     <TableContainer>
       <DesktopOnly>
@@ -178,7 +178,7 @@ export function DocumentTable({
             </tr>
           </Thead>
           <tbody>
-            {documents.map((doc) => (
+            {meetingDocs.map((doc) => (
               <Tr key={doc.id}>
                 <Td width={isWidescreen ? (isDesktop ? '22%' : '21%') : '35%'}>
                   {doc.title}
@@ -214,7 +214,7 @@ export function DocumentTable({
                     >
                       Edit
                     </ActionButton>
-                    {!doc.is_download_all && doc.category !== 'Calendar' && (
+                    {!doc.isDownloadAll && doc.category !== 'Calendar' && (
                       <ActionButton
                         variant="delete"
                         onClick={() => onDelete(doc)}
@@ -232,7 +232,7 @@ export function DocumentTable({
       </DesktopOnly>
 
       <MobileOnly>
-        {documents.map((doc) => (
+        {meetingDocs.map((doc) => (
           <DocGrid key={doc.id}>
             <LabelCell>Title</LabelCell>
             <ValueCell>{doc.title}</ValueCell>
@@ -257,7 +257,7 @@ export function DocumentTable({
             <ValueCell>
               <ActionButtons>
                 <ActionButton onClick={() => onEdit(doc)}>Edit</ActionButton>
-                {!doc.is_download_all && doc.category !== 'Calendar' && (
+                {!doc.isDownloadAll && doc.category !== 'Calendar' && (
                   <ActionButton variant="delete" onClick={() => onDelete(doc)}>
                     Delete
                   </ActionButton>

@@ -1,22 +1,18 @@
-import type React from 'react';
 import styled from 'styled-components';
-import { useState, useEffect, type FormEvent } from 'react';
-import type { Document, Category } from 'types/Backoffice';
+import { useState, useEffect, useCallback, type FormEvent } from 'react';
+import type { BODMeetingDocs, Category } from 'types/Backoffice';
 import { normalizeDateISO } from 'utils/dates';
 
 interface DocumentModalProps {
-  document: Document | null;
+  meetingDocs: BODMeetingDocs | null;
   initialCategory?: Category;
   onClose: () => void;
-  onSubmit: (data: Omit<Document, 'id'>) => void;
+  onSubmit: (data: Omit<BODMeetingDocs, 'id'>) => void;
 }
 
 const Overlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -26,7 +22,7 @@ const Overlay = styled.div`
 `;
 
 const Modal = styled.div`
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 8px;
   width: 100%;
   max-width: 600px;
@@ -54,22 +50,20 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   font-size: 24px;
-  color: #666666;
+  color: #666;
   cursor: pointer;
   padding: 0;
   width: 32px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   border-radius: 4px;
   transition: all 0.2s ease;
 
   &:hover {
     background-color: #f0f0f0;
-    color: #333333;
+    color: #333;
   }
-
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
@@ -79,7 +73,6 @@ const CloseButton = styled.button`
 const ModalBody = styled.form`
   padding: 24px;
 `;
-
 const FormGroup = styled.div`
   margin-bottom: 20px;
 `;
@@ -88,7 +81,7 @@ const Label = styled.label`
   display: block;
   font-size: 14px;
   font-weight: 500;
-  color: #333333;
+  color: #333;
   margin-bottom: 8px;
 `;
 
@@ -98,21 +91,19 @@ const Input = styled.input`
   border: 1px solid #d0d0d0;
   border-radius: 8px;
   font-size: 14px;
-  color: #333333;
+  color: #333;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #999999;
+    border-color: #999;
   }
-
   &:focus {
     outline: none;
-    border-color: #0066cc;
+    border-color: #06c;
     box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
   }
-
   &::placeholder {
-    color: #999999;
+    color: #999;
   }
 `;
 
@@ -122,18 +113,17 @@ const Select = styled.select`
   border: 1px solid #d0d0d0;
   border-radius: 8px;
   font-size: 14px;
-  color: #333333;
-  background-color: #ffffff;
+  color: #333;
+  background-color: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #999999;
+    border-color: #999;
   }
-
   &:focus {
     outline: none;
-    border-color: #0066cc;
+    border-color: #06c;
     box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
   }
 `;
@@ -155,116 +145,114 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
   cursor: pointer;
   transition: all 0.2s ease;
 
-  ${(props) =>
-    props.variant === 'primary'
+  ${({ variant }) =>
+    variant === 'primary'
       ? `
-    background-color: #0066cc;
-    color: #ffffff;
-    &:hover {
-      background-color: #0052a3;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
-    }
-  `
+        background-color: #0066cc;
+        color: #fff;
+        &:hover { background-color: #0052a3; }
+        &:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,102,204,.3); }
+      `
       : `
-    background-color: #f0f0f0;
-    color: #333333;
-    &:hover {
-      background-color: #e0e0e0;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-    }
-  `}
+        background-color: #f0f0f0;
+        color: #333;
+        &:hover { background-color: #e0e0e0; }
+        &:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,.1); }
+      `}
 
   &:active {
     transform: translateY(1px);
   }
 `;
-interface DocumentModalProps {
-  document: Document | null;
-  onClose: () => void;
-  onSubmit: (data: Omit<Document, 'id'>) => void;
-}
 
 export function DocumentModal({
-  document,
+  meetingDocs,
   initialCategory,
   onClose,
   onSubmit,
 }: DocumentModalProps) {
-  const [formData, setFormData] = useState<Omit<Document, 'id'>>({
+  const [formData, setFormData] = useState<Omit<BODMeetingDocs, 'id'>>({
     title: '',
     url: '',
     category: initialCategory ?? 'Calendar',
-    date: '', // user must choose meeting date (unless Calendar / Download All)
-    fy: '',
+    date: '', // user selects (unless Calendar)
+    fy: null, // prefer null over ''
+    isArchived: false, // required by type
+    isDownloadAll: false, // required by type
+    createdAt: null,
+    updatedAt: null,
   });
 
   useEffect(() => {
-    if (document) {
+    if (meetingDocs) {
       setFormData({
-        title: document.title,
-        url: document.url,
-        category: document.category,
-        date: normalizeDateISO(document.date),
-        fy: document.fy,
+        title: meetingDocs.title,
+        url: meetingDocs.url,
+        category: meetingDocs.category,
+        date: normalizeDateISO(meetingDocs.date),
+        fy: meetingDocs.fy ?? null,
+        isArchived: !!meetingDocs.isArchived,
+        isDownloadAll: !!meetingDocs.isDownloadAll,
+        createdAt: meetingDocs.createdAt ?? null,
+        updatedAt: meetingDocs.updatedAt ?? null,
       });
     } else {
-      // ✅ reset all fields properly when creating new
       setFormData({
         title: '',
         url: '',
         category: initialCategory ?? 'Calendar',
         date: '',
-        fy: '',
+        fy: null,
+        isArchived: false,
+        isDownloadAll: false,
+        createdAt: null,
+        updatedAt: null,
       });
     }
-  }, [document, initialCategory]);
+  }, [meetingDocs, initialCategory]);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
 
-    const payload: Omit<Document, 'id'> = {
-      ...formData,
-      date: normalizeDateISO(formData.date),
-    };
+      const payload: Omit<BODMeetingDocs, 'id'> = {
+        ...formData,
+        date: normalizeDateISO(formData.date),
+      };
 
-    const requiresDate = payload.category !== 'Calendar';
+      const isCalendar = payload.category === 'Calendar';
+      const requiresDate = !isCalendar;
+      const isIsoDate = /^\d{4}-\d{2}-\d{2}$/.test(payload.date ?? '');
 
-    const isCalendar = payload.category === 'Calendar';
+      try {
+        // validates both http(s) and file/blob URLs; adjust if needed
+        new URL(payload.url);
+      } catch {
+        alert('Please enter a valid URL.');
+        return;
+      }
 
-    // Safe check: coerce undefined to empty string OR narrow with typeof
-    const isIsoDate = /^\d{4}-\d{2}-\d{2}$/.test(payload.date ?? '');
+      if (requiresDate && !isIsoDate) {
+        alert('Please select the meeting date (YYYY-MM-DD).');
+        return;
+      }
 
-    try {
-      new URL(payload.url);
-    } catch {
-      alert('Please enter a valid URL.');
-      return;
-    }
+      if (isCalendar) {
+        alert('Calendar already exists. Please update existing calendar.');
+        return;
+      }
 
-    if (requiresDate && !isIsoDate) {
-      alert('Please select the meeting date (YYYY-MM-DD).');
-      return;
-    }
+      onSubmit(payload);
+    },
+    [formData, onSubmit],
+  );
 
-    if (isCalendar) {
-      alert('Calendar already exists. Please update existing calendar.');
-      return;
-    }
-
-    onSubmit(payload);
-  };
   return (
     <Overlay onClick={(e) => e.target === e.currentTarget && onClose()}>
       <Modal role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <ModalHeader>
           <ModalTitle id="modal-title">
-            {document ? 'Edit Document' : 'Add New Document'}
+            {meetingDocs ? 'Edit Document' : 'Add New Document'}
           </ModalTitle>
           <CloseButton onClick={onClose} aria-label="Close modal" type="button">
             ×
@@ -323,7 +311,7 @@ export function DocumentModal({
           {formData.category !== 'Calendar' && (
             <FormGroup>
               <Label htmlFor="date">
-                Meeting Date * (date the meeting occurred)
+                Meeting Date * (the date the meeting occurred)
               </Label>
               <Input
                 id="date"
@@ -337,18 +325,31 @@ export function DocumentModal({
                   })
                 }
                 required
-                pattern="\d{4}-\d{2}-\d{2}"
+                pattern="\\d{4}-\\d{2}-\\d{2}"
                 placeholder="YYYY-MM-DD"
               />
             </FormGroup>
           )}
+
+          {/* Optional FY input — unhide if you want to capture it here
+          <FormGroup>
+            <Label htmlFor="fy">Fiscal Year (optional)</Label>
+            <Input
+              id="fy"
+              type="text"
+              value={formData.fy ?? ''}
+              onChange={(e) => setFormData({ ...formData, fy: e.target.value || null })}
+              placeholder="e.g., 2025–2026 or FY25"
+            />
+          </FormGroup>
+          */}
 
           <ModalFooter>
             <Button type="button" onClick={onClose}>
               Cancel
             </Button>
             <Button type="submit" variant="primary">
-              {document ? 'Update' : 'Add'} Document
+              {meetingDocs ? 'Update' : 'Add'} Document
             </Button>
           </ModalFooter>
         </ModalBody>

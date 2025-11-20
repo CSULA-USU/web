@@ -1,6 +1,5 @@
-export function normalizeDateISO(input?: string) {
-  // Accept "", undefined, or "YYYY-MM-DD" or full ISO
-  if (!input) return '';
+export function normalizeDateISO(input?: string | null): string | null {
+  if (input == null || input === '') return null; // handles undefined or null
   return input.length === 10
     ? input
     : new Date(input).toISOString().slice(0, 10);
