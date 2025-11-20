@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
-import { DocumentManager, Toast } from 'modules';
+import { DocumentManager } from 'modules';
 import type { Category, BODMeetingDocs, ToastMessage } from 'types/Backoffice';
 import {
   getMeetingDocuments,
@@ -11,6 +11,7 @@ import {
   updateMeetingDocument,
   archiveMeetingDocument,
 } from 'api';
+import { Toast } from 'components/Toast';
 
 function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
   const da = a.date ?? '';
