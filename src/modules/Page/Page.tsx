@@ -38,7 +38,7 @@ export const Page = ({ children }: PageProps) => (
           <Typography as="p">November 26: Open from 7 AM to 5 PM</Typography>
         </li>
         <li>
-          <Typography as="p">November 27-30: Closed</Typography>
+          <Typography as="p">November 27&ndash;30: Closed</Typography>
         </li>
       </ul>
     </Announcement>
