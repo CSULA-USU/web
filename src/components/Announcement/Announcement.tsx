@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Typography } from 'components';
 import Link from 'next/link';
 interface AnnouncementProps {
-  text: string;
+  children?: React.ReactNode;
+  text?: string;
   isVisible: boolean;
   linkText?: string;
   href?: string;
@@ -31,6 +32,7 @@ const LinkContainer = styled.div`
 `;
 
 export const Announcement = ({
+  children,
   href,
   linkText,
   text,
@@ -40,6 +42,7 @@ export const Announcement = ({
     <AnnouncementContainer>
       <AlertContainer>
         <Typography margin="4px 0 0 8px">{text}</Typography>
+        {children}
       </AlertContainer>
       {linkText && href && (
         <LinkContainer>
