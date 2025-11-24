@@ -3,6 +3,7 @@ import {
   NonBreakingSpan,
   Typography,
   Expandable,
+  StyledLink,
 } from 'components';
 import {
   DocumentLinkContainer,
@@ -64,7 +65,7 @@ export default function PublicDocumentArchives() {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [calendarDownloadAll, setCalendarDownloadAll] =
     useState<Document | null>(null);
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const agendas = useMemo(
     () => documents.filter((d) => d.category === 'Agenda').sort(sortByDateAsc),
@@ -90,12 +91,13 @@ export default function PublicDocumentArchives() {
     () =>
       documents
         .filter((d) => d.category === 'Calendar' && !d.is_download_all)
-        .map((d) => ({ href: d.url, children: d.title })),
+        .map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [documents],
   );
 
   const toLinks = useCallback(
-    (docs: Document[]) => docs.map((d) => ({ href: d.url, children: d.title })),
+    (docs: Document[]) =>
+      docs.map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [],
   );
 
@@ -128,6 +130,27 @@ export default function PublicDocumentArchives() {
         title="Archives"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"
       />
+
+      <FluidContainer
+        padding={
+          isDesktop
+            ? '18px 16px 0 16px'
+            : isTablet
+            ? '18px 36px 0 36px'
+            : '36px 72px 0 72px'
+        }
+      >
+        <Typography variant="title" weight="400" size={isMobile ? 'sm' : 'md'}>
+          Files on this page are for historic reference. If you need an
+          accessible version, please contact{' '}
+          <StyledLink
+            href="mailto:Accessibility@calstatela.edu"
+            isInverseUnderlineStyling
+          >
+            Accessibility@calstatela.edu
+          </StyledLink>
+        </Typography>
+      </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           990 & 199

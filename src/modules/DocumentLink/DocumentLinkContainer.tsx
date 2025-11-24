@@ -15,7 +15,7 @@ const LinkContainer = styled.div<{ stacked: boolean; grid: boolean }>`
   ${(p) =>
     p.grid &&
     `display: grid; 
-     grid-template-columns: repeat(3, 1fr);
+     grid-template-columns: repeat(2, 1fr);
      @media (max-width: 1428px) {
       grid-template-columns: repeat(2, 1fr);
      }

@@ -91,13 +91,6 @@
     "note": ""
   },
   {
-    "meeting": "Facilities Committee",
-    "date": "November 7, 2025",
-    "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
     "meeting": "Board of Directors",
     "date": "November 14, 2025",
     "time": "10:00 AM to 11:30 AM",
@@ -107,7 +100,7 @@
   {
     "meeting": "Nominating Committee",
     "date": "November 21, 2025",
-    "time": "10:00 AM to 11:00 AM",
+    "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
@@ -122,6 +115,13 @@
     "meeting": "Board of Directors",
     "date": "December 5, 2025",
     "time": "10:00 AM to 11:30 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Facilities Committee",
+    "date": "December 5, 2025",
+    "time": "11:30 AM to 12:30 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },

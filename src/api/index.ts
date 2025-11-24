@@ -136,7 +136,6 @@ export const getDownloadAllDoc = async (
   opts?: { isArchived?: boolean },
 ): Promise<BODMeetingDocs | null> => {
   const isArchived = opts?.isArchived ?? false;
-
   const { data, error } = await supabase
     .from('meeting_documents')
     .select(

@@ -29,12 +29,12 @@ const Table = styled.table`
   font-size: 14px;
 `;
 
-const Thead = styled.thead`
+const TableHead = styled.thead`
   background-color: #f8f8f8;
   border-bottom: 2px solid #e0e0e0;
 `;
 
-const Th = styled.th`
+const TableHeaderCell = styled.th`
   padding: 12px 16px;
   text-align: left;
   font-weight: 600;
@@ -42,7 +42,7 @@ const Th = styled.th`
   white-space: nowrap;
 `;
 
-const Tr = styled.tr`
+const TableRow = styled.tr`
   border-bottom: 1px solid #e0e0e0;
 
   &:last-child {
@@ -54,11 +54,11 @@ const Tr = styled.tr`
   }
 `;
 
-interface TdProps {
+interface TableDataCellProps {
   width?: string;
 }
 
-const Td = styled.td<TdProps>`
+const TableDataCell = styled.td<TableDataCellProps>`
   padding: 16px;
   color: #333333;
   vertical-align: middle;
@@ -169,25 +169,30 @@ export function DocumentTable({
     <TableContainer>
       <DesktopOnly>
         <Table>
-          <Thead>
+          <TableHead>
             <tr>
-              <Th scope="col">Title</Th>
-              <Th scope="col">URL</Th>
-              {showDateColumn && <Th scope="col">Meeting Date</Th>}
-              <Th scope="col">Actions</Th>
+              <TableHeaderCell scope="col">Title</TableHeaderCell>
+              <TableHeaderCell scope="col">URL</TableHeaderCell>
+              {showDateColumn && (
+                <TableHeaderCell scope="col">Meeting Date</TableHeaderCell>
+              )}
+              <TableHeaderCell scope="col">Actions</TableHeaderCell>
             </tr>
-          </Thead>
+          </TableHead>
           <tbody>
             {meetingDocs.map((doc) => (
-              <Tr key={doc.id}>
-                <Td width={isWidescreen ? (isDesktop ? '22%' : '21%') : '35%'}>
+              <TableRow key={doc.id}>
+                <TableDataCell
+                  width={isWidescreen ? (isDesktop ? '22%' : '21%') : '35%'}
+                >
                   {doc.title}
-                </Td>
-                <Td>
+                </TableDataCell>
+                <TableDataCell>
                   <Typography color="gold">
                     <StyledLink
                       href={doc.url}
                       aria-label={`Open ${doc.title} in new tab`}
+                      isExternalLink
                     >
                       {doc.url.length > 40
                         ? isDesktop
@@ -196,19 +201,20 @@ export function DocumentTable({
                         : doc.url}
                     </StyledLink>
                   </Typography>
-                </Td>
+                </TableDataCell>
                 {showDateColumn && (
-                  <Td>
+                  <TableDataCell>
                     {doc.date ? (
                       <time dateTime={doc.date}>{formatDate(doc.date)}</time>
                     ) : (
                       '—'
                     )}
-                  </Td>
+                  </TableDataCell>
                 )}
-                <Td>
+                <TableDataCell>
                   <ActionButtons>
                     <ActionButton
+                      type="button"
                       onClick={() => onEdit(doc)}
                       aria-label={`Edit ${doc.title}`}
                     >
@@ -216,6 +222,7 @@ export function DocumentTable({
                     </ActionButton>
                     {!doc.isDownloadAll && doc.category !== 'Calendar' && (
                       <ActionButton
+                        type="button"
                         variant="delete"
                         onClick={() => onDelete(doc)}
                         aria-label={`Delete ${doc.title}`}
@@ -224,8 +231,8 @@ export function DocumentTable({
                       </ActionButton>
                     )}
                   </ActionButtons>
-                </Td>
-              </Tr>
+                </TableDataCell>
+              </TableRow>
             ))}
           </tbody>
         </Table>
@@ -256,9 +263,15 @@ export function DocumentTable({
             <LabelCell>Actions</LabelCell>
             <ValueCell>
               <ActionButtons>
-                <ActionButton onClick={() => onEdit(doc)}>Edit</ActionButton>
+                <ActionButton type="button" onClick={() => onEdit(doc)}>
+                  Edit
+                </ActionButton>
                 {!doc.isDownloadAll && doc.category !== 'Calendar' && (
-                  <ActionButton variant="delete" onClick={() => onDelete(doc)}>
+                  <ActionButton
+                    type="button"
+                    variant="delete"
+                    onClick={() => onDelete(doc)}
+                  >
                     Delete
                   </ActionButton>
                 )}

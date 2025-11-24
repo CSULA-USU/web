@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect, useCallback, type FormEvent } from 'react';
 import type { BODMeetingDocs, Category } from 'types/Backoffice';
 import { normalizeDateISO } from 'utils/dates';
+import { useToast } from 'context/ToastContext';
 
 interface DocumentModalProps {
   meetingDocs: BODMeetingDocs | null;
@@ -136,6 +137,11 @@ const ModalFooter = styled.div`
   gap: 12px;
 `;
 
+const RedAsterisk = styled.span`
+  color: red;
+  margin-left: 2px;
+`;
+
 const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
   padding: 10px 20px;
   border: none;
@@ -171,14 +177,18 @@ export function DocumentModal({
   onClose,
   onSubmit,
 }: DocumentModalProps) {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState<Omit<BODMeetingDocs, 'id'>>({
     title: '',
     url: '',
-    category: initialCategory ?? 'Calendar',
-    date: '', // user selects (unless Calendar)
-    fy: null, // prefer null over ''
-    isArchived: false, // required by type
-    isDownloadAll: false, // required by type
+    category:
+      !initialCategory || initialCategory === 'Calendar'
+        ? 'Agenda'
+        : initialCategory,
+    date: '',
+    isDownloadAll: false,
+    fy: null,
+    isArchived: false,
     createdAt: null,
     updatedAt: null,
   });
@@ -200,7 +210,7 @@ export function DocumentModal({
       setFormData({
         title: '',
         url: '',
-        category: initialCategory ?? 'Calendar',
+        category: !initialCategory ? 'Agenda' : initialCategory,
         date: '',
         fy: null,
         isArchived: false,
@@ -210,7 +220,6 @@ export function DocumentModal({
       });
     }
   }, [meetingDocs, initialCategory]);
-
   const handleSubmit = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
@@ -231,12 +240,14 @@ export function DocumentModal({
         alert('Please enter a valid URL.');
         return;
       }
-
+      if (requiresDate && !isIsoDate) {
+        showToast('Please select the meeting date (YYYY-MM-DD).', 'error');
+        return;
+      }
       if (requiresDate && !isIsoDate) {
         alert('Please select the meeting date (YYYY-MM-DD).');
         return;
       }
-
       if (isCalendar) {
         alert('Calendar already exists. Please update existing calendar.');
         return;
@@ -261,7 +272,9 @@ export function DocumentModal({
 
         <ModalBody onSubmit={handleSubmit}>
           <FormGroup>
-            <Label htmlFor="title">Document Title *</Label>
+            <Label htmlFor="title">
+              Document Title<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="title"
               type="text"
@@ -275,7 +288,9 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="url">Link URL *</Label>
+            <Label htmlFor="url">
+              Link URL<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Input
               id="url"
               type="url"
@@ -290,25 +305,28 @@ export function DocumentModal({
           </FormGroup>
 
           <FormGroup>
-            <Label htmlFor="category">Category *</Label>
+            <Label htmlFor="category">
+              Category<RedAsterisk>*</RedAsterisk>
+            </Label>
             <Select
               id="category"
               value={formData.category}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  category: e.target.value as Category,
-                })
-              }
+              onChange={(e) => {
+                const next = e.target.value as Category;
+                setFormData((prev) => ({
+                  ...prev,
+                  category: !document && next === 'Calendar' ? 'Agenda' : next,
+                }));
+              }}
               required
             >
-              <option value="Calendar">Meeting Calendar</option>
               <option value="Agenda">Agenda</option>
               <option value="Minutes">Minutes</option>
+              <option value="Calendar">Meeting Calendar</option>
             </Select>
           </FormGroup>
 
-          {formData.category !== 'Calendar' && (
+          {formData.category !== 'Calendar' && !formData.isDownloadAll && (
             <FormGroup>
               <Label htmlFor="date">
                 Meeting Date * (the date the meeting occurred)

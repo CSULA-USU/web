@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Head from 'next/head';
+import { FluidContainer, Typography, Button } from 'components';
 import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
 import { DocumentManager } from 'modules';
-import type { Category, BODMeetingDocs, ToastMessage } from 'types/Backoffice';
+import type { Category, BODMeetingDocs } from 'types/Backoffice';
 import {
   getMeetingDocuments,
   createMeetingDocument,
@@ -11,7 +12,7 @@ import {
   updateMeetingDocument,
   archiveMeetingDocument,
 } from 'api';
-import { Toast } from 'components/Toast';
+import { useToast } from 'context/ToastContext';
 
 function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
   const da = a.date ?? '';
@@ -21,30 +22,17 @@ function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
 
 export default function BoardMeetingsAdmin({
   initialDocuments,
+  error,
 }: {
   initialDocuments: BODMeetingDocs[];
 }) {
   const [documents, setDocuments] = useState<BODMeetingDocs[]>(
     [...initialDocuments].sort(sortByDateAsc),
   );
-  const [toast, setToast] = useState<ToastMessage | null>(null);
-  const toastTimerRef = useRef<number | null>(null);
 
-  const showToast = useCallback(
-    (message: string, type: 'success' | 'error') => {
-      setToast({ message, type });
-      if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = window.setTimeout(() => setToast(null), 4000);
-    },
-    [],
-  );
+  const { showToast } = useToast();
 
-  useEffect(() => {
-    return () => {
-      if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
-    };
-  }, []);
-
+  // ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
   const handleCreate = useCallback(
     async (doc: Omit<BODMeetingDocs, 'id'>) => {
       const newDoc = await createMeetingDocument(doc);
@@ -56,32 +44,75 @@ export default function BoardMeetingsAdmin({
 
   const handleUpdate = useCallback(
     async (id: string, updates: Partial<Document>) => {
-      const updated = await updateMeetingDocument(id, updates);
-      setDocuments((prev) =>
-        prev.map((d) => (d.id === id ? updated : d)).sort(sortByDateAsc),
-      );
+      try {
+        const updated = await updateMeetingDocument(id, updates);
+        setDocuments((prev) =>
+          prev.map((d) => (d.id === id ? updated : d)).sort(sortByDateAsc),
+        );
+        showToast('Document updated successfully', 'success');
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('updateMeetingDocument failed', err);
+        showToast('Failed to update document', 'error');
+      }
     },
     [showToast],
   );
 
   const handleDelete = useCallback(
     async (id: string) => {
-      await deleteMeetingDocument(id);
-      setDocuments((prev) => prev.filter((d) => d.id !== id));
-      showToast('Document deleted successfully', 'success');
+      try {
+        await deleteMeetingDocument(id);
+        setDocuments((prev) => prev.filter((d) => d.id !== id));
+        showToast('Document deleted successfully', 'success');
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('deleteMeetingDocument failed', err);
+        showToast('Failed to delete document', 'error');
+      }
     },
     [showToast],
   );
 
   const handleArchive = useCallback(
     async (category: Category) => {
-      await archiveMeetingDocument(category);
-      const rows = await getMeetingDocuments({ isArchived: false });
-      setDocuments(rows);
-      showToast('Documents archived successfully', 'success');
+      try {
+        await archiveMeetingDocument(category);
+        const rows = await getMeetingDocuments({ isArchived: false });
+        setDocuments(rows.sort(sortByDateAsc));
+        showToast('Documents archived successfully', 'success');
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('archiveMeetingDocument failed', err);
+        showToast('Failed to archive documents', 'error');
+      }
     },
     [showToast],
   );
+
+  // NOW we can do early return AFTER all hooks
+  if (error) {
+    return (
+      <Page>
+        <Head>
+          <title>Board Meeting Documents &ndash; Error</title>
+        </Head>
+        <BackOfficeTemplate>
+          <FluidContainer padding="24px">
+            <Typography variant="title" size="xl">
+              Error Loading Documents
+            </Typography>
+            <Typography variant="span" size="md" margin="16px 0">
+              {error}
+            </Typography>
+            <Button variant="primary" onClick={() => window.location.reload()}>
+              Retry
+            </Button>
+          </FluidContainer>
+        </BackOfficeTemplate>
+      </Page>
+    );
+  }
 
   return (
     <Page>
@@ -97,15 +128,22 @@ export default function BoardMeetingsAdmin({
           onArchive={handleArchive}
         />
       </BackOfficeTemplate>
-      {toast && <Toast message={toast.message} type={toast.type} />}
     </Page>
   );
 }
 
 export async function getServerSideProps() {
-  const initialDocuments = await getMeetingDocuments({
-    isArchived: false,
-    order: 'asc',
-  });
-  return { props: { initialDocuments } };
+  try {
+    const initialDocuments = await getMeetingDocuments({
+      isArchived: false,
+      order: 'asc',
+    });
+    return { props: { initialDocuments } };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch documents:', error);
+    return {
+      props: { initialDocuments: [], error: 'Failed to load documents' },
+    };
+  }
 }

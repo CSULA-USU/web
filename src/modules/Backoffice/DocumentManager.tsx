@@ -64,9 +64,9 @@ const categoryIcons: Record<Category, string> = {
 };
 
 export const categoryLabels: Record<Category, string> = {
-  Calendar: `Meeting Calendar (${getCurrentFiscalYearLabel()})`,
   Agenda: `Agenda (${getCurrentFiscalYearLabel()})`,
   Minutes: `Minutes (${getCurrentFiscalYearLabel()})`,
+  Calendar: `Meeting Calendar (${getCurrentFiscalYearLabel()})`,
 };
 
 export function DocumentManager({
@@ -76,8 +76,7 @@ export function DocumentManager({
   onDelete,
   onArchive,
 }: DocumentManagerProps) {
-  const [selectedCategory, setSelectedCategory] =
-    useState<Category>('Calendar');
+  const [selectedCategory, setSelectedCategory] = useState<Category>('Agenda');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDocument, setEditingDocument] = useState<BODMeetingDocs | null>(
     null,
@@ -141,9 +140,9 @@ export function DocumentManager({
 
   // Items for the Radix-based Select
   const categoryItems = [
-    { label: 'Meeting Calendar', value: 'Calendar' },
     { label: 'Agenda', value: 'Agenda' },
     { label: 'Minutes', value: 'Minutes' },
+    { label: 'Meeting Calendar', value: 'Calendar' },
   ];
 
   return (
