@@ -26,7 +26,7 @@ export const Page = ({ children }: PageProps) => (
     <Announcement text="" isVisible={true} linkText="" href="">
       <Typography as="p">
         The University&ndash;Student Union will have adjusted operating hours
-        next week:
+        during Fall Break:
       </Typography>
       <ul>
         <li>
