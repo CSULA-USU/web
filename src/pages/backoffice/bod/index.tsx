@@ -20,12 +20,16 @@ function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
   return da.localeCompare(db);
 }
 
+// Define page props type
+interface BoardMeetingsAdminProps {
+  initialDocuments: BODMeetingDocs[];
+  error?: string | null;
+}
+
 export default function BoardMeetingsAdmin({
   initialDocuments,
   error,
-}: {
-  initialDocuments: BODMeetingDocs[];
-}) {
+}: BoardMeetingsAdminProps) {
   const [documents, setDocuments] = useState<BODMeetingDocs[]>(
     [...initialDocuments].sort(sortByDateAsc),
   );

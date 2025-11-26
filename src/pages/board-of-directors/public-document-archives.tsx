@@ -16,7 +16,7 @@ import { useBreakpoint } from 'hooks';
 import archiveData from 'data/public-document-archives.json';
 import { Spaces } from 'theme';
 import { getDownloadAllDoc, getMeetingDocuments } from 'api';
-import type { Document } from 'types/Backoffice';
+import type { BODMeetingDocs } from 'types/Backoffice';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
@@ -41,15 +41,15 @@ const latestAuditedSection: DownloadSectionProps = {
   ),
 };
 
-const sortByDateAsc = (a: Document, b: Document) =>
+const sortByDateAsc = (a: BODMeetingDocs, b: BODMeetingDocs) =>
   (a.date ?? '').localeCompare(b.date ?? '');
 
-const groupByFy = (docs: Document[]) =>
+const groupByFy = (docs: BODMeetingDocs[]) =>
   docs.reduce((acc, d) => {
     const key = d.fy ?? 'Unknown FY';
     (acc[key] ||= []).push(d);
     return acc;
-  }, {} as Record<string, Document[]>);
+  }, {} as Record<string, BODMeetingDocs[]>);
 
 const fyRank = (fy: string) => {
   const m = /(\d{2}).*?(\d{2})?/.exec(fy);
@@ -58,13 +58,15 @@ const fyRank = (fy: string) => {
   const end = Number(m[2] ?? String((start + 1) % 100).padStart(2, '0'));
   return start * 100 + end;
 };
-const sortFyDesc = ([a]: [string, Document[]], [b]: [string, Document[]]) =>
-  fyRank(b) - fyRank(a);
+const sortFyDesc = (
+  [a]: [string, BODMeetingDocs[]],
+  [b]: [string, BODMeetingDocs[]],
+) => fyRank(b) - fyRank(a);
 
 export default function PublicDocumentArchives() {
-  const [documents, setDocuments] = useState<Document[]>([]);
+  const [documents, setDocuments] = useState<BODMeetingDocs[]>([]);
   const [calendarDownloadAll, setCalendarDownloadAll] =
-    useState<Document | null>(null);
+    useState<BODMeetingDocs | null>(null);
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const agendas = useMemo(
@@ -77,11 +79,11 @@ export default function PublicDocumentArchives() {
   );
 
   const agendasNoAll = useMemo(
-    () => agendas.filter((d) => !d.is_download_all).sort(sortByDateAsc),
+    () => agendas.filter((d) => !d.isDownloadAll).sort(sortByDateAsc),
     [agendas],
   );
   const minutesNoAll = useMemo(
-    () => minutes.filter((d) => !d.is_download_all).sort(sortByDateAsc),
+    () => minutes.filter((d) => !d.isDownloadAll).sort(sortByDateAsc),
     [minutes],
   );
 
@@ -90,13 +92,13 @@ export default function PublicDocumentArchives() {
   const calendarLinks = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Calendar' && !d.is_download_all)
+        .filter((d) => d.category === 'Calendar' && !d.isDownloadAll)
         .map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [documents],
   );
 
   const toLinks = useCallback(
-    (docs: Document[]) =>
+    (docs: BODMeetingDocs[]) =>
       docs.map((d) => ({ href: d.url, children: d.title + ' (Archived)' })),
     [],
   );

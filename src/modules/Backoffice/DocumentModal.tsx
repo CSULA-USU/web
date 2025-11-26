@@ -230,8 +230,9 @@ export function DocumentModal({
       };
 
       const isCalendar = payload.category === 'Calendar';
-      const requiresDate = !isCalendar;
+      const requiresDate = !isCalendar && !payload.isDownloadAll;
       const isIsoDate = /^\d{4}-\d{2}-\d{2}$/.test(payload.date ?? '');
+      const isEditMode = !!meetingDocs;
 
       try {
         // validates both http(s) and file/blob URLs; adjust if needed
@@ -248,7 +249,7 @@ export function DocumentModal({
         alert('Please select the meeting date (YYYY-MM-DD).');
         return;
       }
-      if (isCalendar) {
+      if (!isEditMode && isCalendar) {
         alert('Calendar already exists. Please update existing calendar.');
         return;
       }
@@ -315,7 +316,8 @@ export function DocumentModal({
                 const next = e.target.value as Category;
                 setFormData((prev) => ({
                   ...prev,
-                  category: !document && next === 'Calendar' ? 'Agenda' : next,
+                  category:
+                    !meetingDocs && next === 'Calendar' ? 'Agenda' : next,
                 }));
               }}
               required
