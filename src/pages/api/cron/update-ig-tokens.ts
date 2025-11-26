@@ -25,7 +25,7 @@ async function updateSupabase(name: string, refreshedToken: any) {
   if (!refreshedToken) return; // prevent failed refreshes from updating supabase
   let { data } = await supabase
     .from('instagram_tokens')
-    .update({ token: refreshedToken, created_at: new Date() })
+    .update({ token: refreshedToken, created_at: new Date().toISOString() })
     .eq('name', name)
     .select();
   return data;
@@ -50,7 +50,9 @@ export default async function handler(
   await Promise.all(
     tokens.map(async (tokenName) => {
       let oldToken = await fetchToken(tokenName);
-      let newToken = await refreshToken(oldToken?.[0].token);
+      const newToken = oldToken?.[0]?.token
+        ? await refreshToken(oldToken[0].token!)
+        : null;
       await updateSupabase(tokenName, newToken.access_token);
     }),
   );

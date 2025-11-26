@@ -69,17 +69,24 @@ export default async function handler(
     }
 
     default: {
+      const slugParam = req.query.slug;
+      const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam;
+
+      if (!slug) {
+        return res.status(400).json({ error: 'Missing slug' });
+      }
+
       const { data: sections, error: getError } = await supabase
         .from('pages')
         .select('id, slug, sections(id, page_id, name, order, data)')
-        .eq('slug', req.query.slug)
+        .eq('slug', slug)
         .order('order', { foreignTable: 'sections', ascending: true });
 
       if (getError) {
         return res.status(500).json(getError);
-      } else {
-        return res.status(200).json(sections?.[0]);
       }
+
+      return res.status(200).json(sections?.[0]);
     }
   }
 }

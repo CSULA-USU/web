@@ -4,7 +4,7 @@ import { FluidContainer, Typography, Button } from 'components';
 import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
 import { DocumentManager } from 'modules';
-import type { Category, Document } from 'types/Backoffice';
+import type { Category, BODMeetingDocs } from 'types/Backoffice';
 import {
   getMeetingDocuments,
   createMeetingDocument,
@@ -14,20 +14,23 @@ import {
 } from 'api';
 import { useToast } from 'context/ToastContext';
 
-function sortByDateAsc(a: Document, b: Document) {
+function sortByDateAsc(a: BODMeetingDocs, b: BODMeetingDocs) {
   const da = a.date ?? '';
   const db = b.date ?? '';
   return da.localeCompare(db);
 }
 
+// Define page props type
+interface BoardMeetingsAdminProps {
+  initialDocuments: BODMeetingDocs[];
+  error?: string | null;
+}
+
 export default function BoardMeetingsAdmin({
   initialDocuments,
   error,
-}: {
-  initialDocuments: Document[];
-  error?: string;
-}) {
-  const [documents, setDocuments] = useState<Document[]>(
+}: BoardMeetingsAdminProps) {
+  const [documents, setDocuments] = useState<BODMeetingDocs[]>(
     [...initialDocuments].sort(sortByDateAsc),
   );
 
@@ -35,16 +38,10 @@ export default function BoardMeetingsAdmin({
 
   // ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
   const handleCreate = useCallback(
-    async (doc: Omit<Document, 'id'>) => {
-      try {
-        const newDoc = await createMeetingDocument(doc);
-        setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
-        showToast('Document added successfully', 'success');
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('createMeetingDocument failed', err);
-        showToast('Failed to add document', 'error');
-      }
+    async (doc: Omit<BODMeetingDocs, 'id'>) => {
+      const newDoc = await createMeetingDocument(doc);
+      setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
+      showToast('Document added successfully', 'success');
     },
     [showToast],
   );
@@ -128,7 +125,7 @@ export default function BoardMeetingsAdmin({
       </Head>
       <BackOfficeTemplate>
         <DocumentManager
-          documents={documents}
+          meetingDocs={documents}
           onCreate={handleCreate}
           onUpdate={handleUpdate}
           onDelete={handleDelete}

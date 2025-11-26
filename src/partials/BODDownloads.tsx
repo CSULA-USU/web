@@ -11,7 +11,7 @@ import { DocumentLinkContainer, DownloadSection } from 'modules';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
 import { getMeetingDocuments } from 'api';
-import type { Document } from 'types/Backoffice';
+import type { BODMeetingDocs } from 'types/Backoffice';
 import { useState, useEffect, useMemo } from 'react';
 
 const typographyProps = {
@@ -22,48 +22,46 @@ const typographyProps = {
 } as TypeProps;
 
 export const BODDownloads = () => {
-  const [documents, setDocuments] = useState<Document[]>([]);
+  const [documents, setDocuments] = useState<BODMeetingDocs[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { isMobile, isDesktop } = useBreakpoint();
 
-  const sortByDateAsc = (a: Document, b: Document) =>
+  const sortByDateAsc = (a: BODMeetingDocs, b: BODMeetingDocs) =>
     (a.date ?? '').localeCompare(b.date ?? '');
 
   const agendas = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Agenda' && !d.is_download_all)
+        .filter((d) => d.category === 'Agenda' && !d.isDownloadAll)
         .sort(sortByDateAsc),
     [documents],
   );
   const calendarLink = useMemo(
-    () =>
-      documents.find((d) => d.category === 'Calendar' && !d.is_download_all),
+    () => documents.find((d) => d.category === 'Calendar' && !d.isDownloadAll),
     [documents],
   );
   const minutes = useMemo(
     () =>
       documents
-        .filter((d) => d.category === 'Minutes' && !d.is_download_all)
+        .filter((d) => d.category === 'Minutes' && !d.isDownloadAll)
         .sort(sortByDateAsc),
     [documents],
   );
   const agendaDownloadAll = useMemo(
     () =>
-      documents.find((d) => d.category === 'Agenda' && d.is_download_all) ??
-      null,
+      documents.find((d) => d.category === 'Agenda' && d.isDownloadAll) ?? null,
     [documents],
   );
   const minutesDownloadAll = useMemo(
     () =>
-      documents.find((d) => d.category === 'Minutes' && d.is_download_all) ??
+      documents.find((d) => d.category === 'Minutes' && d.isDownloadAll) ??
       null,
     [documents],
   );
 
   // tiny adapter for DocumentLinkContainer
-  const toLinks = (docs: Document[]) =>
+  const toLinks = (docs: BODMeetingDocs[]) =>
     docs.map((d) => ({ href: d.url, children: d.title }));
 
   useEffect(() => {

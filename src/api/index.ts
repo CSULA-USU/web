@@ -3,11 +3,22 @@ import { StatusType } from 'atoms';
 import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';
 import { SetterOrUpdater } from 'recoil';
-import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
+import type { SupabaseSchema } from 'types/SupabaseSchema';
+import {
+  fromSupabase,
+  type BODMeetingDocs,
+  type Category,
+} from 'types/Backoffice';
 import { SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
 
-export * from './supabase';
+/* ---------------------- DB row/insert/update type aliases ---------------------- */
+type MeetingDocumentRow =
+  SupabaseSchema['public']['Tables']['meeting_documents']['Row'];
+type MeetingDocumentInsert =
+  SupabaseSchema['public']['Tables']['meeting_documents']['Insert'];
+type MeetingDocumentUpdate =
+  SupabaseSchema['public']['Tables']['meeting_documents']['Update'];
 
 /* ------------------------------ External APIs ------------------------------ */
 
@@ -64,7 +75,16 @@ export const fetchJotform = async (id: any) => {
   }
 };
 
-/* --------------------------- Meeting documents DB -------------------------- */
+/* --------------------------- Board Meeting Docs --------------------------- */
+
+type GetDocsOptions = {
+  category?: Category;
+  fy?: string | null;
+  isArchived?: boolean;
+  isDownloadAll?: boolean;
+  limit?: number;
+  order?: 'asc' | 'desc';
+};
 
 /**
  * Fetch meeting documents with optional filters.
@@ -72,7 +92,7 @@ export const fetchJotform = async (id: any) => {
  */
 export const getMeetingDocuments = async (
   opts: GetDocsOptions = {},
-): Promise<Document[]> => {
+): Promise<BODMeetingDocs[]> => {
   const {
     category,
     fy,
@@ -84,14 +104,14 @@ export const getMeetingDocuments = async (
 
   let query = supabase
     .from('meeting_documents')
-    .select('id, title, url, date, category, fy, is_archived, is_download_all')
+    .select(
+      'id, title, url, date, category, fy, is_archived, is_download_all, created_at, updated_at',
+    )
     .order('date', { ascending: order === 'asc' });
 
   if (category) query = query.eq('category', category);
-  if (fy !== undefined) {
-    if (fy === null) query = query.is('fy', null);
-    else query = query.eq('fy', fy);
-  }
+  if (fy !== undefined)
+    query = fy === null ? query.is('fy', null) : query.eq('fy', fy);
   if (typeof isArchived === 'boolean')
     query = query.eq('is_archived', isArchived);
   if (typeof isDownloadAll === 'boolean')
@@ -99,65 +119,43 @@ export const getMeetingDocuments = async (
   if (typeof limit === 'number') query = query.limit(limit);
 
   const { data, error } = await query;
+  if (error) throw error;
 
-  if (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to fetch meeting documents:', error);
-    throw error; // Let caller handle it
-  }
-
-  return (data ?? []) as Document[];
+  const rows = (data ?? []) as MeetingDocumentRow[];
+  return rows.map(fromSupabase);
 };
 
 export const getDownloadAllDoc = async (
   category: Category,
   opts?: { isArchived?: boolean },
-): Promise<Document | null> => {
+): Promise<BODMeetingDocs | null> => {
   const isArchived = opts?.isArchived ?? false;
   const { data, error } = await supabase
     .from('meeting_documents')
-    .select('id, title, url, category, is_download_all, is_archived')
+    .select(
+      'id, title, url, category, is_download_all, is_archived, date, fy, created_at, updated_at',
+    )
     .eq('category', category)
     .eq('is_download_all', true)
     .eq('is_archived', isArchived)
     .maybeSingle();
 
-  if (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to fetch download all document:', error);
-    throw error;
-  }
-
-  return data as Document | null;
+  if (error) throw error;
+  const row = (data ?? null) as MeetingDocumentRow | null;
+  return row ? fromSupabase(row) : null;
 };
 
-export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
-  // Decide if this doc turns the row into "no date" cases
-  const willBeCalendar = doc.category === 'Calendar';
-  const willBeDownloadAll = doc.is_download_all === true;
-
-  // Compute the next date only if we must (either flags require null,
-  // or the caller explicitly provided a date field)
-  let nextDate: string | null | undefined;
-
-  if (willBeCalendar || willBeDownloadAll) {
-    nextDate = null; // force null for these categories
-  } else if ('date' in doc) {
-    const raw = doc.date as unknown as string | null | undefined;
-    if (raw == null || raw === '') {
-      nextDate = null;
-    } else {
-      // your helper only accepts string/undefined, so coerce safely
-      nextDate = normalizeDateISO(raw) || null; // normalize -> '' means null
-    }
-  } else {
-    // leave undefined => don't update the column
-    nextDate = undefined;
-  }
-
-  const payload = {
-    ...doc,
-    ...(nextDate !== undefined ? { date: nextDate } : {}),
+export const createMeetingDocument = async (
+  doc: Omit<BODMeetingDocs, 'id' | 'createdAt' | 'updatedAt'>,
+): Promise<BODMeetingDocs> => {
+  const payload: MeetingDocumentInsert = {
+    title: doc.title,
+    url: doc.url,
+    category: doc.category,
+    date: normalizeDateISO(doc.date ?? null),
+    fy: doc.fy ?? null,
+    is_archived: !!doc.isArchived,
+    is_download_all: !!doc.isDownloadAll,
   };
 
   const { data, error } = await supabase
@@ -167,40 +165,29 @@ export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
     .single();
 
   if (error) throw error;
-  return data as Document;
+
+  return fromSupabase(data as MeetingDocumentRow);
 };
 
 export const updateMeetingDocument = async (
   id: string,
-  updates: Partial<Document>,
-) => {
-  // Decide if this update turns the row into "no date" cases
-  const willBeCalendar = updates.category === 'Calendar';
-  const willBeDownloadAll = updates.is_download_all === true;
-
-  // Compute the next date only if we must (either flags require null,
-  // or the caller explicitly provided a date field)
-  let nextDate: string | null | undefined;
-
-  if (willBeCalendar || willBeDownloadAll) {
-    nextDate = null; // force null for these categories
-  } else if ('date' in updates) {
-    const raw = updates.date as unknown as string | null | undefined;
-    if (raw == null || raw === '') {
-      nextDate = null;
-    } else {
-      // your helper only accepts string/undefined, so coerce safely
-      nextDate = normalizeDateISO(raw) || null; // normalize -> '' means null
-    }
-  } else {
-    // leave undefined => don't update the column
-    nextDate = undefined;
-  }
-
-  // Build payload without accidentally sending undefined fields
-  const payload = {
-    ...updates,
-    ...(nextDate !== undefined ? { date: nextDate } : {}),
+  updates: Partial<BODMeetingDocs>,
+): Promise<BODMeetingDocs> => {
+  const payload: MeetingDocumentUpdate = {
+    title: updates.title,
+    url: updates.url,
+    category: updates.category,
+    date:
+      updates.date === ''
+        ? null
+        : updates.date !== undefined
+        ? normalizeDateISO(updates.date)
+        : undefined,
+    fy: updates.fy ?? undefined,
+    is_archived:
+      updates.isArchived !== undefined ? !!updates.isArchived : undefined,
+    is_download_all:
+      updates.isDownloadAll !== undefined ? !!updates.isDownloadAll : undefined,
   };
 
   const { data, error } = await supabase
@@ -211,23 +198,24 @@ export const updateMeetingDocument = async (
     .single();
 
   if (error) throw error;
-  return data as Document;
+
+  return fromSupabase(data as MeetingDocumentRow);
 };
 
-export const archiveMeetingDocument = async (category: Category) => {
-  const payload = {
-    is_archived: true,
-  };
-
+export const archiveMeetingDocument = async (
+  category: Category,
+): Promise<BODMeetingDocs[]> => {
   const { data, error } = await supabase
     .from('meeting_documents')
-    .update(payload)
+    .update({ is_archived: true })
     .eq('category', category)
     .neq('is_download_all', true)
     .select();
 
   if (error) throw error;
-  return data;
+
+  const rows = (data ?? []) as MeetingDocumentRow[];
+  return rows.map(fromSupabase);
 };
 
 export const deleteMeetingDocument = async (id: string) => {
