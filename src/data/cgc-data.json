@@ -71,14 +71,14 @@
       "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: Friday, May 15", "Time: TBD"],
+        ["Date: Friday, May 15", "Time: 4:30 PM to 6:00 PM"],
         "Location: University Gym",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://drive.google.com/file/d/1aYsxwQpiBcbucIWdt09gTedS1qyXktg2/preview",
-        "buttonPlaceholder": "Applications will open soon",
+        "buttonLink": "",
+        "buttonPlaceholder": "Applications open February 9",
         "buttonText": "Booklet"
       },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
@@ -91,14 +91,14 @@
       "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
       "copy": [
-        ["Date: Saturday, May 16", "Time: TBD"],
+        ["Date: Saturday, May 16", "Time: 3:00 PM to 4:30 PM"],
         "Location: University Gym",
         "Contact: Imani Thomas, Pan African Student Resource Center Coordinator",
         "Email: ithoma10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://drive.google.com/file/d/1ht2lz4XnlaxZIgzBDW25t4ltdVCRiWFl/preview",
-        "buttonPlaceholder": "Applications will open soon",
+        "buttonLink": "",
+        "buttonPlaceholder": "Applications open February 9",
         "buttonText": "Booklet"
       },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
@@ -111,14 +111,14 @@
       "title": "IndigiGrad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
-        ["Date: Friday, May 15", "Time: TBD"],
+        ["Date: Friday, May 15", "Time: 10:30 AM to 12:00 PM"],
         "Location: U-SU Theater",
         "Contact: Fabi Avina, Center for Student Involvement Director",
         "Email: favina@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://drive.google.com/file/d/19J2Q9p7-rOucyZKYEUw6tZv8Ka3KFCoL/preview",
-        "buttonPlaceholder": "Applications will open soon",
+        "buttonLink": "",
+        "buttonPlaceholder": "Applications open February 9",
         "buttonText": "Booklet"
       },
       "iconSrc": "/departments/ccc/native-logo.png",
@@ -131,14 +131,14 @@
       "title": "Nuestra Grad Celebration",
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "copy": [
-        ["Date: Saturday, May 16", "Time: TBD"],
+        ["Date: Saturday, May 16", "Time: 10:00 AM to 11:30 AM"],
         "Location: University Gym",
         "Contact: Emily Urrutia, Chicanx Latinx Student Resource Center Coordinator",
         "Email: eurruti8@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://drive.google.com/file/d/1GnG2nNUGMgCFSTRF9xQ9m07Q9y9Z41eS/preview",
-        "buttonPlaceholder": "Applications will open soon",
+        "buttonLink": "",
+        "buttonPlaceholder": "Applications open February 9",
         "buttonText": "Booklet"
       },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
@@ -151,14 +151,14 @@
       "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: Friday, May 15", "Time: TBD"],
+        ["Date: Friday, May 15", "Time: 7:30 PM to 9:00 PM"],
         "Location: University Gym",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "https://drive.google.com/file/d/1M_wJn7isQn9zJrWQ3q24I4fqc7hplNsa/preview",
-        "buttonPlaceholder": "Applications will open soon",
+        "buttonLink": "",
+        "buttonPlaceholder": "Applications open February 9",
         "buttonText": "Booklet"
       },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
@@ -183,8 +183,8 @@
         "Major(s)",
         "Minor(s)",
         "Certificate(s)",
-        "Headshot picture",
-        "75-word acknowledgment",
+        "Headshot picture (optional)",
+        "75-word acknowledgment (optional)",
         "Example: I would like to thank my family and friends for their continuous support throughout my academic journey. Their encouragement and belief in me have been instrumental in helping me achieve this milestone. I am also grateful to my professors and mentors for their guidance and inspiration. This achievement is not just mine but a reflection of the collective effort and love from those around me."
       ]
     },

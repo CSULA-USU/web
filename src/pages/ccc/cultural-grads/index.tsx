@@ -175,7 +175,7 @@ export default function CulturalGrads() {
             influences that have contributed to your academic success. You
             deserve to celebrate your achievements with cultural influences that
             are integral to your being and important to you and your community!
-            Apply now!
+            Applications open on February 9, 2026!
           </Typography>
           <Typography as="p" variant="copy" color="primary">
             The celebrations are open to all students who would like to sign up
