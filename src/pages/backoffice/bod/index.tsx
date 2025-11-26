@@ -137,26 +137,15 @@ export default function BoardMeetingsAdmin({
 }
 
 export async function getServerSideProps() {
-  console.log('[BOD getServerSideProps] fetching initial documents…');
-
   try {
     const initialDocuments = await getMeetingDocuments({
       isArchived: false,
       order: 'asc',
     });
-
-    console.log(
-      '[BOD getServerSideProps] got documents:',
-      initialDocuments?.length,
-    );
-
     return { props: { initialDocuments } };
   } catch (error) {
-    console.error('[BOD getServerSideProps] error while fetching docs:', {
-      message: (error as any)?.message,
-      stack: (error as any)?.stack,
-    });
-
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch documents:', error);
     return {
       props: { initialDocuments: [], error: 'Failed to load documents' },
     };
