@@ -108,7 +108,7 @@
       "id": "pasrc"
     },
     {
-      "title": "Native Grad Celebration",
+      "title": "IndigiGrad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "copy": [
         ["Date: Friday, May 15", "Time: TBD"],
@@ -177,13 +177,25 @@
       ]
     },
     {
+      "question": "What is required for my application?",
+      "answer": [
+        "CIN",
+        "Major(s)",
+        "Minor(s)",
+        "Certificate(s)",
+        "Headshot picture",
+        "75-word acknowledgment",
+        "Example: I would like to thank my family and friends for their continuous support throughout my academic journey. Their encouragement and belief in me have been instrumental in helping me achieve this milestone. I am also grateful to my professors and mentors for their guidance and inspiration. This achievement is not just mine but a reflection of the collective effort and love from those around me."
+      ]
+    },
+    {
       "question": "What should I wear?",
       "answer": "We encourage you to wear business casual, graduation regalia, or cultural regalia."
     },
     {
       "question": "How many guest tickets do I get?",
       "answer": [
-        "ALL Graduations are open seating (not reserved). First come, first served.",
+        "ALL Graduations are open seating (not reserved). First come, first served. Number of guest tickets may be subject to change.",
         "APIDA Grad # of Guest Tickets: 10",
         "Black Grad # of Guest Tickets: 10",
         "IndigiGrad # of Guest Tickets: 10",
