@@ -10,7 +10,17 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-
+  webpack: (config, options) => {
+    // exclude player.style from server bundle (it’s only for client-side only)
+    if (options.isServer) {
+      if (Array.isArray(config.externals)) {
+        config.externals.push('player.style');
+      } else {
+        config.externals = [config.externals, 'player.style'];
+      }
+    }
+    return config;
+  },
   images: {
     // ✅ Keep your existing allowlist exactly as-is to avoid breaking anything.
     // (You can tighten this later to reduce transformations further.)
