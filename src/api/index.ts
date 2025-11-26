@@ -10,6 +10,7 @@ import {
   type Category,
 } from 'types/Backoffice';
 import { SupaPage, SupaSection } from 'types';
+import { normalizeDateISO } from 'utils/dates';
 
 /* ---------------------- DB row/insert/update type aliases ---------------------- */
 type MeetingDocumentRow =
@@ -75,13 +76,6 @@ export const fetchJotform = async (id: any) => {
 };
 
 /* --------------------------- Board Meeting Docs --------------------------- */
-
-/** Normalize to YYYY-MM-DD (no TZ shift) */
-const normalizeDateISO = (input?: string | null) => {
-  if (input == null || input === '') return null;
-  const justDate = input.length >= 10 ? input.slice(0, 10) : input;
-  return /^\d{4}-\d{2}-\d{2}$/.test(justDate) ? justDate : justDate;
-};
 
 type GetDocsOptions = {
   category?: Category;
