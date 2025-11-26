@@ -55,6 +55,7 @@ const nextConfig = {
   // Add experimental flag for ESM externals
   experimental: {
     esmExternals: 'loose',
+    serverComponentsExternalPackages: ['player.style', 'next-video'],
   },
 };
 
