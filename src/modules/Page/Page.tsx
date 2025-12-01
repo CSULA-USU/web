@@ -23,7 +23,7 @@ interface PageProps {
 
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
-    <Announcement text="" isVisible={true} linkText="" href="">
+    <Announcement text="" isVisible={false} linkText="" href="">
       <Typography as="p">
         The University&ndash;Student Union will have adjusted operating hours
         during Fall Break:
