@@ -1,6 +1,14 @@
 import styled from 'styled-components';
-import Video from 'next-video';
+import dynamic from 'next/dynamic';
 import { useBreakpoint } from 'hooks/useBreakpoint';
+
+// Dynamic import - only loads on client
+const Video = dynamic(() => import('next-video'), {
+  ssr: false,
+  loading: () => (
+    <div style={{ width: '100%', height: '100%', backgroundColor: 'black' }} />
+  ),
+});
 
 interface HeaderWithVideoProps {
   children?: React.ReactNode;
