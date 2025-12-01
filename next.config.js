@@ -9,25 +9,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  webpack: (config, options) => {
-    if (options.isServer) {
-      // Handle both CommonJS and ESM externals
-      if (Array.isArray(config.externals)) {
-        config.externals.push('player.style');
-      } else if (typeof config.externals === 'function') {
-        const originalExternals = config.externals;
-        config.externals = async (context, request, callback) => {
-          if (request === 'player.style') {
-            return callback(null, 'commonjs ' + request);
-          }
-          return originalExternals(context, request, callback);
-        };
-      } else {
-        config.externals = [config.externals, 'player.style'];
-      }
-    }
-    return config;
-  },
   images: {
     // ✅ Keep your existing allowlist exactly as-is to avoid breaking anything.
     // (You can tighten this later to reduce transformations further.)
@@ -51,11 +32,6 @@ const nextConfig = {
     // Generate fewer width variants globally.
     deviceSizes: [360, 768, 1024],
     imageSizes: [400],
-  },
-  // Add experimental flag for ESM externals
-  experimental: {
-    esmExternals: 'loose',
-    serverComponentsExternalPackages: ['player.style', 'next-video'],
   },
 };
 
