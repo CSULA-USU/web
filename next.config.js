@@ -1,4 +1,3 @@
-// next.config.js
 const { withNextVideo } = require('next-video/process');
 
 /** @type {import('next').NextConfig} */
@@ -10,7 +9,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-
   images: {
     // ✅ Keep your existing allowlist exactly as-is to avoid breaking anything.
     // (You can tighten this later to reduce transformations further.)

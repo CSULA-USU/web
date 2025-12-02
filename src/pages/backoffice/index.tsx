@@ -22,20 +22,29 @@ export default function Backoffice() {
   return (
     <Page>
       <Head>
-        <title>U-SU Backoffice</title>
+        <title>U&ndash;SU Backoffice</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <FluidContainer>
         <Typography as="h2" variant="titleLarge">
-          Welcome {firstName} {lastName} to the Backoffice!
+          Welcome to the Backoffice, {firstName} {lastName}!
         </Typography>
         <Typography as="h3" variant="label">
-          View the Graffix Requests:{' '}
+          Board Meeting Documents:{' '}
+          <Link
+            href="/backoffice/bod"
+            style={{ textDecoration: 'underline', color: 'blue' }}
+          >
+            /backoffice/bod
+          </Link>
+        </Typography>
+        <Typography as="h3" variant="label">
+          Graphics Requests:{' '}
           <Link
             href="/backoffice/graffix-requests"
             style={{ textDecoration: 'underline', color: 'blue' }}
           >
-            /backoffice/graffix-requests
+            /backoffice/graffix&ndash;requests
           </Link>
         </Typography>
         <Button onClick={() => signOut()}>Sign Out</Button>

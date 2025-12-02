@@ -23,7 +23,7 @@ export const EventHeader = ({
   title?: React.ReactNode;
   subheaderText?: string;
 }) => {
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -47,7 +47,7 @@ export const EventHeader = ({
       <Typography
         variant="pageHeader"
         color="greyDarker"
-        size={isMobile ? '2xl' : '4xl'}
+        size={isMobile ? '2xl' : isTablet ? '3xl' : '4xl'}
         weight={isMobile ? '700' : '600'}
         as="h1"
         margin={isMobile ? '0 auto' : '0 auto 48px'}

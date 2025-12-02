@@ -6,7 +6,7 @@ import { Colors, FontSizes, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
 import aboutBrand from 'data/aboutBrand.json';
-import { Merriweather, Roboto } from 'next/font/google';
+import { Merriweather } from 'next/font/google';
 import cards from 'data/about.json';
 import { FaRegCopy } from 'react-icons/fa6';
 import { IoIosCheckmark } from 'react-icons/io';
@@ -17,18 +17,12 @@ const merriweather = Merriweather({
   display: 'swap',
 });
 
-const roboto = Roboto({
-  weight: ['300', '400', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
 const fontClassByName: Record<string, string> = {
   Bitter: '',
   Merriweather: merriweather.className,
   Montserrat: '',
-  'Akzidenz-Grotesk': roboto.className, // alias → Roboto
-  Roboto: roboto.className,
+  'Akzidenz-Grotesk': 'use-roboto', // Use system Roboto
+  Roboto: 'use-roboto', // Roboto is loaded via Next.js font
 };
 
 const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
@@ -41,9 +35,13 @@ const SampleP = styled.p<{ fontName: string; size?: string; weight?: number }>`
     const className = fontClassByName[fontName];
 
     // For Next.js fonts (Merriweather, Roboto)
-    if (className) {
+    if (className && className !== 'use-roboto') {
       // Don't use CSS variables, use the className directly
       return ''; // The className will be applied via the className prop
+    }
+
+    if (className === 'use-roboto') {
+      return `font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`;
     }
 
     // For CSS-loaded fonts (Montserrat, Bitter)
@@ -65,9 +63,13 @@ const SampleH3 = styled.h3<{
     const className = fontClassByName[fontName];
 
     // For Next.js fonts (Merriweather, Roboto)
-    if (className) {
+    if (className && className !== 'use-roboto') {
       // Don't use CSS variables, use the className directly
       return ''; // The className will be applied via the className prop
+    }
+
+    if (className === 'use-roboto') {
+      return `font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`;
     }
 
     // For CSS-loaded fonts (Montserrat, Bitter)

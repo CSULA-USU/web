@@ -4,6 +4,10 @@
     "title": "Home"
   },
   {
+    "url": "/backoffice/bod",
+    "title": "BOD"
+  },
+  {
     "url": "/backoffice/graffix-requests",
     "title": "Graffix Requests"
   }
