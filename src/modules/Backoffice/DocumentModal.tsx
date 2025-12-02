@@ -335,9 +335,21 @@ export function DocumentModal({
               }}
               required
             >
-              <option value="Agenda">Agenda</option>
-              <option value="Minutes">Minutes</option>
-              <option value="Calendar">Meeting Calendar</option>
+              {!document ||
+              (document.category !== 'Calendar' &&
+                document.category !== 'Minutes') ? (
+                <option value="Agenda">Agenda</option>
+              ) : null}
+
+              {!document ||
+              (document.category !== 'Calendar' &&
+                document.category !== 'Agenda') ? (
+                <option value="Minutes">Minutes</option>
+              ) : null}
+
+              {document && document.category === 'Calendar' ? (
+                <option value="Calendar">Meeting Calendar</option>
+              ) : null}
             </Select>
           </FormGroup>
 
