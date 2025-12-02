@@ -91,6 +91,8 @@ export function DocumentManager({
     (doc) => doc.category === selectedCategory && !doc.is_download_all,
   );
 
+  const calendars = documents.filter((doc) => doc.category === 'Calendar');
+
   const downloadAllLinks = documents.filter(
     (doc) => doc.is_download_all && doc.category === selectedCategory,
   );
@@ -177,15 +179,17 @@ export function DocumentManager({
               value={selectedCategory}
               onValueChange={(v) => setSelectedCategory(v as Category)}
             />
-            <Button
-              padding="10px 20px"
-              fontSize="14px"
-              fontWeight="600"
-              onClick={() => setIsModalOpen(true)}
-              aria-label="Add new document"
-            >
-              <span aria-hidden="true">+</span> Add New Document
-            </Button>
+            {calendars && selectedCategory === 'Calendar' ? null : (
+              <Button
+                padding="10px 20px"
+                fontSize="14px"
+                fontWeight="600"
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Add new document"
+              >
+                <span aria-hidden="true">+</span> Add New Document
+              </Button>
+            )}
           </Controls>
         </SectionHeader>
         <FluidContainer padding="0" flex flexDirection="column" gap="24px">
