@@ -175,6 +175,22 @@ export const createMeetingDocument = async (doc: Omit<Document, 'id'>) => {
     nextDate = undefined;
   }
 
+  if (!doc.url?.endsWith('raw=1') && doc.url?.includes('.pdf')) {
+    doc.url = doc.url.replace(/dl=0$/, 'raw=1');
+    doc.url = doc.url.replace(/dl=1$/, 'raw=1');
+  }
+
+  if (doc.url?.includes('.docx')) {
+    doc.url = doc.url.replace(/raw=1$/, '');
+    doc.url = doc.url.replace(/dl=0$/, '');
+    doc.url = doc.url.replace(/dl=1$/, '');
+  }
+
+  if (!doc.url?.endsWith('dl=1') && doc.url?.includes('.zip')) {
+    doc.url = doc.url.replace(/dl=0$/, 'dl=1');
+    doc.url = doc.url.replace(/raw=1$/, 'dl=1');
+  }
+
   const payload = {
     ...doc,
     ...(nextDate !== undefined ? { date: nextDate } : {}),
@@ -215,6 +231,22 @@ export const updateMeetingDocument = async (
   } else {
     // leave undefined => don't update the column
     nextDate = undefined;
+  }
+
+  if (!updates.url?.endsWith('raw=1') && updates.url?.includes('.pdf')) {
+    updates.url = updates.url.replace(/dl=0$/, 'raw=1');
+    updates.url = updates.url.replace(/dl=1$/, 'raw=1');
+  }
+
+  if (updates.url?.includes('.docx')) {
+    updates.url = updates.url.replace(/raw=1$/, '');
+    updates.url = updates.url.replace(/dl=0$/, '');
+    updates.url = updates.url.replace(/dl=1$/, '');
+  }
+
+  if (!updates.url?.endsWith('dl=1') && updates.url?.includes('.zip')) {
+    updates.url = updates.url.replace(/dl=0$/, 'dl=1');
+    updates.url = updates.url.replace(/raw=1$/, 'dl=1');
   }
 
   // Build payload without accidentally sending undefined fields
