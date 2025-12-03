@@ -263,10 +263,11 @@ export default function Contact() {
             </Typography>
 
             <form onSubmit={handleSubmit} noValidate>
-              {/* Anti-spam honeypot field */}
+              {/* Anti-spam honeypot field. Will cause WAVE intentionally because honeypot is hidden and doesn't have a label */}
               <HiddenInput
                 type="text"
                 name="honeypot"
+                id="hidden"
                 value={formData.honeypot}
                 onChange={handleInputChange}
                 tabIndex={-1}
@@ -301,13 +302,13 @@ export default function Contact() {
                 <Label htmlFor="category">
                   Category <RequiredMark aria-label="required">*</RequiredMark>
                 </Label>
-
                 <Select
+                  id="category"
                   value={formData.category || undefined}
                   onValueChange={handleCategoryChange}
                   items={categoryItems}
-                  ariaLabel="Category"
                   placeholder="Select..."
+                  required
                 />
                 {errors.category && (
                   <ErrorText id="category-error" role="alert">
