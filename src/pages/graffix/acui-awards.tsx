@@ -199,7 +199,7 @@ export default function AcuiAwards() {
           <Image
             key={y.alt}
             src={y.src}
-            alt={y.alt}
+            alt="" //treat as single decorative group
             width="100px"
             margin="8px"
           />
