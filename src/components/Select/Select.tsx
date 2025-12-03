@@ -11,6 +11,7 @@ import { Colors } from 'theme';
 interface SelectProps extends RadixSelect.SelectProps {
   items: { label: string; value: string }[];
   placeholder?: string;
+  ariaLabel?: string;
   id?: string;
 }
 
@@ -118,11 +119,12 @@ const SelectScrollDownButton = styled(RadixSelect.ScrollDownButton)`
 export const Select = ({
   items,
   placeholder,
+  ariaLabel,
   id,
   ...props
 }: SelectProps & { name?: string }) => (
   <RadixSelect.Root {...props}>
-    <SelectTrigger id={id}>
+    <SelectTrigger id={id} aria-label={ariaLabel}>
       <RadixSelect.Value placeholder={placeholder} />
       <SelectIcon>
         <ChevronDownIcon />
