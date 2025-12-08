@@ -7,9 +7,9 @@ export const categoryMap: Record<string, string> = {
   program: 'Program',
   webissue: 'Website Issue',
   other: 'Other',
-} as const;
+};
 
-export type CategoryOption = keyof typeof categoryMap; // 'general' | ... | 'other'
+export type CategoryOption = keyof typeof categoryMap; // 'accessibility' | 'concern' | 'facility' | 'feedback' | 'program' | 'webissue' | 'other'
 
 export const categoryItems = Object.entries(categoryMap).map(
   ([value, label]) => ({ value, label }),

@@ -2,17 +2,18 @@ import styled from 'styled-components';
 import { Colors } from 'theme';
 
 const StyledTextarea = styled.textarea`
-  width: 100%;
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 10px;
-  height: 100px;
-  font-size: 14px;
-  line-height: 1;
   background-color: white;
-  padding: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 14px;
+  height: 100px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 10px;
+  width: 100%;
+
   &:focus {
     box-shadow: 0 0 0 2px black;
   }
@@ -21,4 +22,6 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
-export const TextArea = (props: any) => <StyledTextarea {...props} />;
+export const TextArea = (
+  props: React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+) => <StyledTextarea {...props} />;

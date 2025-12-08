@@ -6,6 +6,7 @@ import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
 import { SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
+import { ContactFormData } from 'types/Contact';
 
 export * from './supabase';
 
@@ -64,7 +65,7 @@ export const fetchJotform = async (id: any) => {
   }
 };
 
-export const postJotform = async (formData: any) => {
+export const postJotform = async (formData: ContactFormData) => {
   try {
     const res = await fetch('/api/jotformContact', {
       method: 'POST',

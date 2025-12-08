@@ -8,6 +8,8 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { TextArea } from 'components/TextArea';
 import { categoryItems, CategoryOption } from 'types/CategoriesContact';
 import { postJotform } from 'api';
+import { useToast } from 'context/ToastContext';
+import { ContactFormData } from 'types/Contact';
 
 const ContactGrid = styled(FluidContainer)`
   width: 100%;
@@ -59,13 +61,6 @@ const ErrorText = styled.span`
   display: block;
 `;
 
-const HiddenInput = styled.input`
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
-`;
-
 const Label = styled.label`
   display: block;
   margin-bottom: ${Spaces.xs};
@@ -77,16 +72,6 @@ const RequiredMark = styled.span`
   color: #dc2626; /* or Colors.red if in your theme */
 `;
 
-interface FormData {
-  subject: string;
-  category: CategoryOption | '';
-  email: string;
-  message: string;
-  firstName: string;
-  lastInitial: string;
-  honeypot: string;
-}
-
 interface FormErrors {
   subject?: string;
   category?: string;
@@ -96,19 +81,18 @@ interface FormErrors {
 }
 
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ContactFormData>({
     subject: '',
     category: '',
     email: '',
     message: '',
     firstName: '',
     lastInitial: '',
-    honeypot: '',
   });
+  const { showToast } = useToast();
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [text, setText] = useState('');
 
   const validateEmail = (email: string): boolean => {
     const basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -123,7 +107,7 @@ export default function Contact() {
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Please enter a valid cal state la email address';
+      newErrors.email = 'Please enter a valid Cal State LA email address';
     }
 
     if (!formData.subject.trim()) {
@@ -144,12 +128,8 @@ export default function Contact() {
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    isMessage?: boolean,
   ) => {
     const { name, value } = e.target;
-    if (isMessage) {
-      setText(e.target.value);
-    }
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
@@ -167,11 +147,6 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Anti-spam check
-    if (formData.honeypot) {
-      return;
-    }
-
     if (!validateForm()) {
       return;
     }
@@ -179,9 +154,10 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await postJotform(formData);
-      console.log('Submitted successfully:', response);
-      setText('');
+      await postJotform(formData);
+
+      showToast('Your response has been successfully sent!', 'success');
+
       // Reset form
       setFormData({
         firstName: '',
@@ -190,14 +166,18 @@ export default function Contact() {
         subject: '',
         category: '',
         message: '',
-        honeypot: '',
       });
     } catch (error) {
+      showToast(
+        'Error: Your response has not been successfully sent.',
+        'error',
+      );
       console.error(error);
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
     <Page>
       <Head>
@@ -263,17 +243,6 @@ export default function Contact() {
             </Typography>
 
             <form onSubmit={handleSubmit} noValidate>
-              {/* Anti-spam honeypot field. Will cause WAVE intentionally because honeypot is hidden and doesn't have a label */}
-              <HiddenInput
-                type="text"
-                name="honeypot"
-                id="hidden"
-                value={formData.honeypot}
-                onChange={handleInputChange}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
               <FormGroup>
                 <Label htmlFor="subject">
                   Subject <RequiredMark aria-label="required">*</RequiredMark>
@@ -352,7 +321,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(
                     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-                  ) => handleInputChange(e, true)}
+                  ) => handleInputChange(e)}
                   aria-invalid={!!errors.message}
                   aria-describedby={
                     errors.message ? 'message-error' : undefined
@@ -364,7 +333,7 @@ export default function Contact() {
                     {errors.message}
                   </ErrorText>
                 )}
-                <Typography>{text.length} / 1000</Typography>
+                <Typography>{formData.message.length} / 1000</Typography>
               </FormGroup>
 
               <FormRow>
@@ -377,17 +346,7 @@ export default function Contact() {
                     value={formData.firstName}
                     maxLength={50}
                     onChange={handleInputChange}
-                    aria-invalid={!!errors.firstName}
-                    aria-describedby={
-                      errors.firstName ? 'firstName-error' : undefined
-                    }
-                    required
                   />
-                  {errors.firstName && (
-                    <ErrorText id="firstName-error" role="alert">
-                      {errors.firstName}
-                    </ErrorText>
-                  )}
                 </FormGroup>
 
                 <FormGroup>

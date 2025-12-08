@@ -122,7 +122,7 @@ export const Select = ({
   ariaLabel,
   id,
   ...props
-}: SelectProps & { name?: string }) => (
+}: SelectProps) => (
   <RadixSelect.Root {...props}>
     <SelectTrigger id={id} aria-label={ariaLabel}>
       <RadixSelect.Value placeholder={placeholder} />
@@ -130,7 +130,6 @@ export const Select = ({
         <ChevronDownIcon />
       </SelectIcon>
     </SelectTrigger>
-    {/* You may add a hidden native select for form compatibility if needed, but RadixSelect does not provide NativeSelect. */}
     <RadixSelect.Portal>
       <SelectContent>
         <SelectScrollUpButton>
