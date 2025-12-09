@@ -167,7 +167,7 @@ export default function StaffBusinessCard() {
           <CardContainerTop>
             <Image
               src="/usu-wordmark-white.png"
-              alt=""
+              alt="Cal State LA University-Student Union"
               width="224"
               height="80"
             />
