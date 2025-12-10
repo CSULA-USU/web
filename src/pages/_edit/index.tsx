@@ -1,5 +1,5 @@
 import { EditPage } from 'modules';
-import { fetchPages } from 'api';
+import { fetchPages } from 'services';
 import { useEffect, useState } from 'react';
 import { FluidContainer, Typography } from 'components';
 import styled from 'styled-components';

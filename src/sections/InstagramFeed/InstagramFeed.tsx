@@ -4,7 +4,7 @@ import { useBreakpoint } from 'hooks';
 import Link from 'next/link';
 import { FluidContainer, SkeletonWrapper, Typography } from 'components';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchInstagramFeed } from 'api';
+import { fetchInstagramFeed } from 'services';
 import { InstagramPost } from 'types';
 import { InstagramFeedProps } from './props';
 import { truncateString } from 'utils/stringhelpers';

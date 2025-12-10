@@ -15,7 +15,7 @@ import {
 import { useBreakpoint } from 'hooks';
 import archiveData from 'data/public-document-archives.json';
 import { Spaces } from 'theme';
-import { getDownloadAllDoc, getMeetingDocuments } from 'api';
+import { getDownloadAllDoc, getMeetingDocuments } from 'services';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';

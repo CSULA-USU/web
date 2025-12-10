@@ -7,7 +7,7 @@ import { FontSizes, Spaces } from 'theme';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { TextArea } from 'components/TextArea';
 import { categoryItems, CategoryOption } from 'types/CategoriesContact';
-import { postJotform } from 'api';
+import { postJotform } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
 
