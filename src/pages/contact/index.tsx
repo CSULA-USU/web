@@ -181,7 +181,7 @@ export default function Contact() {
   return (
     <Page>
       <Head>
-        <title>Contact the U-SU</title>
+        <title>Contact the U&ndash;SU</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Cross Cultural Centers, Center For Student Involvement, Fitness Center, Student Orgnizations, Calendar, Events, Gender and Sexuality Resource Center, Pan African Resource Center, Asian Pacific Islander, Chicana Latina, Information and Event Services, Distinguished Women Awards, Cultural Graduate Celebrations, Employment Opportunities, Board of Directors, Jobs"
@@ -212,7 +212,7 @@ export default function Contact() {
         <ContactGrid as="section">
           <Card as="aside" color="greyLighter">
             <Typography weight="700" as="h2">
-              University-Student Union
+              University&ndash;Student Union
             </Typography>
             <address style={{ fontStyle: 'normal', marginTop: Spaces.lg }}>
               <Typography as="p">5154 State University Dr</Typography>
