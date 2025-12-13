@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
 import { Colors } from 'theme';
-import { Announcement, BackToTop, Typography } from 'components';
+import { Announcement, BackToTop } from 'components';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -23,25 +23,13 @@ interface PageProps {
 
 export const Page = ({ children }: PageProps) => (
   <PageContainer>
-    <Announcement text="" isVisible={false} linkText="" href="">
-      <Typography as="p">
-        The University&ndash;Student Union will have adjusted operating hours
-        during Fall Break:
-      </Typography>
-      <ul>
-        <li>
-          <Typography as="p">
-            November 24&ndash;25: Open from 7 AM to 7 PM
-          </Typography>
-        </li>
-        <li>
-          <Typography as="p">November 26: Open from 7 AM to 5 PM</Typography>
-        </li>
-        <li>
-          <Typography as="p">November 27&ndash;30: Closed</Typography>
-        </li>
-      </ul>
-    </Announcement>
+    <Announcement
+      text="The University&ndash;Student Union will have adjusted operating hours
+        during Winter Break:"
+      isVisible={true}
+      linkText="2025 U-SU Winter Break Hours"
+      href="https://www.dropbox.com/scl/fi/z06v9bjuqv1s4ysmlmjcp/2025-U-SU-Winter-Hours.pdf?rlkey=p5zccrkg6ay0yzakwx6qdj1xg&st=8t79eyed&raw=1"
+    />
     <Nav />
     <main role="main">{children}</main>
     <Footer />
