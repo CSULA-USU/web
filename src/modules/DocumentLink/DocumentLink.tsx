@@ -1,4 +1,3 @@
-import { AiOutlineFileText } from 'react-icons/ai';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { StyledLink } from 'components';
@@ -22,13 +21,6 @@ const LinkInner = styled.div`
 export const DocumentLink = ({ href, children }: DocumentLinkProps) => (
   <LinkInner>
     <StyledLink href={href} isExternalLink>
-      <AiOutlineFileText
-        style={{
-          position: 'absolute',
-          transform: 'translateX(-18px) translateY(1px)',
-          flexShrink: '0',
-        }}
-      />{' '}
       {children}
     </StyledLink>
   </LinkInner>
