@@ -35,8 +35,8 @@ const StyledSpan = styled.span`
 `;
 
 const StyledDiv = styled.span`
-  position: absolute;
-  transform: translateY(2px);
+  display: inline-flex;
+  align-items: center;
 `;
 
 const IconStyling = {
