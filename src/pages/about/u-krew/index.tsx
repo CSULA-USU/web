@@ -52,7 +52,7 @@ const HeroButtonContainer = styled.div`
 `;
 
 const HeroDescriptionContainer = styled.div`
-  margin-top: ${Spaces['lg']};
+  margin-top: ${Spaces.lg};
   max-width: 680px;
   ${media('mobile')(`
     margin-top: ${Spaces.lg};
