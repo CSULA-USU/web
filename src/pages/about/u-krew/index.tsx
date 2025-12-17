@@ -44,7 +44,7 @@ const ImageGrid = styled.div`
 const HeroButtonContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
-  margin-top: ${Spaces.md};
+  margin-top: ${Spaces.lg};
   ${media('mobile')(`
     margin-top: ${Spaces.lg};
     
@@ -52,6 +52,7 @@ const HeroButtonContainer = styled.div`
 `;
 
 const HeroDescriptionContainer = styled.div`
+  margin-top: ${Spaces['lg']};
   max-width: 680px;
   ${media('mobile')(`
     margin-top: ${Spaces.lg};
