@@ -142,6 +142,13 @@ export default async function handler(
     const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;
 
     // Map your frontend fields -> Jotform field IDs
+    // Jotform Field Mapping:
+    // [2] = Name (first/last)
+    // [3] = Email
+    // [4] = Subject
+    // [5] = Category
+    // [6] = Message
+
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
     body.append('submission[2][last]', formData.lastInitial || '');
