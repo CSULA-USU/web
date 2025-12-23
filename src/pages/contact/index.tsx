@@ -120,7 +120,7 @@ export default function Contact() {
     }
 
     if (!formData.category || formData.category.trim() === '') {
-      newErrors.category = 'Please choose a category.';
+      newErrors.category = 'Category is required';
     }
 
     if (!formData.message.trim()) {
