@@ -150,6 +150,9 @@ export default async function handler(
     // [4] = Subject
     // [5] = Category
     // [6] = Message
+    // NOTE: These numeric field IDs must match your Jotform form configuration.
+    //       Verify them in the Jotform form builder, and update this mapping if
+    //       the form structure or field ordering changes.
 
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
