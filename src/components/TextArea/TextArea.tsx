@@ -9,7 +9,7 @@ const StyledTextarea = styled.textarea`
   font-size: 14px;
   height: 100px;
   line-height: 1;
-  padding: 0 10px;
+  padding: 10px 10px;
   width: 100%;
 
   &:focus {
