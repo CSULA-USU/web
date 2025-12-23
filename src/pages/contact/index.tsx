@@ -72,6 +72,11 @@ const RequiredMark = styled.span`
   color: #dc2626; /* or Colors.red if in your theme */
 `;
 
+const StyledTextArea = styled(TextArea)`
+  border: 2px solid black;
+  border-radius: 4px;
+`;
+
 interface FormErrors {
   subject?: string;
   category?: string;
@@ -312,8 +317,7 @@ export default function Contact() {
                 <Label htmlFor="message">
                   Message <RequiredMark aria-label="required">*</RequiredMark>
                 </Label>
-                <TextArea
-                  style={{ border: '2px solid black', borderRadius: '4px' }}
+                <StyledTextArea
                   id="message"
                   name="message"
                   rows={6}
@@ -362,12 +366,7 @@ export default function Contact() {
                 </FormGroup>
               </FormRow>
 
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full"
-                style={{ marginTop: Spaces.md }}
-              >
+              <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? <>Sending...</> : 'Send Message'}
               </Button>
             </form>
