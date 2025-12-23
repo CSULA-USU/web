@@ -214,7 +214,7 @@ export default function Contact() {
         flexDirection="row"
         backgroundColor="greyLightest"
       >
-        <ContactGrid>
+        <ContactGrid as="div">
           <Card as="aside" color="greyLighter">
             <Typography weight="700" as="h2">
               University&ndash;Student Union

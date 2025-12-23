@@ -33,7 +33,7 @@ const SelectTrigger = styled(RadixSelect.SelectTrigger)`
     box-shadow: 0 0 0 2px black;
   }
   &[data-placeholder] {
-    color: ${Colors.black};
+    color: ${Colors.greyDarker};
   }
 `;
 
