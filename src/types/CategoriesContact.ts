@@ -1,4 +1,4 @@
-// categories.ts
+// CategoriesContact.ts
 export const categoryMap: Record<string, string> = {
   accessibility: 'Accessibility',
   concern: 'Concern',
