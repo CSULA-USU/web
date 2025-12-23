@@ -8,6 +8,7 @@ const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
 
 // Simple in-memory rate limiting (best-effort only)
+
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 2;
 
@@ -113,8 +114,9 @@ export default async function handler(
   }
 
   // Basic rate limiting by IP
+  // Use socket address to prevent header spoofing
   const ip =
-    (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() ||
+    (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||
     req.socket.remoteAddress ||
     'unknown';
 
