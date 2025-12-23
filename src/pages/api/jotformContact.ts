@@ -127,7 +127,6 @@ export default async function handler(
   }
 
   try {
-    // ... existing validation + Jotform logic ...
     // Validate + sanitize body
     const result = validateContactForm(req.body);
 
