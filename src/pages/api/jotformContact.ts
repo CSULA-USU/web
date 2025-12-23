@@ -78,6 +78,10 @@ function validateContactForm(
     errors.push('Email is invalid.');
   }
 
+  // Enforce Cal State LA email domain (must match frontend validation)
+  if (email && !email.toLowerCase().endsWith('@calstatela.edu')) {
+    errors.push('Email must be a calstatela.edu address.');
+  }
   // Category must be one of the defined strings
   const allowedCategories = Object.keys(categoryMap);
   if (category && !allowedCategories.includes(category)) {
