@@ -60,11 +60,11 @@ function validateContactForm(
 
   const raw = body as Partial<ContactFormData>;
 
-  const firstName = sanitize(raw.firstName, 100);
-  const lastInitial = sanitize(raw.lastInitial, 10);
-  const email = sanitize(raw.email, 200);
-  const subject = sanitize(raw.subject, 200);
-  const message = sanitize(raw.message, 2000);
+  const firstName = sanitize(raw.firstName, 50);
+  const lastInitial = sanitize(raw.lastInitial, 1);
+  const email = sanitize(raw.email, 254);
+  const subject = sanitize(raw.subject, 60);
+  const message = sanitize(raw.message, 1000);
   const category = sanitize(raw.category, 50);
 
   // Required field checks
@@ -78,6 +78,10 @@ function validateContactForm(
     errors.push('Email is invalid.');
   }
 
+  // Enforce Cal State LA email domain (must match frontend validation)
+  if (email && !email.toLowerCase().endsWith('@calstatela.edu')) {
+    errors.push('Email must be a calstatela.edu address.');
+  }
   // Category must be one of the defined strings
   const allowedCategories = Object.keys(categoryMap);
   if (category && !allowedCategories.includes(category)) {
@@ -127,7 +131,6 @@ export default async function handler(
   }
 
   try {
-    // ... existing validation + Jotform logic ...
     // Validate + sanitize body
     const result = validateContactForm(req.body);
 
@@ -150,6 +153,9 @@ export default async function handler(
     // [4] = Subject
     // [5] = Category
     // [6] = Message
+    // NOTE: These numeric field IDs must match your Jotform form configuration.
+    //       Verify them in the Jotform form builder, and update this mapping if
+    //       the form structure or field ordering changes.
 
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
