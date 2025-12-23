@@ -63,7 +63,7 @@ function validateContactForm(
   const firstName = sanitize(raw.firstName, 50);
   const lastInitial = sanitize(raw.lastInitial, 1);
   const email = sanitize(raw.email, 254);
-  const subject = sanitize(raw.subject, 200);
+  const subject = sanitize(raw.subject, 60);
   const message = sanitize(raw.message, 1000);
   const category = sanitize(raw.category, 50);
 
