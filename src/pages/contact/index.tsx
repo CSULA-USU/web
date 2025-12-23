@@ -174,7 +174,7 @@ export default function Contact() {
       });
     } catch (error) {
       showToast(
-        'Error: Your response has not been successfully sent.',
+        'Failed to send your message. Please try again.',
         'error',
       );
       console.error(error);
