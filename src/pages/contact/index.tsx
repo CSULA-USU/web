@@ -88,7 +88,7 @@ interface FormErrors {
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     subject: '',
-    category: '',
+    category: '' as CategoryOption,
     email: '',
     message: '',
     firstName: '',
@@ -214,7 +214,7 @@ export default function Contact() {
         flexDirection="row"
         backgroundColor="greyLightest"
       >
-        <ContactGrid as="section">
+        <ContactGrid>
           <Card as="aside" color="greyLighter">
             <Typography weight="700" as="h2">
               University&ndash;Student Union
