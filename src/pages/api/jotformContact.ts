@@ -61,7 +61,7 @@ function validateContactForm(
   const raw = body as Partial<ContactFormData>;
 
   const firstName = sanitize(raw.firstName, 50);
-  const lastInitial = sanitize(raw.lastInitial, 10);
+  const lastInitial = sanitize(raw.lastInitial, 1);
   const email = sanitize(raw.email, 254);
   const subject = sanitize(raw.subject, 200);
   const message = sanitize(raw.message, 2000);
