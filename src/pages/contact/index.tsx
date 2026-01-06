@@ -19,7 +19,6 @@ const ContactGrid = styled(FluidContainer)`
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     align-items: start; // vertical alignment of items
-    /* no justify-content: space-between here */
   }
 `;
 
