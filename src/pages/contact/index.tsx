@@ -134,7 +134,11 @@ export default function Contact() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    const filteredValue =
+      name === 'lastInitial' ? value.replace(/[^A-Za-z]/g, '') : value;
+
+    setFormData((prev) => ({ ...prev, [name]: filteredValue }));
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -172,10 +176,7 @@ export default function Contact() {
         message: '',
       });
     } catch (error) {
-      showToast(
-        'Failed to send your message. Please try again.',
-        'error',
-      );
+      showToast('Failed to send your message. Please try again.', 'error');
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -359,6 +360,7 @@ export default function Contact() {
                     name="lastInitial"
                     type="text"
                     maxLength={1}
+                    pattern="[A-Za-z]"
                     value={formData.lastInitial}
                     onChange={handleInputChange}
                   />
