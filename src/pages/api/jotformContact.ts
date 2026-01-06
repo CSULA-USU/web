@@ -178,15 +178,17 @@ export default async function handler(
     const jotJson = await jotResponse.json();
 
     if (!jotResponse.ok) {
-      return res.status(jotResponse.status).json({
-        error: jotJson?.message || 'Jotform submission failed',
-        jotform: jotJson,
+      console.error('Submission failed:', jotJson);
+      return res.status(500).json({
+        error: 'Failed to submit form. Please try again.',
       });
     }
 
-    return res.status(200).json({ success: true, jotform: jotJson });
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Error posting to Jotform:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error submitting form:', error);
+    return res
+      .status(500)
+      .json({ error: 'Failed to submit form. Please try again.' });
   }
 }
