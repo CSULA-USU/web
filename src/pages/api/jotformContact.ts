@@ -58,14 +58,14 @@ function validateContactForm(
     return { ok: false, errors: ['Invalid request body.'] };
   }
 
-  const raw = body as Partial<ContactFormData>;
+  const requestBody = body as Partial<ContactFormData>;
 
-  const firstName = sanitize(raw.firstName, 50);
-  const lastInitial = sanitize(raw.lastInitial, 1);
-  const email = sanitize(raw.email, 254);
-  const subject = sanitize(raw.subject, 60);
-  const message = sanitize(raw.message, 1000);
-  const category = sanitize(raw.category, 50);
+  const firstName = sanitize(requestBody.firstName, 100);
+  const lastInitial = sanitize(requestBody.lastInitial, 10);
+  const email = sanitize(requestBody.email, 200);
+  const subject = sanitize(requestBody.subject, 200);
+  const message = sanitize(requestBody.message, 2000);
+  const category = sanitize(requestBody.category, 50);
 
   // Required field checks
   if (!email) errors.push('Email is required.');
