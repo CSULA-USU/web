@@ -368,7 +368,7 @@ export default function Contact() {
               </FormRow>
 
               <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? <>Sending...</> : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </Card>
