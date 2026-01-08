@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Nav, Footer } from 'modules';
+import { useEffect, useState } from 'react';
 import { Colors } from 'theme';
 import { Announcement, BackToTop } from 'components';
+import { getVisibleAnnouncementBanner } from 'api/announcementBanner';
+import type { AnnouncementBannerType } from 'types/AnnouncementBanner';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -9,9 +12,10 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  overflow-x: hidden
+  overflow-x: hidden;
   overflow-x: clip;
   background-color: ${Colors.white};
+
   abbr {
     text-decoration: none;
   }
@@ -21,18 +25,39 @@ interface PageProps {
   children: React.ReactNode;
 }
 
-export const Page = ({ children }: PageProps) => (
-  <PageContainer>
-    <Announcement
-      text="The University&ndash;Student Union will have adjusted operating hours
-        during Winter Break:"
-      isVisible={true}
-      linkText="2025 U-SU Winter Break Hours"
-      href="https://www.dropbox.com/scl/fi/z06v9bjuqv1s4ysmlmjcp/2025-U-SU-Winter-Hours.pdf?rlkey=p5zccrkg6ay0yzakwx6qdj1xg&st=8t79eyed&raw=1"
-    />
-    <Nav />
-    <main role="main">{children}</main>
-    <Footer />
-    <BackToTop />
-  </PageContainer>
-);
+export const Page = ({ children }: PageProps) => {
+  const [banner, setBanner] = useState<AnnouncementBannerType | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    (async () => {
+      try {
+        const data = await getVisibleAnnouncementBanner();
+        if (mounted) setBanner(data);
+      } catch {
+        // no banner is fine; fail silently
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return (
+    <PageContainer>
+      <Announcement
+        text={banner?.text}
+        isVisible={!!banner?.is_visible}
+        linkText={banner?.link_text}
+        href={banner?.href}
+      />
+
+      <Nav />
+      <main role="main">{children}</main>
+      <Footer />
+      <BackToTop />
+    </PageContainer>
+  );
+};

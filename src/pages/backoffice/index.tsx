@@ -7,10 +7,21 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useToast } from 'context/ToastContext';
 
 export default function Backoffice() {
   const router = useRouter();
   const { data: session } = useSession();
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (router.query.error === 'unauthorized') {
+      showToast('You do not have access to that page', 'error');
+
+      // Clean URL
+      router.replace('/backoffice', undefined, { shallow: true });
+    }
+  }, [router.query.error, showToast]);
 
   useEffect(() => {
     if (!session) router.push('/backoffice/signin');
@@ -45,6 +56,15 @@ export default function Backoffice() {
             style={{ textDecoration: 'underline', color: 'blue' }}
           >
             /backoffice/graffix&ndash;requests
+          </Link>
+        </Typography>
+        <Typography as="h3" variant="label">
+          Announcement Banner:{' '}
+          <Link
+            href="/backoffice/announcement-banner"
+            style={{ textDecoration: 'underline', color: 'blue' }}
+          >
+            /backoffice/announcement&ndash;banner
           </Link>
         </Typography>
         <Button onClick={() => signOut()}>Sign Out</Button>
