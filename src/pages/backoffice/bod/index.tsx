@@ -5,14 +5,12 @@ import { Page } from 'modules';
 import { BackOfficeTemplate } from 'partials/Backoffice';
 import { DocumentManager } from 'modules';
 import type { Category, Document } from 'types/Backoffice';
-import {
-  getMeetingDocuments,
-  createMeetingDocument,
-  deleteMeetingDocument,
-  updateMeetingDocument,
-  archiveMeetingDocument,
-} from 'api';
+import { getMeetingDocuments } from 'api/bod';
 import { useToast } from 'context/ToastContext';
+import { hasPermission } from 'lib/supabase';
+import { getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { getUserFromSupabaseByEmail } from 'pages/api/user';
 
 function sortByDateAsc(a: Document, b: Document) {
   const da = a.date ?? '';
@@ -33,16 +31,24 @@ export default function BoardMeetingsAdmin({
 
   const { showToast } = useToast();
 
-  // ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
   const handleCreate = useCallback(
     async (doc: Omit<Document, 'id'>) => {
       try {
-        const newDoc = await createMeetingDocument(doc);
+        const res = await fetch('/api/bod/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ doc }),
+        });
+
+        const payload = await res.json();
+        if (!res.ok)
+          throw new Error(payload?.error ?? 'Failed to create document');
+
+        const newDoc = payload as Document;
         setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
         showToast('Document added successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('createMeetingDocument failed', err);
+        console.error('create failed', err);
         showToast('Failed to add document', 'error');
       }
     },
@@ -52,14 +58,23 @@ export default function BoardMeetingsAdmin({
   const handleUpdate = useCallback(
     async (id: string, updates: Partial<Document>) => {
       try {
-        const updated = await updateMeetingDocument(id, updates);
+        const res = await fetch('/api/bod/update', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, updates }),
+        });
+
+        const payload = await res.json();
+        if (!res.ok)
+          throw new Error(payload?.error ?? 'Failed to update document');
+
+        const updated = payload as Document;
         setDocuments((prev) =>
           prev.map((d) => (d.id === id ? updated : d)).sort(sortByDateAsc),
         );
         showToast('Document updated successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('updateMeetingDocument failed', err);
+        console.error('update failed', err);
         showToast('Failed to update document', 'error');
       }
     },
@@ -69,12 +84,20 @@ export default function BoardMeetingsAdmin({
   const handleDelete = useCallback(
     async (id: string) => {
       try {
-        await deleteMeetingDocument(id);
+        const res = await fetch('/api/bod/delete', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id }),
+        });
+
+        const payload = await res.json();
+        if (!res.ok)
+          throw new Error(payload?.error ?? 'Failed to delete document');
+
         setDocuments((prev) => prev.filter((d) => d.id !== id));
         showToast('Document deleted successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('deleteMeetingDocument failed', err);
+        console.error('delete failed', err);
         showToast('Failed to delete document', 'error');
       }
     },
@@ -84,20 +107,32 @@ export default function BoardMeetingsAdmin({
   const handleArchive = useCallback(
     async (category: Category) => {
       try {
-        await archiveMeetingDocument(category);
-        const rows = await getMeetingDocuments({ isArchived: false });
+        const res = await fetch('/api/bod/archive', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ category }),
+        });
+
+        const payload = await res.json();
+        if (!res.ok)
+          throw new Error(payload?.error ?? 'Failed to archive documents');
+
+        // refresh list
+        const rows = await getMeetingDocuments({
+          isArchived: false,
+          order: 'asc',
+        });
         setDocuments(rows.sort(sortByDateAsc));
+
         showToast('Documents archived successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('archiveMeetingDocument failed', err);
+        console.error('archive failed', err);
         showToast('Failed to archive documents', 'error');
       }
     },
     [showToast],
   );
 
-  // NOW we can do early return AFTER all hooks
   if (error) {
     return (
       <Page>
@@ -139,18 +174,43 @@ export default function BoardMeetingsAdmin({
   );
 }
 
-export async function getServerSideProps() {
-  try {
-    const initialDocuments = await getMeetingDocuments({
-      isArchived: false,
-      order: 'asc',
-    });
-    return { props: { initialDocuments } };
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to fetch documents:', error);
+export async function getServerSideProps(ctx: any) {
+  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+
+  if (!session) {
     return {
-      props: { initialDocuments: [], error: 'Failed to load documents' },
+      redirect: {
+        destination: `/backoffice/signin?callbackUrl=${encodeURIComponent(
+          ctx.resolvedUrl,
+        )}`,
+        permanent: false,
+      },
     };
   }
+
+  const { userData, error } = await getUserFromSupabaseByEmail(
+    session.user?.email,
+  );
+
+  if (error || !userData) {
+    return {
+      props: { initialDocuments: [], error: 'Unauthorized' },
+    };
+  }
+
+  if (!hasPermission(userData, 'siteContent:edit:meetingDocuments')) {
+    return {
+      redirect: {
+        destination: '/backoffice?error=unauthorized',
+        permanent: false,
+      },
+    };
+  }
+
+  const initialDocuments = await getMeetingDocuments({
+    isArchived: false,
+    order: 'asc',
+  });
+
+  return { props: { initialDocuments } };
 }

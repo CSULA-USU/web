@@ -4,6 +4,10 @@
     "title": "Home"
   },
   {
+    "url": "/backoffice/announcement-banner",
+    "title": "Banner"
+  },
+  {
     "url": "/backoffice/bod",
     "title": "BOD"
   },
