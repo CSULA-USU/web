@@ -209,7 +209,7 @@ export default function CSI() {
         </SocialsContainer>
       </DepartmentHeader>
       <CallToAction
-        href="https://lp.constantcontactpages.com/su/ZS9x5ft/CSInews"
+        href="http://eepurl.com/jwsk8E"
         buttonText="Sign Up"
         text="CSI Monthly Newsletter"
       >
