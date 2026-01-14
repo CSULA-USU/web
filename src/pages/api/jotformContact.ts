@@ -2,44 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
+import { jotformContactRatelimit } from 'lib/ratelimit';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
-
-// Simple in-memory rate limiting (best-effort only)
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 2;
-
-type RateLimitRecord = {
-  count: number;
-  firstRequestTime: number;
-};
-
-const ipRateLimit = new Map<string, RateLimitRecord>();
-
-function isRateLimited(ip: string | undefined): boolean {
-  if (!ip) return false; // if we can't detect IP, don't block
-
-  const now = Date.now();
-  const record = ipRateLimit.get(ip);
-
-  if (!record) {
-    ipRateLimit.set(ip, { count: 1, firstRequestTime: now });
-    return false;
-  }
-
-  // Reset window if expired
-  if (now - record.firstRequestTime > RATE_LIMIT_WINDOW_MS) {
-    ipRateLimit.set(ip, { count: 1, firstRequestTime: now });
-    return false;
-  }
-
-  record.count += 1;
-  ipRateLimit.set(ip, record);
-
-  return record.count > RATE_LIMIT_MAX_REQUESTS;
-}
 
 // Simple sanitizer: make sure it's a string, trim spaces, and clamp length.
 function sanitize(input: unknown, maxLength: number): string {
@@ -113,19 +80,31 @@ export default async function handler(
   }
 
   // Basic rate limiting by IP
+  const xf = req.headers['x-forwarded-for'];
   const ip =
-    (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() ||
+    (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0]?.trim() ||
     req.socket.remoteAddress ||
     'unknown';
 
-  if (isRateLimited(ip)) {
+  const identifier = ip; // simple IP-based rate limit
+
+  const { success, limit, remaining, reset } =
+    await jotformContactRatelimit.limit(identifier);
+
+  // Optional: helpful headers for debugging
+  res.setHeader('X-RateLimit-Limit', String(limit));
+  res.setHeader('X-RateLimit-Remaining', String(remaining));
+  res.setHeader('X-RateLimit-Reset', String(reset));
+
+  if (!success) {
+    // You can also add Retry-After if you want:
+    // res.setHeader('Retry-After', String(Math.max(1, Math.ceil((reset - Date.now()) / 1000))));
     return res.status(429).json({
       error: 'Too many submissions. Please try again later.',
     });
   }
 
   try {
-    // ... existing validation + Jotform logic ...
     // Validate + sanitize body
     const result = validateContactForm(req.body);
 
@@ -137,6 +116,16 @@ export default async function handler(
     }
 
     const formData = result.data;
+
+    const email = (formData.email || '').toLowerCase();
+    const identifier = email ? `${ip}:${email}` : ip;
+
+    const rl = await jotformContactRatelimit.limit(identifier);
+    if (!rl.success) {
+      return res
+        .status(429)
+        .json({ error: 'Too many submissions. Please try again later.' });
+    }
 
     // Build Jotform API URL
     const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;

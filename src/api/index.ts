@@ -6,7 +6,7 @@ import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
 import { SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
-import { ContactFormData } from 'types/Contact';
+import type { ContactFormData } from 'types/Contact';
 
 export * from './supabase';
 
@@ -66,24 +66,19 @@ export const fetchJotform = async (id: any) => {
 };
 
 export const postJotform = async (formData: ContactFormData) => {
-  try {
-    const res = await fetch('/api/jotformContact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+  const res = await fetch('/api/jotformContact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.error || 'Failed to submit form');
-    }
+  const data = await res.json().catch(() => ({}));
 
-    const result = await res.json();
-    return result;
-  } catch (error) {
-    console.error('Error submitting to Jotform:', error);
-    throw error;
+  if (!res.ok) {
+    throw new Error(data.error || 'Failed to submit form');
   }
+
+  return data;
 };
 /* --------------------------- Meeting documents DB -------------------------- */
 
