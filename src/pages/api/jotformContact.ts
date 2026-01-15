@@ -76,33 +76,15 @@ export default async function handler(
   }
 
   if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Basic rate limiting by IP
   const xf = req.headers['x-forwarded-for'];
   const ip =
     (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0]?.trim() ||
     req.socket.remoteAddress ||
     'unknown';
-
-  const identifier = ip; // simple IP-based rate limit
-
-  const { success, limit, remaining, reset } =
-    await jotformContactRatelimit.limit(identifier);
-
-  // Optional: helpful headers for debugging
-  res.setHeader('X-RateLimit-Limit', String(limit));
-  res.setHeader('X-RateLimit-Remaining', String(remaining));
-  res.setHeader('X-RateLimit-Reset', String(reset));
-
-  if (!success) {
-    // You can also add Retry-After if you want:
-    // res.setHeader('Retry-After', String(Math.max(1, Math.ceil((reset - Date.now()) / 1000))));
-    return res.status(429).json({
-      error: 'Too many submissions. Please try again later.',
-    });
-  }
 
   try {
     // Validate + sanitize body
@@ -117,20 +99,26 @@ export default async function handler(
 
     const formData = result.data;
 
+    // ✅ Rate limit ONCE, using best identifier
     const email = (formData.email || '').toLowerCase();
     const identifier = email ? `${ip}:${email}` : ip;
 
-    const rl = await jotformContactRatelimit.limit(identifier);
-    if (!rl.success) {
-      return res
-        .status(429)
-        .json({ error: 'Too many submissions. Please try again later.' });
+    const { success, limit, remaining, reset } =
+      await jotformContactRatelimit.limit(identifier);
+
+    res.setHeader('X-RateLimit-Limit', String(limit));
+    res.setHeader('X-RateLimit-Remaining', String(remaining));
+    res.setHeader('X-RateLimit-Reset', String(reset));
+
+    if (!success) {
+      return res.status(429).json({
+        error: 'Too many submissions. Please try again later.',
+      });
     }
 
     // Build Jotform API URL
     const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;
 
-    // Map your frontend fields -> Jotform field IDs
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
     body.append('submission[2][last]', formData.lastInitial || '');
@@ -142,7 +130,6 @@ export default async function handler(
     body.append('submission[5]', readableCategory);
     body.append('submission[6]', formData.message || '');
 
-    // POST to Jotform
     const jotResponse = await fetch(jotformUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

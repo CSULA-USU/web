@@ -167,11 +167,16 @@ export default function Contact() {
         category: '',
         message: '',
       });
-    } catch (error) {
+    } catch (error: any) {
+      const message = String(error?.message || '');
+
       showToast(
-        'Error: Your response has not been successfully sent.',
+        message.includes('Too many') || message.includes('maximum')
+          ? 'You have reached the maximum number of submission attempts. Please try again later.'
+          : 'Error: Your response has not been successfully sent.',
         'error',
       );
+
       console.error(error);
     } finally {
       setIsSubmitting(false);

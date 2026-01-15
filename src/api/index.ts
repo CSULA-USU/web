@@ -74,8 +74,14 @@ export const postJotform = async (formData: ContactFormData) => {
 
   const data = await res.json().catch(() => ({}));
 
+  if (res.status === 429) {
+    throw new Error(
+      data?.error || 'You have reached the maximum number of attempts.',
+    );
+  }
+
   if (!res.ok) {
-    throw new Error(data.error || 'Failed to submit form');
+    throw new Error(data?.error || 'Failed to submit form');
   }
 
   return data;
