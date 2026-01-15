@@ -8,9 +8,9 @@ import {
   ContentBoardColumnProps,
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
-import { BackOfficeTemplate } from 'partials/Backoffice';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 
 const Loading = styled.div<{ visible: boolean }>`
   height: 100vh;
@@ -183,16 +183,18 @@ export default function GraphicsRequests() {
       </Head>
       <Loading visible={loading}>Loading...</Loading>
 
-      <BackOfficeTemplate>
+      <BackofficeShell
+        title={`Board Meeting Documents`}
+        subtitle="Manage meeting calendars, agendas, and minutes for the University–Student Union"
+      >
         <ContentBoard
-          title={`Graffix Requests`}
           columns={contentBoardData}
           cellMap={cellMap}
           selectedDepartment={selectedDepartment}
           setSelectedDepartment={setSelectedDepartment}
           accessibleDepartment={accessibleDepartment}
         />
-      </BackOfficeTemplate>
+      </BackofficeShell>
     </Page>
   );
 }

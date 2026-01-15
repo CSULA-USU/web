@@ -13,6 +13,7 @@ import {
   archiveMeetingDocument,
 } from 'api';
 import { useToast } from 'context/ToastContext';
+import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 
 function sortByDateAsc(a: Document, b: Document) {
   const da = a.date ?? '';
@@ -126,7 +127,10 @@ export default function BoardMeetingsAdmin({
       <Head>
         <title>Board Meeting Documents</title>
       </Head>
-      <BackOfficeTemplate>
+      <BackofficeShell
+        title={`Board Meeting Documents`}
+        subtitle="Manage meeting calendars, agendas, and minutes for the University–Student Union"
+      >
         <DocumentManager
           documents={documents}
           onCreate={handleCreate}
@@ -134,7 +138,7 @@ export default function BoardMeetingsAdmin({
           onDelete={handleDelete}
           onArchive={handleArchive}
         />
-      </BackOfficeTemplate>
+      </BackofficeShell>
     </Page>
   );
 }
