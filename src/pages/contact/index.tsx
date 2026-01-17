@@ -118,7 +118,7 @@ export default function Contact() {
       newErrors.subject = 'Subject is required';
     }
 
-    if (!formData.category || formData.category.trim() === '') {
+    if (!formData.category) {
       newErrors.category = 'Category is required';
     }
 
