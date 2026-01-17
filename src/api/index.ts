@@ -6,6 +6,7 @@ import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
 import { SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
+import type { ContactFormData } from 'types/Contact';
 
 export * from './supabase';
 
@@ -64,6 +65,27 @@ export const fetchJotform = async (id: any) => {
   }
 };
 
+export const postJotform = async (formData: ContactFormData) => {
+  const res = await fetch('/api/jotformContact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (res.status === 429) {
+    throw new Error(
+      data?.error || 'You have reached the maximum number of attempts.',
+    );
+  }
+
+  if (!res.ok) {
+    throw new Error(data?.error || 'Failed to submit form');
+  }
+
+  return data;
+};
 /* --------------------------- Meeting documents DB -------------------------- */
 
 /**
