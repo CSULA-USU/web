@@ -186,7 +186,7 @@ export default function Contact() {
   return (
     <Page>
       <Head>
-        <title>Contact the U&ndash;SU</title>
+        <title>Contact the U–SU</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Cross Cultural Centers, Center For Student Involvement, Fitness Center, Student Organizations, Calendar, Events, Gender and Sexuality Resource Center, Pan African Resource Center, Asian Pacific Islander, Chicana Latina, Information and Event Services, Distinguished Women Awards, Cultural Graduate Celebrations, Employment Opportunities, Board of Directors, Jobs, complaints, feedback, contact, connect, report, issue, question"
