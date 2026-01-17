@@ -406,12 +406,18 @@ export default function FSL() {
           </FluidContainer>
           <ButtonGroup>
             <Button
-              href="https://www.instagram.com/calstatelagreeks/?hl=en"
-              aria-label="Link to the Fraternities and Sororities Instagram feed"
+              href="https://form.jotform.com/260065959465064"
               variant="primary"
               isExternalLink
             >
               Join Our Community
+            </Button>
+            <Button
+              href="https://www.instagram.com/calstatelagreeks/?hl=en"
+              variant="primary"
+              isExternalLink
+            >
+              Follow Us
             </Button>
           </ButtonGroup>
         </ContentWrapper>
