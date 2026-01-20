@@ -182,7 +182,7 @@ export const BODDownloads = () => {
             size="sm"
             weight="400"
           >
-            View All Documents
+            View public document archives
           </Typography>
         </StyledLink>
       </FluidContainer>
