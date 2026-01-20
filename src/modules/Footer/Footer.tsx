@@ -124,7 +124,7 @@ export const Footer = () => (
             <StyledLinkMargins>
               <Typography color="white">Sun: Closed</Typography>
             </StyledLinkMargins>
-            <StyledLinkMargins>
+            {/* <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={
@@ -135,7 +135,7 @@ export const Footer = () => (
                   2025 Winter Schedule
                 </StyledLink>
               </Typography>
-            </StyledLinkMargins>
+            </StyledLinkMargins> */}
           </FooterUnorderedList>
           <FooterUnorderedList>
             <li>
