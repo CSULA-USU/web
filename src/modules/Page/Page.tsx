@@ -26,7 +26,7 @@ export const Page = ({ children }: PageProps) => (
     <Announcement
       text="The University&ndash;Student Union will have adjusted operating hours
         during Winter Break:"
-      isVisible={true}
+      isVisible={false}
       linkText="2025 U-SU Winter Break Hours"
       href="https://www.dropbox.com/scl/fi/z06v9bjuqv1s4ysmlmjcp/2025-U-SU-Winter-Hours.pdf?rlkey=p5zccrkg6ay0yzakwx6qdj1xg&st=8t79eyed&raw=1"
     />
