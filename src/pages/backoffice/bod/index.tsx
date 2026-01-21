@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import Head from 'next/head';
 import { FluidContainer, Typography, Button } from 'components';
 import { Page } from 'modules';
-import { BackOfficeTemplate } from 'partials/Backoffice';
 import { DocumentManager } from 'modules';
 import type { Category, Document } from 'types/Backoffice';
 import {
@@ -34,7 +33,6 @@ export default function BoardMeetingsAdmin({
 
   const { showToast } = useToast();
 
-  // ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
   const handleCreate = useCallback(
     async (doc: Omit<Document, 'id'>) => {
       try {
@@ -42,7 +40,6 @@ export default function BoardMeetingsAdmin({
         setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
         showToast('Document added successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('createMeetingDocument failed', err);
         showToast('Failed to add document', 'error');
       }
@@ -59,7 +56,6 @@ export default function BoardMeetingsAdmin({
         );
         showToast('Document updated successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('updateMeetingDocument failed', err);
         showToast('Failed to update document', 'error');
       }
@@ -74,7 +70,6 @@ export default function BoardMeetingsAdmin({
         setDocuments((prev) => prev.filter((d) => d.id !== id));
         showToast('Document deleted successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('deleteMeetingDocument failed', err);
         showToast('Failed to delete document', 'error');
       }
@@ -90,7 +85,6 @@ export default function BoardMeetingsAdmin({
         setDocuments(rows.sort(sortByDateAsc));
         showToast('Documents archived successfully', 'success');
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('archiveMeetingDocument failed', err);
         showToast('Failed to archive documents', 'error');
       }
@@ -98,14 +92,16 @@ export default function BoardMeetingsAdmin({
     [showToast],
   );
 
-  // NOW we can do early return AFTER all hooks
   if (error) {
     return (
       <Page>
         <Head>
           <title>Board Meeting Documents &ndash; Error</title>
         </Head>
-        <BackOfficeTemplate>
+        <BackofficeShell
+          title={`Board Meeting Documents`}
+          subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+        >
           <FluidContainer padding="24px">
             <Typography variant="title" size="xl">
               Error Loading Documents
@@ -117,7 +113,7 @@ export default function BoardMeetingsAdmin({
               Retry
             </Button>
           </FluidContainer>
-        </BackOfficeTemplate>
+        </BackofficeShell>
       </Page>
     );
   }
@@ -129,7 +125,7 @@ export default function BoardMeetingsAdmin({
       </Head>
       <BackofficeShell
         title={`Board Meeting Documents`}
-        subtitle="Manage meeting calendars, agendas, and minutes for the University–Student Union"
+        subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
       >
         <DocumentManager
           documents={documents}
@@ -151,7 +147,6 @@ export async function getServerSideProps() {
     });
     return { props: { initialDocuments } };
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error('Failed to fetch documents:', error);
     return {
       props: { initialDocuments: [], error: 'Failed to load documents' },
