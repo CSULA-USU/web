@@ -127,7 +127,7 @@ export default function CSI() {
   return (
     <Page>
       <Head>
-        <title>U-SU CSI</title>
+        <title>U&ndash;SU CSI</title>
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
@@ -150,10 +150,8 @@ export default function CSI() {
           <OfficeHours
             address={
               <>
-                <Typography as="p">University-Student Union,</Typography>
-                <Typography as="p">
-                  5154 State University Dr, <blockquote />
-                </Typography>
+                <Typography as="p">University&ndash;Student Union,</Typography>
+                <Typography as="p">5154 State University Dr.</Typography>
                 <Typography as="p">Los Angeles CA, 90032</Typography>
               </>
             }
