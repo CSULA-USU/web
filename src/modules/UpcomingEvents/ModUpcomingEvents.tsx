@@ -171,20 +171,28 @@ export const ModUpcomingEvents = ({
                       </li>
                     ))}
                 </TertiaryContainer>
-                {events.length > eventLimit ? (
+              </UpcomingEventsContent>
+              <FluidContainer
+                flex
+                flexDirection="row"
+                justifyContent="center"
+                gap="16px"
+              >
+                {events.length > eventLimit && (
                   <Button
-                    margin="16px auto 0px"
-                    onClick={() => {
-                      setEventLimit(eventLimit + 3);
-                    }}
-                    variant="outline"
+                    onClick={() => setEventLimit(eventLimit + 3)}
+                    variant="black"
                   >
                     Load More
                   </Button>
-                ) : (
-                  ''
                 )}
-              </UpcomingEventsContent>
+
+                {eventLimit > 6 && (
+                  <Button onClick={() => setEventLimit(6)} variant="outline">
+                    Show Less
+                  </Button>
+                )}
+              </FluidContainer>
             </>
           )}
           <EventModal
