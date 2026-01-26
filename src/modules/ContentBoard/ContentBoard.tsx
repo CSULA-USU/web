@@ -5,6 +5,7 @@ import { ContentBoardColumnProps, KeyValueProps } from './ContentBoardTypes';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ContentBoardSidebar } from './ContentBoardSidebar';
 import { useBreakpoint } from 'hooks';
+import { FluidContainer } from 'components';
 
 const deepCopyArray = (arr: any) => {
   return JSON.parse(JSON.stringify(arr));
@@ -41,14 +42,12 @@ const ContentBoardColumnsContainer = styled.div<{
 `;
 
 export const ContentBoard = ({
-  title,
   columns,
   cellMap,
   selectedDepartment,
   setSelectedDepartment,
   accessibleDepartment,
 }: {
-  title: string;
   columns: ContentBoardColumnProps[];
   cellMap: KeyValueProps;
   selectedDepartment: string;
@@ -86,15 +85,15 @@ export const ContentBoard = ({
     setFilteredColumns(tempColumns);
   }, [filterInput, columns]);
 
-  const ContentBoardContainer = styled.div<{ isTablet: boolean }>`
+  const ContentBoardContainer = styled(FluidContainer)<{ isTablet: boolean }>`
     position: relative;
-    width: ${isTablet ? '100%' : 'calc(100% - 120px)'};
+    width: 100%;
+    padding: 0;
   `;
 
   return (
     <ContentBoardContainer isTablet={isTablet}>
       <ContentBoardNav
-        title={title}
         filterInput={filterInput}
         setFilterInput={setFilterInput}
         selectedDepartment={selectedDepartment}

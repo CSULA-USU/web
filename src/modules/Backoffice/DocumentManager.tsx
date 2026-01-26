@@ -155,16 +155,6 @@ export function DocumentManager({
       flexDirection="column"
       height="100%"
     >
-      <FluidContainer backgroundColor="black">
-        <Typography color="white" variant="title" as="h1">
-          Board Meeting Documents
-        </Typography>
-        <Typography color="white" variant="labelTitleSmall">
-          Manage meeting calendars, agendas, and minutes for the
-          University&ndash;Student Union
-        </Typography>
-      </FluidContainer>
-
       <FluidContainer>
         <SectionHeader>
           <SectionTitle>
@@ -228,6 +218,15 @@ export function DocumentManager({
             onEdit={handleEdit}
             onDelete={handleDeleteClick}
           />
+          <FluidContainer padding="0" flex justifyContent="flex-end">
+            <Button
+              variant="outline"
+              onClick={() => handleArchiveClick()}
+              aria-label={`Archive ${selectedCategory}`}
+            >
+              Archive All {selectedCategory} Documents
+            </Button>
+          </FluidContainer>
         </FluidContainer>
       </FluidContainer>
 
@@ -256,15 +255,6 @@ export function DocumentManager({
           onCancel={() => setArchiveConfirm(null)}
         />
       )}
-      <FluidContainer padding=" 0 0 32px 0" flex justifyContent="flex-end">
-        <Button
-          variant="outline"
-          onClick={() => handleArchiveClick()}
-          aria-label={`Archive ${selectedCategory}`}
-        >
-          Archive All {selectedCategory} Documents
-        </Button>
-      </FluidContainer>
     </FluidContainer>
   );
 }

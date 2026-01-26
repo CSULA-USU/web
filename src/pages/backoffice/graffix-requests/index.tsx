@@ -8,9 +8,9 @@ import {
   ContentBoardColumnProps,
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
-import { BackOfficeTemplate } from 'partials/Backoffice';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 
 const Loading = styled.div<{ visible: boolean }>`
   height: 100vh;
@@ -50,8 +50,6 @@ const contentBoardTemplate: any = {
 };
 
 const createDeepCopy = (object: any) => {
-  // Traditional spread operator {...obj} is a shallow copy. The nested values are still referenced.
-  // Returns a deep copy.
   return JSON.parse(JSON.stringify(object));
 };
 
@@ -60,7 +58,6 @@ export default function GraphicsRequests() {
   const router = useRouter();
 
   useEffect(() => {
-    // Needs to make sure the page mounts for the router to work.
     if (!session) router.push('/backoffice/signin');
   }, []);
 
@@ -107,7 +104,6 @@ export default function GraphicsRequests() {
   }, []);
 
   useEffect(() => {
-    // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
     setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
     if (selectedDepartment == 'N/A' || selectedDepartment == '') return;
     setLoading(true);
@@ -132,7 +128,6 @@ export default function GraphicsRequests() {
         })
         .catch(() => {
           console.log('Failed to fetch Graffix Requests.');
-          // router.push('/backoffice/graffix-requests');
         })
         .finally(() => {
           setLoading(false);
@@ -142,7 +137,6 @@ export default function GraphicsRequests() {
   }, [selectedDepartment]);
 
   useEffect(() => {
-    // When Graffix-Requests resources change, update Content Board and Cell Map
     if (!graffixRequests) return;
 
     const populateContentBoard = () => {
@@ -183,16 +177,18 @@ export default function GraphicsRequests() {
       </Head>
       <Loading visible={loading}>Loading...</Loading>
 
-      <BackOfficeTemplate>
+      <BackofficeShell
+        title={`Board Meeting Documents`}
+        subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+      >
         <ContentBoard
-          title={`Graffix Requests`}
           columns={contentBoardData}
           cellMap={cellMap}
           selectedDepartment={selectedDepartment}
           setSelectedDepartment={setSelectedDepartment}
           accessibleDepartment={accessibleDepartment}
         />
-      </BackOfficeTemplate>
+      </BackofficeShell>
     </Page>
   );
 }
