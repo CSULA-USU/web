@@ -11,7 +11,7 @@ import {
   deleteMeetingDocument,
   updateMeetingDocument,
   archiveMeetingDocument,
-} from 'api';
+} from 'services';
 import { useToast } from 'context/ToastContext';
 
 function sortByDateAsc(a: Document, b: Document) {

@@ -10,8 +10,9 @@ import { Colors } from 'theme';
 
 interface SelectProps extends RadixSelect.SelectProps {
   items: { label: string; value: string }[];
-  ariaLabel?: string;
   placeholder?: string;
+  ariaLabel?: string;
+  id?: string;
 }
 
 const SelectTrigger = styled(RadixSelect.SelectTrigger)`
@@ -32,7 +33,7 @@ const SelectTrigger = styled(RadixSelect.SelectTrigger)`
     box-shadow: 0 0 0 2px black;
   }
   &[data-placeholder] {
-    color: ${Colors.greyLighter};
+    color: ${Colors.greyDarker};
   }
 `;
 
@@ -117,12 +118,13 @@ const SelectScrollDownButton = styled(RadixSelect.ScrollDownButton)`
 
 export const Select = ({
   items,
-  ariaLabel,
   placeholder,
+  ariaLabel,
+  id,
   ...props
 }: SelectProps) => (
   <RadixSelect.Root {...props}>
-    <SelectTrigger aria-label={ariaLabel}>
+    <SelectTrigger id={id} aria-label={ariaLabel}>
       <RadixSelect.Value placeholder={placeholder} />
       <SelectIcon>
         <ChevronDownIcon />
