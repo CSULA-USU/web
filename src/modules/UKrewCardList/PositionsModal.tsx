@@ -148,7 +148,7 @@ export const PositionModal = ({
       </TriggerWrapper>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
-        <ModalContent>
+        <ModalContent className="modal-content">
           <FluidContainer
             flex
             flexDirection={isMobile ? 'column' : 'row'}

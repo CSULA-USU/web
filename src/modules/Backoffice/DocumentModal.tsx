@@ -285,7 +285,7 @@ export function DocumentModal({
           </CloseButton>
         </ModalHeader>
 
-        <ModalBody onSubmit={handleSubmit}>
+        <ModalBody onSubmit={handleSubmit} className="modal-content">
           <FormGroup>
             <Label htmlFor="title">
               Document Title<RedAsterisk>*</RedAsterisk>

@@ -50,7 +50,7 @@ export const GenericModal = ({
   isOpen,
   height,
   width,
-  onRequestClose, //expects a function
+  onRequestClose,
 }: GenericModalProps) => {
   const customStyles = {
     content: {
@@ -89,7 +89,9 @@ export const GenericModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main width={width}>{children}</Main>
+      <Main className="modal-content" width={width}>
+        {children}
+      </Main>
     </FixedModal>
   );
 };

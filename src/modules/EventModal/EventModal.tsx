@@ -1,6 +1,6 @@
 import { Divider, Typography } from 'components';
 import { Image } from 'components';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -9,7 +9,6 @@ import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
-
 interface EventModalProps {
   event?: PresenceEvent;
   isOpen: boolean;
@@ -111,6 +110,7 @@ export const EventModal = ({
   onRequestClose,
 }: EventModalProps) => {
   const { isMobile, isDesktop } = useBreakpoint();
+  const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -149,6 +149,9 @@ export const EventModal = ({
           : desktopCustomStyles
       }
       onRequestClose={onRequestClose}
+      onAfterOpen={() => {
+        mainRef.current?.focus();
+      }}
       ariaHideApp={false}
     >
       <CloseButtonContainer>
@@ -156,7 +159,7 @@ export const EventModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main>
+      <Main className="modal-content" tabIndex={-1}>
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`${eventName}`}
