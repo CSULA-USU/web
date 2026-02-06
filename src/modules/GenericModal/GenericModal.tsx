@@ -89,9 +89,7 @@ export const GenericModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main className="modal-content" width={width}>
-        {children}
-      </Main>
+      <Main width={width}>{children}</Main>
     </FixedModal>
   );
 };

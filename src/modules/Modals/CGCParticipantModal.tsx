@@ -167,7 +167,7 @@ export const CGCParticipantModal = ({
             contentLabel="participant modal"
             style={MobileModalStyle}
           >
-            <ModalContainer className="modal-content">
+            <ModalContainer>
               <Typography
                 as="h1"
                 variant="pageHeader"
@@ -315,7 +315,7 @@ export const CGCParticipantModal = ({
             contentLabel="participant modal"
             style={DesktopModalStyle}
           >
-            <ModalContainer className="modal-content">
+            <ModalContainer>
               {participantData.img ? (
                 <>
                   <PictureContainer>

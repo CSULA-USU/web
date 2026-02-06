@@ -97,11 +97,22 @@ const Main = styled.div`
   max-width: 100%;
   padding: ${Spaces.md};
   max-height: 80vh;
+
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+
+  -webkit-overflow-scrolling: touch;
+
   img {
     max-height: 600px;
     object-fit: contain;
+    display: block;
   }
-  overflow-y: auto;
 `;
 
 export const EventModal = ({
@@ -113,11 +124,30 @@ export const EventModal = ({
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const scrollAmount = 50;
+      const container = mainRef.current;
+
+      if (container) {
+        if (event.key === 'ArrowDown' || event.key === 'Down') {
+          event.preventDefault();
+          container.scrollTop += scrollAmount;
+        } else if (event.key === 'ArrowUp' || event.key === 'Up') {
+          event.preventDefault();
+          container.scrollTop -= scrollAmount;
+        }
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      window.addEventListener('keydown', handleKeyDown);
     }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   if (!event) return null;
@@ -159,7 +189,12 @@ export const EventModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main className="modal-content" tabIndex={-1}>
+      <Main
+        ref={mainRef}
+        tabIndex={-1}
+        style={{ outline: 'none' }}
+        className="modal-content"
+      >
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`${eventName}`}

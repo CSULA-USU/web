@@ -30,6 +30,7 @@ const ModalBox = styled.div`
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   position: relative;
+  scroll-behavior: smooth;
 `;
 
 const CloseButton = styled.button`
@@ -56,6 +57,19 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      const scrollAmount = 50;
+
+      if (modalRef.current) {
+        if (event.key === 'ArrowDown' || event.key === 'Down') {
+          event.preventDefault();
+          modalRef.current.scrollTop += scrollAmount;
+        } else if (event.key === 'ArrowUp' || event.key === 'Up') {
+          event.preventDefault();
+          modalRef.current.scrollTop -= scrollAmount;
+        }
       }
     };
 
@@ -63,6 +77,7 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
       document.body.classList.add('overflow-y-hidden');
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleKeyDown);
+
       modalRef.current?.focus();
     }
 
