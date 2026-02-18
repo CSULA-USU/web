@@ -42,7 +42,7 @@ export default function Gene() {
         />
         <meta
           name="description"
-          content="At gene, we believe we all can benefit from learning new skills and
+          content="At GENE, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
