@@ -4,6 +4,8 @@ import { BsSignpost2Fill } from 'react-icons/bs';
 import { CgPill, CgPokemon } from 'react-icons/cg';
 import {
   FaBalanceScale,
+  FaBullhorn,
+  FaDog,
   FaDumbbell,
   FaGamepad,
   FaIceCream,
@@ -39,7 +41,9 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     CgPokemon: createElement(CgPokemon, { size }),
     FaBalanceScale: createElement(FaBalanceScale, { size }),
     FaIceCream: createElement(FaIceCream, { size }),
+    FaDog: createElement(FaDog, { size }),
     FaUmbrellaBeach: createElement(FaUmbrellaBeach, { size }),
+    FaBullhorn: createElement(FaBullhorn, { size }),
     FaDumbbell: createElement(FaDumbbell, { size }),
     FaGamepad: createElement(FaGamepad, { size }),
     FaMountainSun: createElement(FaMountainSun, { size }),
