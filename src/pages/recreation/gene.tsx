@@ -127,7 +127,7 @@ export default function Gene() {
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Fall 2025:
+          <abbr title="gene">GENE</abbr> Bios Spring 2026:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish
