@@ -1,13 +1,16 @@
 import { createElement, ReactElement } from 'react';
-import { BiCoffeeTogo } from 'react-icons/bi';
+import { BiCoffeeTogo, BiSolidSushi } from 'react-icons/bi';
 import { BsSignpost2Fill } from 'react-icons/bs';
 import { CgPill, CgPokemon } from 'react-icons/cg';
 import {
   FaBalanceScale,
+  FaBullhorn,
+  FaDog,
   FaDumbbell,
   FaGamepad,
   FaIceCream,
   FaMusic,
+  FaPaintBrush,
   FaPaperPlane,
   FaPizzaSlice,
   FaRunning,
@@ -19,6 +22,7 @@ import {
   GiRiceCooker,
   GiRollerSkate,
   GiStrawberry,
+  GiTacos,
 } from 'react-icons/gi';
 import { IoMdFlower } from 'react-icons/io';
 import { ImSpoonKnife } from 'react-icons/im';
@@ -35,11 +39,15 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
   const iconComponents: { [key: string]: ReactElement } = {
     BiCoffeeTogo: createElement(BiCoffeeTogo, { size }),
     BsSignpost2Fill: createElement(BsSignpost2Fill, { size }),
+    BiSolidSushi: createElement(BiSolidSushi, { size }),
     CgPill: createElement(CgPill, { size }),
     CgPokemon: createElement(CgPokemon, { size }),
     FaBalanceScale: createElement(FaBalanceScale, { size }),
     FaIceCream: createElement(FaIceCream, { size }),
+    FaDog: createElement(FaDog, { size }),
+    FaPaintBrush: createElement(FaPaintBrush, { size }),
     FaUmbrellaBeach: createElement(FaUmbrellaBeach, { size }),
+    FaBullhorn: createElement(FaBullhorn, { size }),
     FaDumbbell: createElement(FaDumbbell, { size }),
     FaGamepad: createElement(FaGamepad, { size }),
     FaMountainSun: createElement(FaMountainSun, { size }),
@@ -52,6 +60,7 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     GiRiceCooker: createElement(GiRiceCooker, { size }),
     GiRollerSkate: createElement(GiRollerSkate, { size }),
     GiStrawberry: createElement(GiStrawberry, { size }),
+    GiTacos: createElement(GiTacos, { size }),
     ImSpoonKnife: createElement(ImSpoonKnife, { size }),
     IoMdFlower: createElement(IoMdFlower, { size }),
     LuCakeSlice: createElement(LuCakeSlice, { size }),

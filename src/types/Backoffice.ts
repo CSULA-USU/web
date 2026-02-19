@@ -24,3 +24,15 @@ export type GetDocsOptions = {
   limit?: number;
   order?: 'asc' | 'desc';
 };
+
+export type BackofficeLinkItem = {
+  url: string;
+  title: string;
+  description?: string;
+  featured?: boolean;
+};
+
+export type BackofficeLinkSection = {
+  section: string;
+  items: BackofficeLinkItem[];
+};
