@@ -17,6 +17,9 @@ const LogoLink = styled(Link)`
   max-width: 1200px;
   max-height: 90px;
   margin: ${Spaces.xl} 0;
+  &:focus {
+    text-decoration: underline;
+  }
 `;
 
 const StyledInstagramIcon = styled(AiOutlineInstagram)`
