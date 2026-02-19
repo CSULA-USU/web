@@ -113,12 +113,18 @@ export default function Recreation() {
           innerMinHeight={isMobile ? '320px' : '640px'}
           innerMaxWidth="640px"
         >
-          <FluidContainer backgroundColor="white">
+          <FluidContainer
+            backgroundColor="white"
+            width="100%"
+            flex
+            justifyContent="center"
+          >
             <Image
               src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
               alt="university-student union recreation play wellness connection"
               width="100%"
-              height="fit-content"
+              height="auto"
+              style={{ flexShrink: 0, objectFit: 'contain' }}
             />
           </FluidContainer>
         </FluidContainer>
