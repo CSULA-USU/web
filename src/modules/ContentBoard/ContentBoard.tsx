@@ -5,7 +5,6 @@ import { ContentBoardColumnProps, KeyValueProps } from './ContentBoardTypes';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ContentBoardSidebar } from './ContentBoardSidebar';
 import { useBreakpoint } from 'hooks';
-import { FluidContainer } from 'components';
 
 const deepCopyArray = (arr: any) => {
   return JSON.parse(JSON.stringify(arr));
@@ -22,6 +21,7 @@ const ContentBoardColumnsContainer = styled.div<{
   overflow-x: auto;
   gap: 1rem;
   justify-content: space-around;
+  padding: 24px;
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -85,7 +85,7 @@ export const ContentBoard = ({
     setFilteredColumns(tempColumns);
   }, [filterInput, columns]);
 
-  const ContentBoardContainer = styled(FluidContainer)<{ isTablet: boolean }>`
+  const ContentBoardContainer = styled.div<{ isTablet: boolean }>`
     position: relative;
     width: 100%;
     padding: 0;
