@@ -7,14 +7,6 @@ import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
 import { Search } from 'modules/Search';
 
-const LogoLink = styled(Link)`
-  &:focus {
-    box-shadow: 0 0 0 6px black;
-    outline: 3px solid #fece07;
-    text-decoration: underline;
-  }
-`;
-
 const MobileIconsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -39,13 +31,13 @@ export const Nav = () => {
         alignItems="center"
         flex
       >
-        <LogoLink href="/" id="nav-logo" tabIndex={0}>
+        <Link href="/" id="nav-logo" tabIndex={0}>
           <Image
             maxHeight={isMobile ? '64px' : '80px'}
             src={isMini ? '/usu-logo-white.png' : '/usu-wordmark.png'}
             alt="Cal State LA University-Student Union Logo"
           />
-        </LogoLink>
+        </Link>
         <MobileIconsContainer>
           <Link href="/search" aria-label="Search" tabIndex={0}>
             <SearchIconLink />
@@ -64,14 +56,14 @@ export const Nav = () => {
         padding="24px"
         backgroundColor="greyDarkest"
       >
-        <LogoLink href="/" id="nav-logo" tabIndex={0}>
+        <Link href="/" id="nav-logo" tabIndex={0}>
           <Image
             width="200px"
             height="70"
             src="/usu-wordmark-white.png"
             alt="Cal State LA University-Student Union"
           />
-        </LogoLink>
+        </Link>
         <DesktopNav />
         <Search />
       </FluidContainer>

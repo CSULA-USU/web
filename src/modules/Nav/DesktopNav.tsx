@@ -38,10 +38,7 @@ const UnstyledUnorderedList = styled.ul`
     color: ${Colors.greyLighter};
     font-weight: 700;
     font-size: ${FontSizes.sm};
-    &:hover,
-    &:focus {
-      color: ${Colors.primary};
-    }
+    &: hover;
   }
   ul {
     animation: fadeIn 0.3s;

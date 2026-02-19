@@ -76,18 +76,6 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   border: 1px solid transparent;
   &:hover,
   &:focus {
-    border: 1px solid ${Colors.black};
-    ${Overlay} {
-      filter: blur(4px) brightness(0.6);
-    }
-    ${EventCardTop} {
-      transform: translateY(10%);
-    }
-    ${EventCardBottom} {
-      transform: translateY(-10%);
-    }
-  }
-  &:focus {
     text-decoration: underline;
   }
 `;
