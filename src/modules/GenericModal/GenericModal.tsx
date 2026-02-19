@@ -50,7 +50,7 @@ export const GenericModal = ({
   isOpen,
   height,
   width,
-  onRequestClose, //expects a function
+  onRequestClose,
 }: GenericModalProps) => {
   const customStyles = {
     content: {
