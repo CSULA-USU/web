@@ -2,13 +2,11 @@ import { Typography } from 'components';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
-import { FontSizes } from 'theme';
 
 import departmentsData from 'data/departments.json';
 import { useBreakpoint } from 'hooks';
-import { HiMenuAlt3 } from 'react-icons/hi';
-import backOfficeLinks from 'data/backOfficeLinks.json';
-import Link from 'next/link';
+import { IoMdMenu } from 'react-icons/io';
+import { Colors } from 'theme';
 
 const departmentIDs: string[] = departmentsData.reduce((acc, cur) => {
   acc.push(cur?.id);
@@ -18,25 +16,46 @@ const departmentIDs: string[] = departmentsData.reduce((acc, cur) => {
 const ContentBarNavContainer = styled.div`
   height: 64px;
   width: 100%;
-  background-color: #2b2b2b;
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 const SearchBarContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 0.5rem;
 
-  max-width: 300px;
-  border: 2px solid #ccc;
-  /* border-radius: 25px; */
-  padding: 5px 10px;
-  background-color: #fff;
+  width: 100%;
+  max-width: 420px;
+
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+
+  background: ${Colors.pastelYellow};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+`;
+
+const NavLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-self: start;
+`;
+
+const NavCenter = styled.div`
+  justify-self: center;
+  width: 100%;
+  max-width: 420px;
+`;
+
+const NavRight = styled.div`
+  justify-self: end;
 `;
 
 const SearchBar = ({
@@ -53,14 +72,13 @@ const SearchBar = ({
         type="text"
         placeholder="Search by title..."
         value={filterInput}
-        onChange={(e) => {
-          setFilterInput(e.target.value);
-        }}
+        onChange={(e) => setFilterInput(e.target.value)}
         style={{
           flex: 1,
           border: 'none',
+          background: 'transparent',
           fontSize: '16px',
-          height: '100%',
+          outline: 'none',
         }}
       />
     </SearchBarContainer>
@@ -69,17 +87,58 @@ const SearchBar = ({
 
 const MobileDropDownMenu = styled.div`
   position: absolute;
+  top: calc(64px + 10px); /* under the nav */
+  right: 16px;
+
+  width: min(92vw, 320px);
+  padding: 16px;
+  border-radius: 12px;
+
+  background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  z-index: 99;
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  top: 4rem;
-  right: 0;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 2.24) 0px 3px 8px;
-  border-radius: 0.5rem;
-  width: 240px;
-  padding: 0.5rem;
-  z-index: 99;
+  gap: 14px;
+`;
+
+const MobileMenuItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const StyledSelect = styled.select`
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+
+  background: ${Colors.pastelYellow};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme?.Colors?.Primary ?? '#007bff'};
+    outline-offset: 2px;
+  }
+`;
+
+const MenuButton = styled.button`
+  border: 0;
+  background: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${Colors.pastelYellow};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme?.Colors?.Primary ?? '#007bff'};
+    outline-offset: 2px;
+  }
 `;
 
 const ExitMobileDropDownMenuPageCover = styled.div`
@@ -89,105 +148,82 @@ const ExitMobileDropDownMenuPageCover = styled.div`
   inset: 0;
 `;
 
-const BackOfficeLinksContainer = styled.ul`
-  text-decoration: underline;
-  list-style-type: square;
-  margin: 0;
-`;
-
 export const ContentBoardNav = ({
-  title,
   filterInput,
   setFilterInput,
   selectedDepartment,
   setSelectedDepartment,
   accessibleDepartment,
 }: {
-  title: string;
   filterInput: string;
   setFilterInput: Dispatch<SetStateAction<string>>;
   selectedDepartment: string;
   setSelectedDepartment: Dispatch<SetStateAction<string>>;
   accessibleDepartment: string;
 }) => {
-  const { isTablet, isDesktop } = useBreakpoint();
+  const { isTablet } = useBreakpoint();
   const [mobileDropDown, setMobileDropDown] = useState(false);
 
   const DepartmentDropdown = () => {
     return (
-      <select
+      <StyledSelect
         value={selectedDepartment}
         onChange={(e) => setSelectedDepartment(e.target.value)}
+        aria-label="Select department"
       >
-        {departmentIDs.map((departmentID) => {
-          return (
-            <option
-              key={departmentID}
-              value={departmentID}
-              disabled={
-                accessibleDepartment != 'all' &&
-                accessibleDepartment != departmentID
-              }
-            >
-              {departmentID.toUpperCase()}
-            </option>
-          );
-        })}
-      </select>
+        {departmentIDs.map((departmentID) => (
+          <option
+            key={departmentID}
+            value={departmentID}
+            disabled={
+              accessibleDepartment !== 'all' &&
+              accessibleDepartment !== departmentID
+            }
+          >
+            {departmentID.toUpperCase()}
+          </option>
+        ))}
+      </StyledSelect>
     );
   };
 
   return (
     <ContentBarNavContainer>
-      <Typography
-        variant="labelTitle"
-        weight="400"
-        size="lg"
-        lineHeight={FontSizes['lg']}
-        color="white"
-      >
-        {title}
-      </Typography>
       {isTablet ? (
         <>
-          <HiMenuAlt3
-            size={32}
-            color="white"
-            onClick={() => setMobileDropDown(!mobileDropDown)}
-          />
+          <NavLeft>
+            <MenuButton
+              type="button"
+              aria-label="Open board controls"
+              onClick={() => setMobileDropDown((v) => !v)}
+            >
+              <IoMdMenu size={32} color={Colors.primary} />
+            </MenuButton>
+          </NavLeft>
+
+          <NavCenter>
+            <SearchBar
+              filterInput={filterInput}
+              setFilterInput={setFilterInput}
+            />
+          </NavCenter>
+
+          <NavRight />
+
           {mobileDropDown && (
             <>
-              <MobileDropDownMenu>
-                <div>
-                  <Typography color="black">Department: </Typography>
+              <MobileDropDownMenu role="dialog" aria-label="Board controls">
+                <MobileMenuItem>
+                  <Typography as="span" variant="label" weight="600">
+                    Department
+                  </Typography>
                   <DepartmentDropdown />
-                </div>
+                </MobileMenuItem>
 
-                <div>
-                  <Typography color="black">Search: </Typography>
-                  <SearchBar
-                    filterInput={filterInput}
-                    setFilterInput={setFilterInput}
-                  />
-                </div>
-
-                <div>
-                  <Typography color="black">Navigation: </Typography>
-                  <BackOfficeLinksContainer>
-                    {backOfficeLinks.map(
-                      (backOfficeLink: { title: string; url: string }) => {
-                        return (
-                          <li key={backOfficeLink.title}>
-                            <Link href={backOfficeLink.url}>
-                              {backOfficeLink.title}
-                            </Link>
-                          </li>
-                        );
-                      },
-                    )}
-                  </BackOfficeLinksContainer>
-                </div>
+                {/* Optional: keep a second search in the dropdown or remove it.
+                  I'd remove it since search is already centered above. */}
               </MobileDropDownMenu>
+
               <ExitMobileDropDownMenuPageCover
                 onClick={() => setMobileDropDown(false)}
               />
@@ -196,14 +232,18 @@ export const ContentBoardNav = ({
         </>
       ) : (
         <>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            {!isDesktop && <Typography color="white">Department: </Typography>}
+          <NavLeft>
             <DepartmentDropdown />
-          </div>
-          <SearchBar
-            filterInput={filterInput}
-            setFilterInput={setFilterInput}
-          />
+          </NavLeft>
+
+          <NavCenter>
+            <SearchBar
+              filterInput={filterInput}
+              setFilterInput={setFilterInput}
+            />
+          </NavCenter>
+
+          <NavRight />
         </>
       )}
     </ContentBarNavContainer>
