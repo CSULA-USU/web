@@ -11,6 +11,9 @@ const StyledInput = styled.input`
   font-size: 14px;
   line-height: 1;
   background-color: white;
+  &:focus {
+    box-shadow: 0 0 0 2px black;
+  }
   &::selection {
     background-color: white;
     color: white;

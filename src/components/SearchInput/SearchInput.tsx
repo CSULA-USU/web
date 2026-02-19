@@ -42,6 +42,9 @@ const StyledInput = styled.input`
     background: ${Colors.greyDarker};
     color: white;
   }
+  &:focus {
+    border: 0;
+  }
   &::placeholder {
     color: ${Colors.grey};
   }
