@@ -43,8 +43,6 @@ const ModalContent = styled.div`
   z-index: 40;
 `;
 
-// Removed styled Typography components - using regular Typography instead
-
 const StyledImage = styled(Image)`
   flex-shrink: 0;
   width: 100%;
@@ -52,7 +50,7 @@ const StyledImage = styled(Image)`
   max-width: 35%;
   object-fit: cover;
 
-  @media (max-width: 930px) {
+  @media (max-width: 1022px) {
     max-width: 50%;
   }
 
@@ -125,16 +123,16 @@ export const PositionModal = ({
   img,
   alt,
   link,
-  onClose: externalOnClose, // optional from parent
+  onClose: externalOnClose,
 }: PositionModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => {
     setIsOpen(false);
-    externalOnClose?.(); // call parent onClose if provided
+    externalOnClose?.();
   };
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
     <>
@@ -151,10 +149,11 @@ export const PositionModal = ({
         <ModalContent>
           <FluidContainer
             flex
-            flexDirection={isMobile ? 'column' : 'row'}
+            flexDirection={isDesktop ? 'column' : 'row'}
             backgroundColor="greyDarker"
             padding="0"
             justifyContent="space-between"
+            alignItems="center"
           >
             <FluidContainer
               flex
@@ -166,14 +165,15 @@ export const PositionModal = ({
               <Typography
                 as="p"
                 variant="labelTitle"
-                size="xl"
+                size={isTablet ? 'md' : 'lg'}
+                margin={isMobile ? '25px 0 0 0' : ''}
                 nowrap
                 weight="700"
                 color="white"
               >
                 {positionName}
               </Typography>
-              <Typography as="p" margin="0 0 24px 0" color="white">
+              <Typography as="p" color="white" size={isTablet ? 'sm' : 'md'}>
                 {description}
               </Typography>
               <FluidContainer

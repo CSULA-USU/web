@@ -18,8 +18,6 @@ const LogoLink = styled(Link)`
   max-height: 90px;
   margin: ${Spaces.xl} 0;
   &:focus {
-    box-shadow: 0 0 0 6px black;
-    outline: 3px solid #fece07;
     text-decoration: underline;
   }
 `;
