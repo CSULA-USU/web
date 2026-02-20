@@ -289,11 +289,6 @@ const SocialCard = styled.div<{ $copied?: boolean }>`
     border-color: ${Colors.greyLighter};
     cursor: pointer;
   }
-
-  &:focus {
-    outline: 2px solid ${Colors.primary};
-    outline-offset: 2px;
-  }
 `;
 
 const CopyHint = styled.span`
