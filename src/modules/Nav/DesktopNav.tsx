@@ -42,7 +42,6 @@ const UnstyledUnorderedList = styled.ul`
     &:focus {
       color: ${Colors.primary};
     }
-    &:hover;
   }
   ul {
     animation: fadeIn 0.3s;
