@@ -419,22 +419,22 @@ export default function FSL() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'EducationalOrganization',
+              '@type': 'NonprofitOrganization',
               name: 'Fraternity and Sorority Life (FSL)',
               url: 'https://www.calstatelausu.org/csi/fsl',
-              logo: 'https://www.calstatelausu.org/departments/logos/csi-logo.svg',
-              telephone: '+1-323-343-5113',
+              logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png',
+              telephone: '+13233435113',
               email: 'iprieto7@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '5154 State University Dr, U-SU Room 204',
+                streetAddress: '5154 State University Dr., U-SU Room 204',
                 addressLocality: 'Los Angeles',
                 addressRegion: 'CA',
                 postalCode: '90032',
                 addressCountry: 'US',
               },
               parentOrganization: {
-                '@type': 'EducationalOrganization',
+                '@type': 'NonprofitOrganization',
                 name: 'Center for Student Involvement (CSI)',
                 url: 'https://www.calstatelausu.org/csi',
               },

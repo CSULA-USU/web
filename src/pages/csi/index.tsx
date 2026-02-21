@@ -181,17 +181,22 @@ export default function CSI() {
               name: 'Center for Student Involvement (CSI)',
               url: 'https://www.calstatelausu.org/csi',
               logo: 'https://www.calstatelausu.org/departments/logos/csi-logo.svg',
-              telephone: '+1-323-343-5110',
+              telephone: '+13233435110',
               email: 'csi@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '5154 State University Dr, U-SU Room 204',
+                streetAddress: '5154 State University Dr., U-SU Room 204',
                 addressLocality: 'Los Angeles',
                 addressRegion: 'CA',
                 postalCode: '90032',
                 addressCountry: 'US',
               },
               parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+                url: 'https://www.calstatelausu.org',
+              },
+              affiliation: {
                 '@type': 'CollegeOrUniversity',
                 name: 'California State University, Los Angeles',
                 url: 'https://www.calstatela.edu',
@@ -200,7 +205,6 @@ export default function CSI() {
           }}
         />
       </Head>
-
       <DepartmentHeader
         title="Center for Student Involvement"
         infoSection={
