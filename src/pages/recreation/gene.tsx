@@ -42,7 +42,7 @@ export default function Gene() {
         />
         <meta
           name="description"
-          content="At gene, we believe we all can benefit from learning new skills and
+          content="At GENE, we believe we all can benefit from learning new skills and
           receiving support to live our best lives. We are your partner in
           change and want to support you in fostering new possibilities and
           discovering habits of well-being that will last a lifetime."
@@ -119,7 +119,7 @@ export default function Gene() {
         </WelcomeContentContainer>
         <Button
           variant="black"
-          href="https://forms.office.com/r/0pTZzbkdj6"
+          href="https://forms.office.com/r/V7u5KxzAGs"
           isExternalLink
         >
           RSVP
@@ -127,7 +127,7 @@ export default function Gene() {
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Fall 2025:
+          <abbr title="gene">GENE</abbr> Bios Spring 2026:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish

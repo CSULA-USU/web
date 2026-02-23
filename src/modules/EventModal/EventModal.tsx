@@ -1,6 +1,6 @@
 import { Divider, Typography } from 'components';
 import { Image } from 'components';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -9,7 +9,6 @@ import { Colors, Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { PRESENCE_URI_BASE } from 'utils/constants';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
-
 interface EventModalProps {
   event?: PresenceEvent;
   isOpen: boolean;
@@ -98,11 +97,22 @@ const Main = styled.div`
   max-width: 100%;
   padding: ${Spaces.md};
   max-height: 80vh;
+
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+
+  -webkit-overflow-scrolling: touch;
+
   img {
     max-height: 600px;
     object-fit: contain;
+    display: block;
   }
-  overflow-y: auto;
 `;
 
 export const EventModal = ({
@@ -111,13 +121,33 @@ export const EventModal = ({
   onRequestClose,
 }: EventModalProps) => {
   const { isMobile, isDesktop } = useBreakpoint();
+  const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const scrollAmount = 50;
+      const container = mainRef.current;
+
+      if (container) {
+        if (event.key === 'ArrowDown' || event.key === 'Down') {
+          event.preventDefault();
+          container.scrollTop += scrollAmount;
+        } else if (event.key === 'ArrowUp' || event.key === 'Up') {
+          event.preventDefault();
+          container.scrollTop -= scrollAmount;
+        }
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      window.addEventListener('keydown', handleKeyDown);
     }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   if (!event) return null;
@@ -149,6 +179,9 @@ export const EventModal = ({
           : desktopCustomStyles
       }
       onRequestClose={onRequestClose}
+      onAfterOpen={() => {
+        mainRef.current?.focus();
+      }}
       ariaHideApp={false}
     >
       <CloseButtonContainer>
@@ -156,7 +189,12 @@ export const EventModal = ({
           <CloseButtonIcon />
         </CloseButton>
       </CloseButtonContainer>
-      <Main>
+      <Main
+        ref={mainRef}
+        tabIndex={-1}
+        style={{ outline: 'none' }}
+        className="modal-content"
+      >
         <Image
           src={`${PRESENCE_URI_BASE}/${photoUri}`}
           alt={`${eventName}`}

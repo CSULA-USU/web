@@ -1,14 +1,35 @@
 [
   {
-    "url": "/backoffice",
-    "title": "Home"
+    "section": "General",
+    "items": [
+      {
+        "url": "/backoffice",
+        "title": "Home",
+        "description": "Backoffice dashboard and quick access tools",
+        "featured": false
+      }
+    ]
   },
   {
-    "url": "/backoffice/bod",
-    "title": "BOD"
+    "section": "Governance",
+    "items": [
+      {
+        "url": "/backoffice/bod",
+        "title": "Board of Directors",
+        "description": "Access and manage board meeting documents",
+        "featured": true
+      }
+    ]
   },
   {
-    "url": "/backoffice/graffix-requests",
-    "title": "Graffix Requests"
+    "section": "Creative",
+    "items": [
+      {
+        "url": "/backoffice/graffix-requests",
+        "title": "Graffix Requests",
+        "description": "Submit and track graphics and design requests",
+        "featured": true
+      }
+    ]
   }
 ]

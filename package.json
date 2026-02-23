@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev & npx next-video sync -w",
     "dev:sections": "concurrently \"next dev\" \"watch 'npm run generate-section-schemas' ./src/sections \"",
+    "generate-sitemap": "node src/scripts/generate-sitemap.js",
+    "prebuild": "yarn generate-sitemap",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

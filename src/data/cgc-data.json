@@ -71,15 +71,15 @@
       "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "copy": [
-        ["Date: Friday, May 15", "Time: 4:30 PM to 6:00 PM"],
+        ["Date: Friday, May 15", "Time: 7:30 PM to 9:00 PM"],
         "Location: University Gym",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "",
+        "buttonLink": "https://form.jotform.com/260047603034143",
         "buttonPlaceholder": "Applications open February 9",
-        "buttonText": "Booklet"
+        "buttonText": "Apply Now"
       },
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
@@ -97,9 +97,9 @@
         "Email: ithoma10@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "",
+        "buttonLink": "https://form.jotform.com/260047837088161",
         "buttonPlaceholder": "Applications open February 9",
-        "buttonText": "Booklet"
+        "buttonText": "Apply Now"
       },
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
@@ -117,9 +117,9 @@
         "Email: favina@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "",
+        "buttonLink": "https://form.jotform.com/260065276185156",
         "buttonPlaceholder": "Applications open February 9",
-        "buttonText": "Booklet"
+        "buttonText": "Apply Now"
       },
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
@@ -137,9 +137,9 @@
         "Email: eurruti8@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "",
+        "buttonLink": "https://form.jotform.com/260256981239161",
         "buttonPlaceholder": "Applications open February 9",
-        "buttonText": "Booklet"
+        "buttonText": "Join Waitlist"
       },
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
@@ -151,15 +151,15 @@
       "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "copy": [
-        ["Date: Friday, May 15", "Time: 7:30 PM to 9:00 PM"],
+        ["Date: Friday, May 15", "Time: 4:30 PM to 6:00 PM"],
         "Location: University Gym",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
       ],
       "button": {
-        "buttonLink": "",
+        "buttonLink": "https://form.jotform.com/260047725641152",
         "buttonPlaceholder": "Applications open February 9",
-        "buttonText": "Booklet"
+        "buttonText": "Apply Now"
       },
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",

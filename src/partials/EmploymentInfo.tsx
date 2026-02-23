@@ -19,7 +19,7 @@ export const EmploymentInfo = () => {
   const [selectedTab, setSelectedTab] = useState('All');
 
   return (
-    <FluidContainer>
+    <FluidContainer padding="0">
       <span id="positions">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '2xl'}>
           Job Descriptions

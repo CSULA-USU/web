@@ -18,8 +18,6 @@ const LogoLink = styled(Link)`
   max-height: 90px;
   margin: ${Spaces.xl} 0;
   &:focus {
-    box-shadow: 0 0 0 6px black;
-    outline: 3px solid #fece07;
     text-decoration: underline;
   }
 `;
@@ -124,7 +122,7 @@ export const Footer = () => (
             <StyledLinkMargins>
               <Typography color="white">Sun: Closed</Typography>
             </StyledLinkMargins>
-            <StyledLinkMargins>
+            {/* <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={
@@ -135,7 +133,7 @@ export const Footer = () => (
                   2025 Winter Schedule
                 </StyledLink>
               </Typography>
-            </StyledLinkMargins>
+            </StyledLinkMargins> */}
           </FooterUnorderedList>
           <FooterUnorderedList>
             <li>
@@ -145,16 +143,11 @@ export const Footer = () => (
             </li>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
-                <StyledLink href={'/events'}>Calendar of Events</StyledLink>
+                <StyledLink href={'https://asicalstatela.org/'} isExternalLink>
+                  Associated Students, Inc.
+                </StyledLink>
               </Typography>
             </StyledLinkMargins>
-
-            <StyledLinkMargins>
-              <Typography color="primary" size="sm">
-                <StyledLink href={'/csi/student-orgs'}>Clubs & Orgs</StyledLink>
-              </Typography>
-            </StyledLinkMargins>
-
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink
@@ -165,10 +158,19 @@ export const Footer = () => (
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
-
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/csi/student-orgs'}>Clubs & Orgs</StyledLink>
+              </Typography>
+            </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink href={'/employment'}>Employment</StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink href={'/events'}>Events</StyledLink>
               </Typography>
             </StyledLinkMargins>
           </FooterUnorderedList>
@@ -187,6 +189,13 @@ export const Footer = () => (
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
+                <StyledLink href={'/graffix/web-team/accessibility'}>
+                  Digital Accessibility
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
                 <StyledLink
                   href={
                     'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
@@ -194,13 +203,6 @@ export const Footer = () => (
                   isExternalLink
                 >
                   Strategic Plan
-                </StyledLink>
-              </Typography>
-            </StyledLinkMargins>
-            <StyledLinkMargins>
-              <Typography color="primary" size="sm">
-                <StyledLink href={'/graffix/web-team/accessibility'}>
-                  Digital Accessibility
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>

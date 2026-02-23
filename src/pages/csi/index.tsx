@@ -127,21 +127,82 @@ export default function CSI() {
   return (
     <Page>
       <Head>
-        <title>U-SU CSI</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Center for Student Involvement (CSI) | Cal State LA</title>
+        <meta
+          name="description"
+          content="Contact the Center for Student Involvement (CSI) at Cal State LA at (323) 343-5110. The hub for student leadership, campus events, and organization recognition."
+        />
+        <meta
+          property="og:title"
+          content="Center for Student Involvement (CSI) | Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="The hub for student leadership, campus events, and organization recognition at Cal State LA."
+        />
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
-          key="author"
+        />
+        <meta property="og:url" content="https://www.calstatelausu.org/csi" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, GEEK, Golden Eagle Event Krew, FSL, Greek Life, Sorority, Fraternity, Student Organizations, Leadership Enrichment Advocacy and Development, LEAD, Leadership Library, On Campus Programs, Off Campus Programs, Presence"
-          key="keywords"
+          property="og:image:alt"
+          content="Center for Student Involvement (CSI) logo"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Center for Student Involvement (CSI) | Cal State LA"
         />
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          name="twitter:description"
+          content="The hub for student leadership, campus events, and organization recognition."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+        />
+        <link rel="canonical" href="https://www.calstatelausu.org/csi" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'NonprofitOrganization',
+              name: 'Center for Student Involvement (CSI)',
+              url: 'https://www.calstatelausu.org/csi',
+              logo: 'https://www.calstatelausu.org/departments/logos/csi-logo.svg',
+              telephone: '+13233435110',
+              email: 'csi@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 204',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+                url: 'https://www.calstatelausu.org',
+              },
+              affiliation: {
+                '@type': 'CollegeOrUniversity',
+                name: 'California State University, Los Angeles',
+                url: 'https://www.calstatela.edu',
+              },
+            }),
+          }}
         />
       </Head>
       <DepartmentHeader
@@ -150,10 +211,8 @@ export default function CSI() {
           <OfficeHours
             address={
               <>
-                <Typography as="p">University-Student Union,</Typography>
-                <Typography as="p">
-                  5154 State University Dr, <blockquote />
-                </Typography>
+                <Typography as="p">University&ndash;Student Union,</Typography>
+                <Typography as="p">5154 State University Dr.</Typography>
                 <Typography as="p">Los Angeles CA, 90032</Typography>
               </>
             }
@@ -209,7 +268,7 @@ export default function CSI() {
         </SocialsContainer>
       </DepartmentHeader>
       <CallToAction
-        href="https://lp.constantcontactpages.com/su/ZS9x5ft/CSInews"
+        href="http://eepurl.com/jwsk8E"
         buttonText="Sign Up"
         text="CSI Monthly Newsletter"
       >

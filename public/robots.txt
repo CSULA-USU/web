@@ -1,3 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
+Sitemap: https://www.calstatelausu.org/sitemap.xml
