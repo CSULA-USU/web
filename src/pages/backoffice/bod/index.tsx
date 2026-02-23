@@ -10,7 +10,7 @@ import {
   deleteMeetingDocument,
   updateMeetingDocument,
   archiveMeetingDocument,
-} from 'api';
+} from 'services';
 import { useToast } from 'context/ToastContext';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 
