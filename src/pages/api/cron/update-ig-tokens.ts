@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { supabase } from 'lib/supabase';
-import axios from 'axios';
 
 async function fetchToken(name: string) {
   let { data } = await supabase
@@ -12,13 +11,15 @@ async function fetchToken(name: string) {
 
 async function refreshToken(token: string) {
   const URL = `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${token}`;
-  const refreshedToken = await axios
-    .get(URL)
-    .then((response) => response.data)
-    .catch(function (error) {
-      return error;
-    });
-  return refreshedToken;
+
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) return null;
+
+    return await response.json();
+  } catch {
+    return null;
+  }
 }
 
 async function updateSupabase(name: string, refreshedToken: any) {

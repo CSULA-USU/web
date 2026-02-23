@@ -1,4 +1,3 @@
-import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Departments } from 'types';
 import { supabase } from 'lib/supabase';
@@ -91,6 +90,15 @@ export default async function handler(
   };
   const token = tokens[org as keyof typeof tokens];
   const URL = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,thumbnail_url,permalink&access_token=${token}`;
-  const response = await (await axios.get(URL)).data;
+
+  const resFetch = await fetch(URL);
+
+  if (!resFetch.ok) {
+    return res
+      .status(resFetch.status)
+      .json({ error: 'Failed to fetch from Instagram' });
+  }
+
+  const response = await resFetch.json();
   res.status(200).json({ data: response });
 }
