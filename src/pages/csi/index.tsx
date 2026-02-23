@@ -177,7 +177,7 @@ export default function CSI() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'EducationalOrganization',
+              '@type': 'NonprofitOrganization',
               name: 'Center for Student Involvement (CSI)',
               url: 'https://www.calstatelausu.org/csi',
               logo: 'https://www.calstatelausu.org/departments/logos/csi-logo.svg',

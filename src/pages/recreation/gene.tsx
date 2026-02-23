@@ -119,7 +119,7 @@ export default function Gene() {
         </WelcomeContentContainer>
         <Button
           variant="black"
-          href="https://forms.office.com/r/0pTZzbkdj6"
+          href="https://forms.office.com/r/V7u5KxzAGs"
           isExternalLink
         >
           RSVP
