@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { TabCluster, FluidContainer, Typography, Divider } from 'components';
 import { Header, Page } from 'modules';
 import Head from 'next/head';
@@ -152,9 +151,11 @@ export default function Directory() {
 
   useEffect(() => {
     const fetchUKrewStudents = async () => {
-      await axios.get('/api/jotformUKrew').then((res) => {
-        setUKrewStudents(res.data);
-      });
+      const response = await fetch('/api/jotformUKrew');
+      if (response.ok) {
+        const data = await response.json();
+        setUKrewStudents(data);
+      }
     };
     fetchUKrewStudents();
   }, []);
