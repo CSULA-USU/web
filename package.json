@@ -44,7 +44,7 @@
     "lodash.throttle": "^4.1.1",
     "next": "14.2.35",
     "next-auth": "^4.24.11",
-    "next-video": "2.5.1",
+    "next-video": "2.2.3",
     "node-schedule": "^2.1.1",
     "patch-package": "^8.0.0",
     "player.style": "0.3.0",
@@ -71,6 +71,8 @@
     "watch": "^1.0.2"
   },
   "resolutions": {
+    "@aws-sdk/xml-builder": "3.972.6",
+    "fast-xml-parser": "5.3.6",
     "styled-components": "^5",
     "tmp": "^0.2.4"
   },
