@@ -1,9 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
+  "ignorePatterns": ["src/scripts/**"],
   "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "warn",
-    "no-console": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-unused-vars": [
       "error",
       {
