@@ -38,6 +38,11 @@ const NumberContainer = styled.div`
   gap: ${Spaces.lg};
 `;
 
+const Address = styled.address`
+  font-style: normal;
+  line-height: 1.5;
+`;
+
 export const OfficeHours = ({
   address,
   phoneNumber,
@@ -48,7 +53,7 @@ export const OfficeHours = ({
     <Divider margin="24px 0" color="grey" />
     <OfficeHoursContentContainer>
       <div>
-        <Typography>{address}</Typography>
+        <Address>{address}</Address>
         <Divider color="greyLighter" margin="12px 0" />
         <NumberContainer>
           {phoneNumber && (
