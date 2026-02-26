@@ -427,7 +427,7 @@ export default function StudentOrganizationAwards() {
         </Typography>
         <Typography as="p" variant="copy" margin="0 0 8px">
           <strong>
-            Applications open on January 1st and close on March 28th.
+            Applications open on February 20 and close on April 1.
           </strong>
         </Typography>
 
@@ -521,7 +521,7 @@ export default function StudentOrganizationAwards() {
       {/* Yellow Banner - Looking to join a Student Organization */}
       <div style={{ textOverflow: 'ellipsis' }}>
         <CallToAction
-          href="https://forms.office.com/r/VHy8UdVtPZ"
+          href="https://forms.office.com/Pages/ResponsePage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3Ss0cdfPUjJEkZSkEGEKuVJUQk4xVUZKQ1BFT0NYNktFRzJRV1VCVEJNNiQlQCNjPTEkJUAjdD1n"
           buttonText="Apply Now"
           text=""
         >
