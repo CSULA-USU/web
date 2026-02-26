@@ -106,7 +106,7 @@ export const DepartmentHeader = ({
             >
               {title}
             </Typography>
-            <Typography>{children}</Typography>
+            {children}
           </HeaderContent>
 
           <FeatureSlot>
