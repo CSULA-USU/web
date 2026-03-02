@@ -2,6 +2,7 @@ import 'styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
+import React, { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
@@ -10,19 +11,40 @@ import Modal from 'react-modal';
 import { SessionProvider } from 'next-auth/react';
 import { EventsLoader } from 'components';
 import ToastProvider from 'context/ToastContext';
+import { Bitter, Montserrat } from 'next/font/google';
 
 if (typeof window !== 'undefined') {
   Modal.setAppElement('#__next');
 }
 
+const bitter = Bitter({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-bitter',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-montserrat',
+});
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
-  ReactGA.initialize(`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      ReactGA.initialize(`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
+    }
+  }, []);
+
   return (
-    <>
+    <div className={`${bitter.variable} ${montserrat.variable}`}>
       <SessionProvider session={session}>
         <ToastProvider>
           <RecoilRoot>
@@ -57,6 +79,6 @@ export default function App({
           </RecoilRoot>
         </ToastProvider>
       </SessionProvider>
-    </>
+    </div>
   );
 }

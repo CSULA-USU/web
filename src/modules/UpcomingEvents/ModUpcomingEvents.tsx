@@ -82,32 +82,34 @@ export const ModUpcomingEvents = ({
   const eventMonths = Object.keys(eventsByMonth);
 
   const UpcomingEventsSkeleton = ({ monthly }: { monthly?: boolean }) => {
-    return monthly ? (
-      <div>
-        <Divider label="Month" />
-        <UpcomingEventsContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton height="400px" key={index} />
-          ))}
-        </UpcomingEventsContent>
+    return (
+      <div style={{ minHeight: monthly ? '800px' : '600px' }}>
+        {monthly ? (
+          <div>
+            <Divider label="Month" />
+            <UpcomingEventsContent>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Skeleton height="400px" key={index} />
+              ))}
+            </UpcomingEventsContent>
+          </div>
+        ) : (
+          <UpcomingEventsContent>
+            <TertiaryContainer>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <li key={index}>
+                  <MinimalistEventSkeleton />
+                  {index === 4 ? (
+                    ''
+                  ) : (
+                    <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
+                  )}
+                </li>
+              ))}
+            </TertiaryContainer>
+          </UpcomingEventsContent>
+        )}
       </div>
-    ) : (
-      <>
-        <UpcomingEventsContent>
-          <TertiaryContainer>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <li key={index}>
-                <MinimalistEventSkeleton />
-                {index === 4 ? (
-                  ''
-                ) : (
-                  <Divider color="greyLighter" margin={`${Spaces.md} 0`} />
-                )}
-              </li>
-            ))}
-          </TertiaryContainer>
-        </UpcomingEventsContent>
-      </>
     );
   };
 
@@ -125,83 +127,93 @@ export const ModUpcomingEvents = ({
           </Typography>
         </UpcomingEventsHeading>
       )}
-      {loading ? (
-        <UpcomingEventsSkeleton monthly={monthly} />
-      ) : !events.length ? (
-        <Typography as="h3" variant="label">
-          No events Available.
-        </Typography>
-      ) : (
-        <>
-          {monthly ? (
-            eventMonths.map((eventMonth) => (
-              <div key={`${eventMonth} Events`}>
-                <Divider label={eventMonth} />
-                <UpcomingEventsContent>
-                  {eventsByMonth[eventMonth].map((event) => (
-                    <EventCard
-                      key={event.eventNoSqlId}
-                      event={event}
-                      onClick={() => selectEvent(event)}
-                    />
-                  ))}
-                </UpcomingEventsContent>
-              </div>
-            ))
-          ) : (
-            <>
-              <UpcomingEventsContent>
-                <TertiaryContainer>
-                  {events
-                    .slice(1, eventLimit)
-                    .map((event, index, eventArray) => (
-                      <li key={event.eventNoSqlId}>
-                        <MinimalistEvent
-                          event={event}
-                          onClick={() => selectEvent(event)}
-                        />
-                        {index === eventArray.length - 1 ? (
-                          ''
-                        ) : (
-                          <Divider
-                            color="greyLighter"
-                            margin={`${Spaces.md} 0`}
-                          />
-                        )}
-                      </li>
-                    ))}
-                </TertiaryContainer>
-              </UpcomingEventsContent>
-              <FluidContainer
-                flex
-                flexDirection="row"
-                justifyContent="center"
-                gap="16px"
-              >
-                {events.length > eventLimit && (
-                  <Button
-                    onClick={() => setEventLimit(eventLimit + 3)}
-                    variant="black"
-                  >
-                    Load More
-                  </Button>
-                )}
 
-                {eventLimit > 6 && (
-                  <Button onClick={() => setEventLimit(6)} variant="outline">
-                    Show Less
-                  </Button>
-                )}
-              </FluidContainer>
-            </>
-          )}
-          <EventModal
-            isOpen={!!selectedEvent}
-            event={selectedEvent}
-            onRequestClose={onRequestClose}
-          />
-        </>
-      )}
+      {/* We lock the height of this entire section */}
+      <div style={{ minHeight: monthly ? '800px' : '600px' }}>
+        {loading ? (
+          <UpcomingEventsSkeleton monthly={monthly} />
+        ) : events.length <= 1 ? (
+          /* If events.length is 1, index 0 is featured, 
+             so this list has nothing to show. 
+             We keep the min-height div so the page doesn't collapse.
+          */
+          <Typography as="h3" variant="label" style={{ paddingTop: '20px' }}>
+            No additional upcoming events.
+          </Typography>
+        ) : (
+          <>
+            {monthly ? (
+              eventMonths.map((eventMonth) => (
+                <div key={`${eventMonth} Events`}>
+                  <Divider label={eventMonth} />
+                  <UpcomingEventsContent>
+                    {eventsByMonth[eventMonth].map((event) => (
+                      <EventCard
+                        key={event.eventNoSqlId}
+                        event={event}
+                        onClick={() => selectEvent(event)}
+                      />
+                    ))}
+                  </UpcomingEventsContent>
+                </div>
+              ))
+            ) : (
+              <>
+                <UpcomingEventsContent>
+                  <TertiaryContainer>
+                    {events
+                      .slice(1, eventLimit) // Keep your skip logic
+                      .map((event, index, eventArray) => (
+                        <li key={event.eventNoSqlId}>
+                          <MinimalistEvent
+                            event={event}
+                            onClick={() => selectEvent(event)}
+                          />
+                          {index === eventArray.length - 1 ? (
+                            ''
+                          ) : (
+                            <Divider
+                              color="greyLighter"
+                              margin={`${Spaces.md} 0`}
+                            />
+                          )}
+                        </li>
+                      ))}
+                  </TertiaryContainer>
+                </UpcomingEventsContent>
+
+                <FluidContainer
+                  flex
+                  flexDirection="row"
+                  justifyContent="center"
+                  gap="16px"
+                >
+                  {events.length > eventLimit && (
+                    <Button
+                      onClick={() => setEventLimit(eventLimit + 3)}
+                      variant="black"
+                    >
+                      Load More
+                    </Button>
+                  )}
+
+                  {eventLimit > 6 && (
+                    <Button onClick={() => setEventLimit(6)} variant="outline">
+                      Show Less
+                    </Button>
+                  )}
+                </FluidContainer>
+              </>
+            )}
+          </>
+        )}
+      </div>
+
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent}
+        onRequestClose={onRequestClose}
+      />
     </FluidContainer>
   );
 };

@@ -30,7 +30,7 @@ interface TypeVariant {
   lineHeight?: string;
 }
 
-const serif = `'Bitter', serif`;
+const serif = `var(--font-bitter), serif`;
 
 const styles = {
   pageHeader: {
@@ -102,7 +102,6 @@ const getCSS = (p: TypeProps) => {
     lineHeight,
   } = styles[p.variant || 'copy'] as TypeVariant;
   return css`
-    *,
     & {
       strong {
         font-weight: 700;
