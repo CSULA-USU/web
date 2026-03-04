@@ -12,7 +12,7 @@ import {
   Typography,
 } from 'components';
 import { BiChevronRight } from 'react-icons/bi';
-import { CulturalGradsHeader, Page } from 'modules';
+import { CulturalGradsHeader, FooterExtension, Page } from 'modules';
 import { Spaces } from 'theme';
 import CulturalGradsData from 'data/cgc-data.json';
 import { useBreakpoint } from 'hooks';
@@ -268,20 +268,16 @@ export default function CulturalGrads() {
                 </FlatCard>
               ))}
             </IncentiveCardsContainer>
-            <PhotoVideoDisclaimer />
-            <FluidContainer flex justifyContent="center">
-              <Typography
-                as="h2"
-                variant="title"
-                size={isMobile ? 'lg' : '2xl'}
-              >
-                Open to all who are interested to participate regardless of
-                race, sex, color, ethnicity, or national origin
-              </Typography>
-            </FluidContainer>
           </FluidContainer>
         )}
       </div>
+      <PhotoVideoDisclaimer />
+      <FluidContainer flex justifyContent="center">
+        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
+          Open to all who are interested to participate regardless of race, sex,
+          color, ethnicity, or national origin
+        </Typography>
+      </FluidContainer>
       <div id="faq-section">
         {showFAQ && (
           <FluidContainer backgroundColor="black">
@@ -334,6 +330,12 @@ export default function CulturalGrads() {
           </FluidContainer>
         )}
       </div>
+      <FooterExtension
+        text="Consider a gift to the University-Student Union to help make our Cultural Graduation Celebrations a meaningful experience for students and their families. Thank you for your support!"
+        highlight="Give to the U-SU"
+        url="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=dfe9b9e1-20b1-4d92-917d-4d29d91438b7&envid=p-3IGxPccVJUKbRONNvdF98g&zone=usa"
+        isExternalLink
+      />
       {/* <FluidContainer
         backgroundColor="primary"
         flex
