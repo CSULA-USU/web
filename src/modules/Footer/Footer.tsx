@@ -198,6 +198,18 @@ export const Footer = () => (
               <Typography color="primary" size="sm">
                 <StyledLink
                   href={
+                    'https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=dfe9b9e1-20b1-4d92-917d-4d29d91438b7&envid=p-3IGxPccVJUKbRONNvdF98g&zone=usa'
+                  }
+                  isExternalLink
+                >
+                  Give
+                </StyledLink>
+              </Typography>
+            </StyledLinkMargins>
+            <StyledLinkMargins>
+              <Typography color="primary" size="sm">
+                <StyledLink
+                  href={
                     'https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&e=1&dl=0'
                   }
                   isExternalLink
@@ -209,7 +221,7 @@ export const Footer = () => (
             <StyledLinkMargins>
               <Typography color="primary" size="sm">
                 <StyledLink href={'/board-of-directors/public-documents'}>
-                  View Public Documents
+                  Public Documents
                 </StyledLink>
               </Typography>
             </StyledLinkMargins>
