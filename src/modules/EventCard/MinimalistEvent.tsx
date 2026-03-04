@@ -4,6 +4,7 @@ import { PresenceEvent } from 'types';
 import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { media } from 'theme';
+import { useBreakpoint } from 'hooks';
 
 export interface MinimalistEventProps {
   buttonText?: string;
@@ -49,7 +50,6 @@ const MinimalistEventContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Use min-height to reserve space even if content is slow to render */
   min-height: 96px;
   height: 96px;
   width: 100%;
@@ -65,7 +65,6 @@ const MinimalistEventContainer = styled.div`
 `;
 
 const ResponsiveSkeleton = styled(Skeleton)`
-  /* Force height to match container exactly */
   height: 96px !important;
   width: 100%;
 
@@ -101,7 +100,7 @@ const MobileOnly = styled.div`
 
 const TabletOnly = styled.div`
   display: none;
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (min-width: 580px) and (max-width: 1023px) {
     display: block;
   }
 `;
@@ -121,6 +120,7 @@ export const MinimalistEvent = ({
   link,
   onClick,
 }: MinimalistEventProps) => {
+  const { isMobile, isDesktop } = useBreakpoint();
   if (!event) return null;
 
   const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
@@ -131,12 +131,15 @@ export const MinimalistEvent = ({
   const day = getDay(startDateTimeUtc);
 
   const iconColor = isFeatured ? 'white' : 'black';
-  const textColor = isFeatured ? 'greyLighter' : 'black';
 
   return (
     <MinimalistEventContainer>
       <LeftContainer>
-        <Typography as="h3" variant="eventDetail" color="gold">
+        <Typography
+          as="h3"
+          variant="eventDetail"
+          color={isDesktop ? 'gold' : 'black'}
+        >
           <abbr title={`${month} ${day}`}>
             {monthAbbr} {day}
           </abbr>
@@ -149,7 +152,7 @@ export const MinimalistEvent = ({
             color={isFeatured ? 'greyLighter' : 'grey'}
             weight="400"
           >
-            {startTime}
+            {startTime} - {endTime}
           </Typography>
         </DesktopOnly>
 
@@ -163,22 +166,16 @@ export const MinimalistEvent = ({
             {startTime}
           </Typography>
         </TabletOnly>
-
-        <MobileOnly>
-          <Typography
-            as="h4"
-            variant="eventTime"
-            color={isFeatured ? 'greyLighter' : 'grey'}
-            weight="400"
-          >
-            {startTime} - {endTime}
-          </Typography>
-        </MobileOnly>
       </LeftContainer>
 
       <MiddleContainer>
         <TitleContainer onClick={onClick}>
-          <Typography as="h3" variant="eventTitle" color={textColor} size="md">
+          <Typography
+            as="h3"
+            variant="eventTitle"
+            color={isDesktop ? 'black' : 'gold'}
+            size="md"
+          >
             {eventName}
           </Typography>
         </TitleContainer>
@@ -221,10 +218,18 @@ export const MinimalistEvent = ({
         <TabletAndMobile>
           {isFeatured && link ? (
             <StyledLink href={link} isExternalLink>
-              <BsInfoCircle title="Learn More" size="30px" color="white" />
+              <BsInfoCircle
+                title="Learn More"
+                size={isMobile ? '18px' : '30px'}
+                color="white"
+              />
             </StyledLink>
           ) : (
-            <BsInfoCircle title="Learn More" size="30px" onClick={onClick} />
+            <BsInfoCircle
+              title="Learn More"
+              size={isMobile ? '18px' : '30px'}
+              onClick={onClick}
+            />
           )}
         </TabletAndMobile>
       </RightContainer>

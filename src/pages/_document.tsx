@@ -1,4 +1,3 @@
-// pages/_document.js
 import Document, {
   Html,
   Head,

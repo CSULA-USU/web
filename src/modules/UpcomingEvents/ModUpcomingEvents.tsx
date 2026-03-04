@@ -83,7 +83,7 @@ export const ModUpcomingEvents = ({
 
   const UpcomingEventsSkeleton = ({ monthly }: { monthly?: boolean }) => {
     return (
-      <div style={{ minHeight: monthly ? '800px' : '600px' }}>
+      <FluidContainer innerMinHeight={monthly ? '800px' : '600px'}>
         {monthly ? (
           <div>
             <Divider label="Month" />
@@ -109,7 +109,7 @@ export const ModUpcomingEvents = ({
             </TertiaryContainer>
           </UpcomingEventsContent>
         )}
-      </div>
+      </FluidContainer>
     );
   };
 
@@ -117,27 +117,17 @@ export const ModUpcomingEvents = ({
     <FluidContainer>
       {!monthly && (
         <UpcomingEventsHeading>
-          <Typography
-            as="h2"
-            variant="title"
-            color="black"
-            size={isMobile ? 'xl' : '2xl'}
-          >
+          <Typography as="h2" variant="title" size={isMobile ? 'xl' : '2xl'}>
             Upcoming
           </Typography>
         </UpcomingEventsHeading>
       )}
 
-      {/* We lock the height of this entire section */}
-      <div style={{ minHeight: monthly ? '800px' : '600px' }}>
+      <FluidContainer innerMinHeight={monthly ? '800px' : '600px'} padding="0">
         {loading ? (
           <UpcomingEventsSkeleton monthly={monthly} />
         ) : events.length <= 1 ? (
-          /* If events.length is 1, index 0 is featured, 
-             so this list has nothing to show. 
-             We keep the min-height div so the page doesn't collapse.
-          */
-          <Typography as="h3" variant="label" style={{ paddingTop: '20px' }}>
+          <Typography as="h3" variant="label" margin="20px 0 0 0">
             No additional upcoming events.
           </Typography>
         ) : (
@@ -162,7 +152,7 @@ export const ModUpcomingEvents = ({
                 <UpcomingEventsContent>
                   <TertiaryContainer>
                     {events
-                      .slice(1, eventLimit) // Keep your skip logic
+                      .slice(1, eventLimit)
                       .map((event, index, eventArray) => (
                         <li key={event.eventNoSqlId}>
                           <MinimalistEvent
@@ -207,7 +197,7 @@ export const ModUpcomingEvents = ({
             )}
           </>
         )}
-      </div>
+      </FluidContainer>
 
       <EventModal
         isOpen={!!selectedEvent}
