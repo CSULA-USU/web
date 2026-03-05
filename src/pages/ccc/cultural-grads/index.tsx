@@ -91,24 +91,28 @@ export default function CulturalGrads() {
     <Page>
       <Head>
         <title>Cultural Graduation Celebrations</title>
-        <meta
-          name="author"
-          content="The University Student Union Cross Cultural Centers"
-          key="author"
-        />
-        <meta
-          name="keywords"
-          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Black, APIDA, Pride, Nuestra"
-          key="keywords"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="The Cross Cultural Centers in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
-          key="description"
         />
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+          name="author"
+          content="The University Student Union Cross Cultural Centers"
+        />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/ccc/cultural-grads"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:site_name"
+          content="University-Student Union at Cal State LA"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/cultural-grads"
         />
         <meta property="og:title" content="Cultural Graduation Celebrations" />
         <meta
@@ -117,13 +121,9 @@ export default function CulturalGrads() {
         />
         <meta
           property="og:image"
-          content="/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
+          content="https://www.calstatelausu.org/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
         />
-        <meta
-          property="og:url"
-          content="https://www.calstatelausu.org/ccc/cultural-grads"
-        />
-        <meta property="og:type" content="website" />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cultural Graduation Celebrations" />
         <meta
@@ -132,7 +132,7 @@ export default function CulturalGrads() {
         />
         <meta
           name="twitter:image"
-          content="/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
+          content="https://www.calstatelausu.org/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
         />
       </Head>
       <CulturalGradsHeader images={slideshowImages} />
