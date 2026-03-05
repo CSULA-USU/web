@@ -72,12 +72,80 @@ export default function Tenants() {
   return (
     <Page>
       <Head>
-        <title>U-SU Tenants</title>
-        <meta name="author" content="Tenants" key="author" />
+        <title>Tenants & Dining | U&ndash;SU</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="author"
+          content="University-Student Union at Cal State LA"
+        />
+        <meta
+          name="description"
+          content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
+        />
         <meta
           name="keywords"
-          content="Alumni Association, Associated Students Incorporated, ASI, College of Professional and Global Education, PAGE, Information Technology Services, Open Access Labs, OAL, Wells Fargo, Sbarro, Starbucks"
+          content="Cal State LA Starbucks, ASI CSULA, Sbarro Cal State LA, Alumni Association CSULA, Student Union Computer Lab, U-SU Dining, Campus Food CSULA"
           key="keywords"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="U-SU Tenants: Dining, Services, and Student Government"
+        />
+        <meta
+          property="og:description"
+          content="Meet our partners. From student government (ASI) to your morning coffee at Starbucks, explore the organizations and eateries located inside the U-SU."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/about/tenants"
+        />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/about/tenants/starbucks-logo.png"
+        />
+
+        <meta name="twitter:card" content="summary" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/tenants"
+        />
+
+        {/* Structured Data for a Directory of Organizations */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'University-Student Union Tenants',
+              description:
+                'Directory of dining and student services located within the U-SU.',
+              itemListElement: [
+                {
+                  '@type': 'Organization',
+                  position: 1,
+                  name: 'Associated Students, Inc. (ASI)',
+                  telephone: '323-343-4780',
+                },
+                {
+                  '@type': 'FoodEstablishment',
+                  position: 2,
+                  name: 'Starbucks',
+                  telephone: '323-343-6793',
+                },
+                {
+                  '@type': 'FoodEstablishment',
+                  position: 3,
+                  name: 'Sbarro',
+                  telephone: '323-225-1464',
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <Header title="Tenants">

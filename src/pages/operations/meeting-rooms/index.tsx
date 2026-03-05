@@ -81,10 +81,110 @@ export default function MeetingRooms() {
     <Page>
       <Head>
         <title>U&ndash;SU Meeting Rooms</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Rent meeting spaces at Cal State LA U-SU. Available rooms: Los Angeles A/B/C, Theater, Alhambra, San Gabriel, and Plaza Space. View layouts, features, and rental fees."
+        />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
-          key="keywords"
+          content="CSULA Meeting Rooms, Cal State LA Event Spaces, U-SU Room Reservations, Alhambra Room, San Gabriel Room, Los Angeles Room, U-SU Theater, Boardroom North, Boardroom South, Plaza Space Rental"
+        />
+        <meta
+          property="og:title"
+          content="Meeting Rooms & Event Spaces | Cal State LA U-SU"
+        />
+        <meta
+          property="og:description"
+          content="Book your next event at the University-Student Union. Explore our variety of indoor and outdoor spaces designed for student organizations and campus partners."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/operations/meeting-rooms"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA University-Student Union Meeting Rooms"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="U-SU Meeting Room Rentals | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Check room availability, layout features, and rental fees for all U-SU meeting spaces."
+        />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/operations/meeting-rooms"
+        />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'CivicStructure',
+              name: 'U-SU Meeting Rooms',
+              url: 'https://www.calstatelausu.org/operations/meeting-rooms',
+              description:
+                'Professional meeting and event spaces available for rent at the California State University, Los Angeles Student Union.',
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Los Angeles Room A/B/C',
+                  value: 'Large Event Space',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'U-SU Theater',
+                  value: 'Performance Space',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Alhambra Room',
+                  value: 'Meeting Room',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'San Gabriel Room',
+                  value: 'Meeting Room',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'U-SU Plaza Space',
+                  value: 'Outdoor Event Space',
+                },
+              ],
+              potentialAction: {
+                '@type': 'ReserveAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://form.jotform.com/221578153228053',
+                  actionPlatform: [
+                    'http://schema.org/DesktopWebPlatform',
+                    'http://schema.org/MobileWebPlatform',
+                  ],
+                },
+                result: {
+                  '@type': 'Reservation',
+                  name: 'Room Reservation',
+                },
+              },
+            }),
+          }}
         />
       </Head>
       <TopSection>

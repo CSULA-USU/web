@@ -97,11 +97,90 @@ export default function Recreation() {
     <Page>
       <Head>
         <title>U&ndash;SU Recreation</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Get active with Cal State LA Recreation. Access our Fitness Center, Esports Game Room, and wellness programming. Download the Cal State LA Rec app to sign up for classes."
+        />
         <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
-          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Gym, GENE, Golden Eagle Nutrition Education, Nutrition, hours, locations, schedule, muscle, buff, fitness, center, housing, south village, exercise, dumbbell, weights, sports, esports, game room, video games"
-          key="keywords"
+          content="Recreation, Fitness, Workout, Cal State LA, CSULA, U-SU, Gym, Esports, Game Room, Nutrition, Exercise, Weights, Intramural Sports, Spring 2026 Hours"
+        />
+        <meta
+          property="og:title"
+          content="Recreation | Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:description"
+          content="Enhancing the Golden Eagle experience through play, exercise, and community connection. Visit the Fitness Center or Esports Game Room today."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/recreation"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/recreation-hero-background.jpg"
+        />
+        <meta
+          property="og:image:alt"
+          content="Students exercising at the Cal State LA U-SU Recreation Fitness Center"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Recreation | Cal State LA University-Student Union"
+        />
+        <meta
+          name="twitter:description"
+          content="Download the Recreation App for class schedules and facility access. Stay fit and connected at Cal State LA."
+        />
+        <link rel="canonical" href="https://www.calstatelausu.org/recreation" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ExerciseGym',
+              name: 'U-SU Recreation',
+              url: 'https://www.calstatelausu.org/recreation',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
+              telephone: ['+13233437546', '+13233432520'],
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress:
+                  '5154 State University Dr. (Basement & Room 201)',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              description:
+                'Recreation at Cal State LA provides Golden Eagles with opportunities to play, exercise and engage their campus community through the Fitness Center and Esports Game Room.',
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Fitness Center',
+                  value: 'U-SU Basement',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Game Room',
+                  value: 'U-SU Room 201',
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <StyledH1>

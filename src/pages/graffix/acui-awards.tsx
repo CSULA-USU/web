@@ -173,15 +173,69 @@ export default function AcuiAwards() {
     <Page>
       <Head>
         <title>U-SU Graffix ACUI Awards</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="author"
-          content="The University Student Union Graffix Department"
-          key="author"
+          name="description"
+          content="Explore the award-winning work of the Cal State LA U-SU Graffix department. Celebrating over a decade of ACUI conference honors in graphic design and student union promotion."
         />
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
-          key="keywords"
+          content="Graffix Awards, ACUI Conference, Cal State LA Graphic Design, U-SU Creative Services, Award Winning Design, Student Union Marketing, CSULA Graphics"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Graffix ACUI Awards | Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:description"
+          content="From 'Best of Show' to Honorable Mentions, see why our Graffix team is recognized nationally for excellence in student union media."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/graffix/acui-awards"
+        />
+        <meta property="og:type" content="website" />
+        {/* Using the first award year image or a general graffix logo as the preview */}
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/public/departments/logos/graffix-logo.svg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/graffix/acui-awards"
+        />
+
+        {/* Structured Data for Portfolio/Awards */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'CreativeWorkSeries',
+              name: 'Graffix ACUI Award Collection',
+              description:
+                'A collection of award-winning graphic design works recognized by the Association of College Unions International.',
+              creator: {
+                '@type': 'Organization',
+                name: 'U-SU Graffix Department',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              award: [
+                'ACUI Best of Show',
+                'ACUI 1st Place',
+                'ACUI 2nd Place',
+                'ACUI 3rd Place',
+              ],
+            }),
+          }}
         />
       </Head>
       <FluidContainer flex justifyContent="center" backgroundColor="black">

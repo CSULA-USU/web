@@ -43,15 +43,71 @@ export default function CLSRC() {
       <Head>
         <title>U-SU CLSRC</title>
         <meta name="author" content="clsrc coordinator" key="author" />
-        <meta
-          name="keywords"
-          content="csula cal state la student union cross cultural centers the chicana chicano chicanx latina latino latinx student resource center resource ccc u-su university-student"
-          key="keywords"
-        />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="The Chicana/o Latina/o Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
-          key="description"
+          content="The Chicana/o Latina/o Student Resource Center (CLSRC) provides services, cultural education, and community support for Cal State LA students. Join us for Nuestra Grad."
+        />
+        <meta
+          name="keywords"
+          content="CLSRC, Chicana/o Latina/o Student Resource Center, Cal State LA, CSULA, Latinx Resources, Chicanx, Nuestra Grad, Cultural Graduation, CCC, U-SU, Student Union"
+          key="keywords"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Chicana/o Latina/o Student Resource Center (CLSRC) | Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="Providing support, cultural programming, and events for the Chicana/o and Latina/o community at Cal State LA."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/clsrc"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
+        />
+        <meta
+          property="og:image:alt"
+          content="Nuestra Graduation celebration at Cal State LA"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/clsrc" />
+
+        {/* Structured Data for Cultural Resource Center */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Chicana/o Latina/o Student Resource Center (CLSRC)',
+              description:
+                'An identity-based center within the Cross Cultural Centers providing academic and cultural support for the Chicana/o and Latina/o community.',
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              sameAs: [
+                'https://www.instagram.com/clsrc.ccc/',
+                'https://linktr.ee/cccatcalstatela',
+              ],
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

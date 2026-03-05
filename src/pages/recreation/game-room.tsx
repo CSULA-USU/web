@@ -267,10 +267,93 @@ export default function Gameroom() {
     <Page>
       <Head>
         <title>Recreation Game Room</title>
-
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
+        />
+        <meta
+          name="keywords"
+          content="Cal State LA Game Room, CSULA Esports, Gaming at Cal State LA, Video Games, Esports Tournaments, U-SU Room 201, PC Gaming, Console Gaming, Discord Community"
+        />
+        <meta
+          property="og:title"
+          content="Recreation Game Room & Esports | Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:description"
+          content="Do you have what it takes to win? Visit the U-SU Game Room for tournaments, community, and fun. Located on the 2nd floor, Room 201."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/recreation/game-room"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/recreation/game-room/game-room_video.gif"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA Recreation Game Room interface"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="U-SU Recreation Game Room | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Join the Discord and start playing. Open Monday–Thursday, 12 PM to 6 PM."
+        />
+        <link
+          rel="canonical"
+          href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
           rel="stylesheet"
+        />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EntertainmentBusiness',
+              name: 'U-SU Recreation Game Room',
+              url: 'https://www.calstatelausu.org/recreation/game-room',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
+              telephone: '+13233436909',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 201',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '12:00',
+                  closes: '18:00',
+                },
+              ],
+              sameAs: [
+                'https://discord.gg/W5JM6vrbAa',
+                'https://www.instagram.com/calstatela_recreation',
+                'https://www.twitch.tv/calstatela_recreation',
+              ],
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+            }),
+          }}
         />
       </Head>
 
