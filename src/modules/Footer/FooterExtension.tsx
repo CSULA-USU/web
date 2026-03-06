@@ -1,6 +1,6 @@
 import { Divider, FluidContainer, StyledLink, Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, media, Spaces } from 'theme';
+import { Colors, FontSizes, media, Spaces } from 'theme';
 
 interface FooterExtensionProps {
   text: string;
@@ -10,8 +10,33 @@ interface FooterExtensionProps {
 }
 
 const ContentWrapper = styled.div`
+  .footer-extension-title,
+  .footer-extension-title *,
+  .footer-extension-highlight,
+  .footer-extension-highlight * {
+    overflow-wrap: anywhere;
+  }
+
+  ${media('tablet')(`
+    .footer-extension-title,
+    .footer-extension-title *,
+    .footer-extension-highlight,
+    .footer-extension-highlight * {
+      font-size: ${FontSizes.xl};
+      line-height: 1.35;
+    }
+  `)}
+
   ${media('mobile')(`
     text-align: center;
+
+    .footer-extension-title,
+    .footer-extension-title *,
+    .footer-extension-highlight,
+    .footer-extension-highlight * {
+      font-size: ${FontSizes.lg};
+      line-height: 1.3;
+    }
   `)}
 `;
 
@@ -54,7 +79,7 @@ export const FooterExtension = ({
         as="p"
         variant="title"
         color="white"
-        style={{ overflowWrap: 'anywhere' }}
+        className="footer-extension-title"
       >
         {text}
         {highlight && (
@@ -62,7 +87,12 @@ export const FooterExtension = ({
             {' '}
             <HighlightWrapper>
               {url ? (
-                <Typography as="span" variant="title" color="primary">
+                <Typography
+                  as="span"
+                  variant="title"
+                  color="primary"
+                  className="footer-extension-highlight"
+                >
                   <StyledLink
                     href={url}
                     isExternalLink={isExternalLink}
@@ -75,7 +105,12 @@ export const FooterExtension = ({
                   </StyledLink>
                 </Typography>
               ) : (
-                <Typography as="span" variant="title" color="primary">
+                <Typography
+                  as="span"
+                  variant="title"
+                  color="primary"
+                  className="footer-extension-highlight"
+                >
                   {highlight}
                 </Typography>
               )}
