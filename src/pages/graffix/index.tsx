@@ -162,6 +162,8 @@ export default function Graffix() {
   return (
     <Page>
       <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>U-SU Graffix</title>
         <meta
           name="author"
@@ -169,9 +171,70 @@ export default function Graffix() {
           key="author"
         />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
-          key="keywords"
+          name="description"
+          content="Contact U-SU Graffix at (323) 343-2464. The award-winning creative hub at Cal State LA for graphic design, web development, and campus promotion."
+        />
+        <meta
+          property="og:title"
+          content="Graffix | Cal State LA University-Student Union"
+        />
+        <meta
+          property="og:description"
+          content="Award-winning student design and marketing department providing professional creative services for the Cal State LA community."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/graffix"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+        />
+        <meta property="og:image:alt" content="U-SU Graffix Department Logo" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Graffix | Cal State LA University-Student Union"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore student-led graphic design and web development at Cal State LA's award-winning Graffix department."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+        />
+        <link rel="canonical" href="https://www.calstatelausu.org/graffix" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'GovernmentService',
+              name: 'U-SU Graffix',
+              url: 'https://www.calstatelausu.org/graffix',
+              logo: 'https://www.calstatelausu.org/departments/logos/graffix-logo.svg',
+              telephone: '+13233432464',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 204B',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+                url: 'https://www.calstatelausu.org',
+              },
+              description:
+                'The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU through print materials and web development.',
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

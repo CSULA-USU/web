@@ -200,20 +200,94 @@ export default function StudentOrgs() {
     <Page>
       <Head>
         <title>U&ndash;SU Recognized Student Organizations</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement Student Organizations"
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Presence, Sample Constitution, ODC Info and Videos, Club Banking Forms, Officer Change Form, clubs, organization, orgs"
-          key="keywords"
+          name="description"
+          content="Join or start a student organization at Cal State LA. Access The Nest, download sample constitutions, learn about room reservations, and find club banking forms."
         />
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          name="keywords"
+          content="Cal State LA Student Organizations, The Nest CSULA, Register a Club CSULA, Student Org Room Reservations, CSI Resources, ODC Training, Club Banking, Student Life"
+          key="keywords"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Recognized Student Organizations | Center for Student Involvement"
+        />
+        <meta
+          property="og:description"
+          content="Explore 120+ student clubs at Cal State LA. Get the resources you need to lead, grow, and reserve space for your organization."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/student-orgs"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+        />
+        <meta
+          property="og:image:alt"
+          content="The Nest: Cal State LA Student Organization Hub"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/csi/student-orgs"
+        />
+
+        {/* Structured Data for Organizational Resources */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Recognized Student Organizations Resources',
+              description:
+                'Comprehensive guide for student organizations at Cal State LA, including registration, policies, and room reservations.',
+              mainEntity: [
+                {
+                  '@type': 'HowTo',
+                  name: 'How to Start a Student Organization',
+                  step: [
+                    {
+                      '@type': 'HowToStep',
+                      text: 'Read the Student Organization Handbook.',
+                    },
+                    {
+                      '@type': 'HowToStep',
+                      text: 'Complete the Organization Registration Form.',
+                    },
+                    {
+                      '@type': 'HowToStep',
+                      text: 'Submit the Officer and Advisor Acknowledgement Form.',
+                    },
+                  ],
+                },
+                {
+                  '@type': 'ItemList',
+                  name: 'Room Reservation Types',
+                  itemListElement: [
+                    'Recurring Meetings',
+                    'One-Time Meetings',
+                    'Event Reservations',
+                  ],
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <Header title="Recognized Student Organizations" buttons={buttons}>

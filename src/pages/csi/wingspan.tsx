@@ -435,31 +435,32 @@ export default function Wingspan() {
     <Page>
       <Head>
         <title>U-SU CSI Wingspan</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
           content="The University-Student Union Center for Student Involvement at Cal State LA Wingspan Leadership Program"
           key="author"
         />
         <meta
-          name="keywords"
-          content="Wingspan Leadership Program, Wingspan, Wingspan CSULA, wingspan csula, Wingspanla CSULA, wingspanla csula, wingspan la, wingspan cal state la, wingspan la leadership, Cal State LA leadership, csula lead,
-          csula leadership, cal state la leadership program, student leadership development, college student leadership programs, public speaking workshops, leadership conference, teamwork and communication skills,
-          social change model, leadership program, the university student union, California State University Los Angeles, student union, csula, cal state la, u-su, usu, student organizations, center for student involvement,
-          events, csi, graffix, college, student, union, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles, asi, associated students inc., csula wingspan, csula wingspanla,
-          cal state la wingspan, cal state la wingspanla"
-        />
-
-        <meta
           name="description"
-          content="The Wingspan Leadership Program strives to enhance our students' experience at Cal State LA through meaningful opportunities to cultivate leadership skills, social responsibility, and holistic development of students."
-          key="description"
+          content="Expand your leadership reach with Wingspan at Cal State LA. Develop skills through the Social Change Model, earn leadership milestones, and make a positive impact."
+        />
+        <meta
+          name="keywords"
+          content="Wingspan Leadership Program, Cal State LA Leadership, Social Change Model of Leadership, Student Development CSULA, Wingspan Milestones, Rising Leader, Soaring Leader, Golden Leader"
+          key="keywords"
         />
 
-        {/* Open Graph Meta Tags (Facebook, LinkedIn, etc.) */}
-        <meta property="og:title" content="U-SU CSI Wingspan" />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Wingspan Leadership Program | Cal State LA U-SU"
+        />
         <meta
           property="og:description"
-          content="The Wingspan Leadership Program at Cal State LA empowers students through leadership, teamwork, and social responsibility."
+          content="Cultivate leadership skills, social responsibility, and holistic development. Join a community of student leaders making a difference."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -468,28 +469,48 @@ export default function Wingspan() {
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//overview-event.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
         />
         <meta
           property="og:image:alt"
-          content="Group of Cal State LA students at a Wingspan Leadership event"
+          content="Cal State LA students participating in a Wingspan Leadership event"
         />
 
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="U-SU CSI Wingspan" />
-        <meta
-          name="twitter:description"
-          content="Empowering Cal State LA students through leadership, service, and holistic development."
-        />
-        <meta
-          name="twitter:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan//overview-event.webp"
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/csi/wingspan"
         />
 
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* Structured Data for Educational Program */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalProgram',
+              name: 'Wingspan Leadership Program',
+              description:
+                'A leadership development program at Cal State LA based on the Social Change Model of Leadership Development.',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'University-Student Union at Cal State LA',
+                url: 'https://www.calstatelausu.org',
+              },
+              programPrerequisites: 'Open to all Cal State LA students.',
+              educationalCredentialAwarded:
+                'Rising Leader, Soaring Leader, and Golden Leader designations',
+              hasPart: [
+                {
+                  '@type': 'CreativeWork',
+                  name: 'The Seven Cs of Social Change',
+                  description:
+                    'Consciousness of Self, Congruence, Commitment, Collaboration, Common Purpose, Controversy with Civility, and Citizenship.',
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <HeroSection>

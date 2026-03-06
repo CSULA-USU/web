@@ -89,15 +89,77 @@ export default function APISRC() {
       <Head>
         <title>U-SU APISRC</title>
         <meta name="author" content="apisrc coordinator" key="author" />
-        <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, Cross Cultural Centers, CCC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Cultural Graduation, Cultural Grads, Asian, Pacific Islander, Desi-American, U-SU, University Student"
-          key="keywords"
-        />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="The Asian Pacific Islander Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
-          key="description"
+          content="Empowering Cal State LA's Asian, Pacific Islander, and Desi American (APIDA) community through cultural education, engagement, and the APIDA Graduation ceremony."
+        />
+        <meta
+          name="keywords"
+          content="APISRC, APIDA Graduation, Asian Pacific Islander Student Resource Center, Cal State LA CCC, Desi American Resources, APIDA Scholars, U-SU Room 206"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Asian Pacific Islander Student Resource Center (APISRC) | Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="Address the needs of the APIDA community and explore cultural awareness programs at the U-SU Asian Pacific Islander Student Resource Center."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/apisrc"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/apisrc/apida-grad.jpeg"
+        />
+        <meta
+          property="og:image:alt"
+          content="APIDA Graduation celebration at Cal State LA"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/apisrc" />
+
+        {/* Structured Data for Resource Centers */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'GovernmentService',
+              name: 'Asian Pacific Islander Student Resource Center (APISRC)',
+              alternateName: 'APISRC',
+              description:
+                'An identity-based center within the Cross Cultural Centers providing services for Asian, Pacific Islander, and Desi American students.',
+              provider: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              serviceType: 'Student Support and Cultural Education',
+              areaServed: {
+                '@type': 'CollegeOrUniversity',
+                name: 'California State University, Los Angeles',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              sameAs: [
+                'https://www.instagram.com/apisrc.ccc/',
+                'https://www.tiktok.com/@apisrc.ccc',
+                'https://discord.com/invite/quZwGJqsMm',
+              ],
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

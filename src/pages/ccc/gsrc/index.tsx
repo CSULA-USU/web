@@ -124,15 +124,98 @@ export default function GSRC() {
       <Head>
         <title>U-SU GSRC</title>
         <meta name="author" content="gsrc coordinator" key="author" />
-        <meta
-          name="keywords"
-          content="csula cal state la student union cross cultural centers the gender sexuality student queer questioning trans transgender womyn lesbian gay lgbt bi curious feminist resource center resource ccc u-su university-student"
-          key="keywords"
-        />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="GSRC Coordinator" />
         <meta
           name="description"
-          content="The Gender and Sexuality Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
-          key="description"
+          content="The GSRC at Cal State LA empowers LGBTQIA+ students and allies through resources like the Affirmation Closet, Lactation Room, and Pride Grad celebrations."
+        />
+        <meta
+          name="keywords"
+          content="GSRC, Gender and Sexuality Resource Center, Cal State LA, LGBTQIA+ resources, Pride Grad, Affirmation Closet, Lactation Room, Queer Student Support, CSULA CCC"
+          key="keywords"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Gender and Sexuality Resource Center (GSRC) | Cal State LA U-SU"
+        />
+        <meta
+          property="og:description"
+          content="Creating safe and respectful spaces for all individuals across the gender and sexuality spectrum. Discover our resources, programming, and community."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/gsrc"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/gsrc/carousel/pride-grad.jpg"
+        />
+        <meta
+          property="og:image:alt"
+          content="Students celebrating at Cal State LA Pride Graduation"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/gsrc" />
+
+        {/* Structured Data for Support Services */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'GovernmentService',
+              name: 'Gender and Sexuality Resource Center (GSRC)',
+              alternateName: 'GSRC',
+              description:
+                'Identity-based center at Cal State LA providing LGBTQIA+ support, lactation resources, and gender-equity programming.',
+              provider: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              serviceType: 'LGBTQIA+ Student Support',
+              areaServed: {
+                '@type': 'CollegeOrUniversity',
+                name: 'California State University, Los Angeles',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'GSRC Resources',
+                itemListElement: [
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Affirmation Closet (Free Clothing)',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'Lactation Room' },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Pride Graduation',
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

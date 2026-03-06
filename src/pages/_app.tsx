@@ -1,5 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
@@ -19,8 +20,21 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
-  ReactGA.initialize(`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
   const router = useRouter();
+
+  // Initialize GA once on mount
+  useEffect(() => {
+    const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+    if (GA_ID) {
+      ReactGA.initialize(GA_ID);
+    }
+  }, []);
+
+  // Track page views on route change
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: router.pathname });
+  }, [router.pathname]);
+
   return (
     <>
       <SessionProvider session={session}>
@@ -29,29 +43,37 @@ export default function App({
             <Head>
               <title>University&ndash;Student Union</title>
               <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+              />
+              <meta
                 name="author"
-                content="The University Student Union"
+                content="University-Student Union at Cal State LA"
                 key="author"
               />
               <meta
                 name="keywords"
-                content="the university student union, california state university los angeles, student union, csula, cal state la, u-su, usu, student, organizations, cross cultural centers, center for student involvement, fitness center, student orgnizations, calendar, events, gender and sexuality resource center, pan african resource center, asian pacific islander, chicana latina, information and event services, distinguished women awards, cultural graduate celebrations, employment opportunities, board of directors, jobs, ccc, csi, apisrc, graffix, operations, recreation, building hours, building, hours, college, student, union, student union, cal state la, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles"
+                content="U-SU, Cal State LA, Student Union, CSULA, Student Organizations, Campus Life"
                 key="keywords"
               />
               <meta
                 name="description"
-                content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
+                content="The hub for connection and growth at Cal State LA. Providing social, cultural, and recreational opportunities for Golden Eagles."
                 key="description"
               />
               <meta
-                name="image"
                 property="og:image"
-                content="/about/calstatela-hero.jpeg"
+                content="https://www.calstatelausu.org/about/calstatela-hero.jpeg"
                 key="image"
               />
+              <meta property="og:type" content="website" key="type" />
+              <link rel="icon" href="/favicon.ico" />
             </Head>
+
             <EventsLoader />
             <Component {...pageProps} />
+
+            {/* Vercel Performance Tools */}
             <SpeedInsights route={router.pathname} />
             <Analytics />
           </RecoilRoot>

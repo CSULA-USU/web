@@ -115,12 +115,92 @@ export default function MeetingRoom() {
   return !selectedRoom ? null : (
     <Page>
       <Head>
-        <title>U&ndash;SU Meeting Rooms</title>
+        {/* Dynamic Title based on the specific room */}
+        <title>
+          {selectedRoom
+            ? `${selectedRoom.title} | Meeting Rooms`
+            : 'Meeting Rooms'}
+        </title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Dynamic Description: Pulls from room features or arrangements */}
+        <meta
+          name="description"
+          content={
+            selectedRoom
+              ? `View capacity, equipment, and setup options for the ${selectedRoom.title} at Cal State LA. Features: ${selectedRoom.features}.`
+              : 'Explore specific meeting room layouts, capacities, and equipment at the Cal State LA University-Student Union.'
+          }
+        />
+
+        {/* Dynamic Keywords */}
         <meta
           name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
+          content={`${
+            selectedRoom?.title || 'Meeting Rooms'
+          }, CSULA, U-SU, Room Capacity, Event Setup, ${selectedRoom?.id?.replace(
+            '-',
+            ' ',
+          )}`}
           key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content={`${
+            selectedRoom?.title || 'Meeting Room'
+          } | Cal State LA U-SU`}
+        />
+        <meta
+          property="og:description"
+          content={`Plan your event in the ${selectedRoom?.title}. Check setup types, equipment availability, and rental fees.`}
+        />
+        <meta
+          property="og:image"
+          content={
+            selectedRoom?.headerImage ||
+            'https://www.calstatelausu.org/public/usu-logo-white.png'
+          }
+        />
+        <meta
+          property="og:url"
+          content={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
+        />
+
+        {/* Structured Data for the specific room */}
+        {selectedRoom && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Accommodation',
+                name: selectedRoom.title,
+                description: selectedRoom.features,
+                image: selectedRoom.headerImage,
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: '5154 State University Dr.',
+                  addressLocality: 'Los Angeles',
+                  addressRegion: 'CA',
+                  postalCode: '90032',
+                },
+                amenityFeature: selectedRoom.arrangements.map((a) => ({
+                  '@type': 'LocationFeatureSpecification',
+                  name: a.setup,
+                  value: `Capacity: ${a.capacity.join(', ')}`,
+                })),
+              }),
+            }}
+          />
+        )}
       </Head>
       <MeetingRoomsNav />
       <FluidContainer

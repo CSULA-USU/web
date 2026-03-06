@@ -380,20 +380,92 @@ export default function StudentOrganizationAwards() {
     <Page>
       <Head>
         <title>Student Organization Awards</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment"
-          key="keywords"
+          name="description"
+          content="Celebrate excellence at Cal State LA. Apply for the Golden Eagle Awards, recognizing outstanding student organizations, leaders, and advisors. Applications open Feb 20."
         />
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          name="keywords"
+          content="Golden Eagle Awards, Cal State LA Student Org Awards, CSI Golden Eagles, Student Leader Awards, CSULA Club Recognition, Greek Member of the Year, Program of the Year"
+          key="keywords"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Golden Eagle Awards: Recognizing Excellence at Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="Honoring the remarkable efforts of student groups driving innovation, inclusivity, and positive change. See award categories and eligibility."
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/student-organization-awards"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/csi/csi-student-organization-awards.png"
+        />
+        <meta
+          property="og:image:alt"
+          content="Golden Eagle Awards at California State University, Los Angeles"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/csi/student-organization-awards"
+        />
+
+        {/* Structured Data for Events/Awards */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Golden Eagle Awards',
+              description:
+                'Annual awards ceremony recognizing top student organizations and leaders at Cal State LA.',
+              breadcrumb: 'Home > CSI > Awards',
+              mainEntity: {
+                '@type': 'ItemList',
+                name: 'Golden Eagle Award Categories',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Student Organization of the Year',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Outstanding Student Leader',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: 'Greek Chapter of the Year',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 4,
+                    name: 'Commitment to Social Justice',
+                  },
+                ],
+              },
+            }),
+          }}
         />
       </Head>
 

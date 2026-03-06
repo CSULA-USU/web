@@ -46,21 +46,70 @@ export default function Geek() {
   return (
     <Page>
       <Head>
-        <title>U-SU GEEK</title>
+        <title>GEEK | Golden Eagle Event Krew | Cal State LA U-SU</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Center for Student Involvement (CSI)" />
         <meta
-          name="author"
-          content="The University Student Union Center for Student Involvement"
-          key="author"
+          name="description"
+          content="Join the Golden Eagle Event Krew (GEEK) at Cal State LA. Volunteer behind the scenes in event programming, marketing, and leadership development."
         />
         <meta
           name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Studen, GEEK, Golden Eagle Event Krew"
+          content="GEEK, Golden Eagle Event Krew, Cal State LA Volunteering, Student Event Planning, CSI Volunteers, CSULA Campus Jobs, Event Marketing Internship, U-SU GEEK"
           key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          property="og:title"
+          content="Join the Golden Eagle Event Krew (GEEK) | Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="Help bring campus events to life! Build professional skills in a fun, fast-paced environment with the CSI GEEK program."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/geek"
+        />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/csi/geek/geek-header.jpg"
+        />
+        <meta
+          property="og:image:alt"
+          content="Golden Eagle Event Krew - GEEK at Cal State LA"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.calstatelausu.org/csi/geek" />
+
+        {/* Structured Data for Volunteer Opportunities */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              serviceType: 'Volunteer Program',
+              provider: {
+                '@type': 'Organization',
+                name: 'Center for Student Involvement',
+                parentOrganization: {
+                  '@type': 'Organization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              description:
+                'A student volunteer program offering professional and leadership skills in event programming and marketing.',
+              offers: {
+                '@type': 'Offer',
+                description: 'Volunteer experience and leadership incentives',
+              },
+            }),
+          }}
         />
       </Head>
       <FluidContainer
