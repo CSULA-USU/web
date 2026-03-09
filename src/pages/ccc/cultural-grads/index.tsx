@@ -33,6 +33,40 @@ const cards = CulturalGradsData['info-cards'];
 const questions = CulturalGradsData['questions'];
 const incentives = CulturalGradsData['incentives'];
 
+const pageTitle = 'Cultural Graduation Celebrations';
+const pageUrl = 'https://www.calstatelausu.org/ccc/cultural-grads';
+const pageDescription =
+  'Celebrate your achievements through Cultural Graduation Celebrations hosted by the Cross Cultural Centers at Cal State LA University-Student Union. Open to all participating students.';
+const socialImageUrl =
+  'https://www.calstatelausu.org/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      name: pageTitle,
+      url: pageUrl,
+      description: pageDescription,
+      image: socialImageUrl,
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'University-Student Union at Cal State LA',
+        url: 'https://www.calstatelausu.org',
+      },
+    },
+    {
+      '@type': 'Organization',
+      name: 'The University Student Union Cross Cultural Centers',
+      url: pageUrl,
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'University-Student Union at Cal State LA',
+        url: 'https://www.calstatelausu.org',
+      },
+    },
+  ],
+};
+
 const DynamicExpandable = dynamic(
   () => import('../../../components/Expandable').then((mod) => mod.Expandable),
   { ssr: false },
@@ -90,49 +124,33 @@ export default function CulturalGrads() {
   return (
     <Page>
       <Head>
-        <title>Cultural Graduation Celebrations</title>
+        <title>{pageTitle}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={pageDescription} />
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
-          key="author"
         />
-        <meta
-          name="keywords"
-          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Black, APIDA, Pride, Nuestra"
-          key="keywords"
-        />
-        <meta
-          name="description"
-          content="The Cross Cultural Centers in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
-          key="description"
-        />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=yes"
-        />
-        <meta property="og:title" content="Cultural Graduation Celebrations" />
-        <meta
-          property="og:description"
-          content="The Cross Cultural Centers in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
-        />
-        <meta
-          property="og:image"
-          content="/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
-        />
-        <meta
-          property="og:url"
-          content="https://www.calstatelausu.org/ccc/cultural-grads"
-        />
+        <link rel="canonical" href={pageUrl} />
+
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cultural Graduation Celebrations" />
         <meta
-          name="twitter:description"
-          content="The Cross Cultural Centers in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
+          property="og:site_name"
+          content="University-Student Union at Cal State LA"
         />
-        <meta
-          name="twitter:image"
-          content="/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png"
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={socialImageUrl} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={socialImageUrl} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
       <CulturalGradsHeader images={slideshowImages} />

@@ -107,15 +107,15 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fi/hsgf2wob4i7bufx3hlfz1/form-990-199-fy23-24.pdf?rlkey=7ua6ko97us5wt5v5c18juvrzy&st=3hkknntj&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/88mvp66ji4m4p50bnfy2k/form-990-199-fy23-24.pdf?rlkey=sscxtogzx6cnun0pp6daorzer&st=2vscvo0h&raw=1',
             children: 'FY 23-24',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/8nba75aj9mezwn3hkvhxo/form-990-199-fy22-23.pdf?rlkey=b5du3nn77f1yxvdky54i8drty&st=mohx0gdt&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/xjd25r7ejygo1urr91q2b/form-990-199-fy22-23.pdf?rlkey=2cidyn6j43gbgz9ht85ssoffl&st=e5t4c4ke&raw=1',
             children: 'FY 22-23',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/ltytq9mxfyebip5bqunb2/form-990-199-fy21-22.pdf?rlkey=a8ur6q3xopokyyztqdlm1dm60&st=eenp0m83&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/lx06czu7l6s7wgfn78y94/form-990-199-fy21-22.pdf?rlkey=h88gjvxvb4g8ete01zgsosf8u&st=u3ptv535&raw=1',
             children: 'FY 21-22',
           },
         ]}
@@ -125,7 +125,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/scl/fi/bqu5cs6p22q2uekj9l94w/form-990-2012-2023.zip?rlkey=qytabxucqw2cn9bubnxsr611y&st=08f0ui0t&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/g7zlhz7y57rtc3uqbxog3/form-990-199-download-all.zip?rlkey=14l5wdx8jplwijznafcftmhnq&st=npzushov&raw=1',
       variant: 'black',
     },
   },
@@ -143,15 +143,15 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
-            href: 'https://www.dropbox.com/scl/fo/2ftmybbzaryecejcpc39m/AF0kIjnzMCD7JfppAodgovY?rlkey=6csl7yqra0ic50jlm7g0vc4ng&st=65ii921h&raw=1',
+            href: 'https://www.dropbox.com/scl/fo/qn5hish6d4d7xirt8c0lh/ANIRpb_5vaPPQO_T2URzlfE?rlkey=uftek73262lec4ok09lzit0s1&st=dmnoheq5&raw=1',
             children: 'FY 24-25',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/1p777gxi7ml8x711zbjws/afs-fy-23-24.zip?rlkey=tmsu2vwfpbkc0uub2zw81hir3&st=hzdjqpla&raw=1',
+            href: 'https://www.dropbox.com/scl/fo/zrd4kg4cxmn580qt187e9/ADZ-TwrwDLzg5uVVPOidRco?rlkey=mskxsc172pw4uiac12up6h177&st=t47d4nvi&raw=1',
             children: 'FY 23-24',
           },
           {
-            href: 'https://www.dropbox.com/scl/fi/1qzdfqm68bevcmiq1qucb/afs-fy22-23.pdf?rlkey=8hsnljmm05i1iw4rtr8gqzvlf&raw=1',
+            href: 'https://www.dropbox.com/scl/fi/c4xzmxx7uz58r8qlxg3b0/6-30-24-CSU-LA-University-Student-Union-Financial-Statements-w-Supp.pdf?rlkey=rta56fxafb9il9mdyk0smr6m6&st=d3duub33&raw=1',
             children: 'FY 22-23',
           },
         ]}
@@ -161,7 +161,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/scl/fi/m8r0521qdo9labkh150ua/all-afs-2025.zip?rlkey=55fk1mdan1lzwfbltyt6bnqmw&st=x6o3seog&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/kzi2gzwtk4d09owaozp7i/latest-audited-financial-statements-remediated-download-all.zip?rlkey=om457n2pbebv57d56kwzhqj85&st=9q6vg2ah&raw=1',
       variant: 'black',
     },
   },
