@@ -83,7 +83,7 @@ export const ModUpcomingEvents = ({
 
   const UpcomingEventsSkeleton = ({ monthly }: { monthly?: boolean }) => {
     return (
-      <FluidContainer innerMinHeight={monthly ? '800px' : '600px'}>
+      <FluidContainer innerMinHeight={monthly ? '800px' : '600px'} padding="0">
         {monthly ? (
           <div>
             <Divider label="Month" />

@@ -14,16 +14,6 @@ export interface MinimalistEventProps {
   onClick?: () => void;
 }
 
-const InfoContainer = styled.button<{ color: string }>`
-  background: transparent;
-  border: none;
-  color: ${(p) => p.color};
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 0;
-`;
-
 const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,7 +90,7 @@ const MobileOnly = styled.div`
 
 const TabletOnly = styled.div`
   display: none;
-  @media (min-width: 580px) and (max-width: 1023px) {
+  @media (min-width: 581px) and (max-width: 1023px) {
     display: block;
   }
 `;
@@ -129,8 +119,6 @@ export const MinimalistEvent = ({
   const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
   const month = getMonth(startDateTimeUtc);
   const day = getDay(startDateTimeUtc);
-
-  const iconColor = isFeatured ? 'white' : 'black';
 
   return (
     <MinimalistEventContainer>
@@ -204,15 +192,13 @@ export const MinimalistEvent = ({
 
       <RightContainer>
         <DesktopOnly>
-          <InfoContainer color={iconColor}>
-            <Button
-              variant={isFeatured ? 'greyDarker' : 'grey'}
-              onClick={link ? undefined : onClick}
-              href={link ? link : undefined}
-            >
-              {buttonText ? buttonText : 'View Event'}
-            </Button>
-          </InfoContainer>
+          <Button
+            variant={isFeatured ? 'greyDarker' : 'grey'}
+            onClick={link ? undefined : onClick}
+            href={link ? link : undefined}
+          >
+            {buttonText ? buttonText : 'View Event'}
+          </Button>
         </DesktopOnly>
 
         <TabletAndMobile>

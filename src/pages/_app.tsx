@@ -2,7 +2,7 @@ import 'styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
