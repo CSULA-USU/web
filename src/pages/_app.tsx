@@ -32,8 +32,11 @@ export default function App({
 
   // Track page views on route change
   useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: router.pathname });
-  }, [router.pathname]);
+    const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+    if (GA_ID) {
+      ReactGA.send({ hitType: 'pageview', page: router.asPath });
+    }
+  }, [router.asPath]);
 
   return (
     <>
@@ -74,7 +77,7 @@ export default function App({
             <Component {...pageProps} />
 
             {/* Vercel Performance Tools */}
-            <SpeedInsights route={router.pathname} />
+            <SpeedInsights route={router.asPath} />
             <Analytics />
           </RecoilRoot>
         </ToastProvider>

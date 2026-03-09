@@ -88,7 +88,7 @@ export default function Home() {
               '@type': 'CollegeOrUniversity',
               name: 'University-Student Union at Cal State LA',
               url: 'https://www.calstatelausu.org',
-              logo: 'https://www.calstatelausu.org/logo.png',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp',
               sameAs: [
                 'https://www.instagram.com/calstatelausu',
                 'https://www.facebook.com/calstatelausu',

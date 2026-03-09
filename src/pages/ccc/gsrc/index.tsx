@@ -126,7 +126,6 @@ export default function GSRC() {
         <meta name="author" content="gsrc coordinator" key="author" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="GSRC Coordinator" />
         <meta
           name="description"
           content="The GSRC at Cal State LA empowers LGBTQIA+ students and allies through resources like the Affirmation Closet, Lactation Room, and Pride Grad celebrations."

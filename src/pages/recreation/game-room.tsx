@@ -309,7 +309,7 @@ export default function Gameroom() {
         />
         <link
           rel="canonical"
-          href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
+          href="https://www.calstatelausu.org/recreation/game-room"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"

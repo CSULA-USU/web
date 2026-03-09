@@ -126,22 +126,31 @@ export default function Tenants() {
                 'Directory of dining and student services located within the U-SU.',
               itemListElement: [
                 {
-                  '@type': 'Organization',
+                  '@type': 'ListItem',
                   position: 1,
-                  name: 'Associated Students, Inc. (ASI)',
-                  telephone: '323-343-4780',
+                  item: {
+                    '@type': 'Organization',
+                    name: 'Associated Students, Inc. (ASI)',
+                    telephone: '323-343-4780',
+                  },
                 },
                 {
-                  '@type': 'FoodEstablishment',
+                  '@type': 'ListItem',
                   position: 2,
-                  name: 'Starbucks',
-                  telephone: '323-343-6793',
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Starbucks',
+                    telephone: '323-343-6793',
+                  },
                 },
                 {
-                  '@type': 'FoodEstablishment',
+                  '@type': 'ListItem',
                   position: 3,
-                  name: 'Sbarro',
-                  telephone: '323-225-1464',
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Sbarro',
+                    telephone: '323-225-1464',
+                  },
                 },
               ],
             }),

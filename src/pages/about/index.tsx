@@ -89,7 +89,7 @@ export default function About() {
               '@type': 'Organization',
               name: 'University-Student Union at Cal State LA',
               url: 'https://www.calstatelausu.org',
-              logo: 'https://www.calstatelausu.org/logo.png',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp',
               foundingDate: '1975',
               description:
                 'The U-SU provides social, cultural, and recreational programming for California State University, Los Angeles.',
