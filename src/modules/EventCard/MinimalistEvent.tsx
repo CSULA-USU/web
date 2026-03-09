@@ -1,5 +1,5 @@
 import { BsInfoCircle } from 'react-icons/bs';
-import { Button, Skeleton, StyledLink, Typography } from 'components';
+import { Button, Skeleton, Typography } from 'components';
 import { PresenceEvent } from 'types';
 import styled from 'styled-components';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
@@ -126,7 +126,7 @@ export const MinimalistEvent = ({
         <Typography
           as="h3"
           variant="eventDetail"
-          color={isDesktop ? 'gold' : 'black'}
+          color={isFeatured ? 'white' : isDesktop ? 'gold' : 'black'}
         >
           <abbr title={`${month} ${day}`}>
             {monthAbbr} {day}
@@ -161,7 +161,7 @@ export const MinimalistEvent = ({
           <Typography
             as="h3"
             variant="eventTitle"
-            color={isDesktop ? 'black' : 'gold'}
+            color={isFeatured ? 'pastelYellow' : isDesktop ? 'black' : 'gold'}
             size="md"
           >
             {eventName}
@@ -203,19 +203,25 @@ export const MinimalistEvent = ({
 
         <TabletAndMobile>
           {isFeatured && link ? (
-            <StyledLink href={link} isExternalLink>
+            <Button
+              href={link}
+              isExternalLink
+              variant="transparent"
+              padding="0"
+            >
               <BsInfoCircle
                 title="Learn More"
                 size={isMobile ? '18px' : '30px'}
                 color="white"
               />
-            </StyledLink>
+            </Button>
           ) : (
-            <BsInfoCircle
-              title="Learn More"
-              size={isMobile ? '18px' : '30px'}
-              onClick={onClick}
-            />
+            <Button onClick={onClick} variant="transparent" padding="0">
+              <BsInfoCircle
+                title="Learn More"
+                size={isMobile ? '18px' : '30px'}
+              />
+            </Button>
           )}
         </TabletAndMobile>
       </RightContainer>
