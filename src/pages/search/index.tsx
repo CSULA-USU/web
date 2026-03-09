@@ -52,7 +52,7 @@ const SearchCard = styled.div`
   height: 100%;
   justify-content: center;
   margin-top: 32px;
-  padding: 16px;
+  padding: 20px;
   transition: all 0.2s ease;
 
   &:hover {
@@ -62,6 +62,7 @@ const SearchCard = styled.div`
 
   @media screen and (max-width: 480px) {
     height: 100%;
+    padding: 16px;
   }
 `;
 
