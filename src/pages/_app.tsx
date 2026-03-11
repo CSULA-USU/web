@@ -39,7 +39,14 @@ export default function App({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      ReactGA.initialize(`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
+      const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+      if (measurementId) {
+        ReactGA.initialize(measurementId);
+      } else if (process.env.NODE_ENV === 'development') {
+        console.warn(
+          'Google Analytics measurement ID is not set. Skipping ReactGA initialization.',
+        );
+      }
     }
   }, []);
 
