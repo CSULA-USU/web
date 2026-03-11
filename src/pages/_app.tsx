@@ -1,6 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react'; // Added useRef
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
@@ -22,19 +22,24 @@ export default function App({
 }: AppProps) {
   const router = useRouter();
 
-  // Initialize GA once on mount
-  useEffect(() => {
-    const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-    if (GA_ID) {
-      ReactGA.initialize(GA_ID);
-    }
-  }, []);
+  // Refs to prevent double-firing in Strict Mode
+  const initialized = useRef(false);
+  const lastTrackedPath = useRef<string | null>(null);
 
-  // Track page views on route change
   useEffect(() => {
     const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-    if (GA_ID) {
+    if (!GA_ID) return;
+
+    // 1. Initialize GA only once
+    if (!initialized.current) {
+      ReactGA.initialize(GA_ID);
+      initialized.current = true;
+    }
+
+    // 2. Track pageview, ensuring we don't track the same path twice in the same render cycle
+    if (lastTrackedPath.current !== router.asPath) {
       ReactGA.send({ hitType: 'pageview', page: router.asPath });
+      lastTrackedPath.current = router.asPath;
     }
   }, [router.asPath]);
 
@@ -80,7 +85,6 @@ export default function App({
             <EventsLoader />
             <Component {...pageProps} />
 
-            {/* Vercel Performance Tools */}
             <SpeedInsights route={router.pathname} />
             <Analytics />
           </RecoilRoot>
