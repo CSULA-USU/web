@@ -211,6 +211,7 @@ export default function StudentOrgs() {
         <meta
           name="description"
           content="Join or start a student organization at Cal State LA. Access The Nest, download sample constitutions, learn about room reservations, and find club banking forms."
+          key="description"
         />
         <meta
           name="keywords"
@@ -222,19 +223,22 @@ export default function StudentOrgs() {
         <meta
           property="og:title"
           content="Recognized Student Organizations | Center for Student Involvement"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Explore 120+ student clubs at Cal State LA. Get the resources you need to lead, grow, and reserve space for your organization."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/student-orgs"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

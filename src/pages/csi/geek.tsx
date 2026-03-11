@@ -49,27 +49,32 @@ export default function Geek() {
         <title>GEEK | Golden Eagle Event Krew | Cal State LA U-SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Center for Student Involvement (CSI)" />
+        <meta
+          name="author"
+          content="Center for Student Involvement (CSI)"
+          key="author"
+        />
         <meta
           name="description"
           content="Join the Golden Eagle Event Krew (GEEK) at Cal State LA. Volunteer behind the scenes in event programming, marketing, and leadership development."
+          key="description"
         />
         <meta
           name="keywords"
           content="GEEK, Golden Eagle Event Krew, Cal State LA Volunteering, Student Event Planning, CSI Volunteers, CSULA Campus Jobs, Event Marketing Internship, U-SU GEEK"
           key="keywords"
         />
-
-        {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Join the Golden Eagle Event Krew (GEEK) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Help bring campus events to life! Build professional skills in a fun, fast-paced environment with the CSI GEEK program."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/geek"
@@ -77,16 +82,15 @@ export default function Geek() {
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/csi/geek/geek-header.jpg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Golden Eagle Event Krew - GEEK at Cal State LA"
         />
-
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://www.calstatelausu.org/csi/geek" />
 
-        {/* Structured Data for Volunteer Opportunities */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

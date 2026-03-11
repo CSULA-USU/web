@@ -103,33 +103,41 @@ export default function Recreation() {
         <meta
           name="description"
           content="Get active with Cal State LA Recreation. Access our Fitness Center, Esports Game Room, and wellness programming. Download the Cal State LA Rec app to sign up for classes."
+          key="description"
         />
         <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
           content="Recreation, Fitness, Workout, Cal State LA, CSULA, U-SU, Gym, Esports, Game Room, Nutrition, Exercise, Weights, Intramural Sports, Spring 2026 Hours"
+          key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Recreation | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Enhancing the Golden Eagle experience through play, exercise, and community connection. Visit the Fitness Center or Esports Game Room today."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/recreation"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/recreation-hero-background.jpg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Students exercising at the Cal State LA U-SU Recreation Fitness Center"
         />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -139,6 +147,7 @@ export default function Recreation() {
           name="twitter:description"
           content="Download the Recreation App for class schedules and facility access. Stay fit and connected at Cal State LA."
         />
+
         <link rel="canonical" href="https://www.calstatelausu.org/recreation" />
 
         {/* Structured Data for Google/AI */}

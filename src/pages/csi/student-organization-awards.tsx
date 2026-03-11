@@ -391,6 +391,7 @@ export default function StudentOrganizationAwards() {
         <meta
           name="description"
           content="Celebrate excellence at Cal State LA. Apply for the Golden Eagle Awards, recognizing outstanding student organizations, leaders, and advisors. Applications open Feb 20."
+          key="description"
         />
         <meta
           name="keywords"
@@ -402,19 +403,22 @@ export default function StudentOrganizationAwards() {
         <meta
           property="og:title"
           content="Golden Eagle Awards: Recognizing Excellence at Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Honoring the remarkable efforts of student groups driving innovation, inclusivity, and positive change. See award categories and eligibility."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/student-organization-awards"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/csi/csi-student-organization-awards.png"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

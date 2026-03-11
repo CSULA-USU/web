@@ -78,10 +78,12 @@ export default function Tenants() {
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
           content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
+          key="description"
         />
         <meta
           name="keywords"
@@ -93,12 +95,14 @@ export default function Tenants() {
         <meta
           property="og:title"
           content="U-SU Tenants: Dining, Services, and Student Government"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Meet our partners. From student government (ASI) to your morning coffee at Starbucks, explore the organizations and eateries located inside the U-SU."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/about/tenants"
@@ -106,9 +110,11 @@ export default function Tenants() {
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/about/tenants/starbucks-logo.png"
+          key="og-image"
         />
 
-        <meta name="twitter:card" content="summary" />
+        {/* Twitter - Upgraded to large_image for better visibility */}
+        <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/about/tenants"

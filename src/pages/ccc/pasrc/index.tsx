@@ -79,10 +79,15 @@ export default function PASRC() {
 
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="pasrc coordinator director" key="author" />
+        <meta
+          name="author"
+          content="The Pan African Student Resource Center at Cal State LA"
+          key="author"
+        />
         <meta
           name="description"
           content="The Pan African Student Resource Center (PASRC) at Cal State LA supports students through Black identity programming, open dialogue, and the annual Black Grad celebration."
+          key="description"
         />
         <meta
           name="keywords"
@@ -94,19 +99,22 @@ export default function PASRC() {
         <meta
           property="og:title"
           content="Pan African Student Resource Center (PASRC) | Cal State LA U-SU"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Founded in 1990, the PASRC provides a space for community, history, and empowerment for the Pan African diaspora at Cal State LA."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/ccc/pasrc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

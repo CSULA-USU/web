@@ -64,10 +64,12 @@ export default function Services() {
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
           content="Explore free services at the Cal State LA Student Union, including Nap Pods, the Reflection Room, Lactation Room, and gender-inclusive restrooms."
+          key="description"
         />
         <meta
           name="keywords"
@@ -79,12 +81,14 @@ export default function Services() {
         <meta
           property="og:title"
           content="Student Services & Amenities | University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="From high-tech Nap Pods to quiet Reflection Rooms, discover the amenities designed to support student health and wellness at Cal State LA."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/about/services"
@@ -92,6 +96,7 @@ export default function Services() {
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/nap-pod.png"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

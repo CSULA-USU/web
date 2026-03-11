@@ -350,33 +350,46 @@ export default function Brand() {
     <Page>
       <Head>
         <title>U&ndash;SU Brand Guidelines</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="author"
+          content="University-Student Union at Cal State LA"
+          key="author"
+        />
         <meta
           name="description"
           content="Official brand guidelines for the University-Student Union (U&ndash;SU) at Cal State LA — logos, colors, typography, voice, and usage examples for consistent communications."
+          key="description"
         />
-        <meta name="author" content="University-Student Union, Cal State LA" />
         <meta
           name="keywords"
           content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility, branding, logo usage, color palette, font styles, social media guidelines, location branding, marketing materials"
+          key="keywords"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="U&ndash;SU Brand Guidelines" />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="U&ndash;SU Brand Guidelines | Cal State LA"
+          key="og-title"
+        />
         <meta
           property="og:description"
           content="Logos, colors, typography, and voice for the University-Student Union (U&ndash;SU) at Cal State LA."
+          key="og-desc"
         />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
+          key="og-image"
         />
         <meta
           property="og:url"
           content="https://usu.calstatela.edu/about/brand"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -389,6 +402,8 @@ export default function Brand() {
           name="twitter:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
         />
+
+        <link rel="canonical" href="https://usu.calstatela.edu/about/brand" />
 
         {/* Structured Data */}
         <script
@@ -414,8 +429,6 @@ export default function Brand() {
             }),
           }}
         />
-
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainContent>
         <TOCWrapper>

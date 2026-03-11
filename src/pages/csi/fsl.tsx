@@ -366,29 +366,35 @@ export default function FSL() {
         <meta
           name="description"
           content="Contact Cal State LA Fraternity & Sorority Life (FSL) at (323) 343-5113. Information on recruitment, Greek council intake, and sorority/fraternity chapters."
+          key="description"
+        />
+
+        <meta
+          name="author"
+          content="The University Student Union Center for Student Involvement"
+          key="author"
         />
 
         {/* Open Graph */}
         <meta
           property="og:title"
           content="Fraternity & Sorority Life (FSL) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Information on recruitment, Greek council intake, and sorority/fraternity chapters at Cal State LA."
+          key="og-desc"
         />
-        <meta
-          name="author"
-          content="The University Student Union Center for Student Involvement"
-        />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/fsl"
         />
-        <meta property="og:type" content="website" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

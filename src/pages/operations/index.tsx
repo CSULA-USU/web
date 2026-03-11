@@ -167,34 +167,48 @@ export default function Operations() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="Reserve meeting rooms and event spaces at Cal State LA U-SU. Explore our facilities, media services, rental fees, and reservation policies for students and faculty."
+          key="description"
         />
         <meta
           name="keywords"
           content="The University Student Union, Cal State LA, U-SU Operations, Meeting Rooms, Event Reservations, Media Services, Room Rentals, Alhambra Room, Los Angeles Room, San Gabriel Room, MMRS Policies"
+          key="keywords"
         />
+
+        {/* Open Graph / Social Media - Deduplication Keys Applied */}
         <meta
           property="og:title"
           content="Operations & Reservations | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="The hub for campus event support, facility maintenance, and meeting room reservations at the Cal State LA U-SU."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/operations"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="U-SU Operations and Facilities at Cal State LA"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -204,6 +218,7 @@ export default function Operations() {
           name="twitter:description"
           content="Plan your next meeting or event at the University-Student Union. Access rental forms, capacity charts, and equipment fees."
         />
+
         <link rel="canonical" href="https://www.calstatelausu.org/operations" />
 
         {/* Structured Data for Google/AI */}

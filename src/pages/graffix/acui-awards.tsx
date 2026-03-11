@@ -176,32 +176,41 @@ export default function AcuiAwards() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The University-Student Union Graffix Department at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="Explore the award-winning work of the Cal State LA U-SU Graffix department. Celebrating over a decade of ACUI conference honors in graphic design and student union promotion."
+          key="description"
         />
         <meta
           name="keywords"
           content="Graffix Awards, ACUI Conference, Cal State LA Graphic Design, U-SU Creative Services, Award Winning Design, Student Union Marketing, CSULA Graphics"
+          key="keywords"
         />
 
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Graffix ACUI Awards | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="From 'Best of Show' to Honorable Mentions, see why our Graffix team is recognized nationally for excellence in student union media."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/graffix/acui-awards"
         />
-        <meta property="og:type" content="website" />
-        {/* Using the first award year image or a general graffix logo as the preview */}
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/public/departments/logos/graffix-logo.svg"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+          key="og-image"
         />
 
         <meta name="twitter:card" content="summary_large_image" />

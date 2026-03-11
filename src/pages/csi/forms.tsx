@@ -71,6 +71,7 @@ export default function CSIForms() {
         <meta
           name="description"
           content="Access essential forms for Cal State LA student organizations, including event registration, temporary food permits, and amplified sound requests."
+          key="description"
         />
         <meta
           name="keywords"
@@ -78,23 +79,26 @@ export default function CSIForms() {
           key="keywords"
         />
 
-        {/* Open Graph / Social Media */}
+        {/* Open Graph */}
         <meta
           property="og:title"
           content="Student Organization Forms | Center for Student Involvement | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Everything you need to register events and manage your student organization at Cal State LA."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/forms"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
+          key="og-image"
         />
 
         <meta name="twitter:card" content="summary_large_image" />

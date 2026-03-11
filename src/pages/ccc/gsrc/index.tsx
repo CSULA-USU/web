@@ -123,12 +123,17 @@ export default function GSRC() {
     <Page>
       <Head>
         <title>U-SU GSRC</title>
-        <meta name="author" content="gsrc coordinator" key="author" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The Gender and Sexuality Resource Center at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="The GSRC at Cal State LA empowers LGBTQIA+ students and allies through resources like the Affirmation Closet, Lactation Room, and Pride Grad celebrations."
+          key="description"
         />
         <meta
           name="keywords"
@@ -140,19 +145,22 @@ export default function GSRC() {
         <meta
           property="og:title"
           content="Gender and Sexuality Resource Center (GSRC) | Cal State LA U-SU"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Creating safe and respectful spaces for all individuals across the gender and sexuality spectrum. Discover our resources, programming, and community."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/ccc/gsrc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/ccc/gsrc/carousel/pride-grad.jpg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

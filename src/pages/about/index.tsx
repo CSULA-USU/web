@@ -46,10 +46,12 @@ export default function About() {
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
           content="Established in 1975, the U-SU is Cal State LA's hub for connection and growth. Explore our mission, values, organizational chart, and strategic plan for student success."
+          key="description"
         />
         <meta
           name="keywords"
@@ -61,22 +63,26 @@ export default function About() {
         <meta
           property="og:title"
           content="About the U-SU: Cal State LA's Hub for Connection"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. Learn about our vision and core values."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta property="og:url" content="https://www.calstatelausu.org/about" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="The Cal State LA University-Student Union Building"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://www.calstatelausu.org/about" />
 

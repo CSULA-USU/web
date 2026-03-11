@@ -84,34 +84,48 @@ export default function MeetingRooms() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="Rent meeting spaces at Cal State LA U-SU. Available rooms: Los Angeles A/B/C, Theater, Alhambra, San Gabriel, and Plaza Space. View layouts, features, and rental fees."
+          key="description"
         />
         <meta
           name="keywords"
           content="CSULA Meeting Rooms, Cal State LA Event Spaces, U-SU Room Reservations, Alhambra Room, San Gabriel Room, Los Angeles Room, U-SU Theater, Boardroom North, Boardroom South, Plaza Space Rental"
+          key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Meeting Rooms & Event Spaces | Cal State LA U-SU"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Book your next event at the University-Student Union. Explore our variety of indoor and outdoor spaces designed for student organizations and campus partners."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/operations/meeting-rooms"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Cal State LA University-Student Union Meeting Rooms"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -121,6 +135,7 @@ export default function MeetingRooms() {
           name="twitter:description"
           content="Check room availability, layout features, and rental fees for all U-SU meeting spaces."
         />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/operations/meeting-rooms"

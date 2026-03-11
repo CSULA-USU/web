@@ -40,30 +40,35 @@ export default function Gene() {
         <meta
           name="description"
           content="Sign up for personalized nutrition coaching with Cal State LA GENE. Work with Nutritional Science graduate students to build healthy habits and mindfulness."
+          key="description"
         />
         <meta name="author" content="Recreation" key="author" />
         <meta
           name="keywords"
           content="GENE, Golden Eagle Nutrition Education, Cal State LA Nutrition, Nutrition Coaching, Healthy Eating, Mindfulness, Habit Change, CSULA U-SU Recreation"
+          key="keywords"
         />
 
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Golden Eagle Nutrition Education (GENE) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Your partner in change. Get personalized feedback and encouragement from nutrition coaches to foster lifelong well-being."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/recreation/gene"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

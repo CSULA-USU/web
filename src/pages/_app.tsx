@@ -55,29 +55,33 @@ export default function App({
                 key="author"
               />
               <meta
-                name="keywords"
-                content="U-SU, Cal State LA, Student Union, CSULA, Student Organizations, Campus Life"
-                key="keywords"
-              />
-              <meta
                 name="description"
-                content="The hub for connection and growth at Cal State LA. Providing social, cultural, and recreational opportunities for Golden Eagles."
+                content="The hub for connection and growth at Cal State LA."
                 key="description"
               />
               <meta
+                property="og:title"
+                content="University-Student Union | Cal State LA"
+                key="og-title"
+              />
+              <meta
+                property="og:description"
+                content="The hub for connection and growth at Cal State LA."
+                key="og-desc"
+              />
+              <meta property="og:type" content="website" key="og-type" />
+              <meta
                 property="og:image"
                 content="https://www.calstatelausu.org/about/calstatela-hero.jpeg"
-                key="image"
+                key="og-image"
               />
-              <meta property="og:type" content="website" key="type" />
-              <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <EventsLoader />
             <Component {...pageProps} />
 
             {/* Vercel Performance Tools */}
-            <SpeedInsights route={router.asPath} />
+            <SpeedInsights route={router.pathname} />
             <Analytics />
           </RecoilRoot>
         </ToastProvider>

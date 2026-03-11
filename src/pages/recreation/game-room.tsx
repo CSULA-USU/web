@@ -270,34 +270,48 @@ export default function Gameroom() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The University-Student Union Recreation Department at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
+          key="description"
         />
         <meta
           name="keywords"
           content="Cal State LA Game Room, CSULA Esports, Gaming at Cal State LA, Video Games, Esports Tournaments, U-SU Room 201, PC Gaming, Console Gaming, Discord Community"
+          key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Recreation Game Room & Esports | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Do you have what it takes to win? Visit the U-SU Game Room for tournaments, community, and fun. Located on the 2nd floor, Room 201."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/recreation/game-room"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/recreation/game-room/game-room_video.gif"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Cal State LA Recreation Game Room interface"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -307,6 +321,7 @@ export default function Gameroom() {
           name="twitter:description"
           content="Join the Discord and start playing. Open Monday–Thursday, 12 PM to 6 PM."
         />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/recreation/game-room"

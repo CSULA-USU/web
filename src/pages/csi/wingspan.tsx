@@ -446,6 +446,7 @@ export default function Wingspan() {
         <meta
           name="description"
           content="Expand your leadership reach with Wingspan at Cal State LA. Develop skills through the Social Change Model, earn leadership milestones, and make a positive impact."
+          key="description"
         />
         <meta
           name="keywords"
@@ -457,12 +458,14 @@ export default function Wingspan() {
         <meta
           property="og:title"
           content="Wingspan Leadership Program | Cal State LA U-SU"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Cultivate leadership skills, social responsibility, and holistic development. Join a community of student leaders making a difference."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/wingspan"
@@ -470,6 +473,7 @@ export default function Wingspan() {
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

@@ -88,41 +88,51 @@ export default function APISRC() {
     <Page>
       <Head>
         <title>U-SU APISRC</title>
-        <meta name="author" content="apisrc coordinator" key="author" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The Asian Pacific Islander Student Resource Center at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="Empowering Cal State LA's Asian, Pacific Islander, and Desi American (APIDA) community through cultural education, engagement, and the APIDA Graduation ceremony."
+          key="description"
         />
         <meta
           name="keywords"
           content="APISRC, APIDA Graduation, Asian Pacific Islander Student Resource Center, Cal State LA CCC, Desi American Resources, APIDA Scholars, U-SU Room 206"
+          key="keywords"
         />
 
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Asian Pacific Islander Student Resource Center (APISRC) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Address the needs of the APIDA community and explore cultural awareness programs at the U-SU Asian Pacific Islander Student Resource Center."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/ccc/apisrc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/ccc/apisrc/apida-grad.jpeg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="APIDA Graduation celebration at Cal State LA"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://www.calstatelausu.org/ccc/apisrc" />
 

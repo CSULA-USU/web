@@ -42,12 +42,17 @@ export default function CLSRC() {
     <Page>
       <Head>
         <title>U-SU CLSRC</title>
-        <meta name="author" content="clsrc coordinator" key="author" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+          name="author"
+          content="The Chicana/o Latina/o Student Resource Center at Cal State LA"
+          key="author"
+        />
+        <meta
           name="description"
           content="The Chicana/o Latina/o Student Resource Center (CLSRC) provides services, cultural education, and community support for Cal State LA students. Join us for Nuestra Grad."
+          key="description"
         />
         <meta
           name="keywords"
@@ -59,19 +64,22 @@ export default function CLSRC() {
         <meta
           property="og:title"
           content="Chicana/o Latina/o Student Resource Center (CLSRC) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Providing support, cultural programming, and events for the Chicana/o and Latina/o community at Cal State LA."
+          key="og-desc"
         />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/ccc/clsrc"
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"

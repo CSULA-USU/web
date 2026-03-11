@@ -150,35 +150,44 @@ export default function CCC() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
-          content="The University Student Union Center for Student Involvement"
+          content="The Cross Cultural Centers at the Cal State LA University-Student Union"
           key="author"
         />
         <meta
           name="description"
           content="Visit the Cross Cultural Centers at Cal State LA. Home to APISRC, CLSRC, GSRC, and PASRC. We foster an inclusive campus environment through cultural programming and student support."
+          key="description"
         />
         <meta
           name="keywords"
           content="CSULA, Cal State LA Student Union, U-SU, Cross Cultural Center, CCC, APISRC, Asian Pacific Islander Student Resource Center, CLSRC, Chicana/o Latina/o Student Resource Center, GSRC, Gender and Sexuality Resource Center, PASRC, Pan African Student Resource Center, Cultural Graduations, Inclusion, Social Justice"
+          key="keywords"
         />
+
+        {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="Cross Cultural Centers (CCC) | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Encouraging student learning and fostering an inclusive campus environment that challenges oppression at Cal State LA."
+          key="og-desc"
         />
         <meta property="og:url" content="https://www.calstatelausu.org/ccc" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Cal State LA Cross Cultural Centers Logo"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -192,6 +201,7 @@ export default function CCC() {
           name="twitter:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp"
         />
+
         <link rel="canonical" href="https://www.calstatelausu.org/ccc" />
 
         {/* Structured Data for Google/AI */}

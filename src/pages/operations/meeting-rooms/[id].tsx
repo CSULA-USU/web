@@ -118,14 +118,19 @@ export default function MeetingRoom() {
         {/* Dynamic Title based on the specific room */}
         <title>
           {selectedRoom
-            ? `${selectedRoom.title} | Meeting Rooms`
-            : 'Meeting Rooms'}
+            ? `${selectedRoom.title} | Meeting Rooms | Cal State LA U-SU`
+            : 'Meeting Rooms | University-Student Union'}
         </title>
 
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
+        />
 
-        {/* Dynamic Description: Pulls from room features or arrangements */}
+        {/* Dynamic Description */}
         <meta
           name="description"
           content={
@@ -133,6 +138,7 @@ export default function MeetingRoom() {
               ? `View capacity, equipment, and setup options for the ${selectedRoom.title} at Cal State LA. Features: ${selectedRoom.features}.`
               : 'Explore specific meeting room layouts, capacities, and equipment at the Cal State LA University-Student Union.'
           }
+          key="description"
         />
 
         {/* Dynamic Keywords */}
@@ -141,7 +147,7 @@ export default function MeetingRoom() {
           content={`${
             selectedRoom?.title || 'Meeting Rooms'
           }, CSULA, U-SU, Room Capacity, Event Setup, ${selectedRoom?.id?.replace(
-            '-',
+            /-/g,
             ' ',
           )}`}
           key="keywords"
@@ -153,22 +159,27 @@ export default function MeetingRoom() {
           content={`${
             selectedRoom?.title || 'Meeting Room'
           } | Cal State LA U-SU`}
+          key="og-title"
         />
         <meta
           property="og:description"
           content={`Plan your event in the ${selectedRoom?.title}. Check setup types, equipment availability, and rental fees.`}
+          key="og-desc"
         />
         <meta
           property="og:image"
           content={
             selectedRoom?.headerImage ||
-            'https://www.calstatelausu.org/public/usu-logo-white.png'
+            'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp'
           }
+          key="og-image"
         />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
         />
+
         <link
           rel="canonical"
           href={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
