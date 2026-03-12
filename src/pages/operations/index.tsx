@@ -218,6 +218,10 @@ export default function Operations() {
           name="twitter:description"
           content="Plan your next meeting or event at the University-Student Union. Access rental forms, capacity charts, and equipment fees."
         />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+        />
 
         <link rel="canonical" href="https://www.calstatelausu.org/operations" />
 
@@ -227,19 +231,16 @@ export default function Operations() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'GovernmentService',
+              '@type': 'EducationalOrganization',
               name: 'U-SU Operations & Reservations',
               url: 'https://www.calstatelausu.org/operations',
               description:
                 'The Operations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.',
+              telephone: '+13233432465',
+              email: 'jortiz@cslanet.calstatela.edu',
               provider: {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
-              },
-              serviceType: 'Facility Reservation and Event Support',
-              areaServed: {
-                '@type': 'CollegeOrUniversity',
-                name: 'California State University, Los Angeles',
               },
               hasOfferCatalog: {
                 '@type': 'OfferCatalog',

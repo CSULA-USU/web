@@ -134,6 +134,19 @@ export default function APISRC() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Asian Pacific Islander Student Resource Center (APISRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Empowering the APIDA community through cultural education, engagement, and the APIDA Graduation ceremony."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/apisrc/apida-grad.jpeg"
+        />
+
         <link rel="canonical" href="https://www.calstatelausu.org/ccc/apisrc" />
 
         {/* Structured Data for Resource Centers */}
@@ -142,7 +155,7 @@ export default function APISRC() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'GovernmentService',
+              '@type': 'EducationalOrganization',
               name: 'Asian Pacific Islander Student Resource Center (APISRC)',
               alternateName: 'APISRC',
               description:
@@ -151,11 +164,8 @@ export default function APISRC() {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
               },
-              serviceType: 'Student Support and Cultural Education',
-              areaServed: {
-                '@type': 'CollegeOrUniversity',
-                name: 'California State University, Los Angeles',
-              },
+              telephone: '+13233435249',
+              email: 'motuhiv@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr, Room 206',
@@ -163,6 +173,20 @@ export default function APISRC() {
                 addressRegion: 'CA',
                 postalCode: '90032',
               },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
               sameAs: [
                 'https://www.instagram.com/apisrc.ccc/',
                 'https://www.tiktok.com/@apisrc.ccc',

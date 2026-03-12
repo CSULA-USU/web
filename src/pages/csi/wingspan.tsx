@@ -480,7 +480,21 @@ export default function Wingspan() {
           content="Cal State LA students participating in a Wingspan Leadership event"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Wingspan Leadership Program | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Develop your leadership potential through the Social Change Model. Earn Rising, Soaring, and Golden Leader milestones at Cal State LA."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
+        />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/csi/wingspan"
@@ -498,20 +512,33 @@ export default function Wingspan() {
                 'A leadership development program at Cal State LA based on the Social Change Model of Leadership Development.',
               provider: {
                 '@type': 'EducationalOrganization',
-                name: 'University-Student Union at Cal State LA',
-                url: 'https://www.calstatelausu.org',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
               },
               programPrerequisites: 'Open to all Cal State LA students.',
-              educationalCredentialAwarded:
-                'Rising Leader, Soaring Leader, and Golden Leader designations',
-              hasPart: [
+              hasCredential: [
                 {
-                  '@type': 'CreativeWork',
-                  name: 'The Seven Cs of Social Change',
-                  description:
-                    'Consciousness of Self, Congruence, Commitment, Collaboration, Common Purpose, Controversy with Civility, and Citizenship.',
+                  '@type': 'EducationalOccupationalCredential',
+                  name: 'Rising Leader',
+                },
+                {
+                  '@type': 'EducationalOccupationalCredential',
+                  name: 'Soaring Leader',
+                },
+                {
+                  '@type': 'EducationalOccupationalCredential',
+                  name: 'Golden Leader',
                 },
               ],
+              offers: {
+                '@type': 'Offer',
+                category: 'Free',
+                description:
+                  'Open and free for all enrolled Cal State LA students.',
+              },
             }),
           }}
         />

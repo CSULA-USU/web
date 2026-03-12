@@ -167,7 +167,21 @@ export default function GSRC() {
           content="Students celebrating at Cal State LA Pride Graduation"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Gender and Sexuality Resource Center (GSRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Creating safe spaces and providing resources for LGBTQIA+ students, including the Affirmation Closet and Pride Grad."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/gsrc/carousel/pride-grad.jpg"
+        />
+
         <link rel="canonical" href="https://www.calstatelausu.org/ccc/gsrc" />
 
         {/* Structured Data for Support Services */}
@@ -176,7 +190,7 @@ export default function GSRC() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'GovernmentService',
+              '@type': 'EducationalOrganization',
               name: 'Gender and Sexuality Resource Center (GSRC)',
               alternateName: 'GSRC',
               description:
@@ -185,11 +199,8 @@ export default function GSRC() {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
               },
-              serviceType: 'LGBTQIA+ Student Support',
-              areaServed: {
-                '@type': 'CollegeOrUniversity',
-                name: 'California State University, Los Angeles',
-              },
+              telephone: '+13233433370',
+              email: 'mpizarr5@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr, Room 206',
@@ -197,6 +208,21 @@ export default function GSRC() {
                 addressRegion: 'CA',
                 postalCode: '90032',
               },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              sameAs: ['https://www.instagram.com/gsrc.ccc/'],
               hasOfferCatalog: {
                 '@type': 'OfferCatalog',
                 name: 'GSRC Resources',

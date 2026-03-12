@@ -101,7 +101,21 @@ export default function CSIForms() {
           key="og-image"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Student Organization Forms | CSI | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Access official forms for event registration, food permits, and amplified sound requests for Cal State LA student clubs."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
+        />
+
         <link rel="canonical" href="https://www.calstatelausu.org/csi/forms" />
 
         {/* Structured Data for Forms and Resources */}
@@ -112,6 +126,14 @@ export default function CSIForms() {
               '@context': 'https://schema.org',
               '@type': 'ItemList',
               name: 'CSI Student Organization Forms',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
               description:
                 'A collection of official forms for student organizations at California State University, Los Angeles.',
               itemListElement: [

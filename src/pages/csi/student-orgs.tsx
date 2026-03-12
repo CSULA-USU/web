@@ -245,7 +245,21 @@ export default function StudentOrgs() {
           content="The Nest: Cal State LA Student Organization Hub"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Student Organization Resources | Cal State LA U-SU"
+        />
+        <meta
+          name="twitter:description"
+          content="Manage your student club at Cal State LA. Access room reservations, organization registration forms, and training resources via The Nest."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+        />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/csi/student-orgs"
@@ -261,6 +275,14 @@ export default function StudentOrgs() {
               name: 'Recognized Student Organizations Resources',
               description:
                 'Comprehensive guide for student organizations at Cal State LA, including registration, policies, and room reservations.',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
               mainEntity: [
                 {
                   '@type': 'HowTo',

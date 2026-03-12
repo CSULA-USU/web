@@ -387,7 +387,7 @@ export default function Brand() {
         />
         <meta
           property="og:url"
-          content="https://usu.calstatela.edu/about/brand"
+          content="https://www.calstatelausu.org/about/brand"
         />
         <meta property="og:type" content="website" key="og-type" />
 
@@ -403,7 +403,10 @@ export default function Brand() {
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_measurements.webp"
         />
 
-        <link rel="canonical" href="https://usu.calstatela.edu/about/brand" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/brand"
+        />
 
         {/* Structured Data */}
         <script
@@ -415,11 +418,11 @@ export default function Brand() {
               name: 'U–SU Brand Guidelines',
               description:
                 'Official brand guidelines for the University-Student Union (U–SU) at Cal State LA — logos, colors, typography, voice, and usage examples.',
-              url: 'https://usu.calstatela.edu/about/brand',
+              url: 'https://www.calstatelausu.org/about/brand',
               publisher: {
                 '@type': 'Organization',
                 name: 'University-Student Union, Cal State LA',
-                url: 'https://usu.calstatela.edu',
+                url: 'https://www.calstatelausu.org/',
                 logo: {
                   '@type': 'ImageObject',
                   url: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp',

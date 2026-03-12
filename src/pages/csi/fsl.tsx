@@ -393,7 +393,7 @@ export default function FSL() {
         />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
           key="og-image"
         />
         <meta
@@ -413,7 +413,7 @@ export default function FSL() {
         />
         <meta
           name="twitter:image"
-          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
         />
 
         {/* Canonical */}
@@ -425,10 +425,18 @@ export default function FSL() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'NonprofitOrganization',
+              '@type': 'EducationalOrganization',
               name: 'Fraternity and Sorority Life (FSL)',
               url: 'https://www.calstatelausu.org/csi/fsl',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
               telephone: '+13233435113',
               email: 'iprieto7@calstatela.edu',
               address: {
@@ -439,6 +447,7 @@ export default function FSL() {
                 postalCode: '90032',
                 addressCountry: 'US',
               },
+              openingHours: ['Mo-Fr 09:00-17:00'],
               parentOrganization: {
                 '@type': 'NonprofitOrganization',
                 name: 'Center for Student Involvement (CSI)',

@@ -167,10 +167,13 @@ export default function UKrew() {
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-800.webp"
           key="og-image"
         />
-        <meta property="og:url" content="https://usu.calstatela.edu/u-krew" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/about/u-krew"
+        />
         <meta property="og:type" content="website" key="og-type" />
 
         {/* Twitter */}
@@ -184,7 +187,10 @@ export default function UKrew() {
           content="Apply for U-Krew student jobs across departments like Graffix, Recreation, CCC, and more."
         />
 
-        <link rel="canonical" href="https://usu.calstatela.edu/u-krew" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/u-krew"
+        />
 
         {/* Structured Data for Employment */}
         <script
@@ -199,7 +205,7 @@ export default function UKrew() {
               publisher: {
                 '@type': 'Organization',
                 name: 'University-Student Union at Cal State LA',
-                url: 'https://usu.calstatela.edu',
+                url: 'https://www.calstatelausu.org/',
               },
               mainEntity: {
                 '@type': 'ItemList',

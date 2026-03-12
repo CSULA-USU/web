@@ -194,7 +194,7 @@ export default function Graffix() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
           key="og-image"
         />
         <meta property="og:image:alt" content="U-SU Graffix Department Logo" />
@@ -211,7 +211,7 @@ export default function Graffix() {
         />
         <meta
           name="twitter:image"
-          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
         />
 
         <link rel="canonical" href="https://www.calstatelausu.org/graffix" />
@@ -222,7 +222,7 @@ export default function Graffix() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'GovernmentService',
+              '@type': 'EducationalOrganization',
               name: 'U-SU Graffix',
               url: 'https://www.calstatelausu.org/graffix',
               logo: 'https://www.calstatelausu.org/departments/logos/graffix-logo.svg',
@@ -235,13 +235,46 @@ export default function Graffix() {
                 postalCode: '90032',
                 addressCountry: 'US',
               },
+              // Office Hours
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                  ],
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              // Department Emails
+              contactPoint: [
+                {
+                  '@type': 'ContactPoint',
+                  email: 'usugraffix@gmail.com',
+                  contactType: 'general inquiries',
+                },
+                {
+                  '@type': 'ContactPoint',
+                  email: 'graffixwebteam@gmail.com',
+                  contactType: 'web development',
+                },
+                {
+                  '@type': 'ContactPoint',
+                  email: 'rgonza282@calstatela.edu',
+                  contactType: 'graphic design team',
+                },
+              ],
               parentOrganization: {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
                 url: 'https://www.calstatelausu.org',
               },
               description:
-                'The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU through print materials and web development.',
+                'The U-SU Graffix Department is the award-winning creative hub at Cal State LA, responsible for graphic design, web development, and campus promotions.',
             }),
           }}
         />
@@ -273,7 +306,7 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="https://www.dropbox.com/s/heoyre5celakkg1/students-1.png?st=ntenkaq9&raw=1"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
               alt="two female students posing and showcasing the Graffix department tote bags"
               width={600}
               height={700}

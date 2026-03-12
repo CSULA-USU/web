@@ -95,7 +95,7 @@ export default function Services() {
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/nap-pod.png"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/about.png"
           key="og-image"
         />
         <meta

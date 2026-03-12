@@ -109,7 +109,7 @@ export default function Tenants() {
         />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/about/tenants/starbucks-logo.png"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp"
           key="og-image"
         />
 
@@ -136,13 +136,22 @@ export default function Tenants() {
                   position: 1,
                   item: {
                     '@type': 'Organization',
+                    name: 'Alumni Association',
+                    telephone: '323-343-2586',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  item: {
+                    '@type': 'Organization',
                     name: 'Associated Students, Inc. (ASI)',
                     telephone: '323-343-4780',
                   },
                 },
                 {
                   '@type': 'ListItem',
-                  position: 2,
+                  position: 3,
                   item: {
                     '@type': 'FoodEstablishment',
                     name: 'Starbucks',
@@ -151,7 +160,7 @@ export default function Tenants() {
                 },
                 {
                   '@type': 'ListItem',
-                  position: 3,
+                  position: 4,
                   item: {
                     '@type': 'FoodEstablishment',
                     name: 'Sbarro',

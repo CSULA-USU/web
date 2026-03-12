@@ -179,7 +179,7 @@ export default function CCC() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
           key="og-image"
         />
         <meta
@@ -199,7 +199,7 @@ export default function CCC() {
         />
         <meta
           name="twitter:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
         />
 
         <link rel="canonical" href="https://www.calstatelausu.org/ccc" />
@@ -215,6 +215,7 @@ export default function CCC() {
               url: 'https://www.calstatelausu.org/ccc',
               logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp',
               telephone: '+13233435001',
+              email: 'crossculturalcenters@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr., U-SU Room 206',
@@ -223,11 +224,29 @@ export default function CCC() {
                 postalCode: '90032',
                 addressCountry: 'US',
               },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
               parentOrganization: {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
                 url: 'https://www.calstatelausu.org',
               },
+              sameAs: [
+                'https://instagram.com/cccatcalstatela',
+                'https://linktr.ee/cccatcalstatela',
+              ],
               knowsAbout: [
                 'Social Justice',
                 'Inclusion',

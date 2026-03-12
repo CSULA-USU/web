@@ -86,7 +86,21 @@ export default function CLSRC() {
           content="Nuestra Graduation celebration at Cal State LA"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Chicana/o Latina/o Student Resource Center (CLSRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Providing support, cultural programming, and community events like Nuestra Grad for the Chicana/o and Latina/o community."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
+        />
+
         <link rel="canonical" href="https://www.calstatelausu.org/ccc/clsrc" />
 
         {/* Structured Data for Cultural Resource Center */}
@@ -103,6 +117,8 @@ export default function CLSRC() {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
               },
+              telephone: '+13233435047',
+              email: 'eurruti8@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr, Room 206',
@@ -110,10 +126,21 @@ export default function CLSRC() {
                 addressRegion: 'CA',
                 postalCode: '90032',
               },
-              sameAs: [
-                'https://www.instagram.com/clsrc.ccc/',
-                'https://linktr.ee/cccatcalstatela',
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
               ],
+              sameAs: ['https://www.instagram.com/clsrc.ccc/'],
             }),
           }}
         />

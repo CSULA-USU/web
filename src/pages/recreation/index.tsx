@@ -130,7 +130,7 @@ export default function Recreation() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/recreation-hero-background.jpg"
+          content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
           key="og-image"
         />
         <meta
@@ -138,16 +138,17 @@ export default function Recreation() {
           content="Students exercising at the Cal State LA U-SU Recreation Fitness Center"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Recreation | Cal State LA University-Student Union"
-        />
+        <meta name="twitter:title" content="Recreation | Cal State LA U-SU" />
         <meta
           name="twitter:description"
-          content="Download the Recreation App for class schedules and facility access. Stay fit and connected at Cal State LA."
+          content="Access the Fitness Center and Esports Game Room. Stay fit and connected at Cal State LA."
         />
-
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
+        />
         <link rel="canonical" href="https://www.calstatelausu.org/recreation" />
 
         {/* Structured Data for Google/AI */}
@@ -156,36 +157,111 @@ export default function Recreation() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'ExerciseGym',
-              name: 'U-SU Recreation',
-              url: 'https://www.calstatelausu.org/recreation',
-              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
-              telephone: ['+13233437546', '+13233432520'],
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress:
-                  '5154 State University Dr. (Basement & Room 201)',
-                addressLocality: 'Los Angeles',
-                addressRegion: 'CA',
-                postalCode: '90032',
-                addressCountry: 'US',
-              },
-              parentOrganization: {
-                '@type': 'NonprofitOrganization',
-                name: 'University-Student Union at Cal State LA',
-              },
-              description:
-                'Recreation at Cal State LA provides Golden Eagles with opportunities to play, exercise and engage their campus community through the Fitness Center and Esports Game Room.',
-              amenityFeature: [
+              '@graph': [
                 {
-                  '@type': 'LocationFeatureSpecification',
-                  name: 'Fitness Center',
-                  value: 'U-SU Basement',
-                },
-                {
-                  '@type': 'LocationFeatureSpecification',
-                  name: 'Game Room',
-                  value: 'U-SU Room 201',
+                  '@type': 'ExerciseGym',
+                  '@id': 'https://www.calstatelausu.org/recreation',
+                  name: 'U-SU Recreation',
+                  url: 'https://www.calstatelausu.org/recreation',
+                  logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
+                  description:
+                    'Cal State LA’s premier fitness and wellness hub, featuring full-service gyms, esports gaming, and residential wellness centers.',
+                  email: 'cbalam2@calstatela.edu',
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '5154 State University Dr.',
+                    addressLocality: 'Los Angeles',
+                    addressRegion: 'CA',
+                    postalCode: '90032',
+                  },
+                  parentOrganization: {
+                    '@type': 'EducationalOrganization',
+                    name: 'University-Student Union at Cal State LA',
+                  },
+                  subOrganization: [
+                    {
+                      '@type': 'HealthClub',
+                      name: 'Recreation 1',
+                      description:
+                        'Full-service fitness center featuring weights, cardio machines, and locker facilities.',
+                      location: 'U-SU Basement',
+                      telephone: '+13233437546',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Free Weights',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Cardio Machines',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Lockers',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Exercise Classes',
+                          value: 'true',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'HealthClub',
+                      name: 'Recreation 2',
+                      description:
+                        'Full-service fitness center featuring weights and cardio machines.',
+                      location: 'U-SU Basement',
+                      telephone: '+13233432520',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Free Weights',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Cardio Machines',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Exercise Classes',
+                          value: 'true',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'EntertainmentBusiness',
+                      name: 'Recreation Esports Game Room',
+                      description:
+                        'A student gaming hub featuring 8-ball pool, air hockey, foosball, and Nintendo Switch favorites.',
+                      location: 'U-SU Room 201',
+                      telephone: '+13233436909',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Pool & Table Games',
+                          value: '8-ball, Air Hockey, Foosball, Ping-Pong',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Video Games',
+                          value: 'Super Smash Bros, Mario Party, Mario Kart',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'HealthAndBeautyBusiness',
+                      name: 'South Village Housing Wellness Zone',
+                      description:
+                        'Wellness and activity center for campus residents.',
+                      location: 'South Village Housing',
+                    },
+                  ],
                 },
               ],
             }),

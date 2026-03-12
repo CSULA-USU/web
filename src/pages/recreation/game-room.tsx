@@ -284,7 +284,6 @@ export default function Gameroom() {
           content="Cal State LA Game Room, CSULA Esports, Gaming at Cal State LA, Video Games, Esports Tournaments, U-SU Room 201, PC Gaming, Console Gaming, Discord Community"
           key="keywords"
         />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
@@ -310,27 +309,29 @@ export default function Gameroom() {
           property="og:image:alt"
           content="Cal State LA Recreation Game Room interface"
         />
-
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="U-SU Recreation Game Room | Cal State LA"
+          content="Level Up at the U-SU Game Room | Cal State LA"
         />
         <meta
           name="twitter:description"
-          content="Join the Discord and start playing. Open Monday–Thursday, 12 PM to 6 PM."
+          content="From 8-ball pool and air hockey to Super Smash Bros and Mario Kart. Join the Discord and find your community in Room 201!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/recreation/game-room/game-room_video.gif"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Cal State LA Recreation Game Room interface with retro gaming aesthetic"
         />
 
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/recreation/game-room"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-          rel="stylesheet"
-        />
-
         {/* Structured Data for Google/AI */}
         <script
           type="application/ld+json"
@@ -348,7 +349,6 @@ export default function Gameroom() {
                 addressLocality: 'Los Angeles',
                 addressRegion: 'CA',
                 postalCode: '90032',
-                addressCountry: 'US',
               },
               openingHoursSpecification: [
                 {
@@ -356,6 +356,33 @@ export default function Gameroom() {
                   dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
                   opens: '12:00',
                   closes: '18:00',
+                },
+              ],
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: '8-Ball Pool',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Air Hockey',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Foosball',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Ping-Pong',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Nintendo Switch Gaming',
+                  value: 'Super Smash Bros, Mario Party, Mario Kart',
                 },
               ],
               sameAs: [

@@ -121,7 +121,21 @@ export default function PASRC() {
           content="A student smiling at the Cal State LA Black Graduation celebration"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Pan African Student Resource Center (PASRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Providing space for community, history, and empowerment for the Pan African diaspora at Cal State LA."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
+        />
+
         <link rel="canonical" href="https://www.calstatelausu.org/ccc/pasrc" />
 
         {/* Structured Data for Cultural Support */}
@@ -139,6 +153,8 @@ export default function PASRC() {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',
               },
+              telephone: '+13233435131',
+              email: 'ithoma10@calstatela.edu',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr, Room 206',
@@ -146,10 +162,23 @@ export default function PASRC() {
                 addressRegion: 'CA',
                 postalCode: '90032',
               },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
               sameAs: [
                 'https://www.instagram.com/pasrc.ccc/',
                 'https://groupme.com/join_group/96687493/RA2NYgao',
-                'https://linktr.ee/cccatcalstatela',
               ],
               event: {
                 '@type': 'Event',

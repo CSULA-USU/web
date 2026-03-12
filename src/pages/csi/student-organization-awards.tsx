@@ -425,7 +425,21 @@ export default function StudentOrganizationAwards() {
           content="Golden Eagle Awards at California State University, Los Angeles"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Golden Eagle Awards | CSI | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Recognizing excellence in student leadership and organization achievement at Cal State LA. View categories and apply by April 1."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/csi/csi-student-organization-awards.png"
+        />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/csi/student-organization-awards"
@@ -440,33 +454,26 @@ export default function StudentOrganizationAwards() {
               '@type': 'WebPage',
               name: 'Golden Eagle Awards',
               description:
-                'Annual awards ceremony recognizing top student organizations and leaders at Cal State LA.',
-              breadcrumb: 'Home > CSI > Awards',
+                'Annual awards ceremony recognizing top student organizations, leaders, and advisors at California State University, Los Angeles.',
+              publisher: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
               mainEntity: {
                 '@type': 'ItemList',
                 name: 'Golden Eagle Award Categories',
-                itemListElement: [
-                  {
+                numberOfItems: studentOrganizationAwards.length,
+                itemListElement: studentOrganizationAwards.map(
+                  (award, index) => ({
                     '@type': 'ListItem',
-                    position: 1,
-                    name: 'Student Organization of the Year',
-                  },
-                  {
-                    '@type': 'ListItem',
-                    position: 2,
-                    name: 'Outstanding Student Leader',
-                  },
-                  {
-                    '@type': 'ListItem',
-                    position: 3,
-                    name: 'Greek Chapter of the Year',
-                  },
-                  {
-                    '@type': 'ListItem',
-                    position: 4,
-                    name: 'Commitment to Social Justice',
-                  },
-                ],
+                    position: index + 1,
+                    name: award.title,
+                  }),
+                ),
               },
             }),
           }}

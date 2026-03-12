@@ -213,7 +213,21 @@ export default function AcuiAwards() {
           key="og-image"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Award-Winning Design | Graffix ACUI Awards"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore over a decade of national design awards won by Cal State LA students at the ACUI conferences."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+        />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/graffix/acui-awards"
@@ -225,23 +239,33 @@ export default function AcuiAwards() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'CreativeWorkSeries',
-              name: 'Graffix ACUI Award Collection',
-              description:
-                'A collection of award-winning graphic design works recognized by the Association of College Unions International.',
-              creator: {
-                '@type': 'Organization',
-                name: 'U-SU Graffix Department',
-                parentOrganization: {
-                  '@type': 'NonprofitOrganization',
-                  name: 'University-Student Union at Cal State LA',
+              '@graph': [
+                {
+                  '@type': 'CollectionPage',
+                  name: 'Graffix ACUI Awards',
+                  description:
+                    'A gallery of national awards won by Graffix student designers at Cal State LA.',
+                  publisher: {
+                    '@type': 'EducationalOrganization',
+                    name: 'U-SU Graffix',
+                    url: 'https://www.calstatelausu.org/graffix',
+                  },
                 },
-              },
-              award: [
-                'ACUI Best of Show',
-                'ACUI 1st Place',
-                'ACUI 2nd Place',
-                'ACUI 3rd Place',
+                ...awards.map((award) => ({
+                  '@type': 'CreativeWork',
+                  name: award.title,
+                  creator: {
+                    '@type': 'Person',
+                    name: award.name,
+                  },
+                  award: `${award.place} - ${award.acuiName}`,
+                  genre: award.category,
+                  image: `https://www.calstatelausu.org${award.src}`,
+                  maintainer: {
+                    '@type': 'EducationalOrganization',
+                    name: 'U-SU Graffix',
+                  },
+                })),
               ],
             }),
           }}

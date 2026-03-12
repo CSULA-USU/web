@@ -67,7 +67,7 @@ export default function Gene() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
           key="og-image"
         />
         <meta
@@ -75,7 +75,25 @@ export default function Gene() {
           content="Student utilizing GENE nutrition services at Cal State LA"
         />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Golden Eagle Nutrition Education (GENE) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Your partner in change. Get free, personalized nutrition coaching from Cal State LA graduate students. Start building healthy habits today!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Student utilizing GENE nutrition coaching services at Cal State LA"
+        />
+
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/recreation/gene"
@@ -110,6 +128,20 @@ export default function Gene() {
                 description:
                   'Free for Cal State LA students, staff, and faculty',
               },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
             }),
           }}
         />
@@ -121,7 +153,7 @@ export default function Gene() {
         >
           {isDesktop && isMobile && (
             <Image
-              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
               alt="young man using gene services"
               height="232px"
               margin="0px auto"
@@ -137,7 +169,7 @@ export default function Gene() {
         {!isDesktop && (
           // desktop
           <Image
-            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
             alt="young man using gene services"
             height="500px"
             margin="auto"
@@ -146,7 +178,7 @@ export default function Gene() {
         {!isMobile && isDesktop && (
           // mobile
           <Image
-            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
             alt="a young man using gene services eating an apple"
             height="250px"
             margin="auto"

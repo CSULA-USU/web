@@ -88,7 +88,21 @@ export default function Geek() {
           property="og:image:alt"
           content="Golden Eagle Event Krew - GEEK at Cal State LA"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="GEEK | Golden Eagle Event Krew | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Build leadership skills and go behind the scenes of campus events. Join the Golden Eagle Event Krew (GEEK) volunteer program."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/csi/geek/geek-header.jpg"
+        />
         <link rel="canonical" href="https://www.calstatelausu.org/csi/geek" />
 
         <script
@@ -99,10 +113,10 @@ export default function Geek() {
               '@type': 'Service',
               serviceType: 'Volunteer Program',
               provider: {
-                '@type': 'Organization',
-                name: 'Center for Student Involvement',
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
                 parentOrganization: {
-                  '@type': 'Organization',
+                  '@type': 'NonprofitOrganization',
                   name: 'University-Student Union at Cal State LA',
                 },
               },
