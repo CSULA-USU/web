@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useState } from 'react';
 import styled, { CSSObject } from 'styled-components';
 import { layout, space, LayoutProps, SpaceProps } from 'styled-system';
 import { ReactNode } from 'react';
 import { Colors } from 'theme';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { GrExpand } from 'react-icons/gr';
 
 export interface BaseComponentProps
   extends SpaceProps,
@@ -29,11 +29,19 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   round?: boolean;
   lazy?: boolean;
   isExpandable?: boolean;
+  fullSizeSrc?: string;
 }
 
-/**
- * Styled Components for the Fullscreen Logic
- */
+const TriggerWrapper = styled.div<{ isExpandable?: boolean }>`
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  cursor: ${(p) => (p.isExpandable ? 'zoom-in' : 'default')};
+
+  ${layout}
+  ${space}
+`;
+
 const FullScreenOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -57,16 +65,25 @@ const ContentWrapper = styled.div`
   align-items: center;
 `;
 
-const CloseButtonContainer = styled.div`
+const TopIconAnchor = styled.div`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -12px;
+  right: -12px;
   z-index: 10001;
+`;
 
-  @media (max-width: 480px) {
-    top: 10px;
-    right: 10px;
-  }
+const BottomIconAnchor = styled.div`
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 4px;
 `;
 
 const CloseButton = styled.button`
@@ -75,16 +92,20 @@ const CloseButton = styled.button`
   cursor: pointer;
   padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
+`;
+
+const ExpandIcon = styled(GrExpand)`
+  color: ${Colors.white || '#fff'};
+  font-size: 18px;
+  path {
+    stroke: ${Colors.white || '#fff'};
+  }
 `;
 
 const CloseButtonIcon = styled(AiFillCloseCircle)`
   color: red;
   font-size: 24px;
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${Colors.black};
     transition: 0.2s ease-in-out;
   }
@@ -94,26 +115,16 @@ const ExpandedImage = styled.img`
   max-width: 100%;
   max-height: 90vh;
   object-fit: contain;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledImage = styled('img')<ImageProps>`
   border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
   flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
-
-  ${layout}
-  ${space}
-  
-  cursor: ${(p) => (p.isExpandable ? 'zoom-in' : 'default')};
-
-  &:hover {
-    transition: opacity 0.2s ease-in-out;
-  }
+  width: 100%;
+  height: 100%;
+  display: block;
 `;
 
-/**
- * Main Image Component
- */
 export const Image: FC<ImageProps> = ({
   alt,
   onError,
@@ -123,6 +134,7 @@ export const Image: FC<ImageProps> = ({
   srcset,
   lazy = 'eager',
   isExpandable,
+  fullSizeSrc,
   ...rest
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -134,12 +146,13 @@ export const Image: FC<ImageProps> = ({
     setImageSrc(src);
   }, [src]);
 
+  const handleError = () => {
+    if (placeholder) setImageSrc(placeholder);
+    onError?.();
+  };
+
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -160,33 +173,39 @@ export const Image: FC<ImageProps> = ({
     }
   };
 
-  const handleError = () => {
-    if (placeholder) setImageSrc(placeholder);
-    onError?.();
-  };
-
   const filteredProps = Object.fromEntries(
     Object.entries(rest).filter(([_, v]) => v != null),
   );
 
   return (
     <>
-      <StyledImage
+      <TriggerWrapper
         {...filteredProps}
-        alt={alt}
-        src={imageSrc}
-        srcSet={srcset}
-        sizes={sizes}
         isExpandable={isExpandable}
         onClick={toggleOpen}
-        onError={handleError}
-        loading={lazy ? 'lazy' : 'eager'}
+        onKeyDown={handleKeyDown}
         tabIndex={isExpandable ? 0 : -1}
         role={isExpandable ? 'button' : undefined}
-        onKeyDown={handleKeyDown}
         aria-expanded={isOpen}
         aria-label={isExpandable ? `View ${alt} in full screen` : alt}
-      />
+      >
+        <StyledImage
+          alt={alt}
+          src={imageSrc}
+          srcSet={srcset}
+          sizes={sizes}
+          isExpandable={isExpandable}
+          onError={handleError}
+          loading={lazy ? 'lazy' : 'eager'}
+          tabIndex={-1}
+          {...filteredProps}
+        />
+        {isExpandable && !isOpen && (
+          <BottomIconAnchor>
+            <ExpandIcon />
+          </BottomIconAnchor>
+        )}
+      </TriggerWrapper>
 
       {isOpen && (
         <FullScreenOverlay
@@ -195,16 +214,12 @@ export const Image: FC<ImageProps> = ({
           aria-modal="true"
         >
           <ContentWrapper onClick={(e) => e.stopPropagation()}>
-            <CloseButtonContainer>
-              <CloseButton
-                onClick={() => setIsOpen(false)}
-                aria-label="Close fullscreen image"
-              >
+            <TopIconAnchor>
+              <CloseButton onClick={() => setIsOpen(false)} aria-label="Close">
                 <CloseButtonIcon />
               </CloseButton>
-            </CloseButtonContainer>
-
-            <ExpandedImage src={src} alt={alt} />
+            </TopIconAnchor>
+            <ExpandedImage src={fullSizeSrc || src} alt={alt} />
           </ContentWrapper>
         </FullScreenOverlay>
       )}

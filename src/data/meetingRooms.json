@@ -140,13 +140,14 @@
   {
     "title": "Theater Room",
     "id": "theater-room",
-    "mainImageSrc": "/departments/operations/meeting-rooms/theater/theater-room.jpg",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/theater-room.webp",
     "mainImageAlt": "Inside of Theater Room",
     "headerImage": "/departments/operations/meeting-rooms/theater/theatre-header.jpg",
     "arrangements": [
       {
         "setup": "Theater Layout",
-        "image": "/departments/operations/meeting-rooms/theater/u-su-theater.jpg",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/theater-room.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/theater-room-expanded.webp",
         "capacity": ["192 + 8 (ADA)"],
         "equipment": ["Fixed Seating"]
       }

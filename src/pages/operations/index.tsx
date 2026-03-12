@@ -114,7 +114,8 @@ const cards = [
     title: 'Info and Event Services',
     children:
       'Is responsible for processing reservation requests and assisting sponsors with identifying the most efficient use of designated and programmable spaces of the University-Student Union.',
-    iconSrc: '/departments/operations/images/information-event-services.jpg',
+    iconSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/information-event-services.jpg',
     iconAlt: 'Handing a student paper an informative program',
     iconWidth: '150px',
   },

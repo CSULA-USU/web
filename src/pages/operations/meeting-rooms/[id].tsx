@@ -195,7 +195,9 @@ export default function MeetingRoom() {
                         width={350}
                         marginRight={Spaces['2xl']}
                         src={arrangement.image}
+                        fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
+                        isExpandable
                       />
                     )}
                   </th>
