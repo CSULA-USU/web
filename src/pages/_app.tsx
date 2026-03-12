@@ -1,6 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useEffect, useRef } from 'react'; // Added useRef
+import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
@@ -11,10 +11,25 @@ import Modal from 'react-modal';
 import { SessionProvider } from 'next-auth/react';
 import { EventsLoader } from 'components';
 import ToastProvider from 'context/ToastContext';
+import { Bitter, Montserrat } from 'next/font/google';
 
 if (typeof window !== 'undefined') {
   Modal.setAppElement('#__next');
 }
+
+const bitter = Bitter({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-bitter',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-montserrat',
+});
 
 export default function App({
   Component,
@@ -22,74 +37,63 @@ export default function App({
 }: AppProps) {
   const router = useRouter();
 
-  // Refs to prevent double-firing in Strict Mode
-  const initialized = useRef(false);
-  const lastTrackedPath = useRef<string | null>(null);
-
   useEffect(() => {
-    const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-    if (!GA_ID) return;
-
-    // 1. Initialize GA only once
-    if (!initialized.current) {
-      ReactGA.initialize(GA_ID);
-      initialized.current = true;
+    if (typeof window !== 'undefined') {
+      const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+      if (measurementId) {
+        ReactGA.initialize(measurementId);
+      } else if (process.env.NODE_ENV === 'development') {
+        console.warn(
+          'Google Analytics measurement ID is not set. Skipping ReactGA initialization.',
+        );
+      }
     }
-
-    // 2. Track pageview, ensuring we don't track the same path twice in the same render cycle
-    if (lastTrackedPath.current !== router.asPath) {
-      ReactGA.send({ hitType: 'pageview', page: router.asPath });
-      lastTrackedPath.current = router.asPath;
-    }
-  }, [router.asPath]);
+  }, []);
 
   return (
     <>
-      <SessionProvider session={session}>
-        <ToastProvider>
-          <RecoilRoot>
-            <Head>
-              <title>University&ndash;Student Union</title>
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1"
-              />
-              <meta
-                name="author"
-                content="University-Student Union at Cal State LA"
-                key="author"
-              />
-              <meta
-                name="description"
-                content="The hub for connection and growth at Cal State LA."
-                key="description"
-              />
-              <meta
-                property="og:title"
-                content="University-Student Union | Cal State LA"
-                key="og-title"
-              />
-              <meta
-                property="og:description"
-                content="The hub for connection and growth at Cal State LA."
-                key="og-desc"
-              />
-              <meta property="og:type" content="website" key="og-type" />
-              <meta
-                property="og:image"
-                content="https://www.calstatelausu.org/about/calstatela-hero.jpeg"
-                key="og-image"
-              />
-            </Head>
-
-            <EventsLoader />
-            <Component {...pageProps} />
-
-            <SpeedInsights route={router.pathname} />
-            <Analytics />
-          </RecoilRoot>
-        </ToastProvider>
-      </SessionProvider>
+      <style jsx global>{`
+        :root {
+          --font-montserrat: ${montserrat.style.fontFamily};
+          --font-bitter: ${bitter.style.fontFamily};
+        }
+      `}</style>
+      <div className={`${bitter.variable} ${montserrat.variable}`}>
+        <SessionProvider session={session}>
+          <ToastProvider>
+            <RecoilRoot>
+              <Head>
+                <title>University&ndash;Student Union</title>
+                <meta
+                  name="author"
+                  content="The University Student Union"
+                  key="author"
+                />
+                <meta
+                  name="keywords"
+                  content="the university student union, california state university los angeles, student union, csula, cal state la, u-su, usu, student, organizations, cross cultural centers, center for student involvement, fitness center, student orgnizations, calendar, events, gender and sexuality resource center, pan african resource center, asian pacific islander, chicana latina, information and event services, distinguished women awards, cultural graduate celebrations, employment opportunities, board of directors, jobs, ccc, csi, apisrc, graffix, operations, recreation, building hours, building, hours, college, student, union, student union, cal state la, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles"
+                  key="keywords"
+                />
+                <meta
+                  name="description"
+                  content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
+                  key="description"
+                />
+                <meta
+                  name="image"
+                  property="og:image"
+                  content="/about/calstatela-hero.jpeg"
+                  key="image"
+                />
+              </Head>
+              <EventsLoader />
+              <Component {...pageProps} />
+              <SpeedInsights route={router.pathname} />
+              <Analytics />
+            </RecoilRoot>
+          </ToastProvider>
+        </SessionProvider>
+      </div>
     </>
   );
 }
