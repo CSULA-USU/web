@@ -448,12 +448,6 @@ export default function Wingspan() {
           content="Expand your leadership reach with Wingspan at Cal State LA. Develop skills through the Social Change Model, earn leadership milestones, and make a positive impact."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Wingspan Leadership Program, Cal State LA Leadership, Social Change Model of Leadership, Student Development CSULA, Wingspan Milestones, Rising Leader, Soaring Leader, Golden Leader"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

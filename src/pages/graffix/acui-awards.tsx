@@ -185,12 +185,6 @@ export default function AcuiAwards() {
           content="Explore the award-winning work of the Cal State LA U-SU Graffix department. Celebrating over a decade of ACUI conference honors in graphic design and student union promotion."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Graffix Awards, ACUI Conference, Cal State LA Graphic Design, U-SU Creative Services, Award Winning Design, Student Union Marketing, CSULA Graphics"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

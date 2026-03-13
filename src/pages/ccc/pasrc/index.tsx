@@ -89,12 +89,6 @@ export default function PASRC() {
           content="The Pan African Student Resource Center (PASRC) at Cal State LA supports students through Black identity programming, open dialogue, and the annual Black Grad celebration."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="PASRC, Pan African Student Resource Center, Cal State LA, Black Student Resources, Black Grad, Pan African Culture, CSULA CCC, African American Student Support, U-SU Room 206"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

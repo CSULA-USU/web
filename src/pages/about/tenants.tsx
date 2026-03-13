@@ -85,12 +85,6 @@ export default function Tenants() {
           content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Cal State LA Starbucks, ASI CSULA, Sbarro Cal State LA, Alumni Association CSULA, Student Union Computer Lab, U-SU Dining, Campus Food CSULA"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

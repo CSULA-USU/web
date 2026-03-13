@@ -100,12 +100,6 @@ export default function APISRC() {
           content="Empowering Cal State LA's Asian, Pacific Islander, and Desi American (APIDA) community through cultural education, engagement, and the APIDA Graduation ceremony."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="APISRC, APIDA Graduation, Asian Pacific Islander Student Resource Center, Cal State LA CCC, Desi American Resources, APIDA Scholars, U-SU Room 206"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

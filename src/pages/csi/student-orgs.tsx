@@ -213,12 +213,6 @@ export default function StudentOrgs() {
           content="Join or start a student organization at Cal State LA. Access The Nest, download sample constitutions, learn about room reservations, and find club banking forms."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Cal State LA Student Organizations, The Nest CSULA, Register a Club CSULA, Student Org Room Reservations, CSI Resources, ODC Training, Club Banking, Student Life"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

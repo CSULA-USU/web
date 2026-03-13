@@ -393,12 +393,6 @@ export default function StudentOrganizationAwards() {
           content="Celebrate excellence at Cal State LA. Apply for the Golden Eagle Awards, recognizing outstanding student organizations, leaders, and advisors. Applications open Feb 20."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Golden Eagle Awards, Cal State LA Student Org Awards, CSI Golden Eagles, Student Leader Awards, CSULA Club Recognition, Greek Member of the Year, Program of the Year"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

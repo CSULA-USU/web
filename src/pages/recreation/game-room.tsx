@@ -285,12 +285,7 @@ export default function Gameroom() {
           name="description"
           content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
           key="description"
-        />
-        <meta
-          name="keywords"
-          content="Cal State LA Game Room, CSULA Esports, Gaming at Cal State LA, Video Games, Esports Tournaments, U-SU Room 201, PC Gaming, Console Gaming, Discord Community"
-          key="keywords"
-        />
+        />{' '}
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
@@ -334,7 +329,6 @@ export default function Gameroom() {
           name="twitter:image:alt"
           content="Cal State LA Recreation Game Room interface with retro gaming aesthetic"
         />
-
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/recreation/game-room"

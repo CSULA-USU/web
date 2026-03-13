@@ -362,11 +362,6 @@ export default function Brand() {
           content="Official brand guidelines for the University-Student Union (U&ndash;SU) at Cal State LA — logos, colors, typography, voice, and usage examples for consistent communications."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="U-SU brand guidelines, Cal State LA, California State University Los Angeles, CSULA, student union, Cal State LA U-SU, Cal State LA University Student Union, U-SU logo, U-SU colors, typography, brand voice, accessibility, branding, logo usage, color palette, font styles, social media guidelines, location branding, marketing materials"
-          key="keywords"
-        />
         <meta name="robots" content="index,follow" />
 
         {/* Open Graph / Social Media */}

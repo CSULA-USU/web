@@ -60,11 +60,6 @@ export default function Geek() {
           key="description"
         />
         <meta
-          name="keywords"
-          content="GEEK, Golden Eagle Event Krew, Cal State LA Volunteering, Student Event Planning, CSI Volunteers, CSULA Campus Jobs, Event Marketing Internship, U-SU GEEK"
-          key="keywords"
-        />
-        <meta
           property="og:title"
           content="Join the Golden Eagle Event Krew (GEEK) | Cal State LA"
           key="og-title"

@@ -142,17 +142,6 @@ export default function MeetingRoom() {
         />
 
         {/* Dynamic Keywords */}
-        <meta
-          name="keywords"
-          content={`${
-            selectedRoom?.title || 'Meeting Rooms'
-          }, CSULA, U-SU, Room Capacity, Event Setup, ${selectedRoom?.id?.replace(
-            /-/g,
-            ' ',
-          )}`}
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

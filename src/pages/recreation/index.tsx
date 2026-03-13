@@ -106,12 +106,6 @@ export default function Recreation() {
           key="description"
         />
         <meta name="author" content="Recreation" key="author" />
-        <meta
-          name="keywords"
-          content="Recreation, Fitness, Workout, Cal State LA, CSULA, U-SU, Gym, Esports, Game Room, Nutrition, Exercise, Weights, Intramural Sports, Spring 2026 Hours"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

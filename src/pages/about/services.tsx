@@ -71,12 +71,6 @@ export default function Services() {
           content="Explore free services at the Cal State LA Student Union, including Nap Pods, the Reflection Room, Lactation Room, and gender-inclusive restrooms."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Cal State LA Nap Pods, CSULA Reflection Room, Lactation Room Cal State LA, Gender Inclusive Restrooms CSULA, Student Union Amenities, U-SU Services, Relaxation Station CSULA"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

@@ -54,12 +54,6 @@ export default function CLSRC() {
           content="The Chicana/o Latina/o Student Resource Center (CLSRC) provides services, cultural education, and community support for Cal State LA students. Join us for Nuestra Grad."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="CLSRC, Chicana/o Latina/o Student Resource Center, Cal State LA, CSULA, Latinx Resources, Chicanx, Nuestra Grad, Cultural Graduation, CCC, U-SU, Student Union"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

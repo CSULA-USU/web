@@ -82,11 +82,6 @@ export default function HowToVote() {
     <Page>
       <Head>
         <title>How To Vote</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Elections, Office, Candidate, Elect, Representative"
-          key="keywords"
-        />
       </Head>
       <FluidContainer
         backgroundColor="black"

@@ -70,11 +70,6 @@ export default function App({
                   key="author"
                 />
                 <meta
-                  name="keywords"
-                  content="the university student union, california state university los angeles, student union, csula, cal state la, u-su, usu, student, organizations, cross cultural centers, center for student involvement, fitness center, student orgnizations, calendar, events, gender and sexuality resource center, pan african resource center, asian pacific islander, chicana latina, information and event services, distinguished women awards, cultural graduate celebrations, employment opportunities, board of directors, jobs, ccc, csi, apisrc, graffix, operations, recreation, building hours, building, hours, college, student, union, student union, cal state la, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles"
-                  key="keywords"
-                />
-                <meta
                   name="description"
                   content="The University-Student Union inc. (U-SU) at California State University, Los Angeles, was established in 1975. With open doors and minds, we provide space and opportunities enabling Golden Eagles to soar. We accomplish this by encouraging social, cultural, recreational, and educational programming for the University and broader community. We foster a vibrant and equitable campus climate. Our vision is to be Cal State LA’s hub for connection and growth."
                   key="description"

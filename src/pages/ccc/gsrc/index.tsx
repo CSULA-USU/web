@@ -135,12 +135,6 @@ export default function GSRC() {
           content="The GSRC at Cal State LA empowers LGBTQIA+ students and allies through resources like the Affirmation Closet, Lactation Room, and Pride Grad celebrations."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="GSRC, Gender and Sexuality Resource Center, Cal State LA, LGBTQIA+ resources, Pride Grad, Affirmation Closet, Lactation Room, Queer Student Support, CSULA CCC"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

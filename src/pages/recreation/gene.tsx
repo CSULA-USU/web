@@ -43,12 +43,6 @@ export default function Gene() {
           key="description"
         />
         <meta name="author" content="Recreation" key="author" />
-        <meta
-          name="keywords"
-          content="GENE, Golden Eagle Nutrition Education, Cal State LA Nutrition, Nutrition Coaching, Healthy Eating, Mindfulness, Habit Change, CSULA U-SU Recreation"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

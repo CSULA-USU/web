@@ -158,12 +158,6 @@ export default function CCC() {
           content="Visit the Cross Cultural Centers at Cal State LA. Home to APISRC, CLSRC, GSRC, and PASRC. We foster an inclusive campus environment through cultural programming and student support."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Cross Cultural Center, CCC, APISRC, Asian Pacific Islander Student Resource Center, CLSRC, Chicana/o Latina/o Student Resource Center, GSRC, Gender and Sexuality Resource Center, PASRC, Pan African Student Resource Center, Cultural Graduations, Inclusion, Social Justice"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

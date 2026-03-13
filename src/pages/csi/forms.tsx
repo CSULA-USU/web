@@ -73,12 +73,6 @@ export default function CSIForms() {
           content="Access essential forms for Cal State LA student organizations, including event registration, temporary food permits, and amplified sound requests."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="CSI Forms, Student Organization Forms, Cal State LA Event Registration, Temporary Food Permit CSULA, Amplified Sound Request, Student Club Banking, CSI Resources, U-SU CSI"
-          key="keywords"
-        />
-
         {/* Open Graph */}
         <meta
           property="og:title"

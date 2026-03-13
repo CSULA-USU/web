@@ -93,12 +93,6 @@ export default function MeetingRooms() {
           content="Rent meeting spaces at Cal State LA U-SU. Available rooms: Los Angeles A/B/C, Theater, Alhambra, San Gabriel, and Plaza Space. View layouts, features, and rental fees."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="CSULA Meeting Rooms, Cal State LA Event Spaces, U-SU Room Reservations, Alhambra Room, San Gabriel Room, Los Angeles Room, U-SU Theater, Boardroom North, Boardroom South, Plaza Space Rental"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

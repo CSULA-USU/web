@@ -147,11 +147,6 @@ export default function UKrew() {
           content="Explore U-Krew student positions at Cal State LA's University-Student Union. Join departments like Operations, Media Services, Graffix, CSI, and more to build real-world experience."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="Cal State LA, CSULA, campus jobs, student union, U-Krew jobs, student employment Cal State LA, Operations Assistant, Event Services Aide, Student Engagement Assistant, Junior Graphics Designer, Media Services Assistant, Accounting Assistant"
-          key="keywords"
-        />
         <meta name="robots" content="index,follow" />
 
         {/* Open Graph / Social Media - Standardized Keys Applied */}

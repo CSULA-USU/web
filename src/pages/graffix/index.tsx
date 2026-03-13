@@ -164,7 +164,7 @@ export default function Graffix() {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>U-SU Graffix</title>
+        <title>U&ndash;SU Graffix</title>
         <meta
           name="author"
           content="The University Student Union Graffix Department"
@@ -174,8 +174,7 @@ export default function Graffix() {
           name="description"
           content="Contact U-SU Graffix at (323) 343-2464. The award-winning creative hub at Cal State LA for graphic design, web development, and campus promotion."
           key="description"
-        />
-
+        />{' '}
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
@@ -198,7 +197,6 @@ export default function Graffix() {
           key="og-image"
         />
         <meta property="og:image:alt" content="U-SU Graffix Department Logo" />
-
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -213,9 +211,7 @@ export default function Graffix() {
           name="twitter:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
         />
-
         <link rel="canonical" href="https://www.calstatelausu.org/graffix" />
-
         {/* Structured Data for Google/AI */}
         <script
           type="application/ld+json"

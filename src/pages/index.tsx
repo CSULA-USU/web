@@ -54,12 +54,6 @@ export default function Home() {
           name="description"
           content="The heart of campus life at Cal State LA. Discover upcoming events, student organizations, job opportunities, and essential student services at the U-SU."
         />
-        <meta
-          name="keywords"
-          content="Cal State LA Student Union, U-SU, CSULA Events, Student Government, ASI Cal State LA, Golden Eagles, Campus Life Los Angeles, Student Involvement"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

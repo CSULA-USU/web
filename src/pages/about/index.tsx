@@ -53,12 +53,6 @@ export default function About() {
           content="Established in 1975, the U-SU is Cal State LA's hub for connection and growth. Explore our mission, values, organizational chart, and strategic plan for student success."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="About Cal State LA Student Union, U-SU Mission, U-SU Values, Cal State LA Non-Discrimination Policy, Student Union Strategic Plan, Golden Eagles Hub, CSU Los Angeles Student Life"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"

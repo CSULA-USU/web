@@ -176,12 +176,6 @@ export default function Operations() {
           content="Reserve meeting rooms and event spaces at Cal State LA U-SU. Explore our facilities, media services, rental fees, and reservation policies for students and faculty."
           key="description"
         />
-        <meta
-          name="keywords"
-          content="The University Student Union, Cal State LA, U-SU Operations, Meeting Rooms, Event Reservations, Media Services, Room Rentals, Alhambra Room, Los Angeles Room, San Gabriel Room, MMRS Policies"
-          key="keywords"
-        />
-
         {/* Open Graph / Social Media - Deduplication Keys Applied */}
         <meta
           property="og:title"
