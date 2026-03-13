@@ -24,6 +24,13 @@ import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
 import { IconType } from 'react-icons';
 import { useBreakpoint } from 'hooks';
 import { ReactNode } from 'react';
+import { Press_Start_2P } from 'next/font/google';
+
+const pressStart2P = Press_Start_2P({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const VerticalContainer = styled.div`
   display: flex;
@@ -179,7 +186,7 @@ const SocialIconLink = ({
 };
 
 const GameFont = styled.h1<GameFontProps>`
-  font-family: 'Press Start 2P', system-ui;
+  font-family: ${pressStart2P.style.fontFamily}, system-ui;
   font-size: ${(p) => FontSizes[p.size || 'md']};
   letter-spacing: ${(p) => p.letterSpacing};
   color: ${(p) => Colors[p.color || 'black']};
