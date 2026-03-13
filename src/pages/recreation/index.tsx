@@ -131,7 +131,7 @@ export default function Recreation() {
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
-          key="og-image"
+          key="og:image"
         />
         <meta
           property="og:image:alt"
