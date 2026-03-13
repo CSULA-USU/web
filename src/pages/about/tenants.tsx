@@ -72,12 +72,98 @@ export default function Tenants() {
   return (
     <Page>
       <Head>
-        <title>U-SU Tenants</title>
-        <meta name="author" content="Tenants" key="author" />
+        <title>Tenants & Dining | U&ndash;SU</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="Alumni Association, Associated Students Incorporated, ASI, College of Professional and Global Education, PAGE, Information Technology Services, Open Access Labs, OAL, Wells Fargo, Sbarro, Starbucks"
-          key="keywords"
+          name="author"
+          content="University-Student Union at Cal State LA"
+          key="author"
+        />
+        <meta
+          name="description"
+          content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="U-SU Tenants: Dining, Services, and Student Government"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Meet our partners. From student government (ASI) to your morning coffee at Starbucks, explore the organizations and eateries located inside the U-SU."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/about/tenants"
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp"
+          key="og-image"
+        />
+
+        {/* Twitter - Upgraded to large_image for better visibility */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/tenants"
+        />
+
+        {/* Structured Data for a Directory of Organizations */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'University-Student Union Tenants',
+              description:
+                'Directory of dining and student services located within the U-SU.',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  item: {
+                    '@type': 'Organization',
+                    name: 'Alumni Association',
+                    telephone: '323-343-2586',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  item: {
+                    '@type': 'Organization',
+                    name: 'Associated Students, Inc. (ASI)',
+                    telephone: '323-343-4780',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Starbucks',
+                    telephone: '323-343-6793',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Sbarro',
+                    telephone: '323-225-1464',
+                  },
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <Header title="Tenants">

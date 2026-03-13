@@ -145,20 +145,115 @@ export default function CCC() {
     <Page>
       <Head>
         <title>U&ndash;SU CCC</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
-          content="The University Student Union Center for Student Involvement"
+          content="The Cross Cultural Centers at the Cal State LA University-Student Union"
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, CCC, Cross Cultural Center, APISRC, Asian Pacific Islander Student Resource Center, Asian, Pacific Islander, Desi-American, APIDA, Chicana/o Latina/o Student Resrouce Center, Chicana, Chicano, Latina, Latino, Latinx, Gender and Sexuality Resource Center, Pan African Student Resource Center, Cultural Graduations, Black Graduation, APIDA Graduation, Pride Graduation, Nuestra Graduation, Distinguished Women Award"
-          key="keywords"
+          name="description"
+          content="Visit the Cross Cultural Centers at Cal State LA. Home to APISRC, CLSRC, GSRC, and PASRC. We foster an inclusive campus environment through cultural programming and student support."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Cross Cultural Centers (CCC) | Cal State LA University-Student Union"
+          key="og-title"
         />
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          property="og:description"
+          content="Encouraging student learning and fostering an inclusive campus environment that challenges oppression at Cal State LA."
+          key="og-desc"
+        />
+        <meta property="og:url" content="https://www.calstatelausu.org/ccc" />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA Cross Cultural Centers Logo"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Cross Cultural Centers (CCC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the four resource centers within the CCC: APISRC, CLSRC, GSRC, and PASRC."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/nuestra-teaser.jpeg"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Cross Cultural Centers (CCC)',
+              url: 'https://www.calstatelausu.org/ccc',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/ccc/logo-ccc.webp',
+              telephone: '+13233435001',
+              email: 'crossculturalcenters@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+                url: 'https://www.calstatelausu.org',
+              },
+              sameAs: [
+                'https://instagram.com/cccatcalstatela',
+                'https://linktr.ee/cccatcalstatela',
+              ],
+              knowsAbout: [
+                'Social Justice',
+                'Inclusion',
+                'Cultural Programming',
+                'APISRC',
+                'CLSRC',
+                'GSRC',
+                'PASRC',
+              ],
+              description:
+                'The mission of the Cross Cultural Centers is to encourage student learning and foster an inclusive campus environment that challenges racism, sexism, and heterosexism.',
+            }),
+          }}
         />
       </Head>
       <DepartmentHeader
@@ -174,13 +269,16 @@ export default function CCC() {
           />
         }
       >
-        Established in 1997, the mission of the Cross Cultural Centers at
-        California State University, Los Angeles is to encourage student
-        learning as well as foster an inclusive campus environment that
-        challenges racism, sexism, heterosexism, and other forms of oppression.
-        With a commitment to increasing cross-cultural awareness, we offer a
-        wide variety of programs and services that explore both the shared and
-        unique experiences, histories, and heritages of our diverse community.
+        <Typography>
+          Established in 1997, the mission of the Cross Cultural Centers at
+          California State University, Los Angeles is to encourage student
+          learning as well as foster an inclusive campus environment that
+          challenges racism, sexism, heterosexism, and other forms of
+          oppression. With a commitment to increasing cross-cultural awareness,
+          we offer a wide variety of programs and services that explore both the
+          shared and unique experiences, histories, and heritages of our diverse
+          community.
+        </Typography>
       </DepartmentHeader>
       {/* <CallToAction
         backgroundColorProp="black"

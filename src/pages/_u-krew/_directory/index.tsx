@@ -180,10 +180,6 @@ export default function Directory() {
       <Head>
         <title>U-SU U-Krew Directory</title>
         <meta name="author" content="University-Student Union, Cal State LA" />
-        <meta
-          name="keywords"
-          content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

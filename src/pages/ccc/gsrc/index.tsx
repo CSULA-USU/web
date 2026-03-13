@@ -123,16 +123,126 @@ export default function GSRC() {
     <Page>
       <Head>
         <title>U-SU GSRC</title>
-        <meta name="author" content="gsrc coordinator" key="author" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="csula cal state la student union cross cultural centers the gender sexuality student queer questioning trans transgender womyn lesbian gay lgbt bi curious feminist resource center resource ccc u-su university-student"
-          key="keywords"
+          name="author"
+          content="The Gender and Sexuality Resource Center at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
-          content="The Gender and Sexuality Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          content="The GSRC at Cal State LA empowers LGBTQIA+ students and allies through resources like the Affirmation Closet, Lactation Room, and Pride Grad celebrations."
           key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Gender and Sexuality Resource Center (GSRC) | Cal State LA U-SU"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Creating safe and respectful spaces for all individuals across the gender and sexuality spectrum. Discover our resources, programming, and community."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/gsrc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/gsrc/carousel/pride-grad.jpg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Students celebrating at Cal State LA Pride Graduation"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Gender and Sexuality Resource Center (GSRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Creating safe spaces and providing resources for LGBTQIA+ students, including the Affirmation Closet and Pride Grad."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/gsrc/carousel/pride-grad.jpg"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/gsrc" />
+
+        {/* Structured Data for Support Services */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Gender and Sexuality Resource Center (GSRC)',
+              alternateName: 'GSRC',
+              description:
+                'Identity-based center at Cal State LA providing LGBTQIA+ support, lactation resources, and gender-equity programming.',
+              provider: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              telephone: '+13233433370',
+              email: 'mpizarr5@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              sameAs: ['https://www.instagram.com/gsrc.ccc/'],
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'GSRC Resources',
+                itemListElement: [
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Affirmation Closet (Free Clothing)',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'Lactation Room' },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Pride Graduation',
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

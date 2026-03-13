@@ -332,11 +332,6 @@ export default function BoardOfDirectors() {
     <Page>
       <Head>
         <title>Board of Directors</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Committees, Audit, Fiscal, Nomination."
-          key="keywords"
-        />
       </Head>
       <ShadedImageHeader
         title="Board of Directors"

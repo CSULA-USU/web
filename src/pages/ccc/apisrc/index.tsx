@@ -88,16 +88,106 @@ export default function APISRC() {
     <Page>
       <Head>
         <title>U-SU APISRC</title>
-        <meta name="author" content="apisrc coordinator" key="author" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, Cross Cultural Centers, CCC, Asian Pacific Islander Resource Center, ASPIRC, APIDA, Cultural Graduation, Cultural Grads, Asian, Pacific Islander, Desi-American, U-SU, University Student"
-          key="keywords"
+          name="author"
+          content="The Asian Pacific Islander Student Resource Center at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
-          content="The Asian Pacific Islander Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          content="Empowering Cal State LA's Asian, Pacific Islander, and Desi American (APIDA) community through cultural education, engagement, and the APIDA Graduation ceremony."
           key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Asian Pacific Islander Student Resource Center (APISRC) | Cal State LA"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Address the needs of the APIDA community and explore cultural awareness programs at the U-SU Asian Pacific Islander Student Resource Center."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/apisrc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/apisrc/apida-grad.jpeg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="APIDA Graduation celebration at Cal State LA"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Asian Pacific Islander Student Resource Center (APISRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Empowering the APIDA community through cultural education, engagement, and the APIDA Graduation ceremony."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/apisrc/apida-grad.jpeg"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/apisrc" />
+
+        {/* Structured Data for Resource Centers */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Asian Pacific Islander Student Resource Center (APISRC)',
+              alternateName: 'APISRC',
+              description:
+                'An identity-based center within the Cross Cultural Centers providing services for Asian, Pacific Islander, and Desi American students.',
+              provider: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              telephone: '+13233435249',
+              email: 'motuhiv@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              sameAs: [
+                'https://www.instagram.com/apisrc.ccc/',
+                'https://www.tiktok.com/@apisrc.ccc',
+                'https://discord.com/invite/quZwGJqsMm',
+              ],
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

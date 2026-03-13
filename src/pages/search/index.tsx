@@ -182,12 +182,7 @@ export default function Search() {
     <Page>
       <Head>
         <title>U&ndash;SU Search</title>
-        <meta name="author" content="Search" key="author" />
-        <meta
-          name="keywords"
-          content="search find query u-su student union look"
-          key="keywords"
-        />
+        <meta name="author" content="Search" key="author" />{' '}
         {/* Preload background image for better LCP */}
         <link
           rel="preload"
