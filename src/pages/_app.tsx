@@ -1,8 +1,8 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import ReactGA from 'react-ga4';
-import { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
@@ -68,11 +68,6 @@ export default function App({
                   name="author"
                   content="The University Student Union"
                   key="author"
-                />
-                <meta
-                  name="keywords"
-                  content="the university student union, california state university los angeles, student union, csula, cal state la, u-su, usu, student, organizations, cross cultural centers, center for student involvement, fitness center, student orgnizations, calendar, events, gender and sexuality resource center, pan african resource center, asian pacific islander, chicana latina, information and event services, distinguished women awards, cultural graduate celebrations, employment opportunities, board of directors, jobs, ccc, csi, apisrc, graffix, operations, recreation, building hours, building, hours, college, student, union, student union, cal state la, cal state los angeles, cal state, los angeles, university student union, ussu, ussu la, ussu los angeles"
-                  key="keywords"
                 />
                 <meta
                   name="description"

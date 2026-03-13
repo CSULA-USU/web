@@ -97,11 +97,169 @@ export default function Recreation() {
     <Page>
       <Head>
         <title>U&ndash;SU Recreation</title>
-        <meta name="author" content="Recreation" key="author" />
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Gym, GENE, Golden Eagle Nutrition Education, Nutrition, hours, locations, schedule, muscle, buff, fitness, center, housing, south village, exercise, dumbbell, weights, sports, esports, game room, video games"
-          key="keywords"
+          name="description"
+          content="Get active with Cal State LA Recreation. Access our Fitness Center, Esports Game Room, and wellness programming. Download the Cal State LA Rec app to sign up for classes."
+          key="description"
+        />
+        <meta name="author" content="Recreation" key="author" />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Recreation | Cal State LA University-Student Union"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Enhancing the Golden Eagle experience through play, exercise, and community connection. Visit the Fitness Center or Esports Game Room today."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/recreation"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
+          key="og:image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Students exercising at the Cal State LA U-SU Recreation Fitness Center"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Recreation | Cal State LA U-SU" />
+        <meta
+          name="twitter:description"
+          content="Access the Fitness Center and Esports Game Room. Stay fit and connected at Cal State LA."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
+        />
+        <link rel="canonical" href="https://www.calstatelausu.org/recreation" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'ExerciseGym',
+                  '@id': 'https://www.calstatelausu.org/recreation',
+                  name: 'U-SU Recreation',
+                  url: 'https://www.calstatelausu.org/recreation',
+                  logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
+                  description:
+                    'Cal State LA’s premier fitness and wellness hub, featuring full-service gyms, esports gaming, and residential wellness centers.',
+                  email: 'cbalam2@calstatela.edu',
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '5154 State University Dr.',
+                    addressLocality: 'Los Angeles',
+                    addressRegion: 'CA',
+                    postalCode: '90032',
+                  },
+                  parentOrganization: {
+                    '@type': 'EducationalOrganization',
+                    name: 'University-Student Union at Cal State LA',
+                  },
+                  subOrganization: [
+                    {
+                      '@type': 'HealthClub',
+                      name: 'Recreation 1',
+                      description:
+                        'Full-service fitness center featuring weights, cardio machines, and locker facilities.',
+                      location: 'U-SU Basement',
+                      telephone: '+13233437546',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Free Weights',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Cardio Machines',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Lockers',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Exercise Classes',
+                          value: 'true',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'HealthClub',
+                      name: 'Recreation 2',
+                      description:
+                        'Full-service fitness center featuring weights and cardio machines.',
+                      location: 'U-SU Basement',
+                      telephone: '+13233432520',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Free Weights',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Cardio Machines',
+                          value: 'true',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Exercise Classes',
+                          value: 'true',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'EntertainmentBusiness',
+                      name: 'Recreation Esports Game Room',
+                      description:
+                        'A student gaming hub featuring 8-ball pool, air hockey, foosball, and Nintendo Switch favorites.',
+                      location: 'U-SU Room 201',
+                      telephone: '+13233436909',
+                      amenityFeature: [
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Pool & Table Games',
+                          value: '8-ball, Air Hockey, Foosball, Ping-Pong',
+                        },
+                        {
+                          '@type': 'LocationFeatureSpecification',
+                          name: 'Video Games',
+                          value: 'Super Smash Bros, Mario Party, Mario Kart',
+                        },
+                      ],
+                    },
+                    {
+                      '@type': 'HealthAndBeautyBusiness',
+                      name: 'South Village Housing Wellness Zone',
+                      description:
+                        'Wellness and activity center for campus residents.',
+                      location: 'South Village Housing',
+                    },
+                  ],
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <StyledH1>

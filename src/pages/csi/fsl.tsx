@@ -366,29 +366,35 @@ export default function FSL() {
         <meta
           name="description"
           content="Contact Cal State LA Fraternity & Sorority Life (FSL) at (323) 343-5113. Information on recruitment, Greek council intake, and sorority/fraternity chapters."
+          key="description"
+        />
+
+        <meta
+          name="author"
+          content="The University Student Union Center for Student Involvement"
+          key="author"
         />
 
         {/* Open Graph */}
         <meta
           property="og:title"
           content="Fraternity & Sorority Life (FSL) | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Information on recruitment, Greek council intake, and sorority/fraternity chapters at Cal State LA."
+          key="og-desc"
         />
-        <meta
-          name="author"
-          content="The University Student Union Center for Student Involvement"
-        />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/csi/fsl"
         />
-        <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
@@ -407,7 +413,7 @@ export default function FSL() {
         />
         <meta
           name="twitter:image"
-          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
         />
 
         {/* Canonical */}
@@ -419,10 +425,18 @@ export default function FSL() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'NonprofitOrganization',
+              '@type': 'EducationalOrganization',
               name: 'Fraternity and Sorority Life (FSL)',
               url: 'https://www.calstatelausu.org/csi/fsl',
               logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
               telephone: '+13233435113',
               email: 'iprieto7@calstatela.edu',
               address: {
@@ -433,6 +447,7 @@ export default function FSL() {
                 postalCode: '90032',
                 addressCountry: 'US',
               },
+              openingHours: ['Mo-Fr 09:00-17:00'],
               parentOrganization: {
                 '@type': 'NonprofitOrganization',
                 name: 'Center for Student Involvement (CSI)',

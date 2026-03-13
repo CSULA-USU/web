@@ -133,29 +133,38 @@ export default function CSI() {
         <meta
           name="description"
           content="Contact the Center for Student Involvement (CSI) at Cal State LA at (323) 343-5110. The hub for student leadership, campus events, and organization recognition."
-        />
-        <meta
-          property="og:title"
-          content="Center for Student Involvement (CSI) | Cal State LA"
-        />
-        <meta
-          property="og:description"
-          content="The hub for student leadership, campus events, and organization recognition at Cal State LA."
+          key="description"
         />
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
+          key="author"
+        />
+
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Center for Student Involvement (CSI) | Cal State LA"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="The hub for student leadership, campus events, and organization recognition at Cal State LA."
+          key="og-desc"
         />
         <meta property="og:url" content="https://www.calstatelausu.org/csi" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Center for Student Involvement (CSI) logo"
         />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"

@@ -115,12 +115,99 @@ export default function MeetingRoom() {
   return !selectedRoom ? null : (
     <Page>
       <Head>
-        <title>U&ndash;SU Meeting Rooms</title>
+        {/* Dynamic Title based on the specific room */}
+        <title>
+          {selectedRoom
+            ? `${selectedRoom.title} | Meeting Rooms | Cal State LA U-SU`
+            : 'Meeting Rooms | University-Student Union'}
+        </title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
-          key="keywords"
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
         />
+
+        {/* Dynamic Description */}
+        <meta
+          name="description"
+          content={
+            selectedRoom
+              ? `View capacity, equipment, and setup options for the ${selectedRoom.title} at Cal State LA. Features: ${selectedRoom.features}.`
+              : 'Explore specific meeting room layouts, capacities, and equipment at the Cal State LA University-Student Union.'
+          }
+          key="description"
+        />
+
+        {/* Dynamic Keywords */}
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content={`${
+            selectedRoom?.title || 'Meeting Room'
+          } | Cal State LA U-SU`}
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content={`Plan your event in the ${selectedRoom?.title}. Check setup types, equipment availability, and rental fees.`}
+          key="og-desc"
+        />
+        <meta
+          property="og:image"
+          content={
+            selectedRoom?.headerImage ||
+            'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp'
+          }
+          key="og-image"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
+        />
+
+        {/* Structured Data for the specific room */}
+        {selectedRoom && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': ['MeetingRoom', 'EventVenue'],
+                name: selectedRoom.title,
+                description: selectedRoom.features,
+                image: selectedRoom.headerImage,
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: '5154 State University Dr.',
+                  addressLocality: 'Los Angeles',
+                  addressRegion: 'CA',
+                  postalCode: '90032',
+                },
+                amenityFeature: selectedRoom.arrangements.map((a) => ({
+                  '@type': 'LocationFeatureSpecification',
+                  name: a.setup,
+                  value: `Capacity: ${a.capacity.join(', ')}`,
+                })),
+              }),
+            }}
+          />
+        )}
       </Head>
       <MeetingRoomsNav />
       <FluidContainer

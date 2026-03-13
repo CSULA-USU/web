@@ -60,20 +60,102 @@ export default function CSIForms() {
     <Page>
       <Head>
         <title>U-SU CSI Forms</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
           content="The University-Student Union Center for Student Involvement at Cal State LA"
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, USU, University Student, Forms, Form, Student Organization Form, Student Organization, Club Banking, Payment Advance Check Requisition, Payment Advance Procedures, Student Organization Check Requisition, Student Orgnization Deposit Slip, Student Organization Sale Receipt Log, Student Clubs and Orgs Event Fundraising Request Form, Student Organization External Private Fundraising Approval Formm, Amplified Sound Request, Event Registration, Student Organization Temporary Food Permit"
-          key="keywords"
+          name="description"
+          content="Access essential forms for Cal State LA student organizations, including event registration, temporary food permits, and amplified sound requests."
+          key="description"
+        />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Student Organization Forms | Center for Student Involvement | Cal State LA"
+          key="og-title"
         />
         <meta
-          name="description"
-          content="All the forms relevant to the Center for Student Involvement"
-          key="description"
+          property="og:description"
+          content="Everything you need to register events and manage your student organization at Cal State LA."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/forms"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
+          key="og-image"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Student Organization Forms | CSI | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Access official forms for event registration, food permits, and amplified sound requests for Cal State LA student clubs."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/csi/forms" />
+
+        {/* Structured Data for Forms and Resources */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'CSI Student Organization Forms',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              description:
+                'A collection of official forms for student organizations at California State University, Los Angeles.',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Amplified Sound Request',
+                  url: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhDAzVdPgaKb3-l5UdrlKWTqEjIf6WVAJ-JKCU-ewQQZxwFKbmlrarVXUOkjudlo04Q*',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Event Registration',
+                  url: 'https://calstatela.presence.io/form/event-registration',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: 'Temporary Food Permit Form',
+                  url: 'https://calstatela.na4.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhBClO-FUQqabMLYlp_HmZ1jd1qpIfLnT9oqbwpC5uGDrT0xEXkxeOEtpj1gQZ0xDHs*',
+                },
+              ],
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': 'https://www.calstatelausu.org/csi/forms',
+              },
+            }),
+          }}
         />
       </Head>
       <Header

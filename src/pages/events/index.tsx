@@ -26,11 +26,6 @@ export default function Home() {
     <Page>
       <Head>
         <title>U-SU Events</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Cross Cultural Centers, CCC, Center For Student Involvement, CSI, Fitness Center, Student Orgnizations, Calendar, Events"
-          key="keywords"
-        />
       </Head>
       <BackgroundImage>
         <Header title="Upcoming Events">
