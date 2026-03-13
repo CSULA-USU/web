@@ -4,6 +4,10 @@ import { LuExternalLink } from 'react-icons/lu';
 
 const UnderlineHover = styled(Link)`
   color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -18,6 +22,10 @@ const UnderlineHover = styled(Link)`
 
 const NoUnderlineHover = styled(Link)`
   color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -31,7 +39,7 @@ const NoUnderlineHover = styled(Link)`
 `;
 
 const StyledSpan = styled.span`
-  line-height: 1;
+  line-height: inherit;
 `;
 
 const StyledDiv = styled.span`
