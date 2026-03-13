@@ -188,7 +188,7 @@ export default function MeetingRoom() {
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
-                '@type': 'Accommodation',
+                '@type': ['MeetingRoom', 'EventVenue'],
                 name: selectedRoom.title,
                 description: selectedRoom.features,
                 image: selectedRoom.headerImage,

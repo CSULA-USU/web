@@ -172,7 +172,7 @@ export default function AcuiAwards() {
   return (
     <Page>
       <Head>
-        <title>U-SU Graffix ACUI Awards</title>
+        <title>U&ndash;SU Graffix ACUI Awards</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
