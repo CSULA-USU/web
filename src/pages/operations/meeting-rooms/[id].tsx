@@ -177,12 +177,19 @@ export default function MeetingRoom() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
-          content={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
+          content={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
         />
-
         <link
           rel="canonical"
-          href={`https://www.calstatelausu.org/operations/meeting-rooms/${id}`}
+          href={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
         />
 
         {/* Structured Data for the specific room */}
