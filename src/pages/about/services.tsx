@@ -115,21 +115,21 @@ export default function Services() {
                 'Physical amenities and wellness services provided by the U-SU for the Cal State LA community.',
               mainEntity: [
                 {
-                  '@type': 'Accommodation',
+                  '@type': ['Place', 'Service'],
                   name: 'Relaxation Station (Nap Pods)',
                   description:
                     'Three state-of-the-art sleep pods for 20-minute rest intervals.',
                   location: 'U-SU Room 304',
                 },
                 {
-                  '@type': 'Place',
+                  '@type': ['Place', 'Service'],
                   name: 'Reflection Room',
                   description:
                     'Space for quiet reflection, meditation, or prayer.',
                   location: 'U-SU Room 302',
                 },
                 {
-                  '@type': 'HealthAndBeautyBusiness',
+                  '@type': ['Place', 'Service'],
                   name: 'Lactation Room',
                   description: 'Private space for nursing mothers.',
                   location: 'U-SU Room 206',
@@ -150,9 +150,9 @@ export default function Services() {
           width="100%"
         />
         <Typography>
-          The programs and services hosted by the University-Student Union are
-          funded by the student union fee and are available to all students free
-          of charge.
+          The programs and services hosted by the University&ndash;Student Union
+          are funded by the student union fee and are available to all students
+          free of charge.
         </Typography>
       </Header>
       <FluidContainer>
