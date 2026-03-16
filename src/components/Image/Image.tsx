@@ -147,6 +147,8 @@ const ExpandedImage = styled.img`
 export const StyledImage = styled('img')<ImageProps>`
   border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
   flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
+  ${layout}
+  ${space}
   width: 100%;
   height: 100%;
   display: block;
