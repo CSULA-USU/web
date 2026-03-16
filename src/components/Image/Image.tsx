@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styled, { CSSObject } from 'styled-components';
 import { layout, space, LayoutProps, SpaceProps } from 'styled-system';
 import { ReactNode } from 'react';
-import { Colors } from 'theme';
+import { Colors, media } from 'theme';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { GrExpand } from 'react-icons/gr';
 
@@ -84,30 +84,57 @@ const BottomIconAnchor = styled.div`
   background: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   padding: 4px;
+  ${media('tablet')(`
+      bottom: 1px;
+      right: 1px;
+      border-radius: 10px;
+    `)}
+
+  ${media('mobile')(`
+      bottom: 1px;
+      right: 1px;
+      border-radius: 10px;
+    `)}
 `;
 
 const CloseButton = styled.button`
-  background: transparent;
+  background: #fff;
   border: none;
   cursor: pointer;
   padding: 0;
   display: flex;
-`;
+  align-items: center;
+  justify-content: center;
 
-const ExpandIcon = styled(GrExpand)`
-  color: ${Colors.white || '#fff'};
-  font-size: 18px;
-  path {
-    stroke: ${Colors.white || '#fff'};
-  }
+  border-radius: 50%;
+
+  width: 24px;
+  height: 24px;
 `;
 
 const CloseButtonIcon = styled(AiFillCloseCircle)`
   color: red;
   font-size: 24px;
+  display: block;
+
   &:hover {
     color: ${Colors.black};
     transition: 0.2s ease-in-out;
+  }
+`;
+
+const ExpandIcon = styled(GrExpand)`
+  color: ${Colors.white || '#fff'};
+  font-size: 18px;
+  ${media('tablet')(`
+      font-size: 16px;
+    `)}
+
+  ${media('mobile')(`
+      font-size: 14px;
+    `)}
+  path {
+    stroke: ${Colors.white || '#fff'};
   }
 `;
 

@@ -27,24 +27,71 @@ const TextCenter = styled.div`
 
 const Table = styled.div`
   text-align: left;
+  width: 100%;
 
   table {
     border-collapse: collapse;
+    width: 100%;
   }
 
   tr {
     border-bottom: 1pt solid black;
   }
 
-  th {
-    padding: 20px 0 40px 0;
+  @media (min-width: 1025px) {
+    /* Padding for top and bottom of rows */
+    th,
+    td {
+      padding: ${Spaces.lg} 0;
+      text-align: left;
+    }
+
+    /* Column Widths */
+    .setup-column {
+      width: 45%;
+    }
+    .capacity-column {
+      width: 25%;
+    }
+    .equipment-column {
+      width: 30%;
+    }
+
+    td {
+      vertical-align: top;
+    }
   }
 
-  thead th {
-    padding-right: 20px;
-  }
-  td {
-    width: 35%;
+  @media (max-width: 1024px) {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      padding: ${Spaces.lg} 0;
+      text-align: center;
+    }
+
+    td,
+    th {
+      display: flex;
+      width: 100% !important;
+      padding: ${Spaces.xs} 0;
+      align-items: center;
+    }
+
+    td:not(:first-child)::before {
+      content: attr(data-label);
+      width: 120px;
+      min-width: 120px;
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: ${Colors.greyDark};
+    }
   }
 `;
 
@@ -152,8 +199,8 @@ export default function MeetingRoom() {
           <table align="center" vertical-align>
             <thead>
               <tr>
-                {!isDesktop && <td aria-label="No value">&nbsp;</td>}
-                <th>
+                <th></th>
+                <td>
                   <Typography
                     variant="cta"
                     as="h2"
@@ -161,7 +208,7 @@ export default function MeetingRoom() {
                   >
                     Setup
                   </Typography>
-                </th>
+                </td>
                 <th>
                   {
                     <Typography
@@ -187,43 +234,54 @@ export default function MeetingRoom() {
 
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
-                {!isDesktop && (
-                  <th>
+                {/* Combined Setup Column: Image + Text */}
+                <th className="setup-column">
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                    }}
+                  >
                     {arrangement.image && (
                       <Image
                         borderRadius="12px"
-                        width={350}
-                        marginRight={Spaces['2xl']}
+                        width={isDesktop ? 250 : 350}
                         src={arrangement.image}
                         fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
                         isExpandable
                       />
                     )}
-                  </th>
-                )}
-                <td>
-                  <Typography
-                    variant="title"
-                    weight="400"
-                    size={isMobile ? 'xs' : 'md'}
-                  >
-                    {arrangement.setup}
-                  </Typography>
-                </td>
-                <td>
-                  {arrangement.capacity.map((c) => (
                     <Typography
                       variant="title"
-                      weight="400"
+                      weight="700"
                       size={isMobile ? 'xs' : 'md'}
-                      key={c}
+                      margin="20px 0 0 0"
                     >
-                      {c}
+                      {arrangement.setup}
                     </Typography>
-                  ))}
+                  </div>
+                </th>
+
+                {/* Capacity Column */}
+                <td className="capacity-column" data-label="Capacity">
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    {arrangement.capacity.map((c) => (
+                      <Typography
+                        variant="title"
+                        weight="400"
+                        size={isMobile ? 'xs' : 'md'}
+                        key={c}
+                      >
+                        {c}
+                      </Typography>
+                    ))}
+                  </div>
                 </td>
-                <td>
+
+                {/* Equipment Column */}
+                <td className="equipment-column" data-label="Equipment">
                   <EquipmentSection>
                     {arrangement.equipment.map((e) => (
                       <Typography
@@ -232,7 +290,6 @@ export default function MeetingRoom() {
                         weight="400"
                         size={isMobile ? 'xs' : 'md'}
                       >
-                        {' '}
                         {e}
                       </Typography>
                     ))}
