@@ -12,7 +12,12 @@ import { useBreakpoint } from 'hooks';
 const EquipmentSection = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${Spaces.sm};
+
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+  }
 `;
 
 const NavItemContainer = styled.div`
@@ -26,7 +31,7 @@ const TextCenter = styled.div`
 `;
 
 const Table = styled.div`
-  text-align: left;
+  display: flex;
   width: 100%;
 
   table {
@@ -39,26 +44,21 @@ const Table = styled.div`
   }
 
   @media (min-width: 1025px) {
-    /* Padding for top and bottom of rows */
     th,
     td {
       padding: ${Spaces.lg} 0;
-      text-align: left;
+      text-align: center;
+      padding-right: ${Spaces.md};
+      vertical-align: middle;
     }
-
-    /* Column Widths */
     .setup-column {
-      width: 45%;
+      width: 20%;
     }
     .capacity-column {
-      width: 25%;
+      width: 20%;
     }
-    .equipment-column {
-      width: 30%;
-    }
-
     td {
-      vertical-align: top;
+      vertical-align: middle;
     }
   }
 
@@ -77,7 +77,7 @@ const Table = styled.div`
     td,
     th {
       display: flex;
-      width: 100% !important;
+      width: 100%;
       padding: ${Spaces.xs} 0;
       align-items: center;
     }
@@ -125,7 +125,7 @@ const NavItems = [
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -321,35 +321,35 @@ export default function MeetingRoom() {
 
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
-                {/* Combined Setup Column: Image + Text */}
                 <th className="setup-column">
                   <div
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
-                      alignItems: 'flex-start',
+                      alignItems: 'center',
                     }}
                   >
                     {arrangement.image && (
                       <Image
                         borderRadius="12px"
-                        width={isDesktop ? 250 : 350}
+                        width={isMobile ? 250 : 350}
                         src={arrangement.image}
                         fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
                         isExpandable
                       />
                     )}
-                    <Typography
-                      variant="title"
-                      weight="700"
-                      size={isMobile ? 'xs' : 'md'}
-                      margin="20px 0 0 0"
-                    >
-                      {arrangement.setup}
-                    </Typography>
                   </div>
                 </th>
+                <td>
+                  <Typography
+                    variant="title"
+                    weight="400"
+                    size={isMobile ? 'xs' : 'md'}
+                  >
+                    {arrangement.setup}
+                  </Typography>
+                </td>
 
                 {/* Capacity Column */}
                 <td className="capacity-column" data-label="Capacity">
