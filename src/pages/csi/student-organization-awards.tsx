@@ -380,20 +380,97 @@ export default function StudentOrganizationAwards() {
     <Page>
       <Head>
         <title>Student Organization Awards</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment"
-          key="keywords"
+          name="description"
+          content="Celebrate excellence at Cal State LA. Apply for the Golden Eagle Awards, recognizing outstanding student organizations, leaders, and advisors. Applications open Feb 20."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Golden Eagle Awards: Recognizing Excellence at Cal State LA"
+          key="og-title"
         />
         <meta
-          name="description"
-          content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
-          key="description"
+          property="og:description"
+          content="Honoring the remarkable efforts of student groups driving innovation, inclusivity, and positive change. See award categories and eligibility."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/student-organization-awards"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/csi/csi-student-organization-awards.png"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Golden Eagle Awards at California State University, Los Angeles"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Golden Eagle Awards | CSI | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Recognizing excellence in student leadership and organization achievement at Cal State LA. View categories and apply by April 1."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/csi/csi-student-organization-awards.png"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/csi/student-organization-awards"
+        />
+
+        {/* Structured Data for Events/Awards */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Golden Eagle Awards',
+              description:
+                'Annual awards ceremony recognizing top student organizations, leaders, and advisors at California State University, Los Angeles.',
+              publisher: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              mainEntity: {
+                '@type': 'ItemList',
+                name: 'Golden Eagle Award Categories',
+                numberOfItems: studentOrganizationAwards.length,
+                itemListElement: studentOrganizationAwards.map(
+                  (award, index) => ({
+                    '@type': 'ListItem',
+                    position: index + 1,
+                    name: award.title,
+                  }),
+                ),
+              },
+            }),
+          }}
         />
       </Head>
 

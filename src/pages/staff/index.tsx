@@ -34,11 +34,6 @@ export default function Staff() {
           content="University-Student Union, Cal State LA"
           key="author"
         />
-        <meta
-          name="keywords"
-          content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
-          key="keywords"
-        />
       </Head>
       <Header
         title="Meet the Staff"

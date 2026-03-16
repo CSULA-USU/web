@@ -165,10 +165,107 @@ export default function Operations() {
     <Page>
       <Head>
         <title>U&ndash;SU Operations</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations, Reservations, Building Maintenance, Building Services, Custodial Services, Media Services, Media Equipment Rental Chart, MMRS Policies, MMRS, Meeting Space Rental Fees, Capacity Charts, COVID"
-          key="keywords"
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
+        />
+        <meta
+          name="description"
+          content="Reserve meeting rooms and event spaces at Cal State LA U-SU. Explore our facilities, media services, rental fees, and reservation policies for students and faculty."
+          key="description"
+        />
+        {/* Open Graph / Social Media - Deduplication Keys Applied */}
+        <meta
+          property="og:title"
+          content="Operations & Reservations | Cal State LA University-Student Union"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="The hub for campus event support, facility maintenance, and meeting room reservations at the Cal State LA U-SU."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/operations"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="U-SU Operations and Facilities at Cal State LA"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="U-SU Operations & Reservations | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Plan your next meeting or event at the University-Student Union. Access rental forms, capacity charts, and equipment fees."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/operations" />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'U-SU Operations & Reservations',
+              url: 'https://www.calstatelausu.org/operations',
+              description:
+                'The Operations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.',
+              telephone: '+13233432465',
+              email: 'jortiz@cslanet.calstatela.edu',
+              provider: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'U-SU Facilities',
+                itemListElement: [
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Meeting Room Rentals',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Media Equipment Rental',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Event Support Services',
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
         />
       </Head>
       <HeaderWithVideo

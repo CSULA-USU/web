@@ -105,11 +105,6 @@ export default function CulturalGrads() {
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, Center for Student Involvement, CSI, U-SU, University Student, Distinguished Women Awards, CCC, Cross Cultural Center"
-          key="keywords"
-        />
-        <meta
           name="description"
           content="The Center for Student Involvement in the Cal State LA University-Student Union serves as a hub for involvement, recreation, and leadership, adding to the value of campus life at Cal State LA"
           key="description"

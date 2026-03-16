@@ -24,6 +24,13 @@ import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
 import { IconType } from 'react-icons';
 import { useBreakpoint } from 'hooks';
 import { ReactNode } from 'react';
+import { Press_Start_2P } from 'next/font/google';
+
+const pressStart2P = Press_Start_2P({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const VerticalContainer = styled.div`
   display: flex;
@@ -179,7 +186,7 @@ const SocialIconLink = ({
 };
 
 const GameFont = styled.h1<GameFontProps>`
-  font-family: 'Press Start 2P', system-ui;
+  font-family: ${pressStart2P.style.fontFamily}, system-ui;
   font-size: ${(p) => FontSizes[p.size || 'md']};
   letter-spacing: ${(p) => p.letterSpacing};
   color: ${(p) => Colors[p.color || 'black']};
@@ -267,10 +274,129 @@ export default function Gameroom() {
     <Page>
       <Head>
         <title>Recreation Game Room</title>
-
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="author"
+          content="The University-Student Union Recreation Department at Cal State LA"
+          key="author"
+        />
+        <meta
+          name="description"
+          content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
+          key="description"
+        />{' '}
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Recreation Game Room & Esports | Cal State LA University-Student Union"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Do you have what it takes to win? Visit the U-SU Game Room for tournaments, community, and fun. Located on the 2nd floor, Room 201."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/recreation/game-room"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/recreation/game-room/game-room_video.gif"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA Recreation Game Room interface"
+        />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Level Up at the U-SU Game Room | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="From 8-ball pool and air hockey to Super Smash Bros and Mario Kart. Join the Discord and find your community in Room 201!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/recreation/game-room/game-room_video.gif"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Cal State LA Recreation Game Room interface with retro gaming aesthetic"
+        />
         <link
-          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-          rel="stylesheet"
+          rel="canonical"
+          href="https://www.calstatelausu.org/recreation/game-room"
+        />
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EntertainmentBusiness',
+              name: 'U-SU Recreation Game Room',
+              url: 'https://www.calstatelausu.org/recreation/game-room',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp',
+              telephone: '+13233436909',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 201',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '12:00',
+                  closes: '18:00',
+                },
+              ],
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: '8-Ball Pool',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Air Hockey',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Foosball',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Ping-Pong',
+                  value: 'true',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Nintendo Switch Gaming',
+                  value: 'Super Smash Bros, Mario Party, Mario Kart',
+                },
+              ],
+              sameAs: [
+                'https://discord.gg/W5JM6vrbAa',
+                'https://www.instagram.com/calstatela_recreation',
+                'https://www.twitch.tv/calstatela_recreation',
+              ],
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+            }),
+          }}
         />
       </Head>
 
