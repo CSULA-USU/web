@@ -79,7 +79,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'CollegeOrUniversity',
+              '@type': 'NonprofitOrganization',
               name: 'University-Student Union at Cal State LA',
               url: 'https://www.calstatelausu.org',
               logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp',
