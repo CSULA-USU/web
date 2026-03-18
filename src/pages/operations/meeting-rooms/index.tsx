@@ -92,7 +92,7 @@ export default function MeetingRooms() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="U-SU Meeting Room Rentals | Cal State LA"
+          content="U-SU Meeting and Event Room Rentals | Cal State LA"
         />
         <meta
           name="twitter:description"
@@ -110,7 +110,7 @@ export default function MeetingRooms() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'CivicStructure',
+              '@type': 'EventVenue',
               name: 'U-SU Meeting Rooms',
               url: 'https://www.calstatelausu.org/operations/meeting-rooms',
               description:
