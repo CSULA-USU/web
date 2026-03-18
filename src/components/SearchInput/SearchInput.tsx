@@ -36,7 +36,7 @@ const StyledInput = styled.input`
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  font-family: 'Bitter', serif;
+  font-family: var(--font-bitter), serif;
   text-decoration: none;
   ::selection {
     background: ${Colors.greyDarker};
