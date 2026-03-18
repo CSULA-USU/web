@@ -286,8 +286,16 @@ export default function MeetingRoom() {
           <table align="center" vertical-align>
             <thead>
               <tr>
-                <th></th>
-                <td>
+                <th className="setup-column">
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Room View
+                  </Typography>
+                </th>
+                <th>
                   <Typography
                     variant="cta"
                     as="h2"
@@ -295,17 +303,15 @@ export default function MeetingRoom() {
                   >
                     Setup
                   </Typography>
-                </td>
+                </th>
                 <th>
-                  {
-                    <Typography
-                      variant="cta"
-                      as="h2"
-                      size={isMobile ? 'sm' : 'lg'}
-                    >
-                      Capacity
-                    </Typography>
-                  }
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Capacity
+                  </Typography>
                 </th>
                 <th>
                   <Typography

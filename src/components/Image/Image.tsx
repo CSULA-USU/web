@@ -149,8 +149,6 @@ export const StyledImage = styled('img')<ImageProps>`
   flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
   ${layout}
   ${space}
-  width: 100%;
-  height: 100%;
   display: block;
 `;
 
@@ -209,7 +207,6 @@ export const Image: FC<ImageProps> = ({
   return (
     <>
       <TriggerWrapper
-        {...filteredProps}
         isExpandable={isExpandable}
         onClick={toggleOpen}
         onKeyDown={handleKeyDown}
