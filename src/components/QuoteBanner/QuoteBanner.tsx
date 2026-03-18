@@ -21,7 +21,7 @@ export const QuoteBanner = ({ quote, attribution }: QuoteBannerProps) => {
         as="p"
         variant="copy"
         style={{
-          fontFamily: `'Bitter', serif`,
+          fontFamily: 'var(--font-bitter), serif',
           fontSize: '2rem',
           fontWeight: 400,
           lineHeight: '1.5',
