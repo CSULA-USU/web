@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { FluidContainer } from '../FluidContainer';
+import { Colors } from 'theme';
 
 interface QuoteBannerProps {
   quote: string;
@@ -9,42 +10,40 @@ interface QuoteBannerProps {
 
 const BannerWrapper = styled(FluidContainer)`
   width: 100%;
-  background-color: #f9fafb;
-  padding: 64px 24px;
+  background-color: ${Colors.greyLightest};
   text-align: center;
+`;
+
+const QuoteContent = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
 `;
 
 export const QuoteBanner = ({ quote, attribution }: QuoteBannerProps) => {
   return (
     <BannerWrapper>
-      <Typography
-        as="p"
-        variant="copy"
-        style={{
-          fontFamily: 'var(--font-bitter), serif',
-          fontSize: '2rem',
-          fontWeight: 400,
-          lineHeight: '1.5',
-          color: '#1a202c',
-          maxWidth: 960,
-          margin: '0 auto',
-        }}
-      >
-        “{quote}”
-      </Typography>
+      <QuoteContent>
+        <Typography
+          as="p"
+          variant="copy"
+          size="xl"
+          color="black"
+          lineHeight="1.5"
+        >
+          “{quote}”
+        </Typography>
 
-      <Typography
-        as="p"
-        variant="subheader"
-        style={{
-          marginTop: '1.5rem',
-          fontSize: '1rem',
-          fontWeight: 500,
-          color: '#6b7280',
-        }}
-      >
-        — {attribution}
-      </Typography>
+        <Typography
+          as="p"
+          variant="subheader"
+          margin="24px 0 0 0"
+          color="greyDark"
+          size="md"
+          weight="400"
+        >
+          — {attribution}
+        </Typography>
+      </QuoteContent>
     </BannerWrapper>
   );
 };
