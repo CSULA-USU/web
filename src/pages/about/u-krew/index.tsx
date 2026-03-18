@@ -134,7 +134,7 @@ export default function UKrew() {
   return (
     <Page>
       <Head>
-        <title>U-Krew | Student Jobs at Cal State LA U&ndash;SU</title>
+        <title>U&ndash;Krew | Student Jobs at Cal State LA U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
