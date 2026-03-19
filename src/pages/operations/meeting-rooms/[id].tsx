@@ -82,7 +82,7 @@ const Table = styled.div`
       align-items: center;
     }
 
-    td:not(:first-child)::before {
+    td[data-label]::before {
       content: attr(data-label);
       width: 120px;
       min-width: 120px;
@@ -91,6 +91,7 @@ const Table = styled.div`
       text-transform: uppercase;
       font-size: 0.8rem;
       color: ${Colors.greyDark};
+      display: inline-block;
     }
   }
 `;
@@ -347,7 +348,7 @@ export default function MeetingRoom() {
                     )}
                   </div>
                 </th>
-                <td>
+                <td className="setup-column" data-label="Setup">
                   <Typography
                     variant="title"
                     weight="400"

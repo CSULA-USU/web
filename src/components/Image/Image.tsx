@@ -119,7 +119,6 @@ const CloseButtonIcon = styled(AiFillCloseCircle)`
 
   &:hover {
     color: ${Colors.black};
-    transition: 0.2s ease-in-out;
   }
 `;
 
@@ -166,8 +165,10 @@ export const Image: FC<ImageProps> = ({
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
   const [isOpen, setIsOpen] = useState(false);
+  const closeButtonRef = React.useRef<HTMLButtonElement | null>(null);
+  const triggerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const toggleOpen = () => isExpandable && setIsOpen(!isOpen);
+  const toggleOpen = () => isExpandable && setIsOpen((prev) => !prev);
 
   useEffect(() => {
     setImageSrc(src);
@@ -179,9 +180,14 @@ export const Image: FC<ImageProps> = ({
   };
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = originalStyle;
     };
   }, [isOpen]);
 
@@ -204,17 +210,51 @@ export const Image: FC<ImageProps> = ({
     Object.entries(rest).filter(([_, v]) => v != null),
   );
 
+  useEffect(() => {
+    if (isOpen) {
+      triggerRef.current = document.activeElement as HTMLDivElement;
+
+      const timeout = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 10);
+
+      return () => clearTimeout(timeout);
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [isOpen]);
+
   return (
     <>
-      <TriggerWrapper
-        isExpandable={isExpandable}
-        onClick={toggleOpen}
-        onKeyDown={handleKeyDown}
-        tabIndex={isExpandable ? 0 : -1}
-        role={isExpandable ? 'button' : undefined}
-        aria-expanded={isOpen}
-        aria-label={isExpandable ? `View ${alt} in full screen` : alt}
-      >
+      {isExpandable ? (
+        <TriggerWrapper
+          ref={triggerRef}
+          isExpandable={isExpandable}
+          onClick={toggleOpen}
+          onKeyDown={handleKeyDown}
+          tabIndex={isExpandable ? 0 : -1}
+          role={isExpandable ? 'button' : undefined}
+          aria-expanded={isOpen}
+          aria-label={isExpandable ? `View ${alt} in full screen` : alt}
+        >
+          <StyledImage
+            alt={alt}
+            src={imageSrc}
+            srcSet={srcset}
+            sizes={sizes}
+            isExpandable={isExpandable}
+            onError={handleError}
+            loading={lazy ? 'lazy' : 'eager'}
+            tabIndex={-1}
+            {...filteredProps}
+          />
+          {!isOpen && (
+            <BottomIconAnchor>
+              <ExpandIcon />
+            </BottomIconAnchor>
+          )}
+        </TriggerWrapper>
+      ) : (
         <StyledImage
           alt={alt}
           src={imageSrc}
@@ -226,12 +266,7 @@ export const Image: FC<ImageProps> = ({
           tabIndex={-1}
           {...filteredProps}
         />
-        {isExpandable && !isOpen && (
-          <BottomIconAnchor>
-            <ExpandIcon />
-          </BottomIconAnchor>
-        )}
-      </TriggerWrapper>
+      )}
 
       {isOpen && (
         <FullScreenOverlay
@@ -241,7 +276,11 @@ export const Image: FC<ImageProps> = ({
         >
           <ContentWrapper onClick={(e) => e.stopPropagation()}>
             <TopIconAnchor>
-              <CloseButton onClick={() => setIsOpen(false)} aria-label="Close">
+              <CloseButton
+                ref={closeButtonRef}
+                onClick={() => setIsOpen(false)}
+                aria-label="Close"
+              >
                 <CloseButtonIcon />
               </CloseButton>
             </TopIconAnchor>
