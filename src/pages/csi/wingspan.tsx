@@ -616,6 +616,7 @@ export default function Wingspan() {
           <Image
             src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp"
             alt="Large group of students gathered outdoors under an arch of black, white, and gold balloons"
+            isExpandable
             style={{
               width: '100%',
               height: '100%',

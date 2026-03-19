@@ -12,7 +12,12 @@ import { useBreakpoint } from 'hooks';
 const EquipmentSection = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${Spaces.sm};
+
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+  }
 `;
 
 const NavItemContainer = styled.div`
@@ -26,25 +31,68 @@ const TextCenter = styled.div`
 `;
 
 const Table = styled.div`
-  text-align: left;
+  display: flex;
+  width: 100%;
 
   table {
     border-collapse: collapse;
+    width: 100%;
   }
 
   tr {
     border-bottom: 1pt solid black;
   }
 
-  th {
-    padding: 20px 0 40px 0;
+  @media (min-width: 1025px) {
+    th,
+    td {
+      padding: ${Spaces.lg} 0;
+      text-align: center;
+      padding-right: ${Spaces.md};
+      vertical-align: middle;
+    }
+    .setup-column {
+      width: 20%;
+    }
+    .capacity-column {
+      width: 20%;
+    }
+    td {
+      vertical-align: middle;
+    }
   }
 
-  thead th {
-    padding-right: 20px;
-  }
-  td {
-    width: 35%;
+  @media (max-width: 1024px) {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      padding: ${Spaces.lg} 0;
+      text-align: center;
+    }
+
+    td,
+    th {
+      display: flex;
+      width: 100%;
+      padding: ${Spaces.xs} 0;
+      align-items: center;
+    }
+
+    td[data-label]::before {
+      content: attr(data-label);
+      width: 120px;
+      min-width: 120px;
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: ${Colors.greyDark};
+      display: inline-block;
+    }
   }
 `;
 
@@ -78,7 +126,7 @@ const NavItems = [
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -239,7 +287,15 @@ export default function MeetingRoom() {
           <table align="center" vertical-align>
             <thead>
               <tr>
-                {!isDesktop && <td aria-label="No value">&nbsp;</td>}
+                <th className="setup-column">
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Room View
+                  </Typography>
+                </th>
                 <th>
                   <Typography
                     variant="cta"
@@ -250,15 +306,13 @@ export default function MeetingRoom() {
                   </Typography>
                 </th>
                 <th>
-                  {
-                    <Typography
-                      variant="cta"
-                      as="h2"
-                      size={isMobile ? 'sm' : 'lg'}
-                    >
-                      Capacity
-                    </Typography>
-                  }
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Capacity
+                  </Typography>
                 </th>
                 <th>
                   <Typography
@@ -274,20 +328,27 @@ export default function MeetingRoom() {
 
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
-                {!isDesktop && (
-                  <th>
+                <th className="setup-column">
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
                     {arrangement.image && (
                       <Image
                         borderRadius="12px"
-                        width={350}
-                        marginRight={Spaces['2xl']}
+                        width={isMobile ? 250 : 350}
                         src={arrangement.image}
+                        fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
+                        isExpandable
                       />
                     )}
-                  </th>
-                )}
-                <td>
+                  </div>
+                </th>
+                <td className="setup-column" data-label="Setup">
                   <Typography
                     variant="title"
                     weight="400"
@@ -296,19 +357,25 @@ export default function MeetingRoom() {
                     {arrangement.setup}
                   </Typography>
                 </td>
-                <td>
-                  {arrangement.capacity.map((c) => (
-                    <Typography
-                      variant="title"
-                      weight="400"
-                      size={isMobile ? 'xs' : 'md'}
-                      key={c}
-                    >
-                      {c}
-                    </Typography>
-                  ))}
+
+                {/* Capacity Column */}
+                <td className="capacity-column" data-label="Capacity">
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    {arrangement.capacity.map((c) => (
+                      <Typography
+                        variant="title"
+                        weight="400"
+                        size={isMobile ? 'xs' : 'md'}
+                        key={c}
+                      >
+                        {c}
+                      </Typography>
+                    ))}
+                  </div>
                 </td>
-                <td>
+
+                {/* Equipment Column */}
+                <td className="equipment-column" data-label="Equipment">
                   <EquipmentSection>
                     {arrangement.equipment.map((e) => (
                       <Typography
@@ -317,7 +384,6 @@ export default function MeetingRoom() {
                         weight="400"
                         size={isMobile ? 'xs' : 'md'}
                       >
-                        {' '}
                         {e}
                       </Typography>
                     ))}

@@ -487,6 +487,7 @@ export default function UKrew() {
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/Group%20Photo.webp"
           width="100%"
           borderRadius="12px"
+          isExpandable
         />
       </FluidContainer>
       <FluidContainer
