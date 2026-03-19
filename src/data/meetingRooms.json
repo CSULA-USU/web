@@ -112,42 +112,42 @@
     "arrangements": [
       {
         "setup": "Classroom Layout",
-        "capacity": ["Room A: 30", "Room B: 60", "Room : 90"],
+        "capacity": ["Room A: 30", "Room A + B: 60", "Room A + B + C: 90"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom-expanded.webp",
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater Layout",
-        "capacity": ["Room A: 70", "Room B: 130", "Room : 200"],
+        "capacity": ["Room A: 70", "Room A + B: 130", "Room A + B + C: 200"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater-expanded.webp",
         "equipment": ["LA Chairs"]
       },
       {
         "setup": "Reception Layout",
-        "capacity": ["Room A: 44", "Room B: 54", "Room : 64"],
+        "capacity": ["Room A: 44", "Room A + B: 54", "Room A + B + C: 64"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception-expanded.webp",
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle Layout",
-        "capacity": ["Room A: 30", "Room B: 45", "Room : 60"],
+        "capacity": ["Room A: 30", "Room A + B: 45", "Room A + B + C: 60"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle-expanded.webp",
         "equipment": ["LA Chairs"]
       },
       {
         "setup": "Conference Layout",
-        "capacity": ["Room A: 20", "Room B: 36", "Room : 54"],
+        "capacity": ["Room A: 20", "Room A + B: 36", "Room A + B + C: 54"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference-expanded.webp",
         "equipment": ["6 x 30 Tables", "LA Chairs"]
       },
       {
         "setup": "Banquet Layout",
-        "capacity": ["Room A: 50", "Room B: 110", "Room : 170"],
+        "capacity": ["Room A: 50", "Room A + B: 110", "Room A + B + C: 170"],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-expanded.webp",
         "equipment": ["60\" Round Tables", "LA Chairs"]
