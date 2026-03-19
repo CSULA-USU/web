@@ -233,7 +233,7 @@ export const Image: FC<ImageProps> = ({
           onClick={toggleOpen}
           onKeyDown={handleKeyDown}
           tabIndex={isExpandable ? 0 : -1}
-          role={isExpandable ? 'button' : undefined}
+          role="button"
           aria-expanded={isOpen}
           aria-label={`View ${alt} in full screen`}
         >
