@@ -235,7 +235,7 @@ export const Image: FC<ImageProps> = ({
           tabIndex={isExpandable ? 0 : -1}
           role={isExpandable ? 'button' : undefined}
           aria-expanded={isOpen}
-          aria-label={isExpandable ? `View ${alt} in full screen` : alt}
+          aria-label={`View ${alt} in full screen`}
         >
           <StyledImage
             alt={alt}
