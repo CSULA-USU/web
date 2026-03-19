@@ -30,6 +30,7 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   lazy?: boolean;
   isExpandable?: boolean;
   fullSizeSrc?: string;
+  onLoad?: () => void;
 }
 
 const TriggerWrapper = styled.div<{ isExpandable?: boolean }>`
@@ -161,6 +162,7 @@ export const Image: FC<ImageProps> = ({
   lazy = 'eager',
   isExpandable,
   fullSizeSrc,
+  onLoad,
   ...rest
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -246,6 +248,7 @@ export const Image: FC<ImageProps> = ({
             onError={handleError}
             loading={lazy ? 'lazy' : 'eager'}
             tabIndex={-1}
+            onLoad={onLoad}
             {...filteredProps}
           />
           {!isOpen && (
@@ -264,6 +267,7 @@ export const Image: FC<ImageProps> = ({
           onError={handleError}
           loading={lazy ? 'lazy' : 'eager'}
           tabIndex={-1}
+          onLoad={onLoad}
           {...filteredProps}
         />
       )}

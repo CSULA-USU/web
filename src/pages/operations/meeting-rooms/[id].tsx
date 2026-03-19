@@ -3,7 +3,13 @@ import Head from 'next/head';
 import { CallToAction, Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { useRouter } from 'next/router';
-import { Button, FluidContainer, Typography, Image } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Typography,
+  Image,
+  Skeleton,
+} from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
@@ -127,6 +133,7 @@ export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
   const { isMobile } = useBreakpoint();
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -266,11 +273,21 @@ export default function MeetingRoom() {
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
         <h1>
+          {!loadedImages[selectedRoom.headerImage] && (
+            <Skeleton width="100%" height="300px" borderRadius="12px" />
+          )}
+
           <Image
             borderRadius="12px"
             width="100%"
             src={selectedRoom.headerImage}
             alt={selectedRoom.mainImageAlt || 'banner image'}
+            onLoad={() =>
+              setLoadedImages((prev) => ({
+                ...prev,
+                [selectedRoom.headerImage]: true,
+              }))
+            }
           />
         </h1>
         <Button
@@ -336,16 +353,28 @@ export default function MeetingRoom() {
                       alignItems: 'center',
                     }}
                   >
-                    {arrangement.image && (
-                      <Image
+                    {!loadedImages[arrangement.image] && (
+                      <Skeleton
+                        width={isMobile ? '250px' : '350px'}
+                        height={isMobile ? '150px' : '200px'}
                         borderRadius="12px"
-                        width={isMobile ? 250 : 350}
-                        src={arrangement.image}
-                        fullSizeSrc={arrangement.imageExpanded}
-                        alt={`${arrangement.setup} room example`}
-                        isExpandable
                       />
                     )}
+
+                    <Image
+                      borderRadius="12px"
+                      width={isMobile ? 250 : 350}
+                      src={arrangement.image}
+                      fullSizeSrc={arrangement.imageExpanded}
+                      alt={`${arrangement.setup} room example`}
+                      isExpandable
+                      onLoad={() =>
+                        setLoadedImages((prev) => ({
+                          ...prev,
+                          [arrangement.image]: true,
+                        }))
+                      }
+                    />
                   </div>
                 </th>
                 <td className="setup-column" data-label="Setup">
