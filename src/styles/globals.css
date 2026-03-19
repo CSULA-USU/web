@@ -8,6 +8,16 @@ body {
     Droid Sans, Helvetica Neue, sans-serif;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 body * {
   box-sizing: border-box;
 }
