@@ -1,4 +1,4 @@
-import { Page, Header, ImageAndCard } from 'modules';
+import { Page, Header } from 'modules';
 import Head from 'next/head';
 import { Card, FluidContainer, Image, Typography } from 'components';
 import { media, Spaces } from 'theme';
@@ -46,37 +46,6 @@ const meetingRoomButtons = [
 ];
 
 export default function MeetingRooms() {
-  const cards = [
-    {
-      title: 'Attendees',
-      children:
-        'A list of all event attendees (guests, members organizing, staff and/or volunteers) will be required to obtain a reservation confirmation for all indoor events.',
-      imgSrc: '/vectors/operations/people.svg',
-      imgAlt: 'Three People',
-    },
-    {
-      title: 'Members',
-      children:
-        'A list of members organizing, staffing and/or volunteering will be required to obtain a reservation confirmation for all outdoor events (no guest list needed).',
-      imgSrc: '/vectors/operations/teams.svg',
-      imgAlt: 'Connecting Teams',
-    },
-    {
-      title: 'Off Campus Vendors',
-      children:
-        'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
-      imgSrc: '/vectors/operations/form.svg',
-      imgAlt: 'Publish Article',
-    },
-    {
-      title: 'Food',
-      children:
-        'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
-      imgSrc: '/vectors/operations/food.svg',
-      imgAlt: 'Breakfast',
-    },
-  ];
-
   return (
     <Page>
       <Head>
@@ -236,15 +205,6 @@ export default function MeetingRooms() {
             </RoomCard>
           ))}
         </FluidContainer>
-      </FluidContainer>
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="space-between"
-      >
-        {cards.map((props) => (
-          <ImageAndCard key={props.title} {...props} />
-        ))}
       </FluidContainer>
     </Page>
   );
