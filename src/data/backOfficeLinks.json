@@ -18,6 +18,12 @@
         "title": "Board of Directors",
         "description": "Access and manage board meeting documents",
         "featured": true
+      },
+      {
+        "url": "/backoffice/announcement-banner",
+        "title": "Banner",
+        "description": "Update and activate announcement banner at the top of the page across the website",
+        "featured": true
       }
     ]
   },
