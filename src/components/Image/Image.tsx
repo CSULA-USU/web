@@ -1,10 +1,9 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import styled, { CSSObject } from 'styled-components';
 import { layout, space, LayoutProps, SpaceProps } from 'styled-system';
-import { ReactNode } from 'react';
 import { Colors, media } from 'theme';
-import { AiFillCloseCircle } from 'react-icons/ai';
 import { GrExpand } from 'react-icons/gr';
+import { ImageModal } from './ImageModal';
 
 export interface BaseComponentProps
   extends SpaceProps,
@@ -30,6 +29,7 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   lazy?: boolean;
   isExpandable?: boolean;
   fullSizeSrc?: string;
+  onLoad?: React.ReactEventHandler<HTMLImageElement>;
 }
 
 const TriggerWrapper = styled.div<{ isExpandable?: boolean }>`
@@ -40,36 +40,6 @@ const TriggerWrapper = styled.div<{ isExpandable?: boolean }>`
 
   ${layout}
   ${space}
-`;
-
-const FullScreenOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  cursor: zoom-out;
-`;
-
-const ContentWrapper = styled.div`
-  position: relative;
-  display: inline-flex;
-  max-width: 95%;
-  max-height: 95%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TopIconAnchor = styled.div`
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  z-index: 10001;
 `;
 
 const BottomIconAnchor = styled.div`
@@ -84,71 +54,44 @@ const BottomIconAnchor = styled.div`
   background: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   padding: 4px;
+
   ${media('tablet')(`
-      bottom: 1px;
-      right: 1px;
-      border-radius: 10px;
-    `)}
+    bottom: 1px;
+    right: 1px;
+    border-radius: 10px;
+  `)}
 
   ${media('mobile')(`
-      bottom: 1px;
-      right: 1px;
-      border-radius: 10px;
-    `)}
-`;
-
-const CloseButton = styled.button`
-  background: #fff;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  width: 24px;
-  height: 24px;
-`;
-
-const CloseButtonIcon = styled(AiFillCloseCircle)`
-  color: red;
-  font-size: 24px;
-  display: block;
-
-  &:hover {
-    color: ${Colors.black};
-  }
+    bottom: 1px;
+    right: 1px;
+    border-radius: 10px;
+  `)}
 `;
 
 const ExpandIcon = styled(GrExpand)`
   color: ${Colors.white || '#fff'};
   font-size: 18px;
+
   ${media('tablet')(`
-      font-size: 16px;
-    `)}
+    font-size: 16px;
+  `)}
 
   ${media('mobile')(`
-      font-size: 14px;
-    `)}
+    font-size: 14px;
+  `)}
+
   path {
     stroke: ${Colors.white || '#fff'};
   }
 `;
 
-const ExpandedImage = styled.img`
-  max-width: 100%;
-  max-height: 90vh;
-  object-fit: contain;
-`;
-
 export const StyledImage = styled('img')<ImageProps>`
   border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
   flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
+  display: block;
+
   ${layout}
   ${space}
-  display: block;
 `;
 
 export const Image: FC<ImageProps> = ({
@@ -158,103 +101,87 @@ export const Image: FC<ImageProps> = ({
   sizes,
   src,
   srcset,
-  lazy = 'eager',
+  lazy = false,
   isExpandable,
   fullSizeSrc,
+  onLoad,
   ...rest
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
   const [isOpen, setIsOpen] = useState(false);
-  const closeButtonRef = React.useRef<HTMLButtonElement | null>(null);
-  const triggerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const toggleOpen = () => isExpandable && setIsOpen((prev) => !prev);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setImageSrc(src);
   }, [src]);
 
   const handleError = () => {
-    if (placeholder) setImageSrc(placeholder);
+    if (placeholder) {
+      setImageSrc(placeholder);
+    }
+
     onError?.();
   };
 
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
+  const openModal = () => {
+    if (!isExpandable) return;
 
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    }
+    previouslyFocusedElementRef.current =
+      document.activeElement as HTMLElement | null;
+    setIsOpen(true);
+  };
 
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, [isOpen]);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsOpen(false);
-    };
-    if (isOpen) window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [isOpen]);
+  const restoreFocus = () => {
+    previouslyFocusedElementRef.current?.focus();
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (isExpandable && (e.key === 'Enter' || e.key === ' ')) {
+    if (!isExpandable) return;
+
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      setIsOpen(true);
+      openModal();
     }
   };
 
   const filteredProps = Object.fromEntries(
-    Object.entries(rest).filter(([_, v]) => v != null),
+    Object.entries(rest).filter(([_, value]) => value != null),
   );
 
-  useEffect(() => {
-    if (isOpen) {
-      triggerRef.current = document.activeElement as HTMLDivElement;
-
-      const timeout = setTimeout(() => {
-        closeButtonRef.current?.focus();
-      }, 10);
-
-      return () => clearTimeout(timeout);
-    } else {
-      triggerRef.current?.focus();
-    }
-  }, [isOpen]);
+  if (!isExpandable) {
+    return (
+      <StyledImage
+        alt={alt}
+        src={imageSrc}
+        srcSet={srcset}
+        sizes={sizes}
+        isExpandable={isExpandable}
+        onError={handleError}
+        loading={lazy ? 'lazy' : 'eager'}
+        tabIndex={-1}
+        onLoad={onLoad}
+        {...filteredProps}
+      />
+    );
+  }
 
   return (
     <>
-      {isExpandable ? (
-        <TriggerWrapper
-          ref={triggerRef}
-          isExpandable={isExpandable}
-          onClick={toggleOpen}
-          onKeyDown={handleKeyDown}
-          tabIndex={isExpandable ? 0 : -1}
-          role="button"
-          aria-expanded={isOpen}
-          aria-label={`View ${alt} in full screen`}
-        >
-          <StyledImage
-            alt={alt}
-            src={imageSrc}
-            srcSet={srcset}
-            sizes={sizes}
-            isExpandable={isExpandable}
-            onError={handleError}
-            loading={lazy ? 'lazy' : 'eager'}
-            tabIndex={-1}
-            {...filteredProps}
-          />
-          {!isOpen && (
-            <BottomIconAnchor>
-              <ExpandIcon />
-            </BottomIconAnchor>
-          )}
-        </TriggerWrapper>
-      ) : (
+      <TriggerWrapper
+        isExpandable={isExpandable}
+        onClick={openModal}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="button"
+        aria-expanded={isOpen}
+        aria-label={`View ${alt} in full screen`}
+      >
         <StyledImage
           alt={alt}
           src={imageSrc}
@@ -264,29 +191,24 @@ export const Image: FC<ImageProps> = ({
           onError={handleError}
           loading={lazy ? 'lazy' : 'eager'}
           tabIndex={-1}
+          onLoad={onLoad}
           {...filteredProps}
         />
-      )}
+        {!isOpen && (
+          <BottomIconAnchor>
+            <ExpandIcon />
+          </BottomIconAnchor>
+        )}
+      </TriggerWrapper>
 
       {isOpen && (
-        <FullScreenOverlay
-          onClick={() => setIsOpen(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <ContentWrapper onClick={(e) => e.stopPropagation()}>
-            <TopIconAnchor>
-              <CloseButton
-                ref={closeButtonRef}
-                onClick={() => setIsOpen(false)}
-                aria-label="Close"
-              >
-                <CloseButtonIcon />
-              </CloseButton>
-            </TopIconAnchor>
-            <ExpandedImage src={fullSizeSrc || src} alt={alt} />
-          </ContentWrapper>
-        </FullScreenOverlay>
+        <ImageModal
+          alt={alt}
+          src={fullSizeSrc || src}
+          closeButtonRef={closeButtonRef}
+          onClose={closeModal}
+          onRestoreFocus={restoreFocus}
+        />
       )}
     </>
   );

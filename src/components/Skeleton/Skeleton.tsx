@@ -7,6 +7,7 @@ interface SkeletonProps {
   width?: string;
   height?: string;
   borderRadius?: string;
+  margin?: string;
 }
 
 const loadingAnimation = keyframes`
@@ -23,6 +24,7 @@ export const SkeletonWrapper = styled.div<SkeletonProps>`
   border-radius: ${({ borderRadius }) => borderRadius || '4px'};
   width: ${({ width }) => width || '100%'};
   height: ${({ size, height }) => (size ? FontSizes[size] : height || '1rem')};
+  margin: ${({ margin }) => margin || '0'};
   position: relative;
   overflow: hidden;
 
@@ -48,6 +50,7 @@ export const Skeleton = ({
   width,
   height,
   borderRadius,
+  margin,
 }: SkeletonProps) => {
   return (
     <SkeletonWrapper
@@ -55,6 +58,7 @@ export const Skeleton = ({
       width={width}
       height={height}
       borderRadius={borderRadius}
+      margin={margin}
     />
   );
 };

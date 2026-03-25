@@ -3,11 +3,17 @@ import Head from 'next/head';
 import { CallToAction, Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { useRouter } from 'next/router';
-import { Button, FluidContainer, Typography, Image } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Typography,
+  Image,
+  Skeleton,
+} from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
-import { useBreakpoint } from 'hooks';
+import { useBreakpoint, useImageLoading } from 'hooks';
 
 const EquipmentSection = styled.div`
   display: flex;
@@ -96,6 +102,21 @@ const Table = styled.div`
   }
 `;
 
+const ExpandableSkeletonBox = styled.div`
+  width: 350px;
+  aspect-ratio: 350 / 197;
+
+  @media (max-width: 1024px) {
+    width: 250px;
+  }
+`;
+
+const BannerSkeletonBox = styled.div`
+  width: 100%;
+  aspect-ratio: 1124 / 439;
+  margin: 0 0 20px 0;
+`;
+
 const NavItems = [
   {
     header: 'Alhambra',
@@ -122,6 +143,54 @@ const NavItems = [
     id: 'boardroom-south',
   },
 ];
+
+function ImageWithSkeleton({
+  src,
+  alt,
+  fullSizeSrc,
+  isExpandable,
+}: {
+  src: string;
+  alt: string;
+  isExpandable?: boolean;
+  fullSizeSrc?: string;
+}) {
+  const loading = useImageLoading(src);
+  const { isMobile } = useBreakpoint();
+
+  return (
+    <>
+      {loading ? (
+        isExpandable ? (
+          <ExpandableSkeletonBox>
+            <Skeleton width="100%" height="100%" borderRadius="12px" />
+          </ExpandableSkeletonBox>
+        ) : (
+          <BannerSkeletonBox>
+            <Skeleton width="100%" height="100%" borderRadius="12px" />
+          </BannerSkeletonBox>
+        )
+      ) : isExpandable ? (
+        <Image
+          borderRadius="12px"
+          width={isMobile ? 250 : 350}
+          src={src}
+          fullSizeSrc={fullSizeSrc}
+          alt={alt}
+          isExpandable
+        />
+      ) : (
+        <Image
+          borderRadius="12px"
+          width="100%"
+          margin={'0 0 20px 0'}
+          src={src}
+          alt={alt}
+        />
+      )}
+    </>
+  );
+}
 
 export default function MeetingRoom() {
   const router = useRouter();
@@ -265,14 +334,10 @@ export default function MeetingRoom() {
         justifyContent="center"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
-        <h1>
-          <Image
-            borderRadius="12px"
-            width="100%"
-            src={selectedRoom.headerImage}
-            alt={selectedRoom.mainImageAlt || 'banner image'}
-          />
-        </h1>
+        <ImageWithSkeleton
+          src={selectedRoom.headerImage}
+          alt={selectedRoom.mainImageAlt || 'banner image'}
+        />
         <Button
           href="https://form.jotform.com/221578153228053"
           isExternalLink
@@ -329,24 +394,21 @@ export default function MeetingRoom() {
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
                 <th className="setup-column">
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                    }}
+                  <FluidContainer
+                    flex
+                    flexDirection="column"
+                    alignItems="center"
+                    padding="0"
                   >
                     {arrangement.image && (
-                      <Image
-                        borderRadius="12px"
-                        width={isMobile ? 250 : 350}
+                      <ImageWithSkeleton
                         src={arrangement.image}
                         fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
                         isExpandable
                       />
                     )}
-                  </div>
+                  </FluidContainer>
                 </th>
                 <td className="setup-column" data-label="Setup">
                   <Typography
@@ -360,7 +422,7 @@ export default function MeetingRoom() {
 
                 {/* Capacity Column */}
                 <td className="capacity-column" data-label="Capacity">
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <FluidContainer flex flexDirection="column" padding="0">
                     {arrangement.capacity.map((c) => (
                       <Typography
                         variant="title"
@@ -371,7 +433,7 @@ export default function MeetingRoom() {
                         {c}
                       </Typography>
                     ))}
-                  </div>
+                  </FluidContainer>
                 </td>
 
                 {/* Equipment Column */}
