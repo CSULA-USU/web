@@ -1,10 +1,11 @@
 import { Page, Header } from 'modules';
 import Head from 'next/head';
-import { Card, FluidContainer, Image, Typography } from 'components';
+import { Card, FluidContainer, Image, Skeleton, Typography } from 'components';
 import { media, Spaces } from 'theme';
 import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
 import styled from 'styled-components';
+import { useImageLoading } from 'hooks';
 
 const RoomCard = styled(Card)`
   margin: ${Spaces.sm};
@@ -23,7 +24,7 @@ const CardImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block; /* avoid inline-img whitespace wiggles */
+  display: block;
 `;
 
 const DynamicRatioBox = styled.div<{ ratio: number }>`
@@ -33,10 +34,6 @@ const DynamicRatioBox = styled.div<{ ratio: number }>`
   display: block;
 `;
 
-const TopSection = styled(FluidContainer)`
-  min-height: 240px; /* reserve enough space to avoid jump */
-`;
-
 const meetingRoomButtons = [
   {
     text: 'Make Room Reservation',
@@ -44,6 +41,20 @@ const meetingRoomButtons = [
     isExternal: true,
   },
 ];
+
+function MeetingRoomCardImage({ src, alt }: { src: string; alt: string }) {
+  const loading = useImageLoading(src);
+
+  return (
+    <>
+      {loading ? (
+        <Skeleton width="100%" height="100%" />
+      ) : (
+        <CardImage src={src} alt={alt} />
+      )}
+    </>
+  );
+}
 
 export default function MeetingRooms() {
   return (
@@ -165,18 +176,16 @@ export default function MeetingRooms() {
           }}
         />
       </Head>
-      <TopSection>
-        <Header
-          title="Meeting Rooms"
-          buttons={meetingRoomButtons}
-          backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
-        >
-          Rent out a meeting space at CSULA U&ndash;SU. Current locations
-          available to book are Los Angeles A/B/C, Theater, Alhambra, San
-          Gabriel, U&ndash;SU Plaza Space. Click an individual room for more
-          information regarding layout, features, and fees.
-        </Header>
-      </TopSection>
+      <Header
+        title="Meeting Rooms"
+        buttons={meetingRoomButtons}
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+      >
+        Rent out a meeting space at CSULA U&ndash;SU. Current locations
+        available to book are Los Angeles A/B/C, Theater, Alhambra, San Gabriel,
+        U&ndash;SU Plaza Space. Click an individual room for more information
+        regarding layout, features, and fees.
+      </Header>
       <FluidContainer
         flex
         flexDirection="column"
@@ -196,7 +205,7 @@ export default function MeetingRooms() {
             <RoomCard key={props.title} title={props.title}>
               <Link href={'./meeting-rooms/' + props.id}>
                 <DynamicRatioBox ratio={props.aspect ?? 4 / 3}>
-                  <CardImage
+                  <MeetingRoomCardImage
                     src={props.mainImageSrc}
                     alt={props.mainImageAlt}
                   />

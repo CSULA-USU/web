@@ -127,7 +127,8 @@ export default function About() {
                 <Image
                   alt="student union"
                   src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
-                  style={{ width: '100%', height: '100%' }}
+                  width={'100%'}
+                  height={'100%'}
                 />
               </FluidContainer>
               <ButtonContainer>
