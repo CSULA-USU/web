@@ -10,7 +10,7 @@ import {
 import { DocumentLinkContainer, DownloadSection } from 'modules';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
-import { getMeetingDocuments } from 'api';
+import { getMeetingDocuments } from 'api/bod';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo } from 'react';
 
