@@ -148,6 +148,7 @@ export default function Services() {
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/about.png"
           alt="student union"
           width="100%"
+          height="240px"
         />
         <Typography>
           The programs and services hosted by the University&ndash;Student Union
