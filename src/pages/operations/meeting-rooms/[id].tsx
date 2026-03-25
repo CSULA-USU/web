@@ -28,7 +28,7 @@ const EquipmentSection = styled.div`
 
 const NavItemContainer = styled.div`
   *:hover {
-    color: ${Colors.gold};
+    color: ${Colors.primary};
   }
 `;
 
