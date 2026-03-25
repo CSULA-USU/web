@@ -14,10 +14,6 @@ const StyledInput = styled.input`
   &:focus {
     box-shadow: 0 0 0 2px black;
   }
-  &::selection {
-    background-color: white;
-    color: white;
-  }
 `;
 
 export const Input = (props: any) => <StyledInput {...props} />;
