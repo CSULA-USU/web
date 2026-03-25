@@ -1,11 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
 
-import { Button, FluidContainer, Typography } from 'components';
+import { Button, FluidContainer, Loading, Typography } from 'components';
 import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
@@ -23,6 +23,11 @@ const Shell = styled.div`
 
 const Content = styled.div`
   width: 100%;
+  flex: 1;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 const Main = styled.div`
@@ -36,22 +41,22 @@ const TopBar = styled.header`
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 80px;
+  box-sizing: border-box;
   background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 18px 20px;
+  padding: 60px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-
+  flex-shrink: 0;
   @media (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 10px;
-    position: static;
-    width: 100%;
+    gap: 24px;
+    padding: 24px;
+    height: 200px;
+    justify-content: center;
   }
-
   @media (max-width: 580px) {
     display: flex;
     flex-direction: column;
@@ -65,10 +70,15 @@ const TabletIconsContainer = styled.div`
   gap: 16px;
   align-items: flex-end;
 
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   @media (max-width: 580px) {
     display: flex;
     flex-direction: row;
-    align-items: center;
   }
 `;
 
@@ -128,9 +138,10 @@ function flattenNav(sections: BackofficeLinkSection[]) {
 
 export default function BackofficeShell({ title, subtitle, children }: Props) {
   const router = useRouter();
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop, isWidescreen } = useBreakpoint();
   const navSections = backOfficeLinks as BackofficeLinkSection[];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const allItems = useMemo(() => flattenNav(navSections), [navSections]);
   const featuredItems = useMemo(
@@ -142,6 +153,25 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
     router.push(href);
   };
 
+  useEffect(() => {
+    const handleStart = (url: string) => {
+      if (url !== router.asPath) {
+        setIsNavigating(true);
+      }
+    };
+    const handleComplete = () => setIsNavigating(false);
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleComplete);
+      router.events.off('routeChangeError', handleComplete);
+    };
+  }, [router.asPath, router.events]);
+
   return (
     <Shell>
       <BackofficeMobilePanel
@@ -150,20 +180,20 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
           setIsMenuOpen(false);
         }}
       />
-      {!isDesktop ? <BackofficeSideBar /> : null}
+      <BackofficeSideBar />
       <Main>
         <TopBar>
           <TopBarLeft>
             <Typography
               as="h1"
               variant="pageHeader"
-              size={isMobile ? 'xl' : '2xl'}
+              size={isMobile ? 'lg' : isWidescreen ? 'xl' : '2xl'}
             >
               {title}
             </Typography>
 
             {subtitle ? (
-              <Typography as="p" variant="cta">
+              <Typography as="p" variant="cta" size={isMobile ? 'sm' : 'md'}>
                 {subtitle}
               </Typography>
             ) : null}
@@ -171,7 +201,14 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
 
           {isDesktop ? (
             <TabletIconsContainer>
-              <Button onClick={() => signOut()}>Sign Out</Button>
+              <Button
+                padding="10px 20px"
+                fontSize="14px"
+                fontWeight="600"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </Button>
               <HiMenuAlt3
                 size={32}
                 color={Colors.primary}
@@ -185,35 +222,48 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
           )}
         </TopBar>
         <Content>
-          {children}
-
-          {router.pathname === '/backoffice' && featuredItems.length > 0 ? (
-            <FluidContainer>
-              <Typography as="h2" variant="titleSmall">
-                Featured Tools
-              </Typography>
-
-              <FeaturedGrid>
-                {featuredItems.map((item) => (
-                  <FeatureCard
-                    key={item.url}
-                    type="button"
-                    onClick={() => handleNavigate(item.url)}
-                  >
-                    <Typography as="h4" variant="label">
-                      {item.title}
-                    </Typography>
-
-                    {item.description ? (
-                      <Typography as="p" variant="span">
-                        {item.description}
-                      </Typography>
-                    ) : null}
-                  </FeatureCard>
-                ))}
-              </FeaturedGrid>
+          {isNavigating ? (
+            <FluidContainer
+              flex
+              alignItems="center"
+              justifyContent="center"
+              height="70vh"
+            >
+              <Loading load={true} />
             </FluidContainer>
-          ) : null}
+          ) : (
+            <>
+              {children}
+
+              {router.pathname === '/backoffice' && featuredItems.length > 0 ? (
+                <FluidContainer>
+                  <Typography as="h2" variant="titleSmall">
+                    Featured Tools
+                  </Typography>
+
+                  <FeaturedGrid>
+                    {featuredItems.map((item) => (
+                      <FeatureCard
+                        key={item.url}
+                        type="button"
+                        onClick={() => handleNavigate(item.url)}
+                      >
+                        <Typography as="h4" variant="label">
+                          {item.title}
+                        </Typography>
+
+                        {item.description ? (
+                          <Typography as="p" variant="span">
+                            {item.description}
+                          </Typography>
+                        ) : null}
+                      </FeatureCard>
+                    ))}
+                  </FeaturedGrid>
+                </FluidContainer>
+              ) : null}
+            </>
+          )}
         </Content>
       </Main>
     </Shell>

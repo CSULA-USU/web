@@ -15,23 +15,18 @@ type Props = {
 
 const Sidebar = styled.aside`
   flex: 0 0 250px;
+  width: 250px;
   align-self: flex-start;
-
   position: sticky;
   top: 0;
-
-  height: calc(100vh);
-  max-height: calc(100vh);
-
+  height: 100vh;
   background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
   display: flex;
   flex-direction: column;
 
   @media (max-width: 1024px) {
-    position: static;
-    width: 100%;
+    display: none;
   }
 `;
 
