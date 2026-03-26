@@ -213,16 +213,23 @@ export default function Tenants() {
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
-          <Typography variant="titleSmall" as="h2" margin="16px 0">
-            {modalData.title}
-          </Typography>
-          <FluidContainer>
-            <Image
-              src={modalData.iconSrc}
-              alt={modalData.iconAlt}
-              maxHeight="150px"
-              width="auto"
-            />
+          <FluidContainer
+            padding="0"
+            flex
+            flexDirection="column"
+            alignItems="center"
+          >
+            <Typography variant="titleSmall" as="h2" margin="16px 0">
+              {modalData.title}
+            </Typography>
+            <FluidContainer>
+              <Image
+                src={modalData.iconSrc}
+                alt={modalData.iconAlt}
+                maxHeight="150px"
+                width="auto"
+              />
+            </FluidContainer>
           </FluidContainer>
           <Typography margin={`${Spaces.md} 0`}>
             {modalData.children}
