@@ -74,7 +74,9 @@
     "@aws-sdk/xml-builder": "3.972.6",
     "fast-xml-parser": "5.3.6",
     "styled-components": "^5",
-    "tmp": "^0.2.4"
+    "tmp": "^0.2.4",
+    "**/undici": "^7.24.6",
+    "**/picomatch": "^2.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
