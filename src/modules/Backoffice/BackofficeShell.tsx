@@ -187,7 +187,7 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
             <Typography
               as="h1"
               variant="pageHeader"
-              size={isMobile ? 'lg' : isWidescreen ? 'xl' : '2xl'}
+              size={isMobile ? 'xl' : isWidescreen ? 'xl' : '2xl'}
             >
               {title}
             </Typography>

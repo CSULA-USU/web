@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { ContentBoard, Page } from 'modules';
 import { GraffixRequest } from 'types';
 import {
-  ContentBoardCellProps,
   ContentBoardColumnProps,
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
@@ -45,30 +44,48 @@ export default function GraphicsRequests() {
 
   useEffect(() => {
     if (status === 'loading') return;
-    if (!session) {
-      router.push('/backoffice/signin');
-    }
+    if (!session) router.push('/backoffice/signin');
   }, [session, router, status]);
 
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState<string>('N/A');
-
+  const [accessibleDepartment, setAccessibleDepartment] = useState('');
   const [graffixRequests, setGraffixRequests] = useState<
     GraffixRequest[] | undefined
   >(undefined);
   const [cellMap, setCellMap] = useState<KeyValueProps>({});
-
   const [contentBoardData, setContentBoardData] = useState<
     ContentBoardColumnProps[]
   >(createDeepCopy(Object.values(contentBoardTemplate)));
 
   useEffect(() => {
-    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
+    const fetchUserDept = async () => {
+      try {
+        const res = await fetch('/api/user/department');
+        if (!res.ok) throw new Error('No department assigned');
+
+        const data = await res.json();
+        const userDept = data?.department?.toLowerCase();
+
+        setAccessibleDepartment(userDept);
+        setSelectedDepartment(userDept === 'all' ? 'csi' : userDept);
+      } catch {
+        alert(
+          " You aren't assigned to any departments. Contact Graffix Web team.",
+        );
+        router.push('/backoffice');
+      }
+    };
+    fetchUserDept();
+  }, [router]);
+
+  useEffect(() => {
     if (selectedDepartment === 'N/A' || selectedDepartment === '') return;
 
     setLoading(true);
+    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
 
-    const fetchGraffixRequestsFromNotion = async () => {
+    const fetchNotionData = async () => {
       try {
         const res = await fetch(
           `/api/notion?department_id=${selectedDepartment}`,
@@ -77,88 +94,40 @@ export default function GraphicsRequests() {
             credentials: 'include',
           },
         );
-
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
 
         const data = await res.json();
-        if (data && data.length > 0) {
-          setGraffixRequests(data);
-        } else {
-          setGraffixRequests([]);
-        }
+        setGraffixRequests(data || []);
       } catch (err) {
         console.error('Failed to fetch Graffix Requests:', err);
+        setGraffixRequests([]);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchGraffixRequestsFromNotion();
-  }, [selectedDepartment, router]);
-
-  useEffect(() => {
-    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
-    if (selectedDepartment == 'N/A' || selectedDepartment == '') return;
-    setLoading(true);
-
-    const fetchGraffixRequestsFromNotion = async () => {
-      await fetch(`/api/notion?department_id=${selectedDepartment}`, {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (data != undefined && data.length > 0) {
-            setGraffixRequests(data);
-          } else {
-            throw new Error(`Content Error! Status: ${data.status}`);
-          }
-        })
-        .catch(() => {})
-        .finally(() => {
-          setLoading(false);
-        });
-    };
-    fetchGraffixRequestsFromNotion();
+    fetchNotionData();
   }, [selectedDepartment]);
 
   useEffect(() => {
     if (!graffixRequests) return;
 
-    const populateContentBoard = () => {
-      let tempContentBoardData = createDeepCopy(contentBoardTemplate);
-      graffixRequests.map((graffixRequest) => {
-        if (
-          graffixRequest?.status &&
-          graffixRequest?.status in tempContentBoardData
-        ) {
-          const contentBoardCell: ContentBoardCellProps = {
-            cellID: graffixRequest.id,
-            cellTitle: graffixRequest.title,
-          };
-          tempContentBoardData[graffixRequest.status].columnData.push(
-            contentBoardCell,
-          );
-        }
-      });
-      setContentBoardData(Object.values(tempContentBoardData));
-    };
+    const tempContentBoardData = createDeepCopy(contentBoardTemplate);
+    const tempMap: KeyValueProps = {};
 
-    const populateCellIDMap = () => {
-      let tempMap: KeyValueProps = {};
-      graffixRequests.map((graffixRequest) => {
-        tempMap[graffixRequest?.id] = graffixRequest;
-      });
-      setCellMap(tempMap);
-    };
+    graffixRequests.forEach((req) => {
+      tempMap[req.id] = req;
 
-    populateContentBoard();
-    populateCellIDMap();
+      if (req?.status && req.status in tempContentBoardData) {
+        tempContentBoardData[req.status].columnData.push({
+          cellID: req.id,
+          cellTitle: req.title,
+        });
+      }
+    });
+
+    setCellMap(tempMap);
+    setContentBoardData(Object.values(tempContentBoardData));
   }, [graffixRequests]);
 
   return (
@@ -168,7 +137,7 @@ export default function GraphicsRequests() {
       </Head>
 
       <BackofficeShell
-        title={`Graffix Requests`}
+        title="Graffix Requests"
         subtitle="Manage and view graphic requests for the University–Student Union"
       >
         {loading ? (
