@@ -78,7 +78,7 @@ export default function AnnouncementBannerAdmin({
     return (
       <Page>
         <Head>
-          <title>Announcement Banner Admin &ndash; Error</title>
+          <title>Announcement Banner &ndash; Error</title>
         </Head>
         <BackofficeShell
           title="Announcement Banner Admin Error"
@@ -103,10 +103,10 @@ export default function AnnouncementBannerAdmin({
   return (
     <Page>
       <Head>
-        <title>Announcement Banner Admin</title>
+        <title>Announcement Banner</title>
       </Head>
       <BackofficeShell
-        title="Announcement Banner Admin"
+        title="Announcement Banner"
         subtitle="Manage banner that goes on top of the website"
       >
         <FluidContainer
@@ -116,25 +116,14 @@ export default function AnnouncementBannerAdmin({
           innerMaxWidth="100%"
           flex
           flexDirection="column"
-          height="100%"
         >
-          <FluidContainer backgroundColor="black">
-            <Typography color="white" variant="title" as="h1">
-              Announcement Banner
-            </Typography>
-            <Typography color="white" variant="labelTitleSmall">
-              Manage the banner that appears across the University&ndash;Student
-              Union site
-            </Typography>
-          </FluidContainer>
-
           <FluidContainer>
             {banner ? (
               <FluidContainer
                 flex
                 flexDirection="column"
                 gap="21px"
-                justifyContent="center"
+                padding="0"
               >
                 {/* Preview */}
                 <Announcement
