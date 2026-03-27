@@ -60,7 +60,9 @@ export default function MeetingRooms() {
   return (
     <Page>
       <Head>
-        <title>U&ndash;SU Meeting Rooms</title>
+        <title>
+          Event & Conference Room Rentals | U&ndash;SU at Cal State LA
+        </title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -70,18 +72,18 @@ export default function MeetingRooms() {
         />
         <meta
           name="description"
-          content="Rent meeting spaces at Cal State LA U-SU. Available rooms: Los Angeles A/B/C, Theater, Alhambra, San Gabriel, and Plaza Space. View layouts, features, and rental fees."
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
           key="description"
         />
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
-          content="Meeting Rooms & Event Spaces | Cal State LA U-SU"
+          content="Event & Conference Room Rentals | U-SU at Cal State LA"
           key="og-title"
         />
         <meta
           property="og:description"
-          content="Book your next event at the University-Student Union. Explore our variety of indoor and outdoor spaces designed for student organizations and campus partners."
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
           key="og-desc"
         />
         <meta
@@ -91,7 +93,7 @@ export default function MeetingRooms() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
           key="og-image"
         />
         <meta
@@ -103,13 +105,12 @@ export default function MeetingRooms() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="U-SU Meeting and Event Room Rentals | Cal State LA"
+          content="Event & Conference Room Rentals | U-SU at Cal State LA"
         />
         <meta
           name="twitter:description"
-          content="Check room availability, layout features, and rental fees for all U-SU meeting spaces."
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
         />
-
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/operations/meeting-rooms"
@@ -122,12 +123,74 @@ export default function MeetingRooms() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'EventVenue',
+              '@id':
+                'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
               name: 'U-SU Meeting Rooms',
-              url: 'https://www.calstatelausu.org/operations/meeting-rooms',
               description:
-                'Professional meeting and event spaces available for rent at the California State University, Los Angeles Student Union.',
+                'Professional meeting and event spaces for rent at the University-Student Union at Cal State LA.',
+              email: 'USUReservationsDesk@calstatela.edu',
+              url: 'https://www.calstatelausu.org/operations/meeting-rooms',
+              telephone: '+1-323-343-2465',
+              hasMap:
+                'https://www.google.com/maps/search/?api=1&query=5154+State+University+Dr,+Los+Angeles,+CA+90032',
+              image:
+                'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg',
+              mainEntityOfPage:
+                'https://www.calstatelausu.org/operations/meeting-rooms',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr.',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              contactPoint: [
+                {
+                  '@type': 'ContactPoint',
+                  availableLanguage: ['en'],
+                  contactType: 'reservations',
+                  email: 'USUReservationsDesk@calstatela.edu',
+                  telephone: '+1-323-343-2465',
+                },
+              ],
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 34.0683,
+                longitude: -118.1553,
+              },
+              areaServed: [
+                {
+                  '@type': 'City',
+                  name: 'Alhambra',
+                },
+                {
+                  '@type': 'City',
+                  name: 'El Monte',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Los Angeles',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Montebello',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Pasadena',
+                },
+                {
+                  '@type': 'City',
+                  name: 'San Gabriel',
+                },
+                {
+                  '@type': 'AdministrativeArea',
+                  name: 'San Gabriel Valley',
+                },
+              ],
               parentOrganization: {
-                '@type': 'NonprofitOrganization',
+                '@type': 'Organization',
                 name: 'University-Student Union at Cal State LA',
               },
               amenityFeature: [
@@ -177,14 +240,16 @@ export default function MeetingRooms() {
         />
       </Head>
       <Header
-        title="Meeting Rooms"
+        title="Event & Conference Room Rentals"
         buttons={meetingRoomButtons}
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
-        Rent out a meeting space at CSULA U&ndash;SU. Current locations
-        available to book are Los Angeles A/B/C, Theater, Alhambra, San Gabriel,
-        U&ndash;SU Plaza Space. Click an individual room for more information
-        regarding layout, features, and fees.
+        Create a reservation to rent out event and conference spaces at the
+        U&ndash;SU at Cal State LA. Current locations available to book are
+        Alhambra, Board Room North/South, Los Angeles A/B/C, Montebello,
+        Pasadena, San Gabriel, Theater, and the U&ndash;SU Plaza Space. Click an
+        individual room for more information regarding layout, features, and
+        fees.
       </Header>
       <FluidContainer
         flex
