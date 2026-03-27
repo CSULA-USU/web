@@ -125,7 +125,7 @@ export default function MeetingRooms() {
               '@type': 'EventVenue',
               '@id':
                 'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
-              name: 'U-SU Meeting Rooms',
+              name: 'Meeting Rooms at the University-Student Union at Cal State LA',
               description:
                 'Professional meeting and event spaces for rent at the University-Student Union at Cal State LA.',
               email: 'USUReservationsDesk@calstatela.edu',
