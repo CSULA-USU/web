@@ -52,7 +52,7 @@ export default function Home() {
         />
         <meta
           name="description"
-          content="The heart of campus life at Cal State LA. Discover upcoming events, student organizations, job opportunities, and essential student services at the U-SU."
+          content="The heart of campus life at Cal State LA. Discover upcoming events, student organizations, job opportunities, room rentals, and essential student services at the U-SU."
         />
         {/* Open Graph / Social Media */}
         <meta
@@ -61,7 +61,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="Your hub for connection and growth. Explore events, join student orgs, and find your community at the U-SU."
+          content="Your hub for connection and growth. Explore events, join student orgs, find your community at the U-SU."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.calstatelausu.org/" />

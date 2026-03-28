@@ -306,9 +306,15 @@ export default function MeetingRoom() {
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': ['MeetingRoom', 'EventVenue'],
+                '@id': `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}#room`,
                 name: selectedRoom.title,
+                url: `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}`,
                 description: selectedRoom.features,
                 image: selectedRoom.headerImage,
+                containedInPlace: {
+                  '@id':
+                    'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
+                },
                 address: {
                   '@type': 'PostalAddress',
                   streetAddress: '5154 State University Dr.',
