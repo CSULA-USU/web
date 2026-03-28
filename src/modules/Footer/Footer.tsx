@@ -245,7 +245,7 @@ export const Footer = () => (
             |
           </Typography>
           <Typography color="greyLighter" size="sm" lineHeight="2.4">
-            5154 State University Dr,{' '}
+            5154 State University Dr.,{' '}
             <NonBreakingSpan>Los Angeles, CA 90032</NonBreakingSpan>
           </Typography>
           <Typography
