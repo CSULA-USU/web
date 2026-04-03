@@ -107,16 +107,16 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: 'https://www.dropbox.com/scl/fi/nt651n6jmqgyvjadf3fxu/form-990-199-fy24-25.pdf?rlkey=3dd5epelbo1ssjhja7atm2210&st=g2zg063y&raw=1',
+            children: 'FY 24-25',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fi/88mvp66ji4m4p50bnfy2k/form-990-199-fy23-24.pdf?rlkey=sscxtogzx6cnun0pp6daorzer&st=2vscvo0h&raw=1',
             children: 'FY 23-24',
           },
           {
             href: 'https://www.dropbox.com/scl/fi/xjd25r7ejygo1urr91q2b/form-990-199-fy22-23.pdf?rlkey=2cidyn6j43gbgz9ht85ssoffl&st=e5t4c4ke&raw=1',
             children: 'FY 22-23',
-          },
-          {
-            href: 'https://www.dropbox.com/scl/fi/lx06czu7l6s7wgfn78y94/form-990-199-fy21-22.pdf?rlkey=h88gjvxvb4g8ete01zgsosf8u&st=u3ptv535&raw=1',
-            children: 'FY 21-22',
           },
         ]}
       />
@@ -125,7 +125,7 @@ const downloads: DownloadSectionProps[] = [
       children: (
         <NonBreakingSpan>&nbsp;Download All&nbsp;&nbsp;</NonBreakingSpan>
       ),
-      href: 'https://www.dropbox.com/scl/fi/g7zlhz7y57rtc3uqbxog3/form-990-199-download-all.zip?rlkey=14l5wdx8jplwijznafcftmhnq&st=npzushov&raw=1',
+      href: 'https://www.dropbox.com/scl/fi/11jua102x4swczg0axfs0/form-990-apr-2026.zip?rlkey=5n95xb4kw85djd96jxr089n70&st=mnugdtlb&dl=1',
       variant: 'black',
     },
   },
