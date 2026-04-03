@@ -1,15 +1,19 @@
 # U-SU Website (Cal State LA)
 
+![License](https://img.shields.io/badge/license-MIT-green)
+![Next.js](https://img.shields.io/badge/Next.js-Framework-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+
 Official repository for the California State LA University-Student Union (U-SU) website.
 
 This application powers student-facing content including programs, events, services, and campus resources. The project emphasizes accessibility, responsive design, and maintainable component architecture.
 
 ## Tech Stack
 
-- Framework: Next.js (React)
-- Language: TypeScript
-- Package Manager: npm
-- Deployment: Vercel
+- **Framework:** Next.js (React)
+- **Language:** TypeScript
+- **Package Manager:** Yarn
+- **Deployment:** Vercel
 
 ## Getting Started
 
@@ -38,10 +42,7 @@ yarn
 yarn dev
 ```
 
-Visit:
-```bash
-http://localhost:3000
-```
+Visit: http://localhost:3000
 
 ## Project Structure
 
@@ -69,12 +70,19 @@ If you are part of the team:
 - Test changes before submitting PRs
 
 ## License
+
 This project is licensed under the MIT License.
+
+See the [LICENSE](./LICENSE) file for details.
+
+## Usage Notice
+
+This repository is maintained for internal use by the U-SU Web Team.
+
+While the code is available under the MIT License, external use, modification, or redistribution is not officially supported.
 
 ## Maintainers
 - U-SU Web Team
 
 ## Live Site
-```bash
 https://www.calstatelausu.org/
-```
