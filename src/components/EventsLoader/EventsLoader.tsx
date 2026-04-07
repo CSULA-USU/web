@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { fetchEvents } from 'api';
+import { fetchEvents } from 'services';
 import { PresenceEvent } from 'types';
 import {
   eventListState,

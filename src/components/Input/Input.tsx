@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from 'theme';
 
 const StyledInput = styled.input`
   width: 100%;
@@ -13,6 +14,9 @@ const StyledInput = styled.input`
   background-color: white;
   &:focus {
     box-shadow: 0 0 0 2px black;
+  }
+  &::selection {
+    background-color: ${Colors.primary};
   }
 `;
 

@@ -35,4 +35,10 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextVideo(nextConfig);
+// Apply next-video wrapper
+const videoConfig = withNextVideo(nextConfig);
+
+// Remove turbopack config that Next.js 13.5.10 doesn't understand
+delete videoConfig.turbopack;
+
+module.exports = videoConfig;

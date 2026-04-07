@@ -63,6 +63,7 @@ Accessibility is a priority for this project. Development follows WCAG best prac
 This repository is primarily maintained by the U-SU Web Team.
 
 If you are part of the team:
+
 - Follow existing patterns and conventions
 - Use meaningful commit messages
 - Avoid introducing unused dependencies
@@ -82,7 +83,9 @@ This repository is maintained for internal use by the U-SU Web Team.
 While the code is available under the MIT License, external use, modification, or redistribution is not officially supported.
 
 ## Maintainers
+
 - U-SU Web Team
 
 ## Live Site
+
 https://www.calstatelausu.org/
