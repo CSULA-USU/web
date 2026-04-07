@@ -13,7 +13,6 @@ interface LinksProps {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
 `;
 
 const SidebarContainer = styled.div`
@@ -34,8 +33,8 @@ const Sidebar = () => {
   if (isTablet) return <></>;
   return (
     <SidebarContainer>
-      {backOfficeLinks.map((link: LinksProps) => {
-        return (
+      {backOfficeLinks.map((section) =>
+        section.items.map((link: LinksProps) => (
           <Link key={link.title} href={link.url}>
             <LinkContainer>
               <Typography as="h3" variant="labelTitle" color="white">
@@ -43,8 +42,8 @@ const Sidebar = () => {
               </Typography>
             </LinkContainer>
           </Link>
-        );
-      })}
+        )),
+      )}
     </SidebarContainer>
   );
 };

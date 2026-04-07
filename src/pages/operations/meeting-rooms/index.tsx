@@ -1,10 +1,11 @@
-import { Page, Header, ImageAndCard } from 'modules';
+import { Page, Header } from 'modules';
 import Head from 'next/head';
-import { Card, FluidContainer, Image, Typography } from 'components';
+import { Card, FluidContainer, Image, Skeleton, Typography } from 'components';
 import { media, Spaces } from 'theme';
 import Link from 'next/link';
 import meetingRoomsData from 'data/meetingRooms.json';
 import styled from 'styled-components';
+import { useImageLoading } from 'hooks';
 
 const RoomCard = styled(Card)`
   margin: ${Spaces.sm};
@@ -23,7 +24,7 @@ const CardImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block; /* avoid inline-img whitespace wiggles */
+  display: block;
 `;
 
 const DynamicRatioBox = styled.div<{ ratio: number }>`
@@ -31,10 +32,6 @@ const DynamicRatioBox = styled.div<{ ratio: number }>`
   aspect-ratio: ${({ ratio }) => ratio};
   overflow: hidden;
   display: block;
-`;
-
-const TopSection = styled(FluidContainer)`
-  min-height: 240px; /* reserve enough space to avoid jump */
 `;
 
 const meetingRoomButtons = [
@@ -45,60 +42,215 @@ const meetingRoomButtons = [
   },
 ];
 
-export default function MeetingRooms() {
-  const cards = [
-    {
-      title: 'Attendees',
-      children:
-        'A list of all event attendees (guests, members organizing, staff and/or volunteers) will be required to obtain a reservation confirmation for all indoor events.',
-      imgSrc: '/vectors/operations/people.svg',
-      imgAlt: 'Three People',
-    },
-    {
-      title: 'Members',
-      children:
-        'A list of members organizing, staffing and/or volunteering will be required to obtain a reservation confirmation for all outdoor events (no guest list needed).',
-      imgSrc: '/vectors/operations/teams.svg',
-      imgAlt: 'Connecting Teams',
-    },
-    {
-      title: 'Off Campus Vendors',
-      children:
-        'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
-      imgSrc: '/vectors/operations/form.svg',
-      imgAlt: 'Publish Article',
-    },
-    {
-      title: 'Food',
-      children:
-        'All off-campus vendors will need to complete the Off-Campus Vendor Form to obtain a reservation confirmation (sponsor of event is responsible for completing this).',
-      imgSrc: '/vectors/operations/food.svg',
-      imgAlt: 'Breakfast',
-    },
-  ];
+function MeetingRoomCardImage({ src, alt }: { src: string; alt: string }) {
+  const loading = useImageLoading(src);
 
+  return (
+    <>
+      {loading ? (
+        <Skeleton width="100%" height="100%" />
+      ) : (
+        <CardImage src={src} alt={alt} />
+      )}
+    </>
+  );
+}
+
+export default function MeetingRooms() {
   return (
     <Page>
       <Head>
-        <title>U&ndash;SU Meeting Rooms</title>
+        <title>
+          Event & Conference Room Rentals | U&ndash;SU at Cal State LA
+        </title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
-          key="keywords"
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
+        />
+        <meta
+          name="description"
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Event & Conference Room Rentals | U-SU at Cal State LA"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/operations/meeting-rooms"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA University-Student Union Meeting Rooms"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Event & Conference Room Rentals | U-SU at Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Rent conference and event venues at Cal State LA U-SU in Los Angeles. Indoor and outdoor spaces for meetings, conferences, and private events. View capacity, pricing, and request a reservation."
+        />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/operations/meeting-rooms"
+        />
+
+        {/* Structured Data for Google/AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EventVenue',
+              '@id':
+                'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
+              name: 'Meeting Rooms at the University-Student Union at Cal State LA',
+              description:
+                'Professional meeting and event spaces for rent at the University-Student Union at Cal State LA.',
+              email: 'USUReservationsDesk@calstatela.edu',
+              url: 'https://www.calstatelausu.org/operations/meeting-rooms',
+              telephone: '+1-323-343-2465',
+              hasMap:
+                'https://www.google.com/maps/search/?api=1&query=5154+State+University+Dr,+Los+Angeles,+CA+90032',
+              image:
+                'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg',
+              mainEntityOfPage:
+                'https://www.calstatelausu.org/operations/meeting-rooms',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr.',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              contactPoint: [
+                {
+                  '@type': 'ContactPoint',
+                  availableLanguage: ['en'],
+                  contactType: 'reservations',
+                  email: 'USUReservationsDesk@calstatela.edu',
+                  telephone: '+1-323-343-2465',
+                },
+              ],
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 34.0683,
+                longitude: -118.1553,
+              },
+              areaServed: [
+                {
+                  '@type': 'City',
+                  name: 'Alhambra',
+                },
+                {
+                  '@type': 'City',
+                  name: 'El Monte',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Los Angeles',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Montebello',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Pasadena',
+                },
+                {
+                  '@type': 'City',
+                  name: 'San Gabriel',
+                },
+                {
+                  '@type': 'AdministrativeArea',
+                  name: 'San Gabriel Valley',
+                },
+              ],
+              parentOrganization: {
+                '@type': 'Organization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Los Angeles Room A/B/C',
+                  value: 'Large Event Space',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'U-SU Theater',
+                  value: 'Performance Space',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Alhambra Room',
+                  value: 'Meeting Room',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'San Gabriel Room',
+                  value: 'Meeting Room',
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'U-SU Plaza Space',
+                  value: 'Outdoor Event Space',
+                },
+              ],
+              potentialAction: {
+                '@type': 'ReserveAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://form.jotform.com/221578153228053',
+                  actionPlatform: [
+                    'http://schema.org/DesktopWebPlatform',
+                    'http://schema.org/MobileWebPlatform',
+                  ],
+                },
+                result: {
+                  '@type': 'Reservation',
+                  name: 'Room Reservation',
+                },
+              },
+            }),
+          }}
         />
       </Head>
-      <TopSection>
-        <Header
-          title="Meeting Rooms"
-          buttons={meetingRoomButtons}
-          backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
-        >
-          Rent out a meeting space at CSULA U&ndash;SU. Current locations
-          available to book are Los Angeles A/B/C, Theater, Alhambra, San
-          Gabriel, U&ndash;SU Plaza Space. Click an individual room for more
-          information regarding layout, features, and fees.
-        </Header>
-      </TopSection>
+      <Header
+        title="Event & Conference Room Rentals"
+        buttons={meetingRoomButtons}
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+      >
+        Create a reservation to rent out event and conference spaces at the
+        U&ndash;SU at Cal State LA. Current locations available to book are
+        Alhambra, Board Room North/South, Los Angeles A/B/C, Montebello,
+        Pasadena, San Gabriel, Theater, and the U&ndash;SU Plaza Space. Click an
+        individual room for more information regarding layout, features, and
+        fees.
+      </Header>
       <FluidContainer
         flex
         flexDirection="column"
@@ -118,7 +270,7 @@ export default function MeetingRooms() {
             <RoomCard key={props.title} title={props.title}>
               <Link href={'./meeting-rooms/' + props.id}>
                 <DynamicRatioBox ratio={props.aspect ?? 4 / 3}>
-                  <CardImage
+                  <MeetingRoomCardImage
                     src={props.mainImageSrc}
                     alt={props.mainImageAlt}
                   />
@@ -127,15 +279,6 @@ export default function MeetingRooms() {
             </RoomCard>
           ))}
         </FluidContainer>
-      </FluidContainer>
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="space-between"
-      >
-        {cards.map((props) => (
-          <ImageAndCard key={props.title} {...props} />
-        ))}
       </FluidContainer>
     </Page>
   );

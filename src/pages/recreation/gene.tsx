@@ -33,26 +33,111 @@ export default function Gene() {
   return (
     <Page>
       <Head>
-        <title>Recreation GENE</title>
-        <meta name="author" content="Recreation" key="author" />
-        <meta
-          name="keywords"
-          key="keywords"
-          content="Recreation, Fitness, Workout, Calstate LA, CSULA, U-SU, University Student Union, Nutrition, Gym, GENE, Golden Eagle Nutrition Education, diet, eating, junk food"
-        />
+        <title>Nutrition Education (GENE)</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="At gene, we believe we all can benefit from learning new skills and
-          receiving support to live our best lives. We are your partner in
-          change and want to support you in fostering new possibilities and
-          discovering habits of well-being that will last a lifetime."
+          content="Sign up for personalized nutrition coaching with Cal State LA GENE. Work with Nutritional Science graduate students to build healthy habits and mindfulness."
           key="description"
         />
+        <meta name="author" content="Recreation" key="author" />
+        {/* Open Graph / Social Media */}
         <meta
-          name="image"
+          property="og:title"
+          content="Golden Eagle Nutrition Education (GENE) | Cal State LA"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Your partner in change. Get personalized feedback and encouragement from nutrition coaches to foster lifelong well-being."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/recreation/gene"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
           property="og:image"
-          content="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
-          key="image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Student utilizing GENE nutrition services at Cal State LA"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Golden Eagle Nutrition Education (GENE) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Your partner in change. Get free, personalized nutrition coaching from Cal State LA graduate students. Start building healthy habits today!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Student utilizing GENE nutrition coaching services at Cal State LA"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/recreation/gene"
+        />
+
+        {/* Structured Data for Coaching Services */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              serviceType: 'Nutrition Education and Coaching',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Golden Eagle Nutrition Education (GENE)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              areaServed: {
+                '@type': 'CollegeOrUniversity',
+                name: 'California State University, Los Angeles',
+              },
+              description:
+                'Personalized nutrition education sessions provided by Cal State LA Nutritional Science graduate students focusing on habit change and mindfulness.',
+              offers: {
+                '@type': 'Offer',
+                price: '0.00',
+                priceCurrency: 'USD',
+                description:
+                  'Free for Cal State LA students, staff, and faculty',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <FluidContainer flex flexDirection="row" padding="0px">
@@ -62,7 +147,7 @@ export default function Gene() {
         >
           {isDesktop && isMobile && (
             <Image
-              src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
               alt="young man using gene services"
               height="232px"
               margin="0px auto"
@@ -78,7 +163,7 @@ export default function Gene() {
         {!isDesktop && (
           // desktop
           <Image
-            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
             alt="young man using gene services"
             height="500px"
             margin="auto"
@@ -87,7 +172,7 @@ export default function Gene() {
         {!isMobile && isDesktop && (
           // mobile
           <Image
-            src="https://www.dropbox.com/scl/fi/x06btckk835exjbsp6m5i/orangeeatinglaptopman.png?rlkey=eqtehnbu4xze03wln81960lew&raw=1"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp"
             alt="a young man using gene services eating an apple"
             height="250px"
             margin="auto"
@@ -119,7 +204,7 @@ export default function Gene() {
         </WelcomeContentContainer>
         <Button
           variant="black"
-          href="https://forms.office.com/r/0pTZzbkdj6"
+          href="https://forms.office.com/r/V7u5KxzAGs"
           isExternalLink
         >
           RSVP
@@ -127,7 +212,7 @@ export default function Gene() {
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Fall 2025:
+          <abbr title="gene">GENE</abbr> Bios Spring 2026:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish

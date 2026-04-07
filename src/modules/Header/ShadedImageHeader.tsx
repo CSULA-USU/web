@@ -15,6 +15,7 @@ interface HeaderProps {
   children?: React.ReactNode;
   extra?: React.ReactNode;
   buttons?: ButtonProps[];
+  height?: string;
 }
 
 const HeaderContainer = styled.div`
@@ -58,6 +59,7 @@ const ButtonContainer = styled.div`
 const OutsideContainer = styled.div<{
   backgroundImage?: string;
   isDesktop?: boolean;
+  height?: string;
 }>`
   padding: 36px;
   position: relative;
@@ -67,8 +69,11 @@ const OutsideContainer = styled.div<{
   display: flex;
   align-items: end;
   background-color: black;
-  height: 600px;
+  height: ${(props) => props.height};
   @media (max-width: 768px) {
+    height: 420px;
+  }
+  @media (max-width: 580px) {
     height: 320px;
   }
 `;
@@ -79,11 +84,16 @@ export const ShadedImageHeader = ({
   extra,
   backgroundImage,
   buttons,
+  height,
 }: HeaderProps) => {
   const { isMobile, isDesktop } = useBreakpoint();
   return (
     <header>
-      <OutsideContainer backgroundImage={backgroundImage} isDesktop={isDesktop}>
+      <OutsideContainer
+        backgroundImage={backgroundImage}
+        isDesktop={isDesktop}
+        height={height}
+      >
         <HeaderContainer>
           <Typography
             as="h1"

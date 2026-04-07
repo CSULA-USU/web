@@ -44,10 +44,6 @@ export default function Accessibility() {
           content="Learn about Accessibility at Cal State LA's University-Student Union. Explore resources, ADA compliance, inclusive design, and services that ensure all students can fully participate in campus life."
         />
         <meta name="author" content="University-Student Union, Cal State LA" />
-        <meta
-          name="keywords"
-          content="Cal State LA, California State University Los Angeles, CSULA, accessibility, ADA compliance, disability services, inclusive design, Cal State LA U-SU, Cal State LA University Student Union, accessibility resources, accessible campus, assistive technology, student accessibility, universal design, equity inclusion Cal State LA"
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta

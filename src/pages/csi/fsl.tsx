@@ -358,23 +358,106 @@ export default function FSL() {
   return (
     <Page>
       <Head>
-        <title>Student Organizations FSL</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Fraternity & Sorority Life (FSL) | Cal State LA</title>
+
+        <meta
+          name="description"
+          content="Contact Cal State LA Fraternity & Sorority Life (FSL) at (323) 343-5113. Information on recruitment, Greek council intake, and sorority/fraternity chapters."
+          key="description"
+        />
+
         <meta
           name="author"
           content="The University Student Union Center for Student Involvement"
           key="author"
         />
+
+        {/* Open Graph */}
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA Student Union, U-SU, Center for Student Involvement, CSI, University Student, Fraternity, Sorority, Co-Ed, Greek Life, FSL, IFC Recruitment, MGC Membership Intake, NPHC Membership Intake, Panhellenic Recruitment, hazing prevention"
-          key="keywords"
+          property="og:title"
+          content="Fraternity & Sorority Life (FSL) | Cal State LA"
+          key="og-title"
         />
         <meta
-          name="description"
-          content="The Fraternity and Sorority community at California State University, Los Angeles has been a vibrant and engaged community since 1948."
-          key="description"
+          property="og:description"
+          content="Information on recruitment, Greek council intake, and sorority/fraternity chapters at Cal State LA."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/csi/fsl"
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Fraternity & Sorority Life at Cal State LA logo"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Fraternity & Sorority Life (FSL) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Information on recruitment, Greek council intake, and sorority/fraternity chapters at Cal State LA."
+        />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.calstatelausu.org/csi/fsl" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Fraternity and Sorority Life (FSL)',
+              url: 'https://www.calstatelausu.org/csi/fsl',
+              logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Uiy8CLtYE2AQWZgKKbUfEbj1xQ9CDA.png',
+              provider: {
+                '@type': 'EducationalOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                parentOrganization: {
+                  '@type': 'NonprofitOrganization',
+                  name: 'University-Student Union at Cal State LA',
+                },
+              },
+              telephone: '+13233435113',
+              email: 'iprieto7@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr., U-SU Room 204',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+                addressCountry: 'US',
+              },
+              openingHours: ['Mo-Fr 09:00-17:00'],
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'Center for Student Involvement (CSI)',
+                url: 'https://www.calstatelausu.org/csi',
+              },
+            }),
+          }}
         />
       </Head>
+
       <HeroContainer>
         <BackgroundImage
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
@@ -431,7 +514,7 @@ export default function FSL() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            U&ndash;SU 2nd floor, Room 206
+            U&ndash;SU 2nd floor, Room 204
           </Typography>
         </li>
         <li>

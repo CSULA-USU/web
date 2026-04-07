@@ -130,6 +130,11 @@ export default async function handler(
     });
   }
 
+  // Honeypot: if the hidden field was filled, silently discard
+  if (typeof req.body?.website === 'string' && req.body.website.trim()) {
+    return res.status(200).json({ success: true });
+  }
+
   try {
     // Validate + sanitize body
     const result = validateContactForm(req.body);

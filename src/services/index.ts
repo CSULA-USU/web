@@ -1,4 +1,3 @@
-// src/api/index.ts
 import { StatusType } from 'atoms';
 import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';

@@ -76,16 +76,112 @@ export default function PASRC() {
     <Page>
       <Head>
         <title>U-SU PASRC</title>
-        <meta name="author" content="pasrc coordinator director" key="author" />
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="csula cal state la student union cross cultural centers africa african black resource center resource ccc u-su university-student programs events "
-          key="keywords"
+          name="author"
+          content="The Pan African Student Resource Center at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
-          content="The Pan African Student Resource Center is one of the four identity-based centers within the Cross Cultural Centers at the University-Student Union"
+          content="The Pan African Student Resource Center (PASRC) at Cal State LA supports students through Black identity programming, open dialogue, and the annual Black Grad celebration."
           key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Pan African Student Resource Center (PASRC) | Cal State LA U-SU"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Founded in 1990, the PASRC provides a space for community, history, and empowerment for the Pan African diaspora at Cal State LA."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/ccc/pasrc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="A student smiling at the Cal State LA Black Graduation celebration"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Pan African Student Resource Center (PASRC) | Cal State LA"
+        />
+        <meta
+          name="twitter:description"
+          content="Providing space for community, history, and empowerment for the Pan African diaspora at Cal State LA."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/ccc/pasrc/black-grad/2022/grad-smile.png"
+        />
+
+        <link rel="canonical" href="https://www.calstatelausu.org/ccc/pasrc" />
+
+        {/* Structured Data for Cultural Support */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'Pan African Student Resource Center (PASRC)',
+              alternateName: 'PASRC',
+              description:
+                'A resource center dedicated to the Pan African community, focusing on history, culture, and student success.',
+              parentOrganization: {
+                '@type': 'NonprofitOrganization',
+                name: 'University-Student Union at Cal State LA',
+              },
+              telephone: '+13233435131',
+              email: 'ithoma10@calstatela.edu',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr, Room 206',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                  opens: '08:00',
+                  closes: '18:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Friday',
+                  opens: '08:00',
+                  closes: '17:00',
+                },
+              ],
+              sameAs: [
+                'https://www.instagram.com/pasrc.ccc/',
+                'https://groupme.com/join_group/96687493/RA2NYgao',
+              ],
+              event: {
+                '@type': 'Event',
+                name: 'Black Grad',
+                description:
+                  'A cultural graduation ceremony acknowledging academic achievements and cultural influences.',
+              },
+            }),
+          }}
         />
       </Head>
       <HeaderContainer>

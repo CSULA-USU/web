@@ -44,6 +44,57 @@ export default function Home() {
     <Page>
       <Head>
         <title>University&ndash;Student Union</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="author"
+          content="University-Student Union at Cal State LA"
+        />
+        <meta
+          name="description"
+          content="The heart of campus life at Cal State LA. Discover upcoming events, student organizations, job opportunities, room rentals, and essential student services at the U-SU."
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="University-Student Union | Cal State LA"
+        />
+        <meta
+          property="og:description"
+          content="Your hub for connection and growth. Explore events, join student orgs, find your community at the U-SU."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.calstatelausu.org/" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.calstatelausu.org/" />
+
+        {/* Structured Data for the Organization and Events */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'NonprofitOrganization',
+              name: 'University-Student Union at Cal State LA',
+              url: 'https://www.calstatelausu.org',
+              logo: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp',
+              sameAs: [
+                'https://www.instagram.com/calstatelausu',
+                'https://www.facebook.com/calstatelausu',
+                'https://twitter.com/calstatelausu',
+              ],
+              subOrganization: {
+                '@type': 'GovernmentOrganization',
+                name: 'Associated Students, Inc.',
+              },
+            }),
+          }}
+        />
       </Head>
       {/* {loading ? (
         <></>

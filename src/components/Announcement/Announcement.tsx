@@ -6,6 +6,7 @@ interface AnnouncementProps {
   children?: React.ReactNode;
   text?: string;
   isVisible: boolean;
+  isPreview?: boolean;
   linkText?: string;
   href?: string;
 }
@@ -37,8 +38,10 @@ export const Announcement = ({
   linkText,
   text,
   isVisible,
+  isPreview = false,
 }: AnnouncementProps) => {
-  return isVisible ? (
+  const shouldRender = isPreview || isVisible;
+  return shouldRender ? (
     <AnnouncementContainer>
       <AlertContainer>
         <Typography margin="4px 0 0 8px">{text}</Typography>

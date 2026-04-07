@@ -3,11 +3,23 @@ body {
   padding: 0;
   margin: 0;
   background-color: #f4f4f4;
+  font-family: var(--font-montserrat, -apple-system), -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
 }
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 body * {
   box-sizing: border-box;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -24,8 +36,11 @@ button:focus-visible,
 div:focus-visible,
 svg:focus-visible,
 span:focus-visible {
-  box-shadow: 0 0 0 6px black;
-  outline: 3px solid #fece07;
+  outline: 3px solid #1d4ed8;
+  /* Blue 700 */
+  box-shadow: 0 0 0 6px #c4b5fd;
+  /* Purple 300 */
+  outline-offset: 2px;
   text-decoration: underline;
   z-index: 99;
 }
@@ -38,4 +53,43 @@ span:focus-visible {
 ::-moz-selection {
   background: #99ffcc;
   color: black;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Reveal when keyboard focused */
+.skip-link:focus,
+.skip-link:active {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  background: rgb(0 0 0 / 0.85);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content:focus-visible {
+  outline: none;
+  box-shadow: none;
 }

@@ -12,11 +12,6 @@ export default function Governance() {
     <Page>
       <Head>
         <title>U&ndash;SU Board Members</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Representative, Chair, Alumni, President, Faculty, Apointee, Advisor, Dean"
-          key="keywords"
-        />
       </Head>
       <Header
         title="Meet the Board of Directors"
@@ -98,7 +93,7 @@ export default function Governance() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of u-su board of directors "
-          src="https://www.dropbox.com/scl/fi/82dsw2a92skpb14t1jbc1/BODGroup2_2024.jpg?rlkey=gh60f6n5b4z3y4hh5xj8qionb&st=gfn7ty85&raw=1"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
           width="100%"
           height="auto"
           borderRadius="12px"

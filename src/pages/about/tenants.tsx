@@ -18,6 +18,22 @@ const CardContainer = styled.div`
   min-width: calc(33.33% - 8px);
   flex: 1;
   margin: ${Spaces.lg} 0;
+  cursor: pointer;
+
+  &:hover {
+    & > div {
+      opacity: 0.8;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+  }
 `;
 
 const cards = [
@@ -26,24 +42,24 @@ const cards = [
     children:
       'Cal State LA Alumni Association is dedicated to past and present students desiring to stay involved in the Cal State LA community. ',
     iconSrc: '/calstatela-badge.svg',
-    iconAlt: '',
+    iconAlt: 'Cal State LA Alumni Logo',
     number: '323-343-2586',
   },
   {
     title: 'Associated Students, Incorporated',
     children:
-      'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA. Assisting in the protection of student rights and interests, ASI provides the means for effective input into the governance of the campus and is the official avenue through which student opinion is expressed. ASI offers students experience in responsible political participation, as they advocate for the protection of higher education at the state and federal level. With the support of professional staff, the Board sets strategic goals and policy priorities, while members represent student interests on ASI-internal and University-wide committees. The Board and Professional Staff manage the day-to-day operations of the corporation providing students, faculty and staff dynamic programming, support and services.',
+      'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA...',
     iconSrc: '/about/tenants/asi-logo.png',
-    iconAlt: '',
+    iconAlt: 'ASI Logo',
     number: '323-343-4780',
   },
   {
-    title: 'Information Technology Services',
+    title: 'In the Making',
     children:
-      'Information Technology Services is one of five Open Access Labs (OALs) spread out on campus. These labs are made available to assist Cal State LA students to accomplish their academic goal for instruction and research, students must have a current student ID and a Network Information Services (NIS) account. Though all of the OALs provides identical services to the campus community, they offer slightly different equipments, hardware and software depending on various needs in each geographical area on campus.',
-
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: '',
+      'In the Making is a nonprofit organization serving as a community resource center providing clothing and household items to individuals, groups and organizations as well as being a source for youth capacity building in a nonprofit environment.  Our programs form partnerships with schools, corporations and government agencies in order to serve the community.',
+    iconSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/ITM_logo_black.png',
+    iconAlt: 'In the Making Logo',
     number: '',
   },
   {
@@ -52,7 +68,7 @@ const cards = [
       'Extraordinary food and atmosphere, time-honored family recipes and the finest quality ingredients are the hallmarks of the Sbarro brand. From the moment our customers walk through the door, they know that dining at Sbarro will be a distinctive Italian experience.',
 
     iconSrc: '/about/tenants/sbarro-logo.png',
-    iconAlt: '',
+    iconAlt: 'Sbarro Logo',
     number: '323-225-1464',
   },
   {
@@ -60,7 +76,7 @@ const cards = [
     children:
       'It takes many hands to craft the perfect cup of coffee – from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
     iconSrc: '/about/tenants/starbucks-logo.png',
-    iconAlt: '',
+    iconAlt: 'Starbucks Logo',
     number: '323-343-6793',
   },
 ];
@@ -72,12 +88,98 @@ export default function Tenants() {
   return (
     <Page>
       <Head>
-        <title>U-SU Tenants</title>
-        <meta name="author" content="Tenants" key="author" />
+        <title>Tenants & Dining | U&ndash;SU</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="Alumni Association, Associated Students Incorporated, ASI, College of Professional and Global Education, PAGE, Information Technology Services, Open Access Labs, OAL, Wells Fargo, Sbarro, Starbucks"
-          key="keywords"
+          name="author"
+          content="University-Student Union at Cal State LA"
+          key="author"
+        />
+        <meta
+          name="description"
+          content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="U-SU Tenants: Dining, Services, and Student Government"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Meet our partners. From student government (ASI) to your morning coffee at Starbucks, explore the organizations and eateries located inside the U-SU."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/about/tenants"
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp"
+          key="og-image"
+        />
+
+        {/* Twitter - Upgraded to large_image for better visibility */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/tenants"
+        />
+
+        {/* Structured Data for a Directory of Organizations */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'University-Student Union Tenants',
+              description:
+                'Directory of dining and student services located within the U-SU.',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  item: {
+                    '@type': 'Organization',
+                    name: 'Alumni Association',
+                    telephone: '323-343-2586',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  item: {
+                    '@type': 'Organization',
+                    name: 'Associated Students, Inc. (ASI)',
+                    telephone: '323-343-4780',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Starbucks',
+                    telephone: '323-343-6793',
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  item: {
+                    '@type': 'FoodEstablishment',
+                    name: 'Sbarro',
+                    telephone: '323-225-1464',
+                  },
+                },
+              ],
+            }),
+          }}
         />
       </Head>
       <Header title="Tenants">
@@ -96,14 +198,7 @@ export default function Tenants() {
               setIsOpen(true);
             }}
           >
-            <Card
-              hoverable
-              margin={`${Spaces.md}`}
-              topBorder
-              key={`${props.title}`}
-              {...props}
-              minHeight="100%"
-            >
+            <Card margin={`${Spaces.md}`} topBorder {...props} minHeight="100%">
               {`${
                 props.children.length > 200
                   ? props.children.substring(0, 200) + '...'
@@ -112,24 +207,30 @@ export default function Tenants() {
             </Card>
           </CardContainer>
         ))}
-        <CardContainer />
-        <CardContainer />
       </FluidContainer>
       {modalData && (
         <GenericModal
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
-          <Typography variant="titleSmall" as="h2" margin="16px 0">
-            {modalData.title}
-          </Typography>
-          <div>
-            <Image
-              src={modalData.iconSrc}
-              alt={modalData.iconAlt}
-              width="100px"
-            />
-          </div>
+          <FluidContainer
+            padding="0"
+            flex
+            flexDirection="column"
+            alignItems="center"
+          >
+            <Typography variant="titleSmall" as="h2" margin="16px 0">
+              {modalData.title}
+            </Typography>
+            <FluidContainer>
+              <Image
+                src={modalData.iconSrc}
+                alt={modalData.iconAlt}
+                maxHeight="150px"
+                width="auto"
+              />
+            </FluidContainer>
+          </FluidContainer>
           <Typography margin={`${Spaces.md} 0`}>
             {modalData.children}
           </Typography>

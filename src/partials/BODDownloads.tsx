@@ -10,7 +10,7 @@ import {
 import { DocumentLinkContainer, DownloadSection } from 'modules';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
-import { getMeetingDocuments } from 'services';
+import { getMeetingDocuments } from 'api/bod';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo } from 'react';
 
@@ -182,7 +182,7 @@ export const BODDownloads = () => {
             size="sm"
             weight="400"
           >
-            View All Documents
+            View public document archives
           </Typography>
         </StyledLink>
       </FluidContainer>

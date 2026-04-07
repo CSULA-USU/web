@@ -1,30 +1,15 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { ContentBoard, Page } from 'modules';
-import styled from 'styled-components';
 import { GraffixRequest } from 'types';
 import {
-  ContentBoardCellProps,
   ContentBoardColumnProps,
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
-import { BackOfficeTemplate } from 'partials/Backoffice';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-
-const Loading = styled.div<{ visible: boolean }>`
-  height: 100vh;
-  width: 100vw;
-  display: ${(p) => (p.visible ? 'flex' : 'none')};
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.3);
-  position: fixed;
-  font-weight: 700;
-  font-size: 36px;
-`;
+import BackofficeShell from 'modules/Backoffice/BackofficeShell';
+import { FluidContainer, Loading } from 'components';
 
 const contentBoardTemplate: any = {
   'Not Started': { color: 'grey', columnTitle: 'Not Started', columnData: [] },
@@ -50,149 +35,130 @@ const contentBoardTemplate: any = {
 };
 
 const createDeepCopy = (object: any) => {
-  // Traditional spread operator {...obj} is a shallow copy. The nested values are still referenced.
-  // Returns a deep copy.
   return JSON.parse(JSON.stringify(object));
 };
 
 export default function GraphicsRequests() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    // Needs to make sure the page mounts for the router to work.
+    if (status === 'loading') return;
     if (!session) router.push('/backoffice/signin');
-  }, []);
+  }, [session, router, status]);
 
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState<string>('N/A');
   const [accessibleDepartment, setAccessibleDepartment] = useState('');
-
   const [graffixRequests, setGraffixRequests] = useState<
     GraffixRequest[] | undefined
   >(undefined);
   const [cellMap, setCellMap] = useState<KeyValueProps>({});
-
   const [contentBoardData, setContentBoardData] = useState<
     ContentBoardColumnProps[]
   >(createDeepCopy(Object.values(contentBoardTemplate)));
 
   useEffect(() => {
-    const fetchDepartmentsUserHasAccessTo = async () => {
-      await fetch('/api/user/department')
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(
-              `HTTP error! Status: ${res.status}. User does not belong to any department.`,
-            );
-          }
-          return res.json();
-        })
-        .then((res) => {
-          const user_department = res?.department?.toLowerCase();
-          setAccessibleDepartment(user_department);
-          setSelectedDepartment(
-            user_department == 'all' ? 'csi' : user_department,
-          );
-        })
-        .catch(() => {
-          console.log('User does not belong to any department.');
-          alert(
-            "Sorry you aren't assigned to any departments currently. Please contact the Graffix Web team if this problem persists. Thank you",
-          );
-          router.push('/backoffice');
-        });
+    const fetchUserDept = async () => {
+      try {
+        const res = await fetch('/api/user/department');
+        if (!res.ok) throw new Error('No department assigned');
+
+        const data = await res.json();
+        const userDept = data?.department?.toLowerCase();
+
+        setAccessibleDepartment(userDept);
+        setSelectedDepartment(userDept === 'all' ? 'csi' : userDept);
+      } catch {
+        alert(
+          " You aren't assigned to any departments. Contact Graffix Web team.",
+        );
+        router.push('/backoffice');
+      }
     };
-    fetchDepartmentsUserHasAccessTo();
-  }, []);
+    fetchUserDept();
+  }, [router]);
 
   useEffect(() => {
-    // When changing between departments, fetch new Graffix Requests by department. If API call fails, send user to Graffix-Requests page.
-    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
-    if (selectedDepartment == 'N/A' || selectedDepartment == '') return;
-    setLoading(true);
+    if (selectedDepartment === 'N/A' || selectedDepartment === '') return;
 
-    const fetchGraffixRequestsFromNotion = async () => {
-      await fetch(`/api/notion?department_id=${selectedDepartment}`, {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (data != undefined && data.length > 0) {
-            setGraffixRequests(data);
-          } else {
-            throw new Error(`Content Error! Status: ${data.status}`);
-          }
-        })
-        .catch(() => {
-          console.log('Failed to fetch Graffix Requests.');
-          // router.push('/backoffice/graffix-requests');
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    setLoading(true);
+    setContentBoardData(createDeepCopy(Object.values(contentBoardTemplate)));
+
+    const fetchNotionData = async () => {
+      try {
+        const res = await fetch(
+          `/api/notion?department_id=${selectedDepartment}`,
+          {
+            method: 'GET',
+            credentials: 'include',
+          },
+        );
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+
+        const data = await res.json();
+        setGraffixRequests(data || []);
+      } catch (err) {
+        console.error('Failed to fetch Graffix Requests:', err);
+        setGraffixRequests([]);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchGraffixRequestsFromNotion();
+
+    fetchNotionData();
   }, [selectedDepartment]);
 
   useEffect(() => {
-    // When Graffix-Requests resources change, update Content Board and Cell Map
     if (!graffixRequests) return;
 
-    const populateContentBoard = () => {
-      let tempContentBoardData = createDeepCopy(contentBoardTemplate);
-      graffixRequests.map((graffixRequest) => {
-        if (
-          graffixRequest?.status &&
-          graffixRequest?.status in tempContentBoardData
-        ) {
-          const contentBoardCell: ContentBoardCellProps = {
-            cellID: graffixRequest.id,
-            cellTitle: graffixRequest.title,
-          };
-          tempContentBoardData[graffixRequest.status].columnData.push(
-            contentBoardCell,
-          );
-        }
-      });
-      setContentBoardData(Object.values(tempContentBoardData));
-    };
+    const tempContentBoardData = createDeepCopy(contentBoardTemplate);
+    const tempMap: KeyValueProps = {};
 
-    const populateCellIDMap = () => {
-      let tempMap: KeyValueProps = {};
-      graffixRequests.map((graffixRequest) => {
-        tempMap[graffixRequest?.id] = graffixRequest;
-      });
-      setCellMap(tempMap);
-    };
+    graffixRequests.forEach((req) => {
+      tempMap[req.id] = req;
 
-    populateContentBoard();
-    populateCellIDMap();
+      if (req?.status && req.status in tempContentBoardData) {
+        tempContentBoardData[req.status].columnData.push({
+          cellID: req.id,
+          cellTitle: req.title,
+        });
+      }
+    });
+
+    setCellMap(tempMap);
+    setContentBoardData(Object.values(tempContentBoardData));
   }, [graffixRequests]);
 
   return (
     <Page>
       <Head>
-        <title>Graphics Requests</title>
+        <title>Graffix Requests</title>
       </Head>
-      <Loading visible={loading}>Loading...</Loading>
 
-      <BackOfficeTemplate>
-        <ContentBoard
-          title={`Graffix Requests`}
-          columns={contentBoardData}
-          cellMap={cellMap}
-          selectedDepartment={selectedDepartment}
-          setSelectedDepartment={setSelectedDepartment}
-          accessibleDepartment={accessibleDepartment}
-        />
-      </BackOfficeTemplate>
+      <BackofficeShell
+        title="Graffix Requests"
+        subtitle="Manage and view graphic requests for the University–Student Union"
+      >
+        {loading ? (
+          <FluidContainer
+            flex
+            alignItems="center"
+            justifyContent="center"
+            height="70vh"
+          >
+            <Loading load={true} />
+          </FluidContainer>
+        ) : (
+          <ContentBoard
+            columns={contentBoardData}
+            cellMap={cellMap}
+            selectedDepartment={selectedDepartment}
+            setSelectedDepartment={setSelectedDepartment}
+            accessibleDepartment={accessibleDepartment}
+          />
+        )}
+      </BackofficeShell>
     </Page>
   );
 }

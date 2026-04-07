@@ -9,8 +9,6 @@ import { Search } from 'modules/Search';
 
 const LogoLink = styled(Link)`
   &:focus {
-    box-shadow: 0 0 0 6px black;
-    outline: 3px solid #fece07;
     text-decoration: underline;
   }
 `;

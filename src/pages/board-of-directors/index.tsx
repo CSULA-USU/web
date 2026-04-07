@@ -332,15 +332,11 @@ export default function BoardOfDirectors() {
     <Page>
       <Head>
         <title>Board of Directors</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Vote, Committees, Audit, Fiscal, Nomination."
-          key="keywords"
-        />
       </Head>
       <ShadedImageHeader
         title="Board of Directors"
-        backgroundImage="https://www.dropbox.com/scl/fi/82dsw2a92skpb14t1jbc1/BODGroup2_2024.jpg?rlkey=gh60f6n5b4z3y4hh5xj8qionb&st=gfn7ty85&raw=1"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        height="850px"
         buttons={[
           {
             text: 'Meeting Schedule',

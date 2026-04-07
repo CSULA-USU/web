@@ -97,7 +97,7 @@ const UnstyledUnorderedList = styled.ul`
 
 const MainMenuItem = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   > :last-child {
     margin-left: 4px;
   }

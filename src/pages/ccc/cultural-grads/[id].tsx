@@ -153,11 +153,6 @@ export default function CGCGrad() {
           key="author"
         />
         <meta
-          name="keywords"
-          content="CSULA, Cal State LA, college, Los Angeles, Student Union, Cross Cultural Centers, CCC, U-SU, University Student, Cultural Graduation, Nuestra, Chicana, Chicano, Chicanx, Latina, Latino, Latinx, Central American, South American, APIDA, Asian, Pacific Islander, South Asian, Desi-American, Black, African American, Pan-African Diaspora, Native, American Indian, Alaska Native, Native Hawaiian, Indigenous, Pride, Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual"
-          key="keywords"
-        />
-        <meta
           name="description"
           content="Look back into Cal State LA's Cultural Graduations. These celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success. The celebrations are open to all students who would like to sign up and participate. You deserve to celebrate your achievements with cultural influences that are integral to your being and important to you and your community! Apply now!"
           key="description"

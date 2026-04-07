@@ -29,7 +29,7 @@ const SearchBig = styled.input`
   padding: 12px 24px;
   font-size: 18px;
   font-weight: 500;
-  font-family: 'Bitter', serif;
+  font-family: var(--font-bitter), serif;
   text-decoration: none;
   ::selection {
     background: ${Colors.greyDarker};
@@ -52,7 +52,7 @@ const SearchCard = styled.div`
   height: 100%;
   justify-content: center;
   margin-top: 32px;
-  padding: 16px;
+  padding: 20px;
   transition: all 0.2s ease;
 
   &:hover {
@@ -62,6 +62,7 @@ const SearchCard = styled.div`
 
   @media screen and (max-width: 480px) {
     height: 100%;
+    padding: 16px;
   }
 `;
 
@@ -181,12 +182,7 @@ export default function Search() {
     <Page>
       <Head>
         <title>U&ndash;SU Search</title>
-        <meta name="author" content="Search" key="author" />
-        <meta
-          name="keywords"
-          content="search find query u-su student union look"
-          key="keywords"
-        />
+        <meta name="author" content="Search" key="author" />{' '}
         {/* Preload background image for better LCP */}
         <link
           rel="preload"

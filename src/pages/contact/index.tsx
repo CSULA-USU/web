@@ -38,6 +38,11 @@ const ContactItem = styled.div`
   margin-bottom: ${Spaces.lg};
 `;
 
+const Address = styled.address`
+  font-style: normal;
+  margin-top: ${Spaces.lg};
+`;
+
 const FormGroup = styled.div`
   margin-bottom: ${Spaces.lg};
 `;
@@ -76,6 +81,15 @@ const StyledTextArea = styled(TextArea)`
   border-radius: 4px;
 `;
 
+const HoneypotField = styled.div`
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+`;
+
 interface FormErrors {
   subject?: string;
   category?: string;
@@ -97,6 +111,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
 
   const validateEmail = (email: string): boolean => {
     const basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -162,7 +177,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      await postJotform(formData);
+      await postJotform({ ...formData, website: honeypot });
 
       showToast('Your response has been successfully sent!', 'success');
 
@@ -186,7 +201,7 @@ export default function Contact() {
   return (
     <Page>
       <Head>
-        <title>Contact the U–SU</title>
+        <title>Contact the U&ndash;SU</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Cross Cultural Centers, Center For Student Involvement, Fitness Center, Student Organizations, Calendar, Events, Gender and Sexuality Resource Center, Pan African Resource Center, Asian Pacific Islander, Chicana Latina, Information and Event Services, Distinguished Women Awards, Cultural Graduate Celebrations, Employment Opportunities, Board of Directors, Jobs, complaints, feedback, contact, connect, report, issue, question"
@@ -200,7 +215,12 @@ export default function Contact() {
       </Head>
 
       <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp">
-        <Typography variant="titleLarge" weight="700" as="h1">
+        <Typography
+          variant="titleLarge"
+          weight="700"
+          as="h1"
+          margin={`0 0 ${Spaces.md}`}
+        >
           Contact Us
         </Typography>
         <Typography as="p">
@@ -219,10 +239,10 @@ export default function Contact() {
             <Typography weight="700" as="h2">
               University&ndash;Student Union
             </Typography>
-            <address style={{ fontStyle: 'normal', marginTop: Spaces.lg }}>
+            <Address>
               <Typography as="p">5154 State University Dr</Typography>
               <Typography as="p">Los Angeles, CA 90032</Typography>
-            </address>
+            </Address>
 
             <ContactContainer style={{ marginTop: Spaces.xl }}>
               {contacts.map((c) => (
@@ -366,6 +386,19 @@ export default function Contact() {
                   />
                 </FormGroup>
               </FormRow>
+
+              <HoneypotField aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </HoneypotField>
 
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}

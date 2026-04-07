@@ -21,6 +21,7 @@ const ContentBoardColumnsContainer = styled.div<{
   overflow-x: auto;
   gap: 1rem;
   justify-content: space-around;
+  padding: 24px;
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -41,14 +42,12 @@ const ContentBoardColumnsContainer = styled.div<{
 `;
 
 export const ContentBoard = ({
-  title,
   columns,
   cellMap,
   selectedDepartment,
   setSelectedDepartment,
   accessibleDepartment,
 }: {
-  title: string;
   columns: ContentBoardColumnProps[];
   cellMap: KeyValueProps;
   selectedDepartment: string;
@@ -88,13 +87,13 @@ export const ContentBoard = ({
 
   const ContentBoardContainer = styled.div<{ isTablet: boolean }>`
     position: relative;
-    width: ${isTablet ? '100%' : 'calc(100% - 120px)'};
+    width: 100%;
+    padding: 0;
   `;
 
   return (
     <ContentBoardContainer isTablet={isTablet}>
       <ContentBoardNav
-        title={title}
         filterInput={filterInput}
         setFilterInput={setFilterInput}
         selectedDepartment={selectedDepartment}

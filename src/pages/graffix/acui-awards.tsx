@@ -172,16 +172,97 @@ export default function AcuiAwards() {
   return (
     <Page>
       <Head>
-        <title>U-SU Graffix ACUI Awards</title>
+        <title>U&ndash;SU Graffix ACUI Awards</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="author"
-          content="The University Student Union Graffix Department"
+          content="The University-Student Union Graffix Department at Cal State LA"
           key="author"
         />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Graffix, Graphics, Programming, Events, Campaign, Promotion, Print, ACUI"
-          key="keywords"
+          name="description"
+          content="Explore the award-winning work of the Cal State LA U-SU Graffix department. Celebrating over a decade of ACUI conference honors in graphic design and student union promotion."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Graffix ACUI Awards | Cal State LA University-Student Union"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="From 'Best of Show' to Honorable Mentions, see why our Graffix team is recognized nationally for excellence in student union media."
+          key="og-desc"
+        />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/graffix/acui-awards"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+          key="og-image"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Award-Winning Design | Graffix ACUI Awards"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore over a decade of national design awards won by Cal State LA students at the ACUI conferences."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/graffix/acui-awards"
+        />
+
+        {/* Structured Data for Portfolio/Awards */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'CollectionPage',
+                  name: 'Graffix ACUI Awards',
+                  description:
+                    'A gallery of national awards won by Graffix student designers at Cal State LA.',
+                  publisher: {
+                    '@type': 'EducationalOrganization',
+                    name: 'U-SU Graffix',
+                    url: 'https://www.calstatelausu.org/graffix',
+                  },
+                },
+                ...awards.map((award) => ({
+                  '@type': 'CreativeWork',
+                  name: award.title,
+                  creator: {
+                    '@type': 'Person',
+                    name: award.name,
+                  },
+                  award: `${award.place} - ${award.acuiName}`,
+                  genre: award.category,
+                  image: `https://www.calstatelausu.org${award.src}`,
+                  maintainer: {
+                    '@type': 'EducationalOrganization',
+                    name: 'U-SU Graffix',
+                  },
+                })),
+              ],
+            }),
+          }}
         />
       </Head>
       <FluidContainer flex justifyContent="center" backgroundColor="black">

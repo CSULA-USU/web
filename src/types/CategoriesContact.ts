@@ -4,12 +4,13 @@ export const categoryMap: Record<string, string> = {
   concern: 'Concern',
   facility: 'Facility',
   feedback: 'Feedback',
+  kudos: 'Kudos',
   program: 'Program',
   webissue: 'Website Issue',
   other: 'Other',
 };
 
-export type CategoryOption = keyof typeof categoryMap; // 'accessibility' | 'concern' | 'facility' | 'feedback' | 'program' | 'webissue' | 'other'
+export type CategoryOption = keyof typeof categoryMap; // 'accessibility' | 'concern' | 'facility' | 'feedback' | 'kudos' | 'program' | 'webissue' | 'other'
 
 export const categoryItems = Object.entries(categoryMap).map(
   ([value, label]) => ({ value, label }),

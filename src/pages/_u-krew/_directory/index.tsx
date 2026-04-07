@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { TabCluster, FluidContainer, Typography, Divider } from 'components';
 import { Header, Page } from 'modules';
 import Head from 'next/head';
@@ -152,9 +151,11 @@ export default function Directory() {
 
   useEffect(() => {
     const fetchUKrewStudents = async () => {
-      await axios.get('/api/jotformUKrew').then((res) => {
-        setUKrewStudents(res.data);
-      });
+      const response = await fetch('/api/jotformUKrew');
+      if (response.ok) {
+        const data = await response.json();
+        setUKrewStudents(data);
+      }
     };
     fetchUKrewStudents();
   }, []);
@@ -179,10 +180,6 @@ export default function Directory() {
       <Head>
         <title>U-SU U-Krew Directory</title>
         <meta name="author" content="University-Student Union, Cal State LA" />
-        <meta
-          name="keywords"
-          content="Cal State LA, CSULA, U-SU, University-Student Union, Staff, Directors, Administration, Center for Student Involvement, CSI, Cross Cultural Centers, CCC, Graffix, Operations, Recreation, Coordinator, Dean, Technician, Assistant, Web Designer, Executive, Employee"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -58,16 +58,85 @@ export default function Services() {
   return (
     <Page>
       <Head>
-        <title>University-Student Union Services</title>
+        <title>Student Services & Amenities | Cal State LA U&ndash;SU</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, student, organizations, MORE, Cross Cultural Centers, Center For Student Involvement, Fitness Center, The Pit, The Gameroom, Student orgnizations, Calendar, Events, Gender and sexuality resource center, Pan African resource center, Asian Pacific islander, Chicana Latina, Information and Event Services, Distinguished Women, awards, Cultural Graduate Celebrations, LOUDmouth Zine, S.T.A.R.S. Program, Employment Opportunities, Board of Directors, Jobs"
-          key="keywords"
+          name="author"
+          content="University-Student Union at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
-          content="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
+          content="Explore free services at the Cal State LA Student Union, including Nap Pods, the Reflection Room, Lactation Room, and gender-inclusive restrooms."
           key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Student Services & Amenities | University-Student Union"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="From high-tech Nap Pods to quiet Reflection Rooms, discover the amenities designed to support student health and wellness at Cal State LA."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/about/services"
+        />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/about.png"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Nap Pods at the Cal State LA University-Student Union"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/about/services"
+        />
+
+        {/* Structured Data for Facilities */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'University-Student Union Services',
+              description:
+                'Physical amenities and wellness services provided by the U-SU for the Cal State LA community.',
+              mainEntity: [
+                {
+                  '@type': ['Place', 'Service'],
+                  name: 'Relaxation Station (Nap Pods)',
+                  description:
+                    'Three state-of-the-art sleep pods for 20-minute rest intervals.',
+                  location: 'U-SU Room 304',
+                },
+                {
+                  '@type': ['Place', 'Service'],
+                  name: 'Reflection Room',
+                  description:
+                    'Space for quiet reflection, meditation, or prayer.',
+                  location: 'U-SU Room 302',
+                },
+                {
+                  '@type': ['Place', 'Service'],
+                  name: 'Lactation Room',
+                  description: 'Private space for nursing mothers.',
+                  location: 'U-SU Room 206',
+                },
+              ],
+            }),
+          }}
         />
       </Head>
 
@@ -79,11 +148,12 @@ export default function Services() {
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/about.png"
           alt="student union"
           width="100%"
+          height="240px"
         />
         <Typography>
-          The programs and services hosted by the University-Student Union are
-          funded by the student union fee and are available to all students free
-          of charge.
+          The programs and services hosted by the University&ndash;Student Union
+          are funded by the student union fee and are available to all students
+          free of charge.
         </Typography>
       </Header>
       <FluidContainer>

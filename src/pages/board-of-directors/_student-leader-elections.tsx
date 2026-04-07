@@ -204,12 +204,7 @@ export default function StudentLeaderElections() {
   return (
     <Page>
       <Head>
-        <title>U-SU Student Elections</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Elections, Student Government, Application, Candidate"
-          key="keywords"
-        />
+        <title>U&ndash;SU Student Elections</title>
       </Head>
 
       <FluidContainer
@@ -234,7 +229,7 @@ export default function StudentLeaderElections() {
           </Typography>
           <ButtonContainer>
             <Button href="https://form.jotform.com/210416532268047">
-              U-SU Board of Directors
+              U&ndash;SU Board of Directors
             </Button>
             <Button href="https://asicalstatela.org/general-election">
               ASI Student Government

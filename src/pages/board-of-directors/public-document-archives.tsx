@@ -15,7 +15,7 @@ import {
 import { useBreakpoint } from 'hooks';
 import archiveData from 'data/public-document-archives.json';
 import { Spaces } from 'theme';
-import { getDownloadAllDoc, getMeetingDocuments } from 'services';
+import { getDownloadAllDoc, getMeetingDocuments } from 'api/bod';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
@@ -120,11 +120,6 @@ export default function PublicDocumentArchives() {
     <Page>
       <Head>
         <title>U&ndash;SU Public Document Archive</title>
-        <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Board of Directors, Board, Directors, Student, Leader, ASI, Agenda, Minutes, Meetings, Archive, public documents,"
-          key="keywords"
-        />
       </Head>
       <Header
         title="Archives"

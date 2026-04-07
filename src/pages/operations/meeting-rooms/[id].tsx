@@ -3,21 +3,32 @@ import Head from 'next/head';
 import { CallToAction, Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { useRouter } from 'next/router';
-import { Button, FluidContainer, Typography, Image } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Typography,
+  Image,
+  Skeleton,
+} from 'components';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
-import { useBreakpoint } from 'hooks';
+import { useBreakpoint, useImageLoading } from 'hooks';
 
 const EquipmentSection = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${Spaces.sm};
+
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+  }
 `;
 
 const NavItemContainer = styled.div`
   *:hover {
-    color: ${Colors.gold};
+    color: ${Colors.primary};
   }
 `;
 
@@ -26,26 +37,84 @@ const TextCenter = styled.div`
 `;
 
 const Table = styled.div`
-  text-align: left;
+  display: flex;
+  width: 100%;
 
   table {
     border-collapse: collapse;
+    width: 100%;
   }
 
   tr {
     border-bottom: 1pt solid black;
   }
 
-  th {
-    padding: 20px 0 40px 0;
+  @media (min-width: 1025px) {
+    th,
+    td {
+      padding: ${Spaces.lg} 0;
+      text-align: center;
+      padding-right: ${Spaces.md};
+      vertical-align: middle;
+    }
+    .setup-column {
+      width: 20%;
+    }
+    .capacity-column {
+      width: 20%;
+    }
+    td {
+      vertical-align: middle;
+    }
   }
 
-  thead th {
-    padding-right: 20px;
+  @media (max-width: 1024px) {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      padding: ${Spaces.lg} 0;
+      text-align: center;
+    }
+
+    td,
+    th {
+      display: flex;
+      width: 100%;
+      padding: ${Spaces.xs} 0;
+      align-items: center;
+    }
+
+    td[data-label]::before {
+      content: attr(data-label);
+      width: 120px;
+      min-width: 120px;
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: ${Colors.greyDark};
+      display: inline-block;
+    }
   }
-  td {
-    width: 35%;
+`;
+
+const ExpandableSkeletonBox = styled.div`
+  width: 350px;
+  aspect-ratio: 350 / 197;
+
+  @media (max-width: 1024px) {
+    width: 250px;
   }
+`;
+
+const BannerSkeletonBox = styled.div`
+  width: 100%;
+  aspect-ratio: 1124 / 439;
+  margin: 0 0 20px 0;
 `;
 
 const NavItems = [
@@ -75,10 +144,58 @@ const NavItems = [
   },
 ];
 
+function ImageWithSkeleton({
+  src,
+  alt,
+  fullSizeSrc,
+  isExpandable,
+}: {
+  src: string;
+  alt: string;
+  isExpandable?: boolean;
+  fullSizeSrc?: string;
+}) {
+  const loading = useImageLoading(src);
+  const { isMobile } = useBreakpoint();
+
+  return (
+    <>
+      {loading ? (
+        isExpandable ? (
+          <ExpandableSkeletonBox>
+            <Skeleton width="100%" height="100%" borderRadius="12px" />
+          </ExpandableSkeletonBox>
+        ) : (
+          <BannerSkeletonBox>
+            <Skeleton width="100%" height="100%" borderRadius="12px" />
+          </BannerSkeletonBox>
+        )
+      ) : isExpandable ? (
+        <Image
+          borderRadius="12px"
+          width={isMobile ? 250 : 350}
+          src={src}
+          fullSizeSrc={fullSizeSrc}
+          alt={alt}
+          isExpandable
+        />
+      ) : (
+        <Image
+          borderRadius="12px"
+          width="100%"
+          margin={'0 0 20px 0'}
+          src={src}
+          alt={alt}
+        />
+      )}
+    </>
+  );
+}
+
 export default function MeetingRoom() {
   const router = useRouter();
   const { id } = router.query;
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const [selectedRoom, setSelectedRoom] =
     useState<(typeof meetingRoomsData)[number]>();
 
@@ -115,12 +232,105 @@ export default function MeetingRoom() {
   return !selectedRoom ? null : (
     <Page>
       <Head>
-        <title>U&ndash;SU Meeting Rooms</title>
+        {/* Dynamic Title based on the specific room */}
+        <title>
+          {selectedRoom
+            ? `${selectedRoom.title} | Meeting Rooms | Cal State LA U-SU`
+            : 'Meeting Rooms | University-Student Union'}
+        </title>
+
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          name="keywords"
-          content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Meeting Rooms, Alhambra Room, San Gabriel Room, Los Angeles Room, Theater Room, Boardroom North, Boardroom South, Attendees, Members, Off Campus Vendors, Food, Operations"
-          key="keywords"
+          name="author"
+          content="The University-Student Union Operations Department at Cal State LA"
+          key="author"
         />
+
+        {/* Dynamic Description */}
+        <meta
+          name="description"
+          content={
+            selectedRoom
+              ? `View capacity, equipment, and setup options for the ${selectedRoom.title} at Cal State LA. Features: ${selectedRoom.features}.`
+              : 'Explore specific meeting room layouts, capacities, and equipment at the Cal State LA University-Student Union.'
+          }
+          key="description"
+        />
+
+        {/* Dynamic Keywords */}
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content={`${
+            selectedRoom?.title || 'Meeting Room'
+          } | Cal State LA U-SU`}
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content={`Plan your event in the ${selectedRoom?.title}. Check setup types, equipment availability, and rental fees.`}
+          key="og-desc"
+        />
+        <meta
+          property="og:image"
+          content={
+            selectedRoom?.headerImage ||
+            'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp'
+          }
+          key="og-image"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
+            if (selectedRoom?.id) return selectedRoom.id;
+            if (Array.isArray(id)) return id[0] ?? '';
+            return id ?? '';
+          })()}`}
+        />
+
+        {/* Structured Data for the specific room */}
+        {selectedRoom && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': ['MeetingRoom', 'EventVenue'],
+                '@id': `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}#room`,
+                name: selectedRoom.title,
+                url: `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}`,
+                description: selectedRoom.features,
+                image: selectedRoom.headerImage,
+                containedInPlace: {
+                  '@id':
+                    'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
+                },
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: '5154 State University Dr.',
+                  addressLocality: 'Los Angeles',
+                  addressRegion: 'CA',
+                  postalCode: '90032',
+                },
+                amenityFeature: selectedRoom.arrangements.map((a) => ({
+                  '@type': 'LocationFeatureSpecification',
+                  name: a.setup,
+                  value: `Capacity: ${a.capacity.join(', ')}`,
+                })),
+              }),
+            }}
+          />
+        )}
       </Head>
       <MeetingRoomsNav />
       <FluidContainer
@@ -130,14 +340,10 @@ export default function MeetingRoom() {
         justifyContent="center"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
-        <h1>
-          <Image
-            borderRadius="12px"
-            width="100%"
-            src={selectedRoom.headerImage}
-            alt={selectedRoom.mainImageAlt || 'banner image'}
-          />
-        </h1>
+        <ImageWithSkeleton
+          src={selectedRoom.headerImage}
+          alt={selectedRoom.mainImageAlt || 'banner image'}
+        />
         <Button
           href="https://form.jotform.com/221578153228053"
           isExternalLink
@@ -152,7 +358,15 @@ export default function MeetingRoom() {
           <table align="center" vertical-align>
             <thead>
               <tr>
-                {!isDesktop && <td aria-label="No value">&nbsp;</td>}
+                <th className="setup-column">
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Room View
+                  </Typography>
+                </th>
                 <th>
                   <Typography
                     variant="cta"
@@ -163,15 +377,13 @@ export default function MeetingRoom() {
                   </Typography>
                 </th>
                 <th>
-                  {
-                    <Typography
-                      variant="cta"
-                      as="h2"
-                      size={isMobile ? 'sm' : 'lg'}
-                    >
-                      Capacity
-                    </Typography>
-                  }
+                  <Typography
+                    variant="cta"
+                    as="h2"
+                    size={isMobile ? 'sm' : 'lg'}
+                  >
+                    Capacity
+                  </Typography>
                 </th>
                 <th>
                   <Typography
@@ -187,20 +399,24 @@ export default function MeetingRoom() {
 
             {selectedRoom.arrangements.map((arrangement) => (
               <tr key={arrangement.setup}>
-                {!isDesktop && (
-                  <th>
+                <th className="setup-column">
+                  <FluidContainer
+                    flex
+                    flexDirection="column"
+                    alignItems="center"
+                    padding="0"
+                  >
                     {arrangement.image && (
-                      <Image
-                        borderRadius="12px"
-                        width={350}
-                        marginRight={Spaces['2xl']}
+                      <ImageWithSkeleton
                         src={arrangement.image}
+                        fullSizeSrc={arrangement.imageExpanded}
                         alt={`${arrangement.setup} room example`}
+                        isExpandable
                       />
                     )}
-                  </th>
-                )}
-                <td>
+                  </FluidContainer>
+                </th>
+                <td className="setup-column" data-label="Setup">
                   <Typography
                     variant="title"
                     weight="400"
@@ -209,19 +425,25 @@ export default function MeetingRoom() {
                     {arrangement.setup}
                   </Typography>
                 </td>
-                <td>
-                  {arrangement.capacity.map((c) => (
-                    <Typography
-                      variant="title"
-                      weight="400"
-                      size={isMobile ? 'xs' : 'md'}
-                      key={c}
-                    >
-                      {c}
-                    </Typography>
-                  ))}
+
+                {/* Capacity Column */}
+                <td className="capacity-column" data-label="Capacity">
+                  <FluidContainer flex flexDirection="column" padding="0">
+                    {arrangement.capacity.map((c) => (
+                      <Typography
+                        variant="title"
+                        weight="400"
+                        size={isMobile ? 'xs' : 'md'}
+                        key={c}
+                      >
+                        {c}
+                      </Typography>
+                    ))}
+                  </FluidContainer>
                 </td>
-                <td>
+
+                {/* Equipment Column */}
+                <td className="equipment-column" data-label="Equipment">
                   <EquipmentSection>
                     {arrangement.equipment.map((e) => (
                       <Typography
@@ -230,7 +452,6 @@ export default function MeetingRoom() {
                         weight="400"
                         size={isMobile ? 'xs' : 'md'}
                       >
-                        {' '}
                         {e}
                       </Typography>
                     ))}

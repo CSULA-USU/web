@@ -1,49 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# U-SU Website (Cal State LA)
 
-## Prerequisites
+![License](https://img.shields.io/badge/license-MIT-green)
+![Next.js](https://img.shields.io/badge/Next.js-Framework-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
 
-- [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm)
-- [Yarn](https://yarnpkg.com/)
+Official repository for the California State LA University-Student Union (U-SU) website.
+
+This application powers student-facing content including programs, events, services, and campus resources. The project emphasizes accessibility, responsive design, and maintainable component architecture.
+
+## Tech Stack
+
+- **Framework:** Next.js (React)
+- **Language:** TypeScript
+- **Package Manager:** Yarn
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, install packages
+1. Clone the Repository
 
 ```bash
-yarn
+git clone https://github.com/<your-org>/<repo-name>.git
+cd <repo-name>
 ```
 
-Then, use the correct version of node:
+2. Use Correct Node Version
 
 ```bash
 nvm use
 ```
 
-Then, run the development server:
+3. Install Dependencies
+
+```bash
+yarn
+```
+
+4. Start Development Server
 
 ```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+/pages          → Next.js routes
+/modules        → Feature-based modules
+/components     → Reusable UI components
+/styles         → Theme + global styles
+/public         → Static assets
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Accessibility
 
-## Learn More
+Accessibility is a priority for this project. Development follows WCAG best practices, including semantic HTML, keyboard navigation, and regular audits using tools such as WAVE.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This repository is primarily maintained by the U-SU Web Team.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you are part of the team:
 
-## Deploy on Vercel
+- Follow existing patterns and conventions
+- Use meaningful commit messages
+- Avoid introducing unused dependencies
+- Always follow DRY principles
+- Test changes before submitting PRs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License.
+
+See the [LICENSE](./LICENSE) file for details.
+
+## Usage Notice
+
+This repository is maintained for internal use by the U-SU Web Team.
+
+While the code is available under the MIT License, external use, modification, or redistribution is not officially supported.
+
+## Maintainers
+
+- U-SU Web Team
+
+## Live Site
+
+https://www.calstatelausu.org/
