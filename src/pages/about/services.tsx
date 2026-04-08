@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { Page, Header, ImageAndCard } from 'modules';
+import { Page, ImageAndCard } from 'modules';
 import { FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
+import { Colors, Spaces } from 'theme';
 const ServicesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,6 +52,101 @@ const services = [
     imgAlt: 'gender inclusive bathroom sign',
   },
 ];
+
+interface SquareImageContainerProps {
+  src: string;
+  alt: string;
+  maxWidth?: string;
+  objectFit?: 'cover' | 'contain';
+  borderRadius?: string;
+}
+
+const Wrapper = styled.div<{ maxWidth?: string }>`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 17 / 11;
+  ${(p) => p.maxWidth && `max-width: ${p.maxWidth};`}
+  overflow: hidden;
+`;
+
+const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: ${(p) => p.objectFit};
+  ${(p) => p.borderRadius && `border-radius: ${p.borderRadius};`}
+`;
+
+const HeroContainer = styled.section`
+  position: relative;
+  width: 100%;
+  height: 84.5vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const BackgroundImage = styled(Image)`
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+
+  filter: blur(0.5px);
+  transform: scale(1.05);
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: ${`
+    linear-gradient(
+      135deg,
+      ${Colors.primary}CC 0%,
+      ${Colors.primary}D9 10%,
+      ${Colors.primary}F2 20%
+    )
+  `};
+  z-index: 1;
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #1a1a1a;
+  max-width: 1200px;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+`;
+
+export const SquareImageContainer = ({
+  src,
+  alt,
+  maxWidth,
+  objectFit = 'cover',
+  borderRadius = '12px',
+}: SquareImageContainerProps) => (
+  <Wrapper maxWidth={maxWidth}>
+    <StyledImage
+      src={src}
+      alt={alt}
+      objectFit={objectFit}
+      style={{ borderRadius }}
+    />
+  </Wrapper>
+);
 
 export default function Services() {
   const { isMobile, isTablet } = useBreakpoint();
@@ -140,7 +235,7 @@ export default function Services() {
         />
       </Head>
 
-      <Header
+      {/* <Header
         title="Services"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
@@ -155,7 +250,27 @@ export default function Services() {
           are funded by the student union fee and are available to all students
           free of charge.
         </Typography>
-      </Header>
+      </Header> */}
+
+      <HeroContainer>
+        <BackgroundImage
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
+          alt="Cal State LA Fraternity and Sorority students"
+        />
+        <Overlay />
+        <ContentWrapper>
+          <FluidContainer
+            flex
+            flexDirection="column"
+            padding="0 0 80px 0"
+            innerMaxWidth="800px"
+          >
+            <Typography as="h2" variant="subheader" weight="600">
+              Student Union Services
+            </Typography>
+          </FluidContainer>
+        </ContentWrapper>
+      </HeroContainer>
       <FluidContainer>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
           The following services are provided by the U-SU:
