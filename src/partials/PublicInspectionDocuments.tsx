@@ -2,7 +2,6 @@ import {
   Divider,
   FluidContainer,
   NonBreakingSpan,
-  StyledLink,
   Typography,
 } from 'components';
 import {
@@ -215,25 +214,5 @@ export const PublicInspectionDocuments = () => (
     {downloads.map((d) => (
       <DownloadSection key={d.title} {...d} />
     ))}
-    {/* Archived Section */}
-    <Typography
-      variant="titleSmall"
-      as="h2"
-      color="gold"
-      margin={`${Spaces['2xl']} 0 0`}
-    >
-      Archived Documents
-    </Typography>
-    <Divider color="grey" margin={`${Spaces.xl} 0`} />
-    <Typography margin={`0 5px 0 0`}>Looking for older documents? </Typography>
-
-    <StyledLink
-      href="/board-of-directors/public-document-archives"
-      isInverseUnderlineStyling
-    >
-      <Typography margin={`0 10px 0 0`} color="gold">
-        View Archived Documents
-      </Typography>
-    </StyledLink>
   </FluidContainer>
 );
