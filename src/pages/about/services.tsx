@@ -67,7 +67,7 @@ const services = [
     children:
       'Feeling overwhelmed or overstimulated? Visit the Sensory Room located in the Cross Cultural Centers (CCC) on the second floor of the University-Student Union. This space is designed to help students relax, decompress, and refocus. The room includes a variety of sensory-support tools such as aromatherapy, bean bag seating, a weighted blanket, fidget toys, a heating pad, noise-cancelling headphones, and an exercise ball. The Sensory Room is available during CCC operating hours: Monday through Thursday from 8:00 AM to 6:00 PM, and Friday from 8:00 AM to 5:00 PM.',
     imgSrc:
-      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/IMG_9291.JPG',
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Sensory-Room.webp',
     imgAlt: 'sensory room with calming lighting and seating',
   },
 ];
@@ -277,7 +277,7 @@ export default function Services() {
 
       <HeroContainer>
         <BackgroundImage
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/IMG_5250.jpg"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
           alt="Cal State LA Fraternity and Sorority students"
         />
         <HeaderContainer>
