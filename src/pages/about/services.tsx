@@ -1,13 +1,24 @@
 import Head from 'next/head';
-import { Page, ImageAndCard } from 'modules';
+import { Page, CircleImageAndTitle } from 'modules';
 import { FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
-const ServicesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: ${Spaces.lg};
+
+const ServicesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${Spaces.lg};
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
 `;
 
 const services = [
@@ -51,6 +62,14 @@ const services = [
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/all-gender-restroom.jpg',
     imgAlt: 'gender inclusive bathroom sign',
   },
+  {
+    title: 'Sensory Room',
+    children:
+      'Feeling overwhelmed or overstimulated? Visit the Sensory Room located in the Cross Cultural Centers (CCC) on the second floor of the University-Student Union. This space is designed to help students relax, decompress, and refocus. The room includes a variety of sensory-support tools such as aromatherapy, bean bag seating, a weighted blanket, fidget toys, a heating pad, noise-cancelling headphones, and an exercise ball. The Sensory Room is available during CCC operating hours: Monday through Thursday from 8:00 AM to 6:00 PM, and Friday from 8:00 AM to 5:00 PM.',
+    imgSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/IMG_9291.JPG',
+    imgAlt: 'sensory room with calming lighting and seating',
+  },
 ];
 
 interface SquareImageContainerProps {
@@ -82,12 +101,15 @@ const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
 const HeroContainer = styled.section`
   position: relative;
   width: 100%;
-  height: 84.5vh;
+  height: 70vh;
   min-height: 600px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+
+  align-items: flex-end;
   justify-content: center;
+
+  padding-bottom: ${Spaces['2xl']};
 `;
 
 const BackgroundImage = styled(Image)`
@@ -104,30 +126,31 @@ const BackgroundImage = styled(Image)`
   transform: scale(1.05);
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: ${`
-    linear-gradient(
-      135deg,
-      ${Colors.primary}CC 0%,
-      ${Colors.primary}D9 10%,
-      ${Colors.primary}F2 20%
-    )
-  `};
-  z-index: 1;
-`;
-
-const ContentWrapper = styled.div`
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 640px;
+  margin: 0 auto;
   position: relative;
-  z-index: 3;
-  text-align: center;
-  color: #1a1a1a;
-  max-width: 1200px;
-  padding: 0 2rem;
+  padding: 8px;
+  z-index: 2;
 
-  @media (max-width: 768px) {
-    padding: 0 1rem;
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${Colors.white};
+    opacity: 0.7;
+    z-index: 1;
   }
 `;
 
@@ -149,7 +172,7 @@ export const SquareImageContainer = ({
 );
 
 export default function Services() {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -254,37 +277,26 @@ export default function Services() {
 
       <HeroContainer>
         <BackgroundImage
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/fsl-header.webp"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/IMG_5250.jpg"
           alt="Cal State LA Fraternity and Sorority students"
         />
-        <Overlay />
-        <ContentWrapper>
-          <FluidContainer
-            flex
-            flexDirection="column"
-            padding="0 0 80px 0"
-            innerMaxWidth="800px"
+        <HeaderContainer>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            size={isMobile ? 'xl' : '4xl'}
+            color="black"
           >
-            <Typography as="h2" variant="subheader" weight="600">
-              Student Union Services
-            </Typography>
-          </FluidContainer>
-        </ContentWrapper>
+            Student Union Services
+          </Typography>
+        </HeaderContainer>
       </HeroContainer>
       <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          The following services are provided by the U-SU:
-        </Typography>
-        <ServicesContainer>
+        <ServicesGrid>
           {services.map((props) => (
-            <ImageAndCard
-              key={props.title}
-              imageWidth={isMobile ? '80%' : isTablet ? '60%' : '20%'}
-              imageHeight="auto"
-              {...props}
-            />
+            <CircleImageAndTitle key={props.title} {...props} />
           ))}
-        </ServicesContainer>
+        </ServicesGrid>
       </FluidContainer>
     </Page>
   );
