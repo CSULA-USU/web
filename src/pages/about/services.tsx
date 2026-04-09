@@ -1,13 +1,24 @@
 import Head from 'next/head';
-import { Page, Header, ImageAndCard } from 'modules';
+import { Page, CircleImageAndTitle } from 'modules';
 import { FluidContainer, Typography, Image } from 'components';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
-const ServicesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: ${Spaces.lg};
+import { Colors, Spaces } from 'theme';
+
+const ServicesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${Spaces.lg};
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
 `;
 
 const services = [
@@ -51,10 +62,117 @@ const services = [
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/all-gender-restroom.jpg',
     imgAlt: 'gender inclusive bathroom sign',
   },
+  {
+    title: 'Sensory Room',
+    children:
+      'Feeling overwhelmed or overstimulated? Visit the Sensory Room located in the Cross Cultural Centers (CCC) on the second floor of the University-Student Union. This space is designed to help students relax, decompress, and refocus. The room includes a variety of sensory-support tools such as aromatherapy, bean bag seating, a weighted blanket, fidget toys, a heating pad, noise-cancelling headphones, and an exercise ball. The Sensory Room is available during CCC operating hours: Monday through Thursday from 8:00 AM to 6:00 PM, and Friday from 8:00 AM to 5:00 PM.',
+    imgSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Sensory-Room.webp',
+    imgAlt: 'sensory room with calming lighting and seating',
+  },
 ];
 
+interface SquareImageContainerProps {
+  src: string;
+  alt: string;
+  maxWidth?: string;
+  objectFit?: 'cover' | 'contain';
+  borderRadius?: string;
+}
+
+const Wrapper = styled.div<{ maxWidth?: string }>`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 17 / 11;
+  ${(p) => p.maxWidth && `max-width: ${p.maxWidth};`}
+  overflow: hidden;
+`;
+
+const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: ${(p) => p.objectFit};
+  ${(p) => p.borderRadius && `border-radius: ${p.borderRadius};`}
+`;
+
+const HeroContainer = styled.section`
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  padding-bottom: ${Spaces['2xl']};
+`;
+
+const BackgroundImage = styled(Image)`
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+
+  filter: blur(0.5px);
+  transform: scale(1.05);
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  padding: 8px;
+  z-index: 2;
+
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${Colors.white};
+    opacity: 0.7;
+    z-index: 1;
+  }
+`;
+
+export const SquareImageContainer = ({
+  src,
+  alt,
+  maxWidth,
+  objectFit = 'cover',
+  borderRadius = '12px',
+}: SquareImageContainerProps) => (
+  <Wrapper maxWidth={maxWidth}>
+    <StyledImage
+      src={src}
+      alt={alt}
+      objectFit={objectFit}
+      style={{ borderRadius }}
+    />
+  </Wrapper>
+);
+
 export default function Services() {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -140,7 +258,7 @@ export default function Services() {
         />
       </Head>
 
-      <Header
+      {/* <Header
         title="Services"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
@@ -155,21 +273,30 @@ export default function Services() {
           are funded by the student union fee and are available to all students
           free of charge.
         </Typography>
-      </Header>
+      </Header> */}
+
+      <HeroContainer>
+        <BackgroundImage
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
+          alt="Cal State LA Fraternity and Sorority students"
+        />
+        <HeaderContainer>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            size={isMobile ? 'xl' : '4xl'}
+            color="black"
+          >
+            Student Union Services
+          </Typography>
+        </HeaderContainer>
+      </HeroContainer>
       <FluidContainer>
-        <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          The following services are provided by the U-SU:
-        </Typography>
-        <ServicesContainer>
+        <ServicesGrid>
           {services.map((props) => (
-            <ImageAndCard
-              key={props.title}
-              imageWidth={isMobile ? '80%' : isTablet ? '60%' : '20%'}
-              imageHeight="auto"
-              {...props}
-            />
+            <CircleImageAndTitle key={props.title} {...props} />
           ))}
-        </ServicesContainer>
+        </ServicesGrid>
       </FluidContainer>
     </Page>
   );
