@@ -107,7 +107,7 @@ export default async function handler(
     }
 
     const formData = result.data;
-    const captchaResult = await verifyRecaptcha(formData.captchaToken);
+    const captchaResult = await verifyRecaptcha(formData.captchaToken!);
 
     if (!captchaResult.success) {
       console.error('CAPTCHA verification failed:', captchaResult);
