@@ -8,4 +8,5 @@ export interface ContactFormData {
   firstName: string;
   lastInitial: string;
   website?: string;
+  captchaToken?: string;
 }

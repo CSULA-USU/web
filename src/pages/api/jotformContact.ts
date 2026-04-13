@@ -6,6 +6,7 @@ import type { ContactFormData } from 'types/Contact';
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY!;
 
 // Simple in-memory rate limiting (best-effort only)
 
@@ -66,12 +67,17 @@ function validateContactForm(
   const subject = sanitize(requestBody.subject, 200);
   const message = sanitize(requestBody.message, 2000);
   const category = sanitize(requestBody.category, 50);
+  const captchaToken =
+    typeof requestBody.captchaToken === 'string'
+      ? requestBody.captchaToken.trim()
+      : '';
 
   // Required field checks
   if (!email) errors.push('Email is required.');
   if (!subject) errors.push('Subject is required.');
   if (!message) errors.push('Message is required.');
   if (!category) errors.push('Category is required.');
+  if (!captchaToken) errors.push('CAPTCHA token is required.');
 
   // Email simple format check
   if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -101,6 +107,7 @@ function validateContactForm(
       subject,
       message,
       category,
+      captchaToken,
     },
   };
 }
@@ -109,7 +116,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (!CONTACT_API_KEY || !CONTACT_FORM_ID) {
+  if (!CONTACT_API_KEY || !CONTACT_FORM_ID || !RECAPTCHA_SECRET_KEY) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
@@ -147,6 +154,19 @@ export default async function handler(
     }
 
     const formData = result.data;
+    console.error('incoming captcha token:', formData.captchaToken);
+    console.error(
+      'incoming captcha token length:',
+      formData.captchaToken?.length,
+    );
+    const captchaResult = await verifyRecaptcha(formData.captchaToken || '');
+
+    if (!captchaResult.success) {
+      console.error('CAPTCHA verification failed:', captchaResult);
+      return res.status(400).json({
+        error: 'CAPTCHA verification failed',
+      });
+    }
 
     // Build Jotform API URL
     const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;
@@ -197,3 +217,25 @@ export default async function handler(
       .json({ error: 'Failed to submit form. Please try again.' });
   }
 }
+
+const verifyRecaptcha = async (token: string) => {
+  if (!RECAPTCHA_SECRET_KEY) {
+    throw new Error('Missing RECAPTCHA_SECRET_KEY');
+  }
+
+  const response = await fetch(
+    'https://www.google.com/recaptcha/api/siteverify',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: RECAPTCHA_SECRET_KEY,
+        response: token,
+      }).toString(),
+    },
+  );
+
+  return response.json();
+};
