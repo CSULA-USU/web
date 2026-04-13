@@ -203,8 +203,16 @@ export default function Contact() {
 
       setHoneypot('');
       setCaptchaToken(null);
-    } catch (error) {
-      showToast('Failed to send your message. Please try again.', 'error');
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : '';
+
+      showToast(
+        message.includes('Too many') || message.includes('maximum')
+          ? 'You have reached the maximum number of submission attempts. Please try again later.'
+          : 'Error: Your response has not been successfully sent.',
+        'error',
+      );
+
       console.error(error);
       setCaptchaToken(null);
     } finally {
