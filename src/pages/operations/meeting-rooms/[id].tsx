@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { CallToAction, Page } from 'modules';
 import meetingRoomsData from 'data/meetingRooms.json';
-import { useRouter } from 'next/router';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import {
   Button,
   FluidContainer,
@@ -144,6 +143,23 @@ const NavItems = [
   },
 ];
 
+type Room = (typeof meetingRoomsData)[number];
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = meetingRoomsData.map((room) => ({
+    params: { id: room.id },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps<{ room: Room }> = async ({
+  params,
+}) => {
+  const room = meetingRoomsData.find((r) => r.id === params?.id);
+  if (!room) return { notFound: true };
+  return { props: { room } };
+};
+
 function ImageWithSkeleton({
   src,
   alt,
@@ -192,17 +208,8 @@ function ImageWithSkeleton({
   );
 }
 
-export default function MeetingRoom() {
-  const router = useRouter();
-  const { id } = router.query;
+export default function MeetingRoom({ room }: { room: Room }) {
   const { isMobile } = useBreakpoint();
-  const [selectedRoom, setSelectedRoom] =
-    useState<(typeof meetingRoomsData)[number]>();
-
-  useEffect(() => {
-    const room = meetingRoomsData.find((room) => room.id === id);
-    setSelectedRoom(room);
-  }, [id]);
 
   const MeetingRoomsNav = () => {
     return (
@@ -229,15 +236,10 @@ export default function MeetingRoom() {
     );
   };
 
-  return !selectedRoom ? null : (
+  return (
     <Page>
       <Head>
-        {/* Dynamic Title based on the specific room */}
-        <title>
-          {selectedRoom
-            ? `${selectedRoom.title} | Meeting Rooms | Cal State LA U-SU`
-            : 'Meeting Rooms | University-Student Union'}
-        </title>
+        <title>{`${room.title} | Meeting Rooms | Cal State LA U\u2013SU`}</title>
 
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -247,90 +249,65 @@ export default function MeetingRoom() {
           key="author"
         />
 
-        {/* Dynamic Description */}
         <meta
           name="description"
-          content={
-            selectedRoom
-              ? `View capacity, equipment, and setup options for the ${selectedRoom.title} at Cal State LA. Features: ${selectedRoom.features}.`
-              : 'Explore specific meeting room layouts, capacities, and equipment at the Cal State LA University-Student Union.'
-          }
+          content={`View capacity, equipment, and setup options for the ${room.title} at Cal State LA. Features: ${room.features}.`}
           key="description"
         />
 
-        {/* Dynamic Keywords */}
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
-          content={`${
-            selectedRoom?.title || 'Meeting Room'
-          } | Cal State LA U-SU`}
+          content={`${room.title} | Cal State LA U-SU`}
           key="og-title"
         />
         <meta
           property="og:description"
-          content={`Plan your event in the ${selectedRoom?.title}. Check setup types, equipment availability, and rental fees.`}
+          content={`Plan your event in the ${room.title}. Check setup types, equipment availability, and rental fees.`}
           key="og-desc"
         />
-        <meta
-          property="og:image"
-          content={
-            selectedRoom?.headerImage ||
-            'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/brand/usu_logo_white.webp'
-          }
-          key="og-image"
-        />
+        <meta property="og:image" content={room.headerImage} key="og-image" />
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
-          content={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
-            if (selectedRoom?.id) return selectedRoom.id;
-            if (Array.isArray(id)) return id[0] ?? '';
-            return id ?? '';
-          })()}`}
+          content={`https://www.calstatelausu.org/operations/meeting-rooms/${room.id}`}
         />
         <link
           rel="canonical"
-          href={`https://www.calstatelausu.org/operations/meeting-rooms/${(() => {
-            if (selectedRoom?.id) return selectedRoom.id;
-            if (Array.isArray(id)) return id[0] ?? '';
-            return id ?? '';
-          })()}`}
+          href={`https://www.calstatelausu.org/operations/meeting-rooms/${room.id}`}
         />
 
         {/* Structured Data for the specific room */}
-        {selectedRoom && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': ['MeetingRoom', 'EventVenue'],
-                '@id': `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}#room`,
-                name: selectedRoom.title,
-                url: `https://www.calstatelausu.org/operations/meeting-rooms/${selectedRoom.id}`,
-                description: selectedRoom.features,
-                image: selectedRoom.headerImage,
-                containedInPlace: {
-                  '@id':
-                    'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
-                },
-                address: {
-                  '@type': 'PostalAddress',
-                  streetAddress: '5154 State University Dr.',
-                  addressLocality: 'Los Angeles',
-                  addressRegion: 'CA',
-                  postalCode: '90032',
-                },
-                amenityFeature: selectedRoom.arrangements.map((a) => ({
-                  '@type': 'LocationFeatureSpecification',
-                  name: a.setup,
-                  value: `Capacity: ${a.capacity.join(', ')}`,
-                })),
-              }),
-            }}
-          />
-        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': ['MeetingRoom', 'EventVenue'],
+              '@id': `https://www.calstatelausu.org/operations/meeting-rooms/${room.id}#room`,
+              name: room.title,
+              url: `https://www.calstatelausu.org/operations/meeting-rooms/${room.id}`,
+              description: room.features,
+              image: room.headerImage,
+              containedInPlace: {
+                '@id':
+                  'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '5154 State University Dr.',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                postalCode: '90032',
+              },
+              amenityFeature: room.arrangements.map((a) => ({
+                '@type': 'LocationFeatureSpecification',
+                name: a.setup,
+                value: `Capacity: ${a.capacity.join(', ')}`,
+              })),
+            }),
+          }}
+        />
       </Head>
       <MeetingRoomsNav />
       <FluidContainer
@@ -341,8 +318,8 @@ export default function MeetingRoom() {
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
         <ImageWithSkeleton
-          src={selectedRoom.headerImage}
-          alt={selectedRoom.mainImageAlt || 'banner image'}
+          src={room.headerImage}
+          alt={room.mainImageAlt || 'banner image'}
         />
         <Button
           href="https://form.jotform.com/221578153228053"
@@ -396,106 +373,117 @@ export default function MeetingRoom() {
                 </th>
               </tr>
             </thead>
+            <tbody>
+              {room.arrangements.map((arrangement) => (
+                <tr key={arrangement.setup}>
+                  <th className="setup-column">
+                    <FluidContainer
+                      flex
+                      flexDirection="column"
+                      alignItems="center"
+                      padding="0"
+                    >
+                      {arrangement.image && (
+                        <ImageWithSkeleton
+                          src={arrangement.image}
+                          fullSizeSrc={arrangement.imageExpanded}
+                          alt={`${arrangement.setup} room example`}
+                          isExpandable
+                        />
+                      )}
+                    </FluidContainer>
+                  </th>
+                  <td className="setup-column" data-label="Setup">
+                    <Typography
+                      variant="title"
+                      weight="400"
+                      size={isMobile ? 'xs' : 'md'}
+                    >
+                      {arrangement.setup}
+                    </Typography>
+                  </td>
 
-            {selectedRoom.arrangements.map((arrangement) => (
-              <tr key={arrangement.setup}>
-                <th className="setup-column">
-                  <FluidContainer
-                    flex
-                    flexDirection="column"
-                    alignItems="center"
-                    padding="0"
-                  >
-                    {arrangement.image && (
-                      <ImageWithSkeleton
-                        src={arrangement.image}
-                        fullSizeSrc={arrangement.imageExpanded}
-                        alt={`${arrangement.setup} room example`}
-                        isExpandable
-                      />
-                    )}
-                  </FluidContainer>
-                </th>
-                <td className="setup-column" data-label="Setup">
-                  <Typography
-                    variant="title"
-                    weight="400"
-                    size={isMobile ? 'xs' : 'md'}
-                  >
-                    {arrangement.setup}
-                  </Typography>
-                </td>
+                  {/* Capacity Column */}
+                  <td className="capacity-column" data-label="Capacity">
+                    <FluidContainer flex flexDirection="column" padding="0">
+                      {arrangement.capacity.map((c) => (
+                        <Typography
+                          variant="title"
+                          weight="400"
+                          size={isMobile ? 'xs' : 'md'}
+                          key={c}
+                        >
+                          {c}
+                        </Typography>
+                      ))}
+                    </FluidContainer>
+                  </td>
 
-                {/* Capacity Column */}
-                <td className="capacity-column" data-label="Capacity">
-                  <FluidContainer flex flexDirection="column" padding="0">
-                    {arrangement.capacity.map((c) => (
-                      <Typography
-                        variant="title"
-                        weight="400"
-                        size={isMobile ? 'xs' : 'md'}
-                        key={c}
-                      >
-                        {c}
-                      </Typography>
-                    ))}
-                  </FluidContainer>
-                </td>
-
-                {/* Equipment Column */}
-                <td className="equipment-column" data-label="Equipment">
-                  <EquipmentSection>
-                    {arrangement.equipment.map((e) => (
-                      <Typography
-                        key={e}
-                        variant="title"
-                        weight="400"
-                        size={isMobile ? 'xs' : 'md'}
-                      >
-                        {e}
-                      </Typography>
-                    ))}
-                  </EquipmentSection>
+                  {/* Equipment Column */}
+                  <td className="equipment-column" data-label="Equipment">
+                    <EquipmentSection>
+                      {arrangement.equipment.map((e) => (
+                        <Typography
+                          key={e}
+                          variant="title"
+                          weight="400"
+                          size={isMobile ? 'xs' : 'md'}
+                        >
+                          {e}
+                        </Typography>
+                      ))}
+                    </EquipmentSection>
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan={4}>
+                  <TextCenter>
+                    <Typography
+                      weight="700"
+                      as="h3"
+                      margin={`${Spaces.md}0 0 0`}
+                    >
+                      Fixed Room Features:
+                    </Typography>
+                    <Typography
+                      margin={`0 0 ${Spaces.md}`}
+                      size={isMobile ? 'xs' : 'md'}
+                    >
+                      {room.features}
+                    </Typography>
+                  </TextCenter>
                 </td>
               </tr>
-            ))}
-            <tr>
-              <td colSpan={4}>
-                <TextCenter>
-                  <Typography weight="700" as="h3" margin={`${Spaces.md}0 0 0`}>
-                    Fixed Room Features:
-                  </Typography>
-                  <Typography
-                    margin={`0 0 ${Spaces.md}`}
-                    size={isMobile ? 'xs' : 'md'}
-                  >
-                    {selectedRoom.features}
-                  </Typography>
-                </TextCenter>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={4}>
-                <TextCenter>
-                  <Typography weight="700" as="h3" margin={`${Spaces.md}0 0 0`}>
-                    Meeting Space Rental Fees do not include:
-                  </Typography>
-                  <Typography
-                    margin={`0 0 ${Spaces.md}`}
-                    as="p"
-                    size={isMobile ? 'xs' : 'md'}
-                  >
-                    {' '}
-                    Personnel fees, equipment fees, cleaning fees, catering
-                    fees, and extended hours fees as these are separate charges
-                    that vary per room reservation.{' '}
-                    <strong>
-                      Disclaimer: The fees listed below are subject to change.
-                    </strong>
-                  </Typography>
-                </TextCenter>
-              </td>
-            </tr>
+              <tr>
+                <td colSpan={4}>
+                  <TextCenter>
+                    <Typography
+                      weight="700"
+                      as="h3"
+                      margin={`${Spaces.md}0 0 0`}
+                    >
+                      Meeting Space Rental Fees do not include:
+                    </Typography>
+                    <Typography
+                      margin={`0 0 ${Spaces.md}`}
+                      as="p"
+                      size={isMobile ? 'xs' : 'md'}
+                    >
+                      {' '}
+                      Personnel fees, equipment fees, cleaning fees, catering
+                      fees, and extended hours fees as these are separate
+                      charges that vary per room reservation.{' '}
+                    </Typography>
+                    <Typography>
+                      <strong>
+                        Disclaimer: The fees listed below are subject to change.
+                      </strong>
+                    </Typography>
+                  </TextCenter>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </Table>
       </FluidContainer>
