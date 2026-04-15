@@ -132,7 +132,7 @@ export default async function handler(
       });
     }
 
-    const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;
+    const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions`;
 
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
@@ -147,7 +147,10 @@ export default async function handler(
 
     const jotResponse = await fetch(jotformUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        APIKEY: CONTACT_API_KEY,
+      },
       body,
     });
 
