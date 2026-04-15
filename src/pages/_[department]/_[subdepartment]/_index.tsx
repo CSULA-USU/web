@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { fetchPageSections } from 'api';
+import { fetchPageSections } from 'services';
 import { Page } from 'modules';
 import PageSections from 'modules/PageSections/PageSections';
 import { SupaPage } from 'types';

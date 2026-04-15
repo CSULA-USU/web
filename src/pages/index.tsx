@@ -38,7 +38,7 @@ export default function Home() {
     if (eventsStatus != 'undefined') {
       setLoading(false);
     }
-  }, [events]);
+  }, [eventsStatus]);
 
   return (
     <Page>

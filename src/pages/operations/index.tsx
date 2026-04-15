@@ -195,7 +195,7 @@ export default function Operations() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg"
           key="og-image"
         />
         <meta
@@ -215,7 +215,7 @@ export default function Operations() {
         />
         <meta
           name="twitter:image"
-          content="https://www.calstatelausu.org/departments/operations/images/building-maintenance.jpg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg"
         />
 
         <link rel="canonical" href="https://www.calstatelausu.org/operations" />

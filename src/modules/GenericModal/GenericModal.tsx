@@ -67,6 +67,10 @@ export const GenericModal = ({
       width: width ? width : 'auto',
       maxWidth: '90vw',
       overflow: 'auto',
+      zIndex: 1000,
+    },
+    overlay: {
+      zIndex: 999,
     },
   };
 

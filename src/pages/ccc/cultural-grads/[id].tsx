@@ -6,7 +6,7 @@ import { Button, FluidContainer, Loading, Typography } from 'components';
 import { CGCParticipantModal } from 'modules/Modals';
 import { Colors, Spaces, media } from 'theme';
 import { useRouter } from 'next/router';
-import { fetchJotform } from 'api';
+import { fetchJotform } from 'services';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Graduate } from 'types';
 import { useBreakpoint } from 'hooks';

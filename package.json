@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev & npx next-video sync -w",
-    "dev:sections": "concurrently \"next dev\" \"watch 'npm run generate-section-schemas' ./src/sections \"",
+    "dev": "next dev & yarn next-video sync -w",
+    "dev:sections": "concurrently \"next dev\" \"watch 'yarn generate-section-schemas' ./src/sections \"",
     "generate-sitemap": "node src/scripts/generate-sitemap.js",
     "prebuild": "yarn generate-sitemap",
     "build": "next build",
@@ -66,7 +66,7 @@
     "semver": "7.5.4",
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
-    "typescript": "^5.9.2",
+    "typescript": "^6.0.2",
     "typescript-json-schema": "^0.59.0",
     "watch": "^1.0.2"
   },

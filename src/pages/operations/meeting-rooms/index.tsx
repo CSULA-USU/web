@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import { useImageLoading } from 'hooks';
 
 const RoomCard = styled(Card)`
-  margin: ${Spaces.sm};
   width: 400px; /* desktop & up */
 
   ${media('tablet')(`
@@ -186,6 +185,10 @@ export default function MeetingRooms() {
                 },
                 {
                   '@type': 'AdministrativeArea',
+                  name: 'East Los Angeles',
+                },
+                {
+                  '@type': 'AdministrativeArea',
                   name: 'San Gabriel Valley',
                 },
               ],
@@ -262,9 +265,10 @@ export default function MeetingRooms() {
         <FluidContainer
           flex
           flexWrap="wrap"
-          justifyContent="center"
-          margin="18px 0 0 0"
+          justifyContent="flex-start"
+          gap="1.5rem"
           padding="0"
+          margin={`${Spaces.xl} 0 0 0`}
         >
           {meetingRoomsData.map((props: any) => (
             <RoomCard key={props.title} title={props.title}>

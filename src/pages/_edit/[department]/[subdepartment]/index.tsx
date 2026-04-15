@@ -1,5 +1,5 @@
 import { EditDrawer, EditPage } from 'modules';
-import { fetchPageSections } from 'api';
+import { fetchPageSections } from 'services';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect } from 'react';
 import PageSections from 'modules/PageSections/PageSections';

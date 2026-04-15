@@ -20,12 +20,12 @@ export default function Home() {
     if (eventsStatus != 'undefined') {
       setLoading(false);
     }
-  }, [events]);
+  }, [eventsStatus]);
 
   return (
     <Page>
       <Head>
-        <title>U-SU Events</title>
+        <title>U&ndash;SU Events</title>
       </Head>
       <BackgroundImage>
         <Header title="Upcoming Events">
