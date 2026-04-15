@@ -10,6 +10,7 @@ import { categoryItems, CategoryOption } from 'types/CategoriesContact';
 import { postJotform } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactGrid = styled(FluidContainer)`
   width: 100%;
@@ -112,6 +113,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [honeypot, setHoneypot] = useState('');
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const validateEmail = (email: string): boolean => {
     const basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -174,14 +176,22 @@ export default function Contact() {
       return;
     }
 
+    if (!captchaToken) {
+      showToast('Please complete the CAPTCHA.', 'error');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      await postJotform({ ...formData, website: honeypot });
+      await postJotform({
+        ...formData,
+        website: honeypot,
+        captchaToken,
+      });
 
       showToast('Your response has been successfully sent!', 'success');
 
-      // Reset form
       setFormData({
         firstName: '',
         lastInitial: '',
@@ -190,9 +200,21 @@ export default function Contact() {
         category: '',
         message: '',
       });
-    } catch (error) {
-      showToast('Failed to send your message. Please try again.', 'error');
+
+      setHoneypot('');
+      setCaptchaToken(null);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : '';
+
+      showToast(
+        message.includes('Too many') || message.includes('maximum')
+          ? 'You have reached the maximum number of submission attempts. Please try again later.'
+          : 'Error: Your response has not been successfully sent.',
+        'error',
+      );
+
       console.error(error);
+      setCaptchaToken(null);
     } finally {
       setIsSubmitting(false);
     }
@@ -400,6 +422,17 @@ export default function Contact() {
                 />
               </HoneypotField>
 
+              <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
+                  onChange={(token) => {
+                    console.error('frontend captcha token:', token);
+                    setCaptchaToken(token);
+                  }}
+                  onExpired={() => setCaptchaToken(null)}
+                  onErrored={() => setCaptchaToken(null)}
+                />
+              </FluidContainer>
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
