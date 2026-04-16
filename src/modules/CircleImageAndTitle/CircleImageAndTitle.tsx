@@ -241,7 +241,7 @@ export const CircleImageAndTitle = ({
         {titleNode}
         {imageNode}
         <Button variant="primary" onClick={() => setIsOpen(true)}>
-          View Details
+          View
         </Button>
       </FluidContainer>
 
