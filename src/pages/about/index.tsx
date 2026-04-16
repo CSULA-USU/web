@@ -180,7 +180,7 @@ export default function About() {
               <ButtonContainer>
                 <Button
                   variant="black"
-                  href="https://www.dropbox.com/scl/fi/ilqryvwvq5fgrxn1jwjvt/Org-Chart_9.17.25.jpg?rlkey=o2w6m4cmqj2vskvn8fy36iljp&st=m7xnxsft&raw=1"
+                  href="https://www.dropbox.com/scl/fi/2aayb2rjv3ofqdhu94fc8/Org-Chart_4.16.26.jpg?rlkey=800ikl13wyle776y9b0ffxwzg&e=1&unfurl=slack_gen&raw=1"
                   isExternalLink
                 >
                   U&ndash;SU Organizational Chart

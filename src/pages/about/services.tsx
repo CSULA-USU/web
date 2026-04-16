@@ -23,30 +23,6 @@ const ServicesGrid = styled.div`
 
 const services = [
   {
-    title: 'Nap Pods (Relaxation Station)',
-    children:
-      'In late 2019, the U-SU opened the Relaxation Station on the third floor Room 304 of the student union. The station is comprised of three state of the art sleep pods which provide a quiet, comfortable, and relaxing space for students to get some much needed rest. The pods are available for 20 minute intervals while the union is open. Prior reservations are required and only take a quick visit to the information desk in the U-SU lobby or by calling (323) 343-2465.',
-    imgSrc:
-      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/nap-pod.png',
-    imgAlt: 'sleeping pods at the student union',
-  },
-  {
-    title: 'Reflection Room',
-    children:
-      'The U-SU provides a reflection room open to all community members for quiet reflection, meditation, or prayer. The Reflection Room (formerly named the Mediation Room) is located on the third floor in Room 302. After the 1997 renovation of the U-SU, a local artist created a meditation art installation in a vacant union storage space. The meditation space was very popular among students and soon became permanent. When the current U-SU opened in 2008, the Muslim Student Association and U-SU Board of Directors collaborated to recreate the installation as a permanent resource for students. The Reflection Room is utilized by students from all walks of life and tends to get heavier usage during times of student stress and holiday seasons. The space is open free of charge during all U-SU open hours, no reservations required.',
-    imgSrc:
-      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/reflection-room.jpg',
-    imgAlt: 'reflection room door and room',
-  },
-  {
-    title: 'Lactation Room',
-    children:
-      'The lactation room is located in the Gender and Sexuality Center within the Cross Cultural Centers (CCC), Room 206. The space is open from 9:00 AM to 5:30 PM Monday through Friday. Reservations may be made at the front desk of the CCC at (323) 343-5001. Walk-ins are welcome based on availability.',
-    imgSrc:
-      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/lactation-room.jpg',
-    imgAlt: 'gsrc lactation room',
-  },
-  {
     title: 'Diaper Changing Station',
     children:
       'Each restroom on the first, second, and third floors of the U-SU are equipped with diaper changing stations open to all in the University community.',
@@ -63,12 +39,95 @@ const services = [
     imgAlt: 'gender inclusive bathroom sign',
   },
   {
+    title: 'Lactation Room',
+    children:
+      'The lactation room is located in the Gender and Sexuality Center within the Cross Cultural Centers (CCC), Room 206. The space is open from 9:00 AM to 5:30 PM Monday through Friday. Reservations may be made at the front desk of the CCC at (323) 343-5001. Walk-ins are welcome based on availability.',
+    imgSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/lactation-room.jpg',
+    imgAlt: 'gsrc lactation room',
+  },
+  {
+    title: 'Nap Pods',
+    children:
+      'In late 2019, the U-SU opened the Relaxation Station on the third floor Room 304 of the student union. The station is comprised of three state of the art sleep pods which provide a quiet, comfortable, and relaxing space for students to get some much needed rest. The pods are available for 20 minute intervals while the union is open. Prior reservations are required and only take a quick visit to the information desk in the U-SU lobby or by calling (323) 343-2465.',
+    imgSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/nap-pod.png',
+    imgAlt: 'sleeping pods at the student union',
+  },
+  {
+    title: 'Reflection Room',
+    children:
+      'The U-SU provides a reflection room open to all community members for quiet reflection, meditation, or prayer. The Reflection Room (formerly named the Mediation Room) is located on the third floor in Room 302. After the 1997 renovation of the U-SU, a local artist created a meditation art installation in a vacant union storage space. The meditation space was very popular among students and soon became permanent. When the current U-SU opened in 2008, the Muslim Student Association and U-SU Board of Directors collaborated to recreate the installation as a permanent resource for students. The Reflection Room is utilized by students from all walks of life and tends to get heavier usage during times of student stress and holiday seasons. The space is open free of charge during all U-SU open hours, no reservations required.',
+    imgSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/reflection-room.jpg',
+    imgAlt: 'reflection room door and room',
+  },
+  {
     title: 'Sensory Room',
     children:
-      'Feeling overwhelmed or overstimulated? Visit the Sensory Room located in the Cross Cultural Centers (CCC) on the second floor of the University-Student Union. This space is designed to help students relax, decompress, and refocus. The room includes a variety of sensory-support tools such as aromatherapy, bean bag seating, a weighted blanket, fidget toys, a heating pad, noise-cancelling headphones, and an exercise ball. The Sensory Room is available during CCC operating hours: Monday through Thursday from 8:00 AM to 6:00 PM, and Friday from 8:00 AM to 5:00 PM.',
+      'Feeling overwhelmed or overstimulated? Stop by the Sensory Room located in the Cross Cultural Centers in the University-Student Union! This new room is available to students to help you relax, decompress, and refocus if you are feeling stressed, overwhelmed, or overstimulated.',
     imgSrc:
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Sensory-Room.webp',
     imgAlt: 'sensory room with calming lighting and seating',
+    hoursOfOperation: 'Mon-Thu: 8AM-6PM\nFri: 8AM-5PM',
+    phoneNumber: '323-343-5001',
+    location: 'U-SU 2nd Floor Room 206',
+    faq: [
+      {
+        question: 'What is a sensory room?',
+        answer:
+          'A sensory room is a controlled space with equipment and tools that stimulate or soothe the senses. The goal of this space is to help people self-regulate and manage sensory overload.',
+      },
+      {
+        question: 'Where is the sensory room and when can I use it?',
+        answer:
+          'The sensory room is located in the Cross Cultural Centers (CCC) on the second floor of the University-Student Union. It is available during CCC operating hours: Monday through Thursday from 8 AM to 6 PM, and Friday from 8 AM to 5 PM.',
+      },
+      {
+        question: 'What is available in the sensory room?',
+        answer: {
+          visual: ['Soft lighting'],
+          touch: [
+            'Textured wall panels',
+            'Soft bean bags',
+            'Weighted blankets',
+            'Fidget toys',
+            'Heating pad',
+          ],
+          sound: ['White noise machine', 'Noise cancelling headphones'],
+          movement: ['Balance/Yoga ball', 'Exercise ball'],
+          smell: ['Essential oil diffuser', 'Aromatherapy'],
+          note: 'Additional sensory items may also be available.',
+        },
+      },
+    ],
+    guidelines: [
+      {
+        text: 'Be mindful of the time you spend in the room. We ask that you take no more than an hour to allow more students to use the space.',
+      },
+      {
+        text: 'This is a small space, and only one person is allowed in the room at a time. If the room is being used, enjoy a hot cup of water or tea while you wait.',
+      },
+      {
+        text: 'Respect the space. Handle items with care and put things back where you grabbed them.',
+      },
+      {
+        text: 'This space is not meant to be used as a study room or nap pod. Use one of the many tables or desk areas around the U-SU and campus to study, or check in at the information desk to use the nap pods.',
+      },
+      {
+        text: 'We cannot guarantee absolute silence in this space. Noise-cancelling headphones and earplugs are available.',
+      },
+    ],
+    secondaryImgSrcs: [
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/03-Sensory-Room-Secondary-Image.webp',
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/01-Sensory-Room-Secondary-Image.webp',
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/02-Sensory-Room-Secondary-Image.webp',
+    ],
+    secondaryImgAlts: [
+      'Corner of a wellness room with a balance ball chair, small storage unit, and calming wall decor.',
+      'Wide view of a cozy wellness space with soft seating, storage cubes, rugs, and calming decorations.',
+      'Relaxation corner with a large bean bag chair, plush pillows, blanket, and soothing wall art.',
+    ],
   },
 ];
 

@@ -11,19 +11,19 @@ import {
   StyledLink,
   Typography,
 } from 'components';
-import { Page } from 'modules';
-import styled from 'styled-components';
-
-import { GameTypes } from '../../partials/game-types';
+import { ReactNode } from 'react';
 import Head from 'next/head';
-import { BiChevronRight } from 'react-icons/bi';
+import styled from 'styled-components';
+import { Page, ContactsBar } from 'modules';
+import { GameTypes } from '../../partials/game-types';
+
 import TypingAnimation from 'components/TypingAnimation/TypingAnimation';
 
 import { FaDiscord } from 'react-icons/fa';
-import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
+import { BiChevronRight } from 'react-icons/bi';
 import { IconType } from 'react-icons';
+import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
 import { useBreakpoint } from 'hooks';
-import { ReactNode } from 'react';
 import { Press_Start_2P } from 'next/font/google';
 
 const pressStart2P = Press_Start_2P({
@@ -62,26 +62,6 @@ interface GameFontProps {
   margin?: string;
 }
 
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${FontSizes['5xl']};
-  position: relative;
-  z-index: 98;
-  ${() =>
-    media('desktop')(`
-      gap: ${FontSizes['2xl']};
-    `)}
-  ${() =>
-    media('tablet')(`
-      gap: ${FontSizes['md']};
-    `)}
-  ${() =>
-    media('mobile')(`
-      gap: ${FontSizes['2xs']};
-    `)}
-`;
-
 const GameRoomStatsWrapper = styled.div`
   background: radial-gradient(circle at top, rgb(18, 1, 23) 15%, black 85%);
   min-height: 200px;
@@ -114,7 +94,7 @@ const GameRoomStatsCardWrapper = styled.div`
     media('mobile')(`
       flex: 1 1 100%;
     `)}
-    justify-content: center;
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 1rem;
@@ -162,6 +142,7 @@ const SocialIconLinkWrapper = styled.a`
     color: ${Colors.primary};
     transition: transform 200ms ease;
   }
+
   svg:hover {
     color: white;
     transform: translateY(-4px);
@@ -216,57 +197,6 @@ const TitleScreen = styled.div<{ isDesktop: boolean }>`
   }
 `;
 
-const ContactsBarWrapper = styled.ul`
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.5rem;
-  margin: 0;
-  flex-wrap: wrap;
-
-  ${() =>
-    media('tablet')(`
-          width: 300px;
-          margin: 0 auto;
-        `)}
-
-  li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    white-space: nowrap;
-    ${() =>
-      media('desktop')(`
-            justify-content: center;
-            flex: 1 1 50%;
-          `)}
-    ${() =>
-      media('tablet')(`
-            justify-content: start;
-            flex: 1 1 100%;
-          `)}
-  }
-`;
-
-interface ContactsBarProps {
-  children: ReactNode;
-  isMobile: boolean;
-  isDesktop: boolean;
-}
-
-const ContactsBar = ({ children, isMobile, isDesktop }: ContactsBarProps) => {
-  return (
-    <FluidContainer
-      backgroundColor="primary"
-      padding={isMobile ? '0 16px' : isDesktop ? '0 36px' : '12px 72px'}
-    >
-      <ContactsBarWrapper>{children}</ContactsBarWrapper>
-    </FluidContainer>
-  );
-};
-
 export default function Gameroom() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
@@ -285,8 +215,7 @@ export default function Gameroom() {
           name="description"
           content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
           key="description"
-        />{' '}
-        {/* Open Graph / Social Media */}
+        />
         <meta
           property="og:title"
           content="Recreation Game Room & Esports | Cal State LA University-Student Union"
@@ -311,7 +240,6 @@ export default function Gameroom() {
           property="og:image:alt"
           content="Cal State LA Recreation Game Room interface"
         />
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -333,7 +261,6 @@ export default function Gameroom() {
           rel="canonical"
           href="https://www.calstatelausu.org/recreation/game-room"
         />
-        {/* Structured Data for Google/AI */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -402,8 +329,8 @@ export default function Gameroom() {
 
       <TitleScreen isDesktop={isDesktop}>
         <FluidContainer height="100%">
-          <TitleContainer>
-            <VerticalContainer>
+          <div>
+            <div>
               <GameFont
                 size={
                   isMobile ? 'xl' : isTablet ? '2xl' : isDesktop ? '3xl' : '5xl'
@@ -430,9 +357,10 @@ export default function Gameroom() {
               >
                 Game Room
               </GameFont>
-            </VerticalContainer>
+            </div>
+
             <VerticalContainer
-              style={{ gap: FontSizes['xs'], alignItems: 'flex-start' }}
+              style={{ gap: FontSizes.xs, alignItems: 'flex-start' }}
             >
               <Typography
                 as="h2"
@@ -490,27 +418,11 @@ export default function Gameroom() {
                 />
               </HorizontalContainer>
             </VerticalContainer>
-          </TitleContainer>
+          </div>
         </FluidContainer>
       </TitleScreen>
 
       <ContactsBar isMobile={isMobile} isDesktop={isDesktop}>
-        {/* <li>
-          <StyledLink
-            href="gamesroom@calstatela.edu"
-            isInverseUnderlineStyling
-          >
-            <Image
-              alt="Envelope icon for game room's email address."
-              src="/departments/recreation/game-room/icons/envelope.svg"
-              height="18px"
-              width="18px"
-            />
-            <Typography variant="cta" color="black">
-              gamesroom@calstatela.edu
-            </Typography>
-          </StyledLink>
-        </li> */}
         <li>
           <Image
             alt="Flag icon for game room's room number."
@@ -651,8 +563,6 @@ export default function Gameroom() {
           </Typography>
         </BannerItem>
       </ScrollingContent>
-
-      {/* Get events data from API and show events */}
 
       <FluidContainer backgroundColor="black">
         <Typography

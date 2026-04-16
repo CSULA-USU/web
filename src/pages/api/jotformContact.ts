@@ -2,53 +2,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
+import { jotformContactRatelimit } from 'lib/ratelimit';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY!;
 
-// Simple in-memory rate limiting (best-effort only)
-
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 2;
-
-type RateLimitRecord = {
-  count: number;
-  firstRequestTime: number;
-};
-
-const ipRateLimit = new Map<string, RateLimitRecord>();
-
-function isRateLimited(ip: string | undefined): boolean {
-  if (!ip) return false; // if we can't detect IP, don't block
-
-  const now = Date.now();
-  const record = ipRateLimit.get(ip);
-
-  if (!record) {
-    ipRateLimit.set(ip, { count: 1, firstRequestTime: now });
-    return false;
-  }
-
-  // Reset window if expired
-  if (now - record.firstRequestTime > RATE_LIMIT_WINDOW_MS) {
-    ipRateLimit.set(ip, { count: 1, firstRequestTime: now });
-    return false;
-  }
-
-  record.count += 1;
-  ipRateLimit.set(ip, record);
-
-  return record.count > RATE_LIMIT_MAX_REQUESTS;
-}
-
-// Simple sanitizer: make sure it's a string, trim spaces, and clamp length.
 function sanitize(input: unknown, maxLength: number): string {
   if (typeof input !== 'string') return '';
   return input.trim().slice(0, maxLength);
 }
 
-// Runtime validation + sanitization
 function validateContactForm(
   body: unknown,
 ): { ok: true; data: ContactFormData } | { ok: false; errors: string[] } {
@@ -66,23 +31,25 @@ function validateContactForm(
   const subject = sanitize(requestBody.subject, 200);
   const message = sanitize(requestBody.message, 2000);
   const category = sanitize(requestBody.category, 50);
+  const captchaToken =
+    typeof requestBody.captchaToken === 'string'
+      ? requestBody.captchaToken.trim()
+      : '';
 
-  // Required field checks
   if (!email) errors.push('Email is required.');
   if (!subject) errors.push('Subject is required.');
   if (!message) errors.push('Message is required.');
   if (!category) errors.push('Category is required.');
+  if (!captchaToken) errors.push('CAPTCHA token is required.');
 
-  // Email simple format check
   if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     errors.push('Email is invalid.');
   }
 
-  // Enforce Cal State LA email domain (must match frontend validation)
   if (email && !email.toLowerCase().endsWith('@calstatela.edu')) {
     errors.push('Email must be a calstatela.edu address.');
   }
-  // Category must be one of the defined strings
+
   const allowedCategories = Object.keys(categoryMap);
   if (category && !allowedCategories.includes(category)) {
     errors.push('Category is invalid.');
@@ -101,6 +68,7 @@ function validateContactForm(
       subject,
       message,
       category,
+      captchaToken,
     },
   };
 }
@@ -109,34 +77,26 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (!CONTACT_API_KEY || !CONTACT_FORM_ID) {
+  if (!CONTACT_API_KEY || !CONTACT_FORM_ID || !RECAPTCHA_SECRET_KEY) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
   if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Basic rate limiting by IP
-  // Use socket address to prevent header spoofing
-  const ip =
-    (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||
-    req.socket.remoteAddress ||
-    'unknown';
-
-  if (isRateLimited(ip)) {
-    return res.status(429).json({
-      error: 'Too many submissions. Please try again later.',
-    });
-  }
-
-  // Honeypot: if the hidden field was filled, silently discard
   if (typeof req.body?.website === 'string' && req.body.website.trim()) {
     return res.status(200).json({ success: true });
   }
 
+  const xf = req.headers['x-forwarded-for'];
+  const ip =
+    (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0]?.trim() ||
+    req.socket.remoteAddress ||
+    'unknown';
+
   try {
-    // Validate + sanitize body
     const result = validateContactForm(req.body);
 
     if (!result.ok) {
@@ -147,20 +107,32 @@ export default async function handler(
     }
 
     const formData = result.data;
+    const captchaResult = await verifyRecaptcha(formData.captchaToken!);
 
-    // Build Jotform API URL
-    const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions?apiKey=${CONTACT_API_KEY}`;
+    if (!captchaResult.success) {
+      console.error('CAPTCHA verification failed:', captchaResult);
+      return res.status(400).json({
+        error: 'CAPTCHA verification failed',
+      });
+    }
 
-    // Map your frontend fields -> Jotform field IDs
-    // Jotform Field Mapping:
-    // [2] = Name (first/last)
-    // [3] = Email
-    // [4] = Subject
-    // [5] = Category
-    // [6] = Message
-    // NOTE: These numeric field IDs must match your Jotform form configuration.
-    //       Verify them in the Jotform form builder, and update this mapping if
-    //       the form structure or field ordering changes.
+    const email = (formData.email || '').toLowerCase();
+    const identifier = email ? `${ip}:${email}` : ip;
+
+    const { success, limit, remaining, reset } =
+      await jotformContactRatelimit.limit(identifier);
+
+    res.setHeader('X-RateLimit-Limit', String(limit));
+    res.setHeader('X-RateLimit-Remaining', String(remaining));
+    res.setHeader('X-RateLimit-Reset', String(reset));
+
+    if (!success) {
+      return res.status(429).json({
+        error: 'Too many submissions. Please try again later.',
+      });
+    }
+
+    const jotformUrl = `${JOTFORM_BASE_URL}/form/${CONTACT_FORM_ID}/submissions`;
 
     const body = new URLSearchParams();
     body.append('submission[2][first]', formData.firstName || '');
@@ -173,10 +145,12 @@ export default async function handler(
     body.append('submission[5]', readableCategory);
     body.append('submission[6]', formData.message || '');
 
-    // POST to Jotform
     const jotResponse = await fetch(jotformUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        APIKEY: CONTACT_API_KEY,
+      },
       body,
     });
 
@@ -197,3 +171,21 @@ export default async function handler(
       .json({ error: 'Failed to submit form. Please try again.' });
   }
 }
+
+const verifyRecaptcha = async (token: string) => {
+  const response = await fetch(
+    'https://www.google.com/recaptcha/api/siteverify',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: RECAPTCHA_SECRET_KEY,
+        response: token,
+      }).toString(),
+    },
+  );
+
+  return response.json();
+};
