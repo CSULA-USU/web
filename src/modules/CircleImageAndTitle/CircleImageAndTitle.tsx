@@ -13,7 +13,7 @@ import { Spaces, Colors } from 'theme';
 import { GenericModal } from 'modules/GenericModal';
 import { useBreakpoint } from 'hooks';
 import { ContactsBar } from 'modules/ContactsBar';
-import { DynamicExpandable } from 'pages/ccc/cultural-grads';
+import dynamic from 'next/dynamic';
 
 const CircleImageButton = styled.button`
   border: none;
@@ -127,6 +127,11 @@ export type ServiceItem = {
 };
 
 type CircleImageAndTitleProps = ServiceItem;
+
+export const DynamicExpandable = dynamic(
+  () => import('components/Expandable').then((mod) => mod.Expandable),
+  { ssr: false },
+);
 
 const formatLabel = (value: string) =>
   value.charAt(0).toUpperCase() + value.slice(1).replace(/([A-Z])/g, ' $1');
