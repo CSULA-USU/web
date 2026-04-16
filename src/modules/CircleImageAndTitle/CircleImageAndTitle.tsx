@@ -10,9 +10,8 @@ import {
   Typography,
 } from 'components';
 import { Spaces, Colors } from 'theme';
-import { GenericModal } from 'modules/GenericModal';
+import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
-import { ContactsBar } from 'modules/ContactsBar';
 import dynamic from 'next/dynamic';
 
 const CircleImageButton = styled.button`
