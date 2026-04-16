@@ -67,7 +67,7 @@ const structuredData = {
   ],
 };
 
-const DynamicExpandable = dynamic(
+export const DynamicExpandable = dynamic(
   () => import('../../../components/Expandable').then((mod) => mod.Expandable),
   { ssr: false },
 );
