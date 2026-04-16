@@ -250,7 +250,7 @@ export default function StudentLeaderElections() {
           src="/student-leader-elections/sle-vote-hero.svg"
           alt="student leader header"
           width={isTablet ? '100%' : '40%'}
-        ></Image>
+        />
       </FluidContainer>
       <FluidContainer>
         <Typography as="h2" variant="titleLarge">
