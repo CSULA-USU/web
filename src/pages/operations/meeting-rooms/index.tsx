@@ -1,14 +1,24 @@
-import { Page, Header } from 'modules';
+import React from 'react';
 import Head from 'next/head';
-import { Card, FluidContainer, Image, Skeleton, Typography } from 'components';
-import { media, Spaces } from 'theme';
 import Link from 'next/link';
-import meetingRoomsData from 'data/meetingRooms.json';
 import styled from 'styled-components';
-import { useImageLoading } from 'hooks';
+import { BiChevronRight } from 'react-icons/bi';
+import meetingRoomsData from 'data/meetingRooms.json';
+import { media, Spaces } from 'theme';
+import { useBreakpoint, useImageLoading } from 'hooks';
+import {
+  Card,
+  Divider,
+  Expandable,
+  FluidContainer,
+  Image,
+  Skeleton,
+  Typography,
+} from 'components';
+import { Page, Header } from 'modules';
 
 const RoomCard = styled(Card)`
-  width: 400px; /* desktop & up */
+  flex: 1 1 360px;
 
   ${media('tablet')(`
     width: 100%;
@@ -33,11 +43,60 @@ const DynamicRatioBox = styled.div<{ ratio: number }>`
   display: block;
 `;
 
+const faqs = [
+  {
+    question: 'How do I reserve a meeting room at the Cal State LA U-SU?',
+    answer:
+      'Submit a reservation request online via our Events Request Form. You can also contact the reservations desk by phone at (323) 343-2465 or by email at USUReservationsDesk@calstatela.edu.',
+  },
+  {
+    question:
+      'Are meeting rooms at the Cal State LA U-SU open to the public for reservations?',
+    answer:
+      'Yes, meeting and event spaces at the University-Student Union are available to reserve for community members, Cal State LA students, faculty, and staff. Please contact the reservations desk for pricing and availability.',
+  },
+  {
+    question: 'What is the largest event space available at the U-SU?',
+    answer:
+      'The Los Angeles Room (A + B + C combined) provides over 3,200 square feet of space and accommodates up to 200 guests in theater layout. The U-SU Theater also seats 200 guests including 8 ADA seats.',
+  },
+  {
+    question: 'Where is the University-Student Union at Cal State LA located?',
+    answer:
+      'The University-Student Union is located at 5154 State University Dr., Los Angeles, CA 90032, on the Cal State LA campus in East Los Angeles near the San Gabriel Valley.',
+  },
+  {
+    question: 'What equipment is included in meeting room rentals?',
+    answer:
+      'Most meeting rooms include tables and chairs, but additional media equipment is available for additional pricing. Equipment varies by room. Please visit individual room pages for full details.',
+  },
+  {
+    question: 'What room setup options are available?',
+    answer:
+      'Meeting rooms can be arranged in Classroom, Theater, Reception, Discussion Circle, Conference, and Banquet layouts depending on your event needs. Please visit individual room pages for examples of different room layouts and capacities.',
+  },
+  {
+    question: 'How do I pay?',
+    answer:
+      'For off-campus reservations, the U-SU only accepts payment by cash or checks. For on-campus reservations, please provide the appropriate information in the Chartfield section of the reservation form.',
+  },
+  {
+    question: 'When, at the latest, can I make changes to my reservation?',
+    answer:
+      'Reservations should be finalized no later than two days in advance. Changes made within 48 hours of the event may not be accommodated. Please contact the reservations desk as soon as possible if you need to make changes to your reservation.',
+  },
+];
+
 const meetingRoomButtons = [
   {
     text: 'Make Room Reservation',
     href: 'https://form.jotform.com/221578153228053',
     isExternal: true,
+  },
+  {
+    text: 'Policies',
+    href: 'https://www.dropbox.com/scl/fi/ap2nhg75x69zf4hrkriff/POLICIES-PROCEDURES-Updated-07.25.docx?rlkey=qqz8pa269bm3e1yc14vdsgwwo&st=n456ua3l&dl=1',
+    isExternal: false,
   },
 ];
 
@@ -56,6 +115,8 @@ function MeetingRoomCardImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function MeetingRooms() {
+  const { isMobile } = useBreakpoint();
+
   return (
     <Page>
       <Head>
@@ -241,6 +302,25 @@ export default function MeetingRooms() {
             }),
           }}
         />
+
+        {/* FAQ Structured Data for featured snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            }),
+          }}
+        />
       </Head>
       <Header
         title="Event & Conference Room Rentals"
@@ -283,6 +363,44 @@ export default function MeetingRooms() {
             </RoomCard>
           ))}
         </FluidContainer>
+      </FluidContainer>
+      <FluidContainer backgroundColor="black">
+        <Typography as="h2" variant="title" color="primary">
+          Frequently Asked Questions
+        </Typography>
+        {faqs.map((e, i) => (
+          <React.Fragment key={i}>
+            <Expandable
+              indicator={<BiChevronRight color="white" size={48} />}
+              header={
+                <Typography
+                  variant="label"
+                  size={isMobile ? 'md' : 'lg'}
+                  color="white"
+                  as="h3"
+                  margin={`${Spaces.sm} 0`}
+                >
+                  {e.question}
+                </Typography>
+              }
+            >
+              <Typography color="white" as="p">
+                {Array.isArray(e.answer) ? (
+                  <>
+                    <ul>
+                      {e.answer.map((e, answerKey) => (
+                        <li key={`answer-${answerKey}`}>{e}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <> {e.answer}</>
+                )}
+              </Typography>
+            </Expandable>
+            <Divider color="gold" />
+          </React.Fragment>
+        ))}
       </FluidContainer>
     </Page>
   );

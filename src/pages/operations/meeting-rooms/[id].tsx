@@ -33,6 +33,8 @@ const NavItemContainer = styled.div`
 
 const TextCenter = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Table = styled.div`
@@ -144,6 +146,18 @@ const NavItems = [
 ];
 
 type Room = (typeof meetingRoomsData)[number];
+
+function getMaxCapacity(arrangements: Room['arrangements']): number {
+  return Math.max(
+    ...arrangements.flatMap((a) =>
+      a.capacity.map((c) => {
+        if (typeof c === 'number') return c;
+        const nums = String(c).match(/\d+/g)?.map(Number) ?? [0];
+        return nums.reduce((sum, n) => sum + n, 0);
+      }),
+    ),
+  );
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = meetingRoomsData.map((room) => ({
@@ -289,6 +303,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
               url: `https://www.calstatelausu.org/operations/meeting-rooms/${room.id}`,
               description: room.features,
               image: room.headerImage,
+              maximumAttendeeCapacity: getMaxCapacity(room.arrangements),
               containedInPlace: {
                 '@id':
                   'https://www.calstatelausu.org/operations/meeting-rooms#event-venue',
@@ -442,11 +457,12 @@ export default function MeetingRoom({ room }: { room: Room }) {
                     <Typography
                       weight="700"
                       as="h3"
-                      margin={`${Spaces.md}0 0 0`}
+                      margin={`${Spaces.md} 0 0 0`}
                     >
                       Fixed Room Features:
                     </Typography>
                     <Typography
+                      as="p"
                       margin={`0 0 ${Spaces.md}`}
                       size={isMobile ? 'xs' : 'md'}
                     >
@@ -461,7 +477,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
                     <Typography
                       weight="700"
                       as="h3"
-                      margin={`${Spaces.md}0 0 0`}
+                      margin={`${Spaces.md} 0 0 0`}
                     >
                       Meeting Space Rental Fees do not include:
                     </Typography>
