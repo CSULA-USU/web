@@ -9,7 +9,7 @@ import {
   StyledLink,
   Typography,
 } from 'components';
-import { Spaces, Colors } from 'theme';
+import { Spaces, Colors, media } from 'theme';
 import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
 import dynamic from 'next/dynamic';
@@ -58,6 +58,8 @@ const SectionWrapper = styled(FluidContainer)`
   width: 100%;
   padding: ${Spaces.lg};
   border-radius: 16px;
+  ${media('tablet')(`padding: ${Spaces.md}`)};
+  ${media('mobile')(`padding: ${Spaces.sm}`)};
 `;
 
 const DescriptionSection = styled(SectionWrapper)`
@@ -213,7 +215,7 @@ export const CircleImageAndTitle = ({
   secondaryImgAlts,
 }: CircleImageAndTitleProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const imageNode = (
     <CircleImageButton
@@ -248,7 +250,7 @@ export const CircleImageAndTitle = ({
       <GenericModal
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
-        width="90%"
+        width={isTablet ? '100%' : '1440px'}
       >
         <FluidContainer
           flex
@@ -334,7 +336,16 @@ export const CircleImageAndTitle = ({
             flex
             flexDirection="column"
             width="100%"
+            alignItems="flex-start"
           >
+            <Typography
+              as="h2"
+              variant="title"
+              size={isMobile ? 'lg' : '2xl'}
+              color="primary"
+            >
+              Description
+            </Typography>
             <Typography color="white" as="p">
               {children}
             </Typography>
@@ -371,7 +382,13 @@ export const CircleImageAndTitle = ({
           )}
 
           {faq && faq.length > 0 && (
-            <SectionWrapper backgroundColor="black" flex flexDirection="column">
+            <SectionWrapper
+              backgroundColor="black"
+              alignItems="flex-start"
+              flex
+              flexDirection="column"
+              width="100%"
+            >
               <Typography
                 as="h2"
                 variant="title"
