@@ -9,7 +9,7 @@ import {
   StyledLink,
   Typography,
 } from 'components';
-import { Spaces, Colors } from 'theme';
+import { Spaces, Colors, media } from 'theme';
 import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
 import dynamic from 'next/dynamic';
@@ -58,6 +58,8 @@ const SectionWrapper = styled(FluidContainer)`
   width: 100%;
   padding: ${Spaces.lg};
   border-radius: 16px;
+  ${media('tablet')(`padding: ${Spaces.md}`)};
+  ${media('mobile')(`padding: ${Spaces.sm}`)};
 `;
 
 const DescriptionSection = styled(SectionWrapper)`
