@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { Page, CircleImageAndTitle } from 'modules';
-import { FluidContainer, Typography, Image } from 'components';
+import { Page, CircleImageAndTitle, UtilityHeroHeader } from 'modules';
+import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
-import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
 
 const ServicesGrid = styled.div`
   display: grid;
@@ -109,9 +108,6 @@ const services = [
         text: 'Be mindful of the time you spend in the room. We ask that you take no more than an hour to allow more students to use the space.',
       },
       {
-        text: 'Only one person at a time is allowed in the room to ensure a quiet and calming environment for everyone. If the room is occupied, please wait your turn outside the room or in the nearby seating area.',
-      },
-      {
         text: 'Please wait until you are let into the space by a CCC staff member. They will be able to answer any questions you have and ensure the space is used appropriately.',
       },
       {
@@ -131,11 +127,6 @@ const services = [
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/03-Sensory-Room-Secondary-Image.webp',
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/01-Sensory-Room-Secondary-Image.webp',
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/02-Sensory-Room-Secondary-Image.webp',
-    ],
-    secondaryImgAlts: [
-      'Corner of a wellness room with a balance ball chair, small storage unit, and calming wall decor.',
-      'Wide view of a cozy wellness space with soft seating, storage cubes, rugs, and calming decorations.',
-      'Relaxation corner with a large bean bag chair, plush pillows, blanket, and soothing wall art.',
     ],
   },
 ];
@@ -166,62 +157,6 @@ const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
   ${(p) => p.borderRadius && `border-radius: ${p.borderRadius};`}
 `;
 
-const HeroContainer = styled.section`
-  position: relative;
-  width: 100%;
-  height: 70vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-
-  align-items: flex-end;
-  justify-content: center;
-
-  padding-bottom: ${Spaces['2xl']};
-`;
-
-const BackgroundImage = styled(Image)`
-  position: absolute;
-  top: -15px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-
-  filter: blur(0.5px);
-  transform: scale(1.05);
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-  padding: 8px;
-  z-index: 2;
-
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${Colors.white};
-    opacity: 0.7;
-    z-index: 1;
-  }
-`;
-
 export const SquareImageContainer = ({
   src,
   alt,
@@ -240,7 +175,6 @@ export const SquareImageContainer = ({
 );
 
 export default function Services() {
-  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -343,22 +277,12 @@ export default function Services() {
         </Typography>
       </Header> */}
 
-      <HeroContainer>
-        <BackgroundImage
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
-          alt="Cal State LA Fraternity and Sorority students"
-        />
-        <HeaderContainer>
-          <Typography
-            as="h1"
-            variant="pageHeader"
-            size={isMobile ? 'xl' : '4xl'}
-            color="black"
-          >
-            Student Union Services
-          </Typography>
-        </HeaderContainer>
-      </HeroContainer>
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
+        alt="Cal State LA Fraternity and Sorority students"
+        title="Services"
+        description="Free amenities and wellness resources, available to the entire Cal State LA community."
+      />
       <FluidContainer>
         <ServicesGrid>
           {services.map((props) => (
