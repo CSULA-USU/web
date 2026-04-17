@@ -65,7 +65,7 @@ const services = [
   {
     title: 'Sensory Room',
     children:
-      'Feeling overwhelmed or overstimulated? Stop by the Sensory Room located in the Cross Cultural Centers in the University-Student Union! This new room is available to students to help you relax, decompress, and refocus if you are feeling stressed, overwhelmed, or overstimulated.',
+      'Feeling overwhelmed or overstimulated? Stop by the Sensory Room located in the Cross Cultural Centers at the University-Student Union! This new room is available to all students to help you relax, decompress, and refocus. The room is equipped with a variety of sensory tools and equipment designed to provide a calming environment.',
     imgSrc:
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Sensory-Room.webp',
     imgAlt: 'sensory room with calming lighting and seating',
@@ -103,7 +103,16 @@ const services = [
     ],
     guidelines: [
       {
+        text: 'No reservations are needed to use the sensory room. It is available on a walk-in, first-come, first-served basis during the hours of operation. Please check in at the CCC front desk to ensure the room is available and to receive any necessary instructions for use.',
+      },
+      {
         text: 'Be mindful of the time you spend in the room. We ask that you take no more than an hour to allow more students to use the space.',
+      },
+      {
+        text: 'Only one person at a time is allowed in the room to ensure a quiet and calming environment for everyone. If the room is occupied, please wait your turn outside the room or in the nearby seating area.',
+      },
+      {
+        text: 'Please wait until you are let into the space by a CCC staff member. They will be able to answer any questions you have and ensure the space is used appropriately.',
       },
       {
         text: 'This is a small space, and only one person is allowed in the room at a time. If the room is being used, enjoy a hot cup of water or tea while you wait.',
