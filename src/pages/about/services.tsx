@@ -109,9 +109,6 @@ const services = [
         text: 'Be mindful of the time you spend in the room. We ask that you take no more than an hour to allow more students to use the space.',
       },
       {
-        text: 'Only one person at a time is allowed in the room to ensure a quiet and calming environment for everyone. If the room is occupied, please wait your turn outside the room or in the nearby seating area.',
-      },
-      {
         text: 'Please wait until you are let into the space by a CCC staff member. They will be able to answer any questions you have and ensure the space is used appropriately.',
       },
       {
