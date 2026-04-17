@@ -183,7 +183,7 @@ const TitleScreen = styled.div<{ isDesktop: boolean }>`
   background-image: url('/departments/recreation/game-room/game-room_video.gif');
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 1;
+  z-index: 0;
 
   &::before {
     content: '';
@@ -193,7 +193,7 @@ const TitleScreen = styled.div<{ isDesktop: boolean }>`
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    z-index: -1;
   }
 `;
 
