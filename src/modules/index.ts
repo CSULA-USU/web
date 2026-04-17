@@ -15,7 +15,7 @@ export * from './Footer';
 export * from './GenericModal';
 export * from './Header';
 export * from './HeaderWithImage';
-export * from './HeroHeader';
+export * from './UtilityHeroHeader';
 export * from './HeaderWithVideo';
 export * from './ImageAndCard';
 export * from './ImageCardCarousel';

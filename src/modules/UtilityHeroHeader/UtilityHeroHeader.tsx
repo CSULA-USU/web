@@ -57,7 +57,8 @@ const Content = styled.div`
   position: relative;
   z-index: 3;
   padding: ${Spaces['2xl']};
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
 
   @media (max-width: 580px) {
     padding: ${Spaces.xl} ${Spaces.md};

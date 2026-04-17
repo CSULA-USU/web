@@ -128,11 +128,6 @@ const services = [
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/01-Sensory-Room-Secondary-Image.webp',
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/02-Sensory-Room-Secondary-Image.webp',
     ],
-    secondaryImgAlts: [
-      'Corner of a wellness room with a balance ball chair, small storage unit, and calming wall decor.',
-      'Wide view of a cozy wellness space with soft seating, storage cubes, rugs, and calming decorations.',
-      'Relaxation corner with a large bean bag chair, plush pillows, blanket, and soothing wall art.',
-    ],
   },
 ];
 
