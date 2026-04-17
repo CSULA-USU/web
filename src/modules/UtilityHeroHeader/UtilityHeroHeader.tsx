@@ -25,14 +25,12 @@ const HeroContainer = styled.section<{ height: string; minHeight: string }>`
 
 const BackgroundImage = styled(Image)`
   position: absolute;
-  top: -15px;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   z-index: 1;
-  transform: scale(1.05);
 `;
 
 const Overlay = styled.div`
