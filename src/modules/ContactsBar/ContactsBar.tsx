@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { FluidContainer } from 'components';
 import { Colors, media, Spaces } from 'theme';
 
+const Wrapper = styled.div<{ borderRadius?: string }>`
+  ${(p) =>
+    p.borderRadius && `border-radius: ${p.borderRadius}; overflow: hidden;`}
+`;
+
 const ContactsBarList = styled.ul`
   list-style: none;
   display: flex;
@@ -56,6 +61,7 @@ export interface ContactsBarProps {
   borderRadius?: string;
   padding?: string;
   className?: string;
+  rounded?: boolean;
 }
 
 export const ContactsBar = ({
@@ -65,18 +71,23 @@ export const ContactsBar = ({
   backgroundColor = 'primary',
   width = '100%',
   padding,
+  borderRadius,
+  rounded,
 }: ContactsBarProps) => {
   const resolvedPadding =
     padding || (isMobile ? '0 16px' : isDesktop ? '0 36px' : '12px 72px');
+  const resolvedBorderRadius = borderRadius || (rounded ? '12px' : undefined);
 
   return (
-    <FluidContainer
-      backgroundColor={backgroundColor}
-      padding={resolvedPadding}
-      width={width}
-    >
-      <ContactsBarList>{children}</ContactsBarList>
-    </FluidContainer>
+    <Wrapper borderRadius={resolvedBorderRadius}>
+      <FluidContainer
+        backgroundColor={backgroundColor}
+        padding={resolvedPadding}
+        width={width}
+      >
+        <ContactsBarList>{children}</ContactsBarList>
+      </FluidContainer>
+    </Wrapper>
   );
 };
 

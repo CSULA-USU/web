@@ -9,26 +9,10 @@ import {
   StyledLink,
   Typography,
 } from 'components';
-import { Spaces, Colors, media } from 'theme';
+import { Spaces, media } from 'theme';
 import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
 import dynamic from 'next/dynamic';
-
-const CircleImageButton = styled.button`
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:focus-visible {
-    outline: 2px solid ${Colors.primary};
-    outline-offset: 4px;
-  }
-`;
 
 const CircleImageWrapper = styled.div`
   width: 100%;
@@ -40,18 +24,8 @@ const CircleImageWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const TitleLinkButton = styled.button`
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: ${Colors.black};
-  text-decoration: underline;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+const CenteredTitle = styled.div`
+  text-align: center;
 `;
 
 const SectionWrapper = styled(FluidContainer)`
@@ -124,7 +98,6 @@ export type ServiceItem = {
   faq?: FAQItem[];
   guidelines?: GuidelineItem[];
   secondaryImgSrcs?: string[];
-  secondaryImgAlts?: string[];
 };
 
 type CircleImageAndTitleProps = ServiceItem;
@@ -212,29 +185,26 @@ export const CircleImageAndTitle = ({
   faq,
   guidelines,
   secondaryImgSrcs,
-  secondaryImgAlts,
 }: CircleImageAndTitleProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const imageNode = (
-    <CircleImageButton
-      type="button"
+    <CircleImageWrapper
       onClick={() => setIsOpen(true)}
-      aria-label={`Open details for ${title}`}
+      style={{ cursor: 'pointer' }}
+      aria-hidden="true"
     >
-      <CircleImageWrapper>
-        <Image src={imgSrc} alt={imgAlt} width="100%" height="100%" lazy />
-      </CircleImageWrapper>
-    </CircleImageButton>
+      <Image src={imgSrc} alt={imgAlt} width="100%" height="100%" lazy />
+    </CircleImageWrapper>
   );
 
   const titleNode = (
-    <TitleLinkButton type="button" onClick={() => setIsOpen(true)}>
+    <CenteredTitle>
       <Typography as="h2" variant="eventTitle" color="black" size="md">
         {title}
       </Typography>
-    </TitleLinkButton>
+    </CenteredTitle>
   );
 
   return (
@@ -278,9 +248,13 @@ export const CircleImageAndTitle = ({
             faq,
             guidelines,
             secondaryImgSrcs,
-            secondaryImgAlts,
           }) && (
-            <ContactsBar isMobile={isMobile} isDesktop={isDesktop} width="100%">
+            <ContactsBar
+              isMobile={isMobile}
+              isDesktop={isDesktop}
+              width="100%"
+              rounded
+            >
               {location && (
                 <li>
                   <Image
@@ -428,50 +402,38 @@ export const CircleImageAndTitle = ({
             </SectionWrapper>
           )}
 
-          {secondaryImgSrcs &&
-            secondaryImgSrcs.length > 0 &&
-            secondaryImgAlts &&
-            secondaryImgAlts.length > 0 && (
-              <FluidContainer
-                flex
-                flexWrap="wrap"
-                justifyContent="center"
-                gap={Spaces.md}
-                width="100%"
-                padding="0"
-              >
-                {secondaryImgSrcs.map((src, index) => {
-                  let width = '100%';
+          {secondaryImgSrcs && secondaryImgSrcs.length > 0 && (
+            <FluidContainer
+              flex
+              flexWrap="wrap"
+              justifyContent="center"
+              gap={Spaces.md}
+              width="100%"
+              padding="0"
+            >
+              {secondaryImgSrcs.map((src, index) => {
+                let width = '100%';
 
-                  if (!isMobile) {
-                    if (index === 0 || index === 1) {
-                      width = '49%'; // first two images side-by-side
-                    } else {
-                      width = '100%'; // third image full width
-                    }
+                if (!isMobile) {
+                  if (index === 0 || index === 1) {
+                    width = '49%'; // first two images side-by-side
+                  } else {
+                    width = '100%'; // third image full width
                   }
+                }
 
-                  return (
-                    <FluidContainer
-                      key={`${src}-${index}`}
-                      width={width}
-                      padding="0"
-                    >
-                      <Image
-                        src={src}
-                        alt={
-                          secondaryImgAlts[index] ||
-                          `${title} image ${index + 1}`
-                        }
-                        width="100%"
-                        height="auto"
-                        lazy
-                      />
-                    </FluidContainer>
-                  );
-                })}
-              </FluidContainer>
-            )}
+                return (
+                  <FluidContainer
+                    key={`${src}-${index}`}
+                    width={width}
+                    padding="0"
+                  >
+                    <Image src={src} alt="" width="100%" height="auto" lazy />
+                  </FluidContainer>
+                );
+              })}
+            </FluidContainer>
+          )}
         </FluidContainer>
       </GenericModal>
     </>
