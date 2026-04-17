@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { Page, CircleImageAndTitle } from 'modules';
-import { FluidContainer, Typography, Image } from 'components';
+import { Page, CircleImageAndTitle, UtilityHeroHeader } from 'modules';
+import { FluidContainer, Image } from 'components';
 import styled from 'styled-components';
-import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
 
 const ServicesGrid = styled.div`
   display: grid;
@@ -163,62 +162,6 @@ const StyledImage = styled(Image)<{ objectFit: string; borderRadius?: string }>`
   ${(p) => p.borderRadius && `border-radius: ${p.borderRadius};`}
 `;
 
-const HeroContainer = styled.section`
-  position: relative;
-  width: 100%;
-  height: 70vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-
-  align-items: flex-end;
-  justify-content: center;
-
-  padding-bottom: ${Spaces['2xl']};
-`;
-
-const BackgroundImage = styled(Image)`
-  position: absolute;
-  top: -15px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-
-  filter: blur(0.5px);
-  transform: scale(1.05);
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-  padding: 8px;
-  z-index: 2;
-
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${Colors.white};
-    opacity: 0.7;
-    z-index: 1;
-  }
-`;
-
 export const SquareImageContainer = ({
   src,
   alt,
@@ -237,7 +180,6 @@ export const SquareImageContainer = ({
 );
 
 export default function Services() {
-  const { isMobile } = useBreakpoint();
   return (
     <Page>
       <Head>
@@ -340,22 +282,12 @@ export default function Services() {
         </Typography>
       </Header> */}
 
-      <HeroContainer>
-        <BackgroundImage
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
-          alt="Cal State LA Fraternity and Sorority students"
-        />
-        <HeaderContainer>
-          <Typography
-            as="h1"
-            variant="pageHeader"
-            size={isMobile ? 'xl' : '4xl'}
-            color="black"
-          >
-            Student Union Services
-          </Typography>
-        </HeaderContainer>
-      </HeroContainer>
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
+        alt="Cal State LA Fraternity and Sorority students"
+        title="Services"
+        description="Free amenities and wellness resources, available to the entire Cal State LA community."
+      />
       <FluidContainer>
         <ServicesGrid>
           {services.map((props) => (

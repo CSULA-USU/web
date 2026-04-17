@@ -9,26 +9,10 @@ import {
   StyledLink,
   Typography,
 } from 'components';
-import { Spaces, Colors, media } from 'theme';
+import { Spaces, media } from 'theme';
 import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
 import dynamic from 'next/dynamic';
-
-const CircleImageButton = styled.button`
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:focus-visible {
-    outline: 2px solid ${Colors.primary};
-    outline-offset: 4px;
-  }
-`;
 
 const CircleImageWrapper = styled.div`
   width: 100%;
@@ -40,18 +24,8 @@ const CircleImageWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const TitleLinkButton = styled.button`
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: ${Colors.black};
-  text-decoration: underline;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+const CenteredTitle = styled.div`
+  text-align: center;
 `;
 
 const SectionWrapper = styled(FluidContainer)`
@@ -218,23 +192,21 @@ export const CircleImageAndTitle = ({
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   const imageNode = (
-    <CircleImageButton
-      type="button"
+    <CircleImageWrapper
       onClick={() => setIsOpen(true)}
-      aria-label={`Open details for ${title}`}
+      style={{ cursor: 'pointer' }}
+      aria-hidden="true"
     >
-      <CircleImageWrapper>
-        <Image src={imgSrc} alt={imgAlt} width="100%" height="100%" lazy />
-      </CircleImageWrapper>
-    </CircleImageButton>
+      <Image src={imgSrc} alt={imgAlt} width="100%" height="100%" lazy />
+    </CircleImageWrapper>
   );
 
   const titleNode = (
-    <TitleLinkButton type="button" onClick={() => setIsOpen(true)}>
+    <CenteredTitle>
       <Typography as="h2" variant="eventTitle" color="black" size="md">
         {title}
       </Typography>
-    </TitleLinkButton>
+    </CenteredTitle>
   );
 
   return (
