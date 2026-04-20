@@ -121,6 +121,7 @@ const DesignsContainer = styled.div`
   margin: 0 24px 0 0;
   display: flex;
   flex-direction: column;
+  gap: ${Spaces.lg};
 `;
 
 const Graphic = styled.button`
@@ -476,19 +477,21 @@ export default function Graffix() {
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
         >
-          <Typography variant="titleSmall" margin="16px 0">
-            {modalData.title}
-          </Typography>
-          <Image
-            src={modalData.src}
-            alt={modalData.title}
-            width="80%"
-            height="80%"
-          />
-          <Typography weight="700">{modalData.designer}</Typography>
-          <Typography variant="copy" margin="12px 0 0 0">
-            {modalData.description}
-          </Typography>
+          <FluidContainer flex flexDirection="column" alignItems="center">
+            <Typography variant="titleSmall" margin="16px 0">
+              {modalData.title}
+            </Typography>
+            <Image
+              src={modalData.src}
+              alt={modalData.title}
+              width="80%"
+              height="80%"
+            />
+            <Typography weight="700">{modalData.designer}</Typography>
+            <Typography variant="copy" margin="12px 0 0 0">
+              {modalData.description}
+            </Typography>
+          </FluidContainer>
         </GenericModal>
       )}
     </Page>

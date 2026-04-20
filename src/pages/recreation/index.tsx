@@ -11,7 +11,7 @@ import {
   FluidContainer,
   StyledLink,
 } from 'components';
-import { Page } from 'modules';
+import { Page, UtilityHeroHeader } from 'modules';
 import {
   NonDiscriminationPolicy,
   PhotoVideoDisclaimer,
@@ -262,6 +262,12 @@ export default function Recreation() {
           }}
         />
       </Head>
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-bench-tablet.webp"
+        alt="USU Board Of Directors"
+        title="Recreation"
+        height="90vh"
+      />
       <StyledH1>
         <FluidContainer
           backgroundImage="/departments/recreation/recreation-hero-background.jpg"

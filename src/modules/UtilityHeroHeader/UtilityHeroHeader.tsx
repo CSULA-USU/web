@@ -7,9 +7,11 @@ interface UtilityHeroHeaderProps {
   src: string;
   alt: string;
   title: string;
-  description: string;
+  description?: string;
   height?: string;
   minHeight?: string;
+  maxDescriptionWidth?: string;
+  children?: React.ReactNode;
 }
 
 const HeroContainer = styled.section<{ height: string; minHeight: string }>`
@@ -29,7 +31,8 @@ const BackgroundImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* Adjust these % values to keep people in frame (X% Y%) */
+  object-position: 20% center;
   z-index: 1;
 `;
 
@@ -49,6 +52,27 @@ const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: grid;
+  gap: ${Spaces.md};
+  margin: ${Spaces.md} 0 0 0;
+  width: 100%;
+
+  /* Mobile: 1 column */
+  grid-template-columns: repeat(1, 1fr);
+
+  /* iPad/Tablet (e.g., 768px): 2 columns */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: max-content; /* Keeps buttons from stretching too wide on larger screens */
+  }
+
+  /* Desktop (e.g., 1024px): 3 columns */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Content = styled.div`
@@ -77,6 +101,8 @@ export const UtilityHeroHeader = ({
   description,
   height = '50vh',
   minHeight = '380px',
+  maxDescriptionWidth = '480px',
+  children,
 }: UtilityHeroHeaderProps) => {
   const { isMobile } = useBreakpoint();
   return (
@@ -94,14 +120,18 @@ export const UtilityHeroHeader = ({
           >
             {title}
           </Typography>
-          <Typography
-            as="p"
-            size={isMobile ? 'xs' : 'sm'}
-            color="white"
-            style={{ marginTop: Spaces.sm, maxWidth: '480px' }}
-          >
-            {description}
-          </Typography>
+          {description && (
+            <Typography
+              as="p"
+              size={isMobile ? 'xs' : 'sm'}
+              color="white"
+              margin={`${Spaces.md} 0 0 0`}
+              style={{ maxWidth: maxDescriptionWidth }}
+            >
+              {description}
+            </Typography>
+          )}
+          {children && <ButtonContainer>{children}</ButtonContainer>}
         </Content>
       </ContentContainer>
     </HeroContainer>

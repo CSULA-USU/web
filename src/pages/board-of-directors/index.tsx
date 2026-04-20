@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { ShadedImageHeader, Page } from 'modules';
+import { ShadedImageHeader, Page, UtilityHeroHeader } from 'modules';
 import {
   FluidContainer,
   Image,
@@ -7,6 +7,7 @@ import {
   Card,
   Typography,
   Tabs,
+  Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
@@ -333,6 +334,25 @@ export default function BoardOfDirectors() {
       <Head>
         <title>Board of Directors</title>
       </Head>
+
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        alt="USU Board Of Directors"
+        title="Board of Directors"
+        height="90vh"
+        maxDescriptionWidth="1000px"
+        description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
+      >
+        <Button href="https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1">
+          Meeting Schedule
+        </Button>
+        <Button href="/board-of-directors/public-documents">
+          Public Documents
+        </Button>
+        <Button href="/board-of-directors/public-document-archives">
+          Archives
+        </Button>
+      </UtilityHeroHeader>
       <ShadedImageHeader
         title="Board of Directors"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
