@@ -12,7 +12,6 @@ import {
 } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState, eventListStatusState } from 'atoms';
-import { useBreakpoint } from 'hooks';
 // import { Spaces } from 'theme';
 import featuredEvents from 'data/featured-events.json';
 
@@ -32,7 +31,6 @@ export default function Home() {
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
-  const { isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (eventsStatus != 'undefined') {
@@ -101,13 +99,14 @@ export default function Home() {
       ) : events.length > 0 ? ( */}
       <>
         <EventHeader
-          loading={loading}
-          subheaderText={
-            isMobile
-              ? 'California State, Los Angeles'
-              : 'California State University, Los Angeles'
+          loading={loading || !events.length}
+          subheaderText="California State University, Los Angeles"
+          title={
+            <>
+              <span className="mobile-only">U-SU</span>
+              <span className="desktop-only">University-Student Union</span>
+            </>
           }
-          title={isMobile ? 'U-SU' : 'University-Student Union'}
           featuredEvent={events[0]}
         />
         {!loading && eventsStatus == 'failed' ? (

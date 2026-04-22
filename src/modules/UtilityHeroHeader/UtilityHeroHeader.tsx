@@ -5,6 +5,7 @@ import { Colors, Spaces } from 'theme';
 
 interface UtilityHeroHeaderProps {
   src: string;
+  mobileSrc?: string;
   alt: string;
   title: string;
   description?: string;
@@ -96,18 +97,20 @@ const GoldAccent = styled.div`
 
 export const UtilityHeroHeader = ({
   src,
+  mobileSrc,
   alt,
   title,
   description,
-  height = '50vh',
+  height = '91vh',
   minHeight = '380px',
-  maxDescriptionWidth = '480px',
+  maxDescriptionWidth = '1000px',
   children,
 }: UtilityHeroHeaderProps) => {
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isWidescreen } = useBreakpoint();
+  const activeSrc = isWidescreen && mobileSrc ? mobileSrc : src;
   return (
     <HeroContainer height={height} minHeight={minHeight}>
-      <BackgroundImage src={src} alt={alt} />
+      <BackgroundImage src={activeSrc} alt={alt} />
       <Overlay />
       <ContentContainer>
         <Content>

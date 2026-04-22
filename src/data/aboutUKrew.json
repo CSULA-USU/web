@@ -88,9 +88,9 @@
       "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Strong communication, customer service, and organizational skills required. Ability to perform physical tasks including lifting up to 70 pounds. Must obtain CPR, AED, and First Aid certification within 30 days of hire. Experience with fitness equipment, wellness programs, and prior customer service preferred.",
       "hours": "Up to 20 hours/week",
       "hourlyRate": "$18.65",
-      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-bench-desktop.webp",
       "alt": "Student assisting in a recreation facility and ensuring equipment safety",
-      "link": ""
+      "link": "https://calstatela.joinhandshake.com/jobs/10968657/share_preview"
     },
     {
       "positionName": "Information & Reservations Aide",
@@ -114,7 +114,7 @@
       "hourlyRate": "$17.50",
       "img": "https://dl.dropboxusercontent.com/scl/fi/8s1dhcgt64bx0lyry6stg/IMG_5204.JPG?rlkey=mulrm3h5cewm0glp27n6ik3so",
       "alt": "Graphics team working on design projects",
-      "link": "https://calstatela.joinhandshake.com/jobs/9753101/share_preview"
+      "link": "https://calstatela.joinhandshake.com/jobs/10913212/share_preview"
     },
     {
       "positionName": "Junior Web Developer Associate",
@@ -124,9 +124,9 @@
       "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Strong communication, organizational, and interpersonal skills required. Experience with web development technologies including HTML5, CSS3, JavaScript, React, Next.js, Supabase, SQL, and GitHub. Familiarity with accessibility standards, responsive design, cross-browser compatibility, and Agile workflows preferred. Must be self-motivated and able to work in a team environment.",
       "hours": "Up to 20 hours/week",
       "hourlyRate": "$18.32",
-      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
+      "img": "/departments/graffix/web-team/ashley-coding.png",
       "alt": "Student working on web development and coding tasks on a computer",
-      "link": "https://calstatela.joinhandshake.com/jobs/9992972/share_preview"
+      "link": "https://calstatela.joinhandshake.com/jobs/10913275/share_preview"
     },
     {
       "positionName": "Operations Assistant",
@@ -138,7 +138,7 @@
       "hourlyRate": "$18.09",
       "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg",
       "alt": "Operations assistant fixing light",
-      "link": "https://calstatela.joinhandshake.com/jobs/9889946/share_preview"
+      "link": "https://calstatela.joinhandshake.com/jobs/10950487/share_preview"
     },
     {
       "positionName": "Media Services Assistant",
@@ -153,6 +153,18 @@
       "link": "https://calstatela.joinhandshake.com/jobs/9979314/share_preview"
     },
     {
+      "positionName": "Membership Aide",
+      "description": "Provides clerical support and quality customer service for the U-SU Recreation facility. Responsibilities include greeting guests, managing member data in facility software, registering participants for group classes, and ensuring the facility remains organized and clean.",
+      "department": "Recreation",
+      "location": "University-Student Union, Cal State LA",
+      "requirements": "Currently enrolled Cal State LA student (min. 6 undergraduate units with 2.0 GPA or 4 graduate units with 3.0 GPA). Must possess strong organizational, communication, and web-based application skills. Willingness to work with a diverse population and provide courteous customer service is required. Background check/live scan and mandated reporter compliance necessary.",
+      "hours": "Up to 20 hours/week",
+      "hourlyRate": "$18.42",
+      "img": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-treadmill-desktop.webp",
+      "alt": "Student employee providing clerical and member support at the University-Student Union",
+      "link": "https://calstatela.joinhandshake.com/jobs/10968671/share_preview"
+    },
+    {
       "positionName": "Membership Aide - Game Room",
       "description": "Provides clerical and customer service support for the U-SU Game Room by assisting members, managing reservations and registrations, maintaining equipment, organizing events, and ensuring a clean and welcoming environment.",
       "department": "Recreation",
@@ -160,9 +172,9 @@
       "requirements": "Must be a currently enrolled Cal State LA student with a minimum of 6 undergraduate units and a 2.0 GPA, or 4 graduate units and a 3.0 GPA. Strong communication, organizational, and customer service skills required. Ability to handle inquiries, use facility management software, and support daily operations. CPR, AED, and First Aid certification preferred. Previous customer service experience preferred.",
       "hours": "Up to 20 hours/week",
       "hourlyRate": "$18.42",
-      "img": "https://dl.dropboxusercontent.com/scl/fi/yt1y5e9fet6wuw0sakk5l/IMG_6636.JPG?rlkey=44t8367eflw9qi95sive7al4c&st=58ncop06",
+      "img": "/departments/recreation/game-room/game-types/airhockey.jpg",
       "alt": "Student assisting members and managing activities in a campus game room",
-      "link": ""
+      "link": "https://calstatela.joinhandshake.com/jobs/10968681/share_preview"
     },
     {
       "positionName": "Production Aide",

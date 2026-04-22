@@ -65,9 +65,15 @@ export const ModUpcomingEvents = ({
   );
   const [eventLimit, setEventLimit] = useState<number>(6);
   const { isMobile } = useBreakpoint();
+
+  // --- 1. DEFINE DERIVED DATA SAFELY ---
   const onRequestClose = () => selectEvent(undefined);
-  const [_, ...laterEvents] = events || [];
-  const eventsByMonth = (monthly ? events : laterEvents).reduce(
+
+  // Guard against undefined events array
+  const safeEvents = events || [];
+  const [_, ...laterEvents] = safeEvents;
+
+  const eventsByMonth = (monthly ? safeEvents : laterEvents).reduce(
     (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
       const updatedMonths = { ...months };
       const month = getMonth(event.startDateTimeUtc);
@@ -81,8 +87,14 @@ export const ModUpcomingEvents = ({
   );
   const eventMonths = Object.keys(eventsByMonth);
 
+  // --- 2. IMPROVED LOADING LOGIC ---
+  // If parent says loading OR we have 0 events, keep the skeleton visible.
+  // This prevents the "No additional events" text from flashing while the array is empty.
+  const isActuallyLoading = loading || safeEvents.length === 0;
+
   const UpcomingEventsSkeleton = ({ monthly }: { monthly?: boolean }) => {
     return (
+      /* ... keeping your skeleton code exactly as is ... */
       <FluidContainer innerMinHeight={monthly ? '800px' : '600px'} padding="0">
         {monthly ? (
           <div>
@@ -124,9 +136,10 @@ export const ModUpcomingEvents = ({
       )}
 
       <FluidContainer innerMinHeight={monthly ? '800px' : '600px'} padding="0">
-        {loading ? (
+        {/* Use the new combined loading check here */}
+        {isActuallyLoading ? (
           <UpcomingEventsSkeleton monthly={monthly} />
-        ) : events.length <= 1 ? (
+        ) : safeEvents.length <= 1 ? (
           <Typography as="h3" variant="label" margin="20px 0 0 0">
             No additional upcoming events.
           </Typography>
@@ -151,7 +164,7 @@ export const ModUpcomingEvents = ({
               <>
                 <UpcomingEventsContent>
                   <TertiaryContainer>
-                    {events
+                    {safeEvents
                       .slice(1, eventLimit)
                       .map((event, index, eventArray) => (
                         <li key={event.eventNoSqlId}>
@@ -178,7 +191,7 @@ export const ModUpcomingEvents = ({
                   justifyContent="center"
                   gap="16px"
                 >
-                  {events.length > eventLimit && (
+                  {safeEvents.length > eventLimit && (
                     <Button
                       onClick={() => setEventLimit(eventLimit + 3)}
                       variant="black"
