@@ -16,6 +16,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?:
     | 'primary'
     | 'black'
+    | 'white'
     | 'grey'
     | 'greyDarker'
     | 'outline'
@@ -33,6 +34,7 @@ interface ButtonVariant {
 const styles: { [key: string]: ButtonVariant } = {
   primary: { backgroundColor: 'primary', color: 'black' },
   black: { backgroundColor: 'black', color: 'white' },
+  white: { backgroundColor: 'white', color: 'black' },
   grey: {
     backgroundColor: 'greyLightest',
     color: 'black',

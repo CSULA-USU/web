@@ -279,6 +279,7 @@ export default function Services() {
 
       <UtilityHeroHeader
         src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
+        mobileSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/Hero-Mobile.webp"
         alt="Cal State LA Fraternity and Sorority students"
         title="Services"
         description="Free amenities and wellness resources, available to the entire Cal State LA community."

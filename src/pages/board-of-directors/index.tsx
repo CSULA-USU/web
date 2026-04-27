@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import { ShadedImageHeader, Page } from 'modules';
+import { Page, UtilityHeroHeader } from 'modules';
 import {
   FluidContainer,
   Image,
-  NonBreakingSpan,
   Card,
   Typography,
   Tabs,
+  Button,
 } from 'components';
 import { MdGroups } from 'react-icons/md';
 import styled from 'styled-components';
@@ -333,38 +333,29 @@ export default function BoardOfDirectors() {
       <Head>
         <title>Board of Directors</title>
       </Head>
-      <ShadedImageHeader
-        title="Board of Directors"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
-        height="850px"
-        buttons={[
-          {
-            text: 'Meeting Schedule',
-            href: 'https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1',
-          },
-          {
-            text: 'Public Documents',
-            href: '/board-of-directors/public-documents',
-          },
-          {
-            text: 'Archives',
-            href: '/board-of-directors/public-document-archives',
-          },
-        ]}
-      >
-        <Typography>
-          The Board of Directors is the governing board for the{' '}
-          <NonBreakingSpan>University&ndash;Student Union</NonBreakingSpan>,
-          consisting of 8 student directors and 11
-          faculty/staff/administrator/alumni members who help shape policy,
-          structure and are responsible for all financial & legal
-          responsibilities of running a non-profit organization. Directors are
-          expected to serve on the board for one academic year
-          (Fall&ndash;Spring).
-        </Typography>
-      </ShadedImageHeader>
 
-      <FluidContainer padding={isDesktop ? '0 36px' : '36px 72px 0'}>
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        alt="USU Board Of Directors"
+        title="Board of Directors"
+        maxDescriptionWidth="1000px"
+        description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
+      >
+        <Button href="https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1">
+          Meeting Schedule
+        </Button>
+        <Button href="/board-of-directors/public-documents" variant="white">
+          Public Documents
+        </Button>
+        <Button
+          href="/board-of-directors/public-document-archives"
+          variant="white"
+        >
+          Archives
+        </Button>
+      </UtilityHeroHeader>
+
+      <FluidContainer padding={'36px 72px 0'}>
         <Typography
           as="h2"
           variant="title"

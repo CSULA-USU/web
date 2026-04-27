@@ -11,7 +11,7 @@ import {
   FluidContainer,
   StyledLink,
 } from 'components';
-import { Page } from 'modules';
+import { Page, UtilityHeroHeader } from 'modules';
 import {
   NonDiscriminationPolicy,
   PhotoVideoDisclaimer,
@@ -30,13 +30,6 @@ const HoursSection = styled.div`
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const LongDescriptionSection = styled.div`
-  display: flex;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -63,11 +56,6 @@ const NumberInnerContainer = styled.div`
 const NumberContainer = styled.div`
   display: flex;
   gap: ${Spaces.lg};
-`;
-
-const StyledH1 = styled.h1`
-  padding: 0;
-  margin: 0;
 `;
 
 const CTA = styled.div`
@@ -262,31 +250,33 @@ export default function Recreation() {
           }}
         />
       </Head>
-      <StyledH1>
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Rec-Hero.webp"
+        alt="USU Board Of Directors"
+        title="Recreation"
+      >
         <FluidContainer
-          backgroundImage="/departments/recreation/recreation-hero-background.jpg"
           flex
-          justifyContent="center"
-          alignItems="center"
-          innerMinHeight={isMobile ? '320px' : '640px'}
-          innerMaxWidth="640px"
+          flexDirection="column"
+          gap={Spaces.md}
+          padding="0"
+          innerMaxWidth="900px"
         >
-          <FluidContainer
-            backgroundColor="white"
-            width="100%"
-            flex
-            justifyContent="center"
-          >
-            <Image
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/RecLogo_4%20INCH%20-%20REC.webp"
-              alt="university-student union recreation play wellness connection"
-              width="100%"
-              height="auto"
-              style={{ flexShrink: 0, objectFit: 'contain' }}
-            />
-          </FluidContainer>
+          <Typography as="p" margin="0 72px 0 0" color="white">
+            Recreation at Cal State LA provides Golden Eagles with opportunities
+            to play, exercise and engage their campus community through
+            programming and events aimed toward enhancing the experience of all
+            who participate.
+          </Typography>
+          <Typography as="p" color="white">
+            Recreation is comprised of the Recreation Fitness Center Center and
+            Recreation Esports. The Recreation Fitness Center is located on the
+            basement level of the U&ndash;SU and the Recreation Game Room is
+            located on the second floor at room 201. They are open to all
+            students, staff and faculty.
+          </Typography>
         </FluidContainer>
-      </StyledH1>
+      </UtilityHeroHeader>
       <FluidContainer
         flex
         justifyContent="space-between"
@@ -329,21 +319,6 @@ export default function Recreation() {
             />
           ))}
         </HoursSection>
-        <LongDescriptionSection>
-          <Typography as="p" margin="0 72px 0 0">
-            Recreation at Cal State LA provides Golden Eagles with opportunities
-            to play, exercise and engage their campus community through
-            programming and events aimed toward enhancing the experience of all
-            who participate.
-          </Typography>
-          <Typography as="p">
-            Recreation is comprised of the Recreation Fitness Center Center and
-            Recreation Esports. The Recreation Fitness Center is located on the
-            basement level of the U&ndash;SU and the Recreation Game Room is
-            located on the second floor at room 201. They are open to all
-            students, staff and faculty.
-          </Typography>
-        </LongDescriptionSection>
       </FluidContainer>
 
       <FluidContainer>
