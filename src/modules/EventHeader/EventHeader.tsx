@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
-import { ModEventCard, ModEventCardSkeleton } from 'modules';
+import { ModEventCard } from 'modules';
 import { Spaces } from 'theme';
 import { PresenceEvent } from 'types';
 import { useState } from 'react';
@@ -10,6 +10,46 @@ import { useBreakpoint } from 'hooks';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ResponsiveTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .header-subheader {
+    margin: 48px auto 24px;
+    @media (max-width: 768px) {
+      margin: 36px auto 0;
+    }
+  }
+
+  .header-title {
+    margin: 0 auto 48px;
+    font-weight: 600;
+    @media (max-width: 768px) {
+      font-size: 1.5rem; /* Matches 2xl */
+      font-weight: 700;
+      margin: 0 auto;
+    }
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: inline;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-only {
+      display: inline;
+    }
+    .desktop-only {
+      display: none;
+    }
+  }
 `;
 
 export const EventHeader = ({
@@ -23,7 +63,7 @@ export const EventHeader = ({
   title?: React.ReactNode;
   subheaderText?: string;
 }) => {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
@@ -33,38 +73,39 @@ export const EventHeader = ({
       flex
       flexDirection="column"
       backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
-      padding={isMobile ? `0 ${Spaces.sm} ${Spaces['xl']}` : `0 0 48px`}
+      padding={isMobile ? `0 ${Spaces.sm} 48px` : `0 0 48px`}
     >
-      <Typography
-        variant="labelTitle"
-        color="greyDarker"
-        as="h1"
-        margin={isMobile ? '36px auto 0' : '48px auto 24px'}
-        size={isMobile ? 'md' : 'lg'}
-      >
-        {subheaderText}
-      </Typography>
-      <Typography
-        variant="pageHeader"
-        color="greyDarker"
-        size={isMobile ? '2xl' : isTablet ? '3xl' : '4xl'}
-        weight={isMobile ? '700' : '600'}
-        as="h1"
-        margin={isMobile ? '0 auto' : '0 auto 48px'}
-      >
-        {title}
-      </Typography>
+      <ResponsiveTextWrapper>
+        <Typography
+          className="header-subheader"
+          variant="labelTitle"
+          color="greyDarker"
+          as="h1"
+          size="lg"
+        >
+          {subheaderText}
+        </Typography>
+
+        <Typography
+          className="header-title"
+          variant="pageHeader"
+          color="greyDarker"
+          as="h1"
+          size="4xl"
+        >
+          {title}
+        </Typography>
+      </ResponsiveTextWrapper>
+
       <HeaderContainer>
-        {loading ? (
-          <ModEventCardSkeleton />
-        ) : (
-          <ModEventCard
-            featured
-            event={featuredEvent}
-            onClick={() => selectEvent(featuredEvent)}
-          />
-        )}
+        <ModEventCard
+          featured
+          loading={loading}
+          event={featuredEvent}
+          onClick={() => selectEvent(featuredEvent)}
+        />
       </HeaderContainer>
+
       <EventModal
         isOpen={!!selectedEvent}
         event={selectedEvent}

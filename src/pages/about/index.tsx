@@ -1,31 +1,10 @@
 import Head from 'next/head';
-import { Page } from 'modules';
-import {
-  Button,
-  Card,
-  FluidContainer,
-  Image,
-  NonBreakingSpan,
-  Typography,
-} from 'components';
-import styled from 'styled-components';
+import { Page, UtilityHeroHeader } from 'modules';
+import { Button, Card, FluidContainer, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 import cards from 'data/about.json';
-
-const ButtonContainer = styled.div`
-  margin-top: ${Spaces['sm']};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  ./ > *:not(:last-child) {
-    margin-right: 8px;
-  }
-  column-gap: ${Spaces.md};
-  row-gap: ${Spaces.md};
-`;
 
 // const ImageContainer = styled.div`
 //   position: relative;
@@ -35,7 +14,7 @@ const ButtonContainer = styled.div`
 // `;
 
 export default function About() {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+  const { isMobile, isDesktop } = useBreakpoint();
 
   return (
     <Page>
@@ -105,98 +84,28 @@ export default function About() {
           }}
         />
       </Head>
-      <FluidContainer
-        flex
-        justifyContent="center"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"
+      <UtilityHeroHeader
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
+        mobileSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/Hero-Mobile.webp"
+        alt="Student Union Building"
+        title="We are the U-SU"
+        maxDescriptionWidth="1000px"
+        description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
       >
-        {isTablet || isMobile ? (
-          <>
-            <FluidContainer>
-              <Typography
-                as="h1"
-                variant="pageHeader"
-                size={isTablet ? '4xl' : '5xl'}
-                lineHeight="1.3"
-                style={{ textAlign: 'center' }}
-              >
-                We are <NonBreakingSpan>the U&ndash;SU</NonBreakingSpan>
-              </Typography>
-
-              <FluidContainer flex justifyContent="center" alignItems="center">
-                <Image
-                  alt="student union"
-                  src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
-                  width={'100%'}
-                  height={'100%'}
-                />
-              </FluidContainer>
-              <ButtonContainer>
-                <Button
-                  variant="black"
-                  href="https://www.dropbox.com/scl/fi/ilqryvwvq5fgrxn1jwjvt/Org-Chart_9.17.25.jpg?rlkey=o2w6m4cmqj2vskvn8fy36iljp&st=m7xnxsft&raw=1"
-                  isExternalLink
-                >
-                  U&ndash;SU Organizational Chart
-                </Button>
-                <Button
-                  variant="outline"
-                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
-                  isExternalLink
-                >
-                  Strategic Plan
-                </Button>
-              </ButtonContainer>
-            </FluidContainer>
-          </>
-        ) : (
-          <>
-            <FluidContainer
-              flex
-              justifyContent="center"
-              alignItems="center"
-              padding="0"
-            >
-              <Image
-                alt="student union"
-                src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </FluidContainer>
-
-            <FluidContainer padding="18px 0px 18px 18px">
-              <FluidContainer>
-                <Typography
-                  as="h1"
-                  variant="pageHeader"
-                  size={isDesktop ? '4xl' : '5xl'}
-                  lineHeight="1.3"
-                  style={{ textAlign: 'center' }}
-                >
-                  We are <NonBreakingSpan>the U&ndash;SU</NonBreakingSpan>
-                </Typography>
-              </FluidContainer>
-
-              <ButtonContainer>
-                <Button
-                  variant="black"
-                  href="https://www.dropbox.com/scl/fi/2aayb2rjv3ofqdhu94fc8/Org-Chart_4.16.26.jpg?rlkey=800ikl13wyle776y9b0ffxwzg&e=1&unfurl=slack_gen&raw=1"
-                  isExternalLink
-                >
-                  U&ndash;SU Organizational Chart
-                </Button>
-                <Button
-                  variant="outline"
-                  href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
-                  isExternalLink
-                >
-                  Strategic Plan
-                </Button>
-              </ButtonContainer>
-            </FluidContainer>
-          </>
-        )}
-      </FluidContainer>
+        <Button
+          href="https://www.dropbox.com/scl/fi/ilqryvwvq5fgrxn1jwjvt/Org-Chart_9.17.25.jpg?rlkey=o2w6m4cmqj2vskvn8fy36iljp&st=m7xnxsft&raw=1"
+          isExternalLink
+        >
+          U&ndash;SU Organizational Chart
+        </Button>
+        <Button
+          variant="white"
+          href="https://www.dropbox.com/scl/fi/mhz4o8qwrgoc5fs1913pa/strategic-plan-2024.pdf?rlkey=0lqvmafy11699jekjtgru89lg&raw=1"
+          isExternalLink
+        >
+          Strategic Plan
+        </Button>
+      </UtilityHeroHeader>
       <FluidContainer
         flex
         flexDirection={isMobile ? 'column' : 'row'}

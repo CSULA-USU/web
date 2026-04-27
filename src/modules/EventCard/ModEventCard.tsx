@@ -1,7 +1,7 @@
 import { Button, Skeleton, SkeletonWrapper, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdLocationPin } from 'react-icons/md';
@@ -16,6 +16,7 @@ export interface ModEventCardProps {
   event: PresenceEvent;
   featured?: boolean;
   onClick?: () => void;
+  loading?: boolean;
 }
 
 const EventCardSkeletonContainer = styled(SkeletonWrapper)`
@@ -25,6 +26,8 @@ const EventCardSkeletonContainer = styled(SkeletonWrapper)`
   margin: 0px auto ${Spaces.lg};
   max-width: 800px;
   min-height: 480px;
+  border-radius: 16px;
+  border: 2px solid transparent;
   @media (max-width: 1024px) {
     min-height: 480px;
   }
@@ -36,18 +39,39 @@ const EventCardSkeletonContainer = styled(SkeletonWrapper)`
   }
   @media (max-width: 540px) {
     min-height: 272px;
+    margin: 0px auto ${Spaces.md};
   }
   @media (max-width: 320px) {
     min-height: 240px;
   }
 `;
 
-export const ModEventCardSkeleton = () => {
+const SkeletonResponsiveContainer = styled.div`
+  width: 100%;
+  /* Default Desktop Height */
+  height: 100px;
+
+  @media (max-width: 768px) {
+    /* Tablet/Mobile Height */
+    height: 163px;
+  }
+
+  @media (max-width: 480px) {
+    /* Smaller Mobile Height */
+    height: 190px;
+  }
+
+  /* This targets the SkeletonWrapper specifically */
+  & > div {
+    height: 100%;
+  }
+`;
+
+const HeroEventDetailsSkeleton = () => {
   return (
-    <EventContainer>
-      <EventCardSkeletonContainer />
-      <HeroEventDetailsSkeleton />
-    </EventContainer>
+    <SkeletonResponsiveContainer>
+      <Skeleton width="100%" />
+    </SkeletonResponsiveContainer>
   );
 };
 
@@ -55,10 +79,10 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
   cursor: pointer;
   box-sizing: border-box;
   display: flex;
-  filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
-  z-index: 1;
   flex-direction: column;
-  background-color: ${Colors.white};
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 800px;
   margin: 0px auto ${Spaces.lg};
   overflow: hidden;
   max-width: 800px;
@@ -94,13 +118,13 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
 `;
 
 const EventContainer = styled.div`
-flex;
-flex-direction: column;
-width: 1080px;
-@media (max-width: 1100px) and (min-width: 600px) {
-  midth: 100%;
-  padding: 0 18px;
-}
+  display: flex;
+  width: 1080px;
+  flex-direction: column;
+  @media (max-width: 1100px) and (min-width: 600px) {
+    width: 100%;
+    padding: 0 18px;
+  }
 `;
 
 const EventDetails = styled.div`
@@ -176,20 +200,50 @@ const MobileBottom = styled.div`
   gap: 5px;
 `;
 
-const HeroEventDetailsSkeleton = () => {
-  return <Skeleton height="100px" />;
-};
-
 export const ModEventCard = ({
   event,
   featured,
   onClick,
+  loading: parentLoading,
 }: ModEventCardProps) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
   const { isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
     undefined,
   );
-  if (!event) return null;
+
+  // PRELOADER: This ensures we know when the background image is ready
+  useEffect(() => {
+    if (event?.photoUri) {
+      const img = new Image();
+      img.src = `${PRESENCE_URI_BASE}/${event.photoUri}`;
+      img.onload = () => setImgLoaded(true);
+      img.onerror = () => setImgLoaded(true); // Still show card if image fails
+    } else if (event) {
+      // If there's an event but NO image, we are "loaded"
+      setImgLoaded(true);
+    }
+  }, [event]);
+
+  // If we are waiting for data OR waiting for the image, show Skeleton
+  if (parentLoading || !event || !imgLoaded) {
+    return (
+      <EventContainer>
+        <EventCardSkeletonContainer />
+        <HeroEventDetailsSkeleton />
+        {/* HIDDEN PRELOADER: Triggers the download while the skeleton is active */}
+        {event?.photoUri && (
+          <img
+            src={`${PRESENCE_URI_BASE}/${event.photoUri}`}
+            style={{ display: 'none' }}
+            alt=""
+          />
+        )}
+      </EventContainer>
+    );
+  }
+
+  // --- At this point, we GUARANTEE event exists and image is ready ---
   const {
     organizationName,
     eventName,
@@ -203,7 +257,6 @@ export const ModEventCard = ({
   const endTime = getTime(endDateTimeUtc);
   const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
   const month = getMonth(startDateTimeUtc);
-
   const day = getDay(startDateTimeUtc);
 
   return (
@@ -211,8 +264,9 @@ export const ModEventCard = ({
       <EventCardContainer
         onClick={onClick}
         featured={featured}
-        image={`${PRESENCE_URI_BASE}/${photoUri}`}
-      ></EventCardContainer>
+        // Double check that photoUri doesn't already have a leading slash
+        image={`${PRESENCE_URI_BASE}/${photoUri.replace(/^\//, '')}`}
+      />
       {featured && !isTablet ? (
         <HeroEventDetails>
           <EventDateSection>
@@ -276,7 +330,7 @@ export const ModEventCard = ({
             </EventDetails>
             <ButtonSection>
               <Typography as="h3" variant="eventDetail" color="black">
-                {ABBREVIATED_ORGS[organizationName]}
+                {ABBREVIATED_ORGS[organizationName] || organizationName}
               </Typography>
               {featured ? (
                 <Button
@@ -347,7 +401,7 @@ export const ModEventCard = ({
                   style={{ margin: '0px 8px 2px 0px' }}
                 />
                 <Typography as="h1" variant="eventDetail" color="black">
-                  {ABBREVIATED_ORGS[organizationName]}
+                  {ABBREVIATED_ORGS[organizationName] || organizationName}
                 </Typography>
               </InfoContainer>
               {featured ? (

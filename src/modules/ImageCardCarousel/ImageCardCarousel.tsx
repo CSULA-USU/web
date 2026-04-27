@@ -105,10 +105,11 @@ const ArrowButton = styled.button`
   color: ${Colors.white};
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   font-size: 1.25rem;
   cursor: pointer;
+  display: flex;
 
   &:hover {
     background-color: ${Colors.greyDarkest};
@@ -120,6 +121,8 @@ const ArrowButton = styled.button`
 `;
 
 const DotsContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-top: ${Spaces.md};
   display: flex;
   justify-content: center;
@@ -162,10 +165,6 @@ export const ImageCardCarousel = ({ stories }: ImageCardCarouselProps) => {
   return (
     <FluidContainer padding="0">
       <CarouselWrapper>
-        <ArrowButton onClick={prevSlide} aria-label="Previous slide">
-          ←
-        </ArrowButton>
-
         <Card>
           <LeftColumn>
             <ImageWrapper>
@@ -233,13 +232,12 @@ export const ImageCardCarousel = ({ stories }: ImageCardCarouselProps) => {
             </Typography>
           </RightColumn>
         </Card>
-
-        <ArrowButton onClick={nextSlide} aria-label="Next slide">
-          →
-        </ArrowButton>
       </CarouselWrapper>
 
       <DotsContainer>
+        <ArrowButton onClick={prevSlide} aria-label="Previous slide">
+          ←
+        </ArrowButton>
         {stories.map((_, i) => (
           <Dot
             key={i}
@@ -248,6 +246,9 @@ export const ImageCardCarousel = ({ stories }: ImageCardCarouselProps) => {
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
+        <ArrowButton onClick={nextSlide} aria-label="Next slide">
+          →
+        </ArrowButton>
       </DotsContainer>
     </FluidContainer>
   );
