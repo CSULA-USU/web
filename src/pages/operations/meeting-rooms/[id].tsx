@@ -13,6 +13,9 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import Link from 'next/link';
 import { useBreakpoint, useImageLoading } from 'hooks';
+import rawTableData from 'data/meetingRoomRates.json';
+import { TableData } from 'types';
+import { Table as FlexibleTable } from 'components';
 
 const EquipmentSection = styled.div`
   display: flex;
@@ -224,6 +227,7 @@ function ImageWithSkeleton({
 
 export default function MeetingRoom({ room }: { room: Room }) {
   const { isMobile } = useBreakpoint();
+  const tableData = rawTableData as { tables: TableData[] };
 
   const MeetingRoomsNav = () => {
     return (
@@ -503,13 +507,21 @@ export default function MeetingRoom({ room }: { room: Room }) {
           </table>
         </Table>
       </FluidContainer>
-      <FluidContainer flex flexDirection="column" alignItems="center">
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        gap={Spaces.lg}
+      >
         <embed
           type="application/pdf"
           width="80%"
           height={600}
           src="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
         />
+        {tableData.tables.map((table) => (
+          <FlexibleTable key={table.id} data={table} />
+        ))}
         <CallToAction
           text="Make a reservation today!"
           buttonText="Events Request Form"
