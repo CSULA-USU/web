@@ -14,7 +14,6 @@ import {
   MobileFieldValue,
   MobileMergedField,
   StyledTable,
-  TableBodyHeaderCell,
   TableCellContent,
   TableDataCell,
   TableHeadingWrap,
@@ -23,6 +22,9 @@ import {
   TableTitleWrap,
   TableHeadCell,
   VisuallyHiddenCaption,
+  HeaderText,
+  MobileFieldImage,
+  MobileFieldLabelInner,
 } from 'styles/Table.styles';
 
 interface TableProps {
@@ -61,9 +63,16 @@ const renderHeaderLabel = (
         />
       ) : null}
 
-      <Typography as="span" variant="labelTitle" color={headerTextColor}>
-        {column.label}
-      </Typography>
+      <HeaderText>
+        <Typography
+          as="span"
+          variant="labelTitle"
+          color={headerTextColor}
+          size="sm"
+        >
+          {column.label}
+        </Typography>
+      </HeaderText>
     </HeaderCellInner>
   );
 };
@@ -132,6 +141,7 @@ export const Table = ({ data, className }: TableProps) => {
                   scope="col"
                   $backgroundColor={data.headerColors.backgroundColor}
                   $textColor={data.headerColors.textColor}
+                  $width={column.minWidth}
                 >
                   {renderHeaderLabel(column, data.headerColors.textColor)}
                 </TableHeadCell>
@@ -142,7 +152,7 @@ export const Table = ({ data, className }: TableProps) => {
           <tbody>
             {data.rows.map((row, rowIndex) => (
               <tr key={row.id}>
-                {data.columns.map((column, columnIndex) => {
+                {data.columns.map((column) => {
                   const value = getDisplayValue(row, column.id);
                   const mergedValue = column.mergedValue;
 
@@ -158,24 +168,12 @@ export const Table = ({ data, className }: TableProps) => {
                           mergedValue.rowSpan,
                           data.rows.length,
                         )}
-                        $backgroundColor={column.backgroundColor}
-                        $textColor={column.textColor}
+                        $backgroundColor="white"
+                        $textColor="black"
+                        $width={column.minWidth}
                       >
-                        {renderBodyCellText(mergedValue.text, column.textColor)}
+                        {renderBodyCellText(mergedValue.text, 'black')}
                       </TableDataCell>
-                    );
-                  }
-
-                  if (columnIndex === 0) {
-                    return (
-                      <TableBodyHeaderCell
-                        key={`${row.id}-${column.id}`}
-                        scope="row"
-                        $backgroundColor={column.backgroundColor}
-                        $textColor={column.textColor}
-                      >
-                        {renderBodyCellText(value, column.textColor)}
-                      </TableBodyHeaderCell>
                     );
                   }
 
@@ -184,6 +182,7 @@ export const Table = ({ data, className }: TableProps) => {
                       key={`${row.id}-${column.id}`}
                       $backgroundColor={column.backgroundColor}
                       $textColor={column.textColor}
+                      $width={column.minWidth}
                     >
                       {renderBodyCellText(value, column.textColor)}
                     </TableDataCell>
@@ -211,15 +210,8 @@ export const Table = ({ data, className }: TableProps) => {
 
           return (
             <MobileCard key={`${data.id}-${row.id}`}>
-              <MobileCardHeader
-                $backgroundColor={primaryMobileColumn.backgroundColor}
-                $textColor={primaryMobileColumn.textColor}
-              >
-                <Typography
-                  as="h3"
-                  variant="labelTitle"
-                  color={primaryMobileColumn.textColor}
-                >
+              <MobileCardHeader $backgroundColor="black" $textColor="primary">
+                <Typography as="h3" variant="labelTitle" color="primary">
                   {primaryValue}
                 </Typography>
               </MobileCardHeader>
@@ -228,9 +220,23 @@ export const Table = ({ data, className }: TableProps) => {
                 {mobileFields.map(({ column, value }) => (
                   <MobileFieldRow key={`${row.id}-${column.id}`}>
                     <MobileFieldLabel>
-                      <Typography as="span" variant="labelTitleSmall">
-                        {column.label}
-                      </Typography>
+                      <MobileFieldLabelInner>
+                        {column.headerImage ? (
+                          <MobileFieldImage
+                            src={column.headerImage.src}
+                            alt={column.headerImage.alt}
+                            loading="lazy"
+                          />
+                        ) : null}
+
+                        <Typography
+                          as="span"
+                          variant="labelTitleSmall"
+                          color="primary"
+                        >
+                          {column.label}
+                        </Typography>
+                      </MobileFieldLabelInner>
                     </MobileFieldLabel>
 
                     <MobileFieldValue
@@ -253,20 +259,30 @@ export const Table = ({ data, className }: TableProps) => {
                     <Fragment key={`${row.id}-${column.id}-merged`}>
                       <MobileFieldRow>
                         <MobileFieldLabel>
-                          <Typography as="span" variant="labelTitleSmall">
-                            {column.label}
-                          </Typography>
+                          <MobileFieldLabelInner>
+                            {column.headerImage ? (
+                              <MobileFieldImage
+                                src={column.headerImage.src}
+                                alt={column.headerImage.alt}
+                                loading="lazy"
+                              />
+                            ) : null}
+
+                            <Typography
+                              as="span"
+                              variant="labelTitleSmall"
+                              color="primary"
+                            >
+                              {column.label}
+                            </Typography>
+                          </MobileFieldLabelInner>
                         </MobileFieldLabel>
 
                         <MobileMergedField
-                          $backgroundColor={column.backgroundColor}
-                          $textColor={column.textColor}
+                          $backgroundColor="white"
+                          $textColor="black"
                         >
-                          <Typography
-                            as="span"
-                            variant="labelTitle"
-                            color={column.textColor}
-                          >
+                          <Typography as="span" variant="copy" color="black">
                             {column.mergedValue.text}
                           </Typography>
                         </MobileMergedField>

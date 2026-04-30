@@ -14,25 +14,29 @@
           "id": "roomNumber",
           "label": "Room #",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "105px"
         },
         {
           "id": "meetingRoom",
           "label": "Meeting Room",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "230px"
         },
         {
           "id": "size",
-          "label": "Size (SQ. FEET)",
+          "label": "Size (sq. feet)",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "120px"
         },
         {
           "id": "studentRate",
           "label": "Student Rate",
           "backgroundColor": "black",
           "textColor": "primary",
+          "minWidth": "132px",
           "mergedValue": {
             "text": "No charge for students",
             "rowSpan": 14
@@ -42,19 +46,22 @@
           "id": "tenantRate",
           "label": "U-SU Tenant Rate (up to 4 hours*/ each addt'l hour)",
           "backgroundColor": "grey",
-          "textColor": "white"
+          "textColor": "white",
+          "minWidth": "250px"
         },
         {
           "id": "onCampusRate",
           "label": "On-Campus Rate (up to 4 hours*/ each addt'l hour)",
           "backgroundColor": "grey",
-          "textColor": "white"
+          "textColor": "white",
+          "minWidth": "250px"
         },
         {
           "id": "offCampusRate",
           "label": "Off-Campus Rate (up to 4 hours*/ each addt'l hour)",
           "backgroundColor": "grey",
-          "textColor": "white"
+          "textColor": "white",
+          "minWidth": "250px"
         }
       ],
       "rows": [
@@ -63,7 +70,7 @@
           "values": {
             "roomNumber": "106",
             "meetingRoom": "U-SU Theatre",
-            "size": "3523 SQ. FT.",
+            "size": "3523 sq. ft.",
             "tenantRate": "$350 / $70",
             "onCampusRate": "$700 / $140",
             "offCampusRate": "$1,400 / $280"
@@ -74,7 +81,7 @@
           "values": {
             "roomNumber": "303",
             "meetingRoom": "Board Room North",
-            "size": "647 SQ. FT.",
+            "size": "647 sq. ft.",
             "tenantRate": "$75 / $15",
             "onCampusRate": "$150 / $30",
             "offCampusRate": "$300 / $60"
@@ -85,7 +92,7 @@
           "values": {
             "roomNumber": "303A",
             "meetingRoom": "Board Room South",
-            "size": "584 SQ. FT.",
+            "size": "584 sq. ft.",
             "tenantRate": "$75 / $15",
             "onCampusRate": "$150 / $30",
             "offCampusRate": "$300 / $60"
@@ -96,7 +103,7 @@
           "values": {
             "roomNumber": "303/303A",
             "meetingRoom": "Board Room North/South",
-            "size": "1231 SQ. FT.",
+            "size": "1231 sq. ft.",
             "tenantRate": "$140 / $30",
             "onCampusRate": "$280 / $60",
             "offCampusRate": "$560 / $120"
@@ -107,7 +114,7 @@
           "values": {
             "roomNumber": "305",
             "meetingRoom": "Alhambra",
-            "size": "847 SQ. FT.",
+            "size": "847 sq. ft.",
             "tenantRate": "$90 / $20",
             "onCampusRate": "$180 / $40",
             "offCampusRate": "$360 / $80"
@@ -118,7 +125,7 @@
           "values": {
             "roomNumber": "307",
             "meetingRoom": "Pasadena",
-            "size": "586 SQ. FT.",
+            "size": "586 sq. ft.",
             "tenantRate": "$70 / $15",
             "onCampusRate": "$140 / $30",
             "offCampusRate": "$280 / $60"
@@ -129,7 +136,7 @@
           "values": {
             "roomNumber": "308A",
             "meetingRoom": "Los Angeles Room A",
-            "size": "1129 SQ. FT.",
+            "size": "1129 sq. ft.",
             "tenantRate": "$105 / $25",
             "onCampusRate": "$210 / $50",
             "offCampusRate": "$420 / $100"
@@ -140,7 +147,7 @@
           "values": {
             "roomNumber": "308B",
             "meetingRoom": "Los Angeles Room B",
-            "size": "1075 SQ. FT.",
+            "size": "1075 sq. ft.",
             "tenantRate": "$105 / $25",
             "onCampusRate": "$210 / $50",
             "offCampusRate": "$420 / $100"
@@ -151,7 +158,7 @@
           "values": {
             "roomNumber": "308C",
             "meetingRoom": "Los Angeles Room C",
-            "size": "1003 SQ. FT.",
+            "size": "1003 sq. ft.",
             "tenantRate": "$105 / $25",
             "onCampusRate": "$210 / $50",
             "offCampusRate": "$420 / $100"
@@ -162,7 +169,7 @@
           "values": {
             "roomNumber": "308AB",
             "meetingRoom": "Los Angeles Room AB",
-            "size": "2204 SQ. FT.",
+            "size": "2204 sq. ft.",
             "tenantRate": "$210 / $45",
             "onCampusRate": "$420 / $90",
             "offCampusRate": "$840 / $180"
@@ -173,7 +180,7 @@
           "values": {
             "roomNumber": "308BC",
             "meetingRoom": "Los Angeles Room BC",
-            "size": "2078 SQ. FT.",
+            "size": "2078 sq. ft.",
             "tenantRate": "$210 / $45",
             "onCampusRate": "$420 / $90",
             "offCampusRate": "$840 / $180"
@@ -184,7 +191,7 @@
           "values": {
             "roomNumber": "308ABC",
             "meetingRoom": "Los Angeles Room ABC",
-            "size": "3207 SQ. FT.",
+            "size": "3207 sq. ft.",
             "tenantRate": "$315 / $70",
             "onCampusRate": "$630 / $140",
             "offCampusRate": "$1260 / $280"
@@ -195,7 +202,7 @@
           "values": {
             "roomNumber": "309",
             "meetingRoom": "Montebello",
-            "size": "650 SQ. FT.",
+            "size": "650 sq. ft.",
             "tenantRate": "$70 / $15",
             "onCampusRate": "$140 / $30",
             "offCampusRate": "$280 / $60"
@@ -206,7 +213,7 @@
           "values": {
             "roomNumber": "313",
             "meetingRoom": "San Gabriel",
-            "size": "845 SQ. FT.",
+            "size": "845 sq. ft.",
             "tenantRate": "$90 / $20",
             "onCampusRate": "$180 / $40",
             "offCampusRate": "$360 / $80"
@@ -229,33 +236,38 @@
           "id": "smartRoom",
           "label": "Smart Room",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "85px"
         },
         {
           "id": "meetingSpace",
           "label": "Meeting Space",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "190px"
         },
         {
           "id": "size",
-          "label": "Size (SQ. FEET)",
+          "label": "Size (sq. feet)",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "118px"
         },
         {
           "id": "standardSetup",
           "label": "Standard Setup",
           "backgroundColor": "primary",
-          "textColor": "black"
+          "textColor": "black",
+          "minWidth": "118px"
         },
         {
           "id": "discussionCircle",
           "label": "Discussion Circle Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "120px",
           "headerImage": {
-            "src": "/images/tables/discussion-circle.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/discussion-circle.webp",
             "alt": "Discussion circle setup icon"
           }
         },
@@ -264,8 +276,9 @@
           "label": "Banquet Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "100px",
           "headerImage": {
-            "src": "/images/tables/banquet-setup.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/banquet-setup.webp",
             "alt": "Banquet setup icon"
           }
         },
@@ -274,8 +287,9 @@
           "label": "Classroom Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "115px",
           "headerImage": {
-            "src": "/images/tables/classroom-setup.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/classroom-setup.webp",
             "alt": "Classroom setup icon"
           }
         },
@@ -284,8 +298,9 @@
           "label": "Theatre Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "95px",
           "headerImage": {
-            "src": "/images/tables/theatre-setup.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/theatre-setup.webp",
             "alt": "Theatre setup icon"
           }
         },
@@ -294,8 +309,9 @@
           "label": "Conference Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "125px",
           "headerImage": {
-            "src": "/images/tables/conference-setup.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/conference-setup.webp",
             "alt": "Conference setup icon"
           }
         },
@@ -304,8 +320,9 @@
           "label": "Reception Setup",
           "backgroundColor": "grey",
           "textColor": "white",
+          "minWidth": "115px",
           "headerImage": {
-            "src": "/images/tables/reception-setup.png",
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/reception-setup.webp",
             "alt": "Reception setup icon"
           }
         }
@@ -316,7 +333,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "U-SU Theatre (192-Fixed Seat)",
-            "size": "3525 SQ. FT.",
+            "size": "3525 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "N/A",
             "banquet": "N/A",
@@ -331,7 +348,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Alhambra",
-            "size": "847 SQ. FT.",
+            "size": "847 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "30",
             "banquet": "45",
@@ -346,7 +363,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Pasadena",
-            "size": "586 SQ. FT.",
+            "size": "586 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "24",
             "banquet": "27",
@@ -361,7 +378,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Montebello",
-            "size": "650 SQ. FT.",
+            "size": "650 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "24",
             "banquet": "27",
@@ -376,7 +393,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "San Gabriel",
-            "size": "845 SQ. FT.",
+            "size": "845 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "30",
             "banquet": "45",
@@ -391,7 +408,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Board Room North",
-            "size": "647 SQ. FT.",
+            "size": "647 sq. ft.",
             "standardSetup": "Conference",
             "discussionCircle": "N/A",
             "banquet": "N/A",
@@ -406,7 +423,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Board Room South",
-            "size": "584 SQ. FT.",
+            "size": "584 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "20",
             "banquet": "24",
@@ -421,7 +438,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Board Room North/South",
-            "size": "1231 SQ. FT.",
+            "size": "1231 sq. ft.",
             "standardSetup": "Conference / N/A",
             "discussionCircle": "N/A",
             "banquet": "N/A",
@@ -436,7 +453,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Los Angeles Room A",
-            "size": "1129 SQ. FT.",
+            "size": "1129 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "30",
             "banquet": "50",
@@ -451,7 +468,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Los Angeles Room B",
-            "size": "1075 SQ. FT.",
+            "size": "1075 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "30",
             "banquet": "50",
@@ -466,7 +483,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Los Angeles Room C",
-            "size": "1003 SQ. FT.",
+            "size": "1003 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "30",
             "banquet": "50",
@@ -481,7 +498,7 @@
           "values": {
             "smartRoom": "",
             "meetingSpace": "Los Angeles Room AB",
-            "size": "2204 SQ. FT.",
+            "size": "2204 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "45",
             "banquet": "110",
@@ -496,7 +513,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Los Angeles Room BC",
-            "size": "2078 SQ. FT.",
+            "size": "2078 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "45",
             "banquet": "110",
@@ -511,7 +528,7 @@
           "values": {
             "smartRoom": "✱",
             "meetingSpace": "Los Angeles Room ABC",
-            "size": "3270 SQ. FT.",
+            "size": "3270 sq. ft.",
             "standardSetup": "N/A",
             "discussionCircle": "60",
             "banquet": "170",

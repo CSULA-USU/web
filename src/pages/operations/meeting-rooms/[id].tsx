@@ -41,7 +41,6 @@ const TextCenter = styled.div`
 `;
 
 const Table = styled.div`
-  display: flex;
   width: 100%;
 
   table {
@@ -49,69 +48,97 @@ const Table = styled.div`
     width: 100%;
   }
 
-  tr {
-    border-bottom: 1pt solid black;
-  }
-
-  @media (min-width: 1025px) {
+  /* Desktop Styles */
+  @media (min-width: 1156px) {
     th,
     td {
       padding: ${Spaces.lg} 0;
-      text-align: center;
       padding-right: ${Spaces.md};
+      text-align: center;
       vertical-align: middle;
+      border-bottom: 1pt solid black;
     }
     .setup-column {
       width: 20%;
     }
     .capacity-column {
-      width: 20%;
-    }
-    td {
-      vertical-align: middle;
+      width: 40%;
     }
   }
 
-  @media (max-width: 1024px) {
-    thead {
-      display: none;
-    }
-
-    tr {
-      display: flex;
-      flex-direction: column;
-      padding: ${Spaces.lg} 0;
-      text-align: center;
-    }
-
-    td,
-    th {
-      display: flex;
-      width: 100%;
-      padding: ${Spaces.xs} 0;
-      align-items: center;
-    }
-
-    td[data-label]::before {
-      content: attr(data-label);
-      width: 120px;
-      min-width: 120px;
-      text-align: left;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      color: ${Colors.greyDark};
-      display: inline-block;
-    }
+  /* Hide Table on Mobile */
+  @media (max-width: 1155px) {
+    display: none;
   }
 `;
 
-const ExpandableSkeletonBox = styled.div`
-  width: 350px;
+const MobileCardContainer = styled.div`
+  display: none;
+
+  @media (max-width: 1155px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${Spaces.xl};
+    width: 100%;
+  }
+`;
+
+const MobileCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: ${Spaces.xl};
+  border: 1px solid ${Colors.greyLighter};
+  border-radius: 24px;
+  background-color: ${Colors.white};
+  box-sizing: border-box;
+
+  @media (max-width: 580px) {
+    padding: ${Spaces.md};
+  }
+`;
+
+const StyledSectionCard = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  margin: ${Spaces.xl} auto 0 auto;
+  padding: ${Spaces.xl};
+  border: 1px solid ${Colors.greyLighter};
+  border-radius: 24px;
+  background-color: ${Colors.white};
+  box-sizing: border-box;
+  text-align: center;
+
+  @media (max-width: 580px) {
+    padding: ${Spaces.md};
+    border-radius: 16px;
+  }
+`;
+
+const ExpandableMediaWrap = styled.div`
+  width: 250px;
   aspect-ratio: 350 / 197;
 
-  @media (max-width: 1024px) {
-    width: 250px;
+  @media (min-width: 405px) {
+    width: 350px;
+    aspect-ratio: 350 / 200;
+  }
+
+  @media (min-width: 700px) {
+    width: 548px;
+    aspect-ratio: 350 / 200;
+  }
+
+  @media (min-width: 855px) {
+    width: 700px;
+    aspect-ratio: 350 / 200;
+  }
+
+  @media (min-width: 1156px) {
+    width: 500px;
+    aspect-ratio: 350 / 200;
   }
 `;
 
@@ -119,6 +146,36 @@ const BannerSkeletonBox = styled.div`
   width: 100%;
   aspect-ratio: 1124 / 439;
   margin: 0 0 20px 0;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: ${Spaces.md};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${Spaces.sm};
+`;
+
+const MobileImageWrapper = styled.div`
+  margin-bottom: ${Spaces.md};
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const MobileDataContent = styled.div`
+  width: 100%;
+  max-width: 325px;
+`;
+
+const LabelWrapper = styled.div`
+  width: 140px;
+  flex-shrink: 0;
+`;
+
+const ValueListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const NavItems = [
@@ -189,29 +246,30 @@ function ImageWithSkeleton({
   fullSizeSrc?: string;
 }) {
   const loading = useImageLoading(src);
-  const { isMobile } = useBreakpoint();
 
   return (
     <>
       {loading ? (
         isExpandable ? (
-          <ExpandableSkeletonBox>
+          <ExpandableMediaWrap>
             <Skeleton width="100%" height="100%" borderRadius="12px" />
-          </ExpandableSkeletonBox>
+          </ExpandableMediaWrap>
         ) : (
           <BannerSkeletonBox>
             <Skeleton width="100%" height="100%" borderRadius="12px" />
           </BannerSkeletonBox>
         )
       ) : isExpandable ? (
-        <Image
-          borderRadius="12px"
-          width={isMobile ? 250 : 350}
-          src={src}
-          fullSizeSrc={fullSizeSrc}
-          alt={alt}
-          isExpandable
-        />
+        <ExpandableMediaWrap>
+          <Image
+            borderRadius="12px"
+            width="100%"
+            src={src}
+            fullSizeSrc={fullSizeSrc}
+            alt={alt}
+            isExpandable
+          />
+        </ExpandableMediaWrap>
       ) : (
         <Image
           borderRadius="12px"
@@ -340,53 +398,54 @@ export default function MeetingRoom({ room }: { room: Room }) {
           src={room.headerImage}
           alt={room.mainImageAlt || 'banner image'}
         />
-        <Button
-          href="https://form.jotform.com/221578153228053"
-          isExternalLink
-          aria-label="Events Request Form - opens in new tab on Jotform website"
-        >
-          Events Request Form
-        </Button>
+        <ButtonContainer>
+          <Button
+            href="https://form.jotform.com/221578153228053"
+            isExternalLink
+            aria-label="Events Request Form - opens in new tab on Jotform website"
+          >
+            Events Request Form
+          </Button>
+          <Button
+            href="/operations/meeting-rooms"
+            aria-label="View all meeting rooms available for reservation"
+            variant="black"
+          >
+            View All Rooms
+          </Button>
+          <Button
+            variant="greyDarker"
+            href="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
+            aria-label="Meeting Room Rental Info - opens in dropbox"
+            isExternalLink
+          >
+            Rental Info
+          </Button>
+        </ButtonContainer>
       </FluidContainer>
 
       <FluidContainer>
         <Table>
-          <table align="center" vertical-align>
+          <table>
             <thead>
               <tr>
                 <th className="setup-column">
-                  <Typography
-                    variant="cta"
-                    as="h2"
-                    size={isMobile ? 'sm' : 'lg'}
-                  >
+                  <Typography variant="cta" as="h2">
                     Room View
                   </Typography>
                 </th>
                 <th>
-                  <Typography
-                    variant="cta"
-                    as="h2"
-                    size={isMobile ? 'sm' : 'lg'}
-                  >
+                  <Typography variant="cta" as="h2">
                     Setup
                   </Typography>
                 </th>
                 <th>
-                  <Typography
-                    variant="cta"
-                    as="h2"
-                    size={isMobile ? 'sm' : 'lg'}
-                  >
+                  <Typography variant="cta" as="h2">
                     Capacity
                   </Typography>
                 </th>
                 <th>
-                  <Typography
-                    variant="cta"
-                    as="h2"
-                    size={isMobile ? 'sm' : 'lg'}
-                  >
+                  <Typography variant="cta" as="h2">
                     Equipment
                   </Typography>
                 </th>
@@ -395,59 +454,30 @@ export default function MeetingRoom({ room }: { room: Room }) {
             <tbody>
               {room.arrangements.map((arrangement) => (
                 <tr key={arrangement.setup}>
-                  <th className="setup-column">
-                    <FluidContainer
-                      flex
-                      flexDirection="column"
-                      alignItems="center"
-                      padding="0"
-                    >
-                      {arrangement.image && (
-                        <ImageWithSkeleton
-                          src={arrangement.image}
-                          fullSizeSrc={arrangement.imageExpanded}
-                          alt={`${arrangement.setup} room example`}
-                          isExpandable
-                        />
-                      )}
-                    </FluidContainer>
-                  </th>
-                  <td className="setup-column" data-label="Setup">
-                    <Typography
-                      variant="title"
-                      weight="400"
-                      size={isMobile ? 'xs' : 'md'}
-                    >
-                      {arrangement.setup}
-                    </Typography>
+                  <td className="setup-column">
+                    {arrangement.image && (
+                      <ImageWithSkeleton
+                        src={arrangement.image}
+                        fullSizeSrc={arrangement.imageExpanded}
+                        alt={arrangement.setup}
+                        isExpandable
+                      />
+                    )}
                   </td>
-
-                  {/* Capacity Column */}
-                  <td className="capacity-column" data-label="Capacity">
-                    <FluidContainer flex flexDirection="column" padding="0">
-                      {arrangement.capacity.map((c) => (
-                        <Typography
-                          variant="title"
-                          weight="400"
-                          size={isMobile ? 'xs' : 'md'}
-                          key={c}
-                        >
-                          {c}
-                        </Typography>
-                      ))}
-                    </FluidContainer>
+                  <td>
+                    <Typography size="md">{arrangement.setup}</Typography>
                   </td>
-
-                  {/* Equipment Column */}
-                  <td className="equipment-column" data-label="Equipment">
+                  <td>
+                    {arrangement.capacity.map((c) => (
+                      <Typography key={c} size="md">
+                        {c}
+                      </Typography>
+                    ))}
+                  </td>
+                  <td>
                     <EquipmentSection>
                       {arrangement.equipment.map((e) => (
-                        <Typography
-                          key={e}
-                          variant="title"
-                          weight="400"
-                          size={isMobile ? 'xs' : 'md'}
-                        >
+                        <Typography key={e} size="md">
                           {e}
                         </Typography>
                       ))}
@@ -455,57 +485,138 @@ export default function MeetingRoom({ room }: { room: Room }) {
                   </td>
                 </tr>
               ))}
-              <tr>
-                <td colSpan={4}>
-                  <TextCenter>
-                    <Typography
-                      weight="700"
-                      as="h3"
-                      margin={`${Spaces.md} 0 0 0`}
-                    >
-                      Fixed Room Features:
-                    </Typography>
-                    <Typography
-                      as="p"
-                      margin={`0 0 ${Spaces.md}`}
-                      size={isMobile ? 'xs' : 'md'}
-                    >
-                      {room.features}
-                    </Typography>
-                  </TextCenter>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={4}>
-                  <TextCenter>
-                    <Typography
-                      weight="700"
-                      as="h3"
-                      margin={`${Spaces.md} 0 0 0`}
-                    >
-                      Meeting Space Rental Fees do not include:
-                    </Typography>
-                    <Typography
-                      margin={`0 0 ${Spaces.md}`}
-                      as="p"
-                      size={isMobile ? 'xs' : 'md'}
-                    >
-                      {' '}
-                      Personnel fees, equipment fees, cleaning fees, catering
-                      fees, and extended hours fees as these are separate
-                      charges that vary per room reservation.{' '}
-                    </Typography>
-                    <Typography>
-                      <strong>
-                        Disclaimer: The fees listed below are subject to change.
-                      </strong>
-                    </Typography>
-                  </TextCenter>
-                </td>
-              </tr>
             </tbody>
           </table>
         </Table>
+
+        <MobileCardContainer>
+          {room.arrangements.map((arrangement) => (
+            <MobileCard key={arrangement.setup}>
+              <MobileImageWrapper>
+                {arrangement.image && (
+                  <ImageWithSkeleton
+                    src={arrangement.image}
+                    fullSizeSrc={arrangement.imageExpanded}
+                    alt={arrangement.setup}
+                    isExpandable
+                  />
+                )}
+              </MobileImageWrapper>
+
+              <FluidContainer
+                flex
+                flexDirection="column"
+                alignItems="center"
+                width="100%"
+                padding="0"
+              >
+                <MobileDataContent>
+                  <FluidContainer
+                    flex
+                    flexDirection="row"
+                    gap="16px"
+                    padding="6px 0"
+                  >
+                    <LabelWrapper>
+                      <Typography
+                        variant="labelTitleSmall"
+                        color="greyDark"
+                        size={isMobile ? 'sm' : 'md'}
+                      >
+                        Setup
+                      </Typography>
+                    </LabelWrapper>
+                    <Typography size={isMobile ? 'sm' : 'md'}>
+                      {arrangement.setup}
+                    </Typography>
+                  </FluidContainer>
+
+                  <FluidContainer
+                    flex
+                    flexDirection="row"
+                    gap="16px"
+                    padding="6px 0"
+                  >
+                    <LabelWrapper>
+                      <Typography
+                        variant="labelTitleSmall"
+                        color="greyDark"
+                        size={isMobile ? 'sm' : 'md'}
+                      >
+                        Capacity
+                      </Typography>
+                    </LabelWrapper>
+                    <ValueListWrapper>
+                      {arrangement.capacity.map((c) => (
+                        <Typography key={c} size={isMobile ? 'sm' : 'md'}>
+                          {c}
+                        </Typography>
+                      ))}
+                    </ValueListWrapper>
+                  </FluidContainer>
+
+                  <FluidContainer
+                    flex
+                    flexDirection="row"
+                    gap="16px"
+                    padding="6px 0"
+                  >
+                    <LabelWrapper>
+                      <Typography
+                        variant="labelTitleSmall"
+                        color="greyDark"
+                        size={isMobile ? 'sm' : 'md'}
+                      >
+                        Equipment
+                      </Typography>
+                    </LabelWrapper>
+                    <ValueListWrapper>
+                      {arrangement.equipment.map((e) => (
+                        <Typography key={e} size={isMobile ? 'sm' : 'md'}>
+                          {e}
+                        </Typography>
+                      ))}
+                    </ValueListWrapper>
+                  </FluidContainer>
+                </MobileDataContent>
+              </FluidContainer>
+            </MobileCard>
+          ))}
+        </MobileCardContainer>
+
+        <StyledSectionCard>
+          <TextCenter>
+            <Typography weight="700" as="h3" margin={`0 0 ${Spaces.sm} 0`}>
+              Fixed Room Features:
+            </Typography>
+            <Typography
+              as="p"
+              margin={`0 0 ${Spaces.lg}`}
+              size={isMobile ? 'xs' : 'md'}
+            >
+              {room.features}
+            </Typography>
+          </TextCenter>
+
+          <TextCenter>
+            <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0 0`}>
+              Meeting Space Rental Fees do not include:
+            </Typography>
+            <Typography
+              margin={`0 0 ${Spaces.md}`}
+              as="p"
+              size={isMobile ? 'xs' : 'md'}
+            >
+              Personnel fees, equipment fees, cleaning fees, catering fees, and
+              extended hours fees.
+            </Typography>
+            <Typography size="xs" color="greyDark">
+              <strong>
+                Disclaimer: The fees listed below are subject to change.
+              </strong>
+            </Typography>
+          </TextCenter>
+        </StyledSectionCard>
       </FluidContainer>
       <FluidContainer
         flex
@@ -513,12 +624,6 @@ export default function MeetingRoom({ room }: { room: Room }) {
         alignItems="center"
         gap={Spaces.lg}
       >
-        <embed
-          type="application/pdf"
-          width="80%"
-          height={600}
-          src="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
-        />
         {tableData.tables.map((table) => (
           <FlexibleTable key={table.id} data={table} />
         ))}

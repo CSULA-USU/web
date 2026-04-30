@@ -47,7 +47,6 @@ export const DesktopScroll = styled.div`
 
 export const StyledTable = styled.table`
   width: 100%;
-  min-width: 980px;
   border-collapse: collapse;
   table-layout: fixed;
 `;
@@ -61,12 +60,47 @@ export const VisuallyHiddenCaption = styled.caption`
   white-space: nowrap;
 `;
 
-export const TableHeadCell = styled.th<ColorProps>`
+export const MobileFieldLabelInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${Spaces.xs};
+  text-align: center;
+
+  @media (max-width: 414px) {
+    align-items: flex-start;
+    text-align: left;
+  }
+`;
+
+export const MobileFieldImage = styled.img`
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+`;
+
+interface CellWidthProps {
+  $width?: string;
+}
+
+export const TableHeadCell = styled.th<ColorProps & CellWidthProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
+  width: ${({ $width }) => $width || '120px'};
   padding: ${Spaces.md};
   border: 1px solid ${Colors.greyDark};
   vertical-align: middle;
+  overflow-wrap: break-word;
+  word-break: normal;
+`;
+
+export const HeaderText = styled.div`
+  width: 100%;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-align: center;
 `;
 
 export const HeaderCellInner = styled.div`
@@ -76,6 +110,8 @@ export const HeaderCellInner = styled.div`
   align-items: center;
   justify-content: center;
   gap: ${Spaces.sm};
+  width: 100%;
+  text-align: center;
 `;
 
 export const HeaderImage = styled.img`
@@ -95,16 +131,22 @@ export const TableBodyHeaderCell = styled.th<ColorProps>`
   vertical-align: middle;
 `;
 
-export const TableDataCell = styled.td<ColorProps>`
+export const TableDataCell = styled.td<ColorProps & CellWidthProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
+  width: ${({ $width }) => $width || '120px'};
   padding: ${Spaces.md};
   border: 1px solid ${Colors.greyDark};
   vertical-align: middle;
+  overflow-wrap: break-word;
+  word-break: normal;
 `;
 
 export const TableCellContent = styled.div<AlignmentProps>`
   text-align: ${({ $align = 'center' }) => $align};
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
 `;
 
 export const MobileCards = styled.div`
@@ -144,7 +186,8 @@ export const MobileFieldRow = styled.div`
 
 export const MobileFieldLabel = styled.div`
   padding: ${Spaces.sm} ${Spaces.md};
-  background-color: ${Colors.greyLightest};
+  background-color: ${Colors.black};
+  color: ${Colors.primary};
 `;
 
 export const MobileFieldValue = styled.div<ColorProps>`
@@ -157,6 +200,9 @@ export const MobileMergedField = styled.div<ColorProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
   padding: ${Spaces.md};
-  border-top: 1px solid ${Colors.greyLighter};
-  text-align: center;
+  border-top: 1px solid ${Colors.greyDark};
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 `;

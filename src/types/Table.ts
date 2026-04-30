@@ -19,6 +19,7 @@ export interface TableColumn {
   textColor: TableColorKey;
   headerImage?: TableHeaderImage;
   mergedValue?: TableColumnMergedValue;
+  minWidth?: string;
 }
 
 export interface TableRowValues {
