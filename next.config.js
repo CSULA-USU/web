@@ -43,38 +43,4 @@ delete videoConfig.turbopack;
 
 module.exports = {
   ...videoConfig,
-  async redirects() {
-    return [
-      {
-        source: '/ccc/nuestra-grad',
-        destination:
-          'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf',
-        permanent: true,
-      },
-      {
-        source: '/ccc/black-grad',
-        destination:
-          'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf',
-        permanent: true,
-      },
-      {
-        source: '/ccc/apida-grad',
-        destination:
-          'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf',
-        permanent: true,
-      },
-      {
-        source: '/ccc/pride-grad',
-        destination:
-          'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf',
-        permanent: true,
-      },
-      {
-        source: '/ccc/indigi-grad',
-        destination:
-          'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf',
-        permanent: true,
-      },
-    ];
-  },
 };
