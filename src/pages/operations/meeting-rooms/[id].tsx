@@ -414,10 +414,10 @@ export default function MeetingRoom({ room }: { room: Room }) {
             View All Rooms
           </Button>
           <Button
-            variant="greyDarker"
             href="https://www.dropbox.com/scl/fi/ad7ijda4l5i3a8joyf317/meeting-space-capacity-chart.pdf?rlkey=sphutjmwuecebqa7nbl088p6n&e=2&raw=1"
             aria-label="Meeting Room Rental Info - opens in dropbox"
             isExternalLink
+            variant="black"
           >
             Rental Info
           </Button>
