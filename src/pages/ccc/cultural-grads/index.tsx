@@ -260,7 +260,9 @@ export default function CulturalGrads() {
                     iconSrc={card.iconSrc}
                     imgSrc={card.imgSrc}
                     imgAlt={card.imgAlt}
-                    button={card.button}
+                    button={
+                      Array.isArray(card.button) ? card.button[0] : card.button
+                    }
                   />
                 </div>
               );

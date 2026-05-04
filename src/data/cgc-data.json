@@ -76,11 +76,23 @@
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
       ],
-      "button": {
-        "buttonLink": "https://form.jotform.com/260256828984168",
-        "buttonPlaceholder": "Closed",
-        "buttonText": "Waitlist"
-      },
+      "button": [
+        {
+          "buttonLink": "https://form.jotform.com/260256828984168",
+          "buttonPlaceholder": "Closed",
+          "buttonText": "Waitlist"
+        },
+        {
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonPlaceholder": "Booklet",
+          "buttonText": "Booklet"
+        },
+        {
+          "buttonLink": "https://captionedtext.com/client/Event.aspx?EventID=12139",
+          "buttonPlaceholder": "Live Captions English",
+          "buttonText": "Live Captions English"
+        }
+      ],
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
@@ -96,11 +108,23 @@
         "Contact: Imani Thomas, Pan African Student Resource Center Coordinator",
         "Email: ithoma10@calstatela.edu"
       ],
-      "button": {
-        "buttonLink": "https://form.jotform.com/260257234922152",
-        "buttonPlaceholder": "Closed",
-        "buttonText": "Waitlist"
-      },
+      "button": [
+        {
+          "buttonLink": "https://form.jotform.com/260257234922152",
+          "buttonPlaceholder": "Closed",
+          "buttonText": "Waitlist"
+        },
+        {
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonPlaceholder": "Booklet",
+          "buttonText": "Booklet"
+        },
+        {
+          "buttonLink": "https://captionedtext.com/client/Event.aspx?EventID=12139",
+          "buttonPlaceholder": "Live Captions English",
+          "buttonText": "Live Captions English"
+        }
+      ],
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
@@ -116,11 +140,23 @@
         "Contact: Fabi Avina, Center for Student Involvement Director",
         "Email: favina@calstatela.edu"
       ],
-      "button": {
-        "buttonLink": "https://form.jotform.com/260257248507156",
-        "buttonPlaceholder": "Closed",
-        "buttonText": "Waitlist"
-      },
+      "button": [
+        {
+          "buttonLink": "https://form.jotform.com/260257248507156",
+          "buttonPlaceholder": "Closed",
+          "buttonText": "Waitlist"
+        },
+        {
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonPlaceholder": "Booklet",
+          "buttonText": "Booklet"
+        },
+        {
+          "buttonLink": "https://captionedtext.com/client/Event.aspx?EventID=12139",
+          "buttonPlaceholder": "Live Captions English",
+          "buttonText": "Live Captions English"
+        }
+      ],
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
       "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
@@ -136,11 +172,28 @@
         "Contact: Emily Urrutia, Chicanx Latinx Student Resource Center Coordinator",
         "Email: eurruti8@calstatela.edu"
       ],
-      "button": {
-        "buttonLink": "https://form.jotform.com/260256981239161",
-        "buttonPlaceholder": "Closed",
-        "buttonText": "Waitlist"
-      },
+      "button": [
+        {
+          "buttonLink": "https://form.jotform.com/260256981239161",
+          "buttonPlaceholder": "Closed",
+          "buttonText": "Waitlist"
+        },
+        {
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonPlaceholder": "Booklet",
+          "buttonText": "Booklet"
+        },
+        {
+          "buttonLink": "https://captionedtext.com/client/Event.aspx?EventID=12139",
+          "buttonPlaceholder": "Live Captions English",
+          "buttonText": "Live Captions English"
+        },
+        {
+          "buttonLink": "https://www.streamtext.net/player?event=NuestraGraduationSpanish",
+          "buttonPlaceholder": "Live Captions Spanish",
+          "buttonText": "Live Captions Spanish"
+        }
+      ],
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
       "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
@@ -156,11 +209,23 @@
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
       ],
-      "button": {
-        "buttonLink": "https://form.jotform.com/260257579208161",
-        "buttonPlaceholder": "Closed",
-        "buttonText": "Waitlist"
-      },
+      "button": [
+        {
+          "buttonLink": "https://form.jotform.com/260257579208161",
+          "buttonPlaceholder": "Closed",
+          "buttonText": "Waitlist"
+        },
+        {
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonPlaceholder": "Booklet",
+          "buttonText": "Booklet"
+        },
+        {
+          "buttonLink": "https://captionedtext.com/client/Event.aspx?EventID=12139",
+          "buttonPlaceholder": "Live Captions English",
+          "buttonText": "Live Captions English"
+        }
+      ],
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
