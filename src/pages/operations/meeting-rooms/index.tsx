@@ -6,6 +6,9 @@ import { BiChevronRight } from 'react-icons/bi';
 import meetingRoomsData from 'data/meetingRooms.json';
 import { media, Spaces } from 'theme';
 import { useBreakpoint, useImageLoading } from 'hooks';
+import rawTableData from 'data/meetingRoomRates.json';
+import { TableData } from 'types';
+import { Table as FlexibleTable } from 'components';
 import {
   Card,
   Divider,
@@ -116,6 +119,7 @@ function MeetingRoomCardImage({ src, alt }: { src: string; alt: string }) {
 
 export default function MeetingRooms() {
   const { isMobile } = useBreakpoint();
+  const tableData = rawTableData as { tables: TableData[] };
 
   return (
     <Page>
@@ -363,6 +367,16 @@ export default function MeetingRooms() {
             </RoomCard>
           ))}
         </FluidContainer>
+      </FluidContainer>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        alignItems="center"
+        gap={Spaces.lg}
+      >
+        {tableData.tables.map((table) => (
+          <FlexibleTable key={table.id} data={table} />
+        ))}
       </FluidContainer>
       <FluidContainer backgroundColor="black">
         <Typography as="h2" variant="title" color="primary">
