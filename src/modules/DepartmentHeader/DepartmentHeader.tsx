@@ -92,7 +92,7 @@ export const DepartmentHeader = ({
 
   return (
     <>
-      <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp">
+      <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp">
         <HeaderContainer>
           <HeaderContent>
             <Typography variant="labelTitle" as="h1">

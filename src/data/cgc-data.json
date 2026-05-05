@@ -97,7 +97,7 @@
       "iconAlt": "APIDA Logo",
       "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
       "imgAlt": "",
-      "id": "apisrc"
+      "id": "apida-grad"
     },
     {
       "title": "Black Grad Celebration",
@@ -129,7 +129,7 @@
       "iconAlt": "PASRC Logo",
       "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
       "imgAlt": "",
-      "id": "pasrc"
+      "id": "black-grad"
     },
     {
       "title": "IndigiGrad Celebration",
@@ -161,7 +161,7 @@
       "iconAlt": "Native Logo",
       "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
       "imgAlt": "",
-      "id": "native"
+      "id": "indigigrad"
     },
     {
       "title": "Nuestra Grad Celebration",
@@ -198,7 +198,7 @@
       "iconAlt": "Nuestra Logo",
       "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
       "imgAlt": "",
-      "id": "clsrc"
+      "id": "nuestra-grad"
     },
     {
       "title": "Pride Grad Celebration",
@@ -230,7 +230,7 @@
       "iconAlt": "GSRC Logo",
       "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
       "imgAlt": "",
-      "id": "gsrc"
+      "id": "pride-grad"
     }
   ],
   "questions": [
