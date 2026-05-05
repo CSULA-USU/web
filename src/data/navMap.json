@@ -44,6 +44,10 @@
     "href": "/about/services",
     "sub": [
       {
+        "text": "Graphic Requests",
+        "href": "/graffix/request"
+      },
+      {
         "text": "Services",
         "href": "/about/services"
       },
@@ -128,6 +132,10 @@
           {
             "text": "Graffix Home",
             "href": "/graffix"
+          },
+          {
+            "text": "Graphics Request",
+            "href": "/graffix/request"
           },
           {
             "text": "ACUI Awards",
