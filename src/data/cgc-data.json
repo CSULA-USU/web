@@ -70,6 +70,7 @@
     {
       "title": "APIDA Grad Celebration",
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
       "copy": [
         ["Date: Friday, May 15", "Time: 7:30 PM to 9:00 PM"],
         "Location: University Gym",
@@ -102,6 +103,7 @@
     {
       "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
       "copy": [
         ["Date: Saturday, May 16", "Time: 3:00 PM to 4:30 PM"],
         "Location: University Gym",
@@ -134,6 +136,7 @@
     {
       "title": "IndigiGrad Celebration",
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
       "copy": [
         ["Date: Friday, May 15", "Time: 10:30 AM to 12:00 PM"],
         "Location: U-SU Theater",
@@ -166,6 +169,7 @@
     {
       "title": "Nuestra Grad Celebration",
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
       "copy": [
         ["Date: Saturday, May 16", "Time: 10:00 AM to 11:30 AM"],
         "Location: University Gym",
@@ -203,6 +207,7 @@
     {
       "title": "Pride Grad Celebration",
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
       "copy": [
         ["Date: Friday, May 15", "Time: 4:30 PM to 6:00 PM"],
         "Location: University Gym",

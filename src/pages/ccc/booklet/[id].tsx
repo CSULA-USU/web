@@ -43,13 +43,9 @@ export default function CulturalGrad({ grad }: Props) {
   return (
     <Page>
       <Head>
-        <title>{`Cultural Grads | Cal State LA U-SU`}</title>
+        <title>{`${grad.title} | Cal State LA U-SU`}</title>
       </Head>
-      <Image
-        src="/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg"
-        alt="Cultural Grad Image"
-        width="100%"
-      ></Image>
+      <Image src={grad.bookletHero} alt="" width="100%" />
       <FluidContainer flex flexDirection="column" gap={Spaces.md}>
         {Array.isArray(grad.button) &&
           grad.button.slice(1).map((btn) => (
@@ -57,6 +53,7 @@ export default function CulturalGrad({ grad }: Props) {
               key={btn.buttonText}
               href={btn.buttonLink}
               aria-label={btn.buttonPlaceholder}
+              variant="black"
             >
               {btn.buttonText}
             </Button>
