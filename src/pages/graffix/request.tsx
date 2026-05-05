@@ -1,6 +1,11 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md';
+import graffixData from 'data/graffixRequest.json';
+import { Colors, Spaces, media } from 'theme';
+import { useBreakpoint } from 'hooks';
+import { TableData } from 'types';
 import {
   Button,
   Card,
@@ -13,15 +18,10 @@ import {
 } from 'components';
 import {
   GenericModal,
-  GraffixGuidelines,
+  // GraffixGuidelines,
   Page,
   UtilityHeroHeader,
 } from 'modules';
-import { Colors, Spaces, media } from 'theme';
-import { useBreakpoint } from 'hooks';
-import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md';
-import { TableData } from 'types';
-import graffixData from 'data/graffixRequest.json';
 
 interface PackageSection {
   label: string;
@@ -353,7 +353,7 @@ export default function RequestGuide() {
         </FluidContainer>
       </FluidContainer>
 
-      <GraffixGuidelines />
+      {/* <GraffixGuidelines /> */}
 
       {/* Item Selection Examples */}
       <FluidContainer backgroundColor="greyLightest">
@@ -442,7 +442,7 @@ export default function RequestGuide() {
         <GenericModal
           isOpen={modalOpen}
           onRequestClose={() => setModalOpen(false)}
-          width={isDesktop ? '500px' : '90vw'}
+          width={isDesktop ? '500px' : '25vw'}
         >
           <Typography variant="titleSmall" as="h2">
             {modalPkg.title}
