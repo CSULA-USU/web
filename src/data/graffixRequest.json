@@ -1,0 +1,301 @@
+{
+  "packages": [
+    {
+      "title": "Package A",
+      "subtitle": "Full Campaign",
+      "iconSrc": "/departments/graffix/backoffice/request-images/individual-campaign.svg",
+      "sections": [
+        { "label": "Social Media", "items": ["IG Post / Story"] },
+        { "label": "Small Print", "items": ["Poster", "Postcard"] },
+        { "label": "Large Print", "items": ["Large Poster", "Window Decal"] },
+        { "label": "Banners", "items": ["12' × 4'"] },
+        {
+          "label": "Signage",
+          "items": ["A-Frame (2)", "Location Signage (poster size)"]
+        }
+      ]
+    },
+    {
+      "title": "Package B",
+      "subtitle": "Standard Campaign",
+      "iconSrc": "/departments/graffix/backoffice/request-images/party.svg",
+      "sections": [
+        { "label": "Social Media", "items": ["IG Post / Story"] },
+        { "label": "Small Print", "items": ["Poster", "Postcard"] },
+        { "label": "Large Print", "items": ["Large Poster"] },
+        { "label": "Banners", "items": ["3' × 8'"] },
+        { "label": "Signage", "items": ["A-Frame (2)"] }
+      ]
+    },
+    {
+      "title": "Package C",
+      "subtitle": "Basic Package",
+      "iconSrc": "/departments/graffix/backoffice/request-images/card.svg",
+      "sections": [
+        { "label": "Social Media", "items": ["IG Post / Story"] },
+        { "label": "Small Print", "items": ["Poster", "Postcard"] }
+      ]
+    },
+    {
+      "title": "Package D",
+      "subtitle": "Miscellaneous or One-Off Items",
+      "iconSrc": "/departments/graffix/backoffice/request-images/features-overview.svg",
+      "sections": [
+        {
+          "label": "Single Item",
+          "items": [
+            "Specify the item you need. Suitable for one-off requests such as a single poster, flyer, or social media post."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Package E",
+      "subtitle": "Social Media Only",
+      "iconSrc": "/departments/graffix/backoffice/request-images/online-popularity.svg",
+      "sections": [
+        {
+          "label": "Department Social Media",
+          "items": [
+            "A department social media design post. Ideal for promoting events or announcements on your department's social channels."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Optional Promo",
+      "subtitle": "Add-On",
+      "iconSrc": "/departments/graffix/backoffice/request-images/gift-box.svg",
+      "sections": [
+        {
+          "label": "Important Note",
+          "items": [
+            "Requires an additional week for design and print time. Must be discussed prior to adding to your request. Subject to budget and capacity approval."
+          ]
+        },
+        {
+          "label": "Apparel",
+          "items": ["Hats, shirts, hoodies, jackets, etc."]
+        },
+        {
+          "label": "Products",
+          "items": [
+            "Bags, cups, planners, pens, stickers, pins (enamel & Crocs), etc."
+          ]
+        },
+        {
+          "label": "Outdoor",
+          "items": [
+            "Floor decals, large window decals (window facing the plaza)"
+          ]
+        }
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Graffix Trick or Tour",
+      "designer": "Sebastian Lopez",
+      "src": "/departments/graffix/student-designs/graffix-trick-or-tour.png",
+      "alt": "Black and orange square Instagram post reading 'Graffix Trick or Tour' with a pumpkin and a ghost",
+      "description": "A graphic used on Instagram coinciding with Halloween and the Graffix open house. Symbols were inspired by Graffix staff."
+    },
+    {
+      "title": "Larry Itliong Day",
+      "designer": "P Dacayan",
+      "src": "/departments/graffix/student-designs/larry-itliong.jpg",
+      "alt": "Tabloid size vertical poster highlighting Filipino-American history month and Larry Itliong Day",
+      "description": "A tabloid size vertical poster highlighting Filipino-American history month and Larry Itliong Day."
+    },
+    {
+      "title": "Graffix Open House",
+      "designer": "Hector Almaraz",
+      "src": "/departments/graffix/student-designs/graffix-job-fair.jpg",
+      "alt": "Postcard promoting the Graffix open house and job fair with the work office in the background",
+      "description": "This design was inspired by retro scary movie posters."
+    },
+    {
+      "title": "Smash League Tournament",
+      "designer": "Hector Almaraz",
+      "src": "/departments/graffix/student-designs/smash-league.png",
+      "alt": "Instagram post promoting the Super Smash Bros Ultimate Smash League for Fall 2022 with popular game characters in Cal State LA colors",
+      "description": "Instagram post promoting a Super Smash Bros. video game tournament combining e-sports aesthetics with Cal State LA colors."
+    },
+    {
+      "title": "Harvest Festival",
+      "designer": "Anthony (Tony) Villa",
+      "src": "/departments/graffix/student-designs/harvest-festival.png",
+      "alt": "Vertical tabloid-size poster featuring a mummified Eddy the Eagle and a hand-drawn illustration of the U-SU",
+      "description": "A vertical tabloid-sized poster promoting a night event at the U-SU with spooky decorations and Halloween-themed activities."
+    },
+    {
+      "title": "Fluffy Friends",
+      "designer": "Sebastian Lopez",
+      "src": "/departments/graffix/student-designs/fluffy-friends.png",
+      "alt": "Instagram post featuring a notebook and paw prints promoting a pet therapy event with date and location",
+      "description": "An Instagram post promoting a pet therapy event with information on when and where."
+    },
+    {
+      "title": "Brown & Gay in LA",
+      "designer": "P Dacayan",
+      "src": "/departments/graffix/student-designs/brown-gay-la.png",
+      "alt": "Predominantly yellow vertical tabloid-size poster with red text and a photo of author Dr. Anthony Ocampo",
+      "description": "A vertical tabloid-sized poster promoting the APISRC and GSRC book event."
+    },
+    {
+      "title": "Swim in the Sounds",
+      "designer": "Sebastian Lopez",
+      "src": "/departments/graffix/student-designs/swim-in-the-sound.png",
+      "alt": "Instagram post with a digital image of a swimming pool and a red beach ball promoting student-staff music playlists",
+      "description": "An Instagram post promoting the music playlists of student-staff at Graffix."
+    },
+    {
+      "title": "Study Break of Color",
+      "designer": "Frankie Sandoval",
+      "src": "/departments/graffix/student-designs/study-break-of-color.png",
+      "alt": "Instagram post depicting a student in headphones relaxing on a bean bag promoting a study break event",
+      "description": "An Instagram post graphic promoting a study break event with date and location info."
+    }
+  ],
+  "feesTable": {
+    "id": "graffix-fees",
+    "title": "Fees & Pricing",
+    "ariaLabel": "Graffix request fees and pricing",
+    "caption": "Graffix department fees and pricing organized by service package",
+    "note": "* All pricing is subject to change. Contact Graffix staff for current rates.",
+    "headerColors": { "backgroundColor": "black", "textColor": "primary" },
+    "columns": [
+      {
+        "id": "package",
+        "label": "Package",
+        "backgroundColor": "greyLightest",
+        "textColor": "black",
+        "minWidth": "180px"
+      },
+      {
+        "id": "items",
+        "label": "Items Included",
+        "backgroundColor": "white",
+        "textColor": "black",
+        "minWidth": "240px"
+      },
+      {
+        "id": "turnaround",
+        "label": "Turnaround Time",
+        "backgroundColor": "white",
+        "textColor": "black",
+        "minWidth": "160px"
+      },
+      {
+        "id": "fee",
+        "label": "Fee",
+        "backgroundColor": "white",
+        "textColor": "black",
+        "minWidth": "120px"
+      }
+    ],
+    "rows": [
+      {
+        "id": "pkg-a",
+        "values": {
+          "package": "Package A – Full Campaign",
+          "items": "Social media, small/large print, banner, signage",
+          "turnaround": "8+ weeks",
+          "fee": "TBD"
+        }
+      },
+      {
+        "id": "pkg-b",
+        "values": {
+          "package": "Package B – Standard Campaign",
+          "items": "Social media, small/large print, banner",
+          "turnaround": "6+ weeks",
+          "fee": "TBD"
+        }
+      },
+      {
+        "id": "pkg-c",
+        "values": {
+          "package": "Package C – Basic Package",
+          "items": "Social media, small print",
+          "turnaround": "4+ weeks",
+          "fee": "TBD"
+        }
+      },
+      {
+        "id": "pkg-d",
+        "values": {
+          "package": "Package D – Single Item",
+          "items": "One custom design item",
+          "turnaround": "3+ weeks",
+          "fee": "TBD"
+        }
+      },
+      {
+        "id": "pkg-e",
+        "values": {
+          "package": "Package E – Social Media Only",
+          "items": "Department social media design post",
+          "turnaround": "3+ weeks",
+          "fee": "TBD"
+        }
+      },
+      {
+        "id": "pkg-promo",
+        "values": {
+          "package": "Optional Promo Add-On",
+          "items": "Apparel, products, outdoor items",
+          "turnaround": "+1 week",
+          "fee": "TBD"
+        }
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "A Frame",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/a-frame.webp",
+      "alt": "A-Frame 24 inches by 36 inches"
+    },
+    {
+      "title": "Buttons",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/buttons.webp",
+      "alt": "Buttons 1.5 inches, 2.25 inches, 3 inches"
+    },
+    {
+      "title": "Foam Board",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/foamboard.webp",
+      "alt": "foam board 20 inches by 30 inches"
+    },
+    {
+      "title": "Half-Page Postcard",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/half-page-postcard.webp",
+      "alt": "half page postcard 8.5 inches by 5.25 inches"
+    },
+    {
+      "title": "Large Poster",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/large-poster.webp",
+      "alt": "large poster 22 inches by 28 inches"
+    },
+    {
+      "title": "Large Vinyl Banner",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/large-vinyl-banner.webp",
+      "alt": "large vinyl banner 144 inches by 48 inches"
+    },
+    {
+      "title": "Poster",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/poster.webp",
+      "alt": "poster 11 inches by 17 inches"
+    },
+    {
+      "title": "Quarter-Page Postcard",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/qtr-page-postcard.webp",
+      "alt": "quarter page postcard 4.25 inches by 5.25 inches"
+    },
+    {
+      "title": "Window Decal",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/backoffice/window-decal.webp",
+      "alt": "window decal"
+    }
+  ]
+}
