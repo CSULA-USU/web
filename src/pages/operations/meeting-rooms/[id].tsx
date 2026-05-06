@@ -205,6 +205,18 @@ const NavItems = [
   },
 ];
 
+const VisuallyHiddenH1 = styled.h1`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;
+
 type Room = (typeof meetingRoomsData)[number];
 
 function getMaxCapacity(arrangements: Room['arrangements']): number {
@@ -394,6 +406,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
         justifyContent="center"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
+        <VisuallyHiddenH1>{room.title}</VisuallyHiddenH1>
         <ImageWithSkeleton
           src={room.headerImage}
           alt={room.mainImageAlt || 'banner image'}
@@ -429,25 +442,17 @@ export default function MeetingRoom({ room }: { room: Room }) {
           <table>
             <thead>
               <tr>
-                <th className="setup-column">
-                  <Typography variant="cta" as="h2">
-                    Room View
-                  </Typography>
+                <th scope="col" className="setup-column">
+                  <Typography variant="cta">Room View</Typography>
                 </th>
-                <th>
-                  <Typography variant="cta" as="h2">
-                    Setup
-                  </Typography>
+                <th scope="col">
+                  <Typography variant="cta">Setup</Typography>
                 </th>
-                <th>
-                  <Typography variant="cta" as="h2">
-                    Capacity
-                  </Typography>
+                <th scope="col">
+                  <Typography variant="cta">Capacity</Typography>
                 </th>
-                <th>
-                  <Typography variant="cta" as="h2">
-                    Equipment
-                  </Typography>
+                <th scope="col">
+                  <Typography variant="cta">Equipment</Typography>
                 </th>
               </tr>
             </thead>
@@ -464,9 +469,9 @@ export default function MeetingRoom({ room }: { room: Room }) {
                       />
                     )}
                   </td>
-                  <td>
+                  <th scope="row">
                     <Typography size="md">{arrangement.setup}</Typography>
-                  </td>
+                  </th>
                   <td>
                     {arrangement.capacity.map((c) => (
                       <Typography key={c} size="md">
@@ -522,11 +527,12 @@ export default function MeetingRoom({ room }: { room: Room }) {
                         variant="labelTitleSmall"
                         color="greyDark"
                         size={isMobile ? 'sm' : 'md'}
+                        as="h2"
                       >
                         Setup
                       </Typography>
                     </LabelWrapper>
-                    <Typography size={isMobile ? 'sm' : 'md'}>
+                    <Typography size={isMobile ? 'sm' : 'md'} as="h2">
                       {arrangement.setup}
                     </Typography>
                   </FluidContainer>
@@ -542,6 +548,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
                         variant="labelTitleSmall"
                         color="greyDark"
                         size={isMobile ? 'sm' : 'md'}
+                        as="h2"
                       >
                         Capacity
                       </Typography>
@@ -566,6 +573,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
                         variant="labelTitleSmall"
                         color="greyDark"
                         size={isMobile ? 'sm' : 'md'}
+                        as="h2"
                       >
                         Equipment
                       </Typography>
@@ -586,7 +594,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
 
         <StyledSectionCard>
           <TextCenter>
-            <Typography weight="700" as="h3" margin={`0 0 ${Spaces.sm} 0`}>
+            <Typography weight="700" as="h2" margin={`0 0 ${Spaces.sm} 0`}>
               Fixed Room Features:
             </Typography>
             <Typography
@@ -599,7 +607,7 @@ export default function MeetingRoom({ room }: { room: Room }) {
           </TextCenter>
 
           <TextCenter>
-            <Typography weight="700" as="h3" margin={`${Spaces.md} 0 0 0`}>
+            <Typography weight="700" as="h2" margin={`${Spaces.md} 0 0 0`}>
               Meeting Space Rental Fees do not include:
             </Typography>
             <Typography

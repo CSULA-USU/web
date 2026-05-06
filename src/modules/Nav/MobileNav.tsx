@@ -80,6 +80,13 @@ const StyledButton = styled.button`
   }
 `;
 
+const getUniqueSubLinks = (
+  items: navMapType[] = [],
+  parentHref: string,
+): navMapType[] => {
+  return items.filter((item) => item.href !== parentHref);
+};
+
 export const MobileNav = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false); // create a state variable to manage the open state of the drawer
   const drawerRef = useRef<HTMLDivElement>(null); // create a ref to the drawer element
@@ -149,19 +156,21 @@ export const MobileNav = () => {
               <React.Fragment key={`t1-${t1.href}`}>
                 <li>
                   <Link href={t1.href}>{t1.text}</Link>
-                  {t1.sub?.length && (
+                  {getUniqueSubLinks(t1.sub, t1.href).length > 0 && (
                     <T2Container>
-                      {t1.sub?.map((t2) => (
+                      {getUniqueSubLinks(t1.sub, t1.href).map((t2) => (
                         <React.Fragment key={`t2-${t2.href}`}>
                           <li>
                             <Link href={t2.href}>{t2.text}</Link>
-                            {t2.sub?.length && (
+                            {getUniqueSubLinks(t2.sub, t2.href).length > 0 && (
                               <T3Container>
-                                {t2.sub?.map((t3) => (
-                                  <li key={`t3-${t3.href}`}>
-                                    <Link href={t3.href}>{t3.text}</Link>
-                                  </li>
-                                ))}
+                                {getUniqueSubLinks(t2.sub, t2.href).map(
+                                  (t3) => (
+                                    <li key={`t3-${t3.href}`}>
+                                      <Link href={t3.href}>{t3.text}</Link>
+                                    </li>
+                                  ),
+                                )}
                               </T3Container>
                             )}
                           </li>
