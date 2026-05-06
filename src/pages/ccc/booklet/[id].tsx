@@ -45,8 +45,13 @@ export default function CulturalGrad({ grad }: Props) {
       <Head>
         <title>{`${grad.title} | Cal State LA U-SU`}</title>
       </Head>
-      <Image src={grad.bookletHero} alt="" width="100%" />
-      <FluidContainer flex flexDirection="column" gap={Spaces.md}>
+      <FluidContainer
+        flex
+        flexDirection="column"
+        gap={Spaces.md}
+        alignItems="center"
+      >
+        <Image src={grad.bookletHero} alt="" width="100%" maxWidth="1200px" />
         {Array.isArray(grad.button) &&
           grad.button.slice(1).map((btn) => (
             <Button
@@ -54,6 +59,7 @@ export default function CulturalGrad({ grad }: Props) {
               href={btn.buttonLink}
               aria-label={btn.buttonPlaceholder}
               variant="black"
+              isExternalLink
             >
               {btn.buttonText}
             </Button>
