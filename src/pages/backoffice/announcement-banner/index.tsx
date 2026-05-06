@@ -12,8 +12,8 @@ import { useState, useCallback, useEffect } from 'react';
 import type { AnnouncementBannerType } from 'types/AnnouncementBanner';
 import { getLatestAnnouncementBanner } from 'api/announcementBanner';
 import { getServerSession } from 'next-auth';
-import { getUserFromSupabaseByEmail } from 'pages/api/user';
-import { hasPermission } from 'lib/supabase';
+import { getCurrentBackofficeUserByEmail } from 'lib/backoffice/currentUser';
+import { hasPolicy } from 'lib/backoffice/permissions';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { useToast } from 'context/ToastContext';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
@@ -235,15 +235,15 @@ export async function getServerSideProps(ctx: any) {
     };
   }
 
-  const { userData, error } = await getUserFromSupabaseByEmail(
+  const { user, error } = await getCurrentBackofficeUserByEmail(
     session.user?.email,
   );
 
-  if (error || !userData) {
+  if (error || !user) {
     return { props: { initialBanner: null, error: 'Unauthorized' } };
   }
 
-  if (!hasPermission(userData, 'siteContent:edit:announcementBanner')) {
+  if (!hasPolicy(user, 'siteContent:edit:announcementBanner')) {
     return {
       redirect: {
         destination: '/backoffice?error=unauthorized',

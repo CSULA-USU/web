@@ -1,4 +1,5 @@
 export type Category = 'Agenda' | 'Minutes' | 'Calendar';
+export type BackofficePolicy = `${string}:${string}:${string}`;
 
 export interface Document {
   id: string;
@@ -36,3 +37,16 @@ export type BackofficeLinkSection = {
   section: string;
   items: BackofficeLinkItem[];
 };
+
+export interface CurrentBackofficeUser {
+  id: number;
+  email: string;
+  roleId: number;
+  roleName: string;
+  departmentId: number;
+  departmentName: string;
+  departmentFullName: string;
+  rolePolicies: string[];
+  userPolicies: string[];
+  effectivePolicies: string[];
+}

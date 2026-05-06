@@ -7,6 +7,12 @@
         "title": "Home",
         "description": "Backoffice dashboard and quick access tools",
         "featured": false
+      },
+      {
+        "url": "/backoffice/access-management",
+        "title": "Access Management",
+        "description": "Manage users, roles, departments, and permissions",
+        "featured": false
       }
     ]
   },
