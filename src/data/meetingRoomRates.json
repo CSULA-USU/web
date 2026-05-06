@@ -11,18 +11,18 @@
       },
       "columns": [
         {
-          "id": "roomNumber",
-          "label": "Room #",
-          "backgroundColor": "primary",
-          "textColor": "black",
-          "minWidth": "105px"
-        },
-        {
           "id": "meetingRoom",
           "label": "Meeting Room",
           "backgroundColor": "primary",
           "textColor": "black",
           "minWidth": "230px"
+        },
+        {
+          "id": "roomNumber",
+          "label": "Room #",
+          "backgroundColor": "primary",
+          "textColor": "black",
+          "minWidth": "105px"
         },
         {
           "id": "size",
@@ -233,18 +233,18 @@
       },
       "columns": [
         {
-          "id": "smartRoom",
-          "label": "Smart Room",
-          "backgroundColor": "primary",
-          "textColor": "black",
-          "minWidth": "85px"
-        },
-        {
           "id": "meetingSpace",
           "label": "Meeting Space",
           "backgroundColor": "primary",
           "textColor": "black",
           "minWidth": "190px"
+        },
+        {
+          "id": "smartRoom",
+          "label": "Smart Room",
+          "backgroundColor": "primary",
+          "textColor": "black",
+          "minWidth": "85px"
         },
         {
           "id": "size",

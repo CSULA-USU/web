@@ -29,13 +29,7 @@
       },
       {
         "text": "U-Krew",
-        "href": "/u-krew",
-        "sub": [
-          {
-            "text": "U-Krew Home",
-            "href": "/about/u-krew"
-          }
-        ]
+        "href": "about/u-krew"
       }
     ]
   },

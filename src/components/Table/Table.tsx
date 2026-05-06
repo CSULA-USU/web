@@ -41,11 +41,7 @@ const getDisplayValue = (row: TableRow, columnId: string): string => {
   return row.values[columnId] || '';
 };
 
-const getPrimaryMobileColumn = (columns: TableColumn[]): TableColumn => {
-  if (columns.length > 1) {
-    return columns[1];
-  }
-
+const getRowHeaderColumn = (columns: TableColumn[]): TableColumn => {
   return columns[0];
 };
 
@@ -91,7 +87,7 @@ const renderBodyCellText = (
 };
 
 export const Table = ({ data, className }: TableProps) => {
-  const primaryMobileColumn = getPrimaryMobileColumn(data.columns);
+  const rowHeaderColumn = getRowHeaderColumn(data.columns);
   const mergedColumns = data.columns.filter((column) => column.mergedValue);
 
   return (
@@ -152,9 +148,10 @@ export const Table = ({ data, className }: TableProps) => {
           <tbody>
             {data.rows.map((row, rowIndex) => (
               <tr key={row.id}>
-                {data.columns.map((column) => {
+                {data.columns.map((column, columnIndex) => {
                   const value = getDisplayValue(row, column.id);
                   const mergedValue = column.mergedValue;
+                  const isRowHeader = columnIndex === 0;
 
                   if (mergedValue) {
                     if (rowIndex > 0) {
@@ -179,7 +176,9 @@ export const Table = ({ data, className }: TableProps) => {
 
                   return (
                     <TableDataCell
+                      as={isRowHeader ? 'th' : 'td'}
                       key={`${row.id}-${column.id}`}
+                      scope={isRowHeader ? 'row' : undefined}
                       $backgroundColor={column.backgroundColor}
                       $textColor={column.textColor}
                       $width={column.minWidth}
@@ -196,12 +195,12 @@ export const Table = ({ data, className }: TableProps) => {
 
       <MobileCards>
         {data.rows.map((row) => {
-          const primaryValue = getDisplayValue(row, primaryMobileColumn.id);
+          const rowHeaderValue = getDisplayValue(row, rowHeaderColumn.id);
 
           const mobileFields: MobileField[] = data.columns
             .filter(
               (column) =>
-                column.id !== primaryMobileColumn.id && !column.mergedValue,
+                column.id !== rowHeaderColumn.id && !column.mergedValue,
             )
             .map((column) => ({
               column,
@@ -212,7 +211,7 @@ export const Table = ({ data, className }: TableProps) => {
             <MobileCard key={`${data.id}-${row.id}`}>
               <MobileCardHeader $backgroundColor="black" $textColor="primary">
                 <Typography as="h3" variant="labelTitle" color="primary">
-                  {primaryValue}
+                  {rowHeaderValue}
                 </Typography>
               </MobileCardHeader>
 
