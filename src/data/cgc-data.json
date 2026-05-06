@@ -79,13 +79,13 @@
       ],
       "button": [
         {
-          "buttonLink": "https://form.jotform.com/260256828984168",
-          "buttonPlaceholder": "Closed",
-          "buttonText": "Waitlist"
+          "buttonLink": "https://www.calstatelausu.org/ccc/booklet/apida-grad",
+          "buttonPlaceholder": "APIDA Grad Booklet & Live Captions",
+          "buttonText": "Booklet & Captions"
         },
         {
           "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
-          "buttonPlaceholder": "Booklet",
+          "buttonPlaceholder": "APIDA Grad Booklet",
           "buttonText": "Booklet"
         },
         {
@@ -112,9 +112,9 @@
       ],
       "button": [
         {
-          "buttonLink": "https://form.jotform.com/260257234922152",
-          "buttonPlaceholder": "Closed",
-          "buttonText": "Waitlist"
+          "buttonLink": "https://www.calstatelausu.org/ccc/booklet/black-grad",
+          "buttonPlaceholder": "Black Grad Booklet & Live Captions",
+          "buttonText": "Booklet & Captions"
         },
         {
           "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
@@ -145,9 +145,9 @@
       ],
       "button": [
         {
-          "buttonLink": "https://form.jotform.com/260257248507156",
-          "buttonPlaceholder": "Closed",
-          "buttonText": "Waitlist"
+          "buttonLink": "https://www.calstatelausu.org/ccc/booklet/indigigrad",
+          "buttonPlaceholder": "IndigiGrad Booklet & Live Captions",
+          "buttonText": "Booklet & Captions"
         },
         {
           "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
@@ -178,13 +178,13 @@
       ],
       "button": [
         {
-          "buttonLink": "https://form.jotform.com/260256981239161",
-          "buttonPlaceholder": "Closed",
-          "buttonText": "Waitlist"
+          "buttonLink": "https://www.calstatelausu.org/ccc/booklet/nuestra-grad",
+          "buttonPlaceholder": "Nuestra Grad Booklet & Live Captions",
+          "buttonText": "Booklet & Captions"
         },
         {
           "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
-          "buttonPlaceholder": "Booklet",
+          "buttonPlaceholder": "Nuestra Grad Booklet",
           "buttonText": "Booklet"
         },
         {
@@ -216,13 +216,13 @@
       ],
       "button": [
         {
-          "buttonLink": "https://form.jotform.com/260257579208161",
-          "buttonPlaceholder": "Closed",
-          "buttonText": "Waitlist"
+          "buttonLink": "https://www.calstatelausu.org/ccc/booklet/pride-grad",
+          "buttonPlaceholder": "Pride Grad Booklet & Live Captions",
+          "buttonText": "Booklet & Captions"
         },
         {
           "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
-          "buttonPlaceholder": "Booklet",
+          "buttonPlaceholder": "Pride Grad Booklet",
           "buttonText": "Booklet"
         },
         {
