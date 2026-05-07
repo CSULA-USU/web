@@ -5,3 +5,5 @@ export * from './DocumentModal';
 export * from './DocumentTable';
 export * from './DataTable';
 export * from './PolicyList';
+export * from './AccessManagementUserModal';
+export * from './PolicyList';

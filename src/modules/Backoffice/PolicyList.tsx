@@ -1,43 +1,50 @@
 import { Typography } from 'components';
 import { getBackofficePolicyParts } from 'lib/backoffice/formatters';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, Spaces } from 'theme';
 
-const PolicyGroups = styled.div`
+const PolicyGroups = styled.div<{ $align: 'center' | 'left' }>`
   display: grid;
-  gap: 0.75rem;
+  gap: ${Spaces.md};
+  width: ${({ $align }) => ($align === 'left' ? '100%' : 'fit-content')};
+  margin: ${({ $align }) => ($align === 'left' ? '0' : '0 auto')};
+  text-align: left;
 `;
 
 const PolicyGroup = styled.div`
   display: grid;
-  gap: 0.35rem;
+  gap: ${Spaces.xs};
+  padding-left: ${Spaces.sm};
+  border-left: 3px solid ${Colors.grey};
 `;
 
-const PolicyBadges = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+const PolicyItems = styled.ul`
+  display: grid;
+  gap: ${Spaces.xs};
+  padding-left: ${Spaces.md};
+  margin: 0;
 `;
 
-const PolicyBadge = styled.span`
-  display: inline-flex;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid ${Colors.grey};
-  border-radius: 999px;
+const PolicyItem = styled.li`
+  color: ${Colors.black};
 `;
 
 export function PolicyList({
   policies,
   emptyMessage = 'No permissions assigned',
+  align = 'center',
 }: {
   policies: string[];
   emptyMessage?: string;
+  align?: 'center' | 'left';
 }) {
   if (policies.length === 0) {
     return (
-      <Typography as="span" variant="label" size="sm" weight="600">
-        {emptyMessage}
-      </Typography>
+      <PolicyGroups $align={align}>
+        <Typography as="span" variant="label" size="sm" weight="400">
+          {emptyMessage}
+        </Typography>
+      </PolicyGroups>
     );
   }
 
@@ -54,22 +61,26 @@ export function PolicyList({
   });
 
   return (
-    <PolicyGroups>
+    <PolicyGroups $align={align}>
       {Object.entries(groupedPolicies).map(([resourceLabel, labels]) => (
         <PolicyGroup key={resourceLabel}>
-          <Typography as="p" variant="label" size="sm" weight="700">
+          <Typography as="p" variant="label" size="sm" weight="600">
             {resourceLabel}
           </Typography>
 
-          <PolicyBadges>
+          <Typography as="p" variant="label" size="sm" weight="400">
+            Allowed operations:
+          </Typography>
+
+          <PolicyItems>
             {labels.map((label, i) => (
-              <PolicyBadge key={`${label}-${i}`}>
-                <Typography as="span" variant="label" size="sm" weight="600">
+              <PolicyItem key={`${label}-${i}`}>
+                <Typography as="span" variant="label" size="sm" weight="400">
                   {label}
                 </Typography>
-              </PolicyBadge>
+              </PolicyItem>
             ))}
-          </PolicyBadges>
+          </PolicyItems>
         </PolicyGroup>
       ))}
     </PolicyGroups>

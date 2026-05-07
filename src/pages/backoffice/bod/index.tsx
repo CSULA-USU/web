@@ -100,7 +100,7 @@ export default function BoardMeetingsAdmin({
         </Head>
         <BackofficeShell
           title={`Board Meeting Documents`}
-          subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+          subtitle="Manage meeting calendars, agendas, and minutes for the USU"
         >
           <FluidContainer padding="24px">
             <Typography variant="title" size="xl">
@@ -125,7 +125,7 @@ export default function BoardMeetingsAdmin({
       </Head>
       <BackofficeShell
         title={`Board Meeting Documents`}
-        subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+        subtitle="Manage meeting calendars, agendas, and minutes for the USU"
       >
         <DocumentManager
           documents={documents}
