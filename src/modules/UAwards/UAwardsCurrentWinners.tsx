@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { AwardeeCard } from 'components';
 import type { Awardee } from 'types';
@@ -14,7 +14,7 @@ type CategoryKey = 'all' | 'dept' | 'values' | 'staff';
 type GroupTone = 'dept' | 'values' | 'staff';
 type TabTone = GroupTone | 'all';
 
-const GROUP_STYLES: Record<
+const uAwardsGroupStyles: Record<
   GroupTone,
   { background: string; border: string; accent: string; label: string }
 > = {
@@ -38,7 +38,7 @@ const GROUP_STYLES: Record<
   },
 };
 
-const TAB_STYLES: Record<
+const tabStyles: Record<
   TabTone,
   {
     activeBackground: string;
@@ -165,23 +165,22 @@ const Tab = styled.button<{ $active: boolean; $tone: TabTone }>`
   font-weight: 700;
   letter-spacing: 0.04em;
   color: ${(p) =>
-    p.$active ? TAB_STYLES[p.$tone].activeText : Colors.greyDark};
+    p.$active ? tabStyles[p.$tone].activeText : Colors.greyDark};
   box-shadow: ${(p) =>
     p.$active ? '0 10px 22px rgba(0, 0, 0, 0.08)' : 'none'};
   transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out,
     background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
   &:hover {
-    color: ${(p) =>
-      p.$active ? TAB_STYLES[p.$tone].activeText : Colors.black};
+    color: ${(p) => (p.$active ? tabStyles[p.$tone].activeText : Colors.black)};
     transform: translateY(-1px);
   }
 
   ${(p) =>
     p.$active &&
     `
-    background: ${TAB_STYLES[p.$tone].activeBackground};
-    border-color: ${TAB_STYLES[p.$tone].activeBorder};
+    background: ${tabStyles[p.$tone].activeBackground};
+    border-color: ${tabStyles[p.$tone].activeBorder};
   `}
 `;
 
@@ -195,19 +194,17 @@ const CountBadge = styled.span<{ $active: boolean; $tone: TabTone }>`
   font-size: 11px;
   font-weight: 700;
   background: ${(p) =>
-    p.$active
-      ? TAB_STYLES[p.$tone].countActiveBackground
-      : Colors.greyLightest};
+    p.$active ? tabStyles[p.$tone].countActiveBackground : Colors.greyLightest};
   color: ${(p) =>
-    p.$active ? TAB_STYLES[p.$tone].countActiveColor : Colors.greyDark};
+    p.$active ? tabStyles[p.$tone].countActiveColor : Colors.greyDark};
 `;
 
 const Group = styled.section<{ $tone: GroupTone }>`
   margin-bottom: 64px;
   padding: 28px 28px 24px;
-  background: ${(p) => GROUP_STYLES[p.$tone].background};
-  border: 1px solid ${(p) => GROUP_STYLES[p.$tone].border};
-  border-left: 6px solid ${(p) => GROUP_STYLES[p.$tone].accent};
+  background: ${(p) => uAwardsGroupStyles[p.$tone].background};
+  border: 1px solid ${(p) => uAwardsGroupStyles[p.$tone].border};
+  border-left: 6px solid ${(p) => uAwardsGroupStyles[p.$tone].accent};
   border-radius: 20px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
 
@@ -236,7 +233,7 @@ const GroupLabel = styled.span<{ $tone: GroupTone }>`
   gap: 10px;
   padding: 7px 12px;
   border-radius: 999px;
-  background: ${(p) => GROUP_STYLES[p.$tone].accent};
+  background: ${(p) => uAwardsGroupStyles[p.$tone].accent};
   color: ${(p) => (p.$tone === 'values' ? Colors.black : Colors.white)};
   font-family: var(--font-montserrat, sans-serif);
   font-size: 11px;
@@ -264,9 +261,31 @@ const List = styled.div`
   flex-direction: column;
 `;
 
+const panelReveal = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const Panel = styled.div`
   &[hidden] {
     display: none;
+  }
+
+  &:not([hidden]) {
+    animation: ${panelReveal} 280ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:not([hidden]) {
+      animation: none;
+    }
   }
 `;
 
@@ -316,7 +335,7 @@ export const UAwardsCurrentWinners = ({
   ) => (
     <Group $tone={tone}>
       <GroupHead $tone={tone}>
-        <GroupLabel $tone={tone}>{GROUP_STYLES[tone].label}</GroupLabel>
+        <GroupLabel $tone={tone}>{uAwardsGroupStyles[tone].label}</GroupLabel>
         <GroupTitle $tone={tone}>{title}</GroupTitle>
       </GroupHead>
       <GroupSub>{sub}</GroupSub>
