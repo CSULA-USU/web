@@ -1,4 +1,5 @@
 export * from './Announcement';
+export * from './AwardeeCard';
 export * from './Button';
 export * from './Card';
 export * from './Carousel';

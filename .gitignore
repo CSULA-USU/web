@@ -23,6 +23,9 @@ package-lock.json
 .DS_Store
 *.pem
 
+# design handoffs (local-only scratch space)
+_handoff/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
