@@ -57,7 +57,7 @@ export default function UAwardsPage() {
 
       <QuoteBanner
         variant="yellow"
-        quote="Excellence at the U-SU is rarely loud. It looks like a student worker who stays an extra fifteen minutes to greet the last visitor of the day, an operations assistant doing their work diligently day in and day out, a designer who quietly reworks a flyer until it sings, a manager who knows every team member's name and major. The U-Awards exist so that the whole community can see the brilliance we see every day."
+        quote="Excellence at the U-SU is rarely loud. It looks like a student worker who stays an extra fifteen minutes to greet the last visitor of the day, an operations assistant diligently working day in and day out, a designer who quietly reworks a flyer until it sings, a manager who knows every team member's name and major. The U-Awards exist so that the whole community can see the brilliance we see every day."
         name="Dr. Megan Bell"
         title="Executive Director, U-SU"
       />

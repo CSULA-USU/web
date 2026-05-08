@@ -18,6 +18,10 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
 `;
 
 const Media = styled.div<{ $src: string }>`
@@ -36,8 +40,8 @@ const Media = styled.div<{ $src: string }>`
     content: '';
     position: absolute;
     inset: 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     z-index: 0;
   }
 
@@ -55,9 +59,21 @@ const Media = styled.div<{ $src: string }>`
   }
 
   @media (max-width: 900px) {
-    height: auto;
-    min-height: 360px;
+    height: 440px;
     background-attachment: scroll;
+    background-position: center 18%;
+    &::before {
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: 360px;
+    &::before {
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+    }
   }
 `;
 
@@ -81,7 +97,14 @@ const Inner = styled.div`
   width: 100%;
 
   @media (max-width: 900px) {
-    padding: 0 16px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: -88px auto 0;
+    padding: 0 16px 24px;
+    display: block;
   }
 `;
 
@@ -99,6 +122,8 @@ const Card = styled.div`
 
   @media (max-width: 900px) {
     padding: 28px 20px;
+    max-width: 680px;
+    margin: 0 auto;
   }
 `;
 
@@ -149,6 +174,7 @@ const Title = styled.h1`
 `;
 
 const Accent = styled.span`
+  white-space: nowrap;
   background: linear-gradient(
     180deg,
     transparent 65%,
@@ -179,7 +205,8 @@ const Meta = styled.dl`
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 16px;
   }
 

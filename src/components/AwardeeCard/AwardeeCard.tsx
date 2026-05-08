@@ -54,16 +54,21 @@ const Badge = styled.div`
   top: 16px;
   left: 16px;
   background: ${Colors.primary};
-  color: ${Colors.black};
-  font-family: var(--font-montserrat, sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   padding: 8px 12px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   z-index: 2;
+`;
+
+const BadgeText = styled(Typography).attrs({
+  forwardedAs: 'span',
+  size: '2xs',
+})`
+  font-family: var(--font-montserrat, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${Colors.black};
 `;
 
 const Copy = styled.div`
@@ -72,23 +77,29 @@ const Copy = styled.div`
   gap: 12px;
 `;
 
-const Cat = styled.span`
+const Cat = styled(Typography).attrs({
+  forwardedAs: 'p',
+  size: '2xs',
+  weight: '700',
+})`
   font-family: var(--font-montserrat, sans-serif);
-  font-size: 12px;
-  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: ${Colors.gold};
+  margin: 0;
 `;
 
-const Name = styled.h3`
-  font-family: var(--font-bitter), serif;
+const Name = styled(Typography).attrs({
+  forwardedAs: 'h4',
+  variant: 'titleSmall',
+  size: 'xl',
+  weight: '700',
+  color: 'black',
+})`
   font-weight: 700;
-  font-size: clamp(34px, 4vw, 48px);
   line-height: 1.05;
   letter-spacing: -0.01em;
   margin: 0;
-  color: ${Colors.black};
 `;
 
 const RoleRow = styled.div`
@@ -96,10 +107,6 @@ const RoleRow = styled.div`
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  font-family: var(--font-montserrat, sans-serif);
-  font-size: 15px;
-  font-weight: 600;
-  color: ${Colors.greyDark};
 `;
 
 const Dot = styled.span`
@@ -112,21 +119,28 @@ const Dot = styled.span`
 
 const DeptPill = styled.span`
   background: ${Colors.greyLightest};
-  color: ${Colors.black};
-  font-size: 13px;
-  font-weight: 700;
   border-radius: 999px;
   padding: 4px 12px;
 `;
 
-const Quote = styled.p`
-  font-family: var(--font-bitter), serif;
-  font-size: 18px;
+const DeptPillText = styled(Typography).attrs({
+  forwardedAs: 'span',
+  size: '2xs',
+})`
+  color: ${Colors.black};
+  font-weight: 700;
+`;
+
+const Quote = styled(Typography).attrs({
+  forwardedAs: 'p',
+  variant: 'copy',
+  size: 'md',
+  color: 'greyDarkest',
+})`
   line-height: 1.6;
   border-left: 3px solid ${Colors.primary};
   padding-left: 20px;
   margin: 4px 0 0;
-  color: ${Colors.greyDarkest};
 `;
 
 export const AwardeeCard = ({
@@ -144,7 +158,11 @@ export const AwardeeCard = ({
     <Article $flipped={flipped} $isFirst={isFirst}>
       <PhotoWrap>
         <PortraitPlaceholder name={awardee.name} />
-        {badge && <Badge>{badge}</Badge>}
+        {badge && (
+          <Badge>
+            <BadgeText>{badge}</BadgeText>
+          </Badge>
+        )}
       </PhotoWrap>
       <Copy>
         <Cat>{catLabel}</Cat>
@@ -156,7 +174,9 @@ export const AwardeeCard = ({
           {awardee.dept && (
             <>
               <Dot aria-hidden="true" />
-              <DeptPill>{awardee.dept}</DeptPill>
+              <DeptPill>
+                <DeptPillText>{awardee.dept}</DeptPillText>
+              </DeptPill>
             </>
           )}
         </RoleRow>

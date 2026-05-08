@@ -152,6 +152,12 @@ const List = styled.div`
   flex-direction: column;
 `;
 
+const Panel = styled.div`
+  &[hidden] {
+    display: none;
+  }
+`;
+
 export const UAwardsCurrentWinners = ({
   departmentWinners,
   valueWinners,
@@ -169,10 +175,6 @@ export const UAwardsCurrentWinners = ({
     { key: 'staff', label: 'Full-Time Staff', count: staffWinners.length },
   ];
 
-  const showDept = active === 'all' || active === 'dept';
-  const showValues = active === 'all' || active === 'values';
-  const showStaff = active === 'all' || active === 'staff';
-
   return (
     <Section id="winners" aria-labelledby="winners-title">
       <Inner>
@@ -187,11 +189,15 @@ export const UAwardsCurrentWinners = ({
           </Lede>
         </Head>
 
-        <TabStrip role="group" aria-label="Filter honorees by category">
+        <TabStrip role="tablist" aria-label="Filter honorees by category">
           {cats.map((c) => (
             <Tab
               key={c.key}
-              aria-pressed={active === c.key}
+              id={`winners-tab-${c.key}`}
+              role="tab"
+              aria-selected={active === c.key}
+              aria-controls={`winners-panel-${c.key}`}
+              tabIndex={0}
               $active={active === c.key}
               onClick={() => setActive(c.key)}
             >
@@ -201,7 +207,12 @@ export const UAwardsCurrentWinners = ({
           ))}
         </TabStrip>
 
-        {showDept && (
+        <Panel
+          id="winners-panel-all"
+          role="tabpanel"
+          aria-labelledby="winners-tab-all"
+          hidden={active !== 'all'}
+        >
           <Group>
             <GroupHead>
               <GroupTitle>Student of the Year by Department</GroupTitle>
@@ -221,9 +232,7 @@ export const UAwardsCurrentWinners = ({
               ))}
             </List>
           </Group>
-        )}
 
-        {showValues && (
           <Group>
             <GroupHead>
               <GroupTitle>U-SU Values Awards</GroupTitle>
@@ -241,9 +250,87 @@ export const UAwardsCurrentWinners = ({
               ))}
             </List>
           </Group>
-        )}
 
-        {showStaff && (
+          <Group>
+            <GroupHead>
+              <GroupTitle>U-SU Values Champions</GroupTitle>
+              <GroupSub>
+                Two full-time staff members who embody every U-SU value, every
+                day.
+              </GroupSub>
+            </GroupHead>
+            <List>
+              {staffWinners.map((a, i) => (
+                <AwardeeCard
+                  key={a.id}
+                  awardee={a}
+                  badge="Full-Time Staff Honoree"
+                  index={i}
+                  isFirst={i === 0}
+                />
+              ))}
+            </List>
+          </Group>
+        </Panel>
+
+        <Panel
+          id="winners-panel-dept"
+          role="tabpanel"
+          aria-labelledby="winners-tab-dept"
+          hidden={active !== 'dept'}
+        >
+          <Group>
+            <GroupHead>
+              <GroupTitle>Student of the Year by Department</GroupTitle>
+              <GroupSub>
+                One from each U-SU department, nominated by their teams.
+              </GroupSub>
+            </GroupHead>
+            <List>
+              {departmentWinners.map((a, i) => (
+                <AwardeeCard
+                  key={a.id}
+                  awardee={a}
+                  badge="Student of the Year"
+                  index={i}
+                  isFirst={i === 0}
+                />
+              ))}
+            </List>
+          </Group>
+        </Panel>
+
+        <Panel
+          id="winners-panel-values"
+          role="tabpanel"
+          aria-labelledby="winners-tab-values"
+          hidden={active !== 'values'}
+        >
+          <Group>
+            <GroupHead>
+              <GroupTitle>U-SU Values Awards</GroupTitle>
+              <GroupSub>One student for each of our six core values.</GroupSub>
+            </GroupHead>
+            <List>
+              {valueWinners.map((a, i) => (
+                <AwardeeCard
+                  key={a.id}
+                  awardee={a}
+                  badge={a.value}
+                  index={i}
+                  isFirst={i === 0}
+                />
+              ))}
+            </List>
+          </Group>
+        </Panel>
+
+        <Panel
+          id="winners-panel-staff"
+          role="tabpanel"
+          aria-labelledby="winners-tab-staff"
+          hidden={active !== 'staff'}
+        >
           <Group>
             <GroupHead>
               <GroupTitle>Full-Time Staff Honorees</GroupTitle>
@@ -263,7 +350,7 @@ export const UAwardsCurrentWinners = ({
               ))}
             </List>
           </Group>
-        )}
+        </Panel>
       </Inner>
     </Section>
   );
