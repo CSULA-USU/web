@@ -26,6 +26,7 @@ interface TypeVariant {
   weight: string;
   color?: keyof typeof Colors;
   fontFamily?: string;
+  fontStyle?: string;
   textTransform?: string;
   lineHeight?: string;
 }
@@ -61,6 +62,13 @@ const styles = {
     fontFamily: serif,
   },
   subheader: { size: 'lg', weight: '400', fontFamily: serif },
+  quote: {
+    size: 'xl',
+    weight: '400',
+    fontFamily: serif,
+    fontStyle: 'italic',
+    lineHeight: '1.5',
+  },
   labelTitle: {
     size: 'md',
     lineHeight: FontSizes.lg,
@@ -98,6 +106,7 @@ const getCSS = (p: TypeProps) => {
     weight,
     color = 'black',
     fontFamily,
+    fontStyle,
     textTransform,
     lineHeight,
   } = styles[p.variant || 'copy'] as TypeVariant;
@@ -107,6 +116,7 @@ const getCSS = (p: TypeProps) => {
         font-weight: 700;
       }
       ${fontFamily && `font-family: ${fontFamily};`}
+      ${fontStyle && `font-style: ${fontStyle};`}
       ${textTransform && `text-transform: ${textTransform};`}
       font-size: ${FontSizes[p.size || size]};
       font-weight: ${p.weight || weight};
