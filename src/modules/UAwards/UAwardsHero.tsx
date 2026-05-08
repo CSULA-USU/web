@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from 'theme';
 
@@ -24,24 +25,36 @@ const Header = styled.header`
   }
 `;
 
-const Media = styled.div<{ $src: string }>`
+const Media = styled.div<{ $loaded: boolean; $src: string }>`
   width: 100%;
   height: 80vh;
   position: relative;
   overflow: hidden;
   background-color: black;
-  background-image: url(${(p) => p.$src});
-  background-size: cover;
-  background-position: top 30%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+
+  &::selection {
+    background: transparent;
+  }
+
+  > span {
+    position: absolute;
+    inset: 0;
+    background-image: url(${(p) => p.$src});
+    background-size: cover;
+    background-position: top 30%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: ${(p) => (p.$loaded ? 1 : 0)};
+    transition: opacity 480ms ease;
+    will-change: opacity;
+  }
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 0;
   }
 
@@ -60,8 +73,11 @@ const Media = styled.div<{ $src: string }>`
 
   @media (max-width: 900px) {
     height: 440px;
-    background-attachment: scroll;
-    background-position: center 18%;
+    > span {
+      background-attachment: scroll;
+      background-position: center 18%;
+    }
+
     &::before {
       backdrop-filter: blur(1px);
       -webkit-backdrop-filter: blur(1px);
@@ -229,7 +245,7 @@ const Meta = styled.dl`
 `;
 
 const DEFAULT_META = [
-  { label: 'Honorees', value: 'Student and Full-time Staff' },
+  { label: 'Honorees', value: 'Student & Full-time Staff' },
   { label: 'Hosted by', value: 'U-SU Executive Office' },
 ];
 
@@ -243,9 +259,38 @@ export const UAwardsHero = ({
   description = 'Our annual celebration recognizing outstanding employees who have gone above and beyond in their dedication and service to the Cal State LA University-Student Union community',
   meta = DEFAULT_META,
 }: UAwardsHeroProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+
+    const image = new Image();
+    image.src = imageSrc;
+
+    if (image.complete) {
+      setIsLoaded(true);
+      return;
+    }
+
+    image.onload = () => setIsLoaded(true);
+    image.onerror = () => setIsLoaded(true);
+
+    return () => {
+      image.onload = null;
+      image.onerror = null;
+    };
+  }, [imageSrc]);
+
   return (
     <Header>
-      <Media $src={imageSrc} role="img" aria-label={imageAlt} />
+      <Media
+        $loaded={isLoaded}
+        $src={imageSrc}
+        role="img"
+        aria-label={imageAlt}
+      >
+        <span aria-hidden="true" />
+      </Media>
       <Strip aria-hidden="true" />
       <Inner>
         <Card>
