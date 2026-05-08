@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { BiUserPlus, BiMessageDetail } from 'react-icons/bi';
 import { Button } from 'components';
 import { Colors } from 'theme';
@@ -36,16 +37,123 @@ const Section = styled.section`
   }
 `;
 
-const Decoration = styled.div`
+const floatDrift = keyframes`
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+`;
+
+const Decoration = styled.div<{ $isActive: boolean }>`
   position: absolute;
-  top: -120px;
-  right: -80px;
-  width: 320px;
-  height: 320px;
+  top: -70px;
+  right: -48px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: ${Colors.primary};
+  opacity: 0.1;
+  pointer-events: none;
+  animation: ${floatDrift} 7s ease-in-out infinite;
+  animation-play-state: ${(p) => (p.$isActive ? 'running' : 'paused')};
+
+  @media (max-width: 900px) {
+    animation-duration: 11s;
+  }
+
+  @media (max-width: 600px) {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+const Decoration2 = styled.div<{ $isActive: boolean }>`
+  position: absolute;
+  top: 160px;
+  right: 96px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: ${Colors.primary};
+  opacity: 0.09;
+  pointer-events: none;
+  animation: ${floatDrift} 9s ease-in-out infinite;
+  animation-delay: 0.9s;
+  animation-play-state: ${(p) => (p.$isActive ? 'running' : 'paused')};
+
+  @media (max-width: 900px) {
+    animation-duration: 13s;
+  }
+
+  @media (max-width: 600px) {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+const Decoration3 = styled.div<{ $isActive: boolean }>`
+  position: absolute;
+  top: 380px;
+  right: 24px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background: ${Colors.primary};
   opacity: 0.08;
   pointer-events: none;
+  animation: ${floatDrift} 8s ease-in-out infinite;
+  animation-delay: 0.35s;
+  animation-play-state: ${(p) => (p.$isActive ? 'running' : 'paused')};
+
+  @media (max-width: 900px) {
+    animation-duration: 12s;
+  }
+
+  @media (max-width: 600px) {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+const Decoration4 = styled.div<{ $isActive: boolean }>`
+  position: absolute;
+  top: 560px;
+  right: 24px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: ${Colors.primary};
+  opacity: 0.08;
+  pointer-events: none;
+  animation: ${floatDrift} 8s ease-in-out infinite;
+  animation-delay: 0.35s;
+  animation-play-state: ${(p) => (p.$isActive ? 'running' : 'paused')};
+
+  @media (max-width: 900px) {
+    animation-duration: 12.5s;
+  }
+
+  @media (max-width: 600px) {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 const Inner = styled.div`
@@ -190,9 +298,35 @@ export const UAwardsCallToAction = ({
   lede = 'Everyone on this page started as a student or staff member who simply applied. The next cohort is being built right now and there is more than one way to be part of it.',
   cards = DEFAULT_CARDS,
 }: UAwardsCallToActionProps) => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isInView, setIsInView] = useState(true);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Section id="join" aria-labelledby="cta-title">
-      <Decoration aria-hidden="true" />
+    <Section ref={sectionRef} id="join" aria-labelledby="cta-title">
+      <Decoration $isActive={isInView} aria-hidden="true" />
+      <Decoration2 $isActive={isInView} aria-hidden="true" />
+      <Decoration3 $isActive={isInView} aria-hidden="true" />
+      <Decoration4 $isActive={isInView} aria-hidden="true" />
       <Inner>
         <Head>
           <Kicker>{kicker}</Kicker>
