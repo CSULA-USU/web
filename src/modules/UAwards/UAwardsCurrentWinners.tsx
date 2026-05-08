@@ -11,6 +11,77 @@ interface UAwardsCurrentWinnersProps {
 }
 
 type CategoryKey = 'all' | 'dept' | 'values' | 'staff';
+type GroupTone = 'dept' | 'values' | 'staff';
+type TabTone = GroupTone | 'all';
+
+const GROUP_STYLES: Record<
+  GroupTone,
+  { background: string; border: string; accent: string; label: string }
+> = {
+  dept: {
+    background: 'rgba(140, 106, 20, 0.06)',
+    border: 'rgba(140, 106, 20, 0.18)',
+    accent: Colors.gold,
+    label: 'Department Honorees',
+  },
+  values: {
+    background: 'rgba(255, 206, 4, 0.08)',
+    border: 'rgba(255, 206, 4, 0.22)',
+    accent: Colors.primary,
+    label: 'Values Honorees',
+  },
+  staff: {
+    background: 'rgba(0, 0, 0, 0.04)',
+    border: 'rgba(0, 0, 0, 0.12)',
+    accent: Colors.black,
+    label: 'Staff Honorees',
+  },
+};
+
+const TAB_STYLES: Record<
+  TabTone,
+  {
+    activeBackground: string;
+    activeBorder: string;
+    accent: string;
+    activeText: string;
+    countActiveBackground: string;
+    countActiveColor: string;
+  }
+> = {
+  all: {
+    activeBackground: 'rgba(0, 0, 0, 0.04)',
+    activeBorder: 'rgba(0, 0, 0, 0.22)',
+    accent: Colors.black,
+    activeText: Colors.black,
+    countActiveBackground: Colors.black,
+    countActiveColor: Colors.white,
+  },
+  dept: {
+    activeBackground: 'rgba(140, 106, 20, 0.06)',
+    activeBorder: 'rgba(140, 106, 20, 0.3)',
+    accent: Colors.gold,
+    activeText: Colors.gold,
+    countActiveBackground: Colors.gold,
+    countActiveColor: Colors.white,
+  },
+  values: {
+    activeBackground: 'rgba(255, 206, 4, 0.08)',
+    activeBorder: 'rgba(255, 206, 4, 0.36)',
+    accent: Colors.primary,
+    activeText: Colors.black,
+    countActiveBackground: Colors.primary,
+    countActiveColor: Colors.black,
+  },
+  staff: {
+    activeBackground: 'rgba(0, 0, 0, 0.05)',
+    activeBorder: 'rgba(0, 0, 0, 0.24)',
+    accent: Colors.black,
+    activeText: Colors.black,
+    countActiveBackground: Colors.black,
+    countActiveColor: Colors.white,
+  },
+};
 
 const Section = styled.section`
   background: ${Colors.white};
@@ -76,33 +147,45 @@ const Lede = styled.p`
 const TabStrip = styled.div`
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid ${Colors.greyLighter};
+  gap: 12px;
   margin-bottom: 48px;
 `;
 
-const Tab = styled.button<{ $active: boolean }>`
-  background: transparent;
-  border: none;
+const Tab = styled.button<{ $active: boolean; $tone: TabTone }>`
+  background: ${Colors.white};
+  border: 1px solid ${Colors.greyLighter};
   cursor: pointer;
   padding: 14px 20px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  border-radius: 999px;
   font-family: var(--font-montserrat, sans-serif);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: ${(p) => (p.$active ? Colors.black : Colors.greyDark)};
-  border-bottom: 3px solid
-    ${(p) => (p.$active ? Colors.primary : 'transparent')};
-  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  color: ${(p) =>
+    p.$active ? TAB_STYLES[p.$tone].activeText : Colors.greyDark};
+  box-shadow: ${(p) =>
+    p.$active ? '0 10px 22px rgba(0, 0, 0, 0.08)' : 'none'};
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
   &:hover {
-    color: ${Colors.black};
+    color: ${(p) =>
+      p.$active ? TAB_STYLES[p.$tone].activeText : Colors.black};
+    transform: translateY(-1px);
   }
+
+  ${(p) =>
+    p.$active &&
+    `
+    background: ${TAB_STYLES[p.$tone].activeBackground};
+    border-color: ${TAB_STYLES[p.$tone].activeBorder};
+  `}
 `;
 
-const CountBadge = styled.span<{ $active: boolean }>`
+const CountBadge = styled.span<{ $active: boolean; $tone: TabTone }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -111,33 +194,62 @@ const CountBadge = styled.span<{ $active: boolean }>`
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
-  background: ${(p) => (p.$active ? Colors.primary : Colors.greyLightest)};
-  color: ${(p) => (p.$active ? Colors.black : Colors.greyDark)};
+  background: ${(p) =>
+    p.$active
+      ? TAB_STYLES[p.$tone].countActiveBackground
+      : Colors.greyLightest};
+  color: ${(p) =>
+    p.$active ? TAB_STYLES[p.$tone].countActiveColor : Colors.greyDark};
 `;
 
-const Group = styled.div`
+const Group = styled.section<{ $tone: GroupTone }>`
   margin-bottom: 64px;
+  padding: 28px 28px 24px;
+  background: ${(p) => GROUP_STYLES[p.$tone].background};
+  border: 1px solid ${(p) => GROUP_STYLES[p.$tone].border};
+  border-left: 6px solid ${(p) => GROUP_STYLES[p.$tone].accent};
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
 
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: 600px) {
+    padding: 20px 16px 18px;
+    border-left-width: 5px;
+  }
 `;
 
-const GroupHead = styled.div`
+const GroupHead = styled.div<{ $tone: GroupTone }>`
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  gap: 16px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 `;
 
-const GroupTitle = styled.h3`
+const GroupLabel = styled.span<{ $tone: GroupTone }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: ${(p) => GROUP_STYLES[p.$tone].accent};
+  color: ${(p) => (p.$tone === 'values' ? Colors.black : Colors.white)};
+  font-family: var(--font-montserrat, sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`;
+
+const GroupTitle = styled.h3<{ $tone: GroupTone }>`
   font-family: var(--font-bitter), serif;
   font-weight: 700;
   font-size: 32px;
   margin: 0;
-  color: ${Colors.black};
 `;
 
 const GroupSub = styled.p`
@@ -168,12 +280,59 @@ export const UAwardsCurrentWinners = ({
   const total =
     departmentWinners.length + valueWinners.length + staffWinners.length;
 
-  const cats: Array<{ key: CategoryKey; label: string; count: number }> = [
-    { key: 'all', label: 'All Honorees', count: total },
-    { key: 'dept', label: 'Department', count: departmentWinners.length },
-    { key: 'values', label: 'U-SU Values', count: valueWinners.length },
-    { key: 'staff', label: 'Full-Time Staff', count: staffWinners.length },
+  const cats: Array<{
+    key: CategoryKey;
+    label: string;
+    count: number;
+    tone: TabTone;
+  }> = [
+    { key: 'all', label: 'All', count: total, tone: 'all' },
+    {
+      key: 'dept',
+      label: 'Department',
+      count: departmentWinners.length,
+      tone: 'dept',
+    },
+    {
+      key: 'values',
+      label: 'U-SU Values',
+      count: valueWinners.length,
+      tone: 'values',
+    },
+    {
+      key: 'staff',
+      label: 'Full-Time',
+      count: staffWinners.length,
+      tone: 'staff',
+    },
   ];
+
+  const renderGroup = (
+    tone: GroupTone,
+    title: string,
+    sub: string,
+    winners: Awardee[],
+    badge: string | ((awardee: Awardee) => string),
+  ) => (
+    <Group $tone={tone}>
+      <GroupHead $tone={tone}>
+        <GroupLabel $tone={tone}>{GROUP_STYLES[tone].label}</GroupLabel>
+        <GroupTitle $tone={tone}>{title}</GroupTitle>
+      </GroupHead>
+      <GroupSub>{sub}</GroupSub>
+      <List>
+        {winners.map((a, i) => (
+          <AwardeeCard
+            key={a.id}
+            awardee={a}
+            badge={typeof badge === 'function' ? badge(a) : badge}
+            index={i}
+            isFirst={i === 0}
+          />
+        ))}
+      </List>
+    </Group>
+  );
 
   return (
     <Section id="winners" aria-labelledby="winners-title">
@@ -183,9 +342,9 @@ export const UAwardsCurrentWinners = ({
           <Title id="winners-title">This Year&apos;s Winners</Title>
           <Lede>
             Fourteen members of the U-SU team, both students and full-time
-            staff, nominated by their colleagues and selected by a committee to
-            be recognized for outstanding work, embodying our values, and
-            building the culture that makes Cal State LA feel like home.
+            staff, nominated by their colleagues and selected by committee to be
+            recognized for outstanding work, embodying our values, and building
+            the culture that makes Cal State LA feel like home.
           </Lede>
         </Head>
 
@@ -198,11 +357,14 @@ export const UAwardsCurrentWinners = ({
               aria-selected={active === c.key}
               aria-controls={`winners-panel-${c.key}`}
               tabIndex={0}
+              $tone={c.tone}
               $active={active === c.key}
               onClick={() => setActive(c.key)}
             >
               {c.label}
-              <CountBadge $active={active === c.key}>{c.count}</CountBadge>
+              <CountBadge $tone={c.tone} $active={active === c.key}>
+                {c.count}
+              </CountBadge>
             </Tab>
           ))}
         </TabStrip>
@@ -213,64 +375,29 @@ export const UAwardsCurrentWinners = ({
           aria-labelledby="winners-tab-all"
           hidden={active !== 'all'}
         >
-          <Group>
-            <GroupHead>
-              <GroupTitle>Student of the Year by Department</GroupTitle>
-              <GroupSub>
-                One from each U-SU department, nominated by their teams.
-              </GroupSub>
-            </GroupHead>
-            <List>
-              {departmentWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge="Student of the Year"
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'dept',
+            'Student of the Year by Department',
+            'One from each U-SU department, nominated by their teams.',
+            departmentWinners,
+            'Student of the Year',
+          )}
 
-          <Group>
-            <GroupHead>
-              <GroupTitle>U-SU Values Awards</GroupTitle>
-              <GroupSub>One student for each of our six core values.</GroupSub>
-            </GroupHead>
-            <List>
-              {valueWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge={a.value}
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'values',
+            'U-SU Values Awards',
+            'One student for each of our six core values.',
+            valueWinners,
+            (awardee) => awardee.value ?? '',
+          )}
 
-          <Group>
-            <GroupHead>
-              <GroupTitle>U-SU Values Champions</GroupTitle>
-              <GroupSub>
-                Two full-time staff members who embody every U-SU value, every
-                day.
-              </GroupSub>
-            </GroupHead>
-            <List>
-              {staffWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge="Full-Time Staff Honoree"
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'staff',
+            'U-SU Values Champions',
+            'Two full-time staff members who embody every U-SU value, every day.',
+            staffWinners,
+            'Full-Time Staff Honoree',
+          )}
         </Panel>
 
         <Panel
@@ -279,25 +406,13 @@ export const UAwardsCurrentWinners = ({
           aria-labelledby="winners-tab-dept"
           hidden={active !== 'dept'}
         >
-          <Group>
-            <GroupHead>
-              <GroupTitle>Student of the Year by Department</GroupTitle>
-              <GroupSub>
-                One from each U-SU department, nominated by their teams.
-              </GroupSub>
-            </GroupHead>
-            <List>
-              {departmentWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge="Student of the Year"
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'dept',
+            'Student of the Year by Department',
+            'One from each U-SU department, nominated by their teams.',
+            departmentWinners,
+            'Student of the Year',
+          )}
         </Panel>
 
         <Panel
@@ -306,23 +421,13 @@ export const UAwardsCurrentWinners = ({
           aria-labelledby="winners-tab-values"
           hidden={active !== 'values'}
         >
-          <Group>
-            <GroupHead>
-              <GroupTitle>U-SU Values Awards</GroupTitle>
-              <GroupSub>One student for each of our six core values.</GroupSub>
-            </GroupHead>
-            <List>
-              {valueWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge={a.value}
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'values',
+            'U-SU Values Awards',
+            'One student for each of our six core values.',
+            valueWinners,
+            (awardee) => awardee.value ?? '',
+          )}
         </Panel>
 
         <Panel
@@ -331,25 +436,13 @@ export const UAwardsCurrentWinners = ({
           aria-labelledby="winners-tab-staff"
           hidden={active !== 'staff'}
         >
-          <Group>
-            <GroupHead>
-              <GroupTitle>Full-Time Staff Honorees</GroupTitle>
-              <GroupSub>
-                Two staff members who embody every U-SU value, every day.
-              </GroupSub>
-            </GroupHead>
-            <List>
-              {staffWinners.map((a, i) => (
-                <AwardeeCard
-                  key={a.id}
-                  awardee={a}
-                  badge="Full-Time Staff Honoree"
-                  index={i}
-                  isFirst={i === 0}
-                />
-              ))}
-            </List>
-          </Group>
+          {renderGroup(
+            'staff',
+            'Full-Time Staff Honorees',
+            'Two staff members who embody every U-SU value, every day.',
+            staffWinners,
+            'Full-Time Staff Honoree',
+          )}
         </Panel>
       </Inner>
     </Section>

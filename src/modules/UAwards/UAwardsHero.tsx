@@ -53,8 +53,8 @@ const Media = styled.div<{ $loaded: boolean; $src: string }>`
     content: '';
     position: absolute;
     inset: 0;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 0;
   }
 
