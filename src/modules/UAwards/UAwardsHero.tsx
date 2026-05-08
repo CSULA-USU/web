@@ -233,7 +233,7 @@ const DEFAULT_META = [
 ];
 
 export const UAwardsHero = ({
-  imageSrc = '/u-awards/hero.jpg',
+  imageSrc = 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards.webp',
   imageAlt = 'Four U-Awards recipients on stage holding their plaques.',
   kicker = 'Cal State LA University-Student Union presents',
   yearLine = '',
