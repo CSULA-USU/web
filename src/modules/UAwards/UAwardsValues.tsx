@@ -176,8 +176,8 @@ export const UAwardsValues = ({ values }: UAwardsValuesProps) => {
           <Title id="values-title">Our Compass</Title>
           <Lede>
             These six values guide who we hire, how we work, and who we
-            celebrate. Every U-Awards honoree was nominated because they embody
-            at least one of them — usually more.
+            celebrate. Every honoree was nominated because they embody at least
+            one of them&mdash;usually more.
           </Lede>
         </Head>
         <Grid>

@@ -8,7 +8,7 @@ interface UAwardsHeroProps {
   yearLine?: string;
   title?: string;
   highlight?: string;
-  descriptionription?: string;
+  description?: string;
   meta?: Array<{ label: string; value: string }>;
 }
 
@@ -229,7 +229,8 @@ const Meta = styled.dl`
 `;
 
 const DEFAULT_META = [
-  { label: 'Hosted by', value: 'The U-SU Executive Office' },
+  { label: 'Honorees', value: 'Student and Full-time Staff' },
+  { label: 'Hosted by', value: 'U-SU Executive Office' },
 ];
 
 export const UAwardsHero = ({
@@ -239,7 +240,7 @@ export const UAwardsHero = ({
   yearLine = '',
   title = 'The',
   highlight = 'U-Awards',
-  descriptionription = 'Our annual celebration recognizing outstanding student staff and full-time employees who have demonstrated exceptional dedication and service to the Cal State LA University-Student Union community.',
+  description = 'Our annual celebration recognizing outstanding employees who have gone above and beyond in their dedication and service to the Cal State LA University-Student Union community',
   meta = DEFAULT_META,
 }: UAwardsHeroProps) => {
   return (
@@ -255,7 +256,7 @@ export const UAwardsHero = ({
           <Title>
             {title} <Accent>{highlight}</Accent>
           </Title>
-          <Description>{descriptionription}</Description>
+          <Description>{description}</Description>
           <Meta>
             {meta.map((m) => (
               <div key={m.label}>
