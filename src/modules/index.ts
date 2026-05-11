@@ -34,3 +34,4 @@ export * from './Backoffice';
 export * from './CircleImageAndTitle';
 export * from './ContactsBar';
 export * from './GraffixGuidelines';
+export * from './UAwards';

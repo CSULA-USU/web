@@ -314,14 +314,56 @@ export default function MeetingRooms() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-              mainEntity: faqs.map((faq) => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: faq.answer,
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'How do I reserve a meeting room at the Cal State LA U-SU?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Submit a reservation request online through our Events Request Form. You can also contact the reservations desk by phone at (323) 343-2465 or by email at USUReservationsDesk@calstatela.edu.',
+                  },
                 },
-              })),
+                {
+                  '@type': 'Question',
+                  name: 'Are meeting rooms at the Cal State LA U-SU open to the public?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Yes, meeting and event spaces at the University-Student Union are available to community members, Cal State LA students, faculty, and staff. Please contact the reservations desk for pricing and availability.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What is the largest event space available at the U-SU?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'The Los Angeles Room (A+B+C combined) accommodates up to 200 guests in theater layout. The U-SU Theater also seats 200 guests including 8 ADA seats.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Where is the University-Student Union at Cal State LA located?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'The University-Student Union is located at 5154 State University Dr., Los Angeles, CA 90032, on the Cal State LA campus in East Los Angeles near the San Gabriel Valley.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What equipment is included in meeting room rentals?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Most meeting rooms include built-in audio and visual systems, projector screens, whiteboards, and black-out shades. Equipment varies by room. Please visit individual room pages for more details.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What room setup options are available?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Meeting rooms can be arranged in Classroom, Theater, Reception, Discussion Circle, Conference, and Banquet layouts depending on your event needs.',
+                  },
+                },
+              ],
             }),
           }}
         />

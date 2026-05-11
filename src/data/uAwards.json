@@ -1,0 +1,900 @@
+{
+  "departments": [
+    {
+      "key": "graffix",
+      "label": "Graffix"
+    },
+    {
+      "key": "ccc",
+      "label": "Cross Cultural Centers"
+    },
+    {
+      "key": "csi",
+      "label": "Center for Student Involvement"
+    },
+    {
+      "key": "operations",
+      "label": "Operations"
+    },
+    {
+      "key": "recreation",
+      "label": "Recreation"
+    },
+    {
+      "key": "admin",
+      "label": "Admin"
+    }
+  ],
+  "values": [
+    {
+      "key": "accountability",
+      "title": "Accountability",
+      "iconSrc": "/vectors/about/business-deal.svg",
+      "body": "We are accountable to each other and to those we serve. We follow through, own our outcomes, and hold ourselves to a higher standard.",
+      "why": "Why it matters: students rely on us. Showing up daily and consistently means doing what we say we will, every time."
+    },
+    {
+      "key": "integrity",
+      "title": "Integrity",
+      "iconSrc": "/vectors/about/growth.svg",
+      "body": "We act with honesty and consistency, especially when no one is watching. Our word and our work line up.",
+      "why": "Why it matters: trust is earned in small, daily decisions and it is the foundation of everything else."
+    },
+    {
+      "key": "innovation",
+      "title": "Innovation",
+      "iconSrc": "/vectors/about/upgrade.svg",
+      "body": "We try things, learn quickly, and keep improving. We invite new ideas in and reshape what is possible for student life.",
+      "why": "Why it matters: the only constant in life is change. We are always looking for ways to iterate for the better"
+    },
+    {
+      "key": "community",
+      "title": "Community",
+      "iconSrc": "/vectors/about/community.svg",
+      "body": "We identify the specific needs of our community and intentionally create a culture of belonging for every Golden Eagle.",
+      "why": "Why it matters: nobody soars alone. The U-SU is at its best when every student feels at home on campus."
+    },
+    {
+      "key": "fun",
+      "title": "Fun",
+      "iconSrc": "/vectors/about/fireworks.svg",
+      "body": "We enjoy what we do, sharing joy and passion to instill an enjoyable, welcoming environment for students and staff alike.",
+      "why": "Why it matters: college is short. Memorable moments make the work meaningful for everyone involved."
+    },
+    {
+      "key": "connection",
+      "title": "Connection",
+      "iconSrc": "/vectors/about/connection.svg",
+      "body": "We prioritize genuine connections, appreciating the unique value in each other and the people we serve.",
+      "why": "Why it matters: relationships outlast roles. Strong connections turn coworkers into mentors and friends."
+    }
+  ],
+  "current": {
+    "departmentWinners": [
+      {
+        "id": "d1",
+        "name": "Maya Hernandez",
+        "dept": "Graffix",
+        "deptKey": "graffix",
+        "role": "Senior Designer",
+        "quote": "Maya redesigned the U-SU’s entire event-poster system this year, cutting turnaround time in half while raising the visual bar across every department. Her calm leadership in the studio is the reason newer designers feel safe to take creative risks."
+      },
+      {
+        "id": "d2",
+        "name": "Jordan Okafor",
+        "dept": "Cross Cultural Centers",
+        "deptKey": "ccc",
+        "role": "PASRC Programming Lead",
+        "quote": "Jordan led Heritage Showcase from a quiet studio session into a 400-person sold-out event in the LA Room. Beyond the numbers, every PASRC student who walked in left feeling seen — and that is the harder, more important win."
+      },
+      {
+        "id": "d3",
+        "name": "Priya Ramesh",
+        "dept": "Center for Student Involvement",
+        "deptKey": "csi",
+        "role": "Clubs & Orgs Coordinator",
+        "quote": "Priya rebuilt the club registration flow from the ground up, onboarded 38 new student orgs, and somehow made paperwork feel like hospitality. She is the reason CSI is the friendliest desk on campus."
+      },
+      {
+        "id": "d4",
+        "name": "Marcus Bell",
+        "dept": "Operations",
+        "deptKey": "operations",
+        "role": "Reservations Specialist",
+        "quote": "Marcus handles 200+ room reservations a month with a level of care most companies could only dream of. When the boardroom A/V went down 20 minutes before a senate meeting, he had a backup running before anyone noticed."
+      },
+      {
+        "id": "d5",
+        "name": "Sofia Cabrera",
+        "dept": "Recreation",
+        "deptKey": "recreation",
+        "role": "GENE Program Lead",
+        "quote": "Sofia turned the Game Room from a quiet study spot into the most-loved hangout on the third floor. Her tournaments brought in students who had never set foot in the U-SU before — and many of them now work for us."
+      },
+      {
+        "id": "d6",
+        "name": "Aaron Whitaker",
+        "dept": "Admin",
+        "deptKey": "admin",
+        "role": "Executive Office Assistant",
+        "quote": "Aaron keeps the Executive Office running with a quiet competence that makes everyone else’s job possible. He notices what others miss — and the U-SU is steadier because of it."
+      }
+    ],
+    "valueWinners": [
+      {
+        "id": "v1",
+        "name": "Daniela Vargas",
+        "value": "Accountability",
+        "dept": "Operations",
+        "deptKey": "operations",
+        "role": "Building Manager, Evenings",
+        "quote": "Daniela owns the night shift. When something goes wrong on a Tuesday at 9:47 PM, she is the one who finds the right person, files the right ticket, and stays until it is fixed. Accountability lives at her front desk."
+      },
+      {
+        "id": "v2",
+        "name": "Elijah Park",
+        "value": "Integrity",
+        "dept": "Center for Student Involvement",
+        "deptKey": "csi",
+        "role": "Fraternity & Sorority Life Mentor",
+        "quote": "Elijah said the hard thing this year, more than once, when it would have been easier to stay quiet. He held his peers to a standard, and they thanked him for it. That is integrity in practice."
+      },
+      {
+        "id": "v3",
+        "name": "Kyle Malone",
+        "value": "Innovation",
+        "dept": "Graffix",
+        "deptKey": "graffix",
+        "role": "Motion Designer",
+        "quote": "Kyle proposed and shipped our first motion-design system, then taught the rest of the studio how to use it. The work he did this year will outlive his time here — the highest bar for innovation."
+      },
+      {
+        "id": "v4",
+        "name": "Asaya Azah",
+        "value": "Community",
+        "dept": "Cross Cultural Centers",
+        "deptKey": "ccc",
+        "role": "GSRC Peer Educator",
+        "quote": "Asaya creates rooms where people actually exhale. Whether it is GSRC drop-in hours or the Cultural Grads ceremony, she sees who is on the edge of the conversation and pulls them in. That is community work."
+      },
+      {
+        "id": "v5",
+        "name": "Devon Trinh",
+        "value": "Fun",
+        "dept": "Recreation",
+        "deptKey": "recreation",
+        "role": "Game Room Lead",
+        "quote": "Devon turned a Friday-afternoon shift into something students plan their week around. His tournaments, themed nights, and unrepentant trash talk are the reason the third floor sounds like a real college."
+      },
+      {
+        "id": "v6",
+        "name": "Savana Coleman",
+        "value": "Connection",
+        "dept": "Cross Cultural Centers",
+        "deptKey": "ccc",
+        "role": "Cultural Grads Lead",
+        "quote": "Savana remembers the names. She remembers the majors. She remembers what someone said three weeks ago and asks how it is going. The trust she builds is the reason students keep coming back."
+      }
+    ],
+    "staffWinners": [
+      {
+        "id": "s1",
+        "name": "Dr. Renee Castillo",
+        "dept": "Center for Student Involvement",
+        "deptKey": "csi",
+        "role": "Director, Student Engagement",
+        "quote": "Renee mentors the people who mentor our students. The leadership pipeline she has built across CSI — from peer educators to professional staff — is one of the most important pieces of work happening at the U-SU, and most of it is invisible until it isn’t."
+      },
+      {
+        "id": "s2",
+        "name": "James Okonkwo",
+        "dept": "Operations",
+        "deptKey": "operations",
+        "role": "Director, Facilities & Reservations",
+        "quote": "James has spent twelve years making sure the lights, the rooms, and the people who run them are ready for whatever campus throws at us. When students say \"the U-SU just works,\" they are describing James’s work without knowing it."
+      }
+    ]
+  },
+  "past": [
+    {
+      "id": "p1",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Ana Reyes",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p2",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Cross Cultural Centers Student of the Year",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Devin Lee",
+      "role": "Studio Lead"
+    },
+    {
+      "id": "p3",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Center for Student Involvement Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Rachel Owens",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p4",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Tomás Cortez",
+      "role": "Front Desk Lead"
+    },
+    {
+      "id": "p5",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Bri Nguyen",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p6",
+      "year": 2024,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Sam Adekunle",
+      "role": "Senior Designer"
+    },
+    {
+      "id": "p7",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Accountability Award",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Lila Park",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p8",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Integrity Award",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Marcus Yu",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p9",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Innovation Award",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Hannah Choi",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p10",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Community Award",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Jaylen Ford",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p11",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Fun Award",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Kira Patel",
+      "role": "Programming Lead"
+    },
+    {
+      "id": "p12",
+      "year": 2024,
+      "type": "Values",
+      "cat": "Connection Award",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Noah Saito",
+      "role": "Reservations Specialist"
+    },
+    {
+      "id": "p13",
+      "year": 2024,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Ophelia Banks",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p14",
+      "year": 2024,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Pedro Ramos",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p15",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Quinn Davis",
+      "role": "Game Room Lead"
+    },
+    {
+      "id": "p16",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Cross Cultural Centers Student of the Year",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Rina Chen",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p17",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Center for Student Involvement Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Theo Martin",
+      "role": "Studio Lead"
+    },
+    {
+      "id": "p18",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Uma Iqbal",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p19",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Vince Carter",
+      "role": "Front Desk Lead"
+    },
+    {
+      "id": "p20",
+      "year": 2023,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Wes Holloway",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p21",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Accountability Award",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Xiomara Vega",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p22",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Integrity Award",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Yara Suleiman",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p23",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Innovation Award",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Zane Carter",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p24",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Community Award",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Aiden Tran",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p25",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Fun Award",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Bella Romero",
+      "role": "Programming Lead"
+    },
+    {
+      "id": "p26",
+      "year": 2023,
+      "type": "Values",
+      "cat": "Connection Award",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Cole Watson",
+      "role": "Reservations Specialist"
+    },
+    {
+      "id": "p27",
+      "year": 2023,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Dani Ortega",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p28",
+      "year": 2023,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Emery Park",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p29",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Felix Ramos",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p30",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Cross Cultural Centers Student of the Year",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Greta Lin",
+      "role": "Game Room Lead"
+    },
+    {
+      "id": "p31",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Center for Student Involvement Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Henry Ade",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p32",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Iris Tanaka",
+      "role": "Studio Lead"
+    },
+    {
+      "id": "p33",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "June Kim",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p34",
+      "year": 2022,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Kai Nakamura",
+      "role": "Front Desk Lead"
+    },
+    {
+      "id": "p35",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Accountability Award",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Lena Brooks",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p36",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Integrity Award",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Miles Avery",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p37",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Innovation Award",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Nora Bishop",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p38",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Community Award",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Owen Hayes",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p39",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Fun Award",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Page Campbell",
+      "role": "Programming Lead"
+    },
+    {
+      "id": "p40",
+      "year": 2022,
+      "type": "Values",
+      "cat": "Connection Award",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Reese Mendez",
+      "role": "Reservations Specialist"
+    },
+    {
+      "id": "p41",
+      "year": 2022,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Ana Reyes",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p42",
+      "year": 2022,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Devin Lee",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p43",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Rachel Owens",
+      "role": "Peer Educator"
+    },
+    {
+      "id": "p44",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Cross Cultural Centers Student of the Year",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Tomás Cortez",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p45",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Center for Student Involvement Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Bri Nguyen",
+      "role": "Game Room Lead"
+    },
+    {
+      "id": "p46",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Sam Adekunle",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p47",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Lila Park",
+      "role": "Studio Lead"
+    },
+    {
+      "id": "p48",
+      "year": 2021,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Marcus Yu",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p49",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Accountability Award",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Hannah Choi",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p50",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Integrity Award",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Jaylen Ford",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p51",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Innovation Award",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Kira Patel",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p52",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Community Award",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Noah Saito",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p53",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Fun Award",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Ophelia Banks",
+      "role": "Programming Lead"
+    },
+    {
+      "id": "p54",
+      "year": 2021,
+      "type": "Values",
+      "cat": "Connection Award",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Pedro Ramos",
+      "role": "Reservations Specialist"
+    },
+    {
+      "id": "p55",
+      "year": 2021,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Quinn Davis",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p56",
+      "year": 2021,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Rina Chen",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p57",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Theo Martin",
+      "role": "Office Assistant"
+    },
+    {
+      "id": "p58",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Cross Cultural Centers Student of the Year",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Uma Iqbal",
+      "role": "Peer Educator"
+    },
+    {
+      "id": "p59",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Center for Student Involvement Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Vince Carter",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p60",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Wes Holloway",
+      "role": "Game Room Lead"
+    },
+    {
+      "id": "p61",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Xiomara Vega",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p62",
+      "year": 2020,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Yara Suleiman",
+      "role": "Studio Lead"
+    },
+    {
+      "id": "p63",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Accountability Award",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Zane Carter",
+      "role": "Building Manager"
+    },
+    {
+      "id": "p64",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Integrity Award",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Aiden Tran",
+      "role": "Cultural Grads Lead"
+    },
+    {
+      "id": "p65",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Innovation Award",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Bella Romero",
+      "role": "Events Crew"
+    },
+    {
+      "id": "p66",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Community Award",
+      "dept": "Cross Cultural Centers",
+      "deptKey": "ccc",
+      "name": "Cole Watson",
+      "role": "Boardroom Tech"
+    },
+    {
+      "id": "p67",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Fun Award",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Dani Ortega",
+      "role": "Programming Lead"
+    },
+    {
+      "id": "p68",
+      "year": 2020,
+      "type": "Values",
+      "cat": "Connection Award",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Emery Park",
+      "role": "Reservations Specialist"
+    },
+    {
+      "id": "p69",
+      "year": 2020,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Felix Ramos",
+      "role": "Full-Time Staff"
+    },
+    {
+      "id": "p70",
+      "year": 2020,
+      "type": "Staff",
+      "cat": "Full-Time Staff Honoree",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Greta Lin",
+      "role": "Full-Time Staff"
+    }
+  ]
+}

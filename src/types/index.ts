@@ -8,4 +8,4 @@ export * from './Presence';
 export * from './Supabase';
 export * from './UKrew';
 export * from './Table';
-export * from './Backoffice';
+export * from './UAwards';

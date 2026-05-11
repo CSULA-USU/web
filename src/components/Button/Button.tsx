@@ -114,12 +114,13 @@ export const Button = React.forwardRef<
   ButtonProps
 >((props, ref) => {
   const ButtonComponent: any = props.href ? StyledAnchor : StyledButton;
+  const role = props.href ? undefined : 'button';
   return (
     <ButtonComponent
       {...props}
       ref={ref}
       target={props.isExternalLink ? '_blank' : null}
-      role={props.href ? '' : 'button'}
+      role={role}
       rel="noopener noreferrer"
     />
   );
