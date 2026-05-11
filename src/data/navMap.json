@@ -29,7 +29,17 @@
       },
       {
         "text": "U-Krew",
-        "href": "about/u-krew"
+        "href": "about/u-krew",
+        "sub": [
+          {
+            "text": "U-Krew Home",
+            "href": "/about/u-krew"
+          },
+          {
+            "text": "U-Awards",
+            "href": "/about/u-krew/awards"
+          }
+        ]
       }
     ]
   },
