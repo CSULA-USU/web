@@ -76,3 +76,58 @@ ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas
 <!-- Add Notion link and instructions here -->
 
 New components should be documented at
+
+## Project Guidelines: Design System + Architecture
+
+### Scope Discipline
+
+Do not perform repo-wide or codewide searches unless explicitly instructed.
+
+Before searching or refactoring, limit scope to the minimum set of files necessary for the task.
+
+Default rule:
+
+- inspect only the files named in the prompt
+- if additional files are needed, expand scope narrowly and intentionally
+- do not scan unrelated directories "just in case"
+
+Forbidden unless explicitly requested:
+
+- repo-wide audits
+- broad/global searches across app, modules, routes, APIs, and pages
+- speculative refactors outside the named scope
+
+If a task is scoped to components, stay inside:
+
+- `components/`
+- explicitly named supporting files such as `globals.css`, theme files, or barrel exports
+
+If a task is scoped to pages, stay only inside the directories named in the prompt.
+Do not also scan unrelated components, routes, APIs, or other app areas unless explicitly required.
+
+When refactoring a large area, work in narrow batches and only inspect the files needed for the current batch.
+
+### Token Efficiency
+
+Minimize token usage by avoiding unnecessary broad searches and repeated file reads.
+
+Prefer:
+
+- targeted file inspection
+- narrow refactors
+- focused summaries
+- working directory by directory
+- batching related files instead of scanning everything at once
+
+Avoid:
+
+- re-reading already-known files without a reason
+- scanning entire directories when the task names specific files
+- generating long exploratory audits unless explicitly requested
+
+### No Parallel Explore Agents
+
+Never spawn parallel explore agents when files and patterns are explicitly named in the prompt.
+The prompt is the plan. Read one file, edit it, confirm, then move to the next.
+
+Only use explore agents when the task requires genuine discovery across unknown files where the answer cannot be known upfront.

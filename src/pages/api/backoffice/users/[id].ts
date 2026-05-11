@@ -6,62 +6,43 @@ import {
   parseNumericId,
   serverError,
 } from 'lib/api';
-import {
-  isRegisteredBackofficePolicy,
-  requireBackofficeResourcePolicy,
-} from 'lib/backoffice';
+import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
 
 type UpdateUserBody = {
   email?: string;
-  role?: number;
-  department?: number;
-  policies?: string[];
-};
-
-const validatePolicies = (policies: string[] = []) => {
-  return policies.every(isRegisteredBackofficePolicy);
+  department_id?: number | null;
+  is_active?: boolean;
 };
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
 
-  const auth = await requireBackofficeResourcePolicy(
-    req,
-    res,
-    'backofficeUsers',
-  );
-
+  const auth = await requireBackofficePolicyV2(req, res, {
+    pageKey: 'accessManagement',
+    action: 'edit',
+    scope: '*',
+  });
   if (!auth.ok) return;
 
   const id = parseNumericId(req.query.id);
-
-  if (id === null) {
-    return badRequest(res, 'Invalid user id.');
-  }
+  if (id === null) return badRequest(res, 'Invalid user id.');
 
   if (req.method === 'PATCH') {
-    const { email, role, department, policies } = req.body as UpdateUserBody;
+    const { email, department_id, is_active } = req.body as UpdateUserBody;
 
-    if (policies !== undefined) {
-      if (!Array.isArray(policies) || !validatePolicies(policies)) {
-        return badRequest(res, 'One or more policies are invalid.');
-      }
-    }
-
-    const updates = {
-      ...(email !== undefined ? { email: email.trim().toLowerCase() } : {}),
-      ...(role !== undefined ? { role } : {}),
-      ...(department !== undefined ? { department } : {}),
-      ...(policies !== undefined ? { policies } : {}),
-    };
+    const updates: Record<string, unknown> = {};
+    if (email !== undefined) updates.email = email.trim().toLowerCase();
+    if (department_id !== undefined) updates.department_id = department_id;
+    if (is_active !== undefined) updates.is_active = is_active;
 
     if (Object.keys(updates).length === 0) {
-      return badRequest(res, 'No user updates provided.');
+      return badRequest(res, 'No updates provided.');
     }
 
     const { data, error } = await supabaseAdmin
-      .from('backoffice_users')
+      .schema('backoffice_v2')
+      .from('users')
       .update(updates)
       .eq('id', id)
       .is('deleted_at', null)
@@ -69,12 +50,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         `
           id,
           email,
-          role,
-          department,
-          policies,
-          deleted_at,
-          backoffice_roles(id, role_name),
-          backoffice_departments(id, department_name, department_fullname)
+          is_active,
+          departments(id, department_key, department_name, department_fullname)
         `,
       )
       .single();
@@ -87,18 +64,16 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === 'DELETE') {
     if (auth.user.id === id) {
-      return badRequest(res, 'You cannot delete your own backoffice user.');
+      return badRequest(res, 'You cannot deactivate your own account.');
     }
 
     const { data, error } = await supabaseAdmin
-      .from('backoffice_users')
-      .update({
-        deleted_at: new Date().toISOString(),
-        deleted_by: auth.user.email,
-      })
+      .schema('backoffice_v2')
+      .from('users')
+      .update({ is_active: false, deleted_at: new Date().toISOString() })
       .eq('id', id)
       .is('deleted_at', null)
-      .select('id, email, deleted_at, deleted_by')
+      .select('id, email, is_active, deleted_at')
       .single();
 
     if (error) return serverError(res, error.message);

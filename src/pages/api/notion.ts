@@ -14,8 +14,12 @@ async function handler(req: any, res: NextApiResponse<any>) {
 
   const auth = await requireBackofficeDepartmentAccess(req, res, {
     requestedDepartment: department_id,
-    viewAllPolicy: 'graffixRequests:view:*',
-    viewOwnDepartmentPolicy: 'graffixRequests:view:ownDepartment',
+    viewAllPolicy: { pageKey: 'graffixRequests', action: 'view', scope: '*' },
+    viewOwnDepartmentPolicy: {
+      pageKey: 'graffixRequests',
+      action: 'view',
+      scope: 'ownDepartment',
+    },
   });
 
   if (!auth.ok) return;

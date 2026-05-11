@@ -2,16 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import { getCurrentBackofficeUserByEmail } from './currentUser';
-import { hasPolicy } from './permissions';
 
-export const requireBackofficePolicyV2 = async (
+export const requireCurrentBackofficeUser = async (
   req: NextApiRequest,
   res: NextApiResponse,
-  policy: {
-    pageKey: string;
-    action: string;
-    scope: string;
-  },
 ) => {
   const session = await getServerSession(req, res, authOptions);
 
@@ -34,15 +28,10 @@ export const requireBackofficePolicyV2 = async (
     return { ok: false as const };
   }
 
-  if (!hasPolicy(user, policy)) {
-    res.status(403).json({ error: 'Forbidden' });
-    return { ok: false as const };
-  }
-
   return {
     ok: true as const,
     user,
   };
 };
 
-export const requireBackofficePolicy = requireBackofficePolicyV2;
+export const requireCurrentBackofficeUserV2 = requireCurrentBackofficeUser;

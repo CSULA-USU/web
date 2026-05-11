@@ -8,6 +8,7 @@ import { Typography } from 'components';
 import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import { Colors } from 'theme';
+import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 
 type Props = {
   showSearch?: boolean;
@@ -92,14 +93,27 @@ const NavButton = styled.button<{ $active?: boolean }>`
 export default function BackofficeSideBar({ showSearch = true }: Props) {
   const router = useRouter();
   const navSections = backOfficeLinks as BackofficeLinkSection[];
+  const { user, loading: userLoading } = useBackofficeUser();
 
   const [query, setQuery] = useState('');
 
   const filteredSections = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return navSections;
 
-    return navSections
+    const policyFiltered = navSections
+      .map((section) => ({
+        ...section,
+        items: section.items.filter((item) => {
+          if (!item.pageKey) return true;
+          if (userLoading || !user) return true;
+          return canViewBackofficePage(user.effectivePolicies, item.pageKey);
+        }),
+      }))
+      .filter((section) => section.items.length > 0);
+
+    if (!q) return policyFiltered;
+
+    return policyFiltered
       .map((section) => ({
         ...section,
         items: section.items.filter((item) => {
@@ -109,7 +123,7 @@ export default function BackofficeSideBar({ showSearch = true }: Props) {
         }),
       }))
       .filter((section) => section.items.length > 0);
-  }, [navSections, query]);
+  }, [navSections, query, user, userLoading]);
 
   const handleNavigate = (href: string) => {
     router.push(href);

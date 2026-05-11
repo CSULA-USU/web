@@ -2,12 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from 'next-auth';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { getCurrentBackofficeUserByEmail } from './currentUser';
-import { canAccessDepartment } from './permissions';
+import { hasPolicy } from './permissions';
+
+type PolicyArg = { pageKey: string; action: string; scope: string };
 
 type RequireBackofficeDepartmentAccessOptions = {
   requestedDepartment: string | string[] | undefined;
-  viewAllPolicy: string;
-  viewOwnDepartmentPolicy: string;
+  viewAllPolicy: PolicyArg;
+  viewOwnDepartmentPolicy: PolicyArg;
 };
 
 export const requireBackofficeDepartmentAccess = async (
@@ -40,14 +42,13 @@ export const requireBackofficeDepartmentAccess = async (
     return { ok: false as const };
   }
 
-  const hasAccess = canAccessDepartment({
-    user,
-    requestedDepartment,
-    viewAllPolicy,
-    viewOwnDepartmentPolicy,
-  });
+  const canViewAll = hasPolicy(user, viewAllPolicy);
+  const canViewOwn = hasPolicy(user, viewOwnDepartmentPolicy);
+  const deptMatches =
+    (user.departmentName ?? '').toLowerCase() ===
+    requestedDepartment.toLowerCase();
 
-  if (!hasAccess) {
+  if (!canViewAll && !(canViewOwn && deptMatches)) {
     res.status(403).json({
       error: 'You do not have access to view this department.',
     });

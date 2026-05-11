@@ -21,7 +21,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     return res.status(404).send({ error: 'User not found.' });
   }
 
-  if (hasPolicy(user, 'graffixRequests:view:*')) {
+  if (
+    hasPolicy(user, { pageKey: 'graffixRequests', action: 'view', scope: '*' })
+  ) {
     return res.status(200).json({ department: 'all' });
   }
 

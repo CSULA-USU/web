@@ -243,10 +243,16 @@ export async function getServerSideProps(ctx: any) {
     return { props: { initialBanner: null, error: 'Unauthorized' } };
   }
 
-  if (!hasPolicy(user, 'siteContent:edit:announcementBanner')) {
+  if (
+    !hasPolicy(user, {
+      pageKey: 'announcementBanner',
+      action: 'view',
+      scope: '*',
+    })
+  ) {
     return {
       redirect: {
-        destination: '/backoffice?error=unauthorized',
+        destination: '/backoffice',
         permanent: false,
       },
     };

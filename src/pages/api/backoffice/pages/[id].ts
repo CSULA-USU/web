@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   allowMethods,
   badRequest,
-  forbidden,
   notFound,
   parseNumericId,
   serverError,
@@ -10,8 +9,9 @@ import {
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
 
-type UpdateRoleBody = {
-  role_name?: string;
+type UpdatePageBody = {
+  title?: string;
+  route?: string;
   description?: string;
   is_active?: boolean;
 };
@@ -27,23 +27,23 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!auth.ok) return;
 
   const id = parseNumericId(req.query.id);
-  if (id === null) return badRequest(res, 'Invalid role id.');
+  if (id === null) return badRequest(res, 'Invalid page id.');
 
-  const { data: role } = await supabaseAdmin
+  const { data: page } = await supabaseAdmin
     .schema('backoffice_v2')
-    .from('roles')
-    .select('id, is_system')
+    .from('pages')
+    .select('id')
     .eq('id', id)
     .maybeSingle();
 
-  if (!role) return notFound(res, 'Role not found.');
-  if (role.is_system) return forbidden(res, 'System roles cannot be modified.');
+  if (!page) return notFound(res, 'Page not found.');
 
   if (req.method === 'PATCH') {
-    const { role_name, description, is_active } = req.body as UpdateRoleBody;
+    const { title, route, description, is_active } = req.body as UpdatePageBody;
 
     const updates: Record<string, unknown> = {};
-    if (role_name !== undefined) updates.role_name = role_name.trim();
+    if (title !== undefined) updates.title = title.trim();
+    if (route !== undefined) updates.route = route.trim();
     if (description !== undefined) updates.description = description.trim();
     if (is_active !== undefined) updates.is_active = is_active;
 
@@ -53,10 +53,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const { data, error } = await supabaseAdmin
       .schema('backoffice_v2')
-      .from('roles')
+      .from('pages')
       .update(updates)
       .eq('id', id)
-      .select('id, role_key, role_name, description, is_system, is_active')
+      .select('id, page_key, title, route, description, is_active')
       .single();
 
     if (error) return serverError(res, error.message);
@@ -68,14 +68,24 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const deleteSteps = [
       supabaseAdmin
         .schema('backoffice_v2')
-        .from('user_roles')
+        .from('user_policies')
         .delete()
-        .eq('role_id', id),
+        .eq('page_id', id),
       supabaseAdmin
         .schema('backoffice_v2')
         .from('role_policies')
         .delete()
-        .eq('role_id', id),
+        .eq('page_id', id),
+      supabaseAdmin
+        .schema('backoffice_v2')
+        .from('page_actions')
+        .delete()
+        .eq('page_id', id),
+      supabaseAdmin
+        .schema('backoffice_v2')
+        .from('page_scopes')
+        .delete()
+        .eq('page_id', id),
     ];
 
     for (const step of deleteSteps) {
@@ -85,7 +95,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const { error } = await supabaseAdmin
       .schema('backoffice_v2')
-      .from('roles')
+      .from('pages')
       .delete()
       .eq('id', id);
 

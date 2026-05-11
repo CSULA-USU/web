@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -7,15 +7,16 @@ import {
   Select,
   Typography,
 } from 'components';
-import {
-  Page,
-  PolicyList,
-  AccessManagementUserModal,
-  ConfirmDialog,
-} from 'modules';
+import { Page, PolicyList } from 'modules';
 import { Table as FlexibleTable } from 'components';
 import { TableData } from 'types';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
+import { ConfirmDialog } from 'modules/Modals/ConfirmDialog';
+import {
+  AccessManagementUserModal,
+  AccessManagementRoleModal,
+  AccessManagementPageModal,
+} from 'modules/Backoffice/AccessManagement';
 import {
   formatRoleName,
   formatDepartmentName,
@@ -23,13 +24,22 @@ import {
 import { media, Spaces } from 'theme';
 import styled from 'styled-components';
 import { useToast } from 'context/ToastContext';
+import { useBackofficePageAccess } from 'hooks';
+import type {
+  V2UserRow,
+  V2RoleRow,
+  V2PageRow,
+  V2DepartmentRow,
+  V2Role,
+} from 'modules/Backoffice/AccessManagement';
+
+// ── styled ────────────────────────────────────────────────────────────────────
 
 const NoBottomPaddingContainer = styled(FluidContainer)`
   padding-bottom: 0;
   ${media('desktop')`
     padding-bottom: 0;
   `}
-
   ${media('mobile')`
     padding-bottom: 0;
   `}
@@ -49,197 +59,151 @@ const ControlsRow = styled(FluidContainer)`
   }
 `;
 
-type BackofficeUserRow = {
-  id: number;
-  email: string;
-  role: number;
-  department: number;
-  policies: string[];
-  backoffice_roles?: {
-    id: number;
-    role_name: string;
-  };
-  backoffice_departments?: {
-    id: number;
-    department_name: string;
-    department_fullname: string;
-  };
-};
+// ── helpers ───────────────────────────────────────────────────────────────────
 
-type BackofficeRoleRow = {
-  id: number;
-  role_name: string;
-  policies: string[];
-  users_count: number;
-  is_system: boolean;
-};
+function policiesToStrings(
+  policies: { page_key: string; action: string; scope: string }[],
+): string[] {
+  return policies.map((p) => `${p.page_key}:${p.action}:${p.scope}`);
+}
 
-type BackofficeDepartmentRow = {
-  id: number;
-  department_name: string;
-  department_fullname: string;
-  users_count: number;
-};
+type SectionKey = 'users' | 'roles' | 'pages' | 'departments';
+
+// ── page ──────────────────────────────────────────────────────────────────────
 
 export default function AccessManagementPage() {
-  const [users, setUsers] = useState<BackofficeUserRow[]>([]);
-  const [roles, setRoles] = useState<BackofficeRoleRow[]>([]);
-  const [departments, setDepartments] = useState<BackofficeDepartmentRow[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedSection, setSelectedSection] = useState<
-    'users' | 'roles' | 'departments'
-  >('users');
-  const [editingUser, setEditingUser] = useState<BackofficeUserRow | null>(
-    null,
-  );
-  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
-  const [deletingUser, setDeletingUser] = useState<BackofficeUserRow | null>(
-    null,
-  );
   const { showToast } = useToast();
+  const { loading: accessLoading } = useBackofficePageAccess(
+    'accessManagement',
+    'view',
+    ['*'],
+  );
 
-  const refreshAccessManagementData = async () => {
-    const [usersRes, rolesRes, departmentsRes] = await Promise.all([
-      fetch('/api/backoffice/users'),
-      fetch('/api/backoffice/roles'),
-      fetch('/api/backoffice/departments'),
-    ]);
+  const [users, setUsers] = useState<V2UserRow[]>([]);
+  const [roles, setRoles] = useState<V2RoleRow[]>([]);
+  const [pages, setPages] = useState<V2PageRow[]>([]);
+  const [departments, setDepartments] = useState<V2DepartmentRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedSection, setSelectedSection] = useState<SectionKey>('users');
 
-    if (!usersRes.ok || !rolesRes.ok || !departmentsRes.ok) {
-      throw new Error('Failed to load access management data.');
-    }
+  // ── modal state ──────────────────────────────────────────────────────────
+  const [editingUser, setEditingUser] = useState<V2UserRow | null | undefined>(
+    undefined,
+  );
+  const [editingRole, setEditingRole] = useState<V2RoleRow | null | undefined>(
+    undefined,
+  );
+  const [editingPage, setEditingPage] = useState<V2PageRow | null | undefined>(
+    undefined,
+  );
 
-    const [usersData, rolesData, departmentsData] = await Promise.all([
-      usersRes.json(),
-      rolesRes.json(),
-      departmentsRes.json(),
-    ]);
+  // ── confirm state ────────────────────────────────────────────────────────
+  const [confirmDeactivateUser, setConfirmDeactivateUser] =
+    useState<V2UserRow | null>(null);
+  const [confirmDeleteRole, setConfirmDeleteRole] = useState<V2RoleRow | null>(
+    null,
+  );
+  const [confirmDeletePage, setConfirmDeletePage] = useState<V2PageRow | null>(
+    null,
+  );
 
-    setUsers(usersData);
-    setRoles(rolesData);
-    setDepartments(departmentsData);
-  };
+  // editingUser/Role/Page: undefined = closed, null = create, value = edit
 
-  useEffect(() => {
-    const fetchAccessManagementData = async () => {
-      try {
-        setLoading(true);
-
-        const [usersRes, rolesRes, departmentsRes] = await Promise.all([
-          fetch('/api/backoffice/users'),
-          fetch('/api/backoffice/roles'),
-          fetch('/api/backoffice/departments'),
-        ]);
-
-        if (!usersRes.ok || !rolesRes.ok || !departmentsRes.ok) {
-          throw new Error('Failed to load access management data.');
-        }
-
-        const [usersData, rolesData, departmentsData] = await Promise.all([
-          usersRes.json(),
-          rolesRes.json(),
-          departmentsRes.json(),
-        ]);
-
-        setUsers(usersData);
-        setRoles(rolesData);
-        setDepartments(departmentsData);
-      } catch (err) {
-        showToast(
-          err instanceof Error
-            ? err.message
-            : 'Something went wrong loading access management data.',
-          'error',
-        );
-      } finally {
-        setLoading(false);
+  const fetchAll = useCallback(async () => {
+    try {
+      setLoading(true);
+      const [uRes, rRes, pRes, dRes] = await Promise.all([
+        fetch('/api/backoffice/users'),
+        fetch('/api/backoffice/roles'),
+        fetch('/api/backoffice/pages'),
+        fetch('/api/backoffice/departments'),
+      ]);
+      if (!uRes.ok || !rRes.ok || !pRes.ok || !dRes.ok) {
+        throw new Error('Failed to load access management data.');
       }
-    };
-
-    fetchAccessManagementData();
+      const [usersData, rolesData, pagesData, departmentsData] =
+        await Promise.all([uRes.json(), rRes.json(), pRes.json(), dRes.json()]);
+      setUsers(usersData);
+      setRoles(rolesData);
+      setPages(pagesData);
+      setDepartments(departmentsData);
+    } catch (err) {
+      showToast(
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong loading data.',
+        'error',
+      );
+    } finally {
+      setLoading(false);
+    }
   }, [showToast]);
 
-  const handleUserSubmit = async (value: {
-    email: string;
-    role: number | '';
-    department: number | '';
-    policies: string[];
-  }) => {
-    const endpoint = editingUser
-      ? `/api/backoffice/users/${editingUser.id}`
-      : '/api/backoffice/users';
+  useEffect(() => {
+    fetchAll();
+  }, [fetchAll]);
 
-    const method = editingUser ? 'PATCH' : 'POST';
+  // ── deactivate / delete handlers ─────────────────────────────────────────
 
-    const res = await fetch(endpoint, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(value),
-    });
-
-    if (!res.ok) {
-      showToast('Failed to save user.', 'error');
-      return;
-    }
-
-    setIsUserModalOpen(false);
-    setEditingUser(null);
-    await refreshAccessManagementData();
-    showToast(
-      editingUser ? 'User updated successfully.' : 'User added successfully.',
-      'success',
-    );
-  };
-
-  const handleDeleteUser = async () => {
-    if (!deletingUser) return;
-
-    const res = await fetch(`/api/backoffice/users/${deletingUser.id}`, {
+  const handleDeactivateUser = async (user: V2UserRow) => {
+    setConfirmDeactivateUser(null);
+    const res = await fetch(`/api/backoffice/users/${user.id}`, {
       method: 'DELETE',
     });
-
     if (!res.ok) {
-      showToast('Failed to delete user.', 'error');
+      const data = await res.json();
+      showToast(data.error ?? 'Failed to deactivate user.', 'error');
       return;
     }
-
-    setDeletingUser(null);
-    await refreshAccessManagementData();
-    showToast('User deleted successfully.', 'success');
+    showToast('User deactivated.', 'success');
+    fetchAll();
   };
+
+  const handleDeleteRole = async (role: V2RoleRow) => {
+    setConfirmDeleteRole(null);
+    const res = await fetch(`/api/backoffice/roles/${role.id}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      showToast(data.error ?? 'Failed to delete role.', 'error');
+      return;
+    }
+    showToast('Role deleted.', 'success');
+    fetchAll();
+  };
+
+  const handleDeletePage = async (page: V2PageRow) => {
+    setConfirmDeletePage(null);
+    const res = await fetch(`/api/backoffice/pages/${page.id}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      showToast(data.error ?? 'Failed to delete page.', 'error');
+      return;
+    }
+    showToast('Page deleted.', 'success');
+    fetchAll();
+  };
+
+  // ── table definitions ────────────────────────────────────────────────────
 
   const userTableData: TableData = {
     id: 'users',
     ariaLabel: 'Backoffice users',
     caption: 'Users',
-    headerColors: {
-      backgroundColor: 'greyLightest',
-      textColor: 'black',
-    },
+    headerColors: { backgroundColor: 'greyLightest', textColor: 'black' },
     columns: [
       {
         id: 'email',
         label: 'Email',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '280px',
-        render: (row: any) => (
+        minWidth: '260px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {row.original.email}
-          </Typography>
-        ),
-      },
-      {
-        id: 'role',
-        label: 'Role',
-        backgroundColor: 'white',
-        textColor: 'black',
-        minWidth: '160px',
-        render: (row: any) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatRoleName(
-              row.original.backoffice_roles?.role_name || 'No role',
-            )}
           </Typography>
         ),
       },
@@ -248,27 +212,54 @@ export default function AccessManagementPage() {
         label: 'Department',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '180px',
-        render: (row: any) => (
+        minWidth: '160px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDepartmentName(
-              row.original.backoffice_departments?.department_name ||
-                'No department',
-            )}
+            {row.original.department
+              ? formatDepartmentName(row.original.department.department_name)
+              : '—'}
           </Typography>
         ),
       },
       {
-        id: 'policies',
-        label: 'User Overrides',
+        id: 'roles',
+        label: 'Roles',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '320px',
-        render: (row: any) => (
+        minWidth: '180px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.roles.length > 0
+              ? row.original.roles
+                  .map((r: V2Role) => formatRoleName(r.role_name))
+                  .join(', ')
+              : '—'}
+          </Typography>
+        ),
+      },
+      {
+        id: 'direct_access',
+        label: 'Direct Access',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '300px',
+        render: (row) => (
           <PolicyList
-            policies={row.original.policies}
-            emptyMessage="No user-specific overrides"
+            policies={policiesToStrings(row.original.policies)}
+            emptyMessage="No direct policies"
           />
+        ),
+      },
+      {
+        id: 'status',
+        label: 'Status',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '100px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.is_active ? 'Active' : 'Inactive'}
+          </Typography>
         ),
       },
       {
@@ -277,39 +268,39 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '120px',
-        render: (row: any) => (
-          <FluidContainer
-            padding="0"
-            flex
-            flexDirection="column"
-            gap={Spaces.sm}
-          >
-            <Button
-              type="button"
-              variant="edit"
-              onClick={() => {
-                setEditingUser(row.original);
-                setIsUserModalOpen(true);
-              }}
+        render: (row) => {
+          const user: V2UserRow = row.original;
+          return (
+            <FluidContainer
+              padding="0"
+              flex
+              flexDirection="column"
+              gap={Spaces.sm}
             >
-              Edit
-            </Button>
-            <Button
-              type="button"
-              variant="delete"
-              onClick={() => setDeletingUser(row.original)}
-            >
-              Delete
-            </Button>
-          </FluidContainer>
-        ),
+              <Button
+                type="button"
+                variant="edit"
+                onClick={() => setEditingUser(user)}
+              >
+                Edit
+              </Button>
+              {user.is_active && (
+                <Button
+                  type="button"
+                  variant="delete"
+                  onClick={() => setConfirmDeactivateUser(user)}
+                >
+                  Deactivate
+                </Button>
+              )}
+            </FluidContainer>
+          );
+        },
       },
     ],
     rows: users.map((user) => ({
       id: String(user.id),
-      values: {
-        email: user.email,
-      },
+      values: { email: user.email },
       original: user,
     })),
   };
@@ -318,44 +309,59 @@ export default function AccessManagementPage() {
     id: 'roles',
     ariaLabel: 'Backoffice roles',
     caption: 'Roles',
-    headerColors: {
-      backgroundColor: 'greyLightest',
-      textColor: 'black',
-    },
+    headerColors: { backgroundColor: 'greyLightest', textColor: 'black' },
     columns: [
       {
         id: 'role_name',
         label: 'Role',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '220px',
-        render: (row: any) => (
+        minWidth: '200px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {formatRoleName(row.original.role_name)}
+            {row.original.is_system && (
+              <Typography as="span" variant="label" size="sm" weight="400">
+                {' '}
+                (System)
+              </Typography>
+            )}
           </Typography>
         ),
       },
       {
-        id: 'policies',
-        label: 'Permissions',
+        id: 'description',
+        label: 'Description',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '360px',
-        render: (row: any) => (
+        minWidth: '220px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.description || '—'}
+          </Typography>
+        ),
+      },
+      {
+        id: 'role_access',
+        label: 'Policies',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '340px',
+        render: (row) => (
           <PolicyList
-            policies={row.original.policies}
-            emptyMessage="No permissions assigned"
+            policies={policiesToStrings(row.original.policies)}
+            emptyMessage="No policies"
             align="left"
           />
         ),
       },
       {
         id: 'users_count',
-        label: 'Users Assigned',
+        label: 'Users',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '160px',
-        render: (row: any) => (
+        minWidth: '80px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {row.original.users_count}
           </Typography>
@@ -367,29 +373,143 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '120px',
-        render: () => (
-          <FluidContainer
-            padding="0"
-            flex
-            flexDirection="column"
-            gap={Spaces.sm}
-          >
-            <Button type="button" variant="edit">
-              Edit
-            </Button>
-            <Button type="button" variant="delete">
-              Delete
-            </Button>
-          </FluidContainer>
-        ),
+        render: (row) => {
+          const role: V2RoleRow = row.original;
+          return (
+            <FluidContainer
+              padding="0"
+              flex
+              flexDirection="column"
+              gap={Spaces.sm}
+            >
+              <Button
+                type="button"
+                variant="edit"
+                onClick={() => setEditingRole(role)}
+              >
+                Edit
+              </Button>
+              {!role.is_system && (
+                <Button
+                  type="button"
+                  variant="delete"
+                  onClick={() => setConfirmDeleteRole(role)}
+                >
+                  Delete
+                </Button>
+              )}
+            </FluidContainer>
+          );
+        },
       },
     ],
     rows: roles.map((role) => ({
       id: String(role.id),
-      values: {
-        role_name: formatRoleName(role.role_name),
-      },
+      values: { role_name: formatRoleName(role.role_name) },
       original: role,
+    })),
+  };
+
+  const pageTableData: TableData = {
+    id: 'pages',
+    ariaLabel: 'Backoffice pages',
+    caption: 'Pages',
+    headerColors: { backgroundColor: 'greyLightest', textColor: 'black' },
+    columns: [
+      {
+        id: 'title',
+        label: 'Page',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '180px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.title}
+          </Typography>
+        ),
+      },
+      {
+        id: 'route',
+        label: 'Route',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '220px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.route}
+          </Typography>
+        ),
+      },
+      {
+        id: 'page_actions',
+        label: 'Actions',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '180px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.page_actions.length > 0
+              ? row.original.page_actions
+                  .map((a: { label: string }) => a.label)
+                  .join(', ')
+              : '—'}
+          </Typography>
+        ),
+      },
+      {
+        id: 'page_scopes',
+        label: 'Scopes',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '180px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.page_scopes.length > 0
+              ? row.original.page_scopes
+                  .map((s: { label: string }) => s.label)
+                  .join(', ')
+              : '—'}
+          </Typography>
+        ),
+      },
+      {
+        id: 'actions',
+        label: 'Actions',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '120px',
+        render: (row) => {
+          const page: V2PageRow = row.original;
+          return (
+            <FluidContainer
+              padding="0"
+              flex
+              flexDirection="column"
+              gap={Spaces.sm}
+            >
+              <Button
+                type="button"
+                variant="edit"
+                onClick={() => setEditingPage(page)}
+              >
+                Edit
+              </Button>
+              <Button
+                type="button"
+                variant="delete"
+                onClick={() => setConfirmDeletePage(page)}
+              >
+                Delete
+              </Button>
+            </FluidContainer>
+          );
+        },
+      },
+    ],
+    rows: pages.map((page) => ({
+      id: String(page.id),
+      values: { title: page.title },
+      original: page,
     })),
   };
 
@@ -397,18 +517,15 @@ export default function AccessManagementPage() {
     id: 'departments',
     ariaLabel: 'Backoffice departments',
     caption: 'Departments',
-    headerColors: {
-      backgroundColor: 'greyLightest',
-      textColor: 'black',
-    },
+    headerColors: { backgroundColor: 'greyLightest', textColor: 'black' },
     columns: [
       {
         id: 'department_name',
         label: 'Department',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '220px',
-        render: (row: any) => (
+        minWidth: '200px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {formatDepartmentName(row.original.department_name)}
           </Typography>
@@ -420,7 +537,7 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '280px',
-        render: (row: any) => (
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {row.original.department_fullname}
           </Typography>
@@ -428,29 +545,40 @@ export default function AccessManagementPage() {
       },
       {
         id: 'users_count',
-        label: 'Users Assigned',
+        label: 'Users',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '160px',
-        render: (row: any) => (
+        minWidth: '80px',
+        render: (row) => (
           <Typography as="span" variant="label" size="sm" weight="400">
             {row.original.users_count}
           </Typography>
         ),
       },
-    ],
-    rows: departments.map((department) => ({
-      id: String(department.id),
-      values: {
-        department_name: formatDepartmentName(department.department_name),
+      {
+        id: 'status',
+        label: 'Status',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '100px',
+        render: (row) => (
+          <Typography as="span" variant="label" size="sm" weight="400">
+            {row.original.is_active ? 'Active' : 'Inactive'}
+          </Typography>
+        ),
       },
-      original: department,
+    ],
+    rows: departments.map((dept) => ({
+      id: String(dept.id),
+      values: { department_name: formatDepartmentName(dept.department_name) },
+      original: dept,
     })),
   };
 
   const sectionItems = [
     { label: 'Users', value: 'users' },
     { label: 'Roles', value: 'roles' },
+    { label: 'Pages', value: 'pages' },
     { label: 'Departments', value: 'departments' },
   ];
 
@@ -459,7 +587,37 @@ export default function AccessManagementPage() {
       ? userTableData
       : selectedSection === 'roles'
       ? roleTableData
+      : selectedSection === 'pages'
+      ? pageTableData
       : departmentTableData;
+
+  const canAddInSection =
+    selectedSection === 'users' ||
+    selectedSection === 'roles' ||
+    selectedSection === 'pages';
+
+  const handleAddClick = () => {
+    if (selectedSection === 'users') setEditingUser(null);
+    else if (selectedSection === 'roles') setEditingRole(null);
+    else if (selectedSection === 'pages') setEditingPage(null);
+  };
+
+  if (accessLoading) {
+    return (
+      <Page>
+        <BackofficeShell title="Access Management">
+          <FluidContainer
+            flex
+            alignItems="center"
+            justifyContent="center"
+            height="70vh"
+          >
+            <Loading load={true} />
+          </FluidContainer>
+        </BackofficeShell>
+      </Page>
+    );
+  }
 
   return (
     <Page>
@@ -469,84 +627,108 @@ export default function AccessManagementPage() {
 
       <BackofficeShell
         title="Access Management"
-        subtitle="Manage backoffice users, roles, departments, and permissions."
+        subtitle="Manage backoffice users, roles, pages, departments, and permissions."
       >
         <NoBottomPaddingContainer>
           <ControlsRow padding="0">
             <Select
-              ariaLabel="Select access management section"
+              ariaLabel="Select section"
               placeholder="Choose section"
               items={sectionItems}
               value={selectedSection}
-              onValueChange={(value) =>
-                setSelectedSection(value as 'users' | 'roles' | 'departments')
-              }
+              onValueChange={(value) => setSelectedSection(value as SectionKey)}
             />
-
-            {selectedSection === 'users' ? (
-              <Button
-                padding="10px 20px"
-                fontSize="14px"
-                fontWeight="400"
-                type="button"
-                onClick={() => {
-                  setEditingUser(null);
-                  setIsUserModalOpen(true);
-                }}
-              >
-                <span aria-hidden="true">+</span> Add User
+            {canAddInSection && (
+              <Button type="button" onClick={handleAddClick}>
+                Add{' '}
+                {selectedSection === 'users'
+                  ? 'User'
+                  : selectedSection === 'roles'
+                  ? 'Role'
+                  : 'Page'}
               </Button>
-            ) : null}
-
-            {selectedSection === 'roles' ? (
-              <Button
-                padding="10px 20px"
-                fontSize="14px"
-                fontWeight="400"
-                type="button"
-              >
-                <span aria-hidden="true">+</span> Add Role
-              </Button>
-            ) : null}
+            )}
           </ControlsRow>
         </NoBottomPaddingContainer>
+
         <FluidContainer>
-          {loading ? <Loading load={false} /> : null}
-
-          {!loading ? <FlexibleTable data={activeTable} /> : null}
+          {loading ? (
+            <Loading load={false} />
+          ) : (
+            <FlexibleTable data={activeTable} />
+          )}
         </FluidContainer>
-        {isUserModalOpen ? (
-          <AccessManagementUserModal
-            user={editingUser}
-            roles={roles.map((role) => ({
-              id: role.id,
-              label: formatRoleName(role.role_name),
-            }))}
-            departments={departments.map((department) => ({
-              id: department.id,
-              label: formatDepartmentName(department.department_name),
-            }))}
-            onClose={() => {
-              setEditingUser(null);
-              setIsUserModalOpen(false);
-            }}
-            onSubmit={handleUserSubmit}
-          />
-        ) : null}
-
-        {deletingUser ? (
-          <ConfirmDialog
-            title="Delete User"
-            message="Are you sure you want to remove this backoffice user?"
-            highlightedText={deletingUser.email}
-            confirmLabel="Delete User"
-            cancelLabel="Cancel"
-            isDanger
-            onCancel={() => setDeletingUser(null)}
-            onConfirm={handleDeleteUser}
-          />
-        ) : null}
       </BackofficeShell>
+
+      {/* ── User modal ─────────────────────────────────────────────────────── */}
+      {editingUser !== undefined && (
+        <AccessManagementUserModal
+          user={editingUser}
+          allRoles={roles}
+          allPages={pages}
+          departments={departments}
+          onClose={() => setEditingUser(undefined)}
+          onSaved={fetchAll}
+        />
+      )}
+
+      {/* ── Role modal ─────────────────────────────────────────────────────── */}
+      {editingRole !== undefined && (
+        <AccessManagementRoleModal
+          role={editingRole}
+          allPages={pages}
+          onClose={() => setEditingRole(undefined)}
+          onSaved={fetchAll}
+        />
+      )}
+
+      {/* ── Page modal ─────────────────────────────────────────────────────── */}
+      {editingPage !== undefined && (
+        <AccessManagementPageModal
+          page={editingPage}
+          onClose={() => setEditingPage(undefined)}
+          onSaved={fetchAll}
+        />
+      )}
+
+      {/* ── Confirm deactivate user ─────────────────────────────────────────── */}
+      {confirmDeactivateUser && (
+        <ConfirmDialog
+          title="Deactivate User"
+          message="This will deactivate the following user and revoke backoffice access:"
+          highlightedText={confirmDeactivateUser.email}
+          confirmLabel="Deactivate"
+          isDanger
+          onConfirm={() => handleDeactivateUser(confirmDeactivateUser)}
+          onCancel={() => setConfirmDeactivateUser(null)}
+        />
+      )}
+
+      {/* ── Confirm delete role ─────────────────────────────────────────────── */}
+      {confirmDeleteRole && (
+        <ConfirmDialog
+          title="Delete Role"
+          message="This will permanently delete the following role and remove it from all users:"
+          highlightedText={formatRoleName(confirmDeleteRole.role_name)}
+          confirmLabel="Delete"
+          isDanger
+          onConfirm={() => handleDeleteRole(confirmDeleteRole)}
+          onCancel={() => setConfirmDeleteRole(null)}
+        />
+      )}
+
+      {/* ── Confirm delete page ─────────────────────────────────────────────── */}
+      {confirmDeletePage && (
+        <ConfirmDialog
+          title="Delete Page"
+          message="This will permanently delete the following page and all its actions, scopes, and policies:"
+          highlightedText={confirmDeletePage.title}
+          confirmLabel="Delete"
+          isDanger
+          onConfirm={() => handleDeletePage(confirmDeletePage)}
+          onCancel={() => setConfirmDeletePage(null)}
+        />
+      )}
     </Page>
   );
 }

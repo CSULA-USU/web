@@ -1,5 +1,9 @@
 import { useState, useCallback } from 'react';
 import Head from 'next/head';
+import { getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { getCurrentBackofficeUserByEmail } from 'lib/backoffice/currentUser';
+import { hasPolicy } from 'lib/backoffice/permissions';
 import { FluidContainer, Typography, Button } from 'components';
 import { Page } from 'modules';
 import { DocumentManager } from 'modules';
@@ -139,7 +143,29 @@ export default function BoardMeetingsAdmin({
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx: any) {
+  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: `/backoffice/signin?callbackUrl=${encodeURIComponent(
+          ctx.resolvedUrl,
+        )}`,
+        permanent: false,
+      },
+    };
+  }
+
+  const { user } = await getCurrentBackofficeUserByEmail(session.user?.email);
+
+  if (
+    !user ||
+    !hasPolicy(user, { pageKey: 'boardDocuments', action: 'view', scope: '*' })
+  ) {
+    return { redirect: { destination: '/backoffice', permanent: false } };
+  }
+
   try {
     const initialDocuments = await getMeetingDocuments({
       isArchived: false,

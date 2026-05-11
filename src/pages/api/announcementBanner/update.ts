@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { withAuth } from 'lib/authMiddleWare';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-import { requireBackofficePolicy } from 'lib/backoffice/requireBackofficePolicy';
+import { requireBackofficePolicyV2 } from 'lib/backoffice';
 
 type BannerUpdates = Partial<{
   text: string;
@@ -15,8 +15,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const auth = await requireBackofficePolicy(req, res, {
-    policy: 'siteContent:edit:announcementBanner',
+  const auth = await requireBackofficePolicyV2(req, res, {
+    pageKey: 'announcementBanner',
+    action: 'edit',
+    scope: '*',
   });
 
   if (!auth.ok) return;

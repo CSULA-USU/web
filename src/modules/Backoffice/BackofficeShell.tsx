@@ -9,6 +9,7 @@ import { Button, FluidContainer, Loading, Typography } from 'components';
 import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
+import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
 import { HiMenuAlt3 } from 'react-icons/hi';
@@ -143,10 +144,18 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
+  const { user, loading: userLoading } = useBackofficeUser();
+
   const allItems = useMemo(() => flattenNav(navSections), [navSections]);
   const featuredItems = useMemo(
-    () => allItems.filter((item) => item.featured),
-    [allItems],
+    () =>
+      allItems.filter((item) => {
+        if (!item.featured) return false;
+        if (!item.pageKey) return true;
+        if (userLoading || !user) return true;
+        return canViewBackofficePage(user.effectivePolicies, item.pageKey);
+      }),
+    [allItems, user, userLoading],
   );
 
   const handleNavigate = (href: string) => {
