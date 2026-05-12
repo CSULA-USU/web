@@ -15,8 +15,8 @@ import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed
 
 const buttons = [
   {
-    text: '2024 Grad',
-    href: '/ccc/cultural-grads/pride',
+    text: '2026 Grad',
+    href: '/ccc/booklet/pride-grad',
   },
 ];
 const hours = [

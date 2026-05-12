@@ -14,8 +14,8 @@ const buttons = [
     href: 'https://forms.office.com/r/UQGaQbrSbW',
   },
   {
-    text: '2024 Grad',
-    href: '/ccc/cultural-grads/apida',
+    text: '2026 Grad',
+    href: '/ccc/booklet/apida-grad',
   },
 ];
 
@@ -183,7 +183,6 @@ export default function APISRC() {
               ],
               sameAs: [
                 'https://www.instagram.com/apisrc.ccc/',
-                'https://www.tiktok.com/@apisrc.ccc',
                 'https://discord.com/invite/quZwGJqsMm',
               ],
             }),
