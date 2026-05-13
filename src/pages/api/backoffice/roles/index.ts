@@ -30,8 +30,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           role_key,
           role_name,
           description,
-          is_system,
           is_active,
+          deactivated_at,
+          deactivated_by,
           user_roles(id),
           role_policies(
             id,
@@ -50,8 +51,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       role_key: role.role_key,
       role_name: role.role_name,
       description: role.description,
-      is_system: role.is_system,
       is_active: role.is_active,
+      deactivated_at: role.deactivated_at,
+      deactivated_by: role.deactivated_by,
       users_count: role.user_roles?.length ?? 0,
       policies:
         role.role_policies?.map((p: any) => ({
@@ -90,10 +92,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         role_key: role_key.trim(),
         role_name: role_name.trim(),
         description: description?.trim() ?? null,
-        is_system: false,
         is_active: true,
       })
-      .select('id, role_key, role_name, description, is_system, is_active')
+      .select('id, role_key, role_name, description, is_active')
       .single();
 
     if (error) return serverError(res, error.message);

@@ -15,6 +15,10 @@ type UpdateUserBody = {
   is_active?: boolean;
 };
 
+type DeleteUserBody = {
+  permanent?: boolean;
+};
+
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
 
@@ -34,7 +38,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const updates: Record<string, unknown> = {};
     if (email !== undefined) updates.email = email.trim().toLowerCase();
     if (department_id !== undefined) updates.department_id = department_id;
-    if (is_active !== undefined) updates.is_active = is_active;
+    if (is_active !== undefined) {
+      updates.is_active = is_active;
+      if (is_active === true) {
+        updates.deactivated_at = null;
+        updates.deactivated_by = null;
+      }
+    }
 
     if (Object.keys(updates).length === 0) {
       return badRequest(res, 'No updates provided.');
@@ -45,12 +55,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .from('users')
       .update(updates)
       .eq('id', id)
-      .is('deleted_at', null)
       .select(
         `
           id,
           email,
           is_active,
+          deactivated_at,
+          deactivated_by,
           departments(id, department_key, department_name, department_fullname)
         `,
       )
@@ -63,21 +74,54 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
+    const { permanent } = (req.body ?? {}) as DeleteUserBody;
+
     if (auth.user.id === id) {
-      return badRequest(res, 'You cannot deactivate your own account.');
+      return badRequest(
+        res,
+        'You cannot deactivate or delete your own account.',
+      );
+    }
+
+    if (permanent) {
+      await supabaseAdmin
+        .schema('backoffice_v2')
+        .from('user_roles')
+        .delete()
+        .eq('user_id', id);
+
+      await supabaseAdmin
+        .schema('backoffice_v2')
+        .from('user_policies')
+        .delete()
+        .eq('user_id', id);
+
+      const { error } = await supabaseAdmin
+        .schema('backoffice_v2')
+        .from('users')
+        .delete()
+        .eq('id', id);
+
+      if (error) return serverError(res, error.message);
+
+      return res.status(200).json({ ok: true });
     }
 
     const { data, error } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('users')
-      .update({ is_active: false, deleted_at: new Date().toISOString() })
+      .update({
+        is_active: false,
+        deactivated_at: new Date().toISOString(),
+        deactivated_by: auth.user.email,
+      })
       .eq('id', id)
-      .is('deleted_at', null)
-      .select('id, email, is_active, deleted_at')
+      .is('deactivated_at', null)
+      .select('id, email, is_active, deactivated_at, deactivated_by')
       .single();
 
     if (error) return serverError(res, error.message);
-    if (!data) return notFound(res, 'User not found.');
+    if (!data) return notFound(res, 'User not found or already deactivated.');
 
     return res.status(200).json(data);
   }

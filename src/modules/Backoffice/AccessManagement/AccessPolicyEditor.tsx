@@ -144,12 +144,15 @@ export function AccessPolicyEditor({
         </FluidContainer>
       )}
 
+      <Typography as="p" variant="label" size="sm" weight="600">
+        Add New Access Rule
+      </Typography>
       <AddForm>
         <Select
           ariaLabel="Select page"
           placeholder="Page"
           items={pageItems}
-          value={selPageId}
+          value={selPageId || undefined}
           onValueChange={handlePageChange}
           disabled={adding}
         />
@@ -157,7 +160,7 @@ export function AccessPolicyEditor({
           ariaLabel="Select action"
           placeholder="Action"
           items={actionItems}
-          value={selAction}
+          value={selAction || undefined}
           onValueChange={setSelAction}
           disabled={!selPageId || adding}
         />
@@ -165,7 +168,7 @@ export function AccessPolicyEditor({
           ariaLabel="Select scope"
           placeholder="Scope"
           items={scopeItems}
-          value={selScope}
+          value={selScope || undefined}
           onValueChange={setSelScope}
           disabled={!selPageId || adding}
         />

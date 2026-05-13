@@ -12,7 +12,7 @@ import BackofficeSideBar from './BackofficeSideBar';
 import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
-import { HiMenuAlt3 } from 'react-icons/hi';
+import { MdOutlineLaunch } from 'react-icons/md';
 import BackofficeMobilePanel from 'modules/Backoffice/BackofficeMobilePanel';
 
 const Shell = styled.div`
@@ -214,20 +214,23 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
                 padding="10px 20px"
                 fontSize="14px"
                 fontWeight="600"
+                variant="outline"
                 onClick={() => signOut()}
               >
                 Sign Out
               </Button>
-              <HiMenuAlt3
+              <MdOutlineLaunch
                 size={32}
-                color={Colors.primary}
+                color={Colors.black}
                 onClick={() => {
                   setIsMenuOpen(true);
                 }}
               />
             </TabletIconsContainer>
           ) : (
-            <Button onClick={() => signOut()}>Sign Out</Button>
+            <Button variant="outline" onClick={() => signOut()}>
+              Sign Out
+            </Button>
           )}
         </TopBar>
         <Content>

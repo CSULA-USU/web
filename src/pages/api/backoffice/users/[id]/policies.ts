@@ -27,7 +27,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     .from('users')
     .select('id')
     .eq('id', userId)
-    .is('deleted_at', null)
+    .is('deactivated_at', null)
     .maybeSingle();
 
   if (!user) return notFound(res, 'User not found.');

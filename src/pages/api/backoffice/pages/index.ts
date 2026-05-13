@@ -33,6 +33,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           route,
           description,
           is_active,
+          deactivated_at,
+          deactivated_by,
           page_actions(id, action, label),
           page_scopes(id, scope, label)
         `,

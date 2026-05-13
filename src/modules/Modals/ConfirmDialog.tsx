@@ -11,7 +11,6 @@ interface ConfirmDialogProps {
   cancelLabel?: string;
   onConfirm: () => void;
   onCancel: () => void;
-  isDanger?: boolean;
 }
 
 const MessageWrap = styled.div`
@@ -36,7 +35,6 @@ export function ConfirmDialog({
   cancelLabel = 'Cancel',
   onConfirm,
   onCancel,
-  isDanger = false,
 }: ConfirmDialogProps) {
   return (
     <BaseModal
@@ -47,9 +45,7 @@ export function ConfirmDialog({
       footer={
         <>
           <Button onClick={onCancel}>{cancelLabel}</Button>
-          <Button onClick={onConfirm}>
-            {isDanger ? `Delete` : confirmLabel}
-          </Button>
+          <Button onClick={onConfirm}>{confirmLabel}</Button>
         </>
       }
     >

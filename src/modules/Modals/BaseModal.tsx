@@ -1,4 +1,5 @@
 import type React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Typography } from 'components';
 import { Colors, Spaces } from 'theme';
@@ -53,9 +54,11 @@ const CloseButton = styled.button`
   cursor: pointer;
   font-size: 24px;
   line-height: 1;
+  border-radius: 50%;
 
   &:hover {
-    background-color: ${Colors.grey};
+    background-color: ${Colors.red};
+    color: ${Colors.white};
   }
 
   &:focus {
@@ -89,6 +92,14 @@ export function BaseModal({
   labelledById = 'modal-title',
   role = 'dialog',
 }: BaseModalProps) {
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
   const handleOverlayClick = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -104,7 +115,7 @@ export function BaseModal({
         $maxWidth={maxWidth}
       >
         <ModalHeader>
-          <Typography as="h2" id={labelledById} variant="title">
+          <Typography as="h2" id={labelledById} variant="title" size="xl">
             {title}
           </Typography>
 

@@ -28,7 +28,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           id,
           email,
           is_active,
-          deleted_at,
+          deactivated_at,
+          deactivated_by,
           departments(
             id,
             department_key,
@@ -51,7 +52,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           )
         `,
       )
-      .is('deleted_at', null)
       .order('email', { ascending: true });
 
     if (error) return serverError(res, error.message);
@@ -60,6 +60,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       id: user.id,
       email: user.email,
       is_active: user.is_active,
+      deactivated_at: user.deactivated_at,
+      deactivated_by: user.deactivated_by,
       department: user.departments,
       roles:
         user.user_roles?.map((ur: any) => ({
@@ -95,7 +97,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .from('users')
       .select('id')
       .eq('email', normalizedEmail)
-      .is('deleted_at', null)
+      .is('deactivated_at', null)
       .maybeSingle();
 
     if (existing) {

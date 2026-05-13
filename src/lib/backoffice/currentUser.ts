@@ -60,7 +60,7 @@ export const getCurrentBackofficeUserByEmail = async (
     )
     .eq('email', normalizedEmail)
     .eq('is_active', true)
-    .is('deleted_at', null)
+    .is('deactivated_at', null)
     .maybeSingle()) as unknown as {
     data: UserRow | null;
     error: PostgrestError | null;

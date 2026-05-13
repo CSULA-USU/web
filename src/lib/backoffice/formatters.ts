@@ -38,6 +38,14 @@ export const formatDepartmentName = (department: string) => {
   return department.charAt(0).toUpperCase() + department.slice(1);
 };
 
+function camelToLabel(str: string): string {
+  if (str === '*') return 'All';
+  return str
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/^./, (c) => c.toUpperCase())
+    .trim();
+}
+
 export const getBackofficePolicyParts = (policy: string) => {
   const [resource, action, scope] = policy.split(':');
 
@@ -48,8 +56,8 @@ export const getBackofficePolicyParts = (policy: string) => {
 
   if (!resourceConfig) {
     return {
-      resourceLabel: 'Unknown',
-      permissionLabel: policy,
+      resourceLabel: camelToLabel(resource),
+      permissionLabel: `${camelToLabel(action)} ${camelToLabel(scope)}`.trim(),
     };
   }
 
@@ -63,6 +71,6 @@ export const getBackofficePolicyParts = (policy: string) => {
     resourceLabel: resourceConfig.label,
     permissionLabel: scopeLabel
       ? `${actionConfig.label} ${scopeLabel}`
-      : actionConfig?.label || policy,
+      : actionConfig?.label || camelToLabel(action),
   };
 };

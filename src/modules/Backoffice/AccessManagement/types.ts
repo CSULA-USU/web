@@ -24,6 +24,8 @@ export type V2UserRow = {
   id: number;
   email: string;
   is_active: boolean;
+  deactivated_at: string | null;
+  deactivated_by: string | null;
   department: V2Department | null;
   roles: V2Role[];
   policies: V2Policy[];
@@ -34,9 +36,10 @@ export type V2RoleRow = {
   role_key: string;
   role_name: string;
   description: string | null;
-  is_system: boolean;
   is_active: boolean;
   users_count: number;
+  deactivated_at: string | null;
+  deactivated_by: string | null;
   policies: V2Policy[];
 };
 
@@ -59,6 +62,8 @@ export type V2PageRow = {
   route: string;
   description: string | null;
   is_active: boolean;
+  deactivated_at: string | null;
+  deactivated_by: string | null;
   page_actions: V2PageAction[];
   page_scopes: V2PageScope[];
 };
@@ -70,4 +75,6 @@ export type V2DepartmentRow = {
   department_fullname: string;
   is_active: boolean;
   users_count: number;
+  deactivated_at: string | null;
+  deactivated_by: string | null;
 };

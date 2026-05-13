@@ -266,11 +266,6 @@ export function AccessManagementPageModal({
       title={isCreate ? 'Add Page' : `Edit Page: ${page.title}`}
       onClose={onClose}
       maxWidth="640px"
-      footer={
-        <Button type="button" onClick={onClose}>
-          Close
-        </Button>
-      }
     >
       <FluidContainer padding="0" flex flexDirection="column" gap={Spaces.lg}>
         {/* ── Basics ─────────────────────────────────────────── */}

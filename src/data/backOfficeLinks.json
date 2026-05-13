@@ -12,7 +12,7 @@
         "url": "/backoffice/access-management",
         "title": "Access Management",
         "description": "Manage users, roles, departments, and permissions",
-        "featured": false,
+        "featured": true,
         "pageKey": "accessManagement"
       }
     ]

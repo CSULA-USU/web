@@ -9,13 +9,13 @@ import {
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
 
-type UpdateRoleBody = {
-  role_name?: string;
-  description?: string;
+type UpdateDepartmentBody = {
+  department_name?: string;
+  department_fullname?: string;
   is_active?: boolean;
 };
 
-type DeleteRoleBody = {
+type DeleteDepartmentBody = {
   permanent?: boolean;
 };
 
@@ -30,23 +30,26 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!auth.ok) return;
 
   const id = parseNumericId(req.query.id);
-  if (id === null) return badRequest(res, 'Invalid role id.');
+  if (id === null) return badRequest(res, 'Invalid department id.');
 
-  const { data: role } = await supabaseAdmin
+  const { data: dept } = await supabaseAdmin
     .schema('backoffice_v2')
-    .from('roles')
+    .from('departments')
     .select('id, is_active')
     .eq('id', id)
     .maybeSingle();
 
-  if (!role) return notFound(res, 'Role not found.');
+  if (!dept) return notFound(res, 'Department not found.');
 
   if (req.method === 'PATCH') {
-    const { role_name, description, is_active } = req.body as UpdateRoleBody;
+    const { department_name, department_fullname, is_active } =
+      req.body as UpdateDepartmentBody;
 
     const updates: Record<string, unknown> = {};
-    if (role_name !== undefined) updates.role_name = role_name.trim();
-    if (description !== undefined) updates.description = description.trim();
+    if (department_name !== undefined)
+      updates.department_name = department_name.trim();
+    if (department_fullname !== undefined)
+      updates.department_fullname = department_fullname.trim();
     if (is_active !== undefined) {
       updates.is_active = is_active;
       if (is_active === true) {
@@ -61,11 +64,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const { data, error } = await supabaseAdmin
       .schema('backoffice_v2')
-      .from('roles')
+      .from('departments')
       .update(updates)
       .eq('id', id)
       .select(
-        'id, role_key, role_name, description, is_active, deactivated_at, deactivated_by',
+        'id, department_key, department_name, department_fullname, is_active, deactivated_at, deactivated_by',
       )
       .single();
 
@@ -75,41 +78,33 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const { permanent } = (req.body ?? {}) as DeleteRoleBody;
+    const { permanent } = (req.body ?? {}) as DeleteDepartmentBody;
 
     const { count, error: countError } = await supabaseAdmin
       .schema('backoffice_v2')
-      .from('user_roles')
+      .from('users')
       .select('id', { count: 'exact', head: true })
-      .eq('role_id', id);
+      .eq('department_id', id);
 
     if (countError) return serverError(res, countError.message);
 
     if (permanent) {
-      if (role.is_active) {
+      if (dept.is_active) {
         return badRequest(
           res,
-          'Only deactivated roles can be permanently deleted.',
+          'Only deactivated departments can be permanently deleted.',
         );
       }
       if (count && count > 0) {
         return badRequest(
           res,
-          'Cannot permanently delete a role that is assigned to users.',
+          'Cannot permanently delete a department with assigned users. Reassign or remove all users first.',
         );
       }
 
-      const { error: policiesError } = await supabaseAdmin
-        .schema('backoffice_v2')
-        .from('role_policies')
-        .delete()
-        .eq('role_id', id);
-
-      if (policiesError) return serverError(res, policiesError.message);
-
       const { error } = await supabaseAdmin
         .schema('backoffice_v2')
-        .from('roles')
+        .from('departments')
         .delete()
         .eq('id', id);
 
@@ -118,19 +113,19 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(200).json({ ok: true });
     }
 
-    if (!role.is_active) {
-      return badRequest(res, 'Role is already deactivated.');
+    if (!dept.is_active) {
+      return badRequest(res, 'Department is already deactivated.');
     }
     if (count && count > 0) {
       return badRequest(
         res,
-        'Cannot deactivate a role that is assigned to users. Remove all users first.',
+        'Cannot deactivate a department with assigned users. Reassign or remove users first.',
       );
     }
 
     const { error } = await supabaseAdmin
       .schema('backoffice_v2')
-      .from('roles')
+      .from('departments')
       .update({
         is_active: false,
         deactivated_at: new Date().toISOString(),

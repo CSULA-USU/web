@@ -276,11 +276,6 @@ export function AccessManagementUserModal({
       title={isCreate ? 'Add User' : 'Edit User'}
       onClose={onClose}
       maxWidth="680px"
-      footer={
-        <Button type="button" onClick={onClose}>
-          Close
-        </Button>
-      }
     >
       <FluidContainer padding="0" flex flexDirection="column" gap={Spaces.lg}>
         {/* ── Basics ─────────────────────────────────────────── */}
@@ -297,6 +292,7 @@ export function AccessManagementUserModal({
               </Typography>
               <Input
                 type="email"
+                placeholder="ex@calstatela.edu"
                 value={email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setEmail(e.target.value)
@@ -312,7 +308,7 @@ export function AccessManagementUserModal({
                 ariaLabel="Department"
                 placeholder="No department"
                 items={deptItems}
-                value={deptId}
+                value={deptId || undefined}
                 onValueChange={setDeptId}
               />
             </Field>
@@ -381,6 +377,11 @@ export function AccessManagementUserModal({
                 </FluidContainer>
               )}
 
+              {assignableRoles.length > 0 && (
+                <Typography as="p" variant="label" size="sm" weight="600">
+                  Assign New Role
+                </Typography>
+              )}
               {assignableRoles.length > 0 ? (
                 <FluidContainer
                   padding="0"
@@ -392,7 +393,7 @@ export function AccessManagementUserModal({
                     ariaLabel="Assign role"
                     placeholder="Select role to assign"
                     items={assignableRoleItems}
-                    value={selectedRoleId}
+                    value={selectedRoleId || undefined}
                     onValueChange={setSelectedRoleId}
                     disabled={assigningRole}
                   />

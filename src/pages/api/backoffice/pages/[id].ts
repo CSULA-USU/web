@@ -16,6 +16,10 @@ type UpdatePageBody = {
   is_active?: boolean;
 };
 
+type DeletePageBody = {
+  permanent?: boolean;
+};
+
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
 
@@ -32,7 +36,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { data: page } = await supabaseAdmin
     .schema('backoffice_v2')
     .from('pages')
-    .select('id')
+    .select('id, is_active')
     .eq('id', id)
     .maybeSingle();
 
@@ -45,7 +49,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (title !== undefined) updates.title = title.trim();
     if (route !== undefined) updates.route = route.trim();
     if (description !== undefined) updates.description = description.trim();
-    if (is_active !== undefined) updates.is_active = is_active;
+    if (is_active !== undefined) {
+      updates.is_active = is_active;
+      if (is_active === true) {
+        updates.deactivated_at = null;
+        updates.deactivated_by = null;
+      }
+    }
 
     if (Object.keys(updates).length === 0) {
       return badRequest(res, 'No updates provided.');
@@ -56,7 +66,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .from('pages')
       .update(updates)
       .eq('id', id)
-      .select('id, page_key, title, route, description, is_active')
+      .select(
+        'id, page_key, title, route, description, is_active, deactivated_at, deactivated_by',
+      )
       .single();
 
     if (error) return serverError(res, error.message);
@@ -65,38 +77,67 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const deleteSteps = [
-      supabaseAdmin
-        .schema('backoffice_v2')
-        .from('user_policies')
-        .delete()
-        .eq('page_id', id),
-      supabaseAdmin
-        .schema('backoffice_v2')
-        .from('role_policies')
-        .delete()
-        .eq('page_id', id),
-      supabaseAdmin
-        .schema('backoffice_v2')
-        .from('page_actions')
-        .delete()
-        .eq('page_id', id),
-      supabaseAdmin
-        .schema('backoffice_v2')
-        .from('page_scopes')
-        .delete()
-        .eq('page_id', id),
-    ];
+    const { permanent } = (req.body ?? {}) as DeletePageBody;
 
-    for (const step of deleteSteps) {
-      const { error } = await step;
+    if (permanent) {
+      if (page.is_active) {
+        return badRequest(
+          res,
+          'Only deactivated pages can be permanently deleted.',
+        );
+      }
+
+      const deleteSteps = [
+        supabaseAdmin
+          .schema('backoffice_v2')
+          .from('user_policies')
+          .delete()
+          .eq('page_id', id),
+        supabaseAdmin
+          .schema('backoffice_v2')
+          .from('role_policies')
+          .delete()
+          .eq('page_id', id),
+        supabaseAdmin
+          .schema('backoffice_v2')
+          .from('page_actions')
+          .delete()
+          .eq('page_id', id),
+        supabaseAdmin
+          .schema('backoffice_v2')
+          .from('page_scopes')
+          .delete()
+          .eq('page_id', id),
+      ];
+
+      for (const step of deleteSteps) {
+        const { error } = await step;
+        if (error) return serverError(res, error.message);
+      }
+
+      const { error } = await supabaseAdmin
+        .schema('backoffice_v2')
+        .from('pages')
+        .delete()
+        .eq('id', id);
+
       if (error) return serverError(res, error.message);
+
+      return res.status(200).json({ ok: true });
+    }
+
+    if (!page.is_active) {
+      return badRequest(res, 'Page is already deactivated.');
     }
 
     const { error } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('pages')
-      .delete()
+      .update({
+        is_active: false,
+        deactivated_at: new Date().toISOString(),
+        deactivated_by: auth.user.email,
+      })
       .eq('id', id);
 
     if (error) return serverError(res, error.message);
