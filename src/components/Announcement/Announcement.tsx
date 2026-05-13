@@ -44,7 +44,7 @@ export const Announcement = ({
   return shouldRender ? (
     <AnnouncementContainer>
       <AlertContainer>
-        <Typography margin="4px 0 0 8px">{text}</Typography>
+        <Typography>{text}</Typography>
         {children}
       </AlertContainer>
       {linkText && href && (
