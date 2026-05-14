@@ -27,6 +27,7 @@ const Section = styled.section`
   padding: 96px 36px;
   overflow: hidden;
   color: ${Colors.white};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 
   @media (max-width: 900px) {
     padding: 72px 24px;

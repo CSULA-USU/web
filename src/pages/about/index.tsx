@@ -3,7 +3,6 @@ import { Page, UtilityHeroHeader } from 'modules';
 import { Button, Card, FluidContainer, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
-
 import cards from 'data/about.json';
 
 // const ImageContainer = styled.div`
