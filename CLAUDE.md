@@ -67,6 +67,8 @@ All credentials are injected via `.env.local` — see README for the full variab
 
 <!-- Add accessibility requirements, standards (WCAG level), known constraints here -->
 
+When a non-interactive person image appears alongside the person’s name in the same card or section, treat it as decorative and use alt=\"\". Use meaningful alt only when the image conveys unique information or acts as a control.
+
 ### Code Quality
 
 ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas). Husky + lint-staged enforce linting on pre-commit. TypeScript strict mode is on.
