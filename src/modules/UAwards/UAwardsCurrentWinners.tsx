@@ -375,7 +375,7 @@ export const UAwardsCurrentWinners = ({
             Fourteen members of the U-SU team, both students and full-time
             staff, nominated by their colleagues and selected by committee to be
             recognized for outstanding work, embodying our values, and building
-            the culture that makes Cal State LA feel like home.
+            the culture that makes Cal State LA feel like home!
           </Lede>
         </Head>
 
