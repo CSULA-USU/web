@@ -57,7 +57,7 @@ async function handler(req: any, res: NextApiResponse<any>) {
       const graffixRequest: GraffixRequest = {
         id: graffixRequestObj?.id,
         title:
-          graffixRequestObj?.properties?.Item?.title?.[0]?.plain_text ??
+          graffixRequestObj?.properties?.Project?.title?.[0]?.plain_text ??
           'Untitled',
         departmentID:
           graffixRequestObj?.properties?.Department?.rich_text?.[0]
@@ -103,7 +103,7 @@ async function handler(req: any, res: NextApiResponse<any>) {
       },
       sorts: [
         {
-          property: 'title',
+          property: 'Project',
           direction: 'ascending',
         },
       ],
