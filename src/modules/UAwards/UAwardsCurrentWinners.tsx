@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Colors } from 'theme';
-import { AwardeeCard } from 'components';
+import { AwardeeCard } from 'components/AwardeeCard/AwardeeCard';
 import type { Awardee } from 'types';
 
 interface UAwardsCurrentWinnersProps {
@@ -252,13 +252,25 @@ const GroupTitle = styled.h3<{ $tone: GroupTone }>`
 const GroupSub = styled.p`
   font-family: var(--font-bitter), serif;
   font-size: 16px;
-  margin: 0;
+  margin: 0 0 22px;
   color: ${Colors.greyDark};
 `;
 
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
+const List = styled.div<{ $tone: GroupTone }>`
+  display: grid;
+  grid-template-columns: ${(p) =>
+    p.$tone === 'staff'
+      ? 'repeat(2, minmax(0, 1fr))'
+      : 'repeat(3, minmax(0, 1fr))'};
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const panelReveal = keyframes`
@@ -339,7 +351,7 @@ export const UAwardsCurrentWinners = ({
         <GroupTitle $tone={tone}>{title}</GroupTitle>
       </GroupHead>
       <GroupSub>{sub}</GroupSub>
-      <List>
+      <List $tone={tone}>
         {winners.map((a, i) => (
           <AwardeeCard
             key={a.id}
@@ -357,7 +369,7 @@ export const UAwardsCurrentWinners = ({
     <Section id="winners" aria-labelledby="winners-title">
       <Inner>
         <Head>
-          <Kicker>2025 Honorees</Kicker>
+          <Kicker>2026 Honorees</Kicker>
           <Title id="winners-title">This Year&apos;s Winners</Title>
           <Lede>
             Fourteen members of the U-SU team, both students and full-time

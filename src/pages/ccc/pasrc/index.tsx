@@ -15,8 +15,8 @@ const OfferingsContainer = styled.div`
 
 const buttons = [
   {
-    text: '2024 Grad',
-    href: '/ccc/cultural-grads/black',
+    text: '2026 Grad',
+    href: '/ccc/booklet/black-grad',
   },
 ];
 
