@@ -36,7 +36,17 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { email, department_id, is_active } = req.body as UpdateUserBody;
 
     const updates: Record<string, unknown> = {};
-    if (email !== undefined) updates.email = email.trim().toLowerCase();
+    if (email !== undefined) {
+      const trimmedEmail = email.trim().toLowerCase();
+      if (!trimmedEmail) {
+        return badRequest(res, 'Email cannot be empty.');
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(trimmedEmail)) {
+        return badRequest(res, 'Invalid email format.');
+      }
+      updates.email = trimmedEmail;
+    }
     if (department_id !== undefined) updates.department_id = department_id;
     if (is_active !== undefined) {
       updates.is_active = is_active;

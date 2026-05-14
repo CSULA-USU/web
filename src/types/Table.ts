@@ -1,4 +1,5 @@
 import { Colors } from 'theme';
+import type { ReactNode } from 'react';
 
 export type TableColorKey = keyof typeof Colors;
 
@@ -20,7 +21,7 @@ export interface TableColumn {
   headerImage?: TableHeaderImage;
   mergedValue?: TableColumnMergedValue;
   minWidth?: string;
-  render?: (row: TableRow) => React.ReactNode;
+  render?: (row: TableRow) => ReactNode;
 }
 
 export interface TableRowValues {

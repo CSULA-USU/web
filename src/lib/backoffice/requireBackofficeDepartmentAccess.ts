@@ -28,8 +28,13 @@ export const requireBackofficeDepartmentAccess = async (
 
   const session = await getServerSession(req, res, authOptions);
 
+  if (!session?.user?.email) {
+    res.status(401).json({ error: 'Unauthorized.' });
+    return { ok: false as const };
+  }
+
   const { user, error } = await getCurrentBackofficeUserByEmail(
-    session?.user?.email,
+    session.user.email,
   );
 
   if (error) {

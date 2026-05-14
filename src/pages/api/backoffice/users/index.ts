@@ -91,6 +91,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     const normalizedEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(normalizedEmail)) {
+      return badRequest(res, 'Invalid email format.');
+    }
 
     const { data: existing } = await supabaseAdmin
       .schema('backoffice_v2')

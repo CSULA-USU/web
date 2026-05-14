@@ -157,7 +157,19 @@ export async function getServerSideProps(ctx: any) {
     };
   }
 
-  const { user } = await getCurrentBackofficeUserByEmail(session.user?.email);
+  const { user, error } = await getCurrentBackofficeUserByEmail(
+    session.user?.email,
+  );
+
+  if (error) {
+    console.error('Failed to load backoffice user:', error);
+    return {
+      props: {
+        initialDocuments: [],
+        error: 'Failed to verify your backoffice access. Please try again.',
+      },
+    };
+  }
 
   if (
     !user ||

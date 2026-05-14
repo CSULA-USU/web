@@ -1305,7 +1305,7 @@ export default function AccessManagementPage() {
 
         <FluidContainer>
           {loading ? (
-            <Loading load={false} />
+            <Loading load={true} />
           ) : selectedSection === 'users' ? (
             <Tabs
               items={[

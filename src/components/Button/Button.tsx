@@ -29,7 +29,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 interface ButtonVariant {
   backgroundColor: keyof typeof Colors;
   color: keyof typeof Colors;
-  border?: string;
+  border?: keyof typeof Colors;
   padding?: string;
 }
 
@@ -50,7 +50,6 @@ const styles: { [key: string]: ButtonVariant } = {
   transparent: {
     backgroundColor: 'transparent',
     color: 'black',
-    border: '',
   },
   whiteOutline: {
     backgroundColor: 'transparent',
@@ -85,7 +84,7 @@ const getCSS = (p: ButtonProps) => {
     font-size: ${p.fontSize ?? '16px'};
     font-weight: ${p.fontWeight ?? '700'};
     filter: ${p.shadow ? 'drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25))' : ''};
-    border: ${border ? `1px solid ${border}` : 'none'};
+    border: ${border ? `1px solid ${Colors[border]}` : 'none'};
     border-radius: 8px;
     display: inline-block;
     padding: ${p.padding ?? padding ?? '18px 36px'};

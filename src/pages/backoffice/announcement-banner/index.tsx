@@ -125,6 +125,7 @@ export default function AnnouncementBannerAdmin({
                 gap="21px"
                 padding="0"
               >
+                <Typography variant="span">Preview:</Typography>
                 {/* Preview */}
                 <Announcement
                   linkText={draft.link_text}
@@ -246,7 +247,7 @@ export async function getServerSideProps(ctx: any) {
   if (
     !hasPolicy(user, {
       pageKey: 'announcementBanner',
-      action: 'view',
+      action: 'edit',
       scope: '*',
     })
   ) {

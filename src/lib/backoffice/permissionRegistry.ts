@@ -1,4 +1,63 @@
 export const BACKOFFICE_PERMISSION_REGISTRY = {
+  accessManagement: {
+    label: 'Access Management',
+    description:
+      'Manage backoffice users, roles, pages, departments, and access policies.',
+    actions: {
+      view: {
+        label: 'View',
+        scopes: {
+          '*': 'All access management',
+        },
+      },
+      edit: {
+        label: 'Edit',
+        scopes: {
+          '*': 'All access management',
+        },
+      },
+    },
+  },
+
+  announcementBanner: {
+    label: 'Announcement Banner',
+    description: 'Manage the website announcement banner.',
+    actions: {
+      view: {
+        label: 'View',
+        scopes: {
+          '*': 'Announcement banner',
+        },
+      },
+      edit: {
+        label: 'Edit',
+        scopes: {
+          '*': 'Announcement banner',
+        },
+      },
+    },
+  },
+
+  boardDocuments: {
+    label: 'Board Documents',
+    description: 'Manage Board of Directors documents.',
+    actions: {
+      view: {
+        label: 'View',
+
+        scopes: {
+          '*': 'Board documents',
+        },
+      },
+      edit: {
+        label: 'Edit',
+        scopes: {
+          '*': 'Board documents',
+        },
+      },
+    },
+  },
+
   graffixRequests: {
     label: 'Graffix Requests',
     description: 'Manage and view Graffix request boards.',
@@ -15,113 +74,6 @@ export const BACKOFFICE_PERMISSION_REGISTRY = {
         scopes: {
           '*': 'All departments',
           ownDepartment: 'Own department',
-        },
-      },
-      delete: {
-        label: 'Delete',
-        scopes: {
-          '*': 'All departments',
-        },
-      },
-    },
-  },
-
-  siteContent: {
-    label: 'Site Content',
-    description: 'Manage editable website content.',
-    actions: {
-      edit: {
-        label: 'Edit',
-        scopes: {
-          announcementBanner: 'Announcement banner',
-          meetingDocuments: 'Meeting documents',
-        },
-      },
-    },
-  },
-
-  backofficeUsers: {
-    label: 'Backoffice Users',
-    description: 'Manage employee backoffice access.',
-    actions: {
-      view: {
-        label: 'View',
-        scopes: {
-          '*': 'All users',
-        },
-      },
-      create: {
-        label: 'Create',
-        scopes: {
-          '*': 'All users',
-        },
-      },
-      edit: {
-        label: 'Edit',
-        scopes: {
-          '*': 'All users',
-        },
-      },
-      delete: {
-        label: 'Delete',
-        scopes: {
-          '*': 'All users',
-        },
-      },
-    },
-  },
-
-  backofficeRoles: {
-    label: 'Backoffice Roles',
-    description: 'Manage roles and role permissions.',
-    actions: {
-      view: {
-        label: 'View',
-        scopes: {
-          '*': 'All roles',
-        },
-      },
-      create: {
-        label: 'Create',
-        scopes: {
-          '*': 'All roles',
-        },
-      },
-      edit: {
-        label: 'Edit',
-        scopes: {
-          '*': 'All roles',
-        },
-      },
-      delete: {
-        label: 'Delete',
-        scopes: {
-          '*': 'All roles',
-        },
-      },
-    },
-  },
-
-  backofficeDepartments: {
-    label: 'Backoffice Departments',
-    description: 'Manage backoffice departments.',
-    actions: {
-      view: {
-        label: 'View',
-        scopes: {
-          '*': 'All departments',
-        },
-      },
-      create: {
-        label: 'Create',
-        scopes: {
-          '*': 'All departments',
-        },
-      },
-      edit: {
-        label: 'Edit',
-        scopes: {
-          '*': 'All departments',
         },
       },
       delete: {

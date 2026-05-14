@@ -27,6 +27,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     return res.status(200).json({ department: 'all' });
   }
 
+  if (!user.departmentName) {
+    return res.status(400).json({
+      error: 'User is not assigned to a department.',
+    });
+  }
+
   return res.status(200).json({
     department: user.departmentName,
   });
