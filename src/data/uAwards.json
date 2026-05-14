@@ -81,7 +81,8 @@
         "dept": "Graffix",
         "deptKey": "graffix",
         "role": "Social Media Manager",
-        "quote": "One student, in particular, is most guilty for embarrassing us in front of friends and family on TikTok and Instagram.  If you see her walking around your department.. Watch out. Cause she might just make you go viral. And while I don’t think I’ll ever understand your generation’s humor, like the plastic pointer video, the results speak for themselves in more followers, and tens of thousands of views over social media this year alone. And yes.. We do our own stunts. Your hilarious and zesty skits truly give a glimpse of the fun and welcoming work culture we have here at the U-SU."
+        "quote": "One student, in particular, is most guilty for embarrassing us in front of friends and family on TikTok and Instagram.  If you see her walking around your department.. Watch out. Cause she might just make you go viral. And while I don’t think I’ll ever understand your generation’s humor, like the plastic pointer video, the results speak for themselves in more followers, and tens of thousands of views over social media this year alone. And yes.. We do our own stunts. Your hilarious and zesty skits give a glimpse of the fun and welcoming work culture we have here at the U-SU.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/karina-graffix.JPG"
       },
       {
         "id": "d2",
@@ -211,7 +212,7 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Director, Student Engagement and Belonging",
-        "quote": ""
+        "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does."
       }
     ]
   },
