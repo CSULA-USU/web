@@ -17,6 +17,7 @@ import { hasPolicy } from 'lib/backoffice/permissions';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { useToast } from 'context/ToastContext';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
+import { Spaces } from 'theme';
 
 export default function AnnouncementBannerAdmin({
   initialBanner,
@@ -119,12 +120,7 @@ export default function AnnouncementBannerAdmin({
         >
           <FluidContainer>
             {banner ? (
-              <FluidContainer
-                flex
-                flexDirection="column"
-                gap="21px"
-                padding="0"
-              >
+              <FluidContainer flex flexDirection="column" padding="0">
                 <Typography variant="span">Preview:</Typography>
                 {/* Preview */}
                 <Announcement
@@ -148,6 +144,7 @@ export default function AnnouncementBannerAdmin({
                     flex
                     flexDirection="column"
                     gap="16px"
+                    margin={`${Spaces.md} 0 0 0`}
                   >
                     <Label>
                       <Typography variant="span">Banner Text</Typography>
