@@ -169,7 +169,7 @@
     {
       "title": "Nuestra Grad Celebration",
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
-      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/nuestra-grad-header.webp",
       "copy": [
         ["Date: Saturday, May 16", "Time: 10:00 AM to 11:30 AM"],
         "Location: University Gym",
@@ -221,7 +221,7 @@
           "buttonText": "Booklet & Captions"
         },
         {
-          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/NativeGrad_DigitalBooklet_D2.pdf",
+          "buttonLink": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/PrideGrad2026_DigitalBooklet.pdf",
           "buttonPlaceholder": "Pride Grad Booklet",
           "buttonText": "Booklet"
         },
