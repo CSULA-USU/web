@@ -13,6 +13,7 @@ interface AwardeeCardProps {
   index?: number;
   isFirst?: boolean;
   hidePhoto?: boolean;
+  hideModalPhoto?: boolean;
   layout?: 'card' | 'list';
 }
 
@@ -74,6 +75,7 @@ const ModalBackdrop = styled.div`
 const ModalCard = styled.article<{ $hidePhoto: boolean }>`
   width: min(1040px, 100%);
   max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 24px);
   overflow: auto;
   background: ${Colors.white};
   border-radius: 16px;
@@ -97,11 +99,14 @@ const ModalCloseButton = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
-  height: 24px;
-  width: 24px;
+  height: 44px;
+  width: 44px;
   border: none;
   background: transparent;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ModalCloseButtonIcon = styled(AiFillCloseCircle)`
@@ -366,6 +371,7 @@ export const AwardeeCard = ({
   awardee,
   badge,
   hidePhoto = false,
+  hideModalPhoto,
   layout = 'card',
 }: AwardeeCardProps) => {
   const [showFallback, setShowFallback] = useState(false);
@@ -378,10 +384,11 @@ export const AwardeeCard = ({
   const modalRef = useRef<HTMLElement | null>(null);
   const catLabel = awardee.value ? `Values · ${awardee.value}` : awardee.dept;
   const hasPhoto = Boolean(awardee.photoUrl) && !showFallback;
+  const shouldHideModalPhoto = hideModalPhoto ?? hidePhoto;
   const roleLine = awardee.value
     ? [awardee.role, awardee.dept].filter(Boolean).join(' · ')
     : awardee.role;
-  const showModalPhoto = hasPhoto || !hidePhoto;
+  const showModalPhoto = hasPhoto || !shouldHideModalPhoto;
   const previewQuote =
     awardee.quote.length > PREVIEW_QUOTE_LENGTH
       ? `${awardee.quote.slice(0, PREVIEW_QUOTE_LENGTH).trimEnd()}...`
@@ -468,7 +475,7 @@ export const AwardeeCard = ({
   const modalContent = (
     <ModalBackdrop onClick={() => setIsOpen(false)} role="presentation">
       <ModalCard
-        $hidePhoto={hidePhoto}
+        $hidePhoto={shouldHideModalPhoto}
         role="dialog"
         aria-modal="true"
         aria-label={`Profile for ${awardee.name}`}
@@ -502,7 +509,7 @@ export const AwardeeCard = ({
         )}
 
         <ModalCopy>
-          {hidePhoto && badge && (
+          {shouldHideModalPhoto && badge && (
             <InlineBadge>
               <BadgeText>{badge}</BadgeText>
             </InlineBadge>

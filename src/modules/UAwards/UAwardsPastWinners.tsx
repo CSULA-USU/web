@@ -131,10 +131,13 @@ const Count = styled.p`
   margin: 8px 0 24px;
 `;
 
-const Grid = styled.div`
+const Grid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 `;
 
 const reveal = keyframes`
@@ -149,7 +152,7 @@ const reveal = keyframes`
   }
 `;
 
-const ListItem = styled.div<{ $animate: boolean; $delayMs: number }>`
+const ListItem = styled.li<{ $animate: boolean; $delayMs: number }>`
   ${(p) =>
     p.$animate &&
     css`
@@ -230,7 +233,10 @@ export const UAwardsPastWinners = ({
           role: `${winner.dept} · ${winner.role}`,
           dept: winner.cat,
           deptKey: winner.deptKey,
-          quote: `${winner.name} was recognized in ${winner.year} as a ${winner.type} honoree for ${winner.cat}.`,
+          quote:
+            winner.quote?.trim() ||
+            `${winner.name} was recognized in ${winner.year} as a ${winner.type} honoree for ${winner.cat}.`,
+          photoUrl: winner.photoUrl,
         }),
       ),
     [filtered],
@@ -330,6 +336,7 @@ export const UAwardsPastWinners = ({
                     awardee={w}
                     badge={String(filtered[i].year)}
                     hidePhoto
+                    hideModalPhoto={false}
                     layout="list"
                   />
                 </ListItem>
