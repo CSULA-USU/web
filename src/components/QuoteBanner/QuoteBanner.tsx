@@ -13,9 +13,14 @@ interface QuoteBannerProps {
   variant?: QuoteVariant;
 }
 
-const BannerWrapper = styled(FluidContainer)<{ $variant: QuoteVariant }>`
+const BannerWrapper = styled(FluidContainer).attrs({
+  padding: '96px 36px',
+  paddingDesktop: '72px 24px',
+  paddingMobile: '64px 16px',
+})<{ $variant: QuoteVariant }>`
   width: 100%;
   text-align: center;
+
   ${(p) =>
     p.$variant === 'yellow'
       ? css`
