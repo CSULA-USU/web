@@ -24,11 +24,11 @@ const FluidOuter = styled.div<FluidContainerProps>`
   width: ${(p) => p.width};
   ${(p) =>
     media('desktop')(`
-    padding: ${p.padding || '18px 36px'};
+    padding: ${p.paddingDesktop || p.padding || '18px 36px'};
   `)}
   ${(p) =>
     media('mobile')(`
-    padding: ${p.padding || '18px 16px'};
+    padding: ${p.paddingMobile || p.paddingDesktop || p.padding || '18px 16px'};
   `)}
   ${getBackgroundCSS}
 `;
@@ -92,6 +92,8 @@ interface FluidContainerProps extends FluidInnerProps {
   height?: string;
   id?: string;
   padding?: string;
+  paddingDesktop?: string;
+  paddingMobile?: string;
   width?: string;
   margin?: string;
 }
