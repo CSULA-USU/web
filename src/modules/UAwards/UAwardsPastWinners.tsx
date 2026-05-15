@@ -1,8 +1,8 @@
-import { useMemo, useState } from 'react';
-import styled from 'styled-components';
+import { useEffect, useMemo, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import { Colors } from 'theme';
-import { PortraitPlaceholder } from 'components';
-import type { Department, DepartmentKey, PastAwardee } from 'types';
+import { AwardeeCard } from 'components';
+import type { Awardee, Department, DepartmentKey, PastAwardee } from 'types';
 
 interface UAwardsPastWinnersProps {
   winners: PastAwardee[];
@@ -11,6 +11,8 @@ interface UAwardsPastWinnersProps {
 
 type YearFilter = number | 'all';
 type DeptFilter = DepartmentKey | 'all';
+
+const PAGE_SIZE = 14;
 
 const Section = styled.section`
   background: ${Colors.greyLightest};
@@ -131,89 +133,62 @@ const Count = styled.p`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 10px;
+`;
 
-  @media (max-width: 1100px) {
-    grid-template-columns: repeat(3, 1fr);
+const reveal = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
 
-  @media (max-width: 800px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
-const Card = styled.article`
-  background: ${Colors.white};
-  border: 1px solid ${Colors.greyLighter};
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
+const ListItem = styled.div<{ $animate: boolean; $delayMs: number }>`
+  ${(p) =>
+    p.$animate &&
+    css`
+      animation: ${reveal} 280ms ease-out both;
+      animation-delay: ${p.$delayMs}ms;
+    `}
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+const PaginationActions = styled.div`
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+const PaginationButton = styled.button<{ $kind?: 'primary' | 'secondary' }>`
+  background: ${(p) => (p.$kind === 'secondary' ? Colors.white : Colors.black)};
+  color: ${(p) => (p.$kind === 'secondary' ? Colors.black : Colors.white)};
+  border: 1px solid ${Colors.black};
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-family: var(--font-montserrat, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-color: ${Colors.primary};
+    background: ${(p) =>
+      p.$kind === 'secondary' ? Colors.black : Colors.white};
+    color: ${(p) => (p.$kind === 'secondary' ? Colors.white : Colors.black)};
   }
-`;
-
-const CardPhoto = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: ${Colors.greyLightest};
-`;
-
-const YearBadge = styled.span`
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.85);
-  color: ${Colors.white};
-  font-family: var(--font-montserrat, sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 5px 10px;
-  border-radius: 6px;
-`;
-
-const Body = styled.div`
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-`;
-
-const Cat = styled.span`
-  font-family: var(--font-montserrat, sans-serif);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: ${Colors.gold};
-`;
-
-const Name = styled.h3`
-  font-family: var(--font-bitter), serif;
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 1.2;
-  margin: 0;
-  color: ${Colors.black};
-`;
-
-const DeptLine = styled.span`
-  font-family: var(--font-montserrat, sans-serif);
-  font-size: 12px;
-  font-weight: 600;
-  color: ${Colors.greyDark};
 `;
 
 const Empty = styled.div`
@@ -232,6 +207,8 @@ export const UAwardsPastWinners = ({
 }: UAwardsPastWinnersProps) => {
   const [year, setYear] = useState<YearFilter>('all');
   const [dept, setDept] = useState<DeptFilter>('all');
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [animateFromIndex, setAnimateFromIndex] = useState(0);
 
   const years = useMemo(
     () => Array.from(new Set(winners.map((w) => w.year))).sort((a, b) => b - a),
@@ -244,9 +221,34 @@ export const UAwardsPastWinners = ({
       (dept === 'all' || w.deptKey === dept),
   );
 
+  const winnerProfiles = useMemo(
+    () =>
+      filtered.map(
+        (winner): Awardee => ({
+          id: winner.id,
+          name: winner.name,
+          role: `${winner.dept} · ${winner.role}`,
+          dept: winner.cat,
+          deptKey: winner.deptKey,
+          quote: `${winner.name} was recognized in ${winner.year} as a ${winner.type} honoree for ${winner.cat}.`,
+        }),
+      ),
+    [filtered],
+  );
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+    setAnimateFromIndex(0);
+  }, [year, dept]);
+
+  const visibleProfiles = winnerProfiles.slice(0, visibleCount);
+  const hasMore = visibleCount < winnerProfiles.length;
+  const canShowLess = visibleCount > PAGE_SIZE;
+
   const deptLabel =
     dept === 'all' ? null : departments.find((d) => d.key === dept)?.label;
-  const countLine = `Showing ${filtered.length} ${
+  const visibleTotal = Math.min(visibleCount, filtered.length);
+  const countLine = `Showing ${visibleTotal} of ${filtered.length} ${
     filtered.length === 1 ? 'honoree' : 'honorees'
   }${year !== 'all' ? ` from ${year}` : ''}${
     deptLabel ? ` in ${deptLabel}` : ''
@@ -316,23 +318,51 @@ export const UAwardsPastWinners = ({
         {filtered.length === 0 ? (
           <Empty>No honorees match these filters.</Empty>
         ) : (
-          <Grid>
-            {filtered.map((w) => (
-              <Card key={w.id}>
-                <CardPhoto>
-                  <YearBadge>{w.year}</YearBadge>
-                  <PortraitPlaceholder name={w.name} fontSize="40px" />
-                </CardPhoto>
-                <Body>
-                  <Cat>{w.cat}</Cat>
-                  <Name>{w.name}</Name>
-                  <DeptLine>
-                    {w.dept} · {w.role}
-                  </DeptLine>
-                </Body>
-              </Card>
-            ))}
-          </Grid>
+          <>
+            <Grid>
+              {visibleProfiles.map((w, i) => (
+                <ListItem
+                  key={w.id}
+                  $animate={i >= animateFromIndex}
+                  $delayMs={Math.max(0, i - animateFromIndex) * 26}
+                >
+                  <AwardeeCard
+                    awardee={w}
+                    badge={String(filtered[i].year)}
+                    hidePhoto
+                    layout="list"
+                  />
+                </ListItem>
+              ))}
+            </Grid>
+            {(hasMore || canShowLess) && (
+              <PaginationActions>
+                {hasMore && (
+                  <PaginationButton
+                    type="button"
+                    onClick={() => {
+                      setAnimateFromIndex(visibleCount);
+                      setVisibleCount((count) => count + PAGE_SIZE);
+                    }}
+                  >
+                    Load 14 More
+                  </PaginationButton>
+                )}
+                {canShowLess && (
+                  <PaginationButton
+                    $kind="secondary"
+                    type="button"
+                    onClick={() => {
+                      setAnimateFromIndex(0);
+                      setVisibleCount(PAGE_SIZE);
+                    }}
+                  >
+                    Show Less
+                  </PaginationButton>
+                )}
+              </PaginationActions>
+            )}
+          </>
         )}
       </Inner>
     </Section>
