@@ -55,6 +55,7 @@ export interface PastAwardee {
   cat: string;
   name: string;
   role: string;
+  quote?: string;
   dept: string;
   deptKey: DepartmentKey;
   photoUrl?: string;
