@@ -72,10 +72,7 @@
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/apida-grad-blue.webp",
       "copy": [
-        [
-          "Date: Friday, May 15",
-          "Time: 7:30 PM to 9:00 PM"
-        ],
+        ["Date: Friday, May 15", "Time: 7:30 PM to 9:00 PM"],
         "Location: University Gym",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: motuhiv@calstatela.edu"
@@ -106,12 +103,9 @@
     {
       "title": "Black Grad Celebration",
       "subheader": "Black, African-American, Pan-African Diaspora",
-      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/apida-grad-blue.webp",
+      "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/Black%20Grad%20Cover_Web.png",
       "copy": [
-        [
-          "Date: Saturday, May 16",
-          "Time: 3:00 PM to 4:30 PM"
-        ],
+        ["Date: Saturday, May 16", "Time: 3:00 PM to 4:30 PM"],
         "Location: University Gym",
         "Contact: Imani Thomas, Pan African Student Resource Center Coordinator",
         "Email: ithoma10@calstatela.edu"
@@ -144,10 +138,7 @@
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/Indigigrad2026_Header.jpg",
       "copy": [
-        [
-          "Date: Friday, May 15",
-          "Time: 10:30 AM to 12:00 PM"
-        ],
+        ["Date: Friday, May 15", "Time: 10:30 AM to 12:00 PM"],
         "Location: U-SU Theater",
         "Contact: Fabi Avina, Center for Student Involvement Director",
         "Email: favina@calstatela.edu"
@@ -180,10 +171,7 @@
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/nuestra-grad-header.webp",
       "copy": [
-        [
-          "Date: Saturday, May 16",
-          "Time: 10:00 AM to 11:30 AM"
-        ],
+        ["Date: Saturday, May 16", "Time: 10:00 AM to 11:30 AM"],
         "Location: University Gym",
         "Contact: Emily Urrutia, Chicanx Latinx Student Resource Center Coordinator",
         "Email: eurruti8@calstatela.edu"
@@ -221,10 +209,7 @@
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/pride-grad-mobile.webp",
       "copy": [
-        [
-          "Date: Friday, May 15",
-          "Time: 4:30 PM to 6:00 PM"
-        ],
+        ["Date: Friday, May 15", "Time: 4:30 PM to 6:00 PM"],
         "Location: University Gym",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: mpizarr5@calstatela.edu"
