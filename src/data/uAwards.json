@@ -90,7 +90,8 @@
         "dept": "Cross Cultural Centers",
         "deptKey": "ccc",
         "role": "CCC Front Desk",
-        "quote": "This year, the Cross Cultural Centers front desk was filled with a warm and welcoming presence that has helped students feel seen, supported, and connected with the space and campus. Through many transitions during her first year, this student was able to navigate any challenges with resilience, flexibility, and care. She always gave her best effort no matter what challenges came her way.Her growth over the past year has been incredible to witness, and her positivity, dedication, and care for other students have left a lasting impact on the CCC. We are so proud of all that she has accomplished and excited for all that is ahead."
+        "quote": "This year, the Cross Cultural Centers front desk was filled with a warm and welcoming presence that has helped students feel seen, supported, and connected with the space and campus. Through many transitions during her first year, this student was able to navigate any challenges with resilience, flexibility, and care. She always gave her best effort no matter what challenges came her way.Her growth over the past year has been incredible to witness, and her positivity, dedication, and care for other students have left a lasting impact on the CCC. We are so proud of all that she has accomplished and excited for all that is ahead.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/manuela-ccc.jpg"
       },
       {
         "id": "d3",
@@ -102,14 +103,24 @@
       },
       {
         "id": "d4",
+        "name": "Anthony Ngo",
+        "dept": "Operations",
+        "deptKey": "operations",
+        "role": "Operations Specialist",
+        "quote": "",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/anthony-ops.jpg"
+      },
+      {
+        "id": "d5",
         "name": "Monique Garcia",
         "dept": "Operations",
         "deptKey": "operations",
         "role": "Information and Reservations Associate",
-        "quote": "The information and reservations desk has exceptional students who ensure that our guests are greeted with a warm welcome and all of our reservations get processed and finalized on time.. whether that be months in advance or sometimes with a one week notice. We have to multi task to ensure that all details on a reservation are correct and our guests are still getting proper attention as they walk through our doors. One student stands out for her unwavering commitment to helping others. Whether on or off the clock, she is always willing to step in, support the team, and rise to the occasion whenever help is needed. Since being promoted to Information and Reservations Associate, she has continued to lead with reliability, professionalism, and a positive attitude that makes a lasting impact on both our team and our guests."
+        "quote": "The information and reservations desk has exceptional students who ensure that our guests are greeted with a warm welcome and all of our reservations get processed and finalized on time.. whether that be months in advance or sometimes with a one week notice. We have to multi task to ensure that all details on a reservation are correct and our guests are still getting proper attention as they walk through our doors. One student stands out for her unwavering commitment to helping others. Whether on or off the clock, she is always willing to step in, support the team, and rise to the occasion whenever help is needed. Since being promoted to Information and Reservations Associate, she has continued to lead with reliability, professionalism, and a positive attitude that makes a lasting impact on both our team and our guests.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/monique-ops.jpg"
       },
       {
-        "id": "d5",
+        "id": "d6",
         "name": "Malia Berganio",
         "dept": "Recreation",
         "deptKey": "recreation",
@@ -117,28 +128,31 @@
         "quote": "This year, the Recreation Department has successfully enhanced our membership processes thanks to multiple collaborative efforts on campus. There is one student whose energy and unreasonable hospitality I would like to highlight. This student has demonstrated amazing foresight for our facility and exemplifies the type of patience and compassion everyone in our community needs."
       },
       {
-        "id": "d6",
+        "id": "d7",
         "name": "Valerie Urrutia",
         "dept": "Recreation",
         "deptKey": "recreation",
         "role": "Floor Assistant",
-        "quote": "This year, the Recreation Department has intentionally focused on strengthening our culture of hospitality and finding new ways to make our space welcoming for all. One student has truly gone above and beyond in her role, consistently growing and demonstrating strong leadership skills. She has fully stepped into her position by greeting every member with warmth, and patience, always ready to assist when needed. Her impact extends beyond our members as she has become a trusted source of knowledge for her peers and sets an outstanding example."
+        "quote": "This year, the Recreation Department has intentionally focused on strengthening our culture of hospitality and finding new ways to make our space welcoming for all. One student has truly gone above and beyond in her role, consistently growing and demonstrating strong leadership skills. She has fully stepped into her position by greeting every member with warmth, and patience, always ready to assist when needed. Her impact extends beyond our members as she has become a trusted source of knowledge for her peers and sets an outstanding example.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/valerie-rec.jpg"
       },
       {
-        "id": "d7",
+        "id": "d8",
         "name": "Sean Kono",
         "dept": "Admin",
         "deptKey": "admin",
         "role": "Admin Assistant",
-        "quote": "One student stands out for their willingness to learn, adaptability and reliability. Over the year, we have seen this student step out of their comfort zone, take initiative, and is always willing to stay behind to finish their tasks."
+        "quote": "One student stands out for their willingness to learn, adaptability and reliability. Over the year, we have seen this student step out of their comfort zone, take initiative, and is always willing to stay behind to finish their tasks.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/sean-admin.jpg"
       },
       {
-        "id": "d8",
+        "id": "d9",
         "name": "Reine Santos Saavedra",
         "dept": "Board of Directors",
         "deptKey": "board",
         "role": "Student Director",
-        "quote": "I proudly announce that this individual made us all laugh, inspired us all, and truly showed what it means to be a proud Golden Eagle who continues to soar into every next chapter of life. Through passion, dedication, and unforgettable energy, she created an impact on student engagement that will be remembered long after this year. She is the definition of a go-getter — someone who walks into every room with purpose, uplifts the people around her, and leaves every space better than she found it. Her kindness, leadership, and spirit reminded all of us why student leadership matters. Today, we celebrate not only everything she has accomplished, but the incredible person she is becoming. Never stop owning your voice, your light, and your greatness because your impact has truly touched all of us."
+        "quote": "I proudly announce that this individual made us all laugh, inspired us all, and truly showed what it means to be a proud Golden Eagle who continues to soar into every next chapter of life. Through passion, dedication, and unforgettable energy, she created an impact on student engagement that will be remembered long after this year. She is the definition of a go-getter — someone who walks into every room with purpose, uplifts the people around her, and leaves every space better than she found it. Her kindness, leadership, and spirit reminded all of us why student leadership matters. Today, we celebrate not only everything she has accomplished, but the incredible person she is becoming. Never stop owning your voice, your light, and your greatness because your impact has truly touched all of us.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-bod.jpg"
       }
     ],
     "valueWinners": [
@@ -149,7 +163,8 @@
         "dept": "Graffix",
         "deptKey": "graffix",
         "role": "Junior Graphic Designer",
-        "quote": "At the U-SU, accountability means showing up for one another and for the students we serve. It’s about taking ownership of our actions, being honest in our reflections, and holding ourselves to a standard of growth and integrity. Those who embody this value don’t just complete tasks, they follow through with intention, learn from challenges, and actively seek solutions that strengthen our work and our community. Tonight, we recognize an individual who consistently demonstrates accountability, someone who leads by example and makes a meaningful impact through their commitment and responsibility."
+        "quote": "At the U-SU, accountability means showing up for one another and for the students we serve. It’s about taking ownership of our actions, being honest in our reflections, and holding ourselves to a standard of growth and integrity. Those who embody this value don’t just complete tasks, they follow through with intention, learn from challenges, and actively seek solutions that strengthen our work and our community. Tonight, we recognize an individual who consistently demonstrates accountability, someone who leads by example and makes a meaningful impact through their commitment and responsibility.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/eliza-accountability2.jpg"
       },
       {
         "id": "v2",
@@ -157,8 +172,9 @@
         "value": "Integrity",
         "dept": "Operations",
         "deptKey": "operations",
-        "role": "",
-        "quote": "At the U-SU, integrity means leading with honesty, transparency, and respect in everything we do. It’s reflected in how we communicate, how we make decisions, and how we show up for one another and the students we serve. Those who embody this value build trust through their actions. They lead with authenticity, remain consistent in their values, and create an environment where others feel respected, heard, and supported. Tonight, we recognize an individual who exemplifies integrity, someone who leads with purpose and sets a strong example for our community."
+        "role": "Operations Manager",
+        "quote": "At the U-SU, integrity means leading with honesty, transparency, and respect in everything we do. It’s reflected in how we communicate, how we make decisions, and how we show up for one another and the students we serve. Those who embody this value build trust through their actions. They lead with authenticity, remain consistent in their values, and create an environment where others feel respected, heard, and supported. Tonight, we recognize an individual who exemplifies integrity, someone who leads with purpose and sets a strong example for our community.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/omar-integrity2.jpg"
       },
       {
         "id": "v3",
@@ -166,8 +182,9 @@
         "value": "Innovation",
         "dept": "Cross Cultural Centers",
         "deptKey": "ccc",
-        "role": "",
-        "quote": "At the U-SU, innovation means thinking beyond what already exists and actively seeking new ways to enhance the student experience. It’s about creativity, adaptability, and a willingness to try something different in order to improve our programs, services, and spaces. Those who embody this value are forward-thinking and solution-oriented. They bring fresh ideas, challenge the status quo, and continuously look for ways to make a lasting impact across our community. Tonight, we recognize an individual who exemplifies innovation, someone whose creativity and initiative help move our work forward in meaningful ways."
+        "role": "Student Program Coordinator",
+        "quote": "At the U-SU, innovation means thinking beyond what already exists and actively seeking new ways to enhance the student experience. It’s about creativity, adaptability, and a willingness to try something different in order to improve our programs, services, and spaces. Those who embody this value are forward-thinking and solution-oriented. They bring fresh ideas, challenge the status quo, and continuously look for ways to make a lasting impact across our community. Tonight, we recognize an individual who exemplifies innovation, someone whose creativity and initiative help move our work forward in meaningful ways.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/cj-innovation.jpg"
       },
       {
         "id": "v4",
@@ -176,7 +193,8 @@
         "dept": "Recreation",
         "deptKey": "recreation",
         "role": "Floor Assistant",
-        "quote": "At the U-SU, community means recognizing and embracing the diverse experiences and needs of those we serve. It’s about creating spaces where everyone feels welcomed, valued, and a true sense of belonging. Those who embody this value are intentional in their actions. They build connections, foster inclusion, and contribute to a positive environment where individuals feel seen, supported, and empowered. Tonight, we recognize an individual who exemplifies community, someone who helps create a culture of belonging and strengthens the connections that make our U-SU a home for all."
+        "quote": "At the U-SU, community means recognizing and embracing the diverse experiences and needs of those we serve. It’s about creating spaces where everyone feels welcomed, valued, and a true sense of belonging. Those who embody this value are intentional in their actions. They build connections, foster inclusion, and contribute to a positive environment where individuals feel seen, supported, and empowered. Tonight, we recognize an individual who exemplifies community, someone who helps create a culture of belonging and strengthens the connections that make our U-SU a home for all.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/rishab-community2.jpg"
       },
       {
         "id": "v5",
@@ -185,7 +203,8 @@
         "dept": "Board of Directors",
         "deptKey": "board",
         "role": "Student Director",
-        "quote": "At the U-SU, fun is more than just enjoyment, it’s the energy and enthusiasm we bring into our spaces and interactions. It’s about creating a welcoming, uplifting environment where students feel excited to engage, connect, and be themselves. Those who embody this value lead with positivity and passion. They help turn everyday moments into memorable experiences and contribute to a culture that feels vibrant, inclusive, and full of life. Tonight, we recognize an individual who truly brings this value to life, someone whose joy and spirit make a lasting impact on our community."
+        "quote": "At the U-SU, fun is more than just enjoyment, it’s the energy and enthusiasm we bring into our spaces and interactions. It’s about creating a welcoming, uplifting environment where students feel excited to engage, connect, and be themselves. Those who embody this value lead with positivity and passion. They help turn everyday moments into memorable experiences and contribute to a culture that feels vibrant, inclusive, and full of life. Tonight, we recognize an individual who truly brings this value to life, someone whose joy and spirit make a lasting impact on our community.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-fun2.jpg"
       },
       {
         "id": "v6",
@@ -194,7 +213,8 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Student Engagement Assistant",
-        "quote": "Our final U-SU Value is Connection. At the U-SU, connection is about building genuine relationships with one another and with the students we serve. It’s through these meaningful connections that we create a stronger, more supportive community. Those who embody this value take the time to listen, engage, and uplift others. They recognize the unique strengths in each person and help bring people together in ways that amplify our collective success. Tonight, we recognize an individual who exemplifies connection, someone who fosters relationships that make our community stronger and more unified."
+        "quote": "Our final U-SU Value is Connection. At the U-SU, connection is about building genuine relationships with one another and with the students we serve. It’s through these meaningful connections that we create a stronger, more supportive community. Those who embody this value take the time to listen, engage, and uplift others. They recognize the unique strengths in each person and help bring people together in ways that amplify our collective success. Tonight, we recognize an individual who exemplifies connection, someone who fosters relationships that make our community stronger and more unified.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/jaqueline-connection2.jpg"
       }
     ],
     "staffWinners": [
@@ -204,7 +224,8 @@
         "dept": "Admin",
         "deptKey": "admin",
         "role": "Accounting Technician",
-        "quote": ""
+        "quote": "Alice Lam from the U-SU Admin Office is this year's U-SU Values Champion Award recipient, earning three nominations from her colleagues. As the organization's Accounting Technician, she is essential to operations: consistently finding solutions, navigating complex processes, and doing so with remarkable patience, positivity, and grace. Her nominators highlighted her Accountability and Integrity above all, noting how seriously she takes her role as a financial gatekeeper, ensuring accuracy and communicating respectfully even when it means extra work on her end. Alice has also shown tremendous growth, from her early days as a student assistant to now pursuing her Master's degree, leading training presentations, and supervising students, making her a truly deserving recipient of this award.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/alice-values2.jpg"
       },
       {
         "id": "s2",
@@ -212,7 +233,8 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Director, Student Engagement and Belonging",
-        "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does."
+        "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/fabi-values3.jpg"
       }
     ]
   },

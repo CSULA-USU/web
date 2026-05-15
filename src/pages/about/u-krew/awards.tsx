@@ -3,7 +3,7 @@ import {
   Page,
   UAwardsHero,
   UAwardsCurrentWinners,
-  UAwardsPastWinners,
+  // UAwardsPastWinners,
   UAwardsValues,
   UAwardsCallToAction,
 } from 'modules';
@@ -68,7 +68,7 @@ export default function UAwardsPage() {
         staffWinners={data.current.staffWinners}
       />
 
-      <UAwardsPastWinners winners={data.past} departments={data.departments} />
+      {/* <UAwardsPastWinners winners={data.past} departments={data.departments} /> */}
 
       <UAwardsValues values={data.values} />
 

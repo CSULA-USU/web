@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { createPortal } from 'react-dom';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Colors } from 'theme';
 import { Typography } from '../Typography';
 import { PortraitPlaceholder } from './PortraitPlaceholder';
@@ -115,7 +115,17 @@ const ModalCloseButtonIcon = styled(AiFillCloseCircle)`
   }
 `;
 
-const PhotoWrap = styled.div<{ $hasPhoto: boolean }>`
+const imageShimmer = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+`;
+
+const PhotoWrap = styled.div<{ $hasPhoto: boolean; $loaded: boolean }>`
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
@@ -128,9 +138,30 @@ const PhotoWrap = styled.div<{ $hasPhoto: boolean }>`
       transform: scale(1.04);
     }
   `}
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: ${(p) => (p.$hasPhoto && !p.$loaded ? 1 : 0)};
+    pointer-events: none;
+    ${(p) =>
+      p.$hasPhoto &&
+      !p.$loaded &&
+      css`
+        animation: ${imageShimmer} 1.2s ease-in-out infinite;
+      `}
+    transition: opacity 220ms ease-out;
+  }
 `;
 
-const ModalPhotoWrap = styled.div<{ $hasPhoto: boolean }>`
+const ModalPhotoWrap = styled.div<{ $hasPhoto: boolean; $loaded: boolean }>`
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -145,25 +176,51 @@ const ModalPhotoWrap = styled.div<{ $hasPhoto: boolean }>`
       transform: scale(1.04);
     }
   `}
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: ${(p) => (p.$hasPhoto && !p.$loaded ? 1 : 0)};
+    pointer-events: none;
+    ${(p) =>
+      p.$hasPhoto &&
+      !p.$loaded &&
+      css`
+        animation: ${imageShimmer} 1.2s ease-in-out infinite;
+      `}
+    transition: opacity 220ms ease-out;
+  }
 `;
 
-const PhotoImage = styled.img`
+const PhotoImage = styled.img<{ $loaded: boolean }>`
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1);
-  transition: transform 220ms ease;
+  opacity: ${(p) => (p.$loaded ? 1 : 0)};
+  filter: ${(p) => (p.$loaded ? 'blur(0)' : 'blur(10px)')};
+  transform: ${(p) => (p.$loaded ? 'scale(1)' : 'scale(1.02)')};
+  transition: opacity 300ms ease-out, filter 420ms ease-out,
+    transform 420ms ease-out;
 
   @media (prefers-reduced-motion: reduce) {
-    transition: none;
+    transition: opacity 180ms linear;
+    filter: none;
+    transform: scale(1);
   }
 `;
 
 const Badge = styled.div`
   position: absolute;
-  top: 16px;
+  bottom: 16px;
   left: 16px;
   background: ${Colors.primary};
   padding: 6px 10px;
@@ -312,7 +369,10 @@ export const AwardeeCard = ({
   layout = 'card',
 }: AwardeeCardProps) => {
   const [showFallback, setShowFallback] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const cardImageRef = useRef<HTMLImageElement | null>(null);
+  const modalImageRef = useRef<HTMLImageElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const modalRef = useRef<HTMLElement | null>(null);
@@ -326,6 +386,27 @@ export const AwardeeCard = ({
     awardee.quote.length > PREVIEW_QUOTE_LENGTH
       ? `${awardee.quote.slice(0, PREVIEW_QUOTE_LENGTH).trimEnd()}...`
       : awardee.quote;
+
+  useEffect(() => {
+    setShowFallback(false);
+    setIsImageLoaded(false);
+  }, [awardee.photoUrl]);
+
+  useEffect(() => {
+    if (!hasPhoto || isImageLoaded) {
+      return;
+    }
+
+    const cardImage = cardImageRef.current;
+    const modalImage = modalImageRef.current;
+    const hasCompletedImage =
+      (cardImage?.complete && (cardImage?.naturalWidth ?? 0) > 0) ||
+      (modalImage?.complete && (modalImage?.naturalWidth ?? 0) > 0);
+
+    if (hasCompletedImage) {
+      setIsImageLoaded(true);
+    }
+  }, [hasPhoto, isImageLoaded, isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -395,13 +476,19 @@ export const AwardeeCard = ({
         onClick={(event) => event.stopPropagation()}
       >
         {showModalPhoto && (
-          <ModalPhotoWrap $hasPhoto={hasPhoto}>
+          <ModalPhotoWrap $hasPhoto={hasPhoto} $loaded={isImageLoaded}>
             {hasPhoto ? (
               <PhotoImage
                 src={awardee.photoUrl}
                 alt=""
                 decoding="async"
-                onError={() => setShowFallback(true)}
+                ref={modalImageRef}
+                $loaded={isImageLoaded}
+                onLoad={() => setIsImageLoaded(true)}
+                onError={() => {
+                  setShowFallback(true);
+                  setIsImageLoaded(false);
+                }}
               />
             ) : (
               <PortraitPlaceholder name={awardee.name} />
@@ -454,14 +541,20 @@ export const AwardeeCard = ({
         aria-label={`Open full profile for ${awardee.name}`}
       >
         {!hidePhoto && (
-          <PhotoWrap $hasPhoto={hasPhoto}>
+          <PhotoWrap $hasPhoto={hasPhoto} $loaded={isImageLoaded}>
             {hasPhoto ? (
               <PhotoImage
                 src={awardee.photoUrl}
                 alt=""
                 loading="lazy"
                 decoding="async"
-                onError={() => setShowFallback(true)}
+                ref={cardImageRef}
+                $loaded={isImageLoaded}
+                onLoad={() => setIsImageLoaded(true)}
+                onError={() => {
+                  setShowFallback(true);
+                  setIsImageLoaded(false);
+                }}
               />
             ) : (
               <PortraitPlaceholder name={awardee.name} />

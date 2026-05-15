@@ -338,6 +338,7 @@ export const UAwardsCurrentWinners = ({
     },
   ];
 
+  // UI factory pattern to avoid repetition in the JSX return statement below. Renders each group of winners with the appropriate styles and structure.
   const renderGroup = (
     tone: GroupTone,
     title: string,
@@ -417,7 +418,7 @@ export const UAwardsCurrentWinners = ({
           {renderGroup(
             'values',
             'U-SU Values Awards',
-            'One student for each of our six core values.',
+            'Students who each best represent one of our six core values.',
             valueWinners,
             (awardee) => awardee.value ?? '',
           )}
