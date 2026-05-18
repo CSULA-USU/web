@@ -1,4 +1,5 @@
 import { Colors } from 'theme';
+import type { ReactNode } from 'react';
 
 export type TableColorKey = keyof typeof Colors;
 
@@ -20,6 +21,7 @@ export interface TableColumn {
   headerImage?: TableHeaderImage;
   mergedValue?: TableColumnMergedValue;
   minWidth?: string;
+  render?: (row: TableRow) => ReactNode;
 }
 
 export interface TableRowValues {
@@ -29,11 +31,19 @@ export interface TableRowValues {
 export interface TableRow {
   id: string;
   values: TableRowValues;
+  original?: any;
 }
 
 export interface TableHeaderColors {
   backgroundColor: TableColorKey;
   textColor: TableColorKey;
+}
+
+export interface MobileColors {
+  labelBackgroundColor: TableColorKey;
+  labelTextColor: TableColorKey;
+  valueBackgroundColor: TableColorKey;
+  valueTextColor: TableColorKey;
 }
 
 export interface TableData {
@@ -45,4 +55,5 @@ export interface TableData {
   headerColors: TableHeaderColors;
   columns: TableColumn[];
   rows: TableRow[];
+  mobileColors?: MobileColors;
 }

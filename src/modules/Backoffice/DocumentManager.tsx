@@ -1,15 +1,23 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { FluidContainer, Typography, Select, Button } from 'components';
+import {
+  FluidContainer,
+  Typography,
+  Select,
+  Button,
+  StyledLink,
+  Table as FlexibleTable,
+} from 'components';
 import type { Document, Category } from 'types/Backoffice';
 import {
-  DocumentTable,
   DocumentModal,
   ArchiveConfirmDialog,
   DeleteConfirmDialog,
 } from 'modules';
 import { IoMdDownload } from 'react-icons/io';
 import { IoDocumentSharp } from 'react-icons/io5';
+import { TableColumn, TableData } from 'types';
+import { formatDate } from 'utils/dates';
 
 interface DocumentManagerProps {
   documents: Document[];
@@ -145,6 +153,118 @@ export function DocumentManager({
     { label: 'Meeting Calendar', value: 'Calendar' },
   ];
 
+  const createDocumentTableData = (
+    tableId: string,
+    tableDocuments: Document[],
+  ): TableData => {
+    const showDateColumn = tableDocuments.some((doc) => !!doc.date);
+
+    const columns: TableColumn[] = [
+      {
+        id: 'title',
+        label: 'Title',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '220px',
+        render: (row: any) => (
+          <Typography as="span" variant="label" size="sm" weight="600">
+            {row.original.title}
+          </Typography>
+        ),
+      },
+      {
+        id: 'url',
+        label: 'URL',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '320px',
+        render: (row: any) => (
+          <Typography color="gold">
+            <StyledLink
+              href={row.original.url}
+              aria-label={`Open ${row.original.title} in new tab`}
+              isExternalLink
+            >
+              {row.original.url.length > 40
+                ? `${row.original.url.slice(0, 40)}…`
+                : row.original.url}
+            </StyledLink>
+          </Typography>
+        ),
+      },
+    ];
+
+    if (showDateColumn) {
+      columns.push({
+        id: 'date',
+        label: 'Meeting Date',
+        backgroundColor: 'white',
+        textColor: 'black',
+        minWidth: '180px',
+        render: (row: any) =>
+          row.original.date ? (
+            <time dateTime={row.original.date}>
+              {formatDate(row.original.date)}
+            </time>
+          ) : (
+            <Typography as="span" variant="label" size="sm">
+              —
+            </Typography>
+          ),
+      });
+    }
+
+    columns.push({
+      id: 'actions',
+      label: 'Actions',
+      backgroundColor: 'white',
+      textColor: 'black',
+      minWidth: '180px',
+      render: (row: any) => (
+        <FluidContainer padding="0" flex gap="8px">
+          <Button
+            type="button"
+            variant="edit"
+            onClick={() => handleEdit(row.original)}
+            aria-label={`Edit ${row.original.title}`}
+          >
+            Edit
+          </Button>
+
+          {!row.original.is_download_all &&
+            row.original.category !== 'Calendar' && (
+              <Button
+                type="button"
+                variant="delete"
+                onClick={() => handleDeleteClick(row.original)}
+                aria-label={`Delete ${row.original.title}`}
+              >
+                Delete
+              </Button>
+            )}
+        </FluidContainer>
+      ),
+    });
+
+    return {
+      id: tableId,
+      ariaLabel: `${tableId} table`,
+      caption: tableId,
+      headerColors: {
+        backgroundColor: 'greyLightest',
+        textColor: 'black',
+      },
+      columns,
+      rows: tableDocuments.map((doc) => ({
+        id: String(doc.id),
+        values: {
+          title: doc.title,
+        },
+        original: doc,
+      })),
+    };
+  };
+
   return (
     <FluidContainer
       padding="0"
@@ -153,7 +273,8 @@ export function DocumentManager({
       innerMaxWidth="100%"
       flex
       flexDirection="column"
-      height="100%"
+      outerAlignItems="stretch"
+      outerJustifyContent="flex-start"
     >
       <FluidContainer>
         <SectionHeader>
@@ -195,12 +316,18 @@ export function DocumentManager({
               Download All Links
             </Typography>
           </FluidContainer>
-          <DocumentTable
-            documents={downloadAllLinks}
-            onEdit={handleEdit}
-            onDelete={handleDeleteClick}
-            selectedCategory={selectedCategory}
-          />
+          {downloadAllLinks.length > 0 ? (
+            <FlexibleTable
+              data={createDocumentTableData(
+                'download-all-links',
+                downloadAllLinks,
+              )}
+            />
+          ) : (
+            <Typography as="p" variant="label" size="sm">
+              No download all links found.
+            </Typography>
+          )}
           <FluidContainer
             padding="0"
             flex
@@ -213,11 +340,16 @@ export function DocumentManager({
               Documents
             </Typography>
           </FluidContainer>
-          <DocumentTable
-            documents={filteredDocuments}
-            onEdit={handleEdit}
-            onDelete={handleDeleteClick}
-          />
+          {filteredDocuments.length > 0 ? (
+            <FlexibleTable
+              data={createDocumentTableData('documents', filteredDocuments)}
+            />
+          ) : (
+            <Typography as="p" variant="label" size="sm">
+              No documents found. Click &quot;Add New Document&quot; to create
+              one.
+            </Typography>
+          )}
           <FluidContainer padding="0" flex justifyContent="flex-end">
             <Button
               variant="outline"

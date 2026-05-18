@@ -30,6 +30,7 @@ export type BackofficeLinkItem = {
   title: string;
   description?: string;
   featured?: boolean;
+  pageKey?: string;
 };
 
 export type BackofficeLinkSection = {

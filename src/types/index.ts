@@ -9,3 +9,4 @@ export * from './Supabase';
 export * from './UKrew';
 export * from './Table';
 export * from './UAwards';
+export * from './Backoffice';

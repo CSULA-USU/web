@@ -62,4 +62,6 @@ export const Colors = {
   blackMauve: '#52284f',
   nativeBeige: '#c6ba98',
   pastelYellow: '#fef9c3',
+  blue: '#0066cc',
+  red: '#dc3545',
 } as const;

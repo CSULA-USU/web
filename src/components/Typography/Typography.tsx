@@ -13,6 +13,7 @@ interface TypeStyle {
 type TypeElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
 
 export interface TypeProps extends TypeStyle {
+  id?: string;
   style?: CSSObject;
   className?: string;
   variant?: keyof typeof styles;

@@ -53,7 +53,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
 
   const guard = await requireBodEditPermission(req, res);
-  if (!guard.ok) return res.status(guard.status).json({ error: guard.message });
+  if (!guard.ok) return;
 
   const { id, updates } = req.body as { id?: string; updates?: Updates };
   if (!id || !updates)

@@ -1,10 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { withAuth } from 'lib/authMiddleWare';
-import { getServerSession } from 'next-auth';
-import { authOptions } from 'pages/api/auth/[...nextauth]';
-import { getUserFromSupabaseByEmail } from 'pages/api/user';
-import { hasPermission } from 'lib/supabase';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { requireBackofficePolicyV2 } from 'lib/backoffice';
 
 type BannerUpdates = Partial<{
   text: string;
@@ -18,17 +15,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const session = await getServerSession(req, res, authOptions);
-  const { userData, error } = await getUserFromSupabaseByEmail(
-    session?.user?.email,
-  );
+  const auth = await requireBackofficePolicyV2(req, res, {
+    pageKey: 'announcementBanner',
+    action: 'edit',
+    scope: '*',
+  });
 
-  if (error) return res.status(500).json({ error: error.message });
-  if (!userData) return res.status(404).json({ error: 'User not found.' });
-
-  if (!hasPermission(userData, 'siteContent:edit:announcementBanner')) {
-    return res.status(403).json({ error: 'Forbidden' });
-  }
+  if (!auth.ok) return;
 
   const { id, updates } = req.body as { id?: string; updates?: BannerUpdates };
   if (!id || !updates)

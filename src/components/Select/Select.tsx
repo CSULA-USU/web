@@ -42,6 +42,7 @@ const SelectIcon = styled(RadixSelect.SelectIcon)`
 `;
 
 const SelectContent = styled(RadixSelect.Content)`
+  z-index: 1100;
   overflow: hidden;
   background-color: white;
   border-radius: 6px;
@@ -131,7 +132,12 @@ export const Select = ({
       </SelectIcon>
     </SelectTrigger>
     <RadixSelect.Portal>
-      <SelectContent>
+      <SelectContent
+        position="popper"
+        side="bottom"
+        align="start"
+        sideOffset={6}
+      >
         <SelectScrollUpButton>
           <ChevronUpIcon />
         </SelectScrollUpButton>

@@ -12,11 +12,12 @@ import { useState, useCallback, useEffect } from 'react';
 import type { AnnouncementBannerType } from 'types/AnnouncementBanner';
 import { getLatestAnnouncementBanner } from 'api/announcementBanner';
 import { getServerSession } from 'next-auth';
-import { getUserFromSupabaseByEmail } from 'pages/api/user';
-import { hasPermission } from 'lib/supabase';
+import { getCurrentBackofficeUserByEmail } from 'lib/backoffice/currentUser';
+import { hasPolicy } from 'lib/backoffice/permissions';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import { useToast } from 'context/ToastContext';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
+import { Spaces } from 'theme';
 
 export default function AnnouncementBannerAdmin({
   initialBanner,
@@ -119,12 +120,8 @@ export default function AnnouncementBannerAdmin({
         >
           <FluidContainer>
             {banner ? (
-              <FluidContainer
-                flex
-                flexDirection="column"
-                gap="21px"
-                padding="0"
-              >
+              <FluidContainer flex flexDirection="column" padding="0">
+                <Typography variant="span">Preview:</Typography>
                 {/* Preview */}
                 <Announcement
                   linkText={draft.link_text}
@@ -147,6 +144,7 @@ export default function AnnouncementBannerAdmin({
                     flex
                     flexDirection="column"
                     gap="16px"
+                    margin={`${Spaces.md} 0 0 0`}
                   >
                     <Label>
                       <Typography variant="span">Banner Text</Typography>
@@ -235,18 +233,24 @@ export async function getServerSideProps(ctx: any) {
     };
   }
 
-  const { userData, error } = await getUserFromSupabaseByEmail(
+  const { user, error } = await getCurrentBackofficeUserByEmail(
     session.user?.email,
   );
 
-  if (error || !userData) {
+  if (error || !user) {
     return { props: { initialBanner: null, error: 'Unauthorized' } };
   }
 
-  if (!hasPermission(userData, 'siteContent:edit:announcementBanner')) {
+  if (
+    !hasPolicy(user, {
+      pageKey: 'announcementBanner',
+      action: 'edit',
+      scope: '*',
+    })
+  ) {
     return {
       redirect: {
-        destination: '/backoffice?error=unauthorized',
+        destination: '/backoffice',
         permanent: false,
       },
     };
