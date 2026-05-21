@@ -6,7 +6,14 @@ import { supabaseAdmin } from 'lib/supabaseAdmin';
 type CreateRoleBody = {
   role_key?: string;
   role_name?: string;
-  description?: string;
+  description?: string | null;
+};
+
+const normalizeOptionalText = (value: string | null | undefined) => {
+  if (value === undefined || value === null) return null;
+
+  const trimmed = value.trim();
+  return trimmed === '' ? null : trimmed;
 };
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -91,7 +98,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .insert({
         role_key: role_key.trim(),
         role_name: role_name.trim(),
-        description: description?.trim() ?? null,
+        description: normalizeOptionalText(description),
         is_active: true,
       })
       .select('id, role_key, role_name, description, is_active')

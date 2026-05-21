@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Button, FluidContainer, Input, Typography } from 'components';
 import BaseModal from 'modules/Modals/BaseModal';
@@ -44,6 +44,7 @@ export function AccessManagementRoleModal({
   const [roleName, setRoleName] = useState(role?.role_name ?? '');
   const [description, setDescription] = useState(role?.description ?? '');
   const [savingBasics, setSavingBasics] = useState(false);
+  const [localPolicies, setLocalPolicies] = useState(role?.policies ?? []);
 
   const handleBasicsSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -106,8 +107,11 @@ export function AccessManagementRoleModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to add policy.', 'error');
-      throw new Error(data.error);
     }
+    const data = await res.json();
+
+    setLocalPolicies((prev) => [...prev, data]);
+
     showToast('Policy added.', 'success');
     onSaved();
   };
@@ -122,11 +126,16 @@ export function AccessManagementRoleModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to remove policy.', 'error');
-      throw new Error(data.error);
     }
+    setLocalPolicies((prev) => prev.filter((p) => p.id !== policyId));
+
     showToast('Policy removed.', 'success');
     onSaved();
   };
+
+  useEffect(() => {
+    setLocalPolicies(role?.policies ?? []);
+  }, [role]);
 
   return (
     <BaseModal
@@ -212,7 +221,7 @@ export function AccessManagementRoleModal({
               </Typography>
             </SectionTitle>
             <AccessPolicyEditor
-              policies={role.policies}
+              policies={localPolicies}
               pages={allPages}
               onAdd={handleAddPolicy}
               onRemove={handleRemovePolicy}

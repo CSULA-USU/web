@@ -94,17 +94,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (permanent) {
-      await supabaseAdmin
+      const { error: rolesError } = await supabaseAdmin
         .schema('backoffice_v2')
         .from('user_roles')
         .delete()
         .eq('user_id', id);
 
-      await supabaseAdmin
+      if (rolesError) return serverError(res, rolesError.message);
+
+      const { error: policiesError } = await supabaseAdmin
         .schema('backoffice_v2')
         .from('user_policies')
         .delete()
         .eq('user_id', id);
+
+      if (policiesError) return serverError(res, policiesError.message);
 
       const { error } = await supabaseAdmin
         .schema('backoffice_v2')

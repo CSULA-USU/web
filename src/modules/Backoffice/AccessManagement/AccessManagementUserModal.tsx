@@ -248,8 +248,24 @@ export function AccessManagementUserModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to add policy.', 'error');
-      throw new Error(data.error);
+      return;
     }
+
+    const createdPolicy = await res.json();
+    const page = allPages.find((item) => item.id === pageId);
+
+    setLocalPolicies((prev) => [
+      ...prev,
+      {
+        ...createdPolicy,
+        page_id: pageId,
+        page_key: page?.page_key ?? createdPolicy.page_key ?? '',
+        page_title: page?.title ?? createdPolicy.page_title ?? 'Page',
+        action,
+        scope,
+      },
+    ]);
+
     showToast('Policy added.', 'success');
     onSaved();
   };
@@ -264,8 +280,9 @@ export function AccessManagementUserModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to remove policy.', 'error');
-      throw new Error(data.error);
+      return;
     }
+
     setLocalPolicies((prev) => prev.filter((p) => p.id !== policyId));
     showToast('Policy removed.', 'success');
     onSaved();

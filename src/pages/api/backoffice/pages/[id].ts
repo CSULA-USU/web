@@ -12,7 +12,7 @@ import { supabaseAdmin } from 'lib/supabaseAdmin';
 type UpdatePageBody = {
   title?: string;
   route?: string;
-  description?: string;
+  description?: string | null;
   is_active?: boolean;
 };
 
@@ -48,7 +48,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const updates: Record<string, unknown> = {};
     if (title !== undefined) updates.title = title.trim();
     if (route !== undefined) updates.route = route.trim();
-    if (description !== undefined) updates.description = description.trim();
+    if (description !== undefined) {
+      updates.description =
+        description === null || description.trim() === ''
+          ? null
+          : description.trim();
+    }
     if (is_active !== undefined) {
       updates.is_active = is_active;
       if (is_active === true) {

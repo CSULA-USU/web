@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useToast } from 'context/ToastContext';
 import { useBackofficeUser, hasBackofficePolicy } from './useBackofficeUser';
@@ -17,6 +17,7 @@ export function useBackofficePageAccess(
   const router = useRouter();
   const { showToast } = useToast();
   const redirected = useRef(false);
+  const [redirecting, setRedirecting] = useState(false);
 
   const hasAccess =
     !loading &&
@@ -30,10 +31,14 @@ export function useBackofficePageAccess(
       !hasBackofficePolicy(user.effectivePolicies, pageKey, action, scopes)
     ) {
       redirected.current = true;
+      setRedirecting(true);
       showToast('You do not have access to that page.', 'error');
       router.push('/backoffice');
     }
   }, [loading, user, pageKey, action, scopes, router, showToast]);
 
-  return { loading: loading || (!hasAccess && !redirected.current), hasAccess };
+  return {
+    loading: loading || redirecting || (!hasAccess && !redirected.current),
+    hasAccess,
+  };
 }

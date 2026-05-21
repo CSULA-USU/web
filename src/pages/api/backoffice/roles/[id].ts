@@ -11,7 +11,7 @@ import { supabaseAdmin } from 'lib/supabaseAdmin';
 
 type UpdateRoleBody = {
   role_name?: string;
-  description?: string;
+  description?: string | null;
   is_active?: boolean;
 };
 
@@ -46,7 +46,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const updates: Record<string, unknown> = {};
     if (role_name !== undefined) updates.role_name = role_name.trim();
-    if (description !== undefined) updates.description = description.trim();
+    if (description !== undefined) {
+      updates.description =
+        description === null || description.trim() === ''
+          ? null
+          : description.trim();
+    }
     if (is_active !== undefined) {
       updates.is_active = is_active;
       if (is_active === true) {

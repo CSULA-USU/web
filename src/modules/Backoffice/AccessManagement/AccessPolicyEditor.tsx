@@ -96,12 +96,16 @@ export function AccessPolicyEditor({
 
   const handleAdd = async () => {
     if (!selPageId || !selAction || !selScope || adding) return;
+
     setAdding(true);
+
     try {
       await onAdd(Number(selPageId), selAction, selScope);
       setSelPageId('');
       setSelAction('');
       setSelScope('');
+    } catch (error) {
+      console.error('Failed to add policy:', error);
     } finally {
       setAdding(false);
     }
@@ -109,8 +113,11 @@ export function AccessPolicyEditor({
 
   const handleRemove = async (policyId: number) => {
     setRemovingId(policyId);
+
     try {
       await onRemove(policyId);
+    } catch (error) {
+      console.error('Failed to remove policy:', error);
     } finally {
       setRemovingId(null);
     }

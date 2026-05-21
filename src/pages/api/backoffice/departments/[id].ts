@@ -11,7 +11,7 @@ import { supabaseAdmin } from 'lib/supabaseAdmin';
 
 type UpdateDepartmentBody = {
   department_name?: string;
-  department_fullname?: string;
+  department_fullname?: string | null;
   is_active?: boolean;
 };
 
@@ -48,8 +48,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const updates: Record<string, unknown> = {};
     if (department_name !== undefined)
       updates.department_name = department_name.trim();
-    if (department_fullname !== undefined)
-      updates.department_fullname = department_fullname.trim();
+    if (department_fullname !== undefined) {
+      updates.department_fullname =
+        department_fullname === null || department_fullname.trim() === ''
+          ? null
+          : department_fullname.trim();
+    }
     if (is_active !== undefined) {
       updates.is_active = is_active;
       if (is_active === true) {

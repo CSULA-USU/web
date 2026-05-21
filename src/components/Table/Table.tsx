@@ -27,27 +27,32 @@ import {
   MobileFieldLabelInner,
 } from 'styles/Table.styles';
 
-interface TableProps {
-  data: TableData;
+interface TableProps<TOriginal = unknown> {
+  data: TableData<TOriginal>;
   className?: string;
 }
 
-interface MobileField {
-  column: TableColumn;
+interface MobileField<TOriginal = unknown> {
+  column: TableColumn<TOriginal>;
   value: string;
 }
 
-const getDisplayValue = (row: TableRow, columnId: string): string => {
+const getDisplayValue = <TOriginal,>(
+  row: TableRow<TOriginal>,
+  columnId: string,
+): string => {
   return row.values[columnId] || '';
 };
 
-const getRowHeaderColumn = (columns: TableColumn[]): TableColumn => {
+const getRowHeaderColumn = <TOriginal,>(
+  columns: TableColumn<TOriginal>[],
+): TableColumn<TOriginal> => {
   return columns[0];
 };
 
-const renderHeaderLabel = (
-  column: TableColumn,
-  headerTextColor: TableData['headerColors']['textColor'],
+const renderHeaderLabel = <TOriginal,>(
+  column: TableColumn<TOriginal>,
+  headerTextColor: TableData<TOriginal>['headerColors']['textColor'],
 ) => {
   return (
     <HeaderCellInner>
@@ -75,7 +80,7 @@ const renderHeaderLabel = (
 
 const renderBodyCellText = (
   value: string,
-  textColor: TableColumn['textColor'],
+  textColor: TableData['headerColors']['textColor'],
 ): React.ReactNode => {
   return (
     <TableCellContent>
@@ -86,7 +91,10 @@ const renderBodyCellText = (
   );
 };
 
-export const Table = ({ data, className }: TableProps) => {
+export const Table = <TOriginal,>({
+  data,
+  className,
+}: TableProps<TOriginal>) => {
   const rowHeaderColumn = getRowHeaderColumn(data.columns);
   const mergedColumns = data.columns.filter((column) => column.mergedValue);
   const mobileColors = data.mobileColors ?? {
@@ -208,7 +216,7 @@ export const Table = ({ data, className }: TableProps) => {
         {data.rows.map((row) => {
           const rowHeaderValue = getDisplayValue(row, rowHeaderColumn.id);
 
-          const mobileFields: MobileField[] = data.columns
+          const mobileFields: MobileField<TOriginal>[] = data.columns
             .filter(
               (column) =>
                 column.id !== rowHeaderColumn.id && !column.mergedValue,

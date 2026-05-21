@@ -97,13 +97,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return badRequest(res, 'Invalid email format.');
     }
 
-    const { data: existing } = await supabaseAdmin
+    const { data: existing, error: existingError } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('users')
       .select('id')
       .eq('email', normalizedEmail)
       .is('deactivated_at', null)
       .maybeSingle();
+
+    if (existingError) return serverError(res, existingError.message);
 
     if (existing) {
       return badRequest(res, 'A user with this email already exists.');

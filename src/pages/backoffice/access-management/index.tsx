@@ -10,7 +10,7 @@ import {
 } from 'components';
 import { Page, PolicyList } from 'modules';
 import { Table as FlexibleTable } from 'components';
-import { TableData } from 'types';
+import { TableData, TableRow } from 'types';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 import { ConfirmDialog } from 'modules/Modals/ConfirmDialog';
 import {
@@ -79,6 +79,14 @@ function formatDeactivatedAt(value: string | null): string {
 }
 
 type SectionKey = 'users' | 'roles' | 'pages' | 'departments';
+
+function getOriginal<T>(row: TableRow<T>): T {
+  if (!row.original) {
+    throw new Error('Table row is missing original data.');
+  }
+
+  return row.original;
+}
 
 // ── page ──────────────────────────────────────────────────────────────────────
 
@@ -389,7 +397,7 @@ export default function AccessManagementPage() {
 
   // ── table definitions ────────────────────────────────────────────────────
 
-  const userTableData: TableData = {
+  const userTableData: TableData<V2UserRow> = {
     id: 'users',
     ariaLabel: 'Backoffice users',
     caption: 'Users',
@@ -401,11 +409,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '260px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.email}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.email}
+            </Typography>
+          );
+        },
       },
       {
         id: 'department',
@@ -413,13 +425,17 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.department
-              ? formatDepartmentName(row.original.department.department_name)
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.department
+                ? formatDepartmentName(user.department.department_name)
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'roles',
@@ -427,15 +443,19 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.roles.length > 0
-              ? row.original.roles
-                  .map((r: V2Role) => formatRoleName(r.role_name))
-                  .join(', ')
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.roles.length > 0
+                ? user.roles
+                    .map((r: V2Role) => formatRoleName(r.role_name))
+                    .join(', ')
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'direct_access',
@@ -443,12 +463,16 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '300px',
-        render: (row) => (
-          <PolicyList
-            policies={policiesToStrings(row.original.policies)}
-            emptyMessage="No direct policies"
-          />
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <PolicyList
+              policies={policiesToStrings(user.policies)}
+              emptyMessage="No direct policies"
+            />
+          );
+        },
       },
       {
         id: 'actions',
@@ -457,7 +481,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '120px',
         render: (row) => {
-          const user: V2UserRow = row.original;
+          const user = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -491,7 +515,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const deactivatedUserTableData: TableData = {
+  const deactivatedUserTableData: TableData<V2UserRow> = {
     id: 'deactivated-users',
     ariaLabel: 'Deactivated backoffice users',
     caption: 'Deactivated Users',
@@ -503,11 +527,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '260px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.email}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.email}
+            </Typography>
+          );
+        },
       },
       {
         id: 'department',
@@ -515,13 +543,17 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.department
-              ? formatDepartmentName(row.original.department.department_name)
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.department
+                ? formatDepartmentName(user.department.department_name)
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'roles',
@@ -529,15 +561,19 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.roles.length > 0
-              ? row.original.roles
-                  .map((r: V2Role) => formatRoleName(r.role_name))
-                  .join(', ')
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.roles.length > 0
+                ? user.roles
+                    .map((r: V2Role) => formatRoleName(r.role_name))
+                    .join(', ')
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_by',
@@ -545,11 +581,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.deactivated_by ?? '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {user.deactivated_by ?? '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_at',
@@ -557,11 +597,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDeactivatedAt(row.original.deactivated_at)}
-          </Typography>
-        ),
+        render: (row) => {
+          const user = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDeactivatedAt(user.deactivated_at)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -570,7 +614,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '160px',
         render: (row) => {
-          const user: V2UserRow = row.original;
+          const user = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -611,7 +655,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const activeRoleTableData: TableData = {
+  const activeRoleTableData: TableData<V2RoleRow> = {
     id: 'roles',
     ariaLabel: 'Active backoffice roles',
     caption: 'Active Roles',
@@ -623,11 +667,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatRoleName(row.original.role_name)}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatRoleName(role.role_name)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'description',
@@ -635,11 +683,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '220px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.description || '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {role.description || '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'role_access',
@@ -647,13 +699,17 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '340px',
-        render: (row) => (
-          <PolicyList
-            policies={policiesToStrings(row.original.policies)}
-            emptyMessage="No policies"
-            align="left"
-          />
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <PolicyList
+              policies={policiesToStrings(role.policies)}
+              emptyMessage="No policies"
+              align="left"
+            />
+          );
+        },
       },
       {
         id: 'users_count',
@@ -661,11 +717,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '80px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.users_count}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {role.users_count}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -674,7 +734,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '120px',
         render: (row) => {
-          const role: V2RoleRow = row.original;
+          const role = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -710,7 +770,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const deactivatedRoleTableData: TableData = {
+  const deactivatedRoleTableData: TableData<V2RoleRow> = {
     id: 'deactivated-roles',
     ariaLabel: 'Deactivated backoffice roles',
     caption: 'Deactivated Roles',
@@ -722,11 +782,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatRoleName(row.original.role_name)}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatRoleName(role.role_name)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'description',
@@ -734,11 +798,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '220px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.description || '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {role.description || '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'users_count',
@@ -746,11 +814,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '80px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.users_count}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {role.users_count}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_by',
@@ -758,11 +830,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.deactivated_by ?? '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {role.deactivated_by ?? '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_at',
@@ -770,11 +846,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDeactivatedAt(row.original.deactivated_at)}
-          </Typography>
-        ),
+        render: (row) => {
+          const role = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDeactivatedAt(role.deactivated_at)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -783,7 +863,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '160px',
         render: (row) => {
-          const role: V2RoleRow = row.original;
+          const role = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -826,7 +906,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const activePageTableData: TableData = {
+  const activePageTableData: TableData<V2PageRow> = {
     id: 'pages',
     ariaLabel: 'Active backoffice pages',
     caption: 'Active Pages',
@@ -838,11 +918,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.title}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.title}
+            </Typography>
+          );
+        },
       },
       {
         id: 'route',
@@ -850,27 +934,35 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '220px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.route}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.route}
+            </Typography>
+          );
+        },
       },
       {
         id: 'page_actions',
-        label: 'Actions',
+        label: 'Supported Actions',
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.page_actions.length > 0
-              ? row.original.page_actions
-                  .map((a: { label: string }) => a.label)
-                  .join(', ')
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.page_actions.length > 0
+                ? page.page_actions
+                    .map((a: { label: string }) => a.label)
+                    .join(', ')
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'page_scopes',
@@ -878,15 +970,19 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.page_scopes.length > 0
-              ? row.original.page_scopes
-                  .map((s: { label: string }) => s.label)
-                  .join(', ')
-              : '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.page_scopes.length > 0
+                ? page.page_scopes
+                    .map((s: { label: string }) => s.label)
+                    .join(', ')
+                : '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -895,7 +991,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '120px',
         render: (row) => {
-          const page: V2PageRow = row.original;
+          const page = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -929,7 +1025,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const deactivatedPageTableData: TableData = {
+  const deactivatedPageTableData: TableData<V2PageRow> = {
     id: 'deactivated-pages',
     ariaLabel: 'Deactivated backoffice pages',
     caption: 'Deactivated Pages',
@@ -941,11 +1037,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '180px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.title}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.title}
+            </Typography>
+          );
+        },
       },
       {
         id: 'route',
@@ -953,11 +1053,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '220px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.route}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.route}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_by',
@@ -965,11 +1069,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.deactivated_by ?? '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {page.deactivated_by ?? '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_at',
@@ -977,11 +1085,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDeactivatedAt(row.original.deactivated_at)}
-          </Typography>
-        ),
+        render: (row) => {
+          const page = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDeactivatedAt(page.deactivated_at)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -990,7 +1102,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '160px',
         render: (row) => {
-          const page: V2PageRow = row.original;
+          const page = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -1031,7 +1143,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const activeDepartmentTableData: TableData = {
+  const activeDepartmentTableData: TableData<V2DepartmentRow> = {
     id: 'departments',
     ariaLabel: 'Backoffice departments',
     caption: 'Departments',
@@ -1043,11 +1155,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDepartmentName(row.original.department_name)}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDepartmentName(dept.department_name)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'department_fullname',
@@ -1055,11 +1171,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '280px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.department_fullname}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {dept.department_fullname}
+            </Typography>
+          );
+        },
       },
       {
         id: 'users_count',
@@ -1067,11 +1187,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '80px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.users_count}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {dept.users_count}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -1080,7 +1204,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '120px',
         render: (row) => {
-          const dept: V2DepartmentRow = row.original;
+          const dept = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
@@ -1116,7 +1240,7 @@ export default function AccessManagementPage() {
     })),
   };
 
-  const deactivatedDepartmentTableData: TableData = {
+  const deactivatedDepartmentTableData: TableData<V2DepartmentRow> = {
     id: 'deactivated-departments',
     ariaLabel: 'Deactivated backoffice departments',
     caption: 'Deactivated Departments',
@@ -1128,11 +1252,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDepartmentName(row.original.department_name)}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDepartmentName(dept.department_name)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'department_fullname',
@@ -1140,11 +1268,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '280px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.department_fullname}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {dept.department_fullname}
+            </Typography>
+          );
+        },
       },
       {
         id: 'users_count',
@@ -1152,11 +1284,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '80px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.users_count}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {dept.users_count}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_by',
@@ -1164,11 +1300,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '200px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {row.original.deactivated_by ?? '—'}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {dept.deactivated_by ?? '—'}
+            </Typography>
+          );
+        },
       },
       {
         id: 'deactivated_at',
@@ -1176,11 +1316,15 @@ export default function AccessManagementPage() {
         backgroundColor: 'white',
         textColor: 'black',
         minWidth: '160px',
-        render: (row) => (
-          <Typography as="span" variant="label" size="sm" weight="400">
-            {formatDeactivatedAt(row.original.deactivated_at)}
-          </Typography>
-        ),
+        render: (row) => {
+          const dept = getOriginal(row);
+
+          return (
+            <Typography as="span" variant="label" size="sm" weight="400">
+              {formatDeactivatedAt(dept.deactivated_at)}
+            </Typography>
+          );
+        },
       },
       {
         id: 'actions',
@@ -1189,7 +1333,7 @@ export default function AccessManagementPage() {
         textColor: 'black',
         minWidth: '160px',
         render: (row) => {
-          const dept: V2DepartmentRow = row.original;
+          const dept = getOriginal(row);
           return (
             <FluidContainer
               padding="0"
