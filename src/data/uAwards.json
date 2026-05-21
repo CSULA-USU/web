@@ -82,7 +82,7 @@
         "deptKey": "graffix",
         "role": "Social Media Manager",
         "quote": "One student, in particular, is most guilty for embarrassing us in front of friends and family on TikTok and Instagram.  If you see her walking around your department.. Watch out. Cause she might just make you go viral. And while I don’t think I’ll ever understand your generation’s humor, like the plastic pointer video, the results speak for themselves in more followers, and tens of thousands of views over social media this year alone. And yes.. We do our own stunts. Your hilarious and zesty skits give a glimpse of the fun and welcoming work culture we have here at the U-SU.",
-        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/karina-graffix.JPG"
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/karina-graffix2.jpg"
       },
       {
         "id": "d2",
@@ -90,7 +90,8 @@
         "dept": "Cross Cultural Centers",
         "deptKey": "ccc",
         "role": "CCC Front Desk",
-        "quote": "This year, the Cross Cultural Centers front desk was filled with a warm and welcoming presence that has helped students feel seen, supported, and connected with the space and campus. Through many transitions during her first year, this student was able to navigate any challenges with resilience, flexibility, and care. She always gave her best effort no matter what challenges came her way.Her growth over the past year has been incredible to witness, and her positivity, dedication, and care for other students have left a lasting impact on the CCC. We are so proud of all that she has accomplished and excited for all that is ahead."
+        "quote": "This year, the Cross Cultural Centers front desk was filled with a warm and welcoming presence that has helped students feel seen, supported, and connected with the space and campus. Through many transitions during her first year, this student was able to navigate any challenges with resilience, flexibility, and care. She always gave her best effort no matter what challenges came her way.Her growth over the past year has been incredible to witness, and her positivity, dedication, and care for other students have left a lasting impact on the CCC. We are so proud of all that she has accomplished and excited for all that is ahead.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/manuela-ccc.jpg"
       },
       {
         "id": "d3",
@@ -102,14 +103,24 @@
       },
       {
         "id": "d4",
+        "name": "Anthony Ngo",
+        "dept": "Operations",
+        "deptKey": "operations",
+        "role": "Operations Specialist",
+        "quote": "",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/anthony-ops.jpg"
+      },
+      {
+        "id": "d5",
         "name": "Monique Garcia",
         "dept": "Operations",
         "deptKey": "operations",
         "role": "Information and Reservations Associate",
-        "quote": "The information and reservations desk has exceptional students who ensure that our guests are greeted with a warm welcome and all of our reservations get processed and finalized on time.. whether that be months in advance or sometimes with a one week notice. We have to multi task to ensure that all details on a reservation are correct and our guests are still getting proper attention as they walk through our doors. One student stands out for her unwavering commitment to helping others. Whether on or off the clock, she is always willing to step in, support the team, and rise to the occasion whenever help is needed. Since being promoted to Information and Reservations Associate, she has continued to lead with reliability, professionalism, and a positive attitude that makes a lasting impact on both our team and our guests."
+        "quote": "The information and reservations desk has exceptional students who ensure that our guests are greeted with a warm welcome and all of our reservations get processed and finalized on time.. whether that be months in advance or sometimes with a one week notice. We have to multi task to ensure that all details on a reservation are correct and our guests are still getting proper attention as they walk through our doors. One student stands out for her unwavering commitment to helping others. Whether on or off the clock, she is always willing to step in, support the team, and rise to the occasion whenever help is needed. Since being promoted to Information and Reservations Associate, she has continued to lead with reliability, professionalism, and a positive attitude that makes a lasting impact on both our team and our guests.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/monique-ops.jpg"
       },
       {
-        "id": "d5",
+        "id": "d6",
         "name": "Malia Berganio",
         "dept": "Recreation",
         "deptKey": "recreation",
@@ -117,28 +128,31 @@
         "quote": "This year, the Recreation Department has successfully enhanced our membership processes thanks to multiple collaborative efforts on campus. There is one student whose energy and unreasonable hospitality I would like to highlight. This student has demonstrated amazing foresight for our facility and exemplifies the type of patience and compassion everyone in our community needs."
       },
       {
-        "id": "d6",
+        "id": "d7",
         "name": "Valerie Urrutia",
         "dept": "Recreation",
         "deptKey": "recreation",
         "role": "Floor Assistant",
-        "quote": "This year, the Recreation Department has intentionally focused on strengthening our culture of hospitality and finding new ways to make our space welcoming for all. One student has truly gone above and beyond in her role, consistently growing and demonstrating strong leadership skills. She has fully stepped into her position by greeting every member with warmth, and patience, always ready to assist when needed. Her impact extends beyond our members as she has become a trusted source of knowledge for her peers and sets an outstanding example."
+        "quote": "This year, the Recreation Department has intentionally focused on strengthening our culture of hospitality and finding new ways to make our space welcoming for all. One student has truly gone above and beyond in her role, consistently growing and demonstrating strong leadership skills. She has fully stepped into her position by greeting every member with warmth, and patience, always ready to assist when needed. Her impact extends beyond our members as she has become a trusted source of knowledge for her peers and sets an outstanding example.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/valerie-rec.jpg"
       },
       {
-        "id": "d7",
+        "id": "d8",
         "name": "Sean Kono",
         "dept": "Admin",
         "deptKey": "admin",
         "role": "Admin Assistant",
-        "quote": "One student stands out for their willingness to learn, adaptability and reliability. Over the year, we have seen this student step out of their comfort zone, take initiative, and is always willing to stay behind to finish their tasks."
+        "quote": "One student stands out for their willingness to learn, adaptability and reliability. Over the year, we have seen this student step out of their comfort zone, take initiative, and is always willing to stay behind to finish their tasks.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/sean-admin.jpg"
       },
       {
-        "id": "d8",
+        "id": "d9",
         "name": "Reine Santos Saavedra",
         "dept": "Board of Directors",
         "deptKey": "board",
         "role": "Student Director",
-        "quote": "I proudly announce that this individual made us all laugh, inspired us all, and truly showed what it means to be a proud Golden Eagle who continues to soar into every next chapter of life. Through passion, dedication, and unforgettable energy, she created an impact on student engagement that will be remembered long after this year. She is the definition of a go-getter — someone who walks into every room with purpose, uplifts the people around her, and leaves every space better than she found it. Her kindness, leadership, and spirit reminded all of us why student leadership matters. Today, we celebrate not only everything she has accomplished, but the incredible person she is becoming. Never stop owning your voice, your light, and your greatness because your impact has truly touched all of us."
+        "quote": "I proudly announce that this individual made us all laugh, inspired us all, and truly showed what it means to be a proud Golden Eagle who continues to soar into every next chapter of life. Through passion, dedication, and unforgettable energy, she created an impact on student engagement that will be remembered long after this year. She is the definition of a go-getter — someone who walks into every room with purpose, uplifts the people around her, and leaves every space better than she found it. Her kindness, leadership, and spirit reminded all of us why student leadership matters. Today, we celebrate not only everything she has accomplished, but the incredible person she is becoming. Never stop owning your voice, your light, and your greatness because your impact has truly touched all of us.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-bod.jpg"
       }
     ],
     "valueWinners": [
@@ -149,7 +163,8 @@
         "dept": "Graffix",
         "deptKey": "graffix",
         "role": "Junior Graphic Designer",
-        "quote": "At the U-SU, accountability means showing up for one another and for the students we serve. It’s about taking ownership of our actions, being honest in our reflections, and holding ourselves to a standard of growth and integrity. Those who embody this value don’t just complete tasks, they follow through with intention, learn from challenges, and actively seek solutions that strengthen our work and our community. Tonight, we recognize an individual who consistently demonstrates accountability, someone who leads by example and makes a meaningful impact through their commitment and responsibility."
+        "quote": "At the U-SU, accountability means showing up for one another and for the students we serve. It’s about taking ownership of our actions, being honest in our reflections, and holding ourselves to a standard of growth and integrity. Those who embody this value don’t just complete tasks, they follow through with intention, learn from challenges, and actively seek solutions that strengthen our work and our community. Tonight, we recognize an individual who consistently demonstrates accountability, someone who leads by example and makes a meaningful impact through their commitment and responsibility.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/eliza-accountability2.jpg"
       },
       {
         "id": "v2",
@@ -157,8 +172,9 @@
         "value": "Integrity",
         "dept": "Operations",
         "deptKey": "operations",
-        "role": "",
-        "quote": "At the U-SU, integrity means leading with honesty, transparency, and respect in everything we do. It’s reflected in how we communicate, how we make decisions, and how we show up for one another and the students we serve. Those who embody this value build trust through their actions. They lead with authenticity, remain consistent in their values, and create an environment where others feel respected, heard, and supported. Tonight, we recognize an individual who exemplifies integrity, someone who leads with purpose and sets a strong example for our community."
+        "role": "Operations Manager",
+        "quote": "At the U-SU, integrity means leading with honesty, transparency, and respect in everything we do. It’s reflected in how we communicate, how we make decisions, and how we show up for one another and the students we serve. Those who embody this value build trust through their actions. They lead with authenticity, remain consistent in their values, and create an environment where others feel respected, heard, and supported. Tonight, we recognize an individual who exemplifies integrity, someone who leads with purpose and sets a strong example for our community.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/omar-integrity2.jpg"
       },
       {
         "id": "v3",
@@ -166,8 +182,9 @@
         "value": "Innovation",
         "dept": "Cross Cultural Centers",
         "deptKey": "ccc",
-        "role": "",
-        "quote": "At the U-SU, innovation means thinking beyond what already exists and actively seeking new ways to enhance the student experience. It’s about creativity, adaptability, and a willingness to try something different in order to improve our programs, services, and spaces. Those who embody this value are forward-thinking and solution-oriented. They bring fresh ideas, challenge the status quo, and continuously look for ways to make a lasting impact across our community. Tonight, we recognize an individual who exemplifies innovation, someone whose creativity and initiative help move our work forward in meaningful ways."
+        "role": "Student Program Coordinator",
+        "quote": "At the U-SU, innovation means thinking beyond what already exists and actively seeking new ways to enhance the student experience. It’s about creativity, adaptability, and a willingness to try something different in order to improve our programs, services, and spaces. Those who embody this value are forward-thinking and solution-oriented. They bring fresh ideas, challenge the status quo, and continuously look for ways to make a lasting impact across our community. Tonight, we recognize an individual who exemplifies innovation, someone whose creativity and initiative help move our work forward in meaningful ways.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/cj-innovation.jpg"
       },
       {
         "id": "v4",
@@ -176,7 +193,8 @@
         "dept": "Recreation",
         "deptKey": "recreation",
         "role": "Floor Assistant",
-        "quote": "At the U-SU, community means recognizing and embracing the diverse experiences and needs of those we serve. It’s about creating spaces where everyone feels welcomed, valued, and a true sense of belonging. Those who embody this value are intentional in their actions. They build connections, foster inclusion, and contribute to a positive environment where individuals feel seen, supported, and empowered. Tonight, we recognize an individual who exemplifies community, someone who helps create a culture of belonging and strengthens the connections that make our U-SU a home for all."
+        "quote": "At the U-SU, community means recognizing and embracing the diverse experiences and needs of those we serve. It’s about creating spaces where everyone feels welcomed, valued, and a true sense of belonging. Those who embody this value are intentional in their actions. They build connections, foster inclusion, and contribute to a positive environment where individuals feel seen, supported, and empowered. Tonight, we recognize an individual who exemplifies community, someone who helps create a culture of belonging and strengthens the connections that make our U-SU a home for all.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/rishab-community2.jpg"
       },
       {
         "id": "v5",
@@ -185,7 +203,8 @@
         "dept": "Board of Directors",
         "deptKey": "board",
         "role": "Student Director",
-        "quote": "At the U-SU, fun is more than just enjoyment, it’s the energy and enthusiasm we bring into our spaces and interactions. It’s about creating a welcoming, uplifting environment where students feel excited to engage, connect, and be themselves. Those who embody this value lead with positivity and passion. They help turn everyday moments into memorable experiences and contribute to a culture that feels vibrant, inclusive, and full of life. Tonight, we recognize an individual who truly brings this value to life, someone whose joy and spirit make a lasting impact on our community."
+        "quote": "At the U-SU, fun is more than just enjoyment, it’s the energy and enthusiasm we bring into our spaces and interactions. It’s about creating a welcoming, uplifting environment where students feel excited to engage, connect, and be themselves. Those who embody this value lead with positivity and passion. They help turn everyday moments into memorable experiences and contribute to a culture that feels vibrant, inclusive, and full of life. Tonight, we recognize an individual who truly brings this value to life, someone whose joy and spirit make a lasting impact on our community.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-fun2.jpg"
       },
       {
         "id": "v6",
@@ -194,7 +213,8 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Student Engagement Assistant",
-        "quote": "Our final U-SU Value is Connection. At the U-SU, connection is about building genuine relationships with one another and with the students we serve. It’s through these meaningful connections that we create a stronger, more supportive community. Those who embody this value take the time to listen, engage, and uplift others. They recognize the unique strengths in each person and help bring people together in ways that amplify our collective success. Tonight, we recognize an individual who exemplifies connection, someone who fosters relationships that make our community stronger and more unified."
+        "quote": "Our final U-SU Value is Connection. At the U-SU, connection is about building genuine relationships with one another and with the students we serve. It’s through these meaningful connections that we create a stronger, more supportive community. Those who embody this value take the time to listen, engage, and uplift others. They recognize the unique strengths in each person and help bring people together in ways that amplify our collective success. Tonight, we recognize an individual who exemplifies connection, someone who fosters relationships that make our community stronger and more unified.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/jaqueline-connection2.jpg"
       }
     ],
     "staffWinners": [
@@ -204,7 +224,8 @@
         "dept": "Admin",
         "deptKey": "admin",
         "role": "Accounting Technician",
-        "quote": ""
+        "quote": "Alice Lam from the U-SU Admin Office is this year's U-SU Values Champion Award recipient, earning three nominations from her colleagues. As the organization's Accounting Technician, she is essential to operations: consistently finding solutions, navigating complex processes, and doing so with remarkable patience, positivity, and grace. Her nominators highlighted her Accountability and Integrity above all, noting how seriously she takes her role as a financial gatekeeper, ensuring accuracy and communicating respectfully even when it means extra work on her end. Alice has also shown tremendous growth, from her early days as a student assistant to now pursuing her Master's degree, leading training presentations, and supervising students, making her a truly deserving recipient of this award.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/alice-values2.jpg"
       },
       {
         "id": "s2",
@@ -212,710 +233,153 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Director, Student Engagement and Belonging",
-        "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does."
+        "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/fabi-values3.jpg"
       }
     ]
   },
   "past": [
     {
       "id": "p1",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Graffix Student of the Year",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Ana Reyes",
-      "role": "Cultural Grads Lead"
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Accountability",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Alyssa Abasto",
+      "role": "Operations Associate",
+      "quote": "We are accountable to each other and to those we serve, acknowledging and reflecting on our actions, and identifying solutions to maximize our impact. Nominators wrote that this person has the ability to see the potential in others and motivates their coworkers to be their best and stay accountable to their responsibilities. This person was one of their first students in this role and has helped mold the position.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/alyssa-resize.jpg"
     },
     {
       "id": "p2",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Cross Cultural Centers Student of the Year",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Devin Lee",
-      "role": "Studio Lead"
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Integrity",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Kiet Tran",
+      "role": "Floor Assistant",
+      "quote": "We show our integrity by leading, operating, and communicating openly with those we serve. Nominators wrote that this person has approached some challenging situations with honesty and a willingness to meet the challenge that have helped the team tremendously. Whether in the game room or in the gym, this person leads with integrity anywhere he goes.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/kiet-resize.jpg"
     },
     {
       "id": "p3",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Center for Student Involvement Student of the Year",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Rachel Owens",
-      "role": "Events Crew"
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Innovation",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Kyle Malone",
+      "role": "Operations Assistant",
+      "quote": "We actively seek opportunities to create and innovate to improve outcomes across our facilities, services, and activities. Nominators wrote that this person has continuously sought ways         tresolve any issues happening in an efficient and innovative manner. This person is consistently excited and energized for their work.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/kyle-resize"
     },
     {
       "id": "p4",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Operations Student of the Year",
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Community",
       "dept": "Operations",
       "deptKey": "operations",
-      "name": "Tomás Cortez",
-      "role": "Front Desk Lead"
+      "name": "Asaya Azah",
+      "role": "Information and Reservations Aide",
+      "quote": "We identify the unique needs of our community and intentionally act to create a culture of belonging for all who enter our space. Nominators wrote that this person has consistently gone out of her way to find answers to questions they may notknow. This person makes everyone feel welcomed at the U-SU and treats every interaction like they are a VIP.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/asaya-resize.jpg"
     },
     {
       "id": "p5",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Recreation Student of the Year",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Bri Nguyen",
-      "role": "Boardroom Tech"
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Fun",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Devin Garciacano",
+      "role": "Junior Graphic Designer",
+      "quote": "We enjoy what we do. We strive to share our joy and passion with those around us to instill a fun, welcoming and positive environment in the U-SU. Nominators wrote that this person brings the fun every time they walk into the U-SU and knows how to ease the pressure when things get stressful. This person jumps in to help with projects and makes every project fun and keeps the team going strong.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/devin-fun.png"
     },
     {
       "id": "p6",
-      "year": 2024,
-      "type": "Department",
-      "cat": "Admin Student of the Year",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Sam Adekunle",
-      "role": "Senior Designer"
+      "year": 2025,
+      "type": "Values",
+      "cat": "Award for Connection",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Rayana Coleman",
+      "role": "Junior Graphic Designer",
+      "quote": "We prioritize genuine connections with all in our community, enabling us to appreciate the unique value in each other and amplify our successes as a team. Nominators wrote that this person puts others before herself and strives to connect with each student that walks through the door. Her personality is welcoming and she is able to build rapport with guests and staff.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/rayana-resize.jpg"
     },
     {
       "id": "p7",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Accountability Award",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Lila Park",
-      "role": "Building Manager"
+      "year": 2025,
+      "type": "Department",
+      "cat": "BOD Student of the Year",
+      "dept": "Board of Directors",
+      "deptKey": "bod",
+      "name": "Vershaun Evans",
+      "role": "Student Director",
+      "quote": "The U-SU Board of Directors had a strong year, marked by key accomplishments including contributing to the Golden Eagle Fire Relief Fund, upgrading TIAA Retirement Plans for U-SU staff, reviewing the External Audit and Tax Filing, and recruiting 11 BOD candidates — resulting in record-breaking voting turnout. Among this year's Board, one Student Director stood out above the rest. Vershaun Evans is described as someone who lights up every room she enters, offers thoughtful insight, asks the right questions, and brings genuine energy and humor to those around her. She has inspired her colleagues to think bigger, push through challenges, and lead with heart. It is with great pleasure that the Board presents Vershaun Evans with the Student of the Year award.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/Vershaun%20Evans.jpg"
+    },
+    {
+      "id": "p7",
+      "year": 2025,
+      "type": "Department",
+      "cat": "Admin Student of the Year",
+      "dept": "Admin",
+      "deptKey": "admin",
+      "name": "Cynthia Lei",
+      "role": "Accounting/Administrative Assistant",
+      "quote": "Our student of the year is Cynthia Lei. Cynthia has been with us for two years. She is conscious and understands her role being a student employee in the union’s business office. Having seniority in UBO, she often extends help to her new fellow student employees, qualities that we really appreciate.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/cynthia-admin.jpg"
     },
     {
       "id": "p8",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Integrity Award",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Marcus Yu",
-      "role": "Cultural Grads Lead"
+      "year": 2025,
+      "type": "Department",
+      "cat": "Graffix Student of the Year",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "Steven Phan",
+      "role": "Junior Graphic Designer",
+      "quote": "Steven Phan jumped into the Graffix department with focus and drive, understanding what it takes to thrive from day one. His creativity and work ethic didn’t just elevate his own work—it raised the bar for everyone. We're proud to name him our Student of the Year."
     },
     {
       "id": "p9",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Innovation Award",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Hannah Choi",
-      "role": "Events Crew"
+      "year": 2025,
+      "type": "Department",
+      "cat": "CSI Student of the Year",
+      "dept": "Center for Student Involvement",
+      "deptKey": "csi",
+      "name": "Erik Lim",
+      "role": "Student Engagement Assistant",
+      "quote": "This year’s Center for Student Involvement Student of the Year is someone who brings creativity, consistency, and contagious energy to everything he does. Whether he’s hosting Trivia & Treats hyping up Bingo Nights, or crafting standout social media content, he’s always making an impact, and occasionally sneezing seven times in a row while doing it. Please join me in celebrating Erik Lim, our CSI Student of the Year!"
     },
     {
       "id": "p10",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Community Award",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Jaylen Ford",
-      "role": "Boardroom Tech"
+      "year": 2025,
+      "type": "Staff",
+      "cat": "U-SU Values Champion",
+      "dept": "Graffix",
+      "deptKey": "graffix",
+      "name": "John Yasis",
+      "role": "Web Designer",
+      "quote": "John Yasis is a standout contributor at the U-SU, earning nominations that highlight his quiet but impactful leadership, creativity, and reliability.John Yasis is a standout contributor at the U-SU, earning nominations that highlight his quiet but impactful leadership, creativity, and reliability. From developing virtual business cards for staff after attending a conference, to coding a rap battle compliment game, to DJing karaoke — John consistently goes above and beyond without being asked. He led the fan-favorite U-SU Scavenger Hunt at U-SET, which received strong student feedback for building community and fostering fun. Through his work on the website, he ensures the broader campus community can connect with and engage with the U-SU. Colleagues describe him as steady, ego-free, and dependable — someone who steps outside his comfort zone to bring people together, leads by example, and simply gets things done well.",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/john-values.jpg"
     },
     {
       "id": "p11",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Fun Award",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Kira Patel",
-      "role": "Programming Lead"
-    },
-    {
-      "id": "p12",
-      "year": 2024,
-      "type": "Values",
-      "cat": "Connection Award",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Noah Saito",
-      "role": "Reservations Specialist"
-    },
-    {
-      "id": "p13",
-      "year": 2024,
+      "year": 2025,
       "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Ophelia Banks",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p14",
-      "year": 2024,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Pedro Ramos",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p15",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Graffix Student of the Year",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Quinn Davis",
-      "role": "Game Room Lead"
-    },
-    {
-      "id": "p16",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Cross Cultural Centers Student of the Year",
+      "cat": "U-SU Values Champion",
       "dept": "Cross Cultural Centers",
       "deptKey": "ccc",
-      "name": "Rina Chen",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p17",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Center for Student Involvement Student of the Year",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Theo Martin",
-      "role": "Studio Lead"
-    },
-    {
-      "id": "p18",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Operations Student of the Year",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Uma Iqbal",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p19",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Recreation Student of the Year",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Vince Carter",
-      "role": "Front Desk Lead"
-    },
-    {
-      "id": "p20",
-      "year": 2023,
-      "type": "Department",
-      "cat": "Admin Student of the Year",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Wes Holloway",
-      "role": "Boardroom Tech"
-    },
-    {
-      "id": "p21",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Accountability Award",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Xiomara Vega",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p22",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Integrity Award",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Yara Suleiman",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p23",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Innovation Award",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Zane Carter",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p24",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Community Award",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Aiden Tran",
-      "role": "Boardroom Tech"
-    },
-    {
-      "id": "p25",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Fun Award",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Bella Romero",
-      "role": "Programming Lead"
-    },
-    {
-      "id": "p26",
-      "year": 2023,
-      "type": "Values",
-      "cat": "Connection Award",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Cole Watson",
-      "role": "Reservations Specialist"
-    },
-    {
-      "id": "p27",
-      "year": 2023,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Dani Ortega",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p28",
-      "year": 2023,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Emery Park",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p29",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Graffix Student of the Year",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Felix Ramos",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p30",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Cross Cultural Centers Student of the Year",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Greta Lin",
-      "role": "Game Room Lead"
-    },
-    {
-      "id": "p31",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Center for Student Involvement Student of the Year",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Henry Ade",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p32",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Operations Student of the Year",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Iris Tanaka",
-      "role": "Studio Lead"
-    },
-    {
-      "id": "p33",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Recreation Student of the Year",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "June Kim",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p34",
-      "year": 2022,
-      "type": "Department",
-      "cat": "Admin Student of the Year",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Kai Nakamura",
-      "role": "Front Desk Lead"
-    },
-    {
-      "id": "p35",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Accountability Award",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Lena Brooks",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p36",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Integrity Award",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Miles Avery",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p37",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Innovation Award",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Nora Bishop",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p38",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Community Award",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Owen Hayes",
-      "role": "Boardroom Tech"
-    },
-    {
-      "id": "p39",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Fun Award",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Page Campbell",
-      "role": "Programming Lead"
-    },
-    {
-      "id": "p40",
-      "year": 2022,
-      "type": "Values",
-      "cat": "Connection Award",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Reese Mendez",
-      "role": "Reservations Specialist"
-    },
-    {
-      "id": "p41",
-      "year": 2022,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Ana Reyes",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p42",
-      "year": 2022,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Devin Lee",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p43",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Graffix Student of the Year",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Rachel Owens",
-      "role": "Peer Educator"
-    },
-    {
-      "id": "p44",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Cross Cultural Centers Student of the Year",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Tomás Cortez",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p45",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Center for Student Involvement Student of the Year",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Bri Nguyen",
-      "role": "Game Room Lead"
-    },
-    {
-      "id": "p46",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Operations Student of the Year",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Sam Adekunle",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p47",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Recreation Student of the Year",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Lila Park",
-      "role": "Studio Lead"
-    },
-    {
-      "id": "p48",
-      "year": 2021,
-      "type": "Department",
-      "cat": "Admin Student of the Year",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Marcus Yu",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p49",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Accountability Award",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Hannah Choi",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p50",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Integrity Award",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Jaylen Ford",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p51",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Innovation Award",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Kira Patel",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p52",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Community Award",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Noah Saito",
-      "role": "Boardroom Tech"
-    },
-    {
-      "id": "p53",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Fun Award",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Ophelia Banks",
-      "role": "Programming Lead"
-    },
-    {
-      "id": "p54",
-      "year": 2021,
-      "type": "Values",
-      "cat": "Connection Award",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Pedro Ramos",
-      "role": "Reservations Specialist"
-    },
-    {
-      "id": "p55",
-      "year": 2021,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Quinn Davis",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p56",
-      "year": 2021,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Rina Chen",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p57",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Graffix Student of the Year",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Theo Martin",
-      "role": "Office Assistant"
-    },
-    {
-      "id": "p58",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Cross Cultural Centers Student of the Year",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Uma Iqbal",
-      "role": "Peer Educator"
-    },
-    {
-      "id": "p59",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Center for Student Involvement Student of the Year",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Vince Carter",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p60",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Operations Student of the Year",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Wes Holloway",
-      "role": "Game Room Lead"
-    },
-    {
-      "id": "p61",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Recreation Student of the Year",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Xiomara Vega",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p62",
-      "year": 2020,
-      "type": "Department",
-      "cat": "Admin Student of the Year",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Yara Suleiman",
-      "role": "Studio Lead"
-    },
-    {
-      "id": "p63",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Accountability Award",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Zane Carter",
-      "role": "Building Manager"
-    },
-    {
-      "id": "p64",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Integrity Award",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Aiden Tran",
-      "role": "Cultural Grads Lead"
-    },
-    {
-      "id": "p65",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Innovation Award",
-      "dept": "Graffix",
-      "deptKey": "graffix",
-      "name": "Bella Romero",
-      "role": "Events Crew"
-    },
-    {
-      "id": "p66",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Community Award",
-      "dept": "Cross Cultural Centers",
-      "deptKey": "ccc",
-      "name": "Cole Watson",
-      "role": "Boardroom Tech"
-    },
-    {
-      "id": "p67",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Fun Award",
-      "dept": "Center for Student Involvement",
-      "deptKey": "csi",
-      "name": "Dani Ortega",
-      "role": "Programming Lead"
-    },
-    {
-      "id": "p68",
-      "year": 2020,
-      "type": "Values",
-      "cat": "Connection Award",
-      "dept": "Operations",
-      "deptKey": "operations",
-      "name": "Emery Park",
-      "role": "Reservations Specialist"
-    },
-    {
-      "id": "p69",
-      "year": 2020,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Recreation",
-      "deptKey": "recreation",
-      "name": "Felix Ramos",
-      "role": "Full-Time Staff"
-    },
-    {
-      "id": "p70",
-      "year": 2020,
-      "type": "Staff",
-      "cat": "Full-Time Staff Honoree",
-      "dept": "Admin",
-      "deptKey": "admin",
-      "name": "Greta Lin",
-      "role": "Full-Time Staff"
+      "name": "Malia Otuhiva",
+      "role": "APISRC Coordinator",
+      "quote": "",
+      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/malia-otuhiva.png"
     }
   ]
 }
