@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Colors } from 'theme';
@@ -134,7 +135,11 @@ export const ImageModal: FC<ImageModalProps> = ({
     };
   }, [closeButtonRef, onRestoreFocus]);
 
-  return (
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  return createPortal(
     <FullScreenOverlay onClick={onClose} role="dialog" aria-modal="true">
       <ContentWrapper onClick={(e) => e.stopPropagation()}>
         <TopIconAnchor>
@@ -144,6 +149,7 @@ export const ImageModal: FC<ImageModalProps> = ({
         </TopIconAnchor>
         <ExpandedImageWithSkeleton src={src} alt={alt} />
       </ContentWrapper>
-    </FullScreenOverlay>
+    </FullScreenOverlay>,
+    document.body,
   );
 };

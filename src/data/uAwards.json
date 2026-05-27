@@ -235,7 +235,7 @@
         "deptKey": "csi",
         "role": "Director, Student Engagement and Belonging",
         "quote": "Fabi is this year's U-SU Values Champion Award recipient, earning five nominations across the organization. Colleagues praise her graceful leadership, genuine care for people, and ability to build organized, welcoming programs while reducing stress and creating clarity for those around her. She embodies all six U-SU Values through her reliability, humility, efficiency, and thoughtfulness in remembering small details, upholding high standards, and ensuring others have opportunities to grow and feel appreciated. Notably, she is often the one nominating others for recognition herself. Much like the Hadestown quote she inspires: \"it's the relationships we cherish that echo in our hearts.\" Indeed, Fabi's greatest gift is the heart she brings to everything she does.",
-        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/fabi-values3.jpg"
+        "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407320/fabi-new_jhpddl.jpg"
       }
     ]
   },
@@ -356,7 +356,8 @@
       "deptKey": "csi",
       "name": "Erik Lim",
       "role": "Student Engagement Assistant",
-      "quote": "This year’s Center for Student Involvement Student of the Year is someone who brings creativity, consistency, and contagious energy to everything he does. Whether he’s hosting Trivia & Treats hyping up Bingo Nights, or crafting standout social media content, he’s always making an impact, and occasionally sneezing seven times in a row while doing it. Please join me in celebrating Erik Lim, our CSI Student of the Year!"
+      "quote": "This year’s Center for Student Involvement Student of the Year is someone who brings creativity, consistency, and contagious energy to everything he does. Whether he’s hosting Trivia & Treats hyping up Bingo Nights, or crafting standout social media content, he’s always making an impact, and occasionally sneezing seven times in a row while doing it. Please join me in celebrating Erik Lim, our CSI Student of the Year!",
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779904217/Erik_puqebs.jpg"
     },
     {
       "id": "p10",

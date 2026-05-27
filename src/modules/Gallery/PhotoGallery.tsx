@@ -494,6 +494,7 @@ export const PhotoGallery = ({
                     src={shot.src}
                     alt={shot.alt}
                     placeholder={section.coverFallbackSrc}
+                    isExpandable
                   />
                 </PhotoSlot>
                 <Caption>{shot.caption}</Caption>
