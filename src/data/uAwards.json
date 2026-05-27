@@ -99,7 +99,8 @@
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
         "role": "Student Engagement Assistant",
-        "quote": "This year’s Center for Student Involvement Student of the Year is someone who consistently brings positive energy to the office, demonstrates creativity and initiative, and is always willing to lend a helping hand to her peers. She always puts her best effort into her work, and her growth as a leader has shown through her involvement with DIY Series and participation in several presentations. As a Student Engagement Assistant, she’s consistently interacting with students, and she always ensures creating an open environment for students to interact with our activities. If you’ve ever seen the chalkboard design for our events, or our social media videos, it’s thanks to her. We’re extremely proud of all she has accomplished and look forward to seeing her continue to grow both personally and professionally."
+        "quote": "This year’s Center for Student Involvement Student of the Year is someone who consistently brings positive energy to the office, demonstrates creativity and initiative, and is always willing to lend a helping hand to her peers. She always puts her best effort into her work, and her growth as a leader has shown through her involvement with DIY Series and participation in several presentations. As a Student Engagement Assistant, she’s consistently interacting with students, and she always ensures creating an open environment for students to interact with our activities. If you’ve ever seen the chalkboard design for our events, or our social media videos, it’s thanks to her. We’re extremely proud of all she has accomplished and look forward to seeing her continue to grow both personally and professionally.",
+        "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/crysta-csi.jpg"
       },
       {
         "id": "d4",
@@ -366,7 +367,7 @@
       "deptKey": "graffix",
       "name": "John Yasis",
       "role": "Web Designer",
-      "quote": "John Yasis is a standout contributor at the U-SU, earning nominations that highlight his quiet but impactful leadership, creativity, and reliability.John Yasis is a standout contributor at the U-SU, earning nominations that highlight his quiet but impactful leadership, creativity, and reliability. From developing virtual business cards for staff after attending a conference, to coding a rap battle compliment game, to DJing karaoke — John consistently goes above and beyond without being asked. He led the fan-favorite U-SU Scavenger Hunt at U-SET, which received strong student feedback for building community and fostering fun. Through his work on the website, he ensures the broader campus community can connect with and engage with the U-SU. Colleagues describe him as steady, ego-free, and dependable — someone who steps outside his comfort zone to bring people together, leads by example, and simply gets things done well.",
+      "quote": "John Yasis is a standout contributor at the U-SU, earning nominations that highlight his quiet but impactful leadership, creativity, and reliability. From developing virtual business cards for staff after attending a conference, to coding a rap battle compliment game, to DJing karaoke, John consistently goes above and beyond without being asked. He led the fan-favorite U-SU Scavenger Hunt at U-SET, which received strong student feedback for building community and fostering fun. Through his work on the website, he ensures the broader campus community can connect with and engage with the U-SU. Colleagues describe him as steady, ego-free, and dependable — someone who steps outside his comfort zone to bring people together, leads by example, and simply gets things done well.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/john-values.jpg"
     },
     {
@@ -378,7 +379,7 @@
       "deptKey": "ccc",
       "name": "Malia Otuhiva",
       "role": "APISRC Coordinator",
-      "quote": "",
+      "quote": "During her first year and a half at the U-SU, it has been very evident to me that Malia cares deeply for the students engaged with the APISRC center – she truly embodies the U-SU values of Community and Connection. She has created a welcoming, supportive space in the center and also in all of our programs. Malia is also very Innovative with her programming and is helping to broaden the campus’s understanding of the APIDA community, highlighting the complexity and intersectionality of identities. What also stands out to is that Malia will show up for other staff in the U-SU—she is always volunteering to help out beyond just the CCC. For example, she attended the leadership trip all last Saturday to support the CSI team.  I think this quality is especially remarkable given that she has also been working on her Masters degree this past year.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/malia-otuhiva.png"
     }
   ]

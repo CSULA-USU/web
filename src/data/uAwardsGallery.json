@@ -1,0 +1,78 @@
+{
+  "galleryByYear": [
+    {
+      "year": 2026,
+      "theme": "Masquerade Celebration",
+      "coverFallbackSrc": "https://res.cloudinary.com/dflidxy7l/image/upload/q_auto/f_auto/v1779407320/invitation_fy1bpr.jpg",
+      "photos": [
+        {
+          "id": "2026-opening-001",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407319/crowd-eder-speech_qwkrjt.jpg",
+          "caption": "The start of the festivities with a speech from Eder, the Vice-Chair for the U-SU Board of Directors"
+        },
+        {
+          "id": "2026-dessert-002",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407660/dessert-2_wetvzm.jpg",
+          "caption": "The dessert table was a highlight of the evening, featuring a variety of decadent treats and elegant displays"
+        },
+        {
+          "id": "2026-entrance-003",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407660/entrance-red-carpet_u3ispu.jpg",
+          "caption": "Rolling out the red carpet in the entrance as people queue to get inside"
+        },
+        {
+          "id": "2026-reservations-004",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407334/crowd-reservations_ha6hoh.jpg",
+          "caption": "Event and reservations staff in the building"
+        },
+        {
+          "id": "2026-values-introduction-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407655/values-intro_quc2ib.jpg",
+          "caption": "Introducing the students who embody the values of the U-SU are Student Engagement Coordinator Andrea, and Main Character Energy award recipient Emily",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2026-awards-005",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233745/IMG_0057_uovdxc.webp",
+          "caption": "Students received a plaque for their accomplishments with recognition for their hard work"
+        },
+        {
+          "id": "2026-graduating-006",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407655/graduating-students_umc4bx.jpg",
+          "caption": "The graduating student staff of 2026 with their honorary Golden Eagle pins"
+        },
+        {
+          "id": "2026-",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2026-",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2026-",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2026-",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2026-",
+          "src": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "theme": "U-Awards 2025",
+      "coverFallbackSrc": "/u-awards/2025/cover.jpg",
+      "photos": []
+    }
+  ]
+}

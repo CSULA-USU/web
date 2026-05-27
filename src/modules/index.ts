@@ -12,6 +12,7 @@ export * from './EventCard';
 export * from './EventHeader';
 export * from './FeaturedEvents';
 export * from './Footer';
+export * from './Gallery';
 export * from './GenericModal';
 export * from './Header';
 export * from './HeaderWithImage';
