@@ -31,8 +31,6 @@ const FullScreenOverlay = styled.div`
 const ContentWrapper = styled.div`
   position: relative;
   display: inline-flex;
-  max-width: 95%;
-  max-height: 95%;
   justify-content: center;
   align-items: center;
 `;
@@ -68,14 +66,19 @@ const CloseButtonIcon = styled(AiFillCloseCircle)`
 `;
 
 const ExpandedImage = styled.img`
-  width: 100%;
-  height: 100%;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  display: block;
 `;
 
 const ModalMediaFrame = styled.div`
   width: min(95vw, calc(90vh * 2.5603));
   height: calc(137vw / 2.5603);
+  max-width: 95vw;
+  max-height: 95vh;
 `;
 
 function ExpandedImageWithSkeleton({ src, alt }: { src: string; alt: string }) {
