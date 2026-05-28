@@ -214,7 +214,7 @@ const Meta = styled.dl`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 24px;
   margin: 0;
   padding-top: 24px;
