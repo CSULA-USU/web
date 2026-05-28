@@ -3,15 +3,18 @@ import {
   Page,
   UAwardsHero,
   UAwardsCurrentWinners,
+  UAwardsGallery,
   UAwardsPastWinners,
   UAwardsValues,
   UAwardsCallToAction,
 } from 'modules';
 import { QuoteBanner } from 'components';
 import uAwards from 'data/uAwards.json';
-import type { UAwardsData } from 'types';
+import uAwardsGallery from 'data/uAwardsGallery.json';
+import type { UAwardsData, UAwardsGalleryYear } from 'types';
 
 const data = uAwards as UAwardsData;
+const galleryByYear = uAwardsGallery.galleryByYear as UAwardsGalleryYear[];
 
 export default function UAwardsPage() {
   return (
@@ -67,6 +70,8 @@ export default function UAwardsPage() {
         valueWinners={data.current.valueWinners}
         staffWinners={data.current.staffWinners}
       />
+
+      <UAwardsGallery years={galleryByYear} />
 
       <UAwardsPastWinners winners={data.past} departments={data.departments} />
 

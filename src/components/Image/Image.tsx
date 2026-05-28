@@ -32,14 +32,28 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   onLoad?: React.ReactEventHandler<HTMLImageElement>;
 }
 
-const TriggerWrapper = styled.div<{ isExpandable?: boolean }>`
+const TriggerWrapper = styled.div<{
+  $isExpandable?: boolean;
+  round?: boolean;
+  borderRadius?: '12px' | '8px';
+  noShrink?: boolean;
+}>`
   position: relative;
   display: inline-block;
-  overflow: hidden;
-  cursor: ${(p) => (p.isExpandable ? 'zoom-in' : 'default')};
+  cursor: ${(p) => (p.$isExpandable ? 'zoom-in' : 'default')};
+  border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
+  flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
 
   ${layout}
   ${space}
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: inherit;
+  }
 `;
 
 const BottomIconAnchor = styled.div`
@@ -161,7 +175,6 @@ export const Image: FC<ImageProps> = ({
         src={imageSrc}
         srcSet={srcset}
         sizes={sizes}
-        isExpandable={isExpandable}
         onError={handleError}
         loading={lazy ? 'lazy' : 'eager'}
         tabIndex={-1}
@@ -174,7 +187,8 @@ export const Image: FC<ImageProps> = ({
   return (
     <>
       <TriggerWrapper
-        isExpandable={isExpandable}
+        {...filteredProps}
+        $isExpandable={isExpandable}
         onClick={openModal}
         onKeyDown={handleKeyDown}
         tabIndex={0}
@@ -187,12 +201,10 @@ export const Image: FC<ImageProps> = ({
           src={imageSrc}
           srcSet={srcset}
           sizes={sizes}
-          isExpandable={isExpandable}
           onError={handleError}
           loading={lazy ? 'lazy' : 'eager'}
           tabIndex={-1}
           onLoad={onLoad}
-          {...filteredProps}
         />
         {!isOpen && (
           <BottomIconAnchor>
