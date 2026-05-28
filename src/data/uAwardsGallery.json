@@ -47,6 +47,11 @@
           "caption": "Students investigate who murdered Eddie the Eagle and how"
         },
         {
+          "id": "2026-values-winners-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779926696/values-winners-cropped_efocui.jpg",
+          "caption": "Winners of the U-SU Values awardse"
+        },
+        {
           "id": "2026-costume-winners-008",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233736/IMG_0016_knmlpi.webp",
           "caption": "Winners of the costume contest"
@@ -153,8 +158,8 @@
     },
     {
       "year": 2025,
-      "theme": "U-Awards 2025",
-      "coverFallbackSrc": "/u-awards/2025/cover.jpg",
+      "theme": "Night With the Stars",
+      "coverFallbackSrc": "",
       "photos": []
     }
   ]
