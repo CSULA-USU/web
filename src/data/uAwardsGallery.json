@@ -1,0 +1,166 @@
+{
+  "galleryByYear": [
+    {
+      "year": 2026,
+      "theme": "Masquerade Celebration",
+      "coverFallbackSrc": "https://res.cloudinary.com/dflidxy7l/image/upload/q_auto/f_auto/v1779407320/invitation_fy1bpr.jpg",
+      "photos": [
+        {
+          "id": "2026-opening-001",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407319/crowd-eder-speech_qwkrjt.jpg",
+          "caption": "The start of the festivities with a speech from Eder, the Vice-Chair for the U-SU Board of Directors"
+        },
+        {
+          "id": "2026-dessert-002",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407660/dessert-2_wetvzm.jpg",
+          "caption": "The dessert table was a highlight of the evening, featuring a variety of decadent treats and elegant displays"
+        },
+        {
+          "id": "2026-reservations-004",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407334/crowd-reservations_ha6hoh.jpg",
+          "caption": "Info and Event Services staff in the building"
+        },
+        {
+          "id": "2026-entrance-003",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407660/entrance-red-carpet_u3ispu.jpg",
+          "caption": "Rolling out the red carpet in the entrance as people queue to get inside"
+        },
+        {
+          "id": "2026-values-introduction-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407655/values-intro_quc2ib.jpg",
+          "caption": "Introducing the students who embody the values of the U-SU are Student Engagement Coordinator Andrea, and Main Character Energy award recipient Emily",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2026-awards-005",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233745/IMG_0057_uovdxc.webp",
+          "caption": "Students received a plaque for their accomplishments with recognition for their hard work"
+        },
+        {
+          "id": "2026-graduating-006",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407655/graduating-students_umc4bx.jpg",
+          "caption": "The graduating student staff of 2026 with their honorary Golden Eagle pins"
+        },
+        {
+          "id": "2026-murder-mystery-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406881/IMG_0089_euvkqh.webp",
+          "caption": "Students investigate who murdered Eddie the Eagle and how"
+        },
+        {
+          "id": "2026-values-winners-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779926696/values-winners-cropped_efocui.jpg",
+          "caption": "Winners of the U-SU Values awardse"
+        },
+        {
+          "id": "2026-costume-winners-008",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233736/IMG_0016_knmlpi.webp",
+          "caption": "Winners of the costume contest"
+        },
+        {
+          "id": "2026-alice-sophia-010",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233111/IMG_9862_xesbib.webp",
+          "caption": "Alice being awarded the U-SU Values Champion award by her supervisor, Sophia"
+        },
+        {
+          "id": "2026-hug-009",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233122/IMG_9887_myn8yk.webp",
+          "caption": "Executive Director Dr. Megan Bell gives Fabi a hug for winning U-SU Awards values champion"
+        },
+        {
+          "id": "2026-usu-babies-011",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233284/IMG_9898_g93xcn.webp",
+          "caption": "Baby clothes for new dads Chris and Christian",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2026-sam-5-years-013",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233286/IMG_9915_aur0bi.webp",
+          "caption": "Sam celebrating 5 years of service",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2026-martin-30-years-014",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233287/IMG_9941_uzm7g9.webp",
+          "caption": "Director of Operations John O. presenting Martin with an award celebrating 30 years of service"
+        },
+        {
+          "id": "2026-love-usu-015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233291/IMG_9977_g8w5pu.webp",
+          "caption": "What we love about the U-SU video presentation"
+        },
+        {
+          "id": "2026-bod-video-002",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233299/IMG_9993_qbzxmq.webp",
+          "caption": "The U-SU Board of Directors presenting a video message to the students"
+        },
+        {
+          "id": "2026-bod-candid-002",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233295/IMG_9988_pmojbp.webp",
+          "caption": "Candid reactions to the video"
+        },
+        {
+          "id": "2026-dance-action-016",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233105/IMG_0244_cwgeta.webp",
+          "caption": "Opening up the dance floor"
+        },
+        {
+          "id": "2026-events-photobooth-017",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406885/IMG_0143_pusvqf.webp",
+          "caption": "Info and Event Services staff taking pictures at the photo booth with fun props and backdrops"
+        },
+        {
+          "id": "2026-ops-photos-012",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406877/IMG_0055_bbdbgl.webp",
+          "caption": "Operations students taking pictures at the photo booth"
+        },
+        {
+          "id": "2026-cccsi-019",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406873/IMG_0074_rjjltc.webp",
+          "caption": "CCC and CSI staff taking a group photo together"
+        },
+        {
+          "id": "2026-rec-photobooth-022",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233738/IMG_0043_bwmtfi.webp",
+          "caption": "Recreation staff taking photos at the photo booth"
+        },
+        {
+          "id": "2026-dance-more-022",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233106/IMG_0245_ic183v.webp",
+          "caption": "More dancin'"
+        },
+        {
+          "id": "2026-admin-team",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779233741/IMG_0046_b1hpm9.webp",
+          "caption": "UBO taking pictures under the balloon arch"
+        },
+        {
+          "id": "2026-ops-ft-012",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406878/IMG_0130_ynchuk.webp",
+          "caption": "Operations full-time staff"
+        },
+        {
+          "id": "2026-rec-ft-018",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406873/IMG_0116_is5js5.webp",
+          "caption": "Recreation full-time staff",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2026-graffix-staff-020",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406877/IMG_0066_kh9qbn.webp",
+          "caption": "Graffix staff group photo"
+        },
+        {
+          "id": "2026-more-dancing-021",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407664/u-awards-2026-cover_mew449.jpg",
+          "caption": "More dancing as the night goes on"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "theme": "Night With the Stars",
+      "coverFallbackSrc": "",
+      "photos": []
+    }
+  ]
+}

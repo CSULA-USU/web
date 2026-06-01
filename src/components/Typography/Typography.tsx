@@ -7,6 +7,7 @@ interface TypeStyle {
   color?: keyof typeof Colors;
   weight?: '300' | '400' | '600' | '700';
   lineHeight?: string;
+  letterSpacing?: string;
   margin?: string;
 }
 
@@ -18,6 +19,7 @@ export interface TypeProps extends TypeStyle {
   className?: string;
   variant?: keyof typeof styles;
   nowrap?: boolean;
+  uppercase?: boolean;
   as?: TypeElements;
   children?: React.ReactNode;
 }
@@ -118,12 +120,15 @@ const getCSS = (p: TypeProps) => {
       }
       ${fontFamily && `font-family: ${fontFamily};`}
       ${fontStyle && `font-style: ${fontStyle};`}
-      ${textTransform && `text-transform: ${textTransform};`}
+      ${p.uppercase
+        ? `text-transform: uppercase;`
+        : textTransform && `text-transform: ${textTransform};`}
       font-size: ${FontSizes[p.size || size]};
       font-weight: ${p.weight || weight};
       color: ${Colors[p.color || color]};
       margin: ${p.margin || 0};
       line-height: ${p.lineHeight || lineHeight || 1.6};
+      ${p.letterSpacing && `letter-spacing: ${p.letterSpacing};`}
       ${p.margin && 'display: inline-block;'}
       ${p.nowrap &&
       `

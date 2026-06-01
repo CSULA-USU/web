@@ -61,6 +61,22 @@ export interface PastAwardee {
   photoUrl?: string;
 }
 
+export interface UAwardsGalleryPhoto {
+  id: string;
+  src: string;
+  thumbUrl?: string;
+  alt: string;
+  caption: string;
+  orientation: 'landscape' | 'portrait';
+}
+
+export interface UAwardsGalleryYear {
+  year: number;
+  theme: string;
+  coverFallbackSrc?: string;
+  photos: UAwardsGalleryPhoto[];
+}
+
 export interface UAwardsData {
   departments: Department[];
   values: ValueDef[];
@@ -70,4 +86,5 @@ export interface UAwardsData {
     staffWinners: Awardee[];
   };
   past: PastAwardee[];
+  galleryByYear: UAwardsGalleryYear[];
 }

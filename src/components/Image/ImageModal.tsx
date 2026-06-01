@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Colors } from 'theme';
@@ -30,8 +31,6 @@ const FullScreenOverlay = styled.div`
 const ContentWrapper = styled.div`
   position: relative;
   display: inline-flex;
-  max-width: 95%;
-  max-height: 95%;
   justify-content: center;
   align-items: center;
 `;
@@ -67,14 +66,19 @@ const CloseButtonIcon = styled(AiFillCloseCircle)`
 `;
 
 const ExpandedImage = styled.img`
-  width: 100%;
-  height: 100%;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  display: block;
 `;
 
 const ModalMediaFrame = styled.div`
   width: min(95vw, calc(90vh * 2.5603));
   height: calc(137vw / 2.5603);
+  max-width: 95vw;
+  max-height: 95vh;
 `;
 
 function ExpandedImageWithSkeleton({ src, alt }: { src: string; alt: string }) {
@@ -134,7 +138,11 @@ export const ImageModal: FC<ImageModalProps> = ({
     };
   }, [closeButtonRef, onRestoreFocus]);
 
-  return (
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  return createPortal(
     <FullScreenOverlay onClick={onClose} role="dialog" aria-modal="true">
       <ContentWrapper onClick={(e) => e.stopPropagation()}>
         <TopIconAnchor>
@@ -144,6 +152,7 @@ export const ImageModal: FC<ImageModalProps> = ({
         </TopIconAnchor>
         <ExpandedImageWithSkeleton src={src} alt={alt} />
       </ContentWrapper>
-    </FullScreenOverlay>
+    </FullScreenOverlay>,
+    document.body,
   );
 };
