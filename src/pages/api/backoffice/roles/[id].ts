@@ -5,19 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateUpdateRoleBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type UpdateRoleBody = {
-  role_name?: string;
-  description?: string | null;
-  is_active?: boolean;
-};
-
-type DeleteRoleBody = {
-  permanent?: boolean;
-};
+import { UpdateRoleBody, DeleteRoleBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
@@ -43,6 +35,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === 'PATCH') {
     const { role_name, description, is_active } = req.body as UpdateRoleBody;
+
+    try {
+      validateUpdateRoleBody({ role_name, description });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
 
     const updates: Record<string, unknown> = {};
     if (role_name !== undefined) updates.role_name = role_name.trim();

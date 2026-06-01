@@ -5,19 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateUpdateUserBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type UpdateUserBody = {
-  email?: string;
-  department_id?: number | null;
-  is_active?: boolean;
-};
-
-type DeleteUserBody = {
-  permanent?: boolean;
-};
+import { UpdateUserBody, DeleteUserBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
@@ -36,16 +28,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { email, department_id, is_active } = req.body as UpdateUserBody;
 
     const updates: Record<string, unknown> = {};
+    try {
+      validateUpdateUserBody({ email, department_id, is_active });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
     if (email !== undefined) {
-      const trimmedEmail = email.trim().toLowerCase();
-      if (!trimmedEmail) {
-        return badRequest(res, 'Email cannot be empty.');
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(trimmedEmail)) {
-        return badRequest(res, 'Invalid email format.');
-      }
-      updates.email = trimmedEmail;
+      updates.email = email.trim().toLowerCase();
     }
     if (department_id !== undefined) updates.department_id = department_id;
     if (is_active !== undefined) {

@@ -1,12 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { allowMethods, badRequest, serverError } from 'lib/api';
+import { allowMethods, badRequest, serverError, validateEmail } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type CreateUserBody = {
-  email?: string;
-  department_id?: number;
-};
+import { CreateUserBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['GET', 'POST'])) return;
@@ -86,16 +82,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { email, department_id } = req.body as CreateUserBody;
 
-    if (!email?.trim()) {
-      return badRequest(res, 'Email is required.');
-    }
+    const emailError = validateEmail(email);
+    if (emailError) return badRequest(res, emailError);
 
-    const normalizedEmail = email.trim().toLowerCase();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(normalizedEmail)) {
-      return badRequest(res, 'Invalid email format.');
-    }
+    const normalizedEmail = email!.trim().toLowerCase();
 
     const { data: existing, error: existingError } = await supabaseAdmin
       .schema('backoffice_v2')

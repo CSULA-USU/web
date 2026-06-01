@@ -5,9 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateActionBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { AddActionBody, DeleteActionBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['POST', 'DELETE'])) return;
@@ -32,15 +34,25 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!page) return notFound(res, 'Page not found.');
 
   if (req.method === 'POST') {
-    const { action, label } = req.body as { action?: string; label?: string };
+    const { action, label } = req.body as AddActionBody;
 
-    if (!action?.trim()) return badRequest(res, 'action is required.');
-    if (!label?.trim()) return badRequest(res, 'label is required.');
+    try {
+      validateActionBody({ action, label });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
+    const safeAction = action as string;
+    const safeLabel = label as string;
 
     const { data, error } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('page_actions')
-      .insert({ page_id: pageId, action: action.trim(), label: label.trim() })
+      .insert({
+        page_id: pageId,
+        action: safeAction.trim(),
+        label: safeLabel.trim(),
+      })
       .select('id, page_id, action, label')
       .single();
 
@@ -50,7 +62,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const { action_id } = req.body as { action_id?: number };
+    const { action_id } = req.body as DeleteActionBody;
 
     if (!Number.isInteger(action_id)) {
       return badRequest(res, 'action_id is required.');

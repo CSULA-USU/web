@@ -5,9 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateScopeBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { AddScopeBody, DeleteScopeBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['POST', 'DELETE'])) return;
@@ -32,15 +34,25 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!page) return notFound(res, 'Page not found.');
 
   if (req.method === 'POST') {
-    const { scope, label } = req.body as { scope?: string; label?: string };
+    const { scope, label } = req.body as AddScopeBody;
 
-    if (!scope?.trim()) return badRequest(res, 'scope is required.');
-    if (!label?.trim()) return badRequest(res, 'label is required.');
+    try {
+      validateScopeBody({ scope, label });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
+    const safeScope = scope as string;
+    const safeLabel = label as string;
 
     const { data, error } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('page_scopes')
-      .insert({ page_id: pageId, scope: scope.trim(), label: label.trim() })
+      .insert({
+        page_id: pageId,
+        scope: safeScope.trim(),
+        label: safeLabel.trim(),
+      })
       .select('id, page_id, scope, label')
       .single();
 
@@ -50,7 +62,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const { scope_id } = req.body as { scope_id?: number };
+    const { scope_id } = req.body as DeleteScopeBody;
 
     if (!Number.isInteger(scope_id)) {
       return badRequest(res, 'scope_id is required.');

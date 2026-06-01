@@ -7,14 +7,15 @@
     "dev:sections": "concurrently \"next dev\" \"watch 'yarn generate-section-schemas' ./src/sections \"",
     "generate-sitemap": "node src/scripts/generate-sitemap.js",
     "prebuild": "yarn generate-sitemap",
-    "build": "next build",
+    "build": "yarn test && next build",
     "start": "next start",
     "lint": "next lint",
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit --incremental",
     "generate-section-schemas": "node src/scripts/generate-section-schemas",
     "prepare": "husky install",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "test": "jest"
   },
   "dependencies": {
     "@accessible/drawer": "^3.0.2",
@@ -85,6 +86,7 @@
     "@babel/core": "7.26.0",
     "@babel/traverse": "7.27.3",
     "@types/formidable": "^3.4.5",
+    "@types/jest": "^30.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
     "@types/styled-components": "5.1.30",
     "@types/styled-system": "5.1.22",
@@ -92,8 +94,40 @@
     "eslint-import-resolver-typescript": "^4.4.3",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "8.0.3",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "lint-staged": "^13.1.0",
-    "ngrok": "^5.0.0-beta.2"
+    "ngrok": "^5.0.0-beta.2",
+    "node-mocks-http": "^1.17.2",
+    "ts-jest": "^29.4.11"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "^lib/(.*)$": "<rootDir>/src/lib/$1",
+      "^pages/(.*)$": "<rootDir>/src/pages/$1",
+      "^components/(.*)$": "<rootDir>/src/components/$1",
+      "^modules/(.*)$": "<rootDir>/src/modules/$1",
+      "^context/(.*)$": "<rootDir>/src/context/$1",
+      "^types/(.*)$": "<rootDir>/src/types/$1",
+      "^theme$": "<rootDir>/src/theme/index.ts",
+      "^theme/(.*)$": "<rootDir>/src/theme/$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "jsx": "react"
+          }
+        }
+      ]
+    }
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

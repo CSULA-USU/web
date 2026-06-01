@@ -8,6 +8,7 @@ import {
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { RoleAssignmentBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['POST', 'DELETE'])) return;
@@ -33,7 +34,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!user) return notFound(res, 'User not found.');
 
   if (req.method === 'POST') {
-    const { role_id } = req.body as { role_id?: number };
+    const { role_id } = req.body as RoleAssignmentBody;
 
     if (!Number.isInteger(role_id)) {
       return badRequest(res, 'role_id is required.');
@@ -61,7 +62,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const { role_id } = req.body as { role_id?: number };
+    const { role_id } = req.body as RoleAssignmentBody;
 
     if (!Number.isInteger(role_id)) {
       return badRequest(res, 'role_id is required.');

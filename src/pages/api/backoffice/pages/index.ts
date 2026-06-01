@@ -1,14 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { allowMethods, badRequest, serverError } from 'lib/api';
+import {
+  allowMethods,
+  badRequest,
+  serverError,
+  validatePageBody,
+} from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type CreatePageBody = {
-  page_key?: string;
-  title?: string;
-  route?: string;
-  description?: string;
-};
+import { CreatePageBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['GET', 'POST'])) return;
@@ -49,15 +48,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { page_key, title, route, description } = req.body as CreatePageBody;
 
-    if (!page_key?.trim()) return badRequest(res, 'page_key is required.');
-    if (!title?.trim()) return badRequest(res, 'title is required.');
-    if (!route?.trim()) return badRequest(res, 'route is required.');
+    try {
+      validatePageBody({ page_key, title, route, description });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
+    const safePageKey = page_key as string;
+    const safeTitle = title as string;
+    const safeRoute = route as string;
 
     const { data: existing } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('pages')
       .select('id')
-      .eq('page_key', page_key.trim())
+      .eq('page_key', safePageKey.trim())
       .maybeSingle();
 
     if (existing)
@@ -67,9 +72,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .schema('backoffice_v2')
       .from('pages')
       .insert({
-        page_key: page_key.trim(),
-        title: title.trim(),
-        route: route.trim(),
+        page_key: safePageKey.trim(),
+        title: safeTitle.trim(),
+        route: safeRoute.trim(),
         description: description?.trim() ?? null,
         is_active: true,
       })

@@ -5,20 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateUpdatePageBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type UpdatePageBody = {
-  title?: string;
-  route?: string;
-  description?: string | null;
-  is_active?: boolean;
-};
-
-type DeletePageBody = {
-  permanent?: boolean;
-};
+import { UpdatePageBody, DeletePageBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
@@ -44,6 +35,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === 'PATCH') {
     const { title, route, description, is_active } = req.body as UpdatePageBody;
+
+    try {
+      validateUpdatePageBody({ title, route, description });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
 
     const updates: Record<string, unknown> = {};
     if (title !== undefined) updates.title = title.trim();

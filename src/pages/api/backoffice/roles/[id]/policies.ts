@@ -8,6 +8,7 @@ import {
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { AddPolicyBody, DeletePolicyBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['POST', 'DELETE'])) return;
@@ -32,11 +33,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!role) return notFound(res, 'Role not found.');
 
   if (req.method === 'POST') {
-    const { page_id, action, scope } = req.body as {
-      page_id?: number;
-      action?: string;
-      scope?: string;
-    };
+    const { page_id, action, scope } = req.body as AddPolicyBody;
 
     if (!Number.isInteger(page_id))
       return badRequest(res, 'page_id is required.');
@@ -70,7 +67,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (req.method === 'DELETE') {
-    const { policy_id } = req.body as { policy_id?: number };
+    const { policy_id } = req.body as DeletePolicyBody;
 
     if (!Number.isInteger(policy_id)) {
       return badRequest(res, 'policy_id is required.');

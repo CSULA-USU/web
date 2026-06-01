@@ -1,15 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { withAuth } from 'lib/authMiddleWare';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import type { Category } from 'types/Backoffice';
-import { requireBodEditPermission } from './_guard';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'PATCH')
     return res.status(405).json({ error: 'Method not allowed' });
 
-  const guard = await requireBodEditPermission(req, res);
-  if (!guard.ok) return;
+  const auth = await requireBackofficePolicyV2(req, res, {
+    pageKey: 'boardDocuments',
+    action: 'edit',
+    scope: '*',
+  });
+  if (!auth.ok) return;
 
   const { category } = req.body as { category?: Category };
   if (!category) return res.status(400).json({ error: 'Missing category' });
@@ -25,4 +28,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return res.status(200).json({ archived: data?.length ?? 0 });
 }
 
-export default withAuth(handler);
+export default handler;

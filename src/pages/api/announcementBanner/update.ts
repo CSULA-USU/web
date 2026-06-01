@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { withAuth } from 'lib/authMiddleWare';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 
@@ -49,4 +48,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return res.status(200).json(data);
 }
 
-export default withAuth(handler);
+export default handler;

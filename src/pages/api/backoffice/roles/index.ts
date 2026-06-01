@@ -1,15 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { allowMethods, badRequest, serverError } from 'lib/api';
+import {
+  allowMethods,
+  badRequest,
+  serverError,
+  validateCreateRoleBody,
+} from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
+import { CreateRoleBody } from 'types';
 
-type CreateRoleBody = {
-  role_key?: string;
-  role_name?: string;
-  description?: string | null;
-};
-
-const normalizeOptionalText = (value: string | null | undefined) => {
+export const normalizeOptionalText = (value: string | null | undefined) => {
   if (value === undefined || value === null) return null;
 
   const trimmed = value.trim();
@@ -79,14 +79,20 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { role_key, role_name, description } = req.body as CreateRoleBody;
 
-    if (!role_key?.trim()) return badRequest(res, 'role_key is required.');
-    if (!role_name?.trim()) return badRequest(res, 'role_name is required.');
+    try {
+      validateCreateRoleBody({ role_key, role_name, description });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
+    const safeKey = role_key as string;
+    const safeName = role_name as string;
 
     const { data: existing } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('roles')
       .select('id')
-      .eq('role_key', role_key.trim())
+      .eq('role_key', safeKey.trim())
       .maybeSingle();
 
     if (existing)
@@ -96,8 +102,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .schema('backoffice_v2')
       .from('roles')
       .insert({
-        role_key: role_key.trim(),
-        role_name: role_name.trim(),
+        role_key: safeKey.trim(),
+        role_name: safeName.trim(),
         description: normalizeOptionalText(description),
         is_active: true,
       })

@@ -5,19 +5,11 @@ import {
   notFound,
   parseNumericId,
   serverError,
+  validateUpdateDepartmentBody,
 } from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type UpdateDepartmentBody = {
-  department_name?: string;
-  department_fullname?: string | null;
-  is_active?: boolean;
-};
-
-type DeleteDepartmentBody = {
-  permanent?: boolean;
-};
+import { UpdateDepartmentBody, DeleteDepartmentBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['PATCH', 'DELETE'])) return;
@@ -44,6 +36,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'PATCH') {
     const { department_name, department_fullname, is_active } =
       req.body as UpdateDepartmentBody;
+
+    try {
+      validateUpdateDepartmentBody({ department_name, department_fullname });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
 
     const updates: Record<string, unknown> = {};
     if (department_name !== undefined)

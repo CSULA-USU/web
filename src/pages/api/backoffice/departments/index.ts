@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { allowMethods, badRequest, serverError } from 'lib/api';
+import {
+  allowMethods,
+  badRequest,
+  serverError,
+  validateDepartmentBody,
+} from 'lib/api';
 import { requireBackofficePolicyV2 } from 'lib/backoffice';
 import { supabaseAdmin } from 'lib/supabaseAdmin';
-
-type CreateDepartmentBody = {
-  department_key?: string;
-  department_name?: string;
-  department_fullname?: string;
-};
+import { CreateDepartmentBody } from 'types';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!allowMethods(req, res, ['GET', 'POST'])) return;
@@ -58,16 +58,24 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { department_key, department_name, department_fullname } =
       req.body as CreateDepartmentBody;
 
-    if (!department_key?.trim())
-      return badRequest(res, 'department_key is required.');
-    if (!department_name?.trim())
-      return badRequest(res, 'department_name is required.');
+    try {
+      validateDepartmentBody({
+        department_key,
+        department_name,
+        department_fullname,
+      });
+    } catch (e) {
+      return badRequest(res, (e as Error).message);
+    }
+
+    const safeKey = department_key as string;
+    const safeName = department_name as string;
 
     const { data: existing } = await supabaseAdmin
       .schema('backoffice_v2')
       .from('departments')
       .select('id')
-      .eq('department_key', department_key.trim())
+      .eq('department_key', safeKey.trim())
       .maybeSingle();
 
     if (existing)
@@ -77,8 +85,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .schema('backoffice_v2')
       .from('departments')
       .insert({
-        department_key: department_key.trim(),
-        department_name: department_name.trim(),
+        department_key: safeKey.trim(),
+        department_name: safeName.trim(),
         department_fullname: department_fullname?.trim() ?? null,
         is_active: true,
       })

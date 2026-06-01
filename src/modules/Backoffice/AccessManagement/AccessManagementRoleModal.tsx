@@ -107,6 +107,7 @@ export function AccessManagementRoleModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to add policy.', 'error');
+      return;
     }
     const data = await res.json();
 
@@ -126,6 +127,7 @@ export function AccessManagementRoleModal({
     if (!res.ok) {
       const data = await res.json();
       showToast(data.error ?? 'Failed to remove policy.', 'error');
+      return;
     }
     setLocalPolicies((prev) => prev.filter((p) => p.id !== policyId));
 
