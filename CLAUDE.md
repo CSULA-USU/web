@@ -73,6 +73,10 @@ When a non-interactive person image appears alongside the person’s name in the
 
 ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas). Husky + lint-staged enforce linting on pre-commit. TypeScript strict mode is on.
 
+#### Naming
+
+Name variables, props, and components after the concrete thing they hold, not a vague abstraction. Avoid generic catch-alls like `meta`, `data`, `info`, `config`, `item`, or `obj` when a domain-specific name fits — e.g. the hero's bottom detail rows are `details` (and `DEFAULT_DETAILS`), not `meta`. A reader should be able to tell what a name contains without tracing where it's used. Also avoid names that imply the wrong thing (`meta` reads as HTML `<meta>` tags). Prefer a longer, explicit name over a short ambiguous one; verbosity is fine when it makes the reference unmistakable.
+
 ### Notion Integration
 
 <!-- Add Notion link and instructions here -->

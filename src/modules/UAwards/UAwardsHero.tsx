@@ -10,7 +10,7 @@ interface UAwardsHeroProps {
   title?: string;
   highlight?: string;
   description?: string;
-  meta?: Array<{ label: string; value: string }>;
+  details?: Array<{ label: string; value: string }>;
 }
 
 const Header = styled.header`
@@ -27,7 +27,7 @@ const Header = styled.header`
 
 const Media = styled.div<{ $loaded: boolean; $src: string }>`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
   background-color: black;
@@ -43,7 +43,7 @@ const Media = styled.div<{ $loaded: boolean; $src: string }>`
     background-size: cover;
     background-position: top 30%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     opacity: ${(p) => (p.$loaded ? 1 : 0)};
     transition: opacity 480ms ease;
     will-change: opacity;
@@ -74,7 +74,6 @@ const Media = styled.div<{ $loaded: boolean; $src: string }>`
   @media (max-width: 900px) {
     height: 440px;
     > span {
-      background-attachment: scroll;
       background-position: center 18%;
     }
 
@@ -210,7 +209,7 @@ const Description = styled.p`
   color: ${Colors.greyDarkest};
 `;
 
-const Meta = styled.dl`
+const Details = styled.dl`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -244,7 +243,7 @@ const Meta = styled.dl`
   }
 `;
 
-const DEFAULT_META = [
+const DEFAULT_DETAILS = [
   { label: 'Honorees', value: 'Student & Full-time Staff' },
   { label: 'Hosted by', value: 'U-SU Executive Office' },
 ];
@@ -257,7 +256,7 @@ export const UAwardsHero = ({
   title = 'The',
   highlight = 'U-Awards',
   description = 'Our annual celebration recognizing outstanding employees who have gone above and beyond in their dedication and service to the Cal State LA University-Student Union community',
-  meta = DEFAULT_META,
+  details = DEFAULT_DETAILS,
 }: UAwardsHeroProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -302,14 +301,14 @@ export const UAwardsHero = ({
             {title} <Accent>{highlight}</Accent>
           </Title>
           <Description>{description}</Description>
-          <Meta>
-            {meta.map((m) => (
-              <div key={m.label}>
-                <dt>{m.label}</dt>
-                <dd>{m.value}</dd>
+          <Details>
+            {details.map((d) => (
+              <div key={d.label}>
+                <dt>{d.label}</dt>
+                <dd>{d.value}</dd>
               </div>
             ))}
-          </Meta>
+          </Details>
         </Card>
       </Inner>
     </Header>

@@ -306,7 +306,7 @@ export default function Recreation() {
           </PhoneSection>
         </HeaderSection>
         <Typography as="h2" variant="title" size={isMobile ? 'lg' : '2xl'}>
-          Spring 2026 Hours:
+          Summer 2026 Hours:
         </Typography>
         <HoursSection>
           {RecData.home.locations.map((location, index) => (
