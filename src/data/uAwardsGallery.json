@@ -160,7 +160,109 @@
       "year": 2025,
       "theme": "Night With the Stars",
       "coverFallbackSrc": "",
-      "photos": []
+      "photos": [
+        {
+          "id": "2025-jaqui-opening-001",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509874/IMG_1504_chstdp.webp",
+          "caption": "Jaqui walking down the red carpet"
+        },
+        {
+          "id": "2025-csi-paparazzi-002",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509875/IMG_1509_uvz7jx.webp",
+          "caption": "The paparazzi snapping photos of CSI student staff as they arrive at the event"
+        },
+        {
+          "id": "2025-James-003",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509874/IMG_1523_pgkc3u.webp",
+          "caption": "James strutting his stuff on the red carpet",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2025-John-O-004",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509875/IMG_1530_w7bndt.webp",
+          "caption": "John O. surprised by media presence all over the U-SU Awards"
+        },
+        {
+          "id": "2025-Sophia-005",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780514532/IMG_1531_scao0n.webp",
+          "caption": "Sophia does interpretative dance in front of the camera"
+        },
+        {
+          "id": "2025-FT-CSI-006",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510926/IMG_1546_kcqahb.webp",
+          "caption": "CSI Full-time staff Ian, Andrea, and Heidy walking down and posing on the red carpet together"
+        },
+        {
+          "id": "2025-ubo-group-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509876/IMG_1567_e2n7pc.webp",
+          "caption": "UBO group photo in front of the stars"
+        },
+        {
+          "id": "2025-christian-008",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509878/IMG_1709_cpnpbe.webp",
+          "caption": "Christian looking dapper in his suit and tie while wearing sunglasses indoors at night"
+        },
+        {
+          "id": "2025-martin-009",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509877/IMG_1683_avmryz.webp",
+          "caption": "Martìn tips his hat to the award winners of the evening"
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        },
+        {
+          "id": "2025-008",
+          "src": "",
+          "caption": ""
+        }
+      ]
     }
   ]
 }
