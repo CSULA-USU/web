@@ -273,7 +273,7 @@ const ArrowButton = styled.button`
 
 const Rail = styled.div`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   gap: 8px;
   margin-top: 16px;
 

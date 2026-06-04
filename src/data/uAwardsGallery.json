@@ -147,12 +147,17 @@
         {
           "id": "2026-graffix-staff-020",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406877/IMG_0066_kh9qbn.webp",
-          "caption": "Graffix staff group photo"
+          "caption": "Graffix group photo"
         },
         {
           "id": "2026-more-dancing-021",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779407664/u-awards-2026-cover_mew449.jpg",
           "caption": "More dancing as the night goes on"
+        },
+        {
+          "id": "2026-even-more-dancing-022",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779406890/IMG_0203_fjn8jj.webp",
+          "caption": "Dancing past closing time"
         }
       ]
     },
@@ -174,7 +179,7 @@
         {
           "id": "2025-James-003",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509874/IMG_1523_pgkc3u.webp",
-          "caption": "James strutting his stuff on the red carpet",
+          "caption": "James strutting his stuff for his fans",
           "orientation": "portrait"
         },
         {
@@ -183,84 +188,142 @@
           "caption": "John O. surprised by media presence all over the U-SU Awards"
         },
         {
+          "id": "2025-trio-004",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780533824/IMG_1768_qefmld.webp",
+          "caption": "A trio of reservations students posing together for the cameras",
+          "orientation": "portrait"
+        },
+        {
           "id": "2025-Sophia-005",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780514532/IMG_1531_scao0n.webp",
-          "caption": "Sophia does interpretative dance in front of the camera"
+          "caption": "Sophia does interpretative dance"
         },
         {
           "id": "2025-FT-CSI-006",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510926/IMG_1546_kcqahb.webp",
-          "caption": "CSI Full-time staff Ian, Andrea, and Heidy walking down and posing on the red carpet together"
-        },
-        {
-          "id": "2025-ubo-group-007",
-          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509876/IMG_1567_e2n7pc.webp",
-          "caption": "UBO group photo in front of the stars"
+          "caption": "Ian, Andrea, and Heidy walking down and posing on the runway"
         },
         {
           "id": "2025-christian-008",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509878/IMG_1709_cpnpbe.webp",
-          "caption": "Christian looking dapper in his suit and tie while wearing sunglasses indoors at night"
+          "caption": "Famous streamer Christian looking dapper in suit and tie while wearing sunglasses indoors at night",
+          "orientation": "portrait"
         },
         {
           "id": "2025-martin-009",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509877/IMG_1683_avmryz.webp",
-          "caption": "Martìn tips his hat to the award winners of the evening"
+          "caption": "Martìn tips his hat to the award winners of the evening",
+          "orientation": "portrait"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-javi-008",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509882/IMG_1862_hsa6ax.webp",
+          "caption": "Javi rocking a bowtie and a vest"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-erik-interview-009",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510906/IMG_1669_ngy64t.webp",
+          "caption": "Award-winner Erik getting interviewed by the press"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-010",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509877/IMG_1646_ehjkwc.webp",
+          "caption": "Walking down the red carpet with confidence and a tote",
+          "orientation": "portrait"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-joey-dancer-008",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510905/IMG_1619_vm8d0r.webp",
+          "caption": "Dancer extraordinaire Joey hitting a pose for his fans"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-rec-matching-009",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780535394/IMG_1629_yedakh.webp",
+          "caption": "Recreation students arrive in matching style",
+          "orientation": "portrait"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-dr-bell-candid-010",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510905/IMG_1594_zbxuso.webp",
+          "caption": "Catching a totally candid photo of Dr. Bell",
+          "orientation": "portrait"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-diego-valerie-011",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510906/IMG_1660_rbeuut.webp",
+          "caption": "Diego and Valerie waltz in to the celebrations",
+          "orientation": "portrait"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-sophia-joe-014",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509880/IMG_1818_mzlzc9.webp",
+          "caption": "Sophia and Joe sharing a moment during the event"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-snacks-012",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509879/IMG_1762_ivkiho.webp",
+          "caption": "Candy and snacks for the guests to enjoy"
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-spread-013",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509879/IMG_1816_i3ioq7.webp",
+          "caption": "The spread for the evening, feat. John Y."
         },
         {
-          "id": "2025-008",
-          "src": "",
-          "caption": ""
+          "id": "2025-andrea-bingo-015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509881/IMG_1838_rz15sm.webp",
+          "caption": "Andrea getting ready for bingo night"
+        },
+        {
+          "id": "2025-ubo-bingo-016",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509881/IMG_1832_bc73ai.webp",
+          "caption": "UBO concentrating on trying to win a prize"
+        },
+        {
+          "id": "2025-ops-students-015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509884/IMG_1899_ewdedj.webp",
+          "caption": "OPs students locking in"
+        },
+        {
+          "id": "2025-adam-students-015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510910/IMG_1906_vlvass.webp",
+          "caption": "Adam and his student staff chilling in the corner"
+        },
+        {
+          "id": "2025-mari-vic-015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510910/IMG_1896_z0llej.webp",
+          "caption": "Mari and Vic hanging out"
+        },
+        {
+          "id": "2025--015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510911/IMG_1910_bbevbe.webp",
+          "caption": "Video of Imani, Mario, and Valerie expressing their appreciation for all the students that work in the U-SU"
+        },
+        {
+          "id": "2025--015",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510911/IMG_1969_jvuu8s.webp",
+          "caption": "Chris, Joseph, and John O. being recognized for their years of service to the U-SU"
+        },
+        {
+          "id": "2025-ubo-group-007",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509876/IMG_1567_e2n7pc.webp",
+          "caption": "UBO group photo in front of the stars",
+          "orientation": "portrait"
+        },
+        {
+          "id": "2025-bod-group-028",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_2000_d6l0kg.webp",
+          "caption": "BOD group photo"
+        },
+        {
+          "id": "2025-ops-group-029",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_1978_toymta.webp",
+          "caption": "Operations group photo"
+        },
+        {
+          "id": "2025-leadership-group-030",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509883/IMG_1883_at9mjb.webp",
+          "caption": "Leadership taking a group photo"
         }
       ]
     }
