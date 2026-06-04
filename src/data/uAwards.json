@@ -126,7 +126,8 @@
         "dept": "Recreation",
         "deptKey": "recreation",
         "role": "Floor Assistant",
-        "quote": "This year, the Recreation Department has successfully enhanced our membership processes thanks to multiple collaborative efforts on campus. There is one student whose energy and unreasonable hospitality I would like to highlight. This student has demonstrated amazing foresight for our facility and exemplifies the type of patience and compassion everyone in our community needs."
+        "quote": "This year, the Recreation Department has successfully enhanced our membership processes thanks to multiple collaborative efforts on campus. There is one student whose energy and unreasonable hospitality I would like to highlight. This student has demonstrated amazing foresight for our facility and exemplifies the type of patience and compassion everyone in our community needs.",
+        "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780535801/malia-berganio_oygonx.jpg"
       },
       {
         "id": "d7",
@@ -322,10 +323,10 @@
       "name": "Vershaun Evans",
       "role": "Student Director",
       "quote": "The U-SU Board of Directors had a strong year, marked by key accomplishments including contributing to the Golden Eagle Fire Relief Fund, upgrading TIAA Retirement Plans for U-SU staff, reviewing the External Audit and Tax Filing, and recruiting 11 BOD candidates — resulting in record-breaking voting turnout. Among this year's Board, one Student Director stood out above the rest. Vershaun Evans is described as someone who lights up every room she enters, offers thoughtful insight, asks the right questions, and brings genuine energy and humor to those around her. She has inspired her colleagues to think bigger, push through challenges, and lead with heart. It is with great pleasure that the Board presents Vershaun Evans with the Student of the Year award.",
-      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/Vershaun%20Evans.jpg"
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510916/IMG_2012_jalgup.webp"
     },
     {
-      "id": "p7",
+      "id": "p8",
       "year": 2025,
       "type": "Department",
       "cat": "Admin Student of the Year",
@@ -334,10 +335,10 @@
       "name": "Cynthia Lei",
       "role": "Accounting/Administrative Assistant",
       "quote": "Our student of the year is Cynthia Lei. Cynthia has been with us for two years. She is conscious and understands her role being a student employee in the union’s business office. Having seniority in UBO, she often extends help to her new fellow student employees, qualities that we really appreciate.",
-      "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/cynthia-admin.jpg"
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510918/IMG_2018_u63fvn.webp"
     },
     {
-      "id": "p8",
+      "id": "p9",
       "year": 2025,
       "type": "Department",
       "cat": "Graffix Student of the Year",
@@ -348,7 +349,30 @@
       "quote": "Steven Phan jumped into the Graffix department with focus and drive, understanding what it takes to thrive from day one. His creativity and work ethic didn’t just elevate his own work—it raised the bar for everyone. We're proud to name him our Student of the Year."
     },
     {
-      "id": "p9",
+      "id": "p10",
+      "year": 2025,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Anthony Ngo",
+      "role": "Operations Specialist",
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2025_sjakvz.webp"
+    },
+    {
+      "id": "p13",
+      "year": 2025,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Orlando Flota",
+      "role": "Floor Assistant",
+      "quote": "The person selected for this year's Recreation Student of the year has embodied our values of community and connection for the work he has done to engage all in his path. It is with much delight that I present this award to, Orlando Flota.",
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2021_b74q4x.webp"
+    },
+    {
+      "id": "p11",
       "year": 2025,
       "type": "Department",
       "cat": "CSI Student of the Year",
@@ -360,7 +384,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779904217/Erik_puqebs.jpg"
     },
     {
-      "id": "p10",
+      "id": "p12",
       "year": 2025,
       "type": "Staff",
       "cat": "U-SU Values Champion",
@@ -372,7 +396,7 @@
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/john-values.jpg"
     },
     {
-      "id": "p11",
+      "id": "p14",
       "year": 2025,
       "type": "Staff",
       "cat": "U-SU Values Champion",
