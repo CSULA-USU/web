@@ -326,7 +326,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510916/IMG_2012_jalgup.webp"
     },
     {
-      "id": "p7",
+      "id": "p8",
       "year": 2025,
       "type": "Department",
       "cat": "Admin Student of the Year",
@@ -338,7 +338,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510918/IMG_2018_u63fvn.webp"
     },
     {
-      "id": "p8",
+      "id": "p9",
       "year": 2025,
       "type": "Department",
       "cat": "Graffix Student of the Year",
@@ -349,7 +349,30 @@
       "quote": "Steven Phan jumped into the Graffix department with focus and drive, understanding what it takes to thrive from day one. His creativity and work ethic didn’t just elevate his own work—it raised the bar for everyone. We're proud to name him our Student of the Year."
     },
     {
-      "id": "p9",
+      "id": "p10",
+      "year": 2025,
+      "type": "Department",
+      "cat": "Operations Student of the Year",
+      "dept": "Operations",
+      "deptKey": "operations",
+      "name": "Anthony Ngo",
+      "role": "Operations Specialist",
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2025_sjakvz.webp"
+    },
+    {
+      "id": "p13",
+      "year": 2025,
+      "type": "Department",
+      "cat": "Recreation Student of the Year",
+      "dept": "Recreation",
+      "deptKey": "recreation",
+      "name": "Orlando Flota",
+      "role": "Floor Assistant",
+      "quote": "The person selected for this year's Recreation Student of the year has embodied our values of community and connection for the work he has done to engage all in his path. It is with much delight that I present this award to, Orlando Flota.",
+      "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2021_b74q4x.webp"
+    },
+    {
+      "id": "p11",
       "year": 2025,
       "type": "Department",
       "cat": "CSI Student of the Year",
@@ -361,7 +384,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779904217/Erik_puqebs.jpg"
     },
     {
-      "id": "p10",
+      "id": "p12",
       "year": 2025,
       "type": "Staff",
       "cat": "U-SU Values Champion",
@@ -373,7 +396,7 @@
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/john-values.jpg"
     },
     {
-      "id": "p11",
+      "id": "p14",
       "year": 2025,
       "type": "Staff",
       "cat": "U-SU Values Champion",

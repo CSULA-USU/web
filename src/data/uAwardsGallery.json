@@ -194,11 +194,6 @@
           "orientation": "portrait"
         },
         {
-          "id": "2025-Sophia-005",
-          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780514532/IMG_1531_scao0n.webp",
-          "caption": "Sophia does interpretative dance"
-        },
-        {
           "id": "2025-FT-CSI-006",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510926/IMG_1546_kcqahb.webp",
           "caption": "Ian, Andrea, and Heidy walking down and posing on the runway"
@@ -239,8 +234,7 @@
         {
           "id": "2025-rec-matching-009",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780535394/IMG_1629_yedakh.webp",
-          "caption": "Recreation students arrive in matching style",
-          "orientation": "portrait"
+          "caption": "Recreation students arrive in matching style"
         },
         {
           "id": "2025-dr-bell-candid-010",
@@ -295,30 +289,35 @@
           "caption": "Mari and Vic hanging out"
         },
         {
-          "id": "2025--015",
+          "id": "2025-ccc-video-015",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510911/IMG_1910_bbevbe.webp",
-          "caption": "Video of Imani, Mario, and Valerie expressing their appreciation for all the students that work in the U-SU"
+          "caption": "Video of Imani, Mario, and Valerie expressing their appreciation for the students that work in the U-SU"
         },
         {
-          "id": "2025--015",
+          "id": "2025-ft-years-025",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510911/IMG_1969_jvuu8s.webp",
           "caption": "Chris, Joseph, and John O. being recognized for their years of service to the U-SU"
         },
         {
-          "id": "2025-ubo-group-007",
+          "id": "2025-ops-group-028",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_1978_toymta.webp",
+          "caption": "Operations group photo"
+        },
+        {
+          "id": "2025-bod-group-027",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_2000_d6l0kg.webp",
+          "caption": "BOD group photo"
+        },
+        {
+          "id": "2025-ubo-group-026",
           "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780509876/IMG_1567_e2n7pc.webp",
           "caption": "UBO group photo in front of the stars",
           "orientation": "portrait"
         },
         {
-          "id": "2025-bod-group-028",
-          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_2000_d6l0kg.webp",
-          "caption": "BOD group photo"
-        },
-        {
-          "id": "2025-ops-group-029",
-          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510914/IMG_1978_toymta.webp",
-          "caption": "Operations group photo"
+          "id": "2025-rec-group-029",
+          "src": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780591893/IMG_1740_tf290z.webp",
+          "caption": "Recreation squad looking lean and mean for the group photo"
         },
         {
           "id": "2025-leadership-group-030",
