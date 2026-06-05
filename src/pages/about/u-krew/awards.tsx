@@ -46,13 +46,19 @@ export default function UAwardsPage() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
-          content="https://www.calstatelausu.org/about/u-krew/u-awards"
+          content="https://www.calstatelausu.org/about/u-krew/awards"
         />
-        <meta property="og:image" content="/u-awards/hero.jpg" key="og-image" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards.webp"
+          key="og-image"
+        />
+        <meta property="og:image:width" content="1200" key="og-image-w" />
+        <meta property="og:image:height" content="630" key="og-image-h" />
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="canonical"
-          href="https://www.calstatelausu.org/about/u-awards"
+          href="https://www.calstatelausu.org/about/u-krew/awards"
         />
       </Head>
 
