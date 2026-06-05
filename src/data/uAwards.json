@@ -25,7 +25,7 @@
       "label": "Admin"
     },
     {
-      "key": "board",
+      "key": "bod",
       "label": "Board of Directors"
     }
   ],
@@ -151,7 +151,7 @@
         "id": "d009",
         "name": "Reine Santos Saavedra",
         "dept": "Board of Directors",
-        "deptKey": "board",
+        "deptKey": "bod",
         "role": "Student Director",
         "quote": "I proudly announce that this individual made us all laugh, inspired us all, and truly showed what it means to be a proud Golden Eagle who continues to soar into every next chapter of life. Through passion, dedication, and unforgettable energy, she created an impact on student engagement that will be remembered long after this year. She is the definition of a go-getter — someone who walks into every room with purpose, uplifts the people around her, and leaves every space better than she found it. Her kindness, leadership, and spirit reminded all of us why student leadership matters. Today, we celebrate not only everything she has accomplished, but the incredible person she is becoming. Never stop owning your voice, your light, and your greatness because your impact has truly touched all of us.",
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-bod.jpg"
@@ -203,7 +203,7 @@
         "name": "Reine Santos Saavedra",
         "value": "Fun",
         "dept": "Board of Directors",
-        "deptKey": "board",
+        "deptKey": "bod",
         "role": "Student Director",
         "quote": "At the U-SU, fun is more than just enjoyment, it’s the energy and enthusiasm we bring into our spaces and interactions. It’s about creating a welcoming, uplifting environment where students feel excited to engage, connect, and be themselves. Those who embody this value lead with positivity and passion. They help turn everyday moments into memorable experiences and contribute to a culture that feels vibrant, inclusive, and full of life. Tonight, we recognize an individual who truly brings this value to life, someone whose joy and spirit make a lasting impact on our community.",
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-fun2.jpg"
