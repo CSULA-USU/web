@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import styled from 'styled-components';
 import { Colors } from 'theme';
 
@@ -11,6 +11,7 @@ interface UAwardsHeroProps {
   highlight?: string;
   description?: string;
   details?: Array<{ label: string; value: string }>;
+  sections?: Array<{ label: string; href: string }>;
 }
 
 const Header = styled.header`
@@ -243,9 +244,70 @@ const Details = styled.dl`
   }
 `;
 
+const JumpNav = styled.nav`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 900px) {
+    row-gap: 12px;
+  }
+`;
+
+const JumpLabel = styled.span`
+  font-family: var(--font-montserrat, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${Colors.greyDark};
+`;
+
+const JumpLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-montserrat, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${Colors.black};
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease,
+    border-color 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background: ${Colors.primary};
+    border-color: ${Colors.primary};
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px) {
+    min-height: 44px;
+    padding: 0 18px;
+  }
+`;
+
 const DEFAULT_DETAILS = [
   { label: 'Honorees', value: 'Student & Full-time Staff' },
   { label: 'Hosted by', value: 'U-SU Executive Office' },
+];
+
+const DEFAULT_SECTIONS = [
+  { label: 'Winners', href: '#winners' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Past Winners', href: '#past' },
+  { label: 'Values', href: '#values' },
 ];
 
 export const UAwardsHero = ({
@@ -257,8 +319,28 @@ export const UAwardsHero = ({
   highlight = 'U-Awards',
   description = 'Our annual celebration recognizing outstanding employees who have gone above and beyond in their dedication and service to the Cal State LA University-Student Union community',
   details = DEFAULT_DETAILS,
+  sections = DEFAULT_SECTIONS,
 }: UAwardsHeroProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleJump = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) return;
+    event.preventDefault();
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    target.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+
+    // Move focus to the destination so keyboard and screen-reader users
+    // continue from the section they jumped to, not the nav.
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  };
 
   useEffect(() => {
     setIsLoaded(false);
@@ -309,6 +391,20 @@ export const UAwardsHero = ({
               </div>
             ))}
           </Details>
+          {sections.length > 0 && (
+            <JumpNav aria-label="Jump to section">
+              <JumpLabel>Jump to</JumpLabel>
+              {sections.map((section) => (
+                <JumpLink
+                  key={section.href}
+                  href={section.href}
+                  onClick={(event) => handleJump(event, section.href)}
+                >
+                  {section.label}
+                </JumpLink>
+              ))}
+            </JumpNav>
+          )}
         </Card>
       </Inner>
     </Header>

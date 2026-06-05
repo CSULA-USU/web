@@ -76,7 +76,7 @@
   "current": {
     "departmentWinners": [
       {
-        "id": "d1",
+        "id": "d001",
         "name": "Karina Mora",
         "dept": "Graffix",
         "deptKey": "graffix",
@@ -85,7 +85,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/karina-graffix2.jpg"
       },
       {
-        "id": "d2",
+        "id": "d002",
         "name": "Manuela Elias-Chan",
         "dept": "Cross Cultural Centers",
         "deptKey": "ccc",
@@ -94,7 +94,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/manuela-ccc.jpg"
       },
       {
-        "id": "d3",
+        "id": "d003",
         "name": "Crysta Acevedo",
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
@@ -103,7 +103,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/crysta-csi.jpg"
       },
       {
-        "id": "d4",
+        "id": "d004",
         "name": "Anthony Ngo",
         "dept": "Operations",
         "deptKey": "operations",
@@ -112,7 +112,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/anthony-ops.jpg"
       },
       {
-        "id": "d5",
+        "id": "d005",
         "name": "Monique Garcia",
         "dept": "Operations",
         "deptKey": "operations",
@@ -121,7 +121,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/monique-ops.jpg"
       },
       {
-        "id": "d6",
+        "id": "d006",
         "name": "Malia Berganio",
         "dept": "Recreation",
         "deptKey": "recreation",
@@ -130,7 +130,7 @@
         "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780535801/malia-berganio_oygonx.jpg"
       },
       {
-        "id": "d7",
+        "id": "d007",
         "name": "Valerie Urrutia",
         "dept": "Recreation",
         "deptKey": "recreation",
@@ -139,7 +139,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/valerie-rec.jpg"
       },
       {
-        "id": "d8",
+        "id": "d008",
         "name": "Sean Kono",
         "dept": "Admin",
         "deptKey": "admin",
@@ -148,7 +148,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/sean-admin.jpg"
       },
       {
-        "id": "d9",
+        "id": "d009",
         "name": "Reine Santos Saavedra",
         "dept": "Board of Directors",
         "deptKey": "board",
@@ -159,7 +159,7 @@
     ],
     "valueWinners": [
       {
-        "id": "v1",
+        "id": "v001",
         "name": "Eliza Cavestany",
         "value": "Accountability",
         "dept": "Graffix",
@@ -169,7 +169,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/eliza-accountability2.jpg"
       },
       {
-        "id": "v2",
+        "id": "v002",
         "name": "Omar Gutierrez-Alvarez",
         "value": "Integrity",
         "dept": "Operations",
@@ -179,7 +179,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/omar-integrity2.jpg"
       },
       {
-        "id": "v3",
+        "id": "v003",
         "name": "CJ Calica",
         "value": "Innovation",
         "dept": "Cross Cultural Centers",
@@ -189,7 +189,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/cj-innovation.jpg"
       },
       {
-        "id": "v4",
+        "id": "v004",
         "name": "Rishab Lakhotra",
         "value": "Community",
         "dept": "Recreation",
@@ -199,7 +199,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/rishab-community2.jpg"
       },
       {
-        "id": "v5",
+        "id": "v005",
         "name": "Reine Santos Saavedra",
         "value": "Fun",
         "dept": "Board of Directors",
@@ -209,7 +209,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/reine-fun2.jpg"
       },
       {
-        "id": "v6",
+        "id": "v006",
         "name": "Jaqueline Fajardo",
         "value": "Connection",
         "dept": "Center for Student Involvement",
@@ -221,7 +221,7 @@
     ],
     "staffWinners": [
       {
-        "id": "s1",
+        "id": "s001",
         "name": "Alice Lam",
         "dept": "Admin",
         "deptKey": "admin",
@@ -230,7 +230,7 @@
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/alice-values2.jpg"
       },
       {
-        "id": "s2",
+        "id": "s002",
         "name": "Fabiola Avina",
         "dept": "Center for Student Involvement",
         "deptKey": "csi",
@@ -360,7 +360,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2025_sjakvz.webp"
     },
     {
-      "id": "p13",
+      "id": "p11",
       "year": 2025,
       "type": "Department",
       "cat": "Recreation Student of the Year",
@@ -372,7 +372,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2021_b74q4x.webp"
     },
     {
-      "id": "p11",
+      "id": "p12",
       "year": 2025,
       "type": "Department",
       "cat": "CSI Student of the Year",
@@ -384,7 +384,7 @@
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1779904217/Erik_puqebs.jpg"
     },
     {
-      "id": "p12",
+      "id": "p13",
       "year": 2025,
       "type": "Staff",
       "cat": "U-SU Values Champion",

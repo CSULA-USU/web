@@ -267,7 +267,7 @@ export const UAwardsPastWinners = ({
           <Kicker>Hall of Honorees</Kicker>
           <Title id="past-title">Past Winners</Title>
           <Lede>
-            Five years of U-Awards recipients. Browse by year or department to
+            Two years of U-Awards recipients. Browse by year or department to
             see the people who built the U-SU we know today.
           </Lede>
         </Head>
