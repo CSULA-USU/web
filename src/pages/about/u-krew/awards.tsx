@@ -71,17 +71,28 @@ export default function UAwardsPage() {
         title="Executive Director, U-SU"
       />
 
-      <UAwardsCurrentWinners
-        departmentWinners={data.current.departmentWinners}
-        valueWinners={data.current.valueWinners}
-        staffWinners={data.current.staffWinners}
-      />
+      <div id="winners" style={{ scrollMarginTop: 24, outline: 'none' }}>
+        <UAwardsCurrentWinners
+          departmentWinners={data.current.departmentWinners}
+          valueWinners={data.current.valueWinners}
+          staffWinners={data.current.staffWinners}
+        />
+      </div>
 
-      <UAwardsGallery years={galleryByYear} />
+      <div id="gallery" style={{ scrollMarginTop: 24, outline: 'none' }}>
+        <UAwardsGallery years={galleryByYear} />
+      </div>
 
-      <UAwardsPastWinners winners={data.past} departments={data.departments} />
+      <div id="past" style={{ scrollMarginTop: 24, outline: 'none' }}>
+        <UAwardsPastWinners
+          winners={data.past}
+          departments={data.departments}
+        />
+      </div>
 
-      <UAwardsValues values={data.values} />
+      <div id="values" style={{ scrollMarginTop: 24, outline: 'none' }}>
+        <UAwardsValues values={data.values} />
+      </div>
 
       <UAwardsCallToAction />
     </Page>
