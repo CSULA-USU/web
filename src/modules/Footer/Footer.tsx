@@ -105,19 +105,14 @@ export const Footer = () => (
           <FooterUnorderedList>
             <li>
               <Typography margin="0 0 7px 0" as="h2" color="white" weight="600">
-                Building Hours
+                Summer Building Hours
               </Typography>
             </li>
             <StyledLinkMargins>
-              <Typography color="white">
-                Mon&ndash;Thu: 7 AM to 10 PM
-              </Typography>
+              <Typography color="white">Mon&ndash;Fri: 7 AM to 7 PM</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
-              <Typography color="white">Fri: 7 AM to 8 PM</Typography>
-            </StyledLinkMargins>
-            <StyledLinkMargins>
-              <Typography color="white">Sat: 7 AM to 3 PM </Typography>
+              <Typography color="white">Sat: Closed</Typography>
             </StyledLinkMargins>
             <StyledLinkMargins>
               <Typography color="white">Sun: Closed</Typography>
