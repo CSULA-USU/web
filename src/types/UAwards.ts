@@ -4,7 +4,8 @@ export type DepartmentKey =
   | 'csi'
   | 'operations'
   | 'recreation'
-  | 'admin';
+  | 'admin'
+  | 'bod';
 
 export type ValueKey =
   | 'accountability'
