@@ -125,7 +125,7 @@
         "name": "Malia Berganio",
         "dept": "Recreation",
         "deptKey": "recreation",
-        "role": "Floor Assistant",
+        "role": "Recreation Associate",
         "quote": "This year, the Recreation Department has successfully enhanced our membership processes thanks to multiple collaborative efforts on campus. There is one student whose energy and unreasonable hospitality I would like to highlight. This student has demonstrated amazing foresight for our facility and exemplifies the type of patience and compassion everyone in our community needs.",
         "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780535801/malia-berganio_oygonx.jpg"
       },
@@ -134,7 +134,7 @@
         "name": "Valerie Urrutia",
         "dept": "Recreation",
         "deptKey": "recreation",
-        "role": "Floor Assistant",
+        "role": "Recreation Associate",
         "quote": "This year, the Recreation Department has intentionally focused on strengthening our culture of hospitality and finding new ways to make our space welcoming for all. One student has truly gone above and beyond in her role, consistently growing and demonstrating strong leadership skills. She has fully stepped into her position by greeting every member with warmth, and patience, always ready to assist when needed. Her impact extends beyond our members as she has become a trusted source of knowledge for her peers and sets an outstanding example.",
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/valerie-rec.jpg"
       },
@@ -174,7 +174,7 @@
         "value": "Integrity",
         "dept": "Operations",
         "deptKey": "operations",
-        "role": "Operations Manager",
+        "role": "Information and Reservations Aide",
         "quote": "At the U-SU, integrity means leading with honesty, transparency, and respect in everything we do. It’s reflected in how we communicate, how we make decisions, and how we show up for one another and the students we serve. Those who embody this value build trust through their actions. They lead with authenticity, remain consistent in their values, and create an environment where others feel respected, heard, and supported. Tonight, we recognize an individual who exemplifies integrity, someone who leads with purpose and sets a strong example for our community.",
         "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2026/omar-integrity2.jpg"
       },
@@ -261,7 +261,7 @@
       "dept": "Recreation",
       "deptKey": "recreation",
       "name": "Kiet Tran",
-      "role": "Floor Assistant",
+      "role": "Membership Aide",
       "quote": "We show our integrity by leading, operating, and communicating openly with those we serve. Nominators wrote that this person has approached some challenging situations with honesty and a willingness to meet the challenge that have helped the team tremendously. Whether in the game room or in the gym, this person leads with integrity anywhere he goes.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/kiet-resize.jpg"
     },
@@ -273,7 +273,7 @@
       "dept": "Operations",
       "deptKey": "operations",
       "name": "Kyle Malone",
-      "role": "Operations Assistant",
+      "role": "Event Services Lead",
       "quote": "We actively seek opportunities to create and innovate to improve outcomes across our facilities, services, and activities. Nominators wrote that this person has continuously sought ways         tresolve any issues happening in an efficient and innovative manner. This person is consistently excited and energized for their work.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/kyle-resize"
     },
@@ -285,7 +285,7 @@
       "dept": "Operations",
       "deptKey": "operations",
       "name": "Asaya Azah",
-      "role": "Information and Reservations Aide",
+      "role": "Information and Reservations Assistant",
       "quote": "We identify the unique needs of our community and intentionally act to create a culture of belonging for all who enter our space. Nominators wrote that this person has consistently gone out of her way to find answers to questions they may notknow. This person makes everyone feel welcomed at the U-SU and treats every interaction like they are a VIP.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/asaya-resize.jpg"
     },
@@ -309,7 +309,7 @@
       "dept": "Center for Student Involvement",
       "deptKey": "csi",
       "name": "Rayana Coleman",
-      "role": "Junior Graphic Designer",
+      "role": "Student Engagement Assistant",
       "quote": "We prioritize genuine connections with all in our community, enabling us to appreciate the unique value in each other and amplify our successes as a team. Nominators wrote that this person puts others before herself and strives to connect with each student that walks through the door. Her personality is welcoming and she is able to build rapport with guests and staff.",
       "photoUrl": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/2025/rayana-resize.jpg"
     },
@@ -356,7 +356,7 @@
       "dept": "Operations",
       "deptKey": "operations",
       "name": "Anthony Ngo",
-      "role": "Operations Specialist",
+      "role": "Maintenance Aide",
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2025_sjakvz.webp"
     },
     {
@@ -367,7 +367,7 @@
       "dept": "Recreation",
       "deptKey": "recreation",
       "name": "Orlando Flota",
-      "role": "Floor Assistant",
+      "role": "Membership Aide",
       "quote": "The person selected for this year's Recreation Student of the year has embodied our values of community and connection for the work he has done to engage all in his path. It is with much delight that I present this award to, Orlando Flota.",
       "photoUrl": "https://res.cloudinary.com/dflidxy7l/image/upload/v1780510919/IMG_2021_b74q4x.webp"
     },
