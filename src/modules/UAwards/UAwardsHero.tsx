@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import styled from 'styled-components';
 import { Colors } from 'theme';
 
@@ -124,7 +124,7 @@ const Inner = styled.div`
   }
 `;
 
-const Card = styled.div`
+const Card = styled.div<{ $reduceMotion: boolean }>`
   position: relative;
   z-index: 2;
   max-width: 840px;
@@ -135,6 +135,15 @@ const Card = styled.div`
   border-radius: 16px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
   padding: 40px 48px;
+  /* Fade (and gently drift) the card out as the page scrolls so the photo
+     behind it can be seen in full. --hero-progress runs 0 → 1 and stays 0 on
+     mobile, where the card sits below the image and never covers it. */
+  opacity: calc(1 - var(--hero-progress, 0));
+  transform: ${(p) =>
+    p.$reduceMotion
+      ? 'none'
+      : 'translateY(calc(var(--hero-progress, 0) * -32px))'};
+  will-change: opacity, transform;
 
   @media (max-width: 900px) {
     padding: 28px 20px;
@@ -322,6 +331,10 @@ export const UAwardsHero = ({
   sections = DEFAULT_SECTIONS,
 }: UAwardsHeroProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [cardHidden, setCardHidden] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const handleJump = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     const target = document.querySelector<HTMLElement>(href);
@@ -362,8 +375,64 @@ export const UAwardsHero = ({
     };
   }, [imageSrc]);
 
+  // Honor reduced-motion: keep the opacity fade (not vestibular motion) but
+  // drop the upward drift.
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduceMotion(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  // Drive the card fade from scroll position. The card only overlaps the photo
+  // on desktop, so the effect is confined to wide viewports; on mobile the
+  // progress stays 0 and the card remains fully visible and interactive.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    let frame = 0;
+    const sync = () => {
+      frame = 0;
+      const isDesktop = window.matchMedia('(min-width: 901px)').matches;
+
+      if (!isDesktop) {
+        header.style.setProperty('--hero-progress', '0');
+        setCardHidden(false);
+        return;
+      }
+
+      const fadeDistance = window.innerHeight * 0.55;
+      const progress = Math.min(Math.max(window.scrollY / fadeDistance, 0), 1);
+      header.style.setProperty('--hero-progress', String(progress));
+      setCardHidden(progress >= 0.99);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(sync);
+    };
+
+    sync();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // When the card is fully faded out, take it out of the tab order and the
+  // accessibility tree so keyboard and screen-reader users don't land on an
+  // invisible card. `inert` is restored the moment it scrolls back into view.
+  useEffect(() => {
+    cardRef.current?.toggleAttribute('inert', cardHidden);
+  }, [cardHidden]);
+
   return (
-    <Header>
+    <Header ref={headerRef}>
       <Media
         $loaded={isLoaded}
         $src={imageSrc}
@@ -374,7 +443,7 @@ export const UAwardsHero = ({
       </Media>
       <Strip aria-hidden="true" />
       <Inner>
-        <Card>
+        <Card ref={cardRef} $reduceMotion={reduceMotion}>
           <KickerRow>
             <KickerText>{kicker}</KickerText>
             {yearLine && <YearText>{yearLine}</YearText>}
