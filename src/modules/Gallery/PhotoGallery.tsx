@@ -414,6 +414,37 @@ export const PhotoGallery = ({
     setPhotoIdx(0);
   }, [sectionIdx]);
 
+  // Resolve when the current photo is ready to reveal. We can't rely on the
+  // rendered <img>'s onLoad alone: on the statically pre-rendered first paint
+  // the image often finishes loading before React hydrates and attaches the
+  // handler, so that load event is missed and the front layer stays hidden
+  // (showing only the blurred backdrop) until the user navigates. A standalone
+  // loader — and an explicit `complete` check for the cached case — fires
+  // reliably. (`window.Image` to avoid the imported `Image` component.)
+  useEffect(() => {
+    if (!shot) {
+      return;
+    }
+
+    const { id, src } = shot;
+    const loader = new window.Image();
+    loader.src = src;
+
+    if (loader.complete) {
+      setLoadedId(id);
+      return;
+    }
+
+    // Reveal on error too, so a broken image never leaves the stage stuck blurry.
+    loader.onload = () => setLoadedId(id);
+    loader.onerror = () => setLoadedId(id);
+
+    return () => {
+      loader.onload = null;
+      loader.onerror = null;
+    };
+  }, [shot]);
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (!rootRef.current) {
