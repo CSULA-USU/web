@@ -53,9 +53,19 @@ export default function UAwardsPage() {
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards-photo.jpg"
           key="og-image"
         />
-        <meta property="og:image:width" content="1200" key="og-image-w" />
-        <meta property="og:image:height" content="630" key="og-image-h" />
+        <meta property="og:image:width" content="1920" key="og-image-w" />
+        <meta property="og:image:height" content="1080" key="og-image-h" />
+        <meta
+          property="og:image:type"
+          content="image/jpeg"
+          key="og-image-type"
+        />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards-photo.jpg"
+          key="twitter-image"
+        />
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/about/u-krew/awards"
