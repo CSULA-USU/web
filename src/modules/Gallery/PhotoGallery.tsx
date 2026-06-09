@@ -146,12 +146,23 @@ const Backdrop = styled.div<{ $src: string }>`
   opacity: 0.55;
 `;
 
-const PhotoSlot = styled.div<{ $orientation: 'landscape' | 'portrait' }>`
+const PhotoSlot = styled.div<{
+  $orientation: 'landscape' | 'portrait';
+  $visible: boolean;
+  $interactive: boolean;
+}>`
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Each photo lives on its own layer. The incoming one is held at opacity 0
+     until it has fully loaded, then fades in over the outgoing layer so swaps
+     never pop or visibly resize. Opacity-only, so it's kept under
+     prefers-reduced-motion (matching Caption above). */
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  transition: opacity 0.4s ease;
+  pointer-events: ${(p) => (p.$interactive ? 'auto' : 'none')};
 
   > * {
     position: relative;
@@ -352,12 +363,52 @@ export const PhotoGallery = ({
 }: PhotoGalleryProps) => {
   const [sectionIdx, setSectionIdx] = useState(0);
   const [photoIdx, setPhotoIdx] = useState(0);
+  // Crossfade state: id of the photo whose full image has loaded (so we know
+  // when it's safe to fade the front layer in), and the outgoing photo kept on
+  // the back layer beneath it until the fade completes.
+  const [loadedId, setLoadedId] = useState<string | undefined>(undefined);
+  const [prevShot, setPrevShot] = useState<PhotoGalleryPhoto | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const touchRef = useRef({ x: 0, y: 0, t: 0 });
 
   const currentSection =
     sections[Math.min(sectionIdx, Math.max(sections.length - 1, 0))];
   const currentPhotoCount = currentSection?.photos.length ?? 0;
+
+  const hasRealPhotos = currentPhotoCount > 0;
+  const isCoverFallback =
+    !hasRealPhotos && Boolean(currentSection?.coverFallbackSrc);
+  const photos: PhotoGalleryPhoto[] = hasRealPhotos
+    ? currentSection.photos
+    : isCoverFallback
+    ? [
+        {
+          id: `cover-${currentSection.id}`,
+          src: currentSection.coverFallbackSrc as string,
+          alt: '',
+          caption: `${
+            currentSection.heading ?? currentSection.label
+          } — photos coming soon`,
+        },
+      ]
+    : [];
+  const len = photos.length;
+  const shot = photos[Math.min(photoIdx, Math.max(len - 1, 0))];
+
+  // Latest shot in a ref so event handlers (incl. the keydown listener, whose
+  // closure would otherwise go stale) can hand the outgoing photo to the back
+  // layer at navigation time.
+  const shotRef = useRef(shot);
+  shotRef.current = shot;
+
+  const frontVisible = Boolean(shot) && loadedId === shot?.id;
+
+  // Move the current photo to the back layer, then change the index. The new
+  // front layer mounts hidden and fades in once loaded, dissolving the old one.
+  const goToPhoto = (resolve: (idx: number) => number) => {
+    setPrevShot(shotRef.current ?? null);
+    setPhotoIdx(resolve);
+  };
 
   useEffect(() => {
     setPhotoIdx(0);
@@ -379,16 +430,19 @@ export const PhotoGallery = ({
       }
 
       if (event.key === 'ArrowLeft') {
-        setPhotoIdx((idx) => (idx - 1 + currentPhotoCount) % currentPhotoCount);
+        goToPhoto((idx) => (idx - 1 + currentPhotoCount) % currentPhotoCount);
       }
 
       if (event.key === 'ArrowRight') {
-        setPhotoIdx((idx) => (idx + 1) % currentPhotoCount);
+        goToPhoto((idx) => (idx + 1) % currentPhotoCount);
       }
     };
 
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
+    // goToPhoto only reads refs/setters (stable), so currentPhotoCount is the
+    // sole reactive dependency.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPhotoCount]);
 
   if (!sections.length) {
@@ -396,22 +450,6 @@ export const PhotoGallery = ({
   }
 
   const section = sections[Math.min(sectionIdx, sections.length - 1)];
-  const hasRealPhotos = section.photos.length > 0;
-  const isCoverFallback = !hasRealPhotos && Boolean(section.coverFallbackSrc);
-  const photos: PhotoGalleryPhoto[] = hasRealPhotos
-    ? section.photos
-    : isCoverFallback
-    ? [
-        {
-          id: `cover-${section.id}`,
-          src: section.coverFallbackSrc as string,
-          alt: '',
-          caption: `${section.heading ?? section.label} — photos coming soon`,
-        },
-      ]
-    : [];
-  const shot = photos[Math.min(photoIdx, Math.max(photos.length - 1, 0))];
-  const len = photos.length;
 
   const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     const touch = event.touches[0];
@@ -429,10 +467,14 @@ export const PhotoGallery = ({
     const dt = Date.now() - touchRef.current.t;
 
     if (dt < 700 && Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      if (len < 2) {
+        return;
+      }
+
       if (dx < 0) {
-        setPhotoIdx((idx) => (idx + 1) % len);
+        goToPhoto((idx) => (idx + 1) % len);
       } else {
-        setPhotoIdx((idx) => (idx - 1 + len) % len);
+        goToPhoto((idx) => (idx - 1 + len) % len);
       }
     }
   };
@@ -449,7 +491,14 @@ export const PhotoGallery = ({
               role="tab"
               aria-selected={index === sectionIdx}
               $active={index === sectionIdx}
-              onClick={() => setSectionIdx(index)}
+              onClick={() => {
+                if (index === sectionIdx) {
+                  return;
+                }
+
+                setPrevShot(shotRef.current ?? null);
+                setSectionIdx(index);
+              }}
             >
               {entry.label}
             </SectionTab>
@@ -474,7 +523,7 @@ export const PhotoGallery = ({
                   return;
                 }
 
-                setPhotoIdx((idx) => (idx - 1 + len) % len);
+                goToPhoto((idx) => (idx - 1 + len) % len);
               }}
               disabled={len < 2}
             >
@@ -489,12 +538,38 @@ export const PhotoGallery = ({
             {shot ? (
               <>
                 <Backdrop $src={shot.src} aria-hidden />
-                <PhotoSlot $orientation={shot.orientation ?? 'landscape'}>
+                {prevShot && prevShot.id !== shot.id ? (
+                  <PhotoSlot
+                    key={prevShot.id}
+                    $orientation={prevShot.orientation ?? 'landscape'}
+                    $visible
+                    $interactive={false}
+                    aria-hidden
+                  >
+                    <Image
+                      src={prevShot.src}
+                      alt=""
+                      placeholder={section.coverFallbackSrc}
+                    />
+                  </PhotoSlot>
+                ) : null}
+                <PhotoSlot
+                  key={shot.id}
+                  $orientation={shot.orientation ?? 'landscape'}
+                  $visible={frontVisible}
+                  $interactive
+                  onTransitionEnd={() => {
+                    if (frontVisible) {
+                      setPrevShot(null);
+                    }
+                  }}
+                >
                   <Image
                     src={shot.src}
                     alt={shot.alt}
                     placeholder={section.coverFallbackSrc}
                     isExpandable
+                    onLoad={() => setLoadedId(shot.id)}
                   />
                 </PhotoSlot>
                 <Caption>{shot.caption}</Caption>
@@ -521,7 +596,7 @@ export const PhotoGallery = ({
                   return;
                 }
 
-                setPhotoIdx((idx) => (idx + 1) % len);
+                goToPhoto((idx) => (idx + 1) % len);
               }}
               disabled={len < 2}
             >
