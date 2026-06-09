@@ -50,7 +50,7 @@ export default function UAwardsPage() {
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards-photo.jpg"
           key="og-image"
         />
         <meta property="og:image:width" content="1200" key="og-image-w" />
