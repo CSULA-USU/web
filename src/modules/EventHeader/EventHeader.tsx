@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FluidContainer, Typography } from 'components';
 import { ModEventCard } from 'modules';
 import { Spaces } from 'theme';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import { useState } from 'react';
 import { EventModal } from 'modules/EventModal';
 import { useBreakpoint } from 'hooks';
@@ -59,12 +59,12 @@ export const EventHeader = ({
   subheaderText,
 }: {
   loading: boolean;
-  featuredEvent: PresenceEvent;
+  featuredEvent: CampusGroupsEvent;
   title?: React.ReactNode;
   subheaderText?: string;
 }) => {
   const { isMobile } = useBreakpoint();
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);

@@ -14,5 +14,6 @@ export const ABBREVIATED_ORGS: { [key: string]: string } = {
   'University-Student Union': 'U-SU',
 };
 
-export const PRESENCE_URI_BASE =
-  'https://calstatela-cdn.presence.io/event-photos/caa045a5-87e3-4730-9e3b-3237755bc0a8';
+export const USU_GROUP_IDS = [18633, 35617, 35618] as const;
+
+export const CAMPUS_GROUPS_RSS_URL = '/api/events';

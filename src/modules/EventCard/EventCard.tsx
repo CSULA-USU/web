@@ -1,12 +1,13 @@
 import { Button, SkeletonWrapper, Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
-import { PresenceEvent } from 'types';
-import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
+import { CampusGroupsEvent } from 'types';
+import { ABBREVIATED_ORGS } from 'utils/constants';
+import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
 export interface EventCardProps {
-  event: PresenceEvent;
+  event: CampusGroupsEvent;
   featured?: boolean;
   onClick?: () => void;
 }
@@ -118,26 +119,26 @@ export const EventSkeleton = styled(SkeletonWrapper)`
 export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
   if (!event) return null;
   const {
-    organizationName,
-    eventName,
-    location,
-    startDateTimeUtc,
-    endDateTimeUtc,
-    photoUri,
+    group,
+    title,
+    eventLocation,
+    eventStartDateTime,
+    eventEndDateTime,
+    eventOriginalPhotoFullUrl,
   } = event;
-  const startTime = getTime(startDateTimeUtc);
-  const endTime = getTime(endDateTimeUtc);
-  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
-  const month = getMonth(startDateTimeUtc);
-  const day = getDay(startDateTimeUtc);
+  const startTime = getTime(eventStartDateTime);
+  const endTime = getTime(eventEndDateTime);
+  const monthAbbr = getMonth(eventStartDateTime, 'short').toUpperCase();
+  const month = getMonth(eventStartDateTime);
+  const day = getDay(eventStartDateTime);
 
-  return !eventName ? (
+  return !title ? (
     <EventSkeleton />
   ) : (
     <EventCardContainer
       onClick={onClick}
       featured={featured}
-      image={`${PRESENCE_URI_BASE}/${photoUri}`}
+      image={eventOriginalPhotoFullUrl}
     >
       <Overlay />
       <EventCardTop>
@@ -167,16 +168,16 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             </>
           )}
         </EventDate>
-        <abbr title={organizationName}>
+        <abbr title={group}>
           <Typography as="h2" variant="eventDetail">
-            {ABBREVIATED_ORGS[organizationName]}
+            {ABBREVIATED_ORGS[group]}
           </Typography>
         </abbr>
       </EventCardTop>
       <EventCardBottom featured={featured}>
         <EventDetails>
           <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-            {eventName}
+            {title}
           </Typography>
           <Typography as="h4" variant="eventTime">
             {startTime} - {endTime}
@@ -186,10 +187,10 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             variant="eventDetail"
             style={{ overflowWrap: 'anywhere' }}
           >
-            {location.indexOf('.zoom.us') > -1 ? (
-              <a href={location}>Zoom Meeting</a>
+            {eventLocation.indexOf('.zoom.us') > -1 ? (
+              <a href={eventLocation}>Zoom Meeting</a>
             ) : (
-              location
+              formatEventLocation(eventLocation)
             )}
           </Typography>
         </EventDetails>

@@ -1,0 +1,1 @@
+export { formatEventLocation } from './eventUtils';

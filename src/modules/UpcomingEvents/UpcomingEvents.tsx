@@ -1,5 +1,5 @@
 import { Divider, FluidContainer, Typography } from 'components';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import { SplitEventCard } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Spaces, media } from 'theme';
 
 interface UpcomingEventsProps {
-  events: PresenceEvent[];
+  events: CampusGroupsEvent[];
   monthly?: boolean;
 }
 
@@ -33,16 +33,19 @@ const getMonth = (date: string) =>
   new Date(date).toLocaleString('default', { month: 'long' });
 
 export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);
 
   const [_, ...laterEvents] = events || [];
   const eventsByMonth = (monthly ? events : laterEvents).reduce(
-    (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
+    (
+      months: { [key: string]: CampusGroupsEvent[] },
+      event: CampusGroupsEvent,
+    ) => {
       const updatedMonths = { ...months };
-      const month = getMonth(event.startDateTimeUtc);
+      const month = getMonth(event.eventStartDateTime);
       if (!updatedMonths.hasOwnProperty(month)) {
         updatedMonths[month] = [];
       }
@@ -74,7 +77,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
             <UpcomingEventsContent>
               {eventsByMonth[eventMonth].map((event) => (
                 <SplitEventCard
-                  key={event.eventNoSqlId}
+                  key={event.eventId}
                   event={event}
                   onClick={() => selectEvent(event)}
                 />
@@ -87,7 +90,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
           <UpcomingEventsContent>
             {events.slice(1, 3).map((event) => (
               <SplitEventCard
-                key={event.eventNoSqlId}
+                key={event.eventId}
                 event={event}
                 onClick={() => selectEvent(event)}
               />
@@ -95,7 +98,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
 
             {events.slice(3, 6).map((event) => (
               <SplitEventCard
-                key={event.eventNoSqlId}
+                key={event.eventId}
                 event={event}
                 onClick={() => selectEvent(event)}
               />

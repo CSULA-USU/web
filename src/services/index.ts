@@ -3,29 +3,63 @@ import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';
 import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
-import { SupaPage, SupaSection } from 'types';
+import { CampusGroupsEvent, SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
 import type { ContactFormData } from 'types/Contact';
+import { CAMPUS_GROUPS_RSS_URL } from 'utils/constants';
 
 export * from './supabase';
 
 /* ------------------------------ External APIs ------------------------------ */
 
+const getText = (item: Element, tag: string) =>
+  item.querySelector(tag)?.textContent ?? '';
+
 export const fetchEvents = async (
   setEventsStatus: SetterOrUpdater<StatusType>,
-) => {
-  const events = await fetch(
-    'https://api.presence.io/calstatela/v1/events',
-  ).then((res) => {
+): Promise<CampusGroupsEvent[]> => {
+  try {
+    const res = await fetch(CAMPUS_GROUPS_RSS_URL);
     if (!res.ok) {
       setEventsStatus('failed');
       return [];
-    } else {
-      setEventsStatus('success');
-      return res.json();
     }
-  });
-  return events;
+
+    const xml = await res.text();
+    const doc = new DOMParser().parseFromString(xml, 'application/xml');
+    const items = Array.from(doc.querySelectorAll('item'));
+
+    const events: CampusGroupsEvent[] = items.map((item) => ({
+      eventId: getText(item, 'eventId'),
+      eventUid: getText(item, 'eventUid'),
+      groupId: getText(item, 'groupId'),
+      group: getText(item, 'group'),
+      groupAcronym: getText(item, 'groupAcronym'),
+      title: getText(item, 'title'),
+      description: getText(item, 'description'),
+      eventStartDateTime: getText(item, 'eventStartDateTime'),
+      eventEndDateTime: getText(item, 'eventEndDateTime'),
+      eventDate: getText(item, 'eventDate'),
+      eventTime: getText(item, 'eventTime'),
+      eventEndTime: getText(item, 'eventEndTime'),
+      eventLocation: getText(item, 'eventLocation'),
+      locationType: getText(item, 'locationType'),
+      eventType: getText(item, 'eventType'),
+      eventLink: getText(item, 'eventLink'),
+      eventOriginalPhotoFullUrl: getText(item, 'eventOriginalPhotoFullUrl'),
+      eventPhotoAltText: getText(item, 'eventPhotoAltText'),
+      iCalLink: getText(item, 'iCalLink'),
+      allDayEvent: getText(item, 'allDayEvent'),
+      approvalStatus: getText(item, 'approvalStatus'),
+      timeZoneId: getText(item, 'timeZoneId'),
+    }));
+
+    setEventsStatus('success');
+    return events;
+  } catch {
+    setEventsStatus('failed');
+    return [];
+  }
 };
 
 export const fetchInstagramFeed = async (
