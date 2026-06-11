@@ -14,6 +14,6 @@ export const ABBREVIATED_ORGS: { [key: string]: string } = {
   'University-Student Union': 'U-SU',
 };
 
-export const USU_GROUP_IDS = [18633, 35617, 35618] as const;
+export const USU_GROUP_IDS = [18633, 35617, 35618, 35630] as const;
 
 export const CAMPUS_GROUPS_RSS_URL = '/api/events';

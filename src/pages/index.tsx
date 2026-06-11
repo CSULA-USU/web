@@ -8,17 +8,18 @@ import {
   Typography,
 } from 'components';
 import {
-  EventHeader,
-  ModUpcomingEvents,
+  // EventHeader,
+  // ModUpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
   CallToActionImages,
   UAwardsValues,
   UtilityHeroHeader,
-  FeaturedEvents,
+  // FeaturedEvents,
 } from 'modules';
 import { useRecoilValue } from 'recoil';
-import { eventListState, eventListStatusState } from 'atoms';
+// import { eventListState, eventListStatusState } from 'atoms';
+import { eventListStatusState } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import uAwards from 'data/uAwards.json';
 import type { UAwardsData } from 'types';
@@ -38,7 +39,7 @@ import type { UAwardsData } from 'types';
 
 export default function Home() {
   const data = uAwards as UAwardsData;
-  const events = useRecoilValue(eventListState);
+  // const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
   const { isDesktop, isMobile } = useBreakpoint();
@@ -161,7 +162,7 @@ export default function Home() {
         </FluidContainer>
 
         {/* If there are no events, we can hide the event header section and just show the upcoming events section with a message that there are no events. */}
-        <EventHeader
+        {/* <EventHeader
           loading={loading || !events.length}
           subheaderText="California State University, Los Angeles"
           title={
@@ -171,7 +172,7 @@ export default function Home() {
             </>
           }
           featuredEvent={events[0]}
-        />
+        /> */}
         {!loading && eventsStatus == 'failed' ? (
           <Typography as="h3" variant="label">
             Resources failed to load. Please try refreshing your page.
@@ -182,10 +183,10 @@ export default function Home() {
             {/* <BoardOfDirectorsCTAPromotion /> */}
 
             {/* If there are no events, we can hide the featured events section and just show the upcoming events section with a message that there are no events. */}
-            {events.length >= 1 ? (
+            {/* events.length >= 1 ? (
               <FeaturedEvents events={events} featuredEvents={events} />
             ) : null}
-            <ModUpcomingEvents loading={loading} events={events} />
+            <ModUpcomingEvents loading={loading} events={events} /> */}
           </>
         )}
 
