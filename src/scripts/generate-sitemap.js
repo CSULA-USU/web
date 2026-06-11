@@ -49,7 +49,7 @@ const getRoutesFromFiles = (dir, baseDir = dir) => {
     let route = `/${relativePath.replace(/\.tsx$/, '')}`;
 
     if (route.endsWith('/index')) {
-      route = route.slice(0, -('/index'.length)) || '/';
+      route = route.slice(0, -'/index'.length) || '/';
     }
 
     if (route.includes('[') || route.includes(']')) {
@@ -124,7 +124,8 @@ const buildXml = (routes) => {
 
   const urls = sortedRoutes
     .map(
-      (route) => `  <url>\n    <loc>${BASE_URL}${route}</loc>\n    <lastmod>${now}</lastmod>\n  </url>`,
+      (route) =>
+        `  <url>\n    <loc>${BASE_URL}${route}</loc>\n    <lastmod>${now}</lastmod>\n  </url>`,
     )
     .join('\n');
 
@@ -139,7 +140,9 @@ const main = () => {
   const xml = buildXml(routes);
   fs.writeFileSync(OUTPUT_PATH, xml);
 
-  console.log(`Generated sitemap with ${new Set(routes).size} routes at ${OUTPUT_PATH}`);
+  console.log(
+    `Generated sitemap with ${new Set(routes).size} routes at ${OUTPUT_PATH}`,
+  );
 };
 
 main();

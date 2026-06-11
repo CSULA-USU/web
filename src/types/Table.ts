@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Colors } from 'theme';
 
 export type TableColorKey = keyof typeof Colors;
@@ -12,7 +13,17 @@ export interface TableColumnMergedValue {
   rowSpan: number;
 }
 
-export interface TableColumn {
+export interface TableRowValues {
+  [columnId: string]: string | undefined;
+}
+
+export interface TableRow<TOriginal = unknown> {
+  id: string;
+  values: TableRowValues;
+  original?: TOriginal;
+}
+
+export interface TableColumn<TOriginal = unknown> {
   id: string;
   label: string;
   backgroundColor: TableColorKey;
@@ -20,15 +31,7 @@ export interface TableColumn {
   headerImage?: TableHeaderImage;
   mergedValue?: TableColumnMergedValue;
   minWidth?: string;
-}
-
-export interface TableRowValues {
-  [columnId: string]: string | undefined;
-}
-
-export interface TableRow {
-  id: string;
-  values: TableRowValues;
+  render?: (row: TableRow<TOriginal>) => ReactNode;
 }
 
 export interface TableHeaderColors {
@@ -36,13 +39,21 @@ export interface TableHeaderColors {
   textColor: TableColorKey;
 }
 
-export interface TableData {
+export interface MobileColors {
+  labelBackgroundColor: TableColorKey;
+  labelTextColor: TableColorKey;
+  valueBackgroundColor: TableColorKey;
+  valueTextColor: TableColorKey;
+}
+
+export interface TableData<TOriginal = unknown> {
   id: string;
   ariaLabel: string;
   caption: string;
   title?: string;
   note?: string;
   headerColors: TableHeaderColors;
-  columns: TableColumn[];
-  rows: TableRow[];
+  columns: TableColumn<TOriginal>[];
+  rows: TableRow<TOriginal>[];
+  mobileColors?: MobileColors;
 }

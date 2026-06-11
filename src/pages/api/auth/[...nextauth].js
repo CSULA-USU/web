@@ -25,9 +25,12 @@ export const authOptions = {
 
       // Check Supabase allow-list
       const { data, error } = await supabaseAdmin
-        .from('backoffice_users')
+        .schema('backoffice_v2')
+        .from('users')
         .select('email')
         .eq('email', email)
+        .eq('is_active', true)
+        .is('deactivated_at', null)
         .maybeSingle();
 
       if (error) {

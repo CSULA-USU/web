@@ -7,6 +7,13 @@
         "title": "Home",
         "description": "Backoffice dashboard and quick access tools",
         "featured": false
+      },
+      {
+        "url": "/backoffice/access-management",
+        "title": "Access Management",
+        "description": "Manage users, roles, departments, and permissions",
+        "featured": true,
+        "pageKey": "accessManagement"
       }
     ]
   },
@@ -17,13 +24,15 @@
         "url": "/backoffice/announcement-banner",
         "title": "Banner",
         "description": "Update and activate announcement banner at the top of the page across the website",
-        "featured": true
+        "featured": true,
+        "pageKey": "announcementBanner"
       },
       {
         "url": "/backoffice/bod",
         "title": "Board of Directors",
         "description": "Access and manage board meeting documents",
-        "featured": true
+        "featured": true,
+        "pageKey": "boardDocuments"
       }
     ]
   },
@@ -34,7 +43,8 @@
         "url": "/backoffice/graffix-requests",
         "title": "Graffix Requests",
         "description": "Submit and track graphics and design requests",
-        "featured": true
+        "featured": true,
+        "pageKey": "graffixRequests"
       }
     ]
   }
