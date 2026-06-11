@@ -9,9 +9,10 @@ import { Button, FluidContainer, Loading, Typography } from 'components';
 import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
+import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
-import { HiMenuAlt3 } from 'react-icons/hi';
+import { MdOutlineLaunch } from 'react-icons/md';
 import BackofficeMobilePanel from 'modules/Backoffice/BackofficeMobilePanel';
 
 const Shell = styled.div`
@@ -143,10 +144,18 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
+  const { user, loading: userLoading } = useBackofficeUser();
+
   const allItems = useMemo(() => flattenNav(navSections), [navSections]);
   const featuredItems = useMemo(
-    () => allItems.filter((item) => item.featured),
-    [allItems],
+    () =>
+      allItems.filter((item) => {
+        if (!item.featured) return false;
+        if (!item.pageKey) return true;
+        if (userLoading || !user) return true;
+        return canViewBackofficePage(user.effectivePolicies, item.pageKey);
+      }),
+    [allItems, user, userLoading],
   );
 
   const handleNavigate = (href: string) => {
@@ -187,7 +196,7 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
             <Typography
               as="h1"
               variant="pageHeader"
-              size={isMobile ? 'xl' : isWidescreen ? 'xl' : '2xl'}
+              size={isMobile ? 'lg' : isWidescreen ? 'xl' : '2xl'}
             >
               {title}
             </Typography>
@@ -205,20 +214,23 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
                 padding="10px 20px"
                 fontSize="14px"
                 fontWeight="600"
+                variant="outline"
                 onClick={() => signOut()}
               >
                 Sign Out
               </Button>
-              <HiMenuAlt3
+              <MdOutlineLaunch
                 size={32}
-                color={Colors.primary}
+                color={Colors.black}
                 onClick={() => {
                   setIsMenuOpen(true);
                 }}
               />
             </TabletIconsContainer>
           ) : (
-            <Button onClick={() => signOut()}>Sign Out</Button>
+            <Button variant="outline" onClick={() => signOut()}>
+              Sign Out
+            </Button>
           )}
         </TopBar>
         <Content>

@@ -15,9 +15,9 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
 
 const FluidOuter = styled.div<FluidContainerProps>`
   display: flex;
-  align-items: center;
-  border: ${(p) => `1px solid ${p.border}`};
-  justify-content: center;
+  align-items: ${(p) => p.outerAlignItems || 'center'};
+  border: ${(p) => (p.border ? `1px solid ${Colors[p.border]}` : 'none')};
+  justify-content: ${(p) => p.outerJustifyContent || 'center'};
   padding: ${(p) => p.padding || '36px 72px'};
   margin: ${(p) => p.margin};
   height: ${(p) => p.height};
@@ -96,6 +96,24 @@ interface FluidContainerProps extends FluidInnerProps {
   paddingMobile?: string;
   width?: string;
   margin?: string;
+  outerAlignItems?:
+    | 'stretch'
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'baseline'
+    | 'initial'
+    | 'inherit';
+
+  outerJustifyContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'initial'
+    | 'inherit';
 }
 
 export const FluidContainer = ({

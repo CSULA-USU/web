@@ -11,6 +11,7 @@ import { postJotform } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { validateCalStateEmail } from 'lib/api';
 
 const ContactGrid = styled(FluidContainer)`
   width: 100%;
@@ -115,22 +116,11 @@ export default function Contact() {
   const [honeypot, setHoneypot] = useState('');
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  const validateEmail = (email: string): boolean => {
-    const basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!basicEmailRegex.test(email)) return false;
-
-    return email.toLowerCase().endsWith('@calstatela.edu');
-  };
-
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Please enter a valid Cal State LA email address';
-    }
-
+    const emailError = validateCalStateEmail(formData.email);
+    if (emailError) newErrors.email = emailError;
     if (!formData.subject.trim()) {
       newErrors.subject = 'Subject is required';
     }

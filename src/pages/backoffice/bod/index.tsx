@@ -1,5 +1,9 @@
 import { useState, useCallback } from 'react';
 import Head from 'next/head';
+import { getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { getCurrentBackofficeUserByEmail } from 'lib/backoffice/currentUser';
+import { hasPolicy } from 'lib/backoffice/permissions';
 import { FluidContainer, Typography, Button } from 'components';
 import { Page } from 'modules';
 import { DocumentManager } from 'modules';
@@ -100,7 +104,7 @@ export default function BoardMeetingsAdmin({
         </Head>
         <BackofficeShell
           title={`Board Meeting Documents`}
-          subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+          subtitle="Manage meeting calendars, agendas, and minutes for the USU"
         >
           <FluidContainer padding="24px">
             <Typography variant="title" size="xl">
@@ -125,7 +129,7 @@ export default function BoardMeetingsAdmin({
       </Head>
       <BackofficeShell
         title={`Board Meeting Documents`}
-        subtitle="Manage meeting calendars, agendas, and minutes for the University&ndash;Student Union"
+        subtitle="Manage meeting calendars, agendas, and minutes for the USU"
       >
         <DocumentManager
           documents={documents}
@@ -139,7 +143,41 @@ export default function BoardMeetingsAdmin({
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx: any) {
+  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: `/backoffice/signin?callbackUrl=${encodeURIComponent(
+          ctx.resolvedUrl,
+        )}`,
+        permanent: false,
+      },
+    };
+  }
+
+  const { user, error } = await getCurrentBackofficeUserByEmail(
+    session.user?.email,
+  );
+
+  if (error) {
+    console.error('Failed to load backoffice user:', error);
+    return {
+      props: {
+        initialDocuments: [],
+        error: 'Failed to verify your backoffice access. Please try again.',
+      },
+    };
+  }
+
+  if (
+    !user ||
+    !hasPolicy(user, { pageKey: 'boardDocuments', action: 'view', scope: '*' })
+  ) {
+    return { redirect: { destination: '/backoffice', permanent: false } };
+  }
+
   try {
     const initialDocuments = await getMeetingDocuments({
       isArchived: false,

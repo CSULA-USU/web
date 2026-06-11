@@ -13,10 +13,3 @@ export interface SupaSection {
   data: any;
   stagedDelete?: boolean;
 }
-
-export interface BackOfficeUser {
-  email: string;
-  role: string;
-  department: string;
-  policies: string[];
-}
