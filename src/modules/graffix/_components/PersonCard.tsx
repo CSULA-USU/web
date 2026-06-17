@@ -91,6 +91,7 @@ export const PersonCard = ({ member }: { member: WebTeamMember }) => {
     contributions,
     linkedInHref,
     emailHref,
+    portfolioHref,
     gradientStart = Colors.greyDarkest,
     gradientEnd = Colors.greyDark,
   } = member;
@@ -130,7 +131,7 @@ export const PersonCard = ({ member }: { member: WebTeamMember }) => {
           <ContribLabel>Contributions</ContribLabel>
           {contributions}
         </ContribSection>
-        {(linkedInHref || emailHref) && (
+        {(linkedInHref || emailHref || portfolioHref) && (
           <ContactsRow>
             {linkedInHref && (
               <Button
@@ -151,6 +152,17 @@ export const PersonCard = ({ member }: { member: WebTeamMember }) => {
                 fontSize="12px"
               >
                 Email
+              </Button>
+            )}
+            {portfolioHref && (
+              <Button
+                href={portfolioHref}
+                variant="grey"
+                isExternalLink
+                padding="9px 13px"
+                fontSize="12px"
+              >
+                Portfolio
               </Button>
             )}
           </ContactsRow>

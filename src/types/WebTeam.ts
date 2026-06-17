@@ -7,6 +7,7 @@ export interface WebTeamMember {
   bio: string;
   contributions: string;
   linkedInHref?: string;
+  portfolioHref?: string;
   emailHref?: string;
   gradientStart?: string;
   gradientEnd?: string;
@@ -24,6 +25,7 @@ export interface WebTeamStaffMember {
   emailHref?: string;
   phoneHref?: string;
   linkedInHref?: string;
+  portfolioHref?: string;
   gradientStart?: string;
   gradientEnd?: string;
 }

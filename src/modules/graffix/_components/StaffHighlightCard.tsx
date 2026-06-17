@@ -95,6 +95,7 @@ export const StaffHighlightCard = ({
     emailHref,
     phoneHref,
     linkedInHref,
+    portfolioHref,
     gradientStart = Colors.gold,
     gradientEnd = Colors.greyDarkest,
   } = staffMember;
@@ -165,6 +166,17 @@ export const StaffHighlightCard = ({
               fontSize="12px"
             >
               LinkedIn
+            </Button>
+          )}
+          {portfolioHref && (
+            <Button
+              href={portfolioHref}
+              variant="grey"
+              isExternalLink
+              padding="9px 13px"
+              fontSize="12px"
+            >
+              Portfolio
             </Button>
           )}
         </ContactsRow>

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import styled, { keyframes } from 'styled-components';
 import {
   Button,
   CountUp,
@@ -9,718 +8,79 @@ import {
   QuoteBanner,
   Typography,
 } from 'components';
-import { HeaderWithVideo, Page } from 'modules';
-import { Colors, Spaces, media } from 'theme';
+import { Colors } from 'theme';
 import { useBreakpoint } from 'hooks';
 import OPSHeroVideo from '/videos/u-krew-header-video.mp4?thumbnailTime=0';
 import MobileOPSHeroVideo from '/videos/mobile-u-krew-header-video.mp4?thumbnailTime=0';
-import type { WebTeamMember, WebTeamStaffMember, WebTeamTrait } from 'types';
-import { PersonCard } from 'modules/graffix/_components/PersonCard';
-import { SectionRail } from 'modules/graffix/_components/SectionRail';
-import { StaffHighlightCard } from 'modules/graffix/_components/StaffHighlightCard';
+import {
+  StaffHighlightCard,
+  SectionRail,
+  PersonCard,
+  HeaderWithVideo,
+  Page,
+  ALUMNI,
+  STAFF_MEMBERS,
+  TEAM_STATS,
+  TECH_STACK,
+  TRAITS,
+  AccentBar,
+  AccessBox,
+  AccessBoxLabel,
+  AccessBoxNum,
+  AlumniGrid,
+  BoxRow,
+  BuiltWithGrid,
+  BuiltWithKicker,
+  BuiltWithLeft,
+  BuiltWithRight,
+  GameBody,
+  GameCard,
+  GameLink,
+  GamePlayBtn,
+  GamesGrid,
+  GameThumbnail,
+  GameTitle,
+  GaugeItem,
+  GaugeLabel,
+  GaugeRow,
+  HeroButtons,
+  HeroContentWrapper,
+  HeroEyebrow,
+  HeroSubtext,
+  HeroTextGroup,
+  InlineMarqueeOuter,
+  InlineMarqueeTrack,
+  JoinCtaButtons,
+  JoinCtaInner,
+  JoinCtaLeft,
+  JoinCtaSection,
+  MarqueeLogo,
+  OutcomeItem,
+  OutcomeLabel,
+  OutcomesGrid,
+  SectionHead,
+  SectionKicker,
+  StaffGrid,
+  StatBar,
+  StatCard,
+  StatCardKicker,
+  StatCardTitle,
+  StatCardTopRow,
+  StatCell,
+  StatLabel,
+  StatNote,
+  TechPill,
+  TechPills,
+  TraitCard,
+  TraitIconBlock,
+  TraitNum,
+  TraitsGrid,
+  TraitsInner,
+  TraitsSection,
+  TraitTitleRow,
+  TraitWhy,
+} from 'modules';
 import companies from 'data/web-team-company-logos.json';
-
-// ── Data ──────────────────────────────────────────────────────────────────────
-
-const TEAM_STATS = [
-  {
-    count: 3,
-    label: 'Sites launched',
-    note: 'Across the U-SU site and Graffix microsites',
-  },
-  {
-    count: 96,
-    label: 'Vercel Real Experience Score',
-    note: 'p75 across the site · last 30 days',
-  },
-  {
-    count: 100,
-    label: 'WAVE accessibility score',
-    note: 'Zero errors site-wide',
-  },
-  {
-    count: 6,
-    label: 'Student devs trained',
-    note: 'Since 2021',
-  },
-] as const;
-
-const STAFF_MEMBERS: WebTeamStaffMember[] = [
-  {
-    id: 'john-yasis',
-    name: 'John Yasis',
-    initials: 'JY',
-    badgeLabel: 'Team Supervisor',
-    badgeVariant: 'primary',
-    title: 'Web Designer · Graffix · U-SU · 2022–present',
-    bio: 'John joined the U-SU as a student designer in 2020, grew the Web Team into what it is today, and still writes most of the onboarding docs himself. He runs hiring, code review, and the Wednesday standup.',
-    awards: ['2025 U-SU Values Champion', 'U-SET Best in Show'],
-    emailHref: 'mailto:jyasis@calstatela.edu',
-    phoneHref: 'tel:+13233432465',
-    gradientStart: Colors.gold,
-    gradientEnd: Colors.greyDarkest,
-  },
-  {
-    id: 'isaiah-villalobos',
-    name: 'Isaiah Villalobos',
-    initials: 'IV',
-    badgeLabel: 'Web Developer',
-    badgeVariant: 'muted',
-    title: 'Junior Web Developer · Graffix · U-SU',
-    bio: 'Isaiah manages the USU, Wingspan and SLE websites. Keeps the team aligned with U-SU brand standards, and partners with John on development.',
-    awards: [],
-    emailHref: 'mailto:ivilla.devcs@gmail.com',
-    gradientStart: Colors.blackMauve,
-    gradientEnd: Colors.greyDarker,
-  },
-];
-
-const TRAITS: WebTeamTrait[] = [
-  {
-    number: '01',
-    title: 'Curiosity',
-    icon: '/vectors/about/ideas.svg',
-    description:
-      'You poke at things. You read source. You ask "what happens if I press this?" and follow the answer all the way down.',
-    why: "The web changes weekly. The team's edge is staying interested.",
-  },
-  {
-    number: '02',
-    title: 'Craft',
-    icon: '/vectors/about/upgrade.svg',
-    description:
-      'You sweat the details kerning, focus states, the empty state nobody else thought about. Quality is a habit, not a sprint.',
-    why: 'Students notice the broken things. Craft is how we earn their trust.',
-  },
-  {
-    number: '03',
-    title: 'Collaboration',
-    icon: '/vectors/about/teamwork.svg',
-    description:
-      'You give feedback kindly, ask for it often, and treat code review as the best part of the day instead of the worst.',
-    why: 'Every page on the site is shipped by more than one person.',
-  },
-  {
-    number: '04',
-    title: 'Ownership',
-    icon: '/vectors/about/business-deal.svg',
-    description:
-      "If something breaks at 4 PM on a Friday, you don't wait until Monday. You write the message, file the bug, ship the fix.",
-    why: "The people we serve don't care whose PR introduced the regression.",
-  },
-  {
-    number: '05',
-    title: 'Inclusive Mindset',
-    icon: '/vectors/about/inclusive.svg',
-    description:
-      'You design with screen readers, keyboards, and slow networks in front of you not as an afterthought once everything else is done.',
-    why: 'The U-SU serves every Golden Eagle. The site has to do the same.',
-  },
-  {
-    number: '06',
-    title: 'Growth Mindset',
-    icon: '/vectors/about/growth.svg',
-    description:
-      "You'd rather get good than look good. You take notes in 1:1s, ship things you're not yet great at, and stay coachable.",
-    why: 'The team is a training ground. The students who soar are the ones who keep climbing.',
-  },
-];
-
-const ALUMNI: WebTeamMember[] = [
-  {
-    id: 'emily-martinez',
-    name: 'Emily Martinez',
-    initials: 'EM',
-    year: 'Class of 2022',
-    role: 'Web Designer · now Supervisor of this very team',
-    bio: "Emily was a student dev before he ran the place. Quietly led the Scavenger Hunt, the compliment battle game, and the team's first 100-accessibility page.",
-    contributions:
-      'Virtual business cards · Compliment Battle game · KaraokeJS DJ tool',
-    gradientStart: Colors.greyDark,
-    gradientEnd: Colors.greyDarkest,
-  },
-  {
-    id: 'joaquin-reyes',
-    name: 'Joaquin Reyes',
-    initials: 'JR',
-    year: 'Class of 2024',
-    role: 'Frontend Developer · now at Snapchat',
-    bio: "Built the original events module and was the team's first dedicated frontend specialist. Still answers Slack messages from current devs.",
-    contributions:
-      'Events module v1 · Carousel · Mentor to 3 current team members',
-    gradientStart: Colors.greyDarker,
-    gradientEnd: Colors.blackMauve,
-  },
-  {
-    id: 'sarah-kowalski',
-    name: 'Sarah Kowalski',
-    initials: 'SK',
-    year: 'Class of 2024',
-    role: 'Full-Stack Engineer · now at Riot Games',
-    bio: 'Sarah owned the Notion + Supabase integrations and got the team unblocked from Vercel deploys more times than anyone can count.',
-    contributions:
-      'Notion API ingestion · Backoffice auth · Sitemap automation',
-    gradientStart: Colors.gold,
-    gradientEnd: Colors.greyDark,
-  },
-  {
-    id: 'maya-okafor',
-    name: 'Maya Okafor',
-    initials: 'MO',
-    year: 'Class of 2023',
-    role: 'Product Engineer · now at FYI',
-    bio: 'Maya rebuilt the design system from the ground up and gave the team the typography rules they still use today.',
-    contributions:
-      'Design tokens · Typography component · Migrated to styled-system',
-    gradientStart: Colors.greyDarkest,
-    gradientEnd: Colors.nativeBeige,
-  },
-];
-
-const TECH_STACK = [
-  'Next.js 14',
-  'TypeScript',
-  'React 18',
-  'styled-components',
-  'Vercel',
-  'Vercel Analytics',
-  'WAVE · WebAIM',
-  'Notion API',
-  'Supabase',
-  'Mux · next-video',
-  'NextAuth',
-];
-
-// ── Styled components ─────────────────────────────────────────────────────────
-
-const HeroContentWrapper = styled.div`
-  width: 100%;
-  max-width: 1440px;
-  padding: ${Spaces['2xl']};
-  ${media('desktop')(`padding: ${Spaces.xl};`)}
-  ${media('mobile')(`padding: ${Spaces.md} ${Spaces.md} ${Spaces.xl};`)}
-`;
-
-const HeroTextGroup = styled.div`
-  max-width: 720px;
-`;
-
-const AccentBar = styled.div`
-  width: 48px;
-  height: 3px;
-  background: ${Colors.primary};
-  margin-bottom: 16px;
-`;
-
-const HeroEyebrow = styled.p`
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: ${Colors.primary};
-  margin: 0 0 10px;
-`;
-
-const HeroSubtext = styled.div`
-  margin-top: 18px;
-  max-width: 640px;
-`;
-
-const HeroButtons = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-top: 28px;
-  flex-wrap: wrap;
-`;
-
-// Stat bar
-
-const StatBar = styled.div`
-  background: ${Colors.black};
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  ${media('tablet')(`grid-template-columns: repeat(2, 1fr);`)}
-  ${media('mobile')(`grid-template-columns: 1fr;`)}
-`;
-
-const StatCell = styled.div`
-  padding: 36px 28px;
-  background: ${Colors.black};
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-
-  & + & {
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 24px;
-      bottom: 24px;
-      width: 1px;
-      background: ${Colors.greyDarker};
-      ${media('mobile')(`display: none;`)}
-    }
-  }
-`;
-
-const StatLabel = styled.p`
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: ${Colors.greyLighter};
-  margin: 0;
-`;
-
-const StatNote = styled.p`
-  font-size: 13px;
-  color: ${Colors.greyLighter};
-  opacity: 0.85;
-  margin: 0;
-`;
-
-// Alumni companies section
-
-const SectionHead = styled.div`
-  max-width: 720px;
-  margin: 0 auto 48px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-`;
-
-const SectionKicker = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: ${Colors.gold};
-  margin-bottom: 16px;
-
-  &::before,
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 2px;
-    background: ${Colors.primary};
-  }
-`;
-
-const OutcomesGrid = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${Spaces.xl};
-  ${media('tablet')(`grid-template-columns: 1fr;`)}
-`;
-
-const OutcomeItem = styled.div`
-  padding: 28px;
-  border-left: 5px solid ${Colors.primary};
-`;
-
-const OutcomeLabel = styled.p`
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: ${Colors.gold};
-  margin: 8px 0;
-`;
-
-// Team section
-
-const StaffGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${Spaces.lg};
-  margin-bottom: ${Spaces['2xl']};
-  ${media('tablet')(`grid-template-columns: 1fr;`)}
-`;
-
-const MemberGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  ${media('tablet')(`grid-template-columns: repeat(2, 1fr);`)}
-  ${media('mobile')(`grid-template-columns: 1fr;`)}
-`;
-
-// Built With section
-
-const BuiltWithGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${Spaces['2xl']};
-  max-width: 1440px;
-  margin: 0 auto;
-  ${media('tablet')(`grid-template-columns: 1fr;`)}
-`;
-
-const BuiltWithLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const BuiltWithRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const StatCard = styled.div`
-  background: ${Colors.greyDarker};
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const StatCardTopRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const StatCardKicker = styled.span`
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: ${Colors.primary};
-`;
-
-const StatCardTitle = styled.p`
-  font-size: 18px;
-  font-weight: 700;
-  color: ${Colors.white};
-  margin: 0;
-`;
-
-const GaugeRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: flex-start;
-`;
-
-const GaugeItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-`;
-
-const GaugeLabel = styled.span`
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${Colors.greyLighter};
-  opacity: 0.7;
-`;
-
-const BoxRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  flex-wrap: wrap;
-`;
-
-const AccessBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
-  min-width: 60px;
-`;
-
-const AccessBoxNum = styled.span`
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1;
-`;
-
-const AccessBoxLabel = styled.span`
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${Colors.greyLighter};
-  opacity: 0.7;
-`;
-
-const BuiltWithKicker = styled.span`
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: ${Colors.primary};
-  margin-bottom: 14px;
-`;
-
-const TechPills = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: ${Spaces.lg};
-`;
-
-const TechPill = styled.span`
-  padding: 10px 16px;
-  background: ${Colors.greyDarker};
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  color: ${Colors.greyLighter};
-`;
-
-// What We Look For section
-
-const TraitCard = styled.article`
-  background: ${Colors.greyLightest};
-  border-radius: 16px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
-
-  &:hover {
-    background: ${Colors.white};
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-  }
-`;
-
-const TraitsSection = styled.section`
-  background: ${Colors.white};
-  padding: 96px 72px;
-  ${media('desktop')(`padding: 64px 36px;`)}
-  ${media('mobile')(`padding: 48px 18px;`)}
-`;
-
-const TraitsInner = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`;
-
-const TraitsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  ${media('tablet')(`grid-template-columns: repeat(2, 1fr);`)}
-  ${media('mobile')(`grid-template-columns: 1fr;`)}
-`;
-
-const TraitTitleRow = styled.h3`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0;
-  font-family: var(--font-bitter), serif;
-  font-weight: 700;
-  font-size: 26px;
-  color: ${Colors.black};
-`;
-
-const TraitIconBlock = styled.div`
-  height: 120px;
-  background: ${Colors.white};
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-
-  ${TraitCard}:hover & {
-    background: ${Colors.greyLightest};
-  }
-`;
-
-const TraitNum = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: ${Colors.white};
-  border: 1px solid ${Colors.greyLighter};
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 13px;
-  font-weight: 800;
-  color: ${Colors.gold};
-  flex-shrink: 0;
-  transition: background 0.2s ease-in-out, border-color 0.2s ease-in-out;
-
-  ${TraitCard}:hover & {
-    background: ${Colors.primary};
-    border-color: ${Colors.primary};
-    color: ${Colors.black};
-  }
-`;
-
-const TraitWhy = styled.p`
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.55;
-  color: ${Colors.greyDark};
-  border-top: 1px solid ${Colors.greyLighter};
-  padding-top: 14px;
-  margin: auto 0 0;
-`;
-
-// Alumni section (reuses MemberGrid)
-
-const AlumniGrid = styled(MemberGrid)`
-  opacity: 0.85;
-`;
-
-// Marquee
-
-const marqueeScroll = keyframes`
-  from { transform: translateX(0); }
-  to   { transform: translateX(-25%); }
-`;
-
-const InlineMarqueeOuter = styled.div`
-  overflow: hidden;
-  width: 100%;
-  margin: ${Spaces.xl} 0;
-`;
-
-const InlineMarqueeTrack = styled.div`
-  display: flex;
-  width: fit-content;
-  min-width: 200%;
-  animation: ${marqueeScroll} 20s linear infinite;
-  will-change: transform;
-`;
-
-const MarqueeLogo = styled.img`
-  height: 100px;
-  width: auto;
-  flex-shrink: 0;
-  margin: 0 40px;
-  object-fit: contain;
-`;
-
-// Games section
-
-const GamesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  ${media('tablet')(`grid-template-columns: repeat(2, 1fr);`)}
-  ${media('mobile')(`grid-template-columns: 1fr;`)}
-`;
-
-const GameCard = styled.article`
-  border-radius: 12px;
-  overflow: hidden;
-  background: ${Colors.greyLightest};
-  display: flex;
-  flex-direction: column;
-`;
-
-const GameThumbnail = styled.div<{ gradient: string }>`
-  height: 200px;
-  border-radius: 12px 12px 0 0;
-  background: ${({ gradient }) => gradient};
-  position: relative;
-`;
-
-const GamePlayBtn = styled.div`
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: ${Colors.primary};
-  color: ${Colors.black};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1;
-  user-select: none;
-`;
-
-const GameBody = styled.div`
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const GameTitle = styled.p`
-  font-weight: 700;
-  font-size: 18px;
-  color: ${Colors.black};
-  margin: 0;
-`;
-
-const GameLink = styled.a`
-  font-size: 14px;
-  font-weight: 700;
-  color: ${Colors.gold};
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-// Join CTA section
-
-const JoinCtaSection = styled.section`
-  background: ${Colors.greyDarkest};
-  padding: 72px;
-  ${media('mobile')(`padding: 48px 24px;`)}
-`;
-
-const JoinCtaInner = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 32px;
-`;
-
-const JoinCtaLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 600px;
-`;
-
-const JoinCtaButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  flex-wrap: wrap;
-`;
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function WebTeam() {
   const { isMobile } = useBreakpoint();
@@ -729,7 +89,7 @@ export default function WebTeam() {
     <Page>
       <SectionRail />
       <Head>
-        <title>Graffix Web Team | Cal State LA U&ndash;SU</title>
+        <title>Graffix Web Team | U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -812,10 +172,13 @@ export default function WebTeam() {
                 size={isMobile ? 'sm' : 'md'}
                 lineHeight="1.55"
               >
-                We are the student web developers and designers behind{' '}
-                <strong>calstatelausu.org</strong>. We build, ship, and audit
-                the site every Golden Eagle relies on and we train each other to
-                leave it better than we found it.
+                We are the student web developers and designers behind the
+                U&ndash;SU websites including{' '}
+                <strong>
+                  calstatelausu.org, www.wingspanla.org, and slelections.org
+                </strong>
+                . We build, ship, and audit the site every Golden Eagle relies
+                on and we train each other to leave it better than we found it.
               </Typography>
             </HeroSubtext>
             <HeroButtons>
@@ -883,7 +246,7 @@ export default function WebTeam() {
           </InlineMarqueeTrack>
         </InlineMarqueeOuter>
 
-        <FluidContainer padding={`${Spaces['2xl']} 0 0`}>
+        <FluidContainer padding="72px 0 0">
           <OutcomesGrid>
             <OutcomeItem>
               <FluidContainer

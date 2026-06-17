@@ -44,7 +44,7 @@ const RailLine = styled.span<{ active: boolean }>`
   width: ${({ active }) => (active ? '24px' : '12px')};
   height: 2px;
   flex-shrink: 0;
-  background: ${({ active }) => (active ? Colors.primary : Colors.black)};
+  background: ${({ active }) => (active ? Colors.gold : Colors.black)};
   weight: ${({ active }) => (active ? 400 : 700)};
   transition: width 0.2s, background 0.2s;
 `;
@@ -54,7 +54,7 @@ const RailLabel = styled.span<{ active: boolean }>`
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ active }) => (active ? Colors.primary : Colors.black)};
+  color: ${({ active }) => (active ? Colors.gold : Colors.black)};
   transform: translateX(0);
   transition: opacity 0.2s, transform 0.2s;
   white-space: nowrap;
