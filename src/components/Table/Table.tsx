@@ -27,27 +27,32 @@ import {
   MobileFieldLabelInner,
 } from 'styles/Table.styles';
 
-interface TableProps {
-  data: TableData;
+interface TableProps<TOriginal = unknown> {
+  data: TableData<TOriginal>;
   className?: string;
 }
 
-interface MobileField {
-  column: TableColumn;
+interface MobileField<TOriginal = unknown> {
+  column: TableColumn<TOriginal>;
   value: string;
 }
 
-const getDisplayValue = (row: TableRow, columnId: string): string => {
+const getDisplayValue = <TOriginal,>(
+  row: TableRow<TOriginal>,
+  columnId: string,
+): string => {
   return row.values[columnId] || '';
 };
 
-const getRowHeaderColumn = (columns: TableColumn[]): TableColumn => {
+const getRowHeaderColumn = <TOriginal,>(
+  columns: TableColumn<TOriginal>[],
+): TableColumn<TOriginal> => {
   return columns[0];
 };
 
-const renderHeaderLabel = (
-  column: TableColumn,
-  headerTextColor: TableData['headerColors']['textColor'],
+const renderHeaderLabel = <TOriginal,>(
+  column: TableColumn<TOriginal>,
+  headerTextColor: TableData<TOriginal>['headerColors']['textColor'],
 ) => {
   return (
     <HeaderCellInner>
@@ -75,7 +80,7 @@ const renderHeaderLabel = (
 
 const renderBodyCellText = (
   value: string,
-  textColor: TableColumn['textColor'],
+  textColor: TableData['headerColors']['textColor'],
 ): React.ReactNode => {
   return (
     <TableCellContent>
@@ -86,9 +91,18 @@ const renderBodyCellText = (
   );
 };
 
-export const Table = ({ data, className }: TableProps) => {
+export const Table = <TOriginal,>({
+  data,
+  className,
+}: TableProps<TOriginal>) => {
   const rowHeaderColumn = getRowHeaderColumn(data.columns);
   const mergedColumns = data.columns.filter((column) => column.mergedValue);
+  const mobileColors = data.mobileColors ?? {
+    labelBackgroundColor: data.headerColors.backgroundColor,
+    labelTextColor: data.headerColors.textColor,
+    valueBackgroundColor: 'white',
+    valueTextColor: 'black',
+  };
 
   return (
     <TableSection
@@ -150,6 +164,11 @@ export const Table = ({ data, className }: TableProps) => {
               <tr key={row.id}>
                 {data.columns.map((column, columnIndex) => {
                   const value = getDisplayValue(row, column.id);
+                  const content = column.render ? (
+                    <TableCellContent>{column.render(row)}</TableCellContent>
+                  ) : (
+                    renderBodyCellText(value, column.textColor)
+                  );
                   const mergedValue = column.mergedValue;
                   const isRowHeader = columnIndex === 0;
 
@@ -183,7 +202,7 @@ export const Table = ({ data, className }: TableProps) => {
                       $textColor={column.textColor}
                       $width={column.minWidth}
                     >
-                      {renderBodyCellText(value, column.textColor)}
+                      {content}
                     </TableDataCell>
                   );
                 })}
@@ -197,7 +216,7 @@ export const Table = ({ data, className }: TableProps) => {
         {data.rows.map((row) => {
           const rowHeaderValue = getDisplayValue(row, rowHeaderColumn.id);
 
-          const mobileFields: MobileField[] = data.columns
+          const mobileFields: MobileField<TOriginal>[] = data.columns
             .filter(
               (column) =>
                 column.id !== rowHeaderColumn.id && !column.mergedValue,
@@ -209,8 +228,15 @@ export const Table = ({ data, className }: TableProps) => {
 
           return (
             <MobileCard key={`${data.id}-${row.id}`}>
-              <MobileCardHeader $backgroundColor="black" $textColor="primary">
-                <Typography as="h3" variant="labelTitle" color="primary">
+              <MobileCardHeader
+                $backgroundColor={data.headerColors.backgroundColor}
+                $textColor={data.headerColors.textColor}
+              >
+                <Typography
+                  as="h3"
+                  variant="labelTitle"
+                  color={data.headerColors.textColor}
+                >
                   {rowHeaderValue}
                 </Typography>
               </MobileCardHeader>
@@ -218,7 +244,10 @@ export const Table = ({ data, className }: TableProps) => {
               <MobileCardBody>
                 {mobileFields.map(({ column, value }) => (
                   <MobileFieldRow key={`${row.id}-${column.id}`}>
-                    <MobileFieldLabel>
+                    <MobileFieldLabel
+                      $backgroundColor={mobileColors.labelBackgroundColor}
+                      $textColor={mobileColors.labelTextColor}
+                    >
                       <MobileFieldLabelInner>
                         {column.headerImage ? (
                           <MobileFieldImage
@@ -231,7 +260,7 @@ export const Table = ({ data, className }: TableProps) => {
                         <Typography
                           as="span"
                           variant="labelTitleSmall"
-                          color="primary"
+                          color={mobileColors.labelTextColor}
                         >
                           {column.label}
                         </Typography>
@@ -239,16 +268,20 @@ export const Table = ({ data, className }: TableProps) => {
                     </MobileFieldLabel>
 
                     <MobileFieldValue
-                      $backgroundColor={column.backgroundColor}
-                      $textColor={column.textColor}
+                      $backgroundColor={mobileColors.valueBackgroundColor}
+                      $textColor={mobileColors.valueTextColor}
                     >
-                      <Typography
-                        as="span"
-                        variant="copy"
-                        color={column.textColor}
-                      >
-                        {value}
-                      </Typography>
+                      {column.render ? (
+                        column.render(row)
+                      ) : (
+                        <Typography
+                          as="span"
+                          variant="copy"
+                          color={mobileColors.valueTextColor}
+                        >
+                          {value}
+                        </Typography>
+                      )}
                     </MobileFieldValue>
                   </MobileFieldRow>
                 ))}
@@ -257,7 +290,10 @@ export const Table = ({ data, className }: TableProps) => {
                   column.mergedValue ? (
                     <Fragment key={`${row.id}-${column.id}-merged`}>
                       <MobileFieldRow>
-                        <MobileFieldLabel>
+                        <MobileFieldLabel
+                          $backgroundColor={mobileColors.labelBackgroundColor}
+                          $textColor={mobileColors.labelTextColor}
+                        >
                           <MobileFieldLabelInner>
                             {column.headerImage ? (
                               <MobileFieldImage
@@ -270,7 +306,7 @@ export const Table = ({ data, className }: TableProps) => {
                             <Typography
                               as="span"
                               variant="labelTitleSmall"
-                              color="primary"
+                              color={mobileColors.labelTextColor}
                             >
                               {column.label}
                             </Typography>
@@ -278,10 +314,14 @@ export const Table = ({ data, className }: TableProps) => {
                         </MobileFieldLabel>
 
                         <MobileMergedField
-                          $backgroundColor="white"
-                          $textColor="black"
+                          $backgroundColor={column.backgroundColor || 'white'}
+                          $textColor={column.textColor || 'black'}
                         >
-                          <Typography as="span" variant="copy" color="black">
+                          <Typography
+                            as="span"
+                            variant="copy"
+                            color={column.textColor || 'black'}
+                          >
                             {column.mergedValue.text}
                           </Typography>
                         </MobileMergedField>

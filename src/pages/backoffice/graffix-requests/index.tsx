@@ -6,10 +6,10 @@ import {
   ContentBoardColumnProps,
   KeyValueProps,
 } from 'modules/ContentBoard/ContentBoardTypes';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import BackofficeShell from 'modules/Backoffice/BackofficeShell';
 import { FluidContainer, Loading } from 'components';
+import { useBackofficePageAccess } from 'hooks';
 
 const contentBoardTemplate: any = {
   'Not Started': { color: 'grey', columnTitle: 'Not Started', columnData: [] },
@@ -39,13 +39,12 @@ const createDeepCopy = (object: any) => {
 };
 
 export default function GraphicsRequests() {
-  const { data: session, status } = useSession();
   const router = useRouter();
-
-  useEffect(() => {
-    if (status === 'loading') return;
-    if (!session) router.push('/backoffice/signin');
-  }, [session, router, status]);
+  const { loading: accessLoading } = useBackofficePageAccess(
+    'graffixRequests',
+    'view',
+    ['*', 'ownDepartment'],
+  );
 
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState<string>('N/A');
@@ -129,6 +128,23 @@ export default function GraphicsRequests() {
     setCellMap(tempMap);
     setContentBoardData(Object.values(tempContentBoardData));
   }, [graffixRequests]);
+
+  if (accessLoading) {
+    return (
+      <Page>
+        <BackofficeShell title="Graffix Requests">
+          <FluidContainer
+            flex
+            alignItems="center"
+            justifyContent="center"
+            height="70vh"
+          >
+            <Loading load={true} />
+          </FluidContainer>
+        </BackofficeShell>
+      </Page>
+    );
+  }
 
   return (
     <Page>
