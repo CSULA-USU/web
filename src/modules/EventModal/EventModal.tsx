@@ -6,11 +6,11 @@ import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
-import { PresenceEvent } from 'types';
-import { PRESENCE_URI_BASE } from 'utils/constants';
+import { CampusGroupsEvent } from 'types';
+import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 interface EventModalProps {
-  event?: PresenceEvent;
+  event?: CampusGroupsEvent;
   isOpen: boolean;
   onRequestClose: () => void;
 }
@@ -152,19 +152,19 @@ export const EventModal = ({
 
   if (!event) return null;
   const {
-    startDateTimeUtc,
-    endDateTimeUtc,
-    photoUri,
-    organizationName,
-    eventName,
-    location,
+    eventStartDateTime,
+    eventEndDateTime,
+    eventOriginalPhotoFullUrl,
+    group,
+    title,
+    eventLocation,
     description,
   } = event;
-  const startTime = getTime(startDateTimeUtc);
-  const endTime = getTime(endDateTimeUtc);
-  const month = getMonth(startDateTimeUtc, 'long');
-  const day = getDay(startDateTimeUtc);
-  const year = getYear(startDateTimeUtc);
+  const startTime = getTime(eventStartDateTime);
+  const endTime = getTime(eventEndDateTime);
+  const month = getMonth(eventStartDateTime, 'long');
+  const day = getDay(eventStartDateTime);
+  const year = getYear(eventStartDateTime);
 
   return (
     <FixedModal
@@ -196,8 +196,8 @@ export const EventModal = ({
         className="modal-content"
       >
         <Image
-          src={`${PRESENCE_URI_BASE}/${photoUri}`}
-          alt={`${eventName}`}
+          src={eventOriginalPhotoFullUrl}
+          alt={title}
           width={0}
           height={0}
           sizes="100vw"
@@ -205,7 +205,7 @@ export const EventModal = ({
           lazy
         />
         <Typography as="h2" variant="cta">
-          {organizationName}
+          {group}
         </Typography>
         <Divider margin={`${Spaces.sm} 0`} />
         <Typography
@@ -214,7 +214,7 @@ export const EventModal = ({
           color="black"
           margin={`0 0 ${Spaces.xs}`}
         >
-          {eventName}
+          {title}
         </Typography>
         <Typography as="h3" variant="eventDetail" color="gold" size="lg">
           {month} {day}, {year}
@@ -229,7 +229,7 @@ export const EventModal = ({
           weight="400"
           margin={`0 0 ${Spaces.md}`}
         >
-          {location}
+          {formatEventLocation(eventLocation)}
         </Typography>
         <Typography variant="copy" color="greyDark" margin={`0 0 ${Spaces.sm}`}>
           <span dangerouslySetInnerHTML={{ __html: description }} />

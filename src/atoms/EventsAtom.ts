@@ -1,9 +1,9 @@
 import { atom } from 'recoil';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 
 export type StatusType = 'undefined' | 'success' | 'failed';
 
-export const eventListState = atom<PresenceEvent[]>({
+export const eventListState = atom<CampusGroupsEvent[]>({
   key: 'EventList',
   default: [],
 });

@@ -18,10 +18,8 @@ import {
   // FeaturedEvents,
 } from 'modules';
 import { useRecoilValue } from 'recoil';
-import {
-  // eventListState,
-  eventListStatusState,
-} from 'atoms';
+// import { eventListState, eventListStatusState } from 'atoms';
+import { eventListStatusState } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import uAwards from 'data/uAwards.json';
 import type { UAwardsData } from 'types';
@@ -104,18 +102,6 @@ export default function Home() {
         <></>
       ) : events.length > 0 ? ( */}
       <>
-        {/* If there are no events, we can hide the event header section and just show the upcoming events section with a message that there are no events. */}
-        {/* <EventHeader
-          loading={loading || !events.length}
-          subheaderText="California State University, Los Angeles"
-          title={
-            <>
-              <span className="mobile-only">U-SU</span>
-              <span className="desktop-only">University-Student Union</span>
-            </>
-          }
-          featuredEvent={events[0]}
-        /> */}
         {/* summer no event section */}
         <UtilityHeroHeader
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
@@ -174,9 +160,19 @@ export default function Home() {
             </Typography>
           </FluidContainer>
         </FluidContainer>
-        <UAwardsValues values={data.values} />
-        {/* end of summer no event section */}
 
+        {/* If there are no events, we can hide the event header section and just show the upcoming events section with a message that there are no events. */}
+        {/* <EventHeader
+          loading={loading || !events.length}
+          subheaderText="California State University, Los Angeles"
+          title={
+            <>
+              <span className="mobile-only">U-SU</span>
+              <span className="desktop-only">University-Student Union</span>
+            </>
+          }
+          featuredEvent={events[0]}
+        /> */}
         {!loading && eventsStatus == 'failed' ? (
           <Typography as="h3" variant="label">
             Resources failed to load. Please try refreshing your page.
@@ -187,12 +183,15 @@ export default function Home() {
             {/* <BoardOfDirectorsCTAPromotion /> */}
 
             {/* If there are no events, we can hide the featured events section and just show the upcoming events section with a message that there are no events. */}
-            {/* {featuredEvents.length >= 1 ? (
-              <FeaturedEvents events={events} featuredEvents={featuredEvents} />
+            {/* events.length >= 1 ? (
+              <FeaturedEvents events={events} featuredEvents={events} />
             ) : null}
             <ModUpcomingEvents loading={loading} events={events} /> */}
           </>
         )}
+
+        <UAwardsValues values={data.values} />
+        {/* end of summer no event section */}
       </>
       {/* ) : (
         <>

@@ -1,5 +1,5 @@
 import { FluidContainer, Typography } from 'components';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import { MinimalistEvent } from 'modules/EventCard';
 import styled from 'styled-components';
 import { EventModal } from 'modules/EventModal';
@@ -8,7 +8,7 @@ import { media, Colors, Spaces } from 'theme';
 
 interface FeaturedEventsProps {
   featuredEvents: EventProps[];
-  events: PresenceEvent[];
+  events: CampusGroupsEvent[];
 }
 
 interface EventProps {
@@ -68,14 +68,14 @@ export const FeaturedEvents = ({
   events = [],
   featuredEvents = [],
 }: FeaturedEventsProps) => {
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);
   const filteredEvents =
     events.length && featuredEvents.length
       ? events.filter((event) =>
-          featuredEvents.some((featured) => featured.title === event.eventName),
+          featuredEvents.some((featured) => featured.title === event.title),
         )
       : [];
   const combinedArray = filteredEvents.length
@@ -97,7 +97,7 @@ export const FeaturedEvents = ({
             <TertiaryContainer>
               {combinedArray.length &&
                 combinedArray.map((event) => (
-                  <div key={event.eventNoSqlId}>
+                  <div key={event.eventId}>
                     <MinimalistEvent
                       buttonText={event.buttonText ? event.buttonText : ''}
                       event={event}

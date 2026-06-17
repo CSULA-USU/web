@@ -6,7 +6,7 @@ import {
   Typography,
 } from 'components';
 import { useBreakpoint } from 'hooks';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import {
   EventCard,
   MinimalistEvent,
@@ -19,7 +19,7 @@ import { media, Spaces } from 'theme';
 
 interface UpcomingEventsProps {
   loading: boolean;
-  events: PresenceEvent[];
+  events: CampusGroupsEvent[];
   monthly?: boolean;
 }
 
@@ -60,7 +60,7 @@ export const ModUpcomingEvents = ({
   events,
   monthly,
 }: UpcomingEventsProps) => {
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
   const [eventLimit, setEventLimit] = useState<number>(6);
@@ -74,9 +74,12 @@ export const ModUpcomingEvents = ({
   const [_, ...laterEvents] = safeEvents;
 
   const eventsByMonth = (monthly ? safeEvents : laterEvents).reduce(
-    (months: { [key: string]: PresenceEvent[] }, event: PresenceEvent) => {
+    (
+      months: { [key: string]: CampusGroupsEvent[] },
+      event: CampusGroupsEvent,
+    ) => {
       const updatedMonths = { ...months };
-      const month = getMonth(event.startDateTimeUtc);
+      const month = getMonth(event.eventStartDateTime);
       if (!updatedMonths.hasOwnProperty(month)) {
         updatedMonths[month] = [];
       }
@@ -152,7 +155,7 @@ export const ModUpcomingEvents = ({
                   <UpcomingEventsContent>
                     {eventsByMonth[eventMonth].map((event) => (
                       <EventCard
-                        key={event.eventNoSqlId}
+                        key={event.eventId}
                         event={event}
                         onClick={() => selectEvent(event)}
                       />
@@ -167,7 +170,7 @@ export const ModUpcomingEvents = ({
                     {safeEvents
                       .slice(1, eventLimit)
                       .map((event, index, eventArray) => (
-                        <li key={event.eventNoSqlId}>
+                        <li key={event.eventId}>
                           <MinimalistEvent
                             event={event}
                             onClick={() => selectEvent(event)}

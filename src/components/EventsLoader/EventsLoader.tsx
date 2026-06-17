@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { fetchEvents } from 'services';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import {
   eventListState,
   eventListStatusState,
   graphicsRequestListState,
 } from 'atoms';
-import { USU_ORGS } from 'utils/constants';
 
 export const EventsLoader = () => {
   const [_, setEvents] = useRecoilState(eventListState);
@@ -17,20 +16,17 @@ export const EventsLoader = () => {
   );
 
   const getEvents = async () => {
-    const data: PresenceEvent[] = await fetchEvents(setEventsStatus);
+    const data: CampusGroupsEvent[] = await fetchEvents(setEventsStatus);
     const sortedData = data
       .filter(
         (event) =>
-          new Date().getTime() + 1 <
-            new Date(event.startDateTimeUtc).getTime() &&
-          USU_ORGS.includes(event.organizationName),
+          new Date().getTime() < new Date(event.eventStartDateTime).getTime(),
       )
-      .sort((a, b) => {
-        return (
-          new Date(a.startDateTimeUtc).getTime() -
-          new Date(b.startDateTimeUtc).getTime()
-        );
-      });
+      .sort(
+        (a, b) =>
+          new Date(a.eventStartDateTime).getTime() -
+          new Date(b.eventStartDateTime).getTime(),
+      );
     setEvents(sortedData);
   };
 

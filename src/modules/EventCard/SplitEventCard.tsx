@@ -1,13 +1,14 @@
 import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, media, Spaces } from 'theme';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import { Image } from 'components';
-import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
+import { ABBREVIATED_ORGS } from 'utils/constants';
+import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
 export interface SplitEventCardProps {
-  event: PresenceEvent;
+  event: CampusGroupsEvent;
   featured?: boolean;
   onClick?: () => void;
 }
@@ -83,26 +84,26 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
     'Saturday',
   ];
   const {
-    organizationName,
-    eventName,
-    location,
-    startDateTimeUtc,
-    endDateTimeUtc,
-    photoUri,
+    group,
+    title,
+    eventLocation,
+    eventStartDateTime,
+    eventEndDateTime,
+    eventOriginalPhotoFullUrl,
   } = event;
-  const startTime = getTime(startDateTimeUtc);
-  const endTime = getTime(endDateTimeUtc);
-  const month = getMonth(startDateTimeUtc);
-  const day = getDay(startDateTimeUtc);
-  const year = getYear(startDateTimeUtc);
-  const dayOfTheWeek = daysOfWeek[new Date(startDateTimeUtc).getDay()];
+  const startTime = getTime(eventStartDateTime);
+  const endTime = getTime(eventEndDateTime);
+  const month = getMonth(eventStartDateTime);
+  const day = getDay(eventStartDateTime);
+  const year = getYear(eventStartDateTime);
+  const dayOfTheWeek = daysOfWeek[new Date(eventStartDateTime).getDay()];
 
   return (
     <Card onClick={onClick}>
       <GraphicContainer>
         <Image
           alt=""
-          src={`${PRESENCE_URI_BASE}/${photoUri}`}
+          src={eventOriginalPhotoFullUrl}
           width={0}
           height={0}
           sizes="100vw"
@@ -114,7 +115,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
       <Details>
         <EventHeader>
           <Typography as="h3" variant="labelTitle" color="black">
-            {eventName}
+            {title}
           </Typography>
         </EventHeader>
         <Typography variant="copy" color="black">
@@ -124,13 +125,11 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           {startTime} to {endTime}
         </Typography>
         <Typography variant="copy" color="black">
-          {location}
+          {formatEventLocation(eventLocation)}
         </Typography>
         <FinerDetails>
           <Typography variant="cta">
-            <abbr title={organizationName}>
-              {ABBREVIATED_ORGS[organizationName]}
-            </abbr>
+            <abbr title={group}>{ABBREVIATED_ORGS[group]}</abbr>
           </Typography>
           <LearnMoreButton onClick={onClick}>
             <Typography color="gold">Learn More</Typography>
