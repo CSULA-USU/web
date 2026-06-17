@@ -3,6 +3,7 @@ import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
 import { jotformContactRatelimit } from 'lib/ratelimit';
 import { validateCalStateEmail } from 'lib/api';
+import { sendFeedbackNotifications } from 'lib/feedbackNotifications';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
@@ -157,6 +158,15 @@ export default async function handler(
       return res.status(500).json({
         error: 'Failed to submit form. Please try again.',
       });
+    }
+
+    // The submission is now recorded in Jotform. Jotform's API doesn't fire its
+    // automailer, so we send the notification + confirmation ourselves. A mail
+    // failure must not fail the request — the feedback is already saved.
+    try {
+      await sendFeedbackNotifications(formData);
+    } catch (emailError) {
+      console.error('Feedback notification email failed:', emailError);
     }
 
     return res.status(200).json({ success: true });

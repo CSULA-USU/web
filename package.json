@@ -66,6 +66,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-tabs": "^6.0.2",
     "recoil": "0.7.7",
+    "resend": "^6.12.4",
     "rss-parser": "^3.13.0",
     "semver": "7.5.4",
     "styled-components": "^5.3.6",
