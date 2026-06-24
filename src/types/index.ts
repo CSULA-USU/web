@@ -10,3 +10,4 @@ export * from './UKrew';
 export * from './Table';
 export * from './UAwards';
 export * from './Backoffice';
+export * from './WebTeam';
