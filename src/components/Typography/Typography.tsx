@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { CSSObject, css } from 'styled-components';
-import { FontSizes, Colors } from 'theme';
+import { FontSizes, Colors, Spaces } from 'theme';
 
 interface TypeStyle {
   size?: keyof typeof FontSizes;
@@ -11,9 +11,19 @@ interface TypeStyle {
   margin?: string;
 }
 
-type TypeElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
+type TypeElements =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'span'
+  | 'p'
+  | 'div';
 
 export interface TypeProps extends TypeStyle {
+  id?: string;
   style?: CSSObject;
   className?: string;
   variant?: keyof typeof styles;
@@ -21,6 +31,7 @@ export interface TypeProps extends TypeStyle {
   uppercase?: boolean;
   as?: TypeElements;
   children?: React.ReactNode;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 interface TypeVariant {
@@ -87,6 +98,13 @@ const styles = {
     lineHeight: FontSizes.lg,
     fontFamily: serif,
   },
+  prose: {
+    size: 'sm',
+    weight: '400',
+    lineHeight: '1.7',
+    fontFamily: serif,
+    color: 'greyDarker',
+  },
   span: {
     size: 'sm',
     weight: '400',
@@ -101,6 +119,26 @@ const styles = {
     fontFamily: serif,
   },
 } as const;
+
+const proseCSS = css`
+  p {
+    margin: 0 0 ${Spaces.sm};
+  }
+  a {
+    color: ${Colors.blue};
+    word-break: break-word;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  ul,
+  ol {
+    margin: 0 0 ${Spaces.sm};
+    padding-left: ${Spaces.lg};
+  }
+`;
 
 const getCSS = (p: TypeProps) => {
   const {
@@ -135,6 +173,7 @@ const getCSS = (p: TypeProps) => {
       text-overflow: ellipsis;
       overflow: hidden;
     `}
+      ${p.variant === 'prose' && proseCSS}
     }
   `;
 };
@@ -163,6 +202,9 @@ const P = styled.p`
 const Span = styled.span`
   ${getCSS}
 `;
+const Div = styled.div`
+  ${getCSS}
+`;
 
 export const Typography = ({ as: element, ...props }: TypeProps) => {
   const TypeComponent: any = {
@@ -174,6 +216,7 @@ export const Typography = ({ as: element, ...props }: TypeProps) => {
     h6: H6,
     p: P,
     span: Span,
+    div: Div,
   }[element || 'p'];
   return <TypeComponent {...props} />;
 };

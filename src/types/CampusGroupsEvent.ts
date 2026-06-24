@@ -1,0 +1,24 @@
+export type CampusGroupsEvent = {
+  eventId: string;
+  eventUid: string;
+  groupId: string;
+  group: string;
+  groupAcronym: string;
+  title: string;
+  description: string;
+  eventStartDateTime: string;
+  eventEndDateTime: string;
+  eventDate: string;
+  eventTime: string;
+  eventEndTime: string;
+  eventLocation: string;
+  locationType: string;
+  eventType: string;
+  eventLink: string;
+  eventOriginalPhotoFullUrl: string;
+  eventPhotoAltText: string;
+  iCalLink: string;
+  allDayEvent: string;
+  approvalStatus: string;
+  timeZoneId: string;
+};

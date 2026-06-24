@@ -297,7 +297,7 @@ function ImageWithSkeleton({
 
 export default function MeetingRoom({ room }: { room: Room }) {
   const { isMobile } = useBreakpoint();
-  const tableData = rawTableData as { tables: TableData[] };
+  const tableData = rawTableData as unknown as { tables: TableData[] };
 
   const MeetingRoomsNav = () => {
     return (

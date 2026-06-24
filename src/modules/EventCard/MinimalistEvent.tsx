@@ -1,14 +1,15 @@
 import { BsInfoCircle } from 'react-icons/bs';
 import { Button, Skeleton, Typography } from 'components';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import styled from 'styled-components';
+import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 import { media } from 'theme';
 import { useBreakpoint } from 'hooks';
 
 export interface MinimalistEventProps {
   buttonText?: string;
-  event: PresenceEvent;
+  event: CampusGroupsEvent;
   isFeatured?: boolean;
   link?: string;
   onClick?: () => void;
@@ -113,12 +114,12 @@ export const MinimalistEvent = ({
   const { isMobile, isDesktop } = useBreakpoint();
   if (!event) return null;
 
-  const { eventName, location, startDateTimeUtc, endDateTimeUtc } = event;
-  const startTime = getTime(startDateTimeUtc);
-  const endTime = getTime(endDateTimeUtc);
-  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
-  const month = getMonth(startDateTimeUtc);
-  const day = getDay(startDateTimeUtc);
+  const { title, eventLocation, eventStartDateTime, eventEndDateTime } = event;
+  const startTime = getTime(eventStartDateTime);
+  const endTime = getTime(eventEndDateTime);
+  const monthAbbr = getMonth(eventStartDateTime, 'short').toUpperCase();
+  const month = getMonth(eventStartDateTime);
+  const day = getDay(eventStartDateTime);
 
   return (
     <MinimalistEventContainer>
@@ -164,7 +165,7 @@ export const MinimalistEvent = ({
             color={isFeatured ? 'pastelYellow' : isDesktop ? 'black' : 'gold'}
             size="md"
           >
-            {eventName}
+            {title}
           </Typography>
         </TitleContainer>
 
@@ -174,7 +175,7 @@ export const MinimalistEvent = ({
           color={isFeatured ? 'greyLighter' : 'grey'}
           weight="400"
         >
-          {location}
+          {formatEventLocation(eventLocation)}
         </Typography>
 
         <MobileOnly>

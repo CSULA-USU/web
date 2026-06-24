@@ -89,7 +89,7 @@ export const TableHeadCell = styled.th<ColorProps & CellWidthProps>`
     getCellColors({ $backgroundColor, $textColor })};
   width: ${({ $width }) => $width || '120px'};
   padding: ${Spaces.md};
-  border: 1px solid ${Colors.greyDark};
+  border: 1px solid ${Colors.greyLighter};
   vertical-align: middle;
   overflow-wrap: break-word;
   word-break: normal;
@@ -105,7 +105,6 @@ export const HeaderText = styled.div`
 
 export const HeaderCellInner = styled.div`
   display: flex;
-  min-height: 96px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -127,7 +126,7 @@ export const TableBodyHeaderCell = styled.th<ColorProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
   padding: ${Spaces.md};
-  border: 1px solid ${Colors.greyDark};
+  border: 1px solid ${Colors.greyLighter};
   vertical-align: middle;
 `;
 
@@ -136,14 +135,14 @@ export const TableDataCell = styled.td<ColorProps & CellWidthProps>`
     getCellColors({ $backgroundColor, $textColor })};
   width: ${({ $width }) => $width || '120px'};
   padding: ${Spaces.md};
-  border: 1px solid ${Colors.greyDark};
+  border: 1px solid ${Colors.greyLighter};
   vertical-align: middle;
   overflow-wrap: break-word;
   word-break: normal;
 `;
 
 export const TableCellContent = styled.div<AlignmentProps>`
-  text-align: ${({ $align = 'center' }) => $align};
+  text-align: center;
   white-space: normal;
   word-break: keep-all;
   overflow-wrap: normal;
@@ -168,26 +167,35 @@ export const MobileCardHeader = styled.div<ColorProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
   padding: ${Spaces.md};
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 `;
 
 export const MobileCardBody = styled.div`
   display: grid;
+  min-width: 0;
 `;
 
 export const MobileFieldRow = styled.div`
   display: grid;
-  grid-template-columns: minmax(120px, 38%) 1fr;
+  grid-template-columns: minmax(120px, 38%) minmax(0, 1fr);
   border-top: 1px solid ${Colors.greyLighter};
+  min-width: 0;
 
   ${media('mini')`
     grid-template-columns: 1fr;
   `}
 `;
 
-export const MobileFieldLabel = styled.div`
+export const MobileFieldLabel = styled.div<{
+  $backgroundColor?: TableColorKey;
+  $textColor?: TableColorKey;
+}>`
   padding: ${Spaces.sm} ${Spaces.md};
-  background-color: ${Colors.black};
-  color: ${Colors.primary};
+  background-color: ${({ $backgroundColor }) =>
+    Colors[$backgroundColor ?? 'black']};
+  color: ${({ $textColor }) => Colors[$textColor ?? 'primary']};
 `;
 
 export const MobileFieldValue = styled.div<ColorProps>`
@@ -200,7 +208,7 @@ export const MobileMergedField = styled.div<ColorProps>`
   ${({ $backgroundColor, $textColor }) =>
     getCellColors({ $backgroundColor, $textColor })};
   padding: ${Spaces.md};
-  border-top: 1px solid ${Colors.greyDark};
+  border-top: 1px solid ${Colors.greyLighter};
   text-align: left;
   display: flex;
   align-items: flex-start;

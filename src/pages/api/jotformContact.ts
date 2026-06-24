@@ -1,20 +1,20 @@
-// pages/api/jotformContact.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
 import { jotformContactRatelimit } from 'lib/ratelimit';
+import { validateCalStateEmail } from 'lib/api';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY!;
 
-function sanitize(input: unknown, maxLength: number): string {
+export function sanitize(input: unknown, maxLength: number): string {
   if (typeof input !== 'string') return '';
   return input.trim().slice(0, maxLength);
 }
 
-function validateContactForm(
+export function validateContactForm(
   body: unknown,
 ): { ok: true; data: ContactFormData } | { ok: false; errors: string[] } {
   const errors: string[] = [];
@@ -42,14 +42,10 @@ function validateContactForm(
   if (!category) errors.push('Category is required.');
   if (!captchaToken) errors.push('CAPTCHA token is required.');
 
-  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    errors.push('Email is invalid.');
+  if (email) {
+    const emailError = validateCalStateEmail(email);
+    if (emailError) errors.push(emailError);
   }
-
-  if (email && !email.toLowerCase().endsWith('@calstatela.edu')) {
-    errors.push('Email must be a calstatela.edu address.');
-  }
-
   const allowedCategories = Object.keys(categoryMap);
   if (category && !allowedCategories.includes(category)) {
     errors.push('Category is invalid.');
