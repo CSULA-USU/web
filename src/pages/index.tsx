@@ -2,27 +2,26 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 // import styled from 'styled-components';
 import {
-  Button,
+  // Button,
   FluidContainer,
   NonBreakingSpan,
   Typography,
 } from 'components';
 import {
-  // EventHeader,
-  // ModUpcomingEvents,
+  EventHeader,
+  ModUpcomingEvents,
   BoardOfDirectorsCTA,
   Page,
   CallToActionImages,
-  UAwardsValues,
-  UtilityHeroHeader,
+  // UAwardsValues,
+  // UtilityHeroHeader,
   // FeaturedEvents,
 } from 'modules';
 import { useRecoilValue } from 'recoil';
-// import { eventListState, eventListStatusState } from 'atoms';
-import { eventListStatusState } from 'atoms';
-import { useBreakpoint } from 'hooks';
-import uAwards from 'data/uAwards.json';
-import type { UAwardsData } from 'types';
+import { eventListState, eventListStatusState } from 'atoms';
+// import { useBreakpoint } from 'hooks';
+// import uAwards from 'data/uAwards.json';
+// import type { UAwardsData } from 'types';
 
 // import { Spaces } from 'theme';
 // const ButtonContainer = styled.div`
@@ -38,11 +37,11 @@ import type { UAwardsData } from 'types';
 // `;
 
 export default function Home() {
-  const data = uAwards as UAwardsData;
-  // const events = useRecoilValue(eventListState);
+  // const data = uAwards as UAwardsData;
+  const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
-  const { isDesktop, isMobile } = useBreakpoint();
+  // const { isDesktop, isMobile } = useBreakpoint();
 
   useEffect(() => {
     if (eventsStatus != 'undefined') {
@@ -103,7 +102,7 @@ export default function Home() {
       ) : events.length > 0 ? ( */}
       <>
         {/* summer no event section */}
-        <UtilityHeroHeader
+        {/* <UtilityHeroHeader
           src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/services/Services-Hero.webp"
           mobileSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/Hero-Mobile.webp"
           alt="Student Union Building"
@@ -159,10 +158,10 @@ export default function Home() {
               clubs.
             </Typography>
           </FluidContainer>
-        </FluidContainer>
+        </FluidContainer> */}
 
         {/* If there are no events, we can hide the event header section and just show the upcoming events section with a message that there are no events. */}
-        {/* <EventHeader
+        <EventHeader
           loading={loading || !events.length}
           subheaderText="California State University, Los Angeles"
           title={
@@ -172,7 +171,7 @@ export default function Home() {
             </>
           }
           featuredEvent={events[0]}
-        /> */}
+        />
         {!loading && eventsStatus == 'failed' ? (
           <Typography as="h3" variant="label">
             Resources failed to load. Please try refreshing your page.
@@ -183,14 +182,13 @@ export default function Home() {
             {/* <BoardOfDirectorsCTAPromotion /> */}
 
             {/* If there are no events, we can hide the featured events section and just show the upcoming events section with a message that there are no events. */}
-            {/* events.length >= 1 ? (
-              <FeaturedEvents events={events} featuredEvents={events} />
+            {events.length >= 1 ? (
+              <ModUpcomingEvents loading={loading} events={events} />
             ) : null}
-            <ModUpcomingEvents loading={loading} events={events} /> */}
           </>
         )}
 
-        <UAwardsValues values={data.values} />
+        {/* <UAwardsValues values={data.values} /> */}
         {/* end of summer no event section */}
       </>
       {/* ) : (
