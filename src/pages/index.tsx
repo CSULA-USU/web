@@ -182,9 +182,9 @@ export default function Home() {
             {/* <BoardOfDirectorsCTAPromotion /> */}
 
             {/* If there are no events, we can hide the featured events section and just show the upcoming events section with a message that there are no events. */}
-            {events.length >= 1 ? (
-              <ModUpcomingEvents loading={loading} events={events} />
-            ) : null}
+            {/* {events.length >= 1 ? ( */}
+            <ModUpcomingEvents loading={loading} events={events} />
+            {/* ) : null} */}
           </>
         )}
 

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { USU_GROUP_IDS } from 'utils/constants';
 
-const GROUP_IDS = '18633,35617,35618';
+const GROUP_IDS = USU_GROUP_IDS.join(',');
 const RSS_URL = `https://calstatela.campusgroups.com/rss_events?time_range=upcoming&group_ids=${GROUP_IDS}`;
 
 export default async function handler(

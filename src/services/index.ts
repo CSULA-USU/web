@@ -62,6 +62,21 @@ export const fetchEvents = async (
   }
 };
 
+// Keeps only events that haven't started yet, soonest first.
+export const sortUpcomingEvents = (
+  events: CampusGroupsEvent[],
+): CampusGroupsEvent[] =>
+  events
+    .filter(
+      (event) =>
+        new Date().getTime() < new Date(event.eventStartDateTime).getTime(),
+    )
+    .sort(
+      (a, b) =>
+        new Date(a.eventStartDateTime).getTime() -
+        new Date(b.eventStartDateTime).getTime(),
+    );
+
 export const fetchInstagramFeed = async (
   setInstagramResponseStatus: Dispatch<SetStateAction<StatusType>>,
   org: string,

@@ -1,7 +1,11 @@
-import { Divider, Typography } from 'components';
-import { Image } from 'components';
+import { Divider, Image, Typography } from 'components';
 import { useEffect, useRef } from 'react';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import {
+  AiFillCloseCircle,
+  AiOutlineCalendar,
+  AiOutlineClockCircle,
+  AiOutlineEnvironment,
+} from 'react-icons/ai';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
@@ -9,6 +13,7 @@ import { Colors, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
+
 interface EventModalProps {
   event?: CampusGroupsEvent;
   isOpen: boolean;
@@ -16,54 +21,33 @@ interface EventModalProps {
 }
 const FixedModal = Modal as unknown as React.FC<any>;
 
+const baseContent = {
+  top: '50%',
+  left: '50%',
+  right: 'auto',
+  bottom: 'auto',
+  transform: 'translate(-50%, -50%)',
+  borderRadius: '16px',
+  border: `1px solid ${Colors.greyLightest}`,
+  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.18)',
+  textDecoration: 'none',
+  padding: '0',
+  overflow: 'hidden',
+};
+
 const desktopCustomStyles = {
-  overlay: { zIndex: 100 },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '12px',
-    border: `1px solid ${Colors.greyLightest}`,
-    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
-    textDecoration: 'none',
-    padding: '20px 4px 0 0',
-  },
+  overlay: { zIndex: 100, backgroundColor: 'rgba(0, 0, 0, 0.45)' },
+  content: { ...baseContent, width: '560px', maxWidth: '90vw' },
 };
 
 const tabletCustomStyles = {
-  overlay: { zIndex: 100 },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    width: '85%',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '12px',
-    border: `1px solid ${Colors.greyLightest}`,
-    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
-    textDecoration: 'none',
-    padding: '12px 4px 0 0',
-  },
+  overlay: { zIndex: 100, backgroundColor: 'rgba(0, 0, 0, 0.45)' },
+  content: { ...baseContent, width: '85%' },
 };
 
 const mobileCustomStyles = {
-  overlay: { zIndex: 100 },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    width: '95%',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '12px',
-    border: `1px solid ${Colors.greyLightest}`,
-    boxShadow: '2px 4px 12px rgba(191, 191, 191, 0.25)',
-    textDecoration: 'none',
-    padding: '20px 0 0',
-  },
+  overlay: { zIndex: 100, backgroundColor: 'rgba(0, 0, 0, 0.45)' },
+  content: { ...baseContent, width: '94%' },
 };
 
 const CloseButton = styled.button`
@@ -78,6 +62,7 @@ const CloseButton = styled.button`
 const CloseButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-top: ${Spaces.md};
   border-bottom: 1px solid ${Colors.greyLightest};
 `;
 
@@ -95,23 +80,52 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  padding: ${Spaces.md};
   max-height: 80vh;
-
+  padding: 0 ${Spaces.lg} ${Spaces.lg};
   overflow-y: auto;
-
   scroll-behavior: smooth;
-
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-
   -webkit-overflow-scrolling: touch;
+`;
+
+/**
+ * Aspect-agnostic frame: event flyers arrive as either landscape photos or
+ * square graphics. The image is centered and capped by height (never forced to
+ * full width), so a square flyer stays a sensible size instead of ballooning to
+ * the full modal width, and nothing gets cropped.
+ */
+const MediaFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: ${Spaces.lg};
+  padding-top: ${Spaces.lg};
 
   img {
-    max-height: 600px;
+    width: auto;
+    max-width: 100%;
+    max-height: 380px;
     object-fit: contain;
+    border-radius: 12px;
     display: block;
+  }
+`;
+
+const MetaList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.xs};
+  margin-bottom: ${Spaces.md};
+`;
+
+const MetaRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.sm};
+
+  svg {
+    color: ${Colors.gold};
+    font-size: 18px;
+    flex-shrink: 0;
   }
 `;
 
@@ -175,8 +189,8 @@ export const EventModal = ({
         isMobile
           ? mobileCustomStyles
           : isDesktop
-          ? tabletCustomStyles
-          : desktopCustomStyles
+          ? desktopCustomStyles
+          : tabletCustomStyles
       }
       onRequestClose={onRequestClose}
       onAfterOpen={() => {
@@ -195,47 +209,69 @@ export const EventModal = ({
         style={{ outline: 'none' }}
         className="modal-content"
       >
-        <Image
-          src={eventOriginalPhotoFullUrl}
-          alt={title}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: 'auto', marginBottom: '24px' }}
-          lazy
-        />
-        <Typography as="h2" variant="cta">
-          {group}
-        </Typography>
-        <Divider margin={`${Spaces.sm} 0`} />
+        {eventOriginalPhotoFullUrl && (
+          <MediaFrame>
+            <Image src={eventOriginalPhotoFullUrl} alt={title} lazy />
+          </MediaFrame>
+        )}
+
+        {group && (
+          <Typography
+            as="p"
+            variant="cta"
+            color="gold"
+            uppercase
+            letterSpacing="0.08em"
+            margin={`0 0 ${Spaces.xs}`}
+          >
+            {group}
+          </Typography>
+        )}
+
         <Typography
-          as="h3"
-          variant="eventTitle"
+          as="h2"
+          variant="title"
+          size="xl"
           color="black"
-          margin={`0 0 ${Spaces.xs}`}
+          margin={`0 0 ${Spaces.md}`}
         >
           {title}
         </Typography>
-        <Typography as="h3" variant="eventDetail" color="gold" size="lg">
-          {month} {day}, {year}
-        </Typography>
-        <Typography as="h4" variant="eventTime" color="grey" weight="400">
-          {startTime} - {endTime}
-        </Typography>
+
+        <MetaList>
+          <MetaRow>
+            <AiOutlineCalendar />
+            <Typography
+              as="span"
+              variant="span"
+              color="greyDarkest"
+              weight="600"
+            >
+              {month} {day}, {year}
+            </Typography>
+          </MetaRow>
+          <MetaRow>
+            <AiOutlineClockCircle />
+            <Typography as="span" variant="span" color="greyDarkest">
+              {startTime} - {endTime}
+            </Typography>
+          </MetaRow>
+          <MetaRow>
+            <AiOutlineEnvironment />
+            <Typography as="span" variant="span" color="greyDarkest">
+              {formatEventLocation(eventLocation)}
+            </Typography>
+          </MetaRow>
+        </MetaList>
+
+        <Divider margin={`0 0 ${Spaces.md}`} color="grey" size="1px" />
+
         <Typography
-          as="h4"
-          variant="eventTime"
-          color="grey"
-          weight="400"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          {formatEventLocation(eventLocation)}
-        </Typography>
-        <Typography variant="copy" color="greyDark" margin={`0 0 ${Spaces.sm}`}>
-          <span dangerouslySetInnerHTML={{ __html: description }} />
-        </Typography>
+          as="div"
+          variant="prose"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </Main>
-      {/* <ShareLink></ShareLink> */}
     </FixedModal>
   );
 };

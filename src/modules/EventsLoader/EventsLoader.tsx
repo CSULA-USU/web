@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { fetchEvents } from 'services';
+import { fetchEvents, sortUpcomingEvents } from 'services';
 import { CampusGroupsEvent } from 'types';
 import {
   eventListState,
@@ -17,17 +17,7 @@ export const EventsLoader = () => {
 
   const getEvents = async () => {
     const data: CampusGroupsEvent[] = await fetchEvents(setEventsStatus);
-    const sortedData = data
-      .filter(
-        (event) =>
-          new Date().getTime() < new Date(event.eventStartDateTime).getTime(),
-      )
-      .sort(
-        (a, b) =>
-          new Date(a.eventStartDateTime).getTime() -
-          new Date(b.eventStartDateTime).getTime(),
-      );
-    setEvents(sortedData);
+    setEvents(sortUpcomingEvents(data));
   };
 
   useEffect(() => {
