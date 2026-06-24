@@ -1,4 +1,4 @@
-import { Divider, Image, Typography } from 'components';
+import { Button, Divider, Image, Typography } from 'components';
 import { useEffect, useRef } from 'react';
 import {
   AiFillCloseCircle,
@@ -173,6 +173,7 @@ export const EventModal = ({
     title,
     eventLocation,
     description,
+    eventLink,
   } = event;
   const startTime = getTime(eventStartDateTime);
   const endTime = getTime(eventEndDateTime);
@@ -271,6 +272,17 @@ export const EventModal = ({
           variant="prose"
           dangerouslySetInnerHTML={{ __html: description }}
         />
+
+        {eventLink && (
+          <Button
+            href={eventLink}
+            isExternalLink
+            variant="primary"
+            margin={`${Spaces.lg} 0 0`}
+          >
+            RSVP
+          </Button>
+        )}
       </Main>
     </FixedModal>
   );
