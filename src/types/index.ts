@@ -4,7 +4,7 @@ export * from './DesignSystem';
 export * from './Game';
 export * from './Graffix';
 export * from './Instagram';
-export * from './Presence';
+export * from './CampusGroupsEvent';
 export * from './Supabase';
 export * from './UKrew';
 export * from './Table';

@@ -49,4 +49,5 @@ videos/*
 !videos/*.ts
 public/_next-video
 
-CLAUDE.md
+#claude
+CLAUDE.local.md

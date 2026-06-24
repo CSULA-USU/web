@@ -8,12 +8,13 @@ import { MdLocationPin } from 'react-icons/md';
 import { VscOrganization } from 'react-icons/vsc';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
-import { PresenceEvent } from 'types';
-import { ABBREVIATED_ORGS, PRESENCE_URI_BASE } from 'utils/constants';
+import { CampusGroupsEvent } from 'types';
+import { ABBREVIATED_ORGS } from 'utils/constants';
+import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
 export interface ModEventCardProps {
-  event: PresenceEvent;
+  event: CampusGroupsEvent;
   featured?: boolean;
   onClick?: () => void;
   loading?: boolean;
@@ -208,15 +209,15 @@ export const ModEventCard = ({
 }: ModEventCardProps) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const { isTablet } = useBreakpoint();
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
 
   // PRELOADER: This ensures we know when the background image is ready
   useEffect(() => {
-    if (event?.photoUri) {
+    if (event?.eventOriginalPhotoFullUrl) {
       const img = new Image();
-      img.src = `${PRESENCE_URI_BASE}/${event.photoUri}`;
+      img.src = event.eventOriginalPhotoFullUrl;
       img.onload = () => setImgLoaded(true);
       img.onerror = () => setImgLoaded(true); // Still show card if image fails
     } else if (event) {
@@ -232,9 +233,9 @@ export const ModEventCard = ({
         <EventCardSkeletonContainer />
         <HeroEventDetailsSkeleton />
         {/* HIDDEN PRELOADER: Triggers the download while the skeleton is active */}
-        {event?.photoUri && (
+        {event?.eventOriginalPhotoFullUrl && (
           <img
-            src={`${PRESENCE_URI_BASE}/${event.photoUri}`}
+            src={event.eventOriginalPhotoFullUrl}
             style={{ display: 'none' }}
             alt=""
           />
@@ -245,27 +246,26 @@ export const ModEventCard = ({
 
   // --- At this point, we GUARANTEE event exists and image is ready ---
   const {
-    organizationName,
-    eventName,
-    location,
-    startDateTimeUtc,
-    endDateTimeUtc,
-    photoUri,
+    group,
+    title,
+    eventLocation,
+    eventStartDateTime,
+    eventEndDateTime,
+    eventOriginalPhotoFullUrl,
   } = event;
   const onRequestClose = () => selectEvent(undefined);
-  const startTime = getTime(startDateTimeUtc);
-  const endTime = getTime(endDateTimeUtc);
-  const monthAbbr = getMonth(startDateTimeUtc, 'short').toUpperCase();
-  const month = getMonth(startDateTimeUtc);
-  const day = getDay(startDateTimeUtc);
+  const startTime = getTime(eventStartDateTime);
+  const endTime = getTime(eventEndDateTime);
+  const monthAbbr = getMonth(eventStartDateTime, 'short').toUpperCase();
+  const month = getMonth(eventStartDateTime);
+  const day = getDay(eventStartDateTime);
 
   return (
     <EventContainer>
       <EventCardContainer
         onClick={onClick}
         featured={featured}
-        // Double check that photoUri doesn't already have a leading slash
-        image={`${PRESENCE_URI_BASE}/${photoUri.replace(/^\//, '')}`}
+        image={eventOriginalPhotoFullUrl}
       />
       {featured && !isTablet ? (
         <HeroEventDetails>
@@ -296,7 +296,7 @@ export const ModEventCard = ({
                 lineHeight="1.2"
                 color="black"
               >
-                {eventName}
+                {title}
               </Typography>
               <InfoContainer>
                 <BiTimeFive
@@ -320,17 +320,17 @@ export const ModEventCard = ({
                   style={{ overflowWrap: 'anywhere' }}
                   color="black"
                 >
-                  {location.indexOf('.zoom.us') > -1 ? (
-                    <a href={location}>Zoom Meeting</a>
+                  {eventLocation.indexOf('.zoom.us') > -1 ? (
+                    <a href={eventLocation}>Zoom Meeting</a>
                   ) : (
-                    location
+                    formatEventLocation(eventLocation)
                   )}
                 </Typography>
               </InfoContainer>
             </EventDetails>
             <ButtonSection>
               <Typography as="h3" variant="eventDetail" color="black">
-                {ABBREVIATED_ORGS[organizationName] || organizationName}
+                {ABBREVIATED_ORGS[group] || group}
               </Typography>
               {featured ? (
                 <Button
@@ -358,7 +358,7 @@ export const ModEventCard = ({
               color="black"
               size="lg"
             >
-              {eventName}
+              {title}
             </Typography>
             <InfoContainer>
               <BiCalendar size="20px" style={{ margin: '0px 8px 2px 0px' }} />
@@ -387,10 +387,10 @@ export const ModEventCard = ({
                 style={{ overflowWrap: 'anywhere' }}
                 color="black"
               >
-                {location.indexOf('.zoom.us') > -1 ? (
-                  <a href={location}>Zoom Meeting</a>
+                {eventLocation.indexOf('.zoom.us') > -1 ? (
+                  <a href={eventLocation}>Zoom Meeting</a>
                 ) : (
-                  location
+                  eventLocation
                 )}
               </Typography>
             </InfoContainer>
@@ -401,7 +401,7 @@ export const ModEventCard = ({
                   style={{ margin: '0px 8px 2px 0px' }}
                 />
                 <Typography as="h1" variant="eventDetail" color="black">
-                  {ABBREVIATED_ORGS[organizationName] || organizationName}
+                  {ABBREVIATED_ORGS[group] || group}
                 </Typography>
               </InfoContainer>
               {featured ? (

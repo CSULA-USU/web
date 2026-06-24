@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { eventListState, eventListStatusState } from 'atoms';
 import { useEffect, useState } from 'react';
-import { PresenceEvent } from 'types';
+import { CampusGroupsEvent } from 'types';
 import { EventModal } from 'modules/EventModal';
 import { Spaces } from 'theme';
 
@@ -75,11 +75,9 @@ export const DepartmentHeader = ({
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
 
-  const departmentEvent = events.find(
-    (event) => event.organizationName === title,
-  );
+  const departmentEvent = events.find((event) => event.group === title);
 
-  const [selectedEvent, selectEvent] = useState<undefined | PresenceEvent>(
+  const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
   const onRequestClose = () => selectEvent(undefined);
