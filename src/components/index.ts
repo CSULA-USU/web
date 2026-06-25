@@ -7,7 +7,6 @@ export * from './Gallery';
 export * from './CountUp';
 export * from './DescriptionCard';
 export * from './Divider';
-export * from './EventsLoader';
 export * from './Expandable';
 export * from './FluidContainer';
 export * from './Icon';
