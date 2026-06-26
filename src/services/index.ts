@@ -113,7 +113,7 @@ export const fetchJotform = async (id: any) => {
   }
 };
 
-export const postJotform = async (formData: ContactFormData) => {
+export const postJotformFeedback = async (formData: ContactFormData) => {
   const res = await fetch('/api/jotformContact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

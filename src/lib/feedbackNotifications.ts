@@ -7,6 +7,10 @@ const FROM =
   'U-SU Feedback <noreply@calstatelausu.org>';
 const USU_CONTACT_EMAIL = 'usuadmin@calstatela.edu';
 
+// Slack incoming-webhook URL for failure alerts. Deliberately a channel
+// separate from Resend, so an alert still lands when email itself is down.
+const SLACK_ALERT_WEBHOOK_URL = process.env.SLACK_ALERT_WEBHOOK_URL;
+
 const DEFAULT_NOTIFY_RECIPIENTS = [
   // 'usuadmin@calstatela.edu', 'mbell27@calstatela.edu',
   'jyasis@calstatela.edu',
@@ -128,5 +132,39 @@ export async function sendFeedbackNotifications(
         confirmation: confirmationResult.error,
       })}`,
     );
+  }
+}
+
+/**
+ * Posts a Slack alert when a feedback email fails to send.
+ *
+ * Best-effort and self-contained: a no-op when SLACK_ALERT_WEBHOOK_URL is
+ * unset (e.g. local/preview), and it never throws — the caller logs the
+ * failure regardless, so alerting must not be able to fail the request.
+ */
+export async function sendFeedbackEmailFailureAlert(
+  formData: ContactFormData,
+  error: unknown,
+): Promise<void> {
+  if (!SLACK_ALERT_WEBHOOK_URL) return;
+
+  const reason = error instanceof Error ? error.message : String(error);
+
+  try {
+    await fetch(SLACK_ALERT_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: [
+          ':warning: *Feedback email failed to send*',
+          `*From:* ${formData.email || '(unknown)'}`,
+          `*Subject:* ${formData.subject || '(none)'}`,
+          `*Category:* ${formData.category || '(none)'}`,
+          `*Error:* ${reason}`,
+        ].join('\n'),
+      }),
+    });
+  } catch (alertError) {
+    console.error('[FEEDBACK_ALERT_FAILED]', alertError);
   }
 }

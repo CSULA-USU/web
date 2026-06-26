@@ -44,6 +44,25 @@ yarn dev
 
 Visit: http://localhost:3000
 
+## Environment Variables
+
+Credentials are injected via a local `.env.local` file (gitignored) and via
+Vercel's project settings for deployed environments.
+
+The variables below cover the **contact / feedback form** flow. Other
+integrations (Notion, Supabase, Upstash, MUX, Instagram, Azure AD) require
+their own variables — this list is not exhaustive.
+
+| Variable                  | Required | Purpose                                                                                                                                 |
+| ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `CONTACT_JOTFORM_API_KEY` | Yes      | JotForm API key used to record contact submissions.                                                                                     |
+| `CONTACT_JOTFORM_FORM_ID` | Yes      | JotForm form ID that submissions are posted to.                                                                                         |
+| `RECAPTCHA_SECRET_KEY`    | Yes      | Server-side reCAPTCHA secret used to verify the submission token.                                                                       |
+| `RESEND_API_KEY`          | Yes      | Resend API key for the feedback notification + confirmation emails.                                                                     |
+| `FEEDBACK_FROM_EMAIL`     | No       | From address for feedback emails. Defaults to `U-SU Feedback <noreply@calstatelausu.org>`.                                              |
+| `FEEDBACK_NOTIFY_EMAILS`  | No       | Comma-separated admin recipients. Falls back to the in-code default list.                                                               |
+| `SLACK_ALERT_WEBHOOK_URL` | No       | Slack incoming-webhook URL. When set, a feedback email failure posts an alert here. Unset = no Slack alert (failures are still logged). |
+
 ## Project Structure
 
 ```bash

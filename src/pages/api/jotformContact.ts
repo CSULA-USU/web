@@ -3,7 +3,10 @@ import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
 import { jotformContactRatelimit } from 'lib/ratelimit';
 import { validateCalStateEmail } from 'lib/api';
-import { sendFeedbackNotifications } from 'lib/feedbackNotifications';
+import {
+  sendFeedbackNotifications,
+  sendFeedbackEmailFailureAlert,
+} from 'lib/feedbackNotifications';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
@@ -166,7 +169,25 @@ export default async function handler(
     try {
       await sendFeedbackNotifications(formData);
     } catch (emailError) {
-      console.error('Feedback notification email failed:', emailError);
+      // Searchable tag so these are easy to filter in Vercel logs. The
+      // submission is already saved in Jotform, so we log loudly rather than
+      // failing the request.
+      console.error(
+        '[FEEDBACK_EMAIL_FAILED]',
+        JSON.stringify({
+          email: formData.email,
+          subject: formData.subject,
+          category: formData.category,
+          error:
+            emailError instanceof Error
+              ? emailError.message
+              : String(emailError),
+          stack: emailError instanceof Error ? emailError.stack : undefined,
+        }),
+      );
+      // Push a Slack alert over a channel independent of Resend. Best-effort:
+      // the structured log above is the catch-all if this also fails.
+      await sendFeedbackEmailFailureAlert(formData, emailError);
     }
 
     return res.status(200).json({ success: true });
