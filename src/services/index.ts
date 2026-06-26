@@ -8,8 +8,6 @@ import { normalizeDateISO } from 'utils/dates';
 import type { ContactFormData } from 'types/Contact';
 import { CAMPUS_GROUPS_RSS_URL } from 'utils/constants';
 
-export * from './supabase';
-
 /* ------------------------------ External APIs ------------------------------ */
 
 const getText = (item: Element, tag: string) =>
@@ -113,7 +111,7 @@ export const fetchJotform = async (id: any) => {
   }
 };
 
-export const postJotform = async (formData: ContactFormData) => {
+export const postJotformFeedback = async (formData: ContactFormData) => {
   const res = await fetch('/api/jotformContact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

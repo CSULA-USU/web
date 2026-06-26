@@ -1,16 +1,22 @@
 import Head from 'next/head';
-import { Page } from 'modules';
-import { Button, FluidContainer, Input, Select, Typography } from 'components';
-import styled from 'styled-components';
-import contacts from 'data/contacts.json';
-import { FontSizes, Spaces } from 'theme';
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { TextArea } from 'components/TextArea';
+import ReCAPTCHA from 'react-google-recaptcha';
+import styled from 'styled-components';
+import { FontSizes, Spaces } from 'theme';
+import {
+  Button,
+  FluidContainer,
+  Input,
+  Select,
+  TextArea,
+  Typography,
+} from 'components';
+import { Page } from 'modules';
+import contacts from 'data/contacts.json';
 import { categoryItems, CategoryOption } from 'types/CategoriesContact';
-import { postJotform } from 'services';
+import { postJotformFeedback } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { validateCalStateEmail } from 'lib/api';
 
 const ContactGrid = styled(FluidContainer)`
@@ -174,7 +180,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      await postJotform({
+      await postJotformFeedback({
         ...formData,
         website: honeypot,
         captchaToken,
@@ -198,7 +204,7 @@ export default function Contact() {
 
       showToast(
         message.includes('Too many') || message.includes('maximum')
-          ? 'You have reached the maximum number of submission attempts. Please try again later.'
+          ? 'You have reached the maximum number of submission attempts at this time. Please try again later.'
           : 'Error: Your response has not been successfully sent.',
         'error',
       );
@@ -424,7 +430,7 @@ export default function Contact() {
                 />
               </FluidContainer>
               <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </Button>
             </form>
           </Card>
