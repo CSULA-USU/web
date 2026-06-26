@@ -28,6 +28,7 @@ export * from './Skeleton';
 export * from './StaffCard';
 export * from './Tabs';
 export * from './TextAndImage';
+export * from './TextArea';
 export * from './Typography';
 export * from './VerticalLine';
 export * from './WordCycler';
