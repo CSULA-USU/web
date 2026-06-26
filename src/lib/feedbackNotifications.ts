@@ -4,22 +4,24 @@ import type { ContactFormData } from 'types/Contact';
 
 const FROM =
   process.env.FEEDBACK_FROM_EMAIL ||
-  'U-SU Feedback <noreply@calstatelausu.org>';
+  'Cal State LA U-SU Feedback <automailer@calstatelausu.org>';
 const USU_CONTACT_EMAIL = 'usuadmin@calstatela.edu';
 
 // Slack incoming-webhook URL for failure alerts. Deliberately a channel
 // separate from Resend, so an alert still lands when email itself is down.
 const SLACK_ALERT_WEBHOOK_URL = process.env.SLACK_ALERT_WEBHOOK_URL;
 
-const DEFAULT_NOTIFY_RECIPIENTS = [
-  // 'usuadmin@calstatela.edu', 'mbell27@calstatela.edu',
-  'jyasis@calstatela.edu',
-];
-
 /**
  * Admin recipients who get notified of every feedback submission.
  * Override with a comma-separated FEEDBACK_NOTIFY_EMAILS env var.
  */
+
+const DEFAULT_NOTIFY_RECIPIENTS = [
+  'usuadmin@calstatela.edu',
+  'mbell27@calstatela.edu',
+  'jyasis@calstatela.edu',
+];
+
 function notifyRecipients(): string[] {
   const configured = process.env.FEEDBACK_NOTIFY_EMAILS;
   if (configured && configured.trim()) {
@@ -105,7 +107,7 @@ export async function sendFeedbackNotifications(
     html: `
       <p>Hi ${escapeHtml(formData.firstName?.trim() || 'there')},</p>
       <p>
-        Thank you for reaching out to the Cal State LA University-Student Union.
+        Thank you for reaching out to the University-Student Union at Cal State LA.
         We've received your feedback and the team will review it.
       </p>
       <p><strong>Category:</strong> ${escapeHtml(readableCategory)}</p>
@@ -113,10 +115,9 @@ export async function sendFeedbackNotifications(
       <p><strong>Your message:</strong></p>
       <p>${messageHtml}</p>
       <p>
-        If you need to follow up, just reply to this email and it will reach us
-        at ${USU_CONTACT_EMAIL}.
+        If you need to follow up, please feel free to reply to this email and it will reach us at ${USU_CONTACT_EMAIL}.
       </p>
-      <p>&mdash; University-Student Union</p>
+      <p>&mdash; University-Student Union at Cal State LA</p>
     `,
   });
 

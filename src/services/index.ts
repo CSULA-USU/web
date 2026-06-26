@@ -8,8 +8,6 @@ import { normalizeDateISO } from 'utils/dates';
 import type { ContactFormData } from 'types/Contact';
 import { CAMPUS_GROUPS_RSS_URL } from 'utils/constants';
 
-export * from './supabase';
-
 /* ------------------------------ External APIs ------------------------------ */
 
 const getText = (item: Element, tag: string) =>
