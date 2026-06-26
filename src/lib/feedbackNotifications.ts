@@ -7,6 +7,28 @@ const FROM =
   'Cal State LA U-SU Feedback <automailer@calstatelausu.org>';
 const USU_CONTACT_EMAIL = 'usuadmin@calstatela.edu';
 
+// Hosted logo for the email letterhead. Must be an absolute, publicly
+// reachable URL — email clients (notably Gmail) strip data: URIs and route
+// images through proxies, so the file must serve raw with an image/* type.
+// This JPEG carries its own white background, so it stays legible in
+// dark-mode clients. Override via FEEDBACK_LOGO_URL.
+const LOGO_URL =
+  process.env.FEEDBACK_LOGO_URL ||
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/rgb-white-logo-300dpi.jpg';
+
+// Letterhead prepended to both emails. alt text names the sender so the email
+// still reads as official when images are blocked (the default in many clients
+// until the recipient clicks "show images").
+const EMAIL_HEADER_HTML = `
+      <div style="margin-bottom: 24px;">
+        <img
+          src="${LOGO_URL}"
+          alt="University-Student Union at Cal State LA"
+          width="240"
+          style="display: block; width: 240px; max-width: 100%; height: auto;"
+        />
+      </div>`;
+
 // Slack incoming-webhook URL for failure alerts. Deliberately a channel
 // separate from Resend, so an alert still lands when email itself is down.
 const SLACK_ALERT_WEBHOOK_URL = process.env.SLACK_ALERT_WEBHOOK_URL;
@@ -86,6 +108,7 @@ export async function sendFeedbackNotifications(
     replyTo: formData.email,
     subject: `[Feedback: ${readableCategory}] ${subject}`,
     html: `
+      ${EMAIL_HEADER_HTML}
       <h2>New feedback submission</h2>
       <p><strong>From:</strong> ${escapeHtml(name)} (${escapeHtml(
       formData.email,
@@ -105,6 +128,7 @@ export async function sendFeedbackNotifications(
     replyTo: USU_CONTACT_EMAIL,
     subject: `We received your feedback: ${subject}`,
     html: `
+      ${EMAIL_HEADER_HTML}
       <p>Hi ${escapeHtml(formData.firstName?.trim() || 'there')},</p>
       <p>
         Thank you for reaching out to the University-Student Union at Cal State LA.
