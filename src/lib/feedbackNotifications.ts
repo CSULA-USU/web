@@ -24,10 +24,21 @@ const EMAIL_HEADER_HTML = `
         <img
           src="${LOGO_URL}"
           alt="University-Student Union at Cal State LA"
-          width="240"
-          style="display: block; width: 240px; max-width: 100%; height: auto;"
+          width="180"
+          style="display: block; width: 180px; max-width: 100%; height: auto;"
         />
       </div>`;
+
+// Signature/footer appended to both emails. A real postal address + phone is a
+// recognized legitimacy signal (CAN-SPAM best practice, and a positive spam-
+// filter signal), and the extra text improves the text-to-image ratio that
+// filters score. Address/phone mirror the site footer (Footer.tsx).
+const EMAIL_FOOTER_HTML = `
+      <p style="margin-top: 28px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #555555; font-size: 13px; line-height: 1.6;">
+        <strong>University-Student Union at Cal State LA</strong><br />
+        5154 State University Dr., Los Angeles, CA 90032<br />
+        (323) 343-2465 &middot; <a href="https://www.calstatelausu.org" style="color: #555555;">calstatelausu.org</a>
+      </p>`;
 
 // Slack incoming-webhook URL for failure alerts. Deliberately a channel
 // separate from Resend, so an alert still lands when email itself is down.
@@ -117,6 +128,7 @@ export async function sendFeedbackNotifications(
       <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
       <p><strong>Message:</strong></p>
       <p>${messageHtml}</p>
+      ${EMAIL_FOOTER_HTML}
     `,
   });
 
@@ -141,7 +153,7 @@ export async function sendFeedbackNotifications(
       <p>
         If you need to follow up, please feel free to reply to this email and it will reach us at ${USU_CONTACT_EMAIL}.
       </p>
-      <p>&mdash; University-Student Union at Cal State LA</p>
+      ${EMAIL_FOOTER_HTML}
     `,
   });
 
