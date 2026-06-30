@@ -37,7 +37,8 @@ const EMAIL_FOOTER_HTML = `
       <p style="margin-top: 28px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #555555; font-size: 13px; line-height: 1.6;">
         <strong>University-Student Union at Cal State LA</strong><br />
         5154 State University Dr., Los Angeles, CA 90032<br />
-        (323) 343-2465 &middot; <a href="https://www.calstatelausu.org" style="color: #555555;">calstatelausu.org</a>
+        Phone: <a href="tel:+13233432465" style="color: #555555; text-decoration: underline;">(323) 343-2465</a><br />
+        <a href="https://www.calstatelausu.org" style="color: #555555; text-decoration: underline;">University-Student Union website (calstatelausu.org)</a>
       </p>`;
 
 // Slack incoming-webhook URL for failure alerts. Deliberately a channel
