@@ -8,6 +8,7 @@ import {
   FluidContainer,
   Input,
   Select,
+  StyledLink,
   TextArea,
   Typography,
 } from 'components';
@@ -18,6 +19,10 @@ import { postJotformFeedback } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
 import { validateCalStateEmail } from 'lib/api';
+
+// TODO: replace '#' with Cal State LA's privacy policy URL (confirm the exact
+// link with the campus privacy office) or a U-SU privacy page once one exists.
+// const PRIVACY_POLICY_URL = '#';
 
 const ContactGrid = styled(FluidContainer)`
   width: 100%;
@@ -366,7 +371,9 @@ export default function Contact() {
                   ) => handleInputChange(e)}
                   aria-invalid={!!errors.message}
                   aria-describedby={
-                    errors.message ? 'message-error' : undefined
+                    errors.message
+                      ? 'message-error message-count'
+                      : 'message-count'
                   }
                   required
                 />
@@ -375,7 +382,9 @@ export default function Contact() {
                     {errors.message}
                   </ErrorText>
                 )}
-                <Typography>{formData.message.length} / 1000</Typography>
+                <Typography id="message-count" aria-live="polite">
+                  {formData.message.length} / 1000
+                </Typography>
               </FormGroup>
 
               <FormRow>
@@ -422,12 +431,43 @@ export default function Contact() {
                 <ReCAPTCHA
                   sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
                   onChange={(token) => {
-                    console.error('frontend captcha token:', token);
                     setCaptchaToken(token);
                   }}
                   onExpired={() => setCaptchaToken(null)}
                   onErrored={() => setCaptchaToken(null)}
                 />
+              </FluidContainer>
+              <FluidContainer padding="0" margin={`0 0 ${Spaces['md']} 0`}>
+                <Typography variant="span" size="xs" margin="0">
+                  We use the information you submit only to review your
+                  feedback, respond if needed or when possible, and to improve
+                  our facilities and services. We do not sell your information,
+                  and we only share it with the service providers that help us
+                  operate this form.
+                  {/* See our{' '}
+                  <a href={PRIVACY_POLICY_URL}>Privacy Policy</a> for details. */}
+                </Typography>
+              </FluidContainer>
+              <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
+                <Typography variant="span" size="xs" margin="0">
+                  This form is protected by reCAPTCHA. Google&apos;s{' '}
+                  <StyledLink
+                    href="https://policies.google.com/privacy"
+                    isExternalLink
+                    isInverseUnderlineStyling
+                  >
+                    Privacy Policy
+                  </StyledLink>{' '}
+                  and{' '}
+                  <StyledLink
+                    href="https://policies.google.com/terms"
+                    isExternalLink
+                    isInverseUnderlineStyling
+                  >
+                    Terms of Service
+                  </StyledLink>{' '}
+                  apply.
+                </Typography>
               </FluidContainer>
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Submit'}
