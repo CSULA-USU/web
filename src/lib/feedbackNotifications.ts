@@ -52,7 +52,6 @@ const SLACK_ALERT_WEBHOOK_URL = process.env.SLACK_ALERT_WEBHOOK_URL;
 const DEFAULT_NOTIFY_RECIPIENTS = [
   'usuadmin@calstatela.edu',
   'mbell27@calstatela.edu',
-  'jyasis@calstatela.edu',
 ];
 
 function notifyRecipients(): string[] {
