@@ -1,9 +1,8 @@
 [
   {
-    "head": "",
     "title": "U-SU Chair",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/brian-bod.webp",
-    "name": "Brian Pham",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/emily-bod.webp",
+    "name": "Emily Webb",
     "credentials": "",
     "section": "student-representative"
   },
@@ -33,13 +32,6 @@
     "title": "Student Director",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/giovanni-bod.webp",
     "name": "Giovanni Torres",
-    "credentials": "",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2025/emily-bod.webp",
-    "name": "Emily Webb",
     "credentials": "",
     "section": "student-representative"
   },
