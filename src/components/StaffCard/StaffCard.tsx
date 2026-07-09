@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
+import { Colors, media } from 'theme';
 
 interface CardStyles {
   margin?: string;
@@ -18,17 +19,59 @@ interface CardProps extends CardStyles {
   alt: string;
   tags?: string[];
 }
-const CenterWord = styled.div`
-  text-align: center;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+
+// Every card is the same fixed size, so the roster grid stays even no matter
+// how long or short a member's name or title is.
+const HoverPanel = styled(Panel)`
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 184px;
+  max-width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  ${media('mobile')(`
+    height: 156px;
+  `)}
 `;
 
-const NameSection = styled.div`
-  height: 80px;
+// Full-bleed photo on the left. object-fit: cover locks any source image into
+// the frame, so photos never need to be pre-cropped to a fixed size.
+const PhotoFrame = styled.div`
+  flex-shrink: 0;
+  width: 150px;
+  height: 100%;
+  background-color: ${Colors.greyLightest};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  ${media('mobile')(`
+    width: 124px;
+  `)}
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 16px 20px;
+  text-align: left;
 `;
 
 export const StaffCard = ({
@@ -38,57 +81,49 @@ export const StaffCard = ({
   children,
   src,
   alt,
+  width = '380px',
   ...props
 }: CardProps) => {
   return (
-    <Panel {...props} width={'304px'} height="512px">
-      <CenterWord>
-        <div>
-          {head ? (
-            <>
-              <Typography
-                as="h3"
-                color="gold"
-                variant="copy"
-                weight="700"
-                size="md"
-                margin="0 0 0 0"
-                style={{ display: 'block' }}
-              >
-                {head}
-              </Typography>
-            </>
-          ) : (
-            <></>
-          )}
-
+    <HoverPanel {...props} width={width}>
+      <PhotoFrame>
+        <Image src={src} alt={alt} />
+      </PhotoFrame>
+      <Info>
+        {head && (
           <Typography
-            as="h2"
+            as="h4"
             color="gold"
             variant="copy"
             weight="700"
-            size="md"
-            margin="0 0 0 0"
+            size="sm"
+            margin="0"
           >
-            {title}
+            {head}
           </Typography>
-        </div>
-
-        <div>
-          <Image src={src} alt={alt} width="220px" height="245px" />
-          <NameSection>
-            <Typography
-              size="sm"
-              weight="700"
-              margin="8px 0px 0px"
-              variant="labelTitle"
-            >
-              {name}
-            </Typography>
-            {children}
-          </NameSection>
-        </div>
-      </CenterWord>
-    </Panel>
+        )}
+        <Typography
+          as="h3"
+          variant="labelTitle"
+          weight="700"
+          size="md"
+          color="greyDarkest"
+          margin="0"
+        >
+          {name}
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          weight="700"
+          size="sm"
+          color="gold"
+          margin="0"
+        >
+          {title}
+        </Typography>
+        {children}
+      </Info>
+    </HoverPanel>
   );
 };
