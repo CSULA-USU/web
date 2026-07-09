@@ -32,11 +32,9 @@ export default function Governance() {
               <StaffCard
                 key={m.name}
                 name={m.name}
-                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
-                width="calc(22%)"
                 margin="24px 16px"
                 rounded
               >
@@ -53,11 +51,9 @@ export default function Governance() {
               <StaffCard
                 key={m.name}
                 name={m.name}
-                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
-                width="calc(22%)"
                 margin="24px 16px"
                 rounded
               >
@@ -74,11 +70,9 @@ export default function Governance() {
               <StaffCard
                 key={m.name}
                 name={m.name}
-                head={m.head}
                 title={m.title}
                 src={m.src}
                 alt={`Photo of ${m.name}, ${m.title}`}
-                width="calc(22%)"
                 margin="24px 16px"
                 rounded
               >
