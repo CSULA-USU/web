@@ -48,6 +48,13 @@
     "section": "student-representative"
   },
   {
+    "title": "President's Designee",
+    "src": "https://www.dropbox.com/scl/fi/6u713rym2rl0awcpxmx06/stephen-trzaskoma.jpg?rlkey=z2yglczjehsmf78yyeh25u31t&raw=1",
+    "name": "Stephen Trzaskoma",
+    "credentials": "Dean, College Arts and Letters",
+    "section": "pro-board-member"
+  },
+  {
     "title": "Faculty Appointees Two-Year Term",
     "src": "https://www.calstatela.edu/sites/default/files/lawrencethumbnail_0.jpg",
     "name": "Karyn Lawrence",
@@ -59,13 +66,6 @@
     "src": "https://www.dropbox.com/scl/fi/a4x2nflg2nef247710wm1/michael-runnels.jpg?rlkey=75hmnoiv2su72gimrhomk8wf5&raw=1",
     "name": "Michael Runnels",
     "credentials": "Finance, Law and Real Estate",
-    "section": "pro-board-member"
-  },
-  {
-    "title": "President's Designee",
-    "src": "https://www.dropbox.com/scl/fi/6u713rym2rl0awcpxmx06/stephen-trzaskoma.jpg?rlkey=z2yglczjehsmf78yyeh25u31t&raw=1",
-    "name": "Stephen Trzaskoma",
-    "credentials": "Dean, College Arts and Letters",
     "section": "pro-board-member"
   },
   {
@@ -93,14 +93,14 @@
     "title": "Advisor",
     "src": "https://www.dropbox.com/scl/fi/7qo98drqomj3mpi8xad0s/Megan_11.8.24.png?rlkey=z27lnj5tu36v4k2u7pa9z6ejo&st=na3crn5e&raw=1",
     "name": "Megan Bell",
-    "credentials": "Executive Director of the University-Student Union",
+    "credentials": "Executive Director, University-Student Union",
     "section": "advisors"
   },
   {
     "title": "Advisor",
     "src": "https://www.dropbox.com/scl/fi/u37cxhiq9gurg9ux9fxa5/barnaby-peake.jpg?rlkey=mjxybzw3m06tny7ldlv17er68&raw=1",
     "name": "Barnaby Peake",
-    "credentials": "Executive Director of Associated Students, Inc.",
+    "credentials": "Executive Director, Associated Students, Inc.",
     "section": "advisors"
   },
   {
@@ -114,14 +114,14 @@
     "title": "Advisor",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/ashley-bellorin.webp",
     "name": "Ashley Bellorin",
-    "credentials": "President of Associated Students, Inc.",
+    "credentials": "President, Associated Students, Inc.",
     "section": "advisors"
   },
   {
     "title": "Recording Secretary",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/jasmine-heredia.png",
     "name": "Jasmine Heredia",
-    "credentials": "Assistant to the Executive Director U-SU",
+    "credentials": "Assistant to the Executive Director, University-Student Union",
     "section": "advisors"
   }
 ]
