@@ -130,14 +130,8 @@ export function DeleteConfirmDialog({
           </DialogMessage>
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={onCancel} aria-label="Cancel deletion">
-            Cancel
-          </Button>
-          <Button
-            variant="danger"
-            onClick={onConfirm}
-            aria-label="Confirm deletion"
-          >
+          <Button onClick={onCancel}>Cancel</Button>
+          <Button variant="danger" onClick={onConfirm}>
             Delete
           </Button>
         </DialogFooter>

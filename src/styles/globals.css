@@ -88,8 +88,3 @@ span:focus-visible {
   max-height: 80vh;
   overflow-y: auto;
 }
-
-.modal-content:focus-visible {
-  outline: none;
-  box-shadow: none;
-}
