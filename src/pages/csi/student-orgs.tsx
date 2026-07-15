@@ -181,7 +181,7 @@ const orgsCards = [
 const orgsCategoriesCards = [
   {
     title: 'Explore Student Organizations',
-    href: 'https://calstatela.presence.io/',
+    href: 'https://calstatela.campusgroups.com/home_login',
     linkText: 'Visit',
     children:
       'Find a recognized student organization on The Nest, Cal State LA’s hub for student organizations and events. ',
@@ -231,7 +231,7 @@ export default function StudentOrgs() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/campus-groups-preview.png"
           key="og-image"
         />
         <meta
@@ -349,7 +349,7 @@ export default function StudentOrgs() {
           flexWrap={isTablet ? 'wrap' : 'nowrap'}
         >
           <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/campus-groups-preview.png"
             alt="screenshot of The Nest homepage"
             borderRadius="12px"
             width="100%"
@@ -627,7 +627,7 @@ export default function StudentOrgs() {
         <Button
           margin="24px"
           variant="black"
-          href="https://calstatela.presence.io/organizations"
+          href="https://calstatela.campusgroups.com/home_login"
         >
           Learn More
         </Button>
