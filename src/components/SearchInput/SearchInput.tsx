@@ -46,7 +46,7 @@ const StyledInput = styled.input`
     border: 0;
   }
   &::placeholder {
-    color: ${Colors.grey};
+    color: ${Colors.greyDarker};
   }
 `;
 

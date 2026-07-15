@@ -53,7 +53,7 @@ export const Colors = {
   greyDarkest: '#2b2b2b',
   greyDarker: '#323232',
   greyDark: '#6e6e6e',
-  grey: '#6e6e6e',
+  grey: '#757575',
   greyLighter: '#dedede',
   greyLightest: '#f4f4f4',
   white: '#ffffff',

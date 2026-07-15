@@ -349,7 +349,7 @@ export default function StudentOrgs() {
           flexWrap={isTablet ? 'wrap' : 'nowrap'}
         >
           <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/campus-groups-preview.png"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/campus-groups-portrait.png"
             alt="screenshot of The Nest homepage"
             borderRadius="12px"
             width="100%"
