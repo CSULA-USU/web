@@ -6,6 +6,7 @@ import { Colors, Spaces } from 'theme';
 
 interface BaseModalProps {
   title: string;
+  greekLetters?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
   onClose: () => void;
@@ -85,6 +86,7 @@ const ModalFooter = styled.div`
 
 export function BaseModal({
   title,
+  greekLetters,
   children,
   footer,
   onClose,
@@ -116,7 +118,7 @@ export function BaseModal({
       >
         <ModalHeader>
           <Typography as="h2" id={labelledById} variant="title" size="xl">
-            {title}
+            {title} ({greekLetters})
           </Typography>
 
           <CloseButton type="button" onClick={onClose} aria-label="Close modal">

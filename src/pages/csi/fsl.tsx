@@ -1677,6 +1677,7 @@ export default function FSL() {
       {isModalOpen && selectedChapter && (
         <BaseModal
           title={selectedChapter.name}
+          greekLetters={selectedChapter.greekLetters}
           labelledById="fsl-chapter-title"
           maxWidth="560px"
           onClose={closeChapter}
