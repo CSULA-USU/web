@@ -458,7 +458,6 @@ const ChapterCard = styled.button`
   padding: ${Spaces.md};
   background-color: ${Colors.white};
   border: 1px solid ${Colors.greyLighter};
-  border-top: 4px solid ${Colors.primary};
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -466,6 +465,7 @@ const ChapterCard = styled.button`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid ${Colors.primary};
   }
 
   &:focus-visible {
@@ -1454,7 +1454,7 @@ export default function FSL() {
               </ChaptersGrid>
             )}
             <ResultsRow>
-              <Typography color="greyDark" aria-live="polite">
+              <Typography color="greyDark" aria-live="polite" variant="span">
                 Showing {visibleChapters.length} of {CHAPTER_ROSTER.length}
               </Typography>
             </ResultsRow>
