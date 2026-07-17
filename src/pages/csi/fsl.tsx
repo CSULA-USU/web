@@ -1,11 +1,12 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useMemo, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled from 'styled-components';
-import { AiOutlineFileText } from 'react-icons/ai';
-import { BiChevronRight } from 'react-icons/bi';
+import styled, { css } from 'styled-components';
 import { TabPanel } from 'react-tabs';
-import { media, Spaces } from 'theme';
+import { AiOutlineFileText } from 'react-icons/ai';
+import { BiChevronRight, BiCheck } from 'react-icons/bi';
+import { HiOutlineMail } from 'react-icons/hi';
+import { media, Spaces, Colors } from 'theme';
 import { useBreakpoint } from 'hooks';
 import {
   Button,
@@ -21,11 +22,10 @@ import {
   StyledLink,
   CountUp,
 } from 'components';
-import { DocumentLink, Page, Modal } from 'modules';
+import { DocumentLink, Page, BaseModal } from 'modules';
 import { Hazing } from 'partials';
 import fslData from 'data/fsl-full-content.json';
 import staff from 'data/staff.json';
-import { HiOutlineMail } from 'react-icons/hi';
 
 const {
   chapters,
@@ -36,6 +36,42 @@ const {
   resources: ResourceButtons,
   pillarsAccordion: PillarsAccordion,
 } = fslData;
+
+type ChapterType = 'Fraternity' | 'Sorority' | 'Co-Ed';
+type Council = 'IFC' | 'MGC' | 'NPHC' | 'PHC';
+
+interface Chapter {
+  name: string;
+  fullName?: string;
+  crest?: string;
+  greekLetters: string;
+  type: ChapterType;
+  council: Council;
+  status: 'Recognized' | 'Reestablishing';
+  founding?: string;
+  values?: string[];
+  colors?: string[];
+  symbol?: string | string[];
+  communityService?: string[];
+}
+
+const TYPE_FILTERS: ChapterType[] = ['Fraternity', 'Sorority', 'Co-Ed'];
+const COUNCIL_FILTERS: Council[] = ['IFC', 'MGC', 'NPHC', 'PHC'];
+
+// Data is authored alphabetically; sort defensively so display order never
+// depends on JSON ordering.
+const CHAPTER_ROSTER = (chapters as unknown as Chapter[])
+  .slice()
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+// Monogram fallback for chapters that have no seal image yet.
+const getInitials = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 3)
+    .toUpperCase();
 
 const AB524InfoSection = styled.div`
   margin: 0 0 ${Spaces.md} 0;
@@ -301,37 +337,275 @@ const ContactsBarWrapper = styled.ul`
   }
 `;
 
-const ChaptersGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${Spaces.sm};
-  margin: ${Spaces.md} 0;
+/* ---------- Chapters: filter bar ---------- */
+const FilterBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: ${Spaces.md};
+  margin: ${Spaces.md} 0 ${Spaces.lg};
+  padding: ${Spaces.md};
+  background-color: ${Colors.greyLightest};
+  border-radius: 12px;
+  ${() =>
+    media('tablet')(`
+    flex-direction: column;
+    gap: ${Spaces.sm};
+  `)}
+`;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
+const FilterGroup = styled.fieldset`
+  border: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const FilterLegend = styled.legend`
+  padding: 0;
+  margin: 0 0 ${Spaces.sm};
+  font-size: 14px;
+  font-weight: 700;
+  color: ${Colors.greyDarkest};
+`;
+
+const ChipRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${Spaces.sm};
+`;
+
+const ResultsRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: ${Spaces.md} 0;
+`;
+
+const chipBase = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  color: ${Colors.black};
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: ${Colors.grey};
+  }
+`;
+
+const Chip = styled.label<{ $active: boolean }>`
+  ${chipBase}
+  border: 1.5px solid
+    ${({ $active }) => ($active ? Colors.greyDarker : Colors.greyLighter)};
+  background-color: ${({ $active }) =>
+    $active ? Colors.primary : Colors.white};
+
+  /* Focus ring driven by the visually-hidden native checkbox. */
+  &:has(input:focus-visible) {
+    outline: 2px solid ${Colors.black};
+    outline-offset: 2px;
   }
 
-  @media (max-width: 640px) {
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+`;
+
+const ResetChip = styled.button<{ $active: boolean }>`
+  ${chipBase}
+  border: 1.5px solid
+    ${({ $active }) => ($active ? Colors.gold : Colors.greyLighter)};
+  background-color: ${({ $active }) =>
+    $active ? Colors.primary : Colors.white};
+
+  &:focus-visible {
+    outline: 2px solid ${Colors.black};
+    outline-offset: 2px;
+  }
+`;
+
+/* ---------- Chapters: cards ---------- */
+const ChaptersGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: ${Spaces.md};
+  margin: ${Spaces.md} 0;
+
+  @media (max-width: 400px) {
     grid-template-columns: 1fr;
   }
 `;
 
-const ChapterCardWrapper = styled.div`
-  cursor: pointer;
+const ChapterCard = styled.button`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.md};
   width: 100%;
+  text-align: left;
+  padding: ${Spaces.md};
+  background-color: ${Colors.white};
+  border: 1px solid ${Colors.greyLighter};
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid ${Colors.primary};
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${Colors.gold};
+    outline-offset: 2px;
+  }
 `;
 
-const CrestImageContainer = styled.div`
-  width: 100%;
-  height: 160px;
+const SealBox = styled.div<{ $size: string }>`
+  flex-shrink: 0;
+  width: ${({ $size }) => $size};
+  height: ${({ $size }) => $size};
   display: flex;
   align-items: center;
   justify-content: center;
   img {
+    max-width: 100%;
     max-height: 100%;
     object-fit: contain;
   }
 `;
+
+const Monogram = styled.div<{ $size: string }>`
+  flex-shrink: 0;
+  width: ${({ $size }) => $size};
+  height: ${({ $size }) => $size};
+  border-radius: 50%;
+  background-color: ${Colors.primary};
+  color: ${Colors.black};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: calc(${({ $size }) => $size} * 0.3);
+`;
+
+const CardBody = styled.span`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+`;
+
+const ChapterName = styled.span`
+  font-weight: 700;
+  font-size: 18px;
+  color: ${Colors.greyDarkest};
+`;
+
+const MetaLine = styled.span`
+  font-size: 13px;
+  color: ${Colors.greyDark};
+`;
+
+const StatusBadge = styled.span<{ $status: string }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: ${({ $status }) =>
+    $status === 'Recognized' ? Colors.recognizedGreen : Colors.greyLighter};
+  color: ${Colors.greyDarkest};
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: ${({ $status }) =>
+      $status === 'Recognized' ? 'green' : Colors.grey};
+  }
+`;
+
+/* ---------- Chapters: modal ---------- */
+const ModalSealCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const BadgeRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${Spaces.sm};
+  justify-content: center;
+  margin-top: ${Spaces.md};
+`;
+
+const InfoBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: ${Colors.greyLightest};
+  color: ${Colors.greyDarkest};
+  font-size: 13px;
+  font-weight: 600;
+`;
+
+const DetailList = styled.dl`
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: ${Spaces.sm} ${Spaces.md};
+  margin: ${Spaces.lg} 0 0;
+
+  dt {
+    font-weight: 700;
+    color: ${Colors.greyDarkest};
+  }
+  dd {
+    margin: 0;
+    color: ${Colors.greyDarkest};
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    dd {
+      margin-bottom: ${Spaces.sm};
+    }
+  }
+`;
+
+// Renders a chapter's seal, falling back to an initials monogram when the
+// organization has no crest image yet.
+const ChapterSeal = ({ chapter, size }: { chapter: Chapter; size: string }) =>
+  chapter.crest ? (
+    <SealBox $size={size}>
+      <Image src={chapter.crest} alt="" width="auto" height="auto" />
+    </SealBox>
+  ) : (
+    <Monogram $size={size} aria-hidden="true">
+      {getInitials(chapter.name)}
+    </Monogram>
+  );
 
 interface ContactsBarProps {
   children: ReactNode;
@@ -352,8 +626,110 @@ const ContactsBar = ({ children, isMobile, isDesktop }: ContactsBarProps) => {
 export default function FSL() {
   const { isMobile, isTablet, isDesktop, isWidescreen } = useBreakpoint();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState<any | null>(null);
+  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  const [selectedTypes, setSelectedTypes] = useState<Set<ChapterType>>(
+    new Set(),
+  );
+  const [selectedCouncils, setSelectedCouncils] = useState<Set<Council>>(
+    new Set(),
+  );
+  const lastTrigger = useRef<HTMLButtonElement | null>(null);
   const year = new Date().getFullYear();
+
+  const noFiltersActive =
+    selectedTypes.size === 0 && selectedCouncils.size === 0;
+
+  // Within a facet: OR. Across facets: AND. Empty facet = no constraint.
+  const visibleChapters = useMemo(
+    () =>
+      CHAPTER_ROSTER.filter(
+        (chapter) =>
+          (selectedTypes.size === 0 || selectedTypes.has(chapter.type)) &&
+          (selectedCouncils.size === 0 ||
+            selectedCouncils.has(chapter.council)),
+      ),
+    [selectedTypes, selectedCouncils],
+  );
+
+  const toggleType = (value: ChapterType) =>
+    setSelectedTypes((prev) => {
+      const next = new Set(prev);
+      if (next.has(value)) next.delete(value);
+      else next.add(value);
+      return next;
+    });
+
+  const toggleCouncil = (value: Council) =>
+    setSelectedCouncils((prev) => {
+      const next = new Set(prev);
+      if (next.has(value)) next.delete(value);
+      else next.add(value);
+      return next;
+    });
+
+  const clearFilters = () => {
+    setSelectedTypes(new Set());
+    setSelectedCouncils(new Set());
+  };
+
+  const openChapter = (chapter: Chapter, trigger: HTMLButtonElement) => {
+    lastTrigger.current = trigger;
+    setSelectedChapter(chapter);
+    setIsModalOpen(true);
+  };
+
+  const closeChapter = () => {
+    setIsModalOpen(false);
+    setSelectedChapter(null);
+  };
+
+  // Escape-to-close, focus-into-dialog, focus trap, and focus restoration.
+  // BaseModal provides the dialog semantics; this layers keyboard handling on
+  // top without modifying the shared component.
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const dialog = document.querySelector<HTMLElement>(
+      '[aria-labelledby="fsl-chapter-title"]',
+    );
+    if (!dialog) return;
+
+    const getFocusable = () =>
+      Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute('disabled'));
+
+    getFocusable()[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsModalOpen(false);
+        setSelectedChapter(null);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      lastTrigger.current?.focus();
+    };
+  }, [isModalOpen]);
 
   return (
     <Page>
@@ -551,7 +927,7 @@ export default function FSL() {
               margin={isWidescreen ? '18px 0' : '36px 0'}
             >
               <Typography as="p" variant="copy">
-                With 14 organizations and over 300 fraternity and sorority
+                With 16 organizations and over 300 fraternity and sorority
                 members, Cal State LA&apos;s Greek community truly has it
                 all—from culturally based and service&mdash;driven groups to
                 social organizations and everything in between. No matter what
@@ -967,136 +1343,126 @@ export default function FSL() {
 
         {/* Chapters */}
         <TabPanel>
-          <FluidContainer>
+          <FluidContainer flex flexDirection="column" padding="0">
             <Typography
               as="h2"
               variant="title"
               size={isMobile ? 'xl' : '2xl'}
-              margin={`0 0 ${Spaces.md} 0`}
+              margin={`0 0 ${Spaces.sm} 0`}
             >
               Chapters
             </Typography>
-            {chapters.map((obj: any) =>
-              Object.keys(obj).map((item) => (
-                <>
-                  <Expandable
-                    indicator={<BiChevronRight size={36} />}
-                    header={
-                      <Typography variant="titleSmall"> {item}</Typography>
-                    }
-                  >
-                    <ChaptersGrid>
-                      {obj[item].map((p: any) => (
-                        <ChapterCardWrapper
-                          key={p.name}
-                          role="button"
-                          tabIndex={0}
-                          onClick={() => {
-                            setSelectedChapter(p);
-                            setIsModalOpen(true);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              setSelectedChapter(p);
-                              setIsModalOpen(true);
-                            }
-                          }}
-                        >
-                          <FluidContainer
-                            flex
-                            flexDirection="column"
-                            alignItems="center"
-                            padding="16px"
-                            backgroundColor="white"
-                          >
-                            <CrestImageContainer>
-                              <Image
-                                src={p.crest}
-                                alt={`${p.name} crest`}
-                                width="auto"
-                                height="auto"
-                              />
-                            </CrestImageContainer>
-                            <Typography
-                              as="h3"
-                              variant="titleSmall"
-                              margin="16px 0 0"
-                            >
-                              {p.name}
-                            </Typography>
-                          </FluidContainer>
-                        </ChapterCardWrapper>
-                      ))}
-                    </ChaptersGrid>
-                  </Expandable>
-                  <Divider margin={`${Spaces.md} 0`} />
-                </>
-              )),
-            )}
-          </FluidContainer>
-        </TabPanel>
+            <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
+              Filter by organization type or governing council, then select a
+              chapter to view its full profile.
+            </Typography>
 
-        {isModalOpen && selectedChapter && (
-          <Modal
-            isOpen={isModalOpen}
-            onClose={() => {
-              setIsModalOpen(false);
-              setSelectedChapter(null);
-            }}
-          >
-            <FluidContainer flex flexDirection="column" gap="24px">
+            <FilterBar role="group" aria-label="Filter chapters">
+              <FilterGroup>
+                <FilterLegend>Filter</FilterLegend>
+                <ResetChip
+                  type="button"
+                  $active={noFiltersActive}
+                  aria-pressed={noFiltersActive}
+                  onClick={clearFilters}
+                >
+                  {noFiltersActive && <BiCheck size={16} aria-hidden="true" />}
+                  All
+                </ResetChip>
+              </FilterGroup>
+              <FilterGroup>
+                <FilterLegend>Type</FilterLegend>
+                <ChipRow>
+                  {TYPE_FILTERS.map((type) => {
+                    const active = selectedTypes.has(type);
+                    return (
+                      <Chip key={type} $active={active}>
+                        <input
+                          type="checkbox"
+                          name="chapter-type"
+                          value={type}
+                          checked={active}
+                          onChange={() => toggleType(type)}
+                        />
+                        {active && <BiCheck size={16} aria-hidden="true" />}
+                        {type}
+                      </Chip>
+                    );
+                  })}
+                </ChipRow>
+              </FilterGroup>
+
+              <FilterGroup>
+                <FilterLegend>Council</FilterLegend>
+                <ChipRow>
+                  {COUNCIL_FILTERS.map((council) => {
+                    const active = selectedCouncils.has(council);
+                    return (
+                      <Chip key={council} $active={active}>
+                        <input
+                          type="checkbox"
+                          name="chapter-council"
+                          value={council}
+                          checked={active}
+                          onChange={() => toggleCouncil(council)}
+                        />
+                        {active && <BiCheck size={16} aria-hidden="true" />}
+                        {council}
+                      </Chip>
+                    );
+                  })}
+                </ChipRow>
+              </FilterGroup>
+            </FilterBar>
+
+            {visibleChapters.length === 0 ? (
               <FluidContainer
                 flex
                 flexDirection="column"
                 alignItems="center"
-                padding="16px"
-                backgroundColor="white"
+                padding={`${Spaces.xl} 0`}
               >
-                <CrestImageContainer>
-                  <Image
-                    src={selectedChapter.crest}
-                    alt={`${selectedChapter.name} crest`}
-                    width="auto"
-                    height="auto"
-                  />
-                </CrestImageContainer>
-                <Typography as="h3" variant="titleSmall" margin="16px 0 0">
-                  {selectedChapter.name}
+                <Typography as="p" margin={`0 0 ${Spaces.md}`}>
+                  No chapters match the selected filters.
                 </Typography>
+                <Button variant="outline" onClick={clearFilters}>
+                  Clear filters
+                </Button>
               </FluidContainer>
-              <FluidContainer padding="0" innerMaxWidth="400px">
-                <Typography as="span">
-                  <strong>Values: </strong>
-                  {selectedChapter.values.map((value: string, idx: number) => (
-                    <span key={`val-${idx}`}>{value} </span>
-                  ))}
-                  <br />
-                  <strong>Founding: </strong>
-                  {selectedChapter.founding}
-                  <br />
-                  {selectedChapter.communityService && (
-                    <>
-                      <strong>Community Service:</strong>{' '}
-                      {selectedChapter.communityService.map(
-                        (service: string, idx: number) => (
-                          <span key={`cs-${idx}`}>{service} </span>
-                        ),
-                      )}
-                      <br />
-                    </>
-                  )}
-                  <strong>Colors:</strong>{' '}
-                  {selectedChapter.colors.map((color: string, idx: number) => (
-                    <span key={`color-${idx}`}>{color} </span>
-                  ))}
-                  <br />
-                  <strong>Symbol:</strong> {selectedChapter.symbol}
-                </Typography>
-              </FluidContainer>
-            </FluidContainer>
-          </Modal>
-        )}
+            ) : (
+              <ChaptersGrid>
+                {visibleChapters.map((chapter) => (
+                  <ChapterCard
+                    key={chapter.name}
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-label={`${chapter.name}. ${chapter.type}, ${chapter.council} council, ${chapter.status}. View chapter details.`}
+                    onClick={(e) => openChapter(chapter, e.currentTarget)}
+                  >
+                    <ChapterSeal chapter={chapter} size="88px" />
+                    <CardBody>
+                      <ChapterName>{chapter.name}</ChapterName>
+                      <Typography color="greyDarkest" lineHeight="1">
+                        {chapter.greekLetters}
+                      </Typography>
+                      <StatusBadge $status={chapter.status}>
+                        {chapter.status}
+                      </StatusBadge>
+                      <MetaLine>
+                        {chapter.type} &middot; {chapter.council}
+                      </MetaLine>
+                    </CardBody>
+                  </ChapterCard>
+                ))}
+              </ChaptersGrid>
+            )}
+            <ResultsRow>
+              <Typography color="greyDark" aria-live="polite" variant="span">
+                Showing {visibleChapters.length} of {CHAPTER_ROSTER.length}
+              </Typography>
+            </ResultsRow>
+          </FluidContainer>
+        </TabPanel>
 
         {/* How to Join */}
         <TabPanel>
@@ -1307,6 +1673,90 @@ export default function FSL() {
           </FluidContainer>
         </TabPanel>
       </TabCluster>
+
+      {isModalOpen && selectedChapter && (
+        <BaseModal
+          title={selectedChapter.name}
+          greekLetters={selectedChapter.greekLetters}
+          labelledById="fsl-chapter-title"
+          maxWidth="560px"
+          onClose={closeChapter}
+        >
+          <ModalSealCenter>
+            <ChapterSeal chapter={selectedChapter} size="140px" />
+          </ModalSealCenter>
+
+          {selectedChapter.fullName && (
+            <Typography
+              as="p"
+              variant="cta"
+              color="greyDark"
+              margin={`${Spaces.sm} 0 0`}
+            >
+              {selectedChapter.fullName}
+            </Typography>
+          )}
+
+          <BadgeRow>
+            <InfoBadge>{selectedChapter.type}</InfoBadge>
+            <InfoBadge>{selectedChapter.council} Council</InfoBadge>
+            <StatusBadge $status={selectedChapter.status}>
+              {selectedChapter.status}
+            </StatusBadge>
+          </BadgeRow>
+
+          {selectedChapter.founding ||
+          selectedChapter.values ||
+          selectedChapter.colors ||
+          selectedChapter.symbol ||
+          selectedChapter.communityService ? (
+            <DetailList>
+              {selectedChapter.founding && (
+                <>
+                  <dt>Founded</dt>
+                  <dd>{selectedChapter.founding}</dd>
+                </>
+              )}
+              {selectedChapter.values && (
+                <>
+                  <dt>Values</dt>
+                  <dd>{selectedChapter.values.join(', ')}</dd>
+                </>
+              )}
+              {selectedChapter.colors && (
+                <>
+                  <dt>Colors</dt>
+                  <dd>{selectedChapter.colors.join(', ')}</dd>
+                </>
+              )}
+              {selectedChapter.symbol && (
+                <>
+                  <dt>Symbol</dt>
+                  <dd>
+                    {Array.isArray(selectedChapter.symbol)
+                      ? selectedChapter.symbol.join(', ')
+                      : selectedChapter.symbol}
+                  </dd>
+                </>
+              )}
+              {selectedChapter.communityService && (
+                <>
+                  <dt>Community Service</dt>
+                  <dd>{selectedChapter.communityService.join(', ')}</dd>
+                </>
+              )}
+            </DetailList>
+          ) : (
+            <Typography
+              as="p"
+              margin={`${Spaces.lg} 0 0`}
+              style={{ textAlign: 'center' }}
+            >
+              Full chapter profile coming soon.
+            </Typography>
+          )}
+        </BaseModal>
+      )}
     </Page>
   );
 }

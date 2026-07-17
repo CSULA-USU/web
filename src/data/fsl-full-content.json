@@ -166,176 +166,240 @@
   ],
   "chapters": [
     {
-      "Co-Ed": [
-        {
-          "name": "Delta Sigma Chi",
-          "fullName": "Delta Sigma Chi Co-Ed Fraternity",
-          "crest": "/departments/csi/fsl/dsc.png",
-          "values": [
-            "Brotherhood, Sisterhood, Community, Service, Scholarship"
-          ],
-          "founding": "2005",
-          "communityService": ["Heart Cancer Toy Drive", "Relay for Life"],
-          "colors": ["Red", "Black", "Gold"],
-          "symbol": "Black Panther"
-        },
-        {
-          "name": "Alpha Phi Omega",
-          "crest": "/departments/csi/fsl/APO.png",
-          "values": ["Leadership", "Friendship", "Service"],
-          "founding": "1925",
-          "colors": ["Old Glory Gold", "Royal Blue"],
-          "symbol": ["Golden Eagle", "Oak Tree", "Diamond", "Forget-me-not"]
-        }
+      "name": "Alpha Phi Omega",
+      "crest": "/departments/csi/fsl/APO.png",
+      "greekLetters": "ΑΦΩ",
+      "type": "Co-Ed",
+      "council": "MGC",
+      "status": "Recognized",
+      "founding": "1925",
+      "values": ["Leadership", "Friendship", "Service"],
+      "colors": ["Old Glory Gold", "Royal Blue"],
+      "symbol": ["Golden Eagle", "Oak Tree", "Diamond", "Forget-me-not"],
+      "chapterEmail": "",
+      "chapterPhone": ""
+    },
+    {
+      "name": "Alpha Sigma Tau",
+      "crest": "/departments/csi/fsl/ast.png",
+      "greekLetters": "ΑΣΤ",
+      "type": "Sorority",
+      "council": "PHC",
+      "status": "Recognized",
+      "founding": "1993",
+      "values": [
+        "Intellect",
+        "Excellence",
+        "Graciousness",
+        "Respect",
+        "Connections"
+      ],
+      "colors": ["Brown", "Cream"],
+      "symbol": "Anchor",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": [
+        "Pine Mountain Settlement School",
+        "Habitat for Humanity"
       ]
     },
     {
-      "Fraternities": [
-        {
-          "name": "Alpha Phi Alpha",
-          "crest": "/departments/csi/fsl/apa.png",
-          "values": ["Manly Deeds", "Scholarship", "Love for All Mankind"],
-          "founding": "1906",
-          "colors": ["Black", "Old Gold"],
-          "symbol": "Sphinx"
-        },
-        {
-          "name": "Beta Gamma Nu",
-          "crest": "/departments/csi/fsl/bgn.png",
-          "values": [
-            "Pride in Culture",
-            "Brotherhood in Arms",
-            "Respect for Life"
-          ],
-          "founding": "2016",
-          "colors": ["Brown", "Cream"],
-          "symbol": "Black Panther"
-        },
-        {
-          "name": "Sigma Alpha Epsilon",
-          "crest": "/departments/csi/fsl/sae.png",
-          "values": ["Friendship", "Scholarship", "Service"],
-          "founding": "1956",
-          "colors": ["Royal Purple", "Old Gold"],
-          "symbol": "Lion"
-        },
-        {
-          "name": "Sigma Lambda Beta",
-          "fullName": "Sigma Lambda Beta International Fraternity",
-          "crest": "/departments/csi/fsl/slb.png",
-          "values": [
-            "Brotherhood",
-            "Scholarship",
-            "Community Service",
-            "Cultural Awareness"
-          ],
-          "founding": "1997",
-          "communityService": ["CPR Awareness Day for Victor Correa"],
-          "colors": ["Royal Purple", "Purest White"],
-          "symbol": "White Stallion Mustang"
-        },
-        {
-          "name": "Sigma Nu",
-          "crest": "/departments/csi/fsl/sn.png",
-          "values": ["Love", "Truth", "Honor"],
-          "founding": "1966",
-          "communityService": ["Helping Hand Initiative"],
-          "colors": ["Black", "Gold", "White"],
-          "symbol": "Sword"
-        }
+      "name": "Delta Phi Epsilon",
+      "crest": "/departments/csi/fsl/dpe.png",
+      "greekLetters": "ΔΦΕ",
+      "type": "Sorority",
+      "council": "PHC",
+      "status": "Recognized",
+      "founding": "2016",
+      "values": ["Sisterhood", "Scholarship", "Self", "Service", "Social"],
+      "colors": ["Royal Purple", "Pure Gold"],
+      "symbol": "Unicorn",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": [
+        "Cystic Fibrosis Foundation",
+        "National Association of Anorexia Nervosa and Associated Disorders",
+        "Delta Phi Epsilon Educational Foundation"
       ]
     },
     {
-      "Sororities": [
-        {
-          "name": "Alpha Sigma Tau",
-          "crest": "/departments/csi/fsl/ast.png",
-          "values": [
-            "Intellect",
-            "Excellence",
-            "Graciousness",
-            "Respect",
-            "Connections"
-          ],
-          "founding": "1993",
-          "communityService": [
-            "Pine Mountain Settlement School",
-            "Habitat for Humanity"
-          ],
-          "colors": ["Brown", "Cream"],
-          "symbol": "Anchor"
-        },
-        {
-          "name": "Alpha Theta Pi",
-          "crest": "/departments/csi/fsl/atp.png",
-          "values": ["Sisterhood", "Scholastic", "Service", "Social", "Sports"],
-          "founding": "1948",
-          "communityService": [
-            "AIDS Walk",
-            "MS Walk",
-            "Beach Clean Ups",
-            "Holiday Caroling",
-            "Toy, Food, and Clothing Drives"
-          ],
-          "colors": ["Red", "White", "Black"],
-          "symbol": "Pegasus"
-        },
-        {
-          "name": "Delta Phi Epsilon",
-          "crest": "/departments/csi/fsl/dpe.png",
-          "values": ["Sisterhood", "Scholarship", "Self", "Service", "Social"],
-          "founding": "2016",
-          "communityService": [
-            "Cystic Fibrosis Foundation",
-            "National Association of Anorexia Nervosa and Associated Disorders",
-            "Delta Phi Epsilon Educational Foundation"
-          ],
-          "colors": ["Royal Purple", "Pure Gold"],
-          "symbol": "Unicorn"
-        },
-        {
-          "name": "Delta Sigma Theta",
-          "crest": "/departments/csi/fsl/dst.png",
-          "values": ["Scholarship", "Sisterhood", "Service"],
-          "founding": "1962",
-          "communityService": [
-            "Five-Point Program Thrust of Economic Development",
-            "Educational Development",
-            "International Awareness and Involvement",
-            "Physical and Mental Health",
-            "Political Awareness and Involvement"
-          ],
-          "colors": ["Crimson", "Cream"],
-          "symbol": "Fortitude"
-        },
-        {
-          "name": "Delta Zeta",
-          "crest": "/departments/csi/fsl/dz.png",
-          "values": ["Sisterhood", "Philanthropy", "Scholarship"],
-          "founding": "1966",
-          "communityService": [
-            "Painted Turtle Camp",
-            "Starkey Hearing Foundation"
-          ],
-          "colors": ["Rose", "Green"],
-          "symbol": "Roman Lamp"
-        },
-        {
-          "name": "Sigma Lambda Gamma",
-          "crest": "/departments/csi/fsl/slg.png",
-          "values": [
-            "Academics",
-            "Community Service",
-            "Cultural Awareness",
-            "Morals and Ethics",
-            "Social Interaction"
-          ],
-          "founding": "2012",
-          "communityService": ["Breast Cancer Awareness", "TRIO Program"],
-          "colors": ["Shocking Pink", "Majestic Purple"],
-          "symbol": "Pink Rose, Purple Panther"
-        }
+      "name": "Delta Sigma Theta",
+      "crest": "/departments/csi/fsl/dst.png",
+      "greekLetters": "ΔΣΘ",
+      "type": "Sorority",
+      "council": "NPHC",
+      "status": "Recognized",
+      "founding": "1962",
+      "values": ["Scholarship", "Sisterhood", "Service"],
+      "colors": ["Crimson", "Cream"],
+      "symbol": "Fortitude",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": [
+        "Five-Point Program Thrust of Economic Development",
+        "Educational Development",
+        "International Awareness and Involvement",
+        "Physical and Mental Health",
+        "Political Awareness and Involvement"
       ]
+    },
+    {
+      "name": "Delta Zeta",
+      "crest": "/departments/csi/fsl/dz.png",
+      "greekLetters": "ΔΖ",
+      "type": "Sorority",
+      "council": "PHC",
+      "status": "Recognized",
+      "founding": "1966",
+      "values": ["Sisterhood", "Philanthropy", "Scholarship"],
+      "colors": ["Rose", "Green"],
+      "symbol": "Roman Lamp",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": ["Painted Turtle Camp", "Starkey Hearing Foundation"]
+    },
+    {
+      "name": "Kappa Alpha Psi",
+      "crest": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/chapters/kappa-alpha-psi.webp",
+      "greekLetters": "ΚΑΨ",
+      "type": "Fraternity",
+      "council": "NPHC",
+      "status": "Recognized"
+    },
+    {
+      "name": "Lambda Theta Alpha",
+      "crest": "/departments/csi/fsl/LTA.png",
+      "greekLetters": "ΛΘA",
+      "type": "Sorority",
+      "council": "MGC",
+      "status": "Reestablishing"
+    },
+    {
+      "name": "Lambda Theta Nu",
+      "crest": "/departments/csi/fsl/LTN.png",
+      "greekLetters": "ΛΘΝ",
+      "type": "Sorority",
+      "council": "MGC",
+      "status": "Reestablishing"
+    },
+    {
+      "name": "Lambda Theta Phi",
+      "crest": "/departments/csi/fsl/LTPL.png",
+      "greekLetters": "ΛΘΦ",
+      "type": "Fraternity",
+      "council": "MGC",
+      "status": "Reestablishing",
+      "founding": "1975",
+      "values": ["Unity", "Respect", "Honor", "Pride", "Tradition"],
+      "colors": ["Brotherhood Brown", "Pure White"],
+      "communityService": ["American Heart Association", "Food Bank"]
+    },
+    {
+      "name": "Omega Psi Phi",
+      "crest": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/chapters/omega-psi-phi-transparent.webp",
+      "greekLetters": "ΩΨΦ",
+      "type": "Fraternity",
+      "council": "NPHC",
+      "status": "Recognized",
+      "founding": "1911",
+      "values": ["Manhood", "Scholarship", "Perseverance", "Uplift"],
+      "colors": ["Royal Purple", "Old Gold"],
+      "symbol": "Lamp",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": [
+        "National Achievement Week",
+        "Talent Hunt Program",
+        "Social Action Program",
+        "Scholarship Program"
+      ]
+    },
+    {
+      "name": "Phi Iota Alpha",
+      "crest": "/departments/csi/fsl/PIA.png",
+      "greekLetters": "ΦΙΑ",
+      "type": "Fraternity",
+      "council": "MGC",
+      "status": "Reestablishing"
+    },
+    {
+      "name": "Sigma Alpha Epsilon",
+      "crest": "/departments/csi/fsl/sae.png",
+      "greekLetters": "ΣΑΕ",
+      "type": "Fraternity",
+      "council": "IFC",
+      "status": "Recognized",
+      "founding": "1956",
+      "values": ["Friendship", "Scholarship", "Service"],
+      "colors": ["Royal Purple", "Old Gold"],
+      "symbol": "Lion",
+      "chapterEmail": "",
+      "chapterPhone": ""
+    },
+    {
+      "name": "Sigma Lambda Beta",
+      "fullName": "Sigma Lambda Beta International Fraternity",
+      "crest": "/departments/csi/fsl/slb.png",
+      "greekLetters": "ΣΛΒ",
+      "type": "Fraternity",
+      "council": "MGC",
+      "status": "Recognized",
+      "founding": "1997",
+      "values": [
+        "Brotherhood",
+        "Scholarship",
+        "Community Service",
+        "Cultural Awareness"
+      ],
+      "colors": ["Royal Purple", "Purest White"],
+      "symbol": "White Stallion Mustang",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": ["CPR Awareness Day for Victor Correa"]
+    },
+    {
+      "name": "Sigma Lambda Gamma",
+      "crest": "/departments/csi/fsl/slg.png",
+      "greekLetters": "ΣΛΓ",
+      "type": "Sorority",
+      "council": "MGC",
+      "status": "Recognized",
+      "founding": "2012",
+      "values": [
+        "Academics",
+        "Community Service",
+        "Cultural Awareness",
+        "Morals and Ethics",
+        "Social Interaction"
+      ],
+      "colors": ["Shocking Pink", "Majestic Purple"],
+      "symbol": "Pink Rose, Purple Panther",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": ["Breast Cancer Awareness", "TRIO Program"]
+    },
+    {
+      "name": "Sigma Nu",
+      "crest": "/departments/csi/fsl/sn.png",
+      "greekLetters": "ΣΝ",
+      "type": "Fraternity",
+      "council": "IFC",
+      "status": "Recognized",
+      "founding": "1966",
+      "values": ["Love", "Truth", "Honor"],
+      "colors": ["Black", "Gold", "White"],
+      "symbol": "Sword",
+      "chapterEmail": "",
+      "chapterPhone": "",
+      "communityService": ["Helping Hand Initiative"]
+    },
+    {
+      "name": "Zeta Phi Beta",
+      "crest": "/departments/csi/fsl/ZPB.png",
+      "greekLetters": "ΖΦβ",
+      "type": "Sorority",
+      "council": "NPHC",
+      "status": "Recognized"
     }
   ],
   "policyButtons": [
