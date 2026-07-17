@@ -514,7 +514,6 @@ const CardBody = styled.span`
 const ChapterName = styled.span`
   font-weight: 700;
   font-size: 18px;
-  line-height: 1.2;
   color: ${Colors.greyDarkest};
 `;
 
@@ -928,7 +927,7 @@ export default function FSL() {
               margin={isWidescreen ? '18px 0' : '36px 0'}
             >
               <Typography as="p" variant="copy">
-                With 14 organizations and over 300 fraternity and sorority
+                With 16 organizations and over 300 fraternity and sorority
                 members, Cal State LA&apos;s Greek community truly has it
                 all—from culturally based and service&mdash;driven groups to
                 social organizations and everything in between. No matter what
@@ -1442,9 +1441,10 @@ export default function FSL() {
                   >
                     <ChapterSeal chapter={chapter} size="88px" />
                     <CardBody>
-                      <ChapterName>
-                        {chapter.name} ({chapter.greekLetters})
-                      </ChapterName>
+                      <ChapterName>{chapter.name}</ChapterName>
+                      <Typography color="greyDarkest" lineHeight="1">
+                        {chapter.greekLetters}
+                      </Typography>
                       <StatusBadge $status={chapter.status}>
                         {chapter.status}
                       </StatusBadge>
@@ -1692,7 +1692,6 @@ export default function FSL() {
               variant="cta"
               color="greyDark"
               margin={`${Spaces.sm} 0 0`}
-              style={{ textAlign: 'center' }}
             >
               {selectedChapter.fullName}
             </Typography>
