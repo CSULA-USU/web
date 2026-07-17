@@ -50,7 +50,7 @@ export const Announcement = ({
       {linkText && href && (
         <LinkContainer>
           <Link href={href} target="_blank">
-            <Typography weight="700">{linkText}</Typography>
+            <Typography as="span">{linkText}</Typography>
           </Link>
         </LinkContainer>
       )}
