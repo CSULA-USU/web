@@ -44,6 +44,7 @@ interface Chapter {
   name: string;
   fullName?: string;
   crest?: string;
+  greekLetters: string;
   type: ChapterType;
   council: Council;
   status: 'Recognized' | 'Reestablishing';
@@ -394,14 +395,14 @@ const chipBase = css`
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    border-color: ${Colors.gold};
+    border-color: ${Colors.grey};
   }
 `;
 
 const Chip = styled.label<{ $active: boolean }>`
   ${chipBase}
   border: 1.5px solid
-    ${({ $active }) => ($active ? Colors.gold : Colors.greyLighter)};
+    ${({ $active }) => ($active ? Colors.greyDarker : Colors.greyLighter)};
   background-color: ${({ $active }) =>
     $active ? Colors.primary : Colors.white};
 
@@ -541,7 +542,7 @@ const StatusBadge = styled.span<{ $status: string }>`
     height: 7px;
     border-radius: 50%;
     background-color: ${({ $status }) =>
-      $status === 'Recognized' ? Colors.gold : Colors.grey};
+      $status === 'Recognized' ? 'green' : Colors.grey};
   }
 `;
 
@@ -1441,7 +1442,9 @@ export default function FSL() {
                   >
                     <ChapterSeal chapter={chapter} size="88px" />
                     <CardBody>
-                      <ChapterName>{chapter.name}</ChapterName>
+                      <ChapterName>
+                        {chapter.name} ({chapter.greekLetters})
+                      </ChapterName>
                       <StatusBadge $status={chapter.status}>
                         {chapter.status}
                       </StatusBadge>
