@@ -303,7 +303,7 @@ export const StaffCardWithModal = ({
                 href={`/staff/${toKebabCase(name)}`}
                 isInverseUnderlineStyling
               >
-                <Typography color="greyDarker" variant="span">
+                <Typography color="greyDarker" variant="span" as="span">
                   View Virtual Card
                 </Typography>
               </StyledLink>

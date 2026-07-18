@@ -41,7 +41,6 @@ span:focus-visible {
   box-shadow: 0 0 0 6px #c4b5fd;
   /* Purple 300 */
   outline-offset: 2px;
-  text-decoration: underline;
   z-index: 99;
 }
 
