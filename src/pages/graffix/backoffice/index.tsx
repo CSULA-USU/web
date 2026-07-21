@@ -1,17 +1,24 @@
 import Head from 'next/head';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import items from 'data/backoffice.json';
+import requests from 'data/graffixRequestPackages.json';
 import { useBreakpoint } from 'hooks';
 import { GenericModal, GraffixGuidelines, Page } from 'modules';
 import { media, Spaces } from 'theme';
 
-interface TenantCardData {
+interface PackageContentBlock {
+  type: 'label' | 'text' | 'list';
+  text?: string;
+  items?: string[];
+}
+
+interface RequestPackage {
   title: string;
-  children: ReactNode;
   iconSrc: string;
   iconAlt: string;
+  content: PackageContentBlock[];
 }
 
 const RequestContainer = styled.div`
@@ -46,186 +53,52 @@ const ContentSlot = styled.div`
   padding: 24px;
 `;
 
-const requests = [
-  {
-    title: 'Package A',
-    iconSrc:
-      '/departments/graffix/backoffice/request-images/individual-campaign.svg',
-    iconAlt: 'Package A request info',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Social Media
-        </Typography>
-        <Typography as="p">IG Post/Story</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Small Print
-        </Typography>
-        <Typography as="p">Poster</Typography>
-        <Typography as="p">Postcard</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Large Print
-        </Typography>
-        <Typography as="p">Large Poster</Typography>
-        <Typography as="p">Window Decal</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Banners
-        </Typography>
-        <Typography as="p">12&apos; x 4&apos;</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Signage
-        </Typography>
-        <Typography as="p">A-Frame (2)</Typography>
-        <Typography as="p">Location Signage (poster size)</Typography>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Package B',
-    iconSrc: '/departments/graffix/backoffice/request-images/party.svg',
-    iconAlt: 'Package B Information',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Social Media
-        </Typography>
-        <Typography as="p">IG Post/Story</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Small Print
-        </Typography>
-        <Typography as="p">Poster</Typography>
-        <Typography as="p">Postcard</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Large Print
-        </Typography>
-        <Typography as="p">Large Poster</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Banners
-        </Typography>
-        <Typography as="p">3&apos; x 8&apos;</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Signage
-        </Typography>
-        <Typography as="p">A-Frame (2)</Typography>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Package C',
-    iconSrc: '/departments/graffix/backoffice/request-images/card.svg',
-    iconAlt: 'Package C information',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Social Media
-        </Typography>
-        <Typography as="p">IG Post/Story</Typography>
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Small Print
-        </Typography>
-        <Typography as="p">Poster</Typography>
-        <Typography as="p">Postcard</Typography>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Package D',
-    iconSrc:
-      '/departments/graffix/backoffice/request-images/features-overview.svg',
-    iconAlt: 'Package D information',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Single Item Request
-        </Typography>
-        <Typography as="p">Specify the Request</Typography>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Package E',
-    iconSrc:
-      '/departments/graffix/backoffice/request-images/online-popularity.svg',
-    iconAlt: 'Package E information',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Department Social Media Design Post
-        </Typography>
-      </FluidContainer>
-    ),
-  },
-  {
-    title: 'Optional Promo',
-    iconSrc: '/departments/graffix/backoffice/request-images/gift-box.svg',
-    iconAlt: 'Package C information',
-    children: (
-      <FluidContainer
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        innerMaxWidth="100%"
-      >
-        <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
-          Requires an additional week for design and print time
-        </Typography>
-        <Typography as="p">
-          Needs to be disccussed prior to adding promo
-        </Typography>
-        <ol>
-          <li>
-            If solely requesting promo items, submit as a single item request
-          </li>
-        </ol>
-        <Typography as="p">This is based on budget and capacity</Typography>
-        <Typography as="p">Apparel</Typography>
-        <ol>
-          <li>Hats, shirts, hoodies, jackets, etc.</li>
-        </ol>
-        <Typography as="p">Products</Typography>
-        <ol>
-          <li>
-            Bags, cups, planners, pens, stickers, pins (Enamel & Crocs), etc.
-          </li>
-        </ol>
-        <Typography as="p">Outdoor</Typography>
-        <ol>
-          <li>Floor decals, large window decals (Window facing the plaza)</li>
-        </ol>
-      </FluidContainer>
-    ),
-  },
-];
+const requestPackages = requests as RequestPackage[];
+
+function PackageContent({ content }: { content: PackageContentBlock[] }) {
+  return (
+    <FluidContainer
+      flex
+      flexDirection="column"
+      justifyContent="center"
+      innerMaxWidth="100%"
+    >
+      {content.map((block, index) => {
+        if (block.type === 'label') {
+          return (
+            <Typography
+              key={index}
+              variant="label"
+              as="h3"
+              margin={`${Spaces.sm} 0`}
+            >
+              {block.text}
+            </Typography>
+          );
+        }
+        if (block.type === 'list') {
+          return (
+            <ol key={index}>
+              {block.items?.map((listItem) => (
+                <li key={listItem}>{listItem}</li>
+              ))}
+            </ol>
+          );
+        }
+        return (
+          <Typography key={index} as="p">
+            {block.text}
+          </Typography>
+        );
+      })}
+    </FluidContainer>
+  );
+}
 
 export default function Backoffice() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalData, setModalData] = useState<TenantCardData | null>(null);
+  const [modalData, setModalData] = useState<RequestPackage | null>(null);
 
   return (
     <Page>
@@ -284,7 +157,7 @@ export default function Backoffice() {
         justifyContent="space-between"
         padding="0px 32px"
       >
-        {requests.map((props) => (
+        {requestPackages.map((props) => (
           <RequestContainer
             key={props.title}
             onClick={() => {
@@ -336,7 +209,7 @@ export default function Backoffice() {
             {modalData.title}
           </Typography>
           <br />
-          {modalData.children}
+          <PackageContent content={modalData.content} />
         </GenericModal>
       )}
     </Page>
