@@ -201,6 +201,13 @@ export const GraffixGuidelines = () => {
                   </li>
                 </ul>
               </li>
+              <li>
+                If you would like to request additional promotional items such
+                as apparel, mugs, or other items, please indicate this in your
+                request. Sam will reach out to you to discuss the options and
+                pricing. Please note that promotional items may require
+                additional lead time for production and delivery.
+              </li>
             </ol>
           </Expandable>
         </FluidContainer>
