@@ -4,91 +4,43 @@
       "title": "Package A",
       "subtitle": "Full Campaign",
       "iconSrc": "/departments/graffix/backoffice/request-images/individual-campaign.svg",
+      "iconAlt": "Package A request info",
       "sections": [
-        { "label": "Social Media", "items": ["IG Post / Story"] },
-        { "label": "Small Print", "items": ["Poster", "Postcard"] },
-        { "label": "Large Print", "items": ["Large Poster", "Window Decal"] },
-        { "label": "Banners", "items": ["12' × 4'"] },
-        {
-          "label": "Signage",
-          "items": ["A-Frame (2)", "Location Signage (poster size)"]
-        }
+        { "label": "Large Print", "items": ["Large Poster"] },
+        { "label": "Signage", "items": ["Digital Screens"] },
+        { "label": "Small Print", "items": ["Postcard (500+)", "Poster"] },
+        { "label": "Social Media", "items": ["IG Post"] }
       ]
     },
     {
       "title": "Package B",
       "subtitle": "Standard Campaign",
       "iconSrc": "/departments/graffix/backoffice/request-images/party.svg",
+      "iconAlt": "Package B Information",
       "sections": [
-        { "label": "Social Media", "items": ["IG Post / Story"] },
-        { "label": "Small Print", "items": ["Poster", "Postcard"] },
-        { "label": "Large Print", "items": ["Large Poster"] },
-        { "label": "Banners", "items": ["3' × 8'"] },
-        { "label": "Signage", "items": ["A-Frame (2)"] }
+        { "label": "Signage", "items": ["Digital Screens"] },
+        { "label": "Small Print", "items": ["Postcard (250)", "Poster"] },
+        { "label": "Social Media", "items": ["IG Post"] }
       ]
     },
     {
       "title": "Package C",
       "subtitle": "Basic Package",
       "iconSrc": "/departments/graffix/backoffice/request-images/card.svg",
+      "iconAlt": "Package C information",
       "sections": [
-        { "label": "Social Media", "items": ["IG Post / Story"] },
-        { "label": "Small Print", "items": ["Poster", "Postcard"] }
+        { "label": "Small Print", "items": ["Poster"] },
+        { "label": "Signage", "items": ["Digital Screens"] },
+        { "label": "Social Media", "items": ["IG Post"] }
       ]
     },
     {
       "title": "Package D",
       "subtitle": "Miscellaneous or One-Off Items",
       "iconSrc": "/departments/graffix/backoffice/request-images/features-overview.svg",
+      "iconAlt": "Package D information",
       "sections": [
-        {
-          "label": "Single Item",
-          "items": [
-            "Specify the item you need. Suitable for one-off requests such as a single poster, flyer, or social media post."
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Package E",
-      "subtitle": "Social Media Only",
-      "iconSrc": "/departments/graffix/backoffice/request-images/online-popularity.svg",
-      "sections": [
-        {
-          "label": "Department Social Media",
-          "items": [
-            "A department social media design post. Ideal for promoting events or announcements on your department's social channels."
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Optional Promo",
-      "subtitle": "Add-On",
-      "iconSrc": "/departments/graffix/backoffice/request-images/gift-box.svg",
-      "sections": [
-        {
-          "label": "Important Note",
-          "items": [
-            "Requires an additional week for design and print time. Must be discussed prior to adding to your request. Subject to budget and capacity approval."
-          ]
-        },
-        {
-          "label": "Apparel",
-          "items": ["Hats, shirts, hoodies, jackets, etc."]
-        },
-        {
-          "label": "Products",
-          "items": [
-            "Bags, cups, planners, pens, stickers, pins (enamel & Crocs), etc."
-          ]
-        },
-        {
-          "label": "Outdoor",
-          "items": [
-            "Floor decals, large window decals (window facing the plaza)"
-          ]
-        }
+        { "label": "Single Item Request", "items": ["Specify the Request"] }
       ]
     }
   ],
@@ -228,24 +180,6 @@
           "package": "Package D – Single Item",
           "items": "One custom design item",
           "turnaround": "3+ weeks",
-          "fee": "TBD"
-        }
-      },
-      {
-        "id": "pkg-e",
-        "values": {
-          "package": "Package E – Social Media Only",
-          "items": "Department social media design post",
-          "turnaround": "3+ weeks",
-          "fee": "TBD"
-        }
-      },
-      {
-        "id": "pkg-promo",
-        "values": {
-          "package": "Optional Promo Add-On",
-          "items": "Apparel, products, outdoor items",
-          "turnaround": "+1 week",
           "fee": "TBD"
         }
       }

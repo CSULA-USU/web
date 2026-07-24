@@ -194,7 +194,7 @@ export default function Graffix() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-hero.webp"
           key="og-image"
         />
         <meta property="og:image:alt" content="U-SU Graffix Department Logo" />
@@ -210,7 +210,7 @@ export default function Graffix() {
         />
         <meta
           name="twitter:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-hero.webp"
         />
         <link rel="canonical" href="https://www.calstatelausu.org/graffix" />
         {/* Structured Data for Google/AI */}
@@ -303,7 +303,7 @@ export default function Graffix() {
           </Header>
           {!isDesktop && (
             <Image
-              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-header.webp"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-hero.webp"
               alt="two female students posing and showcasing the Graffix department tote bags"
               width={600}
               height={700}
@@ -313,7 +313,7 @@ export default function Graffix() {
         <FluidContainer backgroundColor="transparent">
           <OfficeHours
             address="5154 State University Dr, Los Angeles, CA 90032 Room 204B, Floor 2"
-            phoneNumber="(323)-343-2464"
+            phoneNumber="(323) 343-2464"
             hours={hours}
           />
         </FluidContainer>
