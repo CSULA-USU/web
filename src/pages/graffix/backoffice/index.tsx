@@ -3,22 +3,22 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Card, FluidContainer, Image, Typography } from 'components';
 import items from 'data/backoffice.json';
-import requests from 'data/graffixRequestPackages.json';
+import graffixData from 'data/graffixRequest.json';
 import { useBreakpoint } from 'hooks';
 import { GenericModal, GraffixGuidelines, Page } from 'modules';
 import { media, Spaces } from 'theme';
 
-interface PackageContentBlock {
-  type: 'label' | 'text' | 'list';
-  text?: string;
-  items?: string[];
+interface PackageSection {
+  label: string;
+  items: string[];
 }
 
 interface RequestPackage {
   title: string;
+  subtitle: string;
   iconSrc: string;
   iconAlt: string;
-  content: PackageContentBlock[];
+  sections: PackageSection[];
 }
 
 const RequestContainer = styled.div`
@@ -53,9 +53,9 @@ const ContentSlot = styled.div`
   padding: 24px;
 `;
 
-const requestPackages = requests as RequestPackage[];
+const requestPackages = graffixData.packages as RequestPackage[];
 
-function PackageContent({ content }: { content: PackageContentBlock[] }) {
+function PackageContent({ sections }: { sections: PackageSection[] }) {
   return (
     <FluidContainer
       flex
@@ -63,34 +63,18 @@ function PackageContent({ content }: { content: PackageContentBlock[] }) {
       justifyContent="center"
       innerMaxWidth="100%"
     >
-      {content.map((block, index) => {
-        if (block.type === 'label') {
-          return (
-            <Typography
-              key={index}
-              variant="label"
-              as="h3"
-              margin={`${Spaces.sm} 0`}
-            >
-              {block.text}
-            </Typography>
-          );
-        }
-        if (block.type === 'list') {
-          return (
-            <ol key={index}>
-              {block.items?.map((listItem) => (
-                <li key={listItem}>{listItem}</li>
-              ))}
-            </ol>
-          );
-        }
-        return (
-          <Typography key={index} as="p">
-            {block.text}
+      {sections.map((section) => (
+        <div key={section.label}>
+          <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+            {section.label}
           </Typography>
-        );
-      })}
+          {section.items.map((item) => (
+            <Typography as="p" key={item}>
+              {item}
+            </Typography>
+          ))}
+        </div>
+      ))}
     </FluidContainer>
   );
 }
@@ -173,7 +157,7 @@ export default function Backoffice() {
               margin={`${Spaces.md}`}
               minHeight="100%"
               title={`${props.title}`}
-            ></Card>
+            />
           </RequestContainer>
         ))}
       </FluidContainer>
@@ -209,7 +193,7 @@ export default function Backoffice() {
             {modalData.title}
           </Typography>
           <br />
-          <PackageContent content={modalData.content} />
+          <PackageContent sections={modalData.sections} />
         </GenericModal>
       )}
     </Page>
