@@ -49,8 +49,13 @@ const scrollToTop = () => {
   document.body.scrollTop = 0; // Safari
   document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera and others
 
-  // programatically set focus on top-level item
-  const topElement = document.getElementById('nav-logo') || document.body;
+  // programatically move focus to the top of the page so keyboard users
+  // aren't stranded on the fixed button after the scroll
+  const topElement =
+    document.getElementById('nav-logo-desktop') ||
+    document.getElementById('nav-logo-mobile') ||
+    document.body;
+  topElement.setAttribute('tabindex', '-1');
   topElement.focus();
 };
 

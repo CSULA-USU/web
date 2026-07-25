@@ -41,7 +41,6 @@ span:focus-visible {
   box-shadow: 0 0 0 6px #c4b5fd;
   /* Purple 300 */
   outline-offset: 2px;
-  text-decoration: underline;
   z-index: 99;
 }
 
@@ -87,9 +86,4 @@ span:focus-visible {
 .modal-content {
   max-height: 80vh;
   overflow-y: auto;
-}
-
-.modal-content:focus-visible {
-  outline: none;
-  box-shadow: none;
 }

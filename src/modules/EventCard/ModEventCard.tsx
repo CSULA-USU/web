@@ -400,7 +400,7 @@ export const ModEventCard = ({
                   size="20px"
                   style={{ margin: '0px 8px 2px 0px' }}
                 />
-                <Typography as="h1" variant="eventDetail" color="black">
+                <Typography as="span" variant="eventDetail" color="black">
                   {ABBREVIATED_ORGS[group] || group}
                 </Typography>
               </InfoContainer>

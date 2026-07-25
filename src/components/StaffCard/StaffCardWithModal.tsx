@@ -155,7 +155,10 @@ export const StaffCardWithModal = ({
 
   return (
     <>
-      <StaffCard onClick={() => openModal()} aria-label="open modal">
+      <StaffCard
+        onClick={() => openModal()}
+        aria-label={`View details for ${name}`}
+      >
         <Panel {...props} width={'304px'} height="512px">
           <CenterWord>
             <div>
@@ -300,7 +303,7 @@ export const StaffCardWithModal = ({
                 href={`/staff/${toKebabCase(name)}`}
                 isInverseUnderlineStyling
               >
-                <Typography color="greyDarker" variant="span">
+                <Typography color="greyDarker" variant="span" as="span">
                   View Virtual Card
                 </Typography>
               </StyledLink>

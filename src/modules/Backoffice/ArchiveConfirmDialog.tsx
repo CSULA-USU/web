@@ -130,14 +130,8 @@ export function ArchiveConfirmDialog({
           </DialogMessage>
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={onCancel} aria-label="Cancel deletion">
-            Cancel
-          </Button>
-          <Button
-            variant="danger"
-            onClick={onConfirm}
-            aria-label="Confirm deletion"
-          >
+          <Button onClick={onCancel}>Cancel</Button>
+          <Button variant="danger" onClick={onConfirm}>
             Archive
           </Button>
         </DialogFooter>

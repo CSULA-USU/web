@@ -80,7 +80,7 @@ export const EventHeader = ({
           className="header-subheader"
           variant="labelTitle"
           color="greyDarker"
-          as="h1"
+          as="p"
           size="lg"
         >
           {subheaderText}

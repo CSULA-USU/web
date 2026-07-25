@@ -46,12 +46,20 @@ const StyledInput = styled.input`
     border: 0;
   }
   &::placeholder {
-    color: ${Colors.grey};
+    color: ${Colors.greyDarker};
   }
 `;
 
 const Label = styled.label`
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 `;
 
 const StyledSearchIcon = styled(FaSearch)<{ color?: string }>`
@@ -81,7 +89,6 @@ export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
             <Label htmlFor="searchInput">Search</Label>
             <StyledInput
               id="searchInput"
-              aria-labelledby="searchInput"
               placeholder="Search"
               value={input}
               onChange={onChange}
