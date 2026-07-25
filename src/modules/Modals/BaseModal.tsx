@@ -1,7 +1,9 @@
 import type React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
+import Modal from 'react-modal';
 import styled from 'styled-components';
-import { Typography } from 'components';
+// Leaf import rather than the `components` barrel — see ConfirmDialog.
+import { Typography } from 'components/Typography/Typography';
 import { Colors, Spaces } from 'theme';
 
 interface BaseModalProps {
@@ -12,29 +14,42 @@ interface BaseModalProps {
   onClose: () => void;
   maxWidth?: string;
   labelledById?: string;
+  describedById?: string;
   role?: 'dialog' | 'alertdialog';
+  initialFocusRef?: React.RefObject<HTMLElement>;
 }
 
-const Overlay = styled.div`
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: ${Spaces.md};
-  background-color: rgba(0, 0, 0, 0.5);
-`;
+const FixedModal = Modal as unknown as React.FC<any>;
 
-const Modal = styled.div<{ $maxWidth: string }>`
-  width: 100%;
-  max-width: ${({ $maxWidth }) => $maxWidth};
-  max-height: 90vh;
-  overflow-y: auto;
-  background-color: ${Colors.white};
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-`;
+// react-modal merges these over Modal.defaultStyles, so the content defaults it
+// pins 40px from every edge have to be reset explicitly for the overlay's flex
+// centering to place the panel.
+const buildModalStyles = (maxWidth: string) => ({
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: Spaces.md,
+    zIndex: 1000,
+  },
+  content: {
+    position: 'static',
+    top: 'auto',
+    left: 'auto',
+    right: 'auto',
+    bottom: 'auto',
+    padding: 0,
+    border: 'none',
+    background: Colors.white,
+    borderRadius: '8px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+    width: '100%',
+    maxWidth,
+    maxHeight: '90vh',
+    overflowY: 'auto',
+  },
+});
 
 const ModalHeader = styled.div`
   display: flex;
@@ -91,9 +106,14 @@ export function BaseModal({
   footer,
   onClose,
   maxWidth = '600px',
-  labelledById = 'modal-title',
+  labelledById,
+  describedById,
   role = 'dialog',
+  initialFocusRef,
 }: BaseModalProps) {
+  const generatedId = useId();
+  const headingId = labelledById ?? `${generatedId}-title`;
+
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -102,35 +122,29 @@ export function BaseModal({
     };
   }, []);
 
-  const handleOverlayClick = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
-    <Overlay onClick={handleOverlayClick}>
-      <Modal
-        role={role}
-        aria-modal="true"
-        aria-labelledby={labelledById}
-        $maxWidth={maxWidth}
-      >
-        <ModalHeader>
-          <Typography as="h2" id={labelledById} variant="title" size="xl">
-            {title} ({greekLetters})
-          </Typography>
+    <FixedModal
+      isOpen
+      onRequestClose={onClose}
+      onAfterOpen={() => initialFocusRef?.current?.focus()}
+      role={role}
+      aria={{ labelledby: headingId, describedby: describedById }}
+      style={buildModalStyles(maxWidth)}
+    >
+      <ModalHeader>
+        <Typography as="h2" id={headingId} variant="title" size="xl">
+          {greekLetters ? `${title} (${greekLetters})` : title}
+        </Typography>
 
-          <CloseButton type="button" onClick={onClose} aria-label="Close modal">
-            ×
-          </CloseButton>
-        </ModalHeader>
+        <CloseButton type="button" onClick={onClose} aria-label="Close modal">
+          ×
+        </CloseButton>
+      </ModalHeader>
 
-        <ModalBody>{children}</ModalBody>
+      <ModalBody>{children}</ModalBody>
 
-        {footer ? <ModalFooter>{footer}</ModalFooter> : null}
-      </Modal>
-    </Overlay>
+      {footer ? <ModalFooter>{footer}</ModalFooter> : null}
+    </FixedModal>
   );
 }
 

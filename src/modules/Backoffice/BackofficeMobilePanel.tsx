@@ -207,7 +207,6 @@ export default function BackofficeMobilePanel({ open, onClose }: Props) {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by name or description"
                 aria-label="Search backoffice tools"
-                autoFocus
               />
             </SearchWrap>
 

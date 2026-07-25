@@ -293,7 +293,7 @@ const SocialCard = styled.div<{ $copied?: boolean }>`
 
 const CopyHint = styled.span`
   font-size: 0.75rem;
-  color: ${Colors.grey};
+  color: ${Colors.greyDarker};
 `;
 
 export default function Brand() {

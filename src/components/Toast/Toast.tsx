@@ -21,7 +21,7 @@ const ToastContainer = styled.div<{ type: 'success' | 'error' }>`
   ${(props) =>
     props.type === 'success'
       ? `
-    background-color: #28a745;
+    background-color: #1e7e34;
     color: #ffffff;
   `
       : `

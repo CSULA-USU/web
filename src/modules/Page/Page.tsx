@@ -47,6 +47,9 @@ export const Page = ({ children }: PageProps) => {
 
   return (
     <PageContainer>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <Announcement
         text={banner?.text}
         isVisible={!!banner?.is_visible}
@@ -54,7 +57,9 @@ export const Page = ({ children }: PageProps) => {
         href={banner?.href}
       />
       <Nav />
-      <main role="main">{children}</main>
+      <main id="main-content" tabIndex={-1} role="main">
+        {children}
+      </main>
       <Footer />
       <BackToTop />
     </PageContainer>

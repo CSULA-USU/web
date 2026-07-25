@@ -9,11 +9,8 @@ import {
   Table as FlexibleTable,
 } from 'components';
 import type { Document, Category } from 'types/Backoffice';
-import {
-  DocumentModal,
-  ArchiveConfirmDialog,
-  DeleteConfirmDialog,
-} from 'modules';
+import { DocumentModal } from 'modules';
+import { ConfirmDialog } from 'modules/Modals/ConfirmDialog';
 import { IoMdDownload } from 'react-icons/io';
 import { IoDocumentSharp } from 'react-icons/io5';
 import { TableColumn, TableData } from 'types';
@@ -373,16 +370,24 @@ export function DocumentManager({
       )}
 
       {deleteConfirm && (
-        <DeleteConfirmDialog
-          title={deleteConfirm.title}
+        <ConfirmDialog
+          title="Confirm Deletion"
+          message="Are you sure you want to delete this document? This action cannot be undone."
+          highlightedText={deleteConfirm.title}
+          confirmLabel="Delete"
+          confirmVariant="delete"
           onConfirm={handleDeleteConfirm}
           onCancel={() => setDeleteConfirm(null)}
         />
       )}
 
       {archiveConfirm && (
-        <ArchiveConfirmDialog
-          title={archiveConfirm.category}
+        <ConfirmDialog
+          title="Confirm Archival"
+          message="Are you sure you want to archive all documents in this section? This action cannot be undone."
+          highlightedText={archiveConfirm.category}
+          confirmLabel="Archive"
+          confirmVariant="delete"
           onConfirm={handleArchiveConfirm}
           onCancel={() => setArchiveConfirm(null)}
         />
