@@ -1,5 +1,7 @@
+import { useId, useRef } from 'react';
 import styled from 'styled-components';
 import { Button, Typography } from 'components';
+import type { ButtonProps } from 'components';
 import { Colors, Spaces } from 'theme';
 import BaseModal from './BaseModal';
 
@@ -9,6 +11,7 @@ interface ConfirmDialogProps {
   highlightedText?: string;
   confirmLabel?: string;
   cancelLabel?: string;
+  confirmVariant?: ButtonProps['variant'];
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -33,23 +36,36 @@ export function ConfirmDialog({
   highlightedText,
   confirmLabel = 'Confirm',
   cancelLabel = 'Cancel',
+  confirmVariant,
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  // Focus the non-destructive action: these confirmations are irreversible, so a
+  // stray Enter on open should cancel rather than commit.
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
+  const generatedId = useId();
+  const messageId = `${generatedId}-message`;
+
   return (
     <BaseModal
       title={title}
       onClose={onCancel}
       maxWidth="480px"
       role="alertdialog"
+      describedById={messageId}
+      initialFocusRef={cancelButtonRef}
       footer={
         <>
-          <Button onClick={onCancel}>{cancelLabel}</Button>
-          <Button onClick={onConfirm}>{confirmLabel}</Button>
+          <Button ref={cancelButtonRef} onClick={onCancel}>
+            {cancelLabel}
+          </Button>
+          <Button variant={confirmVariant} onClick={onConfirm}>
+            {confirmLabel}
+          </Button>
         </>
       }
     >
-      <MessageWrap>
+      <MessageWrap id={messageId}>
         <Typography as="p" variant="copy">
           {message}
         </Typography>
