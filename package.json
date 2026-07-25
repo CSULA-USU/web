@@ -86,6 +86,7 @@
   "devDependencies": {
     "@babel/core": "7.26.0",
     "@babel/traverse": "7.27.3",
+    "@testing-library/react": "^14",
     "@types/formidable": "^3.4.5",
     "@types/jest": "^30.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
@@ -110,6 +111,7 @@
       "src"
     ],
     "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
       "^lib/(.*)$": "<rootDir>/src/lib/$1",
       "^pages/(.*)$": "<rootDir>/src/pages/$1",
       "^components/(.*)$": "<rootDir>/src/components/$1",
@@ -124,7 +126,7 @@
         "ts-jest",
         {
           "tsconfig": {
-            "jsx": "react"
+            "jsx": "react-jsx"
           }
         }
       ]

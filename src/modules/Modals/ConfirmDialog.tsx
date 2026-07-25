@@ -1,7 +1,11 @@
 import { useId, useRef } from 'react';
 import styled from 'styled-components';
-import { Button, Typography } from 'components';
-import type { ButtonProps } from 'components';
+// Imported from the leaf modules rather than the `components` barrel: that
+// barrel transitively pulls in the whole app (sections, services, Supabase),
+// which makes these modals impossible to render in isolation under test.
+import { Button } from 'components/Button/Button';
+import type { ButtonProps } from 'components/Button/Button';
+import { Typography } from 'components/Typography/Typography';
 import { Colors, Spaces } from 'theme';
 import BaseModal from './BaseModal';
 

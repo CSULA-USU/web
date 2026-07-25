@@ -2,7 +2,8 @@ import type React from 'react';
 import { useEffect, useId } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
-import { Typography } from 'components';
+// Leaf import rather than the `components` barrel — see ConfirmDialog.
+import { Typography } from 'components/Typography/Typography';
 import { Colors, Spaces } from 'theme';
 
 interface BaseModalProps {
