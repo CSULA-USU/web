@@ -15,7 +15,7 @@
     "generate-section-schemas": "node src/scripts/generate-section-schemas",
     "prepare": "husky install",
     "postinstall": "patch-package",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "@accessible/drawer": "^3.0.2",
