@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
 const LogoLink = styled(Link)`
   max-width: 1200px;
   max-height: 90px;
-  margin: ${Spaces.xl} 0;
+  margin: ${Spaces.md} 0;
   &:focus {
     text-decoration: underline;
   }
@@ -40,6 +40,12 @@ const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
   }
 `;
 
+const FooterLeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 400px;
+`;
 const FooterTopLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -89,18 +95,24 @@ export const Footer = () => (
   <footer role="contentinfo">
     <FluidContainer backgroundColor="greyDarkest">
       <FooterTopContainer>
-        <LogoLink
-          target="_blank"
-          href={'https://www.calstatela.edu/'}
-          tabIndex={0}
-        >
-          <Image
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-logo.webp"
-            alt="Cal State LA Homepage"
-            width="250"
-            height="40"
-          />
-        </LogoLink>
+        <FooterLeftContainer>
+          <LogoLink
+            target="_blank"
+            href={'https://www.calstatela.edu/'}
+            tabIndex={0}
+          >
+            <Image
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-logo.webp"
+              alt="Cal State LA Homepage"
+              width="250"
+              height="40"
+            />
+          </LogoLink>
+          <Typography color="white" as="p">
+            With open doors and minds, we provide space and opportunities,
+            enabling Golden Eagles to soar
+          </Typography>
+        </FooterLeftContainer>
         <FooterTopLinks>
           <FooterUnorderedList>
             <li>

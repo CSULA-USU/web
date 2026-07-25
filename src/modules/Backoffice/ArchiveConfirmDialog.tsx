@@ -1,4 +1,5 @@
-import type React from 'react';
+import { useRef } from 'react';
+import Modal from 'react-modal';
 import styled from 'styled-components';
 
 interface ArchiveConfirmDialogProps {
@@ -7,27 +8,36 @@ interface ArchiveConfirmDialogProps {
   onCancel: () => void;
 }
 
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 16px;
-`;
+const FixedModal = Modal as unknown as React.FC<any>;
 
-const Dialog = styled.div`
-  background-color: #ffffff;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-`;
+// react-modal merges these over Modal.defaultStyles, so the content defaults it
+// pins 40px from every edge have to be reset explicitly for the overlay's flex
+// centering to place the panel.
+const ARCHIVE_DIALOG_STYLES = {
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+    padding: '16px',
+  },
+  content: {
+    position: 'static',
+    top: 'auto',
+    left: 'auto',
+    right: 'auto',
+    bottom: 'auto',
+    padding: 0,
+    border: 'none',
+    background: '#ffffff',
+    borderRadius: '8px',
+    width: '100%',
+    maxWidth: '480px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+    overflow: 'visible',
+  },
+};
 
 const DialogHeader = styled.div`
   padding: 24px 24px 16px;
@@ -108,34 +118,36 @@ export function ArchiveConfirmDialog({
   onConfirm,
   onCancel,
 }: ArchiveConfirmDialogProps) {
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onCancel();
-    }
-  };
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <Overlay onClick={handleOverlayClick}>
-      <Dialog
-        role="alertdialog"
-        aria-labelledby="dialog-title"
-        aria-modal="true"
-      >
-        <DialogHeader>
-          <DialogTitle id="dialog-title">Confirm Archival</DialogTitle>
-          <DialogMessage>
-            Are you sure you want to archive all documents in this section? This
-            action cannot be undone.
-            <DocumentTitle>{title}</DocumentTitle>
-          </DialogMessage>
-        </DialogHeader>
-        <DialogFooter>
-          <Button onClick={onCancel}>Cancel</Button>
-          <Button variant="danger" onClick={onConfirm}>
-            Archive
-          </Button>
-        </DialogFooter>
-      </Dialog>
-    </Overlay>
+    <FixedModal
+      isOpen
+      onRequestClose={onCancel}
+      onAfterOpen={() => cancelButtonRef.current?.focus()}
+      role="alertdialog"
+      aria={{
+        labelledby: 'archive-dialog-title',
+        describedby: 'archive-dialog-message',
+      }}
+      style={ARCHIVE_DIALOG_STYLES}
+    >
+      <DialogHeader>
+        <DialogTitle id="archive-dialog-title">Confirm Archival</DialogTitle>
+        <DialogMessage id="archive-dialog-message">
+          Are you sure you want to archive all documents in this section? This
+          action cannot be undone.
+          <DocumentTitle>{title}</DocumentTitle>
+        </DialogMessage>
+      </DialogHeader>
+      <DialogFooter>
+        <Button ref={cancelButtonRef} onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button variant="danger" onClick={onConfirm}>
+          Archive
+        </Button>
+      </DialogFooter>
+    </FixedModal>
   );
 }
