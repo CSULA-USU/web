@@ -161,7 +161,7 @@ export default function Staff() {
       </Head>
       <Header
         title="Meet the Staff"
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
         <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
           Union: An act or instance of uniting or joining two or more things
@@ -170,8 +170,8 @@ export default function Staff() {
           independent individuals for some common purpose.
         </Typography>
         <Typography as="p" variant="span" size="xs" color="greyDark">
-          Select any staff member for their contact details, a short bio, and a
-          QR code that opens their virtual card.
+          Select any staff member for their details and a link to their virtual
+          card.
         </Typography>
       </Header>
       <FluidContainer>
@@ -212,7 +212,7 @@ export default function Staff() {
             color="greyDark"
             aria-live="polite"
           >
-            {`Showing ${visibleStaff.length} of ${staff.length} staff members`}
+            {`Showing ${visibleStaff.length} of ${staff.length}`}
           </Typography>
           {isFiltered && (
             <Button
@@ -289,7 +289,8 @@ export default function Staff() {
               color="greyDark"
               margin={`${Spaces.md} 0 0 0`}
             >
-              The full&ndash;time staff of the University&ndash;Student Union.
+              The full&ndash;time staff of the University&ndash;Student Union at
+              Cal State LA (2024)
             </Typography>
           </figcaption>
         </GroupPhoto>
