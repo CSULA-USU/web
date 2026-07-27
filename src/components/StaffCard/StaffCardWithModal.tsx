@@ -5,7 +5,7 @@ import { BiSolidPhone, BiLogoLinkedin } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import { toKebabCase } from 'utils/stringhelpers';
 import { Colors, Spaces, media } from 'theme';
-import { Image, Typography, StyledLink } from 'components';
+import { CopyButton, Image, Typography, StyledLink } from 'components';
 import { GenericModal } from 'modules';
 import { StaffCard } from './StaffCard';
 
@@ -67,6 +67,7 @@ const ProfileHeader = styled.div`
   display: flex;
   align-items: flex-start;
   gap: ${Spaces.lg};
+  margin-top: ${Spaces.lg};
 
   ${media('tablet')(`
     flex-direction: column;
@@ -281,6 +282,7 @@ export const StaffCardWithModal = ({
                         {email}
                       </StyledLink>
                     </Typography>
+                    <CopyButton value={email} label="email address" />
                   </ContactItem>
                 )}
                 {phone && (
@@ -301,6 +303,7 @@ export const StaffCardWithModal = ({
                         {phone}
                       </StyledLink>
                     </Typography>
+                    <CopyButton value={phone} label="phone number" />
                   </ContactItem>
                 )}
                 {url && (
@@ -319,7 +322,7 @@ export const StaffCardWithModal = ({
                         isExternalLink
                         isInverseUnderlineStyling
                       >
-                        {`${firstName} on LinkedIn`}
+                        {`LinkedIn`}
                       </StyledLink>
                     </Typography>
                   </ContactItem>
@@ -371,11 +374,13 @@ export const StaffCardWithModal = ({
                 size="xs"
                 margin={`0 0 ${Spaces.sm} 0`}
               >
-                Point a phone camera at the code to open {firstName}&apos;s
-                virtual card, with contact details ready to save.
+                Point a phone camera QR code to open {firstName}&apos;s virtual
+                card
               </Typography>
               <Typography as="p" variant="cta" size="xs" color="greyDarkest">
-                <StyledLink href={cardPath}>View virtual card</StyledLink>
+                <StyledLink href={cardPath} isInverseUnderlineStyling>
+                  View virtual card
+                </StyledLink>
               </Typography>
             </div>
           </NetworkPanel>
