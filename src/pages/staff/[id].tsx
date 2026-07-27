@@ -7,7 +7,6 @@ import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
 import { Image, StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
-import { toTitleCase } from 'utils/stringhelpers';
 
 const OutsideContainer = styled.div`
   display: flex;
@@ -157,7 +156,7 @@ export default function StaffBusinessCard() {
   const router = useRouter();
   const { id } = router.query;
   const staffData = staff.find(
-    (staffMember) => staffMember.name === toTitleCase(String(id)),
+    (staffMember) => toKebabCase(staffMember.name) === String(id),
   );
 
   return (
