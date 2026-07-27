@@ -4,6 +4,7 @@ export * from './Button';
 export * from './Card';
 export * from './Carousel';
 export * from './Gallery';
+export * from './CopyButton';
 export * from './CountUp';
 export * from './DescriptionCard';
 export * from './Divider';
