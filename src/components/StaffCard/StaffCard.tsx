@@ -18,18 +18,22 @@ interface CardProps extends CardStyles {
   src: string;
   alt: string;
   tags?: string[];
+  // 'horizontal' is a fixed-height row (photo beside the text) that keeps a
+  // roster even. 'vertical' stacks the photo above the text and grows with its
+  // content, so long titles stay readable in a multi-column directory grid.
+  orientation?: 'horizontal' | 'vertical';
 }
 
-// Every card is the same fixed size, so the roster grid stays even no matter
-// how long or short a member's name or title is.
-const HoverPanel = styled(Panel)`
-  flex-direction: row;
+// Horizontal cards are all the same fixed size, so the roster grid stays even
+// no matter how long or short a member's name or title is.
+const HoverPanel = styled(Panel)<{ $vertical?: boolean }>`
+  flex-direction: ${(p) => (p.$vertical ? 'column' : 'row')};
   align-items: stretch;
   justify-content: flex-start;
   gap: 0;
   padding: 0;
   overflow: hidden;
-  height: 184px;
+  height: ${(p) => (p.$vertical ? '100%' : '184px')};
   max-width: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -38,18 +42,23 @@ const HoverPanel = styled(Panel)`
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   }
 
-  ${media('mobile')(`
+  ${(p) =>
+    !p.$vertical &&
+    media('mobile')(`
     height: 156px;
   `)}
 `;
 
-// Full-bleed photo on the left. object-fit: cover locks any source image into
-// the frame, so photos never need to be pre-cropped to a fixed size.
-const PhotoFrame = styled.div`
+// Full-bleed photo. object-fit: cover locks any source image into the frame, so
+// photos never need to be pre-cropped to a fixed size. The fill matches the
+// panel behind it: several headshots have transparent backgrounds, and anything
+// other than white reads as a discoloured patch on those cards.
+const PhotoFrame = styled.div<{ $vertical?: boolean }>`
   flex-shrink: 0;
-  width: 150px;
-  height: 100%;
-  background-color: ${Colors.greyLightest};
+  width: ${(p) => (p.$vertical ? '100%' : '150px')};
+  height: ${(p) => (p.$vertical ? 'auto' : '100%')};
+  ${(p) => p.$vertical && 'aspect-ratio: 1 / 1;'}
+  background-color: ${Colors.white};
 
   img {
     width: 100%;
@@ -59,15 +68,18 @@ const PhotoFrame = styled.div`
     display: block;
   }
 
-  ${media('mobile')(`
+  ${(p) =>
+    !p.$vertical &&
+    media('mobile')(`
     width: 124px;
   `)}
 `;
 
-const Info = styled.div`
+const Info = styled.div<{ $vertical?: boolean }>`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${(p) => (p.$vertical ? 'flex-start' : 'center')};
+  ${(p) => p.$vertical && 'flex: 1;'}
   gap: 4px;
   min-width: 0;
   padding: 16px 20px;
@@ -82,14 +94,17 @@ export const StaffCard = ({
   src,
   alt,
   width = '380px',
+  orientation = 'horizontal',
   ...props
 }: CardProps) => {
+  const isVertical = orientation === 'vertical';
+
   return (
-    <HoverPanel {...props} width={width}>
-      <PhotoFrame>
+    <HoverPanel {...props} width={width} $vertical={isVertical}>
+      <PhotoFrame $vertical={isVertical}>
         <Image src={src} alt={alt} />
       </PhotoFrame>
-      <Info>
+      <Info $vertical={isVertical}>
         {head && (
           <Typography
             as="h4"

@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { FluidContainer, Typography, Divider, Image, Card } from 'components';
+import {
+  Card,
+  CopyButton,
+  Divider,
+  FluidContainer,
+  Image,
+  Typography,
+} from 'components';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
 import { Page } from 'modules';
@@ -207,15 +214,6 @@ const ColorValue = styled.div`
   margin: ${Spaces.xs} 0;
   font-family: monospace;
   font-size: 0.875rem;
-`;
-
-const CopyButton = styled.button`
-  background: none;
-  border: 0;
-  padding: 2px 6px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.75rem;
 `;
 
 const GuidelineCallout = styled.div`
@@ -793,18 +791,9 @@ export default function Brand() {
                           Hex: {color.hex}
                         </Typography>
                         <CopyButton
-                          onClick={() => copyToClipboard(color.hex)}
-                          aria-label={`Copy ${color} hex value to clipboard`}
-                        >
-                          <FaRegCopy
-                            color={
-                              copiedValue === color.hex
-                                ? Colors.grey
-                                : Colors.greyLighter
-                            }
-                            size={'20px'}
-                          />
-                        </CopyButton>
+                          value={color.hex}
+                          label={`${color.name} hex value`}
+                        />
                       </ColorValue>
 
                       <ColorValue>
@@ -812,18 +801,9 @@ export default function Brand() {
                           RGB: {color.rgb}
                         </Typography>
                         <CopyButton
-                          onClick={() => copyToClipboard(color.rgb)}
-                          aria-label={`Copy ${color} RGB value to clipboard`}
-                        >
-                          <FaRegCopy
-                            color={
-                              copiedValue === color.rgb
-                                ? Colors.grey
-                                : Colors.greyLighter
-                            }
-                            size={'20px'}
-                          />
-                        </CopyButton>
+                          value={color.rgb}
+                          label={`${color.name} RGB value`}
+                        />
                       </ColorValue>
 
                       <ColorValue>
@@ -831,18 +811,9 @@ export default function Brand() {
                           CMYK: {color.cmyk}
                         </Typography>
                         <CopyButton
-                          onClick={() => copyToClipboard(color.cmyk)}
-                          aria-label={`Copy ${color} CMYK value to clipboard`}
-                        >
-                          <FaRegCopy
-                            color={
-                              copiedValue === color.cmyk
-                                ? Colors.grey
-                                : Colors.greyLighter
-                            }
-                            size={'20px'}
-                          />
-                        </CopyButton>
+                          value={color.cmyk}
+                          label={`${color.name} CMYK value`}
+                        />
                       </ColorValue>
 
                       <ColorValue>
@@ -850,18 +821,9 @@ export default function Brand() {
                           HSL: {color.hsl}
                         </Typography>
                         <CopyButton
-                          onClick={() => copyToClipboard(color.hsl)}
-                          aria-label={`Copy ${color} HSL value to clipboard`}
-                        >
-                          <FaRegCopy
-                            color={
-                              copiedValue === color.hsl
-                                ? Colors.grey
-                                : Colors.greyLighter
-                            }
-                            size={'20px'}
-                          />
-                        </CopyButton>
+                          value={color.hsl}
+                          label={`${color.name} HSL value`}
+                        />
                       </ColorValue>
                     </ColorInfo>
                   </ColorSwatch>

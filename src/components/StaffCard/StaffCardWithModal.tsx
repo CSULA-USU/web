@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { QRCodeSVG } from 'qrcode.react';
-import { BiSolidUserDetail, BiSolidPhone } from 'react-icons/bi';
+import { BiSolidPhone, BiLogoLinkedin } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import { toKebabCase } from 'utils/stringhelpers';
-import { useBreakpoint } from 'hooks';
-import { Spaces } from 'theme';
-import { Image, Panel, Typography, StyledLink } from 'components';
+import { Colors, Spaces, media } from 'theme';
+import { CopyButton, Image, Typography, StyledLink } from 'components';
 import { GenericModal } from 'modules';
+import { StaffCard } from './StaffCard';
 
 interface CardStyles {
   margin?: string;
@@ -27,106 +27,142 @@ interface CardProps extends CardStyles {
   img?: string;
   phone?: string;
   pronouns?: string;
+  suffix?: string;
   tags?: string[];
   url?: string;
   bio?: string;
   email?: string;
+  orientation?: 'horizontal' | 'vertical';
 }
 
-const CenterWord = styled.div`
-  text-align: center;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`;
-
-const NameSection = styled.div`
-  height: 80px;
-`;
-
-const StaffCard = styled.button`
-  background: transparent;
-  cursor: pointer;
+// The whole card is the modal trigger, so it needs a visible focus ring for
+// keyboard users — the button chrome itself is stripped away.
+const CardTrigger = styled.button<{ $margin?: string; $maxWidth: string }>`
+  display: block;
+  width: 100%;
+  max-width: ${(p) => p.$maxWidth};
+  margin: ${(p) => p.$margin || '0'};
   padding: 0;
-  margin: 0;
   border: none;
-`;
-
-const StaffModalContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: ${Spaces.sm} 0 0 0;
-`;
-
-const UpperContainer = styled.div<{ screenSize: boolean }>`
-  display: flex;
-  flex-direction: ${({ screenSize }) => (screenSize ? 'column' : 'row')};
-  max-width: 800px;
-`;
-
-const ImageContainer = styled.div<{ screenSize: boolean }>`
-  margin: 0 ${({ screenSize }) => (screenSize ? 0 : Spaces.md)} ${Spaces.sm} 0;
-`;
-
-const InfoContainer = styled.div<{ screenSize: boolean }>`
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  max-width: 400px;
-`;
-
-const IconAndInfoContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: ${Spaces.sm};
-`;
-
-const InfoContactContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const IconAndInfoContainerRight = styled.div`
+  border-radius: 12px;
+  background: transparent;
   text-align: left;
-  display: flex;
-  align-items: center;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 3px solid ${Colors.gold};
+    outline-offset: 3px;
+  }
 `;
 
-const IconContainer = styled.div`
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.lg};
+  padding: 0 ${Spaces.md} ${Spaces.md};
+  text-align: left;
+`;
+
+const ProfileHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${Spaces.lg};
+  margin-top: ${Spaces.lg};
+
+  ${media('tablet')(`
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  `)}
+`;
+
+// Fixed frame + object-fit means headshots of any dimension read as a
+// consistent set, the same way they do on the roster grid. White fill for the
+// same reason as the card: transparent headshots would otherwise sit on a
+// visibly different shade than the modal around them.
+const PhotoFrame = styled.div`
+  flex-shrink: 0;
+  width: 180px;
+  height: 216px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: ${Colors.white};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+`;
+
+const ProfileDetails = styled.div`
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+`;
+
+const ContactList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.sm};
+  margin-top: ${Spaces.md};
+
+  ${media('tablet')(`
+    align-items: center;
+  `)}
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.sm};
+  min-width: 0;
+  overflow-wrap: anywhere;
+`;
+
+const IconBadge = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  border-radius: 50%;
+  flex-shrink: 0;
   height: 24px;
   width: 24px;
-  margin-right: ${Spaces.sm};
+  border-radius: 50%;
+  background-color: ${Colors.black};
+
+  svg {
+    height: 14px;
+    width: 14px;
+    color: ${Colors.white};
+  }
+`;
+
+const Section = styled.section`
+  border-top: 1px solid ${Colors.greyLighter};
+  padding-top: ${Spaces.lg};
+`;
+
+// The QR code is the point of the page — give it its own framed block with an
+// explanation, rather than leaving a bare code floating under the contact info.
+const NetworkPanel = styled(Section)`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.lg};
+
+  ${media('tablet')(`
+    flex-direction: column;
+    text-align: center;
+  `)}
+`;
+
+const QRFrame = styled.div`
+  display: flex;
   flex-shrink: 0;
-`;
-
-const InfoNameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const QRContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: ${Spaces.sm};
-`;
-
-const QRLinkContainer = styled.div`
-  margin-bottom: ${Spaces.sm};
+  padding: ${Spaces.sm};
+  border: 1px solid ${Colors.greyLighter};
+  border-radius: 12px;
+  background-color: ${Colors.white};
 `;
 
 export const StaffCardWithModal = ({
@@ -140,179 +176,217 @@ export const StaffCardWithModal = ({
   phone,
   email,
   bio,
-  ...props
+  department,
+  suffix,
+  url,
+  margin,
+  width = '380px',
+  orientation,
+  rounded,
+  hoverable,
 }: CardProps) => {
   const [showModal, setShowModal] = useState(false);
-  const { isDesktop } = useBreakpoint();
 
-  function openModal() {
-    setShowModal(true);
-  }
-
-  function closeModal() {
-    setShowModal(false);
-  }
+  const cardPath = `/staff/${toKebabCase(name)}`;
+  const fullName = suffix ? `${name}, ${suffix}` : name;
+  const firstName = name.split(' ')[0];
 
   return (
     <>
-      <StaffCard
-        onClick={() => openModal()}
-        aria-label={`View details for ${name}`}
+      <CardTrigger
+        onClick={() => setShowModal(true)}
+        aria-label={`View contact details and virtual card for ${name}`}
+        $margin={margin}
+        $maxWidth={width}
       >
-        <Panel {...props} width={'304px'} height="512px">
-          <CenterWord>
-            <div>
-              {head ? (
-                <>
-                  <Typography
-                    as="h3"
-                    color="gold"
-                    variant="copy"
-                    weight="700"
-                    size="md"
-                    style={{ display: 'block' }}
-                  >
-                    {head}
-                  </Typography>
-                </>
-              ) : (
-                <></>
-              )}
+        <StaffCard
+          name={name}
+          head={head}
+          title={title}
+          src={src}
+          alt={alt}
+          width="100%"
+          orientation={orientation}
+          rounded={rounded}
+          hoverable={hoverable}
+        >
+          {children}
+        </StaffCard>
+      </CardTrigger>
+      <GenericModal
+        isOpen={showModal}
+        onRequestClose={() => setShowModal(false)}
+        width="720px"
+      >
+        <ModalContent>
+          <ProfileHeader>
+            <PhotoFrame>
+              <Image src={src} alt={alt} />
+            </PhotoFrame>
+            <ProfileDetails>
               <Typography
                 as="h2"
-                color="gold"
-                variant="copy"
-                weight="700"
+                variant="titleSmall"
+                size="lg"
+                lineHeight="1.2"
+              >
+                {fullName}
+              </Typography>
+              {pronouns && (
+                <Typography
+                  as="p"
+                  variant="span"
+                  size="2xs"
+                  color="grey"
+                  margin={`${Spaces.xs} 0 0 0`}
+                >
+                  {pronouns}
+                </Typography>
+              )}
+              <Typography
+                as="p"
+                variant="cta"
                 size="md"
+                color="gold"
+                weight="700"
+                lineHeight="1.3"
+                margin={`${Spaces.sm} 0 0 0`}
               >
                 {title}
               </Typography>
-            </div>
-            <div>
-              <Image src={src} alt={alt} width="220px" height="245px" />
-              <NameSection>
-                <Typography size="sm" weight="700" variant="labelTitle">
-                  {name}
-                </Typography>
-                {children}
-              </NameSection>
-            </div>
-          </CenterWord>
-        </Panel>
-      </StaffCard>
-      <GenericModal
-        isOpen={showModal}
-        onRequestClose={() => closeModal()}
-        height={isDesktop ? '90vh' : 'auto'}
-        width={isDesktop ? '95vw' : 'auto'}
-      >
-        <StaffModalContainer>
-          <UpperContainer screenSize={isDesktop}>
-            <ImageContainer screenSize={isDesktop}>
-              <Image src={src} alt={alt} width="220px" height="245px" />
-            </ImageContainer>
-            <InfoContainer screenSize={isDesktop}>
-              <InfoNameContainer>
-                <Typography
-                  as="h1"
-                  variant="pageHeader"
-                  size="xl"
-                  lineHeight="1"
-                >
-                  {name}
-                </Typography>
-                {pronouns && (
-                  <Typography
-                    size="sm"
-                    as="p"
-                    margin={`0 0 ${Spaces.sm} 0`}
-                    color="grey"
-                    variant="span"
-                  >
-                    {pronouns}
-                  </Typography>
-                )}
+              {department && (
                 <Typography
                   as="p"
-                  variant="cta"
-                  color="gold"
-                  size="md"
-                  weight="700"
-                  margin={`0 0 ${Spaces.sm} 0`}
-                  lineHeight="1.2"
+                  variant="span"
+                  size="xs"
+                  color="greyDark"
+                  margin={`${Spaces.xs} 0 0 0`}
                 >
-                  {title}
+                  {department}
                 </Typography>
-              </InfoNameContainer>
-              <InfoContactContainer>
-                <IconAndInfoContainer>
-                  <IconContainer>
-                    <MdEmail
-                      style={{
-                        height: '16px',
-                        width: '16px',
-                        flexShrink: 0,
-                        color: 'white',
-                      }}
-                    />
-                  </IconContainer>
-                  <IconAndInfoContainerRight>
-                    <Typography color="greyDarker">{email}</Typography>
-                  </IconAndInfoContainerRight>
-                </IconAndInfoContainer>
+              )}
+              <ContactList>
+                {email && (
+                  <ContactItem>
+                    <IconBadge aria-hidden>
+                      <MdEmail />
+                    </IconBadge>
+                    <Typography
+                      as="p"
+                      variant="span"
+                      size="xs"
+                      color="greyDarker"
+                    >
+                      <StyledLink
+                        href={`mailto:${email}`}
+                        isInverseUnderlineStyling
+                      >
+                        {email}
+                      </StyledLink>
+                    </Typography>
+                    <CopyButton value={email} label="email address" />
+                  </ContactItem>
+                )}
                 {phone && (
-                  <IconAndInfoContainer>
-                    <IconContainer>
-                      <BiSolidPhone
-                        style={{
-                          height: '16px',
-                          width: '16px',
-                          flexShrink: 0,
-                          color: 'white',
-                        }}
-                      />
-                    </IconContainer>
-                    <IconAndInfoContainerRight>
-                      <Typography color="greyDarker">{phone}</Typography>
-                    </IconAndInfoContainerRight>
-                  </IconAndInfoContainer>
+                  <ContactItem>
+                    <IconBadge aria-hidden>
+                      <BiSolidPhone />
+                    </IconBadge>
+                    <Typography
+                      as="p"
+                      variant="span"
+                      size="xs"
+                      color="greyDarker"
+                    >
+                      <StyledLink
+                        href={`tel:${phone}`}
+                        isInverseUnderlineStyling
+                      >
+                        {phone}
+                      </StyledLink>
+                    </Typography>
+                    <CopyButton value={phone} label="phone number" />
+                  </ContactItem>
                 )}
-                {bio && (
-                  <IconAndInfoContainer>
-                    <IconContainer>
-                      <BiSolidUserDetail
-                        style={{
-                          height: '16px',
-                          width: '16px',
-                          flexShrink: 0,
-                          color: 'white',
-                        }}
-                      />
-                    </IconContainer>
-                    <IconAndInfoContainerRight>
-                      <Typography color="greyDarker">{bio}</Typography>
-                    </IconAndInfoContainerRight>
-                  </IconAndInfoContainer>
+                {url && (
+                  <ContactItem>
+                    <IconBadge aria-hidden>
+                      <BiLogoLinkedin />
+                    </IconBadge>
+                    <Typography
+                      as="p"
+                      variant="span"
+                      size="xs"
+                      color="greyDarker"
+                    >
+                      <StyledLink
+                        href={url}
+                        isExternalLink
+                        isInverseUnderlineStyling
+                      >
+                        {`LinkedIn`}
+                      </StyledLink>
+                    </Typography>
+                  </ContactItem>
                 )}
-              </InfoContactContainer>
-            </InfoContainer>
-          </UpperContainer>
-          <QRContainer>
-            <QRLinkContainer>
-              <StyledLink
-                href={`/staff/${toKebabCase(name)}`}
-                isInverseUnderlineStyling
+              </ContactList>
+            </ProfileDetails>
+          </ProfileHeader>
+          {bio && (
+            <Section>
+              <Typography
+                as="h3"
+                variant="labelTitleSmall"
+                size="2xs"
+                color="greyDark"
+                uppercase
+                letterSpacing="0.08em"
+                margin={`0 0 ${Spaces.sm} 0`}
               >
-                <Typography color="greyDarker" variant="span" as="span">
-                  View Virtual Card
-                </Typography>
-              </StyledLink>
-            </QRLinkContainer>
-            <QRCodeSVG
-              value={`https://www.calstatelausu.org/staff/${toKebabCase(name)}`}
-            />
-          </QRContainer>
-        </StaffModalContainer>
+                About {firstName}
+              </Typography>
+              <Typography as="p" variant="prose" size="xs">
+                {bio}
+              </Typography>
+            </Section>
+          )}
+          <NetworkPanel>
+            <QRFrame>
+              <QRCodeSVG
+                size={104}
+                value={`https://www.calstatelausu.org${cardPath}`}
+                title={`QR code linking to ${name}'s virtual card`}
+              />
+            </QRFrame>
+            <div>
+              <Typography
+                as="h3"
+                variant="labelTitleSmall"
+                size="2xs"
+                color="greyDark"
+                uppercase
+                letterSpacing="0.08em"
+                margin={`0 0 ${Spaces.xs} 0`}
+              >
+                Scan to connect
+              </Typography>
+              <Typography
+                as="p"
+                variant="prose"
+                size="xs"
+                margin={`0 0 ${Spaces.sm} 0`}
+              >
+                Point a phone camera QR code to open {firstName}&apos;s virtual
+                card
+              </Typography>
+              <Typography as="p" variant="cta" size="xs" color="greyDarkest">
+                <StyledLink href={cardPath} isInverseUnderlineStyling>
+                  View virtual card
+                </StyledLink>
+              </Typography>
+            </div>
+          </NetworkPanel>
+        </ModalContent>
       </GenericModal>
     </>
   );
