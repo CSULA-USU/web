@@ -1199,19 +1199,24 @@ export default function FSL() {
                       title={s.title}
                       src={s.src}
                       alt={s.alt}
-                      tags={s.tags}
                       margin={isMobile ? `${Spaces.sm} 0` : `${Spaces.sm}`}
                       pronouns={s.pronouns}
+                      suffix={s.suffix}
+                      department={s.department}
                       email={s.email}
                       phone={s.phone}
+                      url={s.url}
                       bio={s.bio}
                       rounded
                     >
-                      <Typography size="xs" as="p">
+                      <Typography
+                        as="p"
+                        variant="span"
+                        size="2xs"
+                        color="greyDark"
+                        margin={`${Spaces.xs} 0 0 0`}
+                      >
                         {s.department}
-                      </Typography>
-                      <Typography size="xs" as="p">
-                        {s.email}
                       </Typography>
                     </StaffCardWithModal>
                   ))}

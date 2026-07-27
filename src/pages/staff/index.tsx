@@ -1,30 +1,154 @@
 import Head from 'next/head';
-import { TabPanel } from 'react-tabs';
+import { useMemo, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { FaSearch } from 'react-icons/fa';
 import {
+  Button,
   FluidContainer,
   Image,
-  Typography,
+  Input,
   StaffCardWithModal,
-  TabCluster,
+  Typography,
 } from 'components';
 import staff from 'data/staff.json';
-import { Spaces } from 'theme';
+import { Colors, Spaces, media } from 'theme';
 import { Page, Header } from 'modules';
 
-const staffTabsData = {
-  tabItems: [
-    'All',
-    'Directors',
-    'Administration',
-    'CSI',
-    'CCC',
-    'Graffix',
-    'Operations',
-    'Recreation',
-  ],
-};
+const DEPARTMENT_FILTERS = [
+  'All',
+  'Directors',
+  'Administration',
+  'CSI',
+  'CCC',
+  'Graffix',
+  'Operations',
+  'Recreation',
+];
+
+const SearchField = styled.div`
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  margin-bottom: ${Spaces.lg};
+
+  svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${Colors.greyDark};
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  input {
+    height: 44px;
+    padding-left: 38px;
+    border: 1px solid ${Colors.greyLighter};
+    border-radius: 8px;
+    background-color: ${Colors.white};
+    font-family: inherit;
+    font-size: 14px;
+  }
+`;
+
+const FilterGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${Spaces.sm};
+  padding-bottom: ${Spaces.lg};
+  border-bottom: 1px solid ${Colors.greyLighter};
+`;
+
+const ResultsBar = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: ${Spaces.md};
+  padding: ${Spaces.lg} 0;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
+// Cards ease in as they mount, so switching a filter reads as the roster
+// resolving rather than snapping to a new set. Remounting the grid on a filter
+// change (see the key below) replays it for the whole set; a search only fades
+// in the people who newly match, leaving the rest still.
+const Roster = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: ${Spaces.lg};
+
+  > * {
+    animation: ${fadeIn} 0.3s ease both;
+  }
+
+  ${media('mobile')(`
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: ${Spaces.md};
+  `)}
+
+  @media (prefers-reduced-motion: reduce) {
+    > * {
+      animation: none;
+    }
+  }
+`;
+
+const EmptyState = styled.div`
+  padding: ${Spaces['2xl']} 0;
+  text-align: center;
+  animation: ${fadeIn} 0.3s ease both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+const GroupPhoto = styled.figure`
+  margin: 0;
+  text-align: center;
+`;
 
 export default function Staff() {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [query, setQuery] = useState('');
+
+  const visibleStaff = useMemo(() => {
+    const search = query.trim().toLowerCase();
+
+    return staff.filter((staffMember) => {
+      const matchesFilter =
+        activeFilter === 'All' || staffMember.tags.includes(activeFilter);
+      const matchesSearch =
+        !search ||
+        [
+          staffMember.name,
+          staffMember.title,
+          staffMember.department,
+          staffMember.email,
+        ].some((field) => field.toLowerCase().includes(search));
+
+      return matchesFilter && matchesSearch;
+    });
+  }, [activeFilter, query]);
+
+  const isFiltered = activeFilter !== 'All' || query.trim() !== '';
+
+  const clearFilters = () => {
+    setActiveFilter('All');
+    setQuery('');
+  };
+
   return (
     <Page>
       <Head>
@@ -39,52 +163,136 @@ export default function Staff() {
         title="Meet the Staff"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-1.webp"
       >
-        Union: An act or instance of uniting or joining two or more things into
-        one. Something that is made one : something formed by a combination or
-        coalition of parts or members. A confederation of independent
-        individuals for some common purpose.
+        <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
+          Union: An act or instance of uniting or joining two or more things
+          into one. Something that is made one : something formed by a
+          combination or coalition of parts or members. A confederation of
+          independent individuals for some common purpose.
+        </Typography>
+        <Typography as="p" variant="span" size="xs" color="greyDark">
+          Select any staff member for their contact details, a short bio, and a
+          QR code that opens their virtual card.
+        </Typography>
       </Header>
-      <TabCluster tabItems={staffTabsData.tabItems}>
-        {staffTabsData.tabItems.map((tags) => (
-          <TabPanel key={tags}>
-            <FluidContainer flex flexWrap="wrap" justifyContent="center">
-              {staff.map(
-                (s) =>
-                  (tags === 'All' || s.tags.includes(tags)) && (
-                    <StaffCardWithModal
-                      key={s.name}
-                      name={s.name}
-                      title={s.title}
-                      src={s.src}
-                      alt={s.alt}
-                      tags={s.tags}
-                      margin={`${Spaces.sm}`}
-                      pronouns={s.pronouns}
-                      email={s.email}
-                      phone={s.phone}
-                      bio={s.bio}
-                      rounded
-                    >
-                      <Typography size="xs" as="p">
-                        {s.department}
-                      </Typography>
-                      <Typography size="xs" as="p">
-                        {s.email}
-                      </Typography>
-                    </StaffCardWithModal>
-                  ),
-              )}
-            </FluidContainer>
-          </TabPanel>
-        ))}
-      </TabCluster>
-      <FluidContainer flex justifyContent="center">
-        <Image
-          alt="group photo of full time u-su staff"
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/u-su-group.webp"
-          width="100%"
-          borderRadius="12px"
-        />
+      <FluidContainer>
+        <SearchField>
+          <FaSearch aria-hidden />
+          <Input
+            type="search"
+            value={query}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setQuery(event.target.value)
+            }
+            placeholder="Search by name, title, or department"
+            aria-label="Search staff by name, title, or department"
+          />
+        </SearchField>
+        <FilterGroup>
+          {DEPARTMENT_FILTERS.map((filter) => {
+            const isActive = filter === activeFilter;
+            return (
+              <Button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                variant={isActive ? 'black' : 'grey'}
+                padding="10px 18px"
+                fontSize="14px"
+                aria-pressed={isActive}
+              >
+                {filter}
+              </Button>
+            );
+          })}
+        </FilterGroup>
+        <ResultsBar>
+          <Typography
+            as="p"
+            variant="span"
+            size="xs"
+            color="greyDark"
+            aria-live="polite"
+          >
+            {`Showing ${visibleStaff.length} of ${staff.length} staff members`}
+          </Typography>
+          {isFiltered && (
+            <Button
+              onClick={clearFilters}
+              variant="grey"
+              padding="8px 16px"
+              fontSize="14px"
+            >
+              Clear filters
+            </Button>
+          )}
+        </ResultsBar>
+        {visibleStaff.length > 0 ? (
+          <Roster key={activeFilter}>
+            {visibleStaff.map((staffMember) => (
+              <StaffCardWithModal
+                key={staffMember.name}
+                name={staffMember.name}
+                title={staffMember.title}
+                src={staffMember.src}
+                alt={staffMember.alt}
+                pronouns={staffMember.pronouns}
+                suffix={staffMember.suffix}
+                department={staffMember.department}
+                email={staffMember.email}
+                phone={staffMember.phone}
+                url={staffMember.url}
+                bio={staffMember.bio}
+                orientation="vertical"
+                width="100%"
+                rounded
+              >
+                <Typography
+                  as="p"
+                  variant="span"
+                  size="2xs"
+                  color="greyDark"
+                  margin={`${Spaces.xs} 0 0 0`}
+                >
+                  {staffMember.department}
+                </Typography>
+              </StaffCardWithModal>
+            ))}
+          </Roster>
+        ) : (
+          <EmptyState>
+            <Typography as="p" variant="copy" margin={`0 0 ${Spaces.md} 0`}>
+              No staff members match that search.
+            </Typography>
+            <Button
+              onClick={clearFilters}
+              variant="black"
+              padding="10px 18px"
+              fontSize="14px"
+            >
+              Clear filters
+            </Button>
+          </EmptyState>
+        )}
+      </FluidContainer>
+      <FluidContainer>
+        <GroupPhoto>
+          <Image
+            alt="group photo of full time u-su staff"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/u-su-group.webp"
+            width="100%"
+            borderRadius="12px"
+          />
+          <figcaption>
+            <Typography
+              as="span"
+              variant="span"
+              size="2xs"
+              color="greyDark"
+              margin={`${Spaces.md} 0 0 0`}
+            >
+              The full&ndash;time staff of the University&ndash;Student Union.
+            </Typography>
+          </figcaption>
+        </GroupPhoto>
       </FluidContainer>
     </Page>
   );
