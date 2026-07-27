@@ -77,14 +77,16 @@ const ProfileHeader = styled.div`
 `;
 
 // Fixed frame + object-fit means headshots of any dimension read as a
-// consistent set, the same way they do on the roster grid.
+// consistent set, the same way they do on the roster grid. White fill for the
+// same reason as the card: transparent headshots would otherwise sit on a
+// visibly different shade than the modal around them.
 const PhotoFrame = styled.div`
   flex-shrink: 0;
   width: 180px;
   height: 216px;
   overflow: hidden;
   border-radius: 12px;
-  background-color: ${Colors.greyLightest};
+  background-color: ${Colors.white};
 
   img {
     width: 100%;

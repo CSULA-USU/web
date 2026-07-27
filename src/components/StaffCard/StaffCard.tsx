@@ -50,13 +50,15 @@ const HoverPanel = styled(Panel)<{ $vertical?: boolean }>`
 `;
 
 // Full-bleed photo. object-fit: cover locks any source image into the frame, so
-// photos never need to be pre-cropped to a fixed size.
+// photos never need to be pre-cropped to a fixed size. The fill matches the
+// panel behind it: several headshots have transparent backgrounds, and anything
+// other than white reads as a discoloured patch on those cards.
 const PhotoFrame = styled.div<{ $vertical?: boolean }>`
   flex-shrink: 0;
   width: ${(p) => (p.$vertical ? '100%' : '150px')};
   height: ${(p) => (p.$vertical ? 'auto' : '100%')};
   ${(p) => p.$vertical && 'aspect-ratio: 1 / 1;'}
-  background-color: ${Colors.greyLightest};
+  background-color: ${Colors.white};
 
   img {
     width: 100%;
