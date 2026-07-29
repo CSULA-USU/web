@@ -208,7 +208,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
               height="80"
             />
             <ProfileImageContainer>
-              {staffData?.src && (
+              {staffData.src && (
                 <Image
                   src={staffData.src}
                   alt=""
@@ -241,7 +241,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 lineHeight="1.2"
                 margin={`0 0 ${Spaces.sm} 0`}
               >
-                {staffData && staffData.pronouns}
+                {staffData.pronouns}
               </Typography>
               <Typography
                 variant="titleSmall"
@@ -250,7 +250,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 weight="600"
                 lineHeight="1"
               >
-                {staffData && staffData.title}
+                {staffData.title}
               </Typography>
               <Typography
                 variant="eventTime"
@@ -259,7 +259,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 weight="400"
                 lineHeight="1"
               >
-                {staffData && staffData.department}
+                {staffData.department}
               </Typography>
             </ProfessionalInfoContainer>
             <CardBlurbContainer>
@@ -270,11 +270,11 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 weight="400"
                 lineHeight="1.1"
               >
-                {staffData && staffData.cardBlurb}
+                {staffData.cardBlurb}
               </Typography>
             </CardBlurbContainer>
             <ContactInfoContainer>
-              {staffData && staffData.phone && (
+              {staffData.phone && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiSolidPhone
@@ -293,13 +293,13 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       isInverseUnderlineStyling
                     >
                       <Typography variant="span" size="2xs" color="greyDarkest">
-                        {staffData && staffData.phone}
+                        {staffData.phone}
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.email && (
+              {staffData.email && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <MdEmail
@@ -324,7 +324,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.url && (
+              {staffData.url && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiLogoLinkedin
@@ -420,11 +420,7 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 </StyledLink>
               </IconAndInfoContainer>
               <QRContainer>
-                <QRCodeSVG
-                  value={`https://www.calstatelausu.org/staff/${
-                    staffData && toKebabCase(staffData.name)
-                  }`}
-                />
+                <QRCodeSVG value={`https://www.calstatelausu.org${cardPath}`} />
               </QRContainer>
             </ContactInfoContainer>
           </CardContainerBottom>
