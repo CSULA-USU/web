@@ -283,6 +283,7 @@ export default function Staff() {
                 phone={staffMember.phone}
                 url={staffMember.url}
                 bio={staffMember.bio}
+                special={staffMember.special}
                 orientation="vertical"
                 width="100%"
                 rounded

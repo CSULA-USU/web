@@ -14,7 +14,8 @@
     "pronouns": "",
     "tags": ["All", "Operations"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Alice Lam",
@@ -31,7 +32,8 @@
     "pronouns": "",
     "tags": ["All", "Administration"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Andrea Dominguez",
@@ -48,7 +50,8 @@
     "pronouns": "She/They",
     "tags": ["All", "CSI"],
     "url": "https://www.linkedin.com/in/andrea-dominguez-008ba81b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Anthony Ngo",
@@ -65,7 +68,8 @@
     "pronouns": "",
     "tags": ["All", "Operations"],
     "url": "https://www.linkedin.com/in/anthony-ngo-4a07a2266",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Ashley Lepe",
@@ -82,7 +86,8 @@
     "pronouns": "",
     "tags": ["All", "Recreation"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Chris Balam",
@@ -99,7 +104,8 @@
     "pronouns": "",
     "tags": ["All", "Recreation", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Christian Butler",
@@ -116,7 +122,8 @@
     "pronouns": "",
     "tags": ["All", "Recreation"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Emily Urrutia",
@@ -133,7 +140,8 @@
     "pronouns": "",
     "tags": ["All", "CCC"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Fabi Avina",
@@ -150,7 +158,8 @@
     "pronouns": "",
     "tags": ["All", "CCC", "CSI", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Heidy Saravia",
@@ -167,7 +176,8 @@
     "pronouns": "",
     "tags": ["All", "CSI"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Hilal Kasikci",
@@ -184,7 +194,8 @@
     "pronouns": "",
     "tags": ["All", "CCC", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Ian Prieto",
@@ -201,7 +212,8 @@
     "pronouns": "",
     "tags": ["All", "CSI"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Imani Thomas",
@@ -218,7 +230,8 @@
     "pronouns": "",
     "tags": ["All", "CCC"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Jasmine Heredia",
@@ -235,7 +248,8 @@
     "pronouns": "",
     "tags": ["All", "Administration"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Javier Morales",
@@ -252,7 +266,8 @@
     "pronouns": "",
     "tags": ["All", "Operations"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "John Ortiz",
@@ -269,7 +284,8 @@
     "pronouns": "",
     "tags": ["All", "Operations", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "John Yasis",
@@ -286,7 +302,8 @@
     "pronouns": "",
     "tags": ["All", "Graffix"],
     "url": "https://www.linkedin.com/in/yasis/",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Joseph Sedlacek",
@@ -303,7 +320,8 @@
     "pronouns": "",
     "tags": ["All", "Administration", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Lena Zeng",
@@ -320,7 +338,8 @@
     "pronouns": "",
     "tags": ["All", "Administration"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Lily Rubio",
@@ -337,7 +356,8 @@
     "pronouns": "",
     "tags": ["All", "Recreation"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Malia Otuhiva",
@@ -354,7 +374,8 @@
     "pronouns": "",
     "tags": ["All", "CCC"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Mario Pizarro Rojas",
@@ -371,7 +392,8 @@
     "pronouns": "",
     "tags": ["All", "CCC"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Megan Bell",
@@ -388,7 +410,8 @@
     "pronouns": "",
     "tags": ["All", "Administration", "Directors"],
     "url": "https://www.linkedin.com/in/meganbell22/",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Robert Gonzales",
@@ -405,7 +428,8 @@
     "pronouns": "",
     "tags": ["All", "Graffix", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": true
   },
   {
     "name": "Ron Ruiz",
@@ -422,7 +446,8 @@
     "pronouns": "",
     "tags": ["All", "Operations"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Sam Juarez",
@@ -439,7 +464,8 @@
     "pronouns": "",
     "tags": ["All", "Graffix"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Sophia Shiau",
@@ -456,7 +482,8 @@
     "pronouns": "",
     "tags": ["All", "Administration", "Directors"],
     "url": "",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Vic Lozoya-Hernandez",
@@ -473,7 +500,8 @@
     "pronouns": "They/Them",
     "tags": ["All", "Operations"],
     "url": "https://www.linkedin.com/in/vic-lozoya-hernandez-b1464128a?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
-    "web": ""
+    "web": "",
+    "special": false
   },
   {
     "name": "Yaritza Rodriguez",
@@ -490,6 +518,7 @@
     "pronouns": "",
     "tags": ["All", "Operations"],
     "url": "https://www.linkedin.com/in/yaritza-rodriguez-3232101a5",
-    "web": ""
+    "web": "",
+    "special": false
   }
 ]

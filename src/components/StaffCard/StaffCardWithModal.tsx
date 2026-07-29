@@ -32,6 +32,9 @@ interface CardProps extends CardStyles {
   url?: string;
   bio?: string;
   email?: string;
+  // Passed through to the card, where it gives this member's name the rainbow
+  // treatment. Driven by "special" in staff.json.
+  special?: boolean;
   orientation?: 'horizontal' | 'vertical';
 }
 
@@ -180,6 +183,7 @@ export const StaffCardWithModal = ({
   suffix,
   url,
   margin,
+  special,
   width = '380px',
   orientation,
   rounded,
@@ -205,6 +209,7 @@ export const StaffCardWithModal = ({
           title={title}
           src={src}
           alt={alt}
+          special={special}
           width="100%"
           orientation={orientation}
           rounded={rounded}
@@ -230,6 +235,8 @@ export const StaffCardWithModal = ({
                 size="lg"
                 lineHeight="1.2"
               >
+                {/* Plain on purpose: the modal is contact detail people read
+                    and copy, so only the directory card gets the easter egg. */}
                 {fullName}
               </Typography>
               {pronouns && (

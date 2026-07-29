@@ -229,8 +229,10 @@ export default function StaffBusinessCard({ staffData }: Props) {
                 size="lg"
                 lineHeight="1"
               >
-                {staffData && staffData.name}
-                {staffData && staffData.suffix && ', ' + staffData.suffix}
+                {/* No easter egg here on purpose: the virtual card is what
+                    staff hand to people off campus, so it stays plain. The
+                    "special" flag only animates the staff directory. */}
+                {fullName}
               </Typography>
               <Typography
                 variant="span"

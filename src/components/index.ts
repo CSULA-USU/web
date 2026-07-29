@@ -22,6 +22,7 @@ export * from './Panel';
 export * from './Popover';
 export * from './PushDrawer';
 export * from './QuoteBanner';
+export * from './RainbowText';
 export * from './ScrollingContent';
 export * from './SearchInput';
 export * from './Select';
