@@ -5,7 +5,13 @@ import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
-import { Image, PageMeta, StyledLink, Typography } from 'components';
+import {
+  CopyButton,
+  Image,
+  PageMeta,
+  StyledLink,
+  Typography,
+} from 'components';
 import { Colors, Spaces } from 'theme';
 
 const OutsideContainer = styled.div`
@@ -88,6 +94,15 @@ const CardContainerTop = styled.div`
 `;
 
 const ContactInfoContainer = styled.div``;
+
+// Pushes the copy button to the right edge of its contact row. Aligning just the
+// button keeps the shared row container untouched, so the rows that have no copy
+// button — LinkedIn, website, address — keep sitting exactly where they did.
+const TrailingCopyButton = styled.div`
+  display: flex;
+  align-self: center;
+  margin-left: auto;
+`;
 
 const IconAndInfoContainer = styled.div`
   display: flex;
@@ -297,6 +312,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
+                  <TrailingCopyButton>
+                    <CopyButton value={staffData.phone} label="phone number" />
+                  </TrailingCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.email && (
@@ -322,6 +340,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
+                  <TrailingCopyButton>
+                    <CopyButton value={staffData.email} label="email address" />
+                  </TrailingCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.url && (
