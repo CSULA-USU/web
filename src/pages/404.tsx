@@ -1,6 +1,5 @@
-import Head from 'next/head';
 import { Page } from 'modules';
-import { FluidContainer, Image, Typography } from 'components';
+import { FluidContainer, Image, PageMeta, Typography } from 'components';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Spaces } from 'theme';
@@ -15,9 +14,12 @@ const LinkContainer = styled.div`
 export default function Custom404() {
   return (
     <Page>
-      <Head>
-        <title>University&ndash;Student Union</title>
-      </Head>
+      <PageMeta
+        title="Page Not Found | U–SU"
+        description="This page could not be found. Head back to the University-Student Union home page for events, student organizations, and campus services."
+        path="/404"
+        noindex
+      />
       <FluidContainer
         flex
         justifyContent="space-between"

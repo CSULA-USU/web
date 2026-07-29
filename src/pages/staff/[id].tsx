@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import styled from 'styled-components';
 import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
-import { Image, StyledLink, Typography } from 'components';
+import { Image, PageMeta, StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 
 const OutsideContainer = styled.div`
@@ -152,15 +152,52 @@ const ShadowWrapper = styled.div`
   border-radius: 16px;
 `;
 
-export default function StaffBusinessCard() {
-  const router = useRouter();
-  const { id } = router.query;
+type StaffMember = (typeof staff)[number];
+
+type Props = {
+  staffData: StaffMember;
+};
+
+// Pre-rendered per person so link-preview crawlers get this staff member's name
+// and photo. Resolving the person from router.query instead would leave crawlers
+// — which do not run JavaScript — with an empty card.
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: staff.map((staffMember) => ({
+    params: { id: toKebabCase(staffMember.name) },
+  })),
+  fallback: false,
+});
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const staffData = staff.find(
-    (staffMember) => toKebabCase(staffMember.name) === String(id),
+    (staffMember) => toKebabCase(staffMember.name) === String(params?.id),
   );
+
+  if (!staffData) {
+    return { notFound: true };
+  }
+
+  return { props: { staffData } };
+};
+
+export default function StaffBusinessCard({ staffData }: Props) {
+  const cardPath = `/staff/${toKebabCase(staffData.name)}`;
+  const fullName = staffData.suffix
+    ? `${staffData.name}, ${staffData.suffix}`
+    : staffData.name;
 
   return (
     <OutsideContainer>
+      <PageMeta
+        title={`${fullName} | U–SU Staff`}
+        description={`${staffData.title}, ${staffData.department} at the University-Student Union, Cal State LA. Contact card with email, phone, and a scannable QR code.`}
+        path={cardPath}
+        socialTitle={`${fullName} — ${staffData.title}`}
+        socialDescription={`${staffData.department}, University-Student Union at Cal State LA.`}
+        type="profile"
+        imageUrl={staffData.src || undefined}
+        imageAlt={`${staffData.name}, ${staffData.title}`}
+      />
       <ShadowWrapper>
         <CardContainer>
           <CardContainerTop>

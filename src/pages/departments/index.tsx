@@ -1,19 +1,17 @@
-import Head from 'next/head';
 import { Header, ImageAndCard, Page } from 'modules';
-import { FluidContainer, Typography } from 'components';
+import { FluidContainer, PageMeta, Typography } from 'components';
 import departments from 'data/departments.json';
 
 export default function Departments() {
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Departments</title>{' '}
-        <meta
-          name="description"
-          content="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
-          key="description"
-        />
-      </Head>
+      <PageMeta
+        title="U–SU Departments"
+        description="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
+        path="/departments"
+        socialTitle="U-SU Departments | Cal State LA"
+        socialDescription="Meet the departments behind the U-SU — the Cross Cultural Centers, Center for Student Involvement, Graffix, Operations, and Recreation."
+      />
 
       <Header
         title="Departments"

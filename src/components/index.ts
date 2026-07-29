@@ -17,6 +17,7 @@ export * from './Label';
 export * from './Link';
 export * from './Loading';
 export * from './NonBreakingSpan';
+export * from './PageMeta';
 export * from './Panel';
 export * from './Popover';
 export * from './PushDrawer';

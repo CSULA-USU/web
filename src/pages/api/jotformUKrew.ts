@@ -3,10 +3,18 @@ import { UKrewStudent } from 'types';
 
 const jotform = process.env.JOTFORM_SUBMISSIONS_API_KEY;
 
+// Route is retired. Set ENABLE_UKREW_API=true to bring it back online.
+const isUKrewApiEnabled = process.env.ENABLE_UKREW_API === 'true';
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
+  if (!isUKrewApiEnabled) {
+    res.status(404).end();
+    return;
+  }
+
   const { user_id } = req.query;
   const formID = 243524728647061;
 

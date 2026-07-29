@@ -11,7 +11,7 @@ import {
   useState,
 } from 'react';
 import { Page, Header } from 'modules';
-import { FluidContainer, Image, Typography } from 'components';
+import { FluidContainer, Image, PageMeta, Typography } from 'components';
 import data from 'data/search-directory.json';
 import Fuse from 'fuse.js';
 import { Colors, Spaces } from 'theme';
@@ -180,8 +180,13 @@ export default function Search() {
 
   return (
     <Page>
+      <PageMeta
+        title="U–SU Search"
+        description="Search the University-Student Union site for events, departments, staff, services, and student resources at Cal State LA."
+        path="/search"
+        noindex
+      />
       <Head>
-        <title>U&ndash;SU Search</title>
         <meta name="author" content="Search" key="author" />{' '}
         {/* Preload background image for better LCP */}
         <link

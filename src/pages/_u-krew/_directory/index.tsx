@@ -179,7 +179,11 @@ export default function Directory() {
     <Page>
       <Head>
         <title>U-SU U-Krew Directory</title>
-        <meta name="author" content="University-Student Union, Cal State LA" />
+        <meta
+          name="author"
+          content="University-Student Union, Cal State LA"
+          key="author"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

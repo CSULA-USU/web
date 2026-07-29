@@ -154,14 +154,18 @@ export default function CSI() {
         />
         <meta property="og:url" content="https://www.calstatelausu.org/csi" />
         <meta property="og:type" content="website" key="og-type" />
+        {/* This was the CSI logo as an SVG, which rendered no card image at
+            all — link-preview crawlers, Teams and Facebook included, do not
+            accept SVG for og:image. Swap in a CSI-specific 1200x630 photo when
+            one exists. */}
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/logos/csi-logo.svg"
+          content="https://www.calstatelausu.org/about/calstatela-hero.jpeg"
           key="og-image"
         />
         <meta
           property="og:image:alt"
-          content="Center for Student Involvement (CSI) logo"
+          content="The Cal State LA University-Student Union Building"
         />
 
         {/* Twitter */}

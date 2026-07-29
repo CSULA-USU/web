@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Page } from 'modules';
-import { Button, FluidContainer, Typography } from 'components';
+import { Button, FluidContainer, PageMeta, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 
 // Styled Components
@@ -266,6 +266,11 @@ export default function Hangman() {
 
   return (
     <Page>
+      <PageMeta
+        title="Hangman | Graffix Web Team"
+        description="A word game built by the Graffix Web Team at the Cal State LA University-Student Union."
+        path="/graffix/web-team/games/hangman"
+      />
       <GameWrapper>
         <Typography
           as="h1"

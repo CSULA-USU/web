@@ -158,6 +158,48 @@ export default function Staff() {
           content="University-Student Union, Cal State LA"
           key="author"
         />
+        <meta
+          name="description"
+          content="Meet the staff of the University-Student Union at Cal State LA. Browse our directors, administration, CSI, CCC, Graffix, Operations, and Recreation teams and find their contact details."
+          key="description"
+        />
+        {/* Open Graph / Social Media */}
+        <meta
+          property="og:title"
+          content="Meet the Staff of the Cal State LA U-SU"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Search the U-SU staff directory by name, title, or department, and find contact details for every team across the Union."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/staff"
+          key="og-url"
+        />
+        <meta
+          property="og:image"
+          content="https://www.calstatelausu.org/about/calstatela-hero.jpeg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="The Cal State LA University-Student Union Building"
+          key="og-image-alt"
+        />
+        <meta property="og:image:width" content="1000" key="og-image-width" />
+        <meta property="og:image:height" content="710" key="og-image-height" />
+
+        {/* Twitter */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
+        <link rel="canonical" href="https://www.calstatelausu.org/staff" />
       </Head>
       <Header
         title="Meet the Staff"
@@ -170,8 +212,8 @@ export default function Staff() {
           independent individuals for some common purpose.
         </Typography>
         <Typography as="p" variant="span" size="xs" color="greyDark">
-          Select any staff member for their details and a link to their virtual
-          card.
+          Select any staff member for their info and a link to their virtual
+          card
         </Typography>
       </Header>
       <FluidContainer>
