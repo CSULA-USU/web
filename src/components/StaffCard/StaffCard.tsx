@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
-import { Image, Panel } from 'components';
+import { Image, Panel, RainbowText } from 'components';
 import { Colors, media } from 'theme';
 
 interface CardStyles {
@@ -18,6 +18,9 @@ interface CardProps extends CardStyles {
   src: string;
   alt: string;
   tags?: string[];
+  // Gives this member's name the rainbow treatment. Driven by "special" in
+  // staff.json.
+  special?: boolean;
   // 'horizontal' is a fixed-height row (photo beside the text) that keeps a
   // roster even. 'vertical' stacks the photo above the text and grows with its
   // content, so long titles stay readable in a multi-column directory grid.
@@ -93,6 +96,7 @@ export const StaffCard = ({
   children,
   src,
   alt,
+  special,
   width = '380px',
   orientation = 'horizontal',
   ...props
@@ -125,7 +129,7 @@ export const StaffCard = ({
           color="greyDarkest"
           margin="0"
         >
-          {name}
+          <RainbowText active={special}>{name}</RainbowText>
         </Typography>
         <Typography
           as="p"

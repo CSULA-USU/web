@@ -58,29 +58,46 @@ export default function Home() {
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
+          key="author"
         />
         <meta
           name="description"
           content="The heart of campus life at Cal State LA. Discover upcoming events, student organizations, job opportunities, room rentals, and essential student services at the U-SU."
+          key="description"
         />
         {/* Open Graph / Social Media */}
         <meta
           property="og:title"
           content="University-Student Union | Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Your hub for connection and growth. Explore events, join student orgs, find your community at the U-SU."
+          key="og-desc"
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.calstatelausu.org/" />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:url"
+          content="https://www.calstatelausu.org/"
+          key="og-url"
+        />
         <meta
           property="og:image"
           content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+          key="og-image"
         />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://www.calstatelausu.org/" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/"
+          key="canonical"
+        />
 
         {/* Structured Data for the Organization and Events */}
         <script

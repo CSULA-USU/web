@@ -42,32 +42,46 @@ export default function Accessibility() {
         <meta
           name="description"
           content="Learn about Accessibility at Cal State LA's University-Student Union. Explore resources, ADA compliance, inclusive design, and services that ensure all students can fully participate in campus life."
+          key="description"
         />
-        <meta name="author" content="University-Student Union, Cal State LA" />
+        <meta
+          name="author"
+          content="University-Student Union, Cal State LA"
+          key="author"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index,follow" />
+        <meta name="robots" content="index,follow" key="robots" />
         <meta
           property="og:title"
           content="Accessibility | University-Student Union at Cal State LA"
+          key="og-title"
         />
         <meta
           property="og:description"
           content="Discover how the University-Student Union at Cal State LA promotes web accessibility and inclusion through ADA compliance, and resources."
+          key="og-desc"
         />
         <meta
           property="og:image"
           content="https://live-csu-northridge.pantheonsite.io/sites/default/files/2023-02/Accessibility_Statement.png"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Accessibility Statement graphic representing accessibility and inclusion at Cal State LA University-Student Union"
+          key="og-image-alt"
         />
         <meta
           property="og:url"
-          content="https://calstatelausu.org/graffix/web-team/accessibility"
+          content="https://www.calstatelausu.org/graffix/web-team/accessibility"
+          key="og-url"
         />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:type" content="website" key="og-type" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
         <meta
           name="twitter:title"
           content="U-SU at Cal State LA Web Accessibiility"
@@ -83,6 +97,11 @@ export default function Accessibility() {
         <meta
           name="twitter:image:alt"
           content="Accessibility Statement graphic representing accessibility and inclusion at Cal State LA University-Student Union"
+        />
+        <link
+          rel="canonical"
+          href="https://www.calstatelausu.org/graffix/web-team/accessibility"
+          key="canonical"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

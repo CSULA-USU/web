@@ -117,13 +117,29 @@ export default function WebTeam() {
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/graffix/web-team"
+          key="og-url"
         />
         <meta property="og:type" content="website" key="og-type" />
+        <meta
+          property="og:image"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-hero.webp"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Design work by the U-SU Graffix department at Cal State LA"
+          key="og-image-alt"
+        />
 
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
         <link
           rel="canonical"
           href="https://www.calstatelausu.org/graffix/web-team"
+          key="canonical"
         />
 
         <script

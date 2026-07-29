@@ -1,9 +1,9 @@
-import Head from 'next/head';
 import { Page, UtilityHeroHeader } from 'modules';
 import {
   FluidContainer,
   Image,
   Card,
+  PageMeta,
   Typography,
   Tabs,
   Button,
@@ -330,9 +330,15 @@ export default function BoardOfDirectors() {
 
   return (
     <Page>
-      <Head>
-        <title>Board of Directors</title>
-      </Head>
+      <PageMeta
+        title="Board of Directors"
+        description="The Board of Directors is the governing board of the University-Student Union — 8 student directors alongside faculty, staff, administrator, and alumni members who set policy and hold financial and legal responsibility for the non-profit."
+        path="/board-of-directors"
+        socialTitle="U-SU Board of Directors | Cal State LA"
+        socialDescription="Meet the students, faculty, staff, and alumni who govern the University-Student Union and shape its policy and finances."
+        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        imageAlt="The University-Student Union Board of Directors"
+      />
 
       <UtilityHeroHeader
         src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"

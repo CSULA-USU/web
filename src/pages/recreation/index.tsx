@@ -108,20 +108,26 @@ export default function Recreation() {
         <meta
           property="og:url"
           content="https://www.calstatelausu.org/recreation"
+          key="og-url"
         />
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:image"
           content="https://www.calstatelausu.org/departments/recreation/recreation-hero-background.jpg"
-          key="og:image"
+          key="og-image"
         />
         <meta
           property="og:image:alt"
           content="Students exercising at the Cal State LA U-SU Recreation Fitness Center"
+          key="og-image-alt"
         />
 
         {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
         <meta name="twitter:title" content="Recreation | Cal State LA U-SU" />
         <meta
           name="twitter:description"

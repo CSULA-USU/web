@@ -1,10 +1,15 @@
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { StatusType } from 'atoms';
 import { useBreakpoint } from 'hooks';
 import { Colors, media, Spaces } from 'theme';
-import { FluidContainer, StyledLink, Loading, Typography } from 'components';
+import {
+  FluidContainer,
+  StyledLink,
+  Loading,
+  PageMeta,
+  Typography,
+} from 'components';
 import { Page } from 'modules';
 import { EmploymentInfo } from 'partials';
 // import jobs from 'data/employment.json';
@@ -100,14 +105,13 @@ export default function Employment() {
 
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Employment</title>{' '}
-        <meta
-          name="description"
-          content="Explore work opportunities and job positions at the University-Student Union at Cal State LA, and help contribute to its mission of encouraging broad social, cultural, recreational, and informal educational programming for the university and its surroundings"
-          key="description"
-        />
-      </Head>
+      <PageMeta
+        title="U–SU Employment"
+        description="Explore work opportunities and job positions at the University-Student Union at Cal State LA, and help contribute to its mission of encouraging broad social, cultural, recreational, and informal educational programming for the university and its surroundings"
+        path="/employment"
+        socialTitle="Work at the U-SU | Cal State LA"
+        socialDescription="On-campus jobs for Golden Eagles. Explore open student and professional positions at the University-Student Union."
+      />
 
       <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp">
         <Typography as="h1" variant="pageHeader">

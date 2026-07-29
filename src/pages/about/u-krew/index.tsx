@@ -162,7 +162,7 @@ export default function UKrew() {
         />
         <meta
           property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/awards-800.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/u-krew/u-awards-photo.jpg"
           key="og-image"
         />
         <meta

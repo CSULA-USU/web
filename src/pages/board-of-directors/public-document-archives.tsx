@@ -1,6 +1,7 @@
 import {
   FluidContainer,
   NonBreakingSpan,
+  PageMeta,
   Typography,
   Expandable,
   StyledLink,
@@ -19,7 +20,6 @@ import { getDownloadAllDoc, getMeetingDocuments } from 'api/bod';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
 import { BiChevronRight } from 'react-icons/bi';
 
 const FYContainer = styled.div`
@@ -118,9 +118,13 @@ export default function PublicDocumentArchives() {
   }, []);
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Public Document Archive</title>
-      </Head>
+      <PageMeta
+        title="U–SU Public Document Archive"
+        description="Archived public inspection documents for the University-Student Union at Cal State LA — past audited financial statements, budgets, agendas, and minutes by year."
+        path="/board-of-directors/public-document-archives"
+        socialTitle="U-SU Public Document Archive | Cal State LA"
+        socialDescription="Browse past audited financials, budgets, agendas, and minutes by year."
+      />
       <Header
         title="Archives"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"

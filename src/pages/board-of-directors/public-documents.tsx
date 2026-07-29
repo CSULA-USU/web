@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { PageMeta } from 'components';
 import { Header, Page } from 'modules';
 import {
   GeneralInformation,
@@ -9,9 +9,13 @@ import {
 export default function PublicDocuments() {
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Public Docs</title>
-      </Head>
+      <PageMeta
+        title="U–SU Public Docs"
+        description="Public inspection documents for the University-Student Union at Cal State LA, including audited financial statements, budgets, and governing documents."
+        path="/board-of-directors/public-documents"
+        socialTitle="U-SU Public Documents | Cal State LA"
+        socialDescription="Audited financials, budgets, bylaws, and other public inspection documents for the University-Student Union."
+      />
       <Header
         title="Public Documents"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp"

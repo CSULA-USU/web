@@ -1,9 +1,8 @@
-import Head from 'next/head';
 import { UpcomingEvents, Page, Header } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState, eventListStatusState } from 'atoms';
 import styled from 'styled-components';
-import { FluidContainer, Loading, Typography } from 'components';
+import { FluidContainer, Loading, PageMeta, Typography } from 'components';
 import { useState, useEffect } from 'react';
 
 const BackgroundImage = styled.div`
@@ -24,9 +23,13 @@ export default function Home() {
 
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Events</title>
-      </Head>
+      <PageMeta
+        title="U–SU Events"
+        description="See what's happening at the University-Student Union. Browse upcoming events, programs, and celebrations across Cal State LA's campus hub."
+        path="/events"
+        socialTitle="Upcoming Events at the Cal State LA U-SU"
+        socialDescription="Concerts, cultural celebrations, workshops, and recreation programming — find your next thing to do on campus."
+      />
       <BackgroundImage>
         <Header title="Upcoming Events">
           The University-Student Union hosts various events throughout the

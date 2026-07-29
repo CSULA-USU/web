@@ -359,6 +359,12 @@ export default function MeetingRoom({ room }: { room: Room }) {
         <meta
           property="og:url"
           content={`https://www.calstatelausu.org/operations/meeting-rooms/${room.id}`}
+          key="og-url"
+        />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
         />
         <link
           rel="canonical"

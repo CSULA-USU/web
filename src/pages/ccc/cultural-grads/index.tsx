@@ -126,24 +126,34 @@ export default function CulturalGrads() {
       <Head>
         <title>{pageTitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={pageDescription} />
+        <meta name="description" content={pageDescription} key="description" />
         <meta
           name="author"
           content="The University Student Union Cross Cultural Centers"
+          key="author"
         />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href={pageUrl} key="canonical" />
 
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:site_name"
           content="University-Student Union at Cal State LA"
+          key="og-site-name"
         />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={socialImageUrl} />
+        <meta property="og:url" content={pageUrl} key="og-url" />
+        <meta property="og:title" content={pageTitle} key="og-title" />
+        <meta
+          property="og:description"
+          content={pageDescription}
+          key="og-desc"
+        />
+        <meta property="og:image" content={socialImageUrl} key="og-image" />
 
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImageUrl} />

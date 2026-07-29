@@ -162,9 +162,33 @@ export default function CGCGrad() {
           content="width=device-width, initial-scale=1, shrink-to-fit=yes"
         />
         <meta
-          name="image"
+          property="og:title"
+          content="Cultural Graduation Celebrations | Cal State LA U-SU"
+          key="og-title"
+        />
+        <meta
+          property="og:description"
+          content="Celebrate your academic achievements alongside the families, communities, and cultural influences that got you here. Open to all Cal State LA students."
+          key="og-desc"
+        />
+        <meta property="og:type" content="website" key="og-type" />
+        {/* The variant is read from router.query, which is empty for crawlers,
+            so this stays the shared banner rather than the per-celebration
+            image. Per-variant cards need getStaticPaths/getStaticProps. */}
+        <meta
           property="og:image"
-          content="/departments/ccc/ccc-grad-banner.jpg"
+          content="https://www.calstatelausu.org/departments/ccc/ccc-grad-banner.jpg"
+          key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Cal State LA Cultural Graduation Celebrations banner"
+          key="og-image-alt"
+        />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
         />
         <link rel="preload" as="image" href={headerImageSrc} />
       </Head>
