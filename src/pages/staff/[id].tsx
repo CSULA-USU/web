@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import styled from 'styled-components';
 import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
-import { Image, StyledLink, Typography } from 'components';
+import { Image, PageMeta, StyledLink, Typography } from 'components';
 import { Colors, Spaces } from 'theme';
 
 const OutsideContainer = styled.div`
@@ -152,15 +152,52 @@ const ShadowWrapper = styled.div`
   border-radius: 16px;
 `;
 
-export default function StaffBusinessCard() {
-  const router = useRouter();
-  const { id } = router.query;
+type StaffMember = (typeof staff)[number];
+
+type Props = {
+  staffData: StaffMember;
+};
+
+// Pre-rendered per person so link-preview crawlers get this staff member's name
+// and photo. Resolving the person from router.query instead would leave crawlers
+// — which do not run JavaScript — with an empty card.
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: staff.map((staffMember) => ({
+    params: { id: toKebabCase(staffMember.name) },
+  })),
+  fallback: false,
+});
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const staffData = staff.find(
-    (staffMember) => toKebabCase(staffMember.name) === String(id),
+    (staffMember) => toKebabCase(staffMember.name) === String(params?.id),
   );
+
+  if (!staffData) {
+    return { notFound: true };
+  }
+
+  return { props: { staffData } };
+};
+
+export default function StaffBusinessCard({ staffData }: Props) {
+  const cardPath = `/staff/${toKebabCase(staffData.name)}`;
+  const fullName = staffData.suffix
+    ? `${staffData.name}, ${staffData.suffix}`
+    : staffData.name;
 
   return (
     <OutsideContainer>
+      <PageMeta
+        title={`${fullName} | U–SU Staff`}
+        description={`${staffData.title}, ${staffData.department} at the University-Student Union, Cal State LA. Contact card with email, phone, and a scannable QR code.`}
+        path={cardPath}
+        socialTitle={`${fullName} — ${staffData.title}`}
+        socialDescription={`${staffData.department}, University-Student Union at Cal State LA.`}
+        type="profile"
+        imageUrl={staffData.src || undefined}
+        imageAlt={`${staffData.name}, ${staffData.title}`}
+      />
       <ShadowWrapper>
         <CardContainer>
           <CardContainerTop>
@@ -171,7 +208,7 @@ export default function StaffBusinessCard() {
               height="80"
             />
             <ProfileImageContainer>
-              {staffData?.src && (
+              {staffData.src && (
                 <Image
                   src={staffData.src}
                   alt=""
@@ -192,8 +229,10 @@ export default function StaffBusinessCard() {
                 size="lg"
                 lineHeight="1"
               >
-                {staffData && staffData.name}
-                {staffData && staffData.suffix && ', ' + staffData.suffix}
+                {/* No easter egg here on purpose: the virtual card is what
+                    staff hand to people off campus, so it stays plain. The
+                    "special" flag only animates the staff directory. */}
+                {fullName}
               </Typography>
               <Typography
                 variant="span"
@@ -202,7 +241,7 @@ export default function StaffBusinessCard() {
                 lineHeight="1.2"
                 margin={`0 0 ${Spaces.sm} 0`}
               >
-                {staffData && staffData.pronouns}
+                {staffData.pronouns}
               </Typography>
               <Typography
                 variant="titleSmall"
@@ -211,7 +250,7 @@ export default function StaffBusinessCard() {
                 weight="600"
                 lineHeight="1"
               >
-                {staffData && staffData.title}
+                {staffData.title}
               </Typography>
               <Typography
                 variant="eventTime"
@@ -220,7 +259,7 @@ export default function StaffBusinessCard() {
                 weight="400"
                 lineHeight="1"
               >
-                {staffData && staffData.department}
+                {staffData.department}
               </Typography>
             </ProfessionalInfoContainer>
             <CardBlurbContainer>
@@ -231,11 +270,11 @@ export default function StaffBusinessCard() {
                 weight="400"
                 lineHeight="1.1"
               >
-                {staffData && staffData.cardBlurb}
+                {staffData.cardBlurb}
               </Typography>
             </CardBlurbContainer>
             <ContactInfoContainer>
-              {staffData && staffData.phone && (
+              {staffData.phone && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiSolidPhone
@@ -254,13 +293,13 @@ export default function StaffBusinessCard() {
                       isInverseUnderlineStyling
                     >
                       <Typography variant="span" size="2xs" color="greyDarkest">
-                        {staffData && staffData.phone}
+                        {staffData.phone}
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.email && (
+              {staffData.email && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <MdEmail
@@ -285,7 +324,7 @@ export default function StaffBusinessCard() {
                   </IconAndInfoContainerRight>
                 </IconAndInfoContainer>
               )}
-              {staffData && staffData.url && (
+              {staffData.url && (
                 <IconAndInfoContainer>
                   <IconContainer>
                     <BiLogoLinkedin
@@ -381,11 +420,7 @@ export default function StaffBusinessCard() {
                 </StyledLink>
               </IconAndInfoContainer>
               <QRContainer>
-                <QRCodeSVG
-                  value={`https://www.calstatelausu.org/staff/${
-                    staffData && toKebabCase(staffData.name)
-                  }`}
-                />
+                <QRCodeSVG value={`https://www.calstatelausu.org${cardPath}`} />
               </QRContainer>
             </ContactInfoContainer>
           </CardContainerBottom>

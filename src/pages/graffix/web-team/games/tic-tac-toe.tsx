@@ -1,4 +1,10 @@
-import { Button, FluidContainer, Typography, Image } from 'components';
+import {
+  Button,
+  FluidContainer,
+  PageMeta,
+  Typography,
+  Image,
+} from 'components';
 import { Page } from 'modules';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
@@ -98,7 +104,11 @@ export default function TicTacToe() {
 
   return (
     <Page>
-      <title>Tic-Tac-Toe</title>
+      <PageMeta
+        title="Tic-Tac-Toe | Graffix Web Team"
+        description="A tic-tac-toe game built by the Graffix Web Team at the Cal State LA University-Student Union."
+        path="/graffix/web-team/games/tic-tac-toe"
+      />
       <FluidContainer backgroundImage="https://images.unsplash.com/photo-1609261834504-d501c8a6771a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8">
         <FluidContainer>
           <Typography

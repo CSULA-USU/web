@@ -62,6 +62,7 @@ their own variables — this list is not exhaustive.
 | `FEEDBACK_FROM_EMAIL`     | No       | From address for feedback emails. Defaults to `U-SU Feedback <noreply@calstatelausu.org>`.                                              |
 | `FEEDBACK_NOTIFY_EMAILS`  | No       | Comma-separated admin recipients. Falls back to the in-code default list.                                                               |
 | `SLACK_ALERT_WEBHOOK_URL` | No       | Slack incoming-webhook URL. When set, a feedback email failure posts an alert here. Unset = no Slack alert (failures are still logged). |
+| `ENABLE_UKREW_API`        | No       | Set to `true` to re-enable `/api/jotformUKrew`. Unset (the default) makes the route return 404.                                         |
 
 ## Project Structure
 

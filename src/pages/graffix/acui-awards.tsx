@@ -201,10 +201,17 @@ export default function AcuiAwards() {
           content="https://www.calstatelausu.org/graffix/acui-awards"
         />
         <meta property="og:type" content="website" key="og-type" />
+        {/* Was the Graffix logo as an SVG, which link-preview crawlers reject
+            outright, leaving the card with no image. */}
         <meta
           property="og:image"
-          content="https://www.calstatelausu.org/departments/logos/graffix-logo.svg"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/graffix-hero.webp"
           key="og-image"
+        />
+        <meta
+          property="og:image:alt"
+          content="Design work by the U-SU Graffix department at Cal State LA"
+          key="og-image-alt"
         />
 
         {/* Twitter */}

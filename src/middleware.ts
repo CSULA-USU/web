@@ -10,10 +10,13 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith('/api/auth')) return NextResponse.next();
   if (pathname.startsWith('/backoffice/signin')) return NextResponse.next();
 
-  // Guard everything
+  // Guard everything. /_edit is the Supabase-backed page editor: the leading
+  // underscore keeps it out of search results but does nothing for access, so it
+  // needs the same session check as the backoffice routes.
   if (
     pathname.startsWith('/backoffice') ||
-    pathname.startsWith('/graffix/backoffice')
+    pathname.startsWith('/graffix/backoffice') ||
+    pathname.startsWith('/_edit')
   ) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
@@ -45,5 +48,7 @@ export const config = {
     '/backoffice/:path*',
     '/graffix/backoffice',
     '/graffix/backoffice/:path*',
+    '/_edit',
+    '/_edit/:path*',
   ],
 };

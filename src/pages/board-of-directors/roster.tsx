@@ -1,6 +1,11 @@
-import Head from 'next/head';
 import { Header, Page } from 'modules';
-import { FluidContainer, Image, NonBreakingSpan, Typography } from 'components';
+import {
+  FluidContainer,
+  Image,
+  NonBreakingSpan,
+  PageMeta,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
 import boardMembers from 'data/board-members.json';
 import { StaffCard } from 'components/StaffCard';
@@ -10,9 +15,15 @@ export default function Governance() {
   const {} = useBreakpoint();
   return (
     <Page>
-      <Head>
-        <title>U&ndash;SU Board Members</title>
-      </Head>
+      <PageMeta
+        title="U–SU Board Members"
+        description="Meet the student, faculty, staff, and alumni members currently serving on the University-Student Union Board of Directors at Cal State LA."
+        path="/board-of-directors/roster"
+        socialTitle="U-SU Board Member Roster | Cal State LA"
+        socialDescription="The current roster of the University-Student Union Board of Directors."
+        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        imageAlt="The University-Student Union Board of Directors"
+      />
       <Header
         title="Meet the Board of Directors"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-3.webp"

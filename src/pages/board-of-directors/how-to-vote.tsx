@@ -1,9 +1,9 @@
-import Head from 'next/head';
 import { Page } from 'modules';
 import {
   FluidContainer,
   Image,
   NonBreakingSpan,
+  PageMeta,
   Panel,
   Typography,
 } from 'components';
@@ -80,9 +80,13 @@ export default function HowToVote() {
 
   return (
     <Page>
-      <Head>
-        <title>How To Vote</title>
-      </Head>
+      <PageMeta
+        title="How To Vote"
+        description="Step-by-step instructions for voting in the Cal State LA student leader elections on web and mobile, and choosing your University-Student Union student directors."
+        path="/board-of-directors/how-to-vote"
+        socialTitle="How to Vote in Cal State LA Student Elections"
+        socialDescription="Web and mobile voting instructions for the student leader elections. Your vote picks the U-SU student directors."
+      />
       <FluidContainer
         backgroundColor="black"
         flex

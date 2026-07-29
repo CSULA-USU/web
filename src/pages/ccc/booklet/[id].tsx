@@ -1,8 +1,13 @@
-import { Button, FluidContainer, Typography, Image } from 'components';
+import {
+  Button,
+  FluidContainer,
+  PageMeta,
+  Typography,
+  Image,
+} from 'components';
 import CulturalGradsData from 'data/cgc-data.json';
 import { Page } from 'modules';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import { Spaces } from 'theme';
 
 type Grad = (typeof CulturalGradsData)['info-cards'][number];
@@ -42,9 +47,13 @@ export default function CulturalGrad({ grad }: Props) {
 
   return (
     <Page>
-      <Head>
-        <title>{`${grad.title} | Cal State LA U-SU`}</title>
-      </Head>
+      <PageMeta
+        title={`${grad.title} | Cal State LA U-SU`}
+        description={`${grad.title} for ${grad.subheader} graduates at Cal State LA. Program booklet, ceremony details, and live captions.`}
+        path={`/ccc/booklet/${grad.id}`}
+        imageUrl={grad.bookletHero}
+        imageAlt={`${grad.title} program booklet cover`}
+      />
       <FluidContainer
         flex
         flexDirection="column"

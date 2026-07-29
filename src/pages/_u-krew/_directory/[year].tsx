@@ -6,7 +6,11 @@ export default function UKrewYear() {
     <Page>
       <Head>
         <title>U-Krew</title>
-        <meta name="author" content="University-Student Union, Cal State LA" />
+        <meta
+          name="author"
+          content="University-Student Union, Cal State LA"
+          key="author"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header

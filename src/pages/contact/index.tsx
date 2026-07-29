@@ -7,6 +7,7 @@ import {
   Button,
   FluidContainer,
   Input,
+  PageMeta,
   Select,
   StyledLink,
   TextArea,
@@ -223,17 +224,18 @@ export default function Contact() {
 
   return (
     <Page>
+      <PageMeta
+        title="Contact the U–SU"
+        description="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
+        path="/contact"
+        socialTitle="Contact the Cal State LA U-SU"
+        socialDescription="Questions, feedback, or a report to file? Reach the University-Student Union team, or find the right department directly."
+      />
       <Head>
-        <title>Contact the U&ndash;SU</title>
         <meta
           name="keywords"
           content="The University Student Union, California State University Los Angeles, Student Union, CSULA, Cal State LA, U-SU, USU, Student, Organizations, Cross Cultural Centers, Center For Student Involvement, Fitness Center, Student Organizations, Calendar, Events, Gender and Sexuality Resource Center, Pan African Resource Center, Asian Pacific Islander, Chicana Latina, Information and Event Services, Distinguished Women Awards, Cultural Graduate Celebrations, Employment Opportunities, Board of Directors, Jobs, complaints, feedback, contact, connect, report, issue, question"
           key="keywords"
-        />
-        <meta
-          name="description"
-          content="The University-Student Union inc.(U-SU) at California State University, Los Angeles was established in 1975 and provides a unique setting for the encouragement of broad social, cultural, recreational, and informal educational programming for the university and its surroundings."
-          key="description"
         />
       </Head>
 
