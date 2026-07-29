@@ -93,19 +93,22 @@ const CardContainerTop = styled.div`
   }
 `;
 
-const ContactInfoContainer = styled.div``;
-
-// Pushes the copy button to the right edge of its contact row. Aligning just the
-// button keeps the shared row container untouched, so the rows that have no copy
-// button — LinkedIn, website, address — keep sitting exactly where they did.
-const TrailingCopyButton = styled.div`
+// Sits immediately after the value it copies rather than out at the card edge,
+// which is how the same button reads in the directory modal. Needs a wrapper of
+// its own because CopyButton renders a fragment and cannot take a className.
+const ContactCopyButton = styled.div`
   display: flex;
-  align-self: center;
-  margin-left: auto;
+  margin-left: ${Spaces.sm};
 `;
 
+const ContactInfoContainer = styled.div``;
+
+// Centring the row is what keeps the copy button on the same line as the text:
+// without it the value column stretches to the button's height and the text
+// rides at the top of the row while the button sits lower.
 const IconAndInfoContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   margin-bottom: ${Spaces.sm};
@@ -312,9 +315,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
-                  <TrailingCopyButton>
+                  <ContactCopyButton>
                     <CopyButton value={staffData.phone} label="phone number" />
-                  </TrailingCopyButton>
+                  </ContactCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.email && (
@@ -340,9 +343,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
-                  <TrailingCopyButton>
+                  <ContactCopyButton>
                     <CopyButton value={staffData.email} label="email address" />
-                  </TrailingCopyButton>
+                  </ContactCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.url && (
