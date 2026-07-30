@@ -1,239 +1,746 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import {
+  MdChevronRight,
+  MdEmail,
+  MdLanguage,
+  MdPhone,
+  MdSchedule,
+} from 'react-icons/md';
 import { Page, GenericModal, Header } from 'modules';
-import { Spaces, media } from 'theme';
-import styled from 'styled-components';
-import { Typography, Card, FluidContainer, Image } from 'components';
+import { toKebabCase } from 'utils/stringhelpers';
+import {
+  formatTime,
+  formatWeekdays,
+  groupHoursByValidity,
+  OpeningHours,
+} from 'utils/openingHours';
+import { Colors, FontSizes, Spaces, media } from 'theme';
+import {
+  Button,
+  CopyButton,
+  FluidContainer,
+  Image,
+  PageMeta,
+  Panel,
+  SITE_URL,
+  StyledLink,
+  Typography,
+} from 'components';
 
-interface TenantCardData {
-  title: string;
-  children: string;
-  iconSrc: string;
-  iconAlt: string;
-  number: string;
+type TenantCategory = 'Dining' | 'Organizations & Services' | 'Shopping';
+
+interface Tenant {
+  name: string;
+  category: TenantCategory;
+  /** schema.org type for this tenant, so each one is indexed as what it is. */
+  schemaType: string;
+  /** Full copy. Rendered in the card and the modal, and fed to structured data. */
+  description: string;
+  /** The tenant name sits beside the logo in every place it renders, so the
+   * image is decorative and always gets an empty alt. */
+  logoSrc: string;
+  /**
+   * Tile colour behind the logo. Defaults to white — set any theme colour when
+   * a white or light mark would otherwise disappear into it.
+   */
+  logoBackgroundColor?: keyof typeof Colors;
+  phone?: string;
+  email?: string;
+  website?: string;
+  /** Omit when we have no confirmed hours; nothing renders and nothing is indexed. */
+  hours?: OpeningHours[];
 }
 
-const CardContainer = styled.div`
-  ${media('tablet')(`min-width: 100%;`)}
-  min-width: calc(33.33% - 8px);
-  flex: 1;
-  margin: ${Spaces.lg} 0;
-  cursor: pointer;
+const USU_POSTAL_ADDRESS = {
+  '@type': 'PostalAddress',
+  streetAddress: '5154 State University Dr',
+  addressLocality: 'Los Angeles',
+  addressRegion: 'CA',
+  postalCode: '90032',
+} as const;
 
-  &:hover {
-    & > div {
-      opacity: 0.8;
-      transition: opacity 0.2s ease-in-out;
-    }
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    max-height: 80px;
-    object-fit: contain;
-    aspect-ratio: 3 / 2;
-  }
-`;
-
-const cards = [
+// `phone`, `email`, `website`, and `hours` are all optional — a tenant only
+// shows the rows it has data for. Anything left off here is a detail we have not
+// confirmed with the tenant yet, not one that was forgotten; fill it in and the
+// card, the modal, and the structured data all pick it up automatically.
+//
+// See "Editing Tenant Hours" in the README for the full field reference. Note
+// that these values are published as schema.org structured data, so a guessed
+// value is asserted to Google as fact — leave a field off instead.
+const TENANTS: Tenant[] = [
   {
-    title: 'Alumni Association',
-    children:
-      'Cal State LA Alumni Association is dedicated to past and present students desiring to stay involved in the Cal State LA community. ',
-    iconSrc: '/calstatela-badge.svg',
-    iconAlt: 'Cal State LA Alumni Logo',
-    number: '323-343-2586',
+    name: 'Starbucks',
+    category: 'Dining',
+    schemaType: 'CafeOrCoffeeShop',
+    description:
+      'It takes many hands to craft the perfect cup of coffee—from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
+    logoBackgroundColor: 'greyLightest',
+    logoSrc: '/about/tenants/starbucks-logo.png',
+    phone: '323-343-6793',
+    website: '',
+    // Confirmed hours go here. Scope each span to the term it applies to, and
+    // add the next window when it is known — spans sharing dates group together:
+    // hours: [
+    //   {
+    //     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    //     opens: '07:00',
+    //     closes: '19:00',
+    //     validFrom: '2026-08-24',
+    //     validThrough: '2026-12-18',
+    //   },
+    //   {
+    //     days: ['Friday'],
+    //     opens: '07:00',
+    //     closes: '15:30',
+    //     validFrom: '2026-08-24',
+    //     validThrough: '2026-12-18',
+    //   },
+    // ],
   },
   {
-    title: 'Associated Students, Incorporated',
-    children:
-      'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA...',
-    iconSrc: '/about/tenants/asi-logo.png',
-    iconAlt: 'ASI Logo',
-    number: '323-343-4780',
-  },
-  {
-    title: 'In the Making',
-    children:
-      'In the Making is a nonprofit organization serving as a community resource center providing clothing and household items to individuals, groups and organizations as well as being a source for youth capacity building in a nonprofit environment.  Our programs form partnerships with schools, corporations and government agencies in order to serve the community.',
-    iconSrc:
-      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/ITM_logo_black.png',
-    iconAlt: 'In the Making Logo',
-    number: '',
-  },
-  {
-    title: 'Sbarro',
-    children:
+    name: 'Sbarro',
+    category: 'Dining',
+    schemaType: 'Restaurant',
+    description:
       'Extraordinary food and atmosphere, time-honored family recipes and the finest quality ingredients are the hallmarks of the Sbarro brand. From the moment our customers walk through the door, they know that dining at Sbarro will be a distinctive Italian experience.',
-
-    iconSrc: '/about/tenants/sbarro-logo.png',
-    iconAlt: 'Sbarro Logo',
-    number: '323-225-1464',
+    logoBackgroundColor: 'greyLightest',
+    logoSrc: '/about/tenants/sbarro-logo.png',
+    phone: '323-225-1464',
+    website: '',
   },
   {
-    title: 'Starbucks',
-    children:
-      'It takes many hands to craft the perfect cup of coffee – from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
-    iconSrc: '/about/tenants/starbucks-logo.png',
-    iconAlt: 'Starbucks Logo',
-    number: '323-343-6793',
+    name: 'Associated Students, Incorporated',
+    category: 'Organizations & Services',
+    schemaType: 'NonprofitOrganization',
+    description:
+      'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA.',
+    logoBackgroundColor: 'greyLightest',
+    logoSrc: '/about/tenants/asi-logo.png',
+    phone: '323-343-4780',
+  },
+  {
+    name: 'Alumni Association',
+    category: 'Organizations & Services',
+    schemaType: 'Organization',
+    description:
+      'Cal State LA Alumni Association is dedicated to past and present students desiring to stay involved in the Cal State LA community.',
+    logoBackgroundColor: 'greyLightest',
+    logoSrc: '/calstatela-badge.svg',
+    phone: '323-343-2586',
+  },
+  {
+    name: 'Cal State LA Food Pantry',
+    category: 'Organizations & Services',
+    schemaType: 'Organization',
+    description:
+      'The Cal State LA Food Pantry provides access fresh produce, perishable, and nonperishable foods. The pantry is a no-cost service to currently enrolled, degree-seeking Cal State LA students experiencing food insecurity. While it is closed for the summer, we are bringing food access to the campus commuity through our Pop-Up Food Distributions!',
+    logoSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/FoodPantryLogo_360x214.png',
+    logoBackgroundColor: 'greyDarkest',
+    phone: '',
+    website:
+      'https://www.calstatela.edu/deanofstudents/cal-state-la-food-pantry',
+  },
+  {
+    name: 'In the Making',
+    category: 'Shopping',
+    schemaType: 'NonprofitOrganization',
+    description:
+      'In the Making is a nonprofit organization serving as a community resource center providing clothing and household items to individuals, groups and organizations as well as being a source for youth capacity building in a nonprofit environment. Our programs form partnerships with schools, corporations and government agencies in order to serve the community.',
+    logoBackgroundColor: 'greyLightest',
+    logoSrc:
+      'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/ITM_logo_black.png',
   },
 ];
 
+// Alphabetical is the default order for a rendered list here. Sorted once, so
+// the cards and the structured-data positions cannot drift apart, and so a
+// tenant appended to TENANTS lands in the right place without anyone noticing.
+// The explicit 'en' locale keeps the comparison identical on the server and in
+// the browser — an unqualified localeCompare risks a hydration mismatch.
+const TENANTS_ALPHABETICAL = [...TENANTS].sort((a, b) =>
+  a.name.localeCompare(b.name, 'en'),
+);
+
+const CATEGORY_ORDER: TenantCategory[] = [
+  'Dining',
+  'Organizations & Services',
+  'Shopping',
+];
+
+const CATEGORY_DESCRIPTIONS: Record<TenantCategory, string> = {
+  Dining:
+    'Grab coffee between classes or sit down for lunch without ever having to leave the building. Both of our eateries are inside the U-SU and open to students, staff, and visitors.',
+  'Organizations & Services':
+    'Student government, alumni, and community partners keep offices in the U-SU, which means the people behind these programs are a walk down the hall rather than an email away.',
+  Shopping:
+    'Secondhand clothing and household goods, without ever leaving campus.',
+};
+
+const digitsOf = (phone: string) => phone.replace(/\D/g, '');
+
+/** schema.org wants E.164; the tenants list stores the human-readable form. */
+const toE164 = (phone: string) => `+1${digitsOf(phone)}`;
+
+const toAbsoluteUrl = (src: string) =>
+  src.startsWith('http') ? src : `${SITE_URL}${src}`;
+
+const toDisplayUrl = (url: string) =>
+  url
+    .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
+    .replace(/\/$/, '');
+
+interface TenantContactLink {
+  icon: ReactNode;
+  href: string;
+  text: string;
+  isExternalLink?: boolean;
+  /** Present for values worth putting on the clipboard rather than dialing. */
+  copy?: { value: string; label: string };
+}
+
+const buildContactLinks = (tenant: Tenant): TenantContactLink[] => {
+  const links: TenantContactLink[] = [];
+
+  if (tenant.phone) {
+    links.push({
+      icon: <MdPhone />,
+      href: `tel:${toE164(tenant.phone)}`,
+      text: tenant.phone,
+      copy: { value: tenant.phone, label: 'phone number' },
+    });
+  }
+
+  if (tenant.email) {
+    links.push({
+      icon: <MdEmail />,
+      href: `mailto:${tenant.email}`,
+      text: tenant.email,
+      copy: { value: tenant.email, label: 'email address' },
+    });
+  }
+
+  if (tenant.website) {
+    links.push({
+      icon: <MdLanguage />,
+      href: tenant.website,
+      text: toDisplayUrl(tenant.website),
+      isExternalLink: true,
+    });
+  }
+
+  return links;
+};
+
+// Every tenant lands in the ItemList with its full description and whatever
+// contact details it has, so search engines see the same content a visitor gets
+// from opening a card — the modal itself is not in the DOM until it is opened.
+const tenantsStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'University-Student Union Tenants and Dining',
+  description:
+    'Directory of the dining, student government, alumni, and community organizations located inside the University-Student Union at Cal State LA.',
+  itemListElement: TENANTS_ALPHABETICAL.map((tenant, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': tenant.schemaType,
+      name: tenant.name,
+      description: tenant.description,
+      // Skipped when there is no logo. Passing an empty src through
+      // toAbsoluteUrl would publish the site root as this tenant's image.
+      ...(tenant.logoSrc && { image: toAbsoluteUrl(tenant.logoSrc) }),
+      address: USU_POSTAL_ADDRESS,
+      location: {
+        '@type': 'Place',
+        name: 'University-Student Union at Cal State LA',
+        address: USU_POSTAL_ADDRESS,
+      },
+      ...(tenant.phone && { telephone: toE164(tenant.phone) }),
+      ...(tenant.email && { email: tenant.email }),
+      ...(tenant.website && { url: tenant.website }),
+      ...(tenant.hours && {
+        openingHoursSpecification: tenant.hours.map((span) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: span.days,
+          opens: span.opens,
+          closes: span.closes,
+          ...(span.validFrom && { validFrom: span.validFrom }),
+          ...(span.validThrough && { validThrough: span.validThrough }),
+        })),
+      }),
+    },
+  })),
+};
+
+const TenantGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${Spaces.lg};
+  width: 100%;
+
+  ${media('desktop')(`grid-template-columns: repeat(2, 1fr);`)}
+  ${media('mobile')(`grid-template-columns: 1fr;`)}
+`;
+
+// A short there-and-back nudge rather than a drift, so the chevron reads as
+// "there's more this way" without travelling far enough to be distracting.
+const nudgeChevron = keyframes`
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+`;
+
+// Its own element so it can animate independently of the label, and so the icon
+// centres against the text rather than sitting on the maths baseline the way a
+// literal '>' would. Sized like ContactIcon for consistency within the page.
+const DetailsChevron = styled.span`
+  display: inline-flex;
+  font-size: 18px;
+`;
+
+/**
+ * Lift-and-shadow on hover, matching StaffCard's HoverPanel so the two
+ * card-opens-a-modal patterns on the site behave identically, plus the gold bar
+ * along the top edge.
+ *
+ * The bar is a transparent border that is always present and only gains colour
+ * on hover — adding a 5px border on hover instead would shove the card's
+ * contents down by 5px every time the pointer crossed it.
+ *
+ * Everything keys off `:focus-within` as well as `:hover`, so tabbing to the
+ * "More" button gets the same feedback a mouse does.
+ */
+const TenantCard = styled.div`
+  cursor: pointer;
+  height: 100%;
+
+  > div {
+    height: 100%;
+    border-top: 5px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+      border-top-color 0.2s ease;
+  }
+
+  &:hover > div,
+  &:focus-within > div {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-top-color: ${Colors.primary};
+  }
+
+  &:hover ${DetailsChevron}, &:focus-within ${DetailsChevron} {
+    animation: ${nudgeChevron} 0.9s ease-in-out infinite;
+  }
+
+  /* The looping arrow is the part that matters here — an indefinite animation is
+     what troubles vestibular sensitivity. The colour and shadow cues stay, so
+     hover is still obviously hover without anything moving. */
+  @media (prefers-reduced-motion: reduce) {
+    &:hover ${DetailsChevron}, &:focus-within ${DetailsChevron} {
+      animation: none;
+    }
+
+    &:hover > div,
+    &:focus-within > div {
+      transform: none;
+    }
+  }
+`;
+
+const TenantCardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.md};
+  width: 100%;
+`;
+
+// A fixed-height tile behind the logos, so marks that differ wildly in shape
+// and size still line up at the same optical size across the grid. White by
+// default; takes any theme colour so a white or light logo can get a backdrop
+// it actually reads against. Transient prop so it does not reach the DOM.
+const LogoFrame = styled.div<{ $backgroundColor?: keyof typeof Colors }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88px;
+  padding: ${Spaces.sm} ${Spaces.md};
+  background-color: ${(p) => Colors[p.$backgroundColor ?? 'white']};
+  border-radius: 8px;
+
+  /* Sized here rather than through Image's width/height props: those are real
+     <img> attributes, and a percentage in them is invalid HTML the browser
+     throws away. Letting the intrinsic size shrink to fit letterboxes each
+     logo inside the tile without distorting it. */
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+`;
+
+// Clamps the blurb to keep the grid even while leaving the full text in the
+// markup for crawlers. A JS substring would drop it from the page entirely.
+const ClampedDescription = styled.div`
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+`;
+
+// Font size and padding live here instead of Button's fontSize/padding props,
+// which leak onto the rendered <button> as stray attributes.
+const DetailsButton = styled(Button)`
+  /* Flex row so the chevron centres against the label instead of riding the
+     text baseline. The gap replaces the space that used to sit in the JSX. */
+  display: inline-flex;
+  align-items: center;
+  gap: ${Spaces.xs};
+  padding: ${Spaces.sm} 0;
+  font-size: 14px;
+
+  &:focus-visible {
+    outline: 2px solid ${Colors.gold};
+    outline-offset: 2px;
+  }
+`;
+
+const ContactList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${Spaces.sm};
+`;
+
+const ContactRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.sm};
+  color: ${Colors.greyDarkest};
+`;
+
+const ContactIcon = styled.span`
+  display: inline-flex;
+  color: ${Colors.black};
+  font-size: 20px;
+`;
+
+// A description list is the honest markup for day/time pairs. The two columns
+// keep the times aligned under each other instead of ragging off the day labels.
+const HoursList = styled.dl`
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: ${Spaces.xs} ${Spaces.sm};
+  margin: 0;
+  font-size: ${FontSizes.xs};
+  line-height: 1.5;
+`;
+
+const HoursDays = styled.dt`
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+  color: ${Colors.greyDarkest};
+`;
+
+const HoursTime = styled.dd`
+  margin: 0;
+  text-align: left;
+  color: ${Colors.greyDark};
+  white-space: nowrap;
+`;
+
+const HoursCaption = styled.p`
+  margin: 0 0 ${Spaces.xs};
+  font-size: ${FontSizes['2xs']};
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: ${Colors.gold};
+`;
+
+const HoursGroups = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.md};
+`;
+
+const OpeningHoursList = ({ hours }: { hours: OpeningHours[] }) => (
+  <HoursGroups>
+    {groupHoursByValidity(hours).map((group) => (
+      <div key={group.caption || 'year-round'}>
+        {group.caption && <HoursCaption>{group.caption}</HoursCaption>}
+        <HoursList>
+          {group.spans.map((span) => (
+            <Fragment key={`${span.days.join()}-${span.opens}`}>
+              <HoursDays>{formatWeekdays(span.days)}</HoursDays>
+              <HoursTime>
+                {`${formatTime(span.opens)} – ${formatTime(span.closes)}`}
+              </HoursTime>
+            </Fragment>
+          ))}
+        </HoursList>
+      </div>
+    ))}
+  </HoursGroups>
+);
+
+// On the card the hours sit inline under the name, clock icon to the left.
+const CardHours = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${Spaces.sm};
+
+  ${HoursList} {
+    justify-content: start;
+  }
+
+  ${HoursCaption} {
+    text-align: left;
+  }
+`;
+
+const SectionNav = styled.nav`
+  display: flex;
+  margin-top: ${Spaces.lg};
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${Spaces.sm};
+  width: 100%;
+`;
+
+// scroll-margin keeps the heading clear of the top of the viewport when a nav
+// link jumps to it, rather than butting it against the edge.
+const CategorySection = styled.section`
+  scroll-margin-top: ${Spaces.xl};
+`;
+
+const ModalSection = styled.div`
+  width: 100%;
+  margin-top: ${Spaces.lg};
+  padding-top: ${Spaces.lg};
+  border-top: 1px solid ${Colors.greyLighter};
+`;
+
 export default function Tenants() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalData, setModalData] = useState<TenantCardData | null>(null);
+  const [selectedTenant, setSelectedTenant] = useState<Tenant | null>(null);
+
+  const openTenant = (tenant: Tenant) => {
+    setSelectedTenant(tenant);
+    setIsOpen(true);
+  };
+
+  const contactLinks = selectedTenant ? buildContactLinks(selectedTenant) : [];
 
   return (
     <Page>
+      <PageMeta
+        title="Tenants & Dining | Cal State LA U–SU"
+        description="Starbucks, Sbarro, Associated Students Inc., the Cal State LA Alumni Association, Cal State LA Food Pantry, and In the Making all rent space inside the University-Student Union. Find what each one offers, plus phone numbers and websites."
+        path="/about/tenants"
+        socialTitle="Who You'll Find Inside the U-SU"
+        socialDescription="Coffee, pizza, student government, alumni, and community partners all under one roof at the University-Student Union at Cal State LA."
+      />
       <Head>
-        <title>Tenants & Dining | U&ndash;SU</title>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="author"
-          content="University-Student Union at Cal State LA"
-          key="author"
-        />
-        <meta
-          name="description"
-          content="Find essential services and dining at the Cal State LA U-SU. Home to ASI, the Alumni Association, Open Access Computer Labs, Starbucks, and Sbarro."
-          key="description"
-        />
-        {/* Open Graph / Social Media */}
-        <meta
-          property="og:title"
-          content="U-SU Tenants: Dining, Services, and Student Government"
-          key="og-title"
-        />
-        <meta
-          property="og:description"
-          content="Meet our partners. From student government (ASI) to your morning coffee at Starbucks, explore the organizations and eateries located inside the U-SU."
-          key="og-desc"
-        />
-        <meta property="og:type" content="website" key="og-type" />
-        <meta
-          property="og:url"
-          content="https://www.calstatelausu.org/about/tenants"
-        />
-        <meta
-          property="og:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/usu-dark-logo.webp"
-          key="og-image"
-        />
-
-        {/* Twitter - Upgraded to large_image for better visibility */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <link
-          rel="canonical"
-          href="https://www.calstatelausu.org/about/tenants"
-        />
-
-        {/* Structured Data for a Directory of Organizations */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'ItemList',
-              name: 'University-Student Union Tenants',
-              description:
-                'Directory of dining and student services located within the U-SU.',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  item: {
-                    '@type': 'Organization',
-                    name: 'Alumni Association',
-                    telephone: '323-343-2586',
-                  },
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  item: {
-                    '@type': 'Organization',
-                    name: 'Associated Students, Inc. (ASI)',
-                    telephone: '323-343-4780',
-                  },
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  item: {
-                    '@type': 'FoodEstablishment',
-                    name: 'Starbucks',
-                    telephone: '323-343-6793',
-                  },
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  item: {
-                    '@type': 'FoodEstablishment',
-                    name: 'Sbarro',
-                    telephone: '323-225-1464',
-                  },
-                },
-              ],
-            }),
+            __html: JSON.stringify(tenantsStructuredData),
           }}
         />
       </Head>
-      <Header title="Tenants">
-        The University-Student Union mission is to provide a unique and friendly
-        environment for the campus community to interact informally. Our
-        services and facilities departments provide convenience and easy
-        availability for on-the-go students.
+
+      <Header
+        title="Tenants & Dining"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
+      >
+        The University-Student Union is more than meeting rooms. Restaurants,
+        student government, and community organizations lease space in our
+        building, which puts a coffee run, a hot lunch, and the people who run
+        campus programs on the same floor plan. Here is who you will find
+        inside, and how to reach them.
       </Header>
 
-      <FluidContainer flex flexWrap="wrap" justifyContent="space-between">
-        {cards.map((props) => (
-          <CardContainer
-            key={props.title}
-            onClick={() => {
-              setModalData(props);
-              setIsOpen(true);
-            }}
-          >
-            <Card margin={`${Spaces.md}`} topBorder {...props} minHeight="100%">
-              {`${
-                props.children.length > 200
-                  ? props.children.substring(0, 200) + '...'
-                  : props.children
-              }`}
-            </Card>
-          </CardContainer>
-        ))}
+      {/* All three paddings are set because FluidContainer's responsive steps
+          fall back to `padding` — supplying only that would keep the 72px
+          desktop inset on a phone. Horizontal values track its own defaults. */}
+      <FluidContainer
+        padding={`0 ${Spaces['2xl']} ${Spaces.lg}`}
+        paddingDesktop={`0 ${Spaces.xl} ${Spaces.md}`}
+        paddingMobile={`0 ${Spaces.md} ${Spaces.md}`}
+      >
+        <SectionNav aria-label="Tenant categories">
+          {CATEGORY_ORDER.map((category) => (
+            <Button
+              key={category}
+              href={`#${toKebabCase(category)}`}
+              variant="outline"
+            >
+              {category}
+            </Button>
+          ))}
+        </SectionNav>
       </FluidContainer>
-      {modalData && (
+
+      {CATEGORY_ORDER.map((category, categoryIndex) => (
+        <CategorySection key={category} id={toKebabCase(category)}>
+          <FluidContainer
+            backgroundColor={
+              categoryIndex % 2 === 0 ? 'transparent' : 'greyLightest'
+            }
+          >
+            <Typography as="h2" variant="title" margin={`0 0 ${Spaces.sm}`}>
+              {category}
+            </Typography>
+            <br />
+            <Typography as="p" color="greyDarkest" margin={`0 0 ${Spaces.xl}`}>
+              {CATEGORY_DESCRIPTIONS[category]}
+            </Typography>
+
+            <TenantGrid>
+              {TENANTS_ALPHABETICAL.filter(
+                (tenant) => tenant.category === category,
+              ).map((tenant) => (
+                <TenantCard
+                  key={tenant.name}
+                  onClick={() => openTenant(tenant)}
+                >
+                  <Panel rounded>
+                    <TenantCardBody>
+                      {/* No tile at all when there is no logo — an empty src
+                          renders a broken image box and fires a request for the
+                          page itself. */}
+                      {tenant.logoSrc && (
+                        <LogoFrame
+                          $backgroundColor={tenant.logoBackgroundColor}
+                        >
+                          <Image src={tenant.logoSrc} alt="" lazy />
+                        </LogoFrame>
+                      )}
+                      <Typography as="h3" variant="titleSmall">
+                        {tenant.name}
+                      </Typography>
+                      {tenant.hours && (
+                        <CardHours>
+                          <ContactIcon aria-hidden="true">
+                            <MdSchedule />
+                          </ContactIcon>
+                          <OpeningHoursList hours={tenant.hours} />
+                        </CardHours>
+                      )}
+                      <ClampedDescription>
+                        <Typography as="p">{tenant.description}</Typography>
+                      </ClampedDescription>
+                    </TenantCardBody>
+                    {/* One word plus an arrow to signal it is clickable. The
+                      tenant name goes in aria-label so five buttons reading
+                      "More" are still tellable apart in a screen reader's
+                      element list — that label also replaces the visible text,
+                      so the arrow is never announced as a character. */}
+                    <DetailsButton
+                      variant="transparent"
+                      aria-haspopup="dialog"
+                      aria-label={`More about ${tenant.name}`}
+                      onClick={() => openTenant(tenant)}
+                    >
+                      More
+                      <DetailsChevron aria-hidden="true">
+                        <MdChevronRight />
+                      </DetailsChevron>
+                    </DetailsButton>
+                  </Panel>
+                </TenantCard>
+              ))}
+            </TenantGrid>
+          </FluidContainer>
+        </CategorySection>
+      ))}
+
+      {selectedTenant && (
         <GenericModal
           isOpen={modalIsOpen}
+          width="min(560px, 90vw)"
+          contentLabel={selectedTenant.name}
           onRequestClose={() => setIsOpen(false)}
         >
           <FluidContainer
-            padding="0"
+            padding={`0 ${Spaces.md} ${Spaces.md}`}
             flex
             flexDirection="column"
             alignItems="center"
           >
-            <Typography variant="titleSmall" as="h2" margin="16px 0">
-              {modalData.title}
+            {selectedTenant.logoSrc && (
+              <LogoFrame $backgroundColor={selectedTenant.logoBackgroundColor}>
+                <Image src={selectedTenant.logoSrc} alt="" />
+              </LogoFrame>
+            )}
+            <Typography
+              variant="cta"
+              as="p"
+              color="greyDark"
+              uppercase
+              margin={`${Spaces.lg} 0 ${Spaces.xs}`}
+            >
+              {selectedTenant.category}
             </Typography>
-            <FluidContainer>
-              <Image
-                src={modalData.iconSrc}
-                alt={modalData.iconAlt}
-                maxHeight="150px"
-                width="auto"
-              />
-            </FluidContainer>
+            <Typography variant="titleSmall" as="h2">
+              {selectedTenant.name}
+            </Typography>
+            <Typography as="p" margin={`${Spaces.md} 0 0`}>
+              {selectedTenant.description}
+            </Typography>
+
+            {selectedTenant.hours && (
+              <ModalSection>
+                <Typography
+                  variant="cta"
+                  as="p"
+                  color="greyDark"
+                  uppercase
+                  margin={`0 0 ${Spaces.md}`}
+                >
+                  Hours
+                </Typography>
+                <OpeningHoursList hours={selectedTenant.hours} />
+              </ModalSection>
+            )}
+
+            {contactLinks.length > 0 && (
+              <ModalSection>
+                <ContactList>
+                  {contactLinks.map((link) => (
+                    <ContactRow key={link.href}>
+                      <ContactIcon aria-hidden="true">{link.icon}</ContactIcon>
+                      <Typography as="span">
+                        <StyledLink
+                          href={link.href}
+                          isExternalLink={link.isExternalLink}
+                        >
+                          {link.text}
+                        </StyledLink>
+                      </Typography>
+                      {link.copy && (
+                        <CopyButton
+                          value={link.copy.value}
+                          label={link.copy.label}
+                        />
+                      )}
+                    </ContactRow>
+                  ))}
+                </ContactList>
+              </ModalSection>
+            )}
           </FluidContainer>
-          <Typography margin={`${Spaces.md} 0`}>
-            {modalData.children}
-          </Typography>
         </GenericModal>
       )}
     </Page>

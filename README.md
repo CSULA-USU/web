@@ -74,6 +74,59 @@ their own variables — this list is not exhaustive.
 /public         → Static assets
 ```
 
+## Editing Tenant Hours
+
+Tenants on `/about/tenants` are a single array in `src/pages/about/tenants.tsx`.
+Everything on a tenant except `name`, `category`, `schemaType`, `description`,
+and `logoSrc` is optional — a card only renders the rows it has data for, so
+leaving a field off is safe. Do not fill a field with a placeholder or a guess:
+the same values are emitted as schema.org structured data, so a guess is
+published to Google as fact.
+
+`hours` is stored the way schema.org wants it — full day names, 24-hour times,
+ISO dates — and reformatted for display, so the visible hours and the indexed
+hours can never disagree.
+
+```ts
+hours: [
+  {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '07:00', // 24-hour 'HH:MM'
+    closes: '19:00',
+    validFrom: '2026-08-24', // 'YYYY-MM-DD'
+    validThrough: '2026-12-18',
+  },
+  {
+    days: ['Friday'],
+    opens: '07:00',
+    closes: '15:30',
+    validFrom: '2026-08-24',
+    validThrough: '2026-12-18',
+  },
+],
+```
+
+| Field                        | Notes                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| `days`                       | Full names (`'Monday'`). Omit a day to mean closed — there is no "closed" entry. |
+| `opens` / `closes`           | 24-hour `'HH:MM'`. `'00:00'` is midnight, `'12:00'` is noon.                     |
+| `validFrom` / `validThrough` | Optional, independent. Scope each span to the term it covers.                    |
+
+How it renders:
+
+- Spans sharing a validity window group under one caption, so term hours do not
+  repeat the dates on every row.
+- Consecutive days collapse (`Mon–Thu`); split weeks stay listed (`Mon, Wed, Fri`).
+- `:00` is dropped, so `'19:00'` reads as `7 PM`.
+- Captions read `Aug 24 – Dec 18, 2026`, `From Jan 20, 2027`, or
+  `Through Dec 18, 2026` depending on which bounds are set.
+- A span with no dates is labelled `Year-round`, but only when another span on
+  that tenant _is_ dated — otherwise captions are dropped entirely.
+
+**Dated hours expire silently.** Once `validThrough` passes, the span still
+renders and is still indexed; nothing warns you. Add the next window at each
+term rollover.
+
 ## Accessibility
 
 Accessibility is a priority for this project. Development follows WCAG best practices, including semantic HTML, keyboard navigation, and regular audits using tools such as WAVE.
