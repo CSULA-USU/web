@@ -90,7 +90,7 @@ span:focus-visible {
 
 /* GenericModal fade in/out. Scoped to that component's portal so the other
    react-modal consumers are unaffected. Fading the overlay carries the content
-   with it, which avoids fighting the inline `transform` that centres the
+   with it, which avoids fighting the inline `transform` that centers the
    dialog. Duration must match FADE_DURATION_MS in GenericModal.tsx. */
 .usu-generic-modal-portal .ReactModal__Overlay {
   opacity: 0;

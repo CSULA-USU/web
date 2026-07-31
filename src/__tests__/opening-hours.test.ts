@@ -71,7 +71,7 @@ describe('formatWeekdays', () => {
     );
   });
 
-  it('normalises input order to the calendar week', () => {
+  it('normalizes input order to the calendar week', () => {
     expect(formatWeekdays(['Thursday', 'Monday', 'Wednesday', 'Tuesday'])).toBe(
       'Mon–Thu',
     );

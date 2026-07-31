@@ -6,6 +6,7 @@ import {
   MdEmail,
   MdLanguage,
   MdPhone,
+  MdPlace,
   MdSchedule,
 } from 'react-icons/md';
 import { Page, GenericModal, Header } from 'modules';
@@ -42,15 +43,40 @@ interface Tenant {
    * image is decorative and always gets an empty alt. */
   logoSrc: string;
   /**
-   * Tile colour behind the logo. Defaults to white — set any theme colour when
+   * Tile color behind the logo. Defaults to white — set any theme color when
    * a white or light mark would otherwise disappear into it.
    */
   logoBackgroundColor?: keyof typeof Colors;
+  /**
+   * Where in the building, e.g. 'Room 204' or '3rd Floor'. Shown in the modal
+   * only — deliberately kept off the card, which stays a short pitch. Named for
+   * the building rather than just `location`, which would read as coordinates
+   * and collides with the schema.org `location` key this page also emits.
+   * Appended to the street address in structured data, matching how the GSRC and
+   * FSL pages do it.
+   */
+  locationInBuilding?: string;
   phone?: string;
   email?: string;
   website?: string;
+  /**
+   * Shorter label for the website link, for when the bare URL is long enough to
+   * look bad on a phone. Falls back to the stripped-down URL. Only the visible
+   * text changes — `website` is still the href, and it is `website` that goes to
+   * Google as `url`. Make it say where the link goes ('Food Pantry page' rather
+   * than 'here'), since the link text is what a screen reader announces.
+   */
+  websiteText?: string;
   /** Omit when we have no confirmed hours; nothing renders and nothing is indexed. */
   hours?: OpeningHours[];
+  /**
+   * A single photo of the space, shown in the modal between the name and the
+   * description. Unlike the logo, it carries information nothing else on the
+   * page does, so `alt` has to be real description rather than empty. Also
+   * published to Google in the structured data alongside the logo, so only use
+   * an image meant to be public. Landscape crops sit best — roughly 2:1.
+   */
+  headerImage?: { src: string; alt: string };
 }
 
 const USU_POSTAL_ADDRESS = {
@@ -66,7 +92,7 @@ const USU_POSTAL_ADDRESS = {
 // confirmed with the tenant yet, not one that was forgotten; fill it in and the
 // card, the modal, and the structured data all pick it up automatically.
 //
-// See "Editing Tenant Hours" in the README for the full field reference. Note
+// See "Editing Tenants" in the README for the full field reference. Note
 // that these values are published as schema.org structured data, so a guessed
 // value is asserted to Google as fact — leave a field off instead.
 const TENANTS: Tenant[] = [
@@ -75,7 +101,7 @@ const TENANTS: Tenant[] = [
     category: 'Dining',
     schemaType: 'CafeOrCoffeeShop',
     description:
-      'It takes many hands to craft the perfect cup of coffee—from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
+      'It takes many hands to craft the perfect cup of coffee: from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
     logoBackgroundColor: 'greyLightest',
     logoSrc: '/about/tenants/starbucks-logo.png',
     phone: '323-343-6793',
@@ -111,7 +137,7 @@ const TENANTS: Tenant[] = [
     website: '',
   },
   {
-    name: 'Associated Students, Incorporated',
+    name: 'Associated Students, Inc.',
     category: 'Organizations & Services',
     schemaType: 'NonprofitOrganization',
     description:
@@ -135,13 +161,19 @@ const TENANTS: Tenant[] = [
     category: 'Organizations & Services',
     schemaType: 'Organization',
     description:
-      'The Cal State LA Food Pantry provides access fresh produce, perishable, and nonperishable foods. The pantry is a no-cost service to currently enrolled, degree-seeking Cal State LA students experiencing food insecurity. While it is closed for the summer, we are bringing food access to the campus commuity through our Pop-Up Food Distributions!',
+      'The Cal State LA Food Pantry provides access to fresh produce, perishable, and nonperishable foods. The pantry is a no-cost service to currently enrolled, degree-seeking Cal State LA students experiencing food insecurity. While it is closed for the summer, we are bringing food access to the campus community through our Pop-Up Food Distributions!',
+    locationInBuilding: '3rd Floor',
     logoSrc:
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/FoodPantryLogo_360x214.png',
     logoBackgroundColor: 'greyDarkest',
     phone: '',
+    headerImage: {
+      src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/Food%20Pantry%201200x600.jpg',
+      alt: 'Food Pantry volunteers distributing food to students at the 3rd floor of the U-SU',
+    },
     website:
       'https://www.calstatela.edu/deanofstudents/cal-state-la-food-pantry',
+    websiteText: 'Food Pantry page',
   },
   {
     name: 'In the Making',
@@ -227,13 +259,37 @@ const buildContactLinks = (tenant: Tenant): TenantContactLink[] => {
     links.push({
       icon: <MdLanguage />,
       href: tenant.website,
-      text: toDisplayUrl(tenant.website),
+      text: tenant.websiteText || toDisplayUrl(tenant.website),
       isExternalLink: true,
     });
   }
 
   return links;
 };
+
+/**
+ * Every image we can offer a crawler for this tenant: the logo first, then the
+ * header photo. Empty entries drop out, so a tenant with no logo still
+ * contributes its photo and vice versa — and an empty result means the `image`
+ * key is left off rather than pointing at the site root.
+ */
+const imageUrlsFor = (tenant: Tenant) =>
+  [tenant.logoSrc, tenant.headerImage?.src]
+    .filter((src): src is string => Boolean(src))
+    .map(toAbsoluteUrl);
+
+/**
+ * The tenant's own address: the building, plus its room or level when we know
+ * it. Follows the pattern already used on the GSRC and FSL pages, where the room
+ * is folded into streetAddress rather than carried in a separate field.
+ */
+const postalAddressFor = (tenant: Tenant) =>
+  tenant.locationInBuilding
+    ? {
+        ...USU_POSTAL_ADDRESS,
+        streetAddress: `${USU_POSTAL_ADDRESS.streetAddress}, ${tenant.locationInBuilding}`,
+      }
+    : USU_POSTAL_ADDRESS;
 
 // Every tenant lands in the ItemList with its full description and whatever
 // contact details it has, so search engines see the same content a visitor gets
@@ -251,10 +307,10 @@ const tenantsStructuredData = {
       '@type': tenant.schemaType,
       name: tenant.name,
       description: tenant.description,
-      // Skipped when there is no logo. Passing an empty src through
-      // toAbsoluteUrl would publish the site root as this tenant's image.
-      ...(tenant.logoSrc && { image: toAbsoluteUrl(tenant.logoSrc) }),
-      address: USU_POSTAL_ADDRESS,
+      ...(imageUrlsFor(tenant).length && { image: imageUrlsFor(tenant) }),
+      address: postalAddressFor(tenant),
+      // The containing building, so its address deliberately stays room-free —
+      // the U-SU is not located in Room 204; this tenant is.
       location: {
         '@type': 'Place',
         name: 'University-Student Union at Cal State LA',
@@ -288,14 +344,14 @@ const TenantGrid = styled.div`
 `;
 
 // A short there-and-back nudge rather than a drift, so the chevron reads as
-// "there's more this way" without travelling far enough to be distracting.
+// "there's more this way" without traveling far enough to be distracting.
 const nudgeChevron = keyframes`
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(4px); }
 `;
 
 // Its own element so it can animate independently of the label, and so the icon
-// centres against the text rather than sitting on the maths baseline the way a
+// centers against the text rather than sitting on the maths baseline the way a
 // literal '>' would. Sized like ContactIcon for consistency within the page.
 const DetailsChevron = styled.span`
   display: inline-flex;
@@ -307,7 +363,7 @@ const DetailsChevron = styled.span`
  * card-opens-a-modal patterns on the site behave identically, plus the gold bar
  * along the top edge.
  *
- * The bar is a transparent border that is always present and only gains colour
+ * The bar is a transparent border that is always present and only gains color
  * on hover — adding a 5px border on hover instead would shove the card's
  * contents down by 5px every time the pointer crossed it.
  *
@@ -337,7 +393,7 @@ const TenantCard = styled.div`
   }
 
   /* The looping arrow is the part that matters here — an indefinite animation is
-     what troubles vestibular sensitivity. The colour and shadow cues stay, so
+     what troubles vestibular sensitivity. The color and shadow cues stay, so
      hover is still obviously hover without anything moving. */
   @media (prefers-reduced-motion: reduce) {
     &:hover ${DetailsChevron}, &:focus-within ${DetailsChevron} {
@@ -360,7 +416,7 @@ const TenantCardBody = styled.div`
 
 // A fixed-height tile behind the logos, so marks that differ wildly in shape
 // and size still line up at the same optical size across the grid. White by
-// default; takes any theme colour so a white or light logo can get a backdrop
+// default; takes any theme color so a white or light logo can get a backdrop
 // it actually reads against. Transient prop so it does not reach the DOM.
 const LogoFrame = styled.div<{ $backgroundColor?: keyof typeof Colors }>`
   display: flex;
@@ -399,7 +455,7 @@ const ClampedDescription = styled.div`
 // Font size and padding live here instead of Button's fontSize/padding props,
 // which leak onto the rendered <button> as stray attributes.
 const DetailsButton = styled(Button)`
-  /* Flex row so the chevron centres against the label instead of riding the
+  /* Flex row so the chevron centers against the label instead of riding the
      text baseline. The gap replaces the space that used to sit in the JSX. */
   display: inline-flex;
   align-items: center;
@@ -416,7 +472,7 @@ const DetailsButton = styled(Button)`
 const ContactList = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: ${Spaces.sm};
 `;
 
@@ -495,6 +551,7 @@ const OpeningHoursList = ({ hours }: { hours: OpeningHours[] }) => (
 );
 
 // On the card the hours sit inline under the name, clock icon to the left.
+// On the card the hours sit inline under the name, clock icon to the left.
 const CardHours = styled.div`
   display: flex;
   align-items: flex-start;
@@ -522,6 +579,39 @@ const SectionNav = styled.nav`
 // link jumps to it, rather than butting it against the edge.
 const CategorySection = styled.section`
   scroll-margin-top: ${Spaces.xl};
+`;
+
+// Sits directly under the name, so it reads as part of the tenant's identity
+// rather than as another contact method.
+const ModalLocation = styled.p`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.sm};
+  margin: ${Spaces.sm} 0 0;
+  color: ${Colors.greyDarkest};
+`;
+
+/**
+ * Full-bleed banner across the modal. Height follows the image's own aspect
+ * ratio rather than a fixed box, which is what left the gallery with dead space
+ * above and below a landscape shot. The max-height only bites on an unusually
+ * tall image, and crops rather than letterboxes when it does.
+ */
+const ModalHeaderImage = styled.div`
+  width: 100%;
+  margin-top: ${Spaces.md};
+  border-radius: 8px;
+  overflow: hidden;
+  /* Kills the inline descender gap that would otherwise show under the image. */
+  line-height: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: cover;
+  }
 `;
 
 const ModalSection = styled.div`
@@ -687,7 +777,7 @@ export default function Tenants() {
             <Typography
               variant="cta"
               as="p"
-              color="greyDark"
+              color="gold"
               uppercase
               margin={`${Spaces.lg} 0 ${Spaces.xs}`}
             >
@@ -696,10 +786,17 @@ export default function Tenants() {
             <Typography variant="titleSmall" as="h2">
               {selectedTenant.name}
             </Typography>
+            {selectedTenant.headerImage && (
+              <ModalHeaderImage>
+                <Image
+                  src={selectedTenant.headerImage.src}
+                  alt={selectedTenant.headerImage.alt}
+                />
+              </ModalHeaderImage>
+            )}
             <Typography as="p" margin={`${Spaces.md} 0 0`}>
               {selectedTenant.description}
             </Typography>
-
             {selectedTenant.hours && (
               <ModalSection>
                 <Typography
@@ -718,6 +815,14 @@ export default function Tenants() {
             {contactLinks.length > 0 && (
               <ModalSection>
                 <ContactList>
+                  {selectedTenant.locationInBuilding && (
+                    <ModalLocation>
+                      <ContactIcon aria-hidden="true">
+                        <MdPlace />
+                      </ContactIcon>
+                      {selectedTenant.locationInBuilding}
+                    </ModalLocation>
+                  )}
                   {contactLinks.map((link) => (
                     <ContactRow key={link.href}>
                       <ContactIcon aria-hidden="true">{link.icon}</ContactIcon>
