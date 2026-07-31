@@ -87,3 +87,27 @@ span:focus-visible {
   max-height: 80vh;
   overflow-y: auto;
 }
+
+/* GenericModal fade in/out. Scoped to that component's portal so the other
+   react-modal consumers are unaffected. Fading the overlay carries the content
+   with it, which avoids fighting the inline `transform` that centers the
+   dialog. Duration must match FADE_DURATION_MS in GenericModal.tsx. */
+.usu-generic-modal-portal .ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.usu-generic-modal-portal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.usu-generic-modal-portal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usu-generic-modal-portal .ReactModal__Overlay {
+    opacity: 1;
+    transition: none;
+  }
+}
