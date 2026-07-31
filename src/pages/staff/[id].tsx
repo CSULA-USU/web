@@ -5,7 +5,13 @@ import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import staff from 'data/staff.json';
 import { toKebabCase } from 'utils/stringhelpers';
-import { Image, PageMeta, StyledLink, Typography } from 'components';
+import {
+  CopyButton,
+  Image,
+  PageMeta,
+  StyledLink,
+  Typography,
+} from 'components';
 import { Colors, Spaces } from 'theme';
 
 const OutsideContainer = styled.div`
@@ -87,10 +93,22 @@ const CardContainerTop = styled.div`
   }
 `;
 
+// Sits immediately after the value it copies rather than out at the card edge,
+// which is how the same button reads in the directory modal. Needs a wrapper of
+// its own because CopyButton renders a fragment and cannot take a className.
+const ContactCopyButton = styled.div`
+  display: flex;
+  margin-left: ${Spaces.sm};
+`;
+
 const ContactInfoContainer = styled.div``;
 
+// Centring the row is what keeps the copy button on the same line as the text:
+// without it the value column stretches to the button's height and the text
+// rides at the top of the row while the button sits lower.
 const IconAndInfoContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   margin-bottom: ${Spaces.sm};
@@ -297,6 +315,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
+                  <ContactCopyButton>
+                    <CopyButton value={staffData.phone} label="phone number" />
+                  </ContactCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.email && (
@@ -322,6 +343,9 @@ export default function StaffBusinessCard({ staffData }: Props) {
                       </Typography>
                     </StyledLink>
                   </IconAndInfoContainerRight>
+                  <ContactCopyButton>
+                    <CopyButton value={staffData.email} label="email address" />
+                  </ContactCopyButton>
                 </IconAndInfoContainer>
               )}
               {staffData.url && (

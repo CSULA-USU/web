@@ -9,9 +9,28 @@ interface GenericModalProps {
   children: React.ReactNode;
   height?: string;
   width?: string;
+  /** Names the dialog for screen readers — usually whatever the heading says. */
+  contentLabel?: string;
   onRequestClose: () => void;
 }
 const FixedModal = Modal as unknown as React.FC<any>;
+
+/**
+ * Fade duration. Must stay in step with the transition on
+ * `.usu-generic-modal-portal` in globals.css — react-modal keeps the modal
+ * mounted for exactly this long on close so the fade-out can finish.
+ */
+const FADE_DURATION_MS = 200;
+
+/**
+ * Scopes the fade to this component. react-modal drops its default inline
+ * styles the moment you pass `className`, which would silently strip the
+ * content's `position: absolute` and white background — so the transition is
+ * hung off `portalClassName` instead, which has no such side effect and leaves
+ * the other react-modal consumers (EventModal, ImageModal, ConfirmDialog)
+ * exactly as they were.
+ */
+const PORTAL_CLASS_NAME = 'usu-generic-modal-portal';
 
 const CloseButton = styled.button`
   background: transparent;
@@ -50,6 +69,7 @@ export const GenericModal = ({
   isOpen,
   height,
   width,
+  contentLabel,
   onRequestClose,
 }: GenericModalProps) => {
   const customStyles = {
@@ -97,6 +117,9 @@ export const GenericModal = ({
     <FixedModal
       isOpen={isOpen}
       style={customStyles}
+      contentLabel={contentLabel}
+      portalClassName={PORTAL_CLASS_NAME}
+      closeTimeoutMS={FADE_DURATION_MS}
       onRequestClose={onRequestClose}
     >
       <CloseButtonContainer>

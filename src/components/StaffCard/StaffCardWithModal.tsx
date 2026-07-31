@@ -163,9 +163,6 @@ const QRFrame = styled.div`
   display: flex;
   flex-shrink: 0;
   padding: ${Spaces.sm};
-  border: 1px solid ${Colors.greyLighter};
-  border-radius: 12px;
-  background-color: ${Colors.white};
 `;
 
 export const StaffCardWithModal = ({
@@ -383,12 +380,12 @@ export const StaffCardWithModal = ({
                 size="xs"
                 margin={`0 0 ${Spaces.sm} 0`}
               >
-                Point a phone camera QR code to open {firstName}&apos;s virtual
-                card
+                Point a phone camera to the QR code to open {firstName}&apos;s
+                virtual card
               </Typography>
               <Typography as="p" variant="cta" size="xs" color="greyDarkest">
                 <StyledLink href={cardPath} isInverseUnderlineStyling>
-                  View virtual card
+                  View
                 </StyledLink>
               </Typography>
             </div>
