@@ -94,7 +94,11 @@ export const Expandable = ({
             indicatorRotation={indicatorRotation}
           >
             {header}
-            <span className="indicator">{indicator}</span>
+            {/* Purely a visual affordance — the button already takes its
+                accessible name from the header text. */}
+            <span className="indicator" aria-hidden="true">
+              {indicator}
+            </span>
           </HeaderContainer>
         </Button>
       )}
