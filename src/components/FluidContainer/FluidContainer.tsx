@@ -2,15 +2,19 @@ import styled, { css } from 'styled-components';
 import { Colors, media } from 'theme';
 
 const getBackgroundCSS = (p: FluidContainerProps) => {
-  return p.backgroundImage
-    ? css`
-        background: url(${p.backgroundImage}) no-repeat;
-        background-size: cover;
-        background-position: center;
-      `
-    : css`
-        background-color: ${Colors[p.backgroundColor || 'transparent']};
-      `;
+  if (!p.backgroundImage) {
+    return css`
+      background-color: ${Colors[p.backgroundColor || 'transparent']};
+    `;
+  }
+  const overlay = p.backgroundOverlay
+    ? `linear-gradient(${p.backgroundOverlay}, ${p.backgroundOverlay}), `
+    : '';
+  return css`
+    background: ${overlay} url(${p.backgroundImage}) no-repeat;
+    background-size: cover;
+    background-position: ${p.backgroundPosition || 'center'};
+  `;
 };
 
 const FluidOuter = styled.div<FluidContainerProps>`
@@ -22,6 +26,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
   margin: ${(p) => p.margin};
   height: ${(p) => p.height};
   width: ${(p) => p.width};
+  ${(p) => p.scrollMarginTop && `scroll-margin-top: ${p.scrollMarginTop};`}
   ${(p) =>
     media('desktop')(`
     padding: ${p.paddingDesktop || p.padding || '18px 36px'};
@@ -87,6 +92,13 @@ interface FluidContainerProps extends FluidInnerProps {
   alt?: string;
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
+  /**
+   * Flat scrim laid over `backgroundImage` so text on top stays legible —
+   * any CSS color, e.g. `rgba(0, 0, 0, 0.66)`. Ignored without an image.
+   */
+  backgroundOverlay?: string;
+  /** `background-position` for `backgroundImage`. Defaults to `center`. */
+  backgroundPosition?: string;
   border?: keyof typeof Colors;
   children?: React.ReactNode;
   height?: string;
@@ -96,6 +108,8 @@ interface FluidContainerProps extends FluidInnerProps {
   paddingMobile?: string;
   width?: string;
   margin?: string;
+  /** Keeps an anchored section's heading clear of sticky page chrome. */
+  scrollMarginTop?: string;
   outerAlignItems?:
     | 'stretch'
     | 'center'

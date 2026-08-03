@@ -4,11 +4,19 @@ import { FontSizes, Colors, Spaces } from 'theme';
 
 interface TypeStyle {
   size?: keyof typeof FontSizes;
+  /**
+   * Raw CSS font-size, for fluid type ramps the token scale cannot express
+   * (e.g. `clamp(42px, 6.4vw, 76px)`). Overrides `size` when both are set.
+   * Prefer `size` — reach for this only when a design calls for a clamp().
+   */
+  fluidSize?: string;
   color?: keyof typeof Colors;
-  weight?: '300' | '400' | '600' | '700';
+  weight?: '300' | '400' | '600' | '700' | '800';
   lineHeight?: string;
   letterSpacing?: string;
   margin?: string;
+  /** Locks digits to equal width so figures don't jitter as they change. */
+  tabularNums?: boolean;
 }
 
 type TypeElements =
@@ -160,11 +168,12 @@ const getCSS = (p: TypeProps) => {
       ${p.uppercase
         ? `text-transform: uppercase;`
         : textTransform && `text-transform: ${textTransform};`}
-      font-size: ${FontSizes[p.size || size]};
+      font-size: ${p.fluidSize || FontSizes[p.size || size]};
       font-weight: ${p.weight || weight};
       color: ${Colors[p.color || color]};
       margin: ${p.margin || 0};
       line-height: ${p.lineHeight || lineHeight || 1.6};
+      ${p.tabularNums && `font-variant-numeric: tabular-nums;`}
       ${p.letterSpacing && `letter-spacing: ${p.letterSpacing};`}
       ${p.margin && 'display: inline-block;'}
       ${p.nowrap &&

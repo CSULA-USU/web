@@ -6,6 +6,8 @@ interface ExpandableProps {
   isExpanded?: boolean;
   onToggle?: () => void;
   indicator?: React.ReactNode;
+  /** How far the indicator turns when open. A `+` becomes an `×` at `45deg`. */
+  indicatorRotation?: string;
   header: React.ReactNode;
   children: React.ReactNode;
 }
@@ -15,7 +17,10 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const HeaderContainer = styled.div<{ isOpen?: boolean }>`
+const HeaderContainer = styled.div<{
+  isOpen?: boolean;
+  indicatorRotation: string;
+}>`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -26,7 +31,8 @@ const HeaderContainer = styled.div<{ isOpen?: boolean }>`
   }
 
   .indicator {
-    rotate: ${(p) => (p.isOpen ? '90deg' : '0deg')};
+    rotate: ${(p) => (p.isOpen ? p.indicatorRotation : '0deg')};
+    transition: rotate 0.2s ease-in-out;
   }
 
   &:hover {
@@ -59,6 +65,7 @@ export const Expandable = ({
   isExpanded,
   onToggle,
   indicator,
+  indicatorRotation = '90deg',
   header,
   children,
 }: ExpandableProps) => {
@@ -82,7 +89,10 @@ export const Expandable = ({
     <Container>
       {indicator && (
         <Button aria-expanded={isOpen} onClick={handleToggle}>
-          <HeaderContainer isOpen={isOpen}>
+          <HeaderContainer
+            isOpen={isOpen}
+            indicatorRotation={indicatorRotation}
+          >
             {header}
             <span className="indicator">{indicator}</span>
           </HeaderContainer>
