@@ -24,6 +24,11 @@ export interface TrendSeries {
   strokeWidth: number;
   /** Line style, not color, is what distinguishes the series. */
   dashed?: boolean;
+  /**
+   * Which side of the point its value label sits on. Series that run close
+   * together should take opposite sides so their labels do not collide.
+   */
+  labelSide?: 'above' | 'below';
   points: TrendPoint[];
 }
 
@@ -31,6 +36,15 @@ interface TrendMarker {
   /** Series to ring where it crosses $0. */
   seriesId: string;
   label: string;
+  /**
+   * Nudges the label clear of nearby point values and of the line itself.
+   * Defaults to centered just above the ring.
+   */
+  labelPosition?: {
+    dx?: number;
+    dy?: number;
+    anchor?: 'start' | 'middle' | 'end';
+  };
 }
 
 interface TrendChartProps {
@@ -46,6 +60,8 @@ interface TrendChartProps {
   /** Wipes the plotted lines in left to right on first scroll into view. */
   animate?: boolean;
   animationDuration?: number;
+  /** Draws each published figure beside its own point. */
+  showPointValues?: boolean;
 }
 
 /* Value axis runs $9M at y=40 down to −$3M at y=340 — 25px per $1M, $0 at 265.
@@ -61,6 +77,22 @@ const yAt = (dollars: number) =>
 
 const formatMillions = (millions: number) =>
   `${millions < 0 ? '−' : ''}$${Math.abs(millions)}M`;
+
+/* Matches the hidden table's formatting, minus sign included. */
+const formatDollars = (dollars: number) =>
+  `${dollars < 0 ? '−' : ''}$${Math.abs(dollars).toLocaleString('en-US')}`;
+
+/* Keeps a label inside the drawing: points at either end of the axis anchor
+   inward instead of centering and overflowing the viewBox. */
+const EDGE_MARGIN = 70;
+const anchorFor = (x: number): 'start' | 'middle' | 'end' => {
+  if (x <= X_FIRST + EDGE_MARGIN) return 'start';
+  if (x >= X_LAST - EDGE_MARGIN) return 'end';
+  return 'middle';
+};
+
+const LABEL_RISE = 12;
+const LABEL_DROP = 20;
 
 /* Below ~660px the drawing scrolls rather than shrinking labels past legibility. */
 const ScrollRegion = styled.div`
@@ -127,6 +159,7 @@ export const TrendChart = ({
   table,
   animate = true,
   animationDuration = CHART_DURATION,
+  showPointValues = true,
 }: TrendChartProps) => {
   const clipId = useId();
   const { ref, atFinal, isTransitioning } = useRevealOnce<HTMLDivElement>({
@@ -251,6 +284,40 @@ export const TrendChart = ({
               />
             ))}
 
+            {/* A dot marks every published figure; the lines between them are
+                only trajectories, so the dots are what is actually sourced. */}
+            {showPointValues &&
+              series.map((s) =>
+                s.points.map((point) => {
+                  const x = xAt(point.yearIndex);
+                  const y = yAt(point.value);
+                  const above = (s.labelSide || 'above') === 'above';
+
+                  return (
+                    <g key={`${s.id}-${point.yearIndex}`}>
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r={4}
+                        fill={Colors.white}
+                        stroke={Colors[s.color]}
+                        strokeWidth={2}
+                      />
+                      <text
+                        x={x}
+                        y={above ? y - LABEL_RISE : y + LABEL_DROP}
+                        textAnchor={anchorFor(x)}
+                        fontSize={CHART_LABEL_SIZE}
+                        fontWeight={700}
+                        fill={Colors[s.color]}
+                      >
+                        {formatDollars(point.value)}
+                      </text>
+                    </g>
+                  );
+                }),
+              )}
+
             {markers.map((marker) => {
               const s = series.find((entry) => entry.id === marker.seriesId);
               const x = s ? zeroCrossing(s) : null;
@@ -266,9 +333,9 @@ export const TrendChart = ({
                     strokeWidth={2.5}
                   />
                   <text
-                    x={x}
-                    y={ZERO_Y - 18}
-                    textAnchor="middle"
+                    x={x + (marker.labelPosition?.dx ?? 0)}
+                    y={ZERO_Y + (marker.labelPosition?.dy ?? -18)}
+                    textAnchor={marker.labelPosition?.anchor ?? 'middle'}
                     fontSize={CHART_LABEL_SIZE}
                     fontWeight={700}
                     fill={Colors.black}

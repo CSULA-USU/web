@@ -269,6 +269,7 @@ const trendSeries: TrendSeries[] = [
     color: 'greyDarkest',
     strokeWidth: 3,
     dashed: true,
+    labelSide: 'above',
     points: [
       { yearIndex: 1, value: 5760109 },
       { yearIndex: 6, value: 6677545 },
@@ -280,6 +281,7 @@ const trendSeries: TrendSeries[] = [
     color: 'greyDark',
     strokeWidth: 3,
     dashed: true,
+    labelSide: 'below',
     points: [
       { yearIndex: 1, value: 4876638 },
       { yearIndex: 6, value: 4337325 },
@@ -290,6 +292,7 @@ const trendSeries: TrendSeries[] = [
     label: 'Reserve',
     color: 'gold',
     strokeWidth: 3.5,
+    labelSide: 'above',
     points: [
       { yearIndex: 0, value: 8364353 },
       { yearIndex: 5, value: 274702 },
@@ -1047,7 +1050,15 @@ export default function KeepTheUOpen() {
             <TrendChart
               fiscalYears={FISCAL_YEARS}
               series={trendSeries}
-              markers={[{ seriesId: 'reserve', label: 'Reserve reaches $0' }]}
+              markers={[
+                {
+                  seriesId: 'reserve',
+                  label: 'Reserve reaches $0',
+                  /* Below and left of the ring: above it would sit on the
+                     FY 29-30 reserve figure. */
+                  labelPosition: { dx: -8, dy: 26, anchor: 'end' },
+                },
+              ]}
               shadeBetween={['expenses', 'revenue']}
               ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
               caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31; the lines between them are trajectories, not year-by-year data."
