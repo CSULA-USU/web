@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f4f4f4; font-family: 'Montserrat', sans-serif; color: #000; -webkit-font-smoothing: antialiased; }
+  a { color: #8c6a14; }
+  a:hover { opacity: .7; }
+  summary::-webkit-details-marker { display: none; }
+  .faq-plus { display: inline-block; transition: transform .2s ease-in-out; }
+  details[open] .faq-plus { transform: rotate(45deg); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</helmet>
+
+<div style="background:#f4f4f4;">
+
+<!-- 1 · AnchorNav (hidden ≤768px) -->
+<sc-if value="{{ showAnchorNav }}" hint-placeholder-val="{{ true }}">
+<div style="position:sticky; top:0; z-index:40; background:#ffffff; border-bottom:1px solid #dedede;">
+  <div style="max-width:1200px; margin:0 auto; padding:10px clamp(20px,4vw,36px); min-height:64px; display:flex; align-items:center; gap:clamp(14px,2vw,28px); flex-wrap:wrap;">
+    <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:14px; letter-spacing:.01em; white-space:nowrap;">Keep the U Open</span>
+    <nav aria-label="On this page" style="display:flex; gap:clamp(12px,1.6vw,22px); align-items:center; flex-wrap:wrap;">
+      <a href="#why" style="font-family:Montserrat,sans-serif; font-weight:600; font-size:13.5px; color:#2b2b2b; text-decoration:none; white-space:nowrap;" style-hover="color:#8c6a14">Why It Matters</a>
+      <a href="#numbers" style="font-family:Montserrat,sans-serif; font-weight:600; font-size:13.5px; color:#2b2b2b; text-decoration:none; white-space:nowrap;" style-hover="color:#8c6a14">The Numbers</a>
+      <a href="#if-it-fails" style="font-family:Montserrat,sans-serif; font-weight:600; font-size:13.5px; color:#2b2b2b; text-decoration:none; white-space:nowrap;" style-hover="color:#8c6a14">If It Fails</a>
+      <a href="#faq" style="font-family:Montserrat,sans-serif; font-weight:600; font-size:13.5px; color:#2b2b2b; text-decoration:none; white-space:nowrap;" style-hover="color:#8c6a14">FAQ</a>
+      <a href="#sources" style="font-family:Montserrat,sans-serif; font-weight:600; font-size:13.5px; color:#2b2b2b; text-decoration:none; white-space:nowrap;" style-hover="color:#8c6a14">Sources</a>
+    </nav>
+    <a href="{{ cm.ctaHref }}" style="margin-left:auto; background:#ffce04; color:#000; font-family:Montserrat,sans-serif; font-weight:700; font-size:14px; padding:11px 22px; border-radius:8px; text-decoration:none; white-space:nowrap;" style-hover="opacity:.7">{{ cm.ctaLabel }}</a>
+  </div>
+</div>
+</sc-if>
+
+<!-- 2 · Hero -->
+<div style="position:relative; background:#2b2b2b url('assets/usu-front.jpg') center 62% / cover; scroll-margin-top:84px;">
+  <div style="background:rgba(0,0,0,.66); padding:clamp(56px,8vw,112px) clamp(20px,4vw,36px);">
+    <div style="max-width:1200px; margin:0 auto;">
+      <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#ffce04; margin:0 0 18px;">{{ eyebrow }}</p>
+      <h1 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(42px,6.4vw,76px); line-height:1.03; color:#fff; margin:0; max-width:15ch; text-wrap:pretty;">Keep the U Open</h1>
+      <p style="font-family:Bitter,Georgia,serif; font-size:clamp(17px,1.6vw,21px); line-height:1.6; color:#f4f4f4; margin:24px 0 0; max-width:62ch; text-wrap:pretty;">The University-Student Union runs on a student fee that has not changed since 2007. On the current budget its reserve is gone by <strong style="font-weight:700; color:#fff;">FY 2030-31</strong>. The proposal is <strong style="font-weight:700; color:#fff;">$90 more per semester</strong> — $5.63 a week — for the building you already paid to put up.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:36px;">
+        <a href="#numbers" style="background:#ffce04; color:#000; font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; padding:16px 32px; border-radius:8px; text-decoration:none;" style-hover="opacity:.7">{{ cm.heroPrimaryCta }}</a>
+        <a href="#cost" style="background:transparent; color:#fff; border:1px solid #fff; font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; padding:16px 32px; border-radius:8px; text-decoration:none;" style-hover="opacity:.7">{{ cm.heroSecondaryCta }}</a>
+      </div>
+      <sc-if value="{{ cm.voteDate }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:#ffce04; margin:24px 0 0;">{{ cm.voteDate }}</p>
+      </sc-if>
+      <div style="display:flex; gap:clamp(20px,3vw,44px); flex-wrap:wrap; margin-top:44px; padding-top:26px; border-top:1px solid rgba(255,255,255,.28);">
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:26px; color:#fff; margin:0; font-variant-numeric:tabular-nums;">$137.25</p>
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:#dedede; margin:6px 0 0;">Per semester today</p>
+        </div>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:26px; color:#ffce04; margin:0; font-variant-numeric:tabular-nums;">+$90.00</p>
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:#dedede; margin:6px 0 0;">Proposed increase</p>
+        </div>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:26px; color:#fff; margin:0; font-variant-numeric:tabular-nums;">$227.25</p>
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:#dedede; margin:6px 0 0;">Per semester after</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 · Thesis -->
+<section id="why" data-screen-label="Why it matters" style="background:#ffffff; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px); scroll-margin-top:84px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8c6a14; margin:0 0 14px;">Why it matters</p>
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; margin:0; max-width:20ch; text-wrap:pretty;">You already paid for this building. Here's what you own.</h2>
+    <p style="font-family:Bitter,Georgia,serif; font-size:18px; line-height:1.65; color:#2b2b2b; margin:20px 0 0; max-width:64ch; text-wrap:pretty;">Most Cal State LA students commute. The U-SU is the part of campus that is useful whether or not you have class in the next hour — and it is already included in what you pay.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:24px; margin-top:44px;">
+      <div style="background:#fff; border:1px solid #dedede; border-radius:16px; padding:28px;">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#8c6a14; margin:0 0 12px;">01</p>
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:23px; line-height:1.25; margin:0 0 12px;">The four hours between your classes</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.62; color:#2b2b2b; margin:0;">A commuter's day has holes in it. This is where you sit them out: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #dedede; border-radius:16px; padding:28px;">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#8c6a14; margin:0 0 12px;">02</p>
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:23px; line-height:1.25; margin:0 0 12px;">The things you'd otherwise pay for</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.62; color:#2b2b2b; margin:0;">The fitness center, the food pantry and everyday essentials are covered by the fee you already pay. No membership, no per-visit charge, no sign-up.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #dedede; border-radius:16px; padding:28px;">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#8c6a14; margin:0 0 12px;">03</p>
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:23px; line-height:1.25; margin:0 0 12px;">Nearly 100 student jobs</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.62; color:#2b2b2b; margin:0;">Between 90 and 100 students work here<a href="#source-4" aria-label="Source 4" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">4</a> alongside 29 full-time staff — the largest student employer on campus, with schedules built around class times.</p>
+      </div>
+    </div>
+    <p style="font-family:Bitter,Georgia,serif; font-size:18px; line-height:1.7; color:#2b2b2b; margin:44px 0 0; max-width:70ch; border-left:3px solid #ffce04; padding-left:20px; text-wrap:pretty;">And if you are one of the students who never comes in — someone you know does. The pantry, the quiet floor and the cultural graduations are load-bearing for people who don't advertise that they need them.</p>
+  </div>
+</section>
+
+<!-- 4 · Services -->
+<section style="background:#f4f4f4; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(28px,3.2vw,38px); line-height:1.12; margin:0 0 36px;">What's inside the building</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/calendar-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Events &amp; Activities</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Programming run by students, for students — from noon concerts to the five cultural graduation ceremonies.</p>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/book-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Study &amp; Rest Spaces</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.</p>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/music-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Play &amp; Recreation</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">The fitness center, the Game Room and the GENE program — included, no membership.</p>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/connecting-people-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Cross Cultural Centers</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">APISRC, CLSRC, GSRC and PASRC — staffed centers, open doors, and the Cultural Grads ceremonies.</p>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/resume-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Jobs &amp; Leadership</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">U-Krew employment, the Board of Directors, and paid roles that fit around a class schedule.</p>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(0,0,0,.06); display:flex; flex-direction:column; gap:12px;">
+        <img src="assets/icons/fridge-icon.png" alt="" style="width:64px; height:64px; object-fit:contain;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:400; font-size:22px; margin:0;">Everyday Essentials</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Food pantry, microwaves, lockers and the small things that make a long commuter day workable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Event photo band -->
+<div style="position:relative; height:clamp(260px,30vw,420px); background:#2b2b2b url('assets/calstatela-hero.jpeg') center 40% / cover;">
+  <span style="position:absolute; left:clamp(20px,4vw,36px); bottom:20px; background:rgba(43,43,43,.92); color:#ffce04; font-family:Montserrat,sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.06em; padding:8px 14px; border-radius:8px;">[PLACEHOLDER PHOTOGRAPHY — real U-SU event photography required before launch]</span>
+</div>
+
+<!-- 6 · Stat band -->
+<section style="background:#ffce04; padding:clamp(48px,6vw,80px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(24px,4vw,56px);">
+    <div>
+      <p style="font-family:Montserrat,sans-serif; font-weight:800; font-size:clamp(44px,5.4vw,64px); line-height:1; color:#000; margin:0; font-variant-numeric:tabular-nums;">2007<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#000; vertical-align:super; font-size:.32em; text-decoration:none; padding-left:4px;">2</a></p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.55; color:#000; margin:14px 0 0; max-width:30ch;">The last time students approved a change to this fee. That vote paid for the building.</p>
+    </div>
+    <div>
+      <p style="font-family:Montserrat,sans-serif; font-weight:800; font-size:clamp(44px,5.4vw,64px); line-height:1; color:#000; margin:0; font-variant-numeric:tabular-nums;">90–100<a href="#source-4" aria-label="Source 4" style="font-family:Montserrat,sans-serif; font-weight:700; color:#000; vertical-align:super; font-size:.32em; text-decoration:none; padding-left:4px;">4</a></p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.55; color:#000; margin:14px 0 0; max-width:30ch;">Student employees — the largest student employer on campus, alongside 29 full-time staff.</p>
+    </div>
+    <div>
+      <p style="font-family:Montserrat,sans-serif; font-weight:800; font-size:clamp(44px,5.4vw,64px); line-height:1; color:#000; margin:0; font-variant-numeric:tabular-nums;">5<a href="#source-4" aria-label="Source 4" style="font-family:Montserrat,sans-serif; font-weight:700; color:#000; vertical-align:super; font-size:.32em; text-decoration:none; padding-left:4px;">4</a></p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.55; color:#000; margin:14px 0 0; max-width:30ch;">Cultural graduation ceremonies a year, free to about 800 graduating students and their families.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · The Numbers -->
+<section id="numbers" data-screen-label="The numbers" style="background:#ffffff; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px); scroll-margin-top:84px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8c6a14; margin:0 0 14px;">The numbers</p>
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; margin:0; max-width:22ch; text-wrap:pretty;">What it costs, where it goes, what the budget says.</h2>
+
+    <!-- fee math -->
+    <div id="cost" style="scroll-margin-top:84px; margin-top:44px; border-top:2px solid #000; padding-top:28px;">
+      <h3 style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 24px;">What this costs you</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; align-items:end;">
+        <div style="border-left:3px solid #dedede; padding-left:18px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Today</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:34px; margin:0; font-variant-numeric:tabular-nums;">$137.25</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15px; color:#6e6e6e; margin:6px 0 0;">$274.50 a year<a href="#source-1" aria-label="Source 1" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">1</a></p>
+        </div>
+        <div style="border-left:3px solid #ffce04; padding-left:18px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Increase</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:34px; margin:0; font-variant-numeric:tabular-nums;">+$90.00</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15px; color:#6e6e6e; margin:6px 0 0;">+$180 a year · $5.63 a week</p>
+        </div>
+        <div style="border-left:3px solid #000; padding-left:18px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Proposed</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:34px; margin:0; font-variant-numeric:tabular-nums;">$227.25</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15px; color:#6e6e6e; margin:6px 0 0;">$454.50 a year</p>
+        </div>
+      </div>
+      <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:24px 0 0; max-width:70ch;">The $5.63 is per week across a 16-week semester. The fee was last set in 2007<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">2</a> and has not moved since. The proposed contract language also includes an annual inflation adjustment capped at 3%.<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">2</a></p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:14px 0 0; max-width:70ch;">Cal State LA has the lowest student center fee of any CSU campus — $275 a year, unchanged since 2007.<a href="#source-1" aria-label="Source 1" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">1</a></p>
+    </div>
+
+    <!-- TrendChart -->
+    <div style="margin-top:clamp(48px,6vw,80px); border-top:1px solid #dedede; padding-top:36px;">
+      <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(24px,2.6vw,32px); line-height:1.15; margin:0 0 6px;">Revenue and expenses, if nothing changes</h3>
+      <p style="font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#6e6e6e; margin:0 0 24px;">U-SU Fiscal Committee, “DO NOTHING” projection, April 10 2026<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.7em; text-decoration:none; padding-left:2px;">2</a></p>
+      <div ref="{{ trendWrapRef }}" role="img" aria-label="Line chart. U-SU expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325, widening the gap from $883,471 to $2,340,220. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30, reaches zero during FY 2030-31 and closes that year at negative $2,065,518." style="background:#fff; border:1px solid #dedede; border-radius:16px; padding:clamp(16px,2vw,28px);">
+        <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+        <svg viewBox="0 0 1000 380" style="width:100%; min-width:660px; height:auto; display:block;" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="usuTrendWipe">
+              <rect ref="{{ trendClipRef }}" x="0" y="0" width="1000" height="380"></rect>
+            </clipPath>
+          </defs>
+          <line x1="150" y1="65" x2="960" y2="65" stroke="#ededed" stroke-width="1"></line>
+          <line x1="150" y1="115" x2="960" y2="115" stroke="#ededed" stroke-width="1"></line>
+          <line x1="150" y1="165" x2="960" y2="165" stroke="#ededed" stroke-width="1"></line>
+          <line x1="150" y1="215" x2="960" y2="215" stroke="#ededed" stroke-width="1"></line>
+          <line x1="150" y1="315" x2="960" y2="315" stroke="#ededed" stroke-width="1"></line>
+          <line x1="150" y1="265" x2="960" y2="265" stroke="#2b2b2b" stroke-width="1.5"></line>
+          <text x="138" y="69" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">$8M</text>
+          <text x="138" y="119" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">$6M</text>
+          <text x="138" y="169" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">$4M</text>
+          <text x="138" y="219" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">$2M</text>
+          <text x="138" y="269" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#2b2b2b">$0</text>
+          <text x="138" y="319" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">−$2M</text>
+          <g clip-path="url(#usuTrendWipe)">
+            <polygon points="281.7,121 940,98.1 940,156.6 281.7,143.1" fill="#ffce04" opacity="0.3"></polygon>
+            <line x1="281.7" y1="121" x2="940" y2="98.1" stroke="#2b2b2b" stroke-width="3" stroke-dasharray="9 7"></line>
+            <line x1="281.7" y1="143.1" x2="940" y2="156.6" stroke="#6e6e6e" stroke-width="3" stroke-dasharray="9 7"></line>
+            <polyline points="150,55.9 808.3,258.1 940,316.6" fill="none" stroke="#8c6a14" stroke-width="3.5"></polyline>
+            <circle cx="281.7" cy="121" r="6" fill="#2b2b2b"></circle>
+            <circle cx="940" cy="98.1" r="6" fill="#2b2b2b"></circle>
+            <circle cx="281.7" cy="143.1" r="6" fill="#6e6e6e"></circle>
+            <circle cx="940" cy="156.6" r="6" fill="#6e6e6e"></circle>
+            <circle cx="150" cy="55.9" r="6" fill="#8c6a14"></circle>
+            <circle cx="808.3" cy="258.1" r="6" fill="#8c6a14"></circle>
+            <circle cx="940" cy="316.6" r="6" fill="#8c6a14"></circle>
+            <circle cx="823.8" cy="265" r="7" fill="#fff" stroke="#000" stroke-width="2.5"></circle>
+            <text x="290" y="111" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#2b2b2b">$5,760,109</text>
+            <text x="940" y="86" text-anchor="end" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#2b2b2b">Expenses $6,677,545</text>
+            <text x="290" y="163" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#2b2b2b">$4,876,638</text>
+            <text x="940" y="180" text-anchor="end" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#2b2b2b">Revenue $4,337,325</text>
+            <text x="162" y="48" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#8c6a14">Reserve $8,364,353</text>
+            <text x="808.3" y="246" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#8c6a14">$274,702</text>
+            <text x="935" y="338" text-anchor="end" font-family="Montserrat, sans-serif" font-size="14" font-weight="700" fill="#8c6a14">−$2,065,518</text>
+            <text x="812" y="288" text-anchor="end" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#000">reserve reaches $0</text>
+          </g>
+          <text x="150" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#2b2b2b">FY 24-25</text>
+          <text x="281.7" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#2b2b2b">FY 25-26</text>
+          <text x="413.3" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">FY 26-27</text>
+          <text x="545" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">FY 27-28</text>
+          <text x="676.7" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">FY 28-29</text>
+          <text x="808.3" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#2b2b2b">FY 29-30</text>
+          <text x="940" y="362" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#2b2b2b">FY 30-31</text>
+        </svg>
+        </div>
+        <div style="display:flex; gap:clamp(14px,2.4vw,32px); flex-wrap:wrap; margin-top:18px; padding-top:16px; border-top:1px solid #dedede;">
+          <span style="display:flex; align-items:center; gap:8px; font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#2b2b2b;"><span style="width:22px; height:0; border-top:3px dashed #2b2b2b;"></span>Expenses</span>
+          <span style="display:flex; align-items:center; gap:8px; font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#2b2b2b;"><span style="width:22px; height:0; border-top:3px dashed #6e6e6e;"></span>Revenue</span>
+          <span style="display:flex; align-items:center; gap:8px; font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#2b2b2b;"><span style="width:22px; height:0; border-top:3.5px solid #8c6a14;"></span>Reserve</span>
+          <span style="display:flex; align-items:center; gap:8px; font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#2b2b2b;"><span style="width:16px; height:16px; border-radius:50%; border:2.5px solid #000; background:#fff;"></span>Reserve reaches $0</span>
+        </div>
+        <p style="font-family:Montserrat,sans-serif; font-size:12.5px; line-height:1.5; color:#6e6e6e; margin:12px 0 0;">Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31; the lines between them are trajectories, not year-by-year data.</p>
+        <table style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; margin:-1px; padding:0;">
+          <caption>U-SU DO NOTHING projection, April 10 2026</caption>
+          <thead><tr><th scope="col">Fiscal year</th><th scope="col">Revenue</th><th scope="col">Expenses</th><th scope="col">Reserve</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">FY 2024-25</th><td>Not published</td><td>Not published</td><td>$8,364,353</td></tr>
+            <tr><th scope="row">FY 2025-26</th><td>$4,876,638</td><td>$5,760,109</td><td>Not published</td></tr>
+            <tr><th scope="row">FY 2029-30</th><td>Not published</td><td>Not published</td><td>$274,702</td></tr>
+            <tr><th scope="row">FY 2030-31</th><td>$4,337,325</td><td>$6,677,545</td><td>−$2,065,518</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top:24px;">
+        <div style="background:#f4f4f4; border-radius:16px; padding:20px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Reserve, FY 2024-25</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:24px; margin:0; font-variant-numeric:tabular-nums;">$8,364,353</p>
+        </div>
+        <div style="background:#f4f4f4; border-radius:16px; padding:20px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Reserve, FY 2029-30</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:24px; margin:0; font-variant-numeric:tabular-nums;">$274,702</p>
+        </div>
+        <div style="background:#f4f4f4; border-radius:16px; padding:20px;">
+          <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#6e6e6e; margin:0 0 8px;">Reserve, FY 2030-31</p>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:24px; margin:0; font-variant-numeric:tabular-nums;">−$2,065,518</p>
+        </div>
+      </div>
+      <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#6e6e6e; margin:20px 0 0; max-width:78ch;">Figures are from the Fiscal Committee's April 10 2026 “DO NOTHING” projection — the model in which the fee stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY 2025-26, 25% of the operating budget. An annual bond payment of about $1,920,000 — roughly a third of the operating budget — runs through 2038.</p>
+    </div>
+
+    <!-- ShareChart -->
+    <div style="margin-top:clamp(48px,6vw,80px); border-top:1px solid #dedede; padding-top:36px;">
+      <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(24px,2.6vw,32px); line-height:1.15; margin:0 0 6px;">Where your $227.25 goes</h3>
+      <p style="font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#6e6e6e; margin:0 0 24px;">Share of the U-SU operating budget, applied to the proposed semester fee</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(24px,4vw,56px); align-items:center; background:#fff; border:1px solid #dedede; border-radius:16px; padding:clamp(20px,3vw,36px);">
+        <div ref="{{ shareWrapRef }}" role="img" aria-label="Donut chart. Bond payment on the building: 33 percent, $75.00 of the $227.25 semester fee. Everything else — operations, staffing, programs and maintenance: 67 percent, $152.25. The category breakdown of the remaining 67 percent is not yet published.">
+          <svg viewBox="0 0 400 400" style="width:100%; max-width:340px; height:auto; display:block; margin:0 auto;" aria-hidden="true" focusable="false">
+            <g ref="{{ shareGroupRef }}">
+              <circle ref="{{ shareRestRef }}" cx="200" cy="200" r="90" fill="none" stroke="#dedede" stroke-width="{{ donutStroke }}" stroke-dasharray="378.88 565.49" transform="rotate(28.8 200 200)"></circle>
+              <circle ref="{{ shareArcRef }}" cx="200" cy="200" r="90" fill="none" stroke="#ffce04" stroke-width="{{ donutStroke }}" stroke-dasharray="186.61 565.49" transform="rotate(-90 200 200)"></circle>
+              <sc-if value="{{ isDonut }}" hint-placeholder-val="{{ true }}">
+                <text x="200" y="194" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="26" font-weight="700" fill="#000">$227.25</text>
+                <text x="200" y="216" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#6e6e6e">per semester</text>
+              </sc-if>
+              <text ref="{{ sharePctBondRef }}" x="312" y="138" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" style="font-variant-numeric:tabular-nums;">33%</text>
+              <text ref="{{ sharePctRestRef }}" x="88" y="272" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="17" font-weight="700" fill="#2b2b2b" style="font-variant-numeric:tabular-nums;">67%</text>
+            </g>
+          </svg>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <span style="width:18px; height:18px; border-radius:4px; background:#ffce04; flex:0 0 auto; margin-top:3px;"></span>
+            <div>
+              <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0;">Bond payment on the building</p>
+              <p style="font-family:Montserrat,sans-serif; font-size:15px; margin:4px 0 0; font-variant-numeric:tabular-nums; color:#2b2b2b;">33% · $75.00 of your fee</p>
+              <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.55; color:#6e6e6e; margin:6px 0 0;">About $1,920,000 a year, through 2038. The 2007 vote built the building; this is what paying for it costs.<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">2</a></p>
+            </div>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <span style="width:18px; height:18px; border-radius:4px; background:#dedede; flex:0 0 auto; margin-top:3px;"></span>
+            <div>
+              <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0;">Everything else</p>
+              <p style="font-family:Montserrat,sans-serif; font-size:15px; margin:4px 0 0; font-variant-numeric:tabular-nums; color:#2b2b2b;">67% · $152.25 of your fee</p>
+              <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.55; color:#6e6e6e; margin:6px 0 0;">Operations, staffing, programs and maintenance.</p>
+              <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#8c6a14; background:#f4f4f4; border:1px dashed #8c6a14; border-radius:8px; padding:8px 12px; margin:10px 0 0; display:inline-block;">[NEEDS FIGURE — category split of the remaining 67%]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BarChart -->
+    <div style="margin-top:clamp(48px,6vw,80px); border-top:1px solid #dedede; padding-top:36px;">
+      <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(24px,2.8vw,34px); line-height:1.15; margin:0 0 10px; max-width:26ch;">Even after this passes, Cal State LA is still the second most affordable university in the CSU.</h3>
+      <p style="font-family:Montserrat,sans-serif; font-size:13px; font-weight:600; color:#6e6e6e; margin:0 0 28px;">Total campus mandatory fees per year, 2025-26, across the CSU's 22 campuses<a href="#source-1" aria-label="Source 1" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.7em; text-decoration:none; padding-left:2px;">1</a></p>
+      <div role="img" aria-label="Horizontal bar chart of total annual campus mandatory fees at the 22 CSU campuses. Cal State LA is lowest today at $1,084 and would be second lowest at $1,264 after the proposed increase, behind Channel Islands at $1,146. The CSU median is $1,946. San Luis Obispo, at $7,000, is drawn at the axis cap of $3,000." style="background:#fff; border:1px solid #dedede; border-radius:16px; padding:clamp(16px,2vw,28px);">
+        <div style="position:relative; margin-left:calc(clamp(92px,14vw,150px) + 12px); margin-right:76px; height:22px;">
+          <span style="position:absolute; left:64.87%; top:0; font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; color:#8c6a14; white-space:nowrap; padding-left:8px;">CSU median $1,946</span>
+        </div>
+        <div ref="{{ barWrapRef }}" style="position:relative;">
+          <div style="position:absolute; z-index:2; top:0; bottom:22px; left:calc(clamp(92px,14vw,150px) + 12px); right:76px; pointer-events:none;">
+            <div style="position:absolute; left:64.87%; top:0; bottom:0; border-left:2px dashed #8c6a14; box-shadow:0 0 0 1px rgba(255,255,255,.6);"></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:clamp(92px,14vw,150px) 1fr 64px; gap:12px; align-items:center; padding:6px 0; background:#fffbe8;">
+            <span style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:800; color:#000; text-align:right; line-height:1.2;">Cal State LA</span>
+            <div style="position:relative; height:30px; background:#f0f0f0; border-radius:4px; overflow:hidden;">
+              <div data-bar="1" data-bar-row="0" style="position:absolute; left:0; top:0; bottom:0; width:42.13%; background:#fef9c3; border-right:2px solid #8c6a14; transform-origin:left center;"></div>
+              <div data-bar="1" data-bar-row="0" style="position:absolute; left:0; top:0; bottom:0; width:36.13%; background:#ffce04; transform-origin:left center;"></div>
+              <span style="position:absolute; left:8px; top:50%; transform:translateY(-50%); font-family:Montserrat,sans-serif; font-size:11.5px; font-weight:700; color:#000; white-space:nowrap;">today $1,084</span>
+              <span style="position:absolute; left:43%; top:50%; transform:translateY(-50%); font-family:Montserrat,sans-serif; font-size:11.5px; font-weight:700; color:#2b2b2b; white-space:nowrap; padding-left:6px;">proposed $1,264</span>
+            </div>
+            <span data-barval="1264" data-barval-row="0" style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:800; color:#000; text-align:right; font-variant-numeric:tabular-nums;">$1,264</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:clamp(92px,14vw,150px) 1fr 64px; gap:12px; align-items:center; padding:3px 0;">
+            <span style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; color:#2b2b2b; text-align:right; line-height:1.2;">Channel Islands</span>
+            <div style="position:relative; height:20px; background:#f0f0f0; border-radius:3px; overflow:hidden;">
+              <div data-bar="1" data-bar-row="1" style="position:absolute; left:0; top:0; bottom:0; width:38.2%; background:#6e6e6e; transform-origin:left center;"></div>
+              <span style="position:absolute; left:39%; top:50%; transform:translateY(-50%); font-family:Montserrat,sans-serif; font-size:11px; font-weight:600; color:#2b2b2b; white-space:nowrap; padding-left:6px;">lowest after the increase</span>
+            </div>
+            <span data-barval="1146" data-barval-row="1" style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; color:#2b2b2b; text-align:right; font-variant-numeric:tabular-nums;">$1,146</span>
+          </div>
+
+          <sc-for list="{{ barRows }}" as="row" hint-placeholder-count="19">
+            <div style="display:grid; grid-template-columns:clamp(92px,14vw,150px) 1fr 64px; gap:12px; align-items:center; padding:3px 0;">
+              <span style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; color:#2b2b2b; text-align:right; line-height:1.2;">{{ row.campus }}</span>
+              <div style="position:relative; height:20px; background:#f0f0f0; border-radius:3px; overflow:hidden;">
+                <div data-bar="1" data-bar-row="{{ row.i }}" style="position:absolute; left:0; top:0; bottom:0; background:#2b2b2b; transform-origin:left center; width:{{ row.pct }};"></div>
+              </div>
+              <span data-barval="{{ row.value }}" data-barval-row="{{ row.i }}" style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; color:#2b2b2b; text-align:right; font-variant-numeric:tabular-nums;">{{ row.valueLabel }}</span>
+            </div>
+          </sc-for>
+
+          <div style="display:grid; grid-template-columns:clamp(92px,14vw,150px) 1fr 64px; gap:12px; align-items:center; padding:3px 0;">
+            <span style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:600; color:#2b2b2b; text-align:right; line-height:1.2;">San Luis Obispo</span>
+            <div style="position:relative; height:20px; background:#f0f0f0; border-radius:3px; overflow:hidden;">
+              <div data-bar="1" data-bar-row="21" style="position:absolute; left:0; top:0; bottom:0; width:100%; background:repeating-linear-gradient(135deg,#2b2b2b 0 8px,#4a4a4a 8px 14px); transform-origin:left center;"></div>
+              <span style="position:absolute; right:8px; top:50%; transform:translateY(-50%); font-family:Montserrat,sans-serif; font-size:11px; font-weight:700; color:#fff; white-space:nowrap;">off scale ›</span>
+            </div>
+            <span data-barval="7000" data-barval-row="21" style="font-family:Montserrat,sans-serif; font-size:12.5px; font-weight:700; color:#2b2b2b; text-align:right; font-variant-numeric:tabular-nums;">$7,000</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:clamp(92px,14vw,150px) 1fr 64px; gap:12px; margin-top:8px; border-top:1px solid #dedede; padding-top:8px;">
+            <span></span>
+            <div style="display:flex; justify-content:space-between; font-family:Montserrat,sans-serif; font-size:11.5px; color:#6e6e6e;">
+              <span>$0</span><span>$1,000</span><span>$2,000</span><span>$3,000</span>
+            </div>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:clamp(16px,3vw,40px); flex-wrap:wrap; margin-top:20px;">
+        <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.6; color:#6e6e6e; margin:0; max-width:34ch;">Value axis is capped at $3,000. San Luis Obispo's true figure is $7,000 and its bar is drawn at the cap.</p>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.6; color:#6e6e6e; margin:0; max-width:34ch;">CSU median $1,946; mean $2,161. The median is used here because the mean is pulled up by a single outlier.<a href="#source-1" aria-label="Source 1" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">1</a></p>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.6; color:#6e6e6e; margin:0; max-width:34ch;">22 campuses. The 2025-26 table lists 23; Maritime merged administratively with Cal Poly on July 1 2025 and moves to Cal Poly's fee structure in fall 2026.<a href="#source-6" aria-label="Source 6" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">6</a></p>
+      </div>
+    </div>
+
+    <!-- inflation gap -->
+    <div style="margin-top:clamp(48px,6vw,80px); border-top:2px solid #000; padding-top:28px; max-width:74ch;">
+      <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(22px,2.4vw,28px); line-height:1.2; margin:0 0 14px;">The part that doesn't add up on its own</h3>
+      <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.7; color:#2b2b2b; margin:0;">If the 2007 fee had only kept pace with inflation, it would be <strong style="font-weight:700;">$215.30 a semester</strong> today.<a href="#source-5" aria-label="Source 5" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">5</a> The proposal is <strong style="font-weight:700;">$227.25</strong> — $11.95 more than inflation alone would explain. That difference is real, and it is there because catching up on inflation does not close a shortfall that is also driven by enrollment decline.<a href="#source-3" aria-label="Source 3" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">3</a> Student fees currently cover 67% of what the U-SU costs to run; the sustainable range is 80–85%.<a href="#source-2" aria-label="Source 2" style="font-family:Montserrat,sans-serif; font-weight:700; color:#8c6a14; vertical-align:super; font-size:.6em; text-decoration:none; padding-left:2px;">2</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · If it fails -->
+<section id="if-it-fails" data-screen-label="If it fails" style="background:#f4f4f4; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px); scroll-margin-top:84px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8c6a14; margin:0 0 14px;">If it doesn't pass</p>
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; margin:0; max-width:24ch; text-wrap:pretty;">What changes if this doesn't pass</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; margin-top:40px; align-items:start;">
+      <div style="background:#fff; border-radius:16px; padding:clamp(20px,3vw,32px);">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#6e6e6e; margin:0 0 20px;">Today, funded by the current fee</p>
+        <div style="display:flex; flex-direction:column;">
+          <div style="padding:16px 0; border-top:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Fitness center access</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">Included with enrollment. No membership charge, no per-visit fee.</p>
+          </div>
+          <div style="padding:16px 0; border-top:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Signature events</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">Programmed and paid for out of the operating budget. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS FIGURE — events per year]</span></p>
+          </div>
+          <div style="padding:16px 0; border-top:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Cultural graduation ceremonies</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">Five a year, free to graduates and families, about 800 students.</p>
+          </div>
+          <div style="padding:16px 0; border-top:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Room reservations for student orgs</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS FIGURE — weekly club meetings]</span></p>
+          </div>
+          <div style="padding:16px 0; border-top:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Student employment</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">90–100 student positions, the largest student employer on campus.</p>
+          </div>
+          <div style="padding:16px 0; border-top:1px solid #dedede; border-bottom:1px solid #dedede;">
+            <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:15.5px; margin:0 0 4px;">Building hours</p>
+            <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.55; color:#2b2b2b; margin:0;">Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.</p>
+          </div>
+        </div>
+      </div>
+      <div style="background:#2b2b2b; border-radius:16px; padding:clamp(20px,3vw,32px);">
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#ffce04; margin:0 0 20px;">After FY 2030-31, on the current fee</p>
+        <p style="font-family:Bitter,Georgia,serif; font-size:17.5px; line-height:1.7; color:#f4f4f4; margin:0;">In the DO NOTHING projection, FY 2030-31 expenses of $6,677,545 run $2,340,220 past revenue — 35% of that year's spending — and the reserve closes the year at −$2,065,518. The bond payment of about $1,920,000 continues through 2038 and cannot be reduced.</p>
+        <p style="font-family:Bitter,Georgia,serif; font-size:17.5px; line-height:1.7; color:#f4f4f4; margin:18px 0 0;">Everything in the column beside this one is paid for out of the same budget. The U-SU has not decided or published which of them it would reduce, and this page will not guess.</p>
+        <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.04em; color:#ffce04; border:1px dashed #ffce04; border-radius:8px; padding:10px 14px; margin:22px 0 0; display:inline-block;">[NEEDS COPY — service-level impact statement, U-SU Fiscal Committee]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Financial aid -->
+<section style="background:#ffffff; padding:clamp(48px,6vw,80px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="background:#f4f4f4; border-radius:16px; padding:clamp(24px,3vw,36px); max-width:820px;">
+      <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(24px,2.6vw,32px); line-height:1.2; margin:0 0 14px;">Does financial aid cover the increase?</h2>
+      <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.04em; color:#8c6a14; border:1px dashed #8c6a14; border-radius:8px; padding:10px 14px; margin:0 0 16px; display:inline-block;">[NEEDS COPY — Financial Aid]</p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">This answer has to come from Cal State LA Financial Aid, in their words, and it will be published here before anything else on this page is finalized. Until then: <a href="https://www.calstatela.edu/financialaid" style="color:#8c6a14; font-weight:600;">Cal State LA Financial Aid</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Testimonials -->
+<section style="background:#f4f4f4; padding:clamp(48px,6vw,80px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(26px,3vw,36px); line-height:1.12; margin:0 0 28px;">In students' own words</h2>
+    <div style="border:2px dashed #b5b5b5; border-radius:16px; padding:clamp(28px,4vw,48px); background:#fff; text-align:center;">
+      <p style="font-family:Montserrat,sans-serif; font-weight:800; font-size:14px; letter-spacing:.06em; color:#8c6a14; margin:0;">[AWAITING REAL QUOTES — 4 needed, with written consent]</p>
+      <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:#6e6e6e; margin:12px auto 0; max-width:56ch;">The TestimonialCard grid renders from an empty array. The four quotes in v1 were invented and have been removed. Nothing ships here without a named student and a signed release.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Before you weigh in -->
+<section style="background:#ffffff; padding:clamp(48px,6vw,80px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(26px,3vw,36px); line-height:1.12; margin:0 0 28px;">{{ cm.beforeHeading }}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:24px;">
+      <div style="border:1px solid #dedede; border-radius:16px; padding:26px;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:21px; margin:0 0 10px;">Read the budget yourself</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:#2b2b2b; margin:0 0 14px;">The April 10 2026 Fiscal Committee presentation is the source for every budget figure on this page.</p>
+        <a href="#sources" style="font-family:Montserrat,sans-serif; font-weight:700; font-size:14px; color:#8c6a14; text-decoration:none;">Go to Sources →</a>
+      </div>
+      <div style="border:1px solid #dedede; border-radius:16px; padding:26px;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:21px; margin:0 0 10px;">Come to an info session</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:#2b2b2b; margin:0 0 14px;">Open sessions in the U-SU where you can ask staff and board members directly.</p>
+        <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; color:#8c6a14; border:1px dashed #8c6a14; border-radius:8px; padding:8px 12px; display:inline-block;">[NEEDS FIGURE — dates &amp; locations]</span>
+      </div>
+      <div style="border:1px solid #dedede; border-radius:16px; padding:26px;">
+        <h3 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:21px; margin:0 0 10px;">Ask the board</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:#2b2b2b; margin:0 0 14px;">The U-SU Board of Directors is chaired by an elected student and its meetings are open.</p>
+        <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; color:#8c6a14; border:1px dashed #8c6a14; border-radius:8px; padding:8px 12px; display:inline-block;">[NEEDS FIGURE — meeting schedule]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · FAQ -->
+<section id="faq" data-screen-label="FAQ" style="background:#f4f4f4; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px); scroll-margin-top:84px;">
+  <div style="max-width:900px; margin:0 auto;">
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; margin:0 0 32px;">Questions</h2>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>Exactly how much, and when would it start?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">$90 more per semester. Your U-SU fee goes from $137.25 to $227.25 a semester — $454.50 a year instead of $274.50. Across a 16-week semester that is $5.63 a week. The effective term has not been set. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; color:#8c6a14;">[NEEDS FIGURE — effective term]</span></p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>Does my financial aid cover it?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">That answer belongs to Cal State LA Financial Aid, not to the U-SU, and we are not going to approximate it. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; color:#8c6a14;">[NEEDS COPY — Financial Aid]</span></p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>What is the 3% annual adjustment — is it a blank check?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation — which is exactly why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.</p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>Why can't tuition or the university cover this?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">The U-SU is a separate 501(c)(3) nonprofit governed by a board chaired by an elected student. It is not part of the university's operating budget and tuition does not fund it. Student fees cover 67% of what it costs to run today; the sustainable range is 80–85%.</p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>What happens if it doesn't pass?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">$2,000,000 has already been cut across FY 2024-25 and FY 2025-26 — 25% of the operating budget. On the current fee, the reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to −$2,065,518 in FY 2030-31. What gets reduced after that has not been decided. <a href="#if-it-fails" style="color:#8c6a14; font-weight:600;">See the full section →</a></p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>Who decided the amount?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">The U-SU Board of Directors, chaired by an elected student, working from the Fiscal Committee's April 10 2026 budget projection. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12.5px; color:#8c6a14;">[NEEDS COPY — board resolution and vote record]</span></p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>I never use the U-SU — why am I paying?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">Fair question, and the honest answer has two halves. The first: most of what is in here costs money everywhere else — a gym, a pantry, a microwave, a quiet room, a place to park yourself between classes — and here it is already paid for. The second: the building went up in 2009 on a bond that runs through 2038, about a third of the operating budget every year. That payment does not stop if attendance drops. It is worth getting something back for it.</p>
+      </details>
+      <details style="background:#fff; border:1px solid #dedede; border-radius:16px;">
+        <summary style="list-style:none; cursor:pointer; padding:20px 24px; font-family:Montserrat,sans-serif; font-weight:700; font-size:16.5px; display:flex; gap:16px; align-items:center; justify-content:space-between;"><span>Where can I see the budget myself?</span><span class="faq-plus" style="color:#8c6a14; font-size:22px; line-height:1;">+</span></summary>
+        <p style="padding:0 24px 22px; font-family:Bitter,Georgia,serif; font-size:16.5px; line-height:1.65; color:#2b2b2b; margin:0;">Every figure on this page is numbered and traced to its document. <a href="#sources" style="color:#8c6a14; font-weight:600;">Sources →</a></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · For faculty & staff -->
+<section style="background:#2b2b2b; padding:clamp(40px,5vw,64px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#ffce04; margin:0 0 18px;">For faculty &amp; staff</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px;">
+      <div>
+        <h3 style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; color:#fff; margin:0 0 8px;">The largest student employer on campus</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#dedede; margin:0;">90–100 student positions and 29 full-time staff. Many of your students are paid by this building.</p>
+      </div>
+      <div>
+        <h3 style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; color:#fff; margin:0 0 8px;">Space your department can reserve</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#dedede; margin:0;">93,000 sq ft, opened in 2009: meeting rooms, event space and the ballroom, bookable through U-SU Operations.</p>
+      </div>
+      <div>
+        <h3 style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; color:#fff; margin:0 0 8px;">What to tell students who ask</h3>
+        <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#dedede; margin:0;">$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented. <a href="#sources" style="color:#ffce04; font-weight:600;">Sources →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · Sources -->
+<section id="sources" data-screen-label="Sources" style="background:#ffffff; padding:clamp(56px,7vw,96px) clamp(20px,4vw,36px); scroll-margin-top:84px;">
+  <div style="max-width:900px; margin:0 auto;">
+    <p style="font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8c6a14; margin:0 0 14px;">Sources</p>
+    <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; margin:0 0 12px;">Every number, and where it came from</h2>
+    <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.65; color:#2b2b2b; margin:0 0 32px; max-width:62ch;">The superscript markers throughout this page link here. If a figure on this page is not traceable to one of these documents, it is marked as missing rather than estimated.</p>
+    <ol style="list-style:none; counter-reset:src; padding:0; margin:0; display:flex; flex-direction:column;">
+      <li id="source-1" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">1</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">CSU campus mandatory fees table, 2025-26</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Fee comparison, median and mean, campus rankings, and the student center fee figures. <a href="https://www.calstate.edu" style="color:#8c6a14; font-weight:600;">calstate.edu</a> <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS LINK — direct table URL]</span></p>
+        </div>
+      </li>
+      <li id="source-2" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">2</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">U-SU Fiscal Committee budget presentation, April 10 2026</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">All budget, reserve, bond, fee-coverage and “DO NOTHING” projection figures, and the 2007 approval date. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS LINK — public posting of the deck]</span></p>
+        </div>
+      </li>
+      <li id="source-3" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">3</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">Cal State LA institutional Fact Book</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Enrollment trend and student demographics. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS LINK]</span></p>
+        </div>
+      </li>
+      <li id="source-4" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">4</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">U-SU operating budget / annual report</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Staffing, student employment, building size, services and the cultural graduation ceremonies. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS LINK]</span></p>
+        </div>
+      </li>
+      <li id="source-5" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">5</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">BLS CPI inflation calculator</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">The $215.30 CPI-adjusted equivalent of the 2007 fee. <a href="https://data.bls.gov/cgi-bin/cpicalc.pl" style="color:#8c6a14; font-weight:600;">data.bls.gov</a></p>
+        </div>
+      </li>
+      <li id="source-6" style="counter-increment:src; display:grid; grid-template-columns:36px 1fr; gap:16px; padding:20px 0; border-top:1px solid #dedede; border-bottom:1px solid #dedede; scroll-margin-top:84px;">
+        <span style="font-family:Montserrat,sans-serif; font-weight:800; font-size:16px; color:#8c6a14;">6</span>
+        <div>
+          <p style="font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; margin:0 0 4px;">CSU Chancellor's Office, Cal Poly–Maritime integration</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15.5px; line-height:1.6; color:#2b2b2b; margin:0;">Administrative merger effective July 1 2025, academic integration in fall 2026 — the basis for comparing 22 campuses rather than 23. <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:12px; color:#8c6a14;">[NEEDS LINK]</span></p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 15 · Final CTA -->
+<section style="background:#ffce04; padding:clamp(48px,6vw,80px) clamp(20px,4vw,36px);">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; align-items:center;">
+    <div>
+      <h2 style="font-family:Bitter,Georgia,serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); line-height:1.08; color:#000; margin:0; max-width:18ch; text-wrap:pretty;">{{ cm.finalHeading }}</h2>
+      <p style="font-family:Bitter,Georgia,serif; font-size:18px; line-height:1.6; color:#000; margin:16px 0 0; max-width:56ch;">{{ cm.finalBody }}</p>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-start;">
+      <a href="{{ cm.ctaHref }}" style="background:#000; color:#fff; font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; padding:17px 34px; border-radius:8px; text-decoration:none;" style-hover="opacity:.7">{{ cm.ctaLabel }}</a>
+      <a href="#faq" style="background:transparent; color:#000; border:1px solid #000; font-family:Montserrat,sans-serif; font-weight:700; font-size:16px; padding:17px 34px; border-radius:8px; text-decoration:none;" style-hover="opacity:.7">Read the FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · Disclaimer strip -->
+<div style="background:#f4f4f4; padding:24px clamp(20px,4vw,36px); border-top:1px solid #dedede;">
+  <p style="max-width:1200px; margin:0 auto; font-family:Montserrat,sans-serif; font-size:12px; line-height:1.6; color:#6e6e6e;">Prototype for review — not a published U-SU communication. This page describes a {{ cm.actionNoun }} that has not been finalized. Items marked [NEEDS FIGURE], [NEEDS COPY] or [NEEDS LINK] are unresolved and must be confirmed before launch; photography is placeholder.</p>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;informational&quot;,&quot;advocacy&quot;],&quot;default&quot;:&quot;informational&quot;,&quot;tsType&quot;:&quot;'informational' | 'advocacy'&quot;,&quot;section&quot;:&quot;Campaign mode&quot;},&quot;donutVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;donut&quot;,&quot;pie&quot;],&quot;default&quot;:&quot;pie&quot;,&quot;tsType&quot;:&quot;'donut' | 'pie'&quot;,&quot;section&quot;:&quot;ShareChart&quot;},&quot;shareAnimation&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sweep&quot;,&quot;grow&quot;,&quot;none&quot;],&quot;default&quot;:&quot;sweep&quot;,&quot;tsType&quot;:&quot;'sweep' | 'grow' | 'none'&quot;,&quot;section&quot;:&quot;ShareChart&quot;},&quot;animateTrend&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Chart animation&quot;},&quot;animateBars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Chart animation&quot;},&quot;animationDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1400,&quot;min&quot;:300,&quot;max&quot;:3000,&quot;step&quot;:100,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Chart animation&quot;}}">
+class Component extends DCLogic {
+  /* ── campaignMode ─────────────────────────────────────────────
+     Every mode-dependent string on the page lives here. Flipping to
+     advocacy is a change to these strings only — no JSX edits.
+     Nothing outside this object contains "vote yes," "ballot," or a date. */
+  static MODES = {
+    informational: {
+      mode: 'informational',
+      ctaLabel: 'See the Budget',
+      ctaHref: '#numbers',
+      heroPrimaryCta: 'See the Numbers',
+      heroSecondaryCta: 'What This Costs You',
+      finalHeading: 'The math, in one place.',
+      actionNoun: 'proposal',
+      voteDate: null,
+      beforeHeading: 'Before you weigh in',
+      finalBody: 'Every figure on this page is traced to the April 10 2026 Fiscal Committee presentation or the CSU\u2019s published fee tables. Both are listed in Sources.'
+    },
+    advocacy: {
+      mode: 'advocacy',
+      ctaLabel: 'Vote Yes',
+      ctaHref: '#numbers',
+      heroPrimaryCta: 'Vote Yes',
+      heroSecondaryCta: 'What This Costs You',
+      finalHeading: 'Keep the U open. Vote yes.',
+      actionNoun: 'referendum',
+      voteDate: null,
+      beforeHeading: 'Before you vote',
+      finalBody: 'Every figure on this page is traced to the April 10 2026 Fiscal Committee presentation or the CSU\u2019s published fee tables. Both are listed in Sources.'
+    }
+  };
+
+  state = { narrow: false };
+
+  trendWrapRef = React.createRef();
+  trendClipRef = React.createRef();
+  shareWrapRef = React.createRef();
+  shareArcRef = React.createRef();
+  shareRestRef = React.createRef();
+  sharePctBondRef = React.createRef();
+  sharePctRestRef = React.createRef();
+  shareGroupRef = React.createRef();
+  barWrapRef = React.createRef();
+
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 768px)');
+    this.onMq = (e) => this.setState({ narrow: e.matches });
+    this.setState({ narrow: this.mq.matches });
+    this.mq.addEventListener('change', this.onMq);
+    this.setupAnimations();
+  }
+
+  componentDidUpdate(prev) {
+    const keys = ['animateTrend', 'animateBars', 'shareAnimation', 'animationDuration', 'donutVariant'];
+    if (keys.some((k) => prev[k] !== this.props[k])) this.setupAnimations();
+  }
+
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+    this.teardownAnimations();
+  }
+
+  /* ── chart animation ──────────────────────────────────────────
+     Every chart animates on first scroll into view, never on a loop.
+     All of it is prop-driven and all of it is optional: animateTrend,
+     animateBars, shareAnimation ('sweep' | 'grow' | 'none') and
+     animationDuration (ms). prefers-reduced-motion: reduce skips the
+     lot and paints the final state. */
+  teardownAnimations() {
+    if (this.io) { this.io.disconnect(); this.io = null; }
+    if (this.raf) { cancelAnimationFrame(this.raf); this.raf = null; }
+    if (this.barRaf) { cancelAnimationFrame(this.barRaf); this.barRaf = null; }
+    (this.running || []).forEach((a) => { try { a.cancel(); } catch (e) {} });
+    this.running = [];
+  }
+
+  resetChartState() {
+    const clip = this.trendClipRef.current;
+    if (clip) { clip.style.transformOrigin = '0px 0px'; clip.style.transform = 'none'; }
+    const arc = this.shareArcRef.current;
+    if (arc) arc.style.strokeDashoffset = '0';
+    const rest = this.shareRestRef.current;
+    if (rest) rest.style.strokeDashoffset = '0';
+    this.setPct(1);
+    const g = this.shareGroupRef.current;
+    if (g) { g.style.transformOrigin = '200px 200px'; g.style.transform = 'none'; g.style.opacity = '1'; }
+    this.bars().forEach((b) => { b.style.transform = 'none'; });
+    this.setBarVals();
+  }
+
+  bars() {
+    const w = this.barWrapRef.current;
+    return w ? Array.prototype.slice.call(w.querySelectorAll('[data-bar]')) : [];
+  }
+
+  barVals() {
+    const w = this.barWrapRef.current;
+    return w ? Array.prototype.slice.call(w.querySelectorAll('[data-barval]')) : [];
+  }
+
+  /* Value column counts up alongside its own bar, on the same stagger. */
+  countBars(vals, barDur, stagger) {
+    if (this.barRaf) cancelAnimationFrame(this.barRaf);
+    const start = performance.now();
+    const tick = (now) => {
+      let done = true;
+      vals.forEach((el) => {
+        const target = Number(el.dataset.barval) || 0;
+        const delay = (Number(el.dataset.barvalRow) || 0) * stagger;
+        const p = Math.max(0, Math.min(1, (now - start - delay) / barDur));
+        const e = p * p * (3 - 2 * p);
+        el.textContent = '$' + Math.round(target * e).toLocaleString('en-US');
+        if (p < 1) done = false;
+      });
+      if (!done) this.barRaf = requestAnimationFrame(tick);
+      else { this.barRaf = null; this.setBarVals(); }
+    };
+    this.barRaf = requestAnimationFrame(tick);
+  }
+
+  setBarVals() {
+    this.barVals().forEach((el) => {
+      el.textContent = '$' + (Number(el.dataset.barval) || 0).toLocaleString('en-US');
+    });
+  }
+
+  setupAnimations() {
+    this.teardownAnimations();
+    this.resetChartState();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const dur = Math.max(150, Number(this.props.animationDuration) || 1400);
+    const share = this.props.shareAnimation || 'sweep';
+    const wantTrend = this.props.animateTrend !== false;
+    const wantBars = this.props.animateBars !== false;
+    const wantShare = share !== 'none';
+    const plan = [];
+
+    if (wantTrend && this.trendWrapRef.current && this.trendClipRef.current) {
+      const clip = this.trendClipRef.current;
+      clip.style.transform = 'scaleX(0)';
+      plan.push([this.trendWrapRef.current, () => this.run(clip,
+        [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+        { duration: dur, easing: 'cubic-bezier(.25,.6,.3,1)', fill: 'forwards' })]);
+    }
+
+    if (wantShare && this.shareWrapRef.current) {
+      if (share === 'grow' && this.shareGroupRef.current) {
+        const g = this.shareGroupRef.current;
+        g.style.transform = 'scale(0.6)';
+        g.style.opacity = '0';
+        plan.push([this.shareWrapRef.current, () => this.run(g,
+          [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+          { duration: dur, easing: 'cubic-bezier(.2,.8,.3,1)', fill: 'forwards' })]);
+      } else if (this.shareArcRef.current) {
+        /* Both segments draw clockwise in sequence: bond (33%) then the
+           remainder (67%), so the whole figure fills rather than one wedge
+           sweeping over a finished ring. */
+        const arc = this.shareArcRef.current;
+        const rest = this.shareRestRef.current;
+        const ease = 'cubic-bezier(.3,0,.2,1)';
+        arc.style.strokeDashoffset = '186.61';
+        if (rest) rest.style.strokeDashoffset = '378.88';
+        this.setPct(0);
+        plan.push([this.shareWrapRef.current, () => {
+          this.run(arc, [{ strokeDashoffset: 186.61 }, { strokeDashoffset: 0 }],
+            { duration: dur, easing: ease, fill: 'forwards' });
+          if (rest) this.run(rest, [{ strokeDashoffset: 378.88 }, { strokeDashoffset: 0 }],
+            { duration: dur, easing: ease, fill: 'forwards' });
+          this.countPct(dur);
+        }]);
+      }
+    }
+
+    if (wantBars && this.barWrapRef.current) {
+      const bars = this.bars();
+      const vals = this.barVals();
+      const stagger = Math.round(dur / 60);
+      const barDur = Math.round(dur * 0.6);
+      bars.forEach((b) => { b.style.transform = 'scaleX(0)'; });
+      vals.forEach((v) => { v.textContent = '$0'; });
+      plan.push([this.barWrapRef.current, () => {
+        bars.forEach((b) => this.run(b,
+          [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+          { duration: barDur, delay: (Number(b.dataset.barRow) || 0) * stagger, easing: 'cubic-bezier(.25,.6,.3,1)', fill: 'forwards' }));
+        this.countBars(vals, barDur, stagger);
+      }]);
+    }
+
+    if (!plan.length) return;
+    if (!('IntersectionObserver' in window)) { plan.forEach(([, go]) => go()); return; }
+    const map = new Map(plan);
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const go = map.get(e.target);
+        if (go) { go(); map.delete(e.target); this.io.unobserve(e.target); }
+      });
+    }, { threshold: 0.2 });
+    plan.forEach(([el]) => this.io.observe(el));
+  }
+
+  /* Segment percentages count up in step with the arcs. */
+  setPct(t) {
+    const b = this.sharePctBondRef.current;
+    const r = this.sharePctRestRef.current;
+    if (b) b.textContent = Math.round(33 * t) + '%';
+    if (r) r.textContent = Math.round(67 * t) + '%';
+  }
+
+  countPct(dur) {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      this.setPct(p * p * (3 - 2 * p));
+      if (p < 1) this.raf = requestAnimationFrame(tick); else this.setPct(1);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+
+  run(el, frames, opts) {
+    if (!el || !el.animate) return null;
+    const a = el.animate(frames, opts);
+    (this.running = this.running || []).push(a);
+    return a;
+  }
+
+  renderVals() {
+    const cm = Component.MODES[this.props.mode] || Component.MODES.informational;
+    /* BarChart — total campus mandatory fees 2025-26, axis capped at $3,000.
+       Cal State LA, Channel Islands and San Luis Obispo are authored in the
+       template (two-segment row, annotation, off-scale row). */
+    const rows = [
+      ['Northridge', 1400], ['Dominguez Hills', 1408], ['Fullerton', 1514], ['East Bay', 1539],
+      ['Monterey Bay', 1695], ['Pomona', 1697], ['Fresno', 1774], ['San Francisco', 1874],
+      ['Long Beach', 1888], ['San Marcos', 2004], ['Bakersfield', 2046], ['San Bernardino', 2117],
+      ['Stanislaus', 2240], ['Humboldt', 2374], ['San Jose', 2396], ['Chico', 2446],
+      ['Sacramento', 2564], ['Sonoma', 2612], ['San Diego', 2730]
+    ];
+    const isDonut = (this.props.donutVariant || 'donut') !== 'pie';
+    return {
+      cm,
+      eyebrow: 'A ' + cm.actionNoun + ' for the University-Student Union',
+      showAnchorNav: !this.state.narrow,
+      isDonut,
+      donutStroke: isDonut ? 60 : 180,
+      trendWrapRef: this.trendWrapRef,
+      trendClipRef: this.trendClipRef,
+      shareWrapRef: this.shareWrapRef,
+      shareArcRef: this.shareArcRef,
+      shareRestRef: this.shareRestRef,
+      sharePctBondRef: this.sharePctBondRef,
+      sharePctRestRef: this.sharePctRestRef,
+      shareGroupRef: this.shareGroupRef,
+      barWrapRef: this.barWrapRef,
+      barRows: rows.map(([campus, v], i) => ({
+        campus,
+        value: v,
+        i: i + 2,
+        valueLabel: '$' + v.toLocaleString('en-US'),
+        pct: (v / 3000 * 100).toFixed(2) + '%'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

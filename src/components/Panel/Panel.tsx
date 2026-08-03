@@ -1,36 +1,52 @@
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 
-interface CardStyles {
+const shadows = {
+  default: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+  soft: '0 2px 8px rgba(0, 0, 0, 0.06)',
+  none: 'none',
+} as const;
+
+export interface PanelStyleProps {
   height?: string;
   width?: string;
   minHeight?: string;
   margin?: string;
+  padding?: string;
   topBorder?: boolean;
+  /** 1px outline in the given theme color. */
+  border?: keyof typeof Colors;
+  /** Outline style for `border`. `dashed` marks deliberately unfinished content. */
+  borderStyle?: 'solid' | 'dashed';
   rounded?: boolean;
+  /** Explicit corner radius; overrides `rounded` when both are set. */
+  borderRadius?: string;
+  shadow?: keyof typeof shadows;
   hoverable?: boolean;
   backgroundColor?: keyof typeof Colors;
 }
 
-interface CardProps extends CardStyles {
+interface PanelProps extends PanelStyleProps {
   children?: React.ReactNode;
 }
 
-const StyledPanel = styled.div<CardStyles>`
+const StyledPanel = styled.div<PanelStyleProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: ${Spaces.xl};
+  padding: ${(p) => p.padding || Spaces.xl};
   gap: 16px;
-  box-shadow: 2px 4px 12px rgba(191, 191, 191, 0.25);
+  box-shadow: ${(p) => shadows[p.shadow || 'default']};
   background-color: ${(p) => Colors[p.backgroundColor || 'white']};
   ${(p) => p.height && `height: ${p.height};`}
   ${(p) => p.width && `width: ${p.width};`}
   ${(p) => p.margin && `margin: ${p.margin};`}
   ${(p) => p.minHeight && `min-height: ${p.minHeight};`}
   ${(p) => p.topBorder && `border-top: 5px solid ${Colors.primary};`}
-  border-radius: ${(p) => (p.rounded ? '12px' : '0px')};
+  ${(p) =>
+    p.border && `border: 1px ${p.borderStyle || 'solid'} ${Colors[p.border]};`}
+  border-radius: ${(p) => p.borderRadius || (p.rounded ? '12px' : '0px')};
   ${(p) =>
     p.hoverable &&
     `
@@ -42,4 +58,4 @@ const StyledPanel = styled.div<CardStyles>`
   `}
 `;
 
-export const Panel = (props: CardProps) => <StyledPanel {...props} />;
+export const Panel = (props: PanelProps) => <StyledPanel {...props} />;

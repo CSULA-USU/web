@@ -27,7 +27,7 @@ const bitter = Bitter({
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['300', '400', '600', '700'],
+  weight: ['300', '400', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-montserrat',
 });
