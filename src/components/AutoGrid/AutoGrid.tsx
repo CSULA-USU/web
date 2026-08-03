@@ -10,6 +10,7 @@ interface AutoGridStyles {
   minColumnWidth?: string;
   gap?: string;
   alignItems?: 'stretch' | 'flex-start' | 'center';
+  margin?: string;
 }
 
 interface AutoGridProps extends AutoGridStyles {
@@ -25,6 +26,7 @@ const StyledAutoGrid = styled.div<AutoGridStyles>`
   gap: ${(p) => p.gap || Spaces.lg};
   align-items: ${(p) => p.alignItems || 'stretch'};
   width: 100%;
+  margin: ${(p) => p.margin || '0'};
 `;
 
 export const AutoGrid = (props: AutoGridProps) => <StyledAutoGrid {...props} />;

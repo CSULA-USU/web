@@ -212,7 +212,7 @@ const bandStats = [
     value: '90–100',
     citation: '4',
     label:
-      'Student employees — the largest student employer on campus, alongside 29 full-time staff.',
+      'Student employees: We the largest student employer on campus, alongside 29 full-time staff.',
   },
   {
     value: '5',
@@ -391,7 +391,7 @@ const shareSegments: ShareSegment[] = [
     color: 'primary',
     labelPosition: { x: 312, y: 138 },
     detail:
-      'About $1,920,000 a year, through 2038. The 2007 vote built the building; this is what paying for it costs.',
+      'About $1,920,000 a year, through 2038. The 2007 vote built the building and this is what paying for it costs.',
     sourceId: '2',
   },
   {
@@ -514,7 +514,7 @@ const faq = [
     answer: (
       <>
         $90 more per semester. Your U-SU fee goes from $137.25 to $227.25 a
-        semester — $454.50 a year instead of $274.50. Across a 16-week semester
+        semester: $454.50 a year instead of $274.50. Across a 16-week semester
         that is $5.63 a week. The effective term has not been set.{' '}
         <PlaceholderMarker>[NEEDS FIGURE — effective term]</PlaceholderMarker>
       </>
@@ -531,9 +531,9 @@ const faq = [
     ),
   },
   {
-    question: 'What is the 3% annual adjustment — is it a blank check?',
+    question: 'What is the 3% annual adjustment? Is it a blank check?',
     answer:
-      'No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation — which is exactly why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.',
+      'No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation, which is exactly why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.',
   },
   {
     question: "Why can't tuition or the university cover this?",
@@ -565,7 +565,7 @@ const faq = [
     ),
   },
   {
-    question: 'I never use the U-SU — why am I paying?',
+    question: 'I never use the U-SU.. why am I paying?',
     answer:
       'Fair question, and the honest answer has two halves. The first: most of what is in here costs money everywhere else — a gym, a pantry, a microwave, a quiet room, a place to park yourself between classes — and here it is already paid for. The second: the building went up in 2009 on a bond that runs through 2038, about a third of the operating budget every year. That payment does not stop if attendance drops. It is worth getting something back for it.',
   },
@@ -707,9 +707,9 @@ export default function KeepTheUOpen() {
             weight="700"
             color="white"
           >
-            $90 more per semester
+            $90 more per semester,
           </Typography>{' '}
-          — $5.63 a week — for the building you already paid to put up.
+          $5.63 a week, for the building you already paid to put up.
         </Typography>
         <div>
           <Button
@@ -788,8 +788,8 @@ export default function KeepTheUOpen() {
           style={{ maxWidth: '68ch' }}
         >
           Most Cal State LA students commute. The U-SU is the part of campus
-          that is useful whether or not you have class in the next hour — and it
-          is already included in what you pay.
+          that is useful whether or not you have class in the next hour and
+          it&apos;s already included in what you pay.
         </Typography>
         <AutoGrid minColumnWidth="280px">
           {thesisCards.map((card) => (
@@ -851,10 +851,10 @@ export default function KeepTheUOpen() {
             lineHeight="1.6"
             style={{ maxWidth: '68ch' }}
           >
-            And if you are one of the students who never comes in — someone you
-            know does. The pantry, the quiet floor and the cultural graduations
-            are load-bearing for people who don&apos;t advertise that they need
-            them.
+            And if you&apos;re one of the students who never comes in, someone
+            you know does. The pantry, the quiet floor and the cultural
+            graduations are load-bearing for people who don&apos;t advertise
+            that they need them.
           </Typography>
         </Panel>
       </FluidContainer>
@@ -951,6 +951,7 @@ export default function KeepTheUOpen() {
         >
           The numbers
         </Typography>
+        <br />
         <Typography
           as="h2"
           variant="pageHeader"
@@ -995,8 +996,8 @@ export default function KeepTheUOpen() {
           >
             The $5.63 is per week across a 16-week semester. The fee was last
             set in 2007
-            <CitationMarker sourceId="2" /> and has not moved since. The
-            proposed contract language also includes an annual inflation
+            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
+            The proposed contract language also includes an annual inflation
             adjustment capped at 3%.
             <CitationMarker sourceId="2" />
           </Typography>
@@ -1008,7 +1009,7 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: '68ch' }}
           >
-            Cal State LA has the lowest student center fee of any CSU campus —
+            Cal State LA has the lowest student center fee of any CSU campus:
             $275 a year, unchanged since 2007.
             <CitationMarker sourceId="1" />
           </Typography>
@@ -1061,12 +1062,12 @@ export default function KeepTheUOpen() {
               ]}
               shadeBetween={['expenses', 'revenue']}
               ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
-              caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31; the lines between them are trajectories, not year-by-year data."
+              caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
               table={trendTable}
               animate={chartAnimation.animateTrend}
               animationDuration={chartAnimation.animationDuration}
             />
-            <AutoGrid minColumnWidth="200px">
+            <AutoGrid minColumnWidth="200px" margin="clamp(16px, 2vw, 28px)">
               {reserveCallouts.map((callout) => (
                 <CitedStat
                   key={callout.eyebrow}
@@ -1085,10 +1086,10 @@ export default function KeepTheUOpen() {
               margin={`${Spaces.lg} 0 0`}
             >
               Figures are from the Fiscal Committee&apos;s April 10 2026
-              &ldquo;DO NOTHING&rdquo; projection — the model in which the fee
+              &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
               stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY
               2025-26, 25% of the operating budget. An annual bond payment of
-              about $1,920,000 — roughly a third of the operating budget — runs
+              about $1,920,000, roughly a third of the operating budget, runs
               through 2038.
             </Typography>
           </div>
@@ -1245,9 +1246,9 @@ export default function KeepTheUOpen() {
           If the 2007 fee had only kept pace with inflation, it would be{' '}
           <strong>$215.30 a semester</strong> today.
           <CitationMarker sourceId="5" /> The proposal is{' '}
-          <strong>$227.25</strong> — $11.95 more than inflation alone would
-          explain. That difference is real, and it is there because catching up
-          on inflation does not close a shortfall that is also driven by
+          <strong>$227.25</strong>; $11.95 more than inflation alone would
+          explain. That difference is real, and it&apos;s there because catching
+          up on inflation does not close a shortfall that&apos;s also driven by
           enrollment decline.
           <CitationMarker sourceId="3" /> Student fees currently cover 67% of
           what the U-SU costs to run; the sustainable range is 80–85%.
@@ -1273,6 +1274,7 @@ export default function KeepTheUOpen() {
         >
           If it doesn&apos;t pass
         </Typography>
+        <br />
         <Typography
           as="h2"
           variant="pageHeader"
@@ -1647,7 +1649,7 @@ export default function KeepTheUOpen() {
           fluidSize={FLUID_H2}
           lineHeight="1.15"
         >
-          Every number, and where it came from
+          Every number and where it came from
         </Typography>
         <Typography
           as="p"
