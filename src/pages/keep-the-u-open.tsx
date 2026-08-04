@@ -56,6 +56,7 @@ const sectionShell = {
   paddingMobile: SECTION_PADDING,
   innerMaxWidth: '1200px',
   scrollMarginTop: '84px',
+  revealOnScroll: true,
 } as const;
 
 const bandShell = {
@@ -64,6 +65,7 @@ const bandShell = {
   paddingMobile: BAND_PADDING,
   innerMaxWidth: '1200px',
   scrollMarginTop: '84px',
+  revealOnScroll: true,
 } as const;
 
 /* FAQ and Sources read at a narrower measure than the rest of the page. */
@@ -510,7 +512,7 @@ const beforeYouWeighInCards = [
 
 const faq = [
   {
-    question: 'Exactly how much, and when would it start?',
+    question: 'Exactly how much? And when does it start?',
     answer: (
       <>
         $90 more per semester. Your U-SU fee goes from $137.25 to $227.25 a
@@ -565,12 +567,12 @@ const faq = [
     ),
   },
   {
-    question: 'I never use the U-SU.. why am I paying?',
+    question: 'I never use the U-SU. Why am I paying?',
     answer:
       'Fair question, and the honest answer has two halves. The first: most of what is in here costs money everywhere else — a gym, a pantry, a microwave, a quiet room, a place to park yourself between classes — and here it is already paid for. The second: the building went up in 2009 on a bond that runs through 2038, about a third of the operating budget every year. That payment does not stop if attendance drops. It is worth getting something back for it.',
   },
   {
-    question: 'Where can I see the budget myself?',
+    question: 'Where can I see the budget for myself?',
     answer: (
       <>
         Every figure on this page is numbered and traced to its document.{' '}
@@ -621,7 +623,7 @@ export default function KeepTheUOpen() {
         />
         <meta
           property="og:description"
-          content="The U-SU fee has not changed since 2007. Here is the proposal, the budget projection behind it, and every source."
+          content="The U-SU fee hasn't changed since 2007. Here's the proposal, the budget projection behind it, and every source."
           key="og-desc"
         />
         <meta property="og:type" content="website" key="og-type" />
@@ -647,6 +649,7 @@ export default function KeepTheUOpen() {
         links={anchorLinks}
         ctaLabel={campaignMode.ctaLabel}
         ctaHref={campaignMode.ctaHref}
+        contentMaxWidth={sectionShell.innerMaxWidth}
       />
 
       {/* 2 · Hero */}
@@ -901,6 +904,7 @@ export default function KeepTheUOpen() {
         paddingMobile="clamp(20px, 4vw, 36px)"
         outerAlignItems="flex-end"
         innerMaxWidth="1200px"
+        revealOnScroll
       >
         <Panel
           backgroundColor="greyDarkest"
