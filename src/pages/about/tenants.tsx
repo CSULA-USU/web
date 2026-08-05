@@ -18,6 +18,7 @@ import {
   OpeningHours,
 } from 'utils/openingHours';
 import { Colors, FontSizes, Spaces, media } from 'theme';
+import { useImageLoading } from 'hooks';
 import {
   Button,
   CopyButton,
@@ -26,6 +27,7 @@ import {
   PageMeta,
   Panel,
   SITE_URL,
+  Skeleton,
   StyledLink,
   Typography,
 } from 'components';
@@ -74,7 +76,8 @@ interface Tenant {
    * description. Unlike the logo, it carries information nothing else on the
    * page does, so `alt` has to be real description rather than empty. Also
    * published to Google in the structured data alongside the logo, so only use
-   * an image meant to be public. Landscape crops sit best — roughly 2:1.
+   * an image meant to be public. The banner is a 2:1 box, so crop to that —
+   * anything taller is trimmed top and bottom to fit.
    */
   headerImage?: { src: string; alt: string };
 }
@@ -592,13 +595,17 @@ const ModalLocation = styled.p`
 `;
 
 /**
- * Full-bleed banner across the modal. Height follows the image's own aspect
- * ratio rather than a fixed box, which is what left the gallery with dead space
- * above and below a landscape shot. The max-height only bites on an unusually
- * tall image, and crops rather than letterboxes when it does.
+ * Full-bleed banner across the modal, held at the 2:1 crop header images are
+ * authored to. The ratio — rather than the image's own intrinsic height — is
+ * what reserves the space, so the skeleton and the photo that replaces it fill
+ * exactly the same box and nothing below the banner moves when it loads. A crop
+ * that is a little off 2:1 gets trimmed rather than letterboxed; if we ever take
+ * on a header image that is deliberately a different shape, this becomes a ratio
+ * carried on the tenant's `headerImage` instead of a constant here.
  */
 const ModalHeaderImage = styled.div`
   width: 100%;
+  aspect-ratio: 2 / 1;
   margin-top: ${Spaces.md};
   border-radius: 8px;
   overflow: hidden;
@@ -608,8 +615,7 @@ const ModalHeaderImage = styled.div`
   img {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 320px;
+    height: 100%;
     object-fit: cover;
   }
 `;
@@ -620,6 +626,26 @@ const ModalSection = styled.div`
   padding-top: ${Spaces.lg};
   border-top: 1px solid ${Colors.greyLighter};
 `;
+
+/**
+ * Fills its frame with a shimmer until the image has decoded, then swaps the
+ * image in. Both states are 100% of the frame, so it is the frame that has to
+ * reserve the height — LogoFrame's fixed tile and ModalHeaderImage's 2:1 ratio
+ * both do, which is what keeps the swap from shifting the modal's contents.
+ *
+ * Only the modal needs this: it mounts on open, so its images start loading
+ * after the dialog is already on screen. The cards render with the page and are
+ * lazy-loaded inside a fixed tile, so they have nothing to shift.
+ */
+const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
+  const isLoading = useImageLoading(src);
+
+  return isLoading ? (
+    <Skeleton width="100%" height="100%" />
+  ) : (
+    <Image src={src} alt={alt} />
+  );
+};
 
 export default function Tenants() {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -635,7 +661,7 @@ export default function Tenants() {
   return (
     <Page>
       <PageMeta
-        title="Tenants & Dining | Cal State LA U–SU"
+        title="Tenants | Cal State LA U–SU"
         description="Starbucks, Sbarro, Associated Students Inc., the Cal State LA Alumni Association, Cal State LA Food Pantry, and In the Making all rent space inside the University-Student Union. Find what each one offers, plus phone numbers and websites."
         path="/about/tenants"
         socialTitle="Who You'll Find Inside the U-SU"
@@ -651,7 +677,7 @@ export default function Tenants() {
       </Head>
 
       <Header
-        title="Tenants & Dining"
+        title="Tenants"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
         The University-Student Union is more than meeting rooms. Restaurants,
@@ -771,7 +797,7 @@ export default function Tenants() {
           >
             {selectedTenant.logoSrc && (
               <LogoFrame $backgroundColor={selectedTenant.logoBackgroundColor}>
-                <Image src={selectedTenant.logoSrc} alt="" />
+                <ImageWithSkeleton src={selectedTenant.logoSrc} alt="" />
               </LogoFrame>
             )}
             <Typography
@@ -788,7 +814,7 @@ export default function Tenants() {
             </Typography>
             {selectedTenant.headerImage && (
               <ModalHeaderImage>
-                <Image
+                <ImageWithSkeleton
                   src={selectedTenant.headerImage.src}
                   alt={selectedTenant.headerImage.alt}
                 />

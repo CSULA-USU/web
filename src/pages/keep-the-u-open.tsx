@@ -1,7 +1,28 @@
 import Head from 'next/head';
 import { BarChart, Page, ShareChart, TrendChart } from 'modules';
-import type { BarRow, ShareSegment, TrendSeries } from 'modules';
-import type { TableData } from 'types';
+import {
+  anchorLinks,
+  bandStats,
+  barRows,
+  beforeYouWeighInCards,
+  CAL_STATE_LA_ROW_ID,
+  campaignMode,
+  facultyItems,
+  feeMath,
+  FISCAL_YEARS,
+  heroEyebrow,
+  heroFigures,
+  reserveCallouts,
+  services,
+  shareSegments,
+  sources,
+  testimonials,
+  thesisCards,
+  todayFacts,
+  trendSeries,
+  trendTable,
+} from 'modules/KeepTheUOpen/content';
+import { faq } from 'modules/KeepTheUOpen/faq';
 import {
   AnchorNav,
   AutoGrid,
@@ -19,31 +40,8 @@ import {
   TestimonialCard,
   Typography,
 } from 'components';
-import type { Source, Testimonial } from 'components';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
 import { BiPlus } from 'react-icons/bi';
-
-/**
- * Every mode-dependent string on this page lives here. The page ships
- * informational and flips to advocacy later, never the reverse; flipping is a
- * change to these strings only, with no JSX edits. Nothing outside this object
- * contains "vote yes," "ballot," or a date.
- */
-export const campaignMode = {
-  mode: 'informational',
-  ctaLabel: 'See the Budget',
-  ctaHref: '#numbers',
-  heroPrimaryCta: 'See the Numbers',
-  heroSecondaryCta: 'What This Costs You',
-  finalHeading: 'The math, in one place.',
-  actionNoun: 'proposal',
-  voteDate: null as string | null,
-  beforeHeading: 'Before you weigh in',
-  finalBody:
-    'Every figure on this page is traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
-};
-
-const heroEyebrow = `A ${campaignMode.actionNoun} for the University-Student Union`;
 
 /* Fluid section padding, applied at every breakpoint so the clamp() — not
    FluidContainer's own responsive defaults — governs. */
@@ -56,6 +54,7 @@ const sectionShell = {
   paddingMobile: SECTION_PADDING,
   innerMaxWidth: '1200px',
   scrollMarginTop: '84px',
+  revealOnScroll: true,
 } as const;
 
 const bandShell = {
@@ -64,6 +63,7 @@ const bandShell = {
   paddingMobile: BAND_PADDING,
   innerMaxWidth: '1200px',
   scrollMarginTop: '84px',
+  revealOnScroll: true,
 } as const;
 
 /* FAQ and Sources read at a narrower measure than the rest of the page. */
@@ -86,516 +86,6 @@ const chartAnimation = {
   donutVariant: 'donut',
   animationDuration: 1400,
 } as const;
-
-const anchorLinks = [
-  { label: 'Why It Matters', href: '#why' },
-  { label: 'The Numbers', href: '#numbers' },
-  { label: 'If It Fails', href: '#if-it-fails' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Sources', href: '#sources' },
-];
-
-const heroFigures = [
-  { value: '$137.25', label: 'Per semester today' },
-  { value: '+$90.00', label: 'Proposed increase', highlight: true },
-  { value: '$227.25', label: 'Per semester after' },
-];
-
-/* No quote ships without a named student and a signed release. The four v1
-   quotes were invented and are deleted; the grid renders its empty state. */
-const testimonials: Testimonial[] = [];
-
-const sources: Source[] = [
-  {
-    id: '1',
-    label: 'CSU campus mandatory fees table, 2025-26',
-    note: 'Fee comparison, median and mean, campus rankings, and the student center fee figures.',
-    href: 'https://www.calstate.edu',
-    linkText: 'calstate.edu',
-    marker: '[NEEDS LINK — direct table URL]',
-  },
-  {
-    id: '2',
-    label: 'U-SU Fiscal Committee budget presentation, April 10 2026',
-    note: 'All budget, reserve, bond, fee-coverage and “DO NOTHING” projection figures, and the 2007 approval date.',
-    marker: '[NEEDS LINK — public posting of the deck]',
-  },
-  {
-    id: '3',
-    label: 'Cal State LA institutional Fact Book',
-    note: 'Enrollment trend and student demographics.',
-    marker: '[NEEDS LINK]',
-  },
-  {
-    id: '4',
-    label: 'U-SU operating budget / annual report',
-    note: 'Staffing, student employment, building size, services and the cultural graduation ceremonies.',
-    marker: '[NEEDS LINK]',
-  },
-  {
-    id: '5',
-    label: 'BLS CPI inflation calculator',
-    note: 'The $215.30 CPI-adjusted equivalent of the 2007 fee.',
-    href: 'https://data.bls.gov/cgi-bin/cpicalc.pl',
-    linkText: 'data.bls.gov',
-  },
-  {
-    id: '6',
-    label: "CSU Chancellor's Office, Cal Poly–Maritime integration",
-    note: 'Administrative merger effective July 1 2025, academic integration in fall 2026 — the basis for comparing 22 campuses rather than 23.',
-    marker: '[NEEDS LINK]',
-  },
-];
-
-const thesisCards = [
-  {
-    number: '01',
-    title: 'The four hours between your classes',
-    body: "A commuter's day has holes in it. This is where you sit them out: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
-  },
-  {
-    number: '02',
-    title: "The things you'd otherwise pay for",
-    body: 'The fitness center, the food pantry and everyday essentials are covered by the fee you already pay. No membership, no per-visit charge, no sign-up.',
-  },
-  {
-    number: '03',
-    title: 'Nearly 100 student jobs',
-    body: 'Between 90 and 100 students work here',
-    bodyAfterCitation:
-      ' alongside 29 full-time staff — the largest student employer on campus, with schedules built around class times.',
-    citation: '4',
-  },
-];
-
-const services = [
-  {
-    title: 'Events & Activities',
-    iconSrc: '/icons/calendar-icon.png',
-    body: 'Programming run by students, for students — from noon concerts to the five cultural graduation ceremonies.',
-  },
-  {
-    title: 'Study & Rest Spaces',
-    iconSrc: '/icons/book-icon.png',
-    body: 'Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.',
-  },
-  {
-    title: 'Play & Recreation',
-    iconSrc: '/icons/music-icon.png',
-    body: 'The fitness center, the Game Room and the GENE program — included, no membership.',
-  },
-  {
-    title: 'Cross Cultural Centers',
-    iconSrc: '/icons/connecting-people-icon.png',
-    body: 'APISRC, CLSRC, GSRC and PASRC — staffed centers, open doors, and the Cultural Grads ceremonies.',
-  },
-  {
-    title: 'Jobs & Leadership',
-    iconSrc: '/icons/resume-icon.png',
-    body: 'U-Krew employment, the Board of Directors, and paid roles that fit around a class schedule.',
-  },
-  {
-    title: 'Everyday Essentials',
-    iconSrc: '/icons/fridge-icon.png',
-    body: 'Food pantry, microwaves, lockers and the small things that make a long commuter day workable.',
-  },
-];
-
-const bandStats = [
-  {
-    value: '2007',
-    citation: '2',
-    label:
-      'The last time students approved a change to this fee. That vote paid for the building.',
-  },
-  {
-    value: '90–100',
-    citation: '4',
-    label:
-      'Student employees: We the largest student employer on campus, alongside 29 full-time staff.',
-  },
-  {
-    value: '5',
-    citation: '4',
-    label:
-      'Cultural graduation ceremonies a year, free to about 800 graduating students and their families.',
-  },
-];
-
-const feeMath: {
-  heading: string;
-  value: string;
-  detail: string;
-  citation?: string;
-  accentColor: keyof typeof Colors;
-}[] = [
-  {
-    heading: 'Today',
-    value: '$137.25',
-    detail: '$274.50 a year',
-    citation: '1',
-    accentColor: 'greyLighter',
-  },
-  {
-    heading: 'Increase',
-    value: '+$90.00',
-    detail: '+$180 a year · $5.63 a week',
-    accentColor: 'primary',
-  },
-  {
-    heading: 'Proposed',
-    value: '$227.25',
-    detail: '$454.50 a year',
-    accentColor: 'black',
-  },
-];
-
-/* Only published figures are plotted. The lines between them are trajectories,
-   and both the caption and the hidden table say so. */
-const FISCAL_YEARS = [
-  'FY 24-25',
-  'FY 25-26',
-  'FY 26-27',
-  'FY 27-28',
-  'FY 28-29',
-  'FY 29-30',
-  'FY 30-31',
-];
-
-const trendSeries: TrendSeries[] = [
-  {
-    id: 'expenses',
-    label: 'Expenses',
-    color: 'greyDarkest',
-    strokeWidth: 3,
-    dashed: true,
-    labelSide: 'above',
-    points: [
-      { yearIndex: 1, value: 5760109 },
-      { yearIndex: 6, value: 6677545 },
-    ],
-  },
-  {
-    id: 'revenue',
-    label: 'Revenue',
-    color: 'greyDark',
-    strokeWidth: 3,
-    dashed: true,
-    labelSide: 'below',
-    points: [
-      { yearIndex: 1, value: 4876638 },
-      { yearIndex: 6, value: 4337325 },
-    ],
-  },
-  {
-    id: 'reserve',
-    label: 'Reserve',
-    color: 'gold',
-    strokeWidth: 3.5,
-    labelSide: 'above',
-    points: [
-      { yearIndex: 0, value: 8364353 },
-      { yearIndex: 5, value: 274702 },
-      { yearIndex: 6, value: -2065518 },
-    ],
-  },
-];
-
-const NOT_PUBLISHED = 'Not published';
-
-const trendTable: TableData = {
-  id: 'trend-figures',
-  ariaLabel: 'U-SU DO NOTHING projection, April 10 2026',
-  caption: 'U-SU DO NOTHING projection, April 10 2026',
-  headerColors: { backgroundColor: 'greyDarkest', textColor: 'white' },
-  columns: [
-    {
-      id: 'year',
-      label: 'Fiscal year',
-      backgroundColor: 'white',
-      textColor: 'black',
-    },
-    {
-      id: 'revenue',
-      label: 'Revenue',
-      backgroundColor: 'white',
-      textColor: 'black',
-    },
-    {
-      id: 'expenses',
-      label: 'Expenses',
-      backgroundColor: 'white',
-      textColor: 'black',
-    },
-    {
-      id: 'reserve',
-      label: 'Reserve',
-      backgroundColor: 'white',
-      textColor: 'black',
-    },
-  ],
-  rows: [
-    {
-      id: 'fy-2024-25',
-      values: {
-        year: 'FY 2024-25',
-        revenue: NOT_PUBLISHED,
-        expenses: NOT_PUBLISHED,
-        reserve: '$8,364,353',
-      },
-    },
-    {
-      id: 'fy-2025-26',
-      values: {
-        year: 'FY 2025-26',
-        revenue: '$4,876,638',
-        expenses: '$5,760,109',
-        reserve: NOT_PUBLISHED,
-      },
-    },
-    {
-      id: 'fy-2029-30',
-      values: {
-        year: 'FY 2029-30',
-        revenue: NOT_PUBLISHED,
-        expenses: NOT_PUBLISHED,
-        reserve: '$274,702',
-      },
-    },
-    {
-      id: 'fy-2030-31',
-      values: {
-        year: 'FY 2030-31',
-        revenue: '$4,337,325',
-        expenses: '$6,677,545',
-        reserve: '−$2,065,518',
-      },
-    },
-  ],
-};
-
-const reserveCallouts = [
-  { eyebrow: 'Reserve, FY 2024-25', value: '$8,364,353' },
-  { eyebrow: 'Reserve, FY 2029-30', value: '$274,702' },
-  { eyebrow: 'Reserve, FY 2030-31', value: '−$2,065,518' },
-];
-
-/* Only the bond share is published. Amounts come from the source rather than
-   being recomputed here. */
-const shareSegments: ShareSegment[] = [
-  {
-    id: 'bond',
-    label: 'Bond payment on the building',
-    percentage: 33,
-    amount: '$75.00',
-    color: 'primary',
-    labelPosition: { x: 312, y: 138 },
-    detail:
-      'About $1,920,000 a year, through 2038. The 2007 vote built the building and this is what paying for it costs.',
-    sourceId: '2',
-  },
-  {
-    id: 'everything-else',
-    label: 'Everything else',
-    percentage: 67,
-    amount: '$152.25',
-    color: 'greyLighter',
-    labelPosition: { x: 88, y: 272 },
-    detail: 'Operations, staffing, programs and maintenance.',
-    marker: '[NEEDS FIGURE — category split of the remaining 67%]',
-  },
-];
-
-const CAL_STATE_LA_ROW_ID = 'cal-state-la';
-
-const otherCampusFees: [string, number][] = [
-  ['Northridge', 1400],
-  ['Dominguez Hills', 1408],
-  ['Fullerton', 1514],
-  ['East Bay', 1539],
-  ['Monterey Bay', 1695],
-  ['Pomona', 1697],
-  ['Fresno', 1774],
-  ['San Francisco', 1874],
-  ['Long Beach', 1888],
-  ['San Marcos', 2004],
-  ['Bakersfield', 2046],
-  ['San Bernardino', 2117],
-  ['Stanislaus', 2240],
-  ['Humboldt', 2374],
-  ['San Jose', 2396],
-  ['Chico', 2446],
-  ['Sacramento', 2564],
-  ['Sonoma', 2612],
-  ['San Diego', 2730],
-];
-
-const barRows: BarRow[] = [
-  {
-    id: CAL_STATE_LA_ROW_ID,
-    campus: 'Cal State LA',
-    value: 1084,
-    proposedValue: 1264,
-    segmentLabels: { base: 'today', extension: 'proposed' },
-    color: 'primary',
-  },
-  {
-    id: 'channel-islands',
-    campus: 'Channel Islands',
-    value: 1146,
-    color: 'greyDark',
-    annotation: 'lowest after the increase',
-  },
-  ...otherCampusFees.map(([campus, value]) => ({
-    id: campus.toLowerCase().replace(/\s+/g, '-'),
-    campus,
-    value,
-  })),
-  {
-    id: 'san-luis-obispo',
-    campus: 'San Luis Obispo',
-    value: 7000,
-    offScale: true,
-    annotation: 'off scale ›',
-  },
-];
-
-const todayFacts = [
-  {
-    label: 'Fitness center access',
-    body: 'Included with enrollment. No membership charge, no per-visit fee.',
-  },
-  {
-    label: 'Signature events',
-    body: 'Programmed and paid for out of the operating budget.',
-    marker: '[NEEDS FIGURE — events per year]',
-  },
-  {
-    label: 'Cultural graduation ceremonies',
-    body: 'Five a year, free to graduates and families, about 800 students.',
-  },
-  {
-    label: 'Room reservations for student orgs',
-    body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
-    marker: '[NEEDS FIGURE — weekly club meetings]',
-  },
-  {
-    label: 'Student employment',
-    body: '90–100 student positions, the largest student employer on campus.',
-  },
-  {
-    label: 'Building hours',
-    body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
-  },
-];
-
-const beforeYouWeighInCards = [
-  {
-    title: 'Read the budget yourself',
-    body: 'The April 10 2026 Fiscal Committee presentation is the source for every budget figure on this page.',
-    linkText: 'Go to Sources →',
-    href: '#sources',
-  },
-  {
-    title: 'Come to an info session',
-    body: 'Open sessions in the U-SU where you can ask staff and board members directly.',
-    marker: '[NEEDS FIGURE — dates & locations]',
-  },
-  {
-    title: 'Ask the board',
-    body: 'The U-SU Board of Directors is chaired by an elected student and its meetings are open.',
-    marker: '[NEEDS FIGURE — meeting schedule]',
-  },
-];
-
-const faq = [
-  {
-    question: 'Exactly how much, and when would it start?',
-    answer: (
-      <>
-        $90 more per semester. Your U-SU fee goes from $137.25 to $227.25 a
-        semester: $454.50 a year instead of $274.50. Across a 16-week semester
-        that is $5.63 a week. The effective term has not been set.{' '}
-        <PlaceholderMarker>[NEEDS FIGURE — effective term]</PlaceholderMarker>
-      </>
-    ),
-  },
-  {
-    question: 'Does my financial aid cover it?',
-    answer: (
-      <>
-        That answer belongs to Cal State LA Financial Aid, not to the U-SU, and
-        we are not going to approximate it.{' '}
-        <PlaceholderMarker>[NEEDS COPY — Financial Aid]</PlaceholderMarker>
-      </>
-    ),
-  },
-  {
-    question: 'What is the 3% annual adjustment? Is it a blank check?',
-    answer:
-      'No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation, which is exactly why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.',
-  },
-  {
-    question: "Why can't tuition or the university cover this?",
-    answer:
-      "The U-SU is a separate 501(c)(3) nonprofit governed by a board chaired by an elected student. It is not part of the university's operating budget and tuition does not fund it. Student fees cover 67% of what it costs to run today; the sustainable range is 80–85%.",
-  },
-  {
-    question: "What happens if it doesn't pass?",
-    answer: (
-      <>
-        $2,000,000 has already been cut across FY 2024-25 and FY 2025-26 — 25%
-        of the operating budget. On the current fee, the reserve falls from
-        $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to −$2,065,518 in
-        FY 2030-31. What gets reduced after that has not been decided.{' '}
-        <StyledLink href="#if-it-fails">See the full section →</StyledLink>
-      </>
-    ),
-  },
-  {
-    question: 'Who decided the amount?',
-    answer: (
-      <>
-        The U-SU Board of Directors, chaired by an elected student, working from
-        the Fiscal Committee&apos;s April 10 2026 budget projection.{' '}
-        <PlaceholderMarker>
-          [NEEDS COPY — board resolution and vote record]
-        </PlaceholderMarker>
-      </>
-    ),
-  },
-  {
-    question: 'I never use the U-SU.. why am I paying?',
-    answer:
-      'Fair question, and the honest answer has two halves. The first: most of what is in here costs money everywhere else — a gym, a pantry, a microwave, a quiet room, a place to park yourself between classes — and here it is already paid for. The second: the building went up in 2009 on a bond that runs through 2038, about a third of the operating budget every year. That payment does not stop if attendance drops. It is worth getting something back for it.',
-  },
-  {
-    question: 'Where can I see the budget myself?',
-    answer: (
-      <>
-        Every figure on this page is numbered and traced to its document.{' '}
-        <StyledLink href="#sources">Sources →</StyledLink>
-      </>
-    ),
-  },
-];
-
-const facultyItems = [
-  {
-    title: 'The largest student employer on campus',
-    body: '90–100 student positions and 29 full-time staff. Many of your students are paid by this building.',
-  },
-  {
-    title: 'Space your department can reserve',
-    body: '93,000 sq ft, opened in 2009: meeting rooms, event space and the ballroom, bookable through U-SU Operations.',
-  },
-  {
-    title: 'What to tell students who ask',
-    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented.',
-    linkText: 'Sources →',
-    href: '#sources',
-  },
-];
 
 export default function KeepTheUOpen() {
   return (
@@ -621,7 +111,7 @@ export default function KeepTheUOpen() {
         />
         <meta
           property="og:description"
-          content="The U-SU fee has not changed since 2007. Here is the proposal, the budget projection behind it, and every source."
+          content="The U-SU fee hasn't changed since 2007. Here's the proposal, the budget projection behind it, and every source."
           key="og-desc"
         />
         <meta property="og:type" content="website" key="og-type" />
@@ -647,6 +137,7 @@ export default function KeepTheUOpen() {
         links={anchorLinks}
         ctaLabel={campaignMode.ctaLabel}
         ctaHref={campaignMode.ctaHref}
+        contentMaxWidth={sectionShell.innerMaxWidth}
       />
 
       {/* 2 · Hero */}
@@ -901,6 +392,7 @@ export default function KeepTheUOpen() {
         paddingMobile="clamp(20px, 4vw, 36px)"
         outerAlignItems="flex-end"
         innerMaxWidth="1200px"
+        revealOnScroll
       >
         <Panel
           backgroundColor="greyDarkest"

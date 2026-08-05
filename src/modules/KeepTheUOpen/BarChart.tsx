@@ -93,8 +93,14 @@ const Extension = styled.div<{ $width: number; $height: number }>`
   border-radius: 0 3px 3px 0;
 `;
 
-/* Positioned inside the track column: label column + gap, then the median's
-   share of the remaining track width. */
+const CAMPUS_COLUMN = 'clamp(92px, 14vw, 150px)';
+
+/* Horizontal position inside the track column: campus column + gap, then the
+   ratio's share of the remaining track width. Shared by the rule and its label
+   so the two stay coupled. */
+const trackOffset = (ratio: number) =>
+  `calc(${CAMPUS_COLUMN} + 12px + (100% - ${CAMPUS_COLUMN} - 64px - 24px) * ${ratio})`;
+
 const MedianRule = styled.div<{ $ratio: number }>`
   position: absolute;
   top: 0;
@@ -102,10 +108,21 @@ const MedianRule = styled.div<{ $ratio: number }>`
   z-index: 2;
   border-left: 2px dashed ${Colors.gold};
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
-  left: calc(
-    clamp(92px, 14vw, 150px) + 12px +
-      (100% - clamp(92px, 14vw, 150px) - 64px - 24px) * ${(p) => p.$ratio}
-  );
+  left: ${(p) => trackOffset(p.$ratio)};
+`;
+
+/* Reserves a row above the bars so the label can sit centered on the rule. */
+const MedianLabelRow = styled.div`
+  position: relative;
+  height: 1.4em;
+`;
+
+const MedianLabel = styled.div<{ $ratio: number }>`
+  position: absolute;
+  bottom: 0;
+  left: ${(p) => trackOffset(p.$ratio)};
+  transform: translateX(-50%);
+  white-space: nowrap;
 `;
 
 const AxisRow = styled.div`
@@ -119,10 +136,24 @@ const AxisTicks = styled.div`
   justify-content: space-between;
 `;
 
+/* Anchored to the row's top so the track stays level with the two side columns
+   however much the sub-labels add below it. */
 const BarCell = styled.div`
+  align-self: start;
   display: flex;
   flex-direction: column;
   gap: 4px;
+`;
+
+/* The campus name and value would otherwise center on the full row height,
+   which the sub-labels beneath the track make taller than the bar — that is
+   what dropped Cal State LA, Channel Islands and San Luis Obispo below their
+   bars. Centering on the bar's own height instead lines all three up. */
+const BandCell = styled.div<{ $height: number }>`
+  align-self: start;
+  display: flex;
+  align-items: center;
+  min-height: ${(p) => p.$height}px;
 `;
 
 const SegmentLabels = styled.div`
@@ -154,17 +185,20 @@ export const BarChart = ({
 
   return (
     <div>
-      <Typography
-        as="p"
-        variant="span"
-        size="2xs"
-        weight="700"
-        color="gold"
-        tabularNums
-        margin={`0 0 ${Spaces.sm}`}
-      >
-        {median.label}
-      </Typography>
+      <MedianLabelRow>
+        <MedianLabel $ratio={median.value / cap}>
+          <Typography
+            as="p"
+            variant="span"
+            size="2xs"
+            weight="700"
+            color="gold"
+            tabularNums
+          >
+            {median.label}
+          </Typography>
+        </MedianLabel>
+      </MedianLabelRow>
 
       <Chart role="img" aria-label={ariaLabel} ref={ref}>
         {rows.map((row, rowIndex) => {
@@ -182,14 +216,16 @@ export const BarChart = ({
 
           return (
             <Row key={row.id} $highlighted={highlighted}>
-              <Typography
-                as="span"
-                variant="span"
-                size="2xs"
-                weight={highlighted ? '800' : '400'}
-              >
-                {row.campus}
-              </Typography>
+              <BandCell $height={height}>
+                <Typography
+                  as="span"
+                  variant="span"
+                  size="2xs"
+                  weight={highlighted ? '800' : '400'}
+                >
+                  {row.campus}
+                </Typography>
+              </BandCell>
               <BarCell>
                 <Track>
                   <BarGroup
@@ -247,20 +283,22 @@ export const BarChart = ({
                   </SegmentLabels>
                 )}
               </BarCell>
-              <CountUp
-                as="span"
-                variant="span"
-                size="2xs"
-                weight={highlighted ? '800' : '400'}
-                tabularNums
-                start={isTransitioning ? 0 : row.value}
-                end={row.value}
-                trigger={phase === 'revealed'}
-                duration={barDuration}
-                delay={rowDelay}
-                easing={smoothstep}
-                format={formatDollars}
-              />
+              <BandCell $height={height}>
+                <CountUp
+                  as="span"
+                  variant="span"
+                  size="2xs"
+                  weight={highlighted ? '800' : '400'}
+                  tabularNums
+                  start={isTransitioning ? 0 : row.value}
+                  end={row.value}
+                  trigger={phase === 'revealed'}
+                  duration={barDuration}
+                  delay={rowDelay}
+                  easing={smoothstep}
+                  format={formatDollars}
+                />
+              </BandCell>
             </Row>
           );
         })}

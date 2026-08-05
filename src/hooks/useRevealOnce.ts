@@ -15,6 +15,13 @@ interface RevealOptions {
   enabled?: boolean;
   /** Re-arms the observer when any of these change. */
   resetKey?: unknown;
+  /**
+   * Share of the element that must be visible to fire. Lower it for elements
+   * taller than the viewport, which may never reach a large share.
+   */
+  threshold?: number;
+  /** `IntersectionObserver` root margin, e.g. `0px 0px -12% 0px`. */
+  rootMargin?: string;
 }
 
 /**
@@ -27,6 +34,8 @@ interface RevealOptions {
 export const useRevealOnce = <T extends HTMLElement>({
   enabled = true,
   resetKey,
+  threshold = 0.2,
+  rootMargin,
 }: RevealOptions = {}) => {
   const ref = useRef<T | null>(null);
   const [phase, setPhase] = useState<RevealPhase>('final');
@@ -52,12 +61,12 @@ export const useRevealOnce = <T extends HTMLElement>({
           observer.disconnect();
         }
       },
-      { threshold: 0.2 },
+      { threshold, rootMargin },
     );
     observer.observe(node);
 
     return () => observer.disconnect();
-  }, [enabled, resetKey]);
+  }, [enabled, resetKey, threshold, rootMargin]);
 
   return {
     ref,

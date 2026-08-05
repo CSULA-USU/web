@@ -27,6 +27,9 @@ interface CardProps extends CardStyles {
   img?: string;
   phone?: string;
   pronouns?: string;
+  // Phonetic respelling of the name, e.g. "Jawn YAY-sus". Optional — only
+  // members who have supplied one in staff.json get the line.
+  pronunciation?: string;
   suffix?: string;
   tags?: string[];
   url?: string;
@@ -97,6 +100,13 @@ const PhotoFrame = styled.div`
     object-fit: cover;
     object-position: center top;
   }
+`;
+
+// The respelling carries the information, so it reads darker and heavier than
+// the "Pronounced" label in front of it.
+const PronunciationRespelling = styled.span`
+  color: ${Colors.grey};
+  font-weight: 600;
 `;
 
 const ProfileDetails = styled.div`
@@ -173,6 +183,7 @@ export const StaffCardWithModal = ({
   src,
   alt,
   pronouns,
+  pronunciation,
   phone,
   email,
   bio,
@@ -245,6 +256,21 @@ export const StaffCardWithModal = ({
                   margin={`${Spaces.xs} 0 0 0`}
                 >
                   {pronouns}
+                </Typography>
+              )}
+              {pronunciation && (
+                <Typography
+                  as="p"
+                  variant="span"
+                  size="2xs"
+                  color="grey"
+                  margin={`${Spaces.xs} 0 0 0`}
+                >
+                  {'[ '}
+                  <PronunciationRespelling>
+                    {pronunciation}
+                  </PronunciationRespelling>
+                  {' ]'}
                 </Typography>
               )}
               <Typography

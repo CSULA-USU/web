@@ -16,6 +16,9 @@ interface AnchorNavProps {
   links: AnchorLink[];
   ctaLabel: string;
   ctaHref: string;
+  /** Matches the page's content measure so the bar's items line up with the
+   * sections below it on wide screens. The bar itself stays full-bleed. */
+  contentMaxWidth?: string;
 }
 
 /* Sits below the app nav, which scrolls away rather than sticking. Anchored
@@ -24,10 +27,6 @@ const Bar = styled.nav`
   position: sticky;
   top: 0;
   z-index: 50;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: ${Spaces.md};
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
   background-color: ${Colors.white};
   border-bottom: 1px solid ${Colors.greyLighter};
@@ -35,6 +34,16 @@ const Bar = styled.nav`
   ${media('tablet')(`
     display: none;
   `)}
+`;
+
+const BarInner = styled.div<{ $maxWidth: string }>`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: ${Spaces.md};
+  width: 100%;
+  max-width: ${(p) => p.$maxWidth};
+  margin: 0 auto;
 `;
 
 const Links = styled.div`
@@ -62,20 +71,23 @@ export const AnchorNav = ({
   links,
   ctaLabel,
   ctaHref,
+  contentMaxWidth = '1200px',
 }: AnchorNavProps) => (
   <Bar aria-label="On this page">
-    <Typography as="span" variant="span" size="xs" weight="800">
-      {title}
-    </Typography>
-    <Links>
-      {links.map((link) => (
-        <AnchorLinkItem key={link.href} href={link.href}>
-          {link.label}
-        </AnchorLinkItem>
-      ))}
-    </Links>
-    <Button variant="primary" href={ctaHref} padding="10px 18px">
-      {ctaLabel}
-    </Button>
+    <BarInner $maxWidth={contentMaxWidth}>
+      <Typography as="span" variant="span" size="xs" weight="800">
+        {title}
+      </Typography>
+      <Links>
+        {links.map((link) => (
+          <AnchorLinkItem key={link.href} href={link.href}>
+            {link.label}
+          </AnchorLinkItem>
+        ))}
+      </Links>
+      <Button variant="primary" href={ctaHref} padding="10px 18px">
+        {ctaLabel}
+      </Button>
+    </BarInner>
   </Bar>
 );
