@@ -105,7 +105,7 @@ const PhotoFrame = styled.div`
 // The respelling carries the information, so it reads darker and heavier than
 // the "Pronounced" label in front of it.
 const PronunciationRespelling = styled.span`
-  color: ${Colors.greyDarker};
+  color: ${Colors.grey};
   font-weight: 600;
 `;
 
@@ -266,10 +266,11 @@ export const StaffCardWithModal = ({
                   color="grey"
                   margin={`${Spaces.xs} 0 0 0`}
                 >
-                  Pronounced{' '}
+                  {'[ '}
                   <PronunciationRespelling>
                     {pronunciation}
                   </PronunciationRespelling>
+                  {' ]'}
                 </Typography>
               )}
               <Typography
