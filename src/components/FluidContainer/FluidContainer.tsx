@@ -1,16 +1,26 @@
 import styled, { css } from 'styled-components';
 import { Colors, media } from 'theme';
+import { useRevealOnce } from 'hooks';
+
+const REVEAL_DURATION = 700;
+const REVEAL_EASING = 'cubic-bezier(0.16, 1, 0.3, 1)';
+/** Distance the content travels up as it fades in. */
+const REVEAL_RISE = '20px';
 
 const getBackgroundCSS = (p: FluidContainerProps) => {
-  return p.backgroundImage
-    ? css`
-        background: url(${p.backgroundImage}) no-repeat;
-        background-size: cover;
-        background-position: center;
-      `
-    : css`
-        background-color: ${Colors[p.backgroundColor || 'transparent']};
-      `;
+  if (!p.backgroundImage) {
+    return css`
+      background-color: ${Colors[p.backgroundColor || 'transparent']};
+    `;
+  }
+  const overlay = p.backgroundOverlay
+    ? `linear-gradient(${p.backgroundOverlay}, ${p.backgroundOverlay}), `
+    : '';
+  return css`
+    background: ${overlay} url(${p.backgroundImage}) no-repeat;
+    background-size: cover;
+    background-position: ${p.backgroundPosition || 'center'};
+  `;
 };
 
 const FluidOuter = styled.div<FluidContainerProps>`
@@ -22,6 +32,7 @@ const FluidOuter = styled.div<FluidContainerProps>`
   margin: ${(p) => p.margin};
   height: ${(p) => p.height};
   width: ${(p) => p.width};
+  ${(p) => p.scrollMarginTop && `scroll-margin-top: ${p.scrollMarginTop};`}
   ${(p) =>
     media('desktop')(`
     padding: ${p.paddingDesktop || p.padding || '18px 36px'};
@@ -33,7 +44,20 @@ const FluidOuter = styled.div<FluidContainerProps>`
   ${getBackgroundCSS}
 `;
 
-const FluidInner = styled.div<FluidInnerProps>`
+/* Only emitted for a revealing container, so nothing else on the site gains a
+   transform — which would create a containing block for fixed/sticky children. */
+const getRevealCSS = (p: RevealState) => {
+  if (!p.$reveal) return css``;
+  return css`
+    opacity: ${p.$atFinal ? 1 : 0};
+    transform: translateY(${p.$atFinal ? '0' : REVEAL_RISE});
+    ${p.$isTransitioning &&
+    `transition: opacity ${REVEAL_DURATION}ms ease-out,
+       transform ${REVEAL_DURATION}ms ${REVEAL_EASING};`}
+  `;
+};
+
+const FluidInner = styled.div<FluidInnerProps & RevealState>`
   border-radius: ${(p) => (p.innerRounded ? '12px' : '0px')};
   background-color: ${(p) => Colors[p.innerBackgroundColor || 'transparent']};
   max-width: 1440px;
@@ -52,7 +76,14 @@ const FluidInner = styled.div<FluidInnerProps>`
           gap: ${p.gap || 'initial'};
         `
       : css``};
+  ${getRevealCSS}
 `;
+
+interface RevealState {
+  $reveal?: boolean;
+  $atFinal?: boolean;
+  $isTransitioning?: boolean;
+}
 
 interface FluidInnerProps {
   alignItems?:
@@ -87,6 +118,13 @@ interface FluidContainerProps extends FluidInnerProps {
   alt?: string;
   backgroundColor?: keyof typeof Colors;
   backgroundImage?: string;
+  /**
+   * Flat scrim laid over `backgroundImage` so text on top stays legible —
+   * any CSS color, e.g. `rgba(0, 0, 0, 0.66)`. Ignored without an image.
+   */
+  backgroundOverlay?: string;
+  /** `background-position` for `backgroundImage`. Defaults to `center`. */
+  backgroundPosition?: string;
   border?: keyof typeof Colors;
   children?: React.ReactNode;
   height?: string;
@@ -96,6 +134,14 @@ interface FluidContainerProps extends FluidInnerProps {
   paddingMobile?: string;
   width?: string;
   margin?: string;
+  /** Keeps an anchored section's heading clear of sticky page chrome. */
+  scrollMarginTop?: string;
+  /**
+   * Fades and rises the inner content the first time the container scrolls into
+   * view. The band's own background never animates, so adjacent sections don't
+   * flicker. `prefers-reduced-motion: reduce` paints the content at rest.
+   */
+  revealOnScroll?: boolean;
   outerAlignItems?:
     | 'stretch'
     | 'center'
@@ -120,13 +166,33 @@ export const FluidContainer = ({
   children,
   backgroundColor,
   backgroundImage,
+  revealOnScroll = false,
   ...props
-}: FluidContainerProps) => (
-  <FluidOuter
-    backgroundColor={backgroundColor}
-    backgroundImage={backgroundImage}
-    {...props}
-  >
-    <FluidInner {...props}>{children}</FluidInner>
-  </FluidOuter>
-);
+}: FluidContainerProps) => {
+  /* Sections are often taller than the viewport, so a small threshold plus a
+     bottom margin fires as the section's top edge comes up the screen rather
+     than waiting for a fifth of a tall band to clear the fold. */
+  const { ref, atFinal, isTransitioning } = useRevealOnce<HTMLDivElement>({
+    enabled: revealOnScroll,
+    threshold: 0,
+    rootMargin: '0px 0px -12% 0px',
+  });
+
+  return (
+    <FluidOuter
+      ref={ref}
+      backgroundColor={backgroundColor}
+      backgroundImage={backgroundImage}
+      {...props}
+    >
+      <FluidInner
+        {...props}
+        $reveal={revealOnScroll}
+        $atFinal={atFinal}
+        $isTransitioning={isTransitioning}
+      >
+        {children}
+      </FluidInner>
+    </FluidOuter>
+  );
+};

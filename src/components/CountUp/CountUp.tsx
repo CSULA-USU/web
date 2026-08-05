@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Typography, TypeProps } from 'components';
+import { useCountUp } from 'hooks';
 
 interface CountUpProps extends TypeProps {
   end: number;
@@ -8,6 +9,14 @@ interface CountUpProps extends TypeProps {
   delay?: number;
   format?: (n: number) => string;
   showPlus?: boolean;
+  /**
+   * Drives counting from outside instead of this component's own observer —
+   * for figures that must stay in step with a wider animation. When provided,
+   * no observer is registered.
+   */
+  trigger?: boolean;
+  /** Maps linear progress 0→1 onto eased progress. Defaults to linear. */
+  easing?: (progress: number) => number;
 }
 
 export const CountUp = ({
@@ -17,13 +26,24 @@ export const CountUp = ({
   delay = 500,
   format,
   showPlus,
+  trigger,
+  easing,
   ...typographyProps
 }: CountUpProps) => {
-  const [value, setValue] = useState(start);
+  const isControlled = trigger !== undefined;
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (isControlled) return;
+
+    /* Reduced motion short-circuits setup entirely: no observer is registered
+       and the figure paints at its final value. */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -31,7 +51,7 @@ export const CountUp = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.2 },
     );
 
     if (containerRef.current) {
@@ -39,45 +59,18 @@ export const CountUp = ({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isControlled]);
 
-  useEffect(() => {
-    if (!isVisible) return;
-    if (start === end) {
-      setValue(end);
-      return;
-    }
+  const value = useCountUp(end, {
+    start,
+    duration,
+    delay,
+    easing,
+    active: isControlled ? trigger : isVisible,
+  });
 
-    let animationFrameId: number;
-    let timeoutId: ReturnType<typeof setTimeout>;
-    let startTime: number;
-
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-
-      const progress = timestamp - startTime;
-      const progressRatio = Math.min(progress / duration, 1);
-      const newValue = start + (end - start) * progressRatio;
-
-      setValue(Math.round(newValue));
-
-      if (progress < duration) {
-        animationFrameId = requestAnimationFrame(step);
-      }
-    };
-
-    timeoutId = setTimeout(() => {
-      animationFrameId = requestAnimationFrame(step);
-    }, delay);
-
-    return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [start, end, duration, delay, isVisible]);
-
-  const display = isNaN(value) ? start : format ? format(value) : value;
-
+  const rounded = Math.round(value);
+  const display = isNaN(rounded) ? start : format ? format(rounded) : rounded;
   const text = showPlus ? `${display}+` : display;
 
   return (

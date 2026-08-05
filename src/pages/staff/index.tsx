@@ -277,6 +277,7 @@ export default function Staff() {
                 src={staffMember.src}
                 alt={staffMember.alt}
                 pronouns={staffMember.pronouns}
+                pronunciation={staffMember.pronunciation}
                 suffix={staffMember.suffix}
                 department={staffMember.department}
                 email={staffMember.email}

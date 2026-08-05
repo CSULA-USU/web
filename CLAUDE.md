@@ -166,3 +166,5 @@ One-off components scoped to a single section/page are the exception, not the de
 When a layout looks reusable, build it generic from the start: lift the variable parts to props (text, images, counts, variants) rather than hardcoding one section's content, so the next section can reuse it instead of spawning a near-duplicate. If you find yourself about to create a second component that is 80%+ the same as an existing one, generalize the existing one instead — and flag the duplication rather than quietly forking it.
 
 Prefer prop-driven variants over new components for differences that are cosmetic (spacing, color, alignment). Reach for a new component only when structure or behavior genuinely differs.
+
+@docs/handoff/design_handoff_keep_the_u_open/KEEP_THE_U_OPEN.md

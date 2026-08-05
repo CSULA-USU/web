@@ -1,24 +1,20 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Spaces } from 'theme';
 import { Typography } from '../Typography';
 import { Image, Panel } from 'components';
+import type { PanelStyleProps } from '../Panel';
 
-interface CardStyles {
-  width?: string;
-  minHeight?: string;
-  margin?: string;
+interface CardStyles extends PanelStyleProps {
   iconWidth?: string;
   iconHeight?: string;
-  topBorder?: boolean;
-  rounded?: boolean;
-  hoverable?: boolean;
-  backgroundColor?: keyof typeof Colors;
 }
 
 interface CardProps extends CardStyles {
   title?: string;
+  /** Heading level for `title`, so a card can own its section's outline. */
+  titleAs?: 'h2' | 'h3' | 'h4';
   children?: React.ReactNode;
   linkText?: string;
   href?: string;
@@ -39,6 +35,7 @@ const IconContainer = styled.div`
 
 export const Card = ({
   title,
+  titleAs = 'h3',
   children,
   linkText,
   href,
@@ -69,7 +66,7 @@ export const Card = ({
         {iconElement && <IconContainer>{iconElement}</IconContainer>}
         <br />
         <Typography
-          as="h3"
+          as={titleAs}
           variant="titleSmall"
           margin="0 0 16px"
           size={isMobile ? 'lg' : 'xl'}
