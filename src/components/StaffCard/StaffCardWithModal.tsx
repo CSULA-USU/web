@@ -216,7 +216,6 @@ export const StaffCardWithModal = ({
 
   const cardPath = `/staff/${toKebabCase(name)}`;
   const fullName = suffix ? `${name}, ${suffix}` : name;
-  const firstName = name.split(' ')[0];
 
   return (
     <>
@@ -384,7 +383,7 @@ export const StaffCardWithModal = ({
                 letterSpacing="0.08em"
                 margin={`0 0 ${Spaces.sm} 0`}
               >
-                About {firstName}
+                About
               </Typography>
               <Typography as="p" variant="prose" size="xs">
                 {bio}
@@ -411,14 +410,8 @@ export const StaffCardWithModal = ({
               >
                 Scan to connect
               </Typography>
-              <Typography
-                as="p"
-                variant="prose"
-                size="xs"
-                margin={`0 0 ${Spaces.sm} 0`}
-              >
-                Point a phone camera to the QR code to open {firstName}&apos;s
-                virtual card
+              <Typography as="p" variant="prose" size="xs">
+                Scan the QR code to open virtual card
               </Typography>
               <Typography as="p" variant="cta" size="xs" color="greyDarkest">
                 <StyledLink href={cardPath} isInverseUnderlineStyling>
