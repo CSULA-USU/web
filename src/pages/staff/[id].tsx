@@ -113,14 +113,6 @@ const Identity = styled.div`
   text-align: center;
 `;
 
-const IdentityMeta = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: ${Spaces.sm};
-`;
-
 // Bitter italic, the one place on the card a serif earns its keep — it sets the
 // strengths list apart from the functional text above and below it without
 // needing a rule or a size change. Takes no `as` prop at the call site:
@@ -278,19 +270,10 @@ export default function StaffBusinessCard({ staffData }: Props) {
                   "special" flag only animates the staff directory. */}
               {fullName}
             </Typography>
-            {(staffData.pronouns || staffData.pronunciation) && (
-              <IdentityMeta>
-                {staffData.pronouns && (
-                  <Typography as="p" variant="span" size="2xs" color="grey">
-                    {staffData.pronouns}
-                  </Typography>
-                )}
-                {staffData.pronunciation && (
-                  <Typography as="p" variant="span" size="2xs" color="grey">
-                    {`[ ${staffData.pronunciation} ]`}
-                  </Typography>
-                )}
-              </IdentityMeta>
+            {staffData.pronouns && (
+              <Typography as="p" variant="span" size="2xs" color="grey">
+                {staffData.pronouns}
+              </Typography>
             )}
             <Typography
               as="p"
