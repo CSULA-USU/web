@@ -102,8 +102,23 @@ const PhotoFrame = styled.div`
   }
 `;
 
-// The respelling carries the information, so it reads darker and heavier than
-// the "Pronounced" label in front of it.
+// The respelling sits beside the name rather than under it. Centered, not
+// baseline-aligned: sharing a baseline with type twice its size leaves the
+// smaller text reading low, so it lines up with the name's midline instead. It
+// wraps to its own line when the two together outgrow the column.
+const NameRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: ${Spaces.sm};
+
+  ${media('tablet')(`
+    justify-content: center;
+  `)}
+`;
+
+// The respelling carries the information, so it reads heavier than the brackets
+// framing it.
 const PronunciationRespelling = styled.span`
   color: ${Colors.grey};
   font-weight: 600;
@@ -237,16 +252,27 @@ export const StaffCardWithModal = ({
               <Image src={src} alt={alt} />
             </PhotoFrame>
             <ProfileDetails>
-              <Typography
-                as="h2"
-                variant="titleSmall"
-                size="lg"
-                lineHeight="1.2"
-              >
-                {/* Plain on purpose: the modal is contact detail people read
-                    and copy, so only the directory card gets the easter egg. */}
-                {fullName}
-              </Typography>
+              <NameRow>
+                <Typography
+                  as="h2"
+                  variant="titleSmall"
+                  size="lg"
+                  lineHeight="1.2"
+                >
+                  {/* Plain on purpose: the modal is contact detail people read
+                      and copy, so only the directory card gets the easter egg. */}
+                  {fullName}
+                </Typography>
+                {pronunciation && (
+                  <Typography as="p" variant="span" size="2xs" color="grey">
+                    {'[ '}
+                    <PronunciationRespelling>
+                      {pronunciation}
+                    </PronunciationRespelling>
+                    {' ]'}
+                  </Typography>
+                )}
+              </NameRow>
               {pronouns && (
                 <Typography
                   as="p"
@@ -256,21 +282,6 @@ export const StaffCardWithModal = ({
                   margin={`${Spaces.xs} 0 0 0`}
                 >
                   {pronouns}
-                </Typography>
-              )}
-              {pronunciation && (
-                <Typography
-                  as="p"
-                  variant="span"
-                  size="2xs"
-                  color="grey"
-                  margin={`${Spaces.xs} 0 0 0`}
-                >
-                  {'[ '}
-                  <PronunciationRespelling>
-                    {pronunciation}
-                  </PronunciationRespelling>
-                  {' ]'}
                 </Typography>
               )}
               <Typography
