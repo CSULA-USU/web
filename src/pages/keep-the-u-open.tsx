@@ -12,6 +12,7 @@ import {
   FISCAL_YEARS,
   heroEyebrow,
   heroFigures,
+  proposedSpaces,
   reserveCallouts,
   services,
   shareSegments,
@@ -168,7 +169,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.05"
           color="white"
         >
-          Keep the U Open
+          Change Starts With U
         </Typography>
         <Typography
           as="p"
@@ -179,8 +180,10 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.lg} 0 0`}
           style={{ maxWidth: '62ch' }}
         >
-          The University-Student Union runs on a student fee that has not
-          changed since 2007. On the current budget its reserve is gone by{' '}
+          The University-Student Union runs on a student fee that hasn&apos;t
+          changed since 2007.
+          <br />
+          On the current budget, the reserves will be completely gone by{' '}
           <Typography
             as="span"
             variant="copy"
@@ -190,7 +193,9 @@ export default function KeepTheUOpen() {
           >
             FY 2030-31
           </Typography>
-          . The proposal is{' '}
+          .
+          <br />
+          The proposal:{' '}
           <Typography
             as="span"
             variant="copy"
@@ -200,7 +205,7 @@ export default function KeepTheUOpen() {
           >
             $90 more per semester,
           </Typography>{' '}
-          $5.63 a week, for the building you already paid to put up.
+          or $5.63 a week to expand our programs.
         </Typography>
         <div>
           <Button
@@ -626,7 +631,7 @@ export default function KeepTheUOpen() {
               variant={chartAnimation.donutVariant}
               animation={chartAnimation.shareAnimation}
               animationDuration={chartAnimation.animationDuration}
-              ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else — operations, staffing, programs and maintenance — is 67%, or $152.25."
+              ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
             />
           </div>
         </Panel>
@@ -746,6 +751,106 @@ export default function KeepTheUOpen() {
           what the U-SU costs to run; the sustainable range is 80–85%.
           <CitationMarker sourceId="2" />
         </Typography>
+      </FluidContainer>
+
+      {/* 7.9 · What opens up if this passes */}
+      <FluidContainer
+        {...sectionShell}
+        id="if-it-passes"
+        backgroundColor="white"
+      >
+        <Typography
+          as="p"
+          variant="span"
+          size="2xs"
+          weight="700"
+          uppercase
+          letterSpacing="0.12em"
+          color="gold"
+          margin={`0 0 ${Spaces.md}`}
+        >
+          If it passes
+        </Typography>
+        <br />
+        <Typography
+          as="h2"
+          variant="pageHeader"
+          fluidSize={FLUID_H2}
+          lineHeight="1.15"
+          margin={`0 0 ${Spaces.md}`}
+        >
+          What opens up if this passes
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          color="greyDark"
+          margin={`0 0 ${Spaces.xl}`}
+          style={{ maxWidth: '68ch' }}
+        >
+          These are the spaces the U-SU has identified to add or convert. They
+          are described here only as far as they have been described — nothing
+          below is scheduled, costed, or final.{' '}
+          <PlaceholderMarker>
+            [NEEDS COPY — timeline and phasing]
+          </PlaceholderMarker>
+        </Typography>
+        <AutoGrid minColumnWidth="280px">
+          {proposedSpaces.map((space) => (
+            <Card
+              key={space.title}
+              title={space.title}
+              borderRadius="16px"
+              shadow="soft"
+            >
+              <Typography as="p" variant="copy" size="sm" lineHeight="1.6">
+                {space.body}
+                {space.marker && (
+                  <>
+                    {' '}
+                    <PlaceholderMarker>{space.marker}</PlaceholderMarker>
+                  </>
+                )}
+              </Typography>
+            </Card>
+          ))}
+        </AutoGrid>
+        <Panel
+          border="greyLighter"
+          borderStyle="dashed"
+          borderRadius="16px"
+          shadow="none"
+          padding="clamp(20px, 3vw, 32px)"
+          margin={`${Spaces.xl} 0 0`}
+        >
+          <div>
+            <Typography
+              as="p"
+              variant="span"
+              size="xs"
+              weight="800"
+              letterSpacing="0.06em"
+              color="gold"
+            >
+              [AWAITING RENDERINGS — 6 spaces]
+            </Typography>
+            <Typography
+              as="p"
+              variant="copy"
+              size="sm"
+              lineHeight="1.6"
+              color="greyDark"
+              margin={`${Spaces.md} 0 0`}
+              style={{ maxWidth: '56ch' }}
+            >
+              This section is the one place on the page where a picture would do
+              more than a sentence. Nothing ships here until there is a real
+              rendering or photograph of each space.
+            </Typography>
+          </div>
+        </Panel>
       </FluidContainer>
 
       {/* 8 · What changes if this doesn't pass */}
