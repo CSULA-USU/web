@@ -1,245 +1,238 @@
 [
   {
     "meeting": "Board Orientation",
-    "date": "August 14, 2025",
+    "date": "August 14, 2026",
     "time": "9:00 AM to 4:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Board of Directors",
-    "date": "August 22, 2025",
+    "date": "August 28, 2026",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Audit Committee",
-    "date": "September 5, 2025",
+    "date": "September 4, 2026",
     "time": "10:00 AM to 11:00 AM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Board of Directors",
-    "date": "September 12, 2025",
-    "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Personnel Committee",
-    "date": "September 19, 2025",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Fiscal Committee",
-    "date": "September 19, 2025",
-    "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Student Board Development",
-    "date": "September 26, 2025",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "Pasadena Room 307",
-    "note": ""
-  },
-  {
-    "meeting": "Nominating Committee",
-    "date": "October 3, 2025",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Facilities Committee",
-    "date": "October 3, 2025",
+    "date": "September 4, 2026",
     "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Board of Directors",
-    "date": "October 10, 2025",
+    "date": "September 11, 2026",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Fiscal Committee",
-    "date": "October 17, 2025",
-    "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Personnel Committee",
-    "date": "October 24, 2025",
+    "date": "September 25, 2026",
     "time": "10:00 AM to 11:00 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Student Board Development",
-    "date": "October 24, 2025",
+    "meeting": "Board Development",
+    "date": "September 25, 2026",
     "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 307",
-    "note": ""
-  },
-  {
-    "meeting": "Board of Directors",
-    "date": "November 14, 2025",
-    "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Nominating Committee",
-    "date": "November 21, 2025",
+    "date": "October 2, 2026",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Facilities Committee",
+    "date": "October 2, 2026",
     "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Student Board Development",
-    "date": "November 21, 2025",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "Pasadena Room 307",
-    "note": ""
-  },
-  {
     "meeting": "Board of Directors",
-    "date": "December 5, 2025",
+    "date": "October 16, 2026",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Facilities Committee",
-    "date": "December 5, 2025",
-    "time": "11:30 AM to 12:30 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Board of Directors",
-    "date": "January 23, 2026",
-    "time": "10:00 AM to 11:30 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
     "meeting": "Personnel Committee",
-    "date": "January 30, 2026",
+    "date": "October 23, 2026",
     "time": "10:00 AM to 11:00 AM",
     "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Nominating Committee",
-    "date": "January 30, 2026",
-    "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Student Board Development",
-    "date": "February 6, 2026",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "Pasadena Room 307",
-    "note": ""
-  },
-  {
-    "meeting": "Facilities Committee",
-    "date": "February 6, 2026",
-    "time": "11:00 AM to 12:00 PM",
-    "location": "U-SU Boardroom 303",
-    "note": ""
-  },
-  {
-    "meeting": "Personnel Committee",
-    "date": "February 13, 2026",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "",
     "note": ""
   },
   {
     "meeting": "Fiscal Committee",
-    "date": "February 27, 2026",
+    "date": "October 23, 2026",
     "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
+    "meeting": "Nominating Committee",
+    "date": "October 30, 2026",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Facilities Committee",
+    "date": "October 30, 2026",
+    "time": "11:00 AM to 12:00 PM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board Development",
+    "date": "November 6, 2026",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
     "meeting": "Board of Directors",
-    "date": "February 20, 2026",
+    "date": "November 20, 2026",
     "time": "10:00 AM to 11:30 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board Development",
+    "date": "December 4, 2026",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board of Directors",
+    "date": "December 11, 2026",
+    "time": "10:00 AM to 11:30 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board of Directors",
+    "date": "January 29, 2027",
+    "time": "10:00 AM to 11:30 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Personnel Committee",
+    "date": "February 5, 2027",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Nominating Committee",
+    "date": "February 5, 2027",
+    "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Audit Committee",
-    "date": "February 27, 2026",
+    "date": "February 12, 2027",
     "time": "10:00 AM to 11:00 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Board of Directors",
-    "date": "March 20, 2026",
+    "date": "February 19, 2027",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Nominating Committee",
-    "date": "March 27, 2026",
+    "meeting": "Board Development",
+    "date": "February 26, 2027",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Personnel Committee",
+    "date": "March 12, 2027",
     "time": "10:00 AM to 11:00 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Facilities Committee",
-    "date": "March 27, 2026",
+    "date": "March 12, 2027",
+    "time": "11:00 AM to 12:00 PM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board of Directors",
+    "date": "March 19, 2027",
+    "time": "10:00 AM to 11:30 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Fiscal Committee",
+    "date": "March 26, 2027",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Board Development",
+    "date": "March 26, 2027",
     "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Fiscal Committee",
-    "date": "April 10, 2026",
+    "date": "April 9, 2027",
+    "time": "10:00 AM to 11:00 AM",
+    "location": "U-SU Boardroom 303",
+    "note": ""
+  },
+  {
+    "meeting": "Facilities Committee",
+    "date": "April 9, 2027",
     "time": "11:00 AM to 12:00 PM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Student Board Development",
-    "date": "April 17, 2026",
+    "meeting": "Board Development",
+    "date": "April 16, 2027",
     "time": "10:00 AM to 11:00 AM",
-    "location": "Pasadena Room 307",
+    "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
     "meeting": "Board of Directors",
-    "date": "April 24, 2026",
+    "date": "April 23, 2027",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""
   },
   {
-    "meeting": "Student Board Development",
-    "date": "May 1, 2026",
-    "time": "10:00 AM to 11:00 AM",
-    "location": "Pasadena Room 307",
-    "note": ""
-  },
-  {
     "meeting": "Board of Directors",
-    "date": "May 8, 2026",
+    "date": "May 7, 2027",
     "time": "10:00 AM to 11:30 AM",
     "location": "U-SU Boardroom 303",
     "note": ""

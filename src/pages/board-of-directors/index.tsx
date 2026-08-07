@@ -347,7 +347,7 @@ export default function BoardOfDirectors() {
         maxDescriptionWidth="1000px"
         description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
       >
-        <Button href="https://www.dropbox.com/scl/fi/01d4zzbyz3s2bpqq14uqf/2024-2025-meeting-schedule.zip?rlkey=98tk7cyfh3c16xud89juth7hr&st=6upmmwc8&raw=1">
+        <Button href="https://www.dropbox.com/scl/fi/pe043y0dv4lrzsrcephdz/2026-2027-Board-Meeting-Schedule.pdf?rlkey=p3hd6kzhrl5hp8lnsrdrd8eab&st=fpjwvrba&dl=0">
           Meeting Schedule
         </Button>
         <Button href="/board-of-directors/public-documents" variant="white">
