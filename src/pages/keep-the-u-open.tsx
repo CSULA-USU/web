@@ -1309,7 +1309,7 @@ export default function KeepTheUOpen() {
       >
         <Typography as="p" variant="span" size="2xs" color="greyDark">
           Prototype for review — not a published U-SU communication. This page
-          describes a {campaignMode.actionNoun} that has not been finalized.
+          describes a {campaignMode.actionVerb} that has not been finalized.
           Items marked [NEEDS FIGURE], [NEEDS COPY] or [NEEDS LINK] are
           unresolved and must be confirmed before launch; photography is
           placeholder.
