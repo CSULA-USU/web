@@ -123,9 +123,10 @@ export const BODDownloads = () => {
       <Typography {...typographyProps} size={isMobile ? 'lg' : '2xl'}>
         Meeting Calendar
       </Typography>
+      {/* change meeting calendar info in backoffice in board of directors section */}
       <Divider color="grey" margin={`${Spaces.xl} 0`} />
       <DownloadSection
-        title="Fiscal Year 25-26"
+        title="Fiscal Year 26-27"
         button={
           calendarLink
             ? {

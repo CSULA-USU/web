@@ -321,7 +321,7 @@ export default function Staff() {
         <GroupPhoto>
           <Image
             alt="group photo of full time u-su staff"
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/u-su-group.webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/usu-group-2026.webp"
             width="100%"
             borderRadius="12px"
           />
@@ -334,7 +334,7 @@ export default function Staff() {
               margin={`${Spaces.md} 0 0 0`}
             >
               The full&ndash;time staff of the University&ndash;Student Union at
-              Cal State LA (2024)
+              Cal State LA (2026)
             </Typography>
           </figcaption>
         </GroupPhoto>

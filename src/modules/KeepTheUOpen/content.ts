@@ -18,18 +18,19 @@ export const campaignMode = {
   heroPrimaryCta: 'See the Numbers',
   heroSecondaryCta: 'What This Costs You',
   finalHeading: 'The math, in one place.',
-  actionNoun: 'proposal',
+  actionVerb: 'shape',
   voteDate: null as string | null,
   beforeHeading: 'Before you weigh in',
   finalBody:
     'Every figure on this page is traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
 };
 
-export const heroEyebrow = `A ${campaignMode.actionNoun} for the University-Student Union`;
+export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
 
 export const anchorLinks = [
   { label: 'Why It Matters', href: '#why' },
   { label: 'The Numbers', href: '#numbers' },
+  { label: 'If It Passes', href: '#if-it-passes' },
   { label: 'If It Fails', href: '#if-it-fails' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Sources', href: '#sources' },
@@ -50,9 +51,8 @@ export const sources: Source[] = [
     id: '1',
     label: 'CSU campus mandatory fees table, 2025-26',
     note: 'Fee comparison, median and mean, campus rankings, and the student center fee figures.',
-    href: 'https://www.calstate.edu',
+    href: 'https://www.calstate.edu/apply/paying-for-college/csu-costs/tuition-and-fees/campus-mandatory-fees',
     linkText: 'calstate.edu',
-    marker: '[NEEDS LINK — direct table URL]',
   },
   {
     id: '2',
@@ -431,6 +431,40 @@ export const todayFacts = [
   },
 ];
 
+/**
+ * Spaces the U-SU has identified to add or convert if the increase passes.
+ * Described only as far as they have been described to us — no square footage,
+ * no cost, no opening date, and no feature nobody has confirmed. Alphabetical,
+ * since no phasing order has been published to sequence them by.
+ */
+export const proposedSpaces = [
+  {
+    title: 'Downstairs Lounge',
+    body: 'The lounge on the lower level, enhanced — more room to sit, study and wait out a gap in your schedule.',
+  },
+  {
+    title: 'Engagement Room',
+    body: 'A room set up for productivity.',
+    marker: '[NEEDS COPY — what the engagement room is for]',
+  },
+  {
+    title: 'Lounge & Computer Resources',
+    body: 'The Game Room’s old second-floor space, renovated into an expanded lounge with computer resources. The Game Room itself has already moved to a larger space on the first floor.',
+  },
+  {
+    title: 'Nature Lounge',
+    body: 'An outdoor lounge on the second floor, planned with greenery in mind.',
+  },
+  {
+    title: 'Pub',
+    body: 'The current Sbarro space, converted into a pub.',
+  },
+  {
+    title: 'Relaxation Room',
+    body: 'A dedicated room for rest, with nap pods — findable, instead of tucked away on the third floor where they are now.',
+  },
+];
+
 export const beforeYouWeighInCards = [
   {
     title: 'Read the budget yourself',
@@ -445,7 +479,7 @@ export const beforeYouWeighInCards = [
   },
   {
     title: 'Ask the board',
-    body: 'The U-SU Board of Directors is chaired by an elected student and its meetings are open.',
+    body: 'The U-SU Board of Directors is chaired by elected students and its meetings are open for anyone to join.',
     href: 'https://www.calstatelausu.org/board-of-directors/meeting-schedule',
     linkText: 'BOD Meeting schedule →',
   },
