@@ -4,7 +4,7 @@ import { MdEmail, MdLocationOn } from 'react-icons/md';
 import { BiGlobe, BiLogoLinkedin, BiSolidPhone } from 'react-icons/bi';
 import { QRCodeSVG } from 'qrcode.react';
 import staff from 'data/staff.json';
-import { toKebabCase } from 'utils/stringhelpers';
+import { splitDepartments, toKebabCase } from 'utils/stringhelpers';
 import {
   CopyButton,
   Image,
@@ -285,18 +285,25 @@ export default function StaffBusinessCard({ staffData }: Props) {
             >
               {staffData.title}
             </Typography>
-            <Typography
-              as="p"
-              variant="span"
-              size="2xs"
-              color="greyDark"
-              weight="600"
-              uppercase
-              letterSpacing="0.08em"
-              lineHeight="1.3"
-            >
-              {staffData.department}
-            </Typography>
+            {/* A member in more than one department gets a line each — run
+                together on one line they read as a single, wrong name.
+                Identity is already a centred column with a gap, so they
+                stack on their own. */}
+            {splitDepartments(staffData.department).map((department) => (
+              <Typography
+                key={department}
+                as="p"
+                variant="span"
+                size="2xs"
+                color="greyDark"
+                weight="600"
+                uppercase
+                letterSpacing="0.08em"
+                lineHeight="1.3"
+              >
+                {department}
+              </Typography>
+            ))}
           </Identity>
           {staffData.cardBlurb && (
             <CardBlurb

@@ -49,11 +49,18 @@ import { BiPlus } from 'react-icons/bi';
 const SECTION_PADDING = 'clamp(56px, 7vw, 96px) clamp(20px, 4vw, 36px)';
 const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
 
+/* Matches FluidContainer's own default, and so the rest of the site. Set here
+   rather than left implicit because the anchor nav has to line its items up
+   with the sections below it, and it needs the value to do that. Running text
+   is capped separately by its own measure, so widening this only gives the
+   charts and card grids more room. */
+const CONTENT_MAX_WIDTH = '1440px';
+
 const sectionShell = {
   padding: SECTION_PADDING,
   paddingDesktop: SECTION_PADDING,
   paddingMobile: SECTION_PADDING,
-  innerMaxWidth: '1200px',
+  innerMaxWidth: CONTENT_MAX_WIDTH,
   scrollMarginTop: '84px',
   revealOnScroll: true,
 } as const;
@@ -62,7 +69,7 @@ const bandShell = {
   padding: BAND_PADDING,
   paddingDesktop: BAND_PADDING,
   paddingMobile: BAND_PADDING,
-  innerMaxWidth: '1200px',
+  innerMaxWidth: CONTENT_MAX_WIDTH,
   scrollMarginTop: '84px',
   revealOnScroll: true,
 } as const;
@@ -148,7 +155,7 @@ export default function KeepTheUOpen() {
         padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        innerMaxWidth="1200px"
+        innerMaxWidth={CONTENT_MAX_WIDTH}
       >
         <Typography
           as="p"
@@ -183,7 +190,7 @@ export default function KeepTheUOpen() {
           The University-Student Union runs on a student fee that hasn&apos;t
           changed since 2007.
           <br />
-          On the current budget, the reserves will be completely gone by{' '}
+          On the current budget, the reserves will dry up by{' '}
           <Typography
             as="span"
             variant="copy"
@@ -396,7 +403,7 @@ export default function KeepTheUOpen() {
         paddingDesktop="clamp(20px, 4vw, 36px)"
         paddingMobile="clamp(20px, 4vw, 36px)"
         outerAlignItems="flex-end"
-        innerMaxWidth="1200px"
+        innerMaxWidth={CONTENT_MAX_WIDTH}
         revealOnScroll
       >
         <Panel
@@ -687,8 +694,9 @@ export default function KeepTheUOpen() {
               color="greyDark"
               margin={`${Spaces.lg} 0 0`}
             >
-              Value axis is capped at $3,000. San Luis Obispo&apos;s true figure
-              is $7,000 and its bar is drawn at the cap.
+              Value axis is capped at $3,000 for easier viewing. San Luis
+              Obispo&apos;s true figure is $7,000 and its bar is drawn at the
+              cap.
             </Typography>
             <Typography
               as="p"
@@ -1305,7 +1313,7 @@ export default function KeepTheUOpen() {
         padding={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
         paddingDesktop={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
         paddingMobile={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
-        innerMaxWidth="1200px"
+        innerMaxWidth={CONTENT_MAX_WIDTH}
       >
         <Typography as="p" variant="span" size="2xs" color="greyDark">
           Prototype for review — not a published U-SU communication. This page
