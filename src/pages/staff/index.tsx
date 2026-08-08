@@ -11,6 +11,7 @@ import {
   Typography,
 } from 'components';
 import staff from 'data/staff.json';
+import { splitDepartments } from 'utils/stringhelpers';
 import { Colors, Spaces, media } from 'theme';
 import { Page, Header } from 'modules';
 
@@ -289,15 +290,22 @@ export default function Staff() {
                 width="100%"
                 rounded
               >
-                <Typography
-                  as="p"
-                  variant="span"
-                  size="2xs"
-                  color="greyDark"
-                  margin={`${Spaces.xs} 0 0 0`}
-                >
-                  {staffMember.department}
-                </Typography>
+                {/* A member in more than one department gets a line each —
+                    run together on one line they read as a single, wrong name. */}
+                {splitDepartments(staffMember.department).map(
+                  (department, index) => (
+                    <Typography
+                      key={department}
+                      as="p"
+                      variant="span"
+                      size="2xs"
+                      color="greyDark"
+                      margin={index === 0 ? `${Spaces.xs} 0 0 0` : '0'}
+                    >
+                      {department}
+                    </Typography>
+                  ),
+                )}
               </StaffCardWithModal>
             ))}
           </Roster>
@@ -321,7 +329,7 @@ export default function Staff() {
         <GroupPhoto>
           <Image
             alt="group photo of full time u-su staff"
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/usu-group-2026.webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/usu-group-2026%20(1).webp"
             width="100%"
             borderRadius="12px"
           />

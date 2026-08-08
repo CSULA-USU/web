@@ -14,6 +14,20 @@ export const toTitleCase = (str: string): string => {
     .join(' ');
 };
 
+/**
+ * Splits a staff member's `department` into its individual departments.
+ *
+ * A member who sits in more than one department stores them comma-separated in
+ * staff.json, because that is how the field reads in prose — the modal, the
+ * search index and the page descriptions all use the stored string as-is. Only
+ * the layouts that stack the departments on separate lines need them split.
+ */
+export const splitDepartments = (department: string): string[] =>
+  department
+    .split(',')
+    .map((name) => name.trim())
+    .filter(Boolean);
+
 export const truncateString = (str: string, maxLength: number) => {
   if (str.length <= maxLength) {
     return str;
