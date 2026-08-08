@@ -17,7 +17,9 @@ interface AnchorNavProps {
   ctaLabel: string;
   ctaHref: string;
   /** Matches the page's content measure so the bar's items line up with the
-   * sections below it on wide screens. The bar itself stays full-bleed. */
+   * sections below it on wide screens. The bar itself stays full-bleed.
+   * Defaults to FluidContainer's own max-width, so a page that has not
+   * narrowed its sections gets an aligned bar without passing anything. */
   contentMaxWidth?: string;
 }
 
@@ -71,7 +73,7 @@ export const AnchorNav = ({
   links,
   ctaLabel,
   ctaHref,
-  contentMaxWidth = '1200px',
+  contentMaxWidth = '1440px',
 }: AnchorNavProps) => (
   <Bar aria-label="On this page">
     <BarInner $maxWidth={contentMaxWidth}>
