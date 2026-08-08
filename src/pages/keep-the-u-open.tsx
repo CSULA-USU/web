@@ -184,35 +184,59 @@ export default function KeepTheUOpen() {
           fluidSize={FLUID_HERO_BODY}
           lineHeight="1.6"
           color="greyLightest"
-          margin={`${Spaces.lg} 0 0`}
-          style={{ maxWidth: '62ch' }}
+          margin={`${Spaces.md} 0 0`}
         >
-          The University-Student Union runs on a student fee that hasn&apos;t
-          changed since 2007.
-          <br />
-          On the current budget, the reserves will dry up by{' '}
-          <Typography
-            as="span"
-            variant="copy"
-            fluidSize={FLUID_HERO_BODY}
-            weight="700"
-            color="white"
-          >
-            FY 2030-31
-          </Typography>
-          .
-          <br />
-          The proposal:{' '}
-          <Typography
-            as="span"
-            variant="copy"
-            fluidSize={FLUID_HERO_BODY}
-            weight="700"
-            color="white"
-          >
-            $90 more per semester,
-          </Typography>{' '}
-          or $5.63 a week to expand our programs.
+          The rooms your clubs meet in. The free gym. The food pantry. Study
+          rooms. Places to nap.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_HERO_BODY}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          You already pay for all of it: $137.25 a semester, unchanged since
+          2007.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_HERO_BODY}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          However, costs have risen for nineteen years while enrollment fell.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_HERO_BODY}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          By FY 2030-31, the reserves covering the deficit are gone, leaving 40%
+          less for everything else.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_HERO_BODY}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          The proposal: $90 more a semester. $50 for the building. $40 for what
+          students have asked for.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_HERO_BODY}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          Read on to see how the math checks out, where the money goes, and how
+          to make your voice heard.
         </Typography>
         <div>
           <Button
