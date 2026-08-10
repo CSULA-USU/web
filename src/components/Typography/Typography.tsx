@@ -17,6 +17,8 @@ interface TypeStyle {
   margin?: string;
   /** Locks digits to equal width so figures don't jitter as they change. */
   tabularNums?: boolean;
+  /** Opts the component into inline layout instead of the default block flow. */
+  inline?: boolean;
 }
 
 type TypeElements =
@@ -175,7 +177,7 @@ const getCSS = (p: TypeProps) => {
       line-height: ${p.lineHeight || lineHeight || 1.6};
       ${p.tabularNums && `font-variant-numeric: tabular-nums;`}
       ${p.letterSpacing && `letter-spacing: ${p.letterSpacing};`}
-      ${p.margin && 'display: inline-block;'}
+      ${p.inline ? 'display: inline;' : 'display: block;'}
       ${p.nowrap &&
       `
       white-space: nowrap;

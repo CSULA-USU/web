@@ -469,6 +469,7 @@ export default function KeepTheUOpen() {
         >
           The numbers
         </Typography>
+        <br />
         <Typography
           as="h2"
           variant="pageHeader"
@@ -792,11 +793,13 @@ export default function KeepTheUOpen() {
         >
           If it passes
         </Typography>
+        <br />
         <Typography
           as="h2"
           variant="pageHeader"
           fluidSize={FLUID_H2}
           lineHeight="1.15"
+          margin={`0 0 ${Spaces.md}`}
         >
           What opens up if this passes
         </Typography>
@@ -806,6 +809,7 @@ export default function KeepTheUOpen() {
           size="sm"
           lineHeight="1.6"
           color="greyDark"
+          margin={`0 0 ${Spaces.xl}`}
           style={{ maxWidth: '68ch' }}
         >
           These are the spaces the U-SU has identified to add or convert. They
@@ -889,6 +893,7 @@ export default function KeepTheUOpen() {
         >
           If it doesn&apos;t pass
         </Typography>
+        <br />
         <Typography
           as="h2"
           variant="pageHeader"
