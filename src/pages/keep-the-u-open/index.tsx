@@ -95,6 +95,10 @@ const chartAnimation = {
   animationDuration: 1400,
 } as const;
 
+const WhereMoneyGoesContainer = styled.div`
+  display: flex;
+`;
+
 export default function KeepTheUOpen() {
   return (
     <Page>
@@ -626,7 +630,7 @@ export default function KeepTheUOpen() {
           padding="clamp(16px, 2vw, 28px)"
           width="100%"
         >
-          <div>
+          <WhereMoneyGoesContainer>
             <Typography
               as="h3"
               variant="pageHeader"
@@ -654,7 +658,7 @@ export default function KeepTheUOpen() {
               animationDuration={chartAnimation.animationDuration}
               ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
             />
-          </div>
+          </WhereMoneyGoesContainer>
         </Panel>
 
         {/* 7.4 · BarChart */}
