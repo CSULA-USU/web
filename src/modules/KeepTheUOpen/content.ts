@@ -154,7 +154,7 @@ export const bandStats = [
     value: '90–100',
     citation: '4',
     label:
-      'Student employees: We the largest student employer on campus, alongside 29 full-time staff.',
+      'Student employees: We are the largest student employer on campus, alongside 29 full-time staff.',
   },
   {
     value: '5',
