@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styled from 'styled-components';
 import { BarChart, Page, ShareChart, TrendChart } from 'modules';
 import {
   anchorLinks,
@@ -95,9 +96,7 @@ const chartAnimation = {
   animationDuration: 1400,
 } as const;
 
-const WhereMoneyGoesContainer = styled.div`
-  display: flex;
-`;
+const WhereMoneyGoesContainer = styled.div``;
 
 export default function KeepTheUOpen() {
   return (
