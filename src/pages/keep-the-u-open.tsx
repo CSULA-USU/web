@@ -150,12 +150,14 @@ export default function KeepTheUOpen() {
 
       {/* 2 · Hero */}
       <FluidContainer
-        backgroundImage="/usu-front.jpg"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
         backgroundOverlay="rgba(0, 0, 0, 0.66)"
         padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         innerMaxWidth={CONTENT_MAX_WIDTH}
+        innerMinHeight="min(72svh, 680px)"
+        backgroundPosition="center"
       >
         <Typography
           as="p"
