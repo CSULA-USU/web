@@ -13,6 +13,48 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
       background-color: ${Colors[p.backgroundColor || 'transparent']};
     `;
   }
+
+  /* A blurred background needs layers of its own: a filter on the container
+     itself would take the content down with it. */
+  if (p.backgroundBlur) {
+    return css`
+      position: relative;
+      overflow: hidden;
+
+      ::before {
+        content: '';
+        position: absolute;
+        /* Blur samples past the layer's edges, so a layer sized to the box
+           fades out at its seams. Oversizing it by twice the radius keeps the
+           frame filled corner to corner. */
+        inset: calc(${p.backgroundBlur} * -2);
+        background: url(${p.backgroundImage}) no-repeat;
+        background-size: cover;
+        background-position: ${p.backgroundPosition || 'center'};
+        filter: blur(${p.backgroundBlur});
+        z-index: 0;
+      }
+
+      ${p.backgroundOverlay &&
+      `
+        ::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-color: ${p.backgroundOverlay};
+          z-index: 0;
+        }
+      `}
+
+      /* ::after is the container's last child, so without this the scrim would
+         paint over the content rather than under it. */
+      > * {
+        position: relative;
+        z-index: 1;
+      }
+    `;
+  }
+
   const overlay = p.backgroundOverlay
     ? `linear-gradient(${p.backgroundOverlay}, ${p.backgroundOverlay}), `
     : '';
@@ -123,6 +165,13 @@ interface FluidContainerProps extends FluidInnerProps {
    * any CSS color, e.g. `rgba(0, 0, 0, 0.66)`. Ignored without an image.
    */
   backgroundOverlay?: string;
+  /**
+   * Blur radius for `backgroundImage`, e.g. `12px`. The image moves to its own
+   * layer so only it is blurred, which also softens a low-resolution or
+   * over-scaled photo enough that its artifacts stop reading as a mistake.
+   * Ignored without an image.
+   */
+  backgroundBlur?: string;
   /** `background-position` for `backgroundImage`. Defaults to `center`. */
   backgroundPosition?: string;
   border?: keyof typeof Colors;

@@ -22,7 +22,7 @@ export const campaignMode = {
   voteDate: null as string | null,
   beforeHeading: 'Before you weigh in',
   finalBody:
-    'Every figure on this page is traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
+    'Every figure on this page can be traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
 };
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
