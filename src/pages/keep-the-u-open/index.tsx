@@ -37,14 +37,13 @@ import {
   FluidContainer,
   Panel,
   PlaceholderMarker,
-  ScrollCue,
   SourceList,
   StyledLink,
   Tabs,
   TestimonialCard,
   Typography,
 } from 'components';
-import { Spaces } from 'theme';
+import { FontSizes, Spaces } from 'theme';
 import { BiPlus } from 'react-icons/bi';
 
 /* Fluid section padding, applied at every breakpoint so the clamp() — not
@@ -80,10 +79,15 @@ const bandShell = {
 /* FAQ and Sources read at a narrower measure than the rest of the page. */
 const proseShell = { ...sectionShell, innerMaxWidth: '900px' } as const;
 
-const FLUID_H1 = 'clamp(42px, 6.4vw, 76px)';
-const FLUID_H2 = 'clamp(30px, 3.8vw, 46px)';
-const FLUID_H3 = 'clamp(24px, 2.6vw, 32px)';
-const FLUID_HERO_BODY = 'clamp(17px, 1.6vw, 21px)';
+/* Type scales with the viewport, but both ends of every clamp are real
+   FontSizes steps, so no width renders a size that is off the scale. Each
+   maximum is the size an existing variant already uses for that level:
+   pageHeader (4xl), title (2xl), titleSmall (xl), and one step above body
+   copy for the lead paragraphs that open the hero and the solidarity note. */
+const FLUID_H1 = `clamp(${FontSizes['2xl']}, 6.4vw, ${FontSizes['4xl']})`;
+const FLUID_H2 = `clamp(${FontSizes.xl}, 3.8vw, ${FontSizes['2xl']})`;
+const FLUID_H3 = `clamp(${FontSizes.lg}, 2.6vw, ${FontSizes.xl})`;
+const FLUID_LEAD = `clamp(${FontSizes.sm}, 1.6vw, ${FontSizes.md})`;
 
 /**
  * Chart animation. All of it is optional and fires once, on first scroll into
@@ -163,6 +167,10 @@ export default function KeepTheUOpen() {
         paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         innerMaxWidth={CONTENT_MAX_WIDTH}
         innerMinHeight="min(72svh, 680px)"
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        textAlign="center"
       >
         <Typography
           as="p"
@@ -188,7 +196,7 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
           margin={`${Spaces.md} 0 0`}
@@ -199,7 +207,7 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
         >
@@ -209,7 +217,7 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
         >
@@ -218,7 +226,7 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
         >
@@ -228,7 +236,7 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
         >
@@ -251,18 +259,6 @@ export default function KeepTheUOpen() {
             {campaignMode.heroSecondaryCta}
           </Button>
         </div>
-        {campaignMode.voteDate && (
-          <Typography
-            as="p"
-            variant="span"
-            size="xs"
-            weight="700"
-            color="primary"
-            margin={`${Spaces.md} 0 0`}
-          >
-            {campaignMode.voteDate}
-          </Typography>
-        )}
         <Divider
           color="greyDark"
           size="1px"
@@ -279,13 +275,6 @@ export default function KeepTheUOpen() {
             />
           ))}
         </AutoGrid>
-        <ScrollCue
-          lineStyle="solid"
-          animation="pulse"
-          color="white"
-          height="100px"
-          margin={`${Spaces.xl} auto 0`}
-        />
       </FluidContainer>
 
       {/* 3 · Thesis */}
@@ -373,16 +362,15 @@ export default function KeepTheUOpen() {
         {/* Solidarity bridge — sits after the cards, not as the opening frame */}
         <Panel
           shadow="none"
-          padding={`0 0 0 ${Spaces.lg}`}
           margin={`${Spaces.xl} 0 0`}
           backgroundColor="transparent"
+          padding="0"
         >
           <Typography
             as="p"
             variant="copy"
-            fluidSize="clamp(17px, 1.6vw, 20px)"
-            lineHeight="1.6"
             style={{ maxWidth: '68ch' }}
+            lineHeight="1.6"
           >
             And if you&apos;re one of the students who never comes in, someone
             you know does. The pantry, the quiet floor and the cultural
@@ -500,12 +488,12 @@ export default function KeepTheUOpen() {
         <div id="cost">
           <Typography
             as="h3"
-            variant="pageHeader"
+            variant="title"
             fluidSize={FLUID_H3}
             lineHeight="1.2"
             margin={`0 0 ${Spaces.lg}`}
           >
-            What this costs you
+            What this costs you:
           </Typography>
           <AutoGrid minColumnWidth="240px">
             {feeMath.map((column) => (

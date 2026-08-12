@@ -49,6 +49,15 @@ const TabList = styled.div<{ $variant: TabsVariant }>`
     p.$variant === 'folder'
       ? `
         gap: ${Spaces.xs};
+        /* The whole strip overlaps the panel's top border by 1px, so the
+           active tab's fill-colored bottom edge lands on that border and
+           erases it — the join that makes tab and panel one shape. The
+           overlap belongs here rather than on the tab itself: the scrolling
+           below makes this a scroll container, which clips its children on
+           both axes, so a tab reaching past this box would be cut off. */
+        position: relative;
+        z-index: 1;
+        margin-bottom: -1px;
         /* Folder tabs cannot wrap — a second row would sit behind the panel
            rather than on it — so a crowded strip scrolls instead. */
         flex-wrap: nowrap;
@@ -102,9 +111,6 @@ const Tab = styled.button<{
     p.$variant === 'folder' &&
     `
       position: relative;
-      /* Sits over the panel's top edge, which is what joins the two. */
-      z-index: 1;
-      margin-bottom: -1px;
       /* Every tab is outlined on all four sides. The active tab's gold cap is
          its 1px top border thickened by an inset shadow rather than a wider
          border, so widening it cannot shift the tab's height. */

@@ -19,7 +19,6 @@ export const campaignMode = {
   heroSecondaryCta: 'What This Costs You',
   finalHeading: 'The math, in one place.',
   actionVerb: 'shape',
-  voteDate: null as string | null,
   beforeHeading: 'Before you weigh in',
   finalBody:
     'Every figure on this page can be traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
@@ -92,7 +91,7 @@ export const sources: Source[] = [
 export const thesisCards = [
   {
     number: '01',
-    title: 'The four hours between your classes',
+    title: 'The hours between classes',
     body: "A commuter's day has holes in it. This is where you sit them out: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
   },
   {

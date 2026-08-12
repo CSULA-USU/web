@@ -4,8 +4,15 @@ import { Colors } from 'theme';
 type ScrollCueLine = 'solid' | 'dashed' | 'dotted';
 type ScrollCueAnimation = 'trickle' | 'pulse' | 'draw' | 'drift';
 
-/** How far `pulse` fades down at the bottom of its cycle. */
-const PULSE_LOW_OPACITY = 0.3;
+/** How far `pulse` fades at the bottom of its cycle. Zero, so the line clears
+ * completely between beats rather than idling as a visible bar — a cue that
+ * is only there while it moves. */
+const PULSE_LOW_OPACITY = 0;
+
+/** Length of `trickle`'s traveling highlight, as a fraction of the cue's
+ * height. The mask window and the distance it travels both derive from this,
+ * so it is the only place to change how long the light reads. */
+const HIGHLIGHT_HEIGHT_RATIO = 0.75;
 
 interface ScrollCueProps {
   /** Shape of the line itself. */
@@ -89,16 +96,19 @@ const getPatternPitch = (p: CueStyle) => {
 };
 
 /* The highlight holds still and its mask moves, so the pattern underneath
-   never shifts. Sized at half the line, the window has room to travel from
-   just above the line to just below it. */
+   never shifts. It starts one full window above the line and ends one full
+   line below it, so the highlight has entirely left before the loop restarts.
+   Lengths, not percentages: a percentage mask-position resolves against
+   (line - window), which shrinks as the window grows, so percentages that
+   clear at one HIGHLIGHT_HEIGHT_RATIO overlap at the next. */
 const travel = keyframes`
   from {
-    -webkit-mask-position: 0 -100%;
-    mask-position: 0 -100%;
+    -webkit-mask-position: 0 calc(-1 * var(--cue-highlight-length));
+    mask-position: 0 calc(-1 * var(--cue-highlight-length));
   }
   to {
-    -webkit-mask-position: 0 200%;
-    mask-position: 0 200%;
+    -webkit-mask-position: 0 var(--cue-height);
+    mask-position: 0 var(--cue-height);
   }
 `;
 
@@ -147,8 +157,10 @@ const Cue = styled.span<CueStyle>`
   position: relative;
   overflow: hidden;
   --cue-pitch: ${getPatternPitch};
+  --cue-height: ${(p) => p.$height};
+  --cue-highlight-length: calc(var(--cue-height) * ${HIGHLIGHT_HEIGHT_RATIO});
   width: ${(p) => p.$thickness};
-  height: ${(p) => p.$height};
+  height: var(--cue-height);
   margin: ${(p) => p.$margin || '0'};
 
   ::before {
@@ -188,8 +200,8 @@ const Cue = styled.span<CueStyle>`
           #000 50%,
           transparent
         );
-        -webkit-mask-size: 100% 50%;
-        mask-size: 100% 50%;
+        -webkit-mask-size: 100% var(--cue-highlight-length);
+        mask-size: 100% var(--cue-highlight-length);
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         animation: ${travel} ${p.$duration} linear infinite;

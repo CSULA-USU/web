@@ -107,6 +107,7 @@ const FluidInner = styled.div<FluidInnerProps & RevealState>`
   width: 100%;
   ${(p) => p.innerMaxWidth && `max-width: ${p.innerMaxWidth};`}
   ${(p) => p.innerMinHeight && `min-height: ${p.innerMinHeight};`}
+  ${(p) => p.textAlign && `text-align: ${p.textAlign};`}
   ${(p) =>
     p.flex
       ? css`
@@ -145,6 +146,15 @@ interface FluidInnerProps {
   innerMinHeight?: string;
   innerRounded?: boolean;
   innerPadding?: string;
+  /**
+   * Centers or right-aligns everything inside, headings and running text and
+   * button rows alike, by inheritance. Preferred over `alignItems` for this:
+   * that shrinks each child to its own content width, which centers a short
+   * heading but leaves a wrapped paragraph ragged-left inside a centered box,
+   * and collapses any child whose width comes from its content — a bare
+   * `Divider` renders as a border with nothing in it, so it disappears.
+   */
+  textAlign?: 'left' | 'center' | 'right';
   justifyContent?:
     | 'flex-start'
     | 'flex-end'
