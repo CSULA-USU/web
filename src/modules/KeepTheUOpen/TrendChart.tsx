@@ -68,7 +68,13 @@ interface TrendChartProps {
    Seven year ticks span x=150 to x=940. */
 const ZERO_Y = 265;
 const PX_PER_MILLION = 25;
-const X_FIRST = 150;
+/* Left edge of the plot. The value axis labels are drawn 12 units to the left
+   of this, anchored `end`, so this is really "label width + 12". The widest
+   label is `−$2M`: four glyphs at `CHART_LABEL_SIZE`, roughly 34 units. 52
+   leaves that a few units of margin and no more — anything larger is dead
+   space inside the viewBox that pushes the plotted lines rightward, out of
+   line with the heading and copy above them. */
+const X_FIRST = 52;
 const X_LAST = 940;
 const GRIDLINE_MILLIONS = [8, 6, 4, 2, -2];
 

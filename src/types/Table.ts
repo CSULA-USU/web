@@ -32,6 +32,13 @@ export interface TableColumn<TOriginal = unknown> {
   mergedValue?: TableColumnMergedValue;
   minWidth?: string;
   render?: (row: TableRow<TOriginal>) => ReactNode;
+  /**
+   * Overrides the stacked mobile card's header, which is otherwise the first
+   * column's plain string value. Only read from the first column. Separate
+   * from `render` so that adding a custom desktop cell does not silently
+   * restyle the mobile header — existing tables keep the heading they have.
+   */
+  renderRowHeader?: (row: TableRow<TOriginal>) => ReactNode;
 }
 
 export interface TableHeaderColors {

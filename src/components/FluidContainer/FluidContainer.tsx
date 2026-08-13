@@ -226,6 +226,7 @@ export const FluidContainer = ({
   backgroundColor,
   backgroundImage,
   revealOnScroll = false,
+  id,
   ...props
 }: FluidContainerProps) => {
   /* Sections are often taller than the viewport, so a small threshold plus a
@@ -237,9 +238,15 @@ export const FluidContainer = ({
     rootMargin: '0px 0px -12% 0px',
   });
 
+  /* `id` is pulled out of the spread and applied only to the outer element:
+     the rest of the props legitimately style both boxes, but an id on both
+     makes it a duplicate in the DOM. The outer one is the right target — it
+     carries `scroll-margin-top`, so an anchor jump lands with the section's
+     padding cleared. */
   return (
     <FluidOuter
       ref={ref}
+      id={id}
       backgroundColor={backgroundColor}
       backgroundImage={backgroundImage}
       {...props}
