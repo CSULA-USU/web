@@ -50,7 +50,12 @@ const ListItem = styled.li`
   }
 `;
 
-const TabContent = styled(Typography)`
+/* A div rather than Typography's default paragraph: these tabs wrap an <ol>,
+   which is invalid inside <p>. The parser hoists the list out of the
+   paragraph, leaving a DOM that no longer matches the server's markup, and
+   hydration fails. `forwardedAs` passes the element down to Typography rather
+   than replacing it, so its type styles are kept. */
+const TabContent = styled(Typography).attrs({ forwardedAs: 'div' })`
   &,
   * {
     line-height: 2;

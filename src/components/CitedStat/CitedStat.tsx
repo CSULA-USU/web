@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
 import { Typography } from '../Typography';
 import { CitationMarker } from '../CitationMarker';
 
@@ -24,10 +24,14 @@ interface CitedStatProps {
   accentColor?: keyof typeof Colors;
 }
 
+/* Both ends of every clamp are real FontSizes steps, and every maximum stays
+   under the 4xl a page header uses, so a figure never outgrows the heading it
+   sits beneath. `onPrimary` leads because the yellow band carries the numbers
+   the page is built around. */
 const figureSizes: Record<StatVariant, string> = {
-  onLight: 'clamp(32px, 4vw, 46px)',
-  onDark: 'clamp(28px, 3.2vw, 40px)',
-  onPrimary: 'clamp(44px, 5.4vw, 64px)',
+  onLight: `clamp(${FontSizes.xl}, 4vw, ${FontSizes['2xl']})`,
+  onDark: `clamp(${FontSizes.lg}, 3.2vw, ${FontSizes.xl})`,
+  onPrimary: `clamp(${FontSizes['2xl']}, 5.4vw, ${FontSizes['3xl']})`,
 };
 
 const labelProps = {

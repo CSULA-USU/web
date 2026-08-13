@@ -134,7 +134,7 @@ export const EventModal = ({
   isOpen,
   onRequestClose,
 }: EventModalProps) => {
-  const { isMobile, isDesktop } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -189,9 +189,9 @@ export const EventModal = ({
       style={
         isMobile
           ? mobileCustomStyles
-          : isDesktop
-          ? desktopCustomStyles
-          : tabletCustomStyles
+          : isTablet
+          ? tabletCustomStyles
+          : desktopCustomStyles
       }
       onRequestClose={onRequestClose}
       onAfterOpen={() => {

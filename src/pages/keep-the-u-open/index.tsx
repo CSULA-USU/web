@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styled from 'styled-components';
 import { BarChart, Page, ShareChart, TrendChart } from 'modules';
 import {
   anchorLinks,
@@ -33,15 +34,18 @@ import {
   CitedStat,
   Divider,
   Expandable,
+  Eyebrow,
   FluidContainer,
   Panel,
   PlaceholderMarker,
+  ScrollCue,
   SourceList,
   StyledLink,
+  Tabs,
   TestimonialCard,
   Typography,
 } from 'components';
-import { Spaces } from 'theme';
+import { FontSizes, Spaces } from 'theme';
 import { BiPlus } from 'react-icons/bi';
 
 /* Fluid section padding, applied at every breakpoint so the clamp() — not
@@ -77,10 +81,15 @@ const bandShell = {
 /* FAQ and Sources read at a narrower measure than the rest of the page. */
 const proseShell = { ...sectionShell, innerMaxWidth: '900px' } as const;
 
-const FLUID_H1 = 'clamp(42px, 6.4vw, 76px)';
-const FLUID_H2 = 'clamp(30px, 3.8vw, 46px)';
-const FLUID_H3 = 'clamp(24px, 2.6vw, 32px)';
-const FLUID_HERO_BODY = 'clamp(17px, 1.6vw, 21px)';
+/* Type scales with the viewport, but both ends of every clamp are real
+   FontSizes steps, so no width renders a size that is off the scale. Each
+   maximum is the size an existing variant already uses for that level:
+   pageHeader (4xl), title (2xl), titleSmall (xl), and one step above body
+   copy for the lead paragraphs that open the hero and the solidarity note. */
+const FLUID_H1 = `clamp(${FontSizes['2xl']}, 6.4vw, ${FontSizes['4xl']})`;
+const FLUID_H2 = `clamp(${FontSizes.xl}, 3.8vw, ${FontSizes['2xl']})`;
+const FLUID_H3 = `clamp(${FontSizes.lg}, 2.6vw, ${FontSizes.xl})`;
+const FLUID_LEAD = `clamp(${FontSizes.sm}, 1.6vw, ${FontSizes.md})`;
 
 /**
  * Chart animation. All of it is optional and fires once, on first scroll into
@@ -94,6 +103,8 @@ const chartAnimation = {
   donutVariant: 'donut',
   animationDuration: 1400,
 } as const;
+
+const WhereMoneyGoesContainer = styled.div``;
 
 export default function KeepTheUOpen() {
   return (
@@ -150,12 +161,18 @@ export default function KeepTheUOpen() {
 
       {/* 2 · Hero */}
       <FluidContainer
-        backgroundImage="/usu-front.jpg"
-        backgroundOverlay="rgba(0, 0, 0, 0.66)"
+        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+        backgroundOverlay="rgba(0, 0, 0, 0.75)"
+        backgroundBlur="2px"
         padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
         innerMaxWidth={CONTENT_MAX_WIDTH}
+        innerMinHeight="min(72svh, 680px)"
+        flex
+        flexDirection="column"
+        justifyContent="center"
+        textAlign="center"
       >
         <Typography
           as="p"
@@ -181,38 +198,52 @@ export default function KeepTheUOpen() {
         <Typography
           as="p"
           variant="copy"
-          fluidSize={FLUID_HERO_BODY}
+          fluidSize={FLUID_LEAD}
           lineHeight="1.6"
           color="greyLightest"
-          margin={`${Spaces.lg} 0 0`}
-          style={{ maxWidth: '62ch' }}
+          margin={`${Spaces.md} 0 0`}
         >
-          The University-Student Union runs on a student fee that hasn&apos;t
-          changed since 2007.
-          <br />
-          On the current budget, the reserves will dry up by{' '}
-          <Typography
-            as="span"
-            variant="copy"
-            fluidSize={FLUID_HERO_BODY}
-            weight="700"
-            color="white"
-          >
-            FY 2030-31
-          </Typography>
-          .
-          <br />
-          The proposal:{' '}
-          <Typography
-            as="span"
-            variant="copy"
-            fluidSize={FLUID_HERO_BODY}
-            weight="700"
-            color="white"
-          >
-            $90 more per semester,
-          </Typography>{' '}
-          or $5.63 a week to expand our programs.
+          The rooms your clubs meet in. The free gym. The food pantry. Study
+          rooms. Places to nap.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_LEAD}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          You already pay for all of it: $137.25 a semester, unchanged since
+          2007.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_LEAD}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          However, costs have risen for nineteen years while enrollment fell.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_LEAD}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          By FY 2030-31, the reserves covering the deficit are gone, leaving 40%
+          less for everything else.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          fluidSize={FLUID_LEAD}
+          lineHeight="1.6"
+          color="greyLightest"
+        >
+          The proposal: $90 more a semester. $50 for the building. $40 for what
+          students have asked for.
         </Typography>
         <div>
           <Button
@@ -230,18 +261,6 @@ export default function KeepTheUOpen() {
             {campaignMode.heroSecondaryCta}
           </Button>
         </div>
-        {campaignMode.voteDate && (
-          <Typography
-            as="p"
-            variant="span"
-            size="xs"
-            weight="700"
-            color="primary"
-            margin={`${Spaces.md} 0 0`}
-          >
-            {campaignMode.voteDate}
-          </Typography>
-        )}
         <Divider
           color="greyDark"
           size="1px"
@@ -258,29 +277,29 @@ export default function KeepTheUOpen() {
             />
           ))}
         </AutoGrid>
+        <ScrollCue
+          lineStyle="solid"
+          animation="trickle"
+          color="white"
+          thickness="0.5px"
+          height="100px"
+          duration="2600ms"
+          margin={`${Spaces.xl} auto 0`}
+        />
       </FluidContainer>
 
       {/* 3 · Thesis */}
       <FluidContainer {...sectionShell} id="why" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Why it matters
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
         <Typography
           as="h2"
           variant="pageHeader"
           fluidSize={FLUID_H2}
           lineHeight="1.15"
         >
-          You already paid for this building. Here&apos;s what you own.
+          You already paid for this building.
+          <br />
+          Here&apos;s what you own.
         </Typography>
         <Typography
           as="p"
@@ -343,16 +362,15 @@ export default function KeepTheUOpen() {
         {/* Solidarity bridge — sits after the cards, not as the opening frame */}
         <Panel
           shadow="none"
-          padding={`0 0 0 ${Spaces.lg}`}
           margin={`${Spaces.xl} 0 0`}
           backgroundColor="transparent"
+          padding="0"
         >
           <Typography
             as="p"
             variant="copy"
-            fluidSize="clamp(17px, 1.6vw, 20px)"
-            lineHeight="1.6"
             style={{ maxWidth: '68ch' }}
+            lineHeight="1.6"
           >
             And if you&apos;re one of the students who never comes in, someone
             you know does. The pantry, the quiet floor and the cultural
@@ -371,7 +389,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What&apos;s inside the building
+          What&apos;s inside
         </Typography>
         <AutoGrid minColumnWidth="280px">
           {services.map((service) => (
@@ -443,18 +461,7 @@ export default function KeepTheUOpen() {
 
       {/* 7 · The Numbers */}
       <FluidContainer {...sectionShell} id="numbers" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          The numbers
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
         <br />
         <Typography
           as="h2"
@@ -468,15 +475,6 @@ export default function KeepTheUOpen() {
 
         {/* 7.1 · Fee math — the hero's secondary-CTA target */}
         <div id="cost">
-          <Typography
-            as="h3"
-            variant="pageHeader"
-            fluidSize={FLUID_H3}
-            lineHeight="1.2"
-            margin={`0 0 ${Spaces.lg}`}
-          >
-            What this costs you
-          </Typography>
           <AutoGrid minColumnWidth="240px">
             {feeMath.map((column) => (
               <CitedStat
@@ -612,7 +610,7 @@ export default function KeepTheUOpen() {
           padding="clamp(16px, 2vw, 28px)"
           width="100%"
         >
-          <div>
+          <WhereMoneyGoesContainer>
             <Typography
               as="h3"
               variant="pageHeader"
@@ -640,7 +638,7 @@ export default function KeepTheUOpen() {
               animationDuration={chartAnimation.animationDuration}
               ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
             />
-          </div>
+          </WhereMoneyGoesContainer>
         </Panel>
 
         {/* 7.4 · BarChart */}
@@ -761,124 +759,15 @@ export default function KeepTheUOpen() {
         </Typography>
       </FluidContainer>
 
-      {/* 7.9 · What opens up if this passes */}
+      {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case; the
+          anchor nav's "If It Fails" link targets the second tab's own id, so
+          it scrolls here and switches the tab in one click. */}
       <FluidContainer
         {...sectionShell}
         id="if-it-passes"
         backgroundColor="white"
       >
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          If it passes
-        </Typography>
-        <br />
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          What opens up if this passes
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          color="greyDark"
-          margin={`0 0 ${Spaces.xl}`}
-          style={{ maxWidth: '68ch' }}
-        >
-          These are the spaces the U-SU has identified to add or convert. They
-          are described here only as far as they have been described — nothing
-          below is scheduled, costed, or final.{' '}
-          <PlaceholderMarker>
-            [NEEDS COPY — timeline and phasing]
-          </PlaceholderMarker>
-        </Typography>
-        <AutoGrid minColumnWidth="280px">
-          {proposedSpaces.map((space) => (
-            <Card
-              key={space.title}
-              title={space.title}
-              borderRadius="16px"
-              shadow="soft"
-            >
-              <Typography as="p" variant="copy" size="sm" lineHeight="1.6">
-                {space.body}
-                {space.marker && (
-                  <>
-                    {' '}
-                    <PlaceholderMarker>{space.marker}</PlaceholderMarker>
-                  </>
-                )}
-              </Typography>
-            </Card>
-          ))}
-        </AutoGrid>
-        <Panel
-          border="greyLighter"
-          borderStyle="dashed"
-          borderRadius="16px"
-          shadow="none"
-          padding="clamp(20px, 3vw, 32px)"
-          margin={`${Spaces.xl} 0 0`}
-        >
-          <div>
-            <Typography
-              as="p"
-              variant="span"
-              size="xs"
-              weight="800"
-              letterSpacing="0.06em"
-              color="gold"
-            >
-              [AWAITING RENDERINGS — 6 spaces]
-            </Typography>
-            <Typography
-              as="p"
-              variant="copy"
-              size="sm"
-              lineHeight="1.6"
-              color="greyDark"
-              margin={`${Spaces.md} 0 0`}
-              style={{ maxWidth: '56ch' }}
-            >
-              This section is the one place on the page where a picture would do
-              more than a sentence. Nothing ships here until there is a real
-              rendering or photograph of each space.
-            </Typography>
-          </div>
-        </Panel>
-      </FluidContainer>
-
-      {/* 8 · What changes if this doesn't pass */}
-      <FluidContainer
-        {...sectionShell}
-        id="if-it-fails"
-        backgroundColor="greyLightest"
-      >
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          If it doesn&apos;t pass
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
         <br />
         <Typography
           as="h2"
@@ -887,147 +776,220 @@ export default function KeepTheUOpen() {
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What changes if this doesn&apos;t pass
+          What changes, either way
         </Typography>
-        <AutoGrid minColumnWidth="320px">
-          <Panel
-            border="greyLighter"
-            shadow="none"
-            borderRadius="16px"
-            padding="clamp(20px, 3vw, 32px)"
-          >
-            <div>
-              <Typography
-                as="p"
-                variant="span"
-                size="2xs"
-                weight="700"
-                uppercase
-                letterSpacing="0.08em"
-                color="greyDark"
-                margin={`0 0 ${Spaces.md}`}
-              >
-                Today, funded by the current fee
-              </Typography>
-              {todayFacts.map((fact, index) => (
-                <div key={fact.label}>
-                  {index > 0 && (
-                    <Divider
-                      color="greyLighter"
-                      size="1px"
-                      margin={`${Spaces.md} 0`}
-                    />
-                  )}
-                  <Typography as="p" variant="span" size="sm" weight="700">
-                    {fact.label}
-                  </Typography>
+        <Tabs
+          variant="folder"
+          label="What happens to the U-SU under each outcome"
+          scrollMarginTop="84px"
+          items={[
+            {
+              title: 'If it passes',
+              children: (
+                <>
                   <Typography
                     as="p"
                     variant="copy"
                     size="sm"
                     lineHeight="1.6"
-                    margin={`${Spaces.xs} 0 0`}
+                    color="greyDark"
+                    margin={`0 0 ${Spaces.xl}`}
+                    style={{ maxWidth: '68ch' }}
                   >
-                    {fact.body}
-                    {fact.marker && (
-                      <>
-                        {' '}
-                        <PlaceholderMarker>{fact.marker}</PlaceholderMarker>
-                      </>
-                    )}
+                    These are the spaces the U-SU has identified to add or
+                    convert. They are described here only as far as they have
+                    been described — nothing below is scheduled, costed, or
+                    final.{' '}
+                    <PlaceholderMarker>
+                      [NEEDS COPY — timeline and phasing]
+                    </PlaceholderMarker>
                   </Typography>
-                </div>
-              ))}
-            </div>
-          </Panel>
-          <Panel
-            backgroundColor="greyDarkest"
-            shadow="none"
-            borderRadius="16px"
-            padding="clamp(20px, 3vw, 32px)"
-          >
-            <div>
-              <Typography
-                as="p"
-                variant="span"
-                size="2xs"
-                weight="700"
-                uppercase
-                letterSpacing="0.08em"
-                color="primary"
-                margin={`0 0 ${Spaces.md}`}
-              >
-                After FY 2030-31, on the current fee
-              </Typography>
-              <Typography
-                as="p"
-                variant="copy"
-                size="sm"
-                lineHeight="1.6"
-                color="white"
-                tabularNums
-              >
-                In the DO NOTHING projection, FY 2030-31 expenses of $6,677,545
-                run $2,340,220 past revenue — 35% of that year&apos;s spending —
-                and the reserve closes the year at −$2,065,518. The bond payment
-                of about $1,920,000 continues through 2038 and cannot be
-                reduced.
-              </Typography>
-              <Typography
-                as="p"
-                variant="copy"
-                size="sm"
-                lineHeight="1.6"
-                color="greyLighter"
-                margin={`${Spaces.md} 0 0`}
-              >
-                Everything in the column beside this one is paid for out of the
-                same budget. The U-SU has not decided or published which of them
-                it would reduce, and this page will not guess.
-              </Typography>
-              <Typography as="p" margin={`${Spaces.lg} 0 0`}>
-                <PlaceholderMarker variant="block" tone="primary">
-                  [NEEDS COPY — service-level impact statement, U-SU Fiscal
-                  Committee]
-                </PlaceholderMarker>
-              </Typography>
-            </div>
-          </Panel>
-        </AutoGrid>
-      </FluidContainer>
-
-      {/* 9 · Financial aid */}
-      <FluidContainer {...sectionShell} backgroundColor="white">
-        <Card
-          title="Does financial aid cover the increase?"
-          titleAs="h2"
-          backgroundColor="greyLightest"
-          borderRadius="16px"
-          shadow="none"
-          padding="clamp(20px, 3vw, 32px)"
-        >
-          <PlaceholderMarker variant="block">
-            [NEEDS COPY — Financial Aid]
-          </PlaceholderMarker>
-          <Typography
-            as="p"
-            variant="copy"
-            size="sm"
-            lineHeight="1.6"
-            margin={`${Spaces.md} 0 0`}
-          >
-            This answer has to come from Cal State LA Financial Aid, in their
-            words, and it will be published here before anything else on this
-            page is finalized. Until then:{' '}
-            <StyledLink
-              href="https://www.calstatela.edu/financialaid"
-              isExternalLink
-            >
-              Cal State LA Financial Aid
-            </StyledLink>
-            .
-          </Typography>
-        </Card>
+                  <AutoGrid minColumnWidth="280px">
+                    {proposedSpaces.map((space) => (
+                      <Card
+                        key={space.title}
+                        title={space.title}
+                        borderRadius="16px"
+                        shadow="soft"
+                      >
+                        <Typography
+                          as="p"
+                          variant="copy"
+                          size="sm"
+                          lineHeight="1.6"
+                        >
+                          {space.body}
+                          {space.marker && (
+                            <>
+                              {' '}
+                              <PlaceholderMarker>
+                                {space.marker}
+                              </PlaceholderMarker>
+                            </>
+                          )}
+                        </Typography>
+                      </Card>
+                    ))}
+                  </AutoGrid>
+                  <Panel
+                    border="greyLighter"
+                    borderStyle="dashed"
+                    borderRadius="16px"
+                    shadow="none"
+                    padding="clamp(20px, 3vw, 32px)"
+                    margin={`${Spaces.xl} 0 0`}
+                  >
+                    <div>
+                      <Typography
+                        as="p"
+                        variant="span"
+                        size="xs"
+                        weight="800"
+                        letterSpacing="0.06em"
+                        color="gold"
+                      >
+                        [AWAITING RENDERINGS — 6 spaces]
+                      </Typography>
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="sm"
+                        lineHeight="1.6"
+                        color="greyDark"
+                        margin={`${Spaces.md} 0 0`}
+                        style={{ maxWidth: '56ch' }}
+                      >
+                        This section is the one place on the page where a
+                        picture would do more than a sentence. Nothing ships
+                        here until there is a real rendering or photograph of
+                        each space.
+                      </Typography>
+                    </div>
+                  </Panel>
+                </>
+              ),
+            },
+            {
+              id: 'if-it-fails',
+              title: "If it doesn't pass",
+              children: (
+                <AutoGrid minColumnWidth="320px">
+                  <Panel
+                    border="greyLighter"
+                    shadow="none"
+                    borderRadius="16px"
+                    padding="clamp(20px, 3vw, 32px)"
+                  >
+                    <div>
+                      <Typography
+                        as="p"
+                        variant="span"
+                        size="2xs"
+                        weight="700"
+                        uppercase
+                        letterSpacing="0.08em"
+                        color="greyDark"
+                        margin={`0 0 ${Spaces.md}`}
+                      >
+                        Today, funded by the current fee
+                      </Typography>
+                      {todayFacts.map((fact, index) => (
+                        <div key={fact.label}>
+                          {index > 0 && (
+                            <Divider
+                              color="greyLighter"
+                              size="1px"
+                              margin={`${Spaces.md} 0`}
+                            />
+                          )}
+                          <Typography
+                            as="p"
+                            variant="span"
+                            size="sm"
+                            weight="700"
+                          >
+                            {fact.label}
+                          </Typography>
+                          <Typography
+                            as="p"
+                            variant="copy"
+                            size="sm"
+                            lineHeight="1.6"
+                            margin={`${Spaces.xs} 0 0`}
+                          >
+                            {fact.body}
+                            {fact.marker && (
+                              <>
+                                {' '}
+                                <PlaceholderMarker>
+                                  {fact.marker}
+                                </PlaceholderMarker>
+                              </>
+                            )}
+                          </Typography>
+                        </div>
+                      ))}
+                    </div>
+                  </Panel>
+                  <Panel
+                    backgroundColor="greyDarkest"
+                    shadow="none"
+                    borderRadius="16px"
+                    padding="clamp(20px, 3vw, 32px)"
+                  >
+                    <div>
+                      <Typography
+                        as="p"
+                        variant="span"
+                        size="2xs"
+                        weight="700"
+                        uppercase
+                        letterSpacing="0.08em"
+                        color="primary"
+                        margin={`0 0 ${Spaces.md}`}
+                      >
+                        After FY 2030-31, on the current fee
+                      </Typography>
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="sm"
+                        lineHeight="1.6"
+                        color="white"
+                        tabularNums
+                      >
+                        In the DO NOTHING projection, FY 2030-31 expenses of
+                        $6,677,545 run $2,340,220 past revenue — 35% of that
+                        year&apos;s spending — and the reserve closes the year
+                        at −$2,065,518. The bond payment of about $1,920,000
+                        continues through 2038 and cannot be reduced.
+                      </Typography>
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="sm"
+                        lineHeight="1.6"
+                        color="greyLighter"
+                        margin={`${Spaces.md} 0 0`}
+                      >
+                        Everything in the column beside this one is paid for out
+                        of the same budget. The U-SU has not decided or
+                        published which of them it would reduce, and this page
+                        will not guess.
+                      </Typography>
+                      <Typography as="p" margin={`${Spaces.lg} 0 0`}>
+                        <PlaceholderMarker variant="block" tone="primary">
+                          [NEEDS COPY — service-level impact statement, U-SU
+                          Fiscal Committee]
+                        </PlaceholderMarker>
+                      </Typography>
+                    </div>
+                  </Panel>
+                </AutoGrid>
+              ),
+            },
+          ]}
+        />
       </FluidContainer>
 
       {/* 10 · Testimonials — renders from an empty array */}
@@ -1188,18 +1150,9 @@ export default function KeepTheUOpen() {
 
       {/* 13 · For faculty & staff */}
       <FluidContainer {...bandShell} backgroundColor="greyDarkest">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="primary"
-          margin={`0 0 ${Spaces.lg}`}
-        >
+        <Eyebrow color="primary" margin={`0 0 ${Spaces.lg}`}>
           For faculty &amp; staff
-        </Typography>
+        </Eyebrow>
         <AutoGrid minColumnWidth="260px">
           {facultyItems.map((item) => (
             <div key={item.title}>
@@ -1236,18 +1189,7 @@ export default function KeepTheUOpen() {
 
       {/* 14 · Sources — SourceList pending; ids must stay #source-1…6 */}
       <FluidContainer {...proseShell} id="sources" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Sources
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>Sources</Eyebrow>
         <Typography
           as="h2"
           variant="pageHeader"
@@ -1301,7 +1243,7 @@ export default function KeepTheUOpen() {
             {campaignMode.ctaLabel}
           </Button>
           <Button variant="outline" href="#faq">
-            Read the FAQ
+            Read the FAQs
           </Button>
         </div>
       </FluidContainer>
