@@ -981,12 +981,14 @@ export default function KeepTheUOpen() {
         </TextAndImage>
       </FluidContainer>
 
-      {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case; the
-          anchor nav's "If It Fails" link targets the second tab's own id, so
-          it scrolls here and switches the tab in one click. */}
+      {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case. The
+          second tab keeps its own `if-it-fails` id — the FAQ links straight
+          to it, which scrolls here and switches the tab in one click — but it
+          is no longer an anchor-nav destination, since a nav item pointing at
+          a panel the reader cannot see until they click is a dead end. */}
       <FluidContainer
         {...sectionShell}
-        id="if-it-passes"
+        id="what-can-change"
         backgroundColor="white"
       >
         <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
@@ -1216,7 +1218,11 @@ export default function KeepTheUOpen() {
 
       {/* 11 · Get informed. The eyebrow keeps the mode-dependent string, so
           flipping to advocacy still only touches `campaignMode`. */}
-      <FluidContainer {...sectionShell} backgroundColor="greyLightest">
+      <FluidContainer
+        {...sectionShell}
+        id="before-you-decide"
+        backgroundColor="greyLightest"
+      >
         <Eyebrow margin={`0 0 ${Spaces.md}`}>
           {campaignMode.beforeHeading}
         </Eyebrow>

@@ -32,13 +32,14 @@ export const campaignMode = {
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
 
+/* Every label here is the heading of the section it lands on, word for word.
+   A nav that renames its destinations makes a reader check whether they
+   arrived somewhere else. */
 export const anchorLinks = [
   { label: 'Why It Matters', href: '#why' },
   { label: 'The Numbers', href: '#numbers' },
-  { label: 'If It Passes', href: '#if-it-passes' },
-  { label: 'If It Fails', href: '#if-it-fails' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Sources', href: '#sources' },
+  { label: 'What Can Change', href: '#what-can-change' },
+  { label: 'Before You Make a Decision', href: '#before-you-decide' },
 ];
 
 export const heroFigures = [
