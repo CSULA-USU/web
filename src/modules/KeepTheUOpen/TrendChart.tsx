@@ -29,6 +29,12 @@ export interface TrendSeries {
    * together should take opposite sides so their labels do not collide.
    */
   labelSide?: 'above' | 'below';
+  /**
+   * Draws this series' points as solid dots rather than the default white
+   * ring. Set it on any series whose ring would otherwise be confusable with
+   * the hollow zero-crossing marker.
+   */
+  filledPoint?: boolean;
   points: TrendPoint[];
 }
 
@@ -142,10 +148,28 @@ const pillLeft = (x: number, textWidth: number, anchor: string) => {
 
 /* Point to label baseline. Enough that the pill clears the 4-unit dot rather
    than resting against it. */
+/* A series only needs the two-tone stroke if it actually goes below zero. */
+const crossesZero = (s: TrendSeries) => s.points.some((p) => p.value < 0);
+
+const POINT_RADIUS = 4;
+
 const LABEL_RISE = 15;
 const LABEL_DROP = 23;
 
-/* Below ~660px the drawing scrolls rather than shrinking labels past legibility. */
+/**
+ * Width the drawing scrolls at rather than shrinking below.
+ *
+ * The viewBox is 1000 units wide, so an svg rendered at W px scales its text
+ * by W/1000. The previous floor of 660 put `CHART_LABEL_SIZE` at about 8.6px
+ * — too small to read, and on the narrow screens most likely to hit it. 900
+ * lands it near 12px, about where a dense chart label stops being a squint.
+ *
+ * The cost is a longer sideways scroll on a phone. That is the intended
+ * trade: the drawing is `role="img"` with a full text alternative, and the
+ * published figures are in the data table below it, so a reader who does not
+ * want to scroll a chart has somewhere better to go.
+ */
+const SCROLL_FLOOR_PX = 900;
 const ScrollRegion = styled.div`
   width: 100%;
   overflow-x: auto;
@@ -153,7 +177,7 @@ const ScrollRegion = styled.div`
 
   svg {
     display: block;
-    min-width: 660px;
+    min-width: ${SCROLL_FLOOR_PX}px;
     width: 100%;
     height: auto;
   }
@@ -184,10 +208,31 @@ const LegendItem = styled.li`
   gap: ${Spaces.sm};
 `;
 
-const LineSwatch = styled.span<{ $color: string; $dashed: boolean }>`
+/* A series that changes color partway along the plot says so in its own
+   swatch — half the series color, half the deficit color, split down the
+   middle. A legend that shows one color for a two-color line is the thing a
+   reader checks when the chart confuses them, and it would confuse them
+   further. Drawn as a background rather than a border, since a border takes
+   only one color; the dashed series keep the border, which is what makes
+   them dashed. */
+const LineSwatch = styled.span<{
+  $color: string;
+  $endColor?: string;
+  $dashed: boolean;
+}>`
   width: 28px;
-  border-top: 3px ${(p) => (p.$dashed ? 'dashed' : 'solid')} ${(p) => p.$color};
   flex-shrink: 0;
+  ${(p) =>
+    p.$endColor && !p.$dashed
+      ? `
+        height: 3px;
+        background: linear-gradient(
+          to right,
+          ${p.$color} 50%,
+          ${p.$endColor} 50%
+        );
+      `
+      : `border-top: 3px ${p.$dashed ? 'dashed' : 'solid'} ${p.$color};`}
 `;
 
 /* Scaled on X from the left edge, so the plotted lines draw across. Gridlines
@@ -224,6 +269,8 @@ export const TrendChart = ({
   showPointValues = true,
 }: TrendChartProps) => {
   const clipId = useId();
+  const deficitGradientId = (seriesId: string) =>
+    `${clipId}-deficit-${seriesId}`;
   const { ref, atFinal, isTransitioning } = useRevealOnce<HTMLDivElement>({
     enabled: animate,
     resetKey: animationDuration,
@@ -285,6 +332,30 @@ export const TrendChart = ({
                 }
               />
             </clipPath>
+
+            {/* A line that crosses zero is two different facts either side of
+                it, so it is drawn in two colors. Splitting the polyline at the
+                crossing would mean solving for the intercept and rebuilding
+                the points; a vertical gradient does it geometrically instead.
+                The two stops sit a single unit apart at the zero line, which
+                reads as a hard cut at any rendered size, and a gradient pads
+                its end colors outward — so everything above zero is the series
+                color and everything below is the deficit color, wherever the
+                line happens to cross. One per series that goes negative. */}
+            {series.filter(crossesZero).map((s) => (
+              <linearGradient
+                key={`${s.id}-gradient`}
+                id={deficitGradientId(s.id)}
+                gradientUnits="userSpaceOnUse"
+                x1={0}
+                y1={ZERO_Y}
+                x2={0}
+                y2={ZERO_Y + 1}
+              >
+                <stop offset="0" stopColor={Colors[s.color]} />
+                <stop offset="1" stopColor={Colors.redDark} />
+              </linearGradient>
+            ))}
           </defs>
 
           {GRIDLINE_MILLIONS.map((millions) => (
@@ -339,7 +410,11 @@ export const TrendChart = ({
                 key={s.id}
                 points={pointsFor(s)}
                 fill="none"
-                stroke={Colors[s.color]}
+                stroke={
+                  crossesZero(s)
+                    ? `url(#${deficitGradientId(s.id)})`
+                    : Colors[s.color]
+                }
                 strokeWidth={s.strokeWidth}
                 strokeDasharray={s.dashed ? '9 7' : undefined}
                 strokeLinecap="round"
@@ -370,9 +445,13 @@ export const TrendChart = ({
                       <circle
                         cx={x}
                         cy={y}
-                        r={4}
-                        fill={Colors.white}
-                        stroke={Colors[s.color]}
+                        r={POINT_RADIUS}
+                        /* Filled series read as a solid dot; the stroke stays
+                           so both kinds keep the same outer diameter. Color
+                           follows the same rule as the line and the pill, so
+                           the dot below zero is not the odd one out. */
+                        fill={s.filledPoint ? pillFill : Colors.white}
+                        stroke={pillFill}
                         strokeWidth={2}
                       />
                       <rect
@@ -446,7 +525,11 @@ export const TrendChart = ({
       <Legend>
         {series.map((s) => (
           <LegendItem key={s.id}>
-            <LineSwatch $color={Colors[s.color]} $dashed={!!s.dashed} />
+            <LineSwatch
+              $color={Colors[s.color]}
+              $endColor={crossesZero(s) ? Colors.redDark : undefined}
+              $dashed={!!s.dashed}
+            />
             <Typography as="span" variant="span" size="xs" color="greyDarker">
               {s.label}
             </Typography>

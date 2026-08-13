@@ -337,6 +337,7 @@ export const trendSeries: TrendSeries[] = [
     color: 'greyDarkest',
     strokeWidth: 3,
     dashed: true,
+    filledPoint: true,
     labelSide: 'above',
     points: [
       { yearIndex: 1, value: 5760109 },
@@ -349,6 +350,7 @@ export const trendSeries: TrendSeries[] = [
     color: 'greyDark',
     strokeWidth: 3,
     dashed: true,
+    filledPoint: true,
     labelSide: 'below',
     points: [
       { yearIndex: 1, value: 4876638 },
