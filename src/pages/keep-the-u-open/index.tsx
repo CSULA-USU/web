@@ -446,6 +446,7 @@ export default function KeepTheUOpen() {
           color="white"
           thickness="0.25px"
           height="100px"
+          fadeLength="32px"
           duration="2600ms"
           margin={`${Spaces.xl} auto 0`}
         />
