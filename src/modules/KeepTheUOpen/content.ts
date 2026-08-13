@@ -442,10 +442,17 @@ export const trendTable: TableData = {
   ],
 };
 
-export const reserveCallouts = [
-  { eyebrow: 'Reserve, FY 2024-25', value: '$8,364,353' },
-  { eyebrow: 'Reserve, FY 2029-30', value: '$274,702' },
-  { eyebrow: 'Reserve, FY 2030-31', value: '−$2,065,518' },
+/* `amount` drives the count-up; `value` is the same figure as text, and is
+   what renders on first paint, without JS, and under reduced motion. The two
+   must not drift apart. */
+export const reserveCallouts: {
+  eyebrow: string;
+  value: string;
+  amount: number;
+}[] = [
+  { eyebrow: 'Reserve, FY 2024-25', value: '$8,364,353', amount: 8364353 },
+  { eyebrow: 'Reserve, FY 2029-30', value: '$274,702', amount: 274702 },
+  { eyebrow: 'Reserve, FY 2030-31', value: '−$2,065,518', amount: -2065518 },
 ];
 
 /* Only the bond share is published. Amounts come from the source rather than

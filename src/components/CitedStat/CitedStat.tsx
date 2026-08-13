@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Colors, FontSizes, Spaces } from 'theme';
 import { Typography } from '../Typography';
 import { CitationMarker } from '../CitationMarker';
+import { CountUp } from '../CountUp';
 
 type StatVariant = 'onLight' | 'onDark' | 'onPrimary';
 
@@ -22,6 +24,22 @@ interface CitedStatProps {
   highlightValue?: boolean;
   /** Draws a 3px rule down the left edge in this color. */
   accentColor?: keyof typeof Colors;
+  /**
+   * Counts the figure up on first scroll into view, from zero to this number.
+   * A negative number counts down, which is the honest motion for a figure
+   * falling into deficit. `value` still supplies the text that renders on
+   * first paint, without JS, and under `prefers-reduced-motion`, so the two
+   * must express the same number.
+   */
+  countTo?: number;
+  /**
+   * Formats each counted frame. Required alongside `countTo` — without it the
+   * figure counts in bare digits and only settles into `value`'s formatting
+   * at the end.
+   */
+  formatValue?: (n: number) => string;
+  /** Overrides the figure color the variant would otherwise pick. */
+  valueColor?: keyof typeof Colors;
 }
 
 /* Both ends of every clamp are real FontSizes steps, and every maximum stays
@@ -74,13 +92,43 @@ export const CitedStat = ({
   eyebrow,
   highlightValue,
   accentColor,
+  countTo,
+  formatValue,
+  valueColor,
 }: CitedStatProps) => {
   const figureColor =
-    variant === 'onDark' && highlightValue
+    valueColor ??
+    (variant === 'onDark' && highlightValue
       ? 'primary'
       : variant === 'onDark'
       ? 'white'
-      : 'black';
+      : 'black');
+
+  /* `CountUp` starts its counter at zero and only reaches the real number
+     once its observer fires, so rendering it on the server would ship HTML
+     stating the figure is $0. The static `value` holds until mount, and holds
+     forever under reduced motion — where, per this page's rules, no observer
+     should be registered at all. */
+  const [isCounting, setIsCounting] = useState(false);
+
+  useEffect(() => {
+    if (countTo === undefined) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    setIsCounting(true);
+  }, [countTo]);
+
+  /* Shared by the static figure and the counted one, so a stat that animates
+     is the same typography as one that does not. */
+  const figureType = {
+    as: 'p',
+    variant: 'span',
+    weight: '800',
+    fluidSize: figureSizes[variant],
+    lineHeight: '1',
+    tabularNums: true,
+    color: figureColor,
+  } as const;
 
   /* On the yellow band the figure carries the marker, sized to the figure and
      black for contrast. Elsewhere it reads as a footnote on the label. */
@@ -102,20 +150,16 @@ export const CitedStat = ({
           {eyebrow}
         </Typography>
       )}
-      <Typography
-        as="p"
-        variant="span"
-        weight="800"
-        fluidSize={figureSizes[variant]}
-        lineHeight="1"
-        tabularNums
-        color={figureColor}
-      >
-        {value}
-        {sourceId && markerOnFigure && (
-          <CitationMarker sourceId={sourceId} context="figure" />
-        )}
-      </Typography>
+      {countTo !== undefined && isCounting ? (
+        <CountUp {...figureType} end={countTo} format={formatValue} />
+      ) : (
+        <Typography {...figureType}>
+          {value}
+          {sourceId && markerOnFigure && (
+            <CitationMarker sourceId={sourceId} context="figure" />
+          )}
+        </Typography>
+      )}
       {label && (
         <Typography
           as="p"

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, Page, ShareChart, TrendChart } from 'modules';
+import { BarChart, formatDollars, Page, ShareChart, TrendChart } from 'modules';
 import {
   anchorLinks,
   bandStats,
@@ -68,6 +68,17 @@ const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
    is capped separately by its own measure, so widening this only gives the
    charts and card grids more room. */
 const CONTENT_MAX_WIDTH = '1440px';
+
+/* Reading measure for running text. Sections and panels are as wide as their
+   charts and grids need; the prose inside them is not. A line much past 75
+   characters loses the reader on the return sweep — they land back on the
+   line they just finished. Every paragraph on this page is capped here. */
+const MEASURE = '68ch';
+
+/* A looser measure for prose sitting under a full-width chart, where the
+   default reads mean against all that width. Still short of the ~85 where a
+   line stops being comfortably scannable. */
+const WIDE_MEASURE = '80ch';
 
 const sectionShell = {
   padding: SECTION_PADDING,
@@ -464,7 +475,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             Most Cal State LA students commute. The U-SU is the part of campus
             that is useful whether or not you have class the next hour and
@@ -527,7 +538,7 @@ export default function KeepTheUOpen() {
           <Typography
             as="p"
             variant="copy"
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
             lineHeight="1.6"
           >
             And if you&apos;re one of the students who never comes in, someone
@@ -673,7 +684,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.lg} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             The $5.63 is per week across a 16-week semester. The fee was last
             set in 2007
@@ -688,7 +699,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             Cal State LA has the lowest student center fee of any CSU campus:
             $275 a year, unchanged since 2007.
@@ -744,17 +755,28 @@ export default function KeepTheUOpen() {
               shadeBetween={['expenses', 'revenue']}
               ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
               caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
+              captionMaxWidth={WIDE_MEASURE}
               table={trendTable}
               animate={chartAnimation.animateTrend}
               animationDuration={chartAnimation.animationDuration}
             />
-            <AutoGrid minColumnWidth="200px" margin="clamp(16px, 2vw, 28px)">
+            <AutoGrid
+              minColumnWidth="200px"
+              justifyItems="center"
+              margin="clamp(16px, 2vw, 28px)"
+            >
               {reserveCallouts.map((callout) => (
                 <CitedStat
                   key={callout.eyebrow}
                   variant="onLight"
                   eyebrow={callout.eyebrow}
                   value={callout.value}
+                  countTo={callout.amount}
+                  formatValue={formatDollars}
+                  /* The year the reserve goes negative is the one figure on
+                     this page that is bad news on its own terms. Red ties it
+                     to the reserve line in the chart above. */
+                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
                 />
               ))}
             </AutoGrid>
@@ -764,7 +786,10 @@ export default function KeepTheUOpen() {
               size="xs"
               lineHeight="1.6"
               color="greyDark"
-              margin={`${Spaces.lg} 0 0`}
+              /* Centered block, text still ranged left — see the chart's own
+                 caption above it. */
+              margin={`${Spaces.lg} auto 0`}
+              style={{ maxWidth: WIDE_MEASURE }}
             >
               Figures are from the Fiscal Committee&apos;s April 10 2026
               &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
@@ -940,7 +965,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             If the 2007 fee had only kept pace with inflation, it would be{' '}
             <strong>$215.30 a semester</strong> today.
@@ -991,7 +1016,7 @@ export default function KeepTheUOpen() {
                     lineHeight="1.6"
                     color="greyDark"
                     margin={`0 0 ${Spaces.xl}`}
-                    style={{ maxWidth: '68ch' }}
+                    style={{ maxWidth: MEASURE }}
                   >
                     These are the spaces the U-SU has identified to add or
                     convert. They are described here only as far as they have
@@ -1269,7 +1294,7 @@ export default function KeepTheUOpen() {
           size="sm"
           lineHeight="1.6"
           margin={`${Spaces.md} 0 ${Spaces.xl}`}
-          style={{ maxWidth: '68ch' }}
+          style={{ maxWidth: MEASURE }}
         >
           Fee proposals move through the CSUs regularly, and students don&apos;t
           always approve them.
@@ -1283,7 +1308,7 @@ export default function KeepTheUOpen() {
           size="sm"
           lineHeight="1.6"
           margin={`${Spaces.xl} 0 0`}
-          style={{ maxWidth: '68ch' }}
+          style={{ maxWidth: MEASURE }}
         >
           San Marcos is the one worth understanding. Students rejected the first
           proposal, partly because it would have charged them a year before the
@@ -1296,7 +1321,7 @@ export default function KeepTheUOpen() {
           size="sm"
           lineHeight="1.6"
           margin={`${Spaces.md} 0 0`}
-          style={{ maxWidth: '68ch' }}
+          style={{ maxWidth: MEASURE }}
         >
           That&apos;s what participation does. Not just approve or reject —
           change what gets proposed.

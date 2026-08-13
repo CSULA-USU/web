@@ -54,6 +54,8 @@ interface TrendChartProps {
   /** Series id pair whose vertical gap is shaded. */
   shadeBetween?: [string, string];
   caption: string;
+  /** Reading measure for `caption`. Defaults to `CAPTION_MEASURE`. */
+  captionMaxWidth?: string;
   ariaLabel: string;
   /** Year-by-year figures, read by screen readers in place of the drawing. */
   table: TableData;
@@ -84,8 +86,10 @@ const yAt = (dollars: number) =>
 const formatMillions = (millions: number) =>
   `${millions < 0 ? '−' : ''}$${Math.abs(millions)}M`;
 
-/* Matches the hidden table's formatting, minus sign included. */
-const formatDollars = (dollars: number) =>
+/* Matches the hidden table's formatting, minus sign included. Exported so the
+   reserve figures beside the chart count up into exactly the same string the
+   chart draws — a figure that formats two ways reads as two figures. */
+export const formatDollars = (dollars: number) =>
   `${dollars < 0 ? '−' : ''}$${Math.abs(dollars).toLocaleString('en-US')}`;
 
 /* Keeps a label inside the drawing: points at either end of the axis anchor
@@ -97,8 +101,49 @@ const anchorFor = (x: number): 'start' | 'middle' | 'end' => {
   return 'middle';
 };
 
-const LABEL_RISE = 12;
-const LABEL_DROP = 20;
+/**
+ * Point values are drawn as filled pills rather than bare text. Loose text
+ * over a chart competes with every line and gridline it crosses; a solid
+ * ground gives each figure its own space and ties it to the series by color.
+ *
+ * SVG has no way to size a box to the text inside it, so the pill is measured
+ * from the glyphs. Digits, `$` and the minus sign run about 0.62em at this
+ * weight; commas about half. The estimate is deliberately generous — a pill a
+ * little wide reads as intentional, a pill a little narrow clips the number it
+ * exists to make legible.
+ */
+const GLYPH_EM = 0.62;
+const NARROW_GLYPH_EM = 0.34;
+const PILL_PAD_X = 8;
+const PILL_HEIGHT = 22;
+/* Baseline to pill top. Roughly cap height plus even padding, so digits —
+   which have no descenders — sit centered. */
+const PILL_BASELINE_OFFSET = 15;
+
+const estimateLabelWidth = (text: string) =>
+  text
+    .split('')
+    .reduce(
+      (total, char) =>
+        total +
+        CHART_LABEL_SIZE *
+          (char === ',' || char === '.' ? NARROW_GLYPH_EM : GLYPH_EM),
+      0,
+    );
+
+/* The text is anchored at the point; the pill wraps it, so its left edge
+   depends on which way the text runs from there. */
+const pillLeft = (x: number, textWidth: number, anchor: string) => {
+  if (anchor === 'start') return x - PILL_PAD_X;
+  if (anchor === 'end') return x - textWidth - PILL_PAD_X;
+
+  return x - textWidth / 2 - PILL_PAD_X;
+};
+
+/* Point to label baseline. Enough that the pill clears the 4-unit dot rather
+   than resting against it. */
+const LABEL_RISE = 15;
+const LABEL_DROP = 23;
 
 /* Below ~660px the drawing scrolls rather than shrinking labels past legibility. */
 const ScrollRegion = styled.div`
@@ -114,9 +159,19 @@ const ScrollRegion = styled.div`
   }
 `;
 
+/* A line of text stops being readable somewhere past 75 characters — the eye
+   loses the return sweep and re-reads the line it just finished. The chart
+   itself wants the full panel width; its prose does not. Override per caller
+   when the chart sits in an unusually wide panel and the default reads mean
+   against it. */
+const CAPTION_MEASURE = '68ch';
+
+/* Centered under the plot. A legend ranged left reads as a caption and gets
+   skipped; a chart whose legend is skipped is a chart nobody can read. */
 const Legend = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: ${Spaces.md} ${Spaces.lg};
   list-style: none;
   margin: ${Spaces.md} 0 0;
@@ -161,6 +216,7 @@ export const TrendChart = ({
   markers = [],
   shadeBetween,
   caption,
+  captionMaxWidth = CAPTION_MEASURE,
   ariaLabel,
   table,
   animate = true,
@@ -299,6 +355,16 @@ export const TrendChart = ({
                   const y = yAt(point.value);
                   const above = (s.labelSide || 'above') === 'above';
 
+                  const label = formatDollars(point.value);
+                  const anchor = anchorFor(x);
+                  const textWidth = estimateLabelWidth(label);
+                  const baselineY = above ? y - LABEL_RISE : y + LABEL_DROP;
+                  /* A figure below zero takes the deficit color rather than
+                     its series color, so the number says what it means
+                     without the reader having to catch a minus sign. */
+                  const pillFill =
+                    point.value < 0 ? Colors.redDark : Colors[s.color];
+
                   return (
                     <g key={`${s.id}-${point.yearIndex}`}>
                       <circle
@@ -309,15 +375,23 @@ export const TrendChart = ({
                         stroke={Colors[s.color]}
                         strokeWidth={2}
                       />
+                      <rect
+                        x={pillLeft(x, textWidth, anchor)}
+                        y={baselineY - PILL_BASELINE_OFFSET}
+                        width={textWidth + PILL_PAD_X * 2}
+                        height={PILL_HEIGHT}
+                        rx={6}
+                        fill={pillFill}
+                      />
                       <text
                         x={x}
-                        y={above ? y - LABEL_RISE : y + LABEL_DROP}
-                        textAnchor={anchorFor(x)}
+                        y={baselineY}
+                        textAnchor={anchor}
                         fontSize={CHART_LABEL_SIZE}
                         fontWeight={700}
-                        fill={Colors[s.color]}
+                        fill={Colors.white}
                       >
-                        {formatDollars(point.value)}
+                        {label}
                       </text>
                     </g>
                   );
@@ -394,7 +468,12 @@ export const TrendChart = ({
         size="xs"
         lineHeight="1.6"
         color="greyDark"
-        margin={`${Spaces.md} 0 0`}
+        /* `auto` sides center the capped block under the full-width plot,
+           in line with the legend above it. The text inside stays ranged
+           left — centering the lines themselves would cost the reader the
+           straight left edge their eye returns to. */
+        margin={`${Spaces.md} auto 0`}
+        style={{ maxWidth: captionMaxWidth }}
       >
         {caption}
       </Typography>
