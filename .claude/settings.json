@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // \"\"'); printf '%s\\n' \"$cmd\" | grep -qE '(^|[;&|(]+)[[:space:]]*((yarn|pnpm)[[:space:]]+build|npm[[:space:]]+run[[:space:]]+build|(npx[[:space:]]+)?next[[:space:]]+(build|start))([[:space:]]|$)' || exit 0; procs=$(pgrep -fl \"next[ ]dev\" 2>/dev/null; pgrep -fl \"next[-]server\" 2>/dev/null); [ -z \"$procs\" ] && exit 0; jq -nc --arg p \"$procs\" '{hookSpecificOutput:{hookEventName:\"PreToolUse\",permissionDecision:\"deny\",permissionDecisionReason:(\"Blocked: a Next server is already running (\" + $p + \"). A production build rewrites the shared .next directory, so the live server starts 500ing with \\\"Cannot find module ./chunks/vendor-chunks/*\\\" until it is restarted. Stop that server first, or verify without touching .next: npx tsc --noEmit, yarn lint, yarn test.\")}}'",
+            "timeout": 10,
+            "statusMessage": "Checking for a running dev server"
+          }
+        ]
+      }
+    ]
+  }
+}

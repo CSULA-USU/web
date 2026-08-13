@@ -19,8 +19,15 @@ export const faq = [
     answer: (
       <>
         That answer belongs to Cal State LA Financial Aid, not to the U-SU, and
-        we are not going to approximate it.{' '}
-        <PlaceholderMarker>[NEEDS COPY — Financial Aid]</PlaceholderMarker>
+        we are not going to approximate it. It will be published here, in their
+        words, before anything else on this page is finalized. Until then:{' '}
+        <StyledLink
+          href="https://www.calstatela.edu/financialaid"
+          isExternalLink
+        >
+          Cal State LA Financial Aid
+        </StyledLink>
+        . <PlaceholderMarker>[NEEDS COPY — Financial Aid]</PlaceholderMarker>
       </>
     ),
   },
