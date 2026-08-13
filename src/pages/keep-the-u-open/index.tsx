@@ -34,9 +34,11 @@ import {
   CitedStat,
   Divider,
   Expandable,
+  Eyebrow,
   FluidContainer,
   Panel,
   PlaceholderMarker,
+  ScrollCue,
   SourceList,
   StyledLink,
   Tabs,
@@ -275,22 +277,20 @@ export default function KeepTheUOpen() {
             />
           ))}
         </AutoGrid>
+        <ScrollCue
+          lineStyle="solid"
+          animation="trickle"
+          color="white"
+          thickness="0.5px"
+          height="100px"
+          duration="2600ms"
+          margin={`${Spaces.xl} auto 0`}
+        />
       </FluidContainer>
 
       {/* 3 · Thesis */}
       <FluidContainer {...sectionShell} id="why" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Why it matters
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
         <Typography
           as="h2"
           variant="pageHeader"
@@ -389,7 +389,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What&apos;s inside the building
+          What&apos;s inside
         </Typography>
         <AutoGrid minColumnWidth="280px">
           {services.map((service) => (
@@ -461,18 +461,7 @@ export default function KeepTheUOpen() {
 
       {/* 7 · The Numbers */}
       <FluidContainer {...sectionShell} id="numbers" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          The numbers
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
         <br />
         <Typography
           as="h2"
@@ -486,15 +475,6 @@ export default function KeepTheUOpen() {
 
         {/* 7.1 · Fee math — the hero's secondary-CTA target */}
         <div id="cost">
-          <Typography
-            as="h3"
-            variant="title"
-            fluidSize={FLUID_H3}
-            lineHeight="1.2"
-            margin={`0 0 ${Spaces.lg}`}
-          >
-            What this costs you:
-          </Typography>
           <AutoGrid minColumnWidth="240px">
             {feeMath.map((column) => (
               <CitedStat
@@ -787,18 +767,7 @@ export default function KeepTheUOpen() {
         id="if-it-passes"
         backgroundColor="white"
       >
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          What&apos;s at stake
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
         <br />
         <Typography
           as="h2"
@@ -1181,18 +1150,9 @@ export default function KeepTheUOpen() {
 
       {/* 13 · For faculty & staff */}
       <FluidContainer {...bandShell} backgroundColor="greyDarkest">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="primary"
-          margin={`0 0 ${Spaces.lg}`}
-        >
+        <Eyebrow color="primary" margin={`0 0 ${Spaces.lg}`}>
           For faculty &amp; staff
-        </Typography>
+        </Eyebrow>
         <AutoGrid minColumnWidth="260px">
           {facultyItems.map((item) => (
             <div key={item.title}>
@@ -1229,18 +1189,7 @@ export default function KeepTheUOpen() {
 
       {/* 14 · Sources — SourceList pending; ids must stay #source-1…6 */}
       <FluidContainer {...proseShell} id="sources" backgroundColor="white">
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.12em"
-          color="gold"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Sources
-        </Typography>
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>Sources</Eyebrow>
         <Typography
           as="h2"
           variant="pageHeader"

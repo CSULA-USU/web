@@ -13,6 +13,7 @@ export * from './CountUp';
 export * from './DescriptionCard';
 export * from './Divider';
 export * from './Expandable';
+export * from './Eyebrow';
 export * from './FluidContainer';
 export * from './Icon';
 export * from './Image';
