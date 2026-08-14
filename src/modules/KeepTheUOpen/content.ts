@@ -1,8 +1,17 @@
 import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
 import type { ShareSegment } from 'modules/KeepTheUOpen/ShareChart';
 import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
-import type { Source, Testimonial } from 'components';
+import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
+import type { IconType } from 'react-icons';
+import {
+  MdEvent,
+  MdFitnessCenter,
+  MdGroups,
+  MdKitchen,
+  MdMenuBook,
+  MdWorkOutline,
+} from 'react-icons/md';
 import { Colors } from 'theme';
 
 /**
@@ -17,22 +26,20 @@ export const campaignMode = {
   ctaHref: '#numbers',
   heroPrimaryCta: 'See the Numbers',
   heroSecondaryCta: 'What This Costs You',
-  finalHeading: 'The math, in one place.',
   actionVerb: 'shape',
-  beforeHeading: 'Before you weigh in',
-  finalBody:
-    'Every figure on this page can be traced to the April 10 2026 Fiscal Committee presentation or the CSU’s published fee tables. Both are listed in Sources.',
+  beforeHeading: 'Get informed',
 };
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
 
+/* Every label here is the heading of the section it lands on, word for word.
+   A nav that renames its destinations makes a reader check whether they
+   arrived somewhere else. */
 export const anchorLinks = [
   { label: 'Why It Matters', href: '#why' },
   { label: 'The Numbers', href: '#numbers' },
-  { label: 'If It Passes', href: '#if-it-passes' },
-  { label: 'If It Fails', href: '#if-it-fails' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Sources', href: '#sources' },
+  { label: 'What Can Change', href: '#what-can-change' },
+  { label: 'Before You Make a Decision', href: '#before-you-decide' },
 ];
 
 export const heroFigures = [
@@ -86,7 +93,53 @@ export const sources: Source[] = [
     href: 'https://www.calstate.edu/csu-system/news/Pages/Explained-The-Integration-of-Cal-Maritime-and-Cal-Poly-at-San-Luis-Obispo.aspx',
     linkText: 'See Cal Poly-Maritime Integration',
   },
+  {
+    id: '7',
+    label: 'Cal State San Marcos referendum results, 2024',
+    note: 'Both referendum votes on the recreation facility fee: the April rejection and the October approval on revised terms.',
+    href: 'https://news.csusm.edu/student-led-referendum-achieves-success-for-a-new-wellness--recreation-facility-for-csusm/',
+    linkText: 'news.csusm.edu',
+  },
+  {
+    id: '8',
+    label:
+      'SDSU Campus Fee Advisory Committee, Fall 2025 alternative consultation',
+    note: 'The alternative-consultation process for the Instructionally Related Activities fee, overseen by a student-majority committee.',
+    href: 'https://budget.sdsu.edu/committees/cfac/fall-2025-alternative-consultation',
+    linkText: 'budget.sdsu.edu',
+  },
+  {
+    id: '9',
+    label:
+      'Cal State East Bay presidential message on proposed athletics fee, April 2026',
+    note: 'The proposed athletics fee and the alternative consultation still under way.',
+    href: 'https://www.csueastbay.edu/administration/sandeen-messages/2026/athletics-fee-proposed-increase.html',
+    linkText: 'csueastbay.edu',
+  },
+  {
+    id: '10',
+    label: 'CSUSB Student Financial Services, Category II fee adjustment',
+    note: 'Category II fees indexed to HEPI with a 4% annual cap, and the 2025-26 adjustment.',
+    href: 'https://www.csusb.edu/student-financial-services/tuition-and-fees',
+    linkText: 'csusb.edu',
+  },
 ];
+
+/**
+ * The repo's citation scheme is positional: `SourceList` renders `source.id`
+ * as the visible numeral and `CitationMarker` links to `#source-{id}`, so an
+ * id has to stay a numeral. These names carry the readable handle from the
+ * brief through to the numeral the components need, so a row references the
+ * source it means rather than a magic string.
+ */
+export const peerSourceIds = {
+  csusmReferendum2024: '7',
+  sdsuConsultation2025: '8',
+  csuebAthleticsFee2026: '9',
+  csusbHepi: '10',
+} as const;
+
+export type SourceId = (typeof peerSourceIds)[keyof typeof peerSourceIds];
 
 export const thesisCards = [
   {
@@ -109,36 +162,111 @@ export const thesisCards = [
   },
 ];
 
-export const services = [
+/**
+ * `Icon` holds the component itself, not rendered JSX, so this module stays a
+ * `.ts` file. The page renders it. Vector icons replaced the 64px PNGs the
+ * section used to load, which went soft on any display above 1x.
+ */
+export const services: {
+  title: string;
+  Icon: IconType;
+  body: string;
+}[] = [
   {
     title: 'Events & Activities',
-    iconSrc: '/icons/calendar-icon.png',
+    Icon: MdEvent,
     body: 'Programming run by students, for students — from noon concerts to the five cultural graduation ceremonies.',
   },
   {
-    title: 'Study & Rest Spaces',
-    iconSrc: '/icons/book-icon.png',
+    title: 'Study & Rest',
+    Icon: MdMenuBook,
     body: 'Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.',
   },
   {
     title: 'Play & Recreation',
-    iconSrc: '/icons/music-icon.png',
+    Icon: MdFitnessCenter,
     body: 'The fitness center, the Game Room and the GENE program — included, no membership.',
   },
   {
-    title: 'Cross Cultural Centers',
-    iconSrc: '/icons/connecting-people-icon.png',
-    body: 'APISRC, CLSRC, GSRC and PASRC — staffed centers, open doors, and the Cultural Grads ceremonies.',
+    title: 'Centers',
+    Icon: MdGroups,
+    body: 'APISRC, CLSRC, GSRC and PASRC: staffed centers, open doors, and Cultural Grads.',
   },
   {
     title: 'Jobs & Leadership',
-    iconSrc: '/icons/resume-icon.png',
+    Icon: MdWorkOutline,
     body: 'U-Krew employment, the Board of Directors, and paid roles that fit around a class schedule.',
   },
   {
-    title: 'Everyday Essentials',
-    iconSrc: '/icons/fridge-icon.png',
+    title: 'Essentials',
+    Icon: MdKitchen,
     body: 'Food pantry, microwaves, lockers and the small things that make a long commuter day workable.',
+  },
+];
+
+/**
+ * Photographs for the building section.
+ *
+ * WEIGHTING — when real photography arrives, weight this set toward ordinary
+ * weekday use: study rooms occupied, the fitness center, a club meeting, the
+ * food pantry, the cultural graduations. Concerts and festivals stay a
+ * minority. Event-night photographs are the most photogenic and the least
+ * persuasive to a commuter being asked for money; a picture of a Tuesday
+ * afternoon is the argument.
+ *
+ * CAPTIONS — every caption states what it is, how many, and what it costs a
+ * student. Facts, never adjectives. A caption with no verifiable fact in it
+ * is not finished. Nothing in the register of "students enjoying the vibrant
+ * atmosphere" ships.
+ *
+ * ALT TEXT — describes the scene, never the individuals. No names.
+ *
+ * TODO — RELEASES REQUIRED. This is a public advocacy page. Every photograph
+ * of an identifiable student needs a signed release on file before it
+ * replaces a placeholder here. Drop the `isAwaitingPhotography` line on an
+ * item only once its image exists and its release is signed.
+ */
+export const buildingGalleryItems: GridGalleryItem[] = [
+  {
+    src: '',
+    alt: 'Graduates in stoles seated in rows at a cultural graduation ceremony',
+    caption:
+      'Cultural graduation, 2025. Five ceremonies a year, about 800 students, free.',
+    sourceId: '4',
+    isAwaitingImage: true,
+  },
+  {
+    src: '',
+    alt: 'Students using cardio and weight equipment in a basement-level fitness center',
+    caption:
+      'Fitness center, basement level. Free to all students, no membership.',
+    isAwaitingImage: true,
+  },
+  {
+    src: '',
+    alt: 'Students seated at tables in a glass-walled study room',
+    caption: 'Study rooms, third floor. Free and reservable.',
+    isAwaitingImage: true,
+  },
+  {
+    src: '',
+    alt: 'Rows of student organization tables with banners along a walkway',
+    caption:
+      'Involvement Fair. Every registered student organization on campus, one afternoon.',
+    isAwaitingImage: true,
+  },
+  {
+    src: '',
+    alt: 'Shelves of packaged food and fresh produce in a campus food pantry',
+    caption: 'Food pantry. Open to any enrolled student.',
+    isAwaitingImage: true,
+  },
+  {
+    src: '',
+    alt: 'A meeting room set with a conference table and chairs',
+    caption:
+      'Reserved meeting room. Rental fees waived for registered student organizations.',
+    isAwaitingImage: true,
   },
 ];
 
@@ -210,6 +338,7 @@ export const trendSeries: TrendSeries[] = [
     color: 'greyDarkest',
     strokeWidth: 3,
     dashed: true,
+    filledPoint: true,
     labelSide: 'above',
     points: [
       { yearIndex: 1, value: 5760109 },
@@ -222,6 +351,7 @@ export const trendSeries: TrendSeries[] = [
     color: 'greyDark',
     strokeWidth: 3,
     dashed: true,
+    filledPoint: true,
     labelSide: 'below',
     points: [
       { yearIndex: 1, value: 4876638 },
@@ -315,10 +445,17 @@ export const trendTable: TableData = {
   ],
 };
 
-export const reserveCallouts = [
-  { eyebrow: 'Reserve, FY 2024-25', value: '$8,364,353' },
-  { eyebrow: 'Reserve, FY 2029-30', value: '$274,702' },
-  { eyebrow: 'Reserve, FY 2030-31', value: '−$2,065,518' },
+/* `amount` drives the count-up; `value` is the same figure as text, and is
+   what renders on first paint, without JS, and under reduced motion. The two
+   must not drift apart. */
+export const reserveCallouts: {
+  eyebrow: string;
+  value: string;
+  amount: number;
+}[] = [
+  { eyebrow: 'Reserve, FY 2024-25', value: '$8,364,353', amount: 8364353 },
+  { eyebrow: 'Reserve, FY 2029-30', value: '$274,702', amount: 274702 },
+  { eyebrow: 'Reserve, FY 2030-31', value: '−$2,065,518', amount: -2065518 },
 ];
 
 /* Only the bond share is published. Amounts come from the source rather than
@@ -385,7 +522,7 @@ export const barRows: BarRow[] = [
     campus: 'Channel Islands',
     value: 1146,
     color: 'greyDark',
-    annotation: 'lowest after the increase',
+    annotation: 'new lowest after our increase',
   },
   ...otherCampusFees.map(([campus, value]) => ({
     id: campus.toLowerCase().replace(/\s+/g, '-'),
@@ -484,7 +621,110 @@ export const beforeYouWeighInCards = [
   },
 ];
 
-export const facultyItems = [
+/**
+ * How other CSU campuses decided.
+ *
+ * The frame is outcomes, including rejections — never "fee increases are
+ * normal." A reader who concludes that fees rise everywhere is alarmed, not
+ * reassured, and it invites the obvious reply that everyone else may be
+ * wrong. The San Marcos rejection row is the most important one here: a table
+ * showing only approvals would be worthless for this purpose. Nothing in the
+ * outcome column editorializes past what is in the cited source.
+ *
+ * The `render` that attaches each row's citation lives in the page, because
+ * this module is a `.ts` file and cannot hold JSX.
+ */
+export interface PeerOutcome {
+  id: string;
+  campus: string;
+  /**
+   * Letters for the `Monogram` tile. No CSU campus seals or logos exist in
+   * this repo, and a real campus mark on an advocacy page would read as that
+   * campus endorsing our fee — which none of them has done. Monograms carry
+   * the visual weight without borrowing anyone's trademark.
+   */
+  monogram: string;
+  /** Split out of `campus` so the table can sort and stack the two. */
+  date: string;
+  proposal: string;
+  outcome: string;
+  sourceId: SourceId;
+  /**
+   * Visible link text for the outcome cell. Names the document it opens, so
+   * a reader knows where they are going before they click. A superscript
+   * numeral is not a discoverable affordance on its own.
+   */
+  linkText: string;
+}
+
+export const peerOutcomes: PeerOutcome[] = [
+  {
+    id: 'csusm-april-2024',
+    campus: 'San Marcos',
+    monogram: 'CSUSM',
+    date: 'April 2024',
+    proposal:
+      '$265/semester for a new recreation center, charged starting a year before it opened',
+    outcome: 'Rejected. About 60% voted no.',
+    sourceId: peerSourceIds.csusmReferendum2024,
+    linkText: 'See the referendum results',
+  },
+  {
+    id: 'csusm-october-2024',
+    campus: 'San Marcos',
+    monogram: 'CSUSM',
+    date: 'October 2024',
+    proposal:
+      'Same facility, reduced to $245/semester, not charged until the year it opens',
+    outcome: 'Approved, 64.6% to 35.4%. Turnout 11.9%.',
+    sourceId: peerSourceIds.csusmReferendum2024,
+    linkText: 'See the referendum results',
+  },
+  {
+    id: 'sdsu-fall-2025',
+    campus: 'San Diego',
+    monogram: 'SDSU',
+    date: 'Fall 2025',
+    proposal: 'Instructionally Related Activities fee increase',
+    outcome:
+      'Alternative consultation, overseen by a student-majority committee',
+    sourceId: peerSourceIds.sdsuConsultation2025,
+    linkText: 'See the consultation record',
+  },
+  {
+    id: 'csueb-spring-2026',
+    campus: 'East Bay',
+    monogram: 'CSUEB',
+    date: 'Spring 2026',
+    proposal: 'New athletics fee',
+    outcome: 'Alternative consultation, in progress',
+    sourceId: peerSourceIds.csuebAthleticsFee2026,
+    linkText: "Read the president's message",
+  },
+  {
+    id: 'csusb-hepi',
+    campus: 'San Bernardino',
+    monogram: 'CSUSB',
+    /* The sources give the adjustment year, not the date the indexing was
+       established. Left as a marker rather than guessed at. */
+    date: '[NEEDS FIGURE — date]',
+    proposal: 'Category II fees indexed to HEPI, capped at 4% annually',
+    outcome:
+      'Established by alternative consultation. 3.4% in 2025-26, about $69 for the year.',
+    sourceId: peerSourceIds.csusbHepi,
+    linkText: 'See the fee schedule',
+  },
+];
+
+/* `href`/`linkText` are optional and currently unused — no faculty item links
+   out. Typed rather than inferred so dropping the last link does not break
+   the page's guard, and adding one back needs no type change. */
+export const facultyItems: {
+  title: string;
+  body: string;
+  href?: string;
+  linkText?: string;
+}[] = [
   {
     title: 'The largest student employer on campus',
     body: '90–100 student positions and 29 full-time staff. Many of your students are paid by this building.',
@@ -495,8 +735,6 @@ export const facultyItems = [
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented.',
-    linkText: 'Sources →',
-    href: '#sources',
+    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented below.',
   },
 ];

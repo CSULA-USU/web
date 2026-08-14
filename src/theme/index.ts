@@ -65,4 +65,8 @@ export const Colors = {
   recognizedGreen: '#1ED760',
   blue: '#0066cc',
   red: '#dc3545',
+  /* Deeper than `red`, which lands at 4.53:1 on white — a hair over the AA
+     floor and too thin for a figure a reader is meant to trust. This sits at
+     about 5.6:1 and still reads unmistakably as a deficit. */
+  redDark: '#c62828',
 } as const;

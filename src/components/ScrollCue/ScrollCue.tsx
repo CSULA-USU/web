@@ -35,6 +35,18 @@ interface ScrollCueProps {
   height?: string;
   /** Width of the line, and the diameter of a `dotted` dot. */
   thickness?: string;
+  /**
+   * Distance over which the cue dissolves into nothing at its bottom edge,
+   * e.g. `24px`.
+   *
+   * Without it the line simply stops, and `trickle` stops worst of all: the
+   * travelling highlight is at its brightest exactly when it reaches the end,
+   * so the container clips it at full strength and the cue reads as cut off
+   * rather than as running out. A rounded cap cannot do this job at hairline
+   * widths — a radius is capped at half the line's width, so on a sub-pixel
+   * line there is nothing to round.
+   */
+  fadeLength?: string;
   /** One full cycle, e.g. `2600ms`. Longer is subtler. */
   duration?: string;
   margin?: string;
@@ -49,6 +61,7 @@ interface CueStyle {
   $height: string;
   $thickness: string;
   $duration: string;
+  $fadeLength?: string;
   $margin?: string;
 }
 
@@ -163,6 +176,27 @@ const Cue = styled.span<CueStyle>`
   height: var(--cue-height);
   margin: ${(p) => p.$margin || '0'};
 
+  /* Applied to the cue rather than to either layer inside it, so it fades
+     whatever is there — the track, the travelling highlight, or both — and
+     composes with the highlight's own mask instead of competing with it. */
+  ${(p) =>
+    p.$fadeLength &&
+    css`
+      --cue-fade: ${p.$fadeLength};
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 calc(100% - var(--cue-fade)),
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 calc(100% - var(--cue-fade)),
+        transparent 100%
+      );
+    `}
+
   ::before {
     content: '';
     position: absolute;
@@ -241,6 +275,7 @@ export const ScrollCue = ({
   height = '64px',
   thickness = '2px',
   duration = '2600ms',
+  fadeLength,
   margin,
   className,
 }: ScrollCueProps) => (
@@ -254,6 +289,7 @@ export const ScrollCue = ({
     $height={height}
     $thickness={thickness}
     $duration={duration}
+    $fadeLength={fadeLength}
     $margin={margin}
   />
 );

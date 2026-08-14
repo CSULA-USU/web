@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, Page, ShareChart, TrendChart } from 'modules';
+import { BarChart, formatDollars, Page, ShareChart, TrendChart } from 'modules';
 import {
   anchorLinks,
   bandStats,
   barRows,
   beforeYouWeighInCards,
+  buildingGalleryItems,
   CAL_STATE_LA_ROW_ID,
   campaignMode,
   facultyItems,
@@ -13,6 +14,8 @@ import {
   FISCAL_YEARS,
   heroEyebrow,
   heroFigures,
+  type PeerOutcome,
+  peerOutcomes,
   proposedSpaces,
   reserveCallouts,
   services,
@@ -36,16 +39,22 @@ import {
   Expandable,
   Eyebrow,
   FluidContainer,
+  GridGallery,
+  Monogram,
   Panel,
   PlaceholderMarker,
+  PrototypeNotice,
   ScrollCue,
   SourceList,
   StyledLink,
+  Table,
   Tabs,
   TestimonialCard,
+  TextAndImage,
   Typography,
 } from 'components';
-import { FontSizes, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
+import type { TableData } from 'types';
 import { BiPlus } from 'react-icons/bi';
 
 /* Fluid section padding, applied at every breakpoint so the clamp() — not
@@ -59,6 +68,17 @@ const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
    is capped separately by its own measure, so widening this only gives the
    charts and card grids more room. */
 const CONTENT_MAX_WIDTH = '1440px';
+
+/* Reading measure for running text. Sections and panels are as wide as their
+   charts and grids need; the prose inside them is not. A line much past 75
+   characters loses the reader on the return sweep — they land back on the
+   line they just finished. Every paragraph on this page is capped here. */
+const MEASURE = '68ch';
+
+/* A looser measure for prose sitting under a full-width chart, where the
+   default reads mean against all that width. Still short of the ~85 where a
+   line stops being comfortably scannable. */
+const WIDE_MEASURE = '80ch';
 
 const sectionShell = {
   padding: SECTION_PADDING,
@@ -78,7 +98,7 @@ const bandShell = {
   revealOnScroll: true,
 } as const;
 
-/* FAQ and Sources read at a narrower measure than the rest of the page. */
+/* The FAQ reads at a narrower measure than the rest of the page. */
 const proseShell = { ...sectionShell, innerMaxWidth: '900px' } as const;
 
 /* Type scales with the viewport, but both ends of every clamp are real
@@ -104,7 +124,150 @@ const chartAnimation = {
   animationDuration: 1400,
 } as const;
 
-const WhereMoneyGoesContainer = styled.div``;
+/* Illustrations for the three narrative beats. Every one of these is a
+   placeholder pulled from vectors already in the repo — chosen to hold the
+   slot, not because it is the right drawing. Swap the paths here and nothing
+   else needs to change. Charts and sourced figures stay unillustrated on
+   purpose: decoration next to a cited number reads as spin. */
+const sectionIllustrations = {
+  whyItMatters: '/vectors/about/community.svg',
+  whereMoneyGoes: '/vectors/about/revenue-analysis.svg',
+  inflationGap: '/vectors/about/growth.svg',
+} as const;
+
+/* Vector, so it stays sharp at any density — the PNGs this replaced were
+   64px and softened on every retina display. Gold rather than the brand
+   yellow because yellow on a white card is barely visible; these are
+   decorative, but a decoration nobody can see is just noise. */
+const SERVICE_ICON_SIZE = 44;
+
+/* The campus cell pairs a Monogram with the name. No CSU seals or logos exist
+   in this repo, and borrowing a real one would imply that campus endorses our
+   fee. Lettered tiles carry the weight without borrowing anyone's mark. */
+const CampusCell = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.md};
+  min-width: 0;
+`;
+
+/* The outcome sits above its link rather than becoming one: a whole sentence
+   is poor link text, and the label below names the document it opens. */
+const OutcomeCell = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${Spaces.sm};
+`;
+
+const sourceHrefById = new Map(
+  sources.map((source) => [source.id, source.href]),
+);
+
+const renderCampusCell = (outcome: PeerOutcome) => (
+  <CampusCell>
+    <Monogram
+      label={outcome.monogram}
+      shape="rounded"
+      size="34px"
+      isDecorative
+    />
+    <Typography as="span" variant="labelTitle" size="sm" weight="700">
+      {outcome.campus}
+    </Typography>
+  </CampusCell>
+);
+
+/* Built here rather than in `content.ts` because these cells render links,
+   monograms and citation markers, and that module is a `.ts` file with no
+   JSX. The copy still lives in `peerOutcomes`; this only wires it to the
+   shared Table, which already gives a semantic <table> above 768px and
+   stacked blocks below it. */
+const peerOutcomeTable: TableData<PeerOutcome> = {
+  id: 'peer-outcomes',
+  ariaLabel: 'Recent CSU student fee proposals and how each was decided',
+  caption:
+    'Recent CSU student fee proposals, when each was decided, the terms proposed, and the outcome. Every row links to its source.',
+  headerColors: { backgroundColor: 'greyDarkest', textColor: 'white' },
+  columns: [
+    {
+      id: 'campus',
+      label: 'Campus',
+      backgroundColor: 'white',
+      textColor: 'black',
+      minWidth: '22%',
+      render: (row) => (row.original ? renderCampusCell(row.original) : null),
+      renderRowHeader: (row) =>
+        row.original ? renderCampusCell(row.original) : null,
+    },
+    {
+      id: 'date',
+      label: 'Decided',
+      backgroundColor: 'white',
+      textColor: 'black',
+      minWidth: '13%',
+      render: (row) =>
+        row.values.date?.startsWith('[') ? (
+          <PlaceholderMarker>{row.values.date}</PlaceholderMarker>
+        ) : (
+          <Typography as="span" variant="copy" size="sm">
+            {row.values.date}
+          </Typography>
+        ),
+    },
+    {
+      id: 'proposal',
+      label: 'Proposal',
+      backgroundColor: 'white',
+      textColor: 'black',
+      minWidth: '35%',
+      /* Rendered rather than left to the default cell, which hardcodes
+         weight 700 for every table in the repo. Only the campus column
+         should carry that weight here. */
+      render: (row) => (
+        <Typography as="span" variant="copy" size="sm" lineHeight="1.5">
+          {row.values.proposal}
+        </Typography>
+      ),
+    },
+    {
+      id: 'outcome',
+      label: 'Outcome',
+      backgroundColor: 'white',
+      textColor: 'black',
+      minWidth: '30%',
+      render: (row) => {
+        const href = row.original && sourceHrefById.get(row.original.sourceId);
+
+        return (
+          <OutcomeCell>
+            <Typography as="span" variant="copy" size="sm" lineHeight="1.5">
+              {row.original && href && (
+                <StyledLink
+                  href={href}
+                  isExternalLink
+                  isInverseUnderlineStyling
+                >
+                  {row.values.outcome}
+                </StyledLink>
+              )}
+            </Typography>
+          </OutcomeCell>
+        );
+      },
+    },
+  ],
+  rows: peerOutcomes.map((outcome) => ({
+    id: outcome.id,
+    values: {
+      campus: outcome.campus,
+      date: outcome.date,
+      proposal: outcome.proposal,
+      outcome: outcome.outcome,
+    },
+    original: outcome,
+  })),
+};
 
 export default function KeepTheUOpen() {
   return (
@@ -213,7 +376,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.6"
           color="greyLightest"
         >
-          You already pay for all of it: $137.25 a semester, unchanged since
+          You already pay for the U-SU: $137.25 a semester, unchanged since
           2007.
         </Typography>
         <Typography
@@ -242,8 +405,8 @@ export default function KeepTheUOpen() {
           lineHeight="1.6"
           color="greyLightest"
         >
-          The proposal: $90 more a semester. $50 for the building. $40 for what
-          students have asked for.
+          The proposal is $90 more a semester: $50 for the building & $40 for
+          improvements.
         </Typography>
         <div>
           <Button
@@ -281,8 +444,9 @@ export default function KeepTheUOpen() {
           lineStyle="solid"
           animation="trickle"
           color="white"
-          thickness="0.5px"
+          thickness="0.25px"
           height="100px"
+          fadeLength="32px"
           duration="2600ms"
           margin={`${Spaces.xl} auto 0`}
         />
@@ -290,29 +454,38 @@ export default function KeepTheUOpen() {
 
       {/* 3 · Thesis */}
       <FluidContainer {...sectionShell} id="why" backgroundColor="white">
-        <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
+        <TextAndImage
+          src={sectionIllustrations.whyItMatters}
+          imagePosition="right"
+          imageColumnWidth="minmax(0, 0.5fr)"
+          maxImageWidth="260px"
+          /* Hard against its column's left edge, so it sits close to the copy
+             rather than stranded against the section padding. */
+          imageAlign="start"
+          margin={`0 0 ${Spaces.xl}`}
         >
-          You already paid for this building.
-          <br />
-          Here&apos;s what you own.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          margin={`${Spaces.md} 0 ${Spaces.xl}`}
-          style={{ maxWidth: '68ch' }}
-        >
-          Most Cal State LA students commute. The U-SU is the part of campus
-          that is useful whether or not you have class in the next hour and
-          it&apos;s already included in what you pay.
-        </Typography>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
+          <Typography
+            as="h2"
+            variant="pageHeader"
+            fluidSize={FLUID_H2}
+            lineHeight="1.15"
+          >
+            You and the University-Student Union
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            Most Cal State LA students commute. The U-SU is the part of campus
+            that is useful whether or not you have class the next hour and
+            it&apos;s already included in what you pay.
+          </Typography>
+        </TextAndImage>
         <AutoGrid minColumnWidth="280px">
           {thesisCards.map((card) => (
             <Panel
@@ -369,12 +542,13 @@ export default function KeepTheUOpen() {
           <Typography
             as="p"
             variant="copy"
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
             lineHeight="1.6"
           >
             And if you&apos;re one of the students who never comes in, someone
-            you know does. The pantry, the quiet floor and the cultural
-            graduations are load-bearing for people who don&apos;t advertise
+            you know does. The food pantry, the sensory room, a safe place for
+            commuters to hang out at night, and the cultural graduation
+            celebrations are essentials to students who don&apos;t advertise
             that they need them.
           </Typography>
         </Panel>
@@ -383,23 +557,26 @@ export default function KeepTheUOpen() {
       {/* 4 · Services */}
       <FluidContainer {...sectionShell} backgroundColor="greyLightest">
         <Typography
-          as="h2"
+          as="h3"
           variant="pageHeader"
-          fluidSize={FLUID_H2}
+          fluidSize={FLUID_H3}
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What&apos;s inside
+          Inside the building
         </Typography>
         <AutoGrid minColumnWidth="280px">
           {services.map((service) => (
             <Card
               key={service.title}
               title={service.title}
-              iconSrc={service.iconSrc}
-              iconAlt=""
-              iconWidth="64px"
-              iconHeight="64px"
+              iconElement={
+                <service.Icon
+                  size={SERVICE_ICON_SIZE}
+                  color={Colors.gold}
+                  aria-hidden
+                />
+              }
               borderRadius="16px"
               shadow="soft"
             >
@@ -409,6 +586,23 @@ export default function KeepTheUOpen() {
             </Card>
           ))}
         </AutoGrid>
+
+        {/* 4.1 · GridGallery — sits inside the building section, before
+            any of the argument. Its job is discovery: showing what this place
+            is to a student who has never used it. That only works ahead of the
+            budget case, never appended to the bottom of the page. */}
+        <Divider
+          color="greyLighter"
+          size="1px"
+          margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
+        />
+        <GridGallery
+          items={buildingGalleryItems}
+          columns={3}
+          ariaLabel="Photographs of the University-Student Union and the services inside it"
+          emptyLabel="[GALLERY — awaiting photography and releases]"
+          pendingLabel="[PHOTO PENDING]"
+        />
       </FluidContainer>
 
       {/* 5 · Event-photo band */}
@@ -470,7 +664,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What it costs, where it goes, what the budget says.
+          What it Costs
         </Typography>
 
         {/* 7.1 · Fee math — the hero's secondary-CTA target */}
@@ -494,7 +688,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.lg} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             The $5.63 is per week across a 16-week semester. The fee was last
             set in 2007
@@ -509,7 +703,7 @@ export default function KeepTheUOpen() {
             size="sm"
             lineHeight="1.6"
             margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: '68ch' }}
+            style={{ maxWidth: MEASURE }}
           >
             Cal State LA has the lowest student center fee of any CSU campus:
             $275 a year, unchanged since 2007.
@@ -565,17 +759,28 @@ export default function KeepTheUOpen() {
               shadeBetween={['expenses', 'revenue']}
               ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
               caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
+              captionMaxWidth={WIDE_MEASURE}
               table={trendTable}
               animate={chartAnimation.animateTrend}
               animationDuration={chartAnimation.animationDuration}
             />
-            <AutoGrid minColumnWidth="200px" margin="clamp(16px, 2vw, 28px)">
+            <AutoGrid
+              minColumnWidth="200px"
+              justifyItems="center"
+              margin="clamp(16px, 2vw, 28px)"
+            >
               {reserveCallouts.map((callout) => (
                 <CitedStat
                   key={callout.eyebrow}
                   variant="onLight"
                   eyebrow={callout.eyebrow}
                   value={callout.value}
+                  countTo={callout.amount}
+                  formatValue={formatDollars}
+                  /* The year the reserve goes negative is the one figure on
+                     this page that is bad news on its own terms. Red ties it
+                     to the reserve line in the chart above. */
+                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
                 />
               ))}
             </AutoGrid>
@@ -585,7 +790,10 @@ export default function KeepTheUOpen() {
               size="xs"
               lineHeight="1.6"
               color="greyDark"
-              margin={`${Spaces.lg} 0 0`}
+              /* Centered block, text still ranged left — see the chart's own
+                 caption above it. */
+              margin={`${Spaces.lg} auto 0`}
+              style={{ maxWidth: WIDE_MEASURE }}
             >
               Figures are from the Fiscal Committee&apos;s April 10 2026
               &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
@@ -610,7 +818,7 @@ export default function KeepTheUOpen() {
           padding="clamp(16px, 2vw, 28px)"
           width="100%"
         >
-          <WhereMoneyGoesContainer>
+          <div>
             <Typography
               as="h3"
               variant="pageHeader"
@@ -629,16 +837,27 @@ export default function KeepTheUOpen() {
               Share of the U-SU operating budget, applied to the proposed
               semester fee
             </Typography>
-            <ShareChart
-              segments={shareSegments}
-              total="$227.25"
-              totalLabel="per semester"
-              variant={chartAnimation.donutVariant}
-              animation={chartAnimation.shareAnimation}
-              animationDuration={chartAnimation.animationDuration}
-              ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
-            />
-          </WhereMoneyGoesContainer>
+            <TextAndImage
+              src={sectionIllustrations.whereMoneyGoes}
+              imagePosition="right"
+              imageColumnWidth="minmax(0, 0.5fr)"
+              maxImageWidth="280px"
+              /* Centered, not edge-pinned: the donut beside it is centered in
+                 its own column by `margin: 0 auto`, so an image flush to the
+                 panel's padding reads lopsided against it. */
+              imageAlign="center"
+            >
+              <ShareChart
+                segments={shareSegments}
+                total="$227.25"
+                totalLabel="per semester"
+                variant={chartAnimation.donutVariant}
+                animation={chartAnimation.shareAnimation}
+                animationDuration={chartAnimation.animationDuration}
+                ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
+              />
+            </TextAndImage>
+          </div>
         </Panel>
 
         {/* 7.4 · BarChart */}
@@ -730,41 +949,53 @@ export default function KeepTheUOpen() {
           size="1px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
-        <Typography
-          as="h3"
-          variant="pageHeader"
-          fluidSize={FLUID_H3}
-          lineHeight="1.2"
+        <TextAndImage
+          src={sectionIllustrations.inflationGap}
+          imagePosition="left"
+          imageColumnWidth="minmax(0, 0.6fr)"
+          maxImageWidth="360px"
+          /* Stated rather than left to the default, which used to resolve to
+             this and now resolves to `center`. */
+          imageAlign="end"
         >
-          The part that doesn&apos;t add up on its own
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          margin={`${Spaces.md} 0 0`}
-          style={{ maxWidth: '68ch' }}
-        >
-          If the 2007 fee had only kept pace with inflation, it would be{' '}
-          <strong>$215.30 a semester</strong> today.
-          <CitationMarker sourceId="5" /> The proposal is{' '}
-          <strong>$227.25</strong>; $11.95 more than inflation alone would
-          explain. That difference is real, and it&apos;s there because catching
-          up on inflation does not close a shortfall that&apos;s also driven by
-          enrollment decline.
-          <CitationMarker sourceId="3" /> Student fees currently cover 67% of
-          what the U-SU costs to run; the sustainable range is 80–85%.
-          <CitationMarker sourceId="2" />
-        </Typography>
+          <Typography
+            as="h3"
+            variant="pageHeader"
+            fluidSize={FLUID_H3}
+            lineHeight="1.2"
+          >
+            The part that doesn&apos;t add up on its own
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            If the 2007 fee had only kept pace with inflation, it would be{' '}
+            <strong>$215.30 a semester</strong> today.
+            <CitationMarker sourceId="5" /> The proposal is{' '}
+            <strong>$227.25</strong>; $11.95 more than inflation alone would
+            explain. That difference is real, and it&apos;s there because
+            catching up on inflation does not close a shortfall that&apos;s also
+            driven by enrollment decline.
+            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
+            what the U-SU costs to run; the sustainable range is 80–85%.
+            <CitationMarker sourceId="2" />
+          </Typography>
+        </TextAndImage>
       </FluidContainer>
 
-      {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case; the
-          anchor nav's "If It Fails" link targets the second tab's own id, so
-          it scrolls here and switches the tab in one click. */}
+      {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case. The
+          second tab keeps its own `if-it-fails` id — the FAQ links straight
+          to it, which scrolls here and switches the tab in one click — but it
+          is no longer an anchor-nav destination, since a nav item pointing at
+          a panel the reader cannot see until they click is a dead end. */}
       <FluidContainer
         {...sectionShell}
-        id="if-it-passes"
+        id="what-can-change"
         backgroundColor="white"
       >
         <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
@@ -776,7 +1007,7 @@ export default function KeepTheUOpen() {
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What changes, either way
+          What Can Change
         </Typography>
         <Tabs
           variant="folder"
@@ -794,7 +1025,7 @@ export default function KeepTheUOpen() {
                     lineHeight="1.6"
                     color="greyDark"
                     margin={`0 0 ${Spaces.xl}`}
-                    style={{ maxWidth: '68ch' }}
+                    style={{ maxWidth: MEASURE }}
                   >
                     These are the spaces the U-SU has identified to add or
                     convert. They are described here only as far as they have
@@ -992,12 +1223,130 @@ export default function KeepTheUOpen() {
         />
       </FluidContainer>
 
-      {/* 10 · Testimonials — renders from an empty array */}
-      <FluidContainer {...sectionShell} backgroundColor="greyLightest">
+      {/* 11 · Get informed. The eyebrow keeps the mode-dependent string, so
+          flipping to advocacy still only touches `campaignMode`. */}
+      <FluidContainer
+        {...sectionShell}
+        id="before-you-decide"
+        backgroundColor="greyLightest"
+      >
+        <Eyebrow margin={`0 0 ${Spaces.md}`}>
+          {campaignMode.beforeHeading}
+        </Eyebrow>
         <Typography
           as="h2"
           variant="pageHeader"
           fluidSize={FLUID_H2}
+          lineHeight="1.15"
+          margin={`0 0 ${Spaces.xl}`}
+        >
+          Before You Make a Decision
+        </Typography>
+        <AutoGrid minColumnWidth="260px">
+          {beforeYouWeighInCards.map((card) => (
+            <Panel
+              key={card.title}
+              border="greyLighter"
+              shadow="none"
+              borderRadius="16px"
+              padding="28px"
+            >
+              <div>
+                <Typography
+                  as="h3"
+                  variant="titleSmall"
+                  size="lg"
+                  weight="700"
+                  lineHeight="1.25"
+                >
+                  {card.title}
+                </Typography>
+                <Typography
+                  as="p"
+                  variant="copy"
+                  size="sm"
+                  lineHeight="1.6"
+                  margin={`${Spaces.md} 0 0`}
+                >
+                  {card.body}
+                </Typography>
+              </div>
+              {card.linkText && card.href && (
+                <Typography as="p" variant="span" size="xs" weight="700">
+                  <StyledLink href={card.href}>{card.linkText}</StyledLink>
+                </Typography>
+              )}
+              {card.marker && (
+                <PlaceholderMarker>{card.marker}</PlaceholderMarker>
+              )}
+            </Panel>
+          ))}
+        </AutoGrid>
+      </FluidContainer>
+
+      {/* 11.1 · How other campuses decided — directly after the participation
+          section, because it is the answer to "why bother." The frame is
+          outcomes, including the rejection; it is never "fee increases are
+          normal." */}
+      <FluidContainer
+        {...sectionShell}
+        id="other-campuses"
+        backgroundColor="white"
+      >
+        <Typography
+          as="h3"
+          variant="pageHeader"
+          fluidSize={FLUID_H3}
+          lineHeight="1.15"
+        >
+          How other campuses decide
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          margin={`${Spaces.md} 0 ${Spaces.xl}`}
+          style={{ maxWidth: MEASURE }}
+        >
+          Fee proposals move through the CSUs regularly, and students don&apos;t
+          always approve them.
+          <br />
+          Here are some recent ones:
+        </Typography>
+        <Table data={peerOutcomeTable} />
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          margin={`${Spaces.xl} 0 0`}
+          style={{ maxWidth: MEASURE }}
+        >
+          San Marcos is the one worth understanding. Students rejected the first
+          proposal, partly because it would have charged them a year before the
+          building opened. The campus came back with a cheaper proposal on
+          different terms, and students approved it.
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          margin={`${Spaces.md} 0 0`}
+          style={{ maxWidth: MEASURE }}
+        >
+          That&apos;s what participation does. Not just approve or reject —
+          change what gets proposed.
+        </Typography>
+      </FluidContainer>
+
+      {/* 11.2 · Testimonials — renders from an empty array */}
+      <FluidContainer {...sectionShell} backgroundColor="greyLightest">
+        <Typography
+          as="h3"
+          variant="pageHeader"
+          fluidSize={FLUID_H3}
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
@@ -1046,69 +1395,16 @@ export default function KeepTheUOpen() {
         )}
       </FluidContainer>
 
-      {/* 11 · Before you weigh in */}
-      <FluidContainer {...sectionShell} backgroundColor="white">
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
-          margin={`0 0 ${Spaces.xl}`}
-        >
-          {campaignMode.beforeHeading}
-        </Typography>
-        <AutoGrid minColumnWidth="260px">
-          {beforeYouWeighInCards.map((card) => (
-            <Panel
-              key={card.title}
-              border="greyLighter"
-              shadow="none"
-              borderRadius="16px"
-              padding="28px"
-            >
-              <div>
-                <Typography
-                  as="h3"
-                  variant="titleSmall"
-                  size="lg"
-                  weight="700"
-                  lineHeight="1.25"
-                >
-                  {card.title}
-                </Typography>
-                <Typography
-                  as="p"
-                  variant="copy"
-                  size="sm"
-                  lineHeight="1.6"
-                  margin={`${Spaces.md} 0 0`}
-                >
-                  {card.body}
-                </Typography>
-              </div>
-              {card.linkText && card.href && (
-                <Typography as="p" variant="span" size="xs" weight="700">
-                  <StyledLink href={card.href}>{card.linkText}</StyledLink>
-                </Typography>
-              )}
-              {card.marker && (
-                <PlaceholderMarker>{card.marker}</PlaceholderMarker>
-              )}
-            </Panel>
-          ))}
-        </AutoGrid>
-      </FluidContainer>
-
       {/* 12 · FAQ */}
-      <FluidContainer {...proseShell} id="faq" backgroundColor="greyLightest">
+      <FluidContainer {...proseShell} id="faq" backgroundColor="white">
         <Typography
-          as="h2"
+          as="h3"
           variant="pageHeader"
-          fluidSize={FLUID_H2}
+          fluidSize={FLUID_H3}
           lineHeight="1.15"
           margin={`0 0 ${Spaces.xl}`}
         >
-          Questions
+          Frequently asked questions
         </Typography>
         {faq.map((item, index) => (
           <div key={item.question}>
@@ -1150,7 +1446,9 @@ export default function KeepTheUOpen() {
 
       {/* 13 · For faculty & staff */}
       <FluidContainer {...bandShell} backgroundColor="greyDarkest">
-        <Eyebrow color="primary" margin={`0 0 ${Spaces.lg}`}>
+        {/* No accent rule: the rule marks the top of a section, and this
+            label sits over a band rather than heading one. */}
+        <Eyebrow color="primary" accent={false} margin={`0 0 ${Spaces.lg}`}>
           For faculty &amp; staff
         </Eyebrow>
         <AutoGrid minColumnWidth="260px">
@@ -1188,83 +1486,28 @@ export default function KeepTheUOpen() {
       </FluidContainer>
 
       {/* 14 · Sources — SourceList pending; ids must stay #source-1…6 */}
-      <FluidContainer {...proseShell} id="sources" backgroundColor="white">
-        <Eyebrow margin={`0 0 ${Spaces.md}`}>Sources</Eyebrow>
+      {/* Full width, not the prose measure: two columns of sources need the
+          room, and the running text here is capped by its own measure. */}
+      <FluidContainer {...sectionShell} id="sources" backgroundColor="white">
         <Typography
-          as="h2"
+          as="h3"
           variant="pageHeader"
-          fluidSize={FLUID_H2}
+          fluidSize={FLUID_H3}
           lineHeight="1.15"
+          margin={`0 0 ${Spaces.lg}`}
         >
           Every number and where it came from
         </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          margin={`${Spaces.md} 0 ${Spaces.lg}`}
-        >
-          The superscript markers throughout this page link here. If a figure on
-          this page is not traceable to one of these documents, it is marked as
-          missing rather than estimated.
-        </Typography>
-        <SourceList sources={sources} />
-      </FluidContainer>
-
-      {/* 15 · Final CTA */}
-      <FluidContainer {...bandShell} backgroundColor="primary">
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
-          color="black"
-        >
-          {campaignMode.finalHeading}
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          color="black"
-          margin={`${Spaces.md} 0 ${Spaces.lg}`}
-          style={{ maxWidth: '68ch' }}
-        >
-          {campaignMode.finalBody}
-        </Typography>
-        <div>
-          <Button
-            variant="black"
-            href={campaignMode.ctaHref}
-            margin={`0 ${Spaces.md} 0 0`}
-          >
-            {campaignMode.ctaLabel}
-          </Button>
-          <Button variant="outline" href="#faq">
-            Read the FAQs
-          </Button>
-        </div>
+        <SourceList sources={sources} columns={2} />
       </FluidContainer>
 
       {/* 16 · Disclaimer strip */}
-      <FluidContainer
-        backgroundColor="greyLightest"
-        border="greyLighter"
-        padding={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
-        paddingDesktop={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
-        paddingMobile={`${Spaces.lg} clamp(20px, 4vw, 36px)`}
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-      >
-        <Typography as="p" variant="span" size="2xs" color="greyDark">
-          Prototype for review — not a published U-SU communication. This page
-          describes a {campaignMode.actionVerb} that has not been finalized.
-          Items marked [NEEDS FIGURE], [NEEDS COPY] or [NEEDS LINK] are
-          unresolved and must be confirmed before launch; photography is
-          placeholder.
-        </Typography>
-      </FluidContainer>
+      <PrototypeNotice contentMaxWidth={CONTENT_MAX_WIDTH}>
+        Prototype for review — not a published U-SU communication. This page
+        describes a {campaignMode.actionVerb} that has not been finalized. Items
+        marked [NEEDS FIGURE], [NEEDS COPY] or [NEEDS LINK] are unresolved and
+        must be confirmed before launch; photography is placeholder.
+      </PrototypeNotice>
     </Page>
   );
 }
