@@ -179,15 +179,6 @@ const CampusCell = styled.div`
   min-width: 0;
 `;
 
-/* The outcome sits above its link rather than becoming one: a whole sentence
-   is poor link text, and the label below names the document it opens. */
-const OutcomeCell = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: ${Spaces.sm};
-`;
-
 const sourceHrefById = new Map(
   sources.map((source) => [source.id, source.href]),
 );
@@ -267,20 +258,17 @@ const peerOutcomeTable: TableData<PeerOutcome> = {
       render: (row) => {
         const href = row.original && sourceHrefById.get(row.original.sourceId);
 
+        /* No wrapper: the shared table cell already centers its content, and a
+           flex column pinned to flex-start left the outcomes ranged against
+           the cell's edge while every other column sat centered. */
         return (
-          <OutcomeCell>
-            <Typography as="span" variant="copy" size="sm" lineHeight="1.5">
-              {row.original && href && (
-                <StyledLink
-                  href={href}
-                  isExternalLink
-                  isInverseUnderlineStyling
-                >
-                  {row.values.outcome}
-                </StyledLink>
-              )}
-            </Typography>
-          </OutcomeCell>
+          <Typography as="span" variant="copy" size="sm" lineHeight="1.5">
+            {row.original && href && (
+              <StyledLink href={href} isExternalLink isInverseUnderlineStyling>
+                {row.values.outcome}
+              </StyledLink>
+            )}
+          </Typography>
         );
       },
     },
