@@ -905,7 +905,7 @@ export default function KeepTheUOpen() {
               lineHeight="1.2"
             >
               Even after this passes, Cal State LA is still the second most
-              affordable university in the CSU.
+              affordable university in the CSU
             </Typography>
             <Typography
               as="p"

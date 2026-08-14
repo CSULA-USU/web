@@ -562,7 +562,10 @@ export const barRows: BarRow[] = [
     campus: 'Cal State LA',
     value: 1084,
     proposedValue: 1264,
-    segmentLabels: { base: 'today', extension: 'proposed' },
+    segmentLabels: {
+      base: 'today:',
+      extension: 'proposed total with increase:',
+    },
     color: 'primary',
   },
   {

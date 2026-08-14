@@ -85,11 +85,31 @@ const Bar = styled.div<{ $width: number; $height: number; $fill: string }>`
   border-radius: 3px 0 0 3px;
 `;
 
+/* One definition of the hatch, parameterized by band width so the swatch in
+   the segment labels cannot drift from the segment it stands for. A 10px
+   swatch needs finer bands than a 30px bar to show the pattern at all rather
+   than one black corner. */
+const proposedHatch = (band: number) =>
+  `repeating-linear-gradient(135deg, ${Colors.black} 0 ${band}px, ${
+    Colors.primary
+  } ${band}px ${band * 2}px)`;
+
+/* The proposed increase, drawn as an extension of the same bar rather than a
+   row of its own. It carries the same primary fill as the paid-today segment,
+   hatched: a lighter tint of the fill reads as "less of the same thing", and
+   the pale yellow this used to be sat a shade off the highlighted row's own
+   band, so the one segment a reader is here to see was the hardest to find.
+   The hatch also means the distinction survives without color.
+
+   Same bar weight and lean as the off-scale hatch below — 6px bands at 135deg,
+   running bottom-left to top-right — so the two read as one family of "drawn,
+   but not a plain measured figure." Color and the off-scale row's own
+   annotation are what separate them. */
 const Extension = styled.div<{ $width: number; $height: number }>`
   width: ${(p) => p.$width}%;
   height: ${(p) => p.$height}px;
-  background-color: ${Colors.pastelYellow};
-  border-left: 2px solid ${Colors.gold};
+  background-image: ${proposedHatch(6)};
+  border-left: 2px solid ${Colors.black};
   border-radius: 0 3px 3px 0;
 `;
 
@@ -160,6 +180,26 @@ const SegmentLabels = styled.div`
   display: flex;
   gap: ${Spaces.md};
   flex-wrap: wrap;
+`;
+
+const SegmentLabel = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+/* Ties each sub-label to the segment of the bar it describes, so the reader is
+   not left matching a word to a stripe by position alone. Decorative: the
+   label beside it already names the segment. The hairline ring is what keeps
+   the solid primary swatch from dissolving into the highlighted row's own pale
+   yellow band. */
+const SegmentSwatch = styled.span<{ $fill: string }>`
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: ${(p) => p.$fill};
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
 `;
 
 const formatDollars = (value: number) => `$${value.toLocaleString('en-US')}`;
@@ -246,16 +286,8 @@ export const BarChart = ({
                   <SegmentLabels>
                     {row.segmentLabels && (
                       <>
-                        <Typography
-                          as="span"
-                          variant="span"
-                          size="2xs"
-                          color="greyDark"
-                          tabularNums
-                        >
-                          {row.segmentLabels.base} {formatDollars(row.value)}
-                        </Typography>
-                        {row.proposedValue && (
+                        <SegmentLabel>
+                          <SegmentSwatch $fill={fill} aria-hidden="true" />
                           <Typography
                             as="span"
                             variant="span"
@@ -263,9 +295,26 @@ export const BarChart = ({
                             color="greyDark"
                             tabularNums
                           >
-                            {row.segmentLabels.extension}{' '}
-                            {formatDollars(row.proposedValue)}
+                            {row.segmentLabels.base} {formatDollars(row.value)}
                           </Typography>
+                        </SegmentLabel>
+                        {row.proposedValue && (
+                          <SegmentLabel>
+                            <SegmentSwatch
+                              $fill={proposedHatch(3)}
+                              aria-hidden="true"
+                            />
+                            <Typography
+                              as="span"
+                              variant="span"
+                              size="2xs"
+                              color="greyDark"
+                              tabularNums
+                            >
+                              {row.segmentLabels.extension}{' '}
+                              {formatDollars(row.proposedValue)}
+                            </Typography>
+                          </SegmentLabel>
                         )}
                       </>
                     )}
