@@ -18,6 +18,7 @@ import {
   peerOutcomes,
   proposedSpaces,
   reserveCallouts,
+  sampleTestimonials,
   services,
   shareSegments,
   sources,
@@ -124,16 +125,43 @@ const chartAnimation = {
   animationDuration: 1400,
 } as const;
 
-/* Illustrations for the three narrative beats. Every one of these is a
-   placeholder pulled from vectors already in the repo — chosen to hold the
-   slot, not because it is the right drawing. Swap the paths here and nothing
-   else needs to change. Charts and sourced figures stay unillustrated on
-   purpose: decoration next to a cited number reads as spin. */
+/* One illustration per section header. Every one of these is a placeholder
+   pulled from vectors already in the repo — chosen to hold the slot, not
+   because it is the right drawing. Swap the paths here and nothing else needs
+   to change. Charts and sourced figures stay unillustrated on purpose:
+   decoration next to a cited number reads as spin. */
 const sectionIllustrations = {
+  /* u-su-undraw.svg is a 1536×1024 PNG in an SVG wrapper — 1.9MB, no paths —
+     so it stays out of the repo. Swap this back to it once it is a real
+     vector, or a sized WebP. */
   whyItMatters: '/vectors/about/community.svg',
-  whereMoneyGoes: '/vectors/about/revenue-analysis.svg',
-  inflationGap: '/vectors/about/growth.svg',
+  whatItCosts: '/vectors/about/data2.svg',
+  inflationGap: '/vectors/about/question-answered.svg',
+  whatCanChange: '/vectors/about/upgrade.svg',
+  beforeYouDecide: '/vectors/about/solution-mindset.svg',
 } as const;
+
+/* Height, not width, is what these share. The undraw set mixes landscape and
+   portrait artwork, so one max-width leaves the portrait drawings tall and the
+   people inside them towering over the people in the landscape ones. Height is
+   the dimension that actually governs how big a figure reads, since in all of
+   these the figure fills most of the drawing; width is left to follow each
+   artwork's own ratio. Each usage still chooses its own side and in-column
+   alignment.
+
+   The ceiling is set so that even the widest drawing in the set — upgrade.svg,
+   at nearly 2:1 — still fits its column at that height. A wider one would be
+   clamped by the column and render shorter than the rest, which is the
+   inconsistency this is here to remove. */
+const SECTION_ILLUSTRATION_HEIGHT = 'clamp(150px, 15vw, 200px)';
+const SECTION_ILLUSTRATION_COLUMN_WIDTH = 'minmax(0, 0.5fr)';
+
+/* Renders `sampleTestimonials` under the empty state, so the grid can be seen
+   at the lengths real quotes will run to. Those cards are bracketed
+   scaffolding, not copy — see the array's comment in `content.ts`. Flip to
+   false to preview the empty state alone; delete this flag, the array, and the
+   block that reads them once real quotes land. */
+const PREVIEW_TESTIMONIAL_LAYOUT = true;
 
 /* Vector, so it stays sharp at any density — the PNGs this replaced were
    64px and softened on every retina display. Gold rather than the brand
@@ -457,8 +485,8 @@ export default function KeepTheUOpen() {
         <TextAndImage
           src={sectionIllustrations.whyItMatters}
           imagePosition="right"
-          imageColumnWidth="minmax(0, 0.5fr)"
-          maxImageWidth="260px"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={`clamp('150px, 15vw, 300px')`}
           /* Hard against its column's left edge, so it sits close to the copy
              rather than stranded against the section padding. */
           imageAlign="start"
@@ -655,17 +683,51 @@ export default function KeepTheUOpen() {
 
       {/* 7 · The Numbers */}
       <FluidContainer {...sectionShell} id="numbers" backgroundColor="white">
-        <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
-        <br />
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
+        <TextAndImage
+          src={sectionIllustrations.whatItCosts}
+          imagePosition="right"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What it Costs
-        </Typography>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
+          <Typography
+            as="h2"
+            variant="pageHeader"
+            fluidSize={FLUID_H2}
+            lineHeight="1.15"
+          >
+            What it Costs
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            The $5.63 is per week across a 16-week semester. The fee was last
+            set in 2007
+            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
+            The proposed contract language also includes an annual inflation
+            adjustment capped at 3%.
+            <CitationMarker sourceId="2" />
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.lg} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            As of August 2026, Cal State LA has the lowest student center fee of
+            any CSU campus: $275 a year, unchanged since 2007.
+            <CitationMarker sourceId="1" />
+          </Typography>
+        </TextAndImage>
 
         {/* 7.1 · Fee math — the hero's secondary-CTA target */}
         <div id="cost">
@@ -682,33 +744,6 @@ export default function KeepTheUOpen() {
               />
             ))}
           </AutoGrid>
-          <Typography
-            as="p"
-            variant="copy"
-            size="sm"
-            lineHeight="1.6"
-            margin={`${Spaces.lg} 0 0`}
-            style={{ maxWidth: MEASURE }}
-          >
-            The $5.63 is per week across a 16-week semester. The fee was last
-            set in 2007
-            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
-            The proposed contract language also includes an annual inflation
-            adjustment capped at 3%.
-            <CitationMarker sourceId="2" />
-          </Typography>
-          <Typography
-            as="p"
-            variant="copy"
-            size="sm"
-            lineHeight="1.6"
-            margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: MEASURE }}
-          >
-            Cal State LA has the lowest student center fee of any CSU campus:
-            $275 a year, unchanged since 2007.
-            <CitationMarker sourceId="1" />
-          </Typography>
         </div>
 
         {/* 7.2 · TrendChart */}
@@ -837,26 +872,15 @@ export default function KeepTheUOpen() {
               Share of the U-SU operating budget, applied to the proposed
               semester fee
             </Typography>
-            <TextAndImage
-              src={sectionIllustrations.whereMoneyGoes}
-              imagePosition="right"
-              imageColumnWidth="minmax(0, 0.5fr)"
-              maxImageWidth="280px"
-              /* Centered, not edge-pinned: the donut beside it is centered in
-                 its own column by `margin: 0 auto`, so an image flush to the
-                 panel's padding reads lopsided against it. */
-              imageAlign="center"
-            >
-              <ShareChart
-                segments={shareSegments}
-                total="$227.25"
-                totalLabel="per semester"
-                variant={chartAnimation.donutVariant}
-                animation={chartAnimation.shareAnimation}
-                animationDuration={chartAnimation.animationDuration}
-                ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
-              />
-            </TextAndImage>
+            <ShareChart
+              segments={shareSegments}
+              total="$227.25"
+              totalLabel="per semester"
+              variant={chartAnimation.donutVariant}
+              animation={chartAnimation.shareAnimation}
+              animationDuration={chartAnimation.animationDuration}
+              ariaLabel="Donut chart of the proposed $227.25 semester fee. The bond payment on the building is 33%, or $75.00. Everything else, including operations, staffing, programs and maintenance, is 67%, or $152.25."
+            />
           </div>
         </Panel>
 
@@ -952,8 +976,8 @@ export default function KeepTheUOpen() {
         <TextAndImage
           src={sectionIllustrations.inflationGap}
           imagePosition="left"
-          imageColumnWidth="minmax(0, 0.6fr)"
-          maxImageWidth="360px"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
           /* Stated rather than left to the default, which used to resolve to
              this and now resolves to `center`. */
           imageAlign="end"
@@ -998,17 +1022,36 @@ export default function KeepTheUOpen() {
         id="what-can-change"
         backgroundColor="white"
       >
-        <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
-        <br />
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
+        <TextAndImage
+          src={sectionIllustrations.whatCanChange}
+          imagePosition="right"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          What Can Change
-        </Typography>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
+          <Typography
+            as="h2"
+            variant="pageHeader"
+            fluidSize={FLUID_H2}
+            lineHeight="1.15"
+          >
+            What Can Change
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            Both outcomes are below: the spaces the U-SU has identified to add
+            or convert if the fee passes, and what changes about the building
+            and its services if it doesn&apos;t.
+          </Typography>
+        </TextAndImage>
         <Tabs
           variant="folder"
           label="What happens to the U-SU under each outcome"
@@ -1230,18 +1273,38 @@ export default function KeepTheUOpen() {
         id="before-you-decide"
         backgroundColor="greyLightest"
       >
-        <Eyebrow margin={`0 0 ${Spaces.md}`}>
-          {campaignMode.beforeHeading}
-        </Eyebrow>
-        <Typography
-          as="h2"
-          variant="pageHeader"
-          fluidSize={FLUID_H2}
-          lineHeight="1.15"
+        <TextAndImage
+          src={sectionIllustrations.beforeYouDecide}
+          imagePosition="right"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          Before You Make a Decision
-        </Typography>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>
+            {campaignMode.beforeHeading}
+          </Eyebrow>
+          <Typography
+            as="h2"
+            variant="pageHeader"
+            fluidSize={FLUID_H2}
+            lineHeight="1.15"
+          >
+            Before You Make a Decision
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            Three ways to check any of this for yourself: read the budget the
+            figures come from, bring your questions to an info session, or take
+            them to the board directly.
+          </Typography>
+        </TextAndImage>
         <AutoGrid minColumnWidth="260px">
           {beforeYouWeighInCards.map((card) => (
             <Panel
@@ -1359,39 +1422,57 @@ export default function KeepTheUOpen() {
             ))}
           </AutoGrid>
         ) : (
-          <Panel
-            border="greyLighter"
-            borderStyle="dashed"
-            borderRadius="16px"
-            shadow="none"
-            padding="clamp(28px, 4vw, 48px)"
-          >
-            <div>
-              <Typography
-                as="p"
-                variant="span"
-                size="xs"
-                weight="800"
-                letterSpacing="0.06em"
-                color="gold"
-              >
-                [AWAITING REAL QUOTES — 4 needed, with written consent]
-              </Typography>
-              <Typography
-                as="p"
-                variant="copy"
-                size="sm"
-                lineHeight="1.6"
-                color="greyDark"
-                margin={`${Spaces.md} 0 0`}
-                style={{ maxWidth: '56ch' }}
-              >
-                The TestimonialCard grid renders from an empty array. The four
-                quotes in v1 were invented and have been removed. Nothing ships
-                here without a named student and a signed release.
-              </Typography>
-            </div>
-          </Panel>
+          <>
+            <Panel
+              border="greyLighter"
+              borderStyle="dashed"
+              borderRadius="16px"
+              shadow="none"
+              padding="clamp(28px, 4vw, 48px)"
+            >
+              <div>
+                <Typography
+                  as="p"
+                  variant="span"
+                  size="xs"
+                  weight="800"
+                  letterSpacing="0.06em"
+                  color="gold"
+                >
+                  [AWAITING REAL QUOTES — 4 needed, with written consent]
+                </Typography>
+                <Typography
+                  as="p"
+                  variant="copy"
+                  size="sm"
+                  lineHeight="1.6"
+                  color="greyDark"
+                  margin={`${Spaces.md} 0 0`}
+                  style={{ maxWidth: '56ch' }}
+                >
+                  The TestimonialCard grid renders from an empty array. The four
+                  quotes in v1 were invented and have been removed. Nothing
+                  ships here without a named student and a signed release. Each
+                  card reserves a slot for the student&apos;s portrait; the
+                  photograph needs the same release as the quote.
+                </Typography>
+              </div>
+            </Panel>
+            {PREVIEW_TESTIMONIAL_LAYOUT && (
+              <>
+                <Typography as="p" margin={`${Spaces.xl} 0 ${Spaces.md}`}>
+                  <PlaceholderMarker>
+                    [SAMPLE LAYOUT — placeholder cards, not student quotes]
+                  </PlaceholderMarker>
+                </Typography>
+                <AutoGrid minColumnWidth="260px">
+                  {sampleTestimonials.map((sample) => (
+                    <TestimonialCard key={sample.quote} {...sample} />
+                  ))}
+                </AutoGrid>
+              </>
+            )}
+          </>
         )}
       </FluidContainer>
 
