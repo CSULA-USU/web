@@ -24,6 +24,14 @@ export interface PanelStyleProps {
   shadow?: keyof typeof shadows;
   hoverable?: boolean;
   backgroundColor?: keyof typeof Colors;
+  /**
+   * Cross-axis alignment of the panel's children. Defaults to `stretch`, so
+   * a child fills the panel's width the way it would in ordinary block flow.
+   * Set `flex-start` to shrink children to their content instead — worth it
+   * only when the panel holds something with an intrinsic width, such as a
+   * lone button or image, that should not be pulled edge to edge.
+   */
+  alignItems?: 'stretch' | 'flex-start' | 'center';
 }
 
 interface PanelProps extends PanelStyleProps {
@@ -34,7 +42,7 @@ const StyledPanel = styled.div<PanelStyleProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: ${(p) => p.alignItems || 'stretch'};
   padding: ${(p) => p.padding || Spaces.xl};
   gap: 16px;
   box-shadow: ${(p) => shadows[p.shadow || 'default']};

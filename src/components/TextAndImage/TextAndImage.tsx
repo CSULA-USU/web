@@ -1,59 +1,143 @@
-import styled from 'styled-components';
 import React from 'react';
-import { Typography } from 'components';
+import styled from 'styled-components';
+import { Image } from 'components';
+import { media, Spaces } from 'theme';
 
-type TextAndImageProps = {
-  children?: React.ReactNode;
-  imageOrientation?: string;
-  img?: string;
+type ImagePosition = 'left' | 'right';
+
+/** Where the image sits inside its own column, independent of which side of
+    the row that column is on. */
+type ImageAlign = 'start' | 'center' | 'end';
+
+/* The values are the box-alignment words rather than `flex-*`, so the prop
+   reads like the CSS it becomes; the longhand is what actually ships, being
+   the better supported spelling in flexbox. */
+const justifyContentFor: Record<ImageAlign, string> = {
+  start: 'flex-start',
+  center: 'center',
+  end: 'flex-end',
 };
 
-const TextAndImageStyling = styled.div`
-  display: flex;
-  height: 400px;
-  max-width: 1000px;
-  justify-content: space-between;
-  overflow: hidden;
-  margin: 48px 0 48px;
+interface TextAndImageProps {
+  /** Anything: headings, paragraphs, a chart. Rendered as-is, unwrapped. */
+  children?: React.ReactNode;
+  /** Which side the image sits on from tablet up. Below that it always
+      stacks under the text, whichever side was asked for. */
+  imagePosition?: ImagePosition;
+  src: string;
+  /** Decorative by default. Pass real text only when the image carries
+      information the copy beside it does not. */
+  alt?: string;
+  /** Grid track for the image column; the text column is always
+      `minmax(0, 1fr)`. Narrow this to give the copy more room. */
+  imageColumnWidth?: string;
+  /** Ceiling on the image itself, so an illustration in a wide column
+      doesn't scale up past the size it was drawn for. */
+  maxImageWidth?: string;
+  /**
+   * Where the image sits within its column: hard against the column's leading
+   * edge, centered in it, or hard against its trailing edge. Independent of
+   * `imagePosition`, which decides which side of the row the column is on.
+   *
+   * `center` is the default and usually right — an image pushed to a column
+   * edge strands itself against the section padding and opens a gulf between
+   * itself and the copy. Reach for `start` or `end` when the image needs to
+   * line up with something specific beside it.
+   */
+  imageAlign?: ImageAlign;
+  gap?: string;
+  margin?: string;
+  alignItems?: 'center' | 'flex-start';
+}
+
+type ColumnProps = { $imagePosition: ImagePosition };
+
+const Row = styled.div<{
+  $imagePosition: ImagePosition;
+  $imageColumnWidth: string;
+  $gap?: string;
+  $margin?: string;
+  $alignItems?: string;
+}>`
+  display: grid;
+  grid-template-columns: ${(p) =>
+    p.$imagePosition === 'left'
+      ? `${p.$imageColumnWidth} minmax(0, 1fr)`
+      : `minmax(0, 1fr) ${p.$imageColumnWidth}`};
+  gap: ${(p) => p.$gap || `clamp(${Spaces.lg}, 4vw, ${Spaces['2xl']})`};
+  align-items: ${(p) => p.$alignItems || 'center'};
+  margin: ${(p) => p.$margin || '0'};
+  width: 100%;
+
+  ${media('tablet')(`
+    grid-template-columns: minmax(0, 1fr);
+  `)}
 `;
 
-const FlavourImageSection = styled.div<TextAndImageProps>`
-  width: 600px;
-  height: 100%;
-  background: ${(props) => `url(${props.img}) no-repeat}`};
-  border-radius: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: green;
+/* Text is first in the DOM either way, so the reading order on a phone is
+   copy-then-image and the illustration never pushes the section's opening
+   line below the fold. `left` is achieved by placing the columns, not by
+   reordering the markup. */
+const TextColumn = styled.div<ColumnProps>`
+  min-width: 0;
+  ${(p) => p.$imagePosition === 'left' && 'grid-column: 2; grid-row: 1;'}
+
+  ${media('tablet')(`
+    grid-column: auto;
+    grid-row: auto;
+  `)}
 `;
-const FlavourTextSection = styled.div`
+
+/* Always centered once the row stacks: below that breakpoint the column is
+   the full width of the section, so aligning to either end of it just throws
+   the image against a margin. */
+const ImageColumn = styled.div<
+  ColumnProps & { $maxImageWidth?: string; $imageAlign: ImageAlign }
+>`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
+  justify-content: ${(p) => justifyContentFor[p.$imageAlign]};
+  min-width: 0;
+  ${(p) => p.$imagePosition === 'left' && 'grid-column: 1; grid-row: 1;'}
+
+  > img {
+    width: 100%;
+    max-width: ${(p) => p.$maxImageWidth || '320px'};
+    height: auto;
+  }
+
+  ${media('tablet')(`
+    grid-column: auto;
+    grid-row: auto;
+    justify-content: center;
+  `)}
 `;
+
 export const TextAndImage = ({
   children,
-  imageOrientation,
-  img,
-}: TextAndImageProps) => {
-  return (
-    <div>
-      {imageOrientation === 'left' ? (
-        <TextAndImageStyling>
-          <FlavourImageSection img={img} />
-          <FlavourTextSection>
-            <Typography>{children}</Typography>
-          </FlavourTextSection>
-        </TextAndImageStyling>
-      ) : (
-        <TextAndImageStyling>
-          <FlavourTextSection>
-            <Typography>{children}</Typography>
-          </FlavourTextSection>
-          <FlavourImageSection img={img} />
-        </TextAndImageStyling>
-      )}
-    </div>
-  );
-};
+  imagePosition = 'right',
+  src,
+  alt = '',
+  imageColumnWidth = 'minmax(0, 0.8fr)',
+  maxImageWidth,
+  imageAlign = 'center',
+  gap,
+  margin,
+  alignItems,
+}: TextAndImageProps) => (
+  <Row
+    $imagePosition={imagePosition}
+    $imageColumnWidth={imageColumnWidth}
+    $gap={gap}
+    $margin={margin}
+    $alignItems={alignItems}
+  >
+    <TextColumn $imagePosition={imagePosition}>{children}</TextColumn>
+    <ImageColumn
+      $imagePosition={imagePosition}
+      $maxImageWidth={maxImageWidth}
+      $imageAlign={imageAlign}
+    >
+      <Image src={src} alt={alt} lazy />
+    </ImageColumn>
+  </Row>
+);

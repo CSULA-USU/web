@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Typography, TypeProps } from 'components';
+import { Typography, TypeProps, VisuallyHidden } from 'components';
 import { useCountUp } from 'hooks';
 
 interface CountUpProps extends TypeProps {
@@ -73,9 +73,23 @@ export const CountUp = ({
   const display = isNaN(rounded) ? start : format ? format(rounded) : rounded;
   const text = showPlus ? `${display}+` : display;
 
+  const finalDisplay = format ? format(end) : end;
+  const finalText = showPlus ? `${finalDisplay}+` : finalDisplay;
+
+  /**
+   * The counting figure is decorative to a screen reader: it is mid-animation
+   * text that changes many times a second, and a reader landing on it hears
+   * whatever number the tween happens to be on — or, worse, hears the count
+   * announced repeatedly. It is hidden from the accessibility tree, and the
+   * final value is exposed once, statically, in its place. Sighted and
+   * non-sighted readers get the same number; only the motion differs.
+   */
   return (
     <div ref={containerRef}>
-      <Typography {...typographyProps}>{text}</Typography>
+      <div aria-hidden="true">
+        <Typography {...typographyProps}>{text}</Typography>
+      </div>
+      <VisuallyHidden as="span">{finalText}</VisuallyHidden>
     </div>
   );
 };

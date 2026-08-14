@@ -232,13 +232,17 @@ export const Table = <TOriginal,>({
                 $backgroundColor={data.headerColors.backgroundColor}
                 $textColor={data.headerColors.textColor}
               >
-                <Typography
-                  as="h3"
-                  variant="labelTitle"
-                  color={data.headerColors.textColor}
-                >
-                  {rowHeaderValue}
-                </Typography>
+                {rowHeaderColumn.renderRowHeader ? (
+                  rowHeaderColumn.renderRowHeader(row)
+                ) : (
+                  <Typography
+                    as="h3"
+                    variant="labelTitle"
+                    color={data.headerColors.textColor}
+                  >
+                    {rowHeaderValue}
+                  </Typography>
+                )}
               </MobileCardHeader>
 
               <MobileCardBody>

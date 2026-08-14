@@ -10,6 +10,13 @@ interface AutoGridStyles {
   minColumnWidth?: string;
   gap?: string;
   alignItems?: 'stretch' | 'flex-start' | 'center';
+  /**
+   * Inline placement of each item within its own column. `stretch` fills the
+   * column; `center` sizes the item to its content and centers it, which is
+   * what makes a row of equal columns read as evenly spaced rather than as
+   * items shoved against their left edges.
+   */
+  justifyItems?: 'stretch' | 'center';
   margin?: string;
 }
 
@@ -25,6 +32,7 @@ const StyledAutoGrid = styled.div<AutoGridStyles>`
   );
   gap: ${(p) => p.gap || Spaces.lg};
   align-items: ${(p) => p.alignItems || 'stretch'};
+  justify-items: ${(p) => p.justifyItems || 'stretch'};
   width: 100%;
   margin: ${(p) => p.margin || '0'};
 `;
