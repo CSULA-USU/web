@@ -51,6 +51,9 @@ interface GridGalleryProps {
 const SINGLE_COLUMN_MAX_WIDTH = '640px';
 const TWO_COLUMN_MAX_WIDTH = '900px';
 
+/* Shared by the frame and the caption below it — see `Caption`. */
+const FRAME_CORNER_RADIUS = '12px';
+
 const Grid = styled.ul<{ $columns: ColumnCount; $gap?: string }>`
   display: grid;
   grid-template-columns: repeat(${(p) => p.$columns}, minmax(0, 1fr));
@@ -90,7 +93,7 @@ const Frame = styled.div<{ $aspectRatio: string }>`
   width: 100%;
   aspect-ratio: ${(p) => p.$aspectRatio};
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: ${FRAME_CORNER_RADIUS};
   background-color: ${Colors.greyLightest};
 
   > img {
@@ -104,8 +107,13 @@ const Frame = styled.div<{ $aspectRatio: string }>`
 /* `Typography` has a fixed set of elements it will render as, and
    `figcaption` is not one of them. Rather than widen that shared union for a
    single caller, the semantic element wraps the styled text. */
+/* Inset by half the frame's corner radius. The caption sits under the tile's
+   bottom corner, where the frame has already curved inward, so a caption flush
+   to the frame's box reads as overhanging the picture rather than aligning
+   with it. Both sides, so the text block stays centered under the tile. */
 const Caption = styled.figcaption`
   margin: 0;
+  padding: 0 calc(${FRAME_CORNER_RADIUS} / 2);
 `;
 
 const PendingFrame = styled(Frame)`
