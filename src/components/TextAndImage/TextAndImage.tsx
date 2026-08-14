@@ -5,6 +5,19 @@ import { media, Spaces } from 'theme';
 
 type ImagePosition = 'left' | 'right';
 
+/** Where the image sits inside its own column, independent of which side of
+    the row that column is on. */
+type ImageAlign = 'start' | 'center' | 'end';
+
+/* The values are the box-alignment words rather than `flex-*`, so the prop
+   reads like the CSS it becomes; the longhand is what actually ships, being
+   the better supported spelling in flexbox. */
+const justifyContentFor: Record<ImageAlign, string> = {
+  start: 'flex-start',
+  center: 'center',
+  end: 'flex-end',
+};
+
 interface TextAndImageProps {
   /** Anything: headings, paragraphs, a chart. Rendered as-is, unwrapped. */
   children?: React.ReactNode;
@@ -22,13 +35,16 @@ interface TextAndImageProps {
       doesn't scale up past the size it was drawn for. */
   maxImageWidth?: string;
   /**
-   * `edge` pins the image to the row's outer edge, so all the slack falls
-   * between it and the copy. `center` gives it equal margins inside its own
-   * column instead — the right choice when it sits beside something that is
-   * itself centered in its column, such as a chart with `margin: 0 auto`,
-   * where an edge-pinned image reads as lopsided.
+   * Where the image sits within its column: hard against the column's leading
+   * edge, centered in it, or hard against its trailing edge. Independent of
+   * `imagePosition`, which decides which side of the row the column is on.
+   *
+   * `center` is the default and usually right — an image pushed to a column
+   * edge strands itself against the section padding and opens a gulf between
+   * itself and the copy. Reach for `start` or `end` when the image needs to
+   * line up with something specific beside it.
    */
-  imageAlign?: 'edge' | 'center';
+  imageAlign?: ImageAlign;
   gap?: string;
   margin?: string;
   alignItems?: 'center' | 'flex-start';
@@ -72,19 +88,14 @@ const TextColumn = styled.div<ColumnProps>`
   `)}
 `;
 
-/* By default the image hugs the row's outer edge, so the gap it opens up
-   falls between the image and the copy — which is the point of putting it
-   there. `center` overrides that for the case where the thing beside it is
-   itself centered. Centered once the row stacks either way, since there is
-   no outer edge to hug. */
+/* Always centered once the row stacks: below that breakpoint the column is
+   the full width of the section, so aligning to either end of it just throws
+   the image against a margin. */
 const ImageColumn = styled.div<
-  ColumnProps & { $maxImageWidth?: string; $imageAlign: 'edge' | 'center' }
+  ColumnProps & { $maxImageWidth?: string; $imageAlign: ImageAlign }
 >`
   display: flex;
-  justify-content: ${(p) => {
-    if (p.$imageAlign === 'center') return 'center';
-    return p.$imagePosition === 'left' ? 'flex-start' : 'flex-end';
-  }};
+  justify-content: ${(p) => justifyContentFor[p.$imageAlign]};
   min-width: 0;
   ${(p) => p.$imagePosition === 'left' && 'grid-column: 1; grid-row: 1;'}
 
@@ -108,7 +119,7 @@ export const TextAndImage = ({
   alt = '',
   imageColumnWidth = 'minmax(0, 0.8fr)',
   maxImageWidth,
-  imageAlign = 'edge',
+  imageAlign = 'center',
   gap,
   margin,
   alignItems,

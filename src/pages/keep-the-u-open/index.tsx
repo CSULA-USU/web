@@ -459,6 +459,9 @@ export default function KeepTheUOpen() {
           imagePosition="right"
           imageColumnWidth="minmax(0, 0.5fr)"
           maxImageWidth="260px"
+          /* Hard against its column's left edge, so it sits close to the copy
+             rather than stranded against the section padding. */
+          imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
           <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
@@ -951,6 +954,9 @@ export default function KeepTheUOpen() {
           imagePosition="left"
           imageColumnWidth="minmax(0, 0.6fr)"
           maxImageWidth="360px"
+          /* Stated rather than left to the default, which used to resolve to
+             this and now resolves to `center`. */
+          imageAlign="end"
         >
           <Typography
             as="h3"
