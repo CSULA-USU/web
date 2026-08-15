@@ -43,35 +43,51 @@ const RADIUS = 90;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 const STROKE_WIDTH = { donut: 60, pie: 180 } as const;
 
+/* Two columns that sit centered as a pair, rather than two grid tracks that
+   split the full width: with `space-evenly` the gutters outside the figure and
+   the legend match the one between them, so the pair stays visually centered in
+   whatever container it is dropped into. Stretch, not center, so the legend can
+   fill the figure's height — see `LegendList`. */
 const Layout = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
   gap: clamp(24px, 4vw, 48px);
-  align-items: center;
   width: 100%;
 `;
 
 const Figure = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 340px;
+
   svg {
     display: block;
     width: 100%;
     max-width: 340px;
     height: auto;
-    margin: 0 auto;
   }
 `;
 
+/* Rows are spread down the column instead of bunching at the top, so the
+   descriptions read as a full-height panel beside the donut. */
 const LegendList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  flex: 0 1 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 const LegendRow = styled.li`
   display: grid;
   grid-template-columns: 14px 1fr;
   gap: ${Spaces.md};
-  padding: ${Spaces.md} 0;
+  padding: ${Spaces.lg} 0;
 
   & + & {
     border-top: 1px solid ${Colors.greyLighter};

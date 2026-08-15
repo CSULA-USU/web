@@ -52,6 +52,54 @@ export const heroFigures = [
    quotes were invented and are deleted; the grid renders its empty state. */
 export const testimonials: Testimonial[] = [];
 
+/**
+ * Layout preview only — NOT CONTENT.
+ *
+ * Four cards' worth of bracketed scaffolding, so the grid can be seen at the
+ * lengths real quotes will run to. Every field is a visible `[…]` placeholder
+ * on purpose: no sentence here can be mistaken for something a student said,
+ * and no name here can be mistaken for a student. Do not replace these strings
+ * in place — a real quote goes into `testimonials` above, with its release on
+ * file, and this array and the page flag that renders it both get deleted.
+ *
+ * `isAwaitingPhoto` holds the portrait's footprint on every card. A real face
+ * is what tells a reader these are students rather than composed copy, so the
+ * slot is reserved now and the cards are already the height they will be once
+ * the photography lands. No stand-in image goes in it: a borrowed face beside
+ * a fabricated quote is the exact failure the empty state exists to prevent.
+ * Each portrait needs the same written release as its quote.
+ */
+export const sampleTestimonials: Testimonial[] = [
+  {
+    quote:
+      '[SAMPLE — one long quote, about three lines, where a student says which part of the building they use and what they would do without it. Sets the tallest card in the row.]',
+    name: '[Student name]',
+    detail: '[Major] · [Class year]',
+    isAwaitingPhoto: true,
+  },
+  {
+    quote:
+      '[SAMPLE — one short quote, a single sentence. Shows how the grid handles an uneven row.]',
+    name: '[Student name]',
+    detail: '[Major] · [Class year]',
+    isAwaitingPhoto: true,
+  },
+  {
+    quote:
+      '[SAMPLE — a medium quote of two lines, from a student employee, about the job rather than the space.]',
+    name: '[Student name]',
+    detail: '[Position] · [Class year]',
+    isAwaitingPhoto: true,
+  },
+  {
+    quote:
+      '[SAMPLE — a medium quote of two lines, from a commuter student, about the hours between classes.]',
+    name: '[Student name]',
+    detail: '[Major] · [Class year]',
+    isAwaitingPhoto: true,
+  },
+];
+
 export const sources: Source[] = [
   {
     id: '1',
@@ -188,9 +236,9 @@ export const services: {
     body: 'The fitness center, the Game Room and the GENE program — included, no membership.',
   },
   {
-    title: 'Centers',
+    title: 'Cultural Centers',
     Icon: MdGroups,
-    body: 'APISRC, CLSRC, GSRC and PASRC: staffed centers, open doors, and Cultural Grads.',
+    body: 'The APISRC, CLSRC, GSRC and PASRC: staffed centers, open doors, and Cultural Grads.',
   },
   {
     title: 'Jobs & Leadership',
@@ -275,7 +323,7 @@ export const bandStats = [
     value: '2007',
     citation: '2',
     label:
-      'The last time students approved a change to this fee. That vote paid for the building.',
+      'The year students last approved a change to this fee. That vote paved the way for the new U-SU building to be built.',
   },
   {
     value: '90–100',
@@ -514,7 +562,10 @@ export const barRows: BarRow[] = [
     campus: 'Cal State LA',
     value: 1084,
     proposedValue: 1264,
-    segmentLabels: { base: 'today', extension: 'proposed' },
+    segmentLabels: {
+      base: 'today:',
+      extension: 'proposed total with increase:',
+    },
     color: 'primary',
   },
   {
