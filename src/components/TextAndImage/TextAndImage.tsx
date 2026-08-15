@@ -32,8 +32,20 @@ interface TextAndImageProps {
       `minmax(0, 1fr)`. Narrow this to give the copy more room. */
   imageColumnWidth?: string;
   /** Ceiling on the image itself, so an illustration in a wide column
-      doesn't scale up past the size it was drawn for. */
+      doesn't scale up past the size it was drawn for. Ignored when
+      `imageHeight` is set. */
   maxImageWidth?: string;
+  /**
+   * Fixed rendered height, with the width left to follow the artwork's own
+   * ratio and the image letterboxed inside its box rather than distorted.
+   *
+   * Reach for this instead of `maxImageWidth` across a set of illustrations
+   * whose aspect ratios differ. Matched widths make a portrait drawing tall
+   * and its figures huge next to a landscape one; matched heights keep the
+   * drawn people at roughly the same scale, which is what a reader actually
+   * compares from section to section.
+   */
+  imageHeight?: string;
   /**
    * Where the image sits within its column: hard against the column's leading
    * edge, centered in it, or hard against its trailing edge. Independent of
@@ -92,17 +104,34 @@ const TextColumn = styled.div<ColumnProps>`
    the full width of the section, so aligning to either end of it just throws
    the image against a margin. */
 const ImageColumn = styled.div<
-  ColumnProps & { $maxImageWidth?: string; $imageAlign: ImageAlign }
+  ColumnProps & {
+    $maxImageWidth?: string;
+    $imageHeight?: string;
+    $imageAlign: ImageAlign;
+  }
 >`
   display: flex;
   justify-content: ${(p) => justifyContentFor[p.$imageAlign]};
   min-width: 0;
   ${(p) => p.$imagePosition === 'left' && 'grid-column: 1; grid-row: 1;'}
 
+  /* Height-led: object-fit matters because the column can be narrower than the
+     artwork's ratio wants, and an image asked for a fixed height in a box too
+     narrow for it would otherwise squash rather than shrink. */
   > img {
-    width: 100%;
-    max-width: ${(p) => p.$maxImageWidth || '320px'};
-    height: auto;
+    ${(p) =>
+      p.$imageHeight
+        ? `
+      width: auto;
+      height: ${p.$imageHeight};
+      max-width: 100%;
+      object-fit: contain;
+    `
+        : `
+      width: 100%;
+      max-width: ${p.$maxImageWidth || '320px'};
+      height: auto;
+    `}
   }
 
   ${media('tablet')(`
@@ -119,6 +148,7 @@ export const TextAndImage = ({
   alt = '',
   imageColumnWidth = 'minmax(0, 0.8fr)',
   maxImageWidth,
+  imageHeight,
   imageAlign = 'center',
   gap,
   margin,
@@ -135,6 +165,7 @@ export const TextAndImage = ({
     <ImageColumn
       $imagePosition={imagePosition}
       $maxImageWidth={maxImageWidth}
+      $imageHeight={imageHeight}
       $imageAlign={imageAlign}
     >
       <Image src={src} alt={alt} lazy />
