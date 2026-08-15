@@ -474,7 +474,7 @@ export default function KeepTheUOpen() {
           src={sectionIllustrations.whyItMatters}
           imagePosition="right"
           imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={`clamp('150px, 15vw, 300px')`}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
           /* Hard against its column's left edge, so it sits close to the copy
              rather than stranded against the section padding. */
           imageAlign="start"
@@ -696,11 +696,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            The $5.63 is per week across a 16-week semester. The fee was last
-            set in 2007
-            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
-            The proposed contract language also includes an annual inflation
-            adjustment capped at 3%.
+            An increase of $90.00 translates to $5.63 per week across a 16-week
+            semester. The proposed contract language also includes an annual
+            inflation adjustment capped at 3%.
             <CitationMarker sourceId="2" />
           </Typography>
           <Typography
