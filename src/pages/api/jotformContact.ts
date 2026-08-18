@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
 import { jotformContactRatelimit } from 'lib/ratelimit';
-import { validateCalStateEmail } from 'lib/api';
+import { validateEmail } from 'lib/api';
 import {
   sendFeedbackNotifications,
   sendFeedbackEmailFailureAlert,
@@ -47,7 +47,7 @@ export function validateContactForm(
   if (!captchaToken) errors.push('CAPTCHA token is required.');
 
   if (email) {
-    const emailError = validateCalStateEmail(email);
+    const emailError = validateEmail(email);
     if (emailError) errors.push(emailError);
   }
   const allowedCategories = Object.keys(categoryMap);
