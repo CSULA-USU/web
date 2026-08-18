@@ -28,6 +28,19 @@ export const campaignMode = {
   heroSecondaryCta: 'What This Costs You',
   actionVerb: 'shape',
   beforeHeading: 'Get informed',
+  /* The closing strip. Informational mode asks for one thing the page cannot
+     get on its own — the reader's own view — so the primary action is the
+     contact form and the secondary points back at the two channels the page
+     has already named. On the flip, the heading carries the ask, the primary
+     action becomes the ballot, and the feedback form takes the secondary slot;
+     the JSX does not change. */
+  finalHeading: 'Being informed is only half of the story.',
+  finalBody:
+    "You've seen the budget, the shortfall, and what $90 a semester will get you. Now is the time to make your voice heard. Every piece of feedback is a vote for your vision of a better campus.",
+  finalCtaLabel: 'Share Your Thoughts',
+  finalCtaHref: '/contact',
+  finalSecondaryLabel: 'Other Ways To Take Part',
+  finalSecondaryHref: '#before-you-decide',
 };
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
@@ -205,7 +218,7 @@ export const thesisCards = [
     title: 'Nearly 100 student jobs',
     body: 'Between 90 and 100 students work here',
     bodyAfterCitation:
-      ' alongside 29 full-time staff — the largest student employer on campus, with schedules built around class times.',
+      ' alongside 29 full-time staff—the largest student employer on campus, with schedules built around class times.',
     citation: '4',
   },
 ];
@@ -223,7 +236,7 @@ export const services: {
   {
     title: 'Events & Activities',
     Icon: MdEvent,
-    body: 'Programming run by students, for students — from noon concerts to the five cultural graduation ceremonies.',
+    body: 'Event programming run by students, for students.',
   },
   {
     title: 'Study & Rest',
@@ -233,7 +246,7 @@ export const services: {
   {
     title: 'Play & Recreation',
     Icon: MdFitnessCenter,
-    body: 'The fitness center, the Game Room and the GENE program — included, no membership.',
+    body: 'The fitness center, the Game Room and the GENE program included; no membership required.',
   },
   {
     title: 'Cultural Centers',
@@ -279,15 +292,14 @@ export const buildingGalleryItems: GridGalleryItem[] = [
     src: '',
     alt: 'Graduates in stoles seated in rows at a cultural graduation ceremony',
     caption:
-      'Cultural graduation, 2025. Five ceremonies a year, about 800 students, free.',
+      'Cultural graduations. 5 ceremonies a year, about 800 students, free.',
     sourceId: '4',
     isAwaitingImage: true,
   },
   {
     src: '',
     alt: 'Students using cardio and weight equipment in a basement-level fitness center',
-    caption:
-      'Fitness center, basement level. Free to all students, no membership.',
+    caption: 'Fitness center. Gym access for those who paid student fees.',
     isAwaitingImage: true,
   },
   {
@@ -299,8 +311,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: '',
     alt: 'Rows of student organization tables with banners along a walkway',
-    caption:
-      'Involvement Fair. Every registered student organization on campus, one afternoon.',
+    caption: 'Involvement Fair. Every RSO on campus for one afternoon.',
     isAwaitingImage: true,
   },
   {
@@ -312,8 +323,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: '',
     alt: 'A meeting room set with a conference table and chairs',
-    caption:
-      'Reserved meeting room. Rental fees waived for registered student organizations.',
+    caption: 'Room rental fees waived for registered student organizations.',
     isAwaitingImage: true,
   },
 ];
@@ -727,7 +737,7 @@ export const peerOutcomes: PeerOutcome[] = [
     date: 'October 2024',
     proposal:
       'Same facility, reduced to $245/semester, not charged until the year it opens',
-    outcome: 'Approved, 64.6% to 35.4%. Turnout 11.9%.',
+    outcome: 'Approved, 64.6% to 35.4%.',
     sourceId: peerSourceIds.csusmReferendum2024,
     linkText: 'See the referendum results',
   },
@@ -748,7 +758,7 @@ export const peerOutcomes: PeerOutcome[] = [
     monogram: 'CSUEB',
     date: 'Spring 2026',
     proposal: 'New athletics fee',
-    outcome: 'Alternative consultation, in progress',
+    outcome: 'Alt. consultation in progress',
     sourceId: peerSourceIds.csuebAthleticsFee2026,
     linkText: "Read the president's message",
   },
