@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { Colors } from 'theme';
 
 type ScrollCueLine = 'solid' | 'dashed' | 'dotted';
-type ScrollCueAnimation = 'trickle' | 'pulse' | 'draw' | 'drift';
+type ScrollCueAnimation = 'trickle' | 'stream' | 'pulse' | 'draw' | 'drift';
 
 /** How far `pulse` fades at the bottom of its cycle. Zero, so the line clears
  * completely between beats rather than idling as a visible bar — a cue that
@@ -18,23 +18,35 @@ interface ScrollCueProps {
   /** Shape of the line itself. */
   lineStyle?: ScrollCueLine;
   /**
-   * `trickle` runs a soft light down a dim line. `pulse` breathes the whole
-   * line. `draw` grows it from the top, over and over. `drift` marches the
-   * pattern downward — which needs a pattern, so it reads as static on a
-   * `solid` line.
+   * `trickle` runs a soft light down a dim line. `stream` inverts that — the
+   * line is lit end to end and a short break travels down it, so it reads as a
+   * constant flow rather than a single drop. `pulse` breathes the whole line.
+   * `draw` grows it from the top, over and over. `drift` marches the pattern
+   * downward — which needs a pattern, so it reads as static on a `solid` line.
    */
   animation?: ScrollCueAnimation;
   color?: keyof typeof Colors;
   /**
-   * The line the highlight travels along, drawn beneath it. `trickle` only —
-   * every other animation is a single line and uses `color`. Transparent by
-   * default, so the cue is just the traveling light; give it a color to lay
-   * a visible line under that light.
+   * The line the traveling layer moves along, drawn beneath it. `trickle` and
+   * `stream` only — every other animation is a single line and uses `color`.
+   * Transparent by default, so a `trickle` is just the traveling light and a
+   * `stream`'s break is a true gap; give it a color to lay a visible line
+   * under both.
    */
   trackColor?: keyof typeof Colors;
   height?: string;
   /** Width of the line, and the diameter of a `dotted` dot. */
   thickness?: string;
+  /**
+   * Length of the gap that travels down a `stream`, e.g. `24px`. Ignored by
+   * every other animation. The spacing between breaks derives from it, so a
+   * longer break still leaves only one in view at a time.
+   *
+   * The gap is soft-edged — it fades out over its first half and back in over
+   * its second — so a short value reads as a crisp break and a long one as a
+   * broad thinning of the line, never as a hard-cut segment.
+   */
+  breakLength?: string;
   /**
    * Distance over which the cue dissolves into nothing at its bottom edge,
    * e.g. `24px`.
@@ -47,7 +59,11 @@ interface ScrollCueProps {
    * line there is nothing to round.
    */
   fadeLength?: string;
-  /** One full cycle, e.g. `2600ms`. Longer is subtler. */
+  /**
+   * One full cycle, e.g. `2600ms`. Longer is subtler. For `stream` a cycle is
+   * one break travelling the whole line, top edge to bottom, with the next
+   * break arriving as it leaves.
+   */
   duration?: string;
   margin?: string;
   className?: string;
@@ -60,10 +76,16 @@ interface CueStyle {
   $trackColor?: string;
   $height: string;
   $thickness: string;
+  $breakLength: string;
   $duration: string;
   $fadeLength?: string;
   $margin?: string;
 }
+
+/** Whether the cue is two layers — a dim track with a lit layer moving over
+ * it — rather than a single line that animates as a whole. */
+const hasTravelingLayer = (p: CueStyle) =>
+  p.$animation === 'trickle' || p.$animation === 'stream';
 
 /* Both layers share one pattern so a dotted highlight lands exactly on the
    dotted track rather than beating against it. */
@@ -125,6 +147,20 @@ const travel = keyframes`
   }
 `;
 
+/* Exactly one period, because the mask tiles: moving it by its own tile height
+   lands every break where the one above it started, so the loop has no seam and
+   the handover from one break to the next is invisible. */
+const flow = keyframes`
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 0 var(--cue-stream-period);
+    mask-position: 0 var(--cue-stream-period);
+  }
+`;
+
 const pulse = keyframes`
   0%, 100% { opacity: ${PULSE_LOW_OPACITY}; }
   50% { opacity: 1; }
@@ -144,6 +180,54 @@ const drift = keyframes`
     background-position: 0 var(--cue-pitch);
   }
 `;
+
+/* `trickle` masks in one short window and walks it the length of the line, so
+   the lit part is the exception. `stream` masks in a tile that is opaque except
+   for a short soft break and moves that tile by one period, so the line stays
+   lit end to end and only the break travels — a flow with seams in it rather
+   than a drop running down. */
+const getTravelingMask = (p: CueStyle) => {
+  if (p.$animation === 'stream') {
+    /* Percentages here resolve against the mask tile — one period — not the
+       cue, so the break stays the same length however tall the cue is. */
+    return css`
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 calc(100% - var(--cue-stream-break)),
+        transparent calc(100% - var(--cue-stream-break) / 2),
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 calc(100% - var(--cue-stream-break)),
+        transparent calc(100% - var(--cue-stream-break) / 2),
+        #000 100%
+      );
+      -webkit-mask-size: 100% var(--cue-stream-period);
+      mask-size: 100% var(--cue-stream-period);
+      -webkit-mask-repeat: repeat-y;
+      mask-repeat: repeat-y;
+      animation: ${flow} ${p.$duration} linear infinite;
+    `;
+  }
+
+  return css`
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 50%,
+      transparent
+    );
+    mask-image: linear-gradient(to bottom, transparent, #000 50%, transparent);
+    -webkit-mask-size: 100% var(--cue-highlight-length);
+    mask-size: 100% var(--cue-highlight-length);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: ${travel} ${p.$duration} linear infinite;
+  `;
+};
 
 const getTrackAnimation = (p: CueStyle) => {
   if (p.$animation === 'pulse') {
@@ -172,6 +256,13 @@ const Cue = styled.span<CueStyle>`
   --cue-pitch: ${getPatternPitch};
   --cue-height: ${(p) => p.$height};
   --cue-highlight-length: calc(var(--cue-height) * ${HIGHLIGHT_HEIGHT_RATIO});
+  --cue-stream-break: ${(p) => p.$breakLength};
+  /* The line plus one break's length, so exactly one break is ever in view: the
+     next one reaches the top edge at the instant the current one clears the
+     bottom. Any shorter and a second break enters while the first is still
+     visible; any longer and the line sits unbroken between them, which reads as
+     intermittent rather than as flow. */
+  --cue-stream-period: calc(var(--cue-height) + var(--cue-stream-break));
   width: ${(p) => p.$thickness};
   height: var(--cue-height);
   margin: ${(p) => p.$margin || '0'};
@@ -201,44 +292,26 @@ const Cue = styled.span<CueStyle>`
     content: '';
     position: absolute;
     inset: 0;
-    /* Only trickle has a layer above this one, so only trickle has a track to
-       color separately. The rest are a single line drawn in the main color —
-       otherwise trackColor would quietly win over it. */
+    /* Only the two-layer animations have a layer above this one, so only they
+       have a track to color separately. The rest are a single line drawn in the
+       main color — otherwise trackColor would quietly win over it. */
     ${(p) =>
       getPattern(
         p,
-        p.$animation === 'trickle'
-          ? p.$trackColor || Colors.transparent
-          : p.$color,
+        hasTravelingLayer(p) ? p.$trackColor || Colors.transparent : p.$color,
       )}
     ${getTrackAnimation}
   }
 
   ${(p) =>
-    p.$animation === 'trickle' &&
+    hasTravelingLayer(p) &&
     css`
       ::after {
         content: '';
         position: absolute;
         inset: 0;
         ${getPattern(p, p.$color)}
-        -webkit-mask-image: linear-gradient(
-          to bottom,
-          transparent,
-          #000 50%,
-          transparent
-        );
-        mask-image: linear-gradient(
-          to bottom,
-          transparent,
-          #000 50%,
-          transparent
-        );
-        -webkit-mask-size: 100% var(--cue-highlight-length);
-        mask-size: 100% var(--cue-highlight-length);
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        animation: ${travel} ${p.$duration} linear infinite;
+        ${getTravelingMask(p)}
       }
     `}
 
@@ -249,11 +322,11 @@ const Cue = styled.span<CueStyle>`
       animation: none;
       opacity: 1;
       transform: none;
-      /* A trickle's track is transparent by default, and its highlight is
-         gone here — so draw the line in the main color rather than leave an
-         empty gap. An explicit trackColor is still honored. */
+      /* A trickle's or stream's track is transparent by default, and the layer
+         that lit it is gone here — so draw the line in the main color rather
+         than leave an empty gap. An explicit trackColor is still honored. */
       ${(p) =>
-        p.$animation === 'trickle' && !p.$trackColor && getPattern(p, p.$color)}
+        hasTravelingLayer(p) && !p.$trackColor && getPattern(p, p.$color)}
     }
 
     ::after {
@@ -274,6 +347,7 @@ export const ScrollCue = ({
   trackColor,
   height = '64px',
   thickness = '2px',
+  breakLength = '10px',
   duration = '2600ms',
   fadeLength,
   margin,
@@ -288,6 +362,7 @@ export const ScrollCue = ({
     $trackColor={trackColor && Colors[trackColor]}
     $height={height}
     $thickness={thickness}
+    $breakLength={breakLength}
     $duration={duration}
     $fadeLength={fadeLength}
     $margin={margin}
