@@ -4,6 +4,7 @@ import { layout, space, LayoutProps, SpaceProps } from 'styled-system';
 import { Colors, media } from 'theme';
 import { GrExpand } from 'react-icons/gr';
 import { ImageModal } from './ImageModal';
+import { SkeletonOverlay } from '../Skeleton';
 
 export interface BaseComponentProps
   extends SpaceProps,
@@ -30,6 +31,15 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   isExpandable?: boolean;
   fullSizeSrc?: string;
   onLoad?: React.ReactEventHandler<HTMLImageElement>;
+  /**
+   * Shimmer over the image's box until it has decoded, for photographs heavy
+   * enough that a slow connection leaves a hole in the layout.
+   *
+   * Requires the box to be known before the image arrives — a sized parent, or
+   * an explicit width and height. A skeleton over a box that takes its size
+   * *from* the loaded image has nothing to fill and renders as nothing.
+   */
+  skeletonWhileLoading?: boolean;
 }
 
 const TriggerWrapper = styled.div<{
@@ -54,6 +64,15 @@ const TriggerWrapper = styled.div<{
     border-radius: inherit;
     object-fit: inherit;
   }
+`;
+
+/* Only wraps the image when a skeleton is asked for, so every existing caller
+   keeps rendering a bare `img` with no extra element in the tree. */
+const SkeletonFrame = styled.div`
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 const BottomIconAnchor = styled.div`
@@ -119,10 +138,13 @@ export const Image: FC<ImageProps> = ({
   isExpandable,
   fullSizeSrc,
   onLoad,
+  skeletonWhileLoading,
   ...rest
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSettled, setIsSettled] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
@@ -131,11 +153,25 @@ export const Image: FC<ImageProps> = ({
     setImageSrc(src);
   }, [src]);
 
+  /* A cached image can already be complete before this mounts, in which case
+     its load event has been and gone and the skeleton would never clear. */
+  useEffect(() => {
+    if (imageRef.current?.complete) setIsSettled(true);
+  }, [imageSrc]);
+
+  const handleLoad: React.ReactEventHandler<HTMLImageElement> = (event) => {
+    setIsSettled(true);
+    onLoad?.(event);
+  };
+
   const handleError = () => {
     if (placeholder) {
       setImageSrc(placeholder);
     }
 
+    /* Clear the shimmer either way: a failed image should fall through to its
+       placeholder or the browser's broken-image mark, not shimmer forever. */
+    setIsSettled(true);
     onError?.();
   };
 
@@ -169,8 +205,9 @@ export const Image: FC<ImageProps> = ({
   );
 
   if (!isExpandable) {
-    return (
+    const image = (
       <StyledImage
+        ref={imageRef}
         alt={alt}
         src={imageSrc}
         srcSet={srcset}
@@ -178,9 +215,18 @@ export const Image: FC<ImageProps> = ({
         onError={handleError}
         loading={lazy ? 'lazy' : 'eager'}
         tabIndex={-1}
-        onLoad={onLoad}
+        onLoad={handleLoad}
         {...filteredProps}
       />
+    );
+
+    if (!skeletonWhileLoading) return image;
+
+    return (
+      <SkeletonFrame>
+        {image}
+        {!isSettled && <SkeletonOverlay aria-hidden="true" />}
+      </SkeletonFrame>
     );
   }
 
@@ -197,6 +243,7 @@ export const Image: FC<ImageProps> = ({
         aria-label={`View ${alt} in full screen`}
       >
         <StyledImage
+          ref={imageRef}
           alt={alt}
           src={imageSrc}
           srcSet={srcset}
@@ -204,8 +251,11 @@ export const Image: FC<ImageProps> = ({
           onError={handleError}
           loading={lazy ? 'lazy' : 'eager'}
           tabIndex={-1}
-          onLoad={onLoad}
+          onLoad={handleLoad}
         />
+        {skeletonWhileLoading && !isSettled && (
+          <SkeletonOverlay aria-hidden="true" />
+        )}
         {!isOpen && (
           <BottomIconAnchor>
             <ExpandIcon />

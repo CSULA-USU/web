@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from 'react';
 import NextImage from 'next/image';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { Typography } from '../Typography';
 import { CitationMarker } from '../CitationMarker';
 import { PlaceholderMarker } from '../PlaceholderMarker';
+import { SkeletonOverlay } from '../Skeleton';
 
 export interface GridGalleryItem {
   src: string;
@@ -127,6 +129,49 @@ const PendingFrame = styled(Frame)`
 `;
 
 /**
+ * One tile's photograph, shimmering until it has decoded. Its own component so
+ * each tile tracks its own load rather than the grid holding a set of indexes.
+ */
+const GalleryImage = ({
+  item,
+  sizes,
+  isEager,
+}: {
+  item: GridGalleryItem;
+  sizes: string;
+  isEager: boolean;
+}) => {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [isSettled, setIsSettled] = useState(false);
+  const settle = () => setIsSettled(true);
+
+  /* A cached image can already be complete before this mounts, in which case
+     its load event has been and gone and the skeleton would shimmer forever. */
+  useEffect(() => {
+    if (imageRef.current?.complete) setIsSettled(true);
+  }, []);
+
+  return (
+    <>
+      <NextImage
+        ref={imageRef}
+        src={item.src}
+        alt={item.alt}
+        width={800}
+        height={600}
+        sizes={sizes}
+        loading={isEager ? 'eager' : 'lazy'}
+        onLoad={settle}
+        /* Settle on failure too: a broken source should surface the browser's
+           own broken-image affordance, not shimmer indefinitely. */
+        onError={settle}
+      />
+      {!isSettled && <SkeletonOverlay aria-hidden="true" />}
+    </>
+  );
+};
+
+/**
  * A responsive grid of images, each with a permanently visible caption.
  *
  * Captions are never hover-revealed or overlaid on the image: there is no
@@ -159,17 +204,14 @@ export const GridGallery = ({
               </PendingFrame>
             ) : (
               <Frame $aspectRatio={aspectRatio}>
-                <NextImage
-                  src={item.src}
-                  alt={item.alt}
-                  width={800}
-                  height={600}
+                <GalleryImage
+                  item={item}
                   sizes={`(max-width: ${SINGLE_COLUMN_MAX_WIDTH}) 92vw, (max-width: ${TWO_COLUMN_MAX_WIDTH}) 46vw, ${Math.floor(
                     100 / columns,
                   )}vw`}
                   /* Everything past the first row is below the fold on any
                      viewport that shows this many columns. */
-                  loading={index < columns ? 'eager' : 'lazy'}
+                  isEager={index < columns}
                 />
               </Frame>
             )}

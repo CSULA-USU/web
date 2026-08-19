@@ -214,7 +214,13 @@ const renderCampusCell = (outcome: PeerOutcome) => (
         would only make a screen reader say the campus twice. */}
     {outcome.logoSrc ? (
       <CampusLogo>
-        <Image src={outcome.logoSrc} alt="" width="auto" height="auto" />
+        <Image
+          src={outcome.logoSrc}
+          alt=""
+          width="auto"
+          height="auto"
+          skeletonWhileLoading
+        />
       </CampusLogo>
     ) : (
       <Monogram
