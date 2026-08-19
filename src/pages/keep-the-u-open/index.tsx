@@ -1404,7 +1404,7 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is the one worth understanding. Students rejected the first
+          San Marcos is the one worth understanding: students rejected the first
           proposal, partly because it would have charged them a year before the
           building opened. The campus came back with a cheaper proposal on
           different terms, and students approved it.
