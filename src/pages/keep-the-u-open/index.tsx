@@ -138,7 +138,7 @@ const sectionIllustrations = {
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
-  beforeYouDecide: '/vectors/about/solution-mindset.svg',
+  beforeYouDecide: '/vectors/about/decision.svg',
 } as const;
 
 /* Height, not width, is what these share. The undraw set mixes landscape and
@@ -382,7 +382,7 @@ export default function KeepTheUOpen() {
           color="greyLightest"
           margin={`${Spaces.md} 0 0`}
         >
-          The rooms your clubs meet in. The free gym. The food pantry. Study
+          The rooms your clubs meet in. Gym access. The food pantry. Study
           rooms. Places to nap.
         </Typography>
         <Typography
@@ -458,11 +458,11 @@ export default function KeepTheUOpen() {
         </AutoGrid>
         <ScrollCue
           lineStyle="solid"
-          animation="trickle"
+          animation="stream"
           color="white"
           thickness="0.25px"
           height="100px"
-          fadeLength="32px"
+          breakLength="10px"
           duration="2600ms"
           margin={`${Spaces.xl} auto 0`}
         />
@@ -474,7 +474,7 @@ export default function KeepTheUOpen() {
           src={sectionIllustrations.whyItMatters}
           imagePosition="right"
           imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={`clamp('150px, 15vw, 300px')`}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
           /* Hard against its column's left edge, so it sits close to the copy
              rather than stranded against the section padding. */
           imageAlign="start"
@@ -696,11 +696,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            The $5.63 is per week across a 16-week semester. The fee was last
-            set in 2007
-            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
-            The proposed contract language also includes an annual inflation
-            adjustment capped at 3%.
+            An increase of $90.00 translates to $5.63 per week across a 16-week
+            semester. The proposed contract language also includes an annual
+            inflation adjustment capped at 3%.
             <CitationMarker sourceId="2" />
           </Typography>
           <Typography
@@ -1387,8 +1385,8 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          That&apos;s what participation does. Not just approve or reject —
-          change what gets proposed.
+          That&apos;s what participation does. You have the power to change what
+          gets proposed.
         </Typography>
       </FluidContainer>
 
@@ -1568,6 +1566,71 @@ export default function KeepTheUOpen() {
           Every number and where it came from
         </Typography>
         <SourceList sources={sources} columns={2} />
+      </FluidContainer>
+
+      {/* 15 · Final CTA — after the sources on purpose. Everything above asks
+          the reader to check the figures; this is the only thing the page asks
+          them to do, and it comes once they have had the chance to. Black on
+          primary, which no other band but the stat band is allowed to do —
+          the last full band before the disclaimer. */}
+      <FluidContainer
+        {...bandShell}
+        backgroundColor="primary"
+        textAlign="center"
+      >
+        {/* Not `Eyebrow`: that lays its label out in a flex row, which ignores
+            the band's centering, and its accent rule is gold — invisible here.
+            This is the hero's eyebrow, in black for the yellow. */}
+        <Typography
+          as="p"
+          variant="span"
+          size="2xs"
+          weight="700"
+          uppercase
+          letterSpacing="0.14em"
+          color="black"
+          margin={`0 0 ${Spaces.md}`}
+        >
+          Get involved!
+        </Typography>
+        <Typography
+          as="h2"
+          variant="pageHeader"
+          fluidSize={FLUID_H2}
+          lineHeight="1.15"
+          color="black"
+        >
+          {campaignMode.finalHeading}
+        </Typography>
+        {/* `auto` on the sides, so the measure stays centered under the
+            heading rather than sitting off to the left of it. */}
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          color="black"
+          margin={`${Spaces.md} auto 0`}
+          style={{ maxWidth: MEASURE }}
+        >
+          {campaignMode.finalBody}
+        </Typography>
+        <div>
+          <Button
+            variant="black"
+            href={campaignMode.finalCtaHref}
+            margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+          >
+            {campaignMode.finalCtaLabel}
+          </Button>
+          <Button
+            variant="outline"
+            href={campaignMode.finalSecondaryHref}
+            margin={`${Spaces.lg} 0 0`}
+          >
+            {campaignMode.finalSecondaryLabel}
+          </Button>
+        </div>
       </FluidContainer>
 
       {/* 16 · Disclaimer strip */}

@@ -88,7 +88,7 @@ Jest + ts-jest. Run with `yarn test` (also runs as part of `yarn build`). Tests 
 - Dynamic segments lose their brackets and are dash-joined to the resource: `pages/api/backoffice/users/[id]/roles.ts` → `__tests__/backoffice/users-id-roles.test.ts`.
 - A flat source route stays flat: `pages/api/jotformContact.ts` → `__tests__/jotformContact.test.ts`.
 
-**Lib / helper tests** are named after the feature or function under test, not the file — because files like `lib/api.ts` hold many helpers. Example: `validateCalStateEmail` from `lib/api.ts` is tested in `__tests__/calstatela-email.test.ts`.
+**Lib / helper tests** are named after the feature or function under test, not the file — because files like `lib/api.ts` hold many helpers. Example: `validateEmail` from `lib/api.ts` is tested in `__tests__/email-validation.test.ts`.
 
 **Environment:** `testEnvironment` is `node` by default. A test that needs DOM/component rendering must opt in per-file with a `@jest-environment jsdom` docblock at the top.
 

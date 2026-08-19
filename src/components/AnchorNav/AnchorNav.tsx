@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Colors, FontSizes, Spaces, media } from 'theme';
+import { Colors, FontSizes, Shadows, Spaces, media } from 'theme';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 
@@ -63,12 +63,24 @@ const StickyHost = styled.div`
   `)}
 `;
 
+/* Rule and shadow both, because they answer different questions and neither
+   answers the other everywhere. The rule is an edge; the shadow is height,
+   and height is the true one — the page scrolls underneath this. Over white
+   and greyLightest the shadow carries it and the rule is barely there; over
+   the primary and greyDarkest bands a 6% black shadow is invisible and the
+   rule is all that holds the edge.
+
+   Both are tied to $opaque. Unconditional, the shadow would smear across the
+   hero photograph before the reader has scrolled at all — and the bar's whole
+   transparent state exists so the hero shows through it. */
 const Bar = styled.nav<{ $opaque: boolean }>`
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
   background-color: ${(p) => (p.$opaque ? Colors.white : 'transparent')};
   border-bottom: 1px solid
     ${(p) => (p.$opaque ? Colors.greyLighter : 'transparent')};
-  transition: background-color ${CHROME_FADE}, border-color ${CHROME_FADE};
+  box-shadow: ${(p) => (p.$opaque ? Shadows.soft : Shadows.none)};
+  transition: background-color ${CHROME_FADE}, border-color ${CHROME_FADE},
+    box-shadow ${CHROME_FADE};
 `;
 
 const BarInner = styled.div<{ $maxWidth: string }>`
