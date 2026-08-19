@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, formatDollars, Page, ShareChart, TrendChart } from 'modules';
+import { BarChart, formatDollars, Page, TrendChart } from 'modules';
 import {
   anchorLinks,
   bandStats,
@@ -44,6 +44,7 @@ import {
   Image,
   Monogram,
   Panel,
+  PieChart,
   PlaceholderMarker,
   PrototypeNotice,
   ScrollCue,
@@ -859,7 +860,7 @@ export default function KeepTheUOpen() {
           </div>
         </Panel>
 
-        {/* 7.3 · ShareChart */}
+        {/* 7.3 · PieChart */}
         <Divider
           color="greyLighter"
           size="0px"
@@ -890,8 +891,9 @@ export default function KeepTheUOpen() {
             >
               Share of the U-SU operating budget, as of FY 2025-26
             </Typography>
-            <ShareChart
+            <PieChart
               segments={shareSegments}
+              amountSuffix="of your fee"
               total="$137.25"
               totalLabel="per semester"
               variant={chartAnimation.donutVariant}

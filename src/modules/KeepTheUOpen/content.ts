@@ -1,5 +1,5 @@
 import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
-import type { ShareSegment } from 'modules/KeepTheUOpen/ShareChart';
+import type { PieSegment } from 'components';
 import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
 import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
@@ -518,7 +518,7 @@ export const reserveCallouts: {
 
 /* Only the bond share is published. Amounts come from the source rather than
    being recomputed here. */
-export const shareSegments: ShareSegment[] = [
+export const shareSegments: PieSegment[] = [
   {
     id: 'bond',
     label: 'Bond payment on the building',
