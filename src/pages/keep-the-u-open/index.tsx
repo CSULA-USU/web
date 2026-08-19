@@ -41,6 +41,7 @@ import {
   Eyebrow,
   FluidContainer,
   GridGallery,
+  Image,
   Monogram,
   Panel,
   PlaceholderMarker,
@@ -169,14 +170,37 @@ const PREVIEW_TESTIMONIAL_LAYOUT = true;
    decorative, but a decoration nobody can see is just noise. */
 const SERVICE_ICON_SIZE = 44;
 
-/* The campus cell pairs a Monogram with the name. No CSU seals or logos exist
-   in this repo, and borrowing a real one would imply that campus endorses our
-   fee. Lettered tiles carry the weight without borrowing anyone's mark. */
+/* The campus cell pairs each campus's mark with its name, falling back to a
+   lettered tile for any row whose logo has not been sourced yet. */
 const CampusCell = styled.div`
   display: flex;
   align-items: center;
   gap: ${Spaces.md};
   min-width: 0;
+`;
+
+/* Fluid rather than fixed: the campus column is a percentage of the table, so
+   a mark big enough to read on a wide screen would crowd the name out of a
+   narrow one. The floor is what the logo needs to be legible at all; the
+   ceiling is where it starts to outweigh the row it labels. */
+const CAMPUS_MARK_SIZE = 'clamp(44px, 4vw, 64px)';
+
+/* The logos are square but not cropped alike — some sit tight to their edges,
+   others carry their own padding. `contain` inside a fixed box keeps every
+   mark whole and every row's name starting at the same x. */
+const CampusLogo = styled.div`
+  flex-shrink: 0;
+  width: ${CAMPUS_MARK_SIZE};
+  height: ${CAMPUS_MARK_SIZE};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const sourceHrefById = new Map(
@@ -185,12 +209,20 @@ const sourceHrefById = new Map(
 
 const renderCampusCell = (outcome: PeerOutcome) => (
   <CampusCell>
-    <Monogram
-      label={outcome.monogram}
-      shape="rounded"
-      size="34px"
-      isDecorative
-    />
+    {/* Decorative: the campus name is written beside it, so a described logo
+        would only make a screen reader say the campus twice. */}
+    {outcome.logoSrc ? (
+      <CampusLogo>
+        <Image src={outcome.logoSrc} alt="" width="auto" height="auto" />
+      </CampusLogo>
+    ) : (
+      <Monogram
+        label={outcome.monogram}
+        shape="rounded"
+        size={CAMPUS_MARK_SIZE}
+        isDecorative
+      />
+    )}
     <Typography as="span" variant="labelTitle" size="sm" weight="700">
       {outcome.campus}
     </Typography>
@@ -696,9 +728,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            An increase of $90.00 translates to $5.63 per week across a 16-week
-            semester. The proposed contract language also includes an annual
-            inflation adjustment capped at 3%.
+            The new proposal is an increase of $90.00 which translates to $5.63
+            per week across a 16-week semester. The contract language also
+            includes an annual inflation adjustment capped at 3%.
             <CitationMarker sourceId="2" />
           </Typography>
           <Typography
@@ -709,8 +741,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.lg} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            As of August 2026, Cal State LA has the lowest student center fee of
-            any CSU campus: $275 a year, unchanged since 2007.
+            As of August 2026, Cal State LA has the <strong>lowest</strong>{' '}
+            student center fee of any CSU campus: $274.50 a year, a rate that
+            hasn&apos;t changed since 2007.
             <CitationMarker sourceId="1" />
           </Typography>
         </TextAndImage>
@@ -735,7 +768,7 @@ export default function KeepTheUOpen() {
         {/* 7.2 · TrendChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel
@@ -829,7 +862,7 @@ export default function KeepTheUOpen() {
         {/* 7.3 · ShareChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel
@@ -846,7 +879,7 @@ export default function KeepTheUOpen() {
               fluidSize={FLUID_H3}
               lineHeight="1.2"
             >
-              Where your $227.25 goes
+              Where your $137.25 currently goes
             </Typography>
             <Typography
               as="p"
@@ -855,12 +888,11 @@ export default function KeepTheUOpen() {
               color="greyDark"
               margin={`${Spaces.sm} 0 ${Spaces.lg}`}
             >
-              Share of the U-SU operating budget, applied to the proposed
-              semester fee
+              Share of the U-SU operating budget, as of FY 2025-26
             </Typography>
             <ShareChart
               segments={shareSegments}
-              total="$227.25"
+              total="$137.25"
               totalLabel="per semester"
               variant={chartAnimation.donutVariant}
               animation={chartAnimation.shareAnimation}
@@ -873,7 +905,7 @@ export default function KeepTheUOpen() {
         {/* 7.4 · BarChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel

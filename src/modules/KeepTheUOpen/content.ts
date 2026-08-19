@@ -34,9 +34,9 @@ export const campaignMode = {
      has already named. On the flip, the heading carries the ask, the primary
      action becomes the ballot, and the feedback form takes the secondary slot;
      the JSX does not change. */
-  finalHeading: 'Being informed is only half of the story.',
+  finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the budget, the shortfall, and what $90 a semester will get you. Now is the time to make your voice heard. Every piece of feedback is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 a semester will get you. Now is the time to act. Every piece of feedback and suggestion is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
@@ -523,45 +523,50 @@ export const shareSegments: ShareSegment[] = [
     id: 'bond',
     label: 'Bond payment on the building',
     percentage: 33,
-    amount: '$74.99',
+    amount: '$44.60',
     color: 'primary',
-    detail: "Chancellor's Office",
+    detail:
+      "Chancellor's Office. Repays the loan that built the U-SU building, a fixed obligation that cannot be reduced or redirected.",
     sourceId: '2',
   },
   {
     id: 'supporting-services',
     label: 'Supporting Services',
     percentage: 43,
-    amount: '$97.72',
-    color: 'greyLighter',
-    detail: 'Administration, Operations, and Graffix',
+    amount: '$59.69',
+    color: 'pastelYellow',
+    detail:
+      'Admin, Operations, and Graffix. Keeps the building open and running: facilities, custodial work, utilities, repairs, staffing,and the in-house design studio.',
     sourceId: '2',
   },
   {
     id: 'programs',
     label: 'Programs',
     percentage: 14,
-    amount: '$31.82',
+    amount: '$18.77',
     color: 'nuestraOrange',
-    detail: 'Cross Cultural Center, Center for Student Involvement',
+    detail:
+      'Cross Cultural Center, Center for Student Involvement. Events, leadership development, cultural programming, and support for student organizations.',
     sourceId: '2',
   },
   {
     id: 'fitness-game',
     label: 'Fitness & Game Room',
     percentage: 9,
-    amount: '$20.45',
+    amount: '$12.84',
     color: 'recognizedGreen',
-    detail: 'Recreation Department',
+    detail:
+      'Recreation. Rec 1, 2, and the Game Room. Open to every student, plus the equipment and staff that keep it running',
     sourceId: '2',
   },
   {
     id: 'major-repair',
-    label: 'Major Repair',
+    label: 'Major Repair Replacement',
     percentage: 1,
-    amount: '$2.27',
+    amount: '$1.35',
     color: 'blackMauve',
-    detail: 'Operations',
+    detail:
+      'Operations. A reserve for big-ticket building repairs and equipment replacement, kept out of day-to-day spending.',
     sourceId: '2',
   },
 ];
@@ -723,10 +728,16 @@ export interface PeerOutcome {
   id: string;
   campus: string;
   /**
-   * Letters for the `Monogram` tile. No CSU campus seals or logos exist in
-   * this repo, and a real campus mark on an advocacy page would read as that
-   * campus endorsing our fee — which none of them has done. Monograms carry
-   * the visual weight without borrowing anyone's trademark.
+   * Square campus logo. Each one sits beside a factual row about that
+   * campus's own decision, never beside a claim about this proposal, and the
+   * page stays in informational mode — no campus here has taken a position on
+   * our fee.
+   */
+  logoSrc?: string;
+  /**
+   * Letters for the `Monogram` tile, rendered when a row has no `logoSrc`
+   * yet. Kept as an explicit string rather than derived from `campus`,
+   * because the useful abbreviation is rarely the initials of the name.
    */
   monogram: string;
   /** Split out of `campus` so the table can sort and stack the two. */
@@ -742,10 +753,14 @@ export interface PeerOutcome {
   linkText: string;
 }
 
+const CAMPUS_LOGO_BASE =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/school-logos';
+
 export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-april-2024',
     campus: 'San Marcos',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
     monogram: 'CSUSM',
     date: 'April 2024',
     proposal:
@@ -757,6 +772,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-october-2024',
     campus: 'San Marcos',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
     monogram: 'CSUSM',
     date: 'October 2024',
     proposal:
@@ -768,6 +784,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'sdsu-fall-2025',
     campus: 'San Diego',
+    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.png`,
     monogram: 'SDSU',
     date: 'Fall 2025',
     proposal: 'Instructionally Related Activities fee increase',
@@ -779,6 +796,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csueb-spring-2026',
     campus: 'East Bay',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.png`,
     monogram: 'CSUEB',
     date: 'Spring 2026',
     proposal: 'New athletics fee',
@@ -789,6 +807,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusb-hepi',
     campus: 'San Bernardino',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.jpg`,
     monogram: 'CSUSB',
     /* The sources give the adjustment year, not the date the indexing was
        established. Left as a marker rather than guessed at. */
