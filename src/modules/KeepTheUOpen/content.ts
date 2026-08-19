@@ -302,7 +302,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
     sourceId: '4',
   },
   {
-    src: `${SUPABASE_PAGES}/departments/recreation/rec-treadmill-desktop.webp`,
+    src: `${SUPABASE_PAGES}/departments/recreation/Rec-Hero.webp`,
     alt: 'Two students at a cardio machine in the fitness center, weight racks along the wall behind them',
     caption: 'Fitness center. Gym access for those who paid student fees.',
   },
