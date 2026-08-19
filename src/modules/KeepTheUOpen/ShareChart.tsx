@@ -14,12 +14,29 @@ export interface ShareSegment {
    */
   amount: string;
   color: keyof typeof Colors;
-  /** Where the percentage is drawn on the figure, in viewBox coordinates. */
-  labelPosition: { x: number; y: number };
+  /**
+   * Where the percentage is drawn on the figure, in viewBox coordinates.
+   * When omitted, the chart computes an in-wedge position automatically.
+   */
+  labelPosition?: { x: number; y: number };
   detail?: string;
   sourceId?: string;
   marker?: string;
 }
+
+export const getPercentLabelPosition = (
+  percentage: number,
+  rotation: number,
+  center = 200,
+  radius = 118,
+) => {
+  const sweep = percentage * 3.6;
+  const midAngle = (rotation + sweep / 2) * (Math.PI / 180);
+  const x = center + Math.cos(midAngle) * radius;
+  const y = center + Math.sin(midAngle) * radius;
+
+  return { x, y };
+};
 
 interface ShareChartProps {
   segments: ShareSegment[];
@@ -138,8 +155,8 @@ const PercentLabel = ({
 
   return (
     <text
-      x={segment.labelPosition.x}
-      y={segment.labelPosition.y}
+      x={segment.labelPosition?.x ?? 200}
+      y={segment.labelPosition?.y ?? 200}
       textAnchor="middle"
       fontSize={18}
       fontWeight={800}
@@ -173,16 +190,27 @@ export const ShareChart = ({
   /* Wedges are drawn as dashed strokes on one circle. The first starts at 12
      o'clock; each next one starts where the previous ended. */
   let rotation = -90;
-  const wedges = segments.map((segment) => {
-    const wedge = {
-      id: segment.id,
-      color: Colors[segment.color],
-      dash: (CIRCUMFERENCE * segment.percentage) / 100,
-      rotation,
-    };
+  const chartSegments = segments.map((segment) => {
+    const startRotation = rotation;
+    const labelPosition =
+      segment.labelPosition ??
+      getPercentLabelPosition(segment.percentage, startRotation);
+
     rotation += segment.percentage * 3.6;
-    return wedge;
+
+    return {
+      ...segment,
+      startRotation,
+      labelPosition,
+    };
   });
+
+  const wedges = chartSegments.map((segment) => ({
+    id: segment.id,
+    color: Colors[segment.color],
+    dash: (CIRCUMFERENCE * segment.percentage) / 100,
+    rotation: segment.startRotation,
+  }));
 
   const figure = (
     <>
@@ -204,7 +232,7 @@ export const ShareChart = ({
 
       {/* Percentages are drawn on the figure so color is never the only
           carrier of the split. */}
-      {segments.map((segment) => (
+      {chartSegments.map((segment) => (
         <PercentLabel
           key={segment.id}
           segment={segment}
@@ -255,7 +283,7 @@ export const ShareChart = ({
       </Figure>
 
       <LegendList>
-        {segments.map((segment) => (
+        {chartSegments.map((segment) => (
           <LegendRow key={segment.id}>
             <Swatch $color={Colors[segment.color]} />
             <div>

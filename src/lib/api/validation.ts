@@ -109,19 +109,6 @@ export const validateEmail = (
   return null;
 };
 
-export const validateCalStateEmail = (
-  value: string | null | undefined,
-): string | null => {
-  const basicError = validateEmail(value);
-  if (basicError) return basicError;
-
-  if (!value!.trim().toLowerCase().endsWith('@calstatela.edu')) {
-    return 'Please enter a valid Cal State LA email address.';
-  }
-
-  return null;
-};
-
 export function validateUpdateUserBody(body: UpdateUserBody): void {
   if (body.email !== undefined) {
     const emailError = validateEmail(body.email);

@@ -71,11 +71,18 @@ describe('validateContactForm', () => {
     }
   });
 
-  it('returns error when email is not calstatela.edu', () => {
+  /* Anyone may write in, campus address or not — the form is how visitors
+     and renters reach the U-SU at all. Format is the only email rule left. */
+  it('accepts an email from outside calstatela.edu', () => {
     const result = validateContactForm({
       ...validBody,
-      email: 'student@gmail.com',
+      email: 'visitor@gmail.com',
     });
+    expect(result.ok).toBe(true);
+  });
+
+  it('returns error when email is malformed', () => {
+    const result = validateContactForm({ ...validBody, email: 'notanemail' });
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.errors.some((e) => e.toLowerCase().includes('email'))).toBe(

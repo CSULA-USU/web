@@ -70,3 +70,17 @@ export const Colors = {
      about 5.6:1 and still reads unmistakably as a deficit. */
   redDark: '#c62828',
 } as const;
+
+/**
+ * The site's elevation language. `default` is the long-standing card
+ * lift; `soft` is the tighter, cooler one used where something sits only just
+ * above the surface — a card in a grid, or chrome that content scrolls under.
+ *
+ * Two steps on purpose. A third would invite picking by taste rather than by
+ * how far off the page the thing actually is.
+ */
+export const Shadows = {
+  default: '2px 4px 12px rgba(191, 191, 191, 0.25)',
+  soft: '0 2px 8px rgba(0, 0, 0, 0.06)',
+  none: 'none',
+} as const;

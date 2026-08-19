@@ -41,6 +41,7 @@ import {
   Eyebrow,
   FluidContainer,
   GridGallery,
+  Image,
   Monogram,
   Panel,
   PlaceholderMarker,
@@ -138,7 +139,7 @@ const sectionIllustrations = {
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
-  beforeYouDecide: '/vectors/about/solution-mindset.svg',
+  beforeYouDecide: '/vectors/about/decision.svg',
 } as const;
 
 /* Height, not width, is what these share. The undraw set mixes landscape and
@@ -169,14 +170,37 @@ const PREVIEW_TESTIMONIAL_LAYOUT = true;
    decorative, but a decoration nobody can see is just noise. */
 const SERVICE_ICON_SIZE = 44;
 
-/* The campus cell pairs a Monogram with the name. No CSU seals or logos exist
-   in this repo, and borrowing a real one would imply that campus endorses our
-   fee. Lettered tiles carry the weight without borrowing anyone's mark. */
+/* The campus cell pairs each campus's mark with its name, falling back to a
+   lettered tile for any row whose logo has not been sourced yet. */
 const CampusCell = styled.div`
   display: flex;
   align-items: center;
   gap: ${Spaces.md};
   min-width: 0;
+`;
+
+/* Fluid rather than fixed: the campus column is a percentage of the table, so
+   a mark big enough to read on a wide screen would crowd the name out of a
+   narrow one. The floor is what the logo needs to be legible at all; the
+   ceiling is where it starts to outweigh the row it labels. */
+const CAMPUS_MARK_SIZE = 'clamp(44px, 4vw, 64px)';
+
+/* The logos are square but not cropped alike — some sit tight to their edges,
+   others carry their own padding. `contain` inside a fixed box keeps every
+   mark whole and every row's name starting at the same x. */
+const CampusLogo = styled.div`
+  flex-shrink: 0;
+  width: ${CAMPUS_MARK_SIZE};
+  height: ${CAMPUS_MARK_SIZE};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const sourceHrefById = new Map(
@@ -185,12 +209,20 @@ const sourceHrefById = new Map(
 
 const renderCampusCell = (outcome: PeerOutcome) => (
   <CampusCell>
-    <Monogram
-      label={outcome.monogram}
-      shape="rounded"
-      size="34px"
-      isDecorative
-    />
+    {/* Decorative: the campus name is written beside it, so a described logo
+        would only make a screen reader say the campus twice. */}
+    {outcome.logoSrc ? (
+      <CampusLogo>
+        <Image src={outcome.logoSrc} alt="" width="auto" height="auto" />
+      </CampusLogo>
+    ) : (
+      <Monogram
+        label={outcome.monogram}
+        shape="rounded"
+        size={CAMPUS_MARK_SIZE}
+        isDecorative
+      />
+    )}
     <Typography as="span" variant="labelTitle" size="sm" weight="700">
       {outcome.campus}
     </Typography>
@@ -382,7 +414,7 @@ export default function KeepTheUOpen() {
           color="greyLightest"
           margin={`${Spaces.md} 0 0`}
         >
-          The rooms your clubs meet in. The free gym. The food pantry. Study
+          The rooms your clubs meet in. Gym access. The food pantry. Study
           rooms. Places to nap.
         </Typography>
         <Typography
@@ -458,11 +490,11 @@ export default function KeepTheUOpen() {
         </AutoGrid>
         <ScrollCue
           lineStyle="solid"
-          animation="trickle"
+          animation="stream"
           color="white"
           thickness="0.25px"
           height="100px"
-          fadeLength="32px"
+          breakLength="10px"
           duration="2600ms"
           margin={`${Spaces.xl} auto 0`}
         />
@@ -474,7 +506,7 @@ export default function KeepTheUOpen() {
           src={sectionIllustrations.whyItMatters}
           imagePosition="right"
           imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={`clamp('150px, 15vw, 300px')`}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
           /* Hard against its column's left edge, so it sits close to the copy
              rather than stranded against the section padding. */
           imageAlign="start"
@@ -696,11 +728,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            The $5.63 is per week across a 16-week semester. The fee was last
-            set in 2007
-            <CitationMarker sourceId="2" /> and hasn&apos;t moved ever since.
-            The proposed contract language also includes an annual inflation
-            adjustment capped at 3%.
+            The new proposal is an increase of $90.00 which translates to $5.63
+            per week across a 16-week semester. The contract language also
+            includes an annual inflation adjustment capped at 3%.
             <CitationMarker sourceId="2" />
           </Typography>
           <Typography
@@ -711,8 +741,9 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.lg} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            As of August 2026, Cal State LA has the lowest student center fee of
-            any CSU campus: $275 a year, unchanged since 2007.
+            As of August 2026, Cal State LA has the <strong>lowest</strong>{' '}
+            student center fee of any CSU campus: $274.50 a year, a rate that
+            hasn&apos;t changed since 2007.
             <CitationMarker sourceId="1" />
           </Typography>
         </TextAndImage>
@@ -737,7 +768,7 @@ export default function KeepTheUOpen() {
         {/* 7.2 · TrendChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel
@@ -831,7 +862,7 @@ export default function KeepTheUOpen() {
         {/* 7.3 · ShareChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel
@@ -848,7 +879,7 @@ export default function KeepTheUOpen() {
               fluidSize={FLUID_H3}
               lineHeight="1.2"
             >
-              Where your $227.25 goes
+              Where your $137.25 currently goes
             </Typography>
             <Typography
               as="p"
@@ -857,12 +888,11 @@ export default function KeepTheUOpen() {
               color="greyDark"
               margin={`${Spaces.sm} 0 ${Spaces.lg}`}
             >
-              Share of the U-SU operating budget, applied to the proposed
-              semester fee
+              Share of the U-SU operating budget, as of FY 2025-26
             </Typography>
             <ShareChart
               segments={shareSegments}
-              total="$227.25"
+              total="$137.25"
               totalLabel="per semester"
               variant={chartAnimation.donutVariant}
               animation={chartAnimation.shareAnimation}
@@ -875,7 +905,7 @@ export default function KeepTheUOpen() {
         {/* 7.4 · BarChart */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
         <Panel
@@ -1374,7 +1404,7 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is the one worth understanding. Students rejected the first
+          San Marcos is the one worth understanding: students rejected the first
           proposal, partly because it would have charged them a year before the
           building opened. The campus came back with a cheaper proposal on
           different terms, and students approved it.
@@ -1387,8 +1417,8 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          That&apos;s what participation does. Not just approve or reject —
-          change what gets proposed.
+          That&apos;s what participation does. You have the power to change what
+          gets proposed.
         </Typography>
       </FluidContainer>
 
@@ -1568,6 +1598,71 @@ export default function KeepTheUOpen() {
           Every number and where it came from
         </Typography>
         <SourceList sources={sources} columns={2} />
+      </FluidContainer>
+
+      {/* 15 · Final CTA — after the sources on purpose. Everything above asks
+          the reader to check the figures; this is the only thing the page asks
+          them to do, and it comes once they have had the chance to. Black on
+          primary, which no other band but the stat band is allowed to do —
+          the last full band before the disclaimer. */}
+      <FluidContainer
+        {...bandShell}
+        backgroundColor="primary"
+        textAlign="center"
+      >
+        {/* Not `Eyebrow`: that lays its label out in a flex row, which ignores
+            the band's centering, and its accent rule is gold — invisible here.
+            This is the hero's eyebrow, in black for the yellow. */}
+        <Typography
+          as="p"
+          variant="span"
+          size="2xs"
+          weight="700"
+          uppercase
+          letterSpacing="0.14em"
+          color="black"
+          margin={`0 0 ${Spaces.md}`}
+        >
+          Get involved!
+        </Typography>
+        <Typography
+          as="h2"
+          variant="pageHeader"
+          fluidSize={FLUID_H2}
+          lineHeight="1.15"
+          color="black"
+        >
+          {campaignMode.finalHeading}
+        </Typography>
+        {/* `auto` on the sides, so the measure stays centered under the
+            heading rather than sitting off to the left of it. */}
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          color="black"
+          margin={`${Spaces.md} auto 0`}
+          style={{ maxWidth: MEASURE }}
+        >
+          {campaignMode.finalBody}
+        </Typography>
+        <div>
+          <Button
+            variant="black"
+            href={campaignMode.finalCtaHref}
+            margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+          >
+            {campaignMode.finalCtaLabel}
+          </Button>
+          <Button
+            variant="outline"
+            href={campaignMode.finalSecondaryHref}
+            margin={`${Spaces.lg} 0 0`}
+          >
+            {campaignMode.finalSecondaryLabel}
+          </Button>
+        </div>
       </FluidContainer>
 
       {/* 16 · Disclaimer strip */}

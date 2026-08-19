@@ -35,10 +35,12 @@ const HeaderContainer = styled.div<{
     transition: rotate 0.2s ease-in-out;
   }
 
+  /* The indicator shifts rather than grows. Scaling it up restated what the
+     opacity change already said, and did it by resizing the one element whose
+     size is the open/closed signal. */
   &:hover {
     opacity: 0.8;
     .indicator {
-      scale: 1.2;
       translate: ${(p) => (p.isOpen ? '0' : '4px')};
     }
   }

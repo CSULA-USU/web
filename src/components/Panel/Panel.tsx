@@ -1,11 +1,5 @@
 import styled from 'styled-components';
-import { Colors, Spaces } from 'theme';
-
-const shadows = {
-  default: '2px 4px 12px rgba(191, 191, 191, 0.25)',
-  soft: '0 2px 8px rgba(0, 0, 0, 0.06)',
-  none: 'none',
-} as const;
+import { Colors, Shadows, Spaces } from 'theme';
 
 export interface PanelStyleProps {
   height?: string;
@@ -21,7 +15,7 @@ export interface PanelStyleProps {
   rounded?: boolean;
   /** Explicit corner radius; overrides `rounded` when both are set. */
   borderRadius?: string;
-  shadow?: keyof typeof shadows;
+  shadow?: keyof typeof Shadows;
   hoverable?: boolean;
   backgroundColor?: keyof typeof Colors;
   /**
@@ -45,7 +39,7 @@ const StyledPanel = styled.div<PanelStyleProps>`
   align-items: ${(p) => p.alignItems || 'stretch'};
   padding: ${(p) => p.padding || Spaces.xl};
   gap: 16px;
-  box-shadow: ${(p) => shadows[p.shadow || 'default']};
+  box-shadow: ${(p) => Shadows[p.shadow || 'default']};
   background-color: ${(p) => Colors[p.backgroundColor || 'white']};
   ${(p) => p.height && `height: ${p.height};`}
   ${(p) => p.width && `width: ${p.width};`}

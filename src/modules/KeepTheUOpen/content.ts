@@ -28,6 +28,19 @@ export const campaignMode = {
   heroSecondaryCta: 'What This Costs You',
   actionVerb: 'shape',
   beforeHeading: 'Get informed',
+  /* The closing strip. Informational mode asks for one thing the page cannot
+     get on its own — the reader's own view — so the primary action is the
+     contact form and the secondary points back at the two channels the page
+     has already named. On the flip, the heading carries the ask, the primary
+     action becomes the ballot, and the feedback form takes the secondary slot;
+     the JSX does not change. */
+  finalHeading: 'Being informed is only half of the story',
+  finalBody:
+    "You've seen the U-SU budget, the shortfall, and what $90 a semester will get you. Now is the time to act. Every piece of feedback and suggestion is a vote for your vision of a better campus.",
+  finalCtaLabel: 'Share Your Thoughts',
+  finalCtaHref: '/contact',
+  finalSecondaryLabel: 'Other Ways To Take Part',
+  finalSecondaryHref: '#before-you-decide',
 };
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
@@ -205,7 +218,7 @@ export const thesisCards = [
     title: 'Nearly 100 student jobs',
     body: 'Between 90 and 100 students work here',
     bodyAfterCitation:
-      ' alongside 29 full-time staff — the largest student employer on campus, with schedules built around class times.',
+      ' alongside 29 full-time staff—the largest student employer on campus, with schedules built around class times.',
     citation: '4',
   },
 ];
@@ -223,7 +236,7 @@ export const services: {
   {
     title: 'Events & Activities',
     Icon: MdEvent,
-    body: 'Programming run by students, for students — from noon concerts to the five cultural graduation ceremonies.',
+    body: 'Event programming run by students, for students.',
   },
   {
     title: 'Study & Rest',
@@ -233,7 +246,7 @@ export const services: {
   {
     title: 'Play & Recreation',
     Icon: MdFitnessCenter,
-    body: 'The fitness center, the Game Room and the GENE program — included, no membership.',
+    body: 'The fitness center, the Game Room and the GENE program included; no membership required.',
   },
   {
     title: 'Cultural Centers',
@@ -279,15 +292,14 @@ export const buildingGalleryItems: GridGalleryItem[] = [
     src: '',
     alt: 'Graduates in stoles seated in rows at a cultural graduation ceremony',
     caption:
-      'Cultural graduation, 2025. Five ceremonies a year, about 800 students, free.',
+      'Cultural graduations. 5 ceremonies a year, about 800 students, free.',
     sourceId: '4',
     isAwaitingImage: true,
   },
   {
     src: '',
     alt: 'Students using cardio and weight equipment in a basement-level fitness center',
-    caption:
-      'Fitness center, basement level. Free to all students, no membership.',
+    caption: 'Fitness center. Gym access for those who paid student fees.',
     isAwaitingImage: true,
   },
   {
@@ -299,8 +311,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: '',
     alt: 'Rows of student organization tables with banners along a walkway',
-    caption:
-      'Involvement Fair. Every registered student organization on campus, one afternoon.',
+    caption: 'Involvement Fair. Every RSO on campus for one afternoon.',
     isAwaitingImage: true,
   },
   {
@@ -312,8 +323,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: '',
     alt: 'A meeting room set with a conference table and chairs',
-    caption:
-      'Reserved meeting room. Rental fees waived for registered student organizations.',
+    caption: 'Room rental fees waived for registered student organizations.',
     isAwaitingImage: true,
   },
 ];
@@ -513,22 +523,51 @@ export const shareSegments: ShareSegment[] = [
     id: 'bond',
     label: 'Bond payment on the building',
     percentage: 33,
-    amount: '$75.00',
+    amount: '$44.60',
     color: 'primary',
-    labelPosition: { x: 312, y: 138 },
     detail:
-      'About $1,920,000 a year, through 2038. The 2007 vote built the building and this is what paying for it costs.',
+      "Chancellor's Office. Repays the loan that built the U-SU building, a fixed obligation that cannot be reduced or redirected.",
     sourceId: '2',
   },
   {
-    id: 'everything-else',
-    label: 'Everything else',
-    percentage: 67,
-    amount: '$152.25',
-    color: 'greyLighter',
-    labelPosition: { x: 88, y: 272 },
-    detail: 'Operations, staffing, programs and maintenance.',
-    marker: '[NEEDS FIGURE — category split of the remaining 67%]',
+    id: 'supporting-services',
+    label: 'Supporting Services',
+    percentage: 43,
+    amount: '$59.69',
+    color: 'pastelYellow',
+    detail:
+      'Admin, Operations, and Graffix. Keeps the building open and running: facilities, custodial work, utilities, repairs, staffing,and the in-house design studio.',
+    sourceId: '2',
+  },
+  {
+    id: 'programs',
+    label: 'Programs',
+    percentage: 14,
+    amount: '$18.77',
+    color: 'nuestraOrange',
+    detail:
+      'Cross Cultural Center, Center for Student Involvement. Events, leadership development, cultural programming, and support for student organizations.',
+    sourceId: '2',
+  },
+  {
+    id: 'fitness-game',
+    label: 'Fitness & Game Room',
+    percentage: 9,
+    amount: '$12.84',
+    color: 'recognizedGreen',
+    detail:
+      'Recreation. Rec 1, 2, and the Game Room. Open to every student, plus the equipment and staff that keep it running',
+    sourceId: '2',
+  },
+  {
+    id: 'major-repair',
+    label: 'Major Repair Replacement',
+    percentage: 1,
+    amount: '$1.35',
+    color: 'blackMauve',
+    detail:
+      'Operations. A reserve for big-ticket building repairs and equipment replacement, kept out of day-to-day spending.',
+    sourceId: '2',
   },
 ];
 
@@ -689,10 +728,16 @@ export interface PeerOutcome {
   id: string;
   campus: string;
   /**
-   * Letters for the `Monogram` tile. No CSU campus seals or logos exist in
-   * this repo, and a real campus mark on an advocacy page would read as that
-   * campus endorsing our fee — which none of them has done. Monograms carry
-   * the visual weight without borrowing anyone's trademark.
+   * Square campus logo. Each one sits beside a factual row about that
+   * campus's own decision, never beside a claim about this proposal, and the
+   * page stays in informational mode — no campus here has taken a position on
+   * our fee.
+   */
+  logoSrc?: string;
+  /**
+   * Letters for the `Monogram` tile, rendered when a row has no `logoSrc`
+   * yet. Kept as an explicit string rather than derived from `campus`,
+   * because the useful abbreviation is rarely the initials of the name.
    */
   monogram: string;
   /** Split out of `campus` so the table can sort and stack the two. */
@@ -708,10 +753,14 @@ export interface PeerOutcome {
   linkText: string;
 }
 
+const CAMPUS_LOGO_BASE =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/school-logos';
+
 export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-april-2024',
     campus: 'San Marcos',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
     monogram: 'CSUSM',
     date: 'April 2024',
     proposal:
@@ -723,17 +772,19 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-october-2024',
     campus: 'San Marcos',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
     monogram: 'CSUSM',
     date: 'October 2024',
     proposal:
       'Same facility, reduced to $245/semester, not charged until the year it opens',
-    outcome: 'Approved, 64.6% to 35.4%. Turnout 11.9%.',
+    outcome: 'Approved, 64.6% to 35.4%.',
     sourceId: peerSourceIds.csusmReferendum2024,
     linkText: 'See the referendum results',
   },
   {
     id: 'sdsu-fall-2025',
     campus: 'San Diego',
+    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.png`,
     monogram: 'SDSU',
     date: 'Fall 2025',
     proposal: 'Instructionally Related Activities fee increase',
@@ -745,16 +796,18 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csueb-spring-2026',
     campus: 'East Bay',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.png`,
     monogram: 'CSUEB',
     date: 'Spring 2026',
     proposal: 'New athletics fee',
-    outcome: 'Alternative consultation, in progress',
+    outcome: 'Alt. consultation in progress',
     sourceId: peerSourceIds.csuebAthleticsFee2026,
     linkText: "Read the president's message",
   },
   {
     id: 'csusb-hepi',
     campus: 'San Bernardino',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.jpg`,
     monogram: 'CSUSB',
     /* The sources give the adjustment year, not the date the indexing was
        established. Left as a marker rather than guessed at. */

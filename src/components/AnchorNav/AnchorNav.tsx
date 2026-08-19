@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Colors, FontSizes, Spaces, media } from 'theme';
+import { Colors, FontSizes, Shadows, Spaces, media } from 'theme';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 
@@ -63,12 +63,24 @@ const StickyHost = styled.div`
   `)}
 `;
 
+/* Rule and shadow both, because they answer different questions and neither
+   answers the other everywhere. The rule is an edge; the shadow is height,
+   and height is the true one — the page scrolls underneath this. Over white
+   and greyLightest the shadow carries it and the rule is barely there; over
+   the primary and greyDarkest bands a 6% black shadow is invisible and the
+   rule is all that holds the edge.
+
+   Both are tied to $opaque. Unconditional, the shadow would smear across the
+   hero photograph before the reader has scrolled at all — and the bar's whole
+   transparent state exists so the hero shows through it. */
 const Bar = styled.nav<{ $opaque: boolean }>`
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
   background-color: ${(p) => (p.$opaque ? Colors.white : 'transparent')};
   border-bottom: 1px solid
     ${(p) => (p.$opaque ? Colors.greyLighter : 'transparent')};
-  transition: background-color ${CHROME_FADE}, border-color ${CHROME_FADE};
+  box-shadow: ${(p) => (p.$opaque ? Shadows.soft : Shadows.none)};
+  transition: background-color ${CHROME_FADE}, border-color ${CHROME_FADE},
+    box-shadow ${CHROME_FADE};
 `;
 
 const BarInner = styled.div<{ $maxWidth: string }>`
@@ -122,14 +134,18 @@ const Indicator = styled.span<{
       : 'none'};
 `;
 
-/* The bottom padding is what separates the label from the rule beneath it —
-   the indicator is drawn on this box's bottom edge, so without it the rule
-   would sit against the descenders. */
+/* Padding is symmetric, and the line-height is the title's, so the label sits
+   at the center of its own box: the bar centers boxes, and vertical padding
+   that is heavier on one side would drop the label off the line the title and
+   the CTA sit on. The bottom half still does the job of separating the label
+   from the indicator, which is drawn on this box's bottom edge — without it
+   the rule would sit against the descenders. */
 const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
   position: relative;
   z-index: 1;
-  padding: 4px 6px 8px;
+  padding: 8px 6px;
   font-size: ${FontSizes.xs};
+  line-height: ${FontSizes.md};
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -139,6 +155,41 @@ const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
   &:hover {
     color: ${(p) => (p.$opaque ? Colors.gold : Colors.primary)};
   }
+`;
+
+/* A real button rather than a styled link: the destination is the top of the
+   current page, not a URL, so there is nothing meaningful to put in an href and
+   nothing worth adding to the reader's history.
+
+   Hover takes the same two colors as the links beside it, rather than fading
+   the label: hover means "this responds to you," and dimming the one thing
+   under the cursor says the opposite. Gold over the opaque bar, primary over
+   the hero — primary yellow on white does not hold up. */
+const TitleButton = styled.button<{ $opaque: boolean }>`
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    transition: color ${CHROME_FADE};
+  }
+
+  &:hover span {
+    color: ${(p) => (p.$opaque ? Colors.gold : Colors.primary)};
+  }
+`;
+
+/* The bar sets three things on one line, so the CTA carries the same type size
+   and line-height as the title and the links; left at Button's 16px default its
+   label reads as sitting off the line beside 14px text. Set through a wrapper
+   rather than Button's `fontSize` prop, which reaches the DOM node as a stray
+   attribute. */
+const BarCta = styled(Button)`
+  font-size: ${FontSizes.xs};
+  line-height: ${FontSizes.md};
 `;
 
 export const AnchorNav = ({
@@ -240,6 +291,13 @@ export const AnchorNav = ({
     };
   }, [links]);
 
+  /* No `behavior` of its own: left at the default it defers to the document's
+     `scroll-behavior`, which the effect above sets to smooth and leaves alone
+     under reduced motion. One place decides how this page travels. */
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const measure = useCallback(() => {
     const item = activeHref ? itemRefs.current.get(activeHref) : undefined;
 
@@ -286,15 +344,22 @@ export const AnchorNav = ({
     <StickyHost>
       <Bar aria-label="On this page" $opaque={isOpaque}>
         <BarInner $maxWidth={contentMaxWidth}>
-          <Typography
-            as="span"
-            variant="span"
-            size="xs"
-            weight="800"
-            color={isOpaque ? 'black' : 'white'}
+          <TitleButton
+            type="button"
+            onClick={scrollToTop}
+            $opaque={isOpaque}
+            aria-label={`${title}, back to top`}
           >
-            {title}
-          </Typography>
+            <Typography
+              as="span"
+              variant="span"
+              size="xs"
+              weight="800"
+              color={isOpaque ? 'black' : 'white'}
+            >
+              {title}
+            </Typography>
+          </TitleButton>
           <Links ref={linksRef}>
             <Indicator
               aria-hidden="true"
@@ -319,9 +384,9 @@ export const AnchorNav = ({
               </AnchorLinkItem>
             ))}
           </Links>
-          <Button variant="primary" href={ctaHref} padding="10px 18px">
+          <BarCta variant="primary" href={ctaHref} padding="10px 18px">
             {ctaLabel}
-          </Button>
+          </BarCta>
         </BarInner>
       </Bar>
     </StickyHost>

@@ -19,7 +19,7 @@ import { categoryItems, CategoryOption } from 'types/CategoriesContact';
 import { postJotformFeedback } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
-import { validateCalStateEmail } from 'lib/api';
+import { validateEmail } from 'lib/api';
 
 // TODO: replace '#' with Cal State LA's privacy policy URL (confirm the exact
 // link with the campus privacy office) or a U-SU privacy page once one exists.
@@ -131,7 +131,7 @@ export default function Contact() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    const emailError = validateCalStateEmail(formData.email);
+    const emailError = validateEmail(formData.email);
     if (emailError) newErrors.email = emailError;
     if (!formData.subject.trim()) {
       newErrors.subject = 'Subject is required';
