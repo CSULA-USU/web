@@ -1399,10 +1399,8 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 ${Spaces.xl}`}
           style={{ maxWidth: MEASURE }}
         >
-          Fee proposals move through the CSUs regularly, and students don&apos;t
-          always approve them.
-          <br />
-          Here are some recent ones:
+          Fee proposals move through the CSUs regularly. Here are some recent
+          ones:
         </Typography>
         <Table data={peerOutcomeTable} />
         <Typography
