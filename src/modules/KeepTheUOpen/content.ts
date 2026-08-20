@@ -36,7 +36,7 @@ export const campaignMode = {
      the JSX does not change. */
   finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the U-SU budget, the shortfall, and what $90 a semester will get you. Now is the time to act. Every piece of feedback and suggestion is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 more a semester will get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
