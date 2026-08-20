@@ -136,7 +136,8 @@ const sectionIllustrations = {
   /* u-su-undraw.svg is a 1536×1024 PNG in an SVG wrapper — 1.9MB, no paths —
      so it stays out of the repo. Swap this back to it once it is a real
      vector, or a sized WebP. */
-  whyItMatters: '/vectors/about/community.svg',
+  whyItMatters:
+    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building-vector.svg',
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
