@@ -303,19 +303,18 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   },
   {
     src: `${SUPABASE_PAGES}/departments/recreation/Rec-Hero.webp`,
-    alt: 'Two students at a cardio machine in the fitness center, weight racks along the wall behind them',
+    alt: 'Student bench-pressing in the fitness center, with a trainer spotting them',
     caption: 'Fitness center. Gym access for those who paid student fees.',
   },
   {
-    src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/alhambra/conference.webp`,
-    alt: 'A bookable room set with tables in a U shape beside a wall of windows',
-    caption: 'Study rooms, third floor. Free and reservable.',
+    src: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg`,
+    alt: 'A student worker changing out a lightbulb in a ceiling fixture, standing on a ladder',
+    caption: 'The U-SU is the largest student employer on campus.',
   },
   {
-    src: '',
+    src: 'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/wingspan/overview-event.webp',
     alt: 'Rows of student organization tables with banners along a walkway',
-    caption: 'Involvement Fair. Every RSO on campus for one afternoon.',
-    isAwaitingImage: true,
+    caption: 'Workshops and programs for student leadership development',
   },
   {
     src: `${SUPABASE_PAGES}/about/tenants/Food%20Pantry%201200x600.jpg`,

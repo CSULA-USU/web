@@ -137,7 +137,7 @@ const sectionIllustrations = {
      so it stays out of the repo. Swap this back to it once it is a real
      vector, or a sized WebP. */
   whyItMatters:
-    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building-vector.svg',
+    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building.png',
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
