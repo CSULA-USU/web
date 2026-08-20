@@ -11,11 +11,11 @@ export const chartColors = {
   highlightedRow: '#fffbe8',
 } as const;
 
-/** Chart labels and legends sit at 12.5–14px; SVG text cannot use Typography. */
-export const CHART_LABEL_SIZE = 13;
-
-/** Shared easing for every chart reveal. */
-export const CHART_EASING = 'cubic-bezier(0.25, 0.6, 0.3, 1)';
-
-/** Default reveal duration in ms. Callers may pass 300–3000. */
-export const CHART_DURATION = 1400;
+/* Label size, easing and duration moved to `components/PieChart` when the
+   donut became a shared primitive. Re-exported so BarChart and TrendChart keep
+   importing their chart tokens from one place. */
+export {
+  CHART_LABEL_SIZE,
+  CHART_EASING,
+  CHART_DURATION,
+} from 'components/PieChart/chartTokens';

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, formatDollars, Page, ShareChart, TrendChart } from 'modules';
+import { BarChart, formatDollars, Page, TrendChart } from 'modules';
 import {
   anchorLinks,
   bandStats,
@@ -44,6 +44,7 @@ import {
   Image,
   Monogram,
   Panel,
+  PieChart,
   PlaceholderMarker,
   PrototypeNotice,
   ScrollCue,
@@ -135,7 +136,8 @@ const sectionIllustrations = {
   /* u-su-undraw.svg is a 1536×1024 PNG in an SVG wrapper — 1.9MB, no paths —
      so it stays out of the repo. Swap this back to it once it is a real
      vector, or a sized WebP. */
-  whyItMatters: '/vectors/about/community.svg',
+  whyItMatters:
+    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building.png',
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
@@ -213,7 +215,13 @@ const renderCampusCell = (outcome: PeerOutcome) => (
         would only make a screen reader say the campus twice. */}
     {outcome.logoSrc ? (
       <CampusLogo>
-        <Image src={outcome.logoSrc} alt="" width="auto" height="auto" />
+        <Image
+          src={outcome.logoSrc}
+          alt=""
+          width="auto"
+          height="auto"
+          skeletonWhileLoading
+        />
       </CampusLogo>
     ) : (
       <Monogram
@@ -859,7 +867,7 @@ export default function KeepTheUOpen() {
           </div>
         </Panel>
 
-        {/* 7.3 · ShareChart */}
+        {/* 7.3 · PieChart */}
         <Divider
           color="greyLighter"
           size="0px"
@@ -890,8 +898,9 @@ export default function KeepTheUOpen() {
             >
               Share of the U-SU operating budget, as of FY 2025-26
             </Typography>
-            <ShareChart
+            <PieChart
               segments={shareSegments}
+              amountSuffix="of your fee"
               total="$137.25"
               totalLabel="per semester"
               variant={chartAnimation.donutVariant}
@@ -1390,10 +1399,8 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 ${Spaces.xl}`}
           style={{ maxWidth: MEASURE }}
         >
-          Fee proposals move through the CSUs regularly, and students don&apos;t
-          always approve them.
-          <br />
-          Here are some recent ones:
+          Fee proposals move through the CSUs regularly. Here are some recent
+          ones:
         </Typography>
         <Table data={peerOutcomeTable} />
         <Typography

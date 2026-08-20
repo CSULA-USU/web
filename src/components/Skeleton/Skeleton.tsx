@@ -43,6 +43,29 @@ export const SkeletonWrapper = styled.div<SkeletonProps>`
     );
     animation: ${loadingAnimation} 1.5s infinite ease-in-out;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+    }
+  }
+`;
+
+/**
+ * The same shimmer, filling a positioned parent instead of taking part in the
+ * layout, so an image can sit underneath and reveal itself as it decodes.
+ *
+ * The parent has to establish the containing block and give the box its size —
+ * an aspect-ratio frame, or a fixed width and height. A skeleton stretched over
+ * a box that only gets its size *from* the loaded image renders at zero height
+ * and shows nothing, which is the case this cannot solve on its own.
+ */
+export const SkeletonOverlay = styled(SkeletonWrapper)`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 `;
 
 export const Skeleton = ({

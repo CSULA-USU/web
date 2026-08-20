@@ -26,6 +26,7 @@ export * from './Monogram';
 export * from './NonBreakingSpan';
 export * from './PageMeta';
 export * from './Panel';
+export * from './PieChart';
 export * from './PlaceholderMarker';
 export * from './Popover';
 export * from './PrototypeNotice';
