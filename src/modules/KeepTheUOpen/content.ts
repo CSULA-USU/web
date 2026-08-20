@@ -1,5 +1,5 @@
 import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
-import type { ShareSegment } from 'modules/KeepTheUOpen/ShareChart';
+import type { PieSegment } from 'components';
 import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
 import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
@@ -287,26 +287,29 @@ export const services: {
  * replaces a placeholder here. Drop the `isAwaitingPhotography` line on an
  * item only once its image exists and its release is signed.
  */
+/* Photographs already published elsewhere on this site. The ones in Supabase
+   storage are served by next/image, whose allowlist already carries this host
+   — see `images.domains` in next.config.js. */
+const SUPABASE_PAGES =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages';
+
 export const buildingGalleryItems: GridGalleryItem[] = [
   {
-    src: '',
-    alt: 'Graduates in stoles seated in rows at a cultural graduation ceremony',
+    src: '/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png',
+    alt: 'Graduates in caps and stoles cheering with raised arms onstage at a cultural graduation ceremony, a student band playing behind them',
     caption:
       'Cultural graduations. 5 ceremonies a year, about 800 students, free.',
     sourceId: '4',
-    isAwaitingImage: true,
   },
   {
-    src: '',
-    alt: 'Students using cardio and weight equipment in a basement-level fitness center',
+    src: `${SUPABASE_PAGES}/departments/recreation/Rec-Hero.webp`,
+    alt: 'Two students at a cardio machine in the fitness center, weight racks along the wall behind them',
     caption: 'Fitness center. Gym access for those who paid student fees.',
-    isAwaitingImage: true,
   },
   {
-    src: '',
-    alt: 'Students seated at tables in a glass-walled study room',
+    src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/alhambra/conference.webp`,
+    alt: 'A bookable room set with tables in a U shape beside a wall of windows',
     caption: 'Study rooms, third floor. Free and reservable.',
-    isAwaitingImage: true,
   },
   {
     src: '',
@@ -315,16 +318,14 @@ export const buildingGalleryItems: GridGalleryItem[] = [
     isAwaitingImage: true,
   },
   {
-    src: '',
-    alt: 'Shelves of packaged food and fresh produce in a campus food pantry',
+    src: `${SUPABASE_PAGES}/about/tenants/Food%20Pantry%201200x600.jpg`,
+    alt: 'A student beside refrigerated cases stocked with produce and packaged food under a Cal State LA Food Pantry sign',
     caption: 'Food pantry. Open to any enrolled student.',
-    isAwaitingImage: true,
   },
   {
-    src: '',
-    alt: 'A meeting room set with a conference table and chairs',
+    src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/boardroom/north/room.webp`,
+    alt: 'A boardroom set with a long conference table, office chairs and a whiteboard',
     caption: 'Room rental fees waived for registered student organizations.',
-    isAwaitingImage: true,
   },
 ];
 
@@ -518,7 +519,7 @@ export const reserveCallouts: {
 
 /* Only the bond share is published. Amounts come from the source rather than
    being recomputed here. */
-export const shareSegments: ShareSegment[] = [
+export const shareSegments: PieSegment[] = [
   {
     id: 'bond',
     label: 'Bond payment on the building',

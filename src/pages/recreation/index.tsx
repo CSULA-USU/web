@@ -258,7 +258,7 @@ export default function Recreation() {
       </Head>
       <UtilityHeroHeader
         src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Rec-Hero.webp"
-        alt="USU Board Of Directors"
+        alt="Cal State LA Recreation Fitness Center with students exercising"
         title="Recreation"
       >
         <FluidContainer
