@@ -341,12 +341,12 @@ export default function BoardOfDirectors() {
         path="/board-of-directors"
         socialTitle="U-SU Board of Directors | Cal State LA"
         socialDescription="Meet the students, faculty, staff, and alumni who govern the University-Student Union and shape its policy and finances."
-        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/bod-2026ai.webp"
         imageAlt="The University-Student Union Board of Directors"
       />
 
       <UtilityHeroHeader
-        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/bod-2026ai.webp"
         alt="USU Board Of Directors"
         title="Board of Directors"
         maxDescriptionWidth="1000px"

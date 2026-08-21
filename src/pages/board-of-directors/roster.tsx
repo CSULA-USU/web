@@ -98,7 +98,7 @@ export default function Governance() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of u-su board of directors "
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/bod-2026ai.webp"
           width="100%"
           height="auto"
           borderRadius="12px"
