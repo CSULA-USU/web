@@ -36,7 +36,7 @@ export const campaignMode = {
      the JSX does not change. */
   finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the U-SU budget, the shortfall, and what $90 a semester will get you. Now is the time to act. Every piece of feedback and suggestion is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 more a semester will get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
@@ -123,22 +123,24 @@ export const sources: Source[] = [
   },
   {
     id: '2',
-    label: 'U-SU Fiscal Committee budget presentation, April 10 2026',
-    note: 'All budget, reserve, bond, fee-coverage and “DO NOTHING” projection figures, and the 2007 approval date.',
-    marker: '[NEEDS LINK — public posting of the deck]',
+    label: 'U-SU Board of Directors Minutes, March 20, 2026',
+    note: 'Fiscal Committee recommendation for a $75 increase, amended to $90 and passed by a majority of the board.',
+    href: 'https://uc2cf24bbf794bf288fce3995b76.dl.dropboxusercontent.com/cd/0/inline2/DGk4ad2v5lvO1OryVeqB93ilCJD0JTvsC-9JhLWRv5q07DHcaNlZr7qigDedfxvhpXxKlphnZSF_ZC5-i785h-UX_aDYc35FbLSLKQka4umfh2qTu1cOi0fH--5MXdboUUN6h6G0abrwqpMr69ykguxpjdjKfZxtlw6zcnZ3AotbbamPuK7xeBzVCmx7JyvWHmkC9y_mpo3dHIN4Kkug9fxFR7RATMw-gpjCNT22ZiZf4yq_EH87qPpPAmt00__w6BbvWyHTWfIC3G4E5WANUgP6qMH9eMG_0JOZ3uWIXkowrxlphl4flj-P4WqmqYtpAGXCLAYD8RIj8_kpho53PpmDonzz1yHhFHDjla-KOFTc_ROtD9LOLpr1g4EeNrM6kQk/file',
+    linkText: 'Minutes Dropbox Link',
   },
   {
     id: '3',
     label: 'Cal State LA institutional Fact Book',
     note: 'Enrollment trend and student demographics.',
     href: 'https://www.calstatela.edu/sites/default/files/Fact67.pdf',
-    linkText: 'See Cal State LA Fact Book',
+    linkText: 'Cal State LA Fact Book',
   },
   {
     id: '4',
     label: 'U-SU operating budget / annual report',
-    note: 'Staffing, student employment, building size, services and the cultural graduation ceremonies.',
-    marker: '[NEEDS LINK]',
+    note: 'Staffing, student employment, building size, services expense reports',
+    href: 'https://www.calstatelausu.org/board-of-directors/public-documents',
+    linkText: 'U-SU Public Documents',
   },
   {
     id: '5',
@@ -150,9 +152,9 @@ export const sources: Source[] = [
   {
     id: '6',
     label: "CSU Chancellor's Office, Cal Poly–Maritime integration",
-    note: 'Administrative merger effective July 1 2025, academic integration in fall 2026 — the basis for comparing 22 campuses rather than 23.',
+    note: 'Administrative merger effective July 1 2025, academic integration in fall 2026.',
     href: 'https://www.calstate.edu/csu-system/news/Pages/Explained-The-Integration-of-Cal-Maritime-and-Cal-Poly-at-San-Luis-Obispo.aspx',
-    linkText: 'See Cal Poly-Maritime Integration',
+    linkText: 'Cal Poly-Maritime Integration',
   },
   {
     id: '7',
@@ -612,7 +614,7 @@ export const barRows: BarRow[] = [
     campus: 'Channel Islands',
     value: 1146,
     color: 'greyDark',
-    annotation: 'new lowest after our increase',
+    annotation: 'new lowest after increase',
   },
   ...otherCampusFees.map(([campus, value]) => ({
     id: campus.toLowerCase().replace(/\s+/g, '-'),
