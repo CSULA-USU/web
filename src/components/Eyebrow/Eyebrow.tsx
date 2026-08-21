@@ -4,8 +4,14 @@ import { Typography } from '../Typography';
 
 interface EyebrowProps {
   children: React.ReactNode;
-  /** Color of the label itself. The accent rule is always gold. */
+  /** Color of the label itself. */
   color?: keyof typeof Colors;
+  /**
+   * Color of the accent rule. Defaults to gold, which reads on every light
+   * ground on the site but all but vanishes on a dark band — pass the label's
+   * own color there so the rule stays visible.
+   */
+  accentColor?: keyof typeof Colors;
   /** Tracking for the uppercase label. */
   letterSpacing?: string;
   margin?: string;
@@ -16,7 +22,11 @@ interface EyebrowProps {
 /* A short rule leading into the label, matching the section kickers on the
    U-Awards page. It is decorative — the label carries the meaning on its own,
    so nothing is lost when the rule is dropped or fails to paint. */
-const EyebrowRow = styled.p<{ $accent: boolean; $margin?: string }>`
+const EyebrowRow = styled.p<{
+  $accent: boolean;
+  $accentColor: keyof typeof Colors;
+  $margin?: string;
+}>`
   display: flex;
   align-items: center;
   gap: ${Spaces.sm};
@@ -30,7 +40,7 @@ const EyebrowRow = styled.p<{ $accent: boolean; $margin?: string }>`
         flex: none;
         width: 28px;
         height: 2px;
-        background-color: ${Colors.gold};
+        background-color: ${Colors[p.$accentColor]};
       }
     `}
 `;
@@ -38,11 +48,12 @@ const EyebrowRow = styled.p<{ $accent: boolean; $margin?: string }>`
 export const Eyebrow = ({
   children,
   color = 'gold',
+  accentColor = 'gold',
   letterSpacing = '0.12em',
   margin,
   accent = true,
 }: EyebrowProps) => (
-  <EyebrowRow $accent={accent} $margin={margin}>
+  <EyebrowRow $accent={accent} $accentColor={accentColor} $margin={margin}>
     <Typography
       variant="span"
       as="span"

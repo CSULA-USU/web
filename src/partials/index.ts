@@ -8,5 +8,4 @@ export * from './Hazing';
 export * from './NonDiscriminationPolicy';
 export * from './PhotoVideoDisclaimer';
 export * from './PublicInspectionDocuments';
-export * from './RecreationHoursSection';
 export * from './StudentOrganizationCategories';

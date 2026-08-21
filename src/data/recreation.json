@@ -139,35 +139,59 @@
     ],
     "locations": [
       {
-        "title": "Rec 1",
+        "title": "Recreation 1",
         "location": "U-SU Basement",
+        "phone": "(323) 343-7546",
+        "description": "Free weights, cardio machines, exercise classes, and locker facilities.",
         "hours": [
           {
-            "day": "Monday to Friday",
-            "time": "7:10 AM to 6:45 PM"
+            "day": "Monday to Thursday",
+            "time": "7:10 AM to 9:45 PM"
           },
           {
-            "day": "Saturday and Sunday",
+            "day": "Friday",
+            "time": "7:10 AM to 7:45 PM"
+          },
+          {
+            "day": "Saturday",
+            "time": "7:10 AM to 2:45 PM"
+          },
+          {
+            "day": "Sunday",
             "time": "Closed"
           }
         ]
       },
       {
-        "title": "Rec 2",
+        "title": "Recreation 2",
         "location": "U-SU Basement",
+        "phone": "(323) 343-2520",
+        "description": "Free weights, cardio machines, and exercise classes.",
         "hours": [
           {
-            "day": "Monday to Sunday",
+            "day": "Monday to Thursday",
+            "time": "11:00 AM to 7:00 PM"
+          },
+          {
+            "day": "Friday to Sunday",
             "time": "Closed"
           }
         ]
       },
       {
         "title": "Game Room",
-        "location": "U-SU Room 201",
+        "location": "U-SU Room 104",
+        "phone": "(323) 343-6909",
+        "description": "8-ball, air hockey, foosball, ping-pong, and Nintendo Switch favorites.",
+        "href": "/recreation/game-room",
+        "linkText": "Game Room",
         "hours": [
           {
-            "day": "Monday to Sunday",
+            "day": "Monday to Thursday",
+            "time": "11:00 AM to 7:00 PM"
+          },
+          {
+            "day": "Friday to Sunday",
             "time": "Closed"
           }
         ]
@@ -175,12 +199,139 @@
       {
         "title": "South Village Housing Wellness Zone",
         "location": "South Village Housing",
+        "phone": "(323) 343-4856",
+        "description": "Wellness and activity space for campus residents.",
         "hours": [
           {
-            "day": "Monday to Sunday",
+            "day": "Monday to Thursday",
+            "time": "7:00 AM to 12:00 PM",
+            "secondTime": "4:30 PM to 9:30 PM"
+          },
+          {
+            "day": "Friday to Sunday",
             "time": "Closed"
           }
         ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "133,574",
+        "countTo": 133574,
+        "label": "Scans across all spaces in 2025",
+        "highlight": true
+      },
+      {
+        "value": "4",
+        "countTo": 4,
+        "label": "Fitness, gaming, and wellness spaces"
+      },
+      {
+        "value": "All",
+        "label": "Students, staff, and faculty welcome"
+      }
+    ],
+    "access": [
+      {
+        "title": "Get set up",
+        "description": "Download the free Cal State LA Recreation app, or use the Recreation portal in a browser. Sign-ups and check-in run through both.",
+        "href": "https://recreation.calstatelausu.org/",
+        "linkText": "Recreation portal",
+        "isExternalLink": true
+      },
+      {
+        "title": "Check your access",
+        "description": "Access depends on the kind of Cal State LA student you are. The membership page walks through it.",
+        "href": "/recreation/membership",
+        "linkText": "Membership"
+      },
+      {
+        "title": "Know the rules",
+        "description": "Shoes, attire, and check-in all have rules. The essentials are right below."
+      }
+    ],
+    "programs": [
+      {
+        "title": "Esports and Game Room",
+        "description": "Pool, air hockey, foosball, ping-pong, and Nintendo Switch tournaments on the first floor of the U-SU.",
+        "href": "/recreation/game-room",
+        "linkText": "Game Room",
+        "src": "/departments/recreation/game-room/game-types/pool.png",
+        "alt": "",
+        "fit": "cover"
+      },
+      {
+        "title": "Golden Eagle Nutrition Education",
+        "description": "Free one-on-one nutrition coaching with Nutritional Science graduate students, built around your goals and your food.",
+        "href": "/recreation/gene",
+        "linkText": "GENE",
+        "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/gene/gene-header.webp",
+        "alt": "",
+        "fit": "contain"
+      },
+      {
+        "title": "Group exercise and rentals",
+        "description": "Class sign-ups, equipment rentals, and the program calendar all live on the Recreation portal.",
+        "href": "https://recreation.calstatelausu.org/",
+        "linkText": "Recreation portal",
+        "isExternalLink": true,
+        "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/rec-floor-tablet.webp",
+        "alt": "",
+        "fit": "cover"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Who can use Recreation?",
+        "answer": "Recreation is open to all Cal State LA students, staff, and faculty. What you can access depends on the kind of student you are — the membership page has the breakdown."
+      },
+      {
+        "question": "Where is everything?",
+        "answer": "Recreation 1 and Recreation 2 are on the basement level of the U-SU. The Game Room is on the first floor in room 104. The Wellness Zone is in South Village Housing."
+      },
+      {
+        "question": "How do I sign up for a workout class?",
+        "answer": "Through the Recreation portal at recreation.calstatelausu.org, or the free Cal State LA Recreation app on the App Store and Google Play."
+      },
+      {
+        "question": "What is in the Game Room?",
+        "answer": "8-ball pool, air hockey, foosball, and ping-pong, plus Nintendo Switch favorites including Super Smash Bros., Mario Party, and Mario Kart."
+      },
+      {
+        "question": "Is there nutrition support?",
+        "answer": "Yes. Golden Eagle Nutrition Education (GENE) offers free personalized coaching with Nutritional Science graduate students."
+      }
+    ],
+    "rules": [
+      {
+        "title": "Closed-toe athletic shoes",
+        "description": "Non-marking soles in every activity area. No sandals, cleats, socks, or hard soles — group fitness and special classes excepted.",
+        "iconName": "GiRunningShoe"
+      },
+      {
+        "title": "Athletic attire, no denim",
+        "description": "A shirt or top at all times in public areas. Denim is not permitted in any fitness activity area.",
+        "iconName": "GiTShirt"
+      },
+      {
+        "title": "Check in at the Front Desk",
+        "description": "Every visit, for activity spaces and locker rooms alike. Guests need a staff member to authorize access each time.",
+        "iconName": "BiIdCard"
+      },
+      {
+        "title": "Sealed, non-glass drinks",
+        "description": "Food is not permitted in activity areas, and beverages have to be in a sealed, non-glass container.",
+        "iconName": "BiDrink"
+      },
+      {
+        "title": "Headphones on, cameras off",
+        "description": "No devices in the locker rooms or restrooms, and no recording anyone. Music through headphones, never a speaker.",
+        "iconName": "BiHeadphone"
+      },
+      {
+        "title": "Park your wheels outside",
+        "description": "Bikes, scooters, skateboards, and hoverboards go in the designated racks. ADA assistance devices are always welcome.",
+        "iconName": "MdOutlinePedalBike"
       }
     ]
   }
