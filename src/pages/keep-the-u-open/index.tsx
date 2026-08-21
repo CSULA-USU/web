@@ -137,7 +137,7 @@ const sectionIllustrations = {
      so it stays out of the repo. Swap this back to it once it is a real
      vector, or a sized WebP. */
   whyItMatters:
-    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building.png',
+    'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/vectors/usu-building.webp',
   whatItCosts: '/vectors/about/data2.svg',
   inflationGap: '/vectors/about/question-answered.svg',
   whatCanChange: '/vectors/about/upgrade.svg',
@@ -513,11 +513,10 @@ export default function KeepTheUOpen() {
         <TextAndImage
           src={sectionIllustrations.whyItMatters}
           imagePosition="right"
-          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          imageHeight={`clamp(150px, 15vw, 300px)`}
           /* Hard against its column's left edge, so it sits close to the copy
              rather than stranded against the section padding. */
-          imageAlign="start"
+          imageAlign="center"
           margin={`0 0 ${Spaces.xl}`}
         >
           <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
