@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Image, Typography } from 'components';
+import { Eyebrow, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
 
@@ -8,6 +8,20 @@ interface UtilityHeroHeaderProps {
   mobileSrc?: string;
   alt: string;
   title: string;
+  /**
+   * Short label above the title — a motto or section kicker. It brings its
+   * own accent rule, so it stands in for the bare gold bar rather than
+   * stacking a second rule on top of it.
+   */
+  eyebrow?: string;
+  /**
+   * Darkens the hero's top edge. Off by default, because the gradient below
+   * deliberately leaves the top of the photograph clear. Turn it on when page
+   * chrome is overlaid up there — a sticky anchor bar draws its transparent
+   * state in white, and white over an unscrimmed photograph is legible only
+   * by luck of the image.
+   */
+  topScrim?: boolean;
   description?: string;
   height?: string;
   minHeight?: string;
@@ -37,7 +51,7 @@ const BackgroundImage = styled(Image)`
   z-index: 1;
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ $topScrim: boolean }>`
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -45,7 +59,7 @@ const Overlay = styled.div`
     to top,
     rgba(0, 0, 0, 0.75) 0%,
     rgba(0, 0, 0, 0.25) 55%,
-    transparent 100%
+    ${(p) => (p.$topScrim ? 'rgba(0, 0, 0, 0.55)' : 'transparent')} 100%
   );
 `;
 
@@ -100,7 +114,9 @@ export const UtilityHeroHeader = ({
   mobileSrc,
   alt,
   title,
+  eyebrow,
   description,
+  topScrim = false,
   height = '91vh',
   minHeight = '380px',
   maxDescriptionWidth = '1000px',
@@ -111,10 +127,20 @@ export const UtilityHeroHeader = ({
   return (
     <HeroContainer height={height} minHeight={minHeight}>
       <BackgroundImage src={activeSrc} alt={alt} />
-      <Overlay />
+      <Overlay $topScrim={topScrim} />
       <ContentContainer>
         <Content>
-          <GoldAccent />
+          {eyebrow ? (
+            <Eyebrow
+              color="primary"
+              accentColor="primary"
+              margin={`0 0 ${Spaces.sm}`}
+            >
+              {eyebrow}
+            </Eyebrow>
+          ) : (
+            <GoldAccent />
+          )}
           <Typography
             as="h1"
             variant="pageHeader"

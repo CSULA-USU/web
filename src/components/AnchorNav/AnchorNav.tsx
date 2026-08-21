@@ -39,6 +39,16 @@ const OPAQUE_AFTER = 24;
    rule under 14px text is easy to miss entirely. */
 const INDICATOR_THICKNESS = 4;
 
+/* Width of the fade at the trailing edge of the narrow-screen row. Wide
+   enough to read as a fade rather than a cut, narrow enough that it does not
+   swallow a whole label. */
+const SCROLL_HINT_FADE = 28;
+
+/* Breathing room left either side of the current item when the narrow-screen
+   row scrolls it back into view, so it reads as part of a row rather than
+   jammed against the edge. */
+const ITEM_REVEAL_MARGIN = 16;
+
 const SLIDE = '220ms cubic-bezier(0.4, 0, 0.2, 1)';
 const FADE = '160ms ease';
 const CHROME_FADE = '180ms ease';
@@ -57,10 +67,6 @@ const StickyHost = styled.div`
   top: 0;
   height: 0;
   z-index: 50;
-
-  ${media('tablet')(`
-    display: none;
-  `)}
 `;
 
 /* Rule and shadow both, because they answer different questions and neither
@@ -75,6 +81,10 @@ const StickyHost = styled.div`
    transparent state exists so the hero shows through it. */
 const Bar = styled.nav<{ $opaque: boolean }>`
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
+
+  ${media('tablet')(`
+    padding: 10px 0 10px 16px;
+  `)}
   background-color: ${(p) => (p.$opaque ? Colors.white : 'transparent')};
   border-bottom: 1px solid
     ${(p) => (p.$opaque ? Colors.greyLighter : 'transparent')};
@@ -91,6 +101,11 @@ const BarInner = styled.div<{ $maxWidth: string }>`
   width: 100%;
   max-width: ${(p) => p.$maxWidth};
   margin: 0 auto;
+
+  ${media('tablet')(`
+    flex-wrap: nowrap;
+    gap: 8px;
+  `)}
 `;
 
 const Links = styled.div`
@@ -100,6 +115,37 @@ const Links = styled.div`
   flex-wrap: wrap;
   gap: ${Spaces.md} ${Spaces.lg};
   margin-right: auto;
+
+  /* An auto x-overflow forces overflow-y to auto too, which would clip the
+     indicator drawn on each item's bottom edge and offer a vertical scrollbar
+     for the 4px it sticks out. Hiding the y axis and reserving its height in
+     padding keeps the rule visible and the row one line tall. */
+  ${media('tablet')(`
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: ${INDICATOR_THICKNESS}px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    /* Softens the trailing edge so a clipped label reads as a row that
+       continues rather than one that broke. The scrollbar is hidden, so
+       without this there is nothing at all to say the row scrolls. */
+    mask-image: linear-gradient(
+      to right,
+      #000 calc(100% - ${SCROLL_HINT_FADE}px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 calc(100% - ${SCROLL_HINT_FADE}px),
+      transparent 100%
+    );
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `)}
 `;
 
 /**
@@ -168,6 +214,12 @@ const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
 const TitleButton = styled.button<{ $opaque: boolean }>`
   display: flex;
   align-items: center;
+  /* WCAG 2.2 target size: the label alone is an 18px line. */
+  min-height: 24px;
+
+  ${media('tablet')(`
+    display: none;
+  `)}
   padding: 0;
   background: none;
   border: none;
@@ -190,6 +242,11 @@ const TitleButton = styled.button<{ $opaque: boolean }>`
 const BarCta = styled(Button)`
   font-size: ${FontSizes.xs};
   line-height: ${FontSizes.md};
+  flex: none;
+
+  ${media('tablet')(`
+    margin-right: 16px;
+  `)}
 `;
 
 export const AnchorNav = ({
@@ -314,6 +371,26 @@ export const AnchorNav = ({
       y: item.offsetTop + item.offsetHeight,
       width: item.offsetWidth,
     });
+
+    /* Once the row scrolls sideways — the narrow-screen layout — the current
+       item can sit outside it, which would leave the indicator invisible and
+       the bar looking inert while the reader scrolls. Nudging the container's
+       own scrollLeft keeps it on screen; scrollIntoView would take the page
+       with it. */
+    const host = linksRef.current;
+    if (!host || host.scrollWidth <= host.clientWidth) return;
+
+    const left = item.offsetLeft;
+    const right = left + item.offsetWidth;
+
+    if (left - ITEM_REVEAL_MARGIN < host.scrollLeft) {
+      host.scrollLeft = Math.max(0, left - ITEM_REVEAL_MARGIN);
+    } else if (
+      right + ITEM_REVEAL_MARGIN >
+      host.scrollLeft + host.clientWidth
+    ) {
+      host.scrollLeft = right + ITEM_REVEAL_MARGIN - host.clientWidth;
+    }
   }, [activeHref]);
 
   useEffect(() => {

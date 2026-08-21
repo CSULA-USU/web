@@ -1,5 +1,11 @@
 import { createElement, ReactElement } from 'react';
-import { BiCoffeeTogo, BiSolidSushi } from 'react-icons/bi';
+import {
+  BiCoffeeTogo,
+  BiDrink,
+  BiHeadphone,
+  BiIdCard,
+  BiSolidSushi,
+} from 'react-icons/bi';
 import { BsSignpost2Fill } from 'react-icons/bs';
 import { CgPill, CgPokemon } from 'react-icons/cg';
 import {
@@ -21,13 +27,20 @@ import {
   GiBabyBottle,
   GiRiceCooker,
   GiRollerSkate,
+  GiRunningShoe,
   GiStrawberry,
   GiTacos,
+  GiTShirt,
 } from 'react-icons/gi';
 import { IoMdFlower } from 'react-icons/io';
 import { ImSpoonKnife } from 'react-icons/im';
 import { LuCakeSlice, LuSoup } from 'react-icons/lu';
-import { MdCake, MdSoupKitchen, MdSportsBasketball } from 'react-icons/md';
+import {
+  MdCake,
+  MdOutlinePedalBike,
+  MdSoupKitchen,
+  MdSportsBasketball,
+} from 'react-icons/md';
 import { TbMickeyFilled, TbStairsUp } from 'react-icons/tb';
 interface IconProps {
   iconName: string;
@@ -38,6 +51,9 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
   // Define an object to map icon names to their corresponding components
   const iconComponents: { [key: string]: ReactElement } = {
     BiCoffeeTogo: createElement(BiCoffeeTogo, { size }),
+    BiDrink: createElement(BiDrink, { size }),
+    BiHeadphone: createElement(BiHeadphone, { size }),
+    BiIdCard: createElement(BiIdCard, { size }),
     BsSignpost2Fill: createElement(BsSignpost2Fill, { size }),
     BiSolidSushi: createElement(BiSolidSushi, { size }),
     CgPill: createElement(CgPill, { size }),
@@ -59,13 +75,16 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     GiBabyBottle: createElement(GiBabyBottle, { size }),
     GiRiceCooker: createElement(GiRiceCooker, { size }),
     GiRollerSkate: createElement(GiRollerSkate, { size }),
+    GiRunningShoe: createElement(GiRunningShoe, { size }),
     GiStrawberry: createElement(GiStrawberry, { size }),
     GiTacos: createElement(GiTacos, { size }),
+    GiTShirt: createElement(GiTShirt, { size }),
     ImSpoonKnife: createElement(ImSpoonKnife, { size }),
     IoMdFlower: createElement(IoMdFlower, { size }),
     LuCakeSlice: createElement(LuCakeSlice, { size }),
     LuSoup: createElement(LuSoup, { size }),
     MdCake: createElement(MdCake, { size }),
+    MdOutlinePedalBike: createElement(MdOutlinePedalBike, { size }),
     MdSportsBasketball: createElement(MdSportsBasketball, { size }),
     MdSoupKitchen: createElement(MdSoupKitchen, { size }),
     TbMickeyFilled: createElement(TbMickeyFilled, { size }),
