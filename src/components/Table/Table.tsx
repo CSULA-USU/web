@@ -73,6 +73,19 @@ const renderHeaderLabel = <TOriginal,>(
         >
           {column.label}
         </Typography>
+        {column.sublabel ? (
+          <Typography
+            as="span"
+            variant="copy"
+            size="xs"
+            weight="400"
+            color="greyDark"
+            nowrap
+            margin="6px 0 0"
+          >
+            {column.sublabel}
+          </Typography>
+        ) : null}
       </HeaderText>
     </HeaderCellInner>
   );

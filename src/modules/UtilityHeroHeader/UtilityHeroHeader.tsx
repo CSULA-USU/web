@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { Eyebrow, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
+
+/* Both ends land on real FontSizes steps, so no width renders a size that is
+   off the scale. */
+const DISPLAY_TITLE_SIZE = `clamp(${FontSizes['4xl']}, 10vw, ${FontSizes['6xl']})`;
 
 interface UtilityHeroHeaderProps {
   src: string;
@@ -22,6 +26,15 @@ interface UtilityHeroHeaderProps {
    * by luck of the image.
    */
   topScrim?: boolean;
+  /**
+   * How the title is set. `serif` is the site's page header. `display` is the
+   * heavier uppercase sans treatment, for a hero whose one word is doing the
+   * work of an image.
+   */
+  titleTreatment?: 'serif' | 'display';
+  /** Raw font-size for the description, for a hero that leads with a deck. */
+  descriptionFluidSize?: string;
+  /** Least height the hero may occupy, over `height`'s viewport fraction. */
   description?: string;
   height?: string;
   minHeight?: string;
@@ -117,6 +130,8 @@ export const UtilityHeroHeader = ({
   eyebrow,
   description,
   topScrim = false,
+  titleTreatment = 'serif',
+  descriptionFluidSize,
   height = '91vh',
   minHeight = '380px',
   maxDescriptionWidth = '1000px',
@@ -141,18 +156,38 @@ export const UtilityHeroHeader = ({
           ) : (
             <GoldAccent />
           )}
-          <Typography
-            as="h1"
-            variant="pageHeader"
-            size={isMobile ? '2xl' : '4xl'}
-            color="white"
-          >
-            {title}
-          </Typography>
+          {titleTreatment === 'display' ? (
+            <Typography
+              as="h1"
+              variant="title"
+              weight="800"
+              uppercase
+              fluidSize={DISPLAY_TITLE_SIZE}
+              lineHeight="0.92"
+              letterSpacing="-0.02em"
+              color="white"
+              margin="0"
+            >
+              {title}
+            </Typography>
+          ) : (
+            <Typography
+              as="h1"
+              variant="pageHeader"
+              size={isMobile ? '2xl' : '4xl'}
+              color="white"
+            >
+              {title}
+            </Typography>
+          )}
           {description && (
             <Typography
               as="p"
+              variant={descriptionFluidSize ? 'copy' : 'span'}
+              weight={descriptionFluidSize ? '300' : undefined}
               size={isMobile ? 'xs' : 'sm'}
+              fluidSize={descriptionFluidSize}
+              lineHeight={descriptionFluidSize ? '1.3' : undefined}
               color="white"
               margin={`${Spaces.md} 0 0 0`}
               style={{ maxWidth: maxDescriptionWidth }}

@@ -26,6 +26,12 @@ export interface TableRow<TOriginal = unknown> {
 export interface TableColumn<TOriginal = unknown> {
   id: string;
   label: string;
+  /**
+   * Second line under the label, in body type rather than the header's
+   * uppercase micro-label — for a qualifier that belongs above the column it
+   * governs, such as the date range a term's prices apply to.
+   */
+  sublabel?: string;
   backgroundColor: TableColorKey;
   textColor: TableColorKey;
   headerImage?: TableHeaderImage;

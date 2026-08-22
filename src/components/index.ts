@@ -37,6 +37,7 @@ export * from './RainbowText';
 export * from './ScrollCue';
 export * from './ScrollingContent';
 export * from './SearchInput';
+export * from './SelectableOption';
 export * from './Select';
 export * from './SideImageHeader';
 export * from './Skeleton';
