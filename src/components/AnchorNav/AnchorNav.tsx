@@ -11,18 +11,68 @@ interface AnchorLink {
   href: string;
 }
 
+type NavTone = 'light' | 'dark';
+
 interface AnchorNavProps {
-  /** Short page title shown at the start of the bar. */
-  title: string;
+  /** Short page title shown at the start of the bar. Omit for links only. */
+  title?: string;
   links: AnchorLink[];
-  ctaLabel: string;
-  ctaHref: string;
+  /** Both are needed to render the CTA; omit them for a bar of links only. */
+  ctaLabel?: string;
+  ctaHref?: string;
+  /**
+   * Ground the bar settles onto once scrolled. `light` turns white and takes
+   * dark labels — the right choice over a page of white sections. `dark`
+   * stays dark and keeps its labels white, for a page whose sections it will
+   * be read against are themselves dark.
+   */
+  tone?: NavTone;
   /** Matches the page's content measure so the bar's items line up with the
    * sections below it on wide screens. The bar itself stays full-bleed.
    * Defaults to FluidContainer's own max-width, so a page that has not
    * narrowed its sections gets an aligned bar without passing anything. */
   contentMaxWidth?: string;
 }
+
+interface ToneColors {
+  /** Before the page moves — over the hero. */
+  restBackground: string;
+  restBorder: string;
+  restLabel: keyof typeof Colors;
+  restHover: keyof typeof Colors;
+  /** Once scrolled, when the bar has content running under it. */
+  scrolledBackground: string;
+  scrolledBorder: string;
+  scrolledLabel: keyof typeof Colors;
+  scrolledHover: keyof typeof Colors;
+}
+
+const tones: Record<NavTone, ToneColors> = {
+  light: {
+    restBackground: 'transparent',
+    restBorder: 'transparent',
+    restLabel: 'white',
+    restHover: 'primary',
+    scrolledBackground: Colors.white,
+    scrolledBorder: Colors.greyLighter,
+    /* Gold over the opaque bar, primary over the hero — primary yellow on
+       white does not hold up. */
+    scrolledLabel: 'greyDarkest',
+    scrolledHover: 'gold',
+  },
+  /* Never fully transparent: a dark bar over a dark hero would otherwise have
+     nothing to separate it from the photograph behind it. */
+  dark: {
+    restBackground: 'rgba(0, 0, 0, 0.65)',
+    restBorder: 'transparent',
+    restLabel: 'white',
+    restHover: 'primary',
+    scrolledBackground: Colors.greyDarkest,
+    scrolledBorder: 'rgba(255, 255, 255, 0.2)',
+    scrolledLabel: 'white',
+    scrolledHover: 'primary',
+  },
+};
 
 /* The line the bar occupies once stuck. Anchored sections reserve the same
    distance through their own scroll-margin-top, so a section counts as
@@ -79,16 +129,21 @@ const StickyHost = styled.div`
    Both are tied to $opaque. Unconditional, the shadow would smear across the
    hero photograph before the reader has scrolled at all — and the bar's whole
    transparent state exists so the hero shows through it. */
-const Bar = styled.nav<{ $opaque: boolean }>`
+const Bar = styled.nav<{ $opaque: boolean; $tone: NavTone }>`
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
 
   ${media('tablet')(`
     padding: 10px 0 10px 16px;
   `)}
-  background-color: ${(p) => (p.$opaque ? Colors.white : 'transparent')};
+  background-color: ${(p) =>
+    p.$opaque
+      ? tones[p.$tone].scrolledBackground
+      : tones[p.$tone].restBackground};
   border-bottom: 1px solid
-    ${(p) => (p.$opaque ? Colors.greyLighter : 'transparent')};
-  box-shadow: ${(p) => (p.$opaque ? Shadows.soft : Shadows.none)};
+    ${(p) =>
+      p.$opaque ? tones[p.$tone].scrolledBorder : tones[p.$tone].restBorder};
+  box-shadow: ${(p) =>
+    p.$opaque && p.$tone === 'light' ? Shadows.soft : Shadows.none};
   transition: background-color ${CHROME_FADE}, border-color ${CHROME_FADE},
     box-shadow ${CHROME_FADE};
 `;
@@ -186,7 +241,7 @@ const Indicator = styled.span<{
    the CTA sit on. The bottom half still does the job of separating the label
    from the indicator, which is drawn on this box's bottom edge — without it
    the rule would sit against the descenders. */
-const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
+const AnchorLinkItem = styled(Link)<{ $opaque: boolean; $tone: NavTone }>`
   position: relative;
   z-index: 1;
   padding: 8px 6px;
@@ -196,10 +251,16 @@ const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
   text-decoration: none;
   white-space: nowrap;
   transition: color ${CHROME_FADE};
-  color: ${(p) => (p.$opaque ? Colors.greyDarkest : Colors.white)};
+  color: ${(p) =>
+    Colors[
+      p.$opaque ? tones[p.$tone].scrolledLabel : tones[p.$tone].restLabel
+    ]};
 
   &:hover {
-    color: ${(p) => (p.$opaque ? Colors.gold : Colors.primary)};
+    color: ${(p) =>
+      Colors[
+        p.$opaque ? tones[p.$tone].scrolledHover : tones[p.$tone].restHover
+      ]};
   }
 `;
 
@@ -211,7 +272,7 @@ const AnchorLinkItem = styled(Link)<{ $opaque: boolean }>`
    the label: hover means "this responds to you," and dimming the one thing
    under the cursor says the opposite. Gold over the opaque bar, primary over
    the hero — primary yellow on white does not hold up. */
-const TitleButton = styled.button<{ $opaque: boolean }>`
+const TitleButton = styled.button<{ $opaque: boolean; $tone: NavTone }>`
   display: flex;
   align-items: center;
   /* WCAG 2.2 target size: the label alone is an 18px line. */
@@ -230,7 +291,10 @@ const TitleButton = styled.button<{ $opaque: boolean }>`
   }
 
   &:hover span {
-    color: ${(p) => (p.$opaque ? Colors.gold : Colors.primary)};
+    color: ${(p) =>
+      Colors[
+        p.$opaque ? tones[p.$tone].scrolledHover : tones[p.$tone].restHover
+      ]};
   }
 `;
 
@@ -255,6 +319,7 @@ export const AnchorNav = ({
   ctaLabel,
   ctaHref,
   contentMaxWidth = '1440px',
+  tone = 'light',
 }: AnchorNavProps) => {
   const [isOpaque, setIsOpaque] = useState(false);
   const [activeHref, setActiveHref] = useState<string | null>(null);
@@ -419,24 +484,27 @@ export const AnchorNav = ({
 
   return (
     <StickyHost>
-      <Bar aria-label="On this page" $opaque={isOpaque}>
+      <Bar aria-label="On this page" $opaque={isOpaque} $tone={tone}>
         <BarInner $maxWidth={contentMaxWidth}>
-          <TitleButton
-            type="button"
-            onClick={scrollToTop}
-            $opaque={isOpaque}
-            aria-label={`${title}, back to top`}
-          >
-            <Typography
-              as="span"
-              variant="span"
-              size="xs"
-              weight="800"
-              color={isOpaque ? 'black' : 'white'}
+          {title && (
+            <TitleButton
+              type="button"
+              onClick={scrollToTop}
+              $opaque={isOpaque}
+              $tone={tone}
+              aria-label={`${title}, back to top`}
             >
-              {title}
-            </Typography>
-          </TitleButton>
+              <Typography
+                as="span"
+                variant="span"
+                size="xs"
+                weight="800"
+                color={isOpaque && tone === 'light' ? 'black' : 'white'}
+              >
+                {title}
+              </Typography>
+            </TitleButton>
+          )}
           <Links ref={linksRef}>
             <Indicator
               aria-hidden="true"
@@ -455,15 +523,18 @@ export const AnchorNav = ({
                   else itemRefs.current.delete(link.href);
                 }}
                 $opaque={isOpaque}
+                $tone={tone}
                 aria-current={activeHref === link.href ? 'location' : undefined}
               >
                 {link.label}
               </AnchorLinkItem>
             ))}
           </Links>
-          <BarCta variant="primary" href={ctaHref} padding="10px 18px">
-            {ctaLabel}
-          </BarCta>
+          {ctaLabel && ctaHref && (
+            <BarCta variant="primary" href={ctaHref} padding="10px 18px">
+              {ctaLabel}
+            </BarCta>
+          )}
         </BarInner>
       </Bar>
     </StickyHost>
