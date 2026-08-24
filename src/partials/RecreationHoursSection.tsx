@@ -8,6 +8,11 @@ import { Spaces } from 'theme';
 const LocationContainer = styled.span`
   display: flex;
   align-items: center;
+
+  /* A long location name wraps instead of squeezing the pin. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const TimeInnerContainer = styled.div`
@@ -18,6 +23,10 @@ const TimeInnerContainer = styled.div`
 
 const TimeContainer = styled.div`
   display: flex;
+
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const DayTimeEntry = styled.div`

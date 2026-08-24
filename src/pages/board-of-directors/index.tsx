@@ -29,6 +29,11 @@ const IconHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${Spaces.md};
+
+  /* The heading wraps on a narrow screen; the icon stays 48px. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const List = styled.ul`

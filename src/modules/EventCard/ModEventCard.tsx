@@ -191,6 +191,11 @@ const MobileRight = styled.div`
 const InfoContainer = styled.div`
   display: flex;
   align-items: center;
+
+  /* Locations wrap (some are full Zoom URLs); the icon keeps its 20px. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const MobileBottom = styled.div`

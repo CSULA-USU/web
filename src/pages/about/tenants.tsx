@@ -359,6 +359,7 @@ const nudgeChevron = keyframes`
 const DetailsChevron = styled.span`
   display: inline-flex;
   font-size: 18px;
+  flex-shrink: 0;
 `;
 
 /**
@@ -490,6 +491,8 @@ const ContactIcon = styled.span`
   display: inline-flex;
   color: ${Colors.black};
   font-size: 20px;
+  /* Hours can run to several lines; the clock keeps its size beside them. */
+  flex-shrink: 0;
 `;
 
 // A description list is the honest markup for day/time pairs. The two columns

@@ -25,6 +25,7 @@ const LinkInner = styled.div`
   padding: ${Spaces.sm};
   svg {
     margin-right: ${Spaces.sm};
+    flex-shrink: 0;
   }
 `;
 
