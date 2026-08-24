@@ -45,7 +45,10 @@ const FooterLeftContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   max-width: 400px;
+
+  ${media('mobile')(`margin-bottom: ${Spaces.lg};`)};
 `;
+
 const FooterTopLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
