@@ -213,7 +213,7 @@ export default function Gameroom() {
         />
         <meta
           name="description"
-          content="Level up at the Cal State LA U-SU Game Room (Room 201). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
+          content="Level up at the Cal State LA U-SU Game Room (Room 104). Join our gaming community for esports tournaments, console gaming, and casual play. Open to all students, staff, and faculty."
           key="description"
         />
         <meta
@@ -223,7 +223,7 @@ export default function Gameroom() {
         />
         <meta
           property="og:description"
-          content="Do you have what it takes to win? Visit the U-SU Game Room for tournaments, community, and fun. Located on the 2nd floor, Room 201."
+          content="Do you have what it takes to win? Visit the U-SU Game Room for tournaments, community, and fun. Located on the 1st floor, Room 104."
           key="og-desc"
         />
         <meta
@@ -247,7 +247,7 @@ export default function Gameroom() {
         />
         <meta
           name="twitter:description"
-          content="From 8-ball pool and air hockey to Super Smash Bros and Mario Kart. Join the Discord and find your community in Room 201!"
+          content="From 8-ball pool and air hockey to Super Smash Bros and Mario Kart. Join the Discord and find your community in Room 104!"
         />
         <meta
           name="twitter:image"
@@ -273,7 +273,7 @@ export default function Gameroom() {
               telephone: '+13233436909',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '5154 State University Dr., U-SU Room 201',
+                streetAddress: '5154 State University Dr., U-SU Room 104',
                 addressLocality: 'Los Angeles',
                 addressRegion: 'CA',
                 postalCode: '90032',
@@ -431,7 +431,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            U-SU 2nd floor, Room 201
+            U-SU 1st floor, Room 104
           </Typography>
         </li>
         <li>

@@ -55,9 +55,12 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
     `;
   }
 
-  const overlay = p.backgroundOverlay
+  const flatOverlay = p.backgroundOverlay
     ? `linear-gradient(${p.backgroundOverlay}, ${p.backgroundOverlay}), `
     : '';
+  /* A scrim wins over a flat overlay when both are set: it is the more
+     specific instruction, and stacking the two would double-darken. */
+  const overlay = p.backgroundScrim ? `${p.backgroundScrim}, ` : flatOverlay;
   return css`
     background: ${overlay} url(${p.backgroundImage}) no-repeat;
     background-size: cover;
@@ -175,6 +178,15 @@ interface FluidContainerProps extends FluidInnerProps {
    * any CSS color, e.g. `rgba(0, 0, 0, 0.66)`. Ignored without an image.
    */
   backgroundOverlay?: string;
+  /**
+   * A full CSS background layer laid over `backgroundImage` — a gradient,
+   * where `backgroundOverlay` only takes a flat color. Use it when the scrim
+   * has to be heavier at one edge than the other, e.g.
+   * `linear-gradient(to right, rgba(0,0,0,0.92), rgba(0,0,0,0.45))`.
+   * Takes precedence over `backgroundOverlay`. Ignored without an image, and
+   * ignored under `backgroundBlur`, which composites its own layers.
+   */
+  backgroundScrim?: string;
   /**
    * Blur radius for `backgroundImage`, e.g. `12px`. The image moves to its own
    * layer so only it is blurred, which also softens a low-resolution or

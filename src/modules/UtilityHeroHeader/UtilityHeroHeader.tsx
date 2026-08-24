@@ -1,13 +1,40 @@
 import styled from 'styled-components';
-import { Image, Typography } from 'components';
+import { Eyebrow, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
-import { Colors, Spaces } from 'theme';
+import { Colors, FontSizes, Spaces } from 'theme';
+
+/* Both ends land on real FontSizes steps, so no width renders a size that is
+   off the scale. */
+const DISPLAY_TITLE_SIZE = `clamp(${FontSizes['4xl']}, 10vw, ${FontSizes['6xl']})`;
 
 interface UtilityHeroHeaderProps {
   src: string;
   mobileSrc?: string;
   alt: string;
   title: string;
+  /**
+   * Short label above the title — a motto or section kicker. It brings its
+   * own accent rule, so it stands in for the bare gold bar rather than
+   * stacking a second rule on top of it.
+   */
+  eyebrow?: string;
+  /**
+   * Darkens the hero's top edge. Off by default, because the gradient below
+   * deliberately leaves the top of the photograph clear. Turn it on when page
+   * chrome is overlaid up there — a sticky anchor bar draws its transparent
+   * state in white, and white over an unscrimmed photograph is legible only
+   * by luck of the image.
+   */
+  topScrim?: boolean;
+  /**
+   * How the title is set. `serif` is the site's page header. `display` is the
+   * heavier uppercase sans treatment, for a hero whose one word is doing the
+   * work of an image.
+   */
+  titleTreatment?: 'serif' | 'display';
+  /** Raw font-size for the description, for a hero that leads with a deck. */
+  descriptionFluidSize?: string;
+  /** Least height the hero may occupy, over `height`'s viewport fraction. */
   description?: string;
   height?: string;
   minHeight?: string;
@@ -37,7 +64,7 @@ const BackgroundImage = styled(Image)`
   z-index: 1;
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ $topScrim: boolean }>`
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -45,7 +72,7 @@ const Overlay = styled.div`
     to top,
     rgba(0, 0, 0, 0.75) 0%,
     rgba(0, 0, 0, 0.25) 55%,
-    transparent 100%
+    ${(p) => (p.$topScrim ? 'rgba(0, 0, 0, 0.55)' : 'transparent')} 100%
   );
 `;
 
@@ -100,7 +127,11 @@ export const UtilityHeroHeader = ({
   mobileSrc,
   alt,
   title,
+  eyebrow,
   description,
+  topScrim = false,
+  titleTreatment = 'serif',
+  descriptionFluidSize,
   height = '91vh',
   minHeight = '380px',
   maxDescriptionWidth = '1000px',
@@ -111,22 +142,52 @@ export const UtilityHeroHeader = ({
   return (
     <HeroContainer height={height} minHeight={minHeight}>
       <BackgroundImage src={activeSrc} alt={alt} />
-      <Overlay />
+      <Overlay $topScrim={topScrim} />
       <ContentContainer>
         <Content>
-          <GoldAccent />
-          <Typography
-            as="h1"
-            variant="pageHeader"
-            size={isMobile ? '2xl' : '4xl'}
-            color="white"
-          >
-            {title}
-          </Typography>
+          {eyebrow ? (
+            <Eyebrow
+              color="primary"
+              accentColor="primary"
+              margin={`0 0 ${Spaces.sm}`}
+            >
+              {eyebrow}
+            </Eyebrow>
+          ) : (
+            <GoldAccent />
+          )}
+          {titleTreatment === 'display' ? (
+            <Typography
+              as="h1"
+              variant="title"
+              weight="800"
+              uppercase
+              fluidSize={DISPLAY_TITLE_SIZE}
+              lineHeight="0.92"
+              letterSpacing="-0.02em"
+              color="white"
+              margin="0"
+            >
+              {title}
+            </Typography>
+          ) : (
+            <Typography
+              as="h1"
+              variant="pageHeader"
+              size={isMobile ? '2xl' : '4xl'}
+              color="white"
+            >
+              {title}
+            </Typography>
+          )}
           {description && (
             <Typography
               as="p"
+              variant={descriptionFluidSize ? 'copy' : 'span'}
+              weight={descriptionFluidSize ? '300' : undefined}
               size={isMobile ? 'xs' : 'sm'}
+              fluidSize={descriptionFluidSize}
+              lineHeight={descriptionFluidSize ? '1.3' : undefined}
               color="white"
               margin={`${Spaces.md} 0 0 0`}
               style={{ maxWidth: maxDescriptionWidth }}
