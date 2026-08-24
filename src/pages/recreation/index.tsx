@@ -349,7 +349,7 @@ export default function Recreation() {
         src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Rec-Hero.webp"
         alt="Cal State LA Recreation Fitness Center with students exercising"
         title="Recreation"
-        eyebrow="Play, Wellness, and Connection"
+        eyebrow="Play, Wellness, Connection"
         topScrim
         description="Recreation at Cal State LA provides Golden Eagles with opportunities to play, exercise and engage their campus community through programming and events aimed toward enhancing the experience of all who participate."
       >
