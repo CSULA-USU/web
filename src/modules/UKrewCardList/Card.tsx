@@ -45,8 +45,8 @@ export const Card = ({ uKrewStudent }: { uKrewStudent: UKrewStudent }) => (
       </Typography>
       <Typography>{uKrewStudent.major}</Typography>
       <HorizontalContainer>
-        {uKrewStudent?.email && <MdMail height={24} width={24} />}
-        {uKrewStudent?.phoneNumber && <BiSolidPhone height={24} width={24} />}
+        {uKrewStudent?.email && <MdMail size={24} />}
+        {uKrewStudent?.phoneNumber && <BiSolidPhone size={24} />}
         {uKrewStudent?.linkedIn && <LinkedInLogoIcon height={24} width={24} />}
         {uKrewStudent?.portfolioLink && <GlobeIcon height={24} width={24} />}
       </HorizontalContainer>

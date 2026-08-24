@@ -81,6 +81,11 @@ const IconRow = styled.div`
   display: flex;
   align-items: center;
   gap: ${Spaces.sm};
+
+  /* An address or extension wraps; the icon keeps its 18px. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const StepList = styled.ol`

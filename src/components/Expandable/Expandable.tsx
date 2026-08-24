@@ -31,6 +31,8 @@ const HeaderContainer = styled.div<{
   }
 
   .indicator {
+    /* A long header must wrap rather than squeeze the chevron. */
+    flex-shrink: 0;
     rotate: ${(p) => (p.isOpen ? p.indicatorRotation : '0deg')};
     transition: rotate 0.2s ease-in-out;
   }

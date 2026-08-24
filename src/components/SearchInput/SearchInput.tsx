@@ -64,6 +64,8 @@ const Label = styled.label`
 
 const StyledSearchIcon = styled(FaSearch)<{ color?: string }>`
   font-size: 1.25em;
+  /* Sits in a flex row beside a full-width input, which would squeeze it. */
+  flex-shrink: 0;
   color: ${(props) => props.color || Colors.white};
 
   &:hover {

@@ -31,6 +31,11 @@ const OfficeHoursContentContainer = styled.div`
 const NumberInnerContainer = styled.div`
   display: flex;
   gap: ${Spaces.sm};
+
+  /* The phone or mail icon holds its size; the number or address wraps. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const NumberContainer = styled.div`
