@@ -39,6 +39,7 @@ const SelectTrigger = styled(RadixSelect.SelectTrigger)`
 
 const SelectIcon = styled(RadixSelect.SelectIcon)`
   color: black;
+  flex-shrink: 0;
 `;
 
 const SelectContent = styled(RadixSelect.Content)`
