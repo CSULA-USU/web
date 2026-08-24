@@ -20,6 +20,14 @@ const LeftDescriptionContainer = styled.div`
   flex-direction: column;
 `;
 
+/* The mail and phone icons sit beside an address that has to wrap on a narrow
+   screen, and a flex item shrinks before its sibling text wraps. */
+const ContactRow = styled(FluidContainer)`
+  svg {
+    flex-shrink: 0;
+  }
+`;
+
 const SectionContainer = styled.section`
   background-color: ${Colors.greyLightest};
   border-radius: 12px;
@@ -301,7 +309,7 @@ export default function Accessibility() {
             If you encounter any accessibility barriers on our website or have
             suggestions, please contact the web administrator at:
           </Typography>
-          <FluidContainer flex alignItems="center" padding="0" gap="5px">
+          <ContactRow flex alignItems="center" padding="0" gap="5px">
             <MdOutlineEmail />
             <Typography as="p">
               <StyledLink
@@ -311,15 +319,15 @@ export default function Accessibility() {
                 graffixwebteam@gmail.com
               </StyledLink>
             </Typography>
-          </FluidContainer>
-          <FluidContainer flex alignItems="center" padding="0" gap="5px">
+          </ContactRow>
+          <ContactRow flex alignItems="center" padding="0" gap="5px">
             <FiPhone />
             <Typography>
               <StyledLink href="tel:+13233432488" isInverseUnderlineStyling>
                 (323) 343&ndash;2488
               </StyledLink>
             </Typography>
-          </FluidContainer>
+          </ContactRow>
           <Typography as="p">
             We welcome your feedback and will work to address issues promptly.
           </Typography>

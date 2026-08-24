@@ -74,6 +74,11 @@ const SectionHeader = styled.header`
   display: flex;
   flex-direction: column;
   gap: ${Spaces.sm};
+
+  /* The phone or mail icon holds its size; the number or address wraps. */
+  svg {
+    flex-shrink: 0;
+  }
   max-width: 68ch;
   margin-bottom: ${Spaces.xl};
 `;

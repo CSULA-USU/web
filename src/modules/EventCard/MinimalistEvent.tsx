@@ -18,6 +18,7 @@ export interface MinimalistEventProps {
 const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 0;
   width: 50%;
   ${media('tablet')('width: 80%;')};
   ${media('mobile')('width: 100%;')};
@@ -36,6 +37,13 @@ const RightContainer = styled.div`
   display: flex;
   align-items: center;
   line-height: 1.6;
+  flex-shrink: 0;
+
+  /* The icon is a replaced element, so a long title in the middle column would
+     squeeze it instead of wrapping. */
+  svg {
+    flex-shrink: 0;
+  }
 `;
 const MinimalistEventContainer = styled.div`
   display: flex;
@@ -50,7 +58,7 @@ const MinimalistEventContainer = styled.div`
     flex-direction: column; 
     align-items: start; 
     min-height: 200px;
-    height: 200px; 
+    height: auto; 
     justify-content: center;
   `};
 `;
