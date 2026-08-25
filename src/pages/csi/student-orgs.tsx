@@ -251,7 +251,7 @@ export default function StudentOrgs() {
         />
         <meta
           name="twitter:image"
-          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/nest-preview.webp"
+          content="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/student-orgs/campus-groups-preview.png"
         />
 
         <link

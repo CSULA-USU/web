@@ -10,6 +10,7 @@ export const APP_STORE_HREF =
   'https://apps.apple.com/us/app/cal-state-la-recreation/';
 export const GOOGLE_PLAY_HREF =
   'https://play.google.com/store/apps/details?id=com.innosoftfusiongo.californiastateuniversitylosangeles';
+export const RECREATION_HOMEPAGE = 'https://recreation.calstatelausu.org/';
 export const COORDINATOR_EMAIL = 'Alepe14@calstatela.edu';
 export const DIRECTOR_EMAIL = 'cbalam2@calstatela.edu';
 
