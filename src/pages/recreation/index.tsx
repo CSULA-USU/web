@@ -391,7 +391,7 @@ export default function Recreation() {
         <SectionHeader>
           <Eyebrow>Where to go</Eyebrow>
           <Typography as="h2" variant="title" fluidSize={FLUID_H2} margin="0">
-            Facilities and hours
+            Facilities and Hours
           </Typography>
           <Typography as="p" variant="prose" fluidSize={FLUID_LEAD} margin="0">
             Recreation is comprised of the Recreation Fitness Center and
@@ -401,8 +401,7 @@ export default function Recreation() {
             students, staff and faculty.
           </Typography>
           <Typography as="p" variant="prose" size="xs" margin="0">
-            Fall 2026 hours. Call ahead if you are making a special trip — hours
-            shift between sessions.
+            Fall 2026 hours
           </Typography>
         </SectionHeader>
         <AutoGrid minColumnWidth="280px" gap={Spaces.lg}>
@@ -486,7 +485,7 @@ export default function Recreation() {
         <SectionHeader>
           <Eyebrow>Before your first visit</Eyebrow>
           <Typography as="h2" variant="title" fluidSize={FLUID_H2} margin="0">
-            Getting started
+            Getting Started
           </Typography>
         </SectionHeader>
         <AutoGrid minColumnWidth="280px" gap={Spaces.lg}>
