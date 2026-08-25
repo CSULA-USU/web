@@ -102,7 +102,11 @@ const clubCards = [
 const hours = [
   {
     title: 'Office Hours',
-    times: ['Monday - Friday: 9:00 AM - 5:00 PM', 'Saturday - Sunday: CLOSED'],
+    times: [
+      'Monday - Thursday: 8 AM to 6 PM',
+      'Friday: 8AM to 5 PM',
+      'Saturday - Sunday: CLOSED',
+    ],
   },
 ];
 
