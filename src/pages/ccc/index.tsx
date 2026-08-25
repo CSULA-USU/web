@@ -131,9 +131,9 @@ const hours = [
   {
     title: 'Office Hours',
     times: [
-      'Monday - Thursday: 8:00 AM - 6:00 PM',
-      'Friday: 8:00 AM - 5:00 PM',
-      'Saturday - Sunday: CLOSED',
+      'Monday - Thursday: 8 AM - 7 PM',
+      'Friday: 8 AM - 5 PM',
+      'Saturday & Sunday: Closed',
     ],
   },
 ];
@@ -223,7 +223,7 @@ export default function CCC() {
                   '@type': 'OpeningHoursSpecification',
                   dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
                   opens: '08:00',
-                  closes: '18:00',
+                  closes: '19:00',
                 },
                 {
                   '@type': 'OpeningHoursSpecification',
