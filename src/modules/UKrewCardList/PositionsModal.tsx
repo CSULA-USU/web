@@ -7,7 +7,7 @@ import { useBreakpoint } from 'hooks';
 import { MdLocationOn, MdAccessTime, MdAttachMoney } from 'react-icons/md';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 
-const TriggerWrapper = styled.div`
+const TriggerButton = styled.button`
   width: 100%;
   background-color: #e6e7eb;
   padding: 8px 16px;
@@ -16,6 +16,10 @@ const TriggerWrapper = styled.div`
   align-items: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: none;
 
   &:hover {
     background-color: #d1d5db;
@@ -25,17 +29,6 @@ const CustomContainer = styled(FluidContainer)`
   padding-top: 0;
   display: flex,
   flexDirection: column,
-`;
-
-const TriggerButton = styled.button`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: left;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  background: none;
-  border: none;
 `;
 
 const ModalContent = styled.div`
@@ -136,14 +129,12 @@ export const PositionModal = ({
 
   return (
     <>
-      <TriggerWrapper>
-        <TriggerButton onClick={openModal}>
-          <FaCirclePlus style={{ marginRight: '8px', flexShrink: 0 }} />
-          <Typography as="p" variant="labelTitle" size="md" nowrap weight="400">
-            {positionName}
-          </Typography>
-        </TriggerButton>
-      </TriggerWrapper>
+      <TriggerButton onClick={openModal}>
+        <FaCirclePlus style={{ marginRight: '8px', flexShrink: 0 }} />
+        <Typography as="p" variant="labelTitle" size="md" nowrap weight="400">
+          {positionName}
+        </Typography>
+      </TriggerButton>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
         <ModalContent>

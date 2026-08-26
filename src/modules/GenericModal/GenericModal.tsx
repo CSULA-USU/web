@@ -1,8 +1,8 @@
 import Modal from 'react-modal';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Colors, Spaces } from 'theme';
+import { useBodyScrollLock } from 'hooks';
 
 interface GenericModalProps {
   isOpen: boolean;
@@ -94,24 +94,11 @@ export const GenericModal = ({
     },
   };
 
-  // Locks the page behind the modal, and restores whatever the body had before
-  // — including when the modal unmounts while still open, which is what happens
-  // when a link inside it navigates away. Writing a fixed value on close instead
-  // left the lock stuck on, and clobbered any scroll lock another component had
-  // set. Doing nothing while closed keeps a closed modal from touching the body
-  // at all, which matters here because a page can mount many of these at once.
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isOpen]);
+  // Locks the page behind the modal. The hook owns the restore — including the
+  // case where the modal unmounts while still open, which is what happens when
+  // a link inside it navigates away — and does nothing while closed, which
+  // matters here because a page can mount many of these at once.
+  useBodyScrollLock(isOpen);
 
   return (
     <FixedModal

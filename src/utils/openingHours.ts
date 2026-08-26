@@ -197,3 +197,49 @@ export const groupHoursByValidity = (
       }))
     : groups;
 };
+
+/** One display line: 'Mon–Thu: 8 AM – 7 PM'. */
+export const formatHoursLine = (span: OpeningHours) =>
+  `${formatWeekdays(span.days)}: ${formatTime(span.opens)} – ${formatTime(
+    span.closes,
+  )}`;
+
+/**
+ * 'Sat, Sun: Closed' for the days no span covers, or '' when the week is fully
+ * covered. Validity windows are ignored — a day open in any window counts as
+ * open — so this only describes year-round hours honestly.
+ */
+export const formatClosedDays = (spans: OpeningHours[]) => {
+  const openDays = new Set(spans.flatMap((span) => span.days));
+  const closedDays = WEEKDAY_ORDER.filter((day) => !openDays.has(day));
+
+  return closedDays.length ? `${formatWeekdays(closedDays)}: Closed` : '';
+};
+
+/**
+ * The lines for a string-based hours list, one per span. `showClosedDays`
+ * appends the closed line — opt in, because a page listing only term-time
+ * hours would otherwise advertise the rest of the week as closed.
+ */
+export const formatHoursLines = (
+  spans: OpeningHours[],
+  { showClosedDays = false }: { showClosedDays?: boolean } = {},
+): string[] => {
+  const closedLine = showClosedDays ? formatClosedDays(spans) : '';
+
+  return [...spans.map(formatHoursLine), ...(closedLine ? [closedLine] : [])];
+};
+
+/**
+ * The same spans as schema.org `openingHoursSpecification` entries, so the
+ * structured data and the visible hours cannot drift apart.
+ */
+export const toOpeningHoursSpecification = (spans: OpeningHours[]) =>
+  spans.map((span) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: span.days,
+    opens: span.opens,
+    closes: span.closes,
+    ...(span.validFrom && { validFrom: span.validFrom }),
+    ...(span.validThrough && { validThrough: span.validThrough }),
+  }));
