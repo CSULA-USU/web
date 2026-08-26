@@ -108,7 +108,7 @@ const TENANTS: Tenant[] = [
       'It takes many hands to craft the perfect cup of coffee: from the farmers who tend to the red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to the barista who serves it with care. We are committed to the highest standards of quality and service, embracing our heritage while innovating to create new experiences to savor.',
     logoBackgroundColor: 'greyLightest',
     logoSrc: '/about/tenants/starbucks-logo.png',
-    phone: '323-343-6793',
+    phone: '(323) 343-6793',
     website: '',
     // Confirmed hours go here. Scope each span to the term it applies to, and
     // add the next window when it is known — spans sharing dates group together:
@@ -137,7 +137,7 @@ const TENANTS: Tenant[] = [
       'Extraordinary food and atmosphere, time-honored family recipes and the finest quality ingredients are the hallmarks of the Sbarro brand. From the moment our customers walk through the door, they know that dining at Sbarro will be a distinctive Italian experience.',
     logoBackgroundColor: 'greyLightest',
     logoSrc: '/about/tenants/sbarro-logo.png',
-    phone: '323-225-1464',
+    phone: '(323) 225-1464',
     website: '',
   },
   {
@@ -148,7 +148,7 @@ const TENANTS: Tenant[] = [
       'Associated Students, Incorporated (ASI) is a non-profit student-run auxiliary governed by a Board of Directors elected by the student body of Cal State LA.',
     logoBackgroundColor: 'greyLightest',
     logoSrc: '/about/tenants/asi-logo.png',
-    phone: '323-343-4780',
+    phone: '(323) 343-4780',
   },
   {
     name: 'Alumni Association',
@@ -158,7 +158,7 @@ const TENANTS: Tenant[] = [
       'Cal State LA Alumni Association is dedicated to past and present students desiring to stay involved in the Cal State LA community.',
     logoBackgroundColor: 'greyLightest',
     logoSrc: '/calstatela-badge.svg',
-    phone: '323-343-2586',
+    phone: '(323) 343-2586',
   },
   {
     name: 'Cal State LA Food Pantry',
@@ -188,6 +188,9 @@ const TENANTS: Tenant[] = [
     logoBackgroundColor: 'greyLightest',
     logoSrc:
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/ITM_logo_black.png',
+    phone: '(323) 350-1331',
+    website: 'https://www.inthemakingla.org/',
+    websiteText: 'In the Making website',
   },
 ];
 
@@ -323,7 +326,7 @@ const tenantsStructuredData = {
       ...(tenant.phone && { telephone: toE164(tenant.phone) }),
       ...(tenant.email && { email: tenant.email }),
       ...(tenant.website && { url: tenant.website }),
-      ...(tenant.hours && {
+      ...(tenant.hours?.length && {
         openingHoursSpecification: toOpeningHoursSpecification(tenant.hours),
       }),
     },
@@ -742,14 +745,14 @@ export default function Tenants() {
                       <Typography as="h3" variant="titleSmall">
                         {tenant.name}
                       </Typography>
-                      {tenant.hours && (
+                      {tenant.hours?.length ? (
                         <CardHours>
                           <ContactIcon aria-hidden="true">
                             <MdSchedule />
                           </ContactIcon>
                           <OpeningHoursList hours={tenant.hours} />
                         </CardHours>
-                      )}
+                      ) : null}
                       <ClampedDescription>
                         <Typography as="p">{tenant.description}</Typography>
                       </ClampedDescription>
@@ -819,7 +822,7 @@ export default function Tenants() {
             <Typography as="p" margin={`${Spaces.md} 0 0`}>
               {selectedTenant.description}
             </Typography>
-            {selectedTenant.hours && (
+            {selectedTenant.hours?.length ? (
               <ModalSection>
                 <Typography
                   variant="cta"
@@ -832,7 +835,7 @@ export default function Tenants() {
                 </Typography>
                 <OpeningHoursList hours={selectedTenant.hours} />
               </ModalSection>
-            )}
+            ) : null}
 
             {contactLinks.length > 0 && (
               <ModalSection>
