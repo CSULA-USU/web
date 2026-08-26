@@ -1,6 +1,11 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { Header, OfficeHours, Page } from 'modules';
+import {
+  formatHoursLines,
+  OpeningHours,
+  toOpeningHoursSpecification,
+} from 'utils/openingHours';
 import { Button, FluidContainer, Image, Typography } from 'components';
 import { useBreakpoint } from 'hooks';
 import { Colors, FontSizes, Spaces } from 'theme';
@@ -13,14 +18,19 @@ const buttons = [
     href: '/ccc/booklet/nuestra-grad',
   },
 ];
+const officeHours: OpeningHours[] = [
+  {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  { days: ['Friday'], opens: '08:00', closes: '17:00' },
+];
+
 const hours = [
   {
     title: 'Office Hours',
-    times: [
-      'Monday - Thursday: 8:00 AM - 6:00 PM',
-      'Friday: 8:00 AM - 5:00 PM',
-      'Saturday - Sunday: CLOSED',
-    ],
+    times: formatHoursLines(officeHours, { showClosedDays: true }),
   },
 ];
 
@@ -120,20 +130,8 @@ export default function CLSRC() {
                 addressRegion: 'CA',
                 postalCode: '90032',
               },
-              openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-                  opens: '08:00',
-                  closes: '18:00',
-                },
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: 'Friday',
-                  opens: '08:00',
-                  closes: '17:00',
-                },
-              ],
+              openingHoursSpecification:
+                toOpeningHoursSpecification(officeHours),
               sameAs: ['https://www.instagram.com/clsrc.ccc/'],
             }),
           }}

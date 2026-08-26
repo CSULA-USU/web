@@ -18,6 +18,7 @@ import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
+import { formatHoursLines, OpeningHours } from 'utils/openingHours';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 import { NonDiscriminationPolicy, PhotoVideoDisclaimer } from 'partials';
 
@@ -99,14 +100,19 @@ const clubCards = [
   },
 ];
 
+const officeHours: OpeningHours[] = [
+  {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  { days: ['Friday'], opens: '08:00', closes: '17:00' },
+];
+
 const hours = [
   {
     title: 'Office Hours',
-    times: [
-      'Monday - Thursday: 8 AM to 6 PM',
-      'Friday: 8AM to 5 PM',
-      'Saturday - Sunday: CLOSED',
-    ],
+    times: formatHoursLines(officeHours, { showClosedDays: true }),
   },
 ];
 
