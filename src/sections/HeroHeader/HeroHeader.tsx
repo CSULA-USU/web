@@ -25,10 +25,7 @@ export const defaultProps: HeroHeaderProps = {
   hours: [
     {
       title: 'Office Hours',
-      times: [
-        'Monday - Thursday: 8:30 AM - 7:00 PM',
-        'Friday: 8:30 AM - 4:00 PM',
-      ],
+      times: ['Mon–Thu: 8:30 AM – 7 PM', 'Fri: 8:30 AM – 4 PM'],
     },
   ],
 };

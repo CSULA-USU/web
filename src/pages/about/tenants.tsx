@@ -16,6 +16,7 @@ import {
   formatWeekdays,
   groupHoursByValidity,
   OpeningHours,
+  toOpeningHoursSpecification,
 } from 'utils/openingHours';
 import { Colors, FontSizes, Spaces, media } from 'theme';
 import { useImageLoading } from 'hooks';
@@ -323,14 +324,7 @@ const tenantsStructuredData = {
       ...(tenant.email && { email: tenant.email }),
       ...(tenant.website && { url: tenant.website }),
       ...(tenant.hours && {
-        openingHoursSpecification: tenant.hours.map((span) => ({
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: span.days,
-          opens: span.opens,
-          closes: span.closes,
-          ...(span.validFrom && { validFrom: span.validFrom }),
-          ...(span.validThrough && { validThrough: span.validThrough }),
-        })),
+        openingHoursSpecification: toOpeningHoursSpecification(tenant.hours),
       }),
     },
   })),
@@ -556,7 +550,6 @@ const OpeningHoursList = ({ hours }: { hours: OpeningHours[] }) => (
   </HoursGroups>
 );
 
-// On the card the hours sit inline under the name, clock icon to the left.
 // On the card the hours sit inline under the name, clock icon to the left.
 const CardHours = styled.div`
   display: flex;

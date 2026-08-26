@@ -22,7 +22,7 @@ export const EmploymentInfo = () => {
     <FluidContainer padding="0">
       <span id="positions">
         <Typography variant="title" as="h2" size={isMobile ? 'lg' : '2xl'}>
-          Job Descriptions
+          Student Assistant Job Descriptions
         </Typography>
       </span>
       <TabClusterControlled

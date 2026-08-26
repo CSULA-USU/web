@@ -14,6 +14,11 @@ import awardYears from 'data/acuiYear.json';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
+import {
+  formatHoursLines,
+  OpeningHours,
+  toOpeningHoursSpecification,
+} from 'utils/openingHours';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 interface DesignCardData {
@@ -27,10 +32,18 @@ const buttons = [
   { text: 'ACUI Awards', href: '/graffix/acui-awards' },
   { text: 'Linktree', href: 'https://linktr.ee/usugraffix' },
 ];
+const officeHours: OpeningHours[] = [
+  {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '17:00',
+  },
+];
+
 const hours = [
   {
     title: 'Office Hours',
-    times: ['Monday - Friday: 8:00 AM - 5:00 PM'],
+    times: formatHoursLines(officeHours),
   },
 ];
 const cards1 = [
@@ -233,20 +246,8 @@ export default function Graffix() {
                 addressCountry: 'US',
               },
               // Office Hours
-              openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: [
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                  ],
-                  opens: '08:00',
-                  closes: '17:00',
-                },
-              ],
+              openingHoursSpecification:
+                toOpeningHoursSpecification(officeHours),
               // Department Emails
               contactPoint: [
                 {

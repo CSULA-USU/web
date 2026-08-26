@@ -17,6 +17,11 @@ import {
 import { NonDiscriminationPolicy, PhotoVideoDisclaimer } from 'partials';
 import { media, Spaces } from 'theme';
 import { useBreakpoint } from 'hooks';
+import {
+  formatHoursLines,
+  OpeningHours,
+  toOpeningHoursSpecification,
+} from 'utils/openingHours';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const StudentOrgsCategoriesContentContainer = styled.div`
@@ -127,14 +132,19 @@ const descriptionCards = [
   },
 ];
 
+const officeHours: OpeningHours[] = [
+  {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '08:00',
+    closes: '19:00',
+  },
+  { days: ['Friday'], opens: '08:00', closes: '17:00' },
+];
+
 const hours = [
   {
     title: 'Office Hours',
-    times: [
-      'Monday - Thursday: 8 AM - 7 PM',
-      'Friday: 8 AM - 5 PM',
-      'Saturday & Sunday: Closed',
-    ],
+    times: formatHoursLines(officeHours, { showClosedDays: true }),
   },
 ];
 
@@ -218,20 +228,8 @@ export default function CCC() {
                 postalCode: '90032',
                 addressCountry: 'US',
               },
-              openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-                  opens: '08:00',
-                  closes: '19:00',
-                },
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: 'Friday',
-                  opens: '08:00',
-                  closes: '17:00',
-                },
-              ],
+              openingHoursSpecification:
+                toOpeningHoursSpecification(officeHours),
               parentOrganization: {
                 '@type': 'NonprofitOrganization',
                 name: 'University-Student Union at Cal State LA',

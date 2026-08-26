@@ -1,11 +1,26 @@
 import {
+  formatClosedDays,
+  formatHoursLine,
+  formatHoursLines,
   formatIsoDate,
   formatTime,
   formatValidityCaption,
   formatWeekdays,
   groupHoursByValidity,
   OpeningHours,
+  toOpeningHoursSpecification,
+  Weekday,
 } from 'utils/openingHours';
+
+const WEEK: Weekday[] = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
 
 const span = (overrides: Partial<OpeningHours> = {}): OpeningHours => ({
   days: ['Monday'],
@@ -218,5 +233,110 @@ describe('groupHoursByValidity', () => {
     groupHoursByValidity(input);
 
     expect(input).toEqual(snapshot);
+  });
+});
+
+describe('formatHoursLine', () => {
+  it('joins the day range and the time range', () => {
+    expect(
+      formatHoursLine({
+        days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+        opens: '08:00',
+        closes: '19:00',
+      }),
+    ).toBe('Mon–Thu: 8 AM – 7 PM');
+  });
+
+  it('keeps a single day and its minutes', () => {
+    expect(formatHoursLine(span({ days: ['Friday'], opens: '08:30' }))).toBe(
+      'Fri: 8:30 AM – 5 PM',
+    );
+  });
+});
+
+describe('formatClosedDays', () => {
+  it('names the days no span covers', () => {
+    expect(
+      formatClosedDays([
+        span({ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'] }),
+        span({ days: ['Friday'] }),
+      ]),
+    ).toBe('Sat, Sun: Closed');
+  });
+
+  it('says nothing when the week is fully covered', () => {
+    expect(formatClosedDays([span({ days: [...WEEK] })])).toBe('');
+  });
+
+  it('treats a day open in any span as open', () => {
+    expect(
+      formatClosedDays([
+        span({ days: ['Saturday'], validFrom: '2026-08-24' }),
+        span({ days: ['Sunday'] }),
+      ]),
+    ).toBe('Mon–Fri: Closed');
+  });
+});
+
+describe('formatHoursLines', () => {
+  const officeHours: OpeningHours[] = [
+    {
+      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    { days: ['Friday'], opens: '08:00', closes: '17:00' },
+  ];
+
+  it('omits the closed line by default', () => {
+    expect(formatHoursLines(officeHours)).toEqual([
+      'Mon–Thu: 8 AM – 6 PM',
+      'Fri: 8 AM – 5 PM',
+    ]);
+  });
+
+  it('appends the closed line when asked', () => {
+    expect(formatHoursLines(officeHours, { showClosedDays: true })).toEqual([
+      'Mon–Thu: 8 AM – 6 PM',
+      'Fri: 8 AM – 5 PM',
+      'Sat, Sun: Closed',
+    ]);
+  });
+
+  it('adds no closed line for a week with no gap', () => {
+    expect(
+      formatHoursLines([span({ days: [...WEEK] })], { showClosedDays: true }),
+    ).toEqual(['Mon–Sun: 9 AM – 5 PM']);
+  });
+});
+
+describe('toOpeningHoursSpecification', () => {
+  it('maps a span to a schema.org entry with full day names', () => {
+    expect(
+      toOpeningHoursSpecification([
+        { days: ['Monday', 'Friday'], opens: '08:00', closes: '17:00' },
+      ]),
+    ).toEqual([
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Friday'],
+        opens: '08:00',
+        closes: '17:00',
+      },
+    ]);
+  });
+
+  it('carries validity bounds through and omits them when absent', () => {
+    const [dated, undated] = toOpeningHoursSpecification([
+      span({ validFrom: '2026-08-24', validThrough: '2026-12-18' }),
+      span(),
+    ]);
+
+    expect(dated).toMatchObject({
+      validFrom: '2026-08-24',
+      validThrough: '2026-12-18',
+    });
+    expect(undated).not.toHaveProperty('validFrom');
+    expect(undated).not.toHaveProperty('validThrough');
   });
 });
