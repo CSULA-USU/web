@@ -1,6 +1,6 @@
 import { Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, media, Spaces } from 'theme';
+import { Colors, media, Shadows, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { Image } from 'components';
 import { ABBREVIATED_ORGS } from 'utils/constants';
@@ -22,9 +22,11 @@ const Card = styled.div`
   overflow: hidden;
   justify-content: space-between;
   height: 550px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   &:hover,
   &:focus {
-    filter: drop-shadow(-${Spaces.xs} ${Spaces.xs} ${Spaces.xs} ${Colors.grey});
+    transform: translateY(-4px);
+    box-shadow: ${Shadows.lifted};
   }
 `;
 

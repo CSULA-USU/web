@@ -76,11 +76,18 @@ export const Colors = {
  * lift; `soft` is the tighter, cooler one used where something sits only just
  * above the surface — a card in a grid, or chrome that content scrolls under.
  *
- * Two steps on purpose. A third would invite picking by taste rather than by
- * how far off the page the thing actually is.
+ * Two resting steps on purpose. A third would invite picking by taste rather
+ * than by how far off the page the thing actually is.
+ *
+ * `lifted` is not a third resting step — it is the hovered state of an
+ * interactive card, and belongs here so every card that reacts to a pointer
+ * reacts by the same amount. Pair it with `translateY(-4px)`: the shadow casts
+ * straight down because the card has risen, not because it has been nudged
+ * sideways.
  */
 export const Shadows = {
   default: '2px 4px 12px rgba(191, 191, 191, 0.25)',
   soft: '0 2px 8px rgba(0, 0, 0, 0.06)',
+  lifted: '0 12px 24px rgba(0, 0, 0, 0.12)',
   none: 'none',
 } as const;
