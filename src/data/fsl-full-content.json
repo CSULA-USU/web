@@ -177,7 +177,9 @@
       "colors": ["Old Glory Gold", "Royal Blue"],
       "symbol": ["Golden Eagle", "Oak Tree", "Diamond", "Forget-me-not"],
       "chapterEmail": "",
-      "chapterPhone": ""
+      "chapterPhone": "",
+      "instagram": "apocsula",
+      "website": "https://www.apo.org/"
     },
     {
       "name": "Alpha Sigma Tau",
@@ -186,7 +188,7 @@
       "type": "Sorority",
       "council": "PHC",
       "status": "Recognized",
-      "founding": "1993",
+      "founding": "1899",
       "values": [
         "Intellect",
         "Excellence",
@@ -194,14 +196,12 @@
         "Respect",
         "Connections"
       ],
-      "colors": ["Brown", "Cream"],
+      "colors": ["Emerald Green", "Victory Gold"],
       "symbol": "Anchor",
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": [
-        "Pine Mountain Settlement School",
-        "Habitat for Humanity"
-      ]
+      "instagram": "ast_csula",
+      "website": "https://www.alphasigmatau.org/"
     },
     {
       "name": "Delta Phi Epsilon",
@@ -210,17 +210,14 @@
       "type": "Sorority",
       "council": "PHC",
       "status": "Recognized",
-      "founding": "2016",
-      "values": ["Sisterhood", "Scholarship", "Self", "Service", "Social"],
+      "founding": "1917",
+      "values": ["Justice", "Sisterhood", "Love"],
       "colors": ["Royal Purple", "Pure Gold"],
-      "symbol": "Unicorn",
+      "symbol": ["Iris", "Pearl", "Unicorn"],
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": [
-        "Cystic Fibrosis Foundation",
-        "National Association of Anorexia Nervosa and Associated Disorders",
-        "Delta Phi Epsilon Educational Foundation"
-      ]
+      "instagram": "dphie_la",
+      "website": "https://www.dphie.org/"
     },
     {
       "name": "Delta Sigma Theta",
@@ -229,19 +226,14 @@
       "type": "Sorority",
       "council": "NPHC",
       "status": "Recognized",
-      "founding": "1962",
-      "values": ["Scholarship", "Sisterhood", "Service"],
+      "founding": "1913",
+      "values": ["Scholarship", "Sisterhood", "Service", "Social Action"],
       "colors": ["Crimson", "Cream"],
-      "symbol": "Fortitude",
+      "symbol": "Lady Fortitude",
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": [
-        "Five-Point Program Thrust of Economic Development",
-        "Educational Development",
-        "International Awareness and Involvement",
-        "Physical and Mental Health",
-        "Political Awareness and Involvement"
-      ]
+      "instagram": "epsilonzeta.dst",
+      "website": "https://www.deltasigmatheta.org/"
     },
     {
       "name": "Delta Zeta",
@@ -250,13 +242,16 @@
       "type": "Sorority",
       "council": "PHC",
       "status": "Recognized",
-      "founding": "1966",
-      "values": ["Sisterhood", "Philanthropy", "Scholarship"],
+      "founding": "1902",
+      "values": [
+        "Friendship, Belonging, Community, Generosity, Empowerment, Curiosity"
+      ],
       "colors": ["Rose", "Green"],
-      "symbol": "Roman Lamp",
+      "symbol": ["Pink Killarney Rose", "Diamond", "Roman Lamp", "Turtle"],
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": ["Painted Turtle Camp", "Starkey Hearing Foundation"]
+      "instagram": "csuladeltazeta",
+      "website": "https://www.deltazeta.org/"
     },
     {
       "name": "Kappa Alpha Psi",
@@ -264,7 +259,13 @@
       "greekLetters": "ΚΑΨ",
       "type": "Fraternity",
       "council": "NPHC",
-      "status": "Recognized"
+      "status": "Recognized",
+      "founding": "1911",
+      "values": ["Brotherhood", "Knowledge", "Integrity", "Service", "Unit"],
+      "colors": ["Crimson", "Cream"],
+      "symbol": "Kappa Kane",
+      "instagram": "upsilonnupes",
+      "website": "https://kappaalphapsi1911.com/"
     },
     {
       "name": "Lambda Theta Alpha",
@@ -272,7 +273,13 @@
       "greekLetters": "ΛΘA",
       "type": "Sorority",
       "council": "MGC",
-      "status": "Reestablishing"
+      "status": "Reestablishing",
+      "founding": "1975",
+      "values": ["Unity", "Love", "Respect"],
+      "colors": ["Burgundy", "Grey"],
+      "symbol": ["La Concha", "La Luna"],
+      "instagram": "lta_gammatau",
+      "website": "https://www.lambdalady.org/"
     },
     {
       "name": "Lambda Theta Nu",
@@ -280,7 +287,13 @@
       "greekLetters": "ΛΘΝ",
       "type": "Sorority",
       "council": "MGC",
-      "status": "Reestablishing"
+      "status": "Reestablishing",
+      "founding": "1986",
+      "colors": ["Silver", "Burgundy", "White"],
+      "values": ["Academics", "Service", "Sisterhood"],
+      "symbol": "Rose",
+      "instagram": "csulalambdas",
+      "website": "https://www.lambdathetanu.org/"
     },
     {
       "name": "Lambda Theta Phi",
@@ -290,9 +303,17 @@
       "council": "MGC",
       "status": "Reestablishing",
       "founding": "1975",
-      "values": ["Unity", "Respect", "Honor", "Pride", "Tradition"],
-      "colors": ["Brotherhood Brown", "Pure White"],
-      "communityService": ["American Heart Association", "Food Bank"]
+      "values": [
+        "Brotherhood",
+        "Scholarship",
+        "Character & Morality",
+        "Culture & Chivalry",
+        "Identity"
+      ],
+      "colors": ["Brown", "White"],
+      "symbol": "White Carnation",
+      "instagram": "csula_lambdas",
+      "website": "https://www.thelambdas.org/"
     },
     {
       "name": "Omega Psi Phi",
@@ -307,12 +328,8 @@
       "symbol": "Lamp",
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": [
-        "National Achievement Week",
-        "Talent Hunt Program",
-        "Social Action Program",
-        "Scholarship Program"
-      ]
+      "instagram": "slamminlambdaques1923",
+      "website": "https://oppf.org/"
     },
     {
       "name": "Phi Iota Alpha",
@@ -320,7 +337,13 @@
       "greekLetters": "ΦΙΑ",
       "type": "Fraternity",
       "council": "MGC",
-      "status": "Reestablishing"
+      "status": "Reestablishing",
+      "founding": "1931",
+      "values": ["Strength, Integrity, Friendship"],
+      "colors": ["Red", "White", "Navy Blue", "Gold"],
+      "symbol": ["Lion", "Red Carnation"],
+      "instagram": "csulaphiotas",
+      "website": "https://www.phiota.org/"
     },
     {
       "name": "Sigma Alpha Epsilon",
@@ -329,33 +352,35 @@
       "type": "Fraternity",
       "council": "IFC",
       "status": "Recognized",
-      "founding": "1956",
-      "values": ["Friendship", "Scholarship", "Service"],
+      "founding": "1856",
+      "values": ["Friendship", "Scholarship", "Leadership", "Service"],
       "colors": ["Royal Purple", "Old Gold"],
       "symbol": "Lion",
       "chapterEmail": "",
-      "chapterPhone": ""
+      "chapterPhone": "",
+      "instagram": "csulasae",
+      "website": "https://www.sae.net/"
     },
     {
       "name": "Sigma Lambda Beta",
-      "fullName": "Sigma Lambda Beta International Fraternity",
       "crest": "/departments/csi/fsl/slb.png",
       "greekLetters": "ΣΛΒ",
       "type": "Fraternity",
       "council": "MGC",
       "status": "Recognized",
-      "founding": "1997",
+      "founding": "1986",
       "values": [
         "Brotherhood",
         "Scholarship",
         "Community Service",
         "Cultural Awareness"
       ],
-      "colors": ["Royal Purple", "Purest White"],
-      "symbol": "White Stallion Mustang",
+      "colors": ["Royal Purple", "Pure White"],
+      "symbol": ["White Stallion Mustang", "Red Carnation"],
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": ["CPR Awareness Day for Victor Correa"]
+      "instagram": "csulabetas",
+      "website": "https://www.sigmalambdabeta.com/"
     },
     {
       "name": "Sigma Lambda Gamma",
@@ -364,7 +389,7 @@
       "type": "Sorority",
       "council": "MGC",
       "status": "Recognized",
-      "founding": "2012",
+      "founding": "1990",
       "values": [
         "Academics",
         "Community Service",
@@ -376,7 +401,8 @@
       "symbol": "Pink Rose, Purple Panther",
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": ["Breast Cancer Awareness", "TRIO Program"]
+      "instagram": "csulagammas",
+      "website": "https://www.sigmalambdagamma.org/"
     },
     {
       "name": "Sigma Nu",
@@ -385,13 +411,20 @@
       "type": "Fraternity",
       "council": "IFC",
       "status": "Recognized",
-      "founding": "1966",
+      "founding": "1869",
       "values": ["Love", "Truth", "Honor"],
       "colors": ["Black", "Gold", "White"],
-      "symbol": "Sword",
+      "symbol": [
+        "The Rock",
+        "The Rose",
+        "The White Oak",
+        "The White Star",
+        "Serpent & Knight"
+      ],
       "chapterEmail": "",
       "chapterPhone": "",
-      "communityService": ["Helping Hand Initiative"]
+      "instagram": "sigmanucsula",
+      "website": "https://www.sigmanu.org/"
     },
     {
       "name": "Zeta Phi Beta",
@@ -399,7 +432,13 @@
       "greekLetters": "ΖΦβ",
       "type": "Sorority",
       "council": "NPHC",
-      "status": "Recognized"
+      "status": "Recognized",
+      "founding": "1920",
+      "values": ["Scholarship", "Service", "Sisterhood", "Finer Womanhood"],
+      "colors": ["Royal Blue", "Pure White"],
+      "symbol": ["Dove", "White Rose"],
+      "instagram": "csulazetas_",
+      "website": "https://www.zphib1920.org/"
     }
   ],
   "policyButtons": [

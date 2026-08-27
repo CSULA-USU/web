@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '../Typography';
 import { Image, Panel, RainbowText } from 'components';
-import { Colors, media } from 'theme';
+import { Colors, media, Shadows } from 'theme';
 
 interface CardStyles {
   margin?: string;
@@ -42,7 +42,7 @@ const HoverPanel = styled(Panel)<{ $vertical?: boolean }>`
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: ${Shadows.lifted};
   }
 
   ${(p) =>
