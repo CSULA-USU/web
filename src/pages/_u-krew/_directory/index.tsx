@@ -197,7 +197,7 @@ export default function Directory() {
         connect with the students who help keep the Union running smoothly.
       </Header>
 
-      <TabCluster tabItems={Object.keys(departmentTabs)}>
+      <TabCluster tabItems={Object.keys(departmentTabs)} label="Departments">
         {Object.entries(departmentTabs).map(([tabKey, _tabValue]) => (
           <TabPanel key={tabKey}>
             <FluidContainer>

@@ -19,6 +19,10 @@ yarn dev:sections # Dev server with section schema generation watching
 
 Node version: 22.18.0 (use `nvm use`). Package manager: Yarn.
 
+**Never run `yarn build`, `next start`, or a second `next dev` while a dev server is already running.** They all share `/.next`, and a build rewrites `.next/server/` and prunes `vendor-chunks/`, so the running server's already-loaded webpack runtime fails with `Cannot find module './chunks/vendor-chunks/next.js'` and 500s every route. A `PreToolUse` hook in `.claude/settings.json` blocks the agent from doing this; the rule applies to people too.
+
+Verify with `npx tsc --noEmit`, `yarn lint`, and `yarn test` — none of them write to `.next`. Recovery when it does break: stop the server, `rm -rf .next` (a gitignored build artifact), restart. Never `pkill -f "next dev"` without checking whose server it matches.
+
 ## Architecture
 
 ### Routing & Pages
@@ -59,9 +63,23 @@ NextAuth.js with Azure AD provider. `src/middleware.ts` protects `/backoffice` a
 
 All credentials are injected via `.env.local` — see README for the full variable list.
 
+### Media Assets
+
+Video belongs in MUX / next-video, not `public/`. Large media committed to `public/` stays in git history permanently even after it is deleted from the working tree, bloating every clone — several files already buried in this repo's history run 40–80 MB each and trigger GitHub's >50 MB push warning on every push.
+
 ### Tone & Voice
 
-<!-- Add brand personality, writing style, audience notes here -->
+Rendered copy is short. Cut any word that does not buy clarity — a button reading "More about {org name}" should just read "More", because the surrounding context already supplies the rest. This applies to button labels, link text, headings, captions, and body copy.
+
+It is the exact opposite of the naming rule below: _identifiers_ stay long and explicit (`DEFAULT_DETAILS`, `logoBackgroundColor`), and only strings a visitor actually reads get cut. Where a terse label would be ambiguous lifted out of context — five buttons all reading "More" in a screen reader's element list — keep the visible text short and put the disambiguation in `aria-label` rather than padding the visible copy.
+
+### List Order
+
+Alphabetize rendered lists by default: staff, tenants, directories, card grids, option lists. Predictable order lets a reader find a known name without scanning the whole list, and it removes the unanswerable question of what an arbitrary order was supposed to mean.
+
+Sort once at the point of derivation rather than separately per render, so the visible order and anything derived from it (schema.org `position`, exports, counts) cannot disagree. Always pass an explicit locale — `a.name.localeCompare(b.name, 'en')` — because a module-scope sort runs on both the server and the client, and a collation difference between them is a hydration mismatch. `src/pages/about/tenants.tsx:203` is the reference.
+
+Exceptions are fine wherever order carries meaning: chronological (weekdays, months, opening-hours spans, events), priority (phone before email before website), or a deliberately curated sequence. Say so in a comment, so the exception does not read as an oversight.
 
 ### Accessibility
 
@@ -69,13 +87,39 @@ All credentials are injected via `.env.local` — see README for the full variab
 
 When a non-interactive person image appears alongside the person’s name in the same card or section, treat it as decorative and use alt=\"\". Use meaningful alt only when the image conveys unique information or acts as a control.
 
+### Rendering & SEO
+
+Googlebot renders JavaScript but never interacts. Content that is in the DOM and hidden with CSS (`display: none`) is fully indexed, and is not ranked lower for being hidden. Content that only enters the DOM on click is invisible, because nothing ever clicks.
+
+Tabs and accordions are therefore perfectly good patterns — the defect is always conditional rendering, never the pattern itself. Render every panel and hide the inactive ones. `src/components/Tabs/TabCluster.tsx` is the working reference: react-tabs needs `forceRenderTabPanel` _plus_ explicit panel-hiding CSS, because react-tabs' own stylesheet is not imported anywhere in this project and flipping the prop alone stacks every panel on screen.
+
 ### Code Quality
 
 ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas). Husky + lint-staged enforce linting on pre-commit. TypeScript strict mode is on.
 
+#### Spelling
+
+US English, never British: `color` not `colour`, `centers` not `centres`, `normalizes` not `normalises`, `labeled`, `traveling`, `behavior`, `organize`, `analyze`, `defense`, `license`. This covers everything written, not just user-facing copy — code comments, JSDoc, README and other docs, commit messages, and test descriptions. The site is a Cal State LA property and its own copy is US English; mixed spelling in the codebase reads as careless to the next person in the file.
+
+One exception: **`grey` is correct in this repo.** The theme tokens are named `greyDarkest`, `greyDarker`, `greyDark`, `grey`, `greyLighter`, `greyLightest` (`src/theme/index.ts:53-58`). Never "fix" those to `gray` — it breaks `keyof typeof Colors` lookups. Match the identifier, and use `grey` in prose that refers to those tokens.
+
 #### Naming
 
 Name variables, props, and components after the concrete thing they hold, not a vague abstraction. Avoid generic catch-alls like `meta`, `data`, `info`, `config`, `item`, or `obj` when a domain-specific name fits — e.g. the hero's bottom detail rows are `details` (and `DEFAULT_DETAILS`), not `meta`. A reader should be able to tell what a name contains without tracing where it's used. Also avoid names that imply the wrong thing (`meta` reads as HTML `<meta>` tags). Prefer a longer, explicit name over a short ambiguous one; verbosity is fine when it makes the reference unmistakable.
+
+#### Comments
+
+Documentation lives next to the code it describes. A comment on the line being edited is seen at the moment it becomes wrong; a note in a separate document is not, and drifts silently. Default to explaining in place.
+
+**Comment the why, never the what.** The code already states what it does. A comment earns its place by carrying what the code cannot: the reason this approach was chosen over the obvious one, a constraint that isn't visible locally, or anything that will look like a mistake to the next reader. `PhotoFrame` in `components/StaffCard/StaffCard.tsx` is the shape to copy — it explains that the frame's fill is white because several headshots have transparent backgrounds and any other color reads as a discolored patch. Nobody would infer that, and without the comment someone re-themes it within a year.
+
+A comment that restates its own line is worse than no comment. It adds nothing on the day it is written and becomes a lie the day the line changes.
+
+**State the rule, not just the choice.** When a value or structure is deliberately constrained, say so, so the next change has to reckon with it rather than quietly widen it — e.g. the `Shadows` block in `src/theme/index.ts` records that its two resting steps are a limit, and what would justify an exception.
+
+**Update the comment in the same diff as the code.** A comment is the only part of a file that can be wrong forever without failing a test, a type check, or a lint rule — nothing catches it but the person editing. Changing behavior described by a nearby comment means rewriting that comment in the same change, not leaving it for later. If the comment no longer applies at all, delete it.
+
+**Cross-cutting narrative stays here.** How subsystems relate, why the architecture is shaped this way, what to read first — that has no single file to live in and nobody finds it by reading one. It belongs in this file or a `docs/` page, not wedged into whichever module happened to be open.
 
 ### Testing
 
@@ -166,5 +210,24 @@ One-off components scoped to a single section/page are the exception, not the de
 When a layout looks reusable, build it generic from the start: lift the variable parts to props (text, images, counts, variants) rather than hardcoding one section's content, so the next section can reuse it instead of spawning a near-duplicate. If you find yourself about to create a second component that is 80%+ the same as an existing one, generalize the existing one instead — and flag the duplication rather than quietly forking it.
 
 Prefer prop-driven variants over new components for differences that are cosmetic (spacing, color, alignment). Reach for a new component only when structure or behavior genuinely differs.
+
+When a component graduates from a feature folder into `src/components/`, audit it for leftover coupling to where it came from: hardcoded copy, required props that only apply to one variant, brand colors baked into children, required fields that assume one data shape (a currency `amount` on an otherwise generic chart). A file inside `components/` must import its siblings by direct path (`import { Typography } from '../Typography'`), never through the `components` barrel, which creates an import cycle.
+
+### Design Patterns
+
+**Page heroes.** Full-bleed background image, text anchored bottom-left, a dark gradient scrim rising from the bottom edge, a short `Colors.primary` accent bar above the `h1`, a large white title, and a short white subtitle at reduced opacity. `src/modules/UtilityHeroHeader/UtilityHeroHeader.tsx` is the implementation — compose it rather than rebuilding the treatment. Centered white-box overlays are the superseded pattern; do not reach for them.
+
+**Hover states fill, they do not recolor.** Recoloring text to `Colors.primary` is too weak a signal, especially on pages whose in-page nav already spends primary on text — the hover then just looks like more of the same. Fill the container (the pill or row holding the label) with `Colors.primary` and switch the text to `Colors.black`, which also clears contrast comfortably. Give the element its own padding and `border-radius` so there is a container to fill, and transition `background-color` and `color` together. When the trigger opens a panel, hold the fill while that panel is open, or the panel reads as detached. `src/modules/Nav/DesktopNav.tsx` applies this to both the top bar and its dropdown rows.
+
+### Design Handoffs
+
+Handoffs from the separate design-system project arrive as a README plus an HTML/CSS/JS reference prototype, and land in one of two places:
+
+- `_handoff/` at the repo root — gitignored scratch space (`.gitignore:27`), deleted once the feature ships.
+- `docs/handoff/<name>/` — tracked, for briefs that stay useful after the build. `docs/handoff/design_handoff_keep_the_u_open/` is the current example, and is the file `@`-imported at the bottom of this document.
+
+Treat a prototype as a high-fidelity reference to recreate with this repo's own components and theme tokens. Never port prototype source verbatim, and never ship its chrome — `chrome.jsx`, `tweaks-panel.jsx`, EDITMODE blocks.
+
+Copy transcribed from a handoff is department-approved: do not reword it without the owning department's sign-off. `src/modules/RecreationMembership/content.tsx` holds Recreation's approved strings on exactly that basis.
 
 @docs/handoff/design_handoff_keep_the_u_open/KEEP_THE_U_OPEN.md
