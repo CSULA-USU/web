@@ -128,6 +128,18 @@ const NavItems = [
   'Resources',
 ];
 
+/* The FSL office's own contact details, in one place because they appear in
+   several sections. The dialable and readable forms of the phone number are
+   kept as a pair — they drifted apart once, leaving the contacts bar showing
+   one number and dialing another department's. */
+const FSL_PHONE_E164 = '+13233435113';
+const FSL_PHONE_DISPLAY = '(323) 343–5113';
+const FSL_EMAIL = 'iprieto7@calstatela.edu';
+
+/* Counted from the chapter list rather than written down, so the figure can't
+   fall behind the directory it describes. */
+const CHAPTER_COUNT = chapters.length;
+
 interface SquareImageContainerProps {
   src: string;
   alt: string;
@@ -899,8 +911,8 @@ export default function FSL() {
                   name: 'University-Student Union at Cal State LA',
                 },
               },
-              telephone: '+13233435113',
-              email: 'iprieto7@calstatela.edu',
+              telephone: FSL_PHONE_E164,
+              email: FSL_EMAIL,
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '5154 State University Dr., U-SU Room 204',
@@ -968,9 +980,10 @@ export default function FSL() {
         </ContentWrapper>
       </HeroContainer>
       <ContactsBar isMobile={isMobile} isDesktop={isDesktop}>
+        {/* The icons repeat the label beside them, so they carry no alt. */}
         <li>
           <Image
-            alt="Flag icon for game room's room number."
+            alt=""
             src="/departments/recreation/game-room/icons/flag.svg"
             height="18px"
             width="18px"
@@ -981,22 +994,24 @@ export default function FSL() {
         </li>
         <li>
           <Image
-            alt="Phone icon for game room's phone number."
+            alt=""
             src="/departments/recreation/game-room/icons/phone.svg"
             height="18px"
             width="18px"
           />
-          <StyledLink href="tel:13233436909">
+          <StyledLink href={`tel:${FSL_PHONE_E164}`}>
             <Typography variant="cta" color="black">
-              (323) 343&ndash;5113
+              {FSL_PHONE_DISPLAY}
             </Typography>
           </StyledLink>
         </li>
         <li>
-          <HiOutlineMail />
-          <Typography variant="cta" color="black">
-            iprieto7@calstatela.edu
-          </Typography>
+          <HiOutlineMail aria-hidden="true" />
+          <StyledLink href={`mailto:${FSL_EMAIL}`}>
+            <Typography variant="cta" color="black">
+              {FSL_EMAIL}
+            </Typography>
+          </StyledLink>
         </li>
       </ContactsBar>
 
@@ -1013,9 +1028,9 @@ export default function FSL() {
               margin={isWidescreen ? '18px 0' : '36px 0'}
             >
               <Typography as="p" variant="copy">
-                With 16 organizations and over 300 fraternity and sorority
-                members, Cal State LA&apos;s Greek community truly has it
-                all—from culturally based and service&mdash;driven groups to
+                With {CHAPTER_COUNT} organizations and over 300 fraternity and
+                sorority members, Cal State LA&apos;s Greek community truly has
+                it all—from culturally based and service&mdash;driven groups to
                 social organizations and everything in between. No matter what
                 you&apos;re looking for, there&apos;s a place for you in our
                 fraternity and sorority community! Build lifelong friendships,
@@ -1184,7 +1199,7 @@ export default function FSL() {
               justifyContent="center"
             >
               <CountUp
-                end={14}
+                end={CHAPTER_COUNT}
                 duration={1000}
                 variant="title"
                 as="h2"
@@ -1255,16 +1270,16 @@ export default function FSL() {
                   <li>
                     <Typography as="p">
                       Phone:{' '}
-                      <StyledLink href="tel:+13233435113">
-                        (323) 343&ndash;5113
+                      <StyledLink href={`tel:${FSL_PHONE_E164}`}>
+                        {FSL_PHONE_DISPLAY}
                       </StyledLink>
                     </Typography>
                   </li>
                   <li>
                     <Typography as="p">
                       Email:{' '}
-                      <StyledLink href="mailto:iprieto7@calstatela.edu">
-                        iprieto7@calstatela.edu
+                      <StyledLink href={`mailto:${FSL_EMAIL}`}>
+                        {FSL_EMAIL}
                       </StyledLink>
                     </Typography>
                   </li>
@@ -1614,11 +1629,11 @@ export default function FSL() {
                 and sororities are committed to their academics, volunteer time
                 in the community, develop and strengthen their leadership
                 skills, and form a campus network with other Greeks. Our Greek
-                community consists of over 14 different organizations and over
-                300 students. As the Center for Student Involvement staff, we
-                work closely with the recognized organizations to enhance the
-                overall Greek experience by upholding their values, community
-                standards and university Policies.
+                community consists of {CHAPTER_COUNT} different organizations
+                and over 300 students. As the Center for Student Involvement
+                staff, we work closely with the recognized organizations to
+                enhance the overall Greek experience by upholding their values,
+                community standards and university Policies.
               </Typography>
             </FluidContainer>
           </FluidContainer>

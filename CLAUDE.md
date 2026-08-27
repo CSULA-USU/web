@@ -77,6 +77,20 @@ ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas
 
 Name variables, props, and components after the concrete thing they hold, not a vague abstraction. Avoid generic catch-alls like `meta`, `data`, `info`, `config`, `item`, or `obj` when a domain-specific name fits — e.g. the hero's bottom detail rows are `details` (and `DEFAULT_DETAILS`), not `meta`. A reader should be able to tell what a name contains without tracing where it's used. Also avoid names that imply the wrong thing (`meta` reads as HTML `<meta>` tags). Prefer a longer, explicit name over a short ambiguous one; verbosity is fine when it makes the reference unmistakable.
 
+#### Comments
+
+Documentation lives next to the code it describes. A comment on the line being edited is seen at the moment it becomes wrong; a note in a separate document is not, and drifts silently. Default to explaining in place.
+
+**Comment the why, never the what.** The code already states what it does. A comment earns its place by carrying what the code cannot: the reason this approach was chosen over the obvious one, a constraint that isn't visible locally, or anything that will look like a mistake to the next reader. `PhotoFrame` in `components/StaffCard/StaffCard.tsx` is the shape to copy — it explains that the frame's fill is white because several headshots have transparent backgrounds and any other color reads as a discolored patch. Nobody would infer that, and without the comment someone re-themes it within a year.
+
+A comment that restates its own line is worse than no comment. It adds nothing on the day it is written and becomes a lie the day the line changes.
+
+**State the rule, not just the choice.** When a value or structure is deliberately constrained, say so, so the next change has to reckon with it rather than quietly widen it — e.g. the `Shadows` block in `src/theme/index.ts` records that its two resting steps are a limit, and what would justify an exception.
+
+**Update the comment in the same diff as the code.** A comment is the only part of a file that can be wrong forever without failing a test, a type check, or a lint rule — nothing catches it but the person editing. Changing behavior described by a nearby comment means rewriting that comment in the same change, not leaving it for later. If the comment no longer applies at all, delete it.
+
+**Cross-cutting narrative stays here.** How subsystems relate, why the architecture is shaped this way, what to read first — that has no single file to live in and nobody finds it by reading one. It belongs in this file or a `docs/` page, not wedged into whichever module happened to be open.
+
 ### Testing
 
 Jest + ts-jest. Run with `yarn test` (also runs as part of `yarn build`). Tests are centralized in `src/__tests__/` (not colocated), mirroring the source path under `src/`.
