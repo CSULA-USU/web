@@ -19,7 +19,7 @@ import {
   Typography,
   VisuallyHidden,
 } from 'components';
-import { Page } from 'modules';
+import { Page, UtilityHeroHeader } from 'modules';
 import {
   APP_STORE_HREF,
   eligibilityContacts,
@@ -259,12 +259,6 @@ const StoreBadges = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: ${Spaces.md};
-`;
-
-const HeroButtons = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   gap: ${Spaces.md};
 `;
 
@@ -591,60 +585,23 @@ export default function RecreationMembership() {
         contentMaxWidth={CONTENT_MAX_WIDTH}
       />
 
-      <FluidContainer
-        backgroundImage={`${MEDIA}/Rec-Hero.webp`}
-        backgroundScrim="linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 50%, rgba(0, 0, 0, 0.25) 100%)"
-        backgroundPosition="20% center"
-        padding="clamp(96px, 9vw, 132px) clamp(16px, 5vw, 72px) clamp(36px, 5vw, 64px)"
-        paddingDesktop="clamp(96px, 9vw, 132px) clamp(16px, 5vw, 72px) clamp(36px, 5vw, 64px)"
-        paddingMobile="clamp(96px, 9vw, 132px) clamp(16px, 5vw, 72px) clamp(36px, 5vw, 64px)"
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-        innerMinHeight="480px"
-        outerAlignItems="flex-end"
-        flex
-        flexDirection="column"
-        alignItems="flex-start"
-        justifyContent="flex-end"
-        gap={Spaces.md}
+      <UtilityHeroHeader
+        src={`${MEDIA}/Rec-Hero.webp`}
+        alt="Cal State LA Recreation Fitness Center with students exercising"
+        title="Membership"
+        eyebrow="U&ndash;SU Recreation"
+        topScrim
+        titleTreatment="display"
+        description="Most Golden Eagles already have one. It is paid through your &ldquo;Student Union&rdquo; campus fee."
+        descriptionFluidSize={HERO_DECK}
       >
-        <Eyebrow color="primary" accentColor="primary">
-          U&ndash;SU Recreation
-        </Eyebrow>
-        <Typography
-          as="h1"
-          variant="title"
-          weight="800"
-          uppercase
-          fluidSize={`clamp(${FontSizes['4xl']}, 10vw, ${FontSizes['6xl']})`}
-          lineHeight="0.92"
-          letterSpacing="-0.02em"
-          color="white"
-          margin="0"
-        >
-          Membership
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          weight="300"
-          fluidSize={HERO_DECK}
-          lineHeight="1.3"
-          color="white"
-          margin="0"
-          style={{ maxWidth: '780px' }}
-        >
-          Most Golden Eagles already have one. It is paid through your
-          &ldquo;Student Union&rdquo; campus fee.
-        </Typography>
-        <HeroButtons>
-          <Button href="#statement" variant="primary" shadow>
-            Check if you already have it
-          </Button>
-          <Button href="#plans" variant="whiteOutline">
-            See all memberships
-          </Button>
-        </HeroButtons>
-      </FluidContainer>
+        <Button href="#statement" variant="primary" shadow>
+          Check if you already have it
+        </Button>
+        <Button href="#plans" variant="whiteOutline">
+          See all memberships
+        </Button>
+      </UtilityHeroHeader>
 
       <FluidContainer id="start" backgroundColor="primary" {...sectionShell}>
         <TwoColumn $gap="clamp(32px, 5vw, 72px)" $align="stretch">

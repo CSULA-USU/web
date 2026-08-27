@@ -3,9 +3,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { TabPanel } from 'react-tabs';
-import { AiOutlineFileText } from 'react-icons/ai';
+import { AiOutlineFileText, AiOutlineInstagram } from 'react-icons/ai';
 import { BiChevronRight, BiCheck } from 'react-icons/bi';
 import { HiOutlineMail } from 'react-icons/hi';
+import { MdLanguage } from 'react-icons/md';
 import { media, Spaces, Colors } from 'theme';
 import { useBreakpoint } from 'hooks';
 import {
@@ -52,7 +53,8 @@ interface Chapter {
   values?: string[];
   colors?: string[];
   symbol?: string | string[];
-  communityService?: string[];
+  instagram?: string;
+  website?: string;
 }
 
 const TYPE_FILTERS: ChapterType[] = ['Fraternity', 'Sorority', 'Co-Ed'];
@@ -72,6 +74,20 @@ const getInitials = (name: string) =>
     .join('')
     .slice(0, 3)
     .toUpperCase();
+
+const instagramHref = (handle: string) =>
+  handle.startsWith('http')
+    ? handle
+    : `https://www.instagram.com/${handle.replace(/^@/, '')}/`;
+
+const instagramLabel = (handle: string) =>
+  handle.startsWith('@') ? handle : `@${handle}`;
+
+const websiteLabel = (website: string) =>
+  website
+    .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
+    .replace(/\/$/, '');
 
 const AB524InfoSection = styled.div`
   margin: 0 0 ${Spaces.md} 0;
@@ -591,6 +607,41 @@ const DetailList = styled.dl`
     dd {
       margin-bottom: ${Spaces.sm};
     }
+  }
+`;
+
+const ChapterLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${Spaces.md};
+  width: 100%;
+  margin-top: ${Spaces.xl};
+  padding-top: ${Spaces.lg};
+  border-top: 1px solid ${Colors.greyLighter};
+`;
+
+const ChapterLink = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${Spaces.sm};
+  color: ${Colors.greyDarkest};
+`;
+
+const ChapterLinkIcon = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  line-height: 0;
+  color: ${Colors.black};
+
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
   }
 `;
 
@@ -1713,8 +1764,7 @@ export default function FSL() {
           {selectedChapter.founding ||
           selectedChapter.values ||
           selectedChapter.colors ||
-          selectedChapter.symbol ||
-          selectedChapter.communityService ? (
+          selectedChapter.symbol ? (
             <DetailList>
               {selectedChapter.founding && (
                 <>
@@ -1744,12 +1794,6 @@ export default function FSL() {
                   </dd>
                 </>
               )}
-              {selectedChapter.communityService && (
-                <>
-                  <dt>Community Service</dt>
-                  <dd>{selectedChapter.communityService.join(', ')}</dd>
-                </>
-              )}
             </DetailList>
           ) : (
             <Typography
@@ -1759,6 +1803,39 @@ export default function FSL() {
             >
               Full chapter profile coming soon.
             </Typography>
+          )}
+
+          {(selectedChapter.instagram || selectedChapter.website) && (
+            <ChapterLinks>
+              {selectedChapter.instagram && (
+                <ChapterLink>
+                  <ChapterLinkIcon>
+                    <AiOutlineInstagram aria-hidden="true" />
+                  </ChapterLinkIcon>
+                  <StyledLink
+                    href={instagramHref(selectedChapter.instagram)}
+                    isExternalLink
+                    isInverseUnderlineStyling
+                  >
+                    {instagramLabel(selectedChapter.instagram)}
+                  </StyledLink>
+                </ChapterLink>
+              )}
+              {selectedChapter.website && (
+                <ChapterLink>
+                  <ChapterLinkIcon>
+                    <MdLanguage aria-hidden="true" />
+                  </ChapterLinkIcon>
+                  <StyledLink
+                    href={selectedChapter.website}
+                    isExternalLink
+                    isInverseUnderlineStyling
+                  >
+                    {websiteLabel(selectedChapter.website)}
+                  </StyledLink>
+                </ChapterLink>
+              )}
+            </ChapterLinks>
           )}
         </BaseModal>
       )}

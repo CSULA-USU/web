@@ -12,9 +12,8 @@ interface SelectableOptionProps {
   controls?: string;
 }
 
-/* Border rather than background alone carries the selected state: on a colored
-   ground the fill change between greyLightest and white is slight, and color is
-   never the only thing marking a choice. */
+/* The selected option mirrors the answer panel so the two sides read as one
+  choice: black surface, white copy, and the primary accent. */
 const Option = styled.button<{ $selected: boolean }>`
   display: flex;
   align-items: center;
@@ -27,8 +26,14 @@ const Option = styled.button<{ $selected: boolean }>`
   border-radius: 12px;
   transition: background-color 0.2s ease, border-color 0.2s ease;
   background-color: ${(p) =>
-    p.$selected ? Colors.white : Colors.greyLightest};
-  border: 1px solid ${(p) => (p.$selected ? Colors.black : Colors.greyLighter)};
+    p.$selected ? Colors.black : Colors.greyLightest};
+  border: 1px solid
+    ${(p) => (p.$selected ? Colors.primary : Colors.greyLighter)};
+
+  &:focus-visible {
+    outline: 3px solid ${Colors.black};
+    outline-offset: 3px;
+  }
 
   &:hover {
     opacity: 0.8;
@@ -72,7 +77,7 @@ export const SelectableOption = ({
         variant="labelTitle"
         size="md"
         weight="700"
-        color="greyDarker"
+        color={selected ? 'white' : 'greyDarker'}
         margin="0"
       >
         {title}
@@ -82,7 +87,7 @@ export const SelectableOption = ({
           as="span"
           variant="copy"
           size="xs"
-          color="greyDarker"
+          color={selected ? 'white' : 'greyDarker'}
           margin={`${Spaces.xs} 0 0`}
         >
           {subtitle}
