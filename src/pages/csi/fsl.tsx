@@ -61,10 +61,12 @@ const TYPE_FILTERS: ChapterType[] = ['Fraternity', 'Sorority', 'Co-Ed'];
 const COUNCIL_FILTERS: Council[] = ['IFC', 'MGC', 'NPHC', 'PHC'];
 
 // Data is authored alphabetically; sort defensively so display order never
-// depends on JSON ordering.
+// depends on JSON ordering. The explicit 'en' locale keeps the comparison
+// identical on the server and in the browser — this runs at module scope, so an
+// unqualified localeCompare risks a hydration mismatch.
 const CHAPTER_ROSTER = (chapters as unknown as Chapter[])
   .slice()
-  .sort((a, b) => a.name.localeCompare(b.name));
+  .sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
 // Monogram fallback for chapters that have no seal image yet.
 const getInitials = (name: string) =>
@@ -1016,7 +1018,10 @@ export default function FSL() {
       </ContactsBar>
 
       {/* Drop-Down Menus */}
-      <TabCluster tabItems={NavItems}>
+      <TabCluster
+        tabItems={NavItems}
+        label="Fraternity and Sorority Life sections"
+      >
         {/* About Us*/}
         <TabPanel>
           <FluidContainer>
