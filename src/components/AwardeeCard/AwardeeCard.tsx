@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { createPortal } from 'react-dom';
 import styled, { css, keyframes } from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, Shadows } from 'theme';
 import { Typography } from '../Typography';
 import { PortraitPlaceholder } from './PortraitPlaceholder';
 import type { Awardee } from 'types';
@@ -23,8 +23,7 @@ const TriggerButton = styled.button<{ $layout: 'card' | 'list' }>`
   background: ${Colors.white};
   border-radius: ${(p) => (p.$layout === 'list' ? '10px' : '16px')};
   overflow: hidden;
-  box-shadow: ${(p) =>
-    p.$layout === 'list' ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.06)'};
+  box-shadow: ${(p) => (p.$layout === 'list' ? Shadows.none : Shadows.soft)};
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -35,12 +34,13 @@ const TriggerButton = styled.button<{ $layout: 'card' | 'list' }>`
   padding: 0;
   font: inherit;
 
+  // A list row does not rise — it sits in a stack, so lifting one would break
+  // the run of rows. It gains the resting card's shadow instead, which reads
+  // as "picked out" without moving anything.
   &:hover {
     box-shadow: ${(p) =>
-      p.$layout === 'list'
-        ? '0 4px 12px rgba(0, 0, 0, 0.08)'
-        : '0 12px 28px rgba(0, 0, 0, 0.14)'};
-    transform: ${(p) => (p.$layout === 'list' ? 'none' : 'translateY(-2px)')};
+      p.$layout === 'list' ? Shadows.soft : Shadows.lifted};
+    transform: ${(p) => (p.$layout === 'list' ? 'none' : 'translateY(-4px)')};
     border-color: ${Colors.primary};
   }
 

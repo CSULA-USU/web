@@ -645,6 +645,41 @@ const ChapterLinkIcon = styled.span`
   }
 `;
 
+/* ---------- Meet Our Staff ---------- */
+
+/* Copy on the left, the two staff cards on the right. The columns are uneven
+   on purpose: the prose needs the room, the cards only need to stay portrait.
+   Below 900px the two stack, copy first, so the intro still reads before the
+   people it introduces. */
+const StaffLayout = styled.section`
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: ${Spaces.xl};
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: ${Spaces.lg};
+  }
+`;
+
+/* Two portrait cards side by side. `auto-fit` drops them to one column the
+   moment a pair would squeeze each card under 160px, which is the narrowest
+   the roster on /staff lets a card get — so the breakpoint follows the column
+   the cards actually landed in rather than a guess at the viewport. The cards
+   fill their track, so nothing is ever stretched back to landscape. */
+const StaffCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: ${Spaces.md};
+`;
+
+const StaffContact = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
 // Renders a chapter's seal, falling back to an initials monogram when the
 // organization has no crest image yet.
 const ChapterSeal = ({ chapter, size }: { chapter: Chapter; size: string }) =>
@@ -1194,49 +1229,49 @@ export default function FSL() {
           </FluidContainer>
 
           {/* STAFF */}
-          <FluidContainer
-            flex
-            flexDirection={isWidescreen ? 'column' : 'row'}
-            backgroundColor="greyLightest"
-          >
-            <FluidContainer
-              innerMaxWidth={isWidescreen ? '100%' : '50%'}
-              padding={isWidescreen ? '18px' : '0'}
-            >
-              <Typography
-                as="h2"
-                variant="title"
-                size={isMobile ? 'xl' : '2xl'}
-              >
-                Meet Our Staff
-              </Typography>
-              <Typography as="p" margin={`${Spaces.md} 0 `}>
-                The CSI staff is available during the work week and can be seen
-                on campus at night and weekends for meetings and programs to
-                assist you in your fraternity and sorority experience. Please
-                email us or stop by our office for more information.
-              </Typography>
-              <Typography weight="700" as="h3">
-                Contact Us
-              </Typography>
-              <Typography as="p">Phone: (323) 343&ndash;5113</Typography>
-              <Typography as="p">Email: iprieto7@calstatela.edu</Typography>
-            </FluidContainer>
+          <FluidContainer backgroundColor="greyLightest">
+            <StaffLayout aria-labelledby="fsl-staff-heading">
+              <div>
+                <Typography
+                  as="h2"
+                  variant="title"
+                  size={isMobile ? 'xl' : '2xl'}
+                  id="fsl-staff-heading"
+                >
+                  Meet Our Staff
+                </Typography>
+                <Typography as="p" margin={`${Spaces.md} 0`}>
+                  The CSI staff is available during the work week and can be
+                  seen on campus at night and weekends for meetings and programs
+                  to assist you in your fraternity and sorority experience.
+                  Please email us or stop by our office for more information.
+                </Typography>
+                <Typography weight="700" as="h3">
+                  Contact Us
+                </Typography>
+                {/* Reachable, not just readable — a phone on a handset and an
+                    address in a mail client both need a real link. */}
+                <StaffContact>
+                  <li>
+                    <Typography as="p">
+                      Phone:{' '}
+                      <StyledLink href="tel:+13233435113">
+                        (323) 343&ndash;5113
+                      </StyledLink>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography as="p">
+                      Email:{' '}
+                      <StyledLink href="mailto:iprieto7@calstatela.edu">
+                        iprieto7@calstatela.edu
+                      </StyledLink>
+                    </Typography>
+                  </li>
+                </StaffContact>
+              </div>
 
-            <FluidContainer
-              flex
-              flexDirection="column"
-              alignItems={isWidescreen ? 'center' : 'flex-start'}
-              padding="0"
-            >
-              <FluidContainer
-                flex
-                justifyContent="center"
-                padding="0"
-                flexDirection={
-                  isMobile ? 'column' : isTablet ? 'column' : 'row'
-                }
-              >
+              <StaffCards>
                 {staff
                   .filter(
                     (s) =>
@@ -1250,14 +1285,16 @@ export default function FSL() {
                       title={s.title}
                       src={s.src}
                       alt={s.alt}
-                      margin={isMobile ? `${Spaces.sm} 0` : `${Spaces.sm}`}
                       pronouns={s.pronouns}
+                      pronunciation={s.pronunciation}
                       suffix={s.suffix}
                       department={s.department}
                       email={s.email}
                       phone={s.phone}
                       url={s.url}
                       bio={s.bio}
+                      orientation="vertical"
+                      width="100%"
                       rounded
                     >
                       <Typography
@@ -1271,8 +1308,8 @@ export default function FSL() {
                       </Typography>
                     </StaffCardWithModal>
                   ))}
-              </FluidContainer>
-            </FluidContainer>
+              </StaffCards>
+            </StaffLayout>
           </FluidContainer>
 
           {/* Community Reports */}

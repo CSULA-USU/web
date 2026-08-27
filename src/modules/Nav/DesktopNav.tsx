@@ -60,7 +60,6 @@ const UnstyledUnorderedList = styled.ul`
     &[aria-expanded='true'] {
       color: ${Colors.black};
       background-color: ${Colors.primary};
-      font-weight: 800;
     }
   }
   ul {
@@ -142,12 +141,15 @@ const MainMenuItem = styled.div`
 `;
 
 /**
- * A nav label that is already as wide as its own hovered, heavier self.
+ * A dropdown label that is already as wide as its own hovered, heavier self.
  *
  * The hidden `::after` copy carries the label at `$hoverFontWeight` and sets
  * the width; the visible text sits above it and grows into slack that was
- * always reserved. Without it, bolding on hover widens the item and shoves
- * every item after it sideways — and widens a dropdown panel mid-hover.
+ * always reserved. Without it, bolding on hover widens the row and shoves the
+ * dropdown panel wider mid-hover.
+ *
+ * The bar's own items do not need this — they rest at 700 and stay there, so
+ * their width never changes on hover.
  *
  * The copy is `visibility: hidden`, not transparent, so it stays out of the
  * accessibility tree and screen readers do not hear the label twice.
@@ -167,10 +169,7 @@ const SteadyWidthLabel = styled(NonBreakingSpan)<{ $hoverFontWeight: number }>`
   }
 `;
 
-/** Weight the bar's own items reach on hover, and the width they reserve. */
-const TOP_LEVEL_HOVER_WEIGHT = 800;
-
-/** The same, one tier down, where the resting weight is lighter to begin with. */
+/** Weight a dropdown row reaches on hover, and the width it reserves. */
 const DROPDOWN_HOVER_WEIGHT = 600;
 
 export const DesktopNav = () => {
@@ -187,12 +186,7 @@ export const DesktopNav = () => {
                   menuButton={
                     <MenuButton>
                       <MainMenuItem>
-                        <SteadyWidthLabel
-                          data-label={t1.text}
-                          $hoverFontWeight={TOP_LEVEL_HOVER_WEIGHT}
-                        >
-                          {t1.text}
-                        </SteadyWidthLabel>
+                        <NonBreakingSpan>{t1.text}</NonBreakingSpan>
                         <FiChevronDown />
                       </MainMenuItem>
                     </MenuButton>
@@ -257,12 +251,7 @@ export const DesktopNav = () => {
           return (
             <li key={index}>
               <Link href={t1.href}>
-                <SteadyWidthLabel
-                  data-label={t1.text}
-                  $hoverFontWeight={TOP_LEVEL_HOVER_WEIGHT}
-                >
-                  {t1.text}
-                </SteadyWidthLabel>
+                <NonBreakingSpan>{t1.text}</NonBreakingSpan>
               </Link>
             </li>
           );

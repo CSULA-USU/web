@@ -264,7 +264,7 @@
       "values": ["Brotherhood", "Knowledge", "Integrity", "Service", "Unit"],
       "colors": ["Crimson", "Cream"],
       "symbol": "Kappa Kane",
-      "instagram": "upsilonupes",
+      "instagram": "upsilonnupes",
       "website": "https://kappaalphapsi1911.com/"
     },
     {
@@ -363,7 +363,6 @@
     },
     {
       "name": "Sigma Lambda Beta",
-      "fullName": "Sigma Lambda Beta International Fraternity",
       "crest": "/departments/csi/fsl/slb.png",
       "greekLetters": "ΣΛΒ",
       "type": "Fraternity",
@@ -390,7 +389,7 @@
       "type": "Sorority",
       "council": "MGC",
       "status": "Recognized",
-      "founding": "2012",
+      "founding": "1990",
       "values": [
         "Academics",
         "Community Service",
@@ -401,7 +400,9 @@
       "colors": ["Shocking Pink", "Majestic Purple"],
       "symbol": "Pink Rose, Purple Panther",
       "chapterEmail": "",
-      "chapterPhone": ""
+      "chapterPhone": "",
+      "instagram": "csulagammas",
+      "website": "https://www.sigmalambdagamma.org/"
     },
     {
       "name": "Sigma Nu",
@@ -410,12 +411,20 @@
       "type": "Fraternity",
       "council": "IFC",
       "status": "Recognized",
-      "founding": "1966",
+      "founding": "1869",
       "values": ["Love", "Truth", "Honor"],
       "colors": ["Black", "Gold", "White"],
-      "symbol": "Sword",
+      "symbol": [
+        "The Rock",
+        "The Rose",
+        "The White Oak",
+        "The White Star",
+        "Serpent & Knight"
+      ],
       "chapterEmail": "",
-      "chapterPhone": ""
+      "chapterPhone": "",
+      "instagram": "sigmanucsula",
+      "website": "https://www.sigmanu.org/"
     },
     {
       "name": "Zeta Phi Beta",
@@ -423,7 +432,13 @@
       "greekLetters": "ΖΦβ",
       "type": "Sorority",
       "council": "NPHC",
-      "status": "Recognized"
+      "status": "Recognized",
+      "founding": "1920",
+      "values": ["Scholarship", "Service", "Sisterhood", "Finer Womanhood"],
+      "colors": ["Royal Blue", "Pure White"],
+      "symbol": ["Dove", "White Rose"],
+      "instagram": "csulazetas_",
+      "website": "https://www.zphib1920.org/"
     }
   ],
   "policyButtons": [
