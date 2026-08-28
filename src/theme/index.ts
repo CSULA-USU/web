@@ -91,3 +91,42 @@ export const Shadows = {
   lifted: '0 12px 24px rgba(0, 0, 0, 0.12)',
   none: 'none',
 } as const;
+
+/**
+ * Corner radius, named by the job it does rather than by size.
+ *
+ * `control` is for the small boxes a person points at or types into — a nav
+ * pill, a dropdown row, an input. `surface` is for discrete objects that sit
+ * on the page as their own thing: cards, modals, callouts. `structure` is a
+ * deliberate zero, for full-bleed bars and anything fused to them — the nav
+ * bar, the dropdown panel hanging off it, section bands. Those meet the
+ * viewport edge or another surface, and rounding them makes them float when
+ * they should read as architecture. Writing `structure` rather than omitting
+ * the property is the point: it marks the square corner as a decision, so the
+ * next person does not "fix" it.
+ *
+ * The two sizes differ because radius is read relative to the box, not in the
+ * absolute. 4px on a 34px-tall pill is a visible softening; the same 4px on a
+ * 400px panel is optically nothing. One value used at both scales produces
+ * less consistency, not more.
+ *
+ * `circle` and `pill` are a different job, not two more steps on that scale.
+ * A percentage radius resolves against the box's own width and height, so 50%
+ * is how you make a circle or an ellipse — it is never how you soften a
+ * corner. (There is no reason to write 100%: when radii would overlap, the
+ * spec scales them down proportionally, so on a square box 100% renders
+ * exactly as 50% does.) `pill` is a large pixel value instead, because a
+ * percentage on a wide box gives an ellipse, while an over-large pixel radius
+ * clamps to half the height and gives a true stadium at any width.
+ *
+ * Open question, deliberately left without a token: `Button` rests at 8px,
+ * between `control` and `surface`. Folding it down to `control` changes every
+ * button on the site, so it wants a decision rather than a default.
+ */
+export const Radii = {
+  structure: '0px',
+  control: '4px',
+  surface: '12px',
+  circle: '50%',
+  pill: '9999px',
+} as const;
