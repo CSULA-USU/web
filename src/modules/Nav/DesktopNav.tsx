@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
-import { Colors, FontSizes, Spaces, media } from 'theme';
+import { Colors, FontSizes, Radii, Spaces, media } from 'theme';
 import navMap from 'data/navMap.json';
 import { NonBreakingSpan } from 'components';
 import { FiChevronDown } from 'react-icons/fi';
@@ -61,6 +61,13 @@ const UnstyledUnorderedList = styled.ul`
       color: ${Colors.black};
       background-color: ${Colors.primary};
     }
+    // With the panel open this button is the tab sitting on top of it, so its
+    // bottom corners square off to meet the panel's square top edge. Hover
+    // alone keeps all four rounded — there is no panel below to meet yet.
+    &[aria-expanded='true'] {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
   ul {
     animation: fadeIn 0.3s;
@@ -73,7 +80,12 @@ const UnstyledUnorderedList = styled.ul`
       }
     }
     border-left: 2px solid ${Colors.primary};
-    transform: translateY(8px);
+    // No vertical offset: react-menu already places the panel's top edge on the
+    // button's bottom edge and aligns their left edges, so the button's primary
+    // fill runs straight into this border and the two read as one shape. Any
+    // nudge here reopens the gap that made the panel look detached from the
+    // item that opened it — the nested panels below get their own offset
+    // instead, measured from their parent row.
     a,
     button,
     .szh-menu__item,
@@ -83,15 +95,24 @@ const UnstyledUnorderedList = styled.ul`
       font-size: ${FontSizes.sm};
     }
 
-    // Same highlight as the top-level bar. The --hover class is the library's
-    // own, which it also sets during arrow-key navigation — so the keyboard
-    // path lights up the same row the pointer would.
+    // Same highlight as the top-level bar, but edge to edge: the row spans the
+    // panel's full width so a highlighted row meets the panel its own submenu
+    // opens, and the primary carries across the join instead of stopping at an
+    // inset pill. Square corners are part of that — a radius here would leave
+    // the highlight pulling away from the edge it is supposed to reach.
+    //
+    // --hover is the library's own class, which it also sets during arrow-key
+    // navigation, so the keyboard path lights up the same row the pointer
+    // would. --open holds the fill while this row's submenu is showing, the way
+    // aria-expanded does for the bar above; without it the highlight drops the
+    // moment the pointer moves into the panel it just opened.
     .szh-menu__item {
-      border-radius: 4px;
+      border-radius: ${Radii.structure};
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       &:hover,
       &:focus,
-      &.szh-menu__item--hover {
+      &.szh-menu__item--hover,
+      &.szh-menu__item--open {
         color: ${Colors.black};
         background-color: ${Colors.primary};
         font-weight: 600;
@@ -102,34 +123,48 @@ const UnstyledUnorderedList = styled.ul`
       }
     }
 
-    // sets location of '+' icon for expandable menu items
+    // Location of the '+' on expandable rows. Measured from the panel edge now
+    // that rows run the full width, so it carries the 8px the panel used to
+    // hold as padding on top of its own inset.
     .szh-menu__item--submenu:after {
       content: '+';
       position: absolute;
-      right: ${Spaces.sm};
+      right: ${Spaces.md};
     }
   }
 
-  // styling for window expandable pop up
+  // No padding on any side. Horizontal padding insets every row from the
+  // panel's sides and stops a highlight short of the edge where the next panel
+  // attaches; vertical padding leaves a grey band above the first row and below
+  // the last, which reads as an unfinished edge as soon as one of those rows is
+  // highlighted. The rows below absorb the 8px the sides gave up into their own
+  // padding, so the text sits exactly where it always did while the highlight
+  // behind it runs corner to corner.
+  //
+  // Zero here also removes any need to correct a nested panel's position:
+  // react-menu aligns a submenu's top edge to its parent row's top, so with no
+  // padding of its own the nested panel's first row lands exactly on that row
+  // rather than a notch below it.
   ul {
-    padding: 4px 8px;
+    padding: ${Spaces.zero};
     list-style: none;
     background-color: ${Colors.greyDarker};
   }
 
-  // Row padding doubles as the highlight's inset. The right side is wider to
-  // reserve room for the '+' on expandable rows, which the old margin-right
-  // used to hold open — margin would have left a gap the highlight can't fill.
+  // Row padding is what positions the text, now that it is no longer doubling
+  // as the highlight's inset: each side carries its old value plus the 8px the
+  // panel gave up. The right side stays wider to reserve room for the '+' on
+  // expandable rows, which margin can't hold open without leaving a gap the
+  // highlight cannot fill.
   .szh-menu__item {
-    padding: ${Spaces.sm} ${Spaces.lg} ${Spaces.sm} ${Spaces.sm};
+    padding: ${Spaces.sm} calc(${Spaces.lg} + ${Spaces.sm}) ${Spaces.sm}
+      ${Spaces.md};
   }
 
-  // A nested panel is placed at its parent row's right edge, so this nudge is
-  // measured from there. Dropping the rows' 12px margin above widened them by
-  // that much, so the nudge sheds the same 12px to land where it always did.
-  ul ul {
-    transform: translate(${Spaces.sm}, -4px);
-  }
+  // A nested panel gets no transform at all. react-menu already places it at
+  // its parent row's right edge, which is now the panel's own edge too, so it
+  // butts straight onto the highlighted row and its primary border-left
+  // continues that row's primary fill. Any offset reopens the gap between them.
 `;
 
 const MainMenuItem = styled.div`

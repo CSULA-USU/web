@@ -6,7 +6,7 @@ import {
   ChevronUpIcon,
 } from '@radix-ui/react-icons';
 import styled from 'styled-components';
-import { Colors } from 'theme';
+import { Colors, Radii } from 'theme';
 
 interface SelectProps extends RadixSelect.SelectProps {
   items: { label: string; value: string }[];
@@ -18,6 +18,10 @@ interface SelectProps extends RadixSelect.SelectProps {
 const SelectTrigger = styled(RadixSelect.SelectTrigger)`
   padding: 10px 20px;
   border: none;
+  // Deliberately still a literal. This trigger renders beside Button in every
+  // file that uses Select, so it stays pinned to Button's 8px until that value
+  // is decided; folding it to Radii.control alone would leave it a step tighter
+  // than the buttons standing next to it.
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -46,6 +50,10 @@ const SelectContent = styled(RadixSelect.Content)`
   z-index: 1100;
   overflow: hidden;
   background-color: white;
+  // Deliberately still a literal. This is a small floating menu, and
+  // Radii.surface is calibrated for cards — at 12px it would visibly
+  // over-round a panel this size. The scale has no step yet for small elevated
+  // surfaces, which is where Toast (8px), Popover (4px), and this all sit.
   border-radius: 6px;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
@@ -73,7 +81,7 @@ const StyledItem = styled(RadixSelect.Item)`
   font-size: 13px;
   line-height: 1;
   color: ${Colors.black};
-  border-radius: 3px;
+  border-radius: ${Radii.control};
   display: flex;
   align-items: center;
   height: 25px;

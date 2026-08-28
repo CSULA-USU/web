@@ -142,7 +142,7 @@ export const BODDownloads = () => {
       </Typography>
       <Divider color="grey" margin={`${Spaces.xl} 0`} />
       <DownloadSection
-        title="Fiscal Year 25-26"
+        title="Fiscal Year 26-27"
         button={
           agendaDownloadAll
             ? {
@@ -161,7 +161,7 @@ export const BODDownloads = () => {
       </Typography>
       <Divider color="grey" margin={`${Spaces.xl} 0`} />
       <DownloadSection
-        title="Fiscal Year 25-26"
+        title="Fiscal Year 26-27"
         button={
           minutesDownloadAll
             ? {
