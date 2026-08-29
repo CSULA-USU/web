@@ -11,7 +11,6 @@ import {
   Typography,
 } from 'components';
 import { Page } from 'modules';
-import { EmploymentInfo } from 'partials';
 // import jobs from 'data/employment.json';
 // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
 
@@ -185,9 +184,6 @@ export default function Employment() {
             )}
           </div>
         </JobListingContainer>
-      </FluidContainer>
-      <FluidContainer>
-        <EmploymentInfo />
       </FluidContainer>
       <FluidContainer flex flexDirection="column">
         <Typography
