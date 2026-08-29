@@ -135,14 +135,14 @@ const cards = [
     children:
       'This document is intended to serve as the model to follow when writing the constitution of your organization.',
     linkText: 'View PDF',
-    href: 'https://www.dropbox.com/scl/fi/t7gcv0qxjarwasfjise7j/csi-sample-constitution.pdf?rlkey=lpjuxkhuofjbvklxb904n9xjm&st=ktobc3oq&raw=1',
+    href: 'https://csula.sharepoint.com/:w:/s/CenterForStudentInvolvement/IQAmn2c6KO4xQ7RGu3-R3jSnAcZvin103iRMmIDTo3GJBWU?e=oVydfw&isSPOFile=1&xsdata=MDV8MDJ8fDRiYmEzY2JlZmJhMjQ4ZDY3ZjRlMDhkZjAyYmYzNzY1fGNlOGEyMDAyNDQ4ZjRmNTg4MmIxZDg2ZjczZTNhZmRkfDB8MHw2MzkyMzI2OTI0MDEzMDc0NzB8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T2pVeE0ySTVNMlkyTFRNM1pESXRORGd4WkMwNFl6TmpMVEl6WTJNeE1tSmhOREl3T0Y4NVlqSTJNRFEzTWkxak5EbGlMVFEyTUdNdE9XSTRNaTAzTVRFMFpEaGhaRFl3TkRCQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE56WTNNakl3T1RrNE5RPT18OTExNDU5ODFiNmQ4NDkxNDMxMGEwOGRmMDJiZjM3NjV8NDQxZjMyMTYxYjhlNDBlMmFiNTI2ZTdiMGQ0NzY0ZmQ%3D&sdata=L0dPbGlPM3VqMFV1d2duRDY3Rnc2WmU4OWJtTUh3eENJWkVGQUQveFZTVT0%3D&ovuser=ce8a2002-448f-4f58-82b1-d86f73e3afdd%2Cjyasis%40calstatela.edu',
   },
   {
     title: 'ODC Info and Videos',
     children:
       'The online Organizational Development Course was designed to provide you and your organization with on-demand and on-the-go training and access to campus policies and procedures pertinent to student organizations.',
     linkText: 'Learn More',
-    href: 'https://calstatela.presence.io/experiences',
+    href: 'https://calstatela.campusgroups.com/feeds?type=club&type_id=18633&tab=forum',
   },
   {
     title: 'Club Banking Forms',
@@ -156,24 +156,19 @@ const cards = [
     children:
       "To begin the organization officer transition, the organization's President must first complete the Organization Officer Change Form.",
     linkText: 'See Form',
-    href: 'https://forms.office.com/Pages/ResponsePage.aspx?id=AiCKzo9EWE-Csdhvc-Ov3Ss0cdfPUjJEkZSkEGEKuVJUN1M1U1JGSVAzRkFSVEs4V0RQU1daTUZTTCQlQCN0PWcu',
+    href: 'https://calstatela.campusgroups.com/usucsi/survey?survey_uid=4cbc4a26-8c35-11f1-b16f-0affe24071ff',
   },
 ];
 
 const orgsCards = [
   {
-    title: 'Organization Registration Form',
-    href: 'https://calstatela.presence.io/form/event-registration',
-    linkText: 'View Form',
+    title: 'Registering a New Group',
+    href: 'https://helpcenter.readyeducation.com/registering-a-new-group',
+    linkText: 'View',
   },
   {
-    title: 'Officer & Advisor Form',
-    href: 'https://calstatela.presence.io/form/student-organization-officer-advisor-acknowledgement-form',
-    linkText: 'View Form',
-  },
-  {
-    title: 'Organizational Development',
-    href: 'https://calstatela.presence.io/form/apply-for-opportunity',
+    title: 'Re-registering a Group',
+    href: 'https://helpcenter.readyeducation.com/re-registering-a-group',
     linkText: 'View Form',
   },
 ];
