@@ -1,13 +1,13 @@
 import { ReactNode, useState, useMemo, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { TabPanel } from 'react-tabs';
 import { AiOutlineFileText, AiOutlineInstagram } from 'react-icons/ai';
 import { BiChevronRight, BiCheck } from 'react-icons/bi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { MdLanguage } from 'react-icons/md';
-import { media, Spaces, Colors } from 'theme';
+import { media, Spaces, Colors, Radii } from 'theme';
 import { useBreakpoint } from 'hooks';
 import {
   Button,
@@ -137,6 +137,26 @@ const NavItems = [
 const FSL_PHONE_E164 = '+13233435113';
 const FSL_PHONE_DISPLAY = '(323) 343–5113';
 const FSL_EMAIL = 'iprieto7@calstatela.edu';
+
+/* Panhellenic formal recruitment strip — seasonal, and the only thing on this
+   page with an expiry. Set `enabled` to false the day recruitment closes: the
+   strip stops rendering, nothing else on the page moves, and the copy and link
+   survive for next cycle rather than being retyped from memory. Deliberately
+   not date-gated — this page is static, so a build-time date freezes at
+   whenever the last deploy happened, and a client-side one disagrees with the
+   server's markup on hydration. Copy and link are department-owned. */
+const RECRUITMENT_STRIP = {
+  enabled: true,
+  /* PENDING CSI/PHC SIGN-OFF — every other string here is department-approved.
+     The headline does not name Panhellenic until word four, which is late for
+     someone scanning on a phone, so the eyebrow puts the audience first: a
+     prospective member sees in one glance that this is the sorority track and
+     not one of the page's other three councils. */
+  eyebrow: 'Sorority recruitment · PHC',
+  headline: 'Register for Panhellenic Formal Recruitment',
+  ctaLabel: 'Register',
+  href: 'https://calstatela.mycampusdirector2.com/landing/',
+};
 
 /* Counted from the chapter list rather than written down, so the figure can't
    fall behind the directory it describes. */
@@ -292,10 +312,27 @@ const ButtonGroup = styled.div`
   }
 `;
 
+/* Trims the transparent bottom edge off the wordmark so it sits tight to the
+   copy beneath it.
+
+   `aspect-ratio`, not a fixed height. A fixed height is a constant the content
+   cannot influence: the image went on rendering at its natural size, the box
+   stayed at whatever pixel value the breakpoint named, and the difference was
+   clipped silently — 37px at 900px wide, 26px at 768, 29px on a 430px Pro Max.
+   That reached well past the padding and into the descending swash of "Life".
+   A ratio derives the height from the width instead, so the same proportion is
+   trimmed at every size and the box grows with the image rather than cropping
+   it.
+
+   960 x 343 is the 960 x 360 source minus its 17px of transparent bottom
+   padding, measured from the file's alpha bounding box — the artwork occupies
+   y 40..342. Re-measure if the logo is ever re-exported: the number describes
+   that specific file, and a new export with different padding silently starts
+   cropping again. */
 const LogoCropWrapper = styled.div`
   width: 100%;
   max-width: 900px;
-  height: 300px; /* Adjust this value as needed */
+  aspect-ratio: 960 / 343;
   overflow: hidden;
   margin: 0 auto 2rem;
 
@@ -305,13 +342,13 @@ const LogoCropWrapper = styled.div`
     object-fit: contain;
   }
 
+  /* Spacing below the wordmark only. The crop no longer needs breakpoints — it
+     scales with the width on its own. */
   @media (max-width: 768px) {
-    max-height: 250px;
     margin-bottom: 1.5rem;
   }
 
   @media (max-width: 480px) {
-    height: 120px;
     margin-bottom: 1rem;
   }
 `;
@@ -707,6 +744,216 @@ const ChapterSeal = ({ chapter, size }: { chapter: Chapter; size: string }) =>
     </Monogram>
   );
 
+/* One-off sheen highlight, deliberately not a theme token: it exists only as
+   the light end of this band's arrival animation and is never used as a
+   surface, text or border color. Picked for luminance rather than hue — 0.725
+   against gold's 0.654, about a 10% swing — so the sweep reads as a sheen
+   crossing the band rather than the page pulsing. Both ends clear 14:1 against
+   the black headline and pill, so text contrast never depends on where the
+   sweep has got to. Keep any replacement inside that luminance range. */
+const RECRUITMENT_SHEEN = '#ffdb4d';
+
+const recruitmentSheenSweep = keyframes`
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+`;
+
+/* Full-bleed gold ground for the recruitment band, with a sheen that crosses it
+   once on arrival and then never again.
+
+   Once, not looped, for the same reason the chevron nudges three times and
+   stops: a sweep that ran past five seconds would meet every condition of WCAG
+   2.2.2 Pause, Stop, Hide — automatic, moving, parallel with other content —
+   and would then owe the visitor a pause control. It also runs inside the
+   chevron's 2.7s window on purpose, so the two read as one arrival moment
+   rather than two animations competing over the loudest element on the page.
+   Raising the duration past five seconds, or adding `infinite`, means adding
+   that control.
+
+   The gold ground lives here rather than on the FluidContainer because the
+   sheen has to be full-bleed, and FluidContainer paints its background on the
+   outer element it also uses for padding. The container inside is transparent.
+
+   `transform` and `opacity` are the only animated properties — both composite
+   on the GPU. Animating `background-position` instead would repaint a
+   full-width band every frame, which is exactly the wrong trade on the
+   mid-range Android hardware a good share of this audience is holding. */
+const RecruitmentBanner = styled.div`
+  position: relative;
+  overflow: hidden;
+  background-color: ${Colors.primary};
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      ${RECRUITMENT_SHEEN} 50%,
+      transparent 70%
+    );
+    animation: ${recruitmentSheenSweep} 3s ease-in-out forwards;
+  }
+
+  /* Lifts the band's content over the sheen, which is otherwise painted last. */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+`;
+
+/* Layout only — the band is deliberately not a link. An earlier pass made the
+   whole strip one anchor to buy a bigger tap target on phones, which is a real
+   argument on a touchscreen and worth nothing with a mouse: it put a
+   `cursor: pointer` and a hover trigger across ~1300px of desktop viewport, so
+   the arrow twitched on every pointer trip toward the nav, and it made the
+   headline awkward to select. It also needed an aria-label to stop the link
+   announcing eyebrow, headline and button label as one name — the tell that
+   the anchor had swallowed too much. The full-width pill below already clears
+   the target-size guidance on its own. */
+const RecruitmentBand = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${Spaces.lg};
+  width: 100%;
+  padding: ${Spaces.md} 0;
+
+  ${media('tablet')(`
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  `)}
+`;
+
+/* Black on the gold band rather than the site's usual gold-on-black, because
+   the band has already spent the gold. `pill` reads as a control at a glance
+   where the band's own square corners read as architecture.
+
+   Doubled selectors so these land on top of Button's own rules regardless of
+   how the two classes end up ordered in the stylesheet — the padding, radius
+   and hover here all overwrite a value Button already sets.
+
+   Hover inverts the fill instead of Button's default `opacity: 0.7`, which on
+   a black pill over gold fades to a muddy olive rather than reading as a
+   state. The ring is the only thing separating the hovered pill from the band:
+   greyLighter sits about 1.1:1 against the gold, so without the ring the
+   pill's edge disappears entirely and the label looks like loose text on the
+   band. Do not drop the ring while the band is gold. */
+const RecruitmentCta = styled(Button)`
+  && {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: ${Spaces.sm};
+    flex-shrink: 0;
+    padding: 14px ${Spaces.lg};
+    border-radius: ${Radii.pill};
+    line-height: 1;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+      background-color: ${Colors.greyLighter};
+      color: ${Colors.black};
+      box-shadow: inset 0 0 0 2px ${Colors.black};
+    }
+
+    &:focus-visible {
+      outline: 3px solid ${Colors.black};
+      outline-offset: 3px;
+    }
+
+    ${media('tablet')(`
+      display: flex;
+      width: 100%;
+    `)}
+  }
+`;
+
+/* One distance for both the entry nudge and the hover nudge, so the arrow
+   travels the same way however the motion was triggered. */
+const CTA_ARROW_NUDGE = '5px';
+
+/* Asymmetric on purpose: a quick push out, a slower drift back, then a hold
+   longer than the motion itself. Even left-right oscillation is the vocabulary
+   of loading spinners and reads as waiting; leading with the outbound stroke
+   is what reads as "go this way". The per-segment easing lives in the
+   keyframes rather than on the animation, because a single timing function
+   across the whole cycle makes the return stroke as assertive as the push and
+   the direction washes out. */
+const ctaArrowNudge = keyframes`
+  0% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  33.33% {
+    transform: translateX(${CTA_ARROW_NUDGE});
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  }
+  61.11% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+/* The arrow nudges three times unprompted when the band paints, because hover
+   and focus alone leave the affordance dead on the device this band was built
+   for: a touchscreen fires neither until the tap has already happened, and
+   this CTA's audience arrives on phones. The band sits above an 84.5vh hero,
+   so it is already on screen at load and needs no scroll trigger.
+
+   Three iterations, not infinite. Perpetual motion here would meet all three
+   conditions of WCAG 2.2.2 Pause, Stop, Hide — automatic, over five seconds,
+   parallel with other content — and would then owe the visitor a pause
+   control. Stopping at 2.7s means the criterion never applies, and a chevron
+   twitching in the corner of the eye for a whole visit is a cost the extra
+   attention does not cover. Do not raise the iteration count past five
+   seconds' worth without adding that control. */
+const CtaArrow = styled(BiChevronRight)`
+  animation: ${ctaArrowNudge} 900ms 3;
+  transition: transform 0.2s ease-in-out;
+
+  ${RecruitmentCta}:hover &,
+  ${RecruitmentCta}:focus-visible & {
+    transform: translateX(${CTA_ARROW_NUDGE});
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+
+    ${RecruitmentCta}:hover &,
+    ${RecruitmentCta}:focus-visible & {
+      transform: none;
+    }
+  }
+`;
+
 interface ContactsBarProps {
   children: ReactNode;
   isMobile: boolean;
@@ -841,7 +1088,7 @@ export default function FSL() {
 
         <meta
           name="description"
-          content="Contact Cal State LA Fraternity & Sorority Life (FSL) at (323) 343-5113. Information on recruitment, Greek council intake, and sorority/fraternity chapters."
+          content={`Contact Cal State LA Fraternity & Sorority Life (FSL) at ${FSL_PHONE_DISPLAY}. Information on recruitment, Greek council intake, and sorority/fraternity chapters.`}
           key="description"
         />
 
@@ -933,6 +1180,55 @@ export default function FSL() {
           }}
         />
       </Head>
+
+      {/* Above the hero, not in it: the headline has to name Panhellenic, because
+          this page covers all four councils and a bare `Register` would read as
+          registering for Greek life generally. That phrase is too long for a hero
+          button beside the two evergreen ones, and anywhere below the hero falls
+          under the fold — the hero alone is 84.5vh. RECRUITMENT_STRIP toggles it.
+
+          Gold rather than the black it used to be. Black put the strip in the
+          same register as the dark nav directly above it and the hero photo
+          directly below, so the one time-limited thing on an otherwise
+          evergreen page read as chrome. Gold is the only band on the page that
+          nothing else competes with, and black-on-gold clears AA comfortably. */}
+      {RECRUITMENT_STRIP.enabled && (
+        <RecruitmentBanner>
+          <FluidContainer padding={isMobile ? '8px 16px' : '8px 72px'}>
+            <RecruitmentBand>
+              <div>
+                <Typography
+                  as="p"
+                  variant="labelTitleSmall"
+                  uppercase
+                  letterSpacing="0.08em"
+                  margin="0 0 4px"
+                >
+                  {RECRUITMENT_STRIP.eyebrow}
+                </Typography>
+                <Typography
+                  as="p"
+                  variant="title"
+                  size={isMobile ? 'lg' : 'xl'}
+                  lineHeight="1.2"
+                  margin="0"
+                >
+                  {RECRUITMENT_STRIP.headline}
+                </Typography>
+              </div>
+              <RecruitmentCta
+                href={RECRUITMENT_STRIP.href}
+                isExternalLink
+                variant="black"
+                aria-label={RECRUITMENT_STRIP.headline}
+              >
+                {RECRUITMENT_STRIP.ctaLabel}
+                <CtaArrow size={20} aria-hidden="true" />
+              </RecruitmentCta>
+            </RecruitmentBand>
+          </FluidContainer>
+        </RecruitmentBanner>
+      )}
 
       <HeroContainer>
         <BackgroundImage
@@ -1044,49 +1340,6 @@ export default function FSL() {
               </Typography>
             </FluidContainer>
           </FluidContainer>
-
-          {/* Register */}
-          {/* <FluidContainer
-            flex
-            justifyContent="center"
-            padding="0"
-            margin={isWidescreen ? '18px 0 0 0' : '36px 0 0 0'}
-          >
-            <FluidContainer
-              flex
-              alignItems="center"
-              justifyContent="center"
-              flexDirection={isMobile ? 'column' : 'row'}
-              innerMaxWidth="850px"
-              backgroundColor="primary"
-              gap={'16px'}
-            >
-              <FluidContainer padding="0">
-                <Typography as="p">
-                  Register here for Sorority Formal Recruitment with
-                  Panhellenic. For more information about the Panhellenic
-                  community, visit on{' '}
-                  <StyledLink
-                    href="https://www.instagram.com/csulbpanhellenic"
-                    isInverseUnderlineStyling
-                    isExternalLink
-                  >
-                    @csulapanhellenic
-                  </StyledLink>{' '}
-                  Instagram
-                </Typography>
-              </FluidContainer>
-              <FluidContainer padding="0" innerMaxWidth="200px">
-                <Button
-                  href="http://csula.mycampusdirector2.com/"
-                  isExternalLink
-                  variant="black"
-                >
-                  Register
-                </Button>
-              </FluidContainer>
-            </FluidContainer>
-          </FluidContainer> */}
 
           {/* MISSION */}
           <FluidContainer
@@ -1690,8 +1943,7 @@ export default function FSL() {
               Contact Us
             </Typography>
             <Typography as="p">
-              Phone: 323&ndash;343&ndash;5709 <br /> Email:
-              iprieto7@calstatela.edu
+              Phone: {FSL_PHONE_DISPLAY} <br /> Email: {FSL_EMAIL}
             </Typography>
           </FluidContainer>
           <FluidContainer>
