@@ -26,6 +26,8 @@ export interface ImageProps extends BaseComponentProps, LayoutProps {
   src: string;
   srcset?: string;
   borderRadius?: '12px' | '8px';
+  objectFit?: React.CSSProperties['objectFit'];
+  objectPosition?: React.CSSProperties['objectPosition'];
   round?: boolean;
   lazy?: boolean;
   isExpandable?: boolean;
@@ -63,6 +65,7 @@ const TriggerWrapper = styled.div<{
     height: 100%;
     border-radius: inherit;
     object-fit: inherit;
+    object-position: inherit;
   }
 `;
 
@@ -122,6 +125,8 @@ export const StyledImage = styled('img')<ImageProps>`
   border-radius: ${(p) => (p.round ? '50%' : p.borderRadius || 0)};
   flex-shrink: ${(p) => (p.noShrink ? 0 : 'initial')};
   display: block;
+  object-fit: ${(p) => p.objectFit || 'initial'};
+  object-position: ${(p) => p.objectPosition || 'initial'};
 
   ${layout}
   ${space}

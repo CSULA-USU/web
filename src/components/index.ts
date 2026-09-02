@@ -34,6 +34,7 @@ export * from './PrototypeNotice';
 export * from './PushDrawer';
 export * from './QuoteBanner';
 export * from './RainbowText';
+export * from './ResponsiveImage';
 export * from './ScrollCue';
 export * from './ScrollingContent';
 export * from './SearchInput';
