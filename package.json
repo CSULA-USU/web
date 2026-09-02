@@ -73,10 +73,14 @@
     "@aws-sdk/xml-builder": "3.972.6",
     "@babel/core": "^7.27.4",
     "@babel/traverse": "^7.23.2",
-    "fast-xml-parser": "5.3.6",
+    "browserslist": "^4.28.7",
+    "fast-xml-parser": "^5.7.0",
+    "micromatch": "^4.0.8",
+    "postcss": "^8.5.23",
     "styled-components": "^5",
-    "tmp": "^0.2.4",
-    "**/undici": "^7.24.6",
+    "tmp": "^0.2.6",
+    "yaml": "^2.8.3",
+    "**/undici": "^7.29.0",
     "**/picomatch": "^2.3.2"
   },
   "devDependencies": {
