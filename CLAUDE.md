@@ -67,6 +67,44 @@ All credentials are injected via `.env.local` — see README for the full variab
 
 Video belongs in MUX / next-video, not `public/`. Large media committed to `public/` stays in git history permanently even after it is deleted from the working tree, bloating every clone — several files already buried in this repo's history run 40–80 MB each and trigger GitHub's >50 MB push warning on every push.
 
+### Dependencies
+
+**Entries in `resolutions` are security floors, written as ranges — never exact pins.** Every entry
+there exists because an advisory forced a package's version up. Write it as `^x.y.z` at the version
+that fixed the advisory, so yarn can still climb to later releases.
+
+An exact pin (`"fast-xml-parser": "5.3.6"`) does the opposite of what it looks like. It reads as
+"at least 5.3.6" but means "exactly 5.3.6" — so the moment a _new_ advisory lands against that
+version, the pin blocks its fix and the alert stays open forever. That is not hypothetical: this
+block held `fast-xml-parser` at a vulnerable 5.3.6 and `undici` at a vulnerable 7.24.6 through
+several advisory cycles before anyone noticed.
+
+A stale lockfile does the same thing more quietly. Yarn only re-resolves a dependency when its
+declared range changes, so `^0.2.4` kept reinstalling the 0.2.5 already recorded in `yarn.lock`
+long after 0.2.7 shipped. Raising the floor to the patched version is what forces re-resolution —
+so when an advisory names a fix version, edit the range even if the existing one already permits it.
+
+The same rule killed three pins in `dependencies` that had drifted below what the tree needed:
+`@babel/traverse` was pinned at `7.27.3` while `@babel/core` required `^7.29.7`, so the pin bought
+an older duplicate copy and nothing else. Prefer no pin at all when every dependent already
+declares a patched range — verify with `yarn audit` rather than assuming.
+
+**A resolution can only hold one version, so it cannot serve two major lines at once.** Leave
+`brace-expansion` (1.x and 5.x in the tree, patched separately at `>=1.1.18` and `>=5.0.9`) and
+`js-yaml` (3.x and 4.x) alone unless you scope the entry per-parent — a blanket floor forces one
+major onto consumers of the other and breaks them.
+
+**Not every advisory is reachable.** `yarn audit` counts what is present in the tree, not what is
+exploitable here. Most hits are ReDoS in build-time tooling; the `glob` CLI command-injection needs
+someone to run `glob` as a CLI, which nothing does. Check whether the vulnerable path is one this
+app actually executes before treating a number as urgent. `next` advisories in particular are
+mostly App Router, Server Components, Server Actions, `i18n`, and `rewrites` — none of which this
+Pages Router app uses.
+
+**Before adding a dependency, check it is not already there transitively**, and prefer a floor in
+`resolutions` over a direct dependency when the goal is a security minimum rather than a direct
+import. A direct dependency that nothing imports is dead weight; a floor is enforcement.
+
 ### Tone & Voice
 
 Rendered copy is short. Cut any word that does not buy clarity — a button reading "More about {org name}" should just read "More", because the surrounding context already supplies the rest. This applies to button labels, link text, headings, captions, and body copy.
