@@ -26,10 +26,15 @@ const UnstyledUnorderedList = styled.ul`
   // The pills below carry their own horizontal padding, so the gap between
   // items is cut to match — the space between two labels reads the same as it
   // did before, only now part of it belongs to the highlight.
+  //
+  // The gap and the pill padding both come down below 1366px, which is where
+  // this bar starts running out of room next to the 200px logo. It is not a
+  // tablet rule: below 1024px Nav swaps the whole bar for the hamburger, so
+  // nothing here renders at tablet widths at all.
   > * {
     &:not(:last-child) {
       margin-right: ${Spaces.xs};
-      ${media('tablet')(`margin-right: ${Spaces.zero}`)}
+      ${media('widescreen')(`margin-right: ${Spaces.zero}`)}
     }
   }
   button {
@@ -47,7 +52,7 @@ const UnstyledUnorderedList = styled.ul`
     display: inline-flex;
     align-items: center;
     padding: ${Spaces.sm} ${Spaces.md};
-    ${media('tablet')(`padding: ${Spaces.xs} ${Spaces.sm}`)}
+    ${media('widescreen')(`padding: ${Spaces.xs} ${Spaces.sm}`)}
     border-radius: 4px;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     // A hovered item fills with primary rather than just tinting its text:
