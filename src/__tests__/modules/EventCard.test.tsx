@@ -12,6 +12,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { EventCard } from 'modules/EventCard';
 import { clampFrameAspect } from 'modules/EventCard/ModEventCard';
 import { formatEventLocation } from 'utils/eventUtils';
+import { shouldCropFlyer } from 'modules/EventCard/SplitEventCard';
 import { CampusGroupsEvent } from 'types';
 
 const cultureFest = {
@@ -102,5 +103,25 @@ describe('formatEventLocation', () => {
 
   it('leaves a location that carries no address alone', () => {
     expect(formatEventLocation('U-SU Plaza')).toBe('U-SU Plaza');
+  });
+});
+
+describe('shouldCropFlyer', () => {
+  it('contains a 2:1 cover, which is nearly every flyer in the feed', () => {
+    expect(shouldCropFlyer(760, 380)).toBe(false);
+  });
+
+  it('contains a square and a portrait, where a crop would cut the flyer', () => {
+    expect(shouldCropFlyer(1080, 1080)).toBe(false);
+    expect(shouldCropFlyer(1080, 1350)).toBe(false);
+  });
+
+  it('crops the 5.71:1 banner, which would otherwise be a third of the box', () => {
+    /* 11 of the feed's 117 images are exactly this. */
+    expect(shouldCropFlyer(1200, 210)).toBe(true);
+  });
+
+  it('contains rather than crops when the image never reported a size', () => {
+    expect(shouldCropFlyer(0, 0)).toBe(false);
   });
 });

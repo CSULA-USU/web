@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Shadows, Spaces } from 'theme';
@@ -45,7 +46,35 @@ const Card = styled.div`
  * These cards sit in a grid, and a per-image height would leave every row
  * ragged; uniform cards are worth more here than a perfect fit.
  */
-const GraphicContainer = styled.div`
+/*
+ * Past this, a flyer is cropped instead of contained.
+ *
+ * The box is 2:1, so an image at 3:1 already fills only two thirds of its
+ * height and anything wider is more backdrop than flyer — the 1200x210 banner
+ * in the feed comes out a 54px strip in a 155px box. Cropping such a strip to
+ * the box height and holding the centre shows roughly a third of its width,
+ * which is the right trade only because a flyer that shape is a photograph
+ * rather than a layout with type running edge to edge. Anything narrower stays
+ * contained: the point of the backdrop is that nothing normal gets cut.
+ *
+ * Deliberately one-sided. A portrait flyer also leaves wide bands, but cropping
+ * it to a 2:1 slot would cut away most of the flyer, so tall stays contained.
+ */
+const CROP_ABOVE_ASPECT = 3;
+
+/**
+ * Whether a flyer is wide enough that cropping beats containing it. False for
+ * anything unmeasured, so an image that never reports its dimensions is
+ * contained rather than cropped — the safe direction, since containing cannot
+ * hide any of it.
+ */
+export const shouldCropFlyer = (
+  naturalWidth: number,
+  naturalHeight: number,
+): boolean =>
+  naturalHeight > 0 && naturalWidth / naturalHeight > CROP_ABOVE_ASPECT;
+
+const GraphicContainer = styled.div<{ $fit: 'contain' | 'cover' }>`
   position: relative;
   width: 100%;
   /*
@@ -66,7 +95,8 @@ const GraphicContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: ${({ $fit }) => $fit};
+    object-position: center;
   }
 `;
 
@@ -123,6 +153,24 @@ const LearnMoreButton = styled.button`
 `;
 
 export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
+  const graphicRef = useRef<HTMLDivElement>(null);
+  const [isUltraWide, setIsUltraWide] = useState(false);
+
+  const measure = (image: HTMLImageElement) => {
+    if (!image.naturalHeight) return;
+    setIsUltraWide(shouldCropFlyer(image.naturalWidth, image.naturalHeight));
+  };
+
+  /* These cards load lazily and there are over a hundred of them, so the
+     measurement rides on the image the card already renders rather than a
+     preload that would pull every flyer down at once. onLoad covers the normal
+     path; a cached image can be complete before this runs, and its load event
+     has already been and gone. */
+  useEffect(() => {
+    const image = graphicRef.current?.querySelector('img');
+    if (image?.complete) measure(image);
+  }, [event?.eventOriginalPhotoFullUrl]);
+
   if (!event) return null;
   const daysOfWeek = [
     'Sunday',
@@ -150,7 +198,10 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
 
   return (
     <Card onClick={onClick}>
-      <GraphicContainer>
+      <GraphicContainer
+        ref={graphicRef}
+        $fit={isUltraWide ? 'cover' : 'contain'}
+      >
         <BlurBackdrop aria-hidden="true" $image={eventOriginalPhotoFullUrl} />
         <Image
           alt=""
@@ -158,6 +209,7 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
           sizes="100vw"
           lazy
           aria-hidden="true"
+          onLoad={(loadEvent) => measure(loadEvent.currentTarget)}
         />
       </GraphicContainer>
       <Details>
