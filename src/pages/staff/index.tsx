@@ -5,14 +5,14 @@ import { FaSearch } from 'react-icons/fa';
 import {
   Button,
   FluidContainer,
-  Image,
   Input,
+  ResponsiveImage,
   StaffCardWithModal,
   Typography,
 } from 'components';
 import staff from 'data/staff.json';
 import { splitDepartments } from 'utils/stringhelpers';
-import { Colors, Spaces, media } from 'theme';
+import { Colors, Radii, Spaces, media } from 'theme';
 import { Page, Header } from 'modules';
 
 const DEPARTMENT_FILTERS = [
@@ -327,11 +327,12 @@ export default function Staff() {
       </FluidContainer>
       <FluidContainer>
         <GroupPhoto>
-          <Image
+          <ResponsiveImage
             alt="group photo of full time u-su staff"
-            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/usu-group-2026%20(1).webp"
+            src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/resized-usu-group-2026-landscape.webp"
+            portraitSrc="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/staff/group/resized-usu-group-portrait.webp"
             width="100%"
-            borderRadius="12px"
+            borderRadius={Radii.surface}
           />
           <figcaption>
             <Typography
