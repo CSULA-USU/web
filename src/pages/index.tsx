@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 // import styled from 'styled-components';
 import {
   // Button,
@@ -19,6 +19,8 @@ import {
 } from 'modules';
 import { useRecoilValue } from 'recoil';
 import { eventListState, eventListStatusState } from 'atoms';
+import { useNow } from 'hooks';
+import { splitFeaturedEvents } from 'utils/eventUtils';
 // import { useBreakpoint } from 'hooks';
 // import uAwards from 'data/uAwards.json';
 // import type { UAwardsData } from 'types';
@@ -41,6 +43,14 @@ export default function Home() {
   const events = useRecoilValue(eventListState);
   const eventsStatus = useRecoilValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
+  const now = useNow();
+
+  /* Derived in one place so the hero and the list below cannot disagree about
+     which events the hero has already spent. */
+  const { liveEvents, nextEvent, remainingEvents } = useMemo(
+    () => splitFeaturedEvents(events, now),
+    [events, now],
+  );
   // const { isDesktop, isMobile } = useBreakpoint();
 
   useEffect(() => {
@@ -181,13 +191,19 @@ export default function Home() {
         <EventHeader
           loading={loading || !events.length}
           subheaderText="California State University, Los Angeles"
+          /* One h1 at both widths. The abbreviation used to stand in on
+             mobile, which gave crawlers a different heading depending on the
+             viewport they rendered at, and read as a truncation rather than a
+             title. The nowrap span keeps the break off the hyphen, so it
+             wraps to "University-Student / Union" and never
+             "University- / Student Union". */
           title={
             <>
-              <span className="mobile-only">U-SU</span>
-              <span className="desktop-only">University-Student Union</span>
+              <NonBreakingSpan>University-Student</NonBreakingSpan> Union
             </>
           }
-          featuredEvent={events[0]}
+          liveEvents={liveEvents}
+          featuredEvent={nextEvent}
         />
         {!loading && eventsStatus == 'failed' ? (
           <Typography as="h3" variant="label">
@@ -200,7 +216,7 @@ export default function Home() {
 
             {/* If there are no events, we can hide the featured events section and just show the upcoming events section with a message that there are no events. */}
             {/* {events.length >= 1 ? ( */}
-            <ModUpcomingEvents loading={loading} events={events} />
+            <ModUpcomingEvents loading={loading} events={remainingEvents} />
             {/* ) : null} */}
           </>
         )}

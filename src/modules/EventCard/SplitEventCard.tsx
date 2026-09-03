@@ -1,6 +1,6 @@
 import { Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, media, Shadows, Spaces } from 'theme';
+import { Colors, Shadows, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { Image } from 'components';
 import { ABBREVIATED_ORGS } from 'utils/constants';
@@ -21,7 +21,12 @@ const Card = styled.div`
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
-  height: 550px;
+  /*
+   * No fixed height. The grid stretches every card in a row to the tallest, so
+   * the row is uniform without a magic number that has to hold at four
+   * different column counts — at four columns a 550px card left the graphic
+   * box more than twice as tall as the flyer inside it.
+   */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   &:hover,
   &:focus {
@@ -30,17 +35,60 @@ const Card = styled.div`
   }
 `;
 
+/*
+ * The image is contained and a blurred copy of it fills whatever is left over.
+ * Coordinators upload any shape they like, and the box is a fixed slice of a
+ * fixed-height card, so without the backdrop a wide flyer drew a thin strip
+ * marooned in white — the wider the flyer, the more empty box around it.
+ *
+ * Unlike the homepage hero, the box does not follow the image's proportions.
+ * These cards sit in a grid, and a per-image height would leave every row
+ * ragged; uniform cards are worth more here than a perfect fit.
+ */
 const GraphicContainer = styled.div`
+  position: relative;
   width: 100%;
-  height: 75%;
+  /*
+   * Fixed 2:1, not per-image. Almost every cover arrives 2:1, so the flyer
+   * fills this exactly and no blur shows at all; the odd square or portrait
+   * still gets the backdrop. Fixed rather than adaptive because these sit in a
+   * grid, where a per-image height would leave every row ragged — the reverse
+   * of the homepage hero, which is alone on the page and can follow its image.
+   */
+  aspect-ratio: 2 / 1;
+  flex-shrink: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  /* Image renders a bare img here, so the box is set from out here rather than
+     through props — styled-system would turn a width prop into an attribute on
+     the element as well as CSS. */
+  img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
+
+const BlurBackdrop = styled.div<{ $image?: string }>`
+  position: absolute;
+  background: ${({ $image }) => $image && `url(${$image})`};
+  background-size: cover;
+  background-position: center;
+  /*
+   * Overhangs the box by more than the blur radius, so the fade at the
+   * backdrop's own edge is always clipped away rather than showing as a dark
+   * seam. The overhang has to be absolute: a proportional scale() buys
+   * plenty on an 800px hero and less than the 24px radius on a ~300px grid
+   * card, and its subpixel rounding lands inside the clip on one edge and
+   * outside on the other, which is what put a sliver down one side only.
+   */
+  inset: -32px;
+  filter: blur(24px) brightness(0.9);
 `;
 
 const Details = styled.div`
-  height: 55%;
+  flex: 1;
   padding: ${Spaces.lg};
   display: flex;
   flex-direction: column;
@@ -49,10 +97,10 @@ const Details = styled.div`
 `;
 
 const EventHeader = styled.div`
-  height: 24.3%;
-  ${media('desktop')(`
-    height: 27%;
-  `)}
+  /* Two lines' worth whether the title fills them or not, so the date, time and
+     location rows below line up from card to card. Two lines because that is
+     where the clamp cuts, and 24px is labelTitle's line box. */
+  min-height: 48px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -103,14 +151,12 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
   return (
     <Card onClick={onClick}>
       <GraphicContainer>
+        <BlurBackdrop aria-hidden="true" $image={eventOriginalPhotoFullUrl} />
         <Image
           alt=""
           src={eventOriginalPhotoFullUrl}
-          width={0}
-          height={0}
           sizes="100vw"
           lazy
-          style={{ width: '100%', height: 'auto' }}
           aria-hidden="true"
         />
       </GraphicContainer>

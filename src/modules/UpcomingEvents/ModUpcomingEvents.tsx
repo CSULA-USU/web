@@ -71,9 +71,8 @@ export const ModUpcomingEvents = ({
 
   // Guard against undefined events array
   const safeEvents = events || [];
-  const [_, ...laterEvents] = safeEvents;
 
-  const eventsByMonth = (monthly ? safeEvents : laterEvents).reduce(
+  const eventsByMonth = safeEvents.reduce(
     (
       months: { [key: string]: CampusGroupsEvent[] },
       event: CampusGroupsEvent,
@@ -142,7 +141,7 @@ export const ModUpcomingEvents = ({
         {/* Use the new combined loading check here */}
         {isActuallyLoading ? (
           <UpcomingEventsSkeleton monthly={monthly} />
-        ) : safeEvents.length <= 1 ? (
+        ) : safeEvents.length < 1 ? (
           <Typography as="h3" variant="label" margin="20px 0 0 0">
             No additional upcoming events.
           </Typography>
@@ -168,7 +167,7 @@ export const ModUpcomingEvents = ({
                 <UpcomingEventsContent>
                   <TertiaryContainer>
                     {safeEvents
-                      .slice(1, eventLimit)
+                      .slice(0, eventLimit)
                       .map((event, index, eventArray) => (
                         <li key={event.eventId}>
                           <MinimalistEvent

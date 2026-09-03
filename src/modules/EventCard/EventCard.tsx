@@ -75,8 +75,11 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
     background-position: center;
   }
   border: 1px solid transparent;
+  /* focus-within rather than focus: the card is a div and can never take
+     focus itself. The old &:focus rule here could not fire, which is what let
+     the card look interactive while being unreachable by keyboard. */
   &:hover,
-  &:focus {
+  &:focus-within {
     border: 1px solid ${Colors.black};
     ${Overlay} {
       filter: blur(4px) brightness(0.6);
@@ -88,9 +91,40 @@ const EventCardContainer = styled.div<{ image?: string; featured?: boolean }>`
       transform: translateY(-10%);
     }
   }
-  &:focus {
-    text-decoration: underline;
+`;
+
+/*
+ * One real control per card, on the title, stretched over the whole card by its
+ * own ::after. Mouse users keep clicking anywhere; keyboard users get a single
+ * tab stop whose accessible name is the event title, instead of the
+ * div-with-onClick that no keyboard could reach.
+ */
+const CardTrigger = styled.button`
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
   }
+
+  &:focus-visible {
+    outline: 2px solid ${Colors.white};
+    outline-offset: 2px;
+  }
+`;
+
+/* Lifted over the trigger's overlay, or the card would swallow the click. */
+const ZoomLink = styled.a`
+  position: relative;
+  z-index: 3;
 `;
 
 const EventDetails = styled.div`
@@ -135,11 +169,7 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
   return !title ? (
     <EventSkeleton />
   ) : (
-    <EventCardContainer
-      onClick={onClick}
-      featured={featured}
-      image={eventOriginalPhotoFullUrl}
-    >
+    <EventCardContainer featured={featured} image={eventOriginalPhotoFullUrl}>
       <Overlay />
       <EventCardTop>
         <EventDate>
@@ -177,7 +207,9 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
       <EventCardBottom featured={featured}>
         <EventDetails>
           <Typography as="h3" variant="eventTitle" lineHeight="1.2">
-            {title}
+            <CardTrigger type="button" onClick={onClick}>
+              {title}
+            </CardTrigger>
           </Typography>
           <Typography as="h4" variant="eventTime">
             {startTime} - {endTime}
@@ -188,14 +220,18 @@ export const EventCard = ({ event, featured, onClick }: EventCardProps) => {
             style={{ overflowWrap: 'anywhere' }}
           >
             {eventLocation.indexOf('.zoom.us') > -1 ? (
-              <a href={eventLocation}>Zoom Meeting</a>
+              <ZoomLink href={eventLocation}>Zoom Meeting</ZoomLink>
             ) : (
               formatEventLocation(eventLocation)
             )}
           </Typography>
         </EventDetails>
         {featured ? (
-          <Button margin="12px 0 0">Learn More</Button>
+          /* Decorative: the title above is the control. Kept out of the tab
+             order and the accessibility tree so one card is one stop. */
+          <Button margin="12px 0 0" tabIndex={-1} aria-hidden="true">
+            Learn More
+          </Button>
         ) : (
           <Typography color="primary" size="sm">
             Learn More
