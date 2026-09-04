@@ -1,6 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
 import { Typography } from 'components';
 import styled from 'styled-components';
-import { Colors, media, Shadows, Spaces } from 'theme';
+import { Colors, Shadows, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { Image } from 'components';
 import { ABBREVIATED_ORGS } from 'utils/constants';
@@ -21,7 +22,12 @@ const Card = styled.div`
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
-  height: 550px;
+  /*
+   * No fixed height. The grid stretches every card in a row to the tallest, so
+   * the row is uniform without a magic number that has to hold at four
+   * different column counts — at four columns a 550px card left the graphic
+   * box more than twice as tall as the flyer inside it.
+   */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   &:hover,
   &:focus {
@@ -30,17 +36,89 @@ const Card = styled.div`
   }
 `;
 
-const GraphicContainer = styled.div`
+/*
+ * The image is contained and a blurred copy of it fills whatever is left over.
+ * Coordinators upload any shape they like, and the box is a fixed slice of a
+ * fixed-height card, so without the backdrop a wide flyer drew a thin strip
+ * marooned in white — the wider the flyer, the more empty box around it.
+ *
+ * Unlike the homepage hero, the box does not follow the image's proportions.
+ * These cards sit in a grid, and a per-image height would leave every row
+ * ragged; uniform cards are worth more here than a perfect fit.
+ */
+/*
+ * Past this, a flyer is cropped instead of contained.
+ *
+ * The box is 2:1, so an image at 3:1 already fills only two thirds of its
+ * height and anything wider is more backdrop than flyer — the 1200x210 banner
+ * in the feed comes out a 54px strip in a 155px box. Cropping such a strip to
+ * the box height and holding the centre shows roughly a third of its width,
+ * which is the right trade only because a flyer that shape is a photograph
+ * rather than a layout with type running edge to edge. Anything narrower stays
+ * contained: the point of the backdrop is that nothing normal gets cut.
+ *
+ * Deliberately one-sided. A portrait flyer also leaves wide bands, but cropping
+ * it to a 2:1 slot would cut away most of the flyer, so tall stays contained.
+ */
+const CROP_ABOVE_ASPECT = 3;
+
+/**
+ * Whether a flyer is wide enough that cropping beats containing it. False for
+ * anything unmeasured, so an image that never reports its dimensions is
+ * contained rather than cropped — the safe direction, since containing cannot
+ * hide any of it.
+ */
+export const shouldCropFlyer = (
+  naturalWidth: number,
+  naturalHeight: number,
+): boolean =>
+  naturalHeight > 0 && naturalWidth / naturalHeight > CROP_ABOVE_ASPECT;
+
+const GraphicContainer = styled.div<{ $fit: 'contain' | 'cover' }>`
+  position: relative;
   width: 100%;
-  height: 75%;
+  /*
+   * Fixed 2:1, not per-image. Almost every cover arrives 2:1, so the flyer
+   * fills this exactly and no blur shows at all; the odd square or portrait
+   * still gets the backdrop. Fixed rather than adaptive because these sit in a
+   * grid, where a per-image height would leave every row ragged — the reverse
+   * of the homepage hero, which is alone on the page and can follow its image.
+   */
+  aspect-ratio: 2 / 1;
+  flex-shrink: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  /* Image renders a bare img here, so the box is set from out here rather than
+     through props — styled-system would turn a width prop into an attribute on
+     the element as well as CSS. */
+  img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: ${({ $fit }) => $fit};
+    object-position: center;
+  }
+`;
+
+const BlurBackdrop = styled.div<{ $image?: string }>`
+  position: absolute;
+  background: ${({ $image }) => $image && `url(${$image})`};
+  background-size: cover;
+  background-position: center;
+  /*
+   * Overhangs the box by more than the blur radius, so the fade at the
+   * backdrop's own edge is always clipped away rather than showing as a dark
+   * seam. The overhang has to be absolute: a proportional scale() buys
+   * plenty on an 800px hero and less than the 24px radius on a ~300px grid
+   * card, and its subpixel rounding lands inside the clip on one edge and
+   * outside on the other, which is what put a sliver down one side only.
+   */
+  inset: -32px;
+  filter: blur(24px) brightness(0.9);
 `;
 
 const Details = styled.div`
-  height: 55%;
+  flex: 1;
   padding: ${Spaces.lg};
   display: flex;
   flex-direction: column;
@@ -49,10 +127,10 @@ const Details = styled.div`
 `;
 
 const EventHeader = styled.div`
-  height: 24.3%;
-  ${media('desktop')(`
-    height: 27%;
-  `)}
+  /* Two lines' worth whether the title fills them or not, so the date, time and
+     location rows below line up from card to card. Two lines because that is
+     where the clamp cuts, and 24px is labelTitle's line box. */
+  min-height: 48px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -75,6 +153,24 @@ const LearnMoreButton = styled.button`
 `;
 
 export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
+  const graphicRef = useRef<HTMLDivElement>(null);
+  const [isUltraWide, setIsUltraWide] = useState(false);
+
+  const measure = (image: HTMLImageElement) => {
+    if (!image.naturalHeight) return;
+    setIsUltraWide(shouldCropFlyer(image.naturalWidth, image.naturalHeight));
+  };
+
+  /* These cards load lazily and there are over a hundred of them, so the
+     measurement rides on the image the card already renders rather than a
+     preload that would pull every flyer down at once. onLoad covers the normal
+     path; a cached image can be complete before this runs, and its load event
+     has already been and gone. */
+  useEffect(() => {
+    const image = graphicRef.current?.querySelector('img');
+    if (image?.complete) measure(image);
+  }, [event?.eventOriginalPhotoFullUrl]);
+
   if (!event) return null;
   const daysOfWeek = [
     'Sunday',
@@ -102,16 +198,18 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
 
   return (
     <Card onClick={onClick}>
-      <GraphicContainer>
+      <GraphicContainer
+        ref={graphicRef}
+        $fit={isUltraWide ? 'cover' : 'contain'}
+      >
+        <BlurBackdrop aria-hidden="true" $image={eventOriginalPhotoFullUrl} />
         <Image
           alt=""
           src={eventOriginalPhotoFullUrl}
-          width={0}
-          height={0}
           sizes="100vw"
           lazy
-          style={{ width: '100%', height: 'auto' }}
           aria-hidden="true"
+          onLoad={(loadEvent) => measure(loadEvent.currentTarget)}
         />
       </GraphicContainer>
       <Details>

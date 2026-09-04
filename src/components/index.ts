@@ -22,6 +22,7 @@ export * from './Image';
 export * from './Input';
 export * from './Label';
 export * from './Link';
+export * from './LiveBadge';
 export * from './Loading';
 export * from './Monogram';
 export * from './NonBreakingSpan';
