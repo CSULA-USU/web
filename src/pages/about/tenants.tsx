@@ -189,6 +189,13 @@ const TENANTS: Tenant[] = [
     logoSrc:
       'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/tenants/ITM_logo_black.png',
     phone: '(323) 350-1331',
+    hours: [
+      {
+        days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '11:00',
+        closes: '17:00',
+      },
+    ],
     website: 'https://www.inthemakingla.org/',
     websiteText: 'In the Making website',
   },
@@ -837,7 +844,10 @@ export default function Tenants() {
               </ModalSection>
             ) : null}
 
-            {contactLinks.length > 0 && (
+            {/* The room and the contact rows share one section, so a tenant
+              with a location but no phone, email, or website still shows where
+              to find it. */}
+            {(selectedTenant.locationInBuilding || contactLinks.length > 0) && (
               <ModalSection>
                 <ContactList>
                   {selectedTenant.locationInBuilding && (
