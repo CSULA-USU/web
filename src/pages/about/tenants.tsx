@@ -31,6 +31,7 @@ import {
   Skeleton,
   StyledLink,
   Typography,
+  VisuallyHidden,
 } from 'components';
 
 type TenantCategory = 'Dining' | 'Organizations & Services' | 'Shopping';
@@ -70,7 +71,12 @@ interface Tenant {
    * than 'here'), since the link text is what a screen reader announces.
    */
   websiteText?: string;
-  /** Omit when we have no confirmed hours; nothing renders and nothing is indexed. */
+  /**
+   * Shown in the modal only, like the contact rows — most tenants have no
+   * confirmed hours, and an hours line on some cards but not others makes the
+   * grid look ragged. Omit when we have none: nothing renders, nothing is
+   * indexed.
+   */
   hours?: OpeningHours[];
   /**
    * A single photo of the space, shown in the modal between the name and the
@@ -94,7 +100,7 @@ const USU_POSTAL_ADDRESS = {
 // `phone`, `email`, `website`, and `hours` are all optional — a tenant only
 // shows the rows it has data for. Anything left off here is a detail we have not
 // confirmed with the tenant yet, not one that was forgotten; fill it in and the
-// card, the modal, and the structured data all pick it up automatically.
+// modal and the structured data both pick it up automatically.
 //
 // See "Editing Tenants" in the README for the full field reference. Note
 // that these values are published as schema.org structured data, so a guessed
@@ -540,6 +546,25 @@ const HoursGroups = styled.div`
   gap: ${Spaces.md};
 `;
 
+// The hours sit in the contact list beside the room and the links, so all
+// three read as one set of rows. Unlike those, hours run to several lines, so
+// the icon aligns to the first line rather than centering against the block,
+// and the day/time grid drops the centering it uses in isolation.
+const ModalHours = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${Spaces.sm};
+  color: ${Colors.greyDarkest};
+
+  ${HoursList} {
+    justify-content: start;
+  }
+
+  ${HoursCaption} {
+    text-align: left;
+  }
+`;
+
 const OpeningHoursList = ({ hours }: { hours: OpeningHours[] }) => (
   <HoursGroups>
     {groupHoursByValidity(hours).map((group) => (
@@ -559,21 +584,6 @@ const OpeningHoursList = ({ hours }: { hours: OpeningHours[] }) => (
     ))}
   </HoursGroups>
 );
-
-// On the card the hours sit inline under the name, clock icon to the left.
-const CardHours = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: ${Spaces.sm};
-
-  ${HoursList} {
-    justify-content: start;
-  }
-
-  ${HoursCaption} {
-    text-align: left;
-  }
-`;
 
 const SectionNav = styled.nav`
   display: flex;
@@ -596,7 +606,9 @@ const ModalLocation = styled.p`
   display: flex;
   align-items: center;
   gap: ${Spaces.sm};
-  margin: ${Spaces.sm} 0 0;
+  /* No own margin: the row spacing is ContactList's gap, same as every
+     sibling row. */
+  margin: 0;
   color: ${Colors.greyDarkest};
 `;
 
@@ -752,14 +764,6 @@ export default function Tenants() {
                       <Typography as="h3" variant="titleSmall">
                         {tenant.name}
                       </Typography>
-                      {tenant.hours?.length ? (
-                        <CardHours>
-                          <ContactIcon aria-hidden="true">
-                            <MdSchedule />
-                          </ContactIcon>
-                          <OpeningHoursList hours={tenant.hours} />
-                        </CardHours>
-                      ) : null}
                       <ClampedDescription>
                         <Typography as="p">{tenant.description}</Typography>
                       </ClampedDescription>
@@ -788,6 +792,25 @@ export default function Tenants() {
         </CategorySection>
       ))}
 
+      {/* Only mounted once a card is clicked, so nothing in here is
+        crawlable — deliberate, not an oversight. Two things follow from it.
+        Do not "fix" it by rendering the dialog always and hiding it with CSS:
+        react-modal renders nothing at all while `isOpen` is false, so there
+        would be no element to hide, and a closed dialog is supposed to be
+        absent from the accessibility tree anyway. And do not flatten these
+        rows onto the cards to make them visible: the tenants have wildly
+        uneven detail, so the grid would go ragged, and the full set of rows is
+        too verbose to sit open on every card. Clicking to expand is the point.
+
+        What that costs is small. The card markup carries each tenant's name
+        and full description, which is the content this page ranks as a
+        directory on. Everything else — hours, room, phone, email, website,
+        header photo — reaches crawlers only as an assertion in the ItemList
+        JSON-LD above, with no visible counterpart. That is an accepted limit,
+        not a gap to plug: hours and phone in Search and Maps come from each
+        tenant's own Google Business Profile regardless of what we publish. If
+        tenant-level queries ever justify the work, the answer is real routes at
+        /about/tenants/[slug], not visible clutter here. */}
       {selectedTenant && (
         <GenericModal
           isOpen={modalIsOpen}
@@ -829,25 +852,12 @@ export default function Tenants() {
             <Typography as="p" margin={`${Spaces.md} 0 0`}>
               {selectedTenant.description}
             </Typography>
-            {selectedTenant.hours?.length ? (
-              <ModalSection>
-                <Typography
-                  variant="cta"
-                  as="p"
-                  color="greyDark"
-                  uppercase
-                  margin={`0 0 ${Spaces.md}`}
-                >
-                  Hours
-                </Typography>
-                <OpeningHoursList hours={selectedTenant.hours} />
-              </ModalSection>
-            ) : null}
-
-            {/* The room and the contact rows share one section, so a tenant
-              with a location but no phone, email, or website still shows where
-              to find it. */}
-            {(selectedTenant.locationInBuilding || contactLinks.length > 0) && (
+            {/* Room, hours, and contact links share one section and one row
+              treatment, so a tenant showing only some of them still looks
+              deliberate. Ordered where, then when, then how to reach them. */}
+            {(selectedTenant.locationInBuilding ||
+              selectedTenant.hours?.length ||
+              contactLinks.length > 0) && (
               <ModalSection>
                 <ContactList>
                   {selectedTenant.locationInBuilding && (
@@ -855,9 +865,25 @@ export default function Tenants() {
                       <ContactIcon aria-hidden="true">
                         <MdPlace />
                       </ContactIcon>
+                      {/* The icon is the only thing naming these rows, and it
+                        is aria-hidden, so the value would otherwise be
+                        announced bare — '3rd Floor' with no clue what it
+                        describes. A hidden label rather than aria-label on the
+                        row, because aria-label is not reliably exposed on an
+                        element with no role. */}
+                      <VisuallyHidden as="span">Location: </VisuallyHidden>
                       {selectedTenant.locationInBuilding}
                     </ModalLocation>
                   )}
+                  {selectedTenant.hours?.length ? (
+                    <ModalHours>
+                      <ContactIcon aria-hidden="true">
+                        <MdSchedule />
+                      </ContactIcon>
+                      <VisuallyHidden>Opening hours: </VisuallyHidden>
+                      <OpeningHoursList hours={selectedTenant.hours} />
+                    </ModalHours>
+                  ) : null}
                   {contactLinks.map((link) => (
                     <ContactRow key={link.href}>
                       <ContactIcon aria-hidden="true">{link.icon}</ContactIcon>
