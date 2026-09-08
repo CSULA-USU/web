@@ -31,6 +31,19 @@ import {
   Typography,
 } from 'components';
 import { Page, ImagelessEventsGrid } from 'modules';
+import { EventModal } from 'modules/EventModal';
+import { useMemo, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { eventListState } from 'atoms';
+import { filterEventsByTopic } from 'utils/eventUtils';
+import { CampusGroupsEvent } from 'types';
+
+/**
+ * The CampusGroups topic tag CSI puts on Wingspan programming. The live list
+ * below is only as complete as this tag is applied — an untagged workshop will
+ * not appear here, which is a tagging fix in CampusGroups, not a code change.
+ */
+const WINGSPAN_EVENT_TOPIC = 'Wingspan';
 
 const iconMap = {
   FaRegHandshake,
@@ -387,11 +400,6 @@ const IconList = ({
   </ul>
 );
 
-const filterUpcomingMeetings = (meetings: any[]) => {
-  const today = new Date();
-  return meetings.filter((meeting) => new Date(meeting.date) >= today);
-};
-
 export default function Wingspan() {
   const { returnByBreakpoint, isMobile, isTablet } = useBreakpoint();
 
@@ -429,7 +437,19 @@ export default function Wingspan() {
     widescreen: 'calc(30% - 12px)',
   });
 
-  const upcomingMeetings = filterUpcomingMeetings(wingspanData.meetings);
+  /* Already filtered to "not ended yet" and sorted by start ascending by
+     EventsLoader, which fills this atom once for the whole app — so the page
+     inherits the feed's 5-minute cache instead of fetching again. */
+  const events = useRecoilValue(eventListState);
+
+  const wingspanEvents = useMemo(
+    () => filterEventsByTopic(events, WINGSPAN_EVENT_TOPIC),
+    [events],
+  );
+
+  const [selectedEvent, setSelectedEvent] = useState<
+    CampusGroupsEvent | undefined
+  >(undefined);
 
   return (
     <Page>
@@ -783,22 +803,32 @@ export default function Wingspan() {
       </FluidContainer>
 
       {/* Events */}
-      <>
-        {upcomingMeetings.length > 0 && (
-          <FluidContainer
-            backgroundColor="greyLightest"
-            padding={`0 16px ${Spaces['xl']} 16px`}
-          >
-            <SectionHeader
-              title="Upcoming Events"
-              subtitle="Take part in thoughtful events that support your growth,
+      {wingspanEvents.length > 0 && (
+        <FluidContainer
+          backgroundColor="greyLightest"
+          padding={`0 16px ${Spaces['xl']} 16px`}
+        >
+          <SectionHeader
+            title="Upcoming Events"
+            subtitle="Take part in thoughtful events that support your growth,
                 celebrate your identity, and empower you to lead with
                 confidence."
-            />
-            <ImagelessEventsGrid meetings={upcomingMeetings} />
-          </FluidContainer>
-        )}
-      </>
+          />
+          {/* Chronological, not grouped by month: the feed is pulled with
+              time_range=upcoming and Wingspan programming is sparse enough to
+              skip whole months, so month headings would mostly announce gaps. */}
+          <ImagelessEventsGrid
+            events={wingspanEvents}
+            onSelectEvent={setSelectedEvent}
+          />
+        </FluidContainer>
+      )}
+
+      <EventModal
+        isOpen={!!selectedEvent}
+        event={selectedEvent}
+        onRequestClose={() => setSelectedEvent(undefined)}
+      />
 
       <FluidContainer padding="0  16px">
         <SectionHeader
