@@ -111,3 +111,29 @@ export const splitFeaturedEvents = (
         remainingEvents: notFeatured.slice(1),
       };
 };
+
+/**
+ * Whether an event carries a given topic tag.
+ *
+ * Matches a whole tag case-insensitively rather than testing a substring: the
+ * feed's topic list already holds both "Wingspan" and "Weeks of Welcome", so a
+ * substring test would let a future "Wingspan Kickoff" tag quietly pull events
+ * onto a page filtering for "Wingspan". Case is forgiven because the tags are
+ * typed by hand in CampusGroups, where "wingspan" is one slip away.
+ *
+ * Reads through `?? []` because every CampusGroupsEvent in the tests is built
+ * with an `as` cast, so the required field is not a runtime guarantee.
+ */
+export const hasEventTopic = (
+  event: CampusGroupsEvent,
+  topic: string,
+): boolean =>
+  (event.eventTopics ?? []).some(
+    (eventTopic) => eventTopic.toLowerCase() === topic.toLowerCase(),
+  );
+
+/** Keeps only the events tagged with `topic`, preserving the given order. */
+export const filterEventsByTopic = (
+  events: CampusGroupsEvent[],
+  topic: string,
+): CampusGroupsEvent[] => events.filter((event) => hasEventTopic(event, topic));

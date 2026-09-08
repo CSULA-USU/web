@@ -14,6 +14,19 @@ import { getEventEndTime, getEventStartTime } from 'utils/eventUtils';
 const getText = (item: Element, tag: string) =>
   item.querySelector(tag)?.textContent ?? '';
 
+/**
+ * The feed publishes topic tags twice — as a comma-joined `<eventTopics>`
+ * string and as repeated `<eventTopic>` children under
+ * `<eventTopicsSeparated>`. Read the children: `getText` above is a
+ * `querySelector`, so pointing it at `eventTopic` would silently return only
+ * the first of seven tags, and splitting the CSV twin would break on any
+ * topic name that ever contains a comma.
+ */
+const getTopics = (item: Element): string[] =>
+  Array.from(item.querySelectorAll('eventTopicsSeparated > eventTopic'))
+    .map((topic) => topic.textContent?.trim() ?? '')
+    .filter(Boolean);
+
 export const fetchEvents = async (
   setEventsStatus: SetterOrUpdater<StatusType>,
 ): Promise<CampusGroupsEvent[]> => {
@@ -51,6 +64,7 @@ export const fetchEvents = async (
       allDayEvent: getText(item, 'allDayEvent'),
       approvalStatus: getText(item, 'approvalStatus'),
       timeZoneId: getText(item, 'timeZoneId'),
+      eventTopics: getTopics(item),
     }));
 
     setEventsStatus('success');
