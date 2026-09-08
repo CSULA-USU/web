@@ -212,7 +212,19 @@ export const EventModal = ({
       >
         {eventOriginalPhotoFullUrl && (
           <MediaFrame>
-            <Image src={eventOriginalPhotoFullUrl} alt={title} lazy />
+            {/* Decorative, so alt is empty: the host group, title, date, time
+                and location are all printed as text directly below, and
+                CampusGroups serves the group's generic cover image here
+                whenever nobody uploaded a real flyer — which is most events.
+                The old alt repeated the title, which told a screen reader
+                nothing and misdescribed a CSI logo as the event name.
+
+                Revisit if CSI starts publishing flyers carrying information of
+                their own — a QR code, a lineup, a dress code. An empty alt
+                drops that silently, and the feed's own eventPhotoAltText is no
+                substitute: it is mostly "csi cover photo", and its longer
+                entries arrive double-escaped. */}
+            <Image src={eventOriginalPhotoFullUrl} alt="" lazy />
           </MediaFrame>
         )}
 
