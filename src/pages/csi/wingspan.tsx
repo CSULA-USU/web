@@ -574,7 +574,10 @@ export default function Wingspan() {
         </Typography>
 
         <ButtonGroup>
-          <Button href="https://forms.office.com/r/fpLZipPcJK" isExternalLink>
+          <Button
+            href="https://calstatela.instructure.com/enroll/G9PART"
+            isExternalLink
+          >
             Sign Up →
           </Button>
           <Button
