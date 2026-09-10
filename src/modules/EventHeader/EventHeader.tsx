@@ -232,9 +232,6 @@ export const EventHeader = ({
                 <ModEventCard
                   featured
                   isLive
-                  /* One shape across the strip: switching tabs must not
-                     resize the page under whoever is reading it. */
-                  lockFrameAspect={liveEvents.length > 1}
                   loading={loading}
                   event={event}
                   onClick={() => selectEvent(event)}

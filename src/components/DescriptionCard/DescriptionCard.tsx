@@ -66,7 +66,7 @@ export const DescriptionCard = ({
       {contentNotText ? (
         <>{children}</>
       ) : (
-        <Typography margin="24px 0" weight="300">
+        <Typography as="div" margin="24px 0" weight="300">
           {children}
         </Typography>
       )}
