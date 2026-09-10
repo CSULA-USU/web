@@ -72,6 +72,29 @@ export const Colors = {
 } as const;
 
 /**
+ * Hues for telling one group in a list apart from the next, when the groups
+ * have no order and no fixed meaning — meeting committees, the months in an
+ * events list.
+ *
+ * Deliberately outside `Colors`: these are picked to be distinguishable from
+ * each other, not to mean anything on their own, and folding them in would put
+ * six colors nothing on the site is themed in behind `keyof typeof Colors`.
+ *
+ * Callers cycle through this in order and wrap at the end, so what matters is
+ * that neighbors are separable, not that the list is long enough. Grew out of
+ * the Board of Directors meeting calendar, which is where these six values
+ * were first chosen.
+ */
+export const CategoricalAccents = [
+  '#a04b9e',
+  '#fb0200',
+  '#e97818',
+  '#68bc5a',
+  '#2d86e4',
+  '#f083d4',
+] as const;
+
+/**
  * The site's elevation language. `default` is the long-standing card
  * lift; `soft` is the tighter, cooler one used where something sits only just
  * above the surface — a card in a grid, or chrome that content scrolls under.

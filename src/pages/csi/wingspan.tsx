@@ -20,7 +20,7 @@ import {
 } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 import wingspanData from 'data/wingspan.json';
-import { Colors, media, Spaces } from 'theme';
+import { CategoricalAccents, Colors, media, Spaces } from 'theme';
 import {
   Button,
   DescriptionCard,
@@ -44,6 +44,33 @@ import { CampusGroupsEvent } from 'types';
  * not appear here, which is a tagging fix in CampusGroups, not a code change.
  */
 const WINGSPAN_EVENT_TOPIC = 'Wingspan';
+
+/**
+ * Events shown before the "Show all" toggle.
+ *
+ * Six is three rows of the grid's two desktop columns, and the same six is the
+ * whole of the cap on mobile, where the grid is one column — the collapse does
+ * most of its work there, since a full academic year of Wingspan programming
+ * is sixteen stacked full-width cards otherwise. The rest stay in the DOM,
+ * hidden with CSS, so nothing is lost to search or find-in-page.
+ */
+const COLLAPSED_EVENT_COUNT = 6;
+
+/**
+ * Card-edge accents for the events list, one per month in the order the months
+ * appear.
+ *
+ * The soonest month always takes the U-SU yellow — whatever is happening next
+ * wears the house color, and the months behind it fall back to the separable
+ * hues the Board of Directors calendar uses for its committees. That first
+ * slot is the rule: it is assigned by position in the list, not by calendar
+ * month, so it moves forward on its own as the term drains.
+ *
+ * Separable hues rather than a gradient for the rest, because the color only
+ * has to say "different month," not "further away" — the date badge on every
+ * card already says how far.
+ */
+const EVENT_MONTH_ACCENT_COLORS = [Colors.primary, ...CategoricalAccents];
 
 const iconMap = {
   FaRegHandshake,
@@ -741,7 +768,7 @@ export default function Wingspan() {
           >
             Students can participate through:
           </Typography>
-          <Typography as="p" variant="copy">
+          <Typography as="div" variant="copy">
             <ul
               style={{
                 display: 'flex',
@@ -819,10 +846,15 @@ export default function Wingspan() {
           />
           {/* Chronological, not grouped by month: the feed is pulled with
               time_range=upcoming and Wingspan programming is sparse enough to
-              skip whole months, so month headings would mostly announce gaps. */}
+              skip whole months, so month headings would mostly announce gaps.
+              The card edges carry the month boundaries instead, which marks
+              them without giving a one-event month a heading of its own. */}
           <ImagelessEventsGrid
             events={wingspanEvents}
             onSelectEvent={setSelectedEvent}
+            monthAccentColors={EVENT_MONTH_ACCENT_COLORS}
+            collapsedVisibleCount={COLLAPSED_EVENT_COUNT}
+            showMonthFilter
           />
         </FluidContainer>
       )}

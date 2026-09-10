@@ -1,4 +1,5 @@
 import { CampusGroupsEvent } from 'types';
+import { getMonth, getYear } from 'utils/timehelpers';
 
 export const formatEventLocation = (eventLocation: string): string => {
   const commaIndex = eventLocation.indexOf(',');
@@ -137,3 +138,54 @@ export const filterEventsByTopic = (
   events: CampusGroupsEvent[],
   topic: string,
 ): CampusGroupsEvent[] => events.filter((event) => hasEventTopic(event, topic));
+
+/**
+ * A single calendar month, as the key the accent ramp groups events on.
+ *
+ * Built from the same helpers the date badge renders with, so a card's color
+ * and its printed month resolve the timestamp in one timezone and cannot
+ * disagree. The year is part of the key because Wingspan programming runs
+ * across the academic year — a bare month would fold February 2027 into
+ * February 2028 and hand them the same accent.
+ */
+export const getEventMonthKey = (event: CampusGroupsEvent): string =>
+  `${getYear(event.eventStartDateTime)}-${getMonth(
+    event.eventStartDateTime,
+    'numeric',
+  )}`;
+
+/**
+ * Maps each distinct month in `events` to an accent color, handing them out
+ * from `accentColors` in order and wrapping when the list runs out.
+ *
+ * Assignment is by a month's position in the list, never by which calendar
+ * month it is, which keeps the whole thing clock-free: `events` arrives
+ * already filtered to upcoming and sorted ascending, so the soonest month is
+ * just index 0. Deriving it from `new Date()` instead would put a
+ * server/client disagreement into a value the markup depends on.
+ *
+ * The colors carry no meaning and no order — they exist so a reader can see
+ * where one month's block of cards ends and the next begins. That is why
+ * wrapping is safe: a seventh month repeating the first color is fine as long
+ * as neighbors differ, which they always will.
+ *
+ * Expects the caller's full list rather than a visible slice, so collapsing a
+ * grid cannot recolor the cards that stay on screen.
+ */
+export const getEventMonthAccents = (
+  events: CampusGroupsEvent[],
+  accentColors: readonly string[],
+): Map<string, string> => {
+  const monthKeys: string[] = [];
+  events.forEach((event) => {
+    const monthKey = getEventMonthKey(event);
+    if (!monthKeys.includes(monthKey)) monthKeys.push(monthKey);
+  });
+
+  return new Map(
+    monthKeys.map((monthKey, index) => [
+      monthKey,
+      accentColors[index % accentColors.length],
+    ]),
+  );
+};

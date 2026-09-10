@@ -88,22 +88,51 @@ const Main = styled.div`
 `;
 
 /**
- * Aspect-agnostic frame: event flyers arrive as either landscape photos or
- * square graphics. The image is centered and capped by height (never forced to
- * full width), so a square flyer stays a sensible size instead of ballooning to
- * the full modal width, and nothing gets cropped.
+ * The media well, sized by ratio rather than by the image it holds.
+ *
+ * That is what keeps the modal still. A box that takes its height from the
+ * image is 0px tall on open and jumps to full height once the flyer decodes,
+ * throwing the group, title, date, time, location and description down the
+ * page as it goes. Reserving the space up front costs nothing and removes the
+ * shift entirely — and it is also what gives the skeleton a box to fill, since
+ * an overlay stretched over a zero-height parent paints nothing.
+ *
+ * 2:1 because that is the shape CampusGroups actually serves: of 59 flyers
+ * sampled across the live feed, 57 are exactly 2:1 — the platform normalizes
+ * cover art. So for nearly every event the well *is* the image's own shape and
+ * there is no letterboxing to trade away. The stragglers (that sample held one
+ * at 1.35:1 and one at 5.71:1) sit inside it rather than resizing it.
+ *
+ * Ratio rather than a pixel height so the well tracks the modal's own width,
+ * which is set per breakpoint above — no second set of numbers to keep in step.
+ *
+ * `contain`, never `cover`: flyers routinely carry text, and cropping a 5.71:1
+ * banner to fill a 2:1 well would cut most of it away.
  */
 const MediaFrame = styled.div`
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: ${Spaces.lg};
-  padding-top: ${Spaces.lg};
+  aspect-ratio: 2 / 1;
+  margin: ${Spaces.lg} 0;
+
+  /* The skeleton frame Image wraps itself in sits between this and the img, so
+     it has to become the centering box or the flyer lands top-left of the well
+     instead of in it. */
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 
   img {
     width: auto;
     max-width: 100%;
-    max-height: 380px;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 12px;
     display: block;
@@ -224,7 +253,12 @@ export const EventModal = ({
                 drops that silently, and the feed's own eventPhotoAltText is no
                 substitute: it is mostly "csi cover photo", and its longer
                 entries arrive double-escaped. */}
-            <Image src={eventOriginalPhotoFullUrl} alt="" lazy />
+            <Image
+              src={eventOriginalPhotoFullUrl}
+              alt=""
+              lazy
+              skeletonWhileLoading
+            />
           </MediaFrame>
         )}
 
