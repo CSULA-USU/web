@@ -9,8 +9,7 @@ jest.mock('lib/supabase', () => ({ supabase: {} }));
 jest.mock('@accessible/drawer', () => ({}));
 
 import { fireEvent, render, screen } from '@testing-library/react';
-import { EventCard } from 'modules/EventCard';
-import { clampFrameAspect } from 'modules/EventCard/ModEventCard';
+import { EventCard, ModEventCard } from 'modules/EventCard';
 import { formatEventLocation } from 'utils/eventUtils';
 import { shouldCropFlyer } from 'modules/EventCard/SplitEventCard';
 import { CampusGroupsEvent } from 'types';
@@ -66,27 +65,28 @@ describe('EventCard', () => {
   });
 });
 
-describe('clampFrameAspect', () => {
-  it('lets a 2:1 cover through untouched, so it fills the frame exactly', () => {
-    /* 760x380 — what all but a couple of the feed's images are. */
-    expect(clampFrameAspect(2)).toBe(2);
-  });
+describe('ModEventCard', () => {
+  /* The hero used to hold the whole card behind a skeleton until the flyer had
+     downloaded and been measured, then swap in a frame sized to whatever shape
+     it turned out to be — which shoved everything below the hero down the page
+     on arrival. The details come from data that is already here, so they paint
+     straight away and the flyer shimmers inside a well that is already the
+     right size. jsdom never fires the image's load event, so this renders the
+     undecoded state the shift used to happen in. */
+  it('paints the details while the flyer is still downloading', () => {
+    render(
+      <ModEventCard
+        featured
+        event={{
+          ...cultureFest,
+          eventOriginalPhotoFullUrl: 'https://example.test/flyer.jpg',
+        }}
+        onClick={jest.fn()}
+      />,
+    );
 
-  it('holds a portrait flyer at the floor rather than making a column', () => {
-    expect(clampFrameAspect(1080 / 1350)).toBe(1.5);
-  });
-
-  it('holds a 6:1 banner at the ceiling rather than leaving a ribbon', () => {
-    expect(clampFrameAspect(1200 / 210)).toBe(3);
-  });
-
-  it('falls back while the image is still measuring', () => {
-    expect(clampFrameAspect(null)).toBe(2);
-  });
-
-  it('ignores the image entirely when a tab strip has locked the frame', () => {
-    expect(clampFrameAspect(1080 / 1350, true)).toBe(2);
-    expect(clampFrameAspect(1200 / 210, true)).toBe(2);
+    expect(screen.getByRole('heading', { name: 'Culture Fest' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Learn More' })).toBeTruthy();
   });
 });
 

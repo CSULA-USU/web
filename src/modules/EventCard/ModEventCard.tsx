@@ -1,5 +1,6 @@
 import {
   Button,
+  Image,
   LiveBadge,
   Skeleton,
   SkeletonWrapper,
@@ -7,7 +8,7 @@ import {
 } from 'components';
 import { useBreakpoint } from 'hooks';
 import { EventModal } from 'modules/EventModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BiCalendar, BiTimeFive } from 'react-icons/bi';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdLocationPin } from 'react-icons/md';
@@ -20,42 +21,23 @@ import { formatEventLocation } from 'utils/eventUtils';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
 /*
- * The frame follows the flyer's own proportions between these two stops rather
- * than sorting uploads into shapes. Buckets need thresholds and thresholds have
- * edges — something at 2.6:1 has to fall on one side of a line, and eventually
- * a flyer lands exactly on it. A clamp has no categories, so nothing can fall
- * between them.
+ * The image well's shape, fixed rather than measured.
  *
- * The floor stops a portrait flyer turning the hero into a column; the ceiling
- * stops a 6:1 banner leaving a ribbon in a sea of blur. At the 800px cap the
- * frame runs 533px tall at its tallest and 267px at its shortest, and a 2:1
- * cover — which is what all but a couple of the feed's images are — lands
- * between them and fills the frame exactly, with no blur showing at all.
+ * A frame that takes its ratio from the flyer cannot be drawn until the flyer
+ * has downloaded, so the hero sat as a 2:1 skeleton and then resized to
+ * whatever the image turned out to be — a portrait cover grew the well by a
+ * third of its height and shoved the upcoming events below it down the page on
+ * arrival. Committing to one ratio up front is what removes the shift: the
+ * space is reserved in the first paint, and nothing measured later can move it.
+ *
+ * 2:1 because that is the shape CampusGroups actually serves — it normalizes
+ * cover art, and all but a couple of the live feed's flyers arrive exactly 2:1
+ * and fill the well with nothing left over. The stragglers sit inside it
+ * rather than resizing it: `contain` keeps a portrait flyer whole, and the
+ * blurred copy behind fills whatever containing leaves over. Same well, and
+ * the same reasoning, as `MediaFrame` in the event modal.
  */
-const MIN_FRAME_ASPECT = 1.5;
-const MAX_FRAME_ASPECT = 3;
-
-/*
- * What the frame falls back to: while the image is still measuring, and for
- * every card in a live tab strip. Tabs share one shape on purpose — a switcher
- * that resizes the page under the reader is worse than an imperfect fit on one
- * of two cards. 2:1 because that is what the overwhelming majority of covers
- * arrive as.
- */
-const FIXED_FRAME_ASPECT = 2;
-
-/**
- * The shape the image frame takes: the flyer's own proportions, held between
- * the two stops above, or the fallback while it is still measuring and
- * whenever `locked` says a tab strip needs every card the same size.
- */
-export const clampFrameAspect = (
-  imageAspect: number | null,
-  locked?: boolean,
-) =>
-  locked || imageAspect === null
-    ? FIXED_FRAME_ASPECT
-    : Math.min(Math.max(imageAspect, MIN_FRAME_ASPECT), MAX_FRAME_ASPECT);
+const FRAME_ASPECT = 2;
 
 export interface ModEventCardProps {
   event: CampusGroupsEvent;
@@ -64,23 +46,17 @@ export interface ModEventCardProps {
   loading?: boolean;
   /** Marks the card as under way. Gated on ending today — see `isEventLiveToday`. */
   isLive?: boolean;
-  /**
-   * Holds the frame at its fallback shape instead of following the image.
-   * Set it wherever cards are swapped in place — a tab strip — so switching
-   * does not resize the page.
-   */
-  lockFrameAspect?: boolean;
 }
 
-/* Holds the frame's fallback shape, so a 2:1 cover — nearly all of them — goes
-   from skeleton to card without the page moving. */
+/* The same box the image well occupies, so the swap from skeleton to card
+   leaves everything below it exactly where it was. */
 const EventCardSkeletonContainer = styled(SkeletonWrapper)`
   display: flex;
   z-index: 1;
   flex-direction: column;
   margin: 0px auto ${Spaces.lg};
   max-width: 800px;
-  aspect-ratio: ${FIXED_FRAME_ASPECT};
+  aspect-ratio: ${FRAME_ASPECT};
   border-radius: 16px;
   border: 2px solid transparent;
   @media (max-width: 540px) {
@@ -125,7 +101,7 @@ const HeroEventDetailsSkeleton = () => {
  * which is what keeps a wide flyer from floating in empty bands. Both layers
  * point at the same URL, so the backdrop costs a paint and not a download.
  */
-const EventImageFrame = styled.div<{ $aspect: number }>`
+const EventImageFrame = styled.div`
   position: relative;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -133,7 +109,7 @@ const EventImageFrame = styled.div<{ $aspect: number }>`
   max-width: 800px;
   margin: 0px auto ${Spaces.lg};
   overflow: hidden;
-  aspect-ratio: ${({ $aspect }) => $aspect};
+  aspect-ratio: ${FRAME_ASPECT};
   @media (max-width: 540px) {
     margin: 0px auto ${Spaces.md};
   }
@@ -162,12 +138,22 @@ const BlurBackdrop = styled.div<{ image?: string }>`
   filter: blur(24px) brightness(0.9);
 `;
 
-const EventImage = styled.img`
+/*
+ * Lifts the flyer and its shimmer above the backdrop. The backdrop is
+ * positioned, so an in-flow layer would paint underneath it and the flyer
+ * would sit behind its own blur.
+ */
+const FlyerLayer = styled.div`
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+
+  /* The skeleton frame Image wraps itself in sits between this and the img, so
+     the flyer has to be sized from here rather than on the element itself. */
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const LiveBadgeSlot = styled.div`
@@ -311,57 +297,25 @@ export const ModEventCard = ({
   onClick,
   loading: parentLoading,
   isLive,
-  lockFrameAspect,
 }: ModEventCardProps) => {
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imageAspect, setImageAspect] = useState<number | null>(null);
   const { isTablet } = useBreakpoint();
   const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
 
-  // PRELOADER: This ensures we know when the background image is ready
-  useEffect(() => {
-    if (event?.eventOriginalPhotoFullUrl) {
-      const img = new Image();
-      img.src = event.eventOriginalPhotoFullUrl;
-      img.onload = () => {
-        /* The card holds a skeleton until this fires, so the frame knows the
-           flyer's proportions before it paints — no measure-then-resize. */
-        if (img.naturalHeight > 0) {
-          setImageAspect(img.naturalWidth / img.naturalHeight);
-        }
-        setImgLoaded(true);
-      };
-      img.onerror = () => setImgLoaded(true); // Still show card if image fails
-    } else if (event) {
-      // If there's an event but NO image, we are "loaded"
-      setImgLoaded(true);
-    }
-    /* Clear on the way out, or the next event's flyer paints into the previous
-       one's frame until its own measurement lands. */
-    return () => setImageAspect(null);
-  }, [event]);
-
-  // If we are waiting for data OR waiting for the image, show Skeleton
-  if (parentLoading || !event || !imgLoaded) {
+  /* Only the data holds the card back now. The flyer does not: the well below
+     is already its final size without it, and the skeleton shimmers inside
+     that well while it downloads, so waiting on the image would keep the
+     title, date, time and location off the page for nothing. */
+  if (parentLoading || !event) {
     return (
       <EventContainer>
         <EventCardSkeletonContainer />
         <HeroEventDetailsSkeleton />
-        {/* HIDDEN PRELOADER: Triggers the download while the skeleton is active */}
-        {event?.eventOriginalPhotoFullUrl && (
-          <img
-            src={event.eventOriginalPhotoFullUrl}
-            style={{ display: 'none' }}
-            alt=""
-          />
-        )}
       </EventContainer>
     );
   }
 
-  // --- At this point, we GUARANTEE event exists and image is ready ---
   const {
     group,
     title,
@@ -377,17 +331,23 @@ export const ModEventCard = ({
   const month = getMonth(eventStartDateTime);
   const day = getDay(eventStartDateTime);
 
-  const frameAspect = clampFrameAspect(imageAspect, lockFrameAspect);
-
   return (
     <EventContainer>
-      <EventImageFrame onClick={onClick} $aspect={frameAspect}>
+      <EventImageFrame onClick={onClick}>
         <BlurBackdrop aria-hidden="true" image={eventOriginalPhotoFullUrl} />
         {/* Decorative: title, date, time, location and org all render as text
             directly beneath, so the flyer repeats them rather than adding
             anything. The keyboard path into the event is the Learn More
             control in those details, not this image. */}
-        <EventImage src={eventOriginalPhotoFullUrl} alt="" />
+        {eventOriginalPhotoFullUrl && (
+          <FlyerLayer>
+            <Image
+              src={eventOriginalPhotoFullUrl}
+              alt=""
+              skeletonWhileLoading
+            />
+          </FlyerLayer>
+        )}
         {isLive && (
           <LiveBadgeSlot>
             <LiveBadge />
