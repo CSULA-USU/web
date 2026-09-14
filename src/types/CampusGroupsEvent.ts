@@ -15,7 +15,15 @@ export type CampusGroupsEvent = {
   locationType: string;
   eventType: string;
   eventLink: string;
+  /**
+   * CampusGroups' own 2:1 crop of whatever the coordinator uploaded, not a
+   * second size of it. It crops to fill, so a square flyer comes back with its
+   * top and bottom cut away — see `getEventFlyerUrl`, which prefers
+   * `eventOriginalFlyerFullUrl` and keeps this as the fallback.
+   */
   eventOriginalPhotoFullUrl: string;
+  /** The upload itself, uncropped. Empty on events that have no flyer. */
+  eventOriginalFlyerFullUrl: string;
   eventPhotoAltText: string;
   iCalLink: string;
   allDayEvent: string;

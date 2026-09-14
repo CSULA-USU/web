@@ -17,7 +17,7 @@ import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { ABBREVIATED_ORGS } from 'utils/constants';
-import { formatEventLocation } from 'utils/eventUtils';
+import { formatEventLocation, getEventFlyerUrl } from 'utils/eventUtils';
 import { getDay, getMonth, getTime } from 'utils/timehelpers';
 
 /*
@@ -30,14 +30,21 @@ import { getDay, getMonth, getTime } from 'utils/timehelpers';
  * arrival. Committing to one ratio up front is what removes the shift: the
  * space is reserved in the first paint, and nothing measured later can move it.
  *
- * 2:1 because that is the shape CampusGroups actually serves — it normalizes
- * cover art, and all but a couple of the live feed's flyers arrive exactly 2:1
- * and fill the well with nothing left over. The stragglers sit inside it
- * rather than resizing it: `contain` keeps a portrait flyer whole, and the
- * blurred copy behind fills whatever containing leaves over. Same well, and
- * the same reasoning, as `MediaFrame` in the event modal.
+ * 3:2 because the well now holds flyers rather than covers. `getEventFlyerUrl`
+ * prefers the coordinator's own upload, and those are square — all three in
+ * the 2026-09-14 feed are 1080x1080 — where the covers it falls back to are
+ * 2:1. A 2:1 well showed a square at 400x400 inside 800px, a stamp in 200px of
+ * blur down either side; at 3:2 the same flyer comes out 533x533 and the bands
+ * are 133px. It is also within a pixel of the 800x480 well this card had
+ * before it was given a fixed ratio, which is the shape these flyers were
+ * being laid out against.
+ *
+ * `contain`, never `cover`: flyers carry text, so cropping one to fill is how
+ * the bottom of a schedule goes missing. The blurred copy behind fills
+ * whatever containing leaves over. Same well, and the same reasoning, as
+ * `MediaFrame` in the event modal.
  */
-const FRAME_ASPECT = 2;
+const FRAME_ASPECT = 1.5;
 
 export interface ModEventCardProps {
   event: CampusGroupsEvent;
@@ -94,12 +101,12 @@ const HeroEventDetailsSkeleton = () => {
 };
 
 /*
- * Coordinators upload whatever shape they have. Most covers arrive 2:1, but
- * square and portrait flyers land here too, so the flyer is contained rather
- * than cropped — losing the bottom of a portrait would take the date and
- * location off it. The blurred copy behind fills what containing leaves over,
- * which is what keeps a wide flyer from floating in empty bands. Both layers
- * point at the same URL, so the backdrop costs a paint and not a download.
+ * Coordinators upload whatever shape they have — square flyers, portrait
+ * flyers, the odd 5.71:1 banner — so the image is contained rather than
+ * cropped: losing the bottom of a portrait would take the date and location
+ * off it. The blurred copy behind fills what containing leaves over, which is
+ * what keeps a flyer from floating in empty bands. Both layers point at the
+ * same URL, so the backdrop costs a paint and not a download.
  */
 const EventImageFrame = styled.div`
   position: relative;
@@ -115,8 +122,9 @@ const EventImageFrame = styled.div`
   }
   /* No transparent border here. aspect-ratio sizes the border box, so a border
      leaves the content box at a different ratio than the frame — with 2px each
-     side, a perfect 2:1 cover fits by height instead and exposes 2px of the
-     blurred backdrop down both edges. Nothing ever made the border visible. */
+     side, an image matching the well exactly fits by height instead and
+     exposes 2px of the blurred backdrop down both edges. Nothing ever made the
+     border visible. */
   border-radius: 16px;
   cursor: pointer;
 `;
@@ -316,14 +324,9 @@ export const ModEventCard = ({
     );
   }
 
-  const {
-    group,
-    title,
-    eventLocation,
-    eventStartDateTime,
-    eventEndDateTime,
-    eventOriginalPhotoFullUrl,
-  } = event;
+  const { group, title, eventLocation, eventStartDateTime, eventEndDateTime } =
+    event;
+  const flyerUrl = getEventFlyerUrl(event);
   const onRequestClose = () => selectEvent(undefined);
   const startTime = getTime(eventStartDateTime);
   const endTime = getTime(eventEndDateTime);
@@ -334,18 +337,14 @@ export const ModEventCard = ({
   return (
     <EventContainer>
       <EventImageFrame onClick={onClick}>
-        <BlurBackdrop aria-hidden="true" image={eventOriginalPhotoFullUrl} />
+        <BlurBackdrop aria-hidden="true" image={flyerUrl} />
         {/* Decorative: title, date, time, location and org all render as text
             directly beneath, so the flyer repeats them rather than adding
             anything. The keyboard path into the event is the Learn More
             control in those details, not this image. */}
-        {eventOriginalPhotoFullUrl && (
+        {flyerUrl && (
           <FlyerLayer>
-            <Image
-              src={eventOriginalPhotoFullUrl}
-              alt=""
-              skeletonWhileLoading
-            />
+            <Image src={flyerUrl} alt="" skeletonWhileLoading />
           </FlyerLayer>
         )}
         {isLive && (

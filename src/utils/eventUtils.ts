@@ -7,6 +7,24 @@ export const formatEventLocation = (eventLocation: string): string => {
 };
 
 /**
+ * The image to show for an event: the coordinator's own upload where there is
+ * one, and CampusGroups' crop of it otherwise.
+ *
+ * The two fields are not two sizes of one picture. `eventOriginalPhotoFullUrl`
+ * is a 2:1 cover the platform generates by cropping to fill, so Recreation's
+ * 1080x1080 "Group Exercise Schedule" flyer arrives as 1080x540 with the word
+ * SCHEDULE sliced through and the U-SU logo and web address cut off the bottom
+ * entirely. No frame can recover that — those pixels are not in the file.
+ * `eventOriginalFlyerFullUrl` is the upload itself, whole.
+ *
+ * The cover stays as the fallback because the flyer field is often empty: of
+ * the 268 items in the feed on 2026-09-14, 157 carried a flyer and 111 had
+ * only the cover.
+ */
+export const getEventFlyerUrl = (event: CampusGroupsEvent): string =>
+  event.eventOriginalFlyerFullUrl || event.eventOriginalPhotoFullUrl;
+
+/**
  * At most this many in-progress events get hero tabs. A fourth falls through to
  * the upcoming list rather than growing the strip — a hero someone has to read
  * across is worse than one event they actually see.
