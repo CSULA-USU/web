@@ -16,9 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Reads .nvmrc so CI cannot drift from the version developers and the
+      # deploy actually run. Pinning a literal here is what let CI sit on
+      # Node 20 while the repo moved to 22.
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
