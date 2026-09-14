@@ -59,6 +59,7 @@ export const fetchEvents = async (
       eventType: getText(item, 'eventType'),
       eventLink: getText(item, 'eventLink'),
       eventOriginalPhotoFullUrl: getText(item, 'eventOriginalPhotoFullUrl'),
+      eventOriginalFlyerFullUrl: getText(item, 'eventOriginalFlyerFullUrl'),
       eventPhotoAltText: getText(item, 'eventPhotoAltText'),
       iCalLink: getText(item, 'iCalLink'),
       allDayEvent: getText(item, 'allDayEvent'),
