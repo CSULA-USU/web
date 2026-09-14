@@ -13,6 +13,7 @@ export * from './EventHeader';
 export * from './EventsLoader';
 export * from './FeaturedEvents';
 export * from './Footer';
+export * from './FullTimeJobModal';
 export * from './Gallery';
 export * from './GenericModal';
 export * from './Header';

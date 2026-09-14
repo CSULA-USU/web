@@ -1,7 +1,10 @@
+import type { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { StatusType } from 'atoms';
 import { useBreakpoint } from 'hooks';
+import { fetchFullTimeJobs } from 'lib/aoaJobFeed';
 import { Colors, media, Spaces } from 'theme';
 import {
   FluidContainer,
@@ -10,9 +13,17 @@ import {
   PageMeta,
   Typography,
 } from 'components';
-import { Page } from 'modules';
+import { FullTimeJobModal, Page } from 'modules';
+import { AoaJobListing } from 'types';
 // import jobs from 'data/employment.json';
 // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
+
+/**
+ * Spent twice — by the Applications section below and by every job modal — so
+ * the two cannot come to disagree about which form is current.
+ */
+const APPLICATION_FORM_HREF =
+  'https://www.dropbox.com/scl/fi/np6d18zit1faihhnwr9wi/University-Student-Union-at-Cal-State-LA-Full-time-Staff-Employment-Application-FORM-2025.pdf?rlkey=arynoo26pn4iwmc2ehyp8nmt3&st=8ukukpbb&raw=1';
 
 const JobListingContainer = styled.div`
   display: flex;
@@ -32,17 +43,85 @@ const JobItem = styled.div`
   margin-bottom: 16px;
 `;
 
-export default function Employment() {
+/**
+ * Full-time rows open a modal rather than leaving for csuaoa.org, so the
+ * trigger has to be a real button for keyboard and screen-reader users. It is
+ * deliberately not the house fill-on-hover: it sits directly beside the
+ * student-assistant list, whose rows are StyledLinks, and two adjacent lists of
+ * job titles that hover differently read as a bug. Matching `UnderlineHover` in
+ * components/Link/StyledLink keeps the pair consistent — change both or
+ * neither.
+ */
+const JobTrigger = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.8;
+    text-decoration-color: currentColor;
+  }
+`;
+
+interface EmploymentProps {
+  fullTimeJobs: AoaJobListing[];
+  fullTimeStatus: StatusType;
+}
+
+/** Matches the feed's own hourly rebuild; a posting runs for weeks. */
+const REVALIDATE_SECONDS = 900;
+
+/** Retry sooner than a normal revalidate while AOA is unreachable. */
+const REVALIDATE_ON_FAILURE_SECONDS = 300;
+
+/**
+ * Full-time postings are rendered server-side rather than fetched on mount, so
+ * their titles and the JobPosting JSON-LD are in the initial HTML. Googlebot
+ * does run JavaScript, but that happens in a deferred second pass — too slow to
+ * be much use for a listing that is only open a few weeks.
+ *
+ * The student-assistant column still fetches client-side; its Handshake feed is
+ * a separate integration and was not part of this change.
+ */
+export const getStaticProps: GetStaticProps<EmploymentProps> = async () => {
+  try {
+    const { jobs } = await fetchFullTimeJobs();
+    return {
+      props: { fullTimeJobs: jobs, fullTimeStatus: 'success' },
+      revalidate: REVALIDATE_SECONDS,
+    };
+  } catch {
+    return {
+      props: { fullTimeJobs: [], fullTimeStatus: 'failed' },
+      revalidate: REVALIDATE_ON_FAILURE_SECONDS,
+    };
+  }
+};
+
+export default function Employment({
+  fullTimeJobs,
+  fullTimeStatus,
+}: EmploymentProps) {
   // const fulltimeJobs = jobs.filter((j) => j.type === 'fulltime');
   // used for static full-time job data for before Auxiliary Organizations Association (AOA) RSS feed was available
   const [studentAssistantloading, setStudentAssistantLoading] = useState(true);
-  const [fullTimeloading, setFullTimeLoading] = useState(true);
 
   const [studentJobs, setStudentJobs] = useState([]);
-  const [fullTimeJobs, setFullTimeJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState<AoaJobListing | null>(null);
 
   const [studentStatus, setStudentStatus] = useState<StatusType>('undefined');
-  const [fullTimeStatus, setFullTimeStatus] = useState<StatusType>('undefined');
 
   const { isMobile } = useBreakpoint();
   const fetchJobFeed = async () => {
@@ -68,34 +147,6 @@ export default function Employment() {
       .finally(() => {
         setStudentAssistantLoading(false);
       });
-
-    // RSS feed API for full-time jobs
-    await fetch('/api/fullTimeEmployment')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(
-            'Failed to receive a valid response from fullTimeEmployment API.',
-          );
-        }
-        return res.json();
-      })
-      .then((fullTimeFeed) => {
-        const jobsFiltered = fullTimeFeed?.items.filter((job: any) => {
-          const jobDesc: String = job['content:encodedSnippet'];
-          return (
-            jobDesc.toLowerCase().includes('university-student union') ||
-            jobDesc.toLowerCase().includes('university student union')
-          );
-        });
-        setFullTimeJobs(jobsFiltered);
-        setFullTimeStatus('success');
-      })
-      .catch(() => {
-        setFullTimeStatus('failed');
-      })
-      .finally(() => {
-        setFullTimeLoading(false);
-      });
   };
 
   useEffect(() => {
@@ -111,6 +162,47 @@ export default function Employment() {
         socialTitle="Work at the U-SU | Cal State LA"
         socialDescription="On-campus jobs for Golden Eagles. Explore open student and professional positions at the University-Student Union."
       />
+
+      {/* The posting bodies live in a modal, and react-modal mounts nothing
+          while closed — so without this, the text Googlebot can reach is just
+          the job titles. JobPosting is also the format Google Jobs consumes,
+          which the old link-out to csuaoa.org never gave us. `validThrough` is
+          absent because the AOA feed carries no closing date; it is optional. */}
+      {fullTimeJobs.length >= 1 && (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                fullTimeJobs.map((j) => ({
+                  '@context': 'https://schema.org',
+                  '@type': 'JobPosting',
+                  title: j.title,
+                  description: j.descriptionHtml,
+                  datePosted: j.postedAt,
+                  employmentType: 'FULL_TIME',
+                  hiringOrganization: {
+                    '@type': 'Organization',
+                    name: 'University-Student Union at Cal State LA',
+                    sameAs: 'https://www.calstatelausu.org',
+                  },
+                  jobLocation: {
+                    '@type': 'Place',
+                    address: {
+                      '@type': 'PostalAddress',
+                      streetAddress: '5154 State University Dr',
+                      addressLocality: 'Los Angeles',
+                      addressRegion: 'CA',
+                      postalCode: '90032',
+                      addressCountry: 'US',
+                    },
+                  },
+                })),
+              ),
+            }}
+          />
+        </Head>
+      )}
 
       <FluidContainer backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-2.webp">
         <Typography as="h1" variant="pageHeader">
@@ -160,16 +252,19 @@ export default function Employment() {
             >
               Full&ndash;Time Positions
             </Typography>
-            {fullTimeloading ? (
-              <Loading load={fullTimeloading} />
-            ) : fullTimeJobs.length >= 1 ? (
-              fullTimeJobs.map((j: any) => (
-                <JobItem key={`${j.title}`}>
-                  <Typography variant="subheader" size="md" color="black">
-                    <StyledLink isExternalLink href={j.link}>
+            {fullTimeJobs.length >= 1 ? (
+              fullTimeJobs.map((j) => (
+                <JobItem key={j.id}>
+                  <JobTrigger
+                    type="button"
+                    onClick={() => setSelectedJob(j)}
+                    aria-haspopup="dialog"
+                    aria-label={`Read the full ${j.title} posting`}
+                  >
+                    <Typography variant="subheader" size="md" color="black">
                       {j.title}
-                    </StyledLink>
-                  </Typography>
+                    </Typography>
+                  </JobTrigger>
                 </JobItem>
               ))
             ) : fullTimeStatus == 'failed' ? (
@@ -196,7 +291,7 @@ export default function Employment() {
         </Typography>
         <FluidContainer padding="0">
           <StyledLink
-            href="https://www.dropbox.com/scl/fi/np6d18zit1faihhnwr9wi/University-Student-Union-at-Cal-State-LA-Full-time-Staff-Employment-Application-FORM-2025.pdf?rlkey=arynoo26pn4iwmc2ehyp8nmt3&st=8ukukpbb&raw=1"
+            href={APPLICATION_FORM_HREF}
             aria-label="Open Full-time Professional Appointment Application PDF form in a new tab"
             isInverseUnderlineStyling
           >
@@ -204,6 +299,12 @@ export default function Employment() {
           </StyledLink>
         </FluidContainer>
       </FluidContainer>
+      <FullTimeJobModal
+        job={selectedJob}
+        isOpen={selectedJob !== null}
+        onRequestClose={() => setSelectedJob(null)}
+        applicationFormHref={APPLICATION_FORM_HREF}
+      />
     </Page>
   );
 }
