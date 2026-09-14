@@ -63,6 +63,7 @@
     "recoil": "0.7.7",
     "resend": "^6.12.4",
     "rss-parser": "^3.13.0",
+    "sanitize-html": "^2.17.7",
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
     "typescript": "^6.0.2",
@@ -88,6 +89,7 @@
     "@types/formidable": "^3.4.5",
     "@types/jest": "^30.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
+    "@types/sanitize-html": "^2.16.1",
     "@types/styled-components": "5.1.30",
     "@types/styled-system": "5.1.22",
     "eslint-config-prettier": "^8.5.0",
@@ -129,8 +131,20 @@
             "jsx": "react-jsx"
           }
         }
+      ],
+      "^.+\\.m?js$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "allowJs": true
+          },
+          "diagnostics": false
+        }
       ]
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.*/)?(htmlparser2|domhandler|domutils|dom-serializer|domelementtype|entities)/)"
+    ]
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
