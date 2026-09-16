@@ -13,8 +13,8 @@ export interface AoaJobListing {
   /** ISO 8601. The feed carries no closing date, only this. */
   postedAt: string;
   /**
-   * The full posting body, already run through the allowlist in
-   * `pages/api/fullTimeEmployment`. Safe to pass to `dangerouslySetInnerHTML`.
+   * The full posting body, already run through `sanitizeJobDescription` in
+   * `lib/aoaJobFeed`. Safe to pass to `dangerouslySetInnerHTML`.
    */
   descriptionHtml: string;
 }

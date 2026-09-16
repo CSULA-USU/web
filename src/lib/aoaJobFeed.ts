@@ -159,7 +159,13 @@ export const toJobListings = (
       descriptionHtml: sanitizeJobDescription(
         restorePostingStructure(item['content:encoded'] || ''),
       ),
-    }));
+    }))
+    // Sorted at the point of derivation so the rendered cards and the
+    // JobPosting JSON-LD, which map this same array separately, cannot fall
+    // out of agreement. The feed's own order is WordPress's and carries no
+    // meaning for a reader scanning titles. The locale is pinned because the
+    // default is the host's, which is not the same in Node as in a browser.
+    .sort((a, b) => a.title.localeCompare(b.title, 'en'));
 
 // Built per call rather than at module scope so importing this module does not
 // require Upstash credentials to be present — a local build without them still
