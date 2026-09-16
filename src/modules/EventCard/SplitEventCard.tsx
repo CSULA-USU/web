@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
 import { Typography } from 'components';
 import styled from 'styled-components';
 import { Colors, Shadows, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
 import { Image } from 'components';
 import { ABBREVIATED_ORGS } from 'utils/constants';
-import { formatEventLocation } from 'utils/eventUtils';
+import { formatEventLocation, getEventFlyerUrl } from 'utils/eventUtils';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
 export interface SplitEventCardProps {
@@ -37,54 +36,36 @@ const Card = styled.div`
 `;
 
 /*
- * The image is contained and a blurred copy of it fills whatever is left over.
- * Coordinators upload any shape they like, and the box is a fixed slice of a
- * fixed-height card, so without the backdrop a wide flyer drew a thin strip
- * marooned in white — the wider the flyer, the more empty box around it.
+ * The flyer is contained and a blurred copy of it fills whatever is left over.
+ * Coordinators upload any shape they like, so without the backdrop a flyer that
+ * does not match the well is a strip marooned in white.
  *
- * Unlike the homepage hero, the box does not follow the image's proportions.
+ * Contained, never cropped — this is a rule, not a default. Cropping wide
+ * flyers to fill was tried here and reverted: these are layouts with type
+ * running edge to edge rather than photographs, so filling the well cut a
+ * banner's title down to its middle few letters, and Wingspan rendered as
+ * "ngsp". A flyer too wide for the well now renders whole but small, which is
+ * the lesser failure and reaches only the handful of banner-shaped outliers.
+ *
+ * Unlike the homepage hero, the well does not follow the image's proportions.
  * These cards sit in a grid, and a per-image height would leave every row
  * ragged; uniform cards are worth more here than a perfect fit.
  */
-/*
- * Past this, a flyer is cropped instead of contained.
- *
- * The box is 2:1, so an image at 3:1 already fills only two thirds of its
- * height and anything wider is more backdrop than flyer — the 1200x210 banner
- * in the feed comes out a 54px strip in a 155px box. Cropping such a strip to
- * the box height and holding the centre shows roughly a third of its width,
- * which is the right trade only because a flyer that shape is a photograph
- * rather than a layout with type running edge to edge. Anything narrower stays
- * contained: the point of the backdrop is that nothing normal gets cut.
- *
- * Deliberately one-sided. A portrait flyer also leaves wide bands, but cropping
- * it to a 2:1 slot would cut away most of the flyer, so tall stays contained.
- */
-const CROP_ABOVE_ASPECT = 3;
-
-/**
- * Whether a flyer is wide enough that cropping beats containing it. False for
- * anything unmeasured, so an image that never reports its dimensions is
- * contained rather than cropped — the safe direction, since containing cannot
- * hide any of it.
- */
-export const shouldCropFlyer = (
-  naturalWidth: number,
-  naturalHeight: number,
-): boolean =>
-  naturalHeight > 0 && naturalWidth / naturalHeight > CROP_ABOVE_ASPECT;
-
-const GraphicContainer = styled.div<{ $fit: 'contain' | 'cover' }>`
+const GraphicContainer = styled.div`
   position: relative;
   width: 100%;
   /*
-   * Fixed 2:1, not per-image. Almost every cover arrives 2:1, so the flyer
-   * fills this exactly and no blur shows at all; the odd square or portrait
-   * still gets the backdrop. Fixed rather than adaptive because these sit in a
-   * grid, where a per-image height would leave every row ragged — the reverse
-   * of the homepage hero, which is alone on the page and can follow its image.
+   * 3:2, matching ModEventCard's well, because both now draw from
+   * getEventFlyerUrl — the coordinator's own upload, which is square, rather
+   * than the 2:1 cover CampusGroups crops from it. A 2:1 well showed a square
+   * at 400x400 inside 800px, a stamp between 200px bands of blur; at 3:2 the
+   * same flyer comes out 533x533 and the bands are 133px.
+   *
+   * The cost is a taller card and so fewer events on screen. That is paid
+   * deliberately: square is the common shape in this feed, and the covers that
+   * still arrive 2:1 lose only a shallow band at top and bottom.
    */
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 3 / 2;
   flex-shrink: 0;
   overflow: hidden;
 
@@ -95,7 +76,7 @@ const GraphicContainer = styled.div<{ $fit: 'contain' | 'cover' }>`
     position: relative;
     width: 100%;
     height: 100%;
-    object-fit: ${({ $fit }) => $fit};
+    object-fit: contain;
     object-position: center;
   }
 `;
@@ -153,24 +134,6 @@ const LearnMoreButton = styled.button`
 `;
 
 export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
-  const graphicRef = useRef<HTMLDivElement>(null);
-  const [isUltraWide, setIsUltraWide] = useState(false);
-
-  const measure = (image: HTMLImageElement) => {
-    if (!image.naturalHeight) return;
-    setIsUltraWide(shouldCropFlyer(image.naturalWidth, image.naturalHeight));
-  };
-
-  /* These cards load lazily and there are over a hundred of them, so the
-     measurement rides on the image the card already renders rather than a
-     preload that would pull every flyer down at once. onLoad covers the normal
-     path; a cached image can be complete before this runs, and its load event
-     has already been and gone. */
-  useEffect(() => {
-    const image = graphicRef.current?.querySelector('img');
-    if (image?.complete) measure(image);
-  }, [event?.eventOriginalPhotoFullUrl]);
-
   if (!event) return null;
   const daysOfWeek = [
     'Sunday',
@@ -181,14 +144,13 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
     'Friday',
     'Saturday',
   ];
-  const {
-    group,
-    title,
-    eventLocation,
-    eventStartDateTime,
-    eventEndDateTime,
-    eventOriginalPhotoFullUrl,
-  } = event;
+  const { group, title, eventLocation, eventStartDateTime, eventEndDateTime } =
+    event;
+  /* The coordinator's upload where there is one, so a square flyer arrives
+     whole. The 2:1 cover this used to read is cropped to fill by CampusGroups
+     before we ever see it, which is why no amount of object-fit could stop
+     Recreation's square schedule losing its footer. */
+  const flyerUrl = getEventFlyerUrl(event);
   const startTime = getTime(eventStartDateTime);
   const endTime = getTime(eventEndDateTime);
   const month = getMonth(eventStartDateTime);
@@ -198,19 +160,9 @@ export const SplitEventCard = ({ event, onClick }: SplitEventCardProps) => {
 
   return (
     <Card onClick={onClick}>
-      <GraphicContainer
-        ref={graphicRef}
-        $fit={isUltraWide ? 'cover' : 'contain'}
-      >
-        <BlurBackdrop aria-hidden="true" $image={eventOriginalPhotoFullUrl} />
-        <Image
-          alt=""
-          src={eventOriginalPhotoFullUrl}
-          sizes="100vw"
-          lazy
-          aria-hidden="true"
-          onLoad={(loadEvent) => measure(loadEvent.currentTarget)}
-        />
+      <GraphicContainer>
+        <BlurBackdrop aria-hidden="true" $image={flyerUrl} />
+        <Image alt="" src={flyerUrl} sizes="100vw" lazy aria-hidden="true" />
       </GraphicContainer>
       <Details>
         <EventHeader>
