@@ -37,6 +37,19 @@ describe('toJobListings', () => {
     expect(toJobListings([abbreviated])).toHaveLength(1);
   });
 
+  it('alphabetizes by title rather than keeping feed order', () => {
+    const feedOrder = ['Night Manager', 'Accounting Technician', 'Custodian'];
+    const titles = toJobListings(
+      feedOrder.map((title) => ({ ...usuItem, title })),
+    ).map((job) => job.title);
+
+    expect(titles).toEqual([
+      'Accounting Technician',
+      'Custodian',
+      'Night Manager',
+    ]);
+  });
+
   it('maps only the fields the page renders', () => {
     const [job] = toJobListings([usuItem]);
     expect(job.id).toBe(usuItem.guid);
