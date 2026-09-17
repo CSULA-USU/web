@@ -1,7 +1,51 @@
+import { createHash, createHmac } from 'crypto';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
 const redis = Redis.fromEnv();
+
+const HASH_SECRET = process.env.RATELIMIT_HASH_SECRET;
+
+let hasWarnedAboutMissingSecret = false;
+
+/**
+ * Turns a rate-limit identifier into an opaque key.
+ *
+ * The identifiers here are a visitor's IP address, and for the per-submitter
+ * limit an IP paired with their email — directly identifying, and previously
+ * written to Upstash verbatim as the Redis key. A limiter only ever needs to
+ * know whether it has seen the same caller before, never who that caller is,
+ * so hashing costs nothing: the same input yields the same key and the counts
+ * behave identically.
+ *
+ * Keyed rather than plain, because a bare digest of an email is guessable. The
+ * address space of `@calstatela.edu` addresses is small and the format is
+ * predictable, so anyone holding the digests could hash their way back to the
+ * originals. Mixing in a secret the server alone knows removes that.
+ *
+ * Falls back to an unkeyed digest when no secret is configured, and says so
+ * once. That is weaker, but it still keeps plaintext out of Upstash, and a
+ * missing environment variable should not take down the only written channel
+ * students have to reach the U-SU — the same reasoning as `checkRateLimit`.
+ *
+ * Changing or introducing the secret re-keys everyone, which empties the
+ * current windows. Harmless: they are minutes and hours long.
+ */
+export const hashIdentifier = (identifier: string): string => {
+  if (HASH_SECRET) {
+    return createHmac('sha256', HASH_SECRET).update(identifier).digest('hex');
+  }
+
+  if (!hasWarnedAboutMissingSecret) {
+    hasWarnedAboutMissingSecret = true;
+    console.warn(
+      '[RATELIMIT_HASH_SECRET_MISSING] Falling back to an unkeyed digest. ' +
+        'Rate-limit keys stay opaque but become guessable; set the variable.',
+    );
+  }
+
+  return createHash('sha256').update(identifier).digest('hex');
+};
 
 /**
  * Per-submitter limit, keyed on IP *and* email: bounds how often one person can
@@ -60,6 +104,9 @@ export interface RateLimitOutcome {
  * reaching one is waved through, and it is logged loudly under a searchable
  * tag, because a fail-open nobody can see is indistinguishable from a limiter
  * that silently stopped doing anything.
+ *
+ * Takes the raw identifier and hashes it here rather than asking callers to,
+ * so no future call site can leak an IP or an email to Upstash by forgetting.
  */
 export const checkRateLimit = async (
   limiter: Ratelimit,
@@ -67,7 +114,7 @@ export const checkRateLimit = async (
 ): Promise<RateLimitOutcome> => {
   try {
     const { success, limit, remaining, reset } = await limiter.limit(
-      identifier,
+      hashIdentifier(identifier),
     );
     return { success, limit, remaining, reset, degraded: false };
   } catch (error) {
