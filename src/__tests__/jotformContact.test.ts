@@ -2,6 +2,9 @@ jest.mock('lib/ratelimit', () => ({
   jotformContactRatelimit: {
     limit: jest.fn(),
   },
+  jotformContactIpRatelimit: {
+    limit: jest.fn(),
+  },
 }));
 
 jest.mock('lib/api', () => {
@@ -9,7 +12,12 @@ jest.mock('lib/api', () => {
   return actual;
 });
 
-import { sanitize, validateContactForm } from 'pages/api/jotformContact';
+import {
+  isTooFastToBeHuman,
+  MIN_FORM_FILL_MS,
+  sanitize,
+  validateContactForm,
+} from 'pages/api/jotformContact';
 
 describe('sanitize', () => {
   it('returns empty string when input is not a string', () => {
@@ -43,7 +51,6 @@ describe('validateContactForm', () => {
     subject: 'Test Subject',
     message: 'Test message content',
     category: 'feedback',
-    captchaToken: 'valid-token',
     firstName: 'John',
     lastInitial: 'D',
   };
@@ -126,14 +133,6 @@ describe('validateContactForm', () => {
     }
   });
 
-  it('returns error when captchaToken is missing', () => {
-    const result = validateContactForm({ ...validBody, captchaToken: '' });
-    expect(result.ok).toBe(false);
-    if (!result.ok) {
-      expect(result.errors).toContain('CAPTCHA token is required.');
-    }
-  });
-
   it('returns ok with sanitized data when all fields are valid', () => {
     const result = validateContactForm(validBody);
     expect(result.ok).toBe(true);
@@ -153,5 +152,34 @@ describe('validateContactForm', () => {
     if (result.ok) {
       expect(result.data.subject.length).toBeLessThanOrEqual(200);
     }
+  });
+});
+
+describe('isTooFastToBeHuman', () => {
+  it('accepts a duration a person could plausibly have taken', () => {
+    expect(isTooFastToBeHuman(MIN_FORM_FILL_MS)).toBe(false);
+    expect(isTooFastToBeHuman(MIN_FORM_FILL_MS + 1)).toBe(false);
+    expect(isTooFastToBeHuman(45_000)).toBe(false);
+  });
+
+  it('rejects a submission faster than anyone could type it', () => {
+    expect(isTooFastToBeHuman(0)).toBe(true);
+    expect(isTooFastToBeHuman(250)).toBe(true);
+    expect(isTooFastToBeHuman(MIN_FORM_FILL_MS - 1)).toBe(true);
+  });
+
+  /* A crafted POST that never loaded the page has no duration to report, so a
+     missing or junk value is treated as a fail rather than waved through. */
+  it('rejects a missing or non-numeric duration', () => {
+    expect(isTooFastToBeHuman(undefined)).toBe(true);
+    expect(isTooFastToBeHuman(null)).toBe(true);
+    expect(isTooFastToBeHuman('4000')).toBe(true);
+    expect(isTooFastToBeHuman(NaN)).toBe(true);
+    expect(isTooFastToBeHuman(Infinity)).toBe(true);
+  });
+
+  it('rejects a negative duration', () => {
+    expect(isTooFastToBeHuman(-1)).toBe(true);
+    expect(isTooFastToBeHuman(-60_000)).toBe(true);
   });
 });
