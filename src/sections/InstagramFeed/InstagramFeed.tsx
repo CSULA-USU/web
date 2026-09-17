@@ -22,10 +22,24 @@ const HiddenSpan = styled.span`
   clip: rect(1px, 1px, 1px, 1px);
 `;
 
+/**
+ * Points a Meta CDN image at our own proxy route.
+ *
+ * The Graph API hands back URLs on Meta's CDN, so painting one directly sends
+ * the visitor's IP and a Referer naming this page to Meta — on the resource
+ * center pages that leaks the topic, not just the visit. `/api/instagram-image`
+ * fetches the bytes server-side so the browser only ever talks to this origin.
+ */
+const proxiedImageUrl = (src?: string) =>
+  src ? `/api/instagram-image?src=${encodeURIComponent(src)}` : undefined;
+
 const InstagramCardsContainer = styled.div<InstagramFeedStyleProps>`
   width: 320px;
   height: 320px;
-  background: ${(props) => `url(${props.src}) no-repeat`};
+  background: ${(props) => {
+    const proxied = proxiedImageUrl(props.src);
+    return proxied ? `url("${proxied}") no-repeat` : 'none';
+  }};
   background-size: cover;
   background-position: center center;
   margin: ${Spaces.sm};

@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 import { FontSizes, Spaces } from 'theme';
 import {
@@ -9,7 +8,6 @@ import {
   Input,
   PageMeta,
   Select,
-  StyledLink,
   TextArea,
   Typography,
 } from 'components';
@@ -126,7 +124,12 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [honeypot, setHoneypot] = useState('');
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  /* Stamped once on first render so the submit can report how long the form was
+     open. A script that POSTs the moment the page loads cannot produce a
+     plausible duration; see `isTooFastToBeHuman` in the API route. A ref rather
+     than state because reading it must never trigger a re-render. */
+  const formMountedAt = useRef(Date.now());
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -178,18 +181,13 @@ export default function Contact() {
       return;
     }
 
-    if (!captchaToken) {
-      showToast('Please complete the CAPTCHA.', 'error');
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
       await postJotformFeedback({
         ...formData,
         website: honeypot,
-        captchaToken,
+        formFillDurationMs: Date.now() - formMountedAt.current,
       });
 
       showToast('Your response has been successfully sent!', 'success');
@@ -204,7 +202,10 @@ export default function Contact() {
       });
 
       setHoneypot('');
-      setCaptchaToken(null);
+      /* Restart the clock so a follow-up submission is timed from here rather
+         than from page load, which would otherwise let every message after the
+         first skip the too-fast check entirely. */
+      formMountedAt.current = Date.now();
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : '';
 
@@ -216,7 +217,6 @@ export default function Contact() {
       );
 
       console.error(error);
-      setCaptchaToken(null);
     } finally {
       setIsSubmitting(false);
     }
@@ -430,16 +430,6 @@ export default function Contact() {
               </HoneypotField>
 
               <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
-                <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-                  onChange={(token) => {
-                    setCaptchaToken(token);
-                  }}
-                  onExpired={() => setCaptchaToken(null)}
-                  onErrored={() => setCaptchaToken(null)}
-                />
-              </FluidContainer>
-              <FluidContainer padding="0" margin={`0 0 ${Spaces['md']} 0`}>
                 <Typography variant="span" size="xs" margin="0">
                   We use the information you submit only to review your
                   feedback, respond if needed or when possible, and to improve
@@ -448,27 +438,6 @@ export default function Contact() {
                   operate this form.
                   {/* See our{' '}
                   <a href={PRIVACY_POLICY_URL}>Privacy Policy</a> for details. */}
-                </Typography>
-              </FluidContainer>
-              <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
-                <Typography variant="span" size="xs" margin="0">
-                  This form is protected by reCAPTCHA. Google&apos;s{' '}
-                  <StyledLink
-                    href="https://policies.google.com/privacy"
-                    isExternalLink
-                    isInverseUnderlineStyling
-                  >
-                    Privacy Policy
-                  </StyledLink>{' '}
-                  and{' '}
-                  <StyledLink
-                    href="https://policies.google.com/terms"
-                    isExternalLink
-                    isInverseUnderlineStyling
-                  >
-                    Terms of Service
-                  </StyledLink>{' '}
-                  apply.
                 </Typography>
               </FluidContainer>
               <Button type="submit" disabled={isSubmitting}>

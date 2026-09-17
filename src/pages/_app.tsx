@@ -1,8 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
-import ReactGA from 'react-ga4';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
@@ -46,19 +44,6 @@ export default function App({
   const isDraftRoute = router.pathname
     .split('/')
     .some((segment) => segment.startsWith('_'));
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-      if (measurementId) {
-        ReactGA.initialize(measurementId);
-      } else if (process.env.NODE_ENV === 'development') {
-        console.warn(
-          'Google Analytics measurement ID is not set. Skipping ReactGA initialization.',
-        );
-      }
-    }
-  }, []);
 
   return (
     <>
