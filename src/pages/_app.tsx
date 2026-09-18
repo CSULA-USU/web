@@ -10,6 +10,7 @@ import { SessionProvider } from 'next-auth/react';
 import { EventsLoader } from 'modules';
 import { FALLBACK_CARD_IMAGE } from 'components';
 import ToastProvider from 'context/ToastContext';
+import { usesAuthSession } from 'utils/authRoutes';
 import { Bitter, Montserrat } from 'next/font/google';
 
 if (typeof window !== 'undefined') {
@@ -45,6 +46,8 @@ export default function App({
     .split('/')
     .some((segment) => segment.startsWith('_'));
 
+  const usesSession = usesAuthSession(router.pathname);
+
   return (
     <>
       <style jsx global>{`
@@ -54,7 +57,23 @@ export default function App({
         }
       `}</style>
       <div className={`${bitter.variable} ${montserrat.variable}`}>
-        <SessionProvider session={session}>
+        {/* Kept mounted on every route rather than rendered conditionally: the
+            provider holds the fetched session in memory, so tearing it down
+            when a signed-in staff member steps out to a public page and back
+            would drop that — and would remount ToastProvider and RecoilRoot
+            with it, resetting page state on every crossing.
+
+            What changes is its behavior. `undefined` means "unknown, go find
+            out" and triggers a request to /api/auth/session, which is what
+            sets NextAuth's cookies; `null` means "known signed out" and
+            fetches nothing. Public visitors therefore receive no cookies at
+            all. `refetchOnWindowFocus` defaults to true and would re-fetch on
+            every tab focus, setting them anyway, so it has to be gated on the
+            same condition. */}
+        <SessionProvider
+          session={usesSession ? session : null}
+          refetchOnWindowFocus={usesSession}
+        >
           <ToastProvider>
             <RecoilRoot>
               <Head>
