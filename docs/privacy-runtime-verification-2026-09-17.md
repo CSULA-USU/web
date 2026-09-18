@@ -3,11 +3,9 @@
 **Purpose:** confirm what the deployed site actually does in a browser, so the
 privacy policy describes reality rather than intent.
 
-**Companion to:** `docs/privacy-audit-2026-09-17.md`, which was static analysis
-only. That audit named five things source code cannot answer. Three of them no
-longer exist — Google Analytics, reCAPTCHA, and the direct Meta CDN image loads
-were all removed on the `fix/privacy-issues` branch. What remains below is the
-part that still needs a browser.
+**Companion to:** `docs/third-party-data-inventory.md`, which is static analysis
+only. Its "Open questions" section lists what source code cannot settle; the
+checks below are how each one gets answered.
 
 **Who fills this in:** anyone with DevTools. No special access needed.
 **Time:** about an hour.
@@ -18,10 +16,9 @@ part that still needs a browser.
 ## Why this exists
 
 A privacy policy makes factual claims: _we do not use cookies_, _we share data
-with these vendors_, _we do not store anything in your browser_. Each claim is
-either true or it is a misstatement, and a policy that is wrong is worse than no
-policy at all — it converts an omission into an affirmative false statement,
-which is the shape the indemnification obligation cares about.
+with these vendors_, _we do not store anything in your browser_. Each of those
+is either accurate or it is not, and publishing one that is not is worse than
+publishing nothing — so each gets checked before it ships.
 
 Static analysis got us most of the way. It cannot answer what a third-party
 script does at runtime, because that script is fetched when the page loads and
