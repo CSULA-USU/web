@@ -75,9 +75,9 @@ that fixed the advisory, so yarn can still climb to later releases.
 
 An exact pin (`"fast-xml-parser": "5.3.6"`) does the opposite of what it looks like. It reads as
 "at least 5.3.6" but means "exactly 5.3.6" — so the moment a _new_ advisory lands against that
-version, the pin blocks its fix and the alert stays open forever. That is not hypothetical: this
-block held `fast-xml-parser` at a vulnerable 5.3.6 and `undici` at a vulnerable 7.24.6 through
-several advisory cycles before anyone noticed.
+version, the pin blocks its own fix and the entry stops doing the job it was added for. That is
+not hypothetical: exact pins on `fast-xml-parser` and `undici` held both below the floors their
+later advisories called for, which is why this block is ranges now.
 
 A stale lockfile does the same thing more quietly. Yarn only re-resolves a dependency when its
 declared range changes, so `^0.2.4` kept reinstalling the 0.2.5 already recorded in `yarn.lock`
@@ -94,10 +94,10 @@ declares a patched range — verify with `yarn audit` rather than assuming.
 `js-yaml` (3.x and 4.x) alone unless you scope the entry per-parent — a blanket floor forces one
 major onto consumers of the other and breaks them.
 
-**Not every advisory is reachable.** `yarn audit` counts what is present in the tree, not what is
-exploitable here. Most hits are ReDoS in build-time tooling; the `glob` CLI command-injection needs
-someone to run `glob` as a CLI, which nothing does. Check whether the vulnerable path is one this
-app actually executes before treating a number as urgent. `next` advisories in particular are
+**Not every advisory is reachable.** `yarn audit` counts what is present in the tree, not what this
+app actually runs — most hits are in build-time tooling, and some describe entry points nothing
+here calls. Check whether the affected code path is one this app executes before treating a count
+as urgent, and prefer raising the floor anyway when it is cheap. `next` advisories in particular are
 mostly App Router, Server Components, Server Actions, `i18n`, and `rewrites` — none of which this
 Pages Router app uses.
 
