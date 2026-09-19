@@ -69,7 +69,16 @@ export default function App({
             fetches nothing. Public visitors therefore receive no cookies at
             all. `refetchOnWindowFocus` defaults to true and would re-fetch on
             every tab focus, setting them anyway, so it has to be gated on the
-            same condition. */}
+            same condition.
+
+            Expect this to look broken in development. React StrictMode
+            double-invokes effects, and next-auth's cleanup resets its own
+            module-level session cache to `undefined` between the two runs —
+            so the second mount no longer sees the `null` above, fetches, and
+            sets the cookies regardless. Production mounts once and does not.
+            Verified by toggling `reactStrictMode` off locally: cookies
+            disappear from public pages. Do not "fix" this by disabling
+            StrictMode. */}
         <SessionProvider
           session={usesSession ? session : null}
           refetchOnWindowFocus={usesSession}
