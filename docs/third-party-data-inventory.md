@@ -51,6 +51,34 @@ there is no runtime request to Google Fonts. `src/styles/globals.css` contains n
 There are no `<iframe>` elements anywhere in the codebase, so there are no
 embedded players, maps or widgets.
 
+### A reference that looks like a third-party script and is not
+
+Every page bundle contains a `vercel.live` URL, added by the framework rather
+than by this codebase. Grepping the bundles finds it, so it is recorded here to
+save the next person the investigation.
+
+It never runs for a visitor. The surrounding code tests `document.cookie` for
+Vercel's toolbar flag and returns before creating the element if it is absent:
+
+```js
+...toolbar=1(?:;|$)/.test(document.cookie)) return;
+var s = document.createElement('script');
+s.src = 'https://vercel.live/_next-live/feedback/feedback.js';
+s.setAttribute('data-explicit-opt-in', 'true');
+```
+
+That flag is only present for someone signed in to Vercel who has turned the
+review toolbar on, so the request is made by the people who build the site and
+by nobody else. Observed in practice on the staging hostname and not on
+production, which fits the toolbar being a preview-review feature.
+
+Two other strings in the bundles are similarly inert. `fonts.gstatic.com` and
+`fonts.googleapis.com` appear inside a font-provider lookup table that Next
+ships whether or not those providers are used — no request is made, because
+fonts here are self-hosted at build time. **A string in a bundle is not a
+network request**; anything found by grep needs confirming in a network log
+before it counts.
+
 ## 2. Browser-side: media
 
 `src/components/Image/Image.tsx:124` renders a plain `<img>`, and CSS
@@ -99,6 +127,16 @@ The browser never contacts these; the Vercel function does.
 | Slack webhook                  | Alert when a feedback email fails                      | `src/lib/feedbackNotifications.ts:186-199`                                                                                    |
 | Supabase                       | Backoffice allowlist, CMS, meeting documents           | `src/lib/supabaseAdmin.ts`, `src/services/index.ts:177+`                                                                      |
 | Azure AD                       | Backoffice sign-in (browser-side redirect, staff only) | `src/pages/api/auth/[...nextauth].js:7-11`                                                                                    |
+
+Azure AD is the one entry in this table the browser reaches directly rather
+than the server, and it is worth spelling out because the hand-off happens
+without a click: reaching the sign-in route while signed out sends the browser
+straight on to Microsoft, with no intermediate page to accept or decline.
+
+From there Microsoft sets its own cookies on its own domain. Those belong to
+Microsoft, are outside this site's control, and reach only staff who are
+deliberately signing in — no ordinary visitor encounters them. They are listed
+nowhere below for the same reason.
 
 ## 4. Cookies and client storage
 
