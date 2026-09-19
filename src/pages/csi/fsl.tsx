@@ -1625,10 +1625,13 @@ export default function FSL() {
             </AB524InfoSection>
             <AB524ReportContainer>
               <DocumentLink
-                href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=4k6sbdlb&raw=1"
-                aria-label="FY 22&mdash;23 Report"
+                href="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/csi/fsl/AB%20524/2025-2026%20AB%20524%20Report.pdf"
+                aria-label="FY 25&mdash;26 Report"
               >
-                FY 22&mdash;23 Report
+                FY 25&mdash;26 Report
+              </DocumentLink>
+              <DocumentLink href="https://www.dropbox.com/scl/fi/m9pp7o7jeakk3aswg4s4f/2024-2025-AB-524-Report.pdf?rlkey=db01rxsfu3oldh1p3alwo2y4h&st=ywm14ay6&raw=1">
+                FY 24&mdash;25 Report
               </DocumentLink>
               <DocumentLink
                 href="https://www.dropbox.com/scl/fi/26yu1niyp0kg73ntigdkl/2023-2024-AB-524-Report.pdf?rlkey=coc6owqcz78f1etbixhxzyf3v&st=w0suj43l&raw=1"
@@ -1637,10 +1640,10 @@ export default function FSL() {
                 FY 23&mdash;24 Report
               </DocumentLink>
               <DocumentLink
-                href="https://www.dropbox.com/scl/fi/m9pp7o7jeakk3aswg4s4f/2024-2025-AB-524-Report.pdf?rlkey=db01rxsfu3oldh1p3alwo2y4h&st=ywm14ay6&raw=1"
-                aria-label="FY 24&mdash;25 Report"
+                href="https://www.dropbox.com/scl/fi/bk41ypgbsdjvt0zq9nx5q/2022-2023-AB-524-Report.pdf?rlkey=blktva7fvvqkrlobxcp4j4kuh&st=4k6sbdlb&raw=1"
+                aria-label="FY 22&mdash;23 Report"
               >
-                FY 24&mdash;25 Report
+                FY 22&mdash;23 Report
               </DocumentLink>
             </AB524ReportContainer>
             {/*
