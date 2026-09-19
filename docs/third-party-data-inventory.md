@@ -109,13 +109,25 @@ is in `package.json`. `src/middleware.ts` only redirects.
 
 What remains is set by dependencies:
 
-| Name                                                           | Set by                                          | Scope                                                                                                  |
-| -------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `next-auth.session-token` (`__Secure-` prefixed in production) | NextAuth, `src/pages/api/auth/[...nextauth].js` | Backoffice staff only. `HttpOnly`, `SameSite=Lax`. Library defaults; no `cookies` block is configured. |
-| `next-auth.csrf-token`, `next-auth.callback-url`               | NextAuth, same file                             | Backoffice staff only                                                                                  |
+| Name                               | Set by                                      | Scope                                                                                                                                                                                                                                     |
+| ---------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__Host-next-auth.csrf-token`      | NextAuth, via a call to `/api/auth/session` | Set on reaching any backoffice route, including the sign-in page before anyone signs in — the CSRF token has to exist before the form is submitted. `HttpOnly`, `Secure`, `SameSite=Lax`. Random per session; not an identifier.          |
+| `__Secure-next-auth.callback-url`  | same                                        | Same trigger. Holds the return URL after sign-in. `HttpOnly`, `Secure`, `SameSite=Lax`.                                                                                                                                                   |
+| `__Secure-next-auth.session-token` | NextAuth, on successful sign-in             | Staff only, after authenticating. Carried on every request to the domain thereafter, including public pages — NextAuth's endpoints live under `/api/auth`, so the cookie cannot be path-scoped to `/backoffice` without breaking sign-in. |
 
-No cookies are expected on public pages. See "Open questions" for the two
-storage behaviors that need a browser to confirm.
+All three are first party. No third party receives them, and none is used for
+tracking. NextAuth's library defaults apply; no `cookies` block is configured in
+`src/pages/api/auth/[...nextauth].js`.
+
+**Public visitors receive no cookies.** `SessionProvider` is passed an explicit
+`null` session outside the gated routes (`src/pages/_app.tsx`, using
+`usesAuthSession` from `src/utils/authRoutes.ts`), so it never calls
+`/api/auth/session` and nothing is set. `refetchOnWindowFocus` is gated on the
+same condition, since it defaults to true and would otherwise re-fetch — and set
+the cookies — whenever a tab regained focus.
+
+This was verified in a browser rather than inferred: before that change, a plain
+page load set the first two cookies for every visitor.
 
 ## 5. Forms
 
