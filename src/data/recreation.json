@@ -151,8 +151,8 @@
         "linkText": "Game Room",
         "hours": [
           {
-            "day": "Monday to Sunday",
-            "time": "Closed until September 1"
+            "day": "Monday to Thursday",
+            "time": "11:00 AM to 7:00 PM"
           }
         ]
       },
