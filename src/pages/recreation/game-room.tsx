@@ -397,6 +397,14 @@ export default function Gameroom() {
                 Join a Tournament
               </Button>
 
+              <Button
+                style={{ borderRadius: '4px' }}
+                href="https://www.dropbox.com/scl/fi/ehmnkzpjjng6dg4emp4s6/Game-Room-Rules-Code-of-Conduct-AY-26-27.pdf?rlkey=a8pt9gvhhb6g5fn2krmjmm1p8&st=b48bz2lc&raw=1"
+                isExternalLink
+              >
+                Rules and Regulations
+              </Button>
+
               <HorizontalContainer style={{ gap: Spaces.md }}>
                 <SocialIconLink
                   Icon={FaDiscord}
