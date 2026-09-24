@@ -455,7 +455,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            Mon to Thu: 12 PM to 6 PM
+            Mon to Thu: 11 PM to 7 PM
           </Typography>
         </li>
       </ContactsBar>
