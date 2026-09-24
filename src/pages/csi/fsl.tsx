@@ -145,8 +145,9 @@ const FSL_EMAIL = 'iprieto7@calstatela.edu';
    not date-gated — this page is static, so a build-time date freezes at
    whenever the last deploy happened, and a client-side one disagrees with the
    server's markup on hydration. Copy and link are department-owned. */
+
 const RECRUITMENT_STRIP = {
-  enabled: true,
+  enabled: false,
   /* PENDING CSI/PHC SIGN-OFF — every other string here is department-approved.
      The headline does not name Panhellenic until word four, which is late for
      someone scanning on a phone, so the eyebrow puts the audience first: a
