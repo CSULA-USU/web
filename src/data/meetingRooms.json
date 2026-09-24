@@ -43,7 +43,7 @@
       },
       {
         "setup": "Banquet Layout",
-        "capacity": [45],
+        "capacity": [40],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-expanded.webp",
         "equipment": ["60\" Round Tables", "Chairs"]
@@ -95,7 +95,7 @@
       },
       {
         "setup": "Banquet Layout",
-        "capacity": [45],
+        "capacity": [40],
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet-expanded.webp",
         "equipment": ["60\" Round Tables", "Chairs"]
