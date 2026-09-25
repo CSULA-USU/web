@@ -7,12 +7,12 @@ const NAV_MAP_PATH = path.join(process.cwd(), 'src/data/navMap.json');
 const OUTPUT_PATH = path.join(process.cwd(), 'public/sitemap.xml');
 
 const EXCLUDED_FIRST_SEGMENTS = new Set(['api', 'backoffice', '_edit']);
-// /keep-the-u-open is in testing and also noindexed in its page <Head>;
+// /save-the-u is in testing and also noindexed in its page <Head>;
 // remove it from here when the page launches.
 const EXCLUDED_EXACT_ROUTES = new Set([
   '/404',
   '/graffix/backoffice',
-  '/keep-the-u-open',
+  '/save-the-u',
 ]);
 const EXCLUDED_ROUTE_PREFIXES = ['/graffix/backoffice'];
 

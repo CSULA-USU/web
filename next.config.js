@@ -33,6 +33,21 @@ const nextConfig = {
     deviceSizes: [360, 768, 1024],
     imageSizes: [400],
   },
+
+  async redirects() {
+    return [
+      // The campaign page was renamed after /keep-the-u-open had already gone
+      // out on flyers and emails, so the old URL must keep resolving. Query
+      // strings (UTM tags) carry through. Temporary while the page is in
+      // testing, because browsers cache a permanent redirect indefinitely and
+      // a second rename would strand them; flip to `permanent: true` at launch.
+      {
+        source: '/keep-the-u-open',
+        destination: '/save-the-u',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 // Apply next-video wrapper

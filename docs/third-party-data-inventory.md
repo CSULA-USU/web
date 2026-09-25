@@ -88,7 +88,7 @@ whatever host the URL names, so the `images.domains` allowlist at
 `next/image`, which is used in exactly two files
 (`src/components/Gallery/Gallery.tsx:141`,
 `src/components/GridGallery/GridGallery.tsx:156`) and consumed only by
-`/keep-the-u-open`.
+`/save-the-u`.
 
 | Host                                                                                                                            | Serves                             | Referenced at                                                                                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
