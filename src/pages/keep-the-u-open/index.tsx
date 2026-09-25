@@ -332,6 +332,9 @@ export default function KeepTheUOpen() {
         <title>Keep the U Open | Cal State LA U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* Kept out of search while the page is being tested; it is also
+            excluded in src/scripts/generate-sitemap.js. Remove both to launch. */}
+        <meta name="robots" content="noindex,nofollow" key="robots" />
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
