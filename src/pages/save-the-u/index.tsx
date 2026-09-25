@@ -358,7 +358,7 @@ export default function KeepTheUOpen() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
-          content="https://www.calstatelausu.org/keep-the-u-open"
+          content="https://www.calstatelausu.org/save-the-u"
         />
         <meta property="og:image" content="/usu-front.jpg" key="og-image" />
         <meta
@@ -366,10 +366,7 @@ export default function KeepTheUOpen() {
           content="The University-Student Union building at Cal State LA"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <link
-          rel="canonical"
-          href="https://www.calstatelausu.org/keep-the-u-open"
-        />
+        <link rel="canonical" href="https://www.calstatelausu.org/save-the-u" />
       </Head>
 
       {/* 1 · AnchorNav — hidden ≤768px */}

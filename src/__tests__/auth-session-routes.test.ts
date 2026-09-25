@@ -26,7 +26,7 @@ describe('usesAuthSession', () => {
       '/about',
       '/ccc/gsrc',
       '/recreation',
-      '/keep-the-u-open',
+      '/save-the-u',
       '/ccc/cultural-grads/[id]',
     ].forEach((pathname) => {
       expect(usesAuthSession(pathname)).toBe(false);
