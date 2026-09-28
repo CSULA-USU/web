@@ -153,6 +153,10 @@
           {
             "day": "Monday to Thursday",
             "time": "11:00 AM to 7:00 PM"
+          },
+          {
+            "day": "Friday to Sunday",
+            "time": "Closed"
           }
         ]
       },
