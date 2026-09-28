@@ -1,49 +1,52 @@
 [
   {
     "title": "U-SU Chair",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Emily.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/emily-web.webp",
     "name": "Emily Webb",
-    "section": "student-representative"
+    "section": "student-representative",
+    "credentials": "Personnel Committee Chair"
   },
   {
     "title": "Vice Chair",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Reine.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/reine-santos.webp",
     "name": "Reine Santos Saavedra",
-    "section": "student-representative"
+    "section": "student-representative",
+    "credentials": "Facilities Committee Chair"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Giovanni%20Torres.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/giovanni-torres.webp",
     "name": "Giovanni Torres",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Mark.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/mark-raspopov.webp",
     "name": "Mark Raspopov",
-    "section": "student-representative"
+    "section": "student-representative",
+    "credentials": "Fiscal/Audit Committee Chair"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Ina.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/ina-lozano.webp",
     "name": "Ina Lozano",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Blanca.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/blanca-loza.webp",
     "name": "Blanca Loza",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Arianna%202.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/ariana-rodriguez.webp",
     "name": "Ariana Rodriguez",
     "section": "student-representative"
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/Christina.jpg",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/christina-barraza.webp",
     "name": "Christina Barraza",
     "section": "student-representative"
   },
@@ -80,6 +83,12 @@
     "src": "https://www.dropbox.com/scl/fi/jhcnnzx5ftrn1d3v7oky5/bod-placeholder.png?rlkey=logplfs0t9501h07bs3jggkll&raw=1",
     "name": "Judith Benjamin",
     "credentials": "University Controller",
+    "section": "pro-board-member"
+  },
+  {
+    "title": "Alumni Representative",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/eder-bod.webp",
+    "name": "Eder Perdomo Hernandez",
     "section": "pro-board-member"
   },
   {
