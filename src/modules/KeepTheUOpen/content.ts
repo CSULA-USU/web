@@ -395,7 +395,7 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'expenses',
     label: 'Expenses',
-    color: 'greyDarkest',
+    color: 'blue',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
@@ -408,7 +408,7 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'revenue',
     label: 'Revenue',
-    color: 'greyDark',
+    color: 'greenDark',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
@@ -421,7 +421,7 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'reserve',
     label: 'Reserve',
-    color: 'gold',
+    color: 'black',
     strokeWidth: 3.5,
     labelSide: 'above',
     points: [
