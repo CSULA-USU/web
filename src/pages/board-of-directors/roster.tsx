@@ -41,7 +41,7 @@ export default function Governance() {
           flex
           flexWrap="wrap"
           justifyContent="center"
-          padding="36px 10px"
+          padding="36px 2px"
         >
           {boardMembers.map((m) =>
             m.section === 'student-representative' ? (
@@ -65,7 +65,7 @@ export default function Governance() {
           flex
           flexWrap="wrap"
           justifyContent="center"
-          padding="36px 10px"
+          padding="36px 2px"
         >
           {boardMembers.map((m) =>
             m.section === 'pro-board-member' ? (
@@ -89,7 +89,7 @@ export default function Governance() {
           flex
           flexWrap="wrap"
           justifyContent="center"
-          padding="36px 10px"
+          padding="36px 2px"
         >
           {boardMembers.map((m) =>
             m.section === 'advisors' ? (
