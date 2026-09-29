@@ -329,7 +329,7 @@ export default function KeepTheUOpen() {
   return (
     <Page>
       <Head>
-        <title>Keep the U Open | Cal State LA U&ndash;SU</title>
+        <title>Keep the U-SU Open | Cal State LA U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* Kept out of search while the page is being tested; it is also
@@ -347,7 +347,7 @@ export default function KeepTheUOpen() {
         />
         <meta
           property="og:title"
-          content="Keep the U Open | University-Student Union"
+          content="Keep the U-SU Open | University-Student Union"
           key="og-title"
         />
         <meta
@@ -371,7 +371,7 @@ export default function KeepTheUOpen() {
 
       {/* 1 · AnchorNav — hidden ≤768px */}
       <AnchorNav
-        title="Keep the U Open"
+        title="Keep the U-SU Open"
         links={anchorLinks}
         ctaLabel={campaignMode.ctaLabel}
         ctaHref={campaignMode.ctaHref}
@@ -771,101 +771,53 @@ export default function KeepTheUOpen() {
             ))}
           </AutoGrid>
         </div>
-
-        {/* 7.2 · TrendChart */}
         <Divider
-          color="greyLighter"
-          size="0px"
+          color="transparent"
+          size="1px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
-        <Panel
-          border="greyLighter"
-          shadow="none"
-          borderRadius="16px"
-          padding="clamp(16px, 2vw, 28px)"
-          width="100%"
+        {/* 7.2 · Inflation gap */}
+        <TextAndImage
+          src={sectionIllustrations.inflationGap}
+          imagePosition="left"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          /* Stated rather than left to the default, which used to resolve to
+             this and now resolves to `center`. */
+          imageAlign="end"
         >
-          <div>
-            <Typography
-              as="h3"
-              variant="pageHeader"
-              fluidSize={FLUID_H3}
-              lineHeight="1.2"
-            >
-              Revenue and expenses, if nothing changes
-            </Typography>
-            <Typography
-              as="p"
-              variant="span"
-              size="xs"
-              color="greyDark"
-              margin={`${Spaces.sm} 0 ${Spaces.lg}`}
-            >
-              U-SU Fiscal Committee, &ldquo;DO NOTHING&rdquo; projection, April
-              10 2026
-              <CitationMarker sourceId="2" />
-            </Typography>
-            <TrendChart
-              fiscalYears={FISCAL_YEARS}
-              series={trendSeries}
-              markers={[
-                {
-                  seriesId: 'reserve',
-                  label: 'Reserve reaches $0',
-                  /* Below and left of the ring: above it would sit on the
-                     FY 29-30 reserve figure. */
-                  labelPosition: { dx: -8, dy: 26, anchor: 'end' },
-                },
-              ]}
-              shadeBetween={['expenses', 'revenue']}
-              ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
-              caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
-              captionMaxWidth={WIDE_MEASURE}
-              table={trendTable}
-              animate={chartAnimation.animateTrend}
-              animationDuration={chartAnimation.animationDuration}
-            />
-            <AutoGrid
-              minColumnWidth="200px"
-              justifyItems="center"
-              margin="clamp(16px, 2vw, 28px)"
-            >
-              {reserveCallouts.map((callout) => (
-                <CitedStat
-                  key={callout.eyebrow}
-                  variant="onLight"
-                  eyebrow={callout.eyebrow}
-                  value={callout.value}
-                  countTo={callout.amount}
-                  formatValue={formatDollars}
-                  /* The year the reserve goes negative is the one figure on
-                     this page that is bad news on its own terms. Red ties it
-                     to the reserve line in the chart above. */
-                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
-                />
-              ))}
-            </AutoGrid>
-            <Typography
-              as="p"
-              variant="copy"
-              size="xs"
-              lineHeight="1.6"
-              color="greyDark"
-              /* Centered block, text still ranged left — see the chart's own
-                 caption above it. */
-              margin={`${Spaces.lg} auto 0`}
-              style={{ maxWidth: WIDE_MEASURE }}
-            >
-              Figures are from the Fiscal Committee&apos;s April 10 2026
-              &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
-              stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY
-              2025-26, 25% of the operating budget. An annual bond payment of
-              about $1,920,000, roughly a third of the operating budget, runs
-              through 2038.
-            </Typography>
-          </div>
-        </Panel>
-
+          <Typography
+            as="h3"
+            variant="pageHeader"
+            fluidSize={FLUID_H3}
+            lineHeight="1.2"
+          >
+            The part that doesn&apos;t add up:
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            If the 2007 fee kept pace with inflation, it would be{' '}
+            <strong>$215.30 a semester</strong> today.
+            <CitationMarker sourceId="5" /> The proposal is{' '}
+            <strong>$227.25</strong> which is $11.95 more. That difference is
+            there because just catching up on inflation doesn&apos;t close a
+            shortfall also driven by enrollment decline.
+            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
+            what the U-SU costs to run but the sustainable range is 80–85%.
+            <CitationMarker sourceId="2" />
+          </Typography>
+        </TextAndImage>
+        <Divider
+          color="greyLighter"
+          size="1px"
+          margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
+        />
         {/* 7.3 · PieChart */}
         <Divider
           color="greyLighter"
@@ -993,49 +945,104 @@ export default function KeepTheUOpen() {
           </div>
         </Panel>
 
-        {/* 7.5 · Inflation gap */}
+        {/* 7.5 · TrendChart — last on purpose: the widening gap it shows leads
+            straight into the outcomes below, where that shortfall lands on
+            services. */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
-        <TextAndImage
-          src={sectionIllustrations.inflationGap}
-          imagePosition="left"
-          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
-          /* Stated rather than left to the default, which used to resolve to
-             this and now resolves to `center`. */
-          imageAlign="end"
+        <Panel
+          border="greyLighter"
+          shadow="none"
+          borderRadius="16px"
+          padding="clamp(16px, 2vw, 28px)"
+          width="100%"
         >
-          <Typography
-            as="h3"
-            variant="pageHeader"
-            fluidSize={FLUID_H3}
-            lineHeight="1.2"
-          >
-            The part that doesn&apos;t add up on its own
-          </Typography>
-          <Typography
-            as="p"
-            variant="copy"
-            size="sm"
-            lineHeight="1.6"
-            margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: MEASURE }}
-          >
-            If the 2007 fee had only kept pace with inflation, it would be{' '}
-            <strong>$215.30 a semester</strong> today.
-            <CitationMarker sourceId="5" /> The proposal is{' '}
-            <strong>$227.25</strong>; $11.95 more than inflation alone would
-            explain. That difference is real, and it&apos;s there because
-            catching up on inflation does not close a shortfall that&apos;s also
-            driven by enrollment decline.
-            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
-            what the U-SU costs to run; the sustainable range is 80–85%.
-            <CitationMarker sourceId="2" />
-          </Typography>
-        </TextAndImage>
+          <div>
+            <Typography
+              as="h3"
+              variant="pageHeader"
+              fluidSize={FLUID_H3}
+              lineHeight="1.2"
+            >
+              Revenue and expenses, if nothing changes
+            </Typography>
+            <Typography
+              as="p"
+              variant="span"
+              size="xs"
+              color="greyDarker"
+              margin={`${Spaces.sm} 0 ${Spaces.lg}`}
+            >
+              U&ndash;SU Fiscal Committee, &ldquo;DO NOTHING&rdquo; projection,
+              April 10 2026
+              <CitationMarker sourceId="2" />
+            </Typography>
+            <TrendChart
+              fiscalYears={FISCAL_YEARS}
+              series={trendSeries}
+              markers={[
+                {
+                  seriesId: 'reserve',
+                  label: 'Reserve reaches $0',
+                  /* Below and left of the ring: above it would sit on the
+                     FY 29-30 reserve figure. */
+                  labelPosition: { dx: -8, dy: 26, anchor: 'end' },
+                },
+              ]}
+              shadeBetween={{
+                seriesIds: ['expenses', 'revenue'],
+                label: 'Operating deficit',
+              }}
+              ariaLabel="Line chart of the U-SU DO NOTHING projection. Revenue and expenses are both $5,856,794 in FY 2024-25. Expenses are $5,760,109 in FY 2025-26 and rise to $6,677,545 in FY 2030-31, while revenue falls to $4,876,638 and then $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
+              caption="Plotted points are published figures. Revenue and expenses are published for FY 2024-25, FY 2025-26 and FY 2030-31, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
+              captionMaxWidth={WIDE_MEASURE}
+              table={trendTable}
+              animate={chartAnimation.animateTrend}
+              animationDuration={chartAnimation.animationDuration}
+            />
+            <AutoGrid
+              minColumnWidth="200px"
+              justifyItems="center"
+              margin="clamp(16px, 2vw, 28px)"
+            >
+              {reserveCallouts.map((callout) => (
+                <CitedStat
+                  key={callout.eyebrow}
+                  variant="onLight"
+                  eyebrow={callout.eyebrow}
+                  value={callout.value}
+                  countTo={callout.amount}
+                  formatValue={formatDollars}
+                  /* The year the reserve goes negative is the one figure on
+                     this page that is bad news on its own terms. Red ties it
+                     to the reserve line in the chart above. */
+                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
+                />
+              ))}
+            </AutoGrid>
+            <Typography
+              as="p"
+              variant="copy"
+              size="xs"
+              lineHeight="1.6"
+              color="greyDarker"
+              /* Centered block, text still ranged left — see the chart's own
+                 caption above it. */
+              margin={`${Spaces.lg} auto 0`}
+              style={{ maxWidth: WIDE_MEASURE }}
+            >
+              Figures are from the Fiscal Committee&apos;s April 10 2026
+              &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
+              stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY
+              2025&ndash;26, 25% of the operating budget. An annual bond payment
+              of about $1,920,000, roughly a third of the operating budget, runs
+              through 2038.
+            </Typography>
+          </div>
+        </Panel>
       </FluidContainer>
 
       {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case. The

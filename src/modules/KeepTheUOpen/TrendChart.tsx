@@ -26,7 +26,8 @@ export interface TrendSeries {
   dashed?: boolean;
   /**
    * Which side of the point its value label sits on. Series that run close
-   * together should take opposite sides so their labels do not collide.
+   * together should take opposite sides so their labels do not collide. A
+   * point shared with another series uses the first series' side.
    */
   labelSide?: 'above' | 'below';
   /**
@@ -57,8 +58,12 @@ interface TrendChartProps {
   fiscalYears: string[];
   series: TrendSeries[];
   markers?: TrendMarker[];
-  /** Series id pair whose vertical gap is shaded. */
-  shadeBetween?: [string, string];
+  /**
+   * Shades the vertical gap between two series, and names that area in the
+   * legend. The label travels with the pair so the shading cannot ship
+   * without its key.
+   */
+  shadeBetween?: { seriesIds: [string, string]; label: string };
   caption: string;
   /** Reading measure for `caption`. Defaults to `CAPTION_MEASURE`. */
   captionMaxWidth?: string;
@@ -156,6 +161,36 @@ const POINT_RADIUS = 4;
 const LABEL_RISE = 15;
 const LABEL_DROP = 23;
 
+interface PlottedPoint {
+  series: TrendSeries;
+  point: TrendPoint;
+}
+
+/* Groups points that land on the exact same year and value, in series order.
+   Coincident points would otherwise stack, and only the last series drawn
+   would show — so a shared figure would read as belonging to one series. A
+   group of one is the ordinary case. */
+const groupCoincidentPoints = (series: TrendSeries[]) => {
+  const groups = new Map<string, PlottedPoint[]>();
+  series.forEach((s) =>
+    s.points.forEach((point) => {
+      const key = `${point.yearIndex}:${point.value}`;
+      groups.set(key, [...(groups.get(key) ?? []), { series: s, point }]);
+    }),
+  );
+  return Array.from(groups.values());
+};
+
+/* Bounds of slice `index` of `count`, in objectBoundingBox units, so one set
+   of slices cuts both the dot and the pill however wide each is. The outer
+   slices overhang the box, because the bounding box excludes the stroke and
+   an exact 0–1 slice would shave the dot's ring off at either end. */
+const sliceBounds = (index: number, count: number) => {
+  const left = index === 0 ? -0.5 : index / count;
+  const right = index === count - 1 ? 1.5 : (index + 1) / count;
+  return { x: left, width: right - left };
+};
+
 /**
  * Width the drawing scrolls at rather than shrinking below.
  *
@@ -246,6 +281,28 @@ const WipeRect = styled.rect<{
   ${(p) => p.$transition && `transition: transform ${p.$transition};`}
 `;
 
+/* Shared by the shaded area and its legend swatch, so the key cannot drift
+   from what it describes. */
+const SHADE_OPACITY = 0.3;
+
+/* Square, because the shading is an area: lines stand for series and the ring
+   for a single point, so a round swatch would send readers looking for a dot.
+   Same size as the ring so the two sit evenly in the legend. The hairline ring
+   keeps a 30% tint from dissolving into the white behind it — the same fix as
+   the BarChart's segment swatches. */
+const AreaSwatch = styled.span`
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: color-mix(
+    in srgb,
+    ${Colors.primary} ${SHADE_OPACITY * 100}%,
+    transparent
+  );
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+  flex-shrink: 0;
+`;
+
 const RingSwatch = styled.span`
   width: 14px;
   height: 14px;
@@ -284,7 +341,7 @@ export const TrendChart = ({
 
   const shadedPolygon = () => {
     if (!shadeBetween) return null;
-    const [aId, bId] = shadeBetween;
+    const [aId, bId] = shadeBetween.seriesIds;
     const a = series.find((s) => s.id === aId);
     const b = series.find((s) => s.id === bId);
     if (!a || !b) return null;
@@ -312,6 +369,12 @@ export const TrendChart = ({
   };
 
   const polygon = shadedPolygon();
+  const pointGroups = groupCoincidentPoints(series);
+  const sliceCounts = Array.from(
+    new Set(pointGroups.map((group) => group.length).filter((n) => n > 1)),
+  );
+  const sliceClipId = (index: number, count: number) =>
+    `${clipId}-slice-${count}-${index}`;
 
   return (
     <div>
@@ -356,6 +419,21 @@ export const TrendChart = ({
                 <stop offset="1" stopColor={Colors.redDark} />
               </linearGradient>
             ))}
+
+            {/* Vertical slices for coincident points: slice i of n shows the
+                i-th series' dot and pill, left to right in series order. One
+                set per group size actually on the chart. */}
+            {sliceCounts.map((count) =>
+              Array.from({ length: count }, (_, index) => (
+                <clipPath
+                  key={sliceClipId(index, count)}
+                  id={sliceClipId(index, count)}
+                  clipPathUnits="objectBoundingBox"
+                >
+                  <rect {...sliceBounds(index, count)} y={-0.5} height={2} />
+                </clipPath>
+              )),
+            )}
           </defs>
 
           {GRIDLINE_MILLIONS.map((millions) => (
@@ -373,7 +451,7 @@ export const TrendChart = ({
                 y={yAt(millions * 1_000_000) + 4}
                 textAnchor="end"
                 fontSize={CHART_LABEL_SIZE}
-                fill={Colors.greyDark}
+                fill={Colors.greyDarker}
               >
                 {formatMillions(millions)}
               </text>
@@ -402,7 +480,11 @@ export const TrendChart = ({
           {/* Everything data-bearing lives inside the wipe. */}
           <g clipPath={`url(#${clipId})`}>
             {polygon && (
-              <polygon points={polygon} fill={Colors.primary} opacity={0.3} />
+              <polygon
+                points={polygon}
+                fill={Colors.primary}
+                opacity={SHADE_OPACITY}
+              />
             )}
 
             {series.map((s) => (
@@ -423,59 +505,84 @@ export const TrendChart = ({
 
             {/* A dot marks every published figure; the lines between them are
                 only trajectories, so the dots are what is actually sourced. */}
+            {/* Coincident points share one dot and one pill, split into equal
+                vertical slices, one per series. The figure is drawn once,
+                since it is one figure; the slices say whose it is. The shared
+                label takes the first series' side. */}
             {showPointValues &&
-              series.map((s) =>
-                s.points.map((point) => {
-                  const x = xAt(point.yearIndex);
-                  const y = yAt(point.value);
-                  const above = (s.labelSide || 'above') === 'above';
+              pointGroups.map((group) => {
+                const [{ series: first, point }] = group;
+                const x = xAt(point.yearIndex);
+                const y = yAt(point.value);
+                const above = (first.labelSide || 'above') === 'above';
 
-                  const label = formatDollars(point.value);
-                  const anchor = anchorFor(x);
-                  const textWidth = estimateLabelWidth(label);
-                  const baselineY = above ? y - LABEL_RISE : y + LABEL_DROP;
-                  /* A figure below zero takes the deficit color rather than
-                     its series color, so the number says what it means
-                     without the reader having to catch a minus sign. */
-                  const pillFill =
-                    point.value < 0 ? Colors.redDark : Colors[s.color];
+                const label = formatDollars(point.value);
+                const anchor = anchorFor(x);
+                const textWidth = estimateLabelWidth(label);
+                const baselineY = above ? y - LABEL_RISE : y + LABEL_DROP;
 
-                  return (
-                    <g key={`${s.id}-${point.yearIndex}`}>
-                      <circle
-                        cx={x}
-                        cy={y}
-                        r={POINT_RADIUS}
-                        /* Filled series read as a solid dot; the stroke stays
-                           so both kinds keep the same outer diameter. Color
-                           follows the same rule as the line and the pill, so
-                           the dot below zero is not the odd one out. */
-                        fill={s.filledPoint ? pillFill : Colors.white}
-                        stroke={pillFill}
-                        strokeWidth={2}
-                      />
-                      <rect
-                        x={pillLeft(x, textWidth, anchor)}
-                        y={baselineY - PILL_BASELINE_OFFSET}
-                        width={textWidth + PILL_PAD_X * 2}
-                        height={PILL_HEIGHT}
-                        rx={6}
-                        fill={pillFill}
-                      />
-                      <text
-                        x={x}
-                        y={baselineY}
-                        textAnchor={anchor}
-                        fontSize={CHART_LABEL_SIZE}
-                        fontWeight={700}
-                        fill={Colors.white}
-                      >
-                        {label}
-                      </text>
-                    </g>
-                  );
-                }),
-              )}
+                return (
+                  <g
+                    key={`${group
+                      .map((member) => member.series.id)
+                      .join('+')}-${point.yearIndex}`}
+                  >
+                    {group.map(({ series: s }, index) => {
+                      /* A figure below zero takes the deficit color rather
+                         than its series color, so the number says what it
+                         means without the reader having to catch a minus
+                         sign. */
+                      const pillFill =
+                        point.value < 0 ? Colors.redDark : Colors[s.color];
+                      /* Set on the dot and the pill each, not on a group
+                         around them: a bounding-box clip measures whatever it
+                         is applied to, and a group's box is mostly pill, so
+                         the dot would land wholly inside one slice. */
+                      const sliceClip =
+                        group.length > 1
+                          ? `url(#${sliceClipId(index, group.length)})`
+                          : undefined;
+                      return (
+                        <g key={s.id}>
+                          <circle
+                            clipPath={sliceClip}
+                            cx={x}
+                            cy={y}
+                            r={POINT_RADIUS}
+                            /* Filled series read as a solid dot; the stroke
+                               stays so both kinds keep the same outer
+                               diameter. Color follows the same rule as the
+                               line and the pill, so the dot below zero is not
+                               the odd one out. */
+                            fill={s.filledPoint ? pillFill : Colors.white}
+                            stroke={pillFill}
+                            strokeWidth={2}
+                          />
+                          <rect
+                            clipPath={sliceClip}
+                            x={pillLeft(x, textWidth, anchor)}
+                            y={baselineY - PILL_BASELINE_OFFSET}
+                            width={textWidth + PILL_PAD_X * 2}
+                            height={PILL_HEIGHT}
+                            rx={6}
+                            fill={pillFill}
+                          />
+                        </g>
+                      );
+                    })}
+                    <text
+                      x={x}
+                      y={baselineY}
+                      textAnchor={anchor}
+                      fontSize={CHART_LABEL_SIZE}
+                      fontWeight={700}
+                      fill={Colors.white}
+                    >
+                      {label}
+                    </text>
+                  </g>
+                );
+              })}
 
             {markers.map((marker) => {
               const s = series.find((entry) => entry.id === marker.seriesId);
@@ -513,7 +620,7 @@ export const TrendChart = ({
               y={368}
               textAnchor="middle"
               fontSize={CHART_LABEL_SIZE}
-              fill={Colors.greyDark}
+              fill={Colors.greyDarker}
             >
               {year}
             </text>
@@ -535,6 +642,15 @@ export const TrendChart = ({
             </Typography>
           </LegendItem>
         ))}
+        {/* Grouped by kind: lines, then the area, then the point marker. */}
+        {shadeBetween && (
+          <LegendItem>
+            <AreaSwatch />
+            <Typography as="span" variant="span" size="xs" color="greyDarker">
+              {shadeBetween.label}
+            </Typography>
+          </LegendItem>
+        )}
         {markers.map((marker) => (
           <LegendItem key={marker.seriesId}>
             <RingSwatch />
@@ -550,7 +666,7 @@ export const TrendChart = ({
         variant="copy"
         size="xs"
         lineHeight="1.6"
-        color="greyDark"
+        color="greyDarker"
         /* `auto` sides center the capped block under the full-width plot,
            in line with the legend above it. The text inside stays ranged
            left — centering the lines themselves would cost the reader the
