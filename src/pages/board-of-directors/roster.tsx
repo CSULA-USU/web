@@ -37,7 +37,12 @@ export default function Governance() {
         </Typography>
       </Header>
       <FluidContainer>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="36px 2px"
+        >
           {boardMembers.map((m) =>
             m.section === 'student-representative' ? (
               <StaffCard
@@ -56,7 +61,12 @@ export default function Governance() {
             ),
           )}
         </FluidContainer>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="36px 2px"
+        >
           {boardMembers.map((m) =>
             m.section === 'pro-board-member' ? (
               <StaffCard
@@ -75,7 +85,12 @@ export default function Governance() {
             ),
           )}
         </FluidContainer>
-        <FluidContainer flex flexWrap="wrap" justifyContent="center">
+        <FluidContainer
+          flex
+          flexWrap="wrap"
+          justifyContent="center"
+          padding="36px 2px"
+        >
           {boardMembers.map((m) =>
             m.section === 'advisors' ? (
               <StaffCard

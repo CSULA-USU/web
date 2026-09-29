@@ -15,16 +15,16 @@
   },
   {
     "title": "Student Director",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/giovanni-torres.webp",
-    "name": "Giovanni Torres",
-    "section": "student-representative"
-  },
-  {
-    "title": "Student Director",
     "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/mark-raspopov.webp",
     "name": "Mark Raspopov",
     "section": "student-representative",
     "credentials": "Fiscal/Audit Committee Chair"
+  },
+  {
+    "title": "Student Director",
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/giovanni-torres.webp",
+    "name": "Giovanni Torres",
+    "section": "student-representative"
   },
   {
     "title": "Student Director",
