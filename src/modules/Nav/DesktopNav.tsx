@@ -53,7 +53,10 @@ const UnstyledUnorderedList = styled.ul`
     align-items: center;
     padding: ${Spaces.sm} ${Spaces.md};
     ${media('widescreen')(`padding: ${Spaces.xs} ${Spaces.sm}`)}
-    border-radius: 4px;
+    // Square in every state, matching the square-topped panel it opens onto.
+    // A rounded hover that squared off once the panel opened read as two
+    // different shapes for the same item.
+    border-radius: ${Radii.structure};
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     // A hovered item fills with primary rather than just tinting its text:
     // pages with their own in-page nav already spend the primary color on
@@ -65,13 +68,6 @@ const UnstyledUnorderedList = styled.ul`
     &[aria-expanded='true'] {
       color: ${Colors.black};
       background-color: ${Colors.primary};
-    }
-    // With the panel open this button is the tab sitting on top of it, so its
-    // bottom corners square off to meet the panel's square top edge. Hover
-    // alone keeps all four rounded — there is no panel below to meet yet.
-    &[aria-expanded='true'] {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
   ul {
