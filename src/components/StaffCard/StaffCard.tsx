@@ -97,7 +97,7 @@ export const StaffCard = ({
   src,
   alt,
   special,
-  width = '380px',
+  width = '425px',
   orientation = 'horizontal',
   ...props
 }: CardProps) => {
