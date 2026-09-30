@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { CountUp, Typography } from 'components';
 import { smoothstep, useRevealOnce } from 'hooks';
@@ -32,7 +32,8 @@ interface BarChartProps {
   highlightId: string;
   ariaLabel: string;
   /** Grows the bars from the left, staggered top to bottom, with the value
-   * column counting up on each row's own delay. */
+   * column counting up on each row's own delay, then blinks the highlighted
+   * row's band. */
   animate?: boolean;
   animationDuration?: number;
 }
@@ -49,10 +50,28 @@ const Chart = styled.div`
   width: 100%;
 `;
 
-const Row = styled.div<{ $highlighted: boolean }>`
+/* Two blinks, then the band holds. It ends on the band's own color with no
+   fill-mode, so when the animation finishes the static background takes over
+   without a jump. Two is the ceiling: this pulls the eye to one row once, and
+   anything that keeps flashing turns into noise the reader has to ignore. */
+const HIGHLIGHT_BLINK_DURATION = 1200;
+
+const highlightBlink = keyframes`
+  0%, 50%, 100% { background-color: ${chartColors.highlightedRow}; }
+  25%, 75% { background-color: ${chartColors.highlightedRowFlash}; }
+`;
+
+const Row = styled.div<{ $highlighted: boolean; $blinkDelay: number | null }>`
   ${ROW_GRID}
   padding: 4px 0;
   ${(p) => p.$highlighted && `background-color: ${chartColors.highlightedRow};`}
+  ${(p) =>
+    p.$highlighted &&
+    p.$blinkDelay !== null &&
+    css`
+      animation: ${highlightBlink} ${HIGHLIGHT_BLINK_DURATION}ms ease-in-out
+        ${p.$blinkDelay}ms 1;
+    `}
 `;
 
 const Track = styled.div`
@@ -255,7 +274,13 @@ export const BarChart = ({
             : Colors[row.color || 'greyDarkest'];
 
           return (
-            <Row key={row.id} $highlighted={highlighted}>
+            <Row
+              key={row.id}
+              $highlighted={highlighted}
+              /* Waits for the row's own bar and count-up to land, so the blink
+                 lands on a finished figure rather than competing with it. */
+              $blinkDelay={phase === 'revealed' ? rowDelay + barDuration : null}
+            >
               <BandCell $height={height}>
                 <Typography
                   as="span"

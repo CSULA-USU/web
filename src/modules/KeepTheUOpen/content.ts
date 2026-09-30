@@ -208,7 +208,7 @@ export const thesisCards = [
   {
     number: '01',
     title: 'The hours between classes',
-    body: "A commuter's day has holes in it. This is where you sit them out: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
+    body: "Here is where you hang out between classes: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
   },
   {
     number: '02',
@@ -220,7 +220,7 @@ export const thesisCards = [
     title: 'Nearly 100 student jobs',
     body: 'Between 90 and 100 students work here',
     bodyAfterCitation:
-      ' alongside 29 full-time staff—the largest student employer on campus, with schedules built around class times.',
+      'the largest student employer on campus, with schedules built around class times.',
     citation: '4',
   },
 ];
@@ -321,7 +321,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: `${SUPABASE_PAGES}/about/tenants/Food%20Pantry%201200x600.jpg`,
     alt: 'A student beside refrigerated cases stocked with produce and packaged food under a Cal State LA Food Pantry sign',
-    caption: 'Food pantry. Open to any enrolled student.',
+    caption: 'The food pantry is open to any enrolled student.',
   },
   {
     src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/boardroom/north/room.webp`,
@@ -395,12 +395,13 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'expenses',
     label: 'Expenses',
-    color: 'greyDarkest',
+    color: 'blue',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
     labelSide: 'above',
     points: [
+      { yearIndex: 0, value: 5856794 },
       { yearIndex: 1, value: 5760109 },
       { yearIndex: 6, value: 6677545 },
     ],
@@ -408,12 +409,13 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'revenue',
     label: 'Revenue',
-    color: 'greyDark',
+    color: 'greenDark',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
     labelSide: 'below',
     points: [
+      { yearIndex: 0, value: 5856794 },
       { yearIndex: 1, value: 4876638 },
       { yearIndex: 6, value: 4337325 },
     ],
@@ -421,7 +423,7 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'reserve',
     label: 'Reserve',
-    color: 'gold',
+    color: 'black',
     strokeWidth: 3.5,
     labelSide: 'above',
     points: [
@@ -470,8 +472,8 @@ export const trendTable: TableData = {
       id: 'fy-2024-25',
       values: {
         year: 'FY 2024-25',
-        revenue: NOT_PUBLISHED,
-        expenses: NOT_PUBLISHED,
+        revenue: '$5,856,794',
+        expenses: '$5,856,794',
         reserve: '$8,364,353',
       },
     },
