@@ -60,6 +60,7 @@ interface StyledLinkProps {
   inline?: false;
   isInverseUnderlineStyling?: boolean;
   isExternalLink?: boolean;
+  showExternalIcon?: boolean;
 }
 
 export const StyledLink = ({
@@ -67,6 +68,7 @@ export const StyledLink = ({
   href,
   isInverseUnderlineStyling,
   isExternalLink,
+  showExternalIcon = true,
 }: StyledLinkProps) => {
   return (
     <>
@@ -79,7 +81,7 @@ export const StyledLink = ({
           >
             <StyledSpan>
               {children}
-              {isExternalLink ? (
+              {isExternalLink && showExternalIcon ? (
                 <StyledDiv>
                   <LuExternalLink style={IconStyling} aria-hidden="true" />
                 </StyledDiv>
@@ -96,7 +98,7 @@ export const StyledLink = ({
           >
             <StyledSpan>
               {children}
-              {isExternalLink ? (
+              {isExternalLink && showExternalIcon ? (
                 <StyledDiv>
                   <LuExternalLink style={IconStyling} aria-hidden="true" />
                 </StyledDiv>

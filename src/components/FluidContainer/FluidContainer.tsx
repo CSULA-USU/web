@@ -9,6 +9,11 @@ const REVEAL_RISE = '20px';
 
 const getBackgroundCSS = (p: FluidContainerProps) => {
   if (!p.backgroundImage) {
+    if (p.backgroundGradient) {
+      return css`
+        background: ${p.backgroundGradient};
+      `;
+    }
     return css`
       background-color: ${Colors[p.backgroundColor || 'transparent']};
     `;
@@ -172,6 +177,13 @@ interface FluidInnerProps {
 interface FluidContainerProps extends FluidInnerProps {
   alt?: string;
   backgroundColor?: keyof typeof Colors;
+  /**
+   * A CSS gradient painted edge to edge across the band, in place of
+   * `backgroundColor` — e.g. a color band separating two sections. Ignored
+   * with `backgroundImage`; layer a gradient over a photo with
+   * `backgroundScrim` instead.
+   */
+  backgroundGradient?: string;
   backgroundImage?: string;
   /**
    * Flat scrim laid over `backgroundImage` so text on top stays legible —
