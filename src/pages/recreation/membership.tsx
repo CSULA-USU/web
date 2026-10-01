@@ -1147,7 +1147,7 @@ export default function RecreationMembership() {
       </FluidContainer>
 
       <FluidContainer
-        backgroundImage={`${MEDIA}/rec-treadmill-membership-buy.webp`}
+        backgroundImage={`${MEDIA}/rec-treadmill-membership-background.webp`}
         backgroundScrim="linear-gradient(to right, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.8) 75%, rgba(0, 0, 0, 0.90) 100%)"
         backgroundPosition="50% 40%"
         {...sectionShell}
