@@ -1,3 +1,4 @@
+import { Icon } from 'components/Icon';
 import { isWeekday } from 'utils/openingHours';
 // No module alias covers src/data, so this one import is relative.
 import RecData from '../data/recreation.json';
@@ -25,4 +26,12 @@ describe('Recreation class schedule data', () => {
       days.forEach((day) => expect(isWeekday(day)).toBe(true));
     },
   );
+
+  /* Icon renders nothing for a name missing from its map, so a typo here
+     would leave a card bare without an error. */
+  it.each(
+    RecData.home.classes.map((c) => [c.title, c.backgroundIconName] as const),
+  )('%s names an icon that Icon knows (%s)', (_title, iconName) => {
+    expect(Icon({ iconName })).toBeDefined();
+  });
 });

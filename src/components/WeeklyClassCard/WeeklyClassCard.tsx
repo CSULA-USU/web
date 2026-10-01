@@ -9,6 +9,7 @@ import {
   type Weekday,
 } from 'utils/openingHours';
 import { AutoGrid } from '../AutoGrid';
+import { Icon } from '../Icon';
 import { Typography } from '../Typography';
 import { VisuallyHidden } from '../VisuallyHidden';
 
@@ -36,6 +37,12 @@ export interface WeeklyClassCardProps {
    * `WEEKDAY_ORDER` when a class meets on a weekend, or that day has no chip.
    */
   stripDays?: readonly Weekday[];
+  /**
+   * An `Icon` name drawn large and faint behind the card's content, for
+   * flavor only — it carries nothing the text does not, so it stays hidden
+   * from assistive tech.
+   */
+  backgroundIconName?: string;
   /** Heading level, so a card sits correctly in its section's outline. */
   headingAs?: 'h2' | 'h3' | 'h4';
 }
@@ -55,7 +62,13 @@ const describeDays = (days: Weekday[]) =>
 /* No top accent rule, unlike FacilityCard: the two sit on the same page, and
    the week strip is what should tell a class card apart, so it should not
    also borrow the facility card's silhouette. */
+/* `isolation` gives the card its own stacking context, so the background
+   icon's negative z-index puts it behind the content but still above the
+   card's white fill rather than behind the whole section. */
 const Container = styled.article`
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -65,6 +78,25 @@ const Container = styled.article`
   background-color: ${Colors.white};
   box-shadow: ${Shadows.soft};
 `;
+
+/* Pastel yellow, the light tint /save-the-u uses: faint enough on white that
+   every line of text set over it keeps its contrast. Tucked into the bottom
+   corner, clear of most of the description, and only lightly cropped by the
+   card's edge — about 90% of the icon shows. Crop much more and an icon
+   loses the detail that identifies it (the peach's leaf, the dumbbell's far
+   end); center it and it sits under the densest text and gets sliced by
+   the day strip's chips. */
+const BackgroundIcon = styled.span`
+  position: absolute;
+  z-index: -1;
+  right: -${Spaces.sm};
+  bottom: -${Spaces.sm};
+  display: flex;
+  color: ${Colors.pastelYellow};
+  pointer-events: none;
+`;
+
+const BACKGROUND_ICON_SIZE = '160px';
 
 /* Chips share the row equally rather than sizing to their labels, so the
    five columns line up card to card down the grid. */
@@ -134,12 +166,18 @@ export const WeeklyClassCard = ({
   location,
   capacity,
   stripDays = WORK_WEEK,
+  backgroundIconName,
   headingAs = 'h3',
 }: WeeklyClassCardProps) => {
   const headingId = useId();
 
   return (
     <Container aria-labelledby={headingId}>
+      {backgroundIconName && (
+        <BackgroundIcon>
+          <Icon iconName={backgroundIconName} size={BACKGROUND_ICON_SIZE} />
+        </BackgroundIcon>
+      )}
       <Typography
         as={headingAs}
         id={headingId}

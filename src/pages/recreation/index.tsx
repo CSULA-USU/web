@@ -667,6 +667,7 @@ export default function Recreation() {
               time={groupExerciseClass.time}
               location={groupExerciseClass.location}
               capacity={groupExerciseClass.capacity}
+              backgroundIconName={groupExerciseClass.backgroundIconName}
               description={groupExerciseClass.description}
             />
           ))}
