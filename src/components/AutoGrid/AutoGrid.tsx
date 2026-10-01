@@ -8,6 +8,13 @@ interface AutoGridStyles {
    * narrow viewport.
    */
   minColumnWidth?: string;
+  /**
+   * Most columns the grid may reach, however wide it gets. Set it when the
+   * item count is known and a full-width row would strand a remainder — six
+   * cards at four across leave two hanging, at three across they fill two
+   * rows. Below the cap the grid still drops columns at `minColumnWidth`.
+   */
+  maxColumns?: number;
   gap?: string;
   alignItems?: 'stretch' | 'flex-start' | 'center';
   /**
@@ -24,11 +31,22 @@ interface AutoGridProps extends AutoGridStyles {
   children?: React.ReactNode;
 }
 
+/* With a cap, a column's floor rises to one nth of the row (less the gaps
+   between n columns), so auto-fit can never fit more than n. The outer
+   min(..., 100%) still keeps a narrow viewport from overflowing. */
+const columnFloor = ({ minColumnWidth, maxColumns, gap }: AutoGridStyles) => {
+  const minimum = minColumnWidth || '280px';
+  if (!maxColumns) return minimum;
+  return `max(${minimum}, calc((100% - ${maxColumns - 1} * ${
+    gap || Spaces.lg
+  }) / ${maxColumns}))`;
+};
+
 const StyledAutoGrid = styled.div<AutoGridStyles>`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(${(p) => p.minColumnWidth || '280px'}, 100%), 1fr)
+    minmax(min(${columnFloor}, 100%), 1fr)
   );
   gap: ${(p) => p.gap || Spaces.lg};
   align-items: ${(p) => p.alignItems || 'stretch'};

@@ -55,3 +55,4 @@ export * from './VisuallyHidden';
 export * from './WordCycler';
 export * from './Table';
 export * from './TapTarget';
+export * from './WeeklyClassCard';

@@ -21,8 +21,11 @@ import {
   TapTarget,
   Typography,
   VisuallyHidden,
+  WeeklyClassCard,
 } from 'components';
+import { isWeekday } from 'utils/openingHours';
 import { Page, UtilityHeroHeader } from 'modules';
+import { RECREATION_HOMEPAGE } from 'modules/RecreationMembership';
 import { NonDiscriminationPolicy, PhotoVideoDisclaimer } from 'partials';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
@@ -67,8 +70,15 @@ const anchorLinks = [
   { label: 'Facilities', href: '#facilities' },
   { label: 'Access', href: '#access' },
   { label: 'Programs', href: '#programs' },
+  { label: 'Classes', href: '#classes' },
   { label: 'FAQ', href: '#faq' },
 ];
+
+/* Cards are alphabetized; the days inside each card follow the calendar,
+   which WeeklyClassCard enforces itself. */
+const groupExerciseClasses = [...RecData.home.classes].sort((a, b) =>
+  a.title.localeCompare(b.title, 'en'),
+);
 
 const SectionHeader = styled.header`
   display: flex;
@@ -447,37 +457,6 @@ export default function Recreation() {
       </FluidContainer>
 
       <FluidContainer
-        backgroundColor="primary"
-        {...bandShell}
-        textAlign="center"
-      >
-        <Typography
-          as="h2"
-          variant="title"
-          fluidSize={FLUID_H2}
-          color="black"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Can you get in?
-        </Typography>
-        <Typography
-          as="p"
-          variant="prose"
-          fluidSize={FLUID_LEAD}
-          color="black"
-          margin={`0 auto ${Spaces.xl}`}
-          style={{ maxWidth: '60ch' }}
-        >
-          Gym access depends on the kind of Cal State LA student you are. The
-          membership page spells out who is covered, what it costs, and how to
-          check in at the door.
-        </Typography>
-        <Button href={MEMBERSHIP_HREF} variant="black">
-          Check your membership
-        </Button>
-      </FluidContainer>
-
-      <FluidContainer
         id="access"
         backgroundColor="greyLightest"
         {...sectionShell}
@@ -658,6 +637,52 @@ export default function Recreation() {
             </Panel>
           ))}
         </AutoGrid>
+      </FluidContainer>
+
+      <FluidContainer
+        id="classes"
+        backgroundColor="greyLightest"
+        {...sectionShell}
+      >
+        <SectionHeader>
+          <Eyebrow>Group exercise</Eyebrow>
+          <Typography as="h2" variant="title" fluidSize={FLUID_H2} margin="0">
+            Classes
+          </Typography>
+          <Typography as="p" variant="prose" fluidSize={FLUID_LEAD} margin="0">
+            Weekly classes in strength, cardio, and mindful movement, from HIIT
+            and glute work to yoga and Zumba. Every class welcomes all fitness
+            levels, and spots are limited, so reserve yours ahead of time.
+          </Typography>
+          <Typography as="p" variant="prose" size="xs" margin="0">
+            Fall 2026 schedule
+          </Typography>
+        </SectionHeader>
+        <AutoGrid minColumnWidth="280px" maxColumns={3} gap={Spaces.lg}>
+          {groupExerciseClasses.map((groupExerciseClass) => (
+            <WeeklyClassCard
+              key={groupExerciseClass.title}
+              title={groupExerciseClass.title}
+              days={groupExerciseClass.days.filter(isWeekday)}
+              time={groupExerciseClass.time}
+              location={groupExerciseClass.location}
+              capacity={groupExerciseClass.capacity}
+              description={groupExerciseClass.description}
+            />
+          ))}
+        </AutoGrid>
+        {/* One sign-up link for the whole section: individual class pages on
+            the portal sit behind its login, so there is nothing per-card to
+            deep-link to. */}
+        <Button
+          href={RECREATION_HOMEPAGE}
+          isExternalLink
+          variant="black"
+          margin={`${Spaces.xl} 0 0`}
+          aria-label="Reserve Your Spot on the Recreation portal (opens in a new tab)"
+        >
+          Reserve Your Spot
+        </Button>
       </FluidContainer>
 
       <FluidContainer {...sectionShell}>

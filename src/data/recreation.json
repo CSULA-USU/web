@@ -253,6 +253,56 @@
         "fit": "cover"
       }
     ],
+    "classes": [
+      {
+        "title": "Buns of Fun",
+        "description": "Get ready to strengthen and sculpt with “Buns of Fun,” a lively glute-focused class that’s all about building strength and having a blast! Perfect for all fitness levels, this session combines equipment and bodyweight exercises to target and tone your glutes.",
+        "location": "Multipurpose Room",
+        "capacity": "Up to 15 participants",
+        "days": ["Thursday"],
+        "time": "12:30 PM to 1:00 PM"
+      },
+      {
+        "title": "Core Power",
+        "description": "Ignite your core strength with “Core Power,” a dynamic workout that blends fun and intensity for everyone. Whether you’re new to fitness or a seasoned enthusiast, this class will have you engaging those core muscles with a mix of equipment and bodyweight exercises.",
+        "location": "Multipurpose Room",
+        "capacity": "Up to 15 participants",
+        "days": ["Thursday"],
+        "time": "1:00 PM to 1:30 PM"
+      },
+      {
+        "title": "Golden Eagle Circuit",
+        "description": "Soar to new heights with “Golden Eagle Circuit,” a high-intensity interval training (HIIT) class that blends power, speed, and endurance into one electrifying workout! Suitable for all fitness levels, this circuit-style session uses a mix of equipment and bodyweight exercises to push your limits and keep your energy soaring.",
+        "location": "Multipurpose Room",
+        "capacity": "Up to 15 participants",
+        "days": ["Tuesday", "Thursday"],
+        "time": "5:00 PM to 5:30 PM"
+      },
+      {
+        "title": "Strong Start",
+        "description": "“Strong Start” is an introductory strength training class that teaches foundational exercises using a variety of strength training equipment.",
+        "location": "Rec 2 Space",
+        "capacity": "Up to 8 participants",
+        "days": ["Monday", "Wednesday"],
+        "time": "10:15 AM to 11:00 AM"
+      },
+      {
+        "title": "Yoga",
+        "description": "Find your balance and reconnect with your mind and body in our energizing Yoga class. This all-levels session focuses on breath control, flexibility, and strength through a series of guided postures and movements. Whether you’re looking to reduce stress, improve mobility, or simply find a moment of mindfulness in your day, this class offers the perfect blend of relaxation and challenge. Mats provided, all you need is yourself!",
+        "location": "Multipurpose Room",
+        "capacity": "Up to 20 participants",
+        "days": ["Monday", "Thursday"],
+        "time": "11:00 AM to 12:00 PM"
+      },
+      {
+        "title": "Zumba",
+        "description": "Get ready to dance, move, and groove in this high-energy Zumba class! Perfect for all fitness levels, this class blends upbeat music with easy-to-follow dance moves, making it a fun and effective way to get your cardio in. Whether you’re a seasoned dancer or just looking to try something new, you’ll leave feeling energized and empowered!",
+        "location": "Multipurpose Room",
+        "capacity": "Up to 20 participants",
+        "days": ["Monday", "Wednesday"],
+        "time": "6:15 PM to 7:15 PM"
+      }
+    ],
     "faq": [
       {
         "question": "Who can use Recreation?",
