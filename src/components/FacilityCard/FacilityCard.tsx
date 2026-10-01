@@ -111,6 +111,16 @@ const DetailRow = styled.div`
   }
 `;
 
+/* The "Hours" label is one short line by construction, so it centers on its
+   icon; the top alignment above exists only for values that can wrap. */
+const HoursHeading = styled(DetailRow)`
+  align-items: center;
+
+  svg {
+    margin-top: 0;
+  }
+`;
+
 const Details = styled.div`
   display: flex;
   flex-direction: column;
@@ -248,7 +258,7 @@ export const FacilityCard = ({
 
       {hours && hours.length > 0 && (
         <HoursBlock $ground={variant}>
-          <DetailRow>
+          <HoursHeading>
             <BiTimeFive aria-hidden="true" size="20px" color={Colors.primary} />
             <Typography
               as="span"
@@ -261,7 +271,7 @@ export const FacilityCard = ({
             >
               Hours
             </Typography>
-          </DetailRow>
+          </HoursHeading>
           <HoursList $ground={variant}>
             {hours.map((entry) => (
               <div key={entry.day}>
