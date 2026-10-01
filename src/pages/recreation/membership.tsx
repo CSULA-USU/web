@@ -1147,9 +1147,9 @@ export default function RecreationMembership() {
       </FluidContainer>
 
       <FluidContainer
-        backgroundImage={`${MEDIA}/rec-treadmill-tablet.webp`}
-        backgroundScrim="linear-gradient(to right, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 55%, rgba(0, 0, 0, 0.45) 100%)"
-        backgroundPosition="50% 35%"
+        backgroundImage={`${MEDIA}/rec-treadmill-membership-buy.webp`}
+        backgroundScrim="linear-gradient(to right, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.8) 75%, rgba(0, 0, 0, 0.90) 100%)"
+        backgroundPosition="50% 40%"
         {...sectionShell}
       >
         <TwoColumn $align="center">
