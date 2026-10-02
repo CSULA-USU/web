@@ -4,12 +4,11 @@ import {
   Divider,
   FluidContainer,
   NonBreakingSpan,
+  SocialLinks,
   StyledLink,
   Typography,
 } from 'components';
-import { Colors, media, Spaces } from 'theme';
-import { AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
-import { SiTiktok } from 'react-icons/si';
+import { media, Spaces } from 'theme';
 import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
@@ -20,46 +19,6 @@ const LogoLink = styled(Link)`
   margin: ${Spaces.md} 0;
   &:focus {
     text-decoration: underline;
-  }
-`;
-
-const StyledInstagramIcon = styled(AiOutlineInstagram)`
-  font-size: 32px;
-`;
-
-const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
-  font-size: 32px;
-`;
-
-const StyledTikTokIcon = styled(SiTiktok)`
-  font-size: 24px;
-`;
-
-/* The lift matches the game room header's social icons. It is keyed to the
-   link rather than the icon: the link stays put while the icon rises, so a
-   pointer resting on the icon's bottom edge does not slip off it, drop it,
-   and set it bouncing. Focus gets the same treatment as hover. */
-const SocialLinks = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${Spaces.md};
-
-  svg {
-    color: ${Colors.greyLighter};
-    transition: color 0.4s ease-in-out, transform 200ms ease;
-  }
-
-  a:hover svg,
-  a:focus-visible svg {
-    color: ${Colors.primary};
-    transform: translateY(-4px);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    a:hover svg,
-    a:focus-visible svg {
-      transform: none;
-    }
   }
 `;
 
@@ -312,38 +271,24 @@ export const Footer = () => (
             (323) 343&ndash;2465
           </Typography>
         </FooterBottomInner>
-        <SocialLinks>
-          <span>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href={
-                'https://www.tiktok.com/@usu_calstatela?_r=1&_t=ZP-99BpJw5dpsc'
-              }
-              aria-label="External website: Cal State LA U-SU TikTok. Opens in a new tab."
-            >
-              <StyledTikTokIcon />
-            </Link>
-          </span>
-          <span>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href={'https://www.instagram.com/usucalstatela/?hl=en'}
-              aria-label="External website: Cal State LA U-SU Instagram. Opens in a new tab."
-            >
-              <StyledInstagramIcon />
-            </Link>
-          </span>
-          <Link
-            target="_blank"
-            rel="noopener noreferrer"
-            href={'https://www.linkedin.com/company/usu-cal-state-la/'}
-            aria-label="External website: Cal State LA U-SU LinkedIn. Opens in a new tab."
-          >
-            <StyledLinkedinIcon />
-          </Link>
-        </SocialLinks>
+        <SocialLinks
+          tone="onDark"
+          accountName="U-SU"
+          links={[
+            {
+              network: 'instagram',
+              href: 'https://www.instagram.com/usucalstatela/?hl=en',
+            },
+            {
+              network: 'linkedin',
+              href: 'https://www.linkedin.com/company/usu-cal-state-la/',
+            },
+            {
+              network: 'tiktok',
+              href: 'https://www.tiktok.com/@usu_calstatela?_r=1&_t=ZP-99BpJw5dpsc',
+            },
+          ]}
+        />
       </FooterBottomContainer>
     </FluidContainer>
   </footer>
