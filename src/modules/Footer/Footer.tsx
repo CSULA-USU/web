@@ -24,36 +24,43 @@ const LogoLink = styled(Link)`
 `;
 
 const StyledInstagramIcon = styled(AiOutlineInstagram)`
-  color: ${Colors.greyLighter};
   font-size: 32px;
-  &:hover {
-    color: ${Colors.primary};
-    transition: 0.4s ease-in-out;
-  }
 `;
 
 const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
-  color: ${Colors.greyLighter};
   font-size: 32px;
-  &:hover {
-    color: ${Colors.primary};
-    transition: 0.4s ease-in-out;
-  }
 `;
 
 const StyledTikTokIcon = styled(SiTiktok)`
-  color: ${Colors.greyLighter};
   font-size: 24px;
-  &:hover {
-    color: ${Colors.primary};
-    transition: 0.4s ease-in-out;
-  }
 `;
 
+/* The lift matches the game room header's social icons. It is keyed to the
+   link rather than the icon: the link stays put while the icon rises, so a
+   pointer resting on the icon's bottom edge does not slip off it, drop it,
+   and set it bouncing. Focus gets the same treatment as hover. */
 const SocialLinks = styled.div`
   display: flex;
   align-items: center;
   gap: ${Spaces.md};
+
+  svg {
+    color: ${Colors.greyLighter};
+    transition: color 0.4s ease-in-out, transform 200ms ease;
+  }
+
+  a:hover svg,
+  a:focus-visible svg {
+    color: ${Colors.primary};
+    transform: translateY(-4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a:hover svg,
+    a:focus-visible svg {
+      transform: none;
+    }
+  }
 `;
 
 const FooterLeftContainer = styled.div`
@@ -121,7 +128,7 @@ const FooterBottomInner = styled.div`
   `)}
   ${media('mobile')(`
     text-align: center;
--  `)}
+  `)}
 `;
 
 export const Footer = () => (

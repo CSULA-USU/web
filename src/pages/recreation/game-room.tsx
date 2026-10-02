@@ -137,15 +137,27 @@ const GameRoomStatsCard = ({
   );
 };
 
+/* Keyed to the link rather than the icon: the link stays put while the icon
+   rises, so a pointer resting on the icon's bottom edge does not slip off it,
+   drop it, and set it bouncing. Focus gets the same treatment as hover. The
+   footer's social icons share this lift. */
 const SocialIconLinkWrapper = styled.a`
   svg {
     color: ${Colors.primary};
     transition: transform 200ms ease;
   }
 
-  svg:hover {
+  &:hover svg,
+  &:focus-visible svg {
     color: white;
     transform: translateY(-4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover svg,
+    &:focus-visible svg {
+      transform: none;
+    }
   }
 `;
 
