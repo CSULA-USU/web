@@ -25,4 +25,5 @@ export {
   CHART_LABEL_SIZE,
   CHART_EASING,
   CHART_DURATION,
+  applyChartEasing,
 } from 'components/PieChart/chartTokens';

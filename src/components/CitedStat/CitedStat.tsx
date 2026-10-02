@@ -38,6 +38,21 @@ interface CitedStatProps {
    * at the end.
    */
   formatValue?: (n: number) => string;
+  /**
+   * Starts the count from outside instead of on this stat's own scroll into
+   * view — for a figure that must finish with a neighboring animation. While
+   * provided, the count runs with no lead-in delay, so it starts the moment
+   * this turns true.
+   */
+  countTrigger?: boolean;
+  /** Length of the count in ms. Set it to the duration it must keep step with. */
+  countDuration?: number;
+  /**
+   * Maps linear progress 0→1 onto eased progress, so the count can follow the
+   * same curve as the animation it keeps step with. Defaults to linear. Must
+   * be a stable reference — define it at module scope, not inline.
+   */
+  countEasing?: (progress: number) => number;
   /** Overrides the figure color the variant would otherwise pick. */
   valueColor?: keyof typeof Colors;
 }
@@ -94,6 +109,9 @@ export const CitedStat = ({
   accentColor,
   countTo,
   formatValue,
+  countTrigger,
+  countDuration,
+  countEasing,
   valueColor,
 }: CitedStatProps) => {
   const figureColor =
@@ -151,7 +169,15 @@ export const CitedStat = ({
         </Typography>
       )}
       {countTo !== undefined && isCounting ? (
-        <CountUp {...figureType} end={countTo} format={formatValue} />
+        <CountUp
+          {...figureType}
+          end={countTo}
+          format={formatValue}
+          trigger={countTrigger}
+          duration={countDuration}
+          easing={countEasing}
+          delay={countTrigger !== undefined ? 0 : undefined}
+        />
       ) : (
         <Typography {...figureType}>
           {value}

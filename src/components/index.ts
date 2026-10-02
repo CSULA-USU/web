@@ -43,6 +43,7 @@ export * from './SelectableOption';
 export * from './Select';
 export * from './SideImageHeader';
 export * from './Skeleton';
+export * from './SocialLinks';
 export * from './SourceList';
 export * from './StaffCard';
 export * from './Tabs';

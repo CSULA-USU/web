@@ -257,6 +257,8 @@ When a component graduates from a feature folder into `src/components/`, audit i
 
 **Hover states fill, they do not recolor.** Recoloring text to `Colors.primary` is too weak a signal, especially on pages whose in-page nav already spends primary on text — the hover then just looks like more of the same. Fill the container (the pill or row holding the label) with `Colors.primary` and switch the text to `Colors.black`, which also clears contrast comfortably. Give the element its own padding (and a `border-radius`, where one suits it) so there is a container to fill, and transition `background-color` and `color` together. When the trigger opens a panel, hold the fill while that panel is open, or the panel reads as detached — and keep the trigger's shape the same in every state: a trigger that is rounded on hover but squares off to meet its open panel reads as two different shapes, which is why the nav stays square (`Radii.structure`) throughout. `src/modules/Nav/DesktopNav.tsx` applies this to both the top bar and its dropdown rows.
 
+**Icon-only links lift.** A bare icon has no label or pill to fill, so it recolors and rises 4px instead — the lift is the second signal the fill rule asks for. Social links always go through `src/components/SocialLinks`, which owns the glyph per network, the lift, alphabetical order, and the screen-reader label; do not hand-build another row of icon links. Person-card LinkedIn links (staff, U-Krew) are a different pattern and stay as they are.
+
 ### Design Handoffs
 
 Handoffs from the separate design-system project arrive as a README plus an HTML/CSS/JS reference prototype, and land in one of two places:

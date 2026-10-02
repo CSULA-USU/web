@@ -1,6 +1,13 @@
+import { useCallback, useState } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, formatDollars, Page, TrendChart } from 'modules';
+import {
+  applyChartEasing,
+  BarChart,
+  formatDollars,
+  Page,
+  TrendChart,
+} from 'modules';
 import {
   anchorLinks,
   bandStats,
@@ -326,6 +333,16 @@ const peerOutcomeTable: TableData<PeerOutcome> = {
 };
 
 export default function KeepTheUOpen() {
+  /* The reserve callouts count off the trend chart's wipe rather than their
+     own scroll into view, on its duration and its curve, so the figures and
+     the lines they summarize move together and land together. Left undefined when the chart does not animate: it would never
+     fire, and the callouts fall back to counting on their own. */
+  const [isTrendRevealed, setIsTrendRevealed] = useState(false);
+  const revealTrend = useCallback(() => setIsTrendRevealed(true), []);
+  const reserveCountTrigger = chartAnimation.animateTrend
+    ? isTrendRevealed
+    : undefined;
+
   return (
     <Page>
       <Head>
@@ -1002,6 +1019,7 @@ export default function KeepTheUOpen() {
               table={trendTable}
               animate={chartAnimation.animateTrend}
               animationDuration={chartAnimation.animationDuration}
+              onReveal={revealTrend}
             />
             <AutoGrid
               minColumnWidth="200px"
@@ -1016,6 +1034,9 @@ export default function KeepTheUOpen() {
                   value={callout.value}
                   countTo={callout.amount}
                   formatValue={formatDollars}
+                  countTrigger={reserveCountTrigger}
+                  countDuration={chartAnimation.animationDuration}
+                  countEasing={applyChartEasing}
                   /* The year the reserve goes negative is the one figure on
                      this page that is bad news on its own terms. Red ties it
                      to the reserve line in the chart above. */
