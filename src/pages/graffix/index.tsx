@@ -6,13 +6,12 @@ import {
   Image,
   Button,
   NonBreakingSpan,
+  SocialLinks,
 } from 'components';
-import { Colors, FontSizes, Spaces, media } from 'theme';
+import { Spaces, media } from 'theme';
 import styled from 'styled-components';
 import { useState } from 'react';
 import awardYears from 'data/acuiYear.json';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { FaTiktok } from 'react-icons/fa';
 import { useBreakpoint } from 'hooks';
 import {
   formatHoursLines,
@@ -279,20 +278,20 @@ export default function Graffix() {
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.md}` }}
-            href="https://www.instagram.com/usugraffix/?hl=en"
-            aria-label="link to University-Student Union Graffix's Instagram feed"
-          >
-            <AiOutlineInstagram fontSize={FontSizes['2xl']} />
-          </a>
-          <a
-            style={{ color: Colors.black }}
-            href="https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc"
-            aria-label="link to University-Student Union Graffix's Tiktok feed"
-          >
-            <FaTiktok fontSize={FontSizes.xl} />
-          </a>
+          <SocialLinks
+            size="36px"
+            accountName="U-SU Graffix"
+            links={[
+              {
+                network: 'instagram',
+                href: 'https://www.instagram.com/usugraffix/?hl=en',
+              },
+              {
+                network: 'tiktok',
+                href: 'https://www.tiktok.com/@usugraffix?is_from_webapp=1&sender_device=pc',
+              },
+            ]}
+          />
         </FluidContainer>
         <HeaderInnerContainer>
           <Header title="Graffix" buttons={buttons}>
