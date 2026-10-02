@@ -79,7 +79,7 @@
     "styled-components": "^5",
     "tmp": "^0.2.6",
     "yaml": "^2.8.3",
-    "**/undici": "^7.29.0",
+    "**/undici": "^7.29.1",
     "**/picomatch": "^2.3.2"
   },
   "devDependencies": {
