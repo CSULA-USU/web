@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useEffect, useId } from 'react';
 import styled from 'styled-components';
 import { Colors, Spaces } from 'theme';
 import { Table, Typography, VisuallyHidden } from 'components';
@@ -73,6 +73,13 @@ interface TrendChartProps {
   /** Wipes the plotted lines in left to right on first scroll into view. */
   animate?: boolean;
   animationDuration?: number;
+  /**
+   * Fires once, as the wipe begins, so figures outside the chart can start
+   * in step with it — run them for `animationDuration` on `applyChartEasing`
+   * and they track the wipe the whole way, not just at the ends. Never fires when the chart paints at rest — animation
+   * off, or reduced motion.
+   */
+  onReveal?: () => void;
   /** Draws each published figure beside its own point. */
   showPointValues?: boolean;
 }
@@ -271,7 +278,18 @@ const LineSwatch = styled.span<{
 `;
 
 /* Scaled on X from the left edge, so the plotted lines draw across. Gridlines
-   and axis labels sit outside the clip and stay visible throughout. */
+   and axis labels sit outside the clip and stay visible throughout.
+
+   The wipe ends at the right edge of the data, not of the viewBox. Past that
+   edge it reveals nothing, so a full-width wipe finishes drawing at about
+   two-thirds of its duration and spends the rest moving over empty space —
+   which leaves anything timed to `animationDuration` visibly late. The
+   rightmost thing it clips is the last point's pill, anchored `end` at
+   `X_LAST` and padded `PILL_PAD_X` past it; the dot and round line cap both
+   stop short of that. Anything drawn further right must widen this, or it
+   is clipped for good. */
+const WIPE_RIGHT = X_LAST + PILL_PAD_X;
+
 const WipeRect = styled.rect<{
   $atFinal: boolean;
   $transition: string | null;
@@ -323,15 +341,21 @@ export const TrendChart = ({
   table,
   animate = true,
   animationDuration = CHART_DURATION,
+  onReveal,
   showPointValues = true,
 }: TrendChartProps) => {
   const clipId = useId();
   const deficitGradientId = (seriesId: string) =>
     `${clipId}-deficit-${seriesId}`;
-  const { ref, atFinal, isTransitioning } = useRevealOnce<HTMLDivElement>({
-    enabled: animate,
-    resetKey: animationDuration,
-  });
+  const { ref, phase, atFinal, isTransitioning } =
+    useRevealOnce<HTMLDivElement>({
+      enabled: animate,
+      resetKey: animationDuration,
+    });
+
+  useEffect(() => {
+    if (phase === 'revealed') onReveal?.();
+  }, [phase, onReveal]);
 
   const xAt = (yearIndex: number) =>
     X_FIRST + (yearIndex * (X_LAST - X_FIRST)) / (fiscalYears.length - 1);
@@ -385,7 +409,7 @@ export const TrendChart = ({
               <WipeRect
                 x={0}
                 y={0}
-                width={1000}
+                width={WIPE_RIGHT}
                 height={380}
                 $atFinal={atFinal}
                 $transition={
