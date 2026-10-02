@@ -116,7 +116,12 @@ verified fact about your deployment.
 1. In the incognito window, load the homepage and wait for it to settle.
 2. DevTools → **Application** → **Cookies** → the site origin.
 3. Record every cookie: name, domain, expiry, `Secure`, `HttpOnly`, `SameSite`.
-4. Repeat on `/contact` and `/ccc/gsrc`.
+4. Repeat on `/contact` and `/ccc/gsrc`. On `/contact`, click into a form
+   field first, since that is what loads Cloudflare Turnstile, then check the
+   cookie list for `challenges.cloudflare.com` as well as the site origin.
+   Cloudflare documents Turnstile as cookieless, and a test-key session on
+   `localhost` set none, but a community report names `_cfuvid`. This is the
+   check that settles it for the production key.
 5. Do **not** visit `/backoffice` — NextAuth sets session cookies there, and
    those are a separate, staff-only story the policy handles differently.
 
@@ -188,7 +193,8 @@ Pages to cover, chosen because each pulls a different class of media:
 
 - [ ] `/` — event photos, Supabase backgrounds
 - [ ] `/ccc/gsrc` — Instagram feed, resource center page
-- [ ] `/contact` — previously the reCAPTCHA page
+- [ ] `/contact` — Cloudflare Turnstile; expect `challenges.cloudflare.com`
+      only after a form field is focused, and nothing third-party before
 - [ ] `/events` — event photos at volume
 - [ ] `/operations` — MUX video
 - [ ] `/ccc/cultural-grads/[any id]` — JotForm grad photos, Imgur headers
@@ -223,7 +229,10 @@ inferring.
 1. Network tab → filter **JS**.
 2. Read the domain on every entry.
 3. Everything should be `calstatelausu.org` or `/_next/` / `/_vercel/` paths on
-   your own origin.
+   your own origin, with one expected exception: on `/contact`, after a form
+   field is focused, Cloudflare Turnstile from `challenges.cloudflare.com`. It
+   is a bot check, not analytics, advertising or tracking, but it is
+   third-party, so the policy has to name it. Anything else is a finding.
 
 | Any script from a domain that is not yours? |     |
 | ------------------------------------------- | --- |
@@ -244,7 +253,9 @@ each of these:
 - [ ] **Vendor list** — does every domain from check 4 appear in the draft? The
       server-side processors will not show up in a network log and must be
       carried over from the audit's §1D: JotForm, Resend, Upstash, Notion,
-      Supabase, CampusGroups, Handshake, AOA, Azure AD.
+      Supabase, CampusGroups, Handshake, AOA, Azure AD. Cloudflare was added
+      after the draft went out, for Turnstile on `/contact`, and is both
+      browser-side and server-side.
 - [ ] **Search terms** — does check 3 require a sentence the draft does not have?
 - [ ] **Anything the draft claims that no check above covers** — flag it, because
       an unverified claim in a published policy is the specific risk this whole

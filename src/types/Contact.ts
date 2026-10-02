@@ -15,4 +15,10 @@ export interface ContactFormData {
    * the real form always sends it and the server treats its absence as a fail.
    */
   formFillDurationMs?: number;
+  /**
+   * Cloudflare Turnstile token, generated in the browser at submit. Optional
+   * on the type for the same reason as `formFillDurationMs`; the server
+   * rejects a submission without one.
+   */
+  turnstileToken?: string;
 }
