@@ -1,6 +1,7 @@
 # Third-party data inventory
 
-**Last reviewed:** 2026-09-17
+**Last reviewed:** 2026-10-02 (Cloudflare Turnstile added to `/contact`; full
+review 2026-09-17)
 **Method:** static analysis of this repository. Items that only a browser can
 settle are listed in "Open questions" and covered by
 `docs/privacy-runtime-verification-2026-09-17.md`.
@@ -26,9 +27,22 @@ browser-side list below is short.
 
 ## 1. Browser-side: scripts
 
-**None.** No third-party JavaScript executes on any page.
+**One, on one page, after one action.** Cloudflare Turnstile, the bot check on
+the `/contact` feedback form, is the only third-party JavaScript on the site.
 
-`next/script` is not used anywhere in the repository. The only scripts the
+| Host                        | Loaded when                                                                        | Loaded by                   |
+| --------------------------- | ---------------------------------------------------------------------------------- | --------------------------- |
+| `challenges.cloudflare.com` | On `/contact`, the first time the visitor focuses a form field — not with the page | `src/hooks/useTurnstile.ts` |
+
+A visitor who reads `/contact` without touching the form, and every visitor on
+every other page, contacts no third party for script. Once loaded, Turnstile
+receives the visitor's IP address, User-Agent and TLS fingerprint, plus the site
+key and origin. Cloudflare documents that it uses these only to tell people from
+bots, and that Turnstile neither sets nor reads cookies; see §4 for what was
+observed. The script is fetched from Cloudflare directly because Cloudflare
+documents that proxied or cached copies break.
+
+Apart from that, `next/script` is not used anywhere in the repository. The only scripts the
 browser loads are Next.js's own bundles and two Vercel telemetry scripts, both
 served from this site's own origin rather than a vendor domain:
 
@@ -49,7 +63,9 @@ there is no runtime request to Google Fonts. `src/styles/globals.css` contains n
 `@import` and no remote `url()`.
 
 There are no `<iframe>` elements anywhere in the codebase, so there are no
-embedded players, maps or widgets.
+embedded players or maps. The one runtime iframe is Turnstile's own, which its
+script inserts on `/contact` after the form is focused. It stays invisible
+unless Cloudflare needs the visitor to click a checkbox.
 
 ### A reference that looks like a third-party script and is not
 
@@ -113,20 +129,21 @@ subresource loads.
 
 The browser never contacts these; the Vercel function does.
 
-| Service                        | Purpose                                                | Called from                                                                                                                   |
-| ------------------------------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| `api.jotform.com`              | Contact submissions, grad and U-Krew reads             | `src/pages/api/jotformContact.ts:135`, `src/pages/api/jotform.ts:30-32`, `src/pages/api/jotformUKrew.ts:21-23`                |
-| `graph.instagram.com`          | Instagram Graph API                                    | `src/pages/api/instagram.ts:92-94`, `src/pages/api/cron/update-ig-tokens.ts:16`                                               |
-| Meta CDN                       | Instagram image bytes, proxied                         | `src/pages/api/instagram-image.ts`                                                                                            |
-| `calstatela.campusgroups.com`  | Events RSS                                             | `src/pages/api/events.ts:5,12`; the client calls `/api/events` per `src/utils/constants.ts:19`                                |
-| `csuaoa.org`                   | AOA job feed                                           | `src/lib/aoaJobFeed.ts:7`                                                                                                     |
-| `calstatela.joinhandshake.com` | Employment RSS                                         | `src/pages/api/employment.ts:14-16`                                                                                           |
-| Notion API                     | Graphics requests, work orders, name tags              | `src/pages/api/notion.ts`, `src/pages/api/notion/notion-client.ts`, `src/pages/api/work-order.ts`, `src/pages/api/nametag.ts` |
-| Upstash Redis                  | Rate limiting                                          | `src/lib/ratelimit.ts`                                                                                                        |
-| Resend                         | Feedback notification and confirmation email           | `src/lib/feedbackNotifications.ts:106-165`                                                                                    |
-| Slack webhook                  | Alert when a feedback email fails                      | `src/lib/feedbackNotifications.ts:186-199`                                                                                    |
-| Supabase                       | Backoffice allowlist, CMS, meeting documents           | `src/lib/supabaseAdmin.ts`, `src/services/index.ts:177+`                                                                      |
-| Azure AD                       | Backoffice sign-in (browser-side redirect, staff only) | `src/pages/api/auth/[...nextauth].js:7-11`                                                                                    |
+| Service                        | Purpose                                                 | Called from                                                                                                                   |
+| ------------------------------ | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `api.jotform.com`              | Contact submissions, grad and U-Krew reads              | `src/pages/api/jotformContact.ts:135`, `src/pages/api/jotform.ts:30-32`, `src/pages/api/jotformUKrew.ts:21-23`                |
+| `graph.instagram.com`          | Instagram Graph API                                     | `src/pages/api/instagram.ts:92-94`, `src/pages/api/cron/update-ig-tokens.ts:16`                                               |
+| Meta CDN                       | Instagram image bytes, proxied                          | `src/pages/api/instagram-image.ts`                                                                                            |
+| `calstatela.campusgroups.com`  | Events RSS                                              | `src/pages/api/events.ts:5,12`; the client calls `/api/events` per `src/utils/constants.ts:19`                                |
+| `csuaoa.org`                   | AOA job feed                                            | `src/lib/aoaJobFeed.ts:7`                                                                                                     |
+| `calstatela.joinhandshake.com` | Employment RSS                                          | `src/pages/api/employment.ts:14-16`                                                                                           |
+| Notion API                     | Graphics requests, work orders, name tags               | `src/pages/api/notion.ts`, `src/pages/api/notion/notion-client.ts`, `src/pages/api/work-order.ts`, `src/pages/api/nametag.ts` |
+| Upstash Redis                  | Rate limiting                                           | `src/lib/ratelimit.ts`                                                                                                        |
+| `challenges.cloudflare.com`    | Turnstile token check (siteverify), with the visitor IP | `src/lib/turnstile.ts`, called from `src/pages/api/jotformContact.ts`                                                         |
+| Resend                         | Feedback notification and confirmation email            | `src/lib/feedbackNotifications.ts:106-165`                                                                                    |
+| Slack webhook                  | Alert when a feedback email fails                       | `src/lib/feedbackNotifications.ts:186-199`                                                                                    |
+| Supabase                       | Backoffice allowlist, CMS, meeting documents            | `src/lib/supabaseAdmin.ts`, `src/services/index.ts:177+`                                                                      |
+| Azure AD                       | Backoffice sign-in (browser-side redirect, staff only)  | `src/pages/api/auth/[...nextauth].js:7-11`                                                                                    |
 
 Azure AD is the one entry in this table the browser reaches directly rather
 than the server, and it is worth spelling out because the hand-off happens
@@ -157,6 +174,12 @@ All three are first party. No third party receives them, and none is used for
 tracking. NextAuth's library defaults apply; no `cookies` block is configured in
 `src/pages/api/auth/[...nextauth].js`.
 
+**Turnstile set no cookies when observed.** On 2026-10-02, a browser session on
+`localhost` that loaded Turnstile, ran its check, and also forced its
+interactive checkbox recorded no cookie on any Cloudflare domain. That run used
+Cloudflare's test keys; open question 5 asks for the same check against the
+production key on a deployment.
+
 **Public visitors receive no cookies.** `SessionProvider` is passed an explicit
 `null` session outside the gated routes (`src/pages/_app.tsx`, using
 `usesAuthSession` from `src/utils/authRoutes.ts`), so it never calls
@@ -169,10 +192,10 @@ page load set the first two cookies for every visitor.
 
 ## 5. Forms
 
-| Route                                        | Fields                                                                                                                                                   | Destination                                                                                   | Third-party handler                                                           |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `/contact` (`src/pages/contact/index.tsx`)   | `subject`, `category`, `email`, `message`, `firstName`, `lastInitial`, plus a hidden honeypot and a fill-duration value — type at `src/types/Contact.ts` | `POST /api/jotformContact`                                                                    | Yes, server-side: JotForm, Resend, Upstash, and Slack if email delivery fails |
-| `/search` (`src/pages/search/index.tsx:203`) | Free-text query                                                                                                                                          | None — filtering is local via Fuse.js (line 120); `handleOnSubmit` is a no-op (lines 127-131) | No                                                                            |
+| Route                                        | Fields                                                                                                                                                                      | Destination                                                                                   | Third-party handler                                                                                                                      |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `/contact` (`src/pages/contact/index.tsx`)   | `subject`, `category`, `email`, `message`, `firstName`, `lastInitial`, plus a hidden honeypot, a fill-duration value and a Turnstile token — type at `src/types/Contact.ts` | `POST /api/jotformContact`                                                                    | Yes. Browser-side: Cloudflare Turnstile. Server-side: Cloudflare siteverify, JotForm, Resend, Upstash, and Slack if email delivery fails |
+| `/search` (`src/pages/search/index.tsx:203`) | Free-text query                                                                                                                                                             | None — filtering is local via Fuse.js (line 120); `handleOnSubmit` is a no-op (lines 127-131) | No                                                                                                                                       |
 
 Backoffice forms post to first-party `/api/backoffice/*` routes behind the
 session gate in `src/middleware.ts:16-41`.
@@ -213,7 +236,8 @@ Names only; no values are recorded here.
 `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `RATELIMIT_HASH_SECRET`,
 `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, the `IG_TOKEN_*` keys enumerated at
 `src/pages/api/instagram.ts:11-55`, `CRON_SECRET`, `ENABLE_UKREW_API`,
-`BACKOFFICE_AUTH_STRATEGY`, `SITE_URL`.
+`BACKOFFICE_AUTH_STRATEGY`, `SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`,
+`TURNSTILE_SECRET_KEY`.
 
 ## 8. Open questions
 
@@ -235,6 +259,11 @@ Static analysis cannot settle these. Each is covered by a check in
 4. **Which host serves event photos?** `eventOriginalPhotoFullUrl` is feed data.
    `next.config.js:16` names `calstatela-cdn.presence.io`, but that allowlist
    governs `next/image`, which these images do not use.
+5. **Does Turnstile set cookies with the production key?** Observed setting
+   none with Cloudflare's test keys (§4). A Cloudflare community thread reports a
+   `_cfuvid` cookie alongside Turnstile, which could not be read to see how it
+   was resolved. The test keys may not exercise the same code path, so this
+   needs checking on a deployment that uses the real key.
 
 ## 9. Changes made on 2026-09-17
 
@@ -258,7 +287,17 @@ Recorded so this document reads as current rather than aspirational.
 - Hashed rate-limit identifiers so Upstash receives a digest rather than an IP
   and email address.
 
-## 10. Possible follow-ups
+## 10. Changes made on 2026-10-02
+
+- Added Cloudflare Turnstile to `/contact`, after automated solicitations got
+  past the honeypot, fill-time floor and rate limits. The script loads on the
+  form's first focus, runs its check at submit, and the server confirms the
+  token with Cloudflare before anything reaches JotForm. A missing or failed
+  token is rejected; if Cloudflare itself cannot be reached, the submission is
+  accepted and logged as `[TURNSTILE_UNVERIFIED]`, so an outage cannot drop
+  real feedback. The three existing checks stay in place.
+
+## 11. Possible follow-ups
 
 - Add a Content-Security-Policy in report-only mode (§6).
 - Consolidate remote images onto Supabase or `next/image` to reduce the host list

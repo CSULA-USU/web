@@ -18,6 +18,7 @@ import { postJotformFeedback } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
 import { validateEmail } from 'lib/api';
+import { useTurnstile } from 'hooks';
 
 // TODO: replace '#' with Cal State LA's privacy policy URL (confirm the exact
 // link with the campus privacy office) or a U-SU privacy page once one exists.
@@ -93,6 +94,13 @@ const StyledTextArea = styled(TextArea)`
   border-radius: 4px;
 `;
 
+/* Zero-height for nearly every visitor. Turnstile only draws a visible widget
+   here when Cloudflare needs an interaction, and only then needs room before
+   the submit button. */
+const TurnstileSlot = styled.div<{ $isInteractive: boolean }>`
+  margin-bottom: ${(p) => (p.$isInteractive ? Spaces.lg : '0')};
+`;
+
 const HoneypotField = styled.div`
   position: absolute;
   left: -9999px;
@@ -130,6 +138,11 @@ export default function Contact() {
      plausible duration; see `isTooFastToBeHuman` in the API route. A ref rather
      than state because reading it must never trigger a re-render. */
   const formMountedAt = useRef(Date.now());
+
+  const turnstile = useTurnstile(
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+    'contact',
+  );
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -183,11 +196,25 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
+    let turnstileToken: string | null;
+    try {
+      turnstileToken = await turnstile.getToken();
+    } catch (error: unknown) {
+      /* Blocked by a privacy extension, offline, or a failed challenge. The
+         phone numbers beside the form are the fallback. */
+      showToast('Verification failed. Please try again.', 'error');
+      console.error(error);
+      turnstile.reset();
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       await postJotformFeedback({
         ...formData,
         website: honeypot,
         formFillDurationMs: Date.now() - formMountedAt.current,
+        turnstileToken: turnstileToken ?? undefined,
       });
 
       showToast('Your response has been successfully sent!', 'success');
@@ -212,12 +239,16 @@ export default function Contact() {
       showToast(
         message.includes('Too many') || message.includes('maximum')
           ? 'You have reached the maximum number of submission attempts at this time. Please try again later.'
+          : message.includes('Verification')
+          ? 'Verification failed. Please try again.'
           : 'Error: Your response has not been successfully sent.',
         'error',
       );
 
       console.error(error);
     } finally {
+      /* Tokens are single-use, so every attempt needs a fresh one. */
+      turnstile.reset();
       setIsSubmitting(false);
     }
   };
@@ -292,7 +323,14 @@ export default function Contact() {
               Give Us Your Feedback
             </Typography>
 
-            <form onSubmit={handleSubmit} noValidate>
+            {/* Turnstile loads on the form's first focus, not with the page,
+                so a visitor who only reads the page never contacts
+                Cloudflare. */}
+            <form
+              onSubmit={handleSubmit}
+              onFocus={turnstile.prepare}
+              noValidate
+            >
               <FormGroup>
                 <Label htmlFor="subject">
                   Subject <RequiredMark aria-label="required">*</RequiredMark>
@@ -440,6 +478,10 @@ export default function Contact() {
                   <a href={PRIVACY_POLICY_URL}>Privacy Policy</a> for details. */}
                 </Typography>
               </FluidContainer>
+              <TurnstileSlot
+                ref={turnstile.containerRef}
+                $isInteractive={turnstile.isInteractive}
+              />
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Submit'}
               </Button>

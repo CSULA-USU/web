@@ -11,6 +11,7 @@ import {
   sendFeedbackNotifications,
   sendFeedbackEmailFailureAlert,
 } from 'lib/feedbackNotifications';
+import { verifyTurnstileToken } from 'lib/turnstile';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
@@ -142,6 +143,21 @@ export default async function handler(
     }
 
     const formData = result.data;
+
+    /* After validation, so a malformed form does not spend the visitor's
+       single-use token. Before the rate limits, so a bot turned away here does
+       not use up the per-IP allowance it shares with everyone behind the same
+       campus network address. `unverified` falls through by decision — see
+       `TurnstileVerdict`. */
+    const turnstileVerdict = await verifyTurnstileToken(
+      req.body?.turnstileToken,
+      ip,
+    );
+    if (turnstileVerdict === 'rejected') {
+      return res.status(400).json({
+        error: 'Verification failed. Please try again.',
+      });
+    }
 
     const email = (formData.email || '').toLowerCase();
     const identifier = email ? `${ip}:${email}` : ip;
