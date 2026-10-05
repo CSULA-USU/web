@@ -79,6 +79,13 @@ const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
    charts and card grids more room. */
 const CONTENT_MAX_WIDTH = '1440px';
 
+/* The hero and the event-photo band show the same photograph. One URL, with
+   both rendered through next/image at the same `sizes`, resolves to the same
+   optimized file, so the band's copy comes from cache instead of being a
+   second download. */
+const CAMPUS_PHOTO_SRC =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg';
+
 /* Reading measure for running text. Sections and panels are as wide as their
    charts and grids need; the prose inside them is not. A line much past 75
    characters loses the reader on the return sweep — they land back on the
@@ -227,6 +234,7 @@ const renderCampusCell = (outcome: PeerOutcome) => (
           alt=""
           width="auto"
           height="auto"
+          lazy
           skeletonWhileLoading
         />
       </CampusLogo>
@@ -397,7 +405,8 @@ export default function KeepTheUOpen() {
 
       {/* 2 · Hero */}
       <FluidContainer
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
+        backgroundImage={CAMPUS_PHOTO_SRC}
+        backgroundImageLoading="priority"
         backgroundOverlay="rgba(0, 0, 0, 0.75)"
         backgroundBlur="2px"
         padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
@@ -674,12 +683,15 @@ export default function KeepTheUOpen() {
           ariaLabel="Photographs of the University-Student Union and the services inside it"
           emptyLabel="[GALLERY — awaiting photography and releases]"
           pendingLabel="[PHOTO PENDING]"
+          /* Section 4 — below the fold on every viewport. */
+          eagerCount={0}
         />
       </FluidContainer>
 
       {/* 5 · Event-photo band */}
       <FluidContainer
-        backgroundImage="/about/calstatela-hero.jpeg"
+        backgroundImage={CAMPUS_PHOTO_SRC}
+        backgroundImageLoading="lazy"
         backgroundPosition="center 40%"
         backgroundColor="greyDarkest"
         height="clamp(260px, 30vw, 420px)"
@@ -1438,10 +1450,10 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is the one worth understanding: students rejected the first
+          San Marcos is one worth understanding: students rejected the first
           proposal, partly because it would have charged them a year before the
           building opened. The campus came back with a cheaper proposal on
-          different terms, and students approved it.
+          different terms, and students ended up approving it.
         </Typography>
         <Typography
           as="p"
@@ -1451,8 +1463,9 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          That&apos;s what participation does. You have the power to change what
-          gets proposed.
+          This is why it&apos;s important to participate in student government.
+          You have the power to change what gets proposed. Make your voice
+          heard!
         </Typography>
       </FluidContainer>
 

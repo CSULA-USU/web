@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import styled, { css } from 'styled-components';
 import { Colors, media } from 'theme';
 import { useRevealOnce } from 'hooks';
@@ -7,7 +8,58 @@ const REVEAL_EASING = 'cubic-bezier(0.16, 1, 0.3, 1)';
 /** Distance the content travels up as it fades in. */
 const REVEAL_RISE = '20px';
 
+/* Absolutely positioned, so it sits out of the outer box's flex flow and the
+   content lays out exactly as it does over a CSS background. */
+const BackgroundImageLayer = styled.div<{
+  $blur?: string;
+  $position?: string;
+}>`
+  position: absolute;
+  /* Same oversizing as the CSS blur layer below, for the same reason. */
+  inset: ${(p) => (p.$blur ? `calc(${p.$blur} * -2)` : '0')};
+  z-index: 0;
+  ${(p) => p.$blur && `filter: blur(${p.$blur});`}
+
+  img {
+    object-fit: cover;
+    object-position: ${(p) => p.$position || 'center'};
+  }
+`;
+
+/* The element-image counterpart of the CSS layers below: the photo is a real
+   child, so only the scrim is left for a pseudo-element. */
+const getElementBackgroundCSS = (p: FluidContainerProps) => {
+  const scrim = p.backgroundScrim || p.backgroundOverlay;
+  return css`
+    position: relative;
+    overflow: hidden;
+    /* Shows while a lazy photo is still on its way, so the band reads as a
+       band rather than a hole. */
+    ${p.backgroundColor && `background-color: ${Colors[p.backgroundColor]};`}
+
+    ${scrim &&
+    `
+      ::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: ${scrim};
+        z-index: 0;
+      }
+    `}
+
+    > *:not(${BackgroundImageLayer}) {
+      position: relative;
+      z-index: 1;
+    }
+  `;
+};
+
 const getBackgroundCSS = (p: FluidContainerProps) => {
+  if (p.backgroundImage && p.backgroundImageLoading) {
+    return getElementBackgroundCSS(p);
+  }
+
   if (!p.backgroundImage) {
     if (p.backgroundGradient) {
       return css`
@@ -196,7 +248,8 @@ interface FluidContainerProps extends FluidInnerProps {
    * has to be heavier at one edge than the other, e.g.
    * `linear-gradient(to right, rgba(0,0,0,0.92), rgba(0,0,0,0.45))`.
    * Takes precedence over `backgroundOverlay`. Ignored without an image, and
-   * ignored under `backgroundBlur`, which composites its own layers.
+   * ignored under `backgroundBlur`, which composites its own layers — unless
+   * `backgroundImageLoading` is set.
    */
   backgroundScrim?: string;
   /**
@@ -208,6 +261,20 @@ interface FluidContainerProps extends FluidInnerProps {
   backgroundBlur?: string;
   /** `background-position` for `backgroundImage`. Defaults to `center`. */
   backgroundPosition?: string;
+  /**
+   * Renders `backgroundImage` through `next/image` instead of as a CSS
+   * background, so it is resized per viewport and served as WebP rather than
+   * as the original file. A CSS background can do neither, can't be lazy, and
+   * isn't found until the stylesheet has parsed.
+   *
+   * `priority` preloads it — use it only for an above-the-fold hero, where the
+   * photo is likely the page's largest paint. `lazy` defers it until it nears
+   * the viewport. Omit to keep the plain CSS background.
+   *
+   * Blur, overlay and position all carry over. `backgroundScrim` is honored
+   * under blur here too, since the scrim no longer has to share a layer.
+   */
+  backgroundImageLoading?: 'priority' | 'lazy';
   border?: keyof typeof Colors;
   children?: React.ReactNode;
   height?: string;
@@ -275,6 +342,22 @@ export const FluidContainer = ({
       backgroundImage={backgroundImage}
       {...props}
     >
+      {backgroundImage && props.backgroundImageLoading && (
+        <BackgroundImageLayer
+          $blur={props.backgroundBlur}
+          $position={props.backgroundPosition}
+        >
+          {/* Decorative: anything the photo says is carried by the content
+              laid over it. */}
+          <NextImage
+            src={backgroundImage}
+            alt=""
+            fill
+            sizes="100vw"
+            priority={props.backgroundImageLoading === 'priority'}
+          />
+        </BackgroundImageLayer>
+      )}
       <FluidInner
         {...props}
         $reveal={revealOnScroll}
