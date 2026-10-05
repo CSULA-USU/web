@@ -183,8 +183,29 @@ export const sources: Source[] = [
     id: '10',
     label: 'CSUSB Student Financial Services, Category II fee adjustment',
     note: 'Category II fees indexed to HEPI with a 4% annual cap, and the 2025-26 adjustment.',
-    href: 'https://www.csusb.edu/student-financial-services/tuition-and-fees',
+    href: 'https://www.csusb.edu/dsa-operations-fiscal-management/ira/your-fees-your-campus',
     linkText: 'csusb.edu',
+  },
+  {
+    id: '11',
+    label: 'CSUDH Recreation Facility Project, $85 million funding',
+    note: '$85 million for a new recreation facility, including equipment, operational costs, and engineering systems.',
+    href: 'https://www.csudh.edu/get-centered-toros/',
+    linkText: 'csudh.edu',
+  },
+  {
+    id: '12',
+    label: 'CSUF Student Wellness Initiative',
+    note: 'The student wellness initiative at CSUF, covering various health and wellness programs for students.',
+    href: 'https://asi.fullerton.edu/2025/03/28/wellness-initiative-takes-flight-a-collaborative-victory-for-students/',
+    linkText: 'asi.fullerton.edu',
+  },
+  {
+    id: '13',
+    label: 'CSUSM April Referendum Rejected',
+    note: 'The April 2024 referendum on the recreation facility fee was rejected by the student body.',
+    href: 'https://csusmchronicle.com/23619/news/csusm-students-vote-down-fee-increase-proposal-for-a-wellness-and-recreation-facility/',
+    linkText: 'csusmchronicle.com',
   },
 ];
 
@@ -200,6 +221,9 @@ export const peerSourceIds = {
   sdsuConsultation2025: '8',
   csuebAthleticsFee2026: '9',
   csusbHepi: '10',
+  csudhRecreationFee2022: '11',
+  csufStudentWellnessInitiative: '12',
+  csusmAprilReferendumRejected: '13',
 } as const;
 
 export type SourceId = (typeof peerSourceIds)[keyof typeof peerSourceIds];
@@ -762,6 +786,19 @@ const CAMPUS_LOGO_BASE =
 
 export const peerOutcomes: PeerOutcome[] = [
   {
+    id: 'csudh-april-2022',
+    campus: 'Dominguez Hills',
+    logoSrc: `https://www.csudh.edu/Assets/csudh-sites/brand/images/2018-06-15-Athletics-Primary-Logo.png`,
+    monogram: 'CSUDH',
+    date: 'April 2022',
+    proposal:
+      '$85 million for a new recreation facility, including equipment, operational costs, and engineering systems.',
+    outcome:
+      '53% of Toro voters supported investing in the proposed facility. Doors open in Fall 2026.',
+    sourceId: peerSourceIds.csudhRecreationFee2022,
+    linkText: 'See the referendum results',
+  },
+  {
     id: 'csusm-april-2024',
     campus: 'San Marcos',
     logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
@@ -770,7 +807,7 @@ export const peerOutcomes: PeerOutcome[] = [
     proposal:
       '$265/semester for a new recreation center, charged starting a year before it opened',
     outcome: 'Rejected. About 60% voted no.',
-    sourceId: peerSourceIds.csusmReferendum2024,
+    sourceId: peerSourceIds.csusmAprilReferendumRejected,
     linkText: 'See the referendum results',
   },
   {
@@ -784,6 +821,18 @@ export const peerOutcomes: PeerOutcome[] = [
     outcome: 'Approved, 64.6% to 35.4%.',
     sourceId: peerSourceIds.csusmReferendum2024,
     linkText: 'See the referendum results',
+  },
+  {
+    id: 'csuf-march-2025',
+    campus: 'Fullerton',
+    logoSrc: `https://sportslogohistory.com/wp-content/uploads/2019/02/cal_state_fullerton_titans_2009-pres_a.png`,
+    monogram: 'CSUF',
+    date: 'March 2025',
+    proposal:
+      'Gradual increase in campus union fees from $211 in 2025-26 to $536 in 2028-2029',
+    outcome: 'Approved via several alternative consultations.',
+    sourceId: peerSourceIds.csufStudentWellnessInitiative,
+    linkText: 'See the consultation results',
   },
   {
     id: 'sdsu-fall-2025',
@@ -803,7 +852,8 @@ export const peerOutcomes: PeerOutcome[] = [
     logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.png`,
     monogram: 'CSUEB',
     date: 'Spring 2026',
-    proposal: 'New athletics fee',
+    proposal:
+      'New athletics fee. Increase phased over three semesters from Spring 27-28, totalling to $158.80 per semester.',
     outcome: 'Alt. consultation in progress',
     sourceId: peerSourceIds.csuebAthleticsFee2026,
     linkText: "Read the president's message",
@@ -815,8 +865,9 @@ export const peerOutcomes: PeerOutcome[] = [
     monogram: 'CSUSB',
     /* The sources give the adjustment year, not the date the indexing was
        established. Left as a marker rather than guessed at. */
-    date: '[NEEDS FIGURE — date]',
-    proposal: 'Category II fees indexed to HEPI, capped at 4% annually',
+    date: '25/26 Academic Year',
+    proposal:
+      'Add $301 per year, allocated directly to support experiential learning opportunities',
     outcome:
       'Established by alternative consultation. 3.4% in 2025-26, about $69 for the year.',
     sourceId: peerSourceIds.csusbHepi,
