@@ -102,10 +102,23 @@ export const HeaderWithVideo = ({
         autoPlay
         muted
         loop
-        poster={thumbnail}
         playsInline
         preload="auto"
-      />
+      >
+        {thumbnail && (
+          <img
+            slot="poster"
+            src={thumbnail}
+            alt=""
+            aria-hidden="true"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        )}
+      </Video>
       <ContentOverlay>{children}</ContentOverlay>
     </VideoContainer>
   );
