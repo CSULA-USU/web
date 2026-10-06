@@ -307,6 +307,8 @@ export default function Contact() {
                   {c.tel.map((t, i) => (
                     <Typography as="p" key={`${c.office}-${i}`}>
                       <a href={`tel:${t.replace(/\D/g, '')}`}>{t}</a>
+                      <br></br>
+                      {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
                     </Typography>
                   ))}
                 </ContactItem>
