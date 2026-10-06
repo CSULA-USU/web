@@ -42,7 +42,7 @@ const officeHours: OpeningHours[] = [
 const hours = [
   {
     title: 'Office Hours',
-    times: formatHoursLines(officeHours),
+    times: formatHoursLines(officeHours, { showClosedDays: true }),
   },
 ];
 const cards1 = [
@@ -314,6 +314,7 @@ export default function Graffix() {
           <OfficeHours
             address="5154 State University Dr, Los Angeles, CA 90032 Room 204B, Floor 2"
             phoneNumber="(323) 343-2464"
+            email="usugraffix@calstatela.edu"
             hours={hours}
           />
         </FluidContainer>
