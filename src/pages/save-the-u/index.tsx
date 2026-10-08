@@ -51,6 +51,7 @@ import {
   Image,
   Monogram,
   Panel,
+  ParallaxBand,
   PieChart,
   PlaceholderMarker,
   PrototypeNotice,
@@ -79,12 +80,13 @@ const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
    charts and card grids more room. */
 const CONTENT_MAX_WIDTH = '1440px';
 
-/* The hero and the event-photo band show the same photograph. One URL, with
-   both rendered through next/image at the same `sizes`, resolves to the same
-   optimized file, so the band's copy comes from cache instead of being a
-   second download. */
 const CAMPUS_PHOTO_SRC =
   'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg';
+
+/* A building exterior with no identifiable people in it, so it needs no
+   photo releases — keep it that way if it is ever swapped. */
+const BUILDING_PHOTO_SRC =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/u-su-building/u-su-exterior-576@300x.webp';
 
 /* Reading measure for running text. Sections and panels are as wide as their
    charts and grids need; the prose inside them is not. A line much past 75
@@ -354,7 +356,7 @@ export default function KeepTheUOpen() {
   return (
     <Page>
       <Head>
-        <title>Keep the U-SU Open | Cal State LA U&ndash;SU</title>
+        <title>Your U-SU Fee Explained | Cal State LA U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* Kept out of search while the page is being tested; it is also
@@ -372,7 +374,7 @@ export default function KeepTheUOpen() {
         />
         <meta
           property="og:title"
-          content="Keep the U-SU Open | University-Student Union"
+          content="Your U-SU Fee Explained | University-Student Union"
           key="og-title"
         />
         <meta
@@ -396,7 +398,7 @@ export default function KeepTheUOpen() {
 
       {/* 1 · AnchorNav — hidden ≤768px */}
       <AnchorNav
-        title="Keep the U-SU Open"
+        title="Your U-SU Fee Explained"
         links={anchorLinks}
         ctaLabel={campaignMode.ctaLabel}
         ctaHref={campaignMode.ctaHref}
@@ -477,8 +479,8 @@ export default function KeepTheUOpen() {
           lineHeight="1.6"
           color="greyLightest"
         >
-          By FY 2030-31, the reserves covering the deficit are gone, leaving 40%
-          less for everything else.
+          By FY 2030-31, the reserves covering the deficit are gone, leaving 35%
+          of that year&apos;s spending unfunded.
         </Typography>
         <Typography
           as="p"
@@ -626,11 +628,11 @@ export default function KeepTheUOpen() {
             style={{ maxWidth: MEASURE }}
             lineHeight="1.6"
           >
-            And if you&apos;re one of the students who never comes in, someone
-            you know does. The food pantry, the sensory room, a safe place for
+            And if you&apos;re one of the students who never visit, someone you
+            know does. The food pantry, the sensory room, a safe place for
             commuters to hang out at night, and the cultural graduation
-            celebrations are essentials to students who don&apos;t advertise
-            that they need them.
+            celebrations are essentials to students who don&apos;t necessarily
+            advertise that they need them.
           </Typography>
         </Panel>
       </FluidContainer>
@@ -688,42 +690,25 @@ export default function KeepTheUOpen() {
         />
       </FluidContainer>
 
-      {/* 5 · Event-photo band */}
-      <FluidContainer
-        backgroundImage={CAMPUS_PHOTO_SRC}
-        backgroundImageLoading="lazy"
-        backgroundPosition="center 40%"
-        backgroundColor="greyDarkest"
-        height="clamp(260px, 30vw, 420px)"
-        padding="clamp(20px, 4vw, 36px)"
-        paddingDesktop="clamp(20px, 4vw, 36px)"
-        paddingMobile="clamp(20px, 4vw, 36px)"
-        outerAlignItems="flex-end"
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-        revealOnScroll
+      {/* 5 + 6 · Photo band and StatBand, combined — black on yellow only, never
+          white. The photo is a ~2.6:1 panorama and `cover` crops its sides
+          hard on a narrow screen; 60% keeps the banner and the U-SU sign,
+          both right of center, in what is left. */}
+      <ParallaxBand
+        {...bandShell}
+        backgroundColor="primary"
+        backgroundPhoto={{
+          src: BUILDING_PHOTO_SRC,
+          // The uploaded file's pixel size. Update it with the file.
+          photoAspectRatio: 2400 / 937,
+          objectPosition: '60% center',
+          // Blurred so the building's own lettering cannot compete with the
+          // stats, which in turn makes a low-quality, optimized file look
+          // no different from the full-resolution upload.
+          blur: '6px',
+          quality: 50,
+        }}
       >
-        <Panel
-          backgroundColor="greyDarkest"
-          shadow="none"
-          borderRadius="8px"
-          padding="8px 14px"
-        >
-          <Typography
-            as="p"
-            variant="span"
-            size="2xs"
-            weight="700"
-            letterSpacing="0.06em"
-            color="primary"
-          >
-            [PLACEHOLDER PHOTOGRAPHY — real U-SU event photography required
-            before launch]
-          </Typography>
-        </Panel>
-      </FluidContainer>
-
-      {/* 6 · StatBand — black on yellow only, never white */}
-      <FluidContainer {...bandShell} backgroundColor="primary">
         <AutoGrid minColumnWidth="240px" gap="clamp(24px, 4vw, 56px)">
           {bandStats.map((stat) => (
             <CitedStat
@@ -735,7 +720,7 @@ export default function KeepTheUOpen() {
             />
           ))}
         </AutoGrid>
-      </FluidContainer>
+      </ParallaxBand>
 
       {/* 7 · The Numbers */}
       <FluidContainer {...sectionShell} id="numbers" backgroundColor="white">
@@ -821,7 +806,7 @@ export default function KeepTheUOpen() {
             fluidSize={FLUID_H3}
             lineHeight="1.2"
           >
-            The part that doesn&apos;t add up:
+            Adjusting for shortfall:
           </Typography>
           <Typography
             as="p"
@@ -835,8 +820,8 @@ export default function KeepTheUOpen() {
             <strong>$215.30 a semester</strong> today.
             <CitationMarker sourceId="5" /> The proposal is{' '}
             <strong>$227.25</strong> which is $11.95 more. That difference is
-            there because just catching up on inflation doesn&apos;t close a
-            shortfall also driven by enrollment decline.
+            because just catching up on inflation doesn&apos;t close a deficit
+            also driven by enrollment decline.
             <CitationMarker sourceId="3" /> Student fees currently cover 67% of
             what the U-SU costs to run but the sustainable range is 80–85%.
             <CitationMarker sourceId="2" />
@@ -911,7 +896,7 @@ export default function KeepTheUOpen() {
               fluidSize={FLUID_H3}
               lineHeight="1.2"
             >
-              Even after this passes, Cal State LA is still the second most
+              If the increase passes, Cal State LA is still the second most
               affordable university in the CSU
             </Typography>
             <Typography
@@ -996,7 +981,7 @@ export default function KeepTheUOpen() {
               fluidSize={FLUID_H3}
               lineHeight="1.2"
             >
-              Revenue and expenses, if nothing changes
+              Revenue and expenses projections, if nothing changes
             </Typography>
             <Typography
               as="p"
@@ -1450,7 +1435,7 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is one worth understanding: students rejected the first
+          San Marcos is one case worth looking at: students rejected the first
           proposal, partly because it would have charged them a year before the
           building opened. The campus came back with a cheaper proposal on
           different terms, and students ended up approving it.
@@ -1463,9 +1448,9 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.md} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          This is why it&apos;s important to participate in student government.
-          You have the power to change what gets proposed. Make your voice
-          heard!
+          This is why it&apos;s important to participate in your student
+          government. You have the power to change what gets proposed. Make your
+          voice heard!
         </Typography>
       </FluidContainer>
 
