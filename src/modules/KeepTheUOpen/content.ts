@@ -788,7 +788,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csudh-april-2022',
     campus: 'Dominguez Hills',
-    logoSrc: `https://www.csudh.edu/Assets/csudh-sites/brand/images/2018-06-15-Athletics-Primary-Logo.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csudh-logo.webp`,
     monogram: 'CSUDH',
     date: 'April 2022',
     proposal:
@@ -801,7 +801,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-april-2024',
     campus: 'San Marcos',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.webp`,
     monogram: 'CSUSM',
     date: 'April 2024',
     proposal:
@@ -813,7 +813,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusm-october-2024',
     campus: 'San Marcos',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.webp`,
     monogram: 'CSUSM',
     date: 'October 2024',
     proposal:
@@ -825,7 +825,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csuf-march-2025',
     campus: 'Fullerton',
-    logoSrc: `https://sportslogohistory.com/wp-content/uploads/2019/02/cal_state_fullerton_titans_2009-pres_a.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csuf-logo.webp`,
     monogram: 'CSUF',
     date: 'March 2025',
     proposal:
@@ -837,7 +837,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'sdsu-fall-2025',
     campus: 'San Diego',
-    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.webp`,
     monogram: 'SDSU',
     date: 'Fall 2025',
     proposal: 'Instructionally Related Activities fee increase',
@@ -849,7 +849,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csueb-spring-2026',
     campus: 'East Bay',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.webp`,
     monogram: 'CSUEB',
     date: 'Spring 2026',
     proposal:
@@ -861,7 +861,7 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusb-hepi',
     campus: 'San Bernardino',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.webp`,
     monogram: 'CSUSB',
     /* The sources give the adjustment year, not the date the indexing was
        established. Left as a marker rather than guessed at. */
