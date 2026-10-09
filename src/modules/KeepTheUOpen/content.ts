@@ -9,6 +9,8 @@ import {
   MdFitnessCenter,
   MdGroups,
   MdKitchen,
+  MdLocalDining,
+  MdMeetingRoom,
   MdMenuBook,
   MdWorkOutline,
 } from 'react-icons/md';
@@ -289,6 +291,16 @@ export const services: {
     Icon: MdKitchen,
     body: 'Food pantry, microwaves, lockers and the small things that make a long commuter day workable.',
   },
+  {
+    title: 'Food & Drink',
+    Icon: MdLocalDining,
+    body: 'Food staples like Starbucks and Sbarros are available here.',
+  },
+  {
+    title: 'Meeting Rooms',
+    Icon: MdMeetingRoom,
+    body: "Meeting rooms available for reservations, whether it's studying or official clubs and orgs meetings.",
+  },
 ];
 
 /**
@@ -368,10 +380,10 @@ export const bandStats = [
       'Student employees: We are the largest student employer on campus, alongside 29 full-time staff.',
   },
   {
-    value: '5',
+    value: '800',
     citation: '4',
     label:
-      'Cultural graduation ceremonies a year, free to about 800 graduating students and their families.',
+      'graduating students celebrating 5 cultural graduation ceremonies a year.',
   },
 ];
 

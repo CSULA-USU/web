@@ -1436,22 +1436,9 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is one case worth looking at: students rejected the first
-          proposal, partly because it would have charged them a year before the
-          building opened. The campus came back with a cheaper proposal on
-          different terms, and students ended up approving it.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          margin={`${Spaces.md} 0 0`}
-          style={{ maxWidth: MEASURE }}
-        >
           This is why it&apos;s important to participate in your student
-          government. You have the power to change what gets proposed. Make your
-          voice heard!
+          government. You have the power to influence what gets proposed. Make
+          your voice heard!
         </Typography>
       </FluidContainer>
 
