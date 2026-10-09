@@ -267,7 +267,7 @@ export const services: {
   {
     title: 'Study & Rest',
     Icon: MdMenuBook,
-    body: 'Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.',
+    body: 'Quiet floors, group rooms, nap pods, cold AC, and somewhere to be between a 10 AM and a 2 PM class.',
   },
   {
     title: 'Play & Recreation',
