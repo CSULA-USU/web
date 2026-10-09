@@ -236,15 +236,15 @@ export const thesisCards = [
   },
   {
     number: '02',
-    title: "The things you'd otherwise pay for",
+    title: 'The things you otherwise pay for',
     body: 'The fitness center, the food pantry and everyday essentials are covered by the fee you already pay. No membership, no per-visit charge, no sign-up.',
   },
   {
     number: '03',
     title: 'Nearly 100 student jobs',
-    body: 'Between 90 and 100 students work here',
+    body: 'Between 90-100 students work here',
     bodyAfterCitation:
-      'the largest student employer on campus, with schedules built around class times.',
+      ', the largest student employer on campus, with schedules built around class times. At one point employed ~250.',
     citation: '4',
   },
 ];
@@ -267,7 +267,7 @@ export const services: {
   {
     title: 'Study & Rest',
     Icon: MdMenuBook,
-    body: 'Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.',
+    body: 'Quiet floors, group rooms, nap pods, cold AC, and somewhere to be between a 10 AM and a 2 PM class.',
   },
   {
     title: 'Play & Recreation',
@@ -298,8 +298,8 @@ export const services: {
  * weekday use: study rooms occupied, the fitness center, a club meeting, the
  * food pantry, the cultural graduations. Concerts and festivals stay a
  * minority. Event-night photographs are the most photogenic and the least
- * persuasive to a commuter being asked for money; a picture of a Tuesday
- * afternoon is the argument.
+ * representative of what the fee pays for on an ordinary day; a picture of a
+ * Tuesday afternoon is the accurate one.
  *
  * CAPTIONS — every caption states what it is, how many, and what it costs a
  * student. Facts, never adjectives. A caption with no verifiable fact in it
@@ -308,7 +308,7 @@ export const services: {
  *
  * ALT TEXT — describes the scene, never the individuals. No names.
  *
- * TODO — RELEASES REQUIRED. This is a public advocacy page. Every photograph
+ * TODO — RELEASES REQUIRED. This is a public U-SU page. Every photograph
  * of an identifiable student needs a signed release on file before it
  * replaces a placeholder here. Drop the `isAwaitingPhotography` line on an
  * item only once its image exists and its release is signed.
@@ -721,7 +721,7 @@ export const proposedSpaces = [
 
 export const beforeYouWeighInCards = [
   {
-    title: 'Read the budget yourself',
+    title: 'Read the budget',
     body: 'The April 10 2026 Fiscal Committee presentation is the source for every budget figure on this page.',
     linkText: 'Go to Sources →',
     href: '#sources',
@@ -729,7 +729,7 @@ export const beforeYouWeighInCards = [
   {
     title: 'Come to an info session',
     body: 'Open sessions in the U-SU where you can ask staff and board members directly.',
-    marker: '[NEEDS FIGURE — dates & locations]',
+    marker: '',
   },
   {
     title: 'Ask the board',

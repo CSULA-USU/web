@@ -28,6 +28,8 @@ export * from './Monogram';
 export * from './NonBreakingSpan';
 export * from './PageMeta';
 export * from './Panel';
+export * from './ParallaxBand';
+export * from './ParallaxStrip';
 export * from './PieChart';
 export * from './PlaceholderMarker';
 export * from './Popover';
