@@ -702,10 +702,11 @@ export default function KeepTheUOpen() {
           // The uploaded file's pixel size. Update it with the file.
           photoAspectRatio: 2400 / 937,
           objectPosition: '60% center',
-          // Blurred so the building's own lettering cannot compete with the
-          // stats, which in turn makes a low-quality, optimized file look
-          // no different from the full-resolution upload.
-          blur: '6px',
+          // Blurred just enough that the building's own lettering cannot
+          // compete with the stats while the building still reads as one —
+          // 6px left only smudges, 3px still too much. The blur also softens
+          // the optimized file's 1024px ceiling and its lower quality.
+          blur: '2px',
           quality: 50,
         }}
       >
