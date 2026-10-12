@@ -1106,9 +1106,11 @@ export default function SaveTheU() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            Both outcomes are below: the spaces the U-SU has identified to add
-            or convert if the fee passes, and what changes about the building
-            and its services if it doesn&apos;t.
+            Both outcomes are below: what changes about the building and its
+            services if the fee doesn&apos;t pass, and the spaces the U-SU has
+            identified an intention to add or convert if it does. Please note
+            that nothing has been finalized and that all plans are subject to
+            change.
           </Typography>
         </TextAndImage>
         <Tabs
@@ -1116,92 +1118,6 @@ export default function SaveTheU() {
           label="What happens to the U-SU under each outcome"
           scrollMarginTop="84px"
           items={[
-            {
-              title: 'If it passes',
-              children: (
-                <>
-                  <Typography
-                    as="p"
-                    variant="copy"
-                    size="sm"
-                    lineHeight="1.6"
-                    color="greyDark"
-                    margin={`0 0 ${Spaces.xl}`}
-                    style={{ maxWidth: MEASURE }}
-                  >
-                    These are the spaces the U-SU has identified to add or
-                    convert. They are described here only as far as they have
-                    been described — nothing below is scheduled, costed, or
-                    final.{' '}
-                    <PlaceholderMarker>
-                      [NEEDS COPY — timeline and phasing]
-                    </PlaceholderMarker>
-                  </Typography>
-                  <AutoGrid minColumnWidth="280px">
-                    {proposedSpaces.map((space) => (
-                      <Card
-                        key={space.title}
-                        title={space.title}
-                        borderRadius="16px"
-                        shadow="soft"
-                      >
-                        <Typography
-                          as="p"
-                          variant="copy"
-                          size="sm"
-                          lineHeight="1.6"
-                        >
-                          {space.body}
-                          {space.marker && (
-                            <>
-                              {' '}
-                              <PlaceholderMarker>
-                                {space.marker}
-                              </PlaceholderMarker>
-                            </>
-                          )}
-                        </Typography>
-                      </Card>
-                    ))}
-                  </AutoGrid>
-                  <Panel
-                    border="greyLighter"
-                    borderStyle="dashed"
-                    borderRadius="16px"
-                    shadow="none"
-                    padding="clamp(20px, 3vw, 32px)"
-                    margin={`${Spaces.xl} 0 0`}
-                  >
-                    <div>
-                      <Typography
-                        as="p"
-                        variant="span"
-                        size="xs"
-                        weight="800"
-                        letterSpacing="0.06em"
-                        color="gold"
-                      >
-                        [AWAITING RENDERINGS — 6 spaces]
-                      </Typography>
-                      <Typography
-                        as="p"
-                        variant="copy"
-                        size="sm"
-                        lineHeight="1.6"
-                        color="greyDark"
-                        margin={`${Spaces.md} 0 0`}
-                        style={{ maxWidth: '56ch' }}
-                      >
-                        This section is the one place on the page where a
-                        picture would do more than a sentence. Nothing ships
-                        here until there is a real rendering or photograph of
-                        each space.
-                      </Typography>
-                    </div>
-                  </Panel>
-                </>
-              ),
-            },
             {
               id: 'if-it-fails',
               title: "If it doesn't pass",
@@ -1319,6 +1235,92 @@ export default function SaveTheU() {
                     </div>
                   </Panel>
                 </AutoGrid>
+              ),
+            },
+            {
+              title: 'If it passes',
+              children: (
+                <>
+                  <Typography
+                    as="p"
+                    variant="copy"
+                    size="sm"
+                    lineHeight="1.6"
+                    color="greyDark"
+                    margin={`0 0 ${Spaces.xl}`}
+                    style={{ maxWidth: MEASURE }}
+                  >
+                    These are the spaces the U-SU has identified to add or
+                    convert. They are described here only as far as they have
+                    been described — nothing below is scheduled, costed, or
+                    final.{' '}
+                    <PlaceholderMarker>
+                      [NEEDS COPY — timeline and phasing]
+                    </PlaceholderMarker>
+                  </Typography>
+                  <AutoGrid minColumnWidth="280px">
+                    {proposedSpaces.map((space) => (
+                      <Card
+                        key={space.title}
+                        title={space.title}
+                        borderRadius="16px"
+                        shadow="soft"
+                      >
+                        <Typography
+                          as="p"
+                          variant="copy"
+                          size="sm"
+                          lineHeight="1.6"
+                        >
+                          {space.body}
+                          {space.marker && (
+                            <>
+                              {' '}
+                              <PlaceholderMarker>
+                                {space.marker}
+                              </PlaceholderMarker>
+                            </>
+                          )}
+                        </Typography>
+                      </Card>
+                    ))}
+                  </AutoGrid>
+                  <Panel
+                    border="greyLighter"
+                    borderStyle="dashed"
+                    borderRadius="16px"
+                    shadow="none"
+                    padding="clamp(20px, 3vw, 32px)"
+                    margin={`${Spaces.xl} 0 0`}
+                  >
+                    <div>
+                      <Typography
+                        as="p"
+                        variant="span"
+                        size="xs"
+                        weight="800"
+                        letterSpacing="0.06em"
+                        color="gold"
+                      >
+                        [AWAITING RENDERINGS — 6 spaces]
+                      </Typography>
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="sm"
+                        lineHeight="1.6"
+                        color="greyDark"
+                        margin={`${Spaces.md} 0 0`}
+                        style={{ maxWidth: '56ch' }}
+                      >
+                        This section is the one place on the page where a
+                        picture would do more than a sentence. Nothing ships
+                        here until there is a real rendering or photograph of
+                        each space.
+                      </Typography>
+                    </div>
+                  </Panel>
+                </>
               ),
             },
           ]}
