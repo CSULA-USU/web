@@ -52,6 +52,7 @@ import {
   Monogram,
   Panel,
   ParallaxBand,
+  ParallaxStrip,
   PieChart,
   PlaceholderMarker,
   PrototypeNotice,
@@ -405,136 +406,142 @@ export default function KeepTheUOpen() {
         contentMaxWidth={sectionShell.innerMaxWidth}
       />
 
-      {/* 2 · Hero */}
-      <FluidContainer
-        backgroundImage={CAMPUS_PHOTO_SRC}
-        backgroundImageLoading="priority"
-        backgroundOverlay="rgba(0, 0, 0, 0.75)"
-        backgroundBlur="2px"
-        padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-        innerMinHeight="min(72svh, 680px)"
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        textAlign="center"
+      {/* 2 · Hero — the same parallax as the photo band below, composed the
+          way ParallaxBand composes it: ParallaxStrip owns the photo and its
+          motion, FluidContainer only the layout. With no `height`, the
+          content sizes the strip. */}
+      <ParallaxStrip
+        src={CAMPUS_PHOTO_SRC}
+        priority
+        scrim="rgba(0, 0, 0, 0.75)"
+        blur="2px"
       >
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.14em"
-          color="primary"
-          margin={`0 0 ${Spaces.md}`}
+        <FluidContainer
+          padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          innerMaxWidth={CONTENT_MAX_WIDTH}
+          innerMinHeight="min(72svh, 680px)"
+          flex
+          flexDirection="column"
+          justifyContent="center"
+          textAlign="center"
         >
-          {heroEyebrow}
-        </Typography>
-        <Typography
-          as="h1"
-          variant="pageHeader"
-          fluidSize={FLUID_H1}
-          lineHeight="1.05"
-          color="white"
-        >
-          Change Starts With U
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-          margin={`${Spaces.md} 0 0`}
-        >
-          The rooms your clubs meet in. Gym access. The food pantry. Study
-          rooms. Places to nap.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          You already pay for the U-SU: $137.25 a semester, unchanged since
-          2007.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          However, costs have risen for nineteen years while enrollment fell.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          By FY 2030-31, the reserves covering the deficit are gone, leaving 35%
-          of that year&apos;s spending unfunded.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          The proposal is $90 more a semester: $50 for the building & $40 for
-          improvements.
-        </Typography>
-        <div>
-          <Button
-            variant="primary"
-            href="#numbers"
-            margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+          <Typography
+            as="p"
+            variant="span"
+            size="2xs"
+            weight="700"
+            uppercase
+            letterSpacing="0.14em"
+            color="primary"
+            margin={`0 0 ${Spaces.md}`}
           >
-            {campaignMode.heroPrimaryCta}
-          </Button>
-          <Button
-            variant="whiteOutline"
-            href="#cost"
-            margin={`${Spaces.lg} 0 0`}
+            {heroEyebrow}
+          </Typography>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            fluidSize={FLUID_H1}
+            lineHeight="1.05"
+            color="white"
           >
-            {campaignMode.heroSecondaryCta}
-          </Button>
-        </div>
-        <Divider
-          color="greyDark"
-          size="1px"
-          margin={`${Spaces.xl} 0 ${Spaces.lg}`}
-        />
-        <AutoGrid minColumnWidth="200px" gap={Spaces.lg}>
-          {heroFigures.map((figure) => (
-            <CitedStat
-              key={figure.label}
-              variant="onDark"
-              value={figure.value}
-              label={figure.label}
-              highlightValue={figure.highlight}
-            />
-          ))}
-        </AutoGrid>
-        <ScrollCue
-          lineStyle="solid"
-          animation="stream"
-          color="white"
-          thickness="0.25px"
-          height="100px"
-          breakLength="10px"
-          duration="2600ms"
-          margin={`${Spaces.xl} auto 0`}
-        />
-      </FluidContainer>
+            Change Starts With U
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+            margin={`${Spaces.md} 0 0`}
+          >
+            The rooms your clubs meet in. Gym access. The food pantry. Study
+            rooms. Places to nap.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            You already pay for the U-SU: $137.25 a semester, unchanged since
+            2007.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            However, costs have risen for nineteen years while enrollment fell.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            By FY 2030-31, the reserves covering the deficit are gone, leaving
+            35% of that year&apos;s spending unfunded.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            The proposal is $90 more a semester: $50 for the building & $40 for
+            improvements.
+          </Typography>
+          <div>
+            <Button
+              variant="primary"
+              href="#numbers"
+              margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+            >
+              {campaignMode.heroPrimaryCta}
+            </Button>
+            <Button
+              variant="whiteOutline"
+              href="#cost"
+              margin={`${Spaces.lg} 0 0`}
+            >
+              {campaignMode.heroSecondaryCta}
+            </Button>
+          </div>
+          <Divider
+            color="greyDark"
+            size="1px"
+            margin={`${Spaces.xl} 0 ${Spaces.lg}`}
+          />
+          <AutoGrid minColumnWidth="200px" gap={Spaces.lg}>
+            {heroFigures.map((figure) => (
+              <CitedStat
+                key={figure.label}
+                variant="onDark"
+                value={figure.value}
+                label={figure.label}
+                highlightValue={figure.highlight}
+              />
+            ))}
+          </AutoGrid>
+          <ScrollCue
+            lineStyle="solid"
+            animation="stream"
+            color="white"
+            thickness="0.25px"
+            height="100px"
+            breakLength="10px"
+            duration="2600ms"
+            margin={`${Spaces.xl} auto 0`}
+          />
+        </FluidContainer>
+      </ParallaxStrip>
 
       {/* 3 · Thesis */}
       <FluidContainer {...sectionShell} id="why" backgroundColor="white">

@@ -165,6 +165,12 @@ interface ParallaxStripProps {
    */
   quality?: number;
   /**
+   * Preloads the photo instead of lazy-loading it. Use it only for a strip
+   * that opens the page, as a hero does, where the photo is likely the page's
+   * largest paint; a strip further down should stay lazy.
+   */
+  priority?: boolean;
+  /**
    * Laid over the photo. With `height` set it fills the strip, and layout is
    * the content's job, e.g. a `FluidContainer` at `height="100%"`. Without
    * `height` it is what sizes the strip.
@@ -184,6 +190,7 @@ export const ParallaxStrip = ({
   unoptimized = false,
   blur,
   quality,
+  priority = false,
   children,
 }: ParallaxStripProps) => {
   const stripRef = useRef<HTMLDivElement | null>(null);
@@ -258,6 +265,7 @@ export const ParallaxStrip = ({
           sizes="100vw"
           unoptimized={unoptimized}
           quality={quality}
+          priority={priority}
         />
       </ImageLayer>
       {scrim && <Scrim $scrim={scrim} />}
