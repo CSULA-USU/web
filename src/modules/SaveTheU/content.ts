@@ -1,6 +1,6 @@
-import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
+import type { BarRow } from 'modules/SaveTheU/BarChart';
 import type { PieSegment } from 'components';
-import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
+import type { TrendSeries } from 'modules/SaveTheU/TrendChart';
 import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';

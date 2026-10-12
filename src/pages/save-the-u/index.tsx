@@ -34,8 +34,8 @@ import {
   todayFacts,
   trendSeries,
   trendTable,
-} from 'modules/KeepTheUOpen/content';
-import { faq } from 'modules/KeepTheUOpen/faq';
+} from 'modules/SaveTheU/content';
+import { faq } from 'modules/SaveTheU/faq';
 import {
   AnchorNav,
   AutoGrid,
@@ -343,7 +343,7 @@ const peerOutcomeTable: TableData<PeerOutcome> = {
   })),
 };
 
-export default function KeepTheUOpen() {
+export default function SaveTheU() {
   /* The reserve callouts count off the trend chart's wipe rather than their
      own scroll into view, on its duration and its curve, so the figures and
      the lines they summarize move together and land together. Left undefined when the chart does not animate: it would never
