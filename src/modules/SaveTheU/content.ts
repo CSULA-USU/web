@@ -38,7 +38,7 @@ export const campaignMode = {
      the JSX does not change. */
   finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the U-SU budget, the shortfall, and what $90 more a semester will get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 more a semester can get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
@@ -906,6 +906,6 @@ export const facultyItems: {
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented below.',
+    body: '$137.25 a semester today, price last set in 2007. $227.25 being proposed. Every figure here is documented below.',
   },
 ];
