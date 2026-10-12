@@ -432,8 +432,7 @@ Site logos and the wordmark are not used — the app shell owns the nav and foot
 ## 14 · Files
 
 - `KEEP_THE_U_OPEN.md` — agent working agreement: read-first order, rules, build sequence, done criteria.
-- `Keep the U Open v2.dc.html` — the prototype (open it directly in a browser; `support.js` must sit
-  beside it). Template markup first, then the logic class at the bottom of the file containing
-  `campaignMode`, the bar-chart data, and the animation engine.
-- `support.js` — runtime for the prototype format. Not part of the deliverable.
+- `Keep the U Open v2.dc.html` and `support.js` — the prototype and its runtime. Removed once the
+  page was built, since `src/pages/save-the-u/` is now the reference. To view them again, restore
+  both from commit `0020a190`; the prototype only opens with `support.js` beside it.
 - `assets/` — images and icons listed above.
