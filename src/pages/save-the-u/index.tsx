@@ -49,6 +49,7 @@ import {
   FluidContainer,
   GridGallery,
   Image,
+  ImageCrossfade,
   Monogram,
   Panel,
   ParallaxBand,
@@ -57,6 +58,7 @@ import {
   PlaceholderMarker,
   PrototypeNotice,
   ScrollCue,
+  SelectableOption,
   SourceList,
   StyledLink,
   Table,
@@ -66,6 +68,7 @@ import {
   Typography,
 } from 'components';
 import { Colors, FontSizes, Spaces } from 'theme';
+import type { CrossfadeImage } from 'components';
 import type { TableData } from 'types';
 import { BiPlus } from 'react-icons/bi';
 
@@ -399,6 +402,29 @@ const renderServiceRows = (
     );
   });
 
+/* The "If it passes" list points its `aria-controls` here. */
+const PROPOSED_SPACE_RENDERING_ID = 'proposed-space-rendering';
+
+const proposedSpaceRenderings: CrossfadeImage[] = proposedSpaces.map(
+  (space) => ({
+    key: space.title,
+    title: space.title,
+    src: space.renderingSrc,
+    alt: `Simulated rendering: ${space.title}`,
+    description: (
+      <>
+        {space.body}
+        {space.marker && (
+          <>
+            {' '}
+            <PlaceholderMarker tone="primary">{space.marker}</PlaceholderMarker>
+          </>
+        )}
+      </>
+    ),
+  }),
+);
+
 export default function SaveTheU() {
   /* The reserve callouts count off the trend chart's wipe rather than their
      own scroll into view, on its duration and its curve, so the figures and
@@ -409,6 +435,10 @@ export default function SaveTheU() {
   const reserveCountTrigger = chartAnimation.animateTrend
     ? isTrendRevealed
     : undefined;
+
+  /* Opens on the first space, so the rendering panel never sits empty. One
+     space is always previewed — there is no cleared state. */
+  const [previewedSpace, setPreviewedSpace] = useState(proposedSpaces[0].title);
 
   return (
     <Page>
@@ -1173,6 +1203,7 @@ export default function SaveTheU() {
           variant="folder"
           label="What happens to the U-SU under each outcome"
           scrollMarginTop="84px"
+          matchPanelHeights
           items={[
             {
               id: 'if-it-fails',
@@ -1278,72 +1309,73 @@ export default function SaveTheU() {
                     style={{ maxWidth: MEASURE }}
                   >
                     <PlaceholderMarker>
-                      [NEEDS COPY — timeline and phasing. Old copy already moved
-                      to description section near header]
+                      [NEEDS COPY — what the renderings are (simulated, not
+                      final designs), and what passing pays for that has no
+                      picture, such as more events and more student hires]
                     </PlaceholderMarker>
                   </Typography>
-                  <AutoGrid minColumnWidth="280px">
-                    {proposedSpaces.map((space) => (
-                      <Card
-                        key={space.title}
-                        title={space.title}
-                        borderRadius="16px"
-                        shadow="soft"
-                      >
+                  <AutoGrid minColumnWidth="320px">
+                    <Panel
+                      border="greyLighter"
+                      shadow="none"
+                      borderRadius="16px"
+                      padding="clamp(20px, 3vw, 32px)"
+                    >
+                      <div>
                         <Typography
                           as="p"
-                          variant="copy"
-                          size="sm"
-                          lineHeight="1.6"
+                          variant="span"
+                          size="2xs"
+                          weight="700"
+                          uppercase
+                          letterSpacing="0.08em"
+                          color="greyDark"
+                          margin={`0 0 ${Spaces.md}`}
                         >
-                          {space.body}
-                          {space.marker && (
-                            <>
-                              {' '}
-                              <PlaceholderMarker>
-                                {space.marker}
-                              </PlaceholderMarker>
-                            </>
-                          )}
+                          Proposed spaces
                         </Typography>
-                      </Card>
-                    ))}
+                        <AutoGrid maxColumns={1} gap="12px">
+                          {proposedSpaces.map((space) => (
+                            <SelectableOption
+                              key={space.title}
+                              title={space.title}
+                              selected={previewedSpace === space.title}
+                              onSelect={() => setPreviewedSpace(space.title)}
+                              controls={PROPOSED_SPACE_RENDERING_ID}
+                              selectOnHover
+                            />
+                          ))}
+                        </AutoGrid>
+                      </div>
+                    </Panel>
+                    <Panel
+                      backgroundColor="greyDarkest"
+                      shadow="none"
+                      borderRadius="16px"
+                      padding="clamp(20px, 3vw, 32px)"
+                    >
+                      <div>
+                        <Typography
+                          as="p"
+                          variant="span"
+                          size="2xs"
+                          weight="700"
+                          uppercase
+                          letterSpacing="0.08em"
+                          color="primary"
+                          margin={`0 0 ${Spaces.md}`}
+                        >
+                          Simulated renderings
+                        </Typography>
+                        <ImageCrossfade
+                          id={PROPOSED_SPACE_RENDERING_ID}
+                          images={proposedSpaceRenderings}
+                          activeKey={previewedSpace}
+                          pendingLabel="[AWAITING RENDERING]"
+                        />
+                      </div>
+                    </Panel>
                   </AutoGrid>
-                  <Panel
-                    border="greyLighter"
-                    borderStyle="dashed"
-                    borderRadius="16px"
-                    shadow="none"
-                    padding="clamp(20px, 3vw, 32px)"
-                    margin={`${Spaces.xl} 0 0`}
-                  >
-                    <div>
-                      <Typography
-                        as="p"
-                        variant="span"
-                        size="xs"
-                        weight="800"
-                        letterSpacing="0.06em"
-                        color="gold"
-                      >
-                        [AWAITING RENDERINGS — 6 spaces]
-                      </Typography>
-                      <Typography
-                        as="p"
-                        variant="copy"
-                        size="sm"
-                        lineHeight="1.6"
-                        color="greyDark"
-                        margin={`${Spaces.md} 0 0`}
-                        style={{ maxWidth: '56ch' }}
-                      >
-                        This section is the one place on the page where a
-                        picture would do more than a sentence. Nothing ships
-                        here until there is a real rendering or photograph of
-                        each space.
-                      </Typography>
-                    </div>
-                  </Panel>
                 </>
               ),
             },

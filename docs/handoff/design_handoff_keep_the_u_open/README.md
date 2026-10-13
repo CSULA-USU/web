@@ -372,6 +372,8 @@ Nothing ships with an estimated number. Every item below is visible on the page 
 | `[NEEDS FIGURE — category split of the remaining 67%]`    | §7 ShareChart legend                                                         | Fiscal Committee           |
 | `[NEEDS COPY — Financial Aid]`                            | §9 and §12 FAQ 2                                                             | Cal State LA Financial Aid |
 | `[NEEDS COPY — student positions on the current fee]`     | §8 right panel, student-employment row                                       | U-SU Ops                   |
+| `[NEEDS COPY — what the renderings are …]`                | §8 "If it passes" tab, above the two panels                                  | Campaign lead              |
+| `[AWAITING RENDERING]` ×6                                 | §8 "If it passes" tab, one per proposed space (`renderingSrc`)               | Campaign lead              |
 | `[NEEDS COPY — board resolution and vote record]`         | §12 FAQ 6                                                                    | Board                      |
 | `[NEEDS LINK]` ×5                                         | §14 sources 1, 2, 3, 4, 6                                                    | Campaign lead              |
 | `[AWAITING REAL QUOTES — 4 needed, with written consent]` | §10                                                                          | Campaign lead              |

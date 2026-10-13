@@ -763,8 +763,17 @@ export const serviceComparisons: {
  * Described only as far as they have been described to us — no square footage,
  * no cost, no opening date, and no feature nobody has confirmed. Alphabetical,
  * since no phasing order has been published to sequence them by.
+ *
+ * `renderingSrc` is the simulated rendering shown beside the list. Until a
+ * space has one, its frame shows an awaiting marker rather than a stand-in
+ * picture of somewhere else.
  */
-export const proposedSpaces = [
+export const proposedSpaces: {
+  title: string;
+  body: string;
+  marker?: string;
+  renderingSrc?: string;
+}[] = [
   {
     title: 'Downstairs Lounge',
     body: 'The lounge on the lower level, enhanced — more room to sit, study and wait out a gap in your schedule.',

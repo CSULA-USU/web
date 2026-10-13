@@ -30,6 +30,12 @@ interface TabsProps extends TabsStyle {
   label?: string;
   /** Tab shown before anything is clicked, and before any matching hash. */
   defaultIndex?: number;
+  /**
+   * Render every panel, stacked in one cell, so the frame is always as tall
+   * as the tallest and switching tabs moves nothing below it. Inactive panels
+   * are hidden but stay in the DOM, so their content is also indexed.
+   */
+  matchPanelHeights?: boolean;
 }
 
 /* The folder's outline and its interior. The active tab paints its own bottom
@@ -139,7 +145,20 @@ const Tab = styled.button<{
     `}
 `;
 
-const TabPanel = styled.div<{ $variant: TabsVariant }>`
+/* Every panel shares one grid cell, so the cell takes the tallest one's
+   height. See `matchPanelHeights`. */
+const PanelStack = styled.div`
+  display: grid;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+`;
+
+/* Visibility rather than display, so a hidden panel keeps holding the height
+   while leaving the a11y tree and the tab order. */
+const TabPanel = styled.div<{ $variant: TabsVariant; $hidden?: boolean }>`
+  ${(p) => p.$hidden && 'visibility: hidden;'}
   ${(p) =>
     p.$variant === 'folder' &&
     `
@@ -163,6 +182,7 @@ export const Tabs = ({
   label,
   defaultIndex = 0,
   scrollMarginTop,
+  matchPanelHeights = false,
   ...props
 }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(defaultIndex);
@@ -241,15 +261,33 @@ export const Tabs = ({
           </Tab>
         ))}
       </TabList>
-      <TabPanel
-        role="tabpanel"
-        id={`${baseId}-panel-${activeTab}`}
-        aria-labelledby={activeTabId}
-        tabIndex={0}
-        $variant={variant}
-      >
-        {activeItem?.children}
-      </TabPanel>
+      {matchPanelHeights ? (
+        <PanelStack>
+          {items.map((item, i) => (
+            <TabPanel
+              key={item.title}
+              role="tabpanel"
+              id={`${baseId}-panel-${i}`}
+              aria-labelledby={item.id ?? `${baseId}-tab-${i}`}
+              tabIndex={0}
+              $variant={variant}
+              $hidden={i !== activeTab}
+            >
+              {item.children}
+            </TabPanel>
+          ))}
+        </PanelStack>
+      ) : (
+        <TabPanel
+          role="tabpanel"
+          id={`${baseId}-panel-${activeTab}`}
+          aria-labelledby={activeTabId}
+          tabIndex={0}
+          $variant={variant}
+        >
+          {activeItem?.children}
+        </TabPanel>
+      )}
     </TabsContainer>
   );
 };
