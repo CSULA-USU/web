@@ -26,12 +26,12 @@ import {
   proposedSpaces,
   reserveCallouts,
   sampleTestimonials,
+  serviceComparisons,
   services,
   shareSegments,
   sources,
   testimonials,
   thesisCards,
-  todayFacts,
   trendSeries,
   trendTable,
 } from 'modules/SaveTheU/content';
@@ -342,6 +342,62 @@ const peerOutcomeTable: TableData<PeerOutcome> = {
     original: outcome,
   })),
 };
+
+/* Both columns of the "If it doesn't pass" tab go through this, so they keep
+   the same labels in the same order and read across as one comparison. */
+const renderServiceRows = (
+  side: 'today' | 'ifItFails',
+  { onDark = false } = {},
+) =>
+  serviceComparisons.map((service, index) => {
+    const { body, marker, linkText, href } = service[side];
+    return (
+      <div key={service.label}>
+        {index > 0 && (
+          <Divider
+            color={onDark ? 'greyDark' : 'greyLighter'}
+            size="1px"
+            margin={`${Spaces.md} 0`}
+          />
+        )}
+        <Typography
+          as="p"
+          variant="span"
+          size="sm"
+          weight="700"
+          color={onDark ? 'white' : undefined}
+        >
+          {service.label}
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          color={onDark ? 'greyLighter' : undefined}
+          margin={`${Spaces.xs} 0 0`}
+        >
+          {body}
+          {marker && (
+            <>
+              {body && ' '}
+              <PlaceholderMarker tone={onDark ? 'primary' : 'gold'}>
+                {marker}
+              </PlaceholderMarker>
+            </>
+          )}
+          {linkText && href && (
+            <>
+              {' '}
+              <StyledLink href={href} isInverseUnderlineStyling>
+                {linkText}
+              </StyledLink>
+            </>
+          )}
+        </Typography>
+      </div>
+    );
+  });
 
 export default function SaveTheU() {
   /* The reserve callouts count off the trend chart's wipe rather than their
@@ -1142,42 +1198,26 @@ export default function SaveTheU() {
                       >
                         Today, funded by the current fee
                       </Typography>
-                      {todayFacts.map((fact, index) => (
-                        <div key={fact.label}>
-                          {index > 0 && (
-                            <Divider
-                              color="greyLighter"
-                              size="1px"
-                              margin={`${Spaces.md} 0`}
-                            />
-                          )}
-                          <Typography
-                            as="p"
-                            variant="span"
-                            size="sm"
-                            weight="700"
-                          >
-                            {fact.label}
-                          </Typography>
-                          <Typography
-                            as="p"
-                            variant="copy"
-                            size="sm"
-                            lineHeight="1.6"
-                            margin={`${Spaces.xs} 0 0`}
-                          >
-                            {fact.body}
-                            {fact.marker && (
-                              <>
-                                {' '}
-                                <PlaceholderMarker>
-                                  {fact.marker}
-                                </PlaceholderMarker>
-                              </>
-                            )}
-                          </Typography>
-                        </div>
-                      ))}
+                      {renderServiceRows('today')}
+                      {/* Closes this column the way the deficit paragraph
+                          closes the dark one. Anything added above the rows
+                          on only one side pushes that side's rows down and
+                          breaks the row-for-row alignment. */}
+                      <Divider
+                        color="greyLighter"
+                        size="1px"
+                        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+                      />
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="xs"
+                        lineHeight="1.6"
+                        color="greyDark"
+                      >
+                        These comparisons are projections based on staff
+                        estimates. None are final.
+                      </Typography>
                     </div>
                   </Panel>
                   <Panel
@@ -1199,6 +1239,12 @@ export default function SaveTheU() {
                       >
                         After FY 2030-31, on the current fee
                       </Typography>
+                      {renderServiceRows('ifItFails', { onDark: true })}
+                      <Divider
+                        color="greyDark"
+                        size="1px"
+                        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+                      />
                       <Typography
                         as="p"
                         variant="copy"
@@ -1207,30 +1253,11 @@ export default function SaveTheU() {
                         color="white"
                         tabularNums
                       >
-                        In the DO NOTHING projection, FY 2030-31 expenses of
-                        $6,677,545 run $2,340,220 past revenue — 35% of that
-                        year&apos;s spending — and the reserve closes the year
-                        at −$2,065,518. The bond payment of about $1,920,000
-                        continues through 2038 and cannot be reduced.
-                      </Typography>
-                      <Typography
-                        as="p"
-                        variant="copy"
-                        size="sm"
-                        lineHeight="1.6"
-                        color="greyLighter"
-                        margin={`${Spaces.md} 0 0`}
-                      >
-                        Everything in the column beside this one is paid for out
-                        of the same budget. The U-SU has not decided or
-                        published which of them it would reduce, and this page
-                        will not guess.
-                      </Typography>
-                      <Typography as="p" margin={`${Spaces.lg} 0 0`}>
-                        <PlaceholderMarker variant="block" tone="primary">
-                          [NEEDS COPY — service-level impact statement, U-SU
-                          Fiscal Committee]
-                        </PlaceholderMarker>
+                        The FY 2030-31 expenses of $6,677,545 run $2,340,220
+                        past revenue, 35% of that year&apos;s spending, and the
+                        reserve closes the year at −$2,065,518. The bond payment
+                        of about $1,920,000 continues through 2038 and cannot be
+                        reduced.
                       </Typography>
                     </div>
                   </Panel>

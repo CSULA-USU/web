@@ -668,34 +668,95 @@ export const barRows: BarRow[] = [
   },
 ];
 
-export const todayFacts = [
+interface ServiceState {
+  body?: string;
+  marker?: string;
+  linkText?: string;
+  href?: string;
+}
+
+/**
+ * Each service today beside the same service on the current fee after
+ * FY 2030-31. One list feeds both columns of the "If it doesn't pass" tab, so
+ * a row cannot appear on one side and go missing from the other — the columns
+ * are a direct comparison and only work row for row. Sorted alphabetically
+ * by label, here rather than in the page, so both columns share the order.
+ *
+ * The `ifItFails` side is a projection built from estimates gathered from
+ * U-SU staff — not a decision, and nothing a source row could cite — so the
+ * page says so in a note closing the left column instead of carrying
+ * citation markers. Even so, every price in it is one the U-SU already
+ * charges or has charged: Recreation's non-fee-paying membership, the posted
+ * meeting-room rates (expected to be discounted for students), the $50
+ * cultural graduation charge. Do not add a price without a precedent like
+ * those.
+ */
+export const serviceComparisons: {
+  label: string;
+  today: ServiceState;
+  ifItFails: ServiceState;
+}[] = [
   {
     label: 'Fitness center access',
-    body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    today: {
+      body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    },
+    ifItFails: {
+      body: '$75 a semester for a membership, what students who don’t pay the U-SU fee are charged now.',
+      linkText: 'Membership\u00a0→',
+      href: '/recreation/membership',
+    },
   },
   {
     label: 'Signature events',
-    body: 'Programmed and paid for out of the operating budget.',
-    marker: '[NEEDS FIGURE — events per year]',
+    today: {
+      body: 'Programmed and paid for out of the operating budget.',
+      marker: '[NEEDS FIGURE — events per year]',
+    },
+    ifItFails: {
+      body: 'Fewer of them, and a charge to take part in the costlier ones.',
+    },
   },
   {
     label: 'Cultural graduation ceremonies',
-    body: 'Five a year, free to graduates and families, about 800 students.',
+    today: {
+      body: 'Five a year, free to graduates and families, about 800 students.',
+    },
+    ifItFails: {
+      body: 'Graduates paid $50 until 2024. A $25 fee is already under consideration for 2027.',
+    },
   },
   {
     label: 'Room reservations for student orgs',
-    body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
-    marker: '[NEEDS FIGURE — weekly club meetings]',
+    today: {
+      body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
+      marker: '[NEEDS FIGURE — weekly club meetings]',
+    },
+    ifItFails: {
+      body: 'A charge to reserve, likely discounted from the posted room rates.',
+      linkText: 'Room rates\u00a0→',
+      href: '/operations/meeting-rooms',
+    },
   },
   {
     label: 'Student employment',
-    body: '90–100 student positions, the largest student employer on campus.',
+    today: {
+      body: '90–100 student positions, the largest student employer on campus.',
+    },
+    ifItFails: {
+      marker: '[NEEDS COPY — student positions on the current fee]',
+    },
   },
   {
     label: 'Building hours',
-    body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    today: {
+      body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    },
+    ifItFails: {
+      body: 'Mon–Fri 7 AM to 8 PM · Closed weekends.',
+    },
   },
-];
+].sort((a, b) => a.label.localeCompare(b.label, 'en'));
 
 /**
  * Spaces the U-SU has identified to add or convert if the increase passes.
