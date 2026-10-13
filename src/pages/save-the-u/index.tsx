@@ -1250,12 +1250,9 @@ export default function SaveTheU() {
                     margin={`0 0 ${Spaces.xl}`}
                     style={{ maxWidth: MEASURE }}
                   >
-                    These are the spaces the U-SU has identified to add or
-                    convert. They are described here only as far as they have
-                    been described — nothing below is scheduled, costed, or
-                    final.{' '}
                     <PlaceholderMarker>
-                      [NEEDS COPY — timeline and phasing]
+                      [NEEDS COPY — timeline and phasing. Old copy already moved
+                      to description section near header]
                     </PlaceholderMarker>
                   </Typography>
                   <AutoGrid minColumnWidth="280px">
