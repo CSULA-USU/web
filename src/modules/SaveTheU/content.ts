@@ -702,8 +702,8 @@ export const serviceComparisons: {
       body: 'Included with enrollment. No membership charge, no per-visit fee.',
     },
     ifItFails: {
-      body: '$75 a semester for a membership, what students who don’t pay the U-SU fee are charged now.',
-      linkText: 'Membership\u00a0→',
+      body: 'Some students are already charged $75 a semester for a',
+      linkText: 'membership.',
       href: '/recreation/membership',
     },
   },
@@ -723,18 +723,18 @@ export const serviceComparisons: {
       body: 'Five a year, free to graduates and families, about 800 students.',
     },
     ifItFails: {
-      body: 'Graduates paid $50 until 2024. A $25 fee is already under consideration for 2027.',
+      body: 'Graduates paid $50 through 2023. A $25 fee is under consideration for 2027.',
     },
   },
   {
     label: 'Room reservations for student orgs',
     today: {
-      body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
+      body: 'Meeting space reservable by registered student organizations.',
       marker: '[NEEDS FIGURE — weekly club meetings]',
     },
     ifItFails: {
-      body: 'A charge to reserve, likely discounted from the posted room rates.',
-      linkText: 'Room rates\u00a0→',
+      body: 'There will be a charge to reserve, likely discounted, from the posted ',
+      linkText: 'room rates.',
       href: '/operations/meeting-rooms',
     },
   },
