@@ -152,12 +152,15 @@ Charts sit in white cards, `1px #dedede`, radius 16, padding `clamp(16px,2vw,28p
 
 ### 8 · What changes if this doesn't pass `#if-it-fails` — `#f4f4f4`
 
-Two columns. Left (white card): six verified "today" facts — fitness center access · signature
-events · cultural graduation ceremonies · room reservations for student orgs · student employment ·
-building hours, each a 15.5px Montserrat 700 label over Bitter 15.5 body, separated by `1px #dedede`.
-Right (`#2b2b2b` card, radius 16): the FY 2030-31 arithmetic and an explicit statement that the U-SU
-has not decided or published which services it would reduce, plus `[NEEDS COPY]`. Neutral voice, no
-red, no exclamation points, no warnings.
+Two columns. Left (white card): six verified "today" facts, alphabetical — building hours ·
+cultural graduation ceremonies · fitness center access · room reservations for student orgs ·
+signature events · student employment, each a 15.5px Montserrat 700 label over Bitter 15.5 body,
+separated by `1px #dedede`, closed by a one-line note that the comparisons are projections from
+staff estimates and none are final. Right (`#2b2b2b` card, radius 16): the same six labels in the
+same order, each describing that service on the current fee after FY 2030-31, closed by the
+FY 2030-31 arithmetic. Both columns read from one list (`serviceComparisons`) so they stay a
+row-for-row comparison; anything added above the rows on one side only breaks the alignment.
+Neutral voice, no red, no exclamation points, no warnings.
 
 ### 9 · Financial aid — white; one `Card` on `#f4f4f4`, question as the header, `[NEEDS COPY — Financial Aid]`
 
@@ -222,6 +225,15 @@ FY 2025-26 = 25% of the operating budget. Student fees cover 67% of costs; susta
 **Organization** — 501(c)(3), board chaired by elected students; building opened 2009, 93,000 sq ft;
 29 full-time staff, 90–100 student employees, largest student employer on campus (v1's "250 student
 jobs" was wrong); 5 free cultural graduation ceremonies a year, ~800 students.
+
+**On the current fee, after FY 2030-31** — projections from estimates gathered from U-SU staff, not
+decisions and not citable; the on-page note says so in place of source markers. Building hours
+Mon–Fri 7 AM to 8 PM, closed weekends (Director of Operations). Fitness center membership $75 a
+semester, the rate non-fee-paying students pay now (`/recreation/membership`). Room reservations
+charged, likely at a student discount on the posted rates (`/operations/meeting-rooms`). Cultural
+graduation: graduates paid $50 through 2023; 2024 and 2025 were free; a $25 fee is under
+consideration for 2027 because of current shortfalls. Signature events: fewer, with a charge for
+the costlier ones.
 
 **Peer comparison** — always "among the CSU's **22** campuses". The 2025-26 table lists 23 and
 Maritime shows $0 because it merged administratively with Cal Poly on July 1 2025, completing
@@ -359,7 +371,9 @@ Nothing ships with an estimated number. Every item below is visible on the page 
 | `[NEEDS FIGURE — effective term]`                         | §12 FAQ 1                                                                    | Fiscal Committee           |
 | `[NEEDS FIGURE — category split of the remaining 67%]`    | §7 ShareChart legend                                                         | Fiscal Committee           |
 | `[NEEDS COPY — Financial Aid]`                            | §9 and §12 FAQ 2                                                             | Cal State LA Financial Aid |
-| `[NEEDS COPY — service-level impact statement]`           | §8 right panel                                                               | Fiscal Committee           |
+| `[NEEDS COPY — student positions on the current fee]`     | §8 right panel, student-employment row                                       | U-SU Ops                   |
+| `[NEEDS COPY — what the renderings are …]`                | §8 "If it passes" tab, above the two panels                                  | Campaign lead              |
+| `[AWAITING RENDERING]` ×6                                 | §8 "If it passes" tab, one per proposed space (`renderingSrc`)               | Campaign lead              |
 | `[NEEDS COPY — board resolution and vote record]`         | §12 FAQ 6                                                                    | Board                      |
 | `[NEEDS LINK]` ×5                                         | §14 sources 1, 2, 3, 4, 6                                                    | Campaign lead              |
 | `[AWAITING REAL QUOTES — 4 needed, with written consent]` | §10                                                                          | Campaign lead              |
@@ -432,8 +446,7 @@ Site logos and the wordmark are not used — the app shell owns the nav and foot
 ## 14 · Files
 
 - `KEEP_THE_U_OPEN.md` — agent working agreement: read-first order, rules, build sequence, done criteria.
-- `Keep the U Open v2.dc.html` — the prototype (open it directly in a browser; `support.js` must sit
-  beside it). Template markup first, then the logic class at the bottom of the file containing
-  `campaignMode`, the bar-chart data, and the animation engine.
-- `support.js` — runtime for the prototype format. Not part of the deliverable.
+- `Keep the U Open v2.dc.html` and `support.js` — the prototype and its runtime. Removed once the
+  page was built, since `src/pages/save-the-u/` is now the reference. To view them again, restore
+  both from commit `0020a190`; the prototype only opens with `support.js` beside it.
 - `assets/` — images and icons listed above.

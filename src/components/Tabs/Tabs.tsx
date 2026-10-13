@@ -30,6 +30,13 @@ interface TabsProps extends TabsStyle {
   label?: string;
   /** Tab shown before anything is clicked, and before any matching hash. */
   defaultIndex?: number;
+  /**
+   * Stack every panel in one cell, so the frame is always as tall as the
+   * tallest and switching tabs moves nothing below it. Leave off where one
+   * panel runs far longer than the rest, or the short ones sit in a mostly
+   * empty frame.
+   */
+  matchPanelHeights?: boolean;
 }
 
 /* The folder's outline and its interior. The active tab paints its own bottom
@@ -139,7 +146,25 @@ const Tab = styled.button<{
     `}
 `;
 
-const TabPanel = styled.div<{ $variant: TabsVariant }>`
+/* Every panel shares one grid cell, so the cell takes the tallest one's
+   height. See `matchPanelHeights`. */
+const PanelStack = styled.div`
+  display: grid;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+`;
+
+/* Inactive panels are hidden with `display` by default. Under
+   `matchPanelHeights` it is `visibility` instead, so a hidden panel keeps
+   holding the height. Either way it leaves the a11y tree and the tab order. */
+const TabPanel = styled.div<{
+  $variant: TabsVariant;
+  $hiddenBy?: 'display' | 'visibility';
+}>`
+  ${(p) => p.$hiddenBy === 'display' && 'display: none;'}
+  ${(p) => p.$hiddenBy === 'visibility' && 'visibility: hidden;'}
   ${(p) =>
     p.$variant === 'folder' &&
     `
@@ -163,6 +188,7 @@ export const Tabs = ({
   label,
   defaultIndex = 0,
   scrollMarginTop,
+  matchPanelHeights = false,
   ...props
 }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(defaultIndex);
@@ -213,8 +239,28 @@ export const Tabs = ({
     selectTab(moves[event.key]);
   };
 
-  const activeItem = items[activeTab] ?? items[0];
-  const activeTabId = activeItem?.id ?? `${baseId}-tab-${activeTab}`;
+  /* Every panel is rendered and the inactive ones hidden with CSS, because
+     crawlers run JavaScript but never click: a panel that only mounts on
+     click is content they never see. */
+  const panels = items.map((item, i) => (
+    <TabPanel
+      key={item.title}
+      role="tabpanel"
+      id={`${baseId}-panel-${i}`}
+      aria-labelledby={item.id ?? `${baseId}-tab-${i}`}
+      tabIndex={0}
+      $variant={variant}
+      $hiddenBy={
+        i === activeTab
+          ? undefined
+          : matchPanelHeights
+          ? 'visibility'
+          : 'display'
+      }
+    >
+      {item.children}
+    </TabPanel>
+  ));
 
   return (
     <TabsContainer {...props}>
@@ -241,15 +287,7 @@ export const Tabs = ({
           </Tab>
         ))}
       </TabList>
-      <TabPanel
-        role="tabpanel"
-        id={`${baseId}-panel-${activeTab}`}
-        aria-labelledby={activeTabId}
-        tabIndex={0}
-        $variant={variant}
-      >
-        {activeItem?.children}
-      </TabPanel>
+      {matchPanelHeights ? <PanelStack>{panels}</PanelStack> : panels}
     </TabsContainer>
   );
 };

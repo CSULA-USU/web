@@ -1,7 +1,7 @@
 /**
  * Rendering defaults shared by every chart. They live here, beside the one
  * chart that is a `components/` primitive, so that primitive never has to
- * import from a campaign module. `modules/KeepTheUOpen/chartTokens` re-exports
+ * import from a campaign module. `modules/SaveTheU/chartTokens` re-exports
  * them for the charts that still live there.
  */
 

@@ -1,6 +1,6 @@
-import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
+import type { BarRow } from 'modules/SaveTheU/BarChart';
 import type { PieSegment } from 'components';
-import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
+import type { TrendSeries } from 'modules/SaveTheU/TrendChart';
 import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';
@@ -9,6 +9,8 @@ import {
   MdFitnessCenter,
   MdGroups,
   MdKitchen,
+  MdLocalDining,
+  MdMeetingRoom,
   MdMenuBook,
   MdWorkOutline,
 } from 'react-icons/md';
@@ -36,7 +38,7 @@ export const campaignMode = {
      the JSX does not change. */
   finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the U-SU budget, the shortfall, and what $90 more a semester will get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 more a semester can get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
@@ -289,6 +291,16 @@ export const services: {
     Icon: MdKitchen,
     body: 'Food pantry, microwaves, lockers and the small things that make a long commuter day workable.',
   },
+  {
+    title: 'Food & Drink',
+    Icon: MdLocalDining,
+    body: 'Food staples like Starbucks and Sbarros are available here.',
+  },
+  {
+    title: 'Meeting Rooms',
+    Icon: MdMeetingRoom,
+    body: "Meeting rooms available for reservations, whether it's studying or official clubs and orgs meetings.",
+  },
 ];
 
 /**
@@ -368,10 +380,10 @@ export const bandStats = [
       'Student employees: We are the largest student employer on campus, alongside 29 full-time staff.',
   },
   {
-    value: '5',
+    value: '800',
     citation: '4',
     label:
-      'Cultural graduation ceremonies a year, free to about 800 graduating students and their families.',
+      'graduating students celebrating 5 cultural graduation ceremonies a year.',
   },
 ];
 
@@ -656,42 +668,112 @@ export const barRows: BarRow[] = [
   },
 ];
 
-export const todayFacts = [
+interface ServiceState {
+  body?: string;
+  marker?: string;
+  linkText?: string;
+  href?: string;
+}
+
+/**
+ * Each service today beside the same service on the current fee after
+ * FY 2030-31. One list feeds both columns of the "If it doesn't pass" tab, so
+ * a row cannot appear on one side and go missing from the other — the columns
+ * are a direct comparison and only work row for row. Sorted alphabetically
+ * by label, here rather than in the page, so both columns share the order.
+ *
+ * The `ifItFails` side is a projection built from estimates gathered from
+ * U-SU staff — not a decision, and nothing a source row could cite — so the
+ * page says so in a note closing the left column instead of carrying
+ * citation markers. Even so, every price in it is one the U-SU already
+ * charges or has charged: Recreation's non-fee-paying membership, the posted
+ * meeting-room rates (expected to be discounted for students), the $50
+ * cultural graduation charge. Do not add a price without a precedent like
+ * those.
+ */
+export const serviceComparisons: {
+  label: string;
+  today: ServiceState;
+  ifItFails: ServiceState;
+}[] = [
   {
     label: 'Fitness center access',
-    body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    today: {
+      body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    },
+    ifItFails: {
+      body: 'Some students are already charged $75 a semester for a',
+      linkText: 'membership.',
+      href: '/recreation/membership',
+    },
   },
   {
     label: 'Signature events',
-    body: 'Programmed and paid for out of the operating budget.',
-    marker: '[NEEDS FIGURE — events per year]',
+    today: {
+      body: 'Programmed and paid for out of the operating budget.',
+      marker: '[NEEDS FIGURE — events per year]',
+    },
+    ifItFails: {
+      body: 'Fewer of them, and a charge to take part in the costlier ones.',
+    },
   },
   {
     label: 'Cultural graduation ceremonies',
-    body: 'Five a year, free to graduates and families, about 800 students.',
+    today: {
+      body: 'Five a year, free to graduates and families, about 800 students.',
+    },
+    ifItFails: {
+      body: 'Graduates paid $50 through 2023. A $25 fee is under consideration for 2027.',
+    },
   },
   {
     label: 'Room reservations for student orgs',
-    body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
-    marker: '[NEEDS FIGURE — weekly club meetings]',
+    today: {
+      body: 'Meeting space reservable by registered student organizations.',
+      marker: '[NEEDS FIGURE — weekly club meetings]',
+    },
+    ifItFails: {
+      body: 'There will be a charge to reserve, likely discounted, from the posted ',
+      linkText: 'room rates.',
+      href: '/operations/meeting-rooms',
+    },
   },
   {
     label: 'Student employment',
-    body: '90–100 student positions, the largest student employer on campus.',
+    today: {
+      body: '90–100 student positions, the largest student employer on campus.',
+    },
+    ifItFails: {
+      marker: '[NEEDS COPY — student positions on the current fee]',
+    },
   },
   {
     label: 'Building hours',
-    body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    today: {
+      body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    },
+    ifItFails: {
+      body: 'Mon–Fri 7 AM to 8 PM · Closed weekends.',
+    },
   },
-];
+].sort((a, b) => a.label.localeCompare(b.label, 'en'));
 
 /**
  * Spaces the U-SU has identified to add or convert if the increase passes.
  * Described only as far as they have been described to us — no square footage,
  * no cost, no opening date, and no feature nobody has confirmed. Alphabetical,
  * since no phasing order has been published to sequence them by.
+ *
+ * `renderingSrc` is the simulated rendering shown beside the list. Until a
+ * space has one, its frame shows an awaiting marker rather than a stand-in
+ * picture of somewhere else.
  */
-export const proposedSpaces = [
+export const proposedSpaces: {
+  title: string;
+  body: string;
+  marker?: string;
+  renderingSrc?: string;
+}[] = [
   {
     title: 'Downstairs Lounge',
     body: 'The lounge on the lower level, enhanced — more room to sit, study and wait out a gap in your schedule.',
@@ -894,6 +976,6 @@ export const facultyItems: {
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented below.',
+    body: '$137.25 a semester today, price last set in 2007. $227.25 being proposed. Every figure here is documented below.',
   },
 ];

@@ -19,6 +19,7 @@ export * from './FluidContainer';
 export * from './GridGallery';
 export * from './Icon';
 export * from './Image';
+export * from './ImageCrossfade';
 export * from './Input';
 export * from './Label';
 export * from './Link';
