@@ -356,7 +356,7 @@ export default function Gameroom() {
 
               <Button
                 style={{ borderRadius: '4px' }}
-                href="https://www.dropbox.com/scl/fi/983bmqzlqnga28a00mjdn/Game-Room-Rules-CC-AY-26-27.pdf?rlkey=du1xrtfay9e1uzgtrjumkgutf&st=6jf74tab&dl=0"
+                href="https://www.dropbox.com/scl/fi/983bmqzlqnga28a00mjdn/Game-Room-Rules-CC-AY-26-27.pdf?rlkey=du1xrtfay9e1uzgtrjumkgutf&st=6jf74tab&raw=1"
                 isExternalLink
               >
                 Rules and Regulations
