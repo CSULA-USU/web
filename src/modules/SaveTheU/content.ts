@@ -976,6 +976,6 @@ export const facultyItems: {
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, price last set in 2007. $227.25 being proposed. Every figure here is documented below.',
+    body: '$137.25 a semester today, price last set in 2007. $227.25 is being proposed. Every figure here is documented below.',
   },
 ];
