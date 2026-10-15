@@ -10,6 +10,12 @@ interface SelectableOptionProps {
   onSelect: () => void;
   /** Element the option's answer is written into, for `aria-controls`. */
   controls?: string;
+  /**
+   * Select on pointer hover as well as on press. Only for a preview, where
+   * the answer is cheap to show and moving the pointer down the list to scan
+   * it is the whole interaction — never where selecting commits to anything.
+   */
+  selectOnHover?: boolean;
 }
 
 /* The selected option mirrors the answer panel so the two sides read as one
@@ -63,10 +69,12 @@ export const SelectableOption = ({
   selected,
   onSelect,
   controls,
+  selectOnHover,
 }: SelectableOptionProps) => (
   <Option
     type="button"
     onClick={onSelect}
+    onMouseEnter={selectOnHover ? onSelect : undefined}
     aria-pressed={selected}
     aria-controls={controls}
     $selected={selected}

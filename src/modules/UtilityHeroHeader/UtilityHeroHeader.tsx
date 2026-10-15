@@ -59,8 +59,14 @@ const BackgroundImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Adjust these % values to keep people in frame (X% Y%) */
+  /* Keep the subject centered when the viewport becomes narrow enough that a
+     wide landscape crop would otherwise leave the frame anchored left. */
   object-position: 20% center;
+
+  @media (max-width: 1024px) {
+    object-position: 50% center;
+  }
+
   z-index: 1;
 `;
 

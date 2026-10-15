@@ -41,6 +41,12 @@ export default function BoardMeetingsAdmin({
     async (doc: Omit<Document, 'id'>) => {
       try {
         const newDoc = await createMeetingDocument(doc);
+        // This table lists live documents only, so an archived upload
+        // skips it and is only confirmed by the toast.
+        if (newDoc.is_archived) {
+          showToast('Document added to the archives', 'success');
+          return;
+        }
         setDocuments((prev) => [newDoc, ...prev].sort(sortByDateAsc));
         showToast('Document added successfully', 'success');
       } catch (err) {

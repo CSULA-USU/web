@@ -46,6 +46,16 @@ const nextConfig = {
         destination: '/save-the-u',
         permanent: false,
       },
+      // A guessable short URL that 404'd; room reservations live on the
+      // meeting-rooms page, and that is where they will stay. Permanent, so
+      // search engines fold the short URL into the real page — which also
+      // means browsers cache it, so a real /reservations page later would
+      // need this entry removed and would still miss returning visitors.
+      {
+        source: '/reservations',
+        destination: '/operations/meeting-rooms',
+        permanent: true,
+      },
     ];
   },
 };

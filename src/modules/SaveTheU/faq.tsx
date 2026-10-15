@@ -34,7 +34,7 @@ export const faq = [
   {
     question: 'What is the 3% annual adjustment? Is it a blank check?',
     answer:
-      'No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation, which is exactly why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.',
+      'No. The proposed contract language allows the fee to rise by up to 3% a year for inflation. It is a ceiling, not a target, and it sits below the historical average rate of inflation, which is why this page exists: the fee was set in 2007 and has not moved in nineteen years. The adjustment is there so that the U-SU never has to come back and ask for another $90 at once.',
   },
   {
     question: "Why can't tuition or the university cover this?",
