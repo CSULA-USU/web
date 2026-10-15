@@ -2,7 +2,7 @@ import type React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect, type FormEvent } from 'react';
 import type { Document, Category } from 'types/Backoffice';
-import { normalizeDateISO } from 'utils/dates';
+import { fiscalYearFromDate, normalizeDateISO } from 'utils/dates';
 import { useToast } from 'context/ToastContext';
 
 interface DocumentModalProps {
@@ -139,6 +139,30 @@ const Select = styled.select`
   }
 `;
 
+const CheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  cursor: pointer;
+`;
+
+const Checkbox = styled.input`
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #0066cc;
+  cursor: pointer;
+`;
+
+const Hint = styled.p`
+  font-size: 13px;
+  color: #666666;
+  margin: 6px 0 0 24px;
+`;
+
 const ModalFooter = styled.div`
   padding: 16px 24px;
   border-top: 1px solid #e0e0e0;
@@ -208,6 +232,7 @@ export function DocumentModal({
     date: '',
     fy: '',
     is_download_all: false,
+    is_archived: false,
   });
 
   useEffect(() => {
@@ -228,6 +253,7 @@ export function DocumentModal({
         date: '',
         fy: '',
         is_download_all: false,
+        is_archived: false,
       });
     }
   }, [document, initialCategory]);
@@ -273,6 +299,9 @@ export function DocumentModal({
 
     onSubmit(payload);
   };
+
+  const archiveFiscalYear = fiscalYearFromDate(formData.date);
+
   return (
     <Overlay onClick={(e) => e.target === e.currentTarget && onClose()}>
       <Modal role="dialog" aria-labelledby="modal-title" aria-modal="true">
@@ -376,12 +405,48 @@ export function DocumentModal({
             </FormGroup>
           )}
 
+          {/* New documents only: a late upload from a past meeting goes
+              straight to the public archive, filed under its meeting date's
+              fiscal year. Editing never changes archive state. */}
+          {!document &&
+            formData.category !== 'Calendar' &&
+            !formData.is_download_all && (
+              <FormGroup>
+                <CheckboxLabel htmlFor="is_archived">
+                  <Checkbox
+                    id="is_archived"
+                    type="checkbox"
+                    checked={!!formData.is_archived}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        is_archived: e.target.checked,
+                      })
+                    }
+                    aria-describedby="is_archived_hint"
+                  />
+                  Add straight to the archives
+                </CheckboxLabel>
+                <Hint id="is_archived_hint">
+                  {!formData.is_archived
+                    ? 'For a late document from a past meeting.'
+                    : archiveFiscalYear
+                    ? `Files under FY ${archiveFiscalYear} on the public archive page.`
+                    : 'Pick the meeting date to see which fiscal year it files under.'}
+                </Hint>
+              </FormGroup>
+            )}
+
           <ModalFooter>
             <Button type="button" onClick={onClose}>
               Cancel
             </Button>
             <Button type="submit" variant="primary">
-              {document ? 'Update' : 'Add'} Document
+              {document
+                ? 'Update Document'
+                : formData.is_archived
+                ? 'Add to Archives'
+                : 'Add Document'}
             </Button>
           </ModalFooter>
         </ModalBody>
