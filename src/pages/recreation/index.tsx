@@ -21,8 +21,11 @@ import {
   TapTarget,
   Typography,
   VisuallyHidden,
+  WeeklyClassCard,
 } from 'components';
+import { isWeekday } from 'utils/openingHours';
 import { Page, UtilityHeroHeader } from 'modules';
+import { RECREATION_HOMEPAGE } from 'modules/RecreationMembership';
 import { NonDiscriminationPolicy, PhotoVideoDisclaimer } from 'partials';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
@@ -67,8 +70,15 @@ const anchorLinks = [
   { label: 'Facilities', href: '#facilities' },
   { label: 'Access', href: '#access' },
   { label: 'Programs', href: '#programs' },
+  { label: 'Classes', href: '#classes' },
   { label: 'FAQ', href: '#faq' },
 ];
+
+/* Cards are alphabetized; the days inside each card follow the calendar,
+   which WeeklyClassCard enforces itself. */
+const groupExerciseClasses = [...RecData.home.classes].sort((a, b) =>
+  a.title.localeCompare(b.title, 'en'),
+);
 
 const SectionHeader = styled.header`
   display: flex;
@@ -99,6 +109,12 @@ const StepNumber = styled.span`
   font-size: ${FontSizes.sm};
 `;
 
+/* Painted on the band, not a card inside it: Classes and FAQ share
+   `greyLightest`, so the app CTA running edge to edge is what separates
+   them. Inset as a rounded card, the white around it read as a third
+   section. */
+const APP_CTA_GRADIENT = `linear-gradient(to right, rgb(255, 244, 200), ${Colors.primary})`;
+
 const AppCta = styled.div`
   display: flex;
   flex-direction: column;
@@ -106,10 +122,7 @@ const AppCta = styled.div`
   justify-content: center;
   gap: ${Spaces.md};
   width: 100%;
-  padding: clamp(36px, 5vw, 56px) ${Spaces.lg};
   text-align: center;
-  border-radius: 12px;
-  background: linear-gradient(to right, rgb(255, 244, 200), ${Colors.primary});
 `;
 
 /* Icon beside the rule rather than above it: at six rows a stacked icon
@@ -447,37 +460,6 @@ export default function Recreation() {
       </FluidContainer>
 
       <FluidContainer
-        backgroundColor="primary"
-        {...bandShell}
-        textAlign="center"
-      >
-        <Typography
-          as="h2"
-          variant="title"
-          fluidSize={FLUID_H2}
-          color="black"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Can you get in?
-        </Typography>
-        <Typography
-          as="p"
-          variant="prose"
-          fluidSize={FLUID_LEAD}
-          color="black"
-          margin={`0 auto ${Spaces.xl}`}
-          style={{ maxWidth: '60ch' }}
-        >
-          Gym access depends on the kind of Cal State LA student you are. The
-          membership page spells out who is covered, what it costs, and how to
-          check in at the door.
-        </Typography>
-        <Button href={MEMBERSHIP_HREF} variant="black">
-          Check your membership
-        </Button>
-      </FluidContainer>
-
-      <FluidContainer
         id="access"
         backgroundColor="greyLightest"
         {...sectionShell}
@@ -660,7 +642,51 @@ export default function Recreation() {
         </AutoGrid>
       </FluidContainer>
 
-      <FluidContainer {...sectionShell}>
+      <FluidContainer
+        id="classes"
+        backgroundColor="greyLightest"
+        {...sectionShell}
+      >
+        <SectionHeader>
+          <Eyebrow>Group exercise</Eyebrow>
+          <Typography as="h2" variant="title" fluidSize={FLUID_H2} margin="0">
+            Fall 2026 Classes
+          </Typography>
+          <Typography as="p" variant="prose" fluidSize={FLUID_LEAD} margin="0">
+            Weekly classes in strength, cardio, and mindful movement, from HIIT
+            and glute work to yoga and Zumba. Every class welcomes all fitness
+            levels, and spots are limited, so reserve yours ahead of time.
+          </Typography>
+        </SectionHeader>
+        <AutoGrid minColumnWidth="280px" maxColumns={3} gap={Spaces.lg}>
+          {groupExerciseClasses.map((groupExerciseClass) => (
+            <WeeklyClassCard
+              key={groupExerciseClass.title}
+              title={groupExerciseClass.title}
+              days={groupExerciseClass.days.filter(isWeekday)}
+              time={groupExerciseClass.time}
+              location={groupExerciseClass.location}
+              capacity={groupExerciseClass.capacity}
+              backgroundIconName={groupExerciseClass.backgroundIconName}
+              description={groupExerciseClass.description}
+            />
+          ))}
+        </AutoGrid>
+        {/* One sign-up link for the whole section: individual class pages on
+            the portal sit behind its login, so there is nothing per-card to
+            deep-link to. */}
+        <Button
+          href={RECREATION_HOMEPAGE}
+          isExternalLink
+          variant="black"
+          margin={`${Spaces.xl} 0 0`}
+          aria-label="Reserve Your Spot on the Recreation portal (opens in a new tab)"
+        >
+          Reserve Your Spot
+        </Button>
+      </FluidContainer>
+
+      <FluidContainer {...sectionShell} backgroundGradient={APP_CTA_GRADIENT}>
         <AppCta>
           <Typography
             as="h2"
@@ -670,7 +696,7 @@ export default function Recreation() {
             lineHeight="1.3"
             margin="0"
           >
-            Get the Recreation app
+            Get the Recreation App
           </Typography>
           <Typography
             as="p"
@@ -678,25 +704,39 @@ export default function Recreation() {
             fluidSize={FLUID_LEAD}
             color="black"
             margin={`0 0 ${Spaces.sm}`}
-            style={{ maxWidth: '52ch' }}
+            style={{ maxWidth: '60ch' }}
           >
             Sign up for workout classes and check in at our facilities, free on
-            iOS and Android.
+            iOS and Android
           </Typography>
           <StoreBadges>
-            <StyledLink href="https://apps.apple.com/us/app/cal-state-la-recreation/">
+            <StyledLink
+              href="https://apps.apple.com/us/app/cal-state-la-recreation/id1627747219"
+              isExternalLink
+              showExternalIcon={false}
+            >
               <Image
                 src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/App_Store_Badge.webp"
                 alt="Download on the App Store"
                 width={150}
               />
+              <VisuallyHidden as="span">
+                , external site, opens in a new tab
+              </VisuallyHidden>
             </StyledLink>
-            <StyledLink href="https://play.google.com/store/apps/details?id=com.innosoftfusiongo.californiastateuniversitylosangeles&pcampaignid=web_share">
+            <StyledLink
+              href="https://play.google.com/store/apps/details?id=com.innosoftfusiongo.californiastateuniversitylosangeles&pcampaignid=web_share"
+              isExternalLink
+              showExternalIcon={false}
+            >
               <Image
                 src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/recreation/Google_Play_Store_badge.webp"
                 alt="Get it on Google Play"
                 width={150}
               />
+              <VisuallyHidden as="span">
+                , external site, opens in a new tab
+              </VisuallyHidden>
             </StyledLink>
           </StoreBadges>
         </AppCta>

@@ -1,0 +1,106 @@
+/**
+ * @jest-environment jsdom
+ */
+// The `components` barrel transitively reaches lib/supabase, which throws at
+// import time without env vars. Stubbing it keeps this a pure UI test.
+jest.mock('lib/supabase', () => ({ supabase: {} }));
+// The barrels also reach Nav, whose drawer library ships ESM that ts-jest will
+// not parse. Nothing here renders it.
+jest.mock('@accessible/drawer', () => ({}));
+
+import { fireEvent, render, screen } from '@testing-library/react';
+import { EventCard, ModEventCard } from 'modules/EventCard';
+import { formatEventLocation } from 'utils/eventUtils';
+import { CampusGroupsEvent } from 'types';
+
+const cultureFest = {
+  eventId: 'live-1',
+  eventUid: 'uid-live-1',
+  groupId: '35630',
+  group: 'Cross Cultural Centers',
+  groupAcronym: 'CCC',
+  title: 'Culture Fest',
+  description: '',
+  eventStartDateTime: '2026-09-08T12:00:00-07:00',
+  eventEndDateTime: '2026-09-08T15:00:00-07:00',
+  eventDate: '',
+  eventTime: '',
+  eventEndTime: '',
+  eventLocation: 'U-SU Plaza, 5154 State University Drive',
+  locationType: 'On-Campus',
+  eventType: 'Cultural',
+  eventLink: '',
+  eventOriginalPhotoFullUrl: '',
+  eventPhotoAltText: '',
+  iCalLink: '',
+  allDayEvent: '0',
+  approvalStatus: '1',
+  timeZoneId: 'Pacific Standard Time',
+} as CampusGroupsEvent;
+
+describe('EventCard', () => {
+  it('exposes the event through one control named after it', () => {
+    /* The card used to be a div with an onClick, which no keyboard could reach
+       and no screen reader announced. */
+    render(<EventCard event={cultureFest} onClick={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name: 'Culture Fest' })).toBeTruthy();
+  });
+
+  it('opens the event when that control is activated', () => {
+    const onClick = jest.fn();
+    render(<EventCard event={cultureFest} onClick={onClick} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Culture Fest' }));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not offer Learn More as a second stop to the same place', () => {
+    render(<EventCard featured event={cultureFest} onClick={jest.fn()} />);
+
+    expect(screen.getAllByRole('button')).toHaveLength(1);
+    expect(screen.queryByRole('button', { name: 'Learn More' })).toBeNull();
+  });
+});
+
+describe('ModEventCard', () => {
+  /* The hero used to hold the whole card behind a skeleton until the flyer had
+     downloaded and been measured, then swap in a frame sized to whatever shape
+     it turned out to be — which shoved everything below the hero down the page
+     on arrival. The details come from data that is already here, so they paint
+     straight away and the flyer shimmers inside a well that is already the
+     right size. jsdom never fires the image's load event, so this renders the
+     undecoded state the shift used to happen in. */
+  it('paints the details while the flyer is still downloading', () => {
+    render(
+      <ModEventCard
+        featured
+        event={{
+          ...cultureFest,
+          eventOriginalPhotoFullUrl: 'https://example.test/flyer.jpg',
+        }}
+        onClick={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByRole('heading', { name: 'Culture Fest' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Learn More' })).toBeTruthy();
+  });
+});
+
+describe('formatEventLocation', () => {
+  /* The mobile branch of ModEventCard once rendered the raw feed string, so a
+     phone got the full postal address where desktop got the room. */
+  it('keeps the room and drops the street address behind it', () => {
+    expect(
+      formatEventLocation(
+        'U-SU Alhambra Room , 5154 State University Drive, Los Angeles, CA 90032, United States',
+      ),
+    ).toBe('U-SU Alhambra Room ');
+  });
+
+  it('leaves a location that carries no address alone', () => {
+    expect(formatEventLocation('U-SU Plaza')).toBe('U-SU Plaza');
+  });
+});

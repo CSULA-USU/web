@@ -100,5 +100,25 @@ export default async function handler(
   }
 
   const response = await resFetch.json();
+
+  /* Instagram re-signs every `media_url` on each Graph API call, so an uncached
+     response hands every visitor a different set of URLs for the same photos.
+     That defeats the cache on /api/instagram-image, which necessarily keys on
+     those URLs — without this header every pageview re-fetches the whole feed's
+     images through the proxy. Holding one set of URLs steady for everyone in
+     the window is what makes the proxy cacheable at all.
+
+     The window stays well inside the signature's own expiry, which runs to
+     days: serving a stale body for longer than that would hand out URLs that
+     have since expired, and the images would break. `max-age=0` keeps the
+     browser revalidating so a long-lived tab cannot pin an old feed — the
+     shared cache is what does the work here.
+
+     Set on the success path only. An error must not be cached, or one failed
+     Graph API call would blank the feed for everyone until the window rolled. */
+  res.setHeader(
+    'Cache-Control',
+    'public, max-age=0, s-maxage=3600, stale-while-revalidate=3600',
+  );
   res.status(200).json({ data: response });
 }

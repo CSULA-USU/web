@@ -8,6 +8,7 @@ import {
   FluidContainer,
   Image,
   ScrollingContent,
+  SocialLinks,
   StyledLink,
   Typography,
 } from 'components';
@@ -19,10 +20,7 @@ import { GameTypes } from '../../partials/game-types';
 
 import TypingAnimation from 'components/TypingAnimation/TypingAnimation';
 
-import { FaDiscord } from 'react-icons/fa';
 import { BiChevronRight } from 'react-icons/bi';
-import { IconType } from 'react-icons';
-import { BiLogoInstagramAlt, BiLogoTwitch } from 'react-icons/bi';
 import { useBreakpoint } from 'hooks';
 import { Press_Start_2P } from 'next/font/google';
 
@@ -37,21 +35,9 @@ const VerticalContainer = styled.div`
   flex-direction: column;
 `;
 
-const HorizontalContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 const WhiteListItem = styled.li`
   color: white;
 `;
-
-interface SocialIconLinkProps {
-  Icon: IconType;
-  iconLink: string;
-  size: string;
-  ariaLabel: string;
-}
 
 interface GameFontProps {
   size?: keyof typeof FontSizes;
@@ -134,35 +120,6 @@ const GameRoomStatsCard = ({
         {title}
       </Typography>
     </GameRoomStatsCardWrapper>
-  );
-};
-
-const SocialIconLinkWrapper = styled.a`
-  svg {
-    color: ${Colors.primary};
-    transition: transform 200ms ease;
-  }
-
-  svg:hover {
-    color: white;
-    transform: translateY(-4px);
-  }
-`;
-
-const SocialIconLink = ({
-  Icon,
-  iconLink,
-  size,
-  ariaLabel,
-}: SocialIconLinkProps) => {
-  return (
-    <SocialIconLinkWrapper
-      href={iconLink}
-      target="_blank"
-      aria-label={ariaLabel}
-    >
-      <Icon size={size} />
-    </SocialIconLinkWrapper>
   );
 };
 
@@ -397,26 +354,35 @@ export default function Gameroom() {
                 Join a Tournament
               </Button>
 
-              <HorizontalContainer style={{ gap: Spaces.md }}>
-                <SocialIconLink
-                  Icon={FaDiscord}
-                  iconLink="https://discord.gg/W5JM6vrbAa"
-                  size="40px"
-                  ariaLabel="visit recreation game room's discord"
-                />
-                <SocialIconLink
-                  Icon={BiLogoInstagramAlt}
-                  iconLink="https://www.instagram.com/calstatela_recreation"
-                  size="40px"
-                  ariaLabel="visit recreation game room's instagram"
-                />
-                <SocialIconLink
-                  Icon={BiLogoTwitch}
-                  iconLink="https://www.twitch.tv/calstatela_recreation"
-                  size="40px"
-                  ariaLabel="visit recreation game room's twitch"
-                />
-              </HorizontalContainer>
+              <Button
+                style={{ borderRadius: '4px' }}
+                href="https://www.dropbox.com/scl/fi/983bmqzlqnga28a00mjdn/Game-Room-Rules-CC-AY-26-27.pdf?rlkey=du1xrtfay9e1uzgtrjumkgutf&st=6jf74tab&dl=0"
+                isExternalLink
+              >
+                Rules and Regulations
+              </Button>
+
+              <SocialLinks
+                tone="onDark"
+                color="primary"
+                hoverColor="white"
+                size="40px"
+                accountName="Recreation Game Room"
+                links={[
+                  {
+                    network: 'discord',
+                    href: 'https://discord.gg/W5JM6vrbAa',
+                  },
+                  {
+                    network: 'instagram',
+                    href: 'https://www.instagram.com/calstatela_recreation',
+                  },
+                  {
+                    network: 'twitch',
+                    href: 'https://www.twitch.tv/calstatela_recreation',
+                  },
+                ]}
+              />
             </VerticalContainer>
           </div>
         </FluidContainer>
@@ -455,7 +421,7 @@ export default function Gameroom() {
             width="18px"
           />
           <Typography variant="cta" color="black">
-            Mon to Thu: 12 PM to 6 PM
+            Mon to Thu: 11 PM to 7 PM
           </Typography>
         </li>
       </ContactsBar>

@@ -1,116 +1,32 @@
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import { ChangeEvent, FormEvent, useRef } from 'react';
-import { useBreakpoint } from 'hooks';
 import { Colors } from 'theme';
 import Link from 'next/link';
-import { useState } from 'react';
-
-export interface SearchProps {
-  input?: string;
-  onChange?: (_: ChangeEvent<HTMLInputElement>) => void;
-  onSubmit?: (_: FormEvent<HTMLFormElement>) => void;
-}
 
 const OuterContainer = styled.div`
   display: flex;
 `;
 
-const InputContainerForm = styled.form`
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 120px;
-  gap: 12px;
-`;
-
-const StyledInput = styled.input`
-  background-color: ${Colors.greyLightest};
-  color: black;
-  width: 100%;
-  border-radius: 40px;
-  border-style: none;
-  border: 0;
-  gap: 36px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: var(--font-bitter), serif;
-  text-decoration: none;
-  ::selection {
-    background: ${Colors.greyDarker};
-    color: white;
-  }
-  &:focus {
-    border: 0;
-  }
-  &::placeholder {
-    color: ${Colors.greyDarker};
-  }
-`;
-
-const Label = styled.label`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-`;
-
-const StyledSearchIcon = styled(FaSearch)<{ color?: string }>`
+const StyledSearchIcon = styled(FaSearch)`
   font-size: 1.25em;
-  /* Sits in a flex row beside a full-width input, which would squeeze it. */
+  /* Sits in a flex row beside the nav's items, which would squeeze it. */
   flex-shrink: 0;
-  color: ${(props) => props.color || Colors.white};
+  /* Always renders on the nav bar, whose background is greyDarkest — never
+     inside a light field beside it — so this stays white at every width. An
+     earlier version flipped it to black below 768px on the assumption it sat
+     on the search field. It is that field's sibling, not its child, so the
+     flip put black on #2b2b2b at roughly 1.5:1. */
+  color: ${Colors.white};
 
   &:hover {
     color: ${Colors.primary};
   }
 `;
 
-export const SearchInput = ({ input, onChange, onSubmit }: SearchProps) => {
-  const { isMobile, isTablet } = useBreakpoint();
-  const [isReadOnly, setIsReadOnly] = useState(true);
-  const inputRef = useRef<HTMLInputElement>(null); // create the ref. Refs provide a way to access and interact with DOM elements or React component instances directly
-
-  const handleSearchClick = () => {
-    setIsReadOnly(false);
-    inputRef.current?.focus(); // programmatically focus the input field when the search icon is clicked
-  };
-
-  return (
-    <OuterContainer>
-      <InputContainerForm onSubmit={onSubmit}>
-        {isTablet ? (
-          <>
-            <Label htmlFor="searchInput">Search</Label>
-            <StyledInput
-              id="searchInput"
-              placeholder="Search"
-              value={input}
-              onChange={onChange}
-              readOnly={isReadOnly}
-              onClick={handleSearchClick}
-              style={{
-                backgroundColor: Colors.greyLightest,
-                color: Colors.black,
-                border: '1px solid',
-              }}
-              ref={inputRef}
-            />
-          </>
-        ) : null}
-        {isMobile ? null : (
-          <Link href="/search" aria-label="Search the University Student Union">
-            <StyledSearchIcon color={isTablet ? 'black' : '#FFF'} />
-          </Link>
-        )}
-      </InputContainerForm>
-    </OuterContainer>
-  );
-};
+export const SearchInput = () => (
+  <OuterContainer>
+    <Link href="/search" aria-label="Search the University Student Union">
+      <StyledSearchIcon />
+    </Link>
+  </OuterContainer>
+);

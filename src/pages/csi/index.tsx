@@ -10,11 +10,10 @@ import {
   DescriptionCard,
   FluidContainer,
   Image,
+  SocialLinks,
   Typography,
   Button,
 } from 'components';
-import { MdOutlineFacebook } from 'react-icons/md';
-import { IoLogoInstagram } from 'react-icons/io';
 import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Spaces } from 'theme';
@@ -265,29 +264,23 @@ export default function CSI() {
           </abbr>
         </ButtonContainer>
         <SocialsContainer>
-          <a
-            href="https://www.facebook.com/csicalstatela"
-            aria-label="Visit the University-Student Union CSI facebook page"
-          >
-            <MdOutlineFacebook style={{ height: '32px', width: '32px' }} />
-          </a>
-          <a
-            href="https://www.instagram.com/csicalstatela/?hl=en"
-            aria-label="Check out the U-SU CSI'"
-          >
-            <IoLogoInstagram style={{ height: '32px', width: '32px' }} />
-          </a>
-          <a
-            href="https://linktr.ee/csicalstatela"
-            aria-label="visit the University-Student Union CSI Linktree"
-          >
-            <Image
-              alt=""
-              src="/departments/logos/linktree.svg"
-              height="29px"
-              width="32px"
-            />
-          </a>
+          <SocialLinks
+            accountName="Center for Student Involvement"
+            links={[
+              {
+                network: 'facebook',
+                href: 'https://www.facebook.com/csicalstatela',
+              },
+              {
+                network: 'instagram',
+                href: 'https://www.instagram.com/csicalstatela/?hl=en',
+              },
+              {
+                network: 'linktree',
+                href: 'https://linktr.ee/csicalstatela',
+              },
+            ]}
+          />
         </SocialsContainer>
       </DepartmentHeader>
       <CallToAction

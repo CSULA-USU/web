@@ -7,11 +7,25 @@ import { CampusGroupsEvent, SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
 import type { ContactFormData } from 'types/Contact';
 import { CAMPUS_GROUPS_RSS_URL } from 'utils/constants';
+import { getEventEndTime, getEventStartTime } from 'utils/eventUtils';
 
 /* ------------------------------ External APIs ------------------------------ */
 
 const getText = (item: Element, tag: string) =>
   item.querySelector(tag)?.textContent ?? '';
+
+/**
+ * The feed publishes topic tags twice — as a comma-joined `<eventTopics>`
+ * string and as repeated `<eventTopic>` children under
+ * `<eventTopicsSeparated>`. Read the children: `getText` above is a
+ * `querySelector`, so pointing it at `eventTopic` would silently return only
+ * the first of seven tags, and splitting the CSV twin would break on any
+ * topic name that ever contains a comma.
+ */
+const getTopics = (item: Element): string[] =>
+  Array.from(item.querySelectorAll('eventTopicsSeparated > eventTopic'))
+    .map((topic) => topic.textContent?.trim() ?? '')
+    .filter(Boolean);
 
 export const fetchEvents = async (
   setEventsStatus: SetterOrUpdater<StatusType>,
@@ -45,11 +59,13 @@ export const fetchEvents = async (
       eventType: getText(item, 'eventType'),
       eventLink: getText(item, 'eventLink'),
       eventOriginalPhotoFullUrl: getText(item, 'eventOriginalPhotoFullUrl'),
+      eventOriginalFlyerFullUrl: getText(item, 'eventOriginalFlyerFullUrl'),
       eventPhotoAltText: getText(item, 'eventPhotoAltText'),
       iCalLink: getText(item, 'iCalLink'),
       allDayEvent: getText(item, 'allDayEvent'),
       approvalStatus: getText(item, 'approvalStatus'),
       timeZoneId: getText(item, 'timeZoneId'),
+      eventTopics: getTopics(item),
     }));
 
     setEventsStatus('success');
@@ -60,20 +76,28 @@ export const fetchEvents = async (
   }
 };
 
-// Keeps only events that haven't started yet, soonest first.
+/**
+ * Keeps every event that has not ended yet, soonest first.
+ *
+ * The cut is the end time, not the start: an event that is under way is the
+ * most relevant thing on the page, and filtering on the start swapped it for
+ * the following event the moment it began — so the site advertised the next
+ * thing while the current one was still running.
+ *
+ * Events whose start and end are both unparseable are dropped, since nothing
+ * downstream could place them on a calendar anyway.
+ */
 export const sortUpcomingEvents = (
   events: CampusGroupsEvent[],
-): CampusGroupsEvent[] =>
-  events
-    .filter(
-      (event) =>
-        new Date().getTime() < new Date(event.eventStartDateTime).getTime(),
-    )
-    .sort(
-      (a, b) =>
-        new Date(a.eventStartDateTime).getTime() -
-        new Date(b.eventStartDateTime).getTime(),
-    );
+): CampusGroupsEvent[] => {
+  const now = Date.now();
+  return events
+    .filter((event) => {
+      const endTime = getEventEndTime(event);
+      return endTime !== null && now < endTime;
+    })
+    .sort((a, b) => (getEventStartTime(a) ?? 0) - (getEventStartTime(b) ?? 0));
+};
 
 export const fetchInstagramFeed = async (
   setInstagramResponseStatus: Dispatch<SetStateAction<StatusType>>,

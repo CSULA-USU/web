@@ -1,6 +1,6 @@
-import type { BarRow } from 'modules/KeepTheUOpen/BarChart';
+import type { BarRow } from 'modules/SaveTheU/BarChart';
 import type { PieSegment } from 'components';
-import type { TrendSeries } from 'modules/KeepTheUOpen/TrendChart';
+import type { TrendSeries } from 'modules/SaveTheU/TrendChart';
 import type { GridGalleryItem, Source, Testimonial } from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';
@@ -9,6 +9,8 @@ import {
   MdFitnessCenter,
   MdGroups,
   MdKitchen,
+  MdLocalDining,
+  MdMeetingRoom,
   MdMenuBook,
   MdWorkOutline,
 } from 'react-icons/md';
@@ -36,7 +38,7 @@ export const campaignMode = {
      the JSX does not change. */
   finalHeading: 'Being informed is only half of the story',
   finalBody:
-    "You've seen the U-SU budget, the shortfall, and what $90 more a semester will get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
+    "You've seen the U-SU budget, the shortfall, and what $90 more a semester can get you. Now is the time to act. Every piece of feedback is a vote for your vision of a better campus.",
   finalCtaLabel: 'Share Your Thoughts',
   finalCtaHref: '/contact',
   finalSecondaryLabel: 'Other Ways To Take Part',
@@ -183,8 +185,29 @@ export const sources: Source[] = [
     id: '10',
     label: 'CSUSB Student Financial Services, Category II fee adjustment',
     note: 'Category II fees indexed to HEPI with a 4% annual cap, and the 2025-26 adjustment.',
-    href: 'https://www.csusb.edu/student-financial-services/tuition-and-fees',
+    href: 'https://www.csusb.edu/dsa-operations-fiscal-management/ira/your-fees-your-campus',
     linkText: 'csusb.edu',
+  },
+  {
+    id: '11',
+    label: 'CSUDH Recreation Facility Project, $85 million funding',
+    note: '$85 million for a new recreation facility, including equipment, operational costs, and engineering systems.',
+    href: 'https://www.csudh.edu/get-centered-toros/',
+    linkText: 'csudh.edu',
+  },
+  {
+    id: '12',
+    label: 'CSUF Student Wellness Initiative',
+    note: 'The student wellness initiative at CSUF, covering various health and wellness programs for students.',
+    href: 'https://asi.fullerton.edu/2025/03/28/wellness-initiative-takes-flight-a-collaborative-victory-for-students/',
+    linkText: 'asi.fullerton.edu',
+  },
+  {
+    id: '13',
+    label: 'CSUSM April Referendum Rejected',
+    note: 'The April 2024 referendum on the recreation facility fee was rejected by the student body.',
+    href: 'https://csusmchronicle.com/23619/news/csusm-students-vote-down-fee-increase-proposal-for-a-wellness-and-recreation-facility/',
+    linkText: 'csusmchronicle.com',
   },
 ];
 
@@ -200,6 +223,9 @@ export const peerSourceIds = {
   sdsuConsultation2025: '8',
   csuebAthleticsFee2026: '9',
   csusbHepi: '10',
+  csudhRecreationFee2022: '11',
+  csufStudentWellnessInitiative: '12',
+  csusmAprilReferendumRejected: '13',
 } as const;
 
 export type SourceId = (typeof peerSourceIds)[keyof typeof peerSourceIds];
@@ -208,19 +234,19 @@ export const thesisCards = [
   {
     number: '01',
     title: 'The hours between classes',
-    body: "A commuter's day has holes in it. This is where you sit them out: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
+    body: "Here is where you hang out between classes: lounges, study rooms, nap pods, microwaves, outlets, and a chair that isn't the front seat of your car.",
   },
   {
     number: '02',
-    title: "The things you'd otherwise pay for",
+    title: 'The things you otherwise pay for',
     body: 'The fitness center, the food pantry and everyday essentials are covered by the fee you already pay. No membership, no per-visit charge, no sign-up.',
   },
   {
     number: '03',
     title: 'Nearly 100 student jobs',
-    body: 'Between 90 and 100 students work here',
+    body: 'Between 90-100 students work here',
     bodyAfterCitation:
-      ' alongside 29 full-time staff—the largest student employer on campus, with schedules built around class times.',
+      ', the largest student employer on campus, with schedules built around class times. At one point employed ~250.',
     citation: '4',
   },
 ];
@@ -243,7 +269,7 @@ export const services: {
   {
     title: 'Study & Rest',
     Icon: MdMenuBook,
-    body: 'Quiet floors, group rooms, nap pods and somewhere to be between a 10 AM and a 2 PM class.',
+    body: 'Quiet floors, group rooms, nap pods, cold AC, and somewhere to be between a 10 AM and a 2 PM class.',
   },
   {
     title: 'Play & Recreation',
@@ -265,6 +291,16 @@ export const services: {
     Icon: MdKitchen,
     body: 'Food pantry, microwaves, lockers and the small things that make a long commuter day workable.',
   },
+  {
+    title: 'Food & Drink',
+    Icon: MdLocalDining,
+    body: 'Food staples like Starbucks and Sbarros are available here.',
+  },
+  {
+    title: 'Meeting Rooms',
+    Icon: MdMeetingRoom,
+    body: "Meeting rooms available for reservations, whether it's studying or official clubs and orgs meetings.",
+  },
 ];
 
 /**
@@ -274,8 +310,8 @@ export const services: {
  * weekday use: study rooms occupied, the fitness center, a club meeting, the
  * food pantry, the cultural graduations. Concerts and festivals stay a
  * minority. Event-night photographs are the most photogenic and the least
- * persuasive to a commuter being asked for money; a picture of a Tuesday
- * afternoon is the argument.
+ * representative of what the fee pays for on an ordinary day; a picture of a
+ * Tuesday afternoon is the accurate one.
  *
  * CAPTIONS — every caption states what it is, how many, and what it costs a
  * student. Facts, never adjectives. A caption with no verifiable fact in it
@@ -284,7 +320,7 @@ export const services: {
  *
  * ALT TEXT — describes the scene, never the individuals. No names.
  *
- * TODO — RELEASES REQUIRED. This is a public advocacy page. Every photograph
+ * TODO — RELEASES REQUIRED. This is a public U-SU page. Every photograph
  * of an identifiable student needs a signed release on file before it
  * replaces a placeholder here. Drop the `isAwaitingPhotography` line on an
  * item only once its image exists and its release is signed.
@@ -321,7 +357,7 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: `${SUPABASE_PAGES}/about/tenants/Food%20Pantry%201200x600.jpg`,
     alt: 'A student beside refrigerated cases stocked with produce and packaged food under a Cal State LA Food Pantry sign',
-    caption: 'Food pantry. Open to any enrolled student.',
+    caption: 'The food pantry is open to any enrolled student.',
   },
   {
     src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/boardroom/north/room.webp`,
@@ -344,10 +380,10 @@ export const bandStats = [
       'Student employees: We are the largest student employer on campus, alongside 29 full-time staff.',
   },
   {
-    value: '5',
+    value: '800',
     citation: '4',
     label:
-      'Cultural graduation ceremonies a year, free to about 800 graduating students and their families.',
+      'graduating students celebrating 5 cultural graduation ceremonies a year.',
   },
 ];
 
@@ -395,12 +431,13 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'expenses',
     label: 'Expenses',
-    color: 'greyDarkest',
+    color: 'blue',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
     labelSide: 'above',
     points: [
+      { yearIndex: 0, value: 5856794 },
       { yearIndex: 1, value: 5760109 },
       { yearIndex: 6, value: 6677545 },
     ],
@@ -408,12 +445,13 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'revenue',
     label: 'Revenue',
-    color: 'greyDark',
+    color: 'greenDark',
     strokeWidth: 3,
     dashed: true,
     filledPoint: true,
     labelSide: 'below',
     points: [
+      { yearIndex: 0, value: 5856794 },
       { yearIndex: 1, value: 4876638 },
       { yearIndex: 6, value: 4337325 },
     ],
@@ -421,7 +459,7 @@ export const trendSeries: TrendSeries[] = [
   {
     id: 'reserve',
     label: 'Reserve',
-    color: 'gold',
+    color: 'black',
     strokeWidth: 3.5,
     labelSide: 'above',
     points: [
@@ -470,8 +508,8 @@ export const trendTable: TableData = {
       id: 'fy-2024-25',
       values: {
         year: 'FY 2024-25',
-        revenue: NOT_PUBLISHED,
-        expenses: NOT_PUBLISHED,
+        revenue: '$5,856,794',
+        expenses: '$5,856,794',
         reserve: '$8,364,353',
       },
     },
@@ -630,42 +668,112 @@ export const barRows: BarRow[] = [
   },
 ];
 
-export const todayFacts = [
+interface ServiceState {
+  body?: string;
+  marker?: string;
+  linkText?: string;
+  href?: string;
+}
+
+/**
+ * Each service today beside the same service on the current fee after
+ * FY 2030-31. One list feeds both columns of the "If it doesn't pass" tab, so
+ * a row cannot appear on one side and go missing from the other — the columns
+ * are a direct comparison and only work row for row. Sorted alphabetically
+ * by label, here rather than in the page, so both columns share the order.
+ *
+ * The `ifItFails` side is a projection built from estimates gathered from
+ * U-SU staff — not a decision, and nothing a source row could cite — so the
+ * page says so in a note closing the left column instead of carrying
+ * citation markers. Even so, every price in it is one the U-SU already
+ * charges or has charged: Recreation's non-fee-paying membership, the posted
+ * meeting-room rates (expected to be discounted for students), the $50
+ * cultural graduation charge. Do not add a price without a precedent like
+ * those.
+ */
+export const serviceComparisons: {
+  label: string;
+  today: ServiceState;
+  ifItFails: ServiceState;
+}[] = [
   {
     label: 'Fitness center access',
-    body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    today: {
+      body: 'Included with enrollment. No membership charge, no per-visit fee.',
+    },
+    ifItFails: {
+      body: 'Some students are already charged $75 a semester for a',
+      linkText: 'membership.',
+      href: '/recreation/membership',
+    },
   },
   {
     label: 'Signature events',
-    body: 'Programmed and paid for out of the operating budget.',
-    marker: '[NEEDS FIGURE — events per year]',
+    today: {
+      body: 'Programmed and paid for out of the operating budget.',
+      marker: '[NEEDS FIGURE — events per year]',
+    },
+    ifItFails: {
+      body: 'Fewer of them, and a charge to take part in the costlier ones.',
+    },
   },
   {
     label: 'Cultural graduation ceremonies',
-    body: 'Five a year, free to graduates and families, about 800 students.',
+    today: {
+      body: 'Five a year, free to graduates and families, about 800 students.',
+    },
+    ifItFails: {
+      body: 'Graduates paid $50 through 2023. A $25 fee is under consideration for 2027.',
+    },
   },
   {
     label: 'Room reservations for student orgs',
-    body: 'Meeting and event space in a 93,000 sq ft building, reservable by registered student organizations.',
-    marker: '[NEEDS FIGURE — weekly club meetings]',
+    today: {
+      body: 'Meeting space reservable by registered student organizations.',
+      marker: '[NEEDS FIGURE — weekly club meetings]',
+    },
+    ifItFails: {
+      body: 'There will be a charge to reserve, likely discounted, from the posted ',
+      linkText: 'room rates.',
+      href: '/operations/meeting-rooms',
+    },
   },
   {
     label: 'Student employment',
-    body: '90–100 student positions, the largest student employer on campus.',
+    today: {
+      body: '90–100 student positions, the largest student employer on campus.',
+    },
+    ifItFails: {
+      marker: '[NEEDS COPY — student positions on the current fee]',
+    },
   },
   {
     label: 'Building hours',
-    body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    today: {
+      body: 'Mon–Thu 7 AM to 10 PM · Fri 7 AM to 8 PM · Sat 7 AM to 3 PM.',
+    },
+    ifItFails: {
+      body: 'Mon–Fri 7 AM to 8 PM · Closed weekends.',
+    },
   },
-];
+].sort((a, b) => a.label.localeCompare(b.label, 'en'));
 
 /**
  * Spaces the U-SU has identified to add or convert if the increase passes.
  * Described only as far as they have been described to us — no square footage,
  * no cost, no opening date, and no feature nobody has confirmed. Alphabetical,
  * since no phasing order has been published to sequence them by.
+ *
+ * `renderingSrc` is the simulated rendering shown beside the list. Until a
+ * space has one, its frame shows an awaiting marker rather than a stand-in
+ * picture of somewhere else.
  */
-export const proposedSpaces = [
+export const proposedSpaces: {
+  title: string;
+  body: string;
+  marker?: string;
+  renderingSrc?: string;
+}[] = [
   {
     title: 'Downstairs Lounge',
     body: 'The lounge on the lower level, enhanced — more room to sit, study and wait out a gap in your schedule.',
@@ -695,7 +803,7 @@ export const proposedSpaces = [
 
 export const beforeYouWeighInCards = [
   {
-    title: 'Read the budget yourself',
+    title: 'Read the budget',
     body: 'The April 10 2026 Fiscal Committee presentation is the source for every budget figure on this page.',
     linkText: 'Go to Sources →',
     href: '#sources',
@@ -703,7 +811,7 @@ export const beforeYouWeighInCards = [
   {
     title: 'Come to an info session',
     body: 'Open sessions in the U-SU where you can ask staff and board members directly.',
-    marker: '[NEEDS FIGURE — dates & locations]',
+    marker: '',
   },
   {
     title: 'Ask the board',
@@ -760,21 +868,34 @@ const CAMPUS_LOGO_BASE =
 
 export const peerOutcomes: PeerOutcome[] = [
   {
+    id: 'csudh-april-2022',
+    campus: 'Dominguez Hills',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csudh-logo.webp`,
+    monogram: 'CSUDH',
+    date: 'April 2022',
+    proposal:
+      '$85 million for a new recreation facility, including equipment, operational costs, and engineering systems.',
+    outcome:
+      '53% of Toro voters supported investing in the proposed facility. Doors open in Fall 2026.',
+    sourceId: peerSourceIds.csudhRecreationFee2022,
+    linkText: 'See the referendum results',
+  },
+  {
     id: 'csusm-april-2024',
     campus: 'San Marcos',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.webp`,
     monogram: 'CSUSM',
     date: 'April 2024',
     proposal:
       '$265/semester for a new recreation center, charged starting a year before it opened',
     outcome: 'Rejected. About 60% voted no.',
-    sourceId: peerSourceIds.csusmReferendum2024,
+    sourceId: peerSourceIds.csusmAprilReferendumRejected,
     linkText: 'See the referendum results',
   },
   {
     id: 'csusm-october-2024',
     campus: 'San Marcos',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusm-logo.webp`,
     monogram: 'CSUSM',
     date: 'October 2024',
     proposal:
@@ -784,9 +905,21 @@ export const peerOutcomes: PeerOutcome[] = [
     linkText: 'See the referendum results',
   },
   {
+    id: 'csuf-march-2025',
+    campus: 'Fullerton',
+    logoSrc: `${CAMPUS_LOGO_BASE}/csuf-logo.webp`,
+    monogram: 'CSUF',
+    date: 'March 2025',
+    proposal:
+      'Gradual increase in campus union fees from $211 in 2025-26 to $536 in 2028-2029',
+    outcome: 'Approved via several alternative consultations.',
+    sourceId: peerSourceIds.csufStudentWellnessInitiative,
+    linkText: 'See the consultation results',
+  },
+  {
     id: 'sdsu-fall-2025',
     campus: 'San Diego',
-    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/sdsu-logo.webp`,
     monogram: 'SDSU',
     date: 'Fall 2025',
     proposal: 'Instructionally Related Activities fee increase',
@@ -798,10 +931,11 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csueb-spring-2026',
     campus: 'East Bay',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.png`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csueb-logo.webp`,
     monogram: 'CSUEB',
     date: 'Spring 2026',
-    proposal: 'New athletics fee',
+    proposal:
+      'New athletics fee. Increase phased over three semesters from Spring 27-28, totalling to $158.80 per semester.',
     outcome: 'Alt. consultation in progress',
     sourceId: peerSourceIds.csuebAthleticsFee2026,
     linkText: "Read the president's message",
@@ -809,12 +943,13 @@ export const peerOutcomes: PeerOutcome[] = [
   {
     id: 'csusb-hepi',
     campus: 'San Bernardino',
-    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.jpg`,
+    logoSrc: `${CAMPUS_LOGO_BASE}/csusb-logo.webp`,
     monogram: 'CSUSB',
     /* The sources give the adjustment year, not the date the indexing was
        established. Left as a marker rather than guessed at. */
-    date: '[NEEDS FIGURE — date]',
-    proposal: 'Category II fees indexed to HEPI, capped at 4% annually',
+    date: '25/26 Academic Year',
+    proposal:
+      'Add $301 per year, allocated directly to support experiential learning opportunities',
     outcome:
       'Established by alternative consultation. 3.4% in 2025-26, about $69 for the year.',
     sourceId: peerSourceIds.csusbHepi,
@@ -841,6 +976,6 @@ export const facultyItems: {
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, $227.25 proposed, last set in 2007. Every figure here is documented below.',
+    body: '$137.25 a semester today, price last set in 2007. $227.25 being proposed. Every figure here is documented below.',
   },
 ];

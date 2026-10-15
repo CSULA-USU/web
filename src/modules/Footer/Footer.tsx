@@ -4,11 +4,11 @@ import {
   Divider,
   FluidContainer,
   NonBreakingSpan,
+  SocialLinks,
   StyledLink,
   Typography,
 } from 'components';
-import { Colors, media, Spaces } from 'theme';
-import { AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
+import { media, Spaces } from 'theme';
 import Link from 'next/link';
 
 const currentYear = new Date().getFullYear();
@@ -22,29 +22,14 @@ const LogoLink = styled(Link)`
   }
 `;
 
-const StyledInstagramIcon = styled(AiOutlineInstagram)`
-  color: ${Colors.greyLighter};
-  font-size: 32px;
-  &:hover {
-    color: ${Colors.primary};
-    transition: 0.4s ease-in-out;
-  }
-`;
-
-const StyledLinkedinIcon = styled(AiOutlineLinkedin)`
-  color: ${Colors.greyLighter};
-  font-size: 32px;
-  &:hover {
-    color: ${Colors.primary};
-    transition: 0.4s ease-in-out;
-  }
-`;
-
 const FooterLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
   max-width: 400px;
+  @media (max-width: 1322px) {
+    margin-bottom: ${Spaces.lg};
+  }
 
   ${media('mobile')(`margin-bottom: ${Spaces.lg};`)};
 `;
@@ -53,6 +38,17 @@ const FooterTopLinks = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 72px;
+
+  @media (max-width: 1322px) {
+    flex-wrap: nowrap;
+    gap: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const FooterTopContainer = styled.div`
@@ -91,7 +87,7 @@ const FooterBottomInner = styled.div`
   `)}
   ${media('mobile')(`
     text-align: center;
--  `)}
+  `)}
 `;
 
 export const Footer = () => (
@@ -275,24 +271,24 @@ export const Footer = () => (
             (323) 343&ndash;2465
           </Typography>
         </FooterBottomInner>
-        <div>
-          <span>
-            <Link
-              target="_blank"
-              href={'https://www.instagram.com/usucalstatela/?hl=en'}
-              aria-label="link to the CalState L.A. University-Student Union's Instagram feed"
-            >
-              <StyledInstagramIcon />
-            </Link>
-          </span>
-          <Link
-            target="_blank"
-            href={'https://www.linkedin.com/company/usu-cal-state-la/'}
-            aria-label="link to the CalState L.A. University-Student Union's LinkedIn"
-          >
-            <StyledLinkedinIcon />
-          </Link>
-        </div>
+        <SocialLinks
+          tone="onDark"
+          accountName="U-SU"
+          links={[
+            {
+              network: 'instagram',
+              href: 'https://www.instagram.com/usucalstatela/?hl=en',
+            },
+            {
+              network: 'linkedin',
+              href: 'https://www.linkedin.com/company/usu-cal-state-la/',
+            },
+            {
+              network: 'tiktok',
+              href: 'https://www.tiktok.com/@usu_calstatela?_r=1&_t=ZP-99BpJw5dpsc',
+            },
+          ]}
+        />
       </FooterBottomContainer>
     </FluidContainer>
   </footer>

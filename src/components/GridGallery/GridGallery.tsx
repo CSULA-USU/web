@@ -45,6 +45,10 @@ interface GridGalleryProps {
   emptyLabel?: string;
   /** Shown inside the frame of any item flagged `isAwaitingImage`. */
   pendingLabel?: string;
+  /** How many leading images load eagerly. Defaults to `columns` — the first
+      row, on the assumption the gallery opens the page. Set `0` when it sits
+      below the fold, or those images compete with the hero for bandwidth. */
+  eagerCount?: number;
 }
 
 /* Not theme breakpoints: the grid steps down at the widths where a tile stops
@@ -188,6 +192,7 @@ export const GridGallery = ({
   ariaLabel,
   emptyLabel = '[GALLERY — awaiting images]',
   pendingLabel = '[IMAGE PENDING]',
+  eagerCount = columns,
 }: GridGalleryProps) => {
   if (items.length === 0) {
     return <PlaceholderMarker variant="block">{emptyLabel}</PlaceholderMarker>;
@@ -209,9 +214,7 @@ export const GridGallery = ({
                   sizes={`(max-width: ${SINGLE_COLUMN_MAX_WIDTH}) 92vw, (max-width: ${TWO_COLUMN_MAX_WIDTH}) 46vw, ${Math.floor(
                     100 / columns,
                   )}vw`}
-                  /* Everything past the first row is below the fold on any
-                     viewport that shows this many columns. */
-                  isEager={index < columns}
+                  isEager={index < eagerCount}
                 />
               </Frame>
             )}

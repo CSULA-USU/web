@@ -11,3 +11,4 @@ export * from './Table';
 export * from './UAwards';
 export * from './Backoffice';
 export * from './WebTeam';
+export * from './AoaJobListing';

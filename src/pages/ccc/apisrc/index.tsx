@@ -6,11 +6,15 @@ import {
   OpeningHours,
   toOpeningHoursSpecification,
 } from 'utils/openingHours';
-import { Button, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Image,
+  SocialLinks,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
-import { Colors, FontSizes, Spaces } from 'theme';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { FaDiscord, FaTiktok } from 'react-icons/fa';
+import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const buttons = [
@@ -189,43 +193,28 @@ export default function APISRC() {
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://discord.com/invite/quZwGJqsMm"
-            aria-label="Join our APISRC Discord server"
-          >
-            <FaDiscord fontSize={FontSizes['2xl']} aria-hidden="true" />
-          </a>
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://www.instagram.com/apisrc.ccc/"
-            aria-label="link to the APISRC Instagram feed"
-          >
-            <AiOutlineInstagram
-              fontSize={FontSizes['2xl']}
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href="https://linktr.ee/apisrc.ccc"
-            style={{ margin: `auto ${Spaces.sm}` }}
-            aria-label="Visit our Linktree page"
-          >
-            <Image
-              alt="linktree icon"
-              src="/departments/logos/linktree.svg"
-              height="29px"
-              width="32px"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://www.tiktok.com/@apisrc.ccc"
-            aria-label="Follow us on TikTok"
-          >
-            <FaTiktok fontSize={FontSizes.xl} aria-hidden="true" />
-          </a>
+          <SocialLinks
+            size="36px"
+            accountName="APISRC"
+            links={[
+              {
+                network: 'discord',
+                href: 'https://discord.com/invite/quZwGJqsMm',
+              },
+              {
+                network: 'instagram',
+                href: 'https://www.instagram.com/apisrc.ccc/',
+              },
+              {
+                network: 'linktree',
+                href: 'https://linktr.ee/apisrc.ccc',
+              },
+              {
+                network: 'tiktok',
+                href: 'https://www.tiktok.com/@apisrc.ccc',
+              },
+            ]}
+          />
         </FluidContainer>
         <HeaderLeftContainer>
           <Header

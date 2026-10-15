@@ -9,6 +9,13 @@ export const chartColors = {
   gridline: '#ededed',
   /** Background of the highlighted Cal State LA row. */
   highlightedRow: '#fffbe8',
+  /**
+   * Peak of the highlighted row's blink. The resting band sits too close to
+   * white to register as motion, so the blink flashes to this deeper tint of
+   * primary instead. It stays well short of primary itself, which would swallow
+   * the row's own primary bar.
+   */
+  highlightedRowFlash: '#ffe58f',
 } as const;
 
 /* Label size, easing and duration moved to `components/PieChart` when the
@@ -18,4 +25,5 @@ export {
   CHART_LABEL_SIZE,
   CHART_EASING,
   CHART_DURATION,
+  applyChartEasing,
 } from 'components/PieChart/chartTokens';

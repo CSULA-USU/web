@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 import { FontSizes, Spaces } from 'theme';
 import {
@@ -9,7 +8,6 @@ import {
   Input,
   PageMeta,
   Select,
-  StyledLink,
   TextArea,
   Typography,
 } from 'components';
@@ -20,6 +18,7 @@ import { postJotformFeedback } from 'services';
 import { useToast } from 'context/ToastContext';
 import { ContactFormData } from 'types/Contact';
 import { validateEmail } from 'lib/api';
+import { useTurnstile } from 'hooks';
 
 // TODO: replace '#' with Cal State LA's privacy policy URL (confirm the exact
 // link with the campus privacy office) or a U-SU privacy page once one exists.
@@ -95,6 +94,13 @@ const StyledTextArea = styled(TextArea)`
   border-radius: 4px;
 `;
 
+/* Zero-height for nearly every visitor. Turnstile only draws a visible widget
+   here when Cloudflare needs an interaction, and only then needs room before
+   the submit button. */
+const TurnstileSlot = styled.div<{ $isInteractive: boolean }>`
+  margin-bottom: ${(p) => (p.$isInteractive ? Spaces.lg : '0')};
+`;
+
 const HoneypotField = styled.div`
   position: absolute;
   left: -9999px;
@@ -126,7 +132,17 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [honeypot, setHoneypot] = useState('');
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  /* Stamped once on first render so the submit can report how long the form was
+     open. A script that POSTs the moment the page loads cannot produce a
+     plausible duration; see `isTooFastToBeHuman` in the API route. A ref rather
+     than state because reading it must never trigger a re-render. */
+  const formMountedAt = useRef(Date.now());
+
+  const turnstile = useTurnstile(
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+    'contact',
+  );
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -178,18 +194,27 @@ export default function Contact() {
       return;
     }
 
-    if (!captchaToken) {
-      showToast('Please complete the CAPTCHA.', 'error');
+    setIsSubmitting(true);
+
+    let turnstileToken: string | null;
+    try {
+      turnstileToken = await turnstile.getToken();
+    } catch (error: unknown) {
+      /* Blocked by a privacy extension, offline, or a failed challenge. The
+         phone numbers beside the form are the fallback. */
+      showToast('Verification failed. Please try again.', 'error');
+      console.error(error);
+      turnstile.reset();
+      setIsSubmitting(false);
       return;
     }
-
-    setIsSubmitting(true);
 
     try {
       await postJotformFeedback({
         ...formData,
         website: honeypot,
-        captchaToken,
+        formFillDurationMs: Date.now() - formMountedAt.current,
+        turnstileToken: turnstileToken ?? undefined,
       });
 
       showToast('Your response has been successfully sent!', 'success');
@@ -204,20 +229,26 @@ export default function Contact() {
       });
 
       setHoneypot('');
-      setCaptchaToken(null);
+      /* Restart the clock so a follow-up submission is timed from here rather
+         than from page load, which would otherwise let every message after the
+         first skip the too-fast check entirely. */
+      formMountedAt.current = Date.now();
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : '';
 
       showToast(
         message.includes('Too many') || message.includes('maximum')
           ? 'You have reached the maximum number of submission attempts at this time. Please try again later.'
+          : message.includes('Verification')
+          ? 'Verification failed. Please try again.'
           : 'Error: Your response has not been successfully sent.',
         'error',
       );
 
       console.error(error);
-      setCaptchaToken(null);
     } finally {
+      /* Tokens are single-use, so every attempt needs a fresh one. */
+      turnstile.reset();
       setIsSubmitting(false);
     }
   };
@@ -276,6 +307,8 @@ export default function Contact() {
                   {c.tel.map((t, i) => (
                     <Typography as="p" key={`${c.office}-${i}`}>
                       <a href={`tel:${t.replace(/\D/g, '')}`}>{t}</a>
+                      <br></br>
+                      {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
                     </Typography>
                   ))}
                 </ContactItem>
@@ -292,7 +325,14 @@ export default function Contact() {
               Give Us Your Feedback
             </Typography>
 
-            <form onSubmit={handleSubmit} noValidate>
+            {/* Turnstile loads on the form's first focus, not with the page,
+                so a visitor who only reads the page never contacts
+                Cloudflare. */}
+            <form
+              onSubmit={handleSubmit}
+              onFocus={turnstile.prepare}
+              noValidate
+            >
               <FormGroup>
                 <Label htmlFor="subject">
                   Subject <RequiredMark aria-label="required">*</RequiredMark>
@@ -430,16 +470,6 @@ export default function Contact() {
               </HoneypotField>
 
               <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
-                <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-                  onChange={(token) => {
-                    setCaptchaToken(token);
-                  }}
-                  onExpired={() => setCaptchaToken(null)}
-                  onErrored={() => setCaptchaToken(null)}
-                />
-              </FluidContainer>
-              <FluidContainer padding="0" margin={`0 0 ${Spaces['md']} 0`}>
                 <Typography variant="span" size="xs" margin="0">
                   We use the information you submit only to review your
                   feedback, respond if needed or when possible, and to improve
@@ -450,27 +480,10 @@ export default function Contact() {
                   <a href={PRIVACY_POLICY_URL}>Privacy Policy</a> for details. */}
                 </Typography>
               </FluidContainer>
-              <FluidContainer padding="0" margin={`0 0 ${Spaces['xl']} 0`}>
-                <Typography variant="span" size="xs" margin="0">
-                  This form is protected by reCAPTCHA. Google&apos;s{' '}
-                  <StyledLink
-                    href="https://policies.google.com/privacy"
-                    isExternalLink
-                    isInverseUnderlineStyling
-                  >
-                    Privacy Policy
-                  </StyledLink>{' '}
-                  and{' '}
-                  <StyledLink
-                    href="https://policies.google.com/terms"
-                    isExternalLink
-                    isInverseUnderlineStyling
-                  >
-                    Terms of Service
-                  </StyledLink>{' '}
-                  apply.
-                </Typography>
-              </FluidContainer>
+              <TurnstileSlot
+                ref={turnstile.containerRef}
+                $isInteractive={turnstile.isInteractive}
+              />
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Submit'}
               </Button>

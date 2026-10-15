@@ -28,11 +28,18 @@ const SearchIconLink = styled(FaSearch)`
 `;
 
 export const Nav = () => {
-  const { isMobile } = useBreakpoint();
+  const { breakpoint } = useBreakpoint();
+  // The full bar needs roughly 1225px to lay out at rest — a 200px logo, six
+  // top-level items, and the search icon — so anything narrower than the
+  // `widescreen` bucket gets the hamburger. Not the hook's `isMobile` or
+  // `isDesktop` flags: `isMobile` is only true below 580px, which left the
+  // whole 580–1023 band rendering a bar that could not fit, and `isDesktop` is
+  // true for *everything* at or below 1023px, the opposite of its name.
+  const isCompactNav = !['widescreen', 'uhd'].includes(breakpoint);
 
   return (
     <NavWrapper aria-label="Main navigation">
-      {isMobile ? (
+      {isCompactNav ? (
         <FluidContainer
           padding="24px"
           backgroundColor="white"
@@ -60,7 +67,6 @@ export const Nav = () => {
         <FluidContainer
           flex
           justifyContent="space-between"
-          flexWrap="wrap"
           alignItems="center"
           padding="24px"
           backgroundColor="greyDarkest"

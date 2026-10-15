@@ -53,16 +53,17 @@ The variables below cover the **contact / feedback form** flow. Other
 integrations (Notion, Supabase, Upstash, MUX, Instagram, Azure AD) require
 their own variables — this list is not exhaustive.
 
-| Variable                  | Required | Purpose                                                                                                                                 |
-| ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `CONTACT_JOTFORM_API_KEY` | Yes      | JotForm API key used to record contact submissions.                                                                                     |
-| `CONTACT_JOTFORM_FORM_ID` | Yes      | JotForm form ID that submissions are posted to.                                                                                         |
-| `RECAPTCHA_SECRET_KEY`    | Yes      | Server-side reCAPTCHA secret used to verify the submission token.                                                                       |
-| `RESEND_API_KEY`          | Yes      | Resend API key for the feedback notification + confirmation emails.                                                                     |
-| `FEEDBACK_FROM_EMAIL`     | No       | From address for feedback emails. Defaults to `U-SU Feedback <noreply@calstatelausu.org>`.                                              |
-| `FEEDBACK_NOTIFY_EMAILS`  | No       | Comma-separated admin recipients. Falls back to the in-code default list.                                                               |
-| `SLACK_ALERT_WEBHOOK_URL` | No       | Slack incoming-webhook URL. When set, a feedback email failure posts an alert here. Unset = no Slack alert (failures are still logged). |
-| `ENABLE_UKREW_API`        | No       | Set to `true` to re-enable `/api/jotformUKrew`. Unset (the default) makes the route return 404.                                         |
+| Variable                         | Required | Purpose                                                                                                                                                                                           |
+| -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CONTACT_JOTFORM_API_KEY`        | Yes      | JotForm API key used to record contact submissions.                                                                                                                                               |
+| `CONTACT_JOTFORM_FORM_ID`        | Yes      | JotForm form ID that submissions are posted to.                                                                                                                                                   |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Yes      | Cloudflare Turnstile site key for the contact form widget. Use Cloudflare's test key `1x00000000000000000000AA` outside Production.                                                               |
+| `TURNSTILE_SECRET_KEY`           | Yes      | Turnstile secret the server uses to verify the token. Test key `1x0000000000000000000000000000000AA` outside Production. Unset = submissions are accepted and logged as `[TURNSTILE_UNVERIFIED]`. |
+| `RESEND_API_KEY`                 | Yes      | Resend API key for the feedback notification + confirmation emails.                                                                                                                               |
+| `FEEDBACK_FROM_EMAIL`            | No       | From address for feedback emails. Defaults to `U-SU Feedback <noreply@calstatelausu.org>`.                                                                                                        |
+| `FEEDBACK_NOTIFY_EMAILS`         | No       | Comma-separated admin recipients. Falls back to the in-code default list.                                                                                                                         |
+| `SLACK_ALERT_WEBHOOK_URL`        | No       | Slack incoming-webhook URL. When set, a feedback email failure posts an alert here. Unset = no Slack alert (failures are still logged).                                                           |
+| `ENABLE_UKREW_API`               | No       | Set to `true` to re-enable `/api/jotformUKrew`. Unset (the default) makes the route return 404.                                                                                                   |
 
 ## Project Structure
 

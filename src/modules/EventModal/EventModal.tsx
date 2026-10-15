@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { useBreakpoint } from 'hooks';
 import { Colors, Spaces } from 'theme';
 import { CampusGroupsEvent } from 'types';
-import { formatEventLocation } from 'utils/eventUtils';
+import { formatEventLocation, getEventFlyerUrl } from 'utils/eventUtils';
 import { getDay, getMonth, getTime, getYear } from 'utils/timehelpers';
 
 interface EventModalProps {
@@ -88,22 +88,53 @@ const Main = styled.div`
 `;
 
 /**
- * Aspect-agnostic frame: event flyers arrive as either landscape photos or
- * square graphics. The image is centered and capped by height (never forced to
- * full width), so a square flyer stays a sensible size instead of ballooning to
- * the full modal width, and nothing gets cropped.
+ * The media well, sized by ratio rather than by the image it holds.
+ *
+ * That is what keeps the modal still. A box that takes its height from the
+ * image is 0px tall on open and jumps to full height once the flyer decodes,
+ * throwing the group, title, date, time, location and description down the
+ * page as it goes. Reserving the space up front costs nothing and removes the
+ * shift entirely — and it is also what gives the skeleton a box to fill, since
+ * an overlay stretched over a zero-height parent paints nothing.
+ *
+ * 3:2 because the well holds flyers rather than covers. `getEventFlyerUrl`
+ * prefers the coordinator's own upload, and those are square — all three in
+ * the 2026-09-14 feed are 1080x1080 — where the 2:1 covers it falls back to
+ * are the platform's crop of exactly those squares. Matching the cover meant
+ * showing a flyer at 248px inside a 496px well; 3:2 gives it 330px. The
+ * stragglers (that feed held one at 4.4:1 and one at 5.71:1) sit inside the
+ * well rather than resizing it.
+ *
+ * Ratio rather than a pixel height so the well tracks the modal's own width,
+ * which is set per breakpoint above — no second set of numbers to keep in step.
+ *
+ * `contain`, never `cover`: flyers routinely carry text, and cropping a 5.71:1
+ * banner to fill the well would cut most of it away.
  */
 const MediaFrame = styled.div`
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: ${Spaces.lg};
-  padding-top: ${Spaces.lg};
+  aspect-ratio: 3 / 2;
+  margin: ${Spaces.lg} 0;
+
+  /* The skeleton frame Image wraps itself in sits between this and the img, so
+     it has to become the centering box or the flyer lands top-left of the well
+     instead of in it. */
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 
   img {
     width: auto;
     max-width: 100%;
-    max-height: 380px;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 12px;
     display: block;
@@ -168,13 +199,13 @@ export const EventModal = ({
   const {
     eventStartDateTime,
     eventEndDateTime,
-    eventOriginalPhotoFullUrl,
     group,
     title,
     eventLocation,
     description,
     eventLink,
   } = event;
+  const flyerUrl = getEventFlyerUrl(event);
   const startTime = getTime(eventStartDateTime);
   const endTime = getTime(eventEndDateTime);
   const month = getMonth(eventStartDateTime, 'long');
@@ -210,9 +241,22 @@ export const EventModal = ({
         style={{ outline: 'none' }}
         className="modal-content"
       >
-        {eventOriginalPhotoFullUrl && (
+        {flyerUrl && (
           <MediaFrame>
-            <Image src={eventOriginalPhotoFullUrl} alt={title} lazy />
+            {/* Decorative, so alt is empty: the host group, title, date, time
+                and location are all printed as text directly below, and on the
+                111 of 268 feed items with no flyer this falls back to the
+                group's generic cover. The old alt repeated the title, which
+                told a screen reader nothing and misdescribed a CSI logo as the
+                event name.
+
+                Worth revisiting now that the well shows real flyers rather
+                than the platform's crop of them: a flyer carrying information
+                of its own — a QR code, a lineup, a dress code — is dropped
+                silently by an empty alt. The feed's own eventPhotoAltText is
+                not the substitute; it is mostly "csi cover photo", and its
+                longer entries arrive double-escaped. */}
+            <Image src={flyerUrl} alt="" lazy skeletonWhileLoading />
           </MediaFrame>
         )}
 

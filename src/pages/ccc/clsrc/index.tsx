@@ -6,10 +6,15 @@ import {
   OpeningHours,
   toOpeningHoursSpecification,
 } from 'utils/openingHours';
-import { Button, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Image,
+  SocialLinks,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
-import { Colors, FontSizes, Spaces } from 'theme';
-import { AiOutlineInstagram } from 'react-icons/ai';
+import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const buttons = [
@@ -139,28 +144,21 @@ export default function CLSRC() {
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://www.instagram.com/clsrc.ccc/"
-            aria-label="link to the Chicano/a, Latino/a Student Resource Center's Instagram feed"
-          >
-            <AiOutlineInstagram
-              fontSize={FontSizes['2xl']}
-              aria-label="visit the clsrc instagram"
-            />
-          </a>
-          <a
-            href="https://linktr.ee/cccatcalstatela"
-            style={{ margin: `auto ${Spaces.sm}` }}
-            aria-label="visit ccc linktree"
-          >
-            <Image
-              alt=""
-              src="/departments/logos/linktree.svg"
-              height="29px"
-              width="32px"
-            />
-          </a>
+          <SocialLinks
+            size="36px"
+            accountName="CLSRC"
+            links={[
+              {
+                network: 'instagram',
+                href: 'https://www.instagram.com/clsrc.ccc/',
+              },
+              {
+                network: 'linktree',
+                href: 'https://linktr.ee/cccatcalstatela',
+                accountName: 'Cross Cultural Center',
+              },
+            ]}
+          />
         </FluidContainer>
         <HeaderLeftContainer>
           <Header

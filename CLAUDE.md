@@ -67,6 +67,44 @@ All credentials are injected via `.env.local` — see README for the full variab
 
 Video belongs in MUX / next-video, not `public/`. Large media committed to `public/` stays in git history permanently even after it is deleted from the working tree, bloating every clone — several files already buried in this repo's history run 40–80 MB each and trigger GitHub's >50 MB push warning on every push.
 
+### Dependencies
+
+**Entries in `resolutions` are security floors, written as ranges — never exact pins.** Every entry
+there exists because an advisory forced a package's version up. Write it as `^x.y.z` at the version
+that fixed the advisory, so yarn can still climb to later releases.
+
+An exact pin (`"fast-xml-parser": "5.3.6"`) does the opposite of what it looks like. It reads as
+"at least 5.3.6" but means "exactly 5.3.6" — so the moment a _new_ advisory lands against that
+version, the pin blocks its own fix and the entry stops doing the job it was added for. That is
+not hypothetical: exact pins on `fast-xml-parser` and `undici` held both below the floors their
+later advisories called for, which is why this block is ranges now.
+
+A stale lockfile does the same thing more quietly. Yarn only re-resolves a dependency when its
+declared range changes, so `^0.2.4` kept reinstalling the 0.2.5 already recorded in `yarn.lock`
+long after 0.2.7 shipped. Raising the floor to the patched version is what forces re-resolution —
+so when an advisory names a fix version, edit the range even if the existing one already permits it.
+
+The same rule killed three pins in `dependencies` that had drifted below what the tree needed:
+`@babel/traverse` was pinned at `7.27.3` while `@babel/core` required `^7.29.7`, so the pin bought
+an older duplicate copy and nothing else. Prefer no pin at all when every dependent already
+declares a patched range — verify with `yarn audit` rather than assuming.
+
+**A resolution can only hold one version, so it cannot serve two major lines at once.** Leave
+`brace-expansion` (1.x and 5.x in the tree, patched separately at `>=1.1.18` and `>=5.0.9`) and
+`js-yaml` (3.x and 4.x) alone unless you scope the entry per-parent — a blanket floor forces one
+major onto consumers of the other and breaks them.
+
+**Not every advisory is reachable.** `yarn audit` counts what is present in the tree, not what this
+app actually runs — most hits are in build-time tooling, and some describe entry points nothing
+here calls. Check whether the affected code path is one this app executes before treating a count
+as urgent, and prefer raising the floor anyway when it is cheap. `next` advisories in particular are
+mostly App Router, Server Components, Server Actions, `i18n`, and `rewrites` — none of which this
+Pages Router app uses.
+
+**Before adding a dependency, check it is not already there transitively**, and prefer a floor in
+`resolutions` over a direct dependency when the goal is a security minimum rather than a direct
+import. A direct dependency that nothing imports is dead weight; a floor is enforcement.
+
 ### Tone & Voice
 
 Rendered copy is short. Cut any word that does not buy clarity — a button reading "More about {org name}" should just read "More", because the surrounding context already supplies the rest. This applies to button labels, link text, headings, captions, and body copy.
@@ -217,7 +255,9 @@ When a component graduates from a feature folder into `src/components/`, audit i
 
 **Page heroes.** Full-bleed background image, text anchored bottom-left, a dark gradient scrim rising from the bottom edge, a short `Colors.primary` accent bar above the `h1`, a large white title, and a short white subtitle at reduced opacity. `src/modules/UtilityHeroHeader/UtilityHeroHeader.tsx` is the implementation — compose it rather than rebuilding the treatment. Centered white-box overlays are the superseded pattern; do not reach for them.
 
-**Hover states fill, they do not recolor.** Recoloring text to `Colors.primary` is too weak a signal, especially on pages whose in-page nav already spends primary on text — the hover then just looks like more of the same. Fill the container (the pill or row holding the label) with `Colors.primary` and switch the text to `Colors.black`, which also clears contrast comfortably. Give the element its own padding and `border-radius` so there is a container to fill, and transition `background-color` and `color` together. When the trigger opens a panel, hold the fill while that panel is open, or the panel reads as detached. `src/modules/Nav/DesktopNav.tsx` applies this to both the top bar and its dropdown rows.
+**Hover states fill, they do not recolor.** Recoloring text to `Colors.primary` is too weak a signal, especially on pages whose in-page nav already spends primary on text — the hover then just looks like more of the same. Fill the container (the pill or row holding the label) with `Colors.primary` and switch the text to `Colors.black`, which also clears contrast comfortably. Give the element its own padding (and a `border-radius`, where one suits it) so there is a container to fill, and transition `background-color` and `color` together. When the trigger opens a panel, hold the fill while that panel is open, or the panel reads as detached — and keep the trigger's shape the same in every state: a trigger that is rounded on hover but squares off to meet its open panel reads as two different shapes, which is why the nav stays square (`Radii.structure`) throughout. `src/modules/Nav/DesktopNav.tsx` applies this to both the top bar and its dropdown rows.
+
+**Icon-only links lift.** A bare icon has no label or pill to fill, so it recolors and rises 4px instead — the lift is the second signal the fill rule asks for. Social links always go through `src/components/SocialLinks`, which owns the glyph per network, the lift, alphabetical order, and the screen-reader label; do not hand-build another row of icon links. Person-card LinkedIn links (staff, U-Krew) are a different pattern and stay as they are.
 
 ### Design Handoffs
 

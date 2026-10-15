@@ -144,16 +144,16 @@ const downloads: DownloadSectionProps[] = [
       <DocumentLinkContainer
         links={[
           {
+            href: 'https://www.dropbox.com/scl/fi/tyepshsouhcbjxt04kxbx/afs-fy26-27.zip?rlkey=w26dhw9htqarujha6w29cpb06&st=svawdia5&raw=1',
+            children: 'FY 25-26',
+          },
+          {
             href: 'https://www.dropbox.com/scl/fo/qn5hish6d4d7xirt8c0lh/ANIRpb_5vaPPQO_T2URzlfE?rlkey=uftek73262lec4ok09lzit0s1&st=dmnoheq5&raw=1',
             children: 'FY 24-25',
           },
           {
             href: 'https://www.dropbox.com/scl/fo/zrd4kg4cxmn580qt187e9/ADZ-TwrwDLzg5uVVPOidRco?rlkey=mskxsc172pw4uiac12up6h177&st=t47d4nvi&raw=1',
             children: 'FY 23-24',
-          },
-          {
-            href: 'https://www.dropbox.com/scl/fi/c4xzmxx7uz58r8qlxg3b0/6-30-24-CSU-LA-University-Student-Union-Financial-Statements-w-Supp.pdf?rlkey=rta56fxafb9il9mdyk0smr6m6&st=d3duub33&raw=1',
-            children: 'FY 22-23',
           },
         ]}
       />

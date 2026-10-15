@@ -17,6 +17,19 @@ import { EventModal } from 'modules/EventModal';
 import { useState } from 'react';
 import { media, Spaces } from 'theme';
 
+/*
+ * How many events the list shows before Load More.
+ *
+ * Counted from the top of what it is handed, which is already whatever the
+ * hero did not take — one featured event, or up to three live ones. So the
+ * page shows five beyond the hero however many the hero spent, rather than
+ * five on a quiet day and three when two events are running.
+ */
+const INITIAL_EVENT_COUNT = 5;
+
+/* Load More reveals this many more each press. */
+const EVENT_COUNT_STEP = 3;
+
 interface UpcomingEventsProps {
   loading: boolean;
   events: CampusGroupsEvent[];
@@ -63,7 +76,7 @@ export const ModUpcomingEvents = ({
   const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
     undefined,
   );
-  const [eventLimit, setEventLimit] = useState<number>(6);
+  const [eventLimit, setEventLimit] = useState<number>(INITIAL_EVENT_COUNT);
   const { isMobile } = useBreakpoint();
 
   // --- 1. DEFINE DERIVED DATA SAFELY ---
@@ -71,9 +84,8 @@ export const ModUpcomingEvents = ({
 
   // Guard against undefined events array
   const safeEvents = events || [];
-  const [_, ...laterEvents] = safeEvents;
 
-  const eventsByMonth = (monthly ? safeEvents : laterEvents).reduce(
+  const eventsByMonth = safeEvents.reduce(
     (
       months: { [key: string]: CampusGroupsEvent[] },
       event: CampusGroupsEvent,
@@ -142,7 +154,7 @@ export const ModUpcomingEvents = ({
         {/* Use the new combined loading check here */}
         {isActuallyLoading ? (
           <UpcomingEventsSkeleton monthly={monthly} />
-        ) : safeEvents.length <= 1 ? (
+        ) : safeEvents.length < 1 ? (
           <Typography as="h3" variant="label" margin="20px 0 0 0">
             No additional upcoming events.
           </Typography>
@@ -168,7 +180,7 @@ export const ModUpcomingEvents = ({
                 <UpcomingEventsContent>
                   <TertiaryContainer>
                     {safeEvents
-                      .slice(1, eventLimit)
+                      .slice(0, eventLimit)
                       .map((event, index, eventArray) => (
                         <li key={event.eventId}>
                           <MinimalistEvent
@@ -196,15 +208,20 @@ export const ModUpcomingEvents = ({
                 >
                   {safeEvents.length > eventLimit && (
                     <Button
-                      onClick={() => setEventLimit(eventLimit + 3)}
+                      onClick={() =>
+                        setEventLimit(eventLimit + EVENT_COUNT_STEP)
+                      }
                       variant="black"
                     >
                       Load More
                     </Button>
                   )}
 
-                  {eventLimit > 6 && (
-                    <Button onClick={() => setEventLimit(6)} variant="outline">
+                  {eventLimit > INITIAL_EVENT_COUNT && (
+                    <Button
+                      onClick={() => setEventLimit(INITIAL_EVENT_COUNT)}
+                      variant="outline"
+                    >
                       Show Less
                     </Button>
                   )}

@@ -53,6 +53,7 @@ export const TestimonialCard = ({
           width={PHOTO_SIZE}
           height={PHOTO_SIZE}
           round
+          lazy
           marginBottom={Spaces.sm}
         />
       ) : (

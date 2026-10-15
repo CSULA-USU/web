@@ -1,22 +1,53 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { categoryMap } from 'types/CategoriesContact';
 import type { ContactFormData } from 'types/Contact';
-import { jotformContactRatelimit } from 'lib/ratelimit';
+import {
+  checkRateLimit,
+  jotformContactIpRatelimit,
+  jotformContactRatelimit,
+} from 'lib/ratelimit';
 import { validateEmail } from 'lib/api';
 import {
   sendFeedbackNotifications,
   sendFeedbackEmailFailureAlert,
 } from 'lib/feedbackNotifications';
+import { verifyTurnstileToken } from 'lib/turnstile';
 
 const CONTACT_API_KEY = process.env.CONTACT_JOTFORM_API_KEY!;
 const CONTACT_FORM_ID = process.env.CONTACT_JOTFORM_FORM_ID!;
 const JOTFORM_BASE_URL = 'https://api.jotform.com';
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY!;
+
+/**
+ * Floor on how long filling this form can plausibly take. Six fields, one of
+ * them a message body — a person needs seconds, a script needs none.
+ *
+ * Generous on purpose: the cost of setting it too high is silently rejecting
+ * real feedback, and a false positive here is self-correcting anyway, because
+ * retyping a submission takes longer than the threshold.
+ */
+export const MIN_FORM_FILL_MS = 3000;
 
 export function sanitize(input: unknown, maxLength: number): string {
   if (typeof input !== 'string') return '';
   return input.trim().slice(0, maxLength);
 }
+
+/**
+ * True when a submission arrived faster than a person could have produced it,
+ * or without the timing the real form always sends.
+ *
+ * This is a speed bump of the same class as the honeypot, not a wall: the value
+ * is client-supplied, so anything willing to fake it gets through. It exists to
+ * catch the scripted POST that fills every field instantly and the crafted
+ * request that does not know the field is expected — which between them are
+ * most of what actually reaches a form like this.
+ */
+export const isTooFastToBeHuman = (durationMs: unknown): boolean => {
+  if (typeof durationMs !== 'number' || !Number.isFinite(durationMs)) {
+    return true;
+  }
+  return durationMs < MIN_FORM_FILL_MS;
+};
 
 export function validateContactForm(
   body: unknown,
@@ -35,16 +66,11 @@ export function validateContactForm(
   const subject = sanitize(requestBody.subject, 200);
   const message = sanitize(requestBody.message, 2000);
   const category = sanitize(requestBody.category, 50);
-  const captchaToken =
-    typeof requestBody.captchaToken === 'string'
-      ? requestBody.captchaToken.trim()
-      : '';
 
   if (!email) errors.push('Email is required.');
   if (!subject) errors.push('Subject is required.');
   if (!message) errors.push('Message is required.');
   if (!category) errors.push('Category is required.');
-  if (!captchaToken) errors.push('CAPTCHA token is required.');
 
   if (email) {
     const emailError = validateEmail(email);
@@ -68,7 +94,6 @@ export function validateContactForm(
       subject,
       message,
       category,
-      captchaToken,
     },
   };
 }
@@ -77,7 +102,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (!CONTACT_API_KEY || !CONTACT_FORM_ID || !RECAPTCHA_SECRET_KEY) {
+  if (!CONTACT_API_KEY || !CONTACT_FORM_ID) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
@@ -86,8 +111,19 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  /* A filled honeypot is definitively a bot, so it gets a fake success — there
+     is nothing to tell a bot, and a real error would teach it what to avoid. */
   if (typeof req.body?.website === 'string' && req.body.website.trim()) {
     return res.status(200).json({ success: true });
+  }
+
+  /* Unlike the honeypot, a fast submission is only probably a bot, so this
+     answers honestly rather than silently dropping what might be real
+     feedback. A person who somehow trips it can simply submit again. */
+  if (isTooFastToBeHuman(req.body?.formFillDurationMs)) {
+    return res.status(400).json({
+      error: 'That was submitted too quickly. Please try again.',
+    });
   }
 
   const xf = req.headers['x-forwarded-for'];
@@ -107,26 +143,51 @@ export default async function handler(
     }
 
     const formData = result.data;
-    const captchaResult = await verifyRecaptcha(formData.captchaToken!);
 
-    if (!captchaResult.success) {
-      console.error('CAPTCHA verification failed:', captchaResult);
+    /* After validation, so a malformed form does not spend the visitor's
+       single-use token. Before the rate limits, so a bot turned away here does
+       not use up the per-IP allowance it shares with everyone behind the same
+       campus network address. `unverified` falls through by decision — see
+       `TurnstileVerdict`. */
+    const turnstileVerdict = await verifyTurnstileToken(
+      req.body?.turnstileToken,
+      ip,
+    );
+    if (turnstileVerdict === 'rejected') {
       return res.status(400).json({
-        error: 'CAPTCHA verification failed',
+        error: 'Verification failed. Please try again.',
       });
     }
 
     const email = (formData.email || '').toLowerCase();
     const identifier = email ? `${ip}:${email}` : ip;
 
-    const { success, limit, remaining, reset } =
-      await jotformContactRatelimit.limit(identifier);
+    const perSubmitter = await checkRateLimit(
+      jotformContactRatelimit,
+      identifier,
+    );
 
-    res.setHeader('X-RateLimit-Limit', String(limit));
-    res.setHeader('X-RateLimit-Remaining', String(remaining));
-    res.setHeader('X-RateLimit-Reset', String(reset));
+    /* Absent while degraded — advertising a ceiling the limiter is not actually
+       enforcing would be worse than saying nothing. */
+    if (!perSubmitter.degraded) {
+      res.setHeader('X-RateLimit-Limit', String(perSubmitter.limit));
+      res.setHeader('X-RateLimit-Remaining', String(perSubmitter.remaining));
+      res.setHeader('X-RateLimit-Reset', String(perSubmitter.reset));
+    }
 
-    if (!success) {
+    if (!perSubmitter.success) {
+      return res.status(429).json({
+        error: 'Too many submissions. Please try again later.',
+      });
+    }
+
+    /* Checked after the per-submitter limit and reported identically, so a
+       spammer cannot tell which ceiling it hit. This is the one that stops a
+       single machine cycling through invented addresses, since the key above
+       changes with the email while this one does not. */
+    const perIp = await checkRateLimit(jotformContactIpRatelimit, ip);
+
+    if (!perIp.success) {
       return res.status(429).json({
         error: 'Too many submissions. Please try again later.',
       });
@@ -198,21 +259,3 @@ export default async function handler(
       .json({ error: 'Failed to submit form. Please try again.' });
   }
 }
-
-const verifyRecaptcha = async (token: string) => {
-  const response = await fetch(
-    'https://www.google.com/recaptcha/api/siteverify',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        secret: RECAPTCHA_SECRET_KEY,
-        response: token,
-      }).toString(),
-    },
-  );
-
-  return response.json();
-};

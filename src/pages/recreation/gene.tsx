@@ -204,7 +204,7 @@ export default function Gene() {
         </WelcomeContentContainer>
         <Button
           variant="black"
-          href="https://forms.office.com/r/V7u5KxzAGs"
+          href="https://forms.cloud.microsoft/r/SDKHBeFUSR"
           isExternalLink
         >
           RSVP
@@ -212,7 +212,7 @@ export default function Gene() {
       </FluidContainer>
       <FluidContainer>
         <Typography variant="title" as="h2">
-          <abbr title="gene">GENE</abbr> Bios Spring 2026:
+          <abbr title="gene">GENE</abbr> Bios Fall 2026:
         </Typography>
         <Typography as="p" margin="8px 0px 0px 0px">
           Our <abbr title="gene">GENE</abbr> coaches are all working to finish

@@ -28,7 +28,8 @@ src/pages/keep-the-u-open.tsx
 A campaign/informational page about a proposed +$90/semester U-SU student fee. The bundled
 `Keep the U Open v2.dc.html` is a **design reference prototype**, not source to port. Open it in a
 browser (`support.js` must sit beside it) to see the intended result, then rebuild it with the
-repo's own components and theme.
+repo's own components and theme. Both files have since been removed from this folder — README §14
+says how to restore them.
 
 ## Before you write code
 

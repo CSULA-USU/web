@@ -26,10 +26,15 @@ const UnstyledUnorderedList = styled.ul`
   // The pills below carry their own horizontal padding, so the gap between
   // items is cut to match — the space between two labels reads the same as it
   // did before, only now part of it belongs to the highlight.
+  //
+  // The gap and the pill padding both come down below 1366px, which is where
+  // this bar starts running out of room next to the 200px logo. It is not a
+  // tablet rule: below 1024px Nav swaps the whole bar for the hamburger, so
+  // nothing here renders at tablet widths at all.
   > * {
     &:not(:last-child) {
       margin-right: ${Spaces.xs};
-      ${media('tablet')(`margin-right: ${Spaces.zero}`)}
+      ${media('widescreen')(`margin-right: ${Spaces.zero}`)}
     }
   }
   button {
@@ -47,8 +52,11 @@ const UnstyledUnorderedList = styled.ul`
     display: inline-flex;
     align-items: center;
     padding: ${Spaces.sm} ${Spaces.md};
-    ${media('tablet')(`padding: ${Spaces.xs} ${Spaces.sm}`)}
-    border-radius: 4px;
+    ${media('widescreen')(`padding: ${Spaces.xs} ${Spaces.sm}`)}
+    // Square in every state, matching the square-topped panel it opens onto.
+    // A rounded hover that squared off once the panel opened read as two
+    // different shapes for the same item.
+    border-radius: ${Radii.structure};
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     // A hovered item fills with primary rather than just tinting its text:
     // pages with their own in-page nav already spend the primary color on
@@ -60,13 +68,6 @@ const UnstyledUnorderedList = styled.ul`
     &[aria-expanded='true'] {
       color: ${Colors.black};
       background-color: ${Colors.primary};
-    }
-    // With the panel open this button is the tab sitting on top of it, so its
-    // bottom corners square off to meet the panel's square top edge. Hover
-    // alone keeps all four rounded — there is no panel below to meet yet.
-    &[aria-expanded='true'] {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
   ul {
@@ -106,6 +107,10 @@ const UnstyledUnorderedList = styled.ul`
     // would. --open holds the fill while this row's submenu is showing, the way
     // aria-expanded does for the bar above; without it the highlight drops the
     // moment the pointer moves into the panel it just opened.
+    //
+    // Weight stays put on hover. Bolding widens the glyphs toward the trailing
+    // edge — nearly 7px on the longest labels — which reads as the text
+    // drifting, and the fill already carries the signal on its own.
     .szh-menu__item {
       border-radius: ${Radii.structure};
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -115,10 +120,8 @@ const UnstyledUnorderedList = styled.ul`
       &.szh-menu__item--open {
         color: ${Colors.black};
         background-color: ${Colors.primary};
-        font-weight: 600;
         a {
           color: ${Colors.black};
-          font-weight: 600;
         }
       }
     }
@@ -175,38 +178,6 @@ const MainMenuItem = styled.div`
   }
 `;
 
-/**
- * A dropdown label that is already as wide as its own hovered, heavier self.
- *
- * The hidden `::after` copy carries the label at `$hoverFontWeight` and sets
- * the width; the visible text sits above it and grows into slack that was
- * always reserved. Without it, bolding on hover widens the row and shoves the
- * dropdown panel wider mid-hover.
- *
- * The bar's own items do not need this — they rest at 700 and stay there, so
- * their width never changes on hover.
- *
- * The copy is `visibility: hidden`, not transparent, so it stays out of the
- * accessibility tree and screen readers do not hear the label twice.
- */
-const SteadyWidthLabel = styled(NonBreakingSpan)<{ $hoverFontWeight: number }>`
-  display: inline-flex;
-  flex-direction: column;
-  // Left-aligned so the text's leading edge never moves; the reserved slack
-  // all sits on the trailing side.
-  align-items: flex-start;
-  &::after {
-    content: attr(data-label);
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    font-weight: ${({ $hoverFontWeight }) => $hoverFontWeight};
-  }
-`;
-
-/** Weight a dropdown row reaches on hover, and the width it reserves. */
-const DROPDOWN_HOVER_WEIGHT = 600;
-
 export const DesktopNav = () => {
   const router = useRouter();
 
@@ -231,14 +202,7 @@ export const DesktopNav = () => {
                     if (t2.sub) {
                       return (
                         <SubMenu
-                          label={
-                            <SteadyWidthLabel
-                              data-label={t2.text}
-                              $hoverFontWeight={DROPDOWN_HOVER_WEIGHT}
-                            >
-                              {t2.text}
-                            </SteadyWidthLabel>
-                          }
+                          label={<NonBreakingSpan>{t2.text}</NonBreakingSpan>}
                           key={`t2_${index}`}
                         >
                           {t2.sub.map((t3, index) => (
@@ -249,12 +213,7 @@ export const DesktopNav = () => {
                               }}
                             >
                               <Link href={t3.href}>
-                                <SteadyWidthLabel
-                                  data-label={t3.text}
-                                  $hoverFontWeight={DROPDOWN_HOVER_WEIGHT}
-                                >
-                                  {t3.text}
-                                </SteadyWidthLabel>
+                                <NonBreakingSpan>{t3.text}</NonBreakingSpan>
                               </Link>
                             </MenuItem>
                           ))}
@@ -269,12 +228,7 @@ export const DesktopNav = () => {
                         }}
                       >
                         <Link href={t2.href}>
-                          <SteadyWidthLabel
-                            data-label={t2.text}
-                            $hoverFontWeight={DROPDOWN_HOVER_WEIGHT}
-                          >
-                            {t2.text}
-                          </SteadyWidthLabel>
+                          <NonBreakingSpan>{t2.text}</NonBreakingSpan>
                         </Link>
                       </MenuItem>
                     );

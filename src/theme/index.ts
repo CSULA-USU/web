@@ -63,13 +63,35 @@ export const Colors = {
   nativeBeige: '#c6ba98',
   pastelYellow: '#fef9c3',
   recognizedGreen: '#1ED760',
+  greenDark: '#2e7d32',
   blue: '#0066cc',
+  blueLight: '#4a90e2',
   red: '#dc3545',
-  /* Deeper than `red`, which lands at 4.53:1 on white — a hair over the AA
-     floor and too thin for a figure a reader is meant to trust. This sits at
-     about 5.6:1 and still reads unmistakably as a deficit. */
   redDark: '#c62828',
 } as const;
+
+/**
+ * Hues for telling one group in a list apart from the next, when the groups
+ * have no order and no fixed meaning — meeting committees, the months in an
+ * events list.
+ *
+ * Deliberately outside `Colors`: these are picked to be distinguishable from
+ * each other, not to mean anything on their own, and folding them in would put
+ * six colors nothing on the site is themed in behind `keyof typeof Colors`.
+ *
+ * Callers cycle through this in order and wrap at the end, so what matters is
+ * that neighbors are separable, not that the list is long enough. Grew out of
+ * the Board of Directors meeting calendar, which is where these six values
+ * were first chosen.
+ */
+export const CategoricalAccents = [
+  '#a04b9e',
+  '#fb0200',
+  '#e97818',
+  '#68bc5a',
+  '#2d86e4',
+  '#f083d4',
+] as const;
 
 /**
  * The site's elevation language. `default` is the long-standing card

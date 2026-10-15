@@ -41,7 +41,7 @@ export interface OpeningHoursGroup {
   spans: OpeningHours[];
 }
 
-const WEEKDAY_ORDER: Weekday[] = [
+export const WEEKDAY_ORDER: readonly Weekday[] = [
   'Monday',
   'Tuesday',
   'Wednesday',
@@ -51,7 +51,11 @@ const WEEKDAY_ORDER: Weekday[] = [
   'Sunday',
 ];
 
-const WEEKDAY_ABBREVIATIONS: Record<Weekday, string> = {
+/** Narrows a day read from JSON, where it arrives as a plain string. */
+export const isWeekday = (day: string): day is Weekday =>
+  (WEEKDAY_ORDER as readonly string[]).includes(day);
+
+export const WEEKDAY_ABBREVIATIONS: Record<Weekday, string> = {
   Monday: 'Mon',
   Tuesday: 'Tue',
   Wednesday: 'Wed',

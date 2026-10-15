@@ -10,6 +10,8 @@ import { BsSignpost2Fill } from 'react-icons/bs';
 import { CgPill, CgPokemon } from 'react-icons/cg';
 import {
   FaBalanceScale,
+  FaBolt,
+  FaBook,
   FaBullhorn,
   FaDog,
   FaDumbbell,
@@ -22,9 +24,13 @@ import {
   FaRunning,
   FaUmbrellaBeach,
 } from 'react-icons/fa';
+import { FaScissors } from 'react-icons/fa6';
 import { FaMountainSun, FaPlateWheat } from 'react-icons/fa6';
 import {
+  GiAbdominalArmor,
   GiBabyBottle,
+  GiLotus,
+  GiPeach,
   GiRiceCooker,
   GiRollerSkate,
   GiRunningShoe,
@@ -37,6 +43,7 @@ import { ImSpoonKnife } from 'react-icons/im';
 import { LuCakeSlice, LuSoup } from 'react-icons/lu';
 import {
   MdCake,
+  MdMilitaryTech,
   MdOutlinePedalBike,
   MdSoupKitchen,
   MdSportsBasketball,
@@ -68,6 +75,8 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     CgPill: createElement(CgPill, iconProps),
     CgPokemon: createElement(CgPokemon, iconProps),
     FaBalanceScale: createElement(FaBalanceScale, iconProps),
+    FaBolt: createElement(FaBolt, iconProps),
+    FaBook: createElement(FaBook, iconProps),
     FaIceCream: createElement(FaIceCream, iconProps),
     FaDog: createElement(FaDog, iconProps),
     FaPaintBrush: createElement(FaPaintBrush, iconProps),
@@ -81,7 +90,11 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     FaPizzaSlice: createElement(FaPizzaSlice, iconProps),
     FaPlateWheat: createElement(FaPlateWheat, iconProps),
     FaRunning: createElement(FaRunning, iconProps),
+    FaScissors: createElement(FaScissors, iconProps),
+    GiAbdominalArmor: createElement(GiAbdominalArmor, iconProps),
     GiBabyBottle: createElement(GiBabyBottle, iconProps),
+    GiLotus: createElement(GiLotus, iconProps),
+    GiPeach: createElement(GiPeach, iconProps),
     GiRiceCooker: createElement(GiRiceCooker, iconProps),
     GiRollerSkate: createElement(GiRollerSkate, iconProps),
     GiRunningShoe: createElement(GiRunningShoe, iconProps),
@@ -93,6 +106,7 @@ export const Icon = ({ iconName, size }: IconProps): ReactElement => {
     LuCakeSlice: createElement(LuCakeSlice, iconProps),
     LuSoup: createElement(LuSoup, iconProps),
     MdCake: createElement(MdCake, iconProps),
+    MdMilitaryTech: createElement(MdMilitaryTech, iconProps),
     MdOutlinePedalBike: createElement(MdOutlinePedalBike, iconProps),
     MdSportsBasketball: createElement(MdSportsBasketball, iconProps),
     MdSoupKitchen: createElement(MdSoupKitchen, iconProps),

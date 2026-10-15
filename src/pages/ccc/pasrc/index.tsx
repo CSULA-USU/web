@@ -6,11 +6,15 @@ import {
   OpeningHours,
   toOpeningHoursSpecification,
 } from 'utils/openingHours';
-import { Button, FluidContainer, Image, Typography } from 'components';
+import {
+  Button,
+  FluidContainer,
+  Image,
+  SocialLinks,
+  Typography,
+} from 'components';
 import { useBreakpoint } from 'hooks';
-import { Colors, FontSizes, Spaces } from 'theme';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { SiGroupme } from 'react-icons/si';
+import { Spaces } from 'theme';
 import { Component as InstagramFeed } from 'sections/InstagramFeed/InstagramFeed';
 
 const OfferingsContainer = styled.div`
@@ -184,36 +188,25 @@ export default function PASRC() {
       </Head>
       <HeaderContainer>
         <FluidContainer flex justifyContent="flex-end">
-          <a
-            style={{ color: Colors.black, margin: `auto ${Spaces.sm}` }}
-            href="https://groupme.com/join_group/96687493/RA2NYgao"
-          >
-            <SiGroupme
-              fontSize={FontSizes['xl']}
-              aria-label="groupme link for pasrc"
-            />
-          </a>
-          <a
-            style={{ color: Colors.black, margin: `0 ${Spaces.sm}` }}
-            href="https://www.instagram.com/pasrc.ccc/"
-          >
-            <AiOutlineInstagram
-              fontSize={FontSizes['2xl']}
-              aria-label="Visit the PASRC instagram"
-            />
-          </a>
-          <a
-            href="https://linktr.ee/cccatcalstatela"
-            style={{ margin: `auto ${Spaces.sm}` }}
-            aria-label="Visit the CCC linktree"
-          >
-            <Image
-              alt=""
-              src="/departments/logos/linktree.svg"
-              height="29px"
-              width="32px"
-            />
-          </a>
+          <SocialLinks
+            size="36px"
+            accountName="PASRC"
+            links={[
+              {
+                network: 'groupme',
+                href: 'https://groupme.com/join_group/96687493/RA2NYgao',
+              },
+              {
+                network: 'instagram',
+                href: 'https://www.instagram.com/pasrc.ccc/',
+              },
+              {
+                network: 'linktree',
+                href: 'https://linktr.ee/cccatcalstatela',
+                accountName: 'Cross Cultural Center',
+              },
+            ]}
+          />
         </FluidContainer>
         <HeaderLeftContainer>
           <Header title="Pan African Student Resource Center" buttons={buttons}>

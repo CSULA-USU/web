@@ -1,6 +1,13 @@
+import { useCallback, useState } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { BarChart, formatDollars, Page, TrendChart } from 'modules';
+import {
+  applyChartEasing,
+  BarChart,
+  formatDollars,
+  Page,
+  TrendChart,
+} from 'modules';
 import {
   anchorLinks,
   bandStats,
@@ -19,16 +26,16 @@ import {
   proposedSpaces,
   reserveCallouts,
   sampleTestimonials,
+  serviceComparisons,
   services,
   shareSegments,
   sources,
   testimonials,
   thesisCards,
-  todayFacts,
   trendSeries,
   trendTable,
-} from 'modules/KeepTheUOpen/content';
-import { faq } from 'modules/KeepTheUOpen/faq';
+} from 'modules/SaveTheU/content';
+import { faq } from 'modules/SaveTheU/faq';
 import {
   AnchorNav,
   AutoGrid,
@@ -42,12 +49,16 @@ import {
   FluidContainer,
   GridGallery,
   Image,
+  ImageCrossfade,
   Monogram,
   Panel,
+  ParallaxBand,
+  ParallaxStrip,
   PieChart,
   PlaceholderMarker,
   PrototypeNotice,
   ScrollCue,
+  SelectableOption,
   SourceList,
   StyledLink,
   Table,
@@ -57,6 +68,7 @@ import {
   Typography,
 } from 'components';
 import { Colors, FontSizes, Spaces } from 'theme';
+import type { CrossfadeImage } from 'components';
 import type { TableData } from 'types';
 import { BiPlus } from 'react-icons/bi';
 
@@ -71,6 +83,14 @@ const BAND_PADDING = 'clamp(48px, 6vw, 80px) clamp(20px, 4vw, 36px)';
    is capped separately by its own measure, so widening this only gives the
    charts and card grids more room. */
 const CONTENT_MAX_WIDTH = '1440px';
+
+const CAMPUS_PHOTO_SRC =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg';
+
+/* A building exterior with no identifiable people in it, so it needs no
+   photo releases — keep it that way if it is ever swapped. */
+const BUILDING_PHOTO_SRC =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/u-su-building/u-su-exterior-576@300x.webp';
 
 /* Reading measure for running text. Sections and panels are as wide as their
    charts and grids need; the prose inside them is not. A line much past 75
@@ -220,6 +240,7 @@ const renderCampusCell = (outcome: PeerOutcome) => (
           alt=""
           width="auto"
           height="auto"
+          lazy
           skeletonWhileLoading
         />
       </CampusLogo>
@@ -325,13 +346,109 @@ const peerOutcomeTable: TableData<PeerOutcome> = {
   })),
 };
 
-export default function KeepTheUOpen() {
+/* Both columns of the "If it doesn't pass" tab go through this, so they keep
+   the same labels in the same order and read across as one comparison. */
+const renderServiceRows = (
+  side: 'today' | 'ifItFails',
+  { onDark = false } = {},
+) =>
+  serviceComparisons.map((service, index) => {
+    const { body, marker, linkText, href } = service[side];
+    return (
+      <div key={service.label}>
+        {index > 0 && (
+          <Divider
+            color={onDark ? 'greyDark' : 'greyLighter'}
+            size="1px"
+            margin={`${Spaces.md} 0`}
+          />
+        )}
+        <Typography
+          as="p"
+          variant="span"
+          size="sm"
+          weight="700"
+          color={onDark ? 'white' : undefined}
+        >
+          {service.label}
+        </Typography>
+        <Typography
+          as="p"
+          variant="copy"
+          size="sm"
+          lineHeight="1.6"
+          color={onDark ? 'greyLighter' : undefined}
+          margin={`${Spaces.xs} 0 0`}
+        >
+          {body}
+          {marker && (
+            <>
+              {body && ' '}
+              <PlaceholderMarker tone={onDark ? 'primary' : 'gold'}>
+                {marker}
+              </PlaceholderMarker>
+            </>
+          )}
+          {linkText && href && (
+            <>
+              {' '}
+              <StyledLink href={href} isInverseUnderlineStyling>
+                {linkText}
+              </StyledLink>
+            </>
+          )}
+        </Typography>
+      </div>
+    );
+  });
+
+/* The "If it passes" list points its `aria-controls` here. */
+const PROPOSED_SPACE_RENDERING_ID = 'proposed-space-rendering';
+
+const proposedSpaceRenderings: CrossfadeImage[] = proposedSpaces.map(
+  (space) => ({
+    key: space.title,
+    title: space.title,
+    src: space.renderingSrc,
+    alt: `Simulated rendering: ${space.title}`,
+    description: (
+      <>
+        {space.body}
+        {space.marker && (
+          <>
+            {' '}
+            <PlaceholderMarker tone="primary">{space.marker}</PlaceholderMarker>
+          </>
+        )}
+      </>
+    ),
+  }),
+);
+
+export default function SaveTheU() {
+  /* The reserve callouts count off the trend chart's wipe rather than their
+     own scroll into view, on its duration and its curve, so the figures and
+     the lines they summarize move together and land together. Left undefined when the chart does not animate: it would never
+     fire, and the callouts fall back to counting on their own. */
+  const [isTrendRevealed, setIsTrendRevealed] = useState(false);
+  const revealTrend = useCallback(() => setIsTrendRevealed(true), []);
+  const reserveCountTrigger = chartAnimation.animateTrend
+    ? isTrendRevealed
+    : undefined;
+
+  /* Opens on the first space, so the rendering panel never sits empty. One
+     space is always previewed — there is no cleared state. */
+  const [previewedSpace, setPreviewedSpace] = useState(proposedSpaces[0].title);
+
   return (
     <Page>
       <Head>
-        <title>Keep the U Open | Cal State LA U&ndash;SU</title>
+        <title>Your U-SU Fee Explained | Cal State LA U&ndash;SU</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* Kept out of search while the page is being tested; it is also
+            excluded in src/scripts/generate-sitemap.js. Remove both to launch. */}
+        <meta name="robots" content="noindex,nofollow" key="robots" />
         <meta
           name="author"
           content="University-Student Union at Cal State LA"
@@ -344,7 +461,7 @@ export default function KeepTheUOpen() {
         />
         <meta
           property="og:title"
-          content="Keep the U Open | University-Student Union"
+          content="Your U-SU Fee Explained | University-Student Union"
           key="og-title"
         />
         <meta
@@ -355,7 +472,7 @@ export default function KeepTheUOpen() {
         <meta property="og:type" content="website" key="og-type" />
         <meta
           property="og:url"
-          content="https://www.calstatelausu.org/keep-the-u-open"
+          content="https://www.calstatelausu.org/save-the-u"
         />
         <meta property="og:image" content="/usu-front.jpg" key="og-image" />
         <meta
@@ -363,150 +480,154 @@ export default function KeepTheUOpen() {
           content="The University-Student Union building at Cal State LA"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <link
-          rel="canonical"
-          href="https://www.calstatelausu.org/keep-the-u-open"
-        />
+        <link rel="canonical" href="https://www.calstatelausu.org/save-the-u" />
       </Head>
 
       {/* 1 · AnchorNav — hidden ≤768px */}
       <AnchorNav
-        title="Keep the U Open"
+        title="Your U-SU Fee Explained"
         links={anchorLinks}
         ctaLabel={campaignMode.ctaLabel}
         ctaHref={campaignMode.ctaHref}
         contentMaxWidth={sectionShell.innerMaxWidth}
       />
 
-      {/* 2 · Hero */}
-      <FluidContainer
-        backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/about/calstatela-hero.jpg"
-        backgroundOverlay="rgba(0, 0, 0, 0.75)"
-        backgroundBlur="2px"
-        padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-        innerMinHeight="min(72svh, 680px)"
-        flex
-        flexDirection="column"
-        justifyContent="center"
-        textAlign="center"
+      {/* 2 · Hero — the same parallax as the photo band below, composed the
+          way ParallaxBand composes it: ParallaxStrip owns the photo and its
+          motion, FluidContainer only the layout. With no `height`, the
+          content sizes the strip. */}
+      <ParallaxStrip
+        src={CAMPUS_PHOTO_SRC}
+        priority
+        scrim="rgba(0, 0, 0, 0.75)"
+        blur="2px"
       >
-        <Typography
-          as="p"
-          variant="span"
-          size="2xs"
-          weight="700"
-          uppercase
-          letterSpacing="0.14em"
-          color="primary"
-          margin={`0 0 ${Spaces.md}`}
+        <FluidContainer
+          padding="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          paddingDesktop="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          paddingMobile="clamp(72px, 9vw, 128px) clamp(20px, 4vw, 36px)"
+          innerMaxWidth={CONTENT_MAX_WIDTH}
+          innerMinHeight="min(72svh, 680px)"
+          flex
+          flexDirection="column"
+          justifyContent="center"
+          textAlign="center"
         >
-          {heroEyebrow}
-        </Typography>
-        <Typography
-          as="h1"
-          variant="pageHeader"
-          fluidSize={FLUID_H1}
-          lineHeight="1.05"
-          color="white"
-        >
-          Change Starts With U
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-          margin={`${Spaces.md} 0 0`}
-        >
-          The rooms your clubs meet in. Gym access. The food pantry. Study
-          rooms. Places to nap.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          You already pay for the U-SU: $137.25 a semester, unchanged since
-          2007.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          However, costs have risen for nineteen years while enrollment fell.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          By FY 2030-31, the reserves covering the deficit are gone, leaving 40%
-          less for everything else.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          fluidSize={FLUID_LEAD}
-          lineHeight="1.6"
-          color="greyLightest"
-        >
-          The proposal is $90 more a semester: $50 for the building & $40 for
-          improvements.
-        </Typography>
-        <div>
-          <Button
-            variant="primary"
-            href="#numbers"
-            margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+          <Typography
+            as="p"
+            variant="span"
+            size="2xs"
+            weight="700"
+            uppercase
+            letterSpacing="0.14em"
+            color="primary"
+            margin={`0 0 ${Spaces.md}`}
           >
-            {campaignMode.heroPrimaryCta}
-          </Button>
-          <Button
-            variant="whiteOutline"
-            href="#cost"
-            margin={`${Spaces.lg} 0 0`}
+            {heroEyebrow}
+          </Typography>
+          <Typography
+            as="h1"
+            variant="pageHeader"
+            fluidSize={FLUID_H1}
+            lineHeight="1.05"
+            color="white"
           >
-            {campaignMode.heroSecondaryCta}
-          </Button>
-        </div>
-        <Divider
-          color="greyDark"
-          size="1px"
-          margin={`${Spaces.xl} 0 ${Spaces.lg}`}
-        />
-        <AutoGrid minColumnWidth="200px" gap={Spaces.lg}>
-          {heroFigures.map((figure) => (
-            <CitedStat
-              key={figure.label}
-              variant="onDark"
-              value={figure.value}
-              label={figure.label}
-              highlightValue={figure.highlight}
-            />
-          ))}
-        </AutoGrid>
-        <ScrollCue
-          lineStyle="solid"
-          animation="stream"
-          color="white"
-          thickness="0.25px"
-          height="100px"
-          breakLength="10px"
-          duration="2600ms"
-          margin={`${Spaces.xl} auto 0`}
-        />
-      </FluidContainer>
+            Change Starts With U
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+            margin={`${Spaces.md} 0 0`}
+          >
+            The rooms your clubs meet in. Gym access. The food pantry. Study
+            rooms. Places to nap.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            You already pay for the U-SU: $137.25 a semester, unchanged since
+            2007.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            However, costs have risen for nineteen years while enrollment fell.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            By FY 2030-31, the reserves covering the deficit are gone, leaving
+            35% of that year&apos;s spending unfunded.
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            fluidSize={FLUID_LEAD}
+            lineHeight="1.6"
+            color="greyLightest"
+          >
+            The proposal is $90 more a semester: $50 for the building & $40 for
+            improvements.
+          </Typography>
+          <div>
+            <Button
+              variant="primary"
+              href="#numbers"
+              margin={`${Spaces.lg} ${Spaces.md} 0 0`}
+            >
+              {campaignMode.heroPrimaryCta}
+            </Button>
+            <Button
+              variant="whiteOutline"
+              href="#cost"
+              margin={`${Spaces.lg} 0 0`}
+            >
+              {campaignMode.heroSecondaryCta}
+            </Button>
+          </div>
+          <Divider
+            color="greyDark"
+            size="1px"
+            margin={`${Spaces.xl} 0 ${Spaces.lg}`}
+          />
+          <AutoGrid minColumnWidth="200px" gap={Spaces.lg}>
+            {heroFigures.map((figure) => (
+              <CitedStat
+                key={figure.label}
+                variant="onDark"
+                value={figure.value}
+                label={figure.label}
+                highlightValue={figure.highlight}
+              />
+            ))}
+          </AutoGrid>
+          <ScrollCue
+            lineStyle="solid"
+            animation="stream"
+            color="white"
+            thickness="0.25px"
+            height="100px"
+            breakLength="10px"
+            duration="2600ms"
+            margin={`${Spaces.xl} auto 0`}
+          />
+        </FluidContainer>
+      </ParallaxStrip>
 
       {/* 3 · Thesis */}
       <FluidContainer {...sectionShell} id="why" backgroundColor="white">
@@ -600,11 +721,11 @@ export default function KeepTheUOpen() {
             style={{ maxWidth: MEASURE }}
             lineHeight="1.6"
           >
-            And if you&apos;re one of the students who never comes in, someone
-            you know does. The food pantry, the sensory room, a safe place for
+            And if you&apos;re one of the students who never visit, someone you
+            know does. The food pantry, the sensory room, a safe place for
             commuters to hang out at night, and the cultural graduation
-            celebrations are essentials to students who don&apos;t advertise
-            that they need them.
+            celebrations are essentials to students who don&apos;t necessarily
+            advertise that they need them.
           </Typography>
         </Panel>
       </FluidContainer>
@@ -657,44 +778,31 @@ export default function KeepTheUOpen() {
           ariaLabel="Photographs of the University-Student Union and the services inside it"
           emptyLabel="[GALLERY — awaiting photography and releases]"
           pendingLabel="[PHOTO PENDING]"
+          /* Section 4 — below the fold on every viewport. */
+          eagerCount={0}
         />
       </FluidContainer>
 
-      {/* 5 · Event-photo band */}
-      <FluidContainer
-        backgroundImage="/about/calstatela-hero.jpeg"
-        backgroundPosition="center 40%"
-        backgroundColor="greyDarkest"
-        height="clamp(260px, 30vw, 420px)"
-        padding="clamp(20px, 4vw, 36px)"
-        paddingDesktop="clamp(20px, 4vw, 36px)"
-        paddingMobile="clamp(20px, 4vw, 36px)"
-        outerAlignItems="flex-end"
-        innerMaxWidth={CONTENT_MAX_WIDTH}
-        revealOnScroll
+      {/* 5 + 6 · Photo band and StatBand, combined — black on yellow only, never
+          white. The photo is a ~2.6:1 panorama and `cover` crops its sides
+          hard on a narrow screen; 60% keeps the banner and the U-SU sign,
+          both right of center, in what is left. */}
+      <ParallaxBand
+        {...bandShell}
+        backgroundColor="primary"
+        backgroundPhoto={{
+          src: BUILDING_PHOTO_SRC,
+          // The uploaded file's pixel size. Update it with the file.
+          photoAspectRatio: 2400 / 937,
+          objectPosition: '60% center',
+          // Blurred just enough that the building's own lettering cannot
+          // compete with the stats while the building still reads as one —
+          // 6px left only smudges, 3px still too much. The blur also softens
+          // the optimized file's 1024px ceiling and its lower quality.
+          blur: '2px',
+          quality: 50,
+        }}
       >
-        <Panel
-          backgroundColor="greyDarkest"
-          shadow="none"
-          borderRadius="8px"
-          padding="8px 14px"
-        >
-          <Typography
-            as="p"
-            variant="span"
-            size="2xs"
-            weight="700"
-            letterSpacing="0.06em"
-            color="primary"
-          >
-            [PLACEHOLDER PHOTOGRAPHY — real U-SU event photography required
-            before launch]
-          </Typography>
-        </Panel>
-      </FluidContainer>
-
-      {/* 6 · StatBand — black on yellow only, never white */}
-      <FluidContainer {...bandShell} backgroundColor="primary">
         <AutoGrid minColumnWidth="240px" gap="clamp(24px, 4vw, 56px)">
           {bandStats.map((stat) => (
             <CitedStat
@@ -706,7 +814,7 @@ export default function KeepTheUOpen() {
             />
           ))}
         </AutoGrid>
-      </FluidContainer>
+      </ParallaxBand>
 
       {/* 7 · The Numbers */}
       <FluidContainer {...sectionShell} id="numbers" backgroundColor="white">
@@ -771,101 +879,53 @@ export default function KeepTheUOpen() {
             ))}
           </AutoGrid>
         </div>
-
-        {/* 7.2 · TrendChart */}
         <Divider
-          color="greyLighter"
-          size="0px"
+          color="transparent"
+          size="1px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
-        <Panel
-          border="greyLighter"
-          shadow="none"
-          borderRadius="16px"
-          padding="clamp(16px, 2vw, 28px)"
-          width="100%"
+        {/* 7.2 · Inflation gap */}
+        <TextAndImage
+          src={sectionIllustrations.inflationGap}
+          imagePosition="left"
+          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
+          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
+          /* Stated rather than left to the default, which used to resolve to
+             this and now resolves to `center`. */
+          imageAlign="end"
         >
-          <div>
-            <Typography
-              as="h3"
-              variant="pageHeader"
-              fluidSize={FLUID_H3}
-              lineHeight="1.2"
-            >
-              Revenue and expenses, if nothing changes
-            </Typography>
-            <Typography
-              as="p"
-              variant="span"
-              size="xs"
-              color="greyDark"
-              margin={`${Spaces.sm} 0 ${Spaces.lg}`}
-            >
-              U-SU Fiscal Committee, &ldquo;DO NOTHING&rdquo; projection, April
-              10 2026
-              <CitationMarker sourceId="2" />
-            </Typography>
-            <TrendChart
-              fiscalYears={FISCAL_YEARS}
-              series={trendSeries}
-              markers={[
-                {
-                  seriesId: 'reserve',
-                  label: 'Reserve reaches $0',
-                  /* Below and left of the ring: above it would sit on the
-                     FY 29-30 reserve figure. */
-                  labelPosition: { dx: -8, dy: 26, anchor: 'end' },
-                },
-              ]}
-              shadeBetween={['expenses', 'revenue']}
-              ariaLabel="Line chart of the U-SU DO NOTHING projection. Expenses rise from $5,760,109 in FY 2025-26 to $6,677,545 in FY 2030-31 while revenue falls from $4,876,638 to $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
-              caption="Plotted points are published figures. Revenue and expenses are published for FY 2025-26 and FY 2030-31 only, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
-              captionMaxWidth={WIDE_MEASURE}
-              table={trendTable}
-              animate={chartAnimation.animateTrend}
-              animationDuration={chartAnimation.animationDuration}
-            />
-            <AutoGrid
-              minColumnWidth="200px"
-              justifyItems="center"
-              margin="clamp(16px, 2vw, 28px)"
-            >
-              {reserveCallouts.map((callout) => (
-                <CitedStat
-                  key={callout.eyebrow}
-                  variant="onLight"
-                  eyebrow={callout.eyebrow}
-                  value={callout.value}
-                  countTo={callout.amount}
-                  formatValue={formatDollars}
-                  /* The year the reserve goes negative is the one figure on
-                     this page that is bad news on its own terms. Red ties it
-                     to the reserve line in the chart above. */
-                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
-                />
-              ))}
-            </AutoGrid>
-            <Typography
-              as="p"
-              variant="copy"
-              size="xs"
-              lineHeight="1.6"
-              color="greyDark"
-              /* Centered block, text still ranged left — see the chart's own
-                 caption above it. */
-              margin={`${Spaces.lg} auto 0`}
-              style={{ maxWidth: WIDE_MEASURE }}
-            >
-              Figures are from the Fiscal Committee&apos;s April 10 2026
-              &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
-              stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY
-              2025-26, 25% of the operating budget. An annual bond payment of
-              about $1,920,000, roughly a third of the operating budget, runs
-              through 2038.
-            </Typography>
-          </div>
-        </Panel>
-
+          <Typography
+            as="h3"
+            variant="pageHeader"
+            fluidSize={FLUID_H3}
+            lineHeight="1.2"
+          >
+            Adjusting for shortfall:
+          </Typography>
+          <Typography
+            as="p"
+            variant="copy"
+            size="sm"
+            lineHeight="1.6"
+            margin={`${Spaces.md} 0 0`}
+            style={{ maxWidth: MEASURE }}
+          >
+            If the 2007 fee kept pace with inflation, it would be{' '}
+            <strong>$215.30 a semester</strong> today.
+            <CitationMarker sourceId="5" /> The proposal is{' '}
+            <strong>$227.25</strong> which is $11.95 more. That difference is
+            because just catching up on inflation doesn&apos;t close a deficit
+            also driven by enrollment decline.
+            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
+            what the U-SU costs to run but the sustainable range is 80–85%.
+            <CitationMarker sourceId="2" />
+          </Typography>
+        </TextAndImage>
+        <Divider
+          color="greyLighter"
+          size="1px"
+          margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
+        />
         {/* 7.3 · PieChart */}
         <Divider
           color="greyLighter"
@@ -930,7 +990,7 @@ export default function KeepTheUOpen() {
               fluidSize={FLUID_H3}
               lineHeight="1.2"
             >
-              Even after this passes, Cal State LA is still the second most
+              If the increase passes, Cal State LA is still the second most
               affordable university in the CSU
             </Typography>
             <Typography
@@ -993,49 +1053,108 @@ export default function KeepTheUOpen() {
           </div>
         </Panel>
 
-        {/* 7.5 · Inflation gap */}
+        {/* 7.5 · TrendChart — last on purpose: the widening gap it shows leads
+            straight into the outcomes below, where that shortfall lands on
+            services. */}
         <Divider
           color="greyLighter"
-          size="1px"
+          size="0px"
           margin={`clamp(48px, 6vw, 80px) 0 ${Spaces.xl}`}
         />
-        <TextAndImage
-          src={sectionIllustrations.inflationGap}
-          imagePosition="left"
-          imageColumnWidth={SECTION_ILLUSTRATION_COLUMN_WIDTH}
-          imageHeight={SECTION_ILLUSTRATION_HEIGHT}
-          /* Stated rather than left to the default, which used to resolve to
-             this and now resolves to `center`. */
-          imageAlign="end"
+        <Panel
+          border="greyLighter"
+          shadow="none"
+          borderRadius="16px"
+          padding="clamp(16px, 2vw, 28px)"
+          width="100%"
         >
-          <Typography
-            as="h3"
-            variant="pageHeader"
-            fluidSize={FLUID_H3}
-            lineHeight="1.2"
-          >
-            The part that doesn&apos;t add up on its own
-          </Typography>
-          <Typography
-            as="p"
-            variant="copy"
-            size="sm"
-            lineHeight="1.6"
-            margin={`${Spaces.md} 0 0`}
-            style={{ maxWidth: MEASURE }}
-          >
-            If the 2007 fee had only kept pace with inflation, it would be{' '}
-            <strong>$215.30 a semester</strong> today.
-            <CitationMarker sourceId="5" /> The proposal is{' '}
-            <strong>$227.25</strong>; $11.95 more than inflation alone would
-            explain. That difference is real, and it&apos;s there because
-            catching up on inflation does not close a shortfall that&apos;s also
-            driven by enrollment decline.
-            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
-            what the U-SU costs to run; the sustainable range is 80–85%.
-            <CitationMarker sourceId="2" />
-          </Typography>
-        </TextAndImage>
+          <div>
+            <Typography
+              as="h3"
+              variant="pageHeader"
+              fluidSize={FLUID_H3}
+              lineHeight="1.2"
+            >
+              Revenue and expenses projections, if nothing changes
+            </Typography>
+            <Typography
+              as="p"
+              variant="span"
+              size="xs"
+              color="greyDarker"
+              margin={`${Spaces.sm} 0 ${Spaces.lg}`}
+            >
+              U&ndash;SU Fiscal Committee, &ldquo;DO NOTHING&rdquo; projection,
+              April 10 2026
+              <CitationMarker sourceId="2" />
+            </Typography>
+            <TrendChart
+              fiscalYears={FISCAL_YEARS}
+              series={trendSeries}
+              markers={[
+                {
+                  seriesId: 'reserve',
+                  label: 'Reserve reaches $0',
+                  /* Below and left of the ring: above it would sit on the
+                     FY 29-30 reserve figure. */
+                  labelPosition: { dx: -8, dy: 26, anchor: 'end' },
+                },
+              ]}
+              shadeBetween={{
+                seriesIds: ['expenses', 'revenue'],
+                label: 'Operating deficit',
+              }}
+              ariaLabel="Line chart of the U-SU DO NOTHING projection. Revenue and expenses are both $5,856,794 in FY 2024-25. Expenses are $5,760,109 in FY 2025-26 and rise to $6,677,545 in FY 2030-31, while revenue falls to $4,876,638 and then $4,337,325. The reserve falls from $8,364,353 in FY 2024-25 to $274,702 in FY 2029-30 and to negative $2,065,518 in FY 2030-31, crossing zero during FY 2029-30."
+              caption="Plotted points are published figures. Revenue and expenses are published for FY 2024-25, FY 2025-26 and FY 2030-31, and the reserve for FY 2024-25, FY 2029-30 and FY 2030-31. The lines between them are trajectories, not year-by-year data."
+              captionMaxWidth={WIDE_MEASURE}
+              table={trendTable}
+              animate={chartAnimation.animateTrend}
+              animationDuration={chartAnimation.animationDuration}
+              onReveal={revealTrend}
+            />
+            <AutoGrid
+              minColumnWidth="200px"
+              justifyItems="center"
+              margin="clamp(16px, 2vw, 28px)"
+            >
+              {reserveCallouts.map((callout) => (
+                <CitedStat
+                  key={callout.eyebrow}
+                  variant="onLight"
+                  eyebrow={callout.eyebrow}
+                  value={callout.value}
+                  countTo={callout.amount}
+                  formatValue={formatDollars}
+                  countTrigger={reserveCountTrigger}
+                  countDuration={chartAnimation.animationDuration}
+                  countEasing={applyChartEasing}
+                  /* The year the reserve goes negative is the one figure on
+                     this page that is bad news on its own terms. Red ties it
+                     to the reserve line in the chart above. */
+                  valueColor={callout.amount < 0 ? 'redDark' : undefined}
+                />
+              ))}
+            </AutoGrid>
+            <Typography
+              as="p"
+              variant="copy"
+              size="xs"
+              lineHeight="1.6"
+              color="greyDarker"
+              /* Centered block, text still ranged left — see the chart's own
+                 caption above it. */
+              margin={`${Spaces.lg} auto 0`}
+              style={{ maxWidth: WIDE_MEASURE }}
+            >
+              Figures are from the Fiscal Committee&apos;s April 10 2026
+              &ldquo;DO NOTHING&rdquo; projection: the model in which the fee
+              stays at $137.25. $2,000,000 was cut across FY 2024-25 and FY
+              2025&ndash;26, 25% of the operating budget. An annual bond payment
+              of about $1,920,000, roughly a third of the operating budget, runs
+              through 2038.
+            </Typography>
+          </div>
+        </Panel>
       </FluidContainer>
 
       {/* 7.9 / 8 · Both outcomes, as tabs. Opens on the passing case. The
@@ -1073,102 +1192,19 @@ export default function KeepTheUOpen() {
             margin={`${Spaces.md} 0 0`}
             style={{ maxWidth: MEASURE }}
           >
-            Both outcomes are below: the spaces the U-SU has identified to add
-            or convert if the fee passes, and what changes about the building
-            and its services if it doesn&apos;t.
+            Both outcomes are below: what changes about the building and its
+            services if the fee doesn&apos;t pass, and the spaces the U-SU has
+            identified an intention to add or convert if it does. Please note
+            that nothing has been finalized and that all plans are subject to
+            change.
           </Typography>
         </TextAndImage>
         <Tabs
           variant="folder"
           label="What happens to the U-SU under each outcome"
           scrollMarginTop="84px"
+          matchPanelHeights
           items={[
-            {
-              title: 'If it passes',
-              children: (
-                <>
-                  <Typography
-                    as="p"
-                    variant="copy"
-                    size="sm"
-                    lineHeight="1.6"
-                    color="greyDark"
-                    margin={`0 0 ${Spaces.xl}`}
-                    style={{ maxWidth: MEASURE }}
-                  >
-                    These are the spaces the U-SU has identified to add or
-                    convert. They are described here only as far as they have
-                    been described — nothing below is scheduled, costed, or
-                    final.{' '}
-                    <PlaceholderMarker>
-                      [NEEDS COPY — timeline and phasing]
-                    </PlaceholderMarker>
-                  </Typography>
-                  <AutoGrid minColumnWidth="280px">
-                    {proposedSpaces.map((space) => (
-                      <Card
-                        key={space.title}
-                        title={space.title}
-                        borderRadius="16px"
-                        shadow="soft"
-                      >
-                        <Typography
-                          as="p"
-                          variant="copy"
-                          size="sm"
-                          lineHeight="1.6"
-                        >
-                          {space.body}
-                          {space.marker && (
-                            <>
-                              {' '}
-                              <PlaceholderMarker>
-                                {space.marker}
-                              </PlaceholderMarker>
-                            </>
-                          )}
-                        </Typography>
-                      </Card>
-                    ))}
-                  </AutoGrid>
-                  <Panel
-                    border="greyLighter"
-                    borderStyle="dashed"
-                    borderRadius="16px"
-                    shadow="none"
-                    padding="clamp(20px, 3vw, 32px)"
-                    margin={`${Spaces.xl} 0 0`}
-                  >
-                    <div>
-                      <Typography
-                        as="p"
-                        variant="span"
-                        size="xs"
-                        weight="800"
-                        letterSpacing="0.06em"
-                        color="gold"
-                      >
-                        [AWAITING RENDERINGS — 6 spaces]
-                      </Typography>
-                      <Typography
-                        as="p"
-                        variant="copy"
-                        size="sm"
-                        lineHeight="1.6"
-                        color="greyDark"
-                        margin={`${Spaces.md} 0 0`}
-                        style={{ maxWidth: '56ch' }}
-                      >
-                        This section is the one place on the page where a
-                        picture would do more than a sentence. Nothing ships
-                        here until there is a real rendering or photograph of
-                        each space.
-                      </Typography>
-                    </div>
-                  </Panel>
-                </>
-              ),
-            },
             {
               id: 'if-it-fails',
               title: "If it doesn't pass",
@@ -1193,42 +1229,26 @@ export default function KeepTheUOpen() {
                       >
                         Today, funded by the current fee
                       </Typography>
-                      {todayFacts.map((fact, index) => (
-                        <div key={fact.label}>
-                          {index > 0 && (
-                            <Divider
-                              color="greyLighter"
-                              size="1px"
-                              margin={`${Spaces.md} 0`}
-                            />
-                          )}
-                          <Typography
-                            as="p"
-                            variant="span"
-                            size="sm"
-                            weight="700"
-                          >
-                            {fact.label}
-                          </Typography>
-                          <Typography
-                            as="p"
-                            variant="copy"
-                            size="sm"
-                            lineHeight="1.6"
-                            margin={`${Spaces.xs} 0 0`}
-                          >
-                            {fact.body}
-                            {fact.marker && (
-                              <>
-                                {' '}
-                                <PlaceholderMarker>
-                                  {fact.marker}
-                                </PlaceholderMarker>
-                              </>
-                            )}
-                          </Typography>
-                        </div>
-                      ))}
+                      {renderServiceRows('today')}
+                      {/* Closes this column the way the deficit paragraph
+                          closes the dark one. Anything added above the rows
+                          on only one side pushes that side's rows down and
+                          breaks the row-for-row alignment. */}
+                      <Divider
+                        color="greyLighter"
+                        size="1px"
+                        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+                      />
+                      <Typography
+                        as="p"
+                        variant="copy"
+                        size="xs"
+                        lineHeight="1.6"
+                        color="greyDark"
+                      >
+                        These comparisons are projections based on staff
+                        estimates. None are final.
+                      </Typography>
                     </div>
                   </Panel>
                   <Panel
@@ -1250,6 +1270,12 @@ export default function KeepTheUOpen() {
                       >
                         After FY 2030-31, on the current fee
                       </Typography>
+                      {renderServiceRows('ifItFails', { onDark: true })}
+                      <Divider
+                        color="greyDark"
+                        size="1px"
+                        margin={`${Spaces.lg} 0 ${Spaces.md}`}
+                      />
                       <Typography
                         as="p"
                         variant="copy"
@@ -1258,34 +1284,99 @@ export default function KeepTheUOpen() {
                         color="white"
                         tabularNums
                       >
-                        In the DO NOTHING projection, FY 2030-31 expenses of
-                        $6,677,545 run $2,340,220 past revenue — 35% of that
-                        year&apos;s spending — and the reserve closes the year
-                        at −$2,065,518. The bond payment of about $1,920,000
-                        continues through 2038 and cannot be reduced.
-                      </Typography>
-                      <Typography
-                        as="p"
-                        variant="copy"
-                        size="sm"
-                        lineHeight="1.6"
-                        color="greyLighter"
-                        margin={`${Spaces.md} 0 0`}
-                      >
-                        Everything in the column beside this one is paid for out
-                        of the same budget. The U-SU has not decided or
-                        published which of them it would reduce, and this page
-                        will not guess.
-                      </Typography>
-                      <Typography as="p" margin={`${Spaces.lg} 0 0`}>
-                        <PlaceholderMarker variant="block" tone="primary">
-                          [NEEDS COPY — service-level impact statement, U-SU
-                          Fiscal Committee]
-                        </PlaceholderMarker>
+                        The FY 2030-31 expenses of $6,677,545 run $2,340,220
+                        past revenue, 35% of that year&apos;s spending, and the
+                        reserve closes the year at −$2,065,518. The bond payment
+                        of about $1,920,000 continues through 2038 and cannot be
+                        reduced.
                       </Typography>
                     </div>
                   </Panel>
                 </AutoGrid>
+              ),
+            },
+            {
+              title: 'If it passes',
+              children: (
+                <>
+                  <Typography
+                    as="p"
+                    variant="copy"
+                    size="sm"
+                    lineHeight="1.6"
+                    color="greyDark"
+                    margin={`0 0 ${Spaces.xl}`}
+                    style={{ maxWidth: MEASURE }}
+                  >
+                    <PlaceholderMarker>
+                      [NEEDS COPY — what the renderings are (simulated, not
+                      final designs), and what passing pays for that has no
+                      picture, such as more events and more student hires]
+                    </PlaceholderMarker>
+                  </Typography>
+                  <AutoGrid minColumnWidth="320px">
+                    <Panel
+                      border="greyLighter"
+                      shadow="none"
+                      borderRadius="16px"
+                      padding="clamp(20px, 3vw, 32px)"
+                    >
+                      <div>
+                        <Typography
+                          as="p"
+                          variant="span"
+                          size="2xs"
+                          weight="700"
+                          uppercase
+                          letterSpacing="0.08em"
+                          color="greyDark"
+                          margin={`0 0 ${Spaces.md}`}
+                        >
+                          Proposed spaces
+                        </Typography>
+                        <AutoGrid maxColumns={1} gap="12px">
+                          {proposedSpaces.map((space) => (
+                            <SelectableOption
+                              key={space.title}
+                              title={space.title}
+                              selected={previewedSpace === space.title}
+                              onSelect={() => setPreviewedSpace(space.title)}
+                              controls={PROPOSED_SPACE_RENDERING_ID}
+                              selectOnHover
+                            />
+                          ))}
+                        </AutoGrid>
+                      </div>
+                    </Panel>
+                    <Panel
+                      backgroundColor="greyDarkest"
+                      shadow="none"
+                      borderRadius="16px"
+                      padding="clamp(20px, 3vw, 32px)"
+                    >
+                      <div>
+                        <Typography
+                          as="p"
+                          variant="span"
+                          size="2xs"
+                          weight="700"
+                          uppercase
+                          letterSpacing="0.08em"
+                          color="primary"
+                          margin={`0 0 ${Spaces.md}`}
+                        >
+                          Simulated renderings
+                        </Typography>
+                        <ImageCrossfade
+                          id={PROPOSED_SPACE_RENDERING_ID}
+                          images={proposedSpaceRenderings}
+                          activeKey={previewedSpace}
+                          pendingLabel="[AWAITING RENDERING]"
+                        />
+                      </div>
+                    </Panel>
+                  </AutoGrid>
+                </>
               ),
             },
           ]}
@@ -1410,21 +1501,9 @@ export default function KeepTheUOpen() {
           margin={`${Spaces.xl} 0 0`}
           style={{ maxWidth: MEASURE }}
         >
-          San Marcos is the one worth understanding: students rejected the first
-          proposal, partly because it would have charged them a year before the
-          building opened. The campus came back with a cheaper proposal on
-          different terms, and students approved it.
-        </Typography>
-        <Typography
-          as="p"
-          variant="copy"
-          size="sm"
-          lineHeight="1.6"
-          margin={`${Spaces.md} 0 0`}
-          style={{ maxWidth: MEASURE }}
-        >
-          That&apos;s what participation does. You have the power to change what
-          gets proposed.
+          This is why it&apos;s important to participate in your student
+          government. You have the power to influence what gets proposed. Make
+          your voice heard!
         </Typography>
       </FluidContainer>
 
