@@ -19,6 +19,21 @@ export function formatDate(input?: string) {
   }).format(d);
 }
 
+/**
+ * Fiscal-year label ("25-26") for a YYYY-MM-DD date. The CSU fiscal year
+ * runs July 1 – June 30, so July onward belongs to the year that starts then.
+ * Returns null for anything that is not a YYYY-MM-DD date.
+ */
+export function fiscalYearFromDate(input?: string | null) {
+  const match = /^(\d{4})-(\d{2})-\d{2}/.exec(input ?? '');
+  if (!match) return null;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const startYear = month >= 7 ? year : year - 1;
+  const twoDigits = (y: number) => String(y % 100).padStart(2, '0');
+  return `${twoDigits(startYear)}-${twoDigits(startYear + 1)}`;
+}
+
 export function sortByDateDesc(a: { date?: string }, b: { date?: string }) {
   const x = a.date ?? '';
   const y = b.date ?? '';
