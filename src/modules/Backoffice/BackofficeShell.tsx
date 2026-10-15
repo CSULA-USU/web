@@ -11,15 +11,57 @@ import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
 import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 import { useBreakpoint } from 'hooks';
-import { Colors } from 'theme';
+import { Colors, media } from 'theme';
 import { MdOutlineLaunch } from 'react-icons/md';
 import BackofficeMobilePanel from 'modules/Backoffice/BackofficeMobilePanel';
 
 const Shell = styled.div`
+  position: relative;
   display: flex;
   @media (max-width: 1024px) {
     flex-direction: column;
   }
+`;
+
+// Floats the sidebar outside the layout so the content can center in the
+// same 1440px box as the main nav instead of in the space beside the
+// sidebar. The rail spans the full height of the shell so the sticky
+// sidebar inside it keeps following the scroll. Above TopBar (z-index 10)
+// so the sidebar draws over anything it overlaps.
+//
+// It only shows above the uhd breakpoint (1980px): the content's left edge
+// is max(72px, (width - 1440px) / 2), which first clears the 250px sidebar
+// there, with 20px to spare. Narrower, it would cover the content, so
+// MenuButton opens BackofficeMobilePanel instead. Widening the sidebar
+// means raising this breakpoint with it.
+const SidebarRail = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  z-index: 11;
+
+  ${media('uhd')(`display: none;`)}
+`;
+
+// The menu's only way in wherever SidebarRail is hidden, so it is a real
+// button (focusable, labeled) rather than a click handler on the icon.
+const MenuButton = styled.button`
+  display: none;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid ${Colors.black};
+    outline-offset: 2px;
+  }
+
+  ${media('uhd')(`display: inline-flex;`)}
 `;
 
 const Content = styled.div`
@@ -46,12 +88,17 @@ const TopBar = styled.header`
   box-sizing: border-box;
   background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 60px 30px;
+  /* The bar spans the full width, but its contents sit where a default
+     FluidContainer puts the page body: 72px in, and centered in 1440px once
+     there is room. max(72px, (100% - 1440px) / 2) is that same edge, so the
+     title lines up with the body and, on wide screens, the main nav. */
+  padding: 60px max(72px, calc((100% - 1440px) / 2));
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   flex-shrink: 0;
+  ${media('desktop')(`padding: 60px 36px;`)}
   @media (max-width: 768px) {
     gap: 24px;
     padding: 24px;
@@ -64,12 +111,11 @@ const TopBar = styled.header`
   }
 `;
 
-const TabletIconsContainer = styled.div`
+const TopBarActions = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-cotent: space-between;
+  flex-direction: row;
   gap: 16px;
-  align-items: flex-end;
+  align-items: center;
 
   @media (max-width: 1024px) {
     display: flex;
@@ -189,7 +235,9 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
           setIsMenuOpen(false);
         }}
       />
-      <BackofficeSideBar />
+      <SidebarRail>
+        <BackofficeSideBar />
+      </SidebarRail>
       <Main>
         <TopBar>
           <TopBarLeft>
@@ -208,8 +256,8 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
             ) : null}
           </TopBarLeft>
 
-          {isDesktop ? (
-            <TabletIconsContainer>
+          <TopBarActions>
+            {isDesktop ? (
               <Button
                 padding="10px 20px"
                 fontSize="14px"
@@ -219,19 +267,19 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
               >
                 Sign Out
               </Button>
-              <MdOutlineLaunch
-                size={32}
-                color={Colors.black}
-                onClick={() => {
-                  setIsMenuOpen(true);
-                }}
-              />
-            </TabletIconsContainer>
-          ) : (
-            <Button variant="outline" onClick={() => signOut()}>
-              Sign Out
-            </Button>
-          )}
+            ) : (
+              <Button variant="outline" onClick={() => signOut()}>
+                Sign Out
+              </Button>
+            )}
+            <MenuButton
+              type="button"
+              aria-label="Open backoffice menu"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <MdOutlineLaunch size={32} color={Colors.black} aria-hidden />
+            </MenuButton>
+          </TopBarActions>
         </TopBar>
         <Content>
           {isNavigating ? (

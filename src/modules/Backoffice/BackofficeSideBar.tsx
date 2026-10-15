@@ -15,9 +15,7 @@ type Props = {
 };
 
 const Sidebar = styled.aside`
-  flex: 0 0 250px;
   width: 250px;
-  align-self: flex-start;
   position: sticky;
   top: 0;
   height: 100vh;
