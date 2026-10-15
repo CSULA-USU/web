@@ -55,6 +55,23 @@ const SectionTitle = styled.h2`
   gap: 8px;
 `;
 
+// Clips anything the URL cell holds to the cell, so a long link can never
+// paint over Meeting Date however narrow the column gets.
+const UrlCell = styled.div`
+  overflow: hidden;
+`;
+
+// Truncates the URL text only, not the whole link, so StyledLink's trailing
+// external-link icon (1em + 4px margin) stays visible after the ellipsis.
+const TruncatedUrl = styled.span`
+  display: inline-block;
+  max-width: calc(100% - 24px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+`;
+
 const Controls = styled.div`
   display: flex;
   gap: 12px;
@@ -156,13 +173,19 @@ export function DocumentManager({
   ): TableData => {
     const showDateColumn = tableDocuments.some((doc) => !!doc.date);
 
+    // Table renders `minWidth` as a fixed-layout `width`, which spreads any
+    // spare width across columns in proportion to their widths. URL is the
+    // only `auto` column, so it alone takes the slack and truncates to fit;
+    // the others are sized to measured content. Title's 380px holds the
+    // longest "Committee Month D, YYYY" title (~345px of 16px Montserrat
+    // semibold) on one line; widen it only if titles get longer.
     const columns: TableColumn[] = [
       {
         id: 'title',
         label: 'Title',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '220px',
+        minWidth: '380px',
         render: (row: any) => (
           <Typography as="span" variant="label" size="sm" weight="600">
             {row.original.title}
@@ -174,19 +197,17 @@ export function DocumentManager({
         label: 'URL',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '320px',
+        minWidth: 'auto',
         render: (row: any) => (
-          <Typography color="gold">
-            <StyledLink
-              href={row.original.url}
-              aria-label={`Open ${row.original.title} in new tab`}
-              isExternalLink
-            >
-              {row.original.url.length > 40
-                ? `${row.original.url.slice(0, 40)}…`
-                : row.original.url}
-            </StyledLink>
-          </Typography>
+          <UrlCell>
+            <Typography color="gold">
+              <StyledLink href={row.original.url} isExternalLink>
+                <TruncatedUrl title={row.original.url}>
+                  {row.original.url}
+                </TruncatedUrl>
+              </StyledLink>
+            </Typography>
+          </UrlCell>
         ),
       },
     ];
@@ -197,7 +218,7 @@ export function DocumentManager({
         label: 'Meeting Date',
         backgroundColor: 'white',
         textColor: 'black',
-        minWidth: '180px',
+        minWidth: '144px',
         render: (row: any) =>
           row.original.date ? (
             <time dateTime={row.original.date}>
@@ -216,7 +237,7 @@ export function DocumentManager({
       label: 'Actions',
       backgroundColor: 'white',
       textColor: 'black',
-      minWidth: '180px',
+      minWidth: '188px',
       render: (row: any) => (
         <FluidContainer padding="0" flex gap="8px">
           <Button
