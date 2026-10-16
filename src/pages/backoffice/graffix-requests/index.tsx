@@ -29,9 +29,25 @@ const contentBoardTemplate: any = {
     columnTitle: 'Waiting for Approval',
     columnData: [],
   },
-  Complete: { color: 'green', columnTitle: 'Complete', columnData: [] },
-  'On Hold': { color: 'red', columnTitle: 'On Hold', columnData: [] },
-  Cancelled: { color: 'brown', columnTitle: 'Cancelled', columnData: [] },
+  // Closed statuses start collapsed: they only grow, and nobody works from them.
+  Complete: {
+    color: 'green',
+    columnTitle: 'Complete',
+    columnData: [],
+    startsCollapsed: true,
+  },
+  'On Hold': {
+    color: 'red',
+    columnTitle: 'On Hold',
+    columnData: [],
+    startsCollapsed: true,
+  },
+  Cancelled: {
+    color: 'brown',
+    columnTitle: 'Cancelled',
+    columnData: [],
+    startsCollapsed: true,
+  },
 };
 
 const createDeepCopy = (object: any) => {
@@ -166,13 +182,17 @@ export default function GraphicsRequests() {
             <Loading load={true} />
           </FluidContainer>
         ) : (
-          <ContentBoard
-            columns={contentBoardData}
-            cellMap={cellMap}
-            selectedDepartment={selectedDepartment}
-            setSelectedDepartment={setSelectedDepartment}
-            accessibleDepartment={accessibleDepartment}
-          />
+          // Inside the 1440px content box like every other backoffice page:
+          // edge to edge, the floating sidebar covers the board's left side.
+          <FluidContainer>
+            <ContentBoard
+              columns={contentBoardData}
+              cellMap={cellMap}
+              selectedDepartment={selectedDepartment}
+              setSelectedDepartment={setSelectedDepartment}
+              accessibleDepartment={accessibleDepartment}
+            />
+          </FluidContainer>
         )}
       </BackofficeShell>
     </Page>
