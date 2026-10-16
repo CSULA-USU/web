@@ -52,6 +52,9 @@ export const Colors = {
   black: '#000000',
   greyDarkest: '#2b2b2b',
   greyDarker: '#323232',
+  /* Secondary text on white: 7.5:1 clears WCAG AAA for older readers, and is
+     still visibly lighter than black, which `greyDarker` (12.8:1) is not. */
+  greyMid: '#555555',
   greyDark: '#6e6e6e',
   grey: '#757575',
   greyLighter: '#dedede',

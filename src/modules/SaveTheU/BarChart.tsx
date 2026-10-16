@@ -249,7 +249,7 @@ export const BarChart = ({
           <Typography
             as="p"
             variant="span"
-            size="2xs"
+            size="xs"
             weight="700"
             color="gold"
             tabularNums
@@ -285,7 +285,7 @@ export const BarChart = ({
                 <Typography
                   as="span"
                   variant="span"
-                  size="2xs"
+                  size="xs"
                   weight={highlighted ? '800' : '400'}
                 >
                   {row.campus}
@@ -316,8 +316,8 @@ export const BarChart = ({
                           <Typography
                             as="span"
                             variant="span"
-                            size="2xs"
-                            color="greyDark"
+                            size="xs"
+                            color="greyMid"
                             tabularNums
                           >
                             {row.segmentLabels.base} {formatDollars(row.value)}
@@ -332,8 +332,8 @@ export const BarChart = ({
                             <Typography
                               as="span"
                               variant="span"
-                              size="2xs"
-                              color="greyDark"
+                              size="xs"
+                              color="greyMid"
                               tabularNums
                             >
                               {row.segmentLabels.extension}{' '}
@@ -347,7 +347,7 @@ export const BarChart = ({
                       <Typography
                         as="span"
                         variant="span"
-                        size="2xs"
+                        size="xs"
                         weight="700"
                         color="gold"
                       >
@@ -361,7 +361,7 @@ export const BarChart = ({
                 <CountUp
                   as="span"
                   variant="span"
-                  size="2xs"
+                  size="xs"
                   weight={highlighted ? '800' : '400'}
                   tabularNums
                   start={isTransitioning ? 0 : row.value}
@@ -386,8 +386,8 @@ export const BarChart = ({
               key={tick}
               as="span"
               variant="span"
-              size="2xs"
-              color="greyDark"
+              size="xs"
+              color="greyMid"
               tabularNums
             >
               {formatDollars(Math.round(tick))}

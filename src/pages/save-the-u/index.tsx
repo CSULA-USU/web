@@ -954,7 +954,7 @@ export default function SaveTheU() {
               as="p"
               variant="span"
               size="xs"
-              color="greyDark"
+              color="greyMid"
               margin={`${Spaces.sm} 0 ${Spaces.lg}`}
             >
               Share of the U-SU operating budget, as of FY 2025-26
@@ -999,7 +999,7 @@ export default function SaveTheU() {
               as="p"
               variant="span"
               size="xs"
-              color="greyDark"
+              color="greyMid"
               margin={`${Spaces.sm} 0 ${Spaces.lg}`}
             >
               Total campus mandatory fees per year, 2025-26, across the
@@ -1020,7 +1020,7 @@ export default function SaveTheU() {
               variant="copy"
               size="xs"
               lineHeight="1.6"
-              color="greyDark"
+              color="greyMid"
               margin={`${Spaces.lg} 0 0`}
             >
               Value axis is capped at $3,000 for easier viewing. San Luis
@@ -1032,7 +1032,7 @@ export default function SaveTheU() {
               variant="copy"
               size="xs"
               lineHeight="1.6"
-              color="greyDark"
+              color="greyMid"
               margin={`${Spaces.sm} 0 0`}
             >
               CSU median $1,946; mean $2,161. The median is used here because
@@ -1044,7 +1044,7 @@ export default function SaveTheU() {
               variant="copy"
               size="xs"
               lineHeight="1.6"
-              color="greyDark"
+              color="greyMid"
               margin={`${Spaces.sm} 0 0`}
             >
               22 campuses. The 2025-26 table lists 23; Maritime merged
@@ -1226,7 +1226,7 @@ export default function SaveTheU() {
                         weight="700"
                         uppercase
                         letterSpacing="0.08em"
-                        color="greyDark"
+                        color="greyMid"
                         margin={`0 0 ${Spaces.md}`}
                       >
                         Today, funded by the current fee
@@ -1246,7 +1246,7 @@ export default function SaveTheU() {
                         variant="copy"
                         size="xs"
                         lineHeight="1.6"
-                        color="greyDark"
+                        color="greyMid"
                       >
                         These comparisons are projections based on staff
                         estimates. None are final.
@@ -1306,7 +1306,7 @@ export default function SaveTheU() {
                     variant="copy"
                     size="sm"
                     lineHeight="1.6"
-                    color="greyDark"
+                    color="greyMid"
                     margin={`0 0 ${Spaces.xl}`}
                     style={{ maxWidth: MEASURE }}
                   >
@@ -1331,7 +1331,7 @@ export default function SaveTheU() {
                           weight="700"
                           uppercase
                           letterSpacing="0.08em"
-                          color="greyDark"
+                          color="greyMid"
                           margin={`0 0 ${Spaces.md}`}
                         >
                           Proposed spaces
@@ -1552,7 +1552,7 @@ export default function SaveTheU() {
                   variant="copy"
                   size="sm"
                   lineHeight="1.6"
-                  color="greyDark"
+                  color="greyMid"
                   margin={`${Spaces.md} 0 0`}
                   style={{ maxWidth: '56ch' }}
                 >
