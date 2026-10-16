@@ -410,6 +410,8 @@ const proposedSpaceRenderings: CrossfadeImage[] = proposedSpaces.map(
     key: space.title,
     title: space.title,
     src: space.renderingSrc,
+    mobileSrc: space.mobileRenderingSrc,
+    focalPoint: space.renderingFocalPoint,
     alt: `Simulated rendering: ${space.title}`,
     description: (
       <>
@@ -1371,6 +1373,7 @@ export default function SaveTheU() {
                           id={PROPOSED_SPACE_RENDERING_ID}
                           images={proposedSpaceRenderings}
                           activeKey={previewedSpace}
+                          mobileAspectRatio="3 / 4"
                           pendingLabel="[AWAITING RENDERING]"
                         />
                       </div>

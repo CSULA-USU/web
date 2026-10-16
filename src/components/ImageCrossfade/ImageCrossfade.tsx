@@ -1,11 +1,23 @@
 import { useId, useState } from 'react';
-import NextImage from 'next/image';
+import { getImageProps } from 'next/image';
 import styled, { css } from 'styled-components';
 import { BiPlus } from 'react-icons/bi';
-import { Colors, Radii, Spaces } from 'theme';
+import { Colors, Radii, Spaces, breakpoints, media } from 'theme';
 import { Typography } from '../Typography';
 import { PlaceholderMarker } from '../PlaceholderMarker';
 import { CHART_EASING } from '../PieChart/chartTokens';
+
+/** Every value is a valid CSS `object-position`, so it applies as written. */
+export type CrossfadeFocalPoint =
+  | 'center'
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'top left'
+  | 'top right'
+  | 'bottom left'
+  | 'bottom right';
 
 export interface CrossfadeImage {
   /** Matched against `activeKey`. */
@@ -16,6 +28,12 @@ export interface CrossfadeImage {
   /** Leave unset while the image does not exist yet: the frame renders the
       `pendingLabel` marker instead, and the caption still works. */
   src?: string;
+  /** Served instead of `src` at or below the `mobile` breakpoint, so a phone
+      can get a picture composed for its narrower frame. Falls back to `src`. */
+  mobileSrc?: string;
+  /** The part of the picture kept in view when the frame crops it. Defaults
+      to `center`. */
+  focalPoint?: CrossfadeFocalPoint;
   alt: string;
 }
 
@@ -25,6 +43,9 @@ interface ImageCrossfadeProps {
   /** Target for `aria-controls` on whatever picks `activeKey`. */
   id?: string;
   aspectRatio?: string;
+  /** Replaces `aspectRatio` at or below the `mobile` breakpoint — the same
+      breakpoint that swaps in each image's `mobileSrc`. */
+  mobileAspectRatio?: string;
   pendingLabel?: string;
 }
 
@@ -44,19 +65,31 @@ const Stack = styled.div`
   }
 `;
 
-const Frame = styled.div<{ $aspectRatio: string }>`
+/* The `<source>` media query and the frame's ratio switch must agree, or a
+   phone gets the portrait file in a landscape frame for part of the range. */
+const MOBILE_QUERY = `(max-width: ${breakpoints.mobile}px)`;
+
+const Frame = styled.div<{
+  $aspectRatio: string;
+  $mobileAspectRatio?: string;
+  $focalPoint: CrossfadeFocalPoint;
+}>`
   position: relative;
   aspect-ratio: ${(p) => p.$aspectRatio};
   overflow: hidden;
   border-radius: ${Radii.surface};
   background-color: ${Colors.greyDarker};
 
-  /* Sources can be portrait while the frame is landscape, so the picture is
-     cropped to its vertical middle — where a room's subject usually sits —
-     rather than anchored to the top or bottom edge. */
+  ${(p) =>
+    p.$mobileAspectRatio &&
+    media('mobile')(`aspect-ratio: ${p.$mobileAspectRatio};`)}
+
+  /* A source whose shape differs from the frame's is cropped, and the focal
+     point picks what survives. Center is the default because a room's subject
+     usually sits in the middle; set one per image when it does not. */
   img {
     object-fit: cover;
-    object-position: center center;
+    object-position: ${(p) => p.$focalPoint};
   }
 `;
 
@@ -176,6 +209,39 @@ const Figure = styled.figure<{ $isActive: boolean; $isOpen: boolean }>`
   }
 `;
 
+const IMAGE_SIZES = '(max-width: 768px) 100vw, 50vw';
+
+/* `<picture>` rather than two images hidden by CSS: the browser downloads only
+   the source that matches, where a hidden `<img>` can still be fetched. */
+const ArtDirectedImage = ({
+  src,
+  mobileSrc,
+  alt,
+}: {
+  src: string;
+  mobileSrc?: string;
+  alt: string;
+}) => {
+  const sharedProps = { alt, fill: true, sizes: IMAGE_SIZES };
+  const { props: imageProps } = getImageProps({ ...sharedProps, src });
+  const mobileSrcSet = mobileSrc
+    ? getImageProps({ ...sharedProps, src: mobileSrc }).props.srcSet
+    : undefined;
+
+  return (
+    <picture>
+      {mobileSrcSet && (
+        <source
+          media={MOBILE_QUERY}
+          srcSet={mobileSrcSet}
+          sizes={IMAGE_SIZES}
+        />
+      )}
+      <img {...imageProps} alt={alt} />
+    </picture>
+  );
+};
+
 /**
  * One image at a time from a set, crossfading when `activeKey` changes, each
  * with a caption bar whose description opens on hover or on a tap of the
@@ -192,6 +258,7 @@ export const ImageCrossfade = ({
   activeKey,
   id,
   aspectRatio = '4 / 3',
+  mobileAspectRatio,
   pendingLabel = '[IMAGE PENDING]',
 }: ImageCrossfadeProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -208,13 +275,16 @@ export const ImageCrossfade = ({
             $isActive={image.key === activeKey}
             $isOpen={isOpen}
           >
-            <Frame $aspectRatio={aspectRatio}>
+            <Frame
+              $aspectRatio={aspectRatio}
+              $mobileAspectRatio={mobileAspectRatio}
+              $focalPoint={image.focalPoint ?? 'center'}
+            >
               {image.src ? (
-                <NextImage
+                <ArtDirectedImage
                   src={image.src}
+                  mobileSrc={image.mobileSrc}
                   alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               ) : (
                 <PendingFrame>
