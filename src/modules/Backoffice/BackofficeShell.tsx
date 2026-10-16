@@ -1,25 +1,72 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
+import { MdMenu } from 'react-icons/md';
 
-import { Button, FluidContainer, Loading, Typography } from 'components';
+import {
+  Button,
+  Eyebrow,
+  FluidContainer,
+  Loading,
+  Typography,
+} from 'components';
 import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
+import { findActiveBackofficeLink } from './BackofficeNavList';
 import { useBackofficeUser, canViewBackofficePage } from 'hooks';
 import { useBreakpoint } from 'hooks';
-import { Colors } from 'theme';
-import { MdOutlineLaunch } from 'react-icons/md';
+import { Colors, Spaces, media } from 'theme';
 import BackofficeMobilePanel from 'modules/Backoffice/BackofficeMobilePanel';
 
 const Shell = styled.div`
+  position: relative;
   display: flex;
   @media (max-width: 1024px) {
     flex-direction: column;
   }
+`;
+
+// Floats the sidebar outside the layout so the content can center in the
+// same 1440px box as the main nav instead of in the space beside the
+// sidebar. The rail spans the full height of the shell so the sticky
+// sidebar inside it keeps following the scroll, and sits above the page
+// content so the sidebar draws over anything it overlaps.
+//
+// It only shows above the uhd breakpoint (1980px): the content's left edge
+// is max(72px, (width - 1440px) / 2), which first clears the 250px sidebar
+// there, with 20px to spare. Narrower, it would cover the content, so the
+// band's Tools button opens BackofficeMobilePanel instead. Widening the
+// sidebar means raising this breakpoint with it.
+const SidebarRail = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  z-index: 11;
+
+  ${media('uhd')(`display: none;`)}
+`;
+
+// Tools and Sign Out, for wherever SidebarRail is hidden; above uhd the
+// sidebar holds both, so the band carries the title alone.
+const BandActions = styled.div`
+  display: none;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  ${media('uhd')(`display: flex;`)}
+`;
+
+const ButtonLabel = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: ${Spaces.sm};
 `;
 
 const Content = styled.div`
@@ -36,58 +83,6 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 0;
-`;
-
-const TopBar = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 80px;
-  box-sizing: border-box;
-  background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 60px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
-  @media (max-width: 768px) {
-    gap: 24px;
-    padding: 24px;
-    height: 200px;
-    justify-content: center;
-  }
-  @media (max-width: 580px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-const TabletIconsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-cotent: space-between;
-  gap: 16px;
-  align-items: flex-end;
-
-  @media (max-width: 1024px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media (max-width: 580px) {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const TopBarLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0 0 0 0px;
 `;
 
 const FeaturedGrid = styled.div`
@@ -139,12 +134,17 @@ function flattenNav(sections: BackofficeLinkSection[]) {
 
 export default function BackofficeShell({ title, subtitle, children }: Props) {
   const router = useRouter();
-  const { isMobile, isDesktop, isWidescreen } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const navSections = backOfficeLinks as BackofficeLinkSection[];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
   const { user, loading: userLoading } = useBackofficeUser();
+
+  // Stable, because the drawer re-runs its open effect (focus, scroll lock)
+  // whenever onClose changes identity.
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const activeSection = findActiveBackofficeLink(router.pathname)?.section;
 
   const allItems = useMemo(() => flattenNav(navSections), [navSections]);
   const featuredItems = useMemo(
@@ -183,56 +183,77 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
 
   return (
     <Shell>
-      <BackofficeMobilePanel
-        open={isMenuOpen}
-        onClose={() => {
-          setIsMenuOpen(false);
-        }}
-      />
-      <BackofficeSideBar />
+      <BackofficeMobilePanel open={isMenuOpen} onClose={closeMenu} />
+      <SidebarRail>
+        <BackofficeSideBar />
+      </SidebarRail>
       <Main>
-        <TopBar>
-          <TopBarLeft>
+        {/* The page hero's type (eyebrow, serif title, quiet subtitle) on a
+            light band in place of the photo: a tool page under the dark main
+            nav reads better calm, and a dark band would merge into the nav.
+            Its padding mirrors a default FluidContainer at every breakpoint
+            so the title stays on the body's left edge. */}
+        <FluidContainer
+          backgroundColor="greyLightest"
+          padding="48px 72px 40px"
+          paddingDesktop="32px 36px 28px"
+          paddingMobile="24px 16px"
+          flex
+          flexWrap="wrap"
+          justifyContent="space-between"
+          alignItems="flex-end"
+          gap={Spaces.lg}
+        >
+          <div>
+            {activeSection ? (
+              <Eyebrow margin={`0 0 12px`}>{activeSection}</Eyebrow>
+            ) : null}
             <Typography
               as="h1"
               variant="pageHeader"
-              size={isMobile ? 'lg' : isWidescreen ? 'xl' : '2xl'}
+              size={isMobile ? 'xl' : '2xl'}
+              lineHeight="1.15"
             >
               {title}
             </Typography>
-
             {subtitle ? (
-              <Typography as="p" variant="cta" size={isMobile ? 'sm' : 'md'}>
+              <Typography
+                as="p"
+                variant="span"
+                size="sm"
+                color="greyDark"
+                margin={`${Spaces.sm} 0 0`}
+              >
                 {subtitle}
               </Typography>
             ) : null}
-          </TopBarLeft>
+          </div>
 
-          {isDesktop ? (
-            <TabletIconsContainer>
-              <Button
-                padding="10px 20px"
-                fontSize="14px"
-                fontWeight="600"
-                variant="outline"
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </Button>
-              <MdOutlineLaunch
-                size={32}
-                color={Colors.black}
-                onClick={() => {
-                  setIsMenuOpen(true);
-                }}
-              />
-            </TabletIconsContainer>
-          ) : (
-            <Button variant="outline" onClick={() => signOut()}>
+          <BandActions>
+            <Button
+              variant="outline"
+              padding="10px 16px"
+              fontSize="14px"
+              fontWeight="600"
+              onClick={() => setIsMenuOpen(true)}
+              aria-expanded={isMenuOpen}
+            >
+              <ButtonLabel>
+                <MdMenu size={18} aria-hidden="true" />
+                Tools
+              </ButtonLabel>
+            </Button>
+            <Button
+              variant="outline"
+              padding="10px 20px"
+              fontSize="14px"
+              fontWeight="600"
+              onClick={() => signOut()}
+            >
               Sign Out
             </Button>
-          )}
-        </TopBar>
+          </BandActions>
+        </FluidContainer>
         <Content>
           {isNavigating ? (
             <FluidContainer

@@ -21,7 +21,7 @@ export default function Governance() {
         path="/board-of-directors/roster"
         socialTitle="U-SU Board Member Roster | Cal State LA"
         socialDescription="The current roster of the University-Student Union Board of Directors."
-        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/BOD-Roster.webp"
+        imageUrl="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/sle/supabase-files/bod-2026-retouched.webp"
         imageAlt="The University-Student Union Board of Directors"
       />
       <Header
@@ -113,7 +113,7 @@ export default function Governance() {
       <FluidContainer flex justifyContent="center">
         <Image
           alt="group photo of u-su board of directors "
-          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/governance/bod/2026/bod-2026ai.webp"
+          src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/sle/supabase-files/bod-2026-retouched.webp"
           width="100%"
           height="auto"
           borderRadius="12px"

@@ -17,6 +17,7 @@ import { useBreakpoint } from 'hooks';
 import archiveData from 'data/public-document-archives.json';
 import { Spaces } from 'theme';
 import { getDownloadAllDoc, getMeetingDocuments } from 'api/bod';
+import { fiscalYearFromDate } from 'utils/dates';
 import type { Document } from 'types/Backoffice';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
@@ -44,20 +45,29 @@ const latestAuditedSection: DownloadSectionProps = {
 const sortByDateAsc = (a: Document, b: Document) =>
   (a.date ?? '').localeCompare(b.date ?? '');
 
+const UNKNOWN_FY = 'Unknown FY';
+
+// The meeting date wins over the stored `fy` column: the backoffice upload
+// form has no FY field, so every upload since the Supabase move stores `fy`
+// as "" or null. Stored `fy` is only the fallback for the documents imported
+// from the old JSON, which carry an FY but no date.
+const fiscalYearOf = (d: Document) =>
+  fiscalYearFromDate(d.date) ??
+  (d.fy?.replace(/^FY\s*/i, '').trim() || UNKNOWN_FY);
+
 const groupByFy = (docs: Document[]) =>
   docs.reduce((acc, d) => {
-    const key = d.fy ?? 'Unknown FY';
+    const key = fiscalYearOf(d);
     (acc[key] ||= []).push(d);
     return acc;
   }, {} as Record<string, Document[]>);
 
 const fyRank = (fy: string) => {
-  const m = /(\d{2}).*?(\d{2})?/.exec(fy);
-  if (!m) return -1;
-  const start = Number(m[1]);
-  const end = Number(m[2] ?? String((start + 1) % 100).padStart(2, '0'));
-  return start * 100 + end;
+  const m = /^(\d{2})-\d{2}$/.exec(fy);
+  return m ? Number(m[1]) : -1;
 };
+
+const fyLabel = (fy: string) => (fy === UNKNOWN_FY ? fy : `FY ${fy}`);
 const sortFyDesc = ([a]: [string, Document[]], [b]: [string, Document[]]) =>
   fyRank(b) - fyRank(a);
 
@@ -177,7 +187,7 @@ export default function PublicDocumentArchives() {
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
                       <Typography variant="labelTitle" as="h3">
-                        {fy}
+                        {fyLabel(fy)}
                       </Typography>
                     }
                   >
@@ -211,7 +221,7 @@ export default function PublicDocumentArchives() {
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
                       <Typography variant="labelTitle" as="h3">
-                        {fy}
+                        {fyLabel(fy)}
                       </Typography>
                     }
                   >
