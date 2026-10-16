@@ -17,6 +17,12 @@ interface EyebrowProps {
   margin?: string;
   /** Drops the rule for an eyebrow that is not marking the top of a section. */
   accent?: boolean;
+  /**
+   * Element to render. A paragraph by default; pass a heading level when the
+   * eyebrow is itself the name of the group below it, such as a nav section,
+   * so screen readers can jump between groups by heading.
+   */
+  as?: 'p' | 'h2' | 'h3';
 }
 
 /* A short rule leading into the label, matching the section kickers on the
@@ -52,8 +58,14 @@ export const Eyebrow = ({
   letterSpacing = '0.12em',
   margin,
   accent = true,
+  as = 'p',
 }: EyebrowProps) => (
-  <EyebrowRow $accent={accent} $accentColor={accentColor} $margin={margin}>
+  <EyebrowRow
+    as={as}
+    $accent={accent}
+    $accentColor={accentColor}
+    $margin={margin}
+  >
     <Typography
       variant="span"
       as="span"
