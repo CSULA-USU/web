@@ -1,7 +1,12 @@
 import type { BarRow } from 'modules/SaveTheU/BarChart';
 import type { PieSegment } from 'components';
 import type { TrendSeries } from 'modules/SaveTheU/TrendChart';
-import type { GridGalleryItem, Source, Testimonial } from 'components';
+import type {
+  CrossfadeFocalPoint,
+  GridGalleryItem,
+  Source,
+  Testimonial,
+} from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';
 import {
@@ -767,37 +772,56 @@ export const serviceComparisons: {
  * `renderingSrc` is the simulated rendering shown beside the list. Until a
  * space has one, its frame shows an awaiting marker rather than a stand-in
  * picture of somewhere else.
+ *
+ * `mobileRenderingSrc` is the portrait version phones get. Both fields hold the
+ * same 375×500 portrait files for now, which are too small to stay sharp in
+ * the desktop frame; when the landscape exports (about 1200×900) arrive, only
+ * `renderingSrc` changes. The pub's file is landscape, so phones crop its
+ * sides — accepted.
  */
 export const proposedSpaces: {
   title: string;
   body: string;
   marker?: string;
   renderingSrc?: string;
+  mobileRenderingSrc?: string;
+  renderingFocalPoint?: CrossfadeFocalPoint;
 }[] = [
   {
     title: 'Downstairs Lounge',
-    body: 'The lounge on the lower level, enhanced — more room to sit, study and wait out a gap in your schedule.',
+    body: 'The lounge on the lower level, with better furniture and more room to sit, study and wait out a gap in your schedule.',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/downstairs-lounge.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/downstairs-lounge.webp`,
   },
   {
     title: 'Engagement Room',
     body: 'A room set up for productivity.',
-    marker: '[NEEDS COPY — what the engagement room is for]',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/engagement-room.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/engagement-room.webp`,
   },
   {
     title: 'Lounge & Computer Resources',
     body: 'The Game Room’s old second-floor space, renovated into an expanded lounge with computer resources. The Game Room itself has already moved to a larger space on the first floor.',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/lounge-and-computer-resources.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/lounge-and-computer-resources.webp`,
   },
   {
     title: 'Nature Lounge',
     body: 'An outdoor lounge on the second floor, planned with greenery in mind.',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/nature-lounge.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/nature-lounge.webp`,
   },
   {
     title: 'Pub',
     body: 'The current Sbarro space, converted into a pub.',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/pub.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/pub.webp`,
   },
   {
     title: 'Relaxation Room',
     body: 'A dedicated room for rest, with nap pods — findable, instead of tucked away on the third floor where they are now.',
+    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/relaxation-room.webp`,
+    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/relaxation-room.webp`,
   },
 ];
 
@@ -976,6 +1000,6 @@ export const facultyItems: {
   },
   {
     title: 'What to tell students who ask',
-    body: '$137.25 a semester today, price last set in 2007. $227.25 being proposed. Every figure here is documented below.',
+    body: '$137.25 a semester today, price last set in 2007. $227.25 is being proposed. Every figure here is documented below.',
   },
 ];

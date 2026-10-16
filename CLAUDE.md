@@ -139,7 +139,7 @@ ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas
 
 US English, never British: `color` not `colour`, `centers` not `centres`, `normalizes` not `normalises`, `labeled`, `traveling`, `behavior`, `organize`, `analyze`, `defense`, `license`. This covers everything written, not just user-facing copy — code comments, JSDoc, README and other docs, commit messages, and test descriptions. The site is a Cal State LA property and its own copy is US English; mixed spelling in the codebase reads as careless to the next person in the file.
 
-One exception: **`grey` is correct in this repo.** The theme tokens are named `greyDarkest`, `greyDarker`, `greyDark`, `grey`, `greyLighter`, `greyLightest` (`src/theme/index.ts:53-58`). Never "fix" those to `gray` — it breaks `keyof typeof Colors` lookups. Match the identifier, and use `grey` in prose that refers to those tokens.
+One exception: **`grey` is correct in this repo.** The theme tokens are named `greyDarkest`, `greyDarker`, `greyMid`, `greyDark`, `grey`, `greyLighter`, `greyLightest` (`src/theme/index.ts:53-61`). Never "fix" those to `gray` — it breaks `keyof typeof Colors` lookups. Match the identifier, and use `grey` in prose that refers to those tokens.
 
 #### Naming
 
