@@ -1,28 +1,23 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { signOut, useSession } from 'next-auth/react';
 
-import { Typography } from 'components';
-import backOfficeLinks from 'data/backOfficeLinks.json';
-import type { BackofficeLinkSection } from 'types/Backoffice';
-import { Colors } from 'theme';
-import { useBackofficeUser, canViewBackofficePage } from 'hooks';
+import { Button } from 'components';
+import { useBackofficeUser } from 'hooks';
+import { Colors, FontSizes, Spaces } from 'theme';
+import BackofficeNavList from './BackofficeNavList';
 
-type Props = {
-  showSearch?: boolean;
-};
-
+// The main nav's own ground (greyDarkest) with no seam, so the rail reads as
+// the nav turning down the left edge. It only shows at widths where the main
+// nav is the dark variant (see SidebarRail in BackofficeShell); against the
+// compact white nav it would read as a separate slab.
 const Sidebar = styled.aside`
-  flex: 0 0 250px;
   width: 250px;
-  align-self: flex-start;
   position: sticky;
   top: 0;
   height: 100vh;
-  background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: ${Colors.greyDarkest};
   display: flex;
   flex-direction: column;
 
@@ -35,154 +30,70 @@ const SidebarInner = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  padding: ${Spaces.lg} 0;
+`;
 
-  padding: 20px 16px;
+// The sidebar is one window tall and pins at top: 0, but until the page is
+// scrolled it starts below the main nav, so its last ~120px hang past the
+// window's bottom edge. Pinning this block to the window's bottom keeps Sign
+// Out in view from the first paint. It needs its own background because, at
+// the top of the page, it sits over the bottom of the link list; with a list
+// long enough to reach that far, its last link shows once the page scrolls.
+const Account = styled.div`
+  position: sticky;
+  bottom: 0;
+  background: ${Colors.greyDarkest};
+  flex-shrink: 0;
+  padding: 20px;
+  border-top: 1px solid ${Colors.greyDark};
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  align-items: flex-start;
+  gap: 12px;
 `;
 
-const SearchWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+const AccountLabel = styled.span`
+  display: block;
+  font-size: ${FontSizes['2xs']};
+  color: ${Colors.greyLighter};
 `;
 
-const SearchInput = styled.input`
-  width: 100%;
-  background: ${({ theme }) => theme?.Colors?.Background ?? '#ffffff'};
-  border: 0px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 10px 12px;
-  background: ${Colors.pastelYellow};
+const AccountName = styled.span`
+  display: block;
+  font-size: ${FontSizes.xs};
+  font-weight: 600;
+  color: ${Colors.white};
+  overflow-wrap: anywhere;
 `;
 
-const NavSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const NavItems = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const NavButton = styled.button<{ $active?: boolean }>`
-  width: 100%;
-  text-align: left;
-  border: 0px;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: ${({ $active, theme }) =>
-    $active ? Colors.pastelYellow : theme?.Colors?.Surface ?? '#ffffff'};
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  &:hover {
-    background: ${Colors.pastelYellow};
-  }
-`;
-
-export default function BackofficeSideBar({ showSearch = true }: Props) {
-  const router = useRouter();
-  const navSections = backOfficeLinks as BackofficeLinkSection[];
-  const { user, loading: userLoading } = useBackofficeUser();
-
-  const [query, setQuery] = useState('');
-
-  const filteredSections = useMemo(() => {
-    const q = query.trim().toLowerCase();
-
-    const policyFiltered = navSections
-      .map((section) => ({
-        ...section,
-        items: section.items.filter((item) => {
-          if (!item.pageKey) return true;
-          if (userLoading || !user) return true;
-          return canViewBackofficePage(user.effectivePolicies, item.pageKey);
-        }),
-      }))
-      .filter((section) => section.items.length > 0);
-
-    if (!q) return policyFiltered;
-
-    return policyFiltered
-      .map((section) => ({
-        ...section,
-        items: section.items.filter((item) => {
-          const titleMatch = item.title.toLowerCase().includes(q);
-          const descMatch = (item.description ?? '').toLowerCase().includes(q);
-          return titleMatch || descMatch;
-        }),
-      }))
-      .filter((section) => section.items.length > 0);
-  }, [navSections, query, user, userLoading]);
-
-  const handleNavigate = (href: string) => {
-    router.push(href);
-  };
-
-  const isActive = (href: string) => router.pathname === href;
+export default function BackofficeSideBar() {
+  const { data: session } = useSession();
+  const { user } = useBackofficeUser();
+  // Azure AD supplies a display name; the backoffice record only has email.
+  const accountName = session?.user?.name ?? user?.email;
 
   return (
     <Sidebar aria-label="Backoffice navigation">
       <SidebarInner>
-        {showSearch ? (
-          <SearchWrap>
-            <Typography
-              as="h2"
-              variant="title"
-              size="lg"
-              weight="700"
-              margin="0 0 16px 0"
-            >
-              Search tools
-            </Typography>
-            <SearchInput
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by name or description"
-              aria-label="Search backoffice tools"
-            />
-          </SearchWrap>
-        ) : null}
-
-        {filteredSections.map((section) => (
-          <NavSection key={section.section}>
-            <Typography as="h3" variant="label" weight="600">
-              {section.section}
-            </Typography>
-
-            <NavItems>
-              {section.items.map((item) => (
-                <NavButton
-                  key={item.url}
-                  type="button"
-                  onClick={() => handleNavigate(item.url)}
-                  $active={isActive(item.url)}
-                >
-                  <Typography as="span" variant="label" weight="400">
-                    {item.title}
-                  </Typography>
-
-                  {item.description ? (
-                    <Typography as="span" variant="span">
-                      {item.description}
-                    </Typography>
-                  ) : null}
-                </NavButton>
-              ))}
-            </NavItems>
-          </NavSection>
-        ))}
+        <BackofficeNavList searchId="backoffice-sidebar-search" />
       </SidebarInner>
+      <Account>
+        {accountName ? (
+          <div>
+            <AccountLabel>Signed in as</AccountLabel>
+            <AccountName>{accountName}</AccountName>
+          </div>
+        ) : null}
+        <Button
+          variant="whiteOutline"
+          padding="8px 16px"
+          fontSize="14px"
+          fontWeight="600"
+          onClick={() => signOut()}
+        >
+          Sign Out
+        </Button>
+      </Account>
     </Sidebar>
   );
 }

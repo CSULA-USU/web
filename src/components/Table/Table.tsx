@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Typography } from 'components';
+import { Typography } from '../Typography';
 import { TableData, TableColumn, TableRow } from 'types';
 import {
   DesktopScroll,
