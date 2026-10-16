@@ -1,46 +1,36 @@
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import styled from 'styled-components';
-import { ContentBoardColumn } from './ContentBoardColumn';
-import { ContentBoardNav } from './ContentBoardNav';
+
+import type { GraffixRequest } from 'types';
+import { Spaces } from 'theme';
 import { ContentBoardColumnProps, KeyValueProps } from './ContentBoardTypes';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { ContentBoardSidebar } from './ContentBoardSidebar';
-import { useBreakpoint } from 'hooks';
+import { ContentBoardDetailPanel } from './ContentBoardDetailPanel';
+import { ContentBoardGroup } from './ContentBoardGroup';
+import { ContentBoardToolbar } from './ContentBoardToolbar';
 
-const deepCopyArray = (arr: any) => {
-  return JSON.parse(JSON.stringify(arr));
-};
-
-const ContentBoardColumnsContainer = styled.div<{
-  isMobile: boolean;
-  isTablet: boolean;
-  isDesktop: boolean;
-}>`
+const Board = styled.div`
   display: flex;
-  flex-direction: row;
-  height: 75vh;
-  overflow-x: auto;
-  gap: 1rem;
-  justify-content: space-around;
-  padding: 24px;
-
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  flex-direction: column;
+  gap: ${Spaces.lg};
+  width: 100%;
 `;
 
+const Groups = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${Spaces.md};
+`;
+
+// One section per status, stacked, rather than a column per status side by
+// side: eight 200px columns ran past the 1440px content box into a sideways
+// scroll, and the board was read-only (status lives in Notion), so columns
+// bought none of the drag-between-statuses a kanban is for.
 export const ContentBoard = ({
   columns,
   cellMap,
@@ -54,72 +44,71 @@ export const ContentBoard = ({
   setSelectedDepartment: Dispatch<SetStateAction<string>>;
   accessibleDepartment: string;
 }) => {
-  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [selectedCellID, setSelectedCellID] = useState<string>('');
   const [filterInput, setFilterInput] = useState<string>('');
-  const [filteredColumns, setFilteredColumns] =
-    useState<ContentBoardColumnProps[]>(columns);
+  // Only sections the viewer has toggled; the rest fall back to their
+  // startsCollapsed default. Keyed by status, so it survives a department
+  // switch.
+  const [openOverrides, setOpenOverrides] = useState<Record<string, boolean>>(
+    {},
+  );
 
-  useEffect(() => {
-    // Update columns whenever the filter search input is changed.
-    if (filterInput.length == 0) {
-      setFilteredColumns(columns);
-      return;
-    }
+  const closeDetails = useCallback(() => setSelectedCellID(''), []);
 
-    const tempColumns: ContentBoardColumnProps[] = deepCopyArray(columns).map(
-      (column: ContentBoardColumnProps) => {
-        column.columnData = column.columnData.filter((cell) => {
-          for (let filterWord of filterInput.split(' ')) {
-            if (
-              !cell.cellTitle.toLowerCase().includes(filterWord.toLowerCase())
-            ) {
-              return false;
-            }
-          }
-          return true;
-        });
-        return column;
-      },
-    );
-    setFilteredColumns(tempColumns);
-  }, [filterInput, columns]);
-
-  const ContentBoardContainer = styled.div<{ isTablet: boolean }>`
-    position: relative;
-    width: 100%;
-    padding: 0;
-  `;
+  // Search narrows each section's rows and count but never opens a closed
+  // section, so the page does not jump around while typing; a match in a
+  // closed section shows in its count.
+  const groups = useMemo(() => {
+    const filterWords = filterInput.toLowerCase().split(' ').filter(Boolean);
+    return columns.map((column) => ({
+      ...column,
+      requests: column.columnData
+        .filter((cell) =>
+          filterWords.every((word) =>
+            cell.cellTitle.toLowerCase().includes(word),
+          ),
+        )
+        .map((cell) => cellMap[cell.cellID] as GraffixRequest | undefined)
+        .filter((request): request is GraffixRequest => !!request),
+    }));
+  }, [columns, cellMap, filterInput]);
 
   return (
-    <ContentBoardContainer isTablet={isTablet}>
-      <ContentBoardNav
+    <Board>
+      <ContentBoardToolbar
         filterInput={filterInput}
         setFilterInput={setFilterInput}
         selectedDepartment={selectedDepartment}
         setSelectedDepartment={setSelectedDepartment}
         accessibleDepartment={accessibleDepartment}
       />
-      <ContentBoardColumnsContainer
-        isMobile={isMobile}
-        isTablet={isTablet}
-        isDesktop={isDesktop}
-      >
-        {filteredColumns.map((column: ContentBoardColumnProps, idx: number) => {
+      <Groups>
+        {groups.map((group) => {
+          const isOpen =
+            openOverrides[group.columnTitle] ?? !group.startsCollapsed;
           return (
-            <ContentBoardColumn
-              key={idx}
-              column={column}
-              setSelectedCellID={setSelectedCellID}
+            <ContentBoardGroup
+              key={group.columnTitle}
+              title={group.columnTitle}
+              color={group.color}
+              requests={group.requests}
+              isOpen={isOpen}
+              onToggle={() =>
+                setOpenOverrides((prev) => ({
+                  ...prev,
+                  [group.columnTitle]: !isOpen,
+                }))
+              }
+              onSelectRequest={setSelectedCellID}
             />
           );
         })}
-      </ContentBoardColumnsContainer>
-      <ContentBoardSidebar
+      </Groups>
+      <ContentBoardDetailPanel
         selectedCellID={selectedCellID}
-        setSelectedCellID={setSelectedCellID}
+        onClose={closeDetails}
         cellMap={cellMap}
       />
-    </ContentBoardContainer>
+    </Board>
   );
 };
