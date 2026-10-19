@@ -914,12 +914,13 @@ export default function SaveTheU() {
           >
             If the 2007 fee kept pace with inflation, it would be{' '}
             <strong>$215.30 a semester</strong> today.
-            <CitationMarker sourceId="5" /> The proposal is{' '}
+            <CitationMarker sourceId="5" /> The proposal, however, is{' '}
             <strong>$227.25</strong> which is $11.95 more. That difference is
-            because just catching up on inflation doesn&apos;t close a deficit
-            also driven by enrollment decline.
-            <CitationMarker sourceId="3" /> Student fees currently cover 67% of
-            what the U-SU costs to run but the sustainable range is 80–85%.
+            there because just catching up on inflation isn&apos;t enough to
+            close a deficit also driven by enrollment decline.
+            <CitationMarker sourceId="3" /> Student fees currently cover about
+            67% of what the U-SU costs to run but the sustainable range is
+            80–85%.
             <CitationMarker sourceId="2" />
           </Typography>
         </TextAndImage>
