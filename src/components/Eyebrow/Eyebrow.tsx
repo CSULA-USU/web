@@ -23,6 +23,8 @@ interface EyebrowProps {
    * so screen readers can jump between groups by heading.
    */
   as?: 'p' | 'h2' | 'h3';
+  /** For pointing `aria-labelledby` at the eyebrow from the group it names. */
+  id?: string;
 }
 
 /* A short rule leading into the label, matching the section kickers on the
@@ -59,8 +61,10 @@ export const Eyebrow = ({
   margin,
   accent = true,
   as = 'p',
+  id,
 }: EyebrowProps) => (
   <EyebrowRow
+    id={id}
     as={as}
     $accent={accent}
     $accentColor={accentColor}

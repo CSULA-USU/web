@@ -9,6 +9,7 @@ export * from './DocumentLink';
 export * from './DownloadSection';
 export * from './EditDrawer';
 export * from './EventCard';
+export * from './EventFilters';
 export * from './EventHeader';
 export * from './EventsLoader';
 export * from './FeaturedEvents';
