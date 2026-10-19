@@ -6,6 +6,8 @@ import { EventModal } from 'modules/EventModal';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Spaces, media } from 'theme';
+import { getEventMonthAnchorId, groupEventsByMonth } from 'utils/eventUtils';
+import { getMonth } from 'utils/timehelpers';
 
 interface UpcomingEventsProps {
   events: CampusGroupsEvent[];
@@ -29,8 +31,12 @@ const UpcomingEventsContent = styled.div`
   gap: ${Spaces.md};
 `;
 
-const getMonth = (date: string) =>
-  new Date(date).toLocaleString('default', { month: 'long' });
+/* Each month is an anchor target for the /events month bar, which sticks
+   over the top of the page. The margin is that bar's NAV_OFFSET in
+   AnchorNav, so a jump lands the heading just below the bar, not under it. */
+const MonthSection = styled.section`
+  scroll-margin-top: 84px;
+`;
 
 export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
   const [selectedEvent, selectEvent] = useState<undefined | CampusGroupsEvent>(
@@ -38,24 +44,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
   );
   const onRequestClose = () => selectEvent(undefined);
 
-  const [_, ...laterEvents] = events || [];
-  const eventsByMonth = (monthly ? events : laterEvents).reduce(
-    (
-      months: { [key: string]: CampusGroupsEvent[] },
-      event: CampusGroupsEvent,
-    ) => {
-      const updatedMonths = { ...months };
-      const month = getMonth(event.eventStartDateTime);
-      if (!updatedMonths.hasOwnProperty(month)) {
-        updatedMonths[month] = [];
-      }
-      updatedMonths[month].push(event);
-      return updatedMonths;
-    },
-    {},
-  );
-
-  const eventMonths = Object.keys(eventsByMonth);
+  const eventMonths = monthly ? groupEventsByMonth(events) : [];
   return !events.length ? null : (
     <FluidContainer>
       {!monthly && (
@@ -71,11 +60,15 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
         </UpcomingEventsHeading>
       )}
       {monthly ? (
-        eventMonths.map((eventMonth) => (
-          <div key={`${eventMonth} Events`}>
-            <Divider as="h2" label={eventMonth} variant="title" />
+        eventMonths.map(({ monthKey, events: monthEvents }) => (
+          <MonthSection key={monthKey} id={getEventMonthAnchorId(monthKey)}>
+            <Divider
+              as="h2"
+              label={getMonth(monthEvents[0].eventStartDateTime)}
+              variant="title"
+            />
             <UpcomingEventsContent>
-              {eventsByMonth[eventMonth].map((event) => (
+              {monthEvents.map((event) => (
                 <SplitEventCard
                   key={event.eventId}
                   event={event}
@@ -83,7 +76,7 @@ export const UpcomingEvents = ({ events, monthly }: UpcomingEventsProps) => {
                 />
               ))}
             </UpcomingEventsContent>
-          </div>
+          </MonthSection>
         ))
       ) : (
         <>
