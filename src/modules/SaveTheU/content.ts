@@ -340,14 +340,13 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: '/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png',
     alt: 'Graduates in caps and stoles cheering with raised arms onstage at a cultural graduation ceremony, a student band playing behind them',
-    caption:
-      'Cultural graduations. 5 ceremonies a year, about 800 students, free.',
+    caption: 'Cultural graduations. 5 ceremonies a year, about 800 students.',
     sourceId: '4',
   },
   {
     src: `${SUPABASE_PAGES}/departments/recreation/Rec-Hero.webp`,
     alt: 'Student bench-pressing in the fitness center, with a trainer spotting them',
-    caption: 'Fitness center. Gym access for those who paid student fees.',
+    caption: 'The fitness center. Gym access for those who paid student fees.',
   },
   {
     src: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/images/building-maintenance.jpg`,
@@ -367,7 +366,8 @@ export const buildingGalleryItems: GridGalleryItem[] = [
   {
     src: `${SUPABASE_PAGES}/departments/operations/meeting-rooms/boardroom/north/room.webp`,
     alt: 'A boardroom set with a long conference table, office chairs and a whiteboard',
-    caption: 'Room rental fees waived for registered student organizations.',
+    caption:
+      'Room rental fees are waived for registered student organizations.',
   },
 ];
 
