@@ -172,6 +172,38 @@ export const getEventMonthKey = (event: CampusGroupsEvent): string =>
     'numeric',
   )}`;
 
+export type EventMonth = {
+  /** The `getEventMonthKey` every event in the group shares. */
+  monthKey: string;
+  events: CampusGroupsEvent[];
+};
+
+/**
+ * Splits `events` into calendar months, ordered by where each month first
+ * appears, each keeping its events in the order given.
+ *
+ * The one grouping both the month headings and the month navigation read,
+ * so a link can never point at a section that was grouped differently.
+ * Keyed on year as well as month for the same reason as `getEventMonthKey`:
+ * grouping on the month name alone would fold one October into the next.
+ */
+export const groupEventsByMonth = (
+  events: CampusGroupsEvent[],
+): EventMonth[] => {
+  const monthsByKey = new Map<string, EventMonth>();
+  events.forEach((event) => {
+    const monthKey = getEventMonthKey(event);
+    const month = monthsByKey.get(monthKey);
+    if (month) month.events.push(event);
+    else monthsByKey.set(monthKey, { monthKey, events: [event] });
+  });
+  return Array.from(monthsByKey.values());
+};
+
+/** The element id a month's section carries, for in-page links to it. */
+export const getEventMonthAnchorId = (monthKey: string): string =>
+  `events-${monthKey}`;
+
 /**
  * Maps each distinct month in `events` to an accent color, handing them out
  * from `accentColors` in order and wrapping when the list runs out.

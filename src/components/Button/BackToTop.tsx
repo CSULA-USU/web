@@ -49,14 +49,21 @@ const scrollToTop = () => {
   document.body.scrollTop = 0; // Safari
   document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera and others
 
-  // programatically move focus to the top of the page so keyboard users
-  // aren't stranded on the fixed button after the scroll
-  const topElement =
+  // Move focus to the top of the page so keyboard users aren't stranded on
+  // the fixed button after the scroll. The logo is a link and already
+  // focusable, so it must not get tabindex="-1": that pulls it out of the
+  // tab order for good, and the home link could no longer be tabbed to
+  // until the page reloaded. Only <body>, the fallback, needs it to take
+  // focus at all. preventScroll keeps focus from fighting the scroll above.
+  const logoLink =
     document.getElementById('nav-logo-desktop') ||
-    document.getElementById('nav-logo-mobile') ||
-    document.body;
-  topElement.setAttribute('tabindex', '-1');
-  topElement.focus();
+    document.getElementById('nav-logo-mobile');
+  if (logoLink) {
+    logoLink.focus({ preventScroll: true });
+    return;
+  }
+  document.body.setAttribute('tabindex', '-1');
+  document.body.focus({ preventScroll: true });
 };
 
 export const BackToTop = () => {

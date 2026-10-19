@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Colors, FontSizes, Shadows, Spaces, media } from 'theme';
+import { Colors, FontSizes, Radii, Shadows, Spaces, media } from 'theme';
 import { Typography } from '../Typography';
 import { Button } from '../Button';
 
@@ -32,6 +32,15 @@ interface AnchorNavProps {
    * Defaults to FluidContainer's own max-width, so a page that has not
    * narrowed its sections gets an aligned bar without passing anything. */
   contentMaxWidth?: string;
+  /**
+   * Starts transparent and floats over a hero, turning opaque once the page
+   * scrolls. Turn it off for a bar that begins partway down a light page:
+   * it then takes its own height in the flow, rests transparent with its
+   * links drawn as outlined chips — the hero state's white labels would
+   * vanish on a light ground — and switches to the opaque bar of plain
+   * labels only once it pins to the top.
+   */
+  floatsOverHero?: boolean;
 }
 
 interface ToneColors {
@@ -94,6 +103,19 @@ const INDICATOR_THICKNESS = 4;
    swallow a whole label. */
 const SCROLL_HINT_FADE = 28;
 
+/* Horizontal padding inside each link, shared with the in-flow bar's gutter
+   so the label text, not the link's box, lines up with the content edge. */
+const LINK_PADDING_X = 6;
+
+/* A resting in-flow link's horizontal padding as a chip — the filter chips'
+   own 16px, less the 1px border. */
+const CHIP_PADDING_X = 15;
+
+/* FluidContainer's default horizontal padding at each breakpoint — wide, then
+   at media('desktop') and media('mobile'). An in-flow bar matches it so its
+   labels align with the content below; change one, change the other. */
+const CONTENT_GUTTER = { wide: 72, desktop: 36, mobile: 16 };
+
 /* Breathing room left either side of the current item when the narrow-screen
    row scrolls it back into view, so it reads as part of a row rather than
    jammed against the edge. */
@@ -111,11 +133,14 @@ const CHROME_FADE = '180ms ease';
  * the bar itself: a sticky element still occupies its own height in flow, so
  * putting it here is what buys the overlap without measuring anything or
  * shifting the page once JS arrives.
+ *
+ * A bar that does not float over a hero takes its own height instead, so it
+ * pushes the content down rather than covering the first heading below it.
  */
-const StickyHost = styled.div`
+const StickyHost = styled.div<{ $floatsOverHero: boolean }>`
   position: sticky;
   top: 0;
-  height: 0;
+  height: ${(p) => (p.$floatsOverHero ? '0' : 'auto')};
   z-index: 50;
 `;
 
@@ -129,12 +154,37 @@ const StickyHost = styled.div`
    Both are tied to $opaque. Unconditional, the shadow would smear across the
    hero photograph before the reader has scrolled at all — and the bar's whole
    transparent state exists so the hero shows through it. */
-const Bar = styled.nav<{ $opaque: boolean; $tone: NavTone }>`
+const Bar = styled.nav<{
+  $opaque: boolean;
+  $tone: NavTone;
+  $floatsOverHero: boolean;
+}>`
   padding: ${Spaces.md} clamp(20px, 4vw, 36px);
 
   ${media('tablet')(`
     padding: 10px 0 10px 16px;
   `)}
+
+  /* In flow, the bar sits directly above page content rather than over a
+     hero, so its labels line up with that content's left edge: the gutter
+     steps with FluidContainer's own default padding, less each link's own
+     horizontal padding so the text, not the hit area, meets the edge. */
+  ${(p) =>
+    !p.$floatsOverHero &&
+    `
+      padding-left: ${CONTENT_GUTTER.wide - LINK_PADDING_X}px;
+      padding-right: ${CONTENT_GUTTER.wide - LINK_PADDING_X}px;
+      ${media('desktop')(`
+        padding-left: ${CONTENT_GUTTER.desktop - LINK_PADDING_X}px;
+        padding-right: ${CONTENT_GUTTER.desktop - LINK_PADDING_X}px;
+      `)}
+      ${media('tablet')(`
+        padding-right: 0;
+      `)}
+      ${media('mobile')(`
+        padding-left: ${CONTENT_GUTTER.mobile - LINK_PADDING_X}px;
+      `)}
+    `}
   background-color: ${(p) =>
     p.$opaque
       ? tones[p.$tone].scrolledBackground
@@ -148,13 +198,18 @@ const Bar = styled.nav<{ $opaque: boolean; $tone: NavTone }>`
     box-shadow ${CHROME_FADE};
 `;
 
-const BarInner = styled.div<{ $maxWidth: string }>`
+/* In flow, widened by the links' own padding on each side, so on a screen
+   wide enough to hit the cap the first label still meets the content edge. */
+const BarInner = styled.div<{ $maxWidth: string; $floatsOverHero: boolean }>`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: ${Spaces.md};
   width: 100%;
-  max-width: ${(p) => p.$maxWidth};
+  max-width: ${(p) =>
+    p.$floatsOverHero
+      ? p.$maxWidth
+      : `calc(${p.$maxWidth} + ${LINK_PADDING_X * 2}px)`};
   margin: 0 auto;
 
   ${media('tablet')(`
@@ -163,13 +218,17 @@ const BarInner = styled.div<{ $maxWidth: string }>`
   `)}
 `;
 
-const Links = styled.div`
+/* As chips, the links close up to the chip groups' own gap, and the row
+   steps in by the text links' padding so the first chip's outline, rather
+   than its label, meets the content edge — as the filter chips above it do. */
+const Links = styled.div<{ $asChips: boolean }>`
   position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: ${Spaces.md} ${Spaces.lg};
+  gap: ${(p) => (p.$asChips ? Spaces.sm : `${Spaces.md} ${Spaces.lg}`)};
   margin-right: auto;
+  margin-left: ${(p) => (p.$asChips ? `${LINK_PADDING_X}px` : '0')};
 
   /* An auto x-overflow forces overflow-y to auto too, which would clip the
      indicator drawn on each item's bottom edge and offer a vertical scrollbar
@@ -241,10 +300,15 @@ const Indicator = styled.span<{
    the CTA sit on. The bottom half still does the job of separating the label
    from the indicator, which is drawn on this box's bottom edge — without it
    the rule would sit against the descenders. */
-const AnchorLinkItem = styled(Link)<{ $opaque: boolean; $tone: NavTone }>`
+const AnchorLinkItem = styled(Link)<{
+  $opaque: boolean;
+  $tone: NavTone;
+  $asChip: boolean;
+  $floatsOverHero: boolean;
+}>`
   position: relative;
   z-index: 1;
-  padding: 8px 6px;
+  padding: 8px ${LINK_PADDING_X}px;
   font-size: ${FontSizes.xs};
   line-height: ${FontSizes.md};
   font-weight: 600;
@@ -262,6 +326,47 @@ const AnchorLinkItem = styled(Link)<{ $opaque: boolean; $tone: NavTone }>`
         p.$opaque ? tones[p.$tone].scrolledHover : tones[p.$tone].restHover
       ]};
   }
+
+  /* Outlined like a filter chip, so links resting on the page read as
+     things to press rather than as a line of text. Hover fills primary under
+     black text, per the house rule; the fill is gated to real pointers, where
+     a tapped chip would otherwise stay yellow. 7px vertical padding plus the
+     1px border keeps the chip exactly as tall as the 8px-padded text link it
+     turns into, so the bar does not change height as it sticks — in flow,
+     that would shove the page under it and could flip the bar straight back. */
+  ${(p) =>
+    p.$asChip &&
+    `
+      padding: 7px ${CHIP_PADDING_X}px;
+      border: 1px solid ${Colors.greyLighter};
+      border-radius: ${Radii.pill};
+      background-color: ${Colors.white};
+      color: ${Colors.black};
+      transition: color ${CHROME_FADE}, background-color ${CHROME_FADE},
+        border-color ${CHROME_FADE};
+
+      &:hover {
+        color: ${Colors.black};
+      }
+      @media (hover: hover) {
+        &:hover {
+          background-color: ${Colors.primary};
+          border-color: ${Colors.primary};
+        }
+      }
+    `}
+
+  /* The same 44px touch target the filter chips get, in both states so the
+     bar's height still does not change as it sticks. */
+  ${(p) =>
+    !p.$floatsOverHero &&
+    `
+      @media (pointer: coarse) {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
+    `}
 `;
 
 /* A real button rather than a styled link: the destination is the top of the
@@ -320,8 +425,16 @@ export const AnchorNav = ({
   ctaHref,
   contentMaxWidth = '1440px',
   tone = 'light',
+  floatsOverHero = true,
 }: AnchorNavProps) => {
-  const [isOpaque, setIsOpaque] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [isStuck, setIsStuck] = useState(false);
+  /* Over a hero the bar turns opaque once the page moves. In flow it has
+     nothing behind it worth seeing through until it pins to the top, so it
+     waits for that — and until then its links rest as chips. */
+  const isOpaque = floatsOverHero ? hasScrolled : isStuck;
+  const showsChips = !floatsOverHero && !isStuck;
+  const hostRef = useRef<HTMLDivElement | null>(null);
   const [activeHref, setActiveHref] = useState<string | null>(null);
   const [indicator, setIndicator] = useState<{
     x: number;
@@ -372,7 +485,14 @@ export const AnchorNav = ({
 
     const read = () => {
       frame = 0;
-      setIsOpaque(window.scrollY > OPAQUE_AFTER);
+      setHasScrolled(window.scrollY > OPAQUE_AFTER);
+      /* Pinned once its host reaches the top edge; a pixel of slack covers
+         the fractional offsets zoomed or high-DPI layouts report. It stays
+         pinned-looking after the list ends and the bar scrolls away with
+         it, which is the right look for something leaving under the page. */
+      if (hostRef.current) {
+        setIsStuck(hostRef.current.getBoundingClientRect().top <= 1);
+      }
 
       /* The current section is the last one whose top has passed under the
          bar. Walking the list in order means overlapping or nested targets
@@ -483,9 +603,14 @@ export const AnchorNav = ({
   }, [indicator, hasSettled]);
 
   return (
-    <StickyHost>
-      <Bar aria-label="On this page" $opaque={isOpaque} $tone={tone}>
-        <BarInner $maxWidth={contentMaxWidth}>
+    <StickyHost ref={hostRef} $floatsOverHero={floatsOverHero}>
+      <Bar
+        aria-label="On this page"
+        $opaque={isOpaque}
+        $tone={tone}
+        $floatsOverHero={floatsOverHero}
+      >
+        <BarInner $maxWidth={contentMaxWidth} $floatsOverHero={floatsOverHero}>
           {title && (
             <TitleButton
               type="button"
@@ -505,7 +630,7 @@ export const AnchorNav = ({
               </Typography>
             </TitleButton>
           )}
-          <Links ref={linksRef}>
+          <Links ref={linksRef} $asChips={showsChips}>
             <Indicator
               aria-hidden="true"
               $x={indicator?.x ?? 0}
@@ -524,6 +649,8 @@ export const AnchorNav = ({
                 }}
                 $opaque={isOpaque}
                 $tone={tone}
+                $asChip={showsChips}
+                $floatsOverHero={floatsOverHero}
                 aria-current={activeHref === link.href ? 'location' : undefined}
               >
                 {link.label}

@@ -15,6 +15,7 @@ export * from './Divider';
 export * from './Expandable';
 export * from './Eyebrow';
 export * from './FacilityCard';
+export * from './FilterChip';
 export * from './FluidContainer';
 export * from './GridGallery';
 export * from './Icon';
