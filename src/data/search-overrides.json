@@ -1,22 +1,8 @@
 [
   {
-    "title": "U-SU Graffix",
-    "url": "/graffix",
-    "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions.",
-    "tags": [
-      "art",
-      "graffix",
-      "graphics",
-      "events",
-      "campaign",
-      "promo",
-      "promotion",
-      "print",
-      "acui",
-      "design",
-      "designer",
-      "social media"
-    ]
+    "url": "/",
+    "title": "Home",
+    "tags": ["home", "homepage"]
   },
   {
     "title": "About The U-SU",
@@ -35,27 +21,24 @@
     ]
   },
   {
-    "title": "Board of Directors Meeting Schedule",
-    "url": "/board-of-directors/meeting-schedule",
-    "description": "Stay informed by being a part of the University-Student Union's governance process. Access the meeting schedule to keep track of upcoming board meetings and participate in shaping the future of the U-SU.",
+    "title": "U–SU Brand Guidelines",
+    "url": "/about/brand",
+    "description": "Logos, colors, typography, and brand voice for the University-Student Union at Cal State LA. Official guide for consistent and accessible communications.",
     "tags": [
-      "meeting",
-      "schedule",
-      "board of directors",
-      "governance",
-      "calendar",
-      "archives",
-      "bod",
-      "asi",
-      "monthly",
-      "board meetings"
+      "U-SU brand",
+      "brand guidelines",
+      "logo",
+      "logos",
+      "color palette",
+      "colors",
+      "typography",
+      "fonts",
+      "brand voice",
+      "messaging",
+      "social media",
+      "identity",
+      "design"
     ]
-  },
-  {
-    "title": "Contact Us",
-    "url": "/contact",
-    "description": "University-Student Union, 5154 State University Dr, Los Angeles CA, 90032",
-    "tags": ["contact", "address", "phone numbers", "zip code", "street"]
   },
   {
     "title": "Services",
@@ -70,19 +53,6 @@
       "diaper changing",
       "gender-inclusive",
       "restrooms"
-    ]
-  },
-  {
-    "title": "Staff",
-    "url": "/staff",
-    "description": "Meet the staff of the U-SU.",
-    "tags": [
-      "staff",
-      "directors",
-      "administation",
-      "coordinators",
-      "technician",
-      "assistant"
     ]
   },
   {
@@ -105,19 +75,103 @@
     ]
   },
   {
-    "title": "Departments",
-    "url": "/departments",
-    "description": "Visit the departments of the U-SU: CCC, CSI, Graffix, Operations, and Recreation.",
+    "title": "U-Krew",
+    "url": "/about/u-krew",
+    "description": "The dedicated team of student staff who keep the University–Student Union at Cal State LA running.",
+    "tags": ["u-krew", "student", "student stories", "u-awards", "directory"],
+    "aliases": ["ukrew"]
+  },
+  {
+    "url": "/about/u-krew/awards",
+    "tags": ["u-awards", "awards", "student staff", "employee recognition"]
+  },
+  {
+    "title": "Board of Directors",
+    "url": "/board-of-directors",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
     "tags": [
-      "departments",
-      "center for student involvement",
-      "csi",
-      "cross cultural centers",
-      "ccc",
-      "graffix",
-      "operations",
-      "recreation",
-      "reservation"
+      "governance",
+      "board of directors",
+      "vote",
+      "public documents",
+      "committees",
+      "student leader",
+      "elections",
+      "sle"
+    ],
+    "aliases": ["bod"]
+  },
+  {
+    "title": "How to Vote",
+    "url": "/board-of-directors/how-to-vote",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": ["vote", "board of directors", "governance", "elections"]
+  },
+  {
+    "title": "Board of Directors Meeting Schedule",
+    "url": "/board-of-directors/meeting-schedule",
+    "description": "Stay informed by being a part of the University-Student Union's governance process. Access the meeting schedule to keep track of upcoming board meetings and participate in shaping the future of the U-SU.",
+    "tags": [
+      "meeting",
+      "schedule",
+      "board of directors",
+      "governance",
+      "calendar",
+      "archives",
+      "bod",
+      "asi",
+      "monthly",
+      "board meetings"
+    ]
+  },
+  {
+    "title": "Public Document Archives",
+    "url": "/board-of-directors/public-document-archives",
+    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
+    "tags": [
+      "archives",
+      "agenda",
+      "minutes",
+      "board meeting",
+      "governance",
+      "public documents"
+    ]
+  },
+  {
+    "title": "Public Documents",
+    "url": "/board-of-directors/public-documents",
+    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
+    "tags": [
+      "public documents",
+      "financial statements",
+      "bylaws",
+      "conflict of interest",
+      "policy",
+      "tax exemption",
+      "irs determination",
+      "annual registration renewal",
+      "articles of incorporation",
+      "auxiliary operating agreement",
+      "code of procedures",
+      "form 990",
+      "199",
+      "governance"
+    ]
+  },
+  {
+    "title": "Meet the Board",
+    "url": "/board-of-directors/roster",
+    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
+    "tags": [
+      "board members",
+      "student representatives",
+      "director",
+      "dean",
+      "faculty",
+      "alumni",
+      "advisor",
+      "governance",
+      "roster"
     ]
   },
   {
@@ -153,7 +207,8 @@
       "cultural graduates",
       "ccc",
       "cross cultural centers",
-      "desi"
+      "desi",
+      "asian"
     ]
   },
   {
@@ -166,7 +221,10 @@
       "ccc",
       "cross cultural centers",
       "cultural graduates",
-      "nuestra"
+      "nuestra",
+      "latino",
+      "latina",
+      "mexican"
     ]
   },
   {
@@ -213,6 +271,20 @@
     ]
   },
   {
+    "title": "Native Grad",
+    "url": "/ccc/cultural-grads/native",
+    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
+    "tags": [
+      "ccc",
+      "cultural graduates",
+      "native",
+      "grads",
+      "tribe",
+      "graduation celebration",
+      "american indian"
+    ]
+  },
+  {
     "title": "Nuestra Grad",
     "url": "/ccc/cultural-grads/nuestra",
     "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
@@ -246,20 +318,6 @@
     ]
   },
   {
-    "title": "Native Grad",
-    "url": "/ccc/cultural-grads/native",
-    "description": "These ceremonies and celebrations are great opportunities to acknowledge your academic achievements, honor your families, communities, and other significant people in your lives, and to celebrate the cultural influences that have contributed to your academic success.",
-    "tags": [
-      "ccc",
-      "cultural graduates",
-      "native",
-      "grads",
-      "tribe",
-      "graduation celebration",
-      "american indian"
-    ]
-  },
-  {
     "title": "Gender and Sexuality Resource Center",
     "url": "/ccc/gsrc",
     "description": "The Gender and Sexuality Resource Center at Cal State LA is dedicated to creating safe and respectful learning spaces, catering specifically to the empowerment of all individuals across the gender and sexuality spectrum.",
@@ -273,7 +331,9 @@
       "trans",
       "queer",
       "women",
-      "sex"
+      "sex",
+      "lesbian",
+      "bisexual"
     ]
   },
   {
@@ -281,6 +341,12 @@
     "url": "/ccc/pasrc",
     "description": "The PASRC provides services and support for students who identify as, or are interested in, Pan African community and cultural issues. The PASRC also develops long and short term programs and events focusing on issues of importance to the Pan African community.",
     "tags": ["pasrc", "black", "ccc", "cultural graduates"]
+  },
+  {
+    "title": "Contact Us",
+    "url": "/contact",
+    "description": "University-Student Union, 5154 State University Dr, Los Angeles CA, 90032",
+    "tags": ["contact", "address", "phone numbers", "zip code", "street"]
   },
   {
     "title": "Center for Student Involvement",
@@ -326,13 +392,25 @@
       "chapters",
       "co-ed",
       "rush"
-    ]
+    ],
+    "aliases": ["greek life"]
   },
   {
     "title": "Golden Eagle Event Krew (GEEK)",
     "url": "/csi/geek",
     "description": "Golden Eagle Event Krew (GEEK) is an opportunity for Cal State LA students to get involved behind the scenes, helping with event programming and/or marketing for Center for Student Involvement events.",
     "tags": ["csi", "geek", "golden eagle event krew", "volunteer", "events"]
+  },
+  {
+    "url": "/csi/student-organization-awards",
+    "tags": [
+      "golden eagle awards",
+      "awards",
+      "student organizations",
+      "leaders",
+      "advisors",
+      "nominate"
+    ]
   },
   {
     "title": "Recognized Student Organizations",
@@ -350,132 +428,32 @@
     ]
   },
   {
-    "title": "Graffix ACUI Awards",
-    "url": "/graffix/acui-awards",
-    "description": "Steal This Idea is the ACUI's marketing and graphics competition to recognize the year's best promotional ideas throughout the regions and presents them at the conference. The winning entries are selected based on concept, design, editorial content, and effectiveness.",
-    "tags": ["graffix", "acui awards", "graphic design", "art", "designer"]
-  },
-  {
-    "title": "Operations and Reservations",
-    "url": "/operations",
-    "description": "The Operations and Reservations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.",
+    "title": "Wingspan",
+    "url": "/csi/wingspan",
+    "description": "The University-Student Union Center for Student Involvement at Cal State LA Wingspan Leadership Program",
     "tags": [
-      "operations",
-      "building maintenance",
-      "custodial services",
-      "media",
-      "union meeting",
-      "events",
-      "reservation",
-      "reserve",
-      "rooms"
+      "wingspan",
+      "leadership program",
+      "student leadership development",
+      "leadership conference",
+      "public speaking workshops",
+      "social change model"
     ]
   },
   {
-    "title": "Meeting Rooms",
-    "url": "/operations/meeting-rooms",
-    "description": "Rent out a meeting space at CSULA U-SU. Current locations available to book are Los Angeles A/B/C (ABC), Theater, Alhambra, San Gabriel, U-SU Plaza rooms.",
-    "tags": ["operations", "meeting rooms", "boardroom"]
-  },
-  {
-    "title": "Recreation",
-    "url": "/recreation",
-    "description": "Recreation is comprised of the Recreation Fitness Center Center and Recreation Esports. The Recreation Fitness Center is located on the basement level of the U-SU, and will be open to all students, staff and faculty.",
-    "tags": ["recreation", "fitness center", "esports", "gene", "basement", ""]
-  },
-  {
-    "title": "Golden Eagle Nutrition Education (GENE)",
-    "url": "/recreation/gene",
-    "description": "Welcome to the Golden Eagle Nutrition Education (GENE) program! Here, you can sign up for personalized nutrition education sessions provided by our Cal State LA Nutritional Science students.",
+    "title": "Departments",
+    "url": "/departments",
+    "description": "Visit the departments of the U-SU: CCC, CSI, Graffix, Operations, and Recreation.",
     "tags": [
-      "recreation",
-      "gene",
-      "nutrition education",
-      "coach",
-      "fitness center"
-    ]
-  },
-  {
-    "title": "Board of Directors",
-    "url": "/board-of-directors",
-    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
-    "tags": [
-      "governance",
-      "board of directors",
-      "vote",
-      "public documents",
-      "committees",
-      "student leader",
-      "elections",
-      "bod",
-      "sle"
-    ]
-  },
-  {
-    "title": "How to Vote",
-    "url": "/board-of-directors/how-to-vote",
-    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
-    "tags": ["vote", "board of directors", "governance", "elections"]
-  },
-  {
-    "title": "Meet the Board",
-    "url": "/board-of-directors/meet-the-board",
-    "description": "The University-Student Union's Board of Directors is the governing board of the Union. The purpose of the Board is to establish policy for the Union as a student body center for the benefit of students, faculty, staff and alumni at Cal State Los Angeles.",
-    "tags": [
-      "board members",
-      "student representatives",
-      "director",
-      "dean",
-      "faculty",
-      "alumni",
-      "advisor",
-      "governance",
-      "roster"
-    ]
-  },
-  {
-    "title": "Public Documents",
-    "url": "/board-of-directors/public-documents",
-    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
-    "tags": [
-      "public documents",
-      "financial statements",
-      "bylaws",
-      "conflict of interest",
-      "policy",
-      "tax exemption",
-      "irs determination",
-      "annual registration renewal",
-      "articles of incorporation",
-      "auxiliary operating agreement",
-      "code of procedures",
-      "form 990",
-      "199",
-      "governance"
-    ]
-  },
-  {
-    "title": "Public Document Archives",
-    "url": "/board-of-directors/public-document-archives",
-    "description": "As a tax-exempt organization, the University-Student Union (U-SU) must make the appropriate organizational documents available for inspection online or for copying at the organization's main office during normal business hours.",
-    "tags": [
-      "archives",
-      "agenda",
-      "minutes",
-      "board meeting",
-      "governance",
-      "public documents"
-    ]
-  },
-  {
-    "title": "Events",
-    "url": "/events",
-    "description": "The University-Student Union hosts various events throughout the school year. Make sure to check back here to stay up to date with the latest events.",
-    "tags": [
-      "events",
-      "calendar",
+      "departments",
+      "center for student involvement",
       "csi",
-      "center for student involvement, ccc, programs, recreation"
+      "cross cultural centers",
+      "ccc",
+      "graffix",
+      "operations",
+      "recreation",
+      "reservation"
     ]
   },
   {
@@ -495,31 +473,56 @@
     ]
   },
   {
-    "title": "Wingspan",
-    "url": "/csi/wingspan",
-    "description": "The University-Student Union Center for Student Involvement at Cal State LA Wingspan Leadership Program",
+    "title": "Events",
+    "url": "/events",
+    "description": "The University-Student Union hosts various events throughout the school year. Make sure to check back here to stay up to date with the latest events.",
     "tags": [
-      "wingspan",
-      "leadership program",
-      "student leadership development",
-      "leadership conference",
-      "public speaking workshops",
-      "social change model"
+      "events",
+      "calendar",
+      "csi",
+      "center for student involvement, ccc, programs, recreation"
     ]
   },
   {
-    "title": "U-Krew",
-    "url": "/about/u-krew",
-    "description": "The dedicated team of student staff who keep the University–Student Union at Cal State LA running.",
+    "title": "U-SU Graffix",
+    "url": "/graffix",
+    "description": "The U-SU Graffix Department is responsible for promoting events and programs coordinated by the U-SU Programming Units through print materials and the U-SU website. We establish and maintain an identity for the U-SU through consistent publicity campaigns and promotions.",
     "tags": [
-      "u-krew",
-      "jobs",
-      "positions",
-      "student",
-      "student stories",
-      "u-awards",
-      "directory"
+      "art",
+      "graffix",
+      "graphics",
+      "events",
+      "campaign",
+      "promo",
+      "promotion",
+      "print",
+      "acui",
+      "design",
+      "designer",
+      "social media"
     ]
+  },
+  {
+    "title": "Graffix ACUI Awards",
+    "url": "/graffix/acui-awards",
+    "description": "Steal This Idea is the ACUI's marketing and graphics competition to recognize the year's best promotional ideas throughout the regions and presents them at the conference. The winning entries are selected based on concept, design, editorial content, and effectiveness.",
+    "tags": ["graffix", "acui awards", "graphic design", "art", "designer"]
+  },
+  {
+    "url": "/graffix/request",
+    "tags": [
+      "graphics request",
+      "design request",
+      "poster",
+      "banner",
+      "social media",
+      "marketing",
+      "promotion"
+    ]
+  },
+  {
+    "url": "/graffix/web-team",
+    "tags": ["web team", "website", "developers", "designers", "tech"]
   },
   {
     "title": "Accessibility",
@@ -546,23 +549,98 @@
     ]
   },
   {
-    "title": "U–SU Brand Guidelines",
-    "url": "/about/brand",
-    "description": "Logos, colors, typography, and brand voice for the University-Student Union at Cal State LA. Official guide for consistent and accessible communications.",
+    "title": "Operations and Reservations",
+    "url": "/operations",
+    "description": "The Operations and Reservations Team consists of five divisions: building maintenance, building services, custodial services, media services, and union meeting and event services.",
     "tags": [
-      "U-SU brand",
-      "brand guidelines",
-      "logo",
-      "logos",
-      "color palette",
-      "colors",
-      "typography",
-      "fonts",
-      "brand voice",
-      "messaging",
-      "social media",
-      "identity",
-      "design"
+      "operations",
+      "building maintenance",
+      "custodial services",
+      "media",
+      "union meeting",
+      "events",
+      "reservation",
+      "reserve",
+      "rooms"
+    ]
+  },
+  {
+    "title": "Meeting Rooms",
+    "url": "/operations/meeting-rooms",
+    "description": "Rent out a meeting space at CSULA U-SU. Current locations available to book are Los Angeles A/B/C (ABC), Theater, Alhambra, San Gabriel, U-SU Plaza rooms.",
+    "tags": [
+      "operations",
+      "meeting rooms",
+      "boardroom",
+      "reservations",
+      "reserve a room",
+      "book a room",
+      "room rental",
+      "event space"
+    ]
+  },
+  {
+    "title": "Recreation",
+    "url": "/recreation",
+    "description": "Recreation is comprised of the Recreation Fitness Center Center and Recreation Esports. The Recreation Fitness Center is located on the basement level of the U-SU, and will be open to all students, staff and faculty.",
+    "tags": [
+      "recreation",
+      "fitness center",
+      "esports",
+      "gym",
+      "workout",
+      "exercise"
+    ],
+    "aliases": ["rec"]
+  },
+  {
+    "url": "/recreation/game-room",
+    "tags": [
+      "game room",
+      "gaming",
+      "video games",
+      "console",
+      "esports",
+      "pool",
+      "billiards",
+      "foosball",
+      "room 104"
+    ]
+  },
+  {
+    "title": "Golden Eagle Nutrition Education (GENE)",
+    "url": "/recreation/gene",
+    "description": "Welcome to the Golden Eagle Nutrition Education (GENE) program! Here, you can sign up for personalized nutrition education sessions provided by our Cal State LA Nutritional Science students.",
+    "tags": [
+      "recreation",
+      "gene",
+      "nutrition education",
+      "coach",
+      "fitness center"
+    ]
+  },
+  {
+    "url": "/recreation/membership",
+    "tags": [
+      "membership",
+      "gym",
+      "rec membership",
+      "rates",
+      "billing",
+      "student union fee"
+    ]
+  },
+  {
+    "title": "Staff",
+    "url": "/staff",
+    "description": "Meet the staff of the U-SU.",
+    "tags": [
+      "staff",
+      "directors",
+      "administation",
+      "coordinators",
+      "technician",
+      "assistant"
     ]
   },
   {

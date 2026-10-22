@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import { FaSearch } from 'react-icons/fa';
 import { FluidContainer, Image } from 'components';
 import { MobileNav } from './MobileNav';
 import { DesktopNav } from './DesktopNav';
-import { Search } from 'modules/Search';
+import { SearchButton } from 'modules/SiteSearch';
 import { useBreakpoint } from 'hooks';
 
 const LogoLink = styled(Link)`
@@ -21,10 +20,6 @@ const MobileIconsContainer = styled.div`
 const NavWrapper = styled.nav`
   filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
   z-index: 99;
-`;
-
-const SearchIconLink = styled(FaSearch)`
-  font-size: 33px;
 `;
 
 export const Nav = () => {
@@ -57,9 +52,9 @@ export const Nav = () => {
           </LogoLink>
 
           <MobileIconsContainer>
-            <Link href="/search" aria-label="Search">
-              <SearchIconLink />
-            </Link>
+            {/* Gold, not primary: this bar is white, and primary on white
+                is too faint to read as a hover. */}
+            <SearchButton size="33px" color="black" hoverColor="gold" />
             <MobileNav />
           </MobileIconsContainer>
         </FluidContainer>
@@ -81,7 +76,7 @@ export const Nav = () => {
           </LogoLink>
 
           <DesktopNav />
-          <Search />
+          <SearchButton />
         </FluidContainer>
       )}
     </NavWrapper>
