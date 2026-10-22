@@ -763,21 +763,23 @@ export const serviceComparisons: {
   },
 ].sort((a, b) => a.label.localeCompare(b.label, 'en'));
 
+const MOCKUP_BASE = `${SUPABASE_PAGES}/about/fee-increase/mockups`;
+
 /**
  * Spaces the U-SU has identified to add or convert if the increase passes.
  * Described only as far as they have been described to us — no square footage,
- * no cost, no opening date, and no feature nobody has confirmed. Alphabetical,
- * since no phasing order has been published to sequence them by.
+ * no cost, no opening date, and no feature nobody has confirmed.
  *
- * `renderingSrc` is the simulated rendering shown beside the list. Until a
- * space has one, its frame shows an awaiting marker rather than a stand-in
- * picture of somewhere else.
+ * Order: Nature Lounge first, deliberately — the first item is the rendering
+ * shown before anyone interacts, and the campaign lead picked it as the
+ * strongest. The rest stay alphabetical, since no phasing order has been
+ * published to sequence them by.
  *
- * `mobileRenderingSrc` is the portrait version phones get. Both fields hold the
- * same 375×500 portrait files for now, which are too small to stay sharp in
- * the desktop frame; when the landscape exports (about 1200×900) arrive, only
- * `renderingSrc` changes. The pub's file is landscape, so phones crop its
- * sides — accepted.
+ * `renderingSrc` is the 4:3 landscape rendering for the desktop frame, and
+ * `mobileRenderingSrc` the 3:4 portrait phones get — the two ratios
+ * `ImageCrossfade` is set to on the page, so neither is cropped. Until a space
+ * has one, its frame shows an awaiting marker rather than a stand-in picture
+ * of somewhere else.
  */
 export const proposedSpaces: {
   title: string;
@@ -788,40 +790,40 @@ export const proposedSpaces: {
   renderingFocalPoint?: CrossfadeFocalPoint;
 }[] = [
   {
+    title: 'Nature Lounge',
+    body: 'An outdoor lounge on the second floor, planned with greenery in mind.',
+    renderingSrc: `${MOCKUP_BASE}/nature-lounge-horizontal.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/nature-lounge-vertical.webp`,
+  },
+  {
     title: 'Downstairs Lounge',
     body: 'The lounge on the lower level, with better furniture and more room to sit, study and wait out a gap in your schedule.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/downstairs-lounge.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/downstairs-lounge.webp`,
+    renderingSrc: `${MOCKUP_BASE}/downstairs-lounge-horizontal.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/downstairs-lounge-vertical.webp`,
   },
   {
     title: 'Engagement Room',
     body: 'A room set up for productivity.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/engagement-room.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/engagement-room.webp`,
+    renderingSrc: `${MOCKUP_BASE}/engagement-room-horizontal.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/engagement-room-vertical.webp`,
   },
   {
     title: 'Lounge & Computer Resources',
     body: 'The Game Room’s old second-floor space, renovated into an expanded lounge with computer resources. The Game Room itself has already moved to a larger space on the first floor.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/lounge-and-computer-resources.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/lounge-and-computer-resources.webp`,
-  },
-  {
-    title: 'Nature Lounge',
-    body: 'An outdoor lounge on the second floor, planned with greenery in mind.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/nature-lounge.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/nature-lounge.webp`,
+    renderingSrc: `${MOCKUP_BASE}/lounge-and-computer-resources-horizontal.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/lounge-and-computer-resources-vertical.webp`,
   },
   {
     title: 'Pub',
     body: 'The current Sbarro space, converted into a pub.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/pub.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/pub.webp`,
+    renderingSrc: `${MOCKUP_BASE}/pub-horizontal.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/pub-vertical.webp`,
   },
   {
     title: 'Relaxation Room',
     body: 'A dedicated room for rest, with nap pods — findable, instead of tucked away on the third floor where they are now.',
-    renderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/relaxation-room.webp`,
-    mobileRenderingSrc: `https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/about/fee-increase/mockups/relaxation-room.webp`,
+    renderingSrc: `${MOCKUP_BASE}/relaxation-room-horizontal.jpg`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/relaxation-room-vertical.jpg`,
   },
 ];
 
