@@ -54,3 +54,7 @@ CLAUDE.local.md
 # Design-handoff photography and icons are byte-identical to files already in
 # public/ — referenced from there rather than duplicated into git history.
 docs/handoff/*/assets/
+
+# Search index — generated before every `dev` and `build` from src/pages and
+# src/data/search-overrides.json, so it cannot fall behind the pages.
+public/search-index.json
