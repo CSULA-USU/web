@@ -31,7 +31,7 @@ export * from './Nav';
 export * from './OfficeHours';
 export * from './Page';
 export * from './PageSections';
-export * from './Search';
+export * from './SiteSearch';
 export * from './UpcomingEvents';
 export * from './UKrewCardList';
 export * from './Backoffice';

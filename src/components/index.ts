@@ -42,7 +42,6 @@ export * from './RainbowText';
 export * from './ResponsiveImage';
 export * from './ScrollCue';
 export * from './ScrollingContent';
-export * from './SearchInput';
 export * from './SelectableOption';
 export * from './Select';
 export * from './SideImageHeader';
