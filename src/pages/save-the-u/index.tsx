@@ -1249,8 +1249,9 @@ export default function SaveTheU() {
                         lineHeight="1.6"
                         color="greyMid"
                       >
-                        These comparisons are projections based on staff
-                        estimates. None are final.
+                        Please note that these comparisons are projections based
+                        on staff estimates and existing trends. No figures are
+                        final.
                       </Typography>
                     </div>
                   </Panel>

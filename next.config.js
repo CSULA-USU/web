@@ -10,15 +10,18 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    // ✅ Keep your existing allowlist exactly as-is to avoid breaking anything.
-    // (You can tighten this later to reduce transformations further.)
-    domains: [
-      'calstatela-cdn.presence.io',
-      'www.jotform.com',
-      'i.imgur.com',
-      'media.giphy.com',
-      'www.dropbox.com',
-      'bubqscxokeycpuuoqphp.supabase.co',
+    // Hostname-only on purpose: an omitted protocol/port/pathname matches
+    // anything, which is exactly what the deprecated `domains` list allowed.
+    // Several of these URLs come from external data (Presence, JotForm), so
+    // check real URLs before adding `protocol` or `pathname` — a narrower
+    // pattern silently breaks any image that falls outside it.
+    remotePatterns: [
+      { hostname: 'calstatela-cdn.presence.io' },
+      { hostname: 'www.jotform.com' },
+      { hostname: 'i.imgur.com' },
+      { hostname: 'media.giphy.com' },
+      { hostname: 'www.dropbox.com' },
+      { hostname: 'bubqscxokeycpuuoqphp.supabase.co' },
     ],
 
     // ✅ Cost savers (Vercel’s recommendations):
