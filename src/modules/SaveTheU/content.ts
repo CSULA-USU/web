@@ -716,10 +716,11 @@ export const serviceComparisons: {
     label: 'Signature events',
     today: {
       body: 'Programmed and paid for out of the operating budget.',
-      marker: '[NEEDS FIGURE — events per year]',
+      marker:
+        '[NEEDS COPY, NUMBER FIGURE] Programmed and paid for out of the operating budget.',
     },
     ifItFails: {
-      body: 'Fewer of them, and a charge to take part in the costlier ones.',
+      body: 'Fewer events and most likely a charge to take part in the costlier ones.',
     },
   },
   {
@@ -734,8 +735,7 @@ export const serviceComparisons: {
   {
     label: 'Room reservations for student orgs',
     today: {
-      body: 'Meeting space reservable by registered student organizations.',
-      marker: '[NEEDS FIGURE — weekly club meetings]',
+      body: 'Free meeting spaces reservable by registered student organizations.',
     },
     ifItFails: {
       body: 'There will be a charge to reserve, likely discounted, from the posted ',
@@ -749,7 +749,7 @@ export const serviceComparisons: {
       body: '90–100 student positions, the largest student employer on campus.',
     },
     ifItFails: {
-      marker: '[NEEDS COPY — student positions on the current fee]',
+      body: 'Student employment is expected to drop down to the 70s by 2027.',
     },
   },
   {
