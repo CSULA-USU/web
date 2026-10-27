@@ -798,8 +798,8 @@ export const proposedSpaces: {
   {
     title: 'Downstairs Lounge',
     body: 'The lounge on the lower level, with better furniture and more room to sit, study and wait out a gap in your schedule.',
-    renderingSrc: `${MOCKUP_BASE}/downstairs-lounge-landscape.webp`,
-    mobileRenderingSrc: `${MOCKUP_BASE}/downstairs-lounge-portrait.webp`,
+    renderingSrc: `${MOCKUP_BASE}/downstairs-lounge-landscape-2.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/downstairs-lounge-portrait-2.webp`,
   },
   {
     title: 'Engagement Room',
@@ -822,8 +822,8 @@ export const proposedSpaces: {
   {
     title: 'Relaxation Room',
     body: 'A dedicated room for rest, with nap pods — findable, instead of tucked away on the third floor where they are now.',
-    renderingSrc: `${MOCKUP_BASE}/relaxation-room-landscape.webp`,
-    mobileRenderingSrc: `${MOCKUP_BASE}/relaxation-room-portrait.webp`,
+    renderingSrc: `${MOCKUP_BASE}/relaxation-room-landscape-2.webp`,
+    mobileRenderingSrc: `${MOCKUP_BASE}/relaxation-room-portrait-2.webp`,
   },
 ];
 
