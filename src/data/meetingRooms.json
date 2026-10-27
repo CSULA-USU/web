@@ -2,50 +2,50 @@
   {
     "title": "Alhambra Room",
     "id": "alhambra-room",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-2.webp",
     "mainImageAlt": "Inside of Alhambra Room",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/alhambra-header.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/classroom.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/classroom-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/classroom-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/classroom-2-expanded.webp",
         "capacity": [36],
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/theater.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/theater-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/theater-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/theater-2-expanded.webp",
         "capacity": [54],
         "equipment": ["Chairs"]
       },
       {
         "setup": "Reception Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/reception.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/reception-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/reception-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/reception-2-expanded.webp",
         "capacity": [30],
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle Layout",
         "capacity": [34],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/discussion-circle.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/discussion-circle-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/discussion-circle-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/discussion-circle-2-expanded.webp",
         "equipment": ["Chairs"]
       },
       {
         "setup": "Conference Layout",
         "capacity": [20],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/conference.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/conference-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/conference-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/conference-2-expanded.webp",
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet Layout",
         "capacity": [45],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-2-expanded.webp",
         "equipment": ["60\" Round Tables", "Chairs"]
       }
     ],
@@ -54,50 +54,50 @@
   {
     "title": "San Gabriel Room",
     "id": "san-gabriel-room",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/reception.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom-2.webp",
     "mainImageAlt": "Inside of San Gabriel Room",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/san-gabriel-header.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
         "capacity": [26],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom-2-expanded.webp",
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater Layout",
         "capacity": [65],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/theater.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/theater-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/theater-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/theater-2-expanded.webp",
         "equipment": ["Chairs"]
       },
       {
         "setup": "Reception Layout",
         "capacity": [36],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/reception.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/reception-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/reception-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/reception-2-expanded.webp",
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle Layout",
         "capacity": [34],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/discussion-circle.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/discussion-circle-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/discussion-circle-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/discussion-circle-2-expanded.webp",
         "equipment": ["Chairs"]
       },
       {
         "setup": "Conference Layout",
         "capacity": [20],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/conference.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/conference-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/conference-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/conference-2-expanded.webp",
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet Layout",
         "capacity": [45],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/banquet-2-expanded.webp",
         "equipment": ["60\" Round Tables", "Chairs"]
       }
     ],
@@ -106,50 +106,50 @@
   {
     "title": "Los Angeles Room",
     "id": "los-angeles-room",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-2.webp",
     "mainImageAlt": "Inside of Los Angeles Room",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/la-room-header.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
         "capacity": ["Room A: 30", "Room A + B: 60", "Room A + B + C: 90"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/classroom-2-expanded.webp",
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater Layout",
         "capacity": ["Room A: 70", "Room A + B: 130", "Room A + B + C: 200"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/theater-2-expanded.webp",
         "equipment": ["LA Chairs"]
       },
       {
         "setup": "Reception Layout",
         "capacity": ["Room A: 44", "Room A + B: 54", "Room A + B + C: 64"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/reception-2-expanded.webp",
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle Layout",
         "capacity": ["Room A: 30", "Room A + B: 45", "Room A + B + C: 60"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/discussion-circle-2-expanded.webp",
         "equipment": ["LA Chairs"]
       },
       {
         "setup": "Conference Layout",
         "capacity": ["Room A: 20", "Room A + B: 36", "Room A + B + C: 54"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/conference-2-expanded.webp",
         "equipment": ["6 x 30 Tables", "LA Chairs"]
       },
       {
         "setup": "Banquet Layout",
         "capacity": ["Room A: 50", "Room A + B: 110", "Room A + B + C: 170"],
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-2-expanded.webp",
         "equipment": ["60\" Round Tables", "LA Chairs"]
       }
     ],
@@ -158,14 +158,14 @@
   {
     "title": "Theater Room",
     "id": "theater-room",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2.webp",
     "mainImageAlt": "Inside of Theater Room",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/header.webp",
     "arrangements": [
       {
         "setup": "Theater Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2-expanded.webp",
         "capacity": ["192 + 8 (ADA)"],
         "equipment": ["Fixed Seating"]
       }
@@ -175,14 +175,14 @@
   {
     "title": "Boardroom North",
     "id": "boardroom-north",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room-2.webp",
     "mainImageAlt": "Inside of Boardroom North",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/header.webp",
     "arrangements": [
       {
         "setup": "Conference Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room-2-expanded.webp",
         "capacity": [20],
         "equipment": ["Large Conference Table", "Rolling Chairs"]
       }
@@ -192,49 +192,49 @@
   {
     "title": "Boardroom South",
     "id": "boardroom-south",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference.webp",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference-2.webp",
     "mainImageAlt": "Inside of Boardroom South",
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/header.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/classroom.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/classroom-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/classroom-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/classroom-2-expanded.webp",
         "capacity": [20],
         "equipment": ["6 x 18 Tables", "Chairs"]
       },
       {
         "setup": "Theater Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/theater.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/theater-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/theater-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/theater-2-expanded.webp",
         "capacity": [32],
         "equipment": ["Chairs"]
       },
       {
         "setup": "Reception Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/reception.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/reception-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/reception-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/reception-2-expanded.webp",
         "capacity": [32],
         "equipment": ["Chairs", "Cocktail Tables"]
       },
       {
         "setup": "Discussion Circle Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/discussion.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/discussion-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/discussion-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/discussion-2-expanded.webp",
         "capacity": [32],
         "equipment": ["Chairs"]
       },
       {
         "setup": "Conference Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference-2-expanded.webp",
         "capacity": [12],
         "equipment": ["6 x 30 Tables", "Chairs"]
       },
       {
         "setup": "Banquet Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/banquet.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/banquet-expanded.webp",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/banquet-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/banquet-2-expanded.webp",
         "capacity": [24],
         "equipment": ["60\" Round Tables", "Chairs"]
       }
