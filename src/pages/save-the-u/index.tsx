@@ -1605,11 +1605,12 @@ export default function SaveTheU() {
               />
             )}
             <Expandable
+              headingLevel={4}
               indicator={<BiPlus size={24} />}
               indicatorRotation="45deg"
               header={
                 <Typography
-                  as="h3"
+                  as="span"
                   variant="titleSmall"
                   size="lg"
                   weight="700"

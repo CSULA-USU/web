@@ -764,11 +764,12 @@ export default function Recreation() {
               />
             )}
             <Expandable
+              headingLevel={3}
               indicator={<BiPlus size={24} />}
               indicatorRotation="45deg"
               header={
                 <Typography
-                  as="h3"
+                  as="span"
                   variant="titleSmall"
                   size="md"
                   weight="700"
