@@ -596,7 +596,7 @@ export default function SaveTheU() {
             </Button>
             <Button
               variant="whiteOutline"
-              href="#cost"
+              href="#what-can-change"
               margin={`${Spaces.lg} 0 0`}
             >
               {campaignMode.heroSecondaryCta}
@@ -865,22 +865,20 @@ export default function SaveTheU() {
           </Typography>
         </TextAndImage>
 
-        {/* 7.1 · Fee math — the hero's secondary-CTA target */}
-        <div id="cost">
-          <AutoGrid minColumnWidth="240px">
-            {feeMath.map((column) => (
-              <CitedStat
-                key={column.heading}
-                variant="onLight"
-                eyebrow={column.heading}
-                value={column.value}
-                label={column.detail}
-                sourceId={column.citation}
-                accentColor={column.accentColor}
-              />
-            ))}
-          </AutoGrid>
-        </div>
+        {/* 7.1 · Fee math */}
+        <AutoGrid minColumnWidth="240px">
+          {feeMath.map((column) => (
+            <CitedStat
+              key={column.heading}
+              variant="onLight"
+              eyebrow={column.heading}
+              value={column.value}
+              label={column.detail}
+              sourceId={column.citation}
+              accentColor={column.accentColor}
+            />
+          ))}
+        </AutoGrid>
         <Divider
           color="transparent"
           size="1px"

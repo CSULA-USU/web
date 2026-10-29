@@ -32,7 +32,7 @@ export const campaignMode = {
   ctaLabel: 'See the Budget',
   ctaHref: '#numbers',
   heroPrimaryCta: 'See the Numbers',
-  heroSecondaryCta: 'What This Costs You',
+  heroSecondaryCta: 'What Can Change',
   actionVerb: 'shape',
   beforeHeading: 'Get informed',
   /* The closing strip. Informational mode asks for one thing the page cannot
