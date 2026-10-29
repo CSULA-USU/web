@@ -1310,11 +1310,14 @@ export default function SaveTheU() {
                     margin={`0 0 ${Spaces.xl}`}
                     style={{ maxWidth: MEASURE }}
                   >
-                    <PlaceholderMarker>
-                      [NEEDS COPY — what the renderings are (simulated, not
-                      final designs), and what passing pays for that has no
-                      picture, such as more events and more student hires]
-                    </PlaceholderMarker>
+                    As recent as 2022, the U-SU employed over 150 student
+                    workers. An increased fee would allow the U-SU to hire more
+                    students, hire more staff, expand services, organize more
+                    events, and improve the building for everyone. The following
+                    are a list of proposed spaces that the U-SU has identified
+                    an intention to add or convert if the fee passes. Please
+                    note that nothing has been finalized and that all plans are
+                    subject to change.
                   </Typography>
                   <AutoGrid minColumnWidth="320px">
                     <Panel
