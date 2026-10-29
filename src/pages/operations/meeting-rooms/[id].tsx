@@ -203,6 +203,14 @@ const NavItems = [
     header: 'Boardroom South',
     id: 'boardroom-south',
   },
+  {
+    header: 'Montebello',
+    id: 'montebello-room',
+  },
+  {
+    header: 'Pasadena',
+    id: 'pasadena-room',
+  },
 ];
 
 const VisuallyHiddenH1 = styled.h1`
