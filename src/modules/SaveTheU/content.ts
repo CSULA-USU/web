@@ -715,9 +715,7 @@ export const serviceComparisons: {
   {
     label: 'Signature events',
     today: {
-      body: 'Programmed and paid for out of the operating budget.',
-      marker:
-        '[NEEDS COPY, NUMBER FIGURE] Programmed and paid for out of the operating budget.',
+      body: '113 events programmed last year, free to students.',
     },
     ifItFails: {
       body: 'Fewer events and most likely a charge to take part in the costlier ones.',
@@ -997,7 +995,7 @@ export const facultyItems: {
     body: '90–100 student positions and 29 full-time staff. Many of your students are paid by this building.',
   },
   {
-    title: 'Space your department can reserve',
+    title: 'Spaces your department can reserve',
     body: '93,000 sq ft, opened in 2009: meeting rooms, event space and the ballroom, bookable through U-SU Operations.',
   },
   {
