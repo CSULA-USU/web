@@ -92,7 +92,7 @@ export default function About() {
         description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
       >
         <Button
-          href="https://www.dropbox.com/scl/fi/7qxwkmxrajc421i2wzs8w/Org-Chart_7.24.26-compressed.pdf?rlkey=j89gfk6uwc8plcq931yqy4yo5&st=mxnrf6qj&raw=1"
+          href="https://www.dropbox.com/scl/fi/fjslg226l9vep6ekaj3j4/Org-Chart_10.19.26.pdf?rlkey=lpn41lg46f42utu8cgbigwjra&st=chctm9y5&raw=1"
           isExternalLink
         >
           U&ndash;SU Organizational Chart
