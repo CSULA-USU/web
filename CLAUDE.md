@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the official website for the Cal State LA University-Student Union (U-SU) — a student-facing portal for programs, events, services, and campus resources. Built with Next.js 14 (Pages Router) and deployed on Vercel.
+This is the official website for the Cal State LA University-Student Union (U-SU) — a student-facing portal for programs, events, services, and campus resources. Built with Next.js 16 (Pages Router, webpack — see `next.config.js` before switching to Turbopack) and deployed on Vercel.
 
 ## Commands
 
@@ -12,7 +12,7 @@ This is the official website for the Cal State LA University-Student Union (U-SU
 yarn dev          # Dev server (Next.js + next-video sync)
 yarn build        # Production build (also generates sitemap)
 yarn start        # Production server
-yarn lint         # ESLint via next lint
+yarn lint         # ESLint CLI over src/ (Next 16 removed `next lint`)
 yarn ts-lint      # TypeScript type checking (incremental watch)
 yarn dev:sections # Dev server with section schema generation watching
 ```
@@ -133,7 +133,7 @@ Tabs and accordions are therefore perfectly good patterns — the defect is alwa
 
 ### Code Quality
 
-ESLint extends `next/core-web-vitals` + Prettier (single quotes, trailing commas). Husky + lint-staged enforce linting on pre-commit. TypeScript strict mode is on.
+ESLint 9 flat config (`eslint.config.mjs`) extends `eslint-config-next/core-web-vitals` + jsx-a11y + Prettier (single quotes, trailing commas). Husky + lint-staged enforce type checking, linting and formatting on pre-commit. TypeScript strict mode is on.
 
 #### Spelling
 
