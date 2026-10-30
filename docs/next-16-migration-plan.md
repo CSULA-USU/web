@@ -2,6 +2,21 @@
 
 Audit date: October 28, 2026. Status: suitable for a staged migration; not yet validated on Next.js 16.
 
+## Progress (October 30, 2026)
+
+Upgraded on `feat/upgrade-next16` to Next.js 16.4.3. Type check, lint (0 errors), 522 tests, a local `next build --webpack`, and a local `next start` smoke test pass. Preview validation against the acceptance matrix below is still open.
+
+Decisions that change the plan below:
+
+- **No 15.x checkpoint.** 15 left Maintenance LTS on October 21, 2026. If a regression needs bisecting, install 15.5.x locally; nothing ships on 15.
+- **Webpack for the first release.** Scripts pass `--webpack`; `next.config.js` records what switching to Turbopack involves.
+- **ESLint 9, not 10.** eslint-config-next bundles jsx-a11y, react and import plugins that do not yet declare ESLint 10 support. ESLint 9 reports as unsupported upstream; revisit when those plugins catch up.
+- **React Compiler lint rules warn.** eslint-plugin-react-hooks 7 enables five rules as errors that flag about 60 existing sites. They warn in `eslint.config.mjs` until refactored separately.
+- **`middleware.ts` stays** for this release (item 4 below moves to its own PR), since `proxy.ts` cannot run on Edge.
+- **Next 16 warns that React 18 support is deprecated** and ends in Next 17. Replacing Recoil, the blocker for React 19, now has a deadline.
+
+Still to verify on a preview: Azure sign-in end to end, and `www.dropbox.com` images, which redirect to a host outside `remotePatterns` and now face a 3-redirect limit.
+
 ## Recommendation
 
 Upgrade the framework while retaining Pages Router, React 18, styled-components 5, NextAuth 4, and Webpack for the first release. Treat React 19, replacing Recoil, Turbopack, and any App Router conversion as separate projects. The immediate benefit is a supported framework release; do not assume this upgrade alone improves visitor performance.
