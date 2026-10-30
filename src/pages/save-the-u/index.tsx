@@ -25,6 +25,7 @@ import {
   peerOutcomes,
   proposedSpaces,
   reserveCallouts,
+  sectionEyebrows,
   sampleTestimonials,
   serviceComparisons,
   services,
@@ -642,7 +643,7 @@ export default function SaveTheU() {
           imageAlign="center"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>{sectionEyebrows.why}</Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -828,7 +829,9 @@ export default function SaveTheU() {
           imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>
+            {sectionEyebrows.numbers}
+          </Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -1176,7 +1179,9 @@ export default function SaveTheU() {
           imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>
+            {sectionEyebrows.whatCanChange}
+          </Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -1228,7 +1233,7 @@ export default function SaveTheU() {
                         color="greyMid"
                         margin={`0 0 ${Spaces.md}`}
                       >
-                        Today, funded by the current fee
+                        Today funded by the current fee
                       </Typography>
                       {renderServiceRows('today')}
                       {/* Closes this column the way the deficit paragraph
@@ -1270,7 +1275,7 @@ export default function SaveTheU() {
                         color="primary"
                         margin={`0 0 ${Spaces.md}`}
                       >
-                        After FY 2030-31, on the current fee
+                        After FY 2030-31 on the current fee
                       </Typography>
                       {renderServiceRows('ifItFails', { onDark: true })}
                       <Divider
@@ -1405,7 +1410,7 @@ export default function SaveTheU() {
           margin={`0 0 ${Spaces.xl}`}
         >
           <Eyebrow margin={`0 0 ${Spaces.md}`}>
-            {campaignMode.beforeHeading}
+            {sectionEyebrows.beforeYouDecide}
           </Eyebrow>
           <Typography
             as="h2"
