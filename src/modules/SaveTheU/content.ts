@@ -9,6 +9,7 @@ import type {
 } from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';
+import { toHeadlineCase } from 'utils/stringhelpers';
 import {
   MdEvent,
   MdFitnessCenter,
@@ -56,7 +57,8 @@ export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
    two cannot drift apart again. The nav names a section by its eyebrow rather
    than its heading because the headings run too long for the bar; the eyebrow
    sits directly above the heading, so the reader still lands on the words they
-   clicked. */
+   clicked. Written in sentence case like every eyebrow on the page; the nav
+   derives its headline case from them rather than keeping a second copy. */
 export const sectionEyebrows = {
   why: 'Why it matters',
   numbers: 'The numbers',
@@ -65,10 +67,16 @@ export const sectionEyebrows = {
 };
 
 export const anchorLinks = [
-  { label: sectionEyebrows.why, href: '#why' },
-  { label: sectionEyebrows.numbers, href: '#numbers' },
-  { label: sectionEyebrows.whatCanChange, href: '#what-can-change' },
-  { label: sectionEyebrows.beforeYouDecide, href: '#before-you-decide' },
+  { label: toHeadlineCase(sectionEyebrows.why), href: '#why' },
+  { label: toHeadlineCase(sectionEyebrows.numbers), href: '#numbers' },
+  {
+    label: toHeadlineCase(sectionEyebrows.whatCanChange),
+    href: '#what-can-change',
+  },
+  {
+    label: toHeadlineCase(sectionEyebrows.beforeYouDecide),
+    href: '#before-you-decide',
+  },
 ];
 
 export const heroFigures = [
