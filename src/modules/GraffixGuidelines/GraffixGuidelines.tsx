@@ -28,9 +28,10 @@ export const GraffixGuidelines = () => {
       <GuidelineContainer>
         <FluidContainer>
           <Expandable
+            headingLevel={3}
             indicator={indicator}
             header={
-              <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              <Typography variant="label" as="span" margin={`${Spaces.sm} 0`}>
                 Design Guidelines
               </Typography>
             }
@@ -152,9 +153,10 @@ export const GraffixGuidelines = () => {
       <GuidelineContainer>
         <FluidContainer>
           <Expandable
+            headingLevel={3}
             indicator={indicator}
             header={
-              <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              <Typography variant="label" as="span" margin={`${Spaces.sm} 0`}>
                 Request Guidelines
               </Typography>
             }
@@ -216,9 +218,10 @@ export const GraffixGuidelines = () => {
       <GuidelineContainer>
         <FluidContainer>
           <Expandable
+            headingLevel={3}
             indicator={indicator}
             header={
-              <Typography variant="label" as="h3" margin={`${Spaces.sm} 0`}>
+              <Typography variant="label" as="span" margin={`${Spaces.sm} 0`}>
                 Submittal Requirements
               </Typography>
             }

@@ -14,6 +14,54 @@ export const toTitleCase = (str: string): string => {
     .join(' ');
 };
 
+/* Short articles, conjunctions and prepositions, which headline case leaves
+   lowercase unless they open or close the phrase. "Up" is left out on purpose:
+   in a label it is nearly always half of a verb, as in "Sign Up", and keeps
+   its capital. */
+const HEADLINE_MINOR_WORDS = new Set([
+  'a',
+  'an',
+  'and',
+  'as',
+  'at',
+  'but',
+  'by',
+  'for',
+  'from',
+  'in',
+  'into',
+  'nor',
+  'of',
+  'on',
+  'or',
+  'over',
+  'per',
+  'so',
+  'the',
+  'to',
+  'via',
+  'with',
+  'yet',
+]);
+
+/**
+ * Headline case for labels written in sentence case elsewhere: "What's at
+ * stake" becomes "What's at Stake". Separate from `toTitleCase` because that
+ * one formats people's names, where lowercasing "de" or "la" would be wrong.
+ */
+export const toHeadlineCase = (str: string): string => {
+  const words = str.split(' ');
+  return words
+    .map((word, index) => {
+      const isEdge = index === 0 || index === words.length - 1;
+      if (!isEdge && HEADLINE_MINOR_WORDS.has(word.toLowerCase())) {
+        return word.toLowerCase();
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+};
+
 /**
  * Splits a staff member's `department` into its individual departments.
  *

@@ -274,12 +274,13 @@ export default function StudentLeaderElections() {
           </Typography>
         </div>
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What is the role of a U-SU Board of Directors Member{' '}
@@ -313,12 +314,13 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What is the difference between the U-SU Board of Directors and
@@ -345,12 +347,13 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               Do you have what it takes to serve the U-SU Board of Directors?
@@ -378,12 +381,13 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What can you gain from serving on the U-SU Board of Directors?
@@ -411,12 +415,13 @@ export default function StudentLeaderElections() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               I have more questions about applying. Who do I contact?

@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Divider,
+  Expandable,
   FlatCard,
   FluidContainer,
   Panel,
@@ -67,11 +68,6 @@ const structuredData = {
   ],
 };
 
-export const DynamicExpandable = dynamic(
-  () => import('../../../components/Expandable').then((mod) => mod.Expandable),
-  { ssr: false },
-);
-
 const DynamicImageWithinCard = dynamic(
   () =>
     import('../../../modules/ImageWithinCard').then(
@@ -82,44 +78,33 @@ const DynamicImageWithinCard = dynamic(
 
 export default function CulturalGrads() {
   const { isMobile } = useBreakpoint();
-  const [showFAQ, setShowFAQ] = useState(false);
   const [showIncentives, setShowIncentives] = useState(false);
   const [showGraduations, setShowGraduations] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate the position of FAQ section relative to the viewport
-      const faqSection = document.getElementById('faq-section');
-      if (faqSection && !showFAQ) {
-        const rect = faqSection.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          setShowFAQ(true);
+      const incentivesSection = document.getElementById('incentives-section');
+      if (incentivesSection && !showIncentives) {
+        const incentivesRect = incentivesSection.getBoundingClientRect();
+        if (incentivesRect.top < window.innerHeight) {
+          setShowIncentives(true);
+        }
+      }
+
+      const graduationsSection = document.getElementById('graduations-section');
+      if (graduationsSection && !showGraduations) {
+        const incentivesRect = graduationsSection.getBoundingClientRect();
+        if (incentivesRect.top < window.innerHeight) {
+          setShowGraduations(true);
         }
       }
     };
 
-    const incentivesSection = document.getElementById('incentives-section');
-    if (incentivesSection && !showIncentives) {
-      const incentivesRect = incentivesSection.getBoundingClientRect();
-      if (incentivesRect.top < window.innerHeight) {
-        setShowIncentives(true);
-      }
-    }
-
-    const graduationsSection = document.getElementById('graduations-section');
-    if (graduationsSection && !showGraduations) {
-      const incentivesRect = graduationsSection.getBoundingClientRect();
-      if (incentivesRect.top < window.innerHeight) {
-        setShowGraduations(true);
-      }
-    }
-
-    // Attach scroll event listener
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up event listener on unmount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showIncentives, showFAQ, showGraduations]);
+  }, [showIncentives, showGraduations]);
 
   return (
     <Page>
@@ -308,57 +293,56 @@ export default function CulturalGrads() {
           color, ethnicity, or national origin
         </Typography>
       </FluidContainer>
+      {/* Rendered on the server and never scroll-gated like the sections
+          above: content that only enters the DOM on scroll is never indexed,
+          because crawlers do not scroll. */}
       <div id="faq-section">
-        {showFAQ && (
-          <FluidContainer backgroundColor="black">
-            <div>
-              <Typography
-                as="h2"
-                variant="title"
-                size={isMobile ? 'lg' : '2xl'}
-                color="primary"
-              >
-                Graduate Participation Information
-              </Typography>
-            </div>
-            {/* Render FAQ content */}
-            {/* Replace questions.map with your FAQ content */}
-            {/* Ensure to remove DynamicExpandable and use Expandable directly if you're not dynamically rendering */}
-            {questions.map((e, i) => (
-              <React.Fragment key={i}>
-                <DynamicExpandable
-                  indicator={<BiChevronRight color="white" size={48} />}
-                  header={
-                    <Typography
-                      variant="label"
-                      size={isMobile ? 'md' : 'lg'}
-                      color="white"
-                      as="h3"
-                      margin={`${Spaces.sm} 0`}
-                    >
-                      {e.question}
-                    </Typography>
-                  }
-                >
-                  <Typography color="white" as="p">
-                    {Array.isArray(e.answer) ? (
-                      <>
-                        <ul>
-                          {e.answer.map((e, answerKey) => (
-                            <li key={`answer-${answerKey}`}>{e}</li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <> {e.answer}</>
-                    )}
+        <FluidContainer backgroundColor="black">
+          <div>
+            <Typography
+              as="h2"
+              variant="title"
+              size={isMobile ? 'lg' : '2xl'}
+              color="primary"
+            >
+              Graduate Participation Information
+            </Typography>
+          </div>
+          {questions.map((e, i) => (
+            <React.Fragment key={i}>
+              <Expandable
+                headingLevel={3}
+                indicator={<BiChevronRight color="white" size={48} />}
+                header={
+                  <Typography
+                    variant="label"
+                    size={isMobile ? 'md' : 'lg'}
+                    color="white"
+                    as="span"
+                    margin={`${Spaces.sm} 0`}
+                  >
+                    {e.question}
                   </Typography>
-                </DynamicExpandable>
-                <Divider color="gold" />
-              </React.Fragment>
-            ))}
-          </FluidContainer>
-        )}
+                }
+              >
+                <Typography color="white" as="p">
+                  {Array.isArray(e.answer) ? (
+                    <>
+                      <ul>
+                        {e.answer.map((e, answerKey) => (
+                          <li key={`answer-${answerKey}`}>{e}</li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <> {e.answer}</>
+                  )}
+                </Typography>
+              </Expandable>
+              <Divider color="gold" />
+            </React.Fragment>
+          ))}
+        </FluidContainer>
       </div>
       <FooterExtension
         text="Consider a gift to the University-Student Union to help make our Cultural Graduation Celebrations a meaningful experience for students and their families. Thank you for your support!"
