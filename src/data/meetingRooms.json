@@ -4,7 +4,7 @@
     "id": "alhambra-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/banquet-2.webp",
     "mainImageAlt": "Inside of Alhambra Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/alhambra-header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/alhambra/alhambra-header-2.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
@@ -56,7 +56,7 @@
     "id": "boardroom-north",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/room-2.webp",
     "mainImageAlt": "Inside of Boardroom North",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/north/header-2.webp",
     "arrangements": [
       {
         "setup": "Conference Layout",
@@ -73,7 +73,7 @@
     "id": "boardroom-south",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/conference-2.webp",
     "mainImageAlt": "Inside of Boardroom South",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/boardroom/south/header-2.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
@@ -125,7 +125,7 @@
     "id": "san-gabriel-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/classroom-2.webp",
     "mainImageAlt": "Inside of San Gabriel Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/san-gabriel-header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/san-gabriel/san-gabriel-header-2.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
@@ -177,7 +177,7 @@
     "id": "montebello-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/montebello/classroom.webp",
     "mainImageAlt": "Inside of Montebello Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/montebello/montebello-header.png",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/montebello/montebello-header-2.webp",
     "arrangements": [
       {
         "setup": "Banquet Layout",
@@ -228,7 +228,7 @@
     "id": "pasadena-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/pasadena/discussion-circle.webp",
     "mainImageAlt": "Inside of Pasadena Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/pasadena/pasadena-header.png",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/pasadena/pasadena-header-2.webp",
     "arrangements": [
       {
         "setup": "Banquet Layout",
@@ -279,7 +279,7 @@
     "id": "los-angeles-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/banquet-2.webp",
     "mainImageAlt": "Inside of Los Angeles Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/la-room-header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/los-angeles/la-room-header-2.webp",
     "arrangements": [
       {
         "setup": "Classroom Layout",
@@ -331,7 +331,7 @@
     "id": "theater-room",
     "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2.webp",
     "mainImageAlt": "Inside of Theater Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/header.webp",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/header-2.webp",
     "arrangements": [
       {
         "setup": "Theater Layout",

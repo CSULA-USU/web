@@ -197,12 +197,13 @@ export default function Geek() {
         </Typography>
 
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What are the requirements that GEEKs must fulfill?
@@ -226,12 +227,13 @@ export default function Geek() {
         </Expandable>
         <Divider color="gold" />
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What is the GEEK dress code?
@@ -248,12 +250,13 @@ export default function Geek() {
         <Divider color="gold" />
 
         <Expandable
+          headingLevel={3}
           indicator={<BiChevronRight color="white" size={48} />}
           header={
             <Typography
               variant="label"
               color="white"
-              as="h3"
+              as="span"
               margin={`${Spaces.sm} 0`}
             >
               What is the GEEK code of conduct?
