@@ -8,6 +8,12 @@ export const authOptions = {
       clientId: process.env.AZURE_AD_CLIENT_ID,
       clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
       tenantId: process.env.AZURE_AD_TENANT_ID,
+      // Without the account picker, Microsoft silently reuses whichever account
+      // the browser is already signed in with, so nobody can switch accounts.
+      // `scope` repeats the provider default so adding `prompt` can't drop it.
+      authorization: {
+        params: { scope: 'openid profile email', prompt: 'select_account' },
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
