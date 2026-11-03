@@ -334,7 +334,7 @@
     "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/header-2.webp",
     "arrangements": [
       {
-        "setup": "Theatre Layout",
+        "setup": "Theater Layout",
         "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/room-2.webp",
         "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/room-expanded-2.webp",
         "capacity": ["192 + 8 (ADA)"],
