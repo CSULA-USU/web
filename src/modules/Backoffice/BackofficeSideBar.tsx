@@ -89,7 +89,9 @@ export default function BackofficeSideBar() {
           padding="8px 16px"
           fontSize="14px"
           fontWeight="600"
-          onClick={() => signOut()}
+          // Leave /backoffice on sign-out: returning to it lands on the sign-in
+          // page, which auto-starts Microsoft sign-in and silently logs back in.
+          onClick={() => signOut({ callbackUrl: '/' })}
         >
           Sign Out
         </Button>

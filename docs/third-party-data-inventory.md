@@ -160,7 +160,7 @@ nowhere below for the same reason.
 The application writes none. Searches across `src/` for `document.cookie`,
 `Set-Cookie`, `js-cookie`, `cookies-next`, `nookies`, `localStorage`,
 `sessionStorage` and `indexedDB` all return zero matches, and no cookie library
-is in `package.json`. `src/middleware.ts` only redirects.
+is in `package.json`. `src/proxy.ts` only redirects.
 
 What remains is set by dependencies:
 
@@ -197,8 +197,11 @@ page load set the first two cookies for every visitor.
 | `/contact` (`src/pages/contact/index.tsx`)   | `subject`, `category`, `email`, `message`, `firstName`, `lastInitial`, plus a hidden honeypot, a fill-duration value and a Turnstile token — type at `src/types/Contact.ts` | `POST /api/jotformContact`                                                                    | Yes. Browser-side: Cloudflare Turnstile. Server-side: Cloudflare siteverify, JotForm, Resend, Upstash, and Slack if email delivery fails |
 | `/search` (`src/pages/search/index.tsx:203`) | Free-text query                                                                                                                                                             | None — filtering is local via Fuse.js (line 120); `handleOnSubmit` is a no-op (lines 127-131) | No                                                                                                                                       |
 
-Backoffice forms post to first-party `/api/backoffice/*` routes behind the
-session gate in `src/middleware.ts:16-41`.
+Backoffice forms post to first-party `/api/backoffice/*` routes. The proxy
+(`src/proxy.ts`) does not gate them, because its matcher covers no `/api`
+paths. Each handler checks the session itself, through
+`requireBackofficePolicyV2` (`src/lib/backoffice/`) or `withAuth`
+(`src/lib/authMiddleWare.ts`).
 
 A contact submission fans out to JotForm (`src/pages/api/jotformContact.ts:135`),
 then Resend for a staff notification and a confirmation to the submitter
@@ -214,7 +217,7 @@ navigation away from this site, not an embed.
 - `next.config.js` defines no `headers()`, so there is no Content-Security-Policy.
   Adding one in report-only mode would make any future third-party script fail
   visibly rather than silently.
-- `src/middleware.ts` gates `/backoffice`, `/graffix/backoffice` and `/_edit`.
+- `src/proxy.ts` gates `/backoffice`, `/graffix/backoffice` and `/_edit`.
   It sets no cookies and adds no headers.
 - `vercel.json` holds one cron entry for Instagram token refresh.
 - `public/` contains no HTML or JavaScript.
