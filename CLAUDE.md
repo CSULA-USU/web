@@ -48,7 +48,7 @@ styled-components (SSR-enabled via `next.config.js`) + styled-system for spacing
 
 ### Authentication & Authorization
 
-NextAuth.js with Azure AD provider. `src/middleware.ts` protects `/backoffice` and `/graffix/backoffice` routes. Supabase maintains an allowlist of permitted backoffice users. Auth middleware uses JWT validation from next-auth/jwt.
+NextAuth.js with Azure AD provider. `src/proxy.ts` (Next 16's replacement for `middleware.ts`, on the Node runtime) protects `/backoffice`, `/graffix/backoffice` and `/_edit`. Supabase maintains an allowlist of permitted backoffice users, checked in the `signIn` callback only when `BACKOFFICE_AUTH_STRATEGY=supabase` — without it, any account in the tenant gets in. The proxy validates the session JWT with next-auth/jwt.
 
 ### External Integrations
 

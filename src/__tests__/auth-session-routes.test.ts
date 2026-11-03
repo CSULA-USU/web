@@ -52,10 +52,10 @@ describe('usesAuthSession', () => {
     expect(usesAuthSession('')).toBe(false);
   });
 
-  /* Guards the duplication against src/middleware.ts: Next requires that
+  /* Guards the duplication against src/proxy.ts: Next requires that
      matcher to be a static literal, so drift is caught here rather than by a
      staff member finding themselves signed out. */
-  it('covers exactly the areas the middleware gates', () => {
+  it('covers exactly the areas the proxy gates', () => {
     expect([...SESSION_ROUTE_PREFIXES].sort()).toEqual(
       ['/_edit', '/backoffice', '/graffix/backoffice'].sort(),
     );

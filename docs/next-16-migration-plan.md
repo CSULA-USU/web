@@ -12,10 +12,10 @@ Decisions that change the plan below:
 - **Webpack for the first release.** Scripts pass `--webpack`; `next.config.js` records what switching to Turbopack involves.
 - **ESLint 9, not 10.** eslint-config-next bundles jsx-a11y, react and import plugins that do not yet declare ESLint 10 support. ESLint 9 reports as unsupported upstream; revisit when those plugins catch up.
 - **React Compiler lint rules warn.** eslint-plugin-react-hooks 7 enables five rules as errors that flag about 60 existing sites. They warn in `eslint.config.mjs` until refactored separately.
-- **`middleware.ts` stays** for this release (item 4 below moves to its own PR), since `proxy.ts` cannot run on Edge.
+- **`middleware.ts` became `proxy.ts` in this release** (item 4, commit `5afa55a0`), rather than in its own PR as first planned. The auth guard now runs on Node, not Edge.
 - **Next 16 warns that React 18 support is deprecated** and ends in Next 17. Replacing Recoil, the blocker for React 19, now has a deadline.
 
-Still to verify on a preview: Azure sign-in end to end, and `www.dropbox.com` images, which redirect to a host outside `remotePatterns` and now face a 3-redirect limit.
+Still to verify on a preview: Azure sign-in end to end through the new proxy, and any `www.dropbox.com` image served through `next/image`, directly or via a component that uses it internally such as `FluidContainer`'s `backgroundImage`. Dropbox redirects to a host outside `remotePatterns`, and the optimizer now follows at most 3 redirects. The Dropbox URLs hard-coded in `src/` are unaffected: they are document links, and the cultural-grads banners render through the plain-`<img>` `Image` component. Only a Dropbox URL arriving from runtime data could still hit the limit.
 
 ## Recommendation
 
@@ -81,7 +81,7 @@ Do not run builds or another server in the active development checkout. Use an i
 | Integrations      | Events, Instagram and image proxy, JotForm, Notion, Supabase, rate limits, multipart name tags/work orders, monthly token cron                                     |
 | Editing           | Editor save/load, backoffice CRUD and role enforcement using test records                                                                                          |
 
-Use designated test accounts and records for writes. A mocked unit test cannot establish Azure callback or deployed media compatibility. The existing auth-session test checks a literal list against another list; it does not execute middleware or verify access enforcement. Add focused tests for that boundary and verify it in preview.
+Use designated test accounts and records for writes. A mocked unit test cannot establish Azure callback or deployed media compatibility. The existing auth-session test checks a literal list against another list; it does not execute the proxy or verify access enforcement. Add focused tests for that boundary and verify it in preview.
 
 Compare production-mode behavior against the baseline, including response errors, client exceptions, LCP/CLS, API latency, and asset failures. Agree acceptable regression thresholds before promotion. Roll back on broken login, lost access enforcement, widespread 5xx responses, or materially broken public pages. Keep environment and database schema changes out of this release so deployment rollback remains straightforward.
 
