@@ -294,14 +294,14 @@
           }
         },
         {
-          "id": "theatre",
-          "label": "Theatre Setup",
+          "id": "theater",
+          "label": "Theater Setup",
           "backgroundColor": "grey",
           "textColor": "white",
           "minWidth": "95px",
           "headerImage": {
-            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/theatre-setup.webp",
-            "alt": "Theatre setup icon"
+            "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/setups/theater-setup.webp",
+            "alt": "Theater setup icon"
           }
         },
         {
@@ -338,7 +338,7 @@
             "discussionCircle": "N/A",
             "banquet": "N/A",
             "classroom": "N/A",
-            "theatre": "192+8",
+            "theater": "192+8",
             "conference": "N/A",
             "reception": "N/A"
           }
@@ -353,7 +353,7 @@
             "discussionCircle": "30",
             "banquet": "40",
             "classroom": "26",
-            "theatre": "54",
+            "theater": "54",
             "conference": "20",
             "reception": "30"
           }
@@ -368,7 +368,7 @@
             "discussionCircle": "24",
             "banquet": "27",
             "classroom": "16",
-            "theatre": "45",
+            "theater": "45",
             "conference": "15",
             "reception": "28"
           }
@@ -383,7 +383,7 @@
             "discussionCircle": "24",
             "banquet": "27",
             "classroom": "16",
-            "theatre": "45",
+            "theater": "45",
             "conference": "15",
             "reception": "28"
           }
@@ -398,7 +398,7 @@
             "discussionCircle": "30",
             "banquet": "40",
             "classroom": "26",
-            "theatre": "65",
+            "theater": "65",
             "conference": "20",
             "reception": "30"
           }
@@ -413,7 +413,7 @@
             "discussionCircle": "N/A",
             "banquet": "N/A",
             "classroom": "N/A",
-            "theatre": "N/A",
+            "theater": "N/A",
             "conference": "20",
             "reception": "N/A"
           }
@@ -428,7 +428,7 @@
             "discussionCircle": "20",
             "banquet": "24",
             "classroom": "16",
-            "theatre": "32",
+            "theater": "32",
             "conference": "10",
             "reception": "21"
           }
@@ -443,7 +443,7 @@
             "discussionCircle": "N/A",
             "banquet": "N/A",
             "classroom": "N/A",
-            "theatre": "32",
+            "theater": "32",
             "conference": "20",
             "reception": "N/A"
           }
@@ -458,7 +458,7 @@
             "discussionCircle": "30",
             "banquet": "50",
             "classroom": "30",
-            "theatre": "70",
+            "theater": "70",
             "conference": "20",
             "reception": "40"
           }
@@ -473,7 +473,7 @@
             "discussionCircle": "30",
             "banquet": "50",
             "classroom": "30",
-            "theatre": "70",
+            "theater": "70",
             "conference": "20",
             "reception": "40"
           }
@@ -488,7 +488,7 @@
             "discussionCircle": "30",
             "banquet": "50",
             "classroom": "30",
-            "theatre": "70",
+            "theater": "70",
             "conference": "20",
             "reception": "40"
           }
@@ -503,7 +503,7 @@
             "discussionCircle": "45",
             "banquet": "110",
             "classroom": "60",
-            "theatre": "130",
+            "theater": "130",
             "conference": "36",
             "reception": "54"
           }
@@ -518,7 +518,7 @@
             "discussionCircle": "45",
             "banquet": "110",
             "classroom": "60",
-            "theatre": "130",
+            "theater": "130",
             "conference": "36",
             "reception": "54"
           }
@@ -533,7 +533,7 @@
             "discussionCircle": "60",
             "banquet": "170",
             "classroom": "90",
-            "theatre": "200",
+            "theater": "200",
             "conference": "54",
             "reception": "64"
           }

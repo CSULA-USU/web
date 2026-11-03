@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'What is the largest event space available at the U-SU?',
     answer:
-      'The Los Angeles Room (A + B + C combined) provides over 3,200 square feet of space and accommodates up to 200 guests in theater layout. The U-SU Theater also seats 200 guests including 8 ADA seats.',
+      'The Los Angeles Room (A + B + C combined) provides over 3,200 square feet of space and accommodates up to 200 guests in theater layout. The U-SU Theatre also seats 200 guests including 8 ADA seats.',
   },
   {
     question: 'Where is the University-Student Union at Cal State LA located?',
@@ -269,7 +269,7 @@ export default function MeetingRooms() {
                 },
                 {
                   '@type': 'LocationFeatureSpecification',
-                  name: 'U-SU Theater',
+                  name: 'U-SU Theatre',
                   value: 'Performance Space',
                 },
                 {
@@ -336,7 +336,7 @@ export default function MeetingRooms() {
                   name: 'What is the largest event space available at the U-SU?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'The Los Angeles Room (A+B+C combined) accommodates up to 200 guests in theater layout. The U-SU Theater also seats 200 guests including 8 ADA seats.',
+                    text: 'The Los Angeles Room (A+B+C combined) accommodates up to 200 guests in theater layout. The U-SU Theatre also seats 200 guests including 8 ADA seats.',
                   },
                 },
                 {
@@ -376,7 +376,7 @@ export default function MeetingRooms() {
         Create a reservation to rent out event and conference spaces at the
         U&ndash;SU at Cal State LA. Current locations available to book are
         Alhambra, Board Room North/South, Los Angeles A/B/C, Montebello,
-        Pasadena, San Gabriel, Theater, and the U&ndash;SU Plaza Space. Click an
+        Pasadena, San Gabriel, Theatre, and the U&ndash;SU Plaza Space. Click an
         individual room for more information regarding layout, features, and
         fees.
       </Header>

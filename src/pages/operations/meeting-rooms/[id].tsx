@@ -192,8 +192,8 @@ const NavItems = [
     id: 'los-angeles-room',
   },
   {
-    header: 'Theater Room',
-    id: 'theater-room',
+    header: 'Theatre Room',
+    id: 'theatre-room',
   },
   {
     header: 'Boardroom North',
@@ -248,9 +248,11 @@ const RoomHeaderTitle = styled.h1`
     padding: 2.4% 8% 2.4% 4%;
     margin: 0;
     color: ${Colors.white};
+    font-family: inherit;
     font-weight: 700;
     font-size: clamp(16px, 3.8cqw, 80px);
     font-style: italic;
+    text-transform: uppercase;
     line-height: 1.15;
     isolation: isolate;
 
@@ -259,7 +261,7 @@ const RoomHeaderTitle = styled.h1`
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: rgba(255, 206, 4, 0.72);
+      background: rgba(110, 90, 10, 0.72);
       clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
     }
 

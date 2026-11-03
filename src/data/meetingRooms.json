@@ -327,16 +327,16 @@
     "features": "Retractable Walls, Built-In Audio and Visual System. For special set-up please schedule a meeting with the Event Services Coordinator."
   },
   {
-    "title": "Theater Room",
-    "id": "theater-room",
-    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2.webp",
-    "mainImageAlt": "Inside of Theater Room",
-    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/header-2.webp",
+    "title": "Theatre Room",
+    "id": "theatre-room",
+    "mainImageSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/room-2.webp",
+    "mainImageAlt": "Inside of theatre Room",
+    "headerImage": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/header-2.webp",
     "arrangements": [
       {
-        "setup": "Theater Layout",
-        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-2.webp",
-        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theater/room-expanded-2.webp",
+        "setup": "Theatre Layout",
+        "image": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/room-2.webp",
+        "imageExpanded": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/operations/meeting-rooms/theatre/room-expanded-2.webp",
         "capacity": ["192 + 8 (ADA)"],
         "equipment": ["Fixed Seating"]
       }
