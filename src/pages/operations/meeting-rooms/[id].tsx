@@ -213,16 +213,60 @@ const NavItems = [
   },
 ];
 
-const VisuallyHiddenH1 = styled.h1`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+const RoomHeader = styled.div`
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  border-radius: 12px;
+  margin-bottom: 20px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.18);
+    clip-path: ellipse(95% 125% at 85% 152%);
+  }
+
+  /* Keep the banner's spacing outside the overlay's positioning area. */
+  > img,
+  > ${BannerSkeletonBox} {
+    margin: 0;
+  }
+`;
+
+const RoomHeaderTitle = styled.h1`
+  && {
+    position: absolute;
+    left: 0;
+    bottom: 7.5%;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 62%;
+    padding: 2.4% 8% 2.4% 4%;
+    margin: 0;
+    color: ${Colors.white};
+    font-weight: 700;
+    font-size: clamp(16px, 3.8cqw, 80px);
+    font-style: italic;
+    line-height: 1.15;
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(255, 206, 4, 0.72);
+      clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+    }
+
+    @container (max-width: 480px) {
+      width: 90%;
+    }
+  }
 `;
 
 type Room = (typeof meetingRoomsData)[number];
@@ -420,11 +464,14 @@ export default function MeetingRoom({ room }: { room: Room }) {
         justifyContent="center"
         backgroundImage="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/backgrounds/subtle-background-4.webp"
       >
-        <VisuallyHiddenH1>{room.title}</VisuallyHiddenH1>
-        <ImageWithSkeleton
-          src={room.headerImage}
-          alt={room.mainImageAlt || 'banner image'}
-        />
+        <RoomHeader>
+          <ImageWithSkeleton
+            key={room.headerImage}
+            src={room.headerImage}
+            alt={room.mainImageAlt || 'banner image'}
+          />
+          <RoomHeaderTitle>{room.title}</RoomHeaderTitle>
+        </RoomHeader>
         <ButtonContainer>
           <Button
             href="https://form.jotform.com/221578153228053"
