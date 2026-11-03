@@ -72,7 +72,7 @@ const TabContent = styled(Typography).attrs({ forwardedAs: 'div' })`
 
 const cards = [
   {
-    title: 'Meet the Board of Directors',
+    title: 'Meet the BOD',
     children:
       "Learn more about the University Student Union's Board of Directors!",
     linkText: 'Learn More',
@@ -355,20 +355,27 @@ export default function BoardOfDirectors() {
         alt="USU Board Of Directors"
         title="Board of Directors"
         maxDescriptionWidth="1000px"
-        description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/administrator/alumni members who help shape policy, structure and are responsible for all financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for one academic year (Fall-Spring)."
+        description="The Board of Directors is the governing board for the University-Student Union, consisting of 8 student directors and 11 faculty/staff/admin/alumni who help shape policy, structure and are responsible for all the financial & legal responsibilities of running a non-profit organization. Directors are expected to serve on the board for 1 academic year (Fall-Spring)."
       >
-        <Button href="https://www.dropbox.com/scl/fi/pe043y0dv4lrzsrcephdz/2026-2027-Board-Meeting-Schedule.pdf?rlkey=p3hd6kzhrl5hp8lnsrdrd8eab&st=fpjwvrba&dl=0">
+        <Button href="https://form.jotform.com/263026714107147" isExternalLink>
+          Apply for Spring 2027
+        </Button>
+        <Button
+          href="https://www.dropbox.com/scl/fi/pe043y0dv4lrzsrcephdz/2026-2027-Board-Meeting-Schedule.pdf?rlkey=p3hd6kzhrl5hp8lnsrdrd8eab&st=fpjwvrba&raw=1"
+          variant="white"
+          isExternalLink
+        >
           Meeting Schedule
         </Button>
         <Button href="/board-of-directors/public-documents" variant="white">
           Public Documents
         </Button>
-        <Button
+        {/* <Button
           href="/board-of-directors/public-document-archives"
           variant="white"
         >
           Archives
-        </Button>
+        </Button> */}
       </UtilityHeroHeader>
 
       <FluidContainer padding={'36px 72px 0'}>

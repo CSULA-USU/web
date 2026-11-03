@@ -39,13 +39,14 @@ export const BoardOfDirectorsCTA = () => {
         </Typography>
         <Typography margin="revert-layer">
           Apply to be on the board of directors to make a difference while
-          developing your leadership skills
+          developing your leadership skills.
+          <br />A new BOD position is available for Spring 2027.
         </Typography>
       </BoardOfDirectorsCTAText>
       <BoardOfDirectorsCTAButtons>
         <abbr title="University Student Union Board of Directors Application">
           <Button
-            href="https://form.jotform.com/210416532268047"
+            href="https://form.jotform.com/263026714107147"
             isExternalLink
             variant="black"
           >
