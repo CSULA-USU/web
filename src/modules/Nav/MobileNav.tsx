@@ -120,7 +120,7 @@ export const MobileNav = () => {
   }, [isMobileNavOpen]);
 
   return (
-    <Drawer.Drawer>
+    <Drawer.Drawer open={isMobileNavOpen} onChange={setIsMobileNavOpen}>
       <Drawer.Trigger>
         <StyledButton
           aria-label="Navigation Menu"

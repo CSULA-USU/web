@@ -3,7 +3,6 @@ const { withNextVideo } = require('next-video/process');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
 
   // You’re using styled-components — keep SWC transform on for correct SSR.
   compiler: {
@@ -35,6 +34,11 @@ const nextConfig = {
     // Generate fewer width variants globally.
     deviceSizes: [360, 768, 1024],
     imageSizes: [400],
+
+    // Every `quality` a page requests must be listed. Since Next 16 the
+    // default allows only 75, and anything else is silently rounded to the
+    // nearest listed value — /save-the-u's parallax photos ask for 50.
+    qualities: [50, 75],
   },
 
   async redirects() {
@@ -66,7 +70,10 @@ const nextConfig = {
 // Apply next-video wrapper
 const videoConfig = withNextVideo(nextConfig);
 
-// Remove turbopack config that Next.js 13.5.10 doesn't understand
+// The app builds with webpack (`--webpack` in package.json) until Turbopack is
+// validated on its own, so next-video's Turbopack rules have no job yet.
+// Moving to Turbopack means removing this line along with the flag: without
+// those rules, Turbopack has no loader for the video files.
 delete videoConfig.turbopack;
 
 module.exports = {

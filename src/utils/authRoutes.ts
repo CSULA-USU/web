@@ -1,7 +1,7 @@
 /**
  * Route prefixes whose pages read an authenticated session.
  *
- * Deliberately duplicated from the `matcher` in `src/middleware.ts` rather than
+ * Deliberately duplicated from the `matcher` in `src/proxy.ts` rather than
  * shared: Next.js requires that matcher to be a statically analyzable literal,
  * so it cannot import this. The two lists must be changed together — a route
  * gated there but missing here renders as permanently signed out, and one added

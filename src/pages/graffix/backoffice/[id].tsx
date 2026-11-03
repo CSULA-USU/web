@@ -22,7 +22,7 @@ export default function GraphicsRequests() {
             display: 'block',
           }}
         >
-          https://www.calstatela.edu/backoffice/graffix-requests
+          https://www.calstatelausu.org/backoffice/graffix-requests
         </Link>
       </FluidContainer>
     </Page>
