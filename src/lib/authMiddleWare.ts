@@ -14,7 +14,7 @@ export const withAuth = (
     if (!session) {
       return res.status(401).json({
         error:
-          'Unauthorized. Please sign in with your outlook account at https://www.calstatela.edu/backoffice/signin',
+          'Unauthorized. Please sign in with your outlook account at https://www.calstatelausu.org/backoffice/signin',
       });
     }
 
