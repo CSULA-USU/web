@@ -541,9 +541,10 @@ export default function StudentOrganizationAwards() {
             return (
               <Fragment key={award.title}>
                 <Expandable
+                  headingLevel={3}
                   indicator={<BiChevronRight size={36} />}
                   header={
-                    <Typography variant="labelTitle" as="h2">
+                    <Typography variant="labelTitle" as="span">
                       {award.title}
                     </Typography>
                   }
@@ -552,18 +553,14 @@ export default function StudentOrganizationAwards() {
                     if (key == 'title') return;
                     if (typeof val === 'string') {
                       return (
-                        <Typography
-                          as="h3"
-                          variant="copy"
-                          key={`${key}-${idx}`}
-                        >
+                        <Typography variant="copy" key={`${key}-${idx}`}>
                           <strong>{capitalize(key)}</strong>: {val}
                         </Typography>
                       );
                     } else if (typeof val === 'object') {
                       return (
                         <VerticalContainer key={`${key}-${idx}`}>
-                          <Typography as="h3" variant="copy">
+                          <Typography variant="copy">
                             <strong>{capitalize(key)}</strong>: {val.text}
                           </Typography>
                           <ul style={{ margin: '0 0 16px' }}>
@@ -621,9 +618,10 @@ export default function StudentOrganizationAwards() {
           return (
             <>
               <Expandable
+                headingLevel={3}
                 indicator={<BiChevronRight size={36} />}
                 header={
-                  <Typography variant="labelTitle" as="h2">
+                  <Typography variant="labelTitle" as="span">
                     {award.year}
                   </Typography>
                 }

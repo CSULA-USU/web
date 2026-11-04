@@ -14,7 +14,7 @@ interface SectionFormProps {
   section: SupaSection;
 }
 
-const SectionHeader = styled.div`
+const SectionHeader = styled.span`
   width: 100%;
   display: flex;
   align-items: center;

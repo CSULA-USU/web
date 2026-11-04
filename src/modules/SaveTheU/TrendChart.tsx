@@ -30,12 +30,6 @@ export interface TrendSeries {
    * point shared with another series uses the first series' side.
    */
   labelSide?: 'above' | 'below';
-  /**
-   * Draws this series' points as solid dots rather than the default white
-   * ring. Set it on any series whose ring would otherwise be confusable with
-   * the hollow zero-crossing marker.
-   */
-  filledPoint?: boolean;
   points: TrendPoint[];
 }
 
@@ -216,7 +210,7 @@ const groupCoincidentPoints = (series: TrendSeries[]) => {
 /* Bounds of slice `index` of `count`, in objectBoundingBox units, so one set
    of slices cuts both the dot and the pill however wide each is. The outer
    slices overhang the box, because the bounding box excludes the stroke and
-   an exact 0–1 slice would shave the dot's ring off at either end. */
+   an exact 0–1 slice would shave the dot's outer edge off at either end. */
 const sliceBounds = (index: number, count: number) => {
   const left = index === 0 ? -0.5 : index / count;
   const right = index === count - 1 ? 1.5 : (index + 1) / count;
@@ -612,12 +606,13 @@ export const TrendChart = ({
                             cx={x}
                             cy={y}
                             r={POINT_RADIUS}
-                            /* Filled series read as a solid dot; the stroke
-                               stays so both kinds keep the same outer
-                               diameter. Color follows the same rule as the
-                               line and the pill, so the dot below zero is not
-                               the odd one out. */
-                            fill={s.filledPoint ? pillFill : Colors.white}
+                            /* Always solid, on every series: a solid dot is a
+                               published figure and the hollow ring is the
+                               computed $0 crossing, so a ring here would read
+                               as a second crossing. Color follows the same
+                               rule as the line and the pill, so the dot below
+                               zero is not the odd one out. */
+                            fill={pillFill}
                             stroke={pillFill}
                             strokeWidth={2}
                           />
@@ -700,7 +695,7 @@ export const TrendChart = ({
                       cx={tipX}
                       cy={y}
                       r={POINT_RADIUS}
-                      fill={s.filledPoint ? pillFill : Colors.white}
+                      fill={pillFill}
                       stroke={pillFill}
                       strokeWidth={2}
                     />

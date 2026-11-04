@@ -427,13 +427,14 @@ export default function MeetingRooms() {
         {faqs.map((e, i) => (
           <React.Fragment key={i}>
             <Expandable
+              headingLevel={3}
               indicator={<BiChevronRight color="white" size={48} />}
               header={
                 <Typography
                   variant="label"
                   size={isMobile ? 'md' : 'lg'}
                   color="white"
-                  as="h3"
+                  as="span"
                   margin={`${Spaces.sm} 0`}
                 >
                   {e.question}

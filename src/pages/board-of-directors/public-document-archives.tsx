@@ -184,9 +184,10 @@ export default function PublicDocumentArchives() {
               <FYContainer key={fy}>
                 <FluidContainer padding="0 16px">
                   <Expandable
+                    headingLevel={3}
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
-                      <Typography variant="labelTitle" as="h3">
+                      <Typography variant="labelTitle" as="span">
                         {fyLabel(fy)}
                       </Typography>
                     }
@@ -218,9 +219,10 @@ export default function PublicDocumentArchives() {
               <FYContainer key={fy}>
                 <FluidContainer padding="0 16px">
                   <Expandable
+                    headingLevel={3}
                     indicator={<BiChevronRight color="black" size={48} />}
                     header={
-                      <Typography variant="labelTitle" as="h3">
+                      <Typography variant="labelTitle" as="span">
                         {fyLabel(fy)}
                       </Typography>
                     }

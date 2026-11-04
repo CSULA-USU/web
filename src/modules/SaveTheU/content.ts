@@ -9,6 +9,7 @@ import type {
 } from 'components';
 import type { TableData } from 'types';
 import type { IconType } from 'react-icons';
+import { toHeadlineCase } from 'utils/stringhelpers';
 import {
   MdEvent,
   MdFitnessCenter,
@@ -32,7 +33,7 @@ export const campaignMode = {
   ctaLabel: 'See the Budget',
   ctaHref: '#numbers',
   heroPrimaryCta: 'See the Numbers',
-  heroSecondaryCta: 'What This Costs You',
+  heroSecondaryCta: 'What Can Change',
   actionVerb: 'shape',
   beforeHeading: 'Get informed',
   /* The closing strip. Informational mode asks for one thing the page cannot
@@ -52,14 +53,30 @@ export const campaignMode = {
 
 export const heroEyebrow = `${campaignMode.actionVerb} what matters`;
 
-/* Every label here is the heading of the section it lands on, word for word.
-   A nav that renames its destinations makes a reader check whether they
-   arrived somewhere else. */
+/* Shared by each section's eyebrow and the nav link that lands on it, so the
+   two cannot drift apart again. The nav names a section by its eyebrow rather
+   than its heading because the headings run too long for the bar; the eyebrow
+   sits directly above the heading, so the reader still lands on the words they
+   clicked. Written in sentence case like every eyebrow on the page; the nav
+   derives its headline case from them rather than keeping a second copy. */
+export const sectionEyebrows = {
+  why: 'Why it matters',
+  numbers: 'The numbers',
+  whatCanChange: "What's at stake",
+  beforeYouDecide: campaignMode.beforeHeading,
+};
+
 export const anchorLinks = [
-  { label: 'Why It Matters', href: '#why' },
-  { label: 'The Numbers', href: '#numbers' },
-  { label: 'What Can Change', href: '#what-can-change' },
-  { label: 'Before You Make a Decision', href: '#before-you-decide' },
+  { label: toHeadlineCase(sectionEyebrows.why), href: '#why' },
+  { label: toHeadlineCase(sectionEyebrows.numbers), href: '#numbers' },
+  {
+    label: toHeadlineCase(sectionEyebrows.whatCanChange),
+    href: '#what-can-change',
+  },
+  {
+    label: toHeadlineCase(sectionEyebrows.beforeYouDecide),
+    href: '#before-you-decide',
+  },
 ];
 
 export const heroFigures = [
@@ -132,7 +149,7 @@ export const sources: Source[] = [
     id: '2',
     label: 'U-SU Board of Directors Minutes, March 20, 2026',
     note: 'Fiscal Committee recommendation for a $75 increase, amended to $90 and passed by a majority of the board.',
-    href: 'https://uc2cf24bbf794bf288fce3995b76.dl.dropboxusercontent.com/cd/0/inline2/DGk4ad2v5lvO1OryVeqB93ilCJD0JTvsC-9JhLWRv5q07DHcaNlZr7qigDedfxvhpXxKlphnZSF_ZC5-i785h-UX_aDYc35FbLSLKQka4umfh2qTu1cOi0fH--5MXdboUUN6h6G0abrwqpMr69ykguxpjdjKfZxtlw6zcnZ3AotbbamPuK7xeBzVCmx7JyvWHmkC9y_mpo3dHIN4Kkug9fxFR7RATMw-gpjCNT22ZiZf4yq_EH87qPpPAmt00__w6BbvWyHTWfIC3G4E5WANUgP6qMH9eMG_0JOZ3uWIXkowrxlphl4flj-P4WqmqYtpAGXCLAYD8RIj8_kpho53PpmDonzz1yHhFHDjla-KOFTc_ROtD9LOLpr1g4EeNrM6kQk/file',
+    href: 'https://www.dropbox.com/scl/fi/93b6a1t109hvarhvxj2qd/Minutes-Board-of-Directors-March-20-2026-signed.pdf?rlkey=geohie6ykfbd4sk7dbpmskmq1&st=e2la1q9s&raw=1',
     linkText: 'Minutes Dropbox Link',
   },
   {
@@ -439,7 +456,6 @@ export const trendSeries: TrendSeries[] = [
     color: 'blue',
     strokeWidth: 3,
     dashed: true,
-    filledPoint: true,
     labelSide: 'above',
     points: [
       { yearIndex: 0, value: 5856794 },
@@ -453,7 +469,6 @@ export const trendSeries: TrendSeries[] = [
     color: 'greenDark',
     strokeWidth: 3,
     dashed: true,
-    filledPoint: true,
     labelSide: 'below',
     points: [
       { yearIndex: 0, value: 5856794 },
@@ -715,9 +730,7 @@ export const serviceComparisons: {
   {
     label: 'Signature events',
     today: {
-      body: 'Programmed and paid for out of the operating budget.',
-      marker:
-        '[NEEDS COPY, NUMBER FIGURE] Programmed and paid for out of the operating budget.',
+      body: '113 events programmed last year, free to students.',
     },
     ifItFails: {
       body: 'Fewer events and most likely a charge to take part in the costlier ones.',
@@ -791,37 +804,37 @@ export const proposedSpaces: {
 }[] = [
   {
     title: 'Nature Lounge',
-    body: 'An outdoor lounge on the second floor, planned with greenery in mind.',
+    body: 'A tranquil outdoor lounge on the second floor, planned with greenery in mind.',
     renderingSrc: `${MOCKUP_BASE}/nature-lounge-landscape.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/nature-lounge-portrait.webp`,
   },
   {
     title: 'Downstairs Lounge',
-    body: 'The lounge on the lower level, with better furniture and more room to sit, study and wait out a gap in your schedule.',
+    body: 'The lounge on the lower level, with better furniture, abundant greenery, and more room to sit, study and wait out a gap in your schedule.',
     renderingSrc: `${MOCKUP_BASE}/downstairs-lounge-landscape-2.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/downstairs-lounge-portrait-2.webp`,
   },
   {
     title: 'Engagement Room',
-    body: 'A room set up for productivity.',
+    body: 'The Engagement Room is a proposed shared space where recognized clubs and orgs can meet, collaborate, and connect for 1:1 conversations or small-group gatherings. Stocked with supplies for making banners and other club materials, it gives student leaders a convenient place to plan activities, prepare for events, and work with other organizations.',
     renderingSrc: `${MOCKUP_BASE}/engagement-room-landscape.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/engagement-room-portrait.webp`,
   },
   {
     title: 'Lounge & Computer Resources',
-    body: 'The Game Room’s old second-floor space, renovated into an expanded lounge with computer resources. The Game Room itself has already moved to a larger space on the first floor.',
+    body: 'The Game Room’s old second-floor space, renovated into an expanded lounge with computer resources.',
     renderingSrc: `${MOCKUP_BASE}/lounge-and-computer-resources-landscape.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/lounge-and-computer-resources-portrait.webp`,
   },
   {
     title: 'Pub',
-    body: 'The current Sbarro space, converted into a pub.',
+    body: 'A reimagining of the current Sbarro restaurant space, converted into a pub.',
     renderingSrc: `${MOCKUP_BASE}/pub-landscape.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/pub-portrait.webp`,
   },
   {
     title: 'Relaxation Room',
-    body: 'A dedicated room for rest, with nap pods — findable, instead of tucked away on the third floor where they are now.',
+    body: 'A dedicated room for rest, furnished with comfortable seating, nap pods, massage chairs, bean bag chairs, and calming decor.',
     renderingSrc: `${MOCKUP_BASE}/relaxation-room-landscape-2.webp`,
     mobileRenderingSrc: `${MOCKUP_BASE}/relaxation-room-portrait-2.webp`,
   },
@@ -837,7 +850,7 @@ export const beforeYouWeighInCards = [
   {
     title: 'Come to an info session',
     body: 'Open sessions in the U-SU where you can ask staff and board members directly.',
-    marker: '',
+    marker: '[need scheduled dates]',
   },
   {
     title: 'Ask the board',
@@ -997,7 +1010,7 @@ export const facultyItems: {
     body: '90–100 student positions and 29 full-time staff. Many of your students are paid by this building.',
   },
   {
-    title: 'Space your department can reserve',
+    title: 'Spaces your department can reserve',
     body: '93,000 sq ft, opened in 2009: meeting rooms, event space and the ballroom, bookable through U-SU Operations.',
   },
   {

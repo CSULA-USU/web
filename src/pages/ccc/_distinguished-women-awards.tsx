@@ -72,7 +72,11 @@ const calculateYears = (startYear: number, endYear: number) => {
             <Expandable
               key={item}
               indicator={<BiChevronRight size={48} />}
-              header={<Typography size="md">{item}</Typography>}
+              header={
+                <Typography as="span" size="md">
+                  {item}
+                </Typography>
+              }
             >
               {obj[item].map((p: any) => (
                 <div key={p.name}>

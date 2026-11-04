@@ -1397,11 +1397,12 @@ export default function FSL() {
             {PillarsAccordion.map((item, index) => (
               <FluidContainer key={index} padding="0">
                 <Expandable
+                  headingLevel={3}
                   indicator={<BiChevronRight size={36} />}
                   header={
                     <Typography
                       variant="titleSmall"
-                      as="h3"
+                      as="span"
                       size={isMobile ? 'lg' : 'xl'}
                     >
                       {item.title}

@@ -4,6 +4,7 @@ import { BiChevronRight } from 'react-icons/bi';
 import {
   Button,
   Divider,
+  Expandable,
   FluidContainer,
   Image,
   StyledLink,
@@ -12,7 +13,6 @@ import {
 import { Spaces, media } from 'theme';
 import { GenericModal, ContactsBar } from 'modules';
 import { useBreakpoint } from 'hooks';
-import dynamic from 'next/dynamic';
 
 const CircleImageWrapper = styled.div`
   width: 100%;
@@ -101,11 +101,6 @@ export type ServiceItem = {
 };
 
 type CircleImageAndTitleProps = ServiceItem;
-
-export const DynamicExpandable = dynamic(
-  () => import('components/Expandable').then((mod) => mod.Expandable),
-  { ssr: false },
-);
 
 const formatLabel = (value: string) =>
   value.charAt(0).toUpperCase() + value.slice(1).replace(/([A-Z])/g, ' $1');
@@ -375,14 +370,15 @@ export const CircleImageAndTitle = ({
 
               {faq.map((item, index) => (
                 <React.Fragment key={`${item.question}-${index}`}>
-                  <DynamicExpandable
+                  <Expandable
+                    headingLevel={3}
                     indicator={<BiChevronRight color="white" size={48} />}
                     header={
                       <Typography
                         variant="label"
                         size={isMobile ? 'md' : 'lg'}
                         color="white"
-                        as="h3"
+                        as="span"
                         margin={`${Spaces.sm} 0`}
                       >
                         {item.question}
@@ -394,7 +390,7 @@ export const CircleImageAndTitle = ({
                         {renderAnswerContent(item.answer)}
                       </AnswerContentWrapper>
                     </FluidContainer>
-                  </DynamicExpandable>
+                  </Expandable>
 
                   {index < faq.length - 1 && <Divider color="gold" />}
                 </React.Fragment>

@@ -25,6 +25,7 @@ import {
   peerOutcomes,
   proposedSpaces,
   reserveCallouts,
+  sectionEyebrows,
   sampleTestimonials,
   serviceComparisons,
   services,
@@ -596,7 +597,7 @@ export default function SaveTheU() {
             </Button>
             <Button
               variant="whiteOutline"
-              href="#cost"
+              href="#what-can-change"
               margin={`${Spaces.lg} 0 0`}
             >
               {campaignMode.heroSecondaryCta}
@@ -642,7 +643,7 @@ export default function SaveTheU() {
           imageAlign="center"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>Why it matters</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>{sectionEyebrows.why}</Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -828,7 +829,9 @@ export default function SaveTheU() {
           imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>The numbers</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>
+            {sectionEyebrows.numbers}
+          </Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -865,22 +868,20 @@ export default function SaveTheU() {
           </Typography>
         </TextAndImage>
 
-        {/* 7.1 · Fee math — the hero's secondary-CTA target */}
-        <div id="cost">
-          <AutoGrid minColumnWidth="240px">
-            {feeMath.map((column) => (
-              <CitedStat
-                key={column.heading}
-                variant="onLight"
-                eyebrow={column.heading}
-                value={column.value}
-                label={column.detail}
-                sourceId={column.citation}
-                accentColor={column.accentColor}
-              />
-            ))}
-          </AutoGrid>
-        </div>
+        {/* 7.1 · Fee math */}
+        <AutoGrid minColumnWidth="240px">
+          {feeMath.map((column) => (
+            <CitedStat
+              key={column.heading}
+              variant="onLight"
+              eyebrow={column.heading}
+              value={column.value}
+              label={column.detail}
+              sourceId={column.citation}
+              accentColor={column.accentColor}
+            />
+          ))}
+        </AutoGrid>
         <Divider
           color="transparent"
           size="1px"
@@ -1178,7 +1179,9 @@ export default function SaveTheU() {
           imageAlign="start"
           margin={`0 0 ${Spaces.xl}`}
         >
-          <Eyebrow margin={`0 0 ${Spaces.md}`}>What&apos;s at stake</Eyebrow>
+          <Eyebrow margin={`0 0 ${Spaces.md}`}>
+            {sectionEyebrows.whatCanChange}
+          </Eyebrow>
           <Typography
             as="h2"
             variant="pageHeader"
@@ -1230,7 +1233,7 @@ export default function SaveTheU() {
                         color="greyMid"
                         margin={`0 0 ${Spaces.md}`}
                       >
-                        Today, funded by the current fee
+                        Today funded by the current fee
                       </Typography>
                       {renderServiceRows('today')}
                       {/* Closes this column the way the deficit paragraph
@@ -1272,7 +1275,7 @@ export default function SaveTheU() {
                         color="primary"
                         margin={`0 0 ${Spaces.md}`}
                       >
-                        After FY 2030-31, on the current fee
+                        After FY 2030-31 on the current fee
                       </Typography>
                       {renderServiceRows('ifItFails', { onDark: true })}
                       <Divider
@@ -1312,11 +1315,14 @@ export default function SaveTheU() {
                     margin={`0 0 ${Spaces.xl}`}
                     style={{ maxWidth: MEASURE }}
                   >
-                    <PlaceholderMarker>
-                      [NEEDS COPY — what the renderings are (simulated, not
-                      final designs), and what passing pays for that has no
-                      picture, such as more events and more student hires]
-                    </PlaceholderMarker>
+                    As recent as 2022, the U-SU employed over 150 student
+                    workers. An increased fee would allow the U-SU to hire more
+                    students, hire more staff, expand services, organize more
+                    events, and improve the building for everyone. The following
+                    are a list of proposed spaces that the U-SU has identified
+                    an intention to add or convert if the fee passes. Please
+                    note that nothing has been finalized and that all plans are
+                    subject to change.
                   </Typography>
                   <AutoGrid minColumnWidth="320px">
                     <Panel
@@ -1404,7 +1410,7 @@ export default function SaveTheU() {
           margin={`0 0 ${Spaces.xl}`}
         >
           <Eyebrow margin={`0 0 ${Spaces.md}`}>
-            {campaignMode.beforeHeading}
+            {sectionEyebrows.beforeYouDecide}
           </Eyebrow>
           <Typography
             as="h2"
@@ -1605,11 +1611,12 @@ export default function SaveTheU() {
               />
             )}
             <Expandable
+              headingLevel={4}
               indicator={<BiPlus size={24} />}
               indicatorRotation="45deg"
               header={
                 <Typography
-                  as="h3"
+                  as="span"
                   variant="titleSmall"
                   size="lg"
                   weight="700"
