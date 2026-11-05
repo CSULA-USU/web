@@ -33,7 +33,7 @@ import {
 import { Page, ImagelessEventsGrid } from 'modules';
 import { EventModal } from 'modules/EventModal';
 import { useMemo, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 import { eventListState } from 'atoms';
 import { filterEventsByTopic } from 'utils/eventUtils';
 import { CampusGroupsEvent } from 'types';
@@ -467,7 +467,7 @@ export default function Wingspan() {
   /* Already filtered to "not ended yet" and sorted by start ascending by
      EventsLoader, which fills this atom once for the whole app — so the page
      inherits the feed's 5-minute cache instead of fetching again. */
-  const events = useRecoilValue(eventListState);
+  const events = useAtomValue(eventListState);
 
   const wingspanEvents = useMemo(
     () => filterEventsByTopic(events, WINGSPAN_EVENT_TOPIC),

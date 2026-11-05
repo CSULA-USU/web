@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const jotformSubmissionsListState = atom<any[]>({
-  key: 'JotformSubmissions',
-  default: [],
-});
+export const jotformSubmissionsListState = atom<any[]>([]);

@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const graphicsRequestListState = atom<any[]>({
-  key: 'RequestList',
-  default: [],
-});
+export const graphicsRequestListState = atom<any[]>([]);

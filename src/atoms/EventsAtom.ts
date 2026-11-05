@@ -1,14 +1,8 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 import { CampusGroupsEvent } from 'types';
 
 export type StatusType = 'undefined' | 'success' | 'failed';
 
-export const eventListState = atom<CampusGroupsEvent[]>({
-  key: 'EventList',
-  default: [],
-});
+export const eventListState = atom<CampusGroupsEvent[]>([]);
 
-export const eventListStatusState = atom<StatusType>({
-  key: 'EventListStatus',
-  default: 'undefined',
-});
+export const eventListStatusState = atom<StatusType>('undefined');
