@@ -4,7 +4,7 @@ import { SupaSection } from 'types';
 import { schema, sections } from 'sections';
 import { SectionFormComponent } from './SectionFormComponent';
 import { RiCloseCircleFill } from 'react-icons/ri';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { editorPageState } from 'atoms/EditorAtom';
 import { Expandable, Typography } from 'components';
 import { BiChevronRight } from 'react-icons/bi';
@@ -51,7 +51,7 @@ const SectionFormContainer = styled.div`
 `;
 
 export const SectionForm = ({ section }: SectionFormProps) => {
-  const [page, setPage] = useRecoilState(editorPageState);
+  const [page, setPage] = useAtom(editorPageState);
   const { name, data, order, stagedDelete } = section;
 
   const sectionProperties = useMemo(() => {

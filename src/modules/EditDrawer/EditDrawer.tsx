@@ -7,7 +7,7 @@ import {
 } from 'react-icons/bi';
 import { SectionAdder } from './SectionAdder';
 import { SectionForm } from './SectionForm';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { editorPageState } from 'atoms/EditorAtom';
 // import { savePageSections } from 'api';
 import { Divider, PushDrawer, Typography } from 'components';
@@ -60,7 +60,7 @@ const Toolbar = styled.div`
 
 export const EditDrawer = ({ children }: { children: React.ReactNode }) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const [page, setPage] = useRecoilState(editorPageState);
+  const [page, setPage] = useAtom(editorPageState);
 
   const handleSave = async () => {
     if (!page?.sections) return;

@@ -1,7 +1,6 @@
 import { StatusType } from 'atoms';
 import { supabase } from 'lib/supabase';
 import { Dispatch, SetStateAction } from 'react';
-import { SetterOrUpdater } from 'recoil';
 import type { Document, Category, GetDocsOptions } from 'types/Backoffice';
 import { CampusGroupsEvent, SupaPage, SupaSection } from 'types';
 import { normalizeDateISO } from 'utils/dates';
@@ -28,7 +27,7 @@ const getTopics = (item: Element): string[] =>
     .filter(Boolean);
 
 export const fetchEvents = async (
-  setEventsStatus: SetterOrUpdater<StatusType>,
+  setEventsStatus: (status: StatusType) => void,
 ): Promise<CampusGroupsEvent[]> => {
   try {
     const res = await fetch(CAMPUS_GROUPS_RSS_URL);

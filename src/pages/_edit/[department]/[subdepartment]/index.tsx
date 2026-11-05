@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect } from 'react';
 import PageSections from 'modules/PageSections/PageSections';
 import { supabase } from 'lib/supabase';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { editorPageState } from 'atoms/EditorAtom';
 import { SupaSection } from 'types';
 
 export default function DynamicPage() {
-  const [page, setPage] = useRecoilState(editorPageState);
+  const [page, setPage] = useAtom(editorPageState);
   const router = useRouter();
   const { department, subdepartment } = router.query;
 

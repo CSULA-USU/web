@@ -8,9 +8,9 @@ const DEFAULT_INTERVAL_MS = 30000;
  *
  * Anything time-dependent on the events pages has to derive from this rather
  * than from a bare `Date.now()`. The event list is fetched once on mount and
- * held in Recoil, so a timestamp taken at fetch never advances — an event that
- * ended while a tab sat open would keep its "Live now" badge indefinitely, and
- * one that started would never get one.
+ * held in a Jotai atom, so a timestamp taken at fetch never advances — an
+ * event that ended while a tab sat open would keep its "Live now" badge
+ * indefinitely, and one that started would never get one.
  *
  * Safe to call during SSR: it returns a server timestamp on the first render,
  * but every consumer derives from the event list, which is empty until the

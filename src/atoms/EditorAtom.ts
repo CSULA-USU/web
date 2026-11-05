@@ -1,7 +1,4 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 import { SupaPage } from 'types';
 
-export const editorPageState = atom<SupaPage | undefined>({
-  key: 'EditorPageState',
-  default: undefined,
-});
+export const editorPageState = atom<SupaPage | undefined>(undefined);

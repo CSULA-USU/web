@@ -1,6 +1,6 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
-import { RecoilRoot } from 'recoil';
+import { Provider as JotaiProvider } from 'jotai';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useRouter } from 'next/router';
@@ -60,8 +60,8 @@ export default function App({
         {/* Kept mounted on every route rather than rendered conditionally: the
             provider holds the fetched session in memory, so tearing it down
             when a signed-in staff member steps out to a public page and back
-            would drop that — and would remount ToastProvider and RecoilRoot
-            with it, resetting page state on every crossing.
+            would drop that — and would remount ToastProvider and the Jotai
+            provider with it, resetting page state on every crossing.
 
             What changes is its behavior. `undefined` means "unknown, go find
             out" and triggers a request to /api/auth/session, which is what
@@ -84,7 +84,13 @@ export default function App({
           refetchOnWindowFocus={usesSession}
         >
           <ToastProvider>
-            <RecoilRoot>
+            {/* A provider-owned store, never Jotai's provider-less default.
+                The default store lives at module scope, which on the server is
+                shared by every request — atom state set while rendering one
+                visitor's page would leak into the next. Keep it here, above
+                the page and unkeyed, so state also survives client-side
+                navigation; that is what lets EventsLoader fetch once. */}
+            <JotaiProvider>
               <Head>
                 <title>University&ndash;Student Union</title>
                 <meta
@@ -138,7 +144,7 @@ export default function App({
               <Component {...pageProps} />
               <SpeedInsights route={router.pathname} />
               <Analytics />
-            </RecoilRoot>
+            </JotaiProvider>
           </ToastProvider>
         </SessionProvider>
       </div>

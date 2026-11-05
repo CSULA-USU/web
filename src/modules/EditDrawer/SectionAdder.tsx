@@ -1,6 +1,6 @@
 import { Popover, Typography } from 'components';
 import { sections } from 'sections';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { editorPageState } from 'atoms/EditorAtom';
 import { BiSolidPlusSquare } from 'react-icons/bi';
 import styled from 'styled-components';
@@ -19,7 +19,7 @@ const SectionButton = styled.button`
 `;
 
 export const SectionAdder = ({ pageId }: { pageId: number }) => {
-  const [page, setPage] = useRecoilState(editorPageState);
+  const [page, setPage] = useAtom(editorPageState);
 
   const handleAddSection = (sectionName: string) => {
     if (!page) return;
