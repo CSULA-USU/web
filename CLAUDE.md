@@ -42,7 +42,7 @@ styled-components (SSR-enabled via `next.config.js`) + styled-system for spacing
 
 ### State Management
 
-- **Recoil** atoms in `src/atoms/` for global state (search results, events, editor, JotForm submissions, graphics requests)
+- **Jotai** atoms in `src/atoms/` for global state. Two are live: the event feed (`eventListState` + `eventListStatusState`, filled once per visit by `EventsLoader`) and the `/_edit` page editor (`editorPageState`). `graphicsRequestListState` and `jotformSubmissionsListState` are defined but nothing reads them. The `Provider` in `_app.tsx` must stay mounted above the page and unkeyed — Jotai's provider-less default store is module-scoped, which on the server is shared across requests. `src/__tests__/pages/_app.test.tsx` fails if either rule is broken. Jest compiles Jotai through `src/jest.esm-transform.js`; its header says why ts-jest can't.
 - **React Context** (`src/context/ToastContext`) for toast notifications
 - **NextAuth SessionProvider** for auth state
 

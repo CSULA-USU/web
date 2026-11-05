@@ -5,7 +5,7 @@ import {
   Header,
   useEventFilterState,
 } from 'modules';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 import { eventListState, eventListStatusState } from 'atoms';
 import styled from 'styled-components';
 import {
@@ -27,8 +27,8 @@ const BackgroundImage = styled.div`
 `;
 
 export default function Home() {
-  const events = useRecoilValue(eventListState);
-  const eventsStatus = useRecoilValue(eventListStatusState);
+  const events = useAtomValue(eventListState);
+  const eventsStatus = useAtomValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
   const { filters, setFilters, setSearchQuery } = useEventFilterState();
 

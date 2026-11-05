@@ -1,7 +1,7 @@
 import { Typography, FluidContainer, Image } from 'components';
 import { EventCard, EventSkeleton } from '../../modules/EventCard';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 import { eventListState, eventListStatusState } from 'atoms';
 import { useEffect, useState } from 'react';
 import { CampusGroupsEvent } from 'types';
@@ -72,8 +72,8 @@ export const DepartmentHeader = ({
   placeholderImageAlt,
 }: DepartmentHeaderProps) => {
   const [loading, setLoading] = useState(true);
-  const events = useRecoilValue(eventListState);
-  const eventsStatus = useRecoilValue(eventListStatusState);
+  const events = useAtomValue(eventListState);
+  const eventsStatus = useAtomValue(eventListStatusState);
 
   const departmentEvent = events.find((event) => event.group === title);
 

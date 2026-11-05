@@ -17,7 +17,7 @@ import {
   // UtilityHeroHeader,
   // FeaturedEvents,
 } from 'modules';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 import { eventListState, eventListStatusState } from 'atoms';
 import { useNow } from 'hooks';
 import { splitFeaturedEvents } from 'utils/eventUtils';
@@ -40,8 +40,8 @@ import { splitFeaturedEvents } from 'utils/eventUtils';
 
 export default function Home() {
   // const data = uAwards as UAwardsData;
-  const events = useRecoilValue(eventListState);
-  const eventsStatus = useRecoilValue(eventListStatusState);
+  const events = useAtomValue(eventListState);
+  const eventsStatus = useAtomValue(eventListStatusState);
   const [loading, setLoading] = useState(true);
   const now = useNow();
 

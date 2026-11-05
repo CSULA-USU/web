@@ -1,7 +1,7 @@
 import { Input, Label, Select, Typography } from 'components';
 import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { editorPageState } from 'atoms/EditorAtom';
 import { SupaSection } from 'types';
 import { title } from 'radash';
@@ -61,7 +61,7 @@ export const SectionFormComponent = ({
   propertySchema,
   value,
 }: SectionFormComponentProps) => {
-  const [page, setPage] = useRecoilState(editorPageState);
+  const [page, setPage] = useAtom(editorPageState);
   const [property, definition] = propertySchema;
 
   const FormComponent = useMemo(
