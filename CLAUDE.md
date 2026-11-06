@@ -17,7 +17,8 @@ yarn ts-lint      # TypeScript type checking (incremental watch)
 yarn dev:sections # Dev server with section schema generation watching
 ```
 
-Node version: 22.18.0 (use `nvm use`). Package manager: Yarn.
+Node version: use the version specified in `.nvmrc` (`nvm use`).
+Package manager: Yarn.
 
 **Never run `yarn build`, `next start`, or a second `next dev` while a dev server is already running.** They all share `/.next`, and a build rewrites `.next/server/` and prunes `vendor-chunks/`, so the running server's already-loaded webpack runtime fails with `Cannot find module './chunks/vendor-chunks/next.js'` and 500s every route. A `PreToolUse` hook in `.claude/settings.json` blocks the agent from doing this; the rule applies to people too.
 
