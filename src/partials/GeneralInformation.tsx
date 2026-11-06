@@ -44,7 +44,7 @@ const sections = [
 export const GeneralInformation = () => (
   <FluidContainer backgroundColor="greyLightest">
     {sections.map((s) => (
-      <div key="s.title">
+      <div key={s.title}>
         <Typography
           variant="titleSmall"
           as="h2"
