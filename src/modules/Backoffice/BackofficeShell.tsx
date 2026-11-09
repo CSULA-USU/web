@@ -17,7 +17,11 @@ import backOfficeLinks from 'data/backOfficeLinks.json';
 import type { BackofficeLinkSection } from 'types/Backoffice';
 import BackofficeSideBar from './BackofficeSideBar';
 import { findActiveBackofficeLink } from './BackofficeNavList';
-import { useBackofficeUser, canViewBackofficePage } from 'hooks';
+import {
+  useBackofficeUser,
+  useBackofficeUserSync,
+  canViewBackofficePage,
+} from 'hooks';
 import { useBreakpoint } from 'hooks';
 import { Colors, Spaces, media } from 'theme';
 import BackofficeMobilePanel from 'modules/Backoffice/BackofficeMobilePanel';
@@ -139,7 +143,8 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const { user, loading: userLoading } = useBackofficeUser();
+  const { user } = useBackofficeUser();
+  useBackofficeUserSync();
 
   // Stable, because the drawer re-runs its open effect (focus, scroll lock)
   // whenever onClose changes identity.
@@ -152,10 +157,11 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
       allItems.filter((item) => {
         if (!item.featured) return false;
         if (!item.pageKey) return true;
-        if (userLoading || !user) return true;
+        // Hidden until permissions are known, the same rule as the nav list.
+        if (!user) return false;
         return canViewBackofficePage(user.effectivePolicies, item.pageKey);
       }),
-    [allItems, user, userLoading],
+    [allItems, user],
   );
 
   const handleNavigate = (href: string) => {

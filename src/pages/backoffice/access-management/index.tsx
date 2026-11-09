@@ -26,7 +26,7 @@ import {
 import { media, Spaces } from 'theme';
 import styled from 'styled-components';
 import { useToast } from 'context/ToastContext';
-import { useBackofficePageAccess } from 'hooks';
+import { useBackofficePageAccess, useRefreshBackofficeUser } from 'hooks';
 import type {
   V2UserRow,
   V2RoleRow,
@@ -92,6 +92,7 @@ function getOriginal<T>(row: TableRow<T>): T {
 
 export default function AccessManagementPage() {
   const { showToast } = useToast();
+  const refreshBackofficeUser = useRefreshBackofficeUser();
   const { loading: accessLoading } = useBackofficePageAccess(
     'accessManagement',
     'view',
@@ -150,7 +151,12 @@ export default function AccessManagementPage() {
     setConfirmPermanentDeleteDepartment,
   ] = useState<V2DepartmentRow | null>(null);
 
+  // Every save on this page, its own and each modal's onSaved, ends here. Any
+  // of them can change the viewer's own access (their roles, a role they
+  // hold, a page's policies), so their nav and page access refresh alongside
+  // the tables rather than at the next background check.
   const fetchAll = useCallback(async () => {
+    refreshBackofficeUser();
     try {
       setLoading(true);
       const [uRes, rRes, pRes, dRes] = await Promise.all([
@@ -178,7 +184,7 @@ export default function AccessManagementPage() {
     } finally {
       setLoading(false);
     }
-  }, [showToast]);
+  }, [showToast, refreshBackofficeUser]);
 
   useEffect(() => {
     fetchAll();
