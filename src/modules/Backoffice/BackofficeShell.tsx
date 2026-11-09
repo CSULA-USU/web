@@ -279,7 +279,11 @@ export default function BackofficeShell({ title, subtitle, children }: Props) {
 
               {router.pathname === '/backoffice' && featuredItems.length > 0 ? (
                 <FluidContainer>
-                  <Typography as="h2" variant="titleSmall">
+                  <Typography
+                    as="h2"
+                    variant="titleSmall"
+                    margin={`0 0 ${Spaces.lg}`}
+                  >
                     Featured Tools
                   </Typography>
 
