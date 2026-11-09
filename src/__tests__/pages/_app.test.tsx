@@ -25,6 +25,7 @@ jest.mock('next/router', () => ({
 }));
 
 import { render, screen, waitFor } from '@testing-library/react';
+import type { JSX } from 'react';
 import type { AppProps } from 'next/app';
 import type { NextComponentType } from 'next';
 import { useAtomValue } from 'jotai';
