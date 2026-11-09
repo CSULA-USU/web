@@ -4,9 +4,6 @@
 // The `components` barrel transitively reaches lib/supabase, which throws at
 // import time without env vars. Nothing here talks to Supabase.
 jest.mock('lib/supabase', () => ({ supabase: {} }));
-// The barrels also reach Nav, whose drawer library ships ESM that ts-jest will
-// not parse. Nothing here renders it.
-jest.mock('@accessible/drawer', () => ({}));
 
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { createStore, Provider, useAtomValue } from 'jotai';

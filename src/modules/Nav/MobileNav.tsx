@@ -1,25 +1,31 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
-import * as Drawer from '@accessible/drawer';
+import * as Dialog from '@radix-ui/react-dialog';
 import Link from 'next/link';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { Colors, FontSizes } from 'theme';
 import navMap from 'data/navMap.json';
 import { MdCancel } from 'react-icons/md';
-import { FluidContainer } from 'components';
+import { FluidContainer, VisuallyHidden } from 'components';
 
 interface navMapType {
   text: string;
   href: string;
   sub?: navMapType[];
 }
+
+// Radix portals the open menu to the end of <body>, so `fixed` is measured
+// against the viewport. It used to render inside Nav's wrapper, whose `filter`
+// made it measure against the nav instead. 1000 sits above page content and
+// level with the site's modals (BaseModal), which never open alongside it;
+// toasts (2000) still land on top.
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
   padding: 24px;
   background-color: rgba(255, 255, 255, 0.95);
-  z-index: 10;
+  z-index: 1000;
   overflow-y: auto;
   position: fixed;
   top: 0;
@@ -87,53 +93,33 @@ const getUniqueSubLinks = (
   return items.filter((item) => item.href !== parentHref);
 };
 
-export const MobileNav = () => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false); // create a state variable to manage the open state of the drawer
-  const drawerRef = useRef<HTMLDivElement>(null); // create a ref to the drawer element
+/*
+ * A Radix Dialog, which supplies everything the menu needs: focus moves in on
+ * open and is trapped there, Esc closes it, page scroll is locked, and focus
+ * returns to the hamburger on close. No effect here should re-implement any of
+ * that.
+ *
+ * The open menu is not rendered until opened, unlike a hidden panel. That is
+ * fine for search: Googlebot never clicks, but the desktop bar (always in the
+ * DOM, see Nav) carries the same links.
+ */
+export const MobileNav = () => (
+  <Dialog.Root>
+    <Dialog.Trigger asChild>
+      <StyledButton aria-label="Navigation Menu">
+        <HiMenuAlt3 size={48} />
+      </StyledButton>
+    </Dialog.Trigger>
 
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMobileNavOpen(false);
-      }
-    };
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
-        setIsMobileNavOpen(false);
-      }
-    };
-
-    if (isMobileNavOpen) {
-      document.body.style.overflow = 'hidden'; //prevents scrolling when the drawer is open
-      document.addEventListener('keydown', handleEscape); // add event listener for the escape key
-      document.addEventListener('mousedown', handleClickOutside); // add event listener for clicking outside the drawer
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-      document.removeEventListener('keydown', handleEscape); // run handleEscape when the escape key is pressed
-      document.removeEventListener('mousedown', handleClickOutside); // run handleClickOutside when clicking outside the drawer
-    };
-  }, [isMobileNavOpen]);
-
-  return (
-    <Drawer.Drawer open={isMobileNavOpen} onChange={setIsMobileNavOpen}>
-      <Drawer.Trigger>
-        <StyledButton
-          aria-label="Navigation Menu"
-          onClick={() => setIsMobileNavOpen(true)}
-        >
-          <HiMenuAlt3 size={48} />
-        </StyledButton>
-      </Drawer.Trigger>
-
-      <Drawer.Target preventScroll>
-        <Container ref={drawerRef} /* assigns ref to Container */>
+    <Dialog.Portal>
+      {/* The links are the whole menu; there is no description to point at. */}
+      <Dialog.Content asChild aria-describedby={undefined}>
+        <Container>
+          <Dialog.Title asChild>
+            <VisuallyHidden as="h2">Menu</VisuallyHidden>
+          </Dialog.Title>
           <FluidContainer flex justifyContent="flex-start" alignItems="center">
-            <Drawer.CloseButton>
+            <Dialog.Close asChild>
               <button
                 style={{
                   border: 0,
@@ -145,11 +131,10 @@ export const MobileNav = () => {
                   alignItems: 'center',
                 }}
                 aria-label="Close Navigation"
-                onClick={() => setIsMobileNavOpen(false)}
               >
                 CLOSE <MdCancel size={40} />
               </button>
-            </Drawer.CloseButton>
+            </Dialog.Close>
           </FluidContainer>
           <T1Container>
             {(navMap as navMapType[]).map((t1) => (
@@ -183,7 +168,7 @@ export const MobileNav = () => {
             ))}
           </T1Container>
         </Container>
-      </Drawer.Target>
-    </Drawer.Drawer>
-  );
-};
+      </Dialog.Content>
+    </Dialog.Portal>
+  </Dialog.Root>
+);

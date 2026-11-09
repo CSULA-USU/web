@@ -16,7 +16,7 @@ interface BaseModalProps {
   labelledById?: string;
   describedById?: string;
   role?: 'dialog' | 'alertdialog';
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
 }
 
 const FixedModal = Modal as unknown as React.FC<any>;

@@ -9,7 +9,7 @@ import { SkeletonOverlay } from '../Skeleton';
 export interface BaseComponentProps
   extends SpaceProps,
     Partial<Pick<HTMLElement, 'title' | 'id' | 'tabIndex'>> {
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
   children?: ReactNode;
   className?: string;
   'data-qa'?: string;
