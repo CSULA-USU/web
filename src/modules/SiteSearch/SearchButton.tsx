@@ -90,9 +90,14 @@ export const SearchButton = ({
   hoverColor = 'primary',
 }: SearchButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Nav mounts one SearchButton per layout and CSS hides the other, so
+      // only the copy on screen may answer, or ⌘K opens a dialog per copy.
+      // getClientRects() is empty for an element inside `display: none`.
+      if (!linkRef.current?.getClientRects().length) return;
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
         setIsOpen(true);
@@ -120,6 +125,7 @@ export const SearchButton = ({
   return (
     <>
       <SearchLink
+        ref={linkRef}
         href="/search"
         aria-label="Search"
         aria-haspopup="dialog"

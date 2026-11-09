@@ -164,7 +164,7 @@ type Props = {
  */
 export default function BackofficeNavList({ searchId, onNavigate }: Props) {
   const router = useRouter();
-  const { user, loading: userLoading } = useBackofficeUser();
+  const { user } = useBackofficeUser();
   const [query, setQuery] = useState('');
 
   const activeUrl = findActiveBackofficeLink(router.pathname)?.item.url;
@@ -175,9 +175,16 @@ export default function BackofficeNavList({ searchId, onNavigate }: Props) {
       .map((section) => ({
         ...section,
         items: section.items.filter((item) => {
-          if (item.pageKey && !userLoading && user) {
-            if (!canViewBackofficePage(user.effectivePolicies, item.pageKey))
-              return false;
+          // A gated tool stays hidden until permissions are known. Showing
+          // every tool while /me loaded and then pulling the ones the viewer
+          // cannot open made the nav visibly change under them; this way it
+          // only ever gains items. With no backoffice user, none are open.
+          if (
+            item.pageKey &&
+            (!user ||
+              !canViewBackofficePage(user.effectivePolicies, item.pageKey))
+          ) {
+            return false;
           }
           if (!q) return true;
           return (
@@ -187,7 +194,7 @@ export default function BackofficeNavList({ searchId, onNavigate }: Props) {
         }),
       }))
       .filter((section) => section.items.length > 0);
-  }, [query, user, userLoading]);
+  }, [query, user]);
 
   return (
     <>
