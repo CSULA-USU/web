@@ -1263,14 +1263,14 @@ export default function FSL() {
           <ButtonGroup>
             <Button
               href="https://form.jotform.com/260065959465064"
-              variant="primary"
+              variant="black"
               isExternalLink
             >
               Join Our Community
             </Button>
             <Button
               href="https://www.instagram.com/calstatelagreeks/?hl=en"
-              variant="primary"
+              variant="outline"
               isExternalLink
             >
               Follow Us
