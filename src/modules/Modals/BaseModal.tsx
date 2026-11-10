@@ -17,6 +17,9 @@ interface BaseModalProps {
   describedById?: string;
   role?: 'dialog' | 'alertdialog';
   initialFocusRef?: React.RefObject<HTMLElement>;
+  /** Class on the modal's portal node, for scoping CSS such as an opening
+      animation in globals.css to one caller instead of every modal. */
+  portalClassName?: string;
 }
 
 const FixedModal = Modal as unknown as React.FC<any>;
@@ -110,6 +113,7 @@ export function BaseModal({
   describedById,
   role = 'dialog',
   initialFocusRef,
+  portalClassName,
 }: BaseModalProps) {
   const generatedId = useId();
   const headingId = labelledById ?? `${generatedId}-title`;
@@ -130,6 +134,7 @@ export function BaseModal({
       role={role}
       aria={{ labelledby: headingId, describedby: describedById }}
       style={buildModalStyles(maxWidth)}
+      portalClassName={portalClassName}
     >
       <ModalHeader>
         <Typography as="h2" id={headingId} variant="title" size="xl">

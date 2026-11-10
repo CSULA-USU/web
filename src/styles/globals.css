@@ -111,3 +111,42 @@ span:focus-visible {
     transition: none;
   }
 }
+
+/* Search dialog (SearchButton) eases in instead of appearing at once: the
+   backdrop fades while the panel rises 8px and settles from 98% scale. Kept
+   short and small so it reads as a settle, not an entrance. react-modal adds
+   the --after-open classes a frame after mounting, which is what lets the
+   transition run. Opening only: the dialog unmounts on close, so there is no
+   frame left to animate out of. */
+.usu-search-modal-portal .ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+.usu-search-modal-portal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.usu-search-modal-portal .ReactModal__Content {
+  transform: translateY(8px) scale(0.98);
+  transition: transform 180ms ease-out;
+}
+
+.usu-search-modal-portal .ReactModal__Content--after-open {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usu-search-modal-portal .ReactModal__Overlay,
+  .usu-search-modal-portal .ReactModal__Content {
+    transition: none;
+  }
+
+  .usu-search-modal-portal .ReactModal__Overlay {
+    opacity: 1;
+  }
+
+  .usu-search-modal-portal .ReactModal__Content {
+    transform: none;
+  }
+}
