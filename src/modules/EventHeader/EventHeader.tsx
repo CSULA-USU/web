@@ -110,6 +110,14 @@ const LiveTab = styled.button<{ $active: boolean }>`
   }
 `;
 
+/* A flex item will not shrink below its content's min-content width unless
+   told to, and the card's fixed 1080px is that width. The featured card sits
+   in HeaderContainer directly and shrinks on its own; this wrapper around the
+   live panels has to opt in, or a live event overflows a phone screen. */
+const LivePanels = styled.div`
+  min-width: 0;
+`;
+
 const LiveTabPanel = styled.div<{ $active: boolean }>`
   display: ${({ $active }) => ($active ? 'block' : 'none')};
 `;
@@ -220,7 +228,7 @@ export const EventHeader = ({
 
       <HeaderContainer>
         {hasLiveEvents ? (
-          <div>
+          <LivePanels>
             {liveEvents.map((event, index) => (
               <LiveTabPanel
                 key={event.eventId}
@@ -238,7 +246,7 @@ export const EventHeader = ({
                 />
               </LiveTabPanel>
             ))}
-          </div>
+          </LivePanels>
         ) : (
           <ModEventCard
             featured
