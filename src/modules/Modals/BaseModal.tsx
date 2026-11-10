@@ -16,7 +16,7 @@ interface BaseModalProps {
   labelledById?: string;
   describedById?: string;
   role?: 'dialog' | 'alertdialog';
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /** Class on the modal's portal node, for scoping CSS such as an opening
       animation in globals.css to one caller instead of every modal. */
   portalClassName?: string;
