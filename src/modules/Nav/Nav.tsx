@@ -35,8 +35,12 @@ const NavWrapper = styled.nav`
 // hamburger. The two rules are complementary (one default, one min-width at
 // the same value) so no width, including fractional ones under browser zoom,
 // shows both bars or neither.
+const FULL_BAR_MEDIA = `(min-width: ${breakpoints.desktop}px)`;
+// The exact complement of FULL_BAR_MEDIA, for the same no-gap reason.
+const COMPACT_BAR_MEDIA = `not all and ${FULL_BAR_MEDIA}`;
+
 const CompactBar = styled.div`
-  @media (min-width: ${breakpoints.desktop}px) {
+  @media ${FULL_BAR_MEDIA} {
     display: none;
   }
 `;
@@ -44,9 +48,22 @@ const CompactBar = styled.div`
 const FullBar = styled.div`
   display: none;
 
-  @media (min-width: ${breakpoints.desktop}px) {
+  @media ${FULL_BAR_MEDIA} {
     display: block;
   }
+`;
+
+// A 1x1 transparent GIF, inline, so it costs no request.
+const BLANK_IMAGE =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+// Browsers download an <img> even inside `display: none`, so each wordmark
+// sits in a <picture> whose <source> swaps in BLANK_IMAGE at the widths where
+// its bar is hidden. Only the visible bar's PNG is requested, and resizing
+// across the breakpoint fetches the other. `display: contents` gives the
+// <picture> no box of its own, so the <img> lays out exactly as it did bare.
+const Wordmark = styled.picture`
+  display: contents;
 `;
 
 export const Nav = () => (
@@ -60,12 +77,15 @@ export const Nav = () => (
         flex
       >
         <LogoLink href="/" id="nav-logo-mobile">
-          <Image
-            className="mobile-logo"
-            src="/usu-wordmark.png"
-            alt="Cal State LA University-Student Union Logo"
-            style={{ maxHeight: '64px' }}
-          />
+          <Wordmark>
+            <source media={FULL_BAR_MEDIA} srcSet={BLANK_IMAGE} />
+            <Image
+              className="mobile-logo"
+              src="/usu-wordmark.png"
+              alt="Cal State LA University-Student Union Logo"
+              style={{ maxHeight: '64px' }}
+            />
+          </Wordmark>
         </LogoLink>
 
         <MobileIconsContainer>
@@ -86,12 +106,15 @@ export const Nav = () => (
         backgroundColor="greyDarkest"
       >
         <LogoLink href="/" id="nav-logo-desktop">
-          <Image
-            width="200px"
-            height="70"
-            src="/usu-wordmark-white.png"
-            alt="Cal State LA University-Student Union"
-          />
+          <Wordmark>
+            <source media={COMPACT_BAR_MEDIA} srcSet={BLANK_IMAGE} />
+            <Image
+              width="200px"
+              height="70"
+              src="/usu-wordmark-white.png"
+              alt="Cal State LA University-Student Union"
+            />
+          </Wordmark>
         </LogoLink>
 
         <DesktopNav />

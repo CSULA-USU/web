@@ -55,7 +55,7 @@ const LiveRegion = styled.span`
 
 export const CopyButton = ({ value, label }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
-  const resetTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const resetTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(resetTimeout.current), []);
 
