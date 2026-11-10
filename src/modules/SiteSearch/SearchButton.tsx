@@ -62,6 +62,7 @@ const SearchDialog = ({ onClose }: { onClose: () => void }) => {
       onClose={onClose}
       maxWidth="640px"
       initialFocusRef={inputRef}
+      portalClassName="usu-search-modal-portal"
     >
       <SiteSearch
         query={query}
