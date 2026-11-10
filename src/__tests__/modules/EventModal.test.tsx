@@ -4,9 +4,6 @@
 // The `components` barrel transitively reaches lib/supabase, which throws at
 // import time without env vars. Stubbing it keeps this a pure UI test.
 jest.mock('lib/supabase', () => ({ supabase: {} }));
-// The barrels also reach Nav, whose drawer library ships ESM that ts-jest will
-// not parse. Nothing here renders it.
-jest.mock('@accessible/drawer', () => ({}));
 
 import { render, screen } from '@testing-library/react';
 import { EventModal } from 'modules/EventModal';
