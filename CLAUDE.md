@@ -17,7 +17,8 @@ yarn ts-lint      # TypeScript type checking (incremental watch)
 yarn dev:sections # Dev server with section schema generation watching
 ```
 
-Node version: 22.18.0 (use `nvm use`). Package manager: Yarn.
+Node version: use the version specified in `.nvmrc` (`nvm use`).
+Package manager: Yarn.
 
 **Never run `yarn build`, `next start`, or a second `next dev` while a dev server is already running.** They all share `/.next`, and a build rewrites `.next/server/` and prunes `vendor-chunks/`, so the running server's already-loaded webpack runtime fails with `Cannot find module './chunks/vendor-chunks/next.js'` and 500s every route. A `PreToolUse` hook in `.claude/settings.json` blocks the agent from doing this; the rule applies to people too.
 
@@ -42,7 +43,7 @@ styled-components (SSR-enabled via `next.config.js`) + styled-system for spacing
 
 ### State Management
 
-- **Jotai** atoms in `src/atoms/` for global state. Two are live: the event feed (`eventListState` + `eventListStatusState`, filled once per visit by `EventsLoader`) and the `/_edit` page editor (`editorPageState`). `graphicsRequestListState` and `jotformSubmissionsListState` are defined but nothing reads them. The `Provider` in `_app.tsx` must stay mounted above the page and unkeyed — Jotai's provider-less default store is module-scoped, which on the server is shared across requests. `src/__tests__/pages/_app.test.tsx` fails if either rule is broken. Jest compiles Jotai through `src/jest.esm-transform.js`; its header says why ts-jest can't.
+- **Jotai** atoms in `src/atoms/` for global state. Three are live: the event feed (`eventListState` + `eventListStatusState`, filled once per visit by `EventsLoader`), the `/_edit` page editor (`editorPageState`), and the backoffice viewer's permissions (`backofficeUserState`, from `/api/backoffice/me`; always go through the hooks in `src/hooks/useBackofficeUser.ts`, whose header explains when it refreshes). `graphicsRequestListState` and `jotformSubmissionsListState` are defined but nothing reads them. The `Provider` in `_app.tsx` must stay mounted above the page and unkeyed — Jotai's provider-less default store is module-scoped, which on the server is shared across requests. `src/__tests__/pages/_app.test.tsx` fails if either rule is broken. Jest compiles Jotai through `src/jest.esm-transform.js`; its header says why ts-jest can't.
 - **React Context** (`src/context/ToastContext`) for toast notifications
 - **NextAuth SessionProvider** for auth state
 

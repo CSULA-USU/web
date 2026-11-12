@@ -140,7 +140,7 @@ interface SiteSearchProps {
   onQueryChange: (query: string) => void;
   /** Called as a result is opened — the search dialog closes itself here. */
   onResultOpen?: () => void;
-  inputRef?: RefObject<HTMLInputElement>;
+  inputRef?: RefObject<HTMLInputElement | null>;
 }
 
 /**

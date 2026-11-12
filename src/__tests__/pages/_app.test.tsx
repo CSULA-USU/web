@@ -2,10 +2,8 @@
  * @jest-environment jsdom
  */
 // The barrels _app reaches transitively pull in lib/supabase, which throws at
-// import time without env vars, and Nav's drawer library, which ships ESM
-// that ts-jest will not parse. Neither is exercised here.
+// import time without env vars. It is not exercised here.
 jest.mock('lib/supabase', () => ({ supabase: {} }));
-jest.mock('@accessible/drawer', () => ({}));
 // next/font only works under the Next compiler, which Jest does not run.
 jest.mock('next/font/google', () => {
   const font = () => ({
@@ -25,6 +23,7 @@ jest.mock('next/router', () => ({
 }));
 
 import { render, screen, waitFor } from '@testing-library/react';
+import type { JSX } from 'react';
 import type { AppProps } from 'next/app';
 import type { NextComponentType } from 'next';
 import { useAtomValue } from 'jotai';
