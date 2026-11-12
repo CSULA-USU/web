@@ -26,6 +26,11 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
     | 'delete';
 }
 
+type ButtonStyleProps = Pick<
+  ButtonProps,
+  'variant' | 'fontSize' | 'fontWeight' | 'shadow' | 'padding' | 'margin'
+>;
+
 interface ButtonVariant {
   backgroundColor: keyof typeof Colors;
   color: keyof typeof Colors;
@@ -75,7 +80,7 @@ const styles: { [key: string]: ButtonVariant } = {
   },
 } as const;
 
-const getCSS = (p: ButtonProps) => {
+const getCSS = (p: ButtonStyleProps) => {
   const { backgroundColor, border, color, padding } =
     styles[p.variant || 'primary'];
   return css`
@@ -101,10 +106,10 @@ const getCSS = (p: ButtonProps) => {
   `;
 };
 
-const StyledAnchor = styled.a`
+const StyledAnchor = styled.a<ButtonStyleProps>`
   ${getCSS}
 `;
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonStyleProps>`
   ${getCSS}
 `;
 
