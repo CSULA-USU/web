@@ -12,6 +12,8 @@ import { FALLBACK_CARD_IMAGE } from 'components';
 import ToastProvider from 'context/ToastContext';
 import { usesAuthSession } from 'utils/authRoutes';
 import { Bitter, Montserrat } from 'next/font/google';
+import { StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
 
 if (typeof window !== 'undefined') {
   Modal.setAppElement('#__next');
@@ -31,6 +33,11 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
+// Restore HTML prop filtering because styled-system props are used throughout the app.
+function shouldForwardProp(propName: string, target: unknown) {
+  return typeof target === 'string' ? isPropValid(propName) : true;
+}
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -49,7 +56,7 @@ export default function App({
   const usesSession = usesAuthSession(router.pathname);
 
   return (
-    <>
+    <StyleSheetManager shouldForwardProp={shouldForwardProp}>
       <style jsx global>{`
         :root {
           --font-montserrat: ${montserrat.style.fontFamily};
@@ -148,6 +155,6 @@ export default function App({
           </ToastProvider>
         </SessionProvider>
       </div>
-    </>
+    </StyleSheetManager>
   );
 }

@@ -100,7 +100,7 @@ const FeaturedGrid = styled.div`
 `;
 
 const FeatureCard = styled.button`
-  border: 0;
+  border : 0;
   background: ${Colors.white};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -116,7 +116,7 @@ const FeatureCard = styled.button`
   }
 
   &:focus-visible {
-    outline: 2px solid #007bff;
+    outline: 2px solid #007bff
     outline-offset: 2px;
   }
 `;
