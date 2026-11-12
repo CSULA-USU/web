@@ -171,9 +171,15 @@ const LiveBadgeSlot = styled.div`
   z-index: 1;
 `;
 
+/* The fixed 1080px is what sizes the hero on desktop: EventHeader's parents
+   fit their content, so a percentage width here would shrink the card to the
+   width of its text. max-width: 100% is what lets it give way on a phone once
+   its parent is narrower; without it the card holds 1080px and the centered
+   flyer is clipped on both sides. */
 const EventContainer = styled.div`
   display: flex;
   width: 1080px;
+  max-width: 100%;
   flex-direction: column;
   @media (max-width: 1100px) and (min-width: 600px) {
     width: 100%;
