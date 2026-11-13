@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { CSSObject, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontSizes, Colors, Spaces } from 'theme';
 
 interface TypeStyle {
@@ -34,7 +34,7 @@ type TypeElements =
 
 export interface TypeProps extends TypeStyle {
   id?: string;
-  style?: CSSObject;
+  style?: React.CSSProperties;
   className?: string;
   variant?: keyof typeof styles;
   nowrap?: boolean;
@@ -43,6 +43,9 @@ export interface TypeProps extends TypeStyle {
   children?: React.ReactNode;
   dangerouslySetInnerHTML?: { __html: string };
 }
+
+type TypographyStyleProps = TypeStyle &
+  Pick<TypeProps, 'variant' | 'uppercase' | 'nowrap'>;
 
 interface TypeVariant {
   size: keyof typeof FontSizes;
@@ -150,7 +153,7 @@ const proseCSS = css`
   }
 `;
 
-const getCSS = (p: TypeProps) => {
+const getCSS = (p: TypographyStyleProps) => {
   const {
     size,
     weight,
@@ -189,31 +192,31 @@ const getCSS = (p: TypeProps) => {
   `;
 };
 
-const H1 = styled.h1`
+const H1 = styled.h1<TypographyStyleProps>`
   ${getCSS}
 `;
-const H2 = styled.h2`
+const H2 = styled.h2<TypographyStyleProps>`
   ${getCSS}
 `;
-const H3 = styled.h3`
+const H3 = styled.h3<TypographyStyleProps>`
   ${getCSS}
 `;
-const H4 = styled.h4`
+const H4 = styled.h4<TypographyStyleProps>`
   ${getCSS}
 `;
-const H5 = styled.h5`
+const H5 = styled.h5<TypographyStyleProps>`
   ${getCSS}
 `;
-const H6 = styled.h6`
+const H6 = styled.h6<TypographyStyleProps>`
   ${getCSS}
 `;
-const P = styled.p`
+const P = styled.p<TypographyStyleProps>`
   ${getCSS}
 `;
-const Span = styled.span`
+const Span = styled.span<TypographyStyleProps>`
   ${getCSS}
 `;
-const Div = styled.div`
+const Div = styled.div<TypographyStyleProps>`
   ${getCSS}
 `;
 
