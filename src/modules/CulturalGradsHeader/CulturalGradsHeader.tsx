@@ -7,11 +7,12 @@ import { Colors, FontSizes, Radii, Spaces, media } from 'theme';
 interface StripPhoto {
   src: string;
   alt: string;
-  /* Intrinsic size. The strip sets each photo's height and lets the width
-     follow, so without these a photo that has not loaded yet has no width and
-     leaves a blank stretch in the strip. */
-  width: number;
-  height: number;
+  /**
+   * "portrait" gets a 2:3 frame; anything else, or nothing, gets 3:2. Typed
+   * as a string because JSON imports widen literals, so the data file cannot
+   * be checked against a union.
+   */
+  orientation?: string;
 }
 
 interface CulturalGradsHeaderProps {
@@ -185,7 +186,8 @@ const Strip = styled.div`
 const Track = styled.div<{ $paused: boolean }>`
   display: flex;
   width: max-content;
-  animation: ${drift} 100s linear infinite;
+  /* One full pass over the set. On desktop that's roughly 34px a second. */
+  animation: ${drift} 130s linear infinite;
   animation-play-state: ${(p) => (p.$paused ? 'paused' : 'running')};
 
   @media (prefers-reduced-motion: reduce) {
@@ -193,7 +195,13 @@ const Track = styled.div<{ $paused: boolean }>`
   }
 `;
 
-/* Spacing is a margin on every photo, the last one included, rather than a
+/* Every photo sits in a fixed frame, 3:2 or 2:3, cropped to fill it. The
+   frame's size comes from CSS alone, so a photo's width is known before the
+   file arrives (no blank stretches while loading) and the data never needs
+   pixel dimensions. Swapping in a photo of a different shape crops it rather
+   than resizing the strip.
+
+   Spacing is a margin on every photo, the last one included, rather than a
    flex gap: both copies of the set must be exactly the same width for the
    loop to line up, and a gap leaves no space after the final photo. */
 const PhotoSet = styled.div`
@@ -203,7 +211,13 @@ const PhotoSet = styled.div`
   img {
     height: ${STRIP_HEIGHT.wide};
     width: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
     margin-right: ${Spaces.xs};
+  }
+
+  img[data-orientation='portrait'] {
+    aspect-ratio: 2 / 3;
   }
 
   ${media('tablet')(`
@@ -260,8 +274,9 @@ const renderPhotos = (images: StripPhoto[]) =>
       key={photo.src}
       src={photo.src}
       alt={photo.alt}
-      width={photo.width}
-      height={photo.height}
+      data-orientation={
+        photo.orientation === 'portrait' ? 'portrait' : 'landscape'
+      }
     />
   ));
 
