@@ -79,7 +79,7 @@
       ],
       "iconSrc": "/departments/ccc/apisrc/apisrc-textless.svg",
       "iconAlt": "APIDA Logo",
-      "imgSrc": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
+      "imgSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-apidagrad.webp",
       "imgAlt": "",
       "id": "apida-grad"
     },
@@ -112,7 +112,7 @@
       ],
       "iconSrc": "/departments/logos/pasrc-icon.svg",
       "iconAlt": "PASRC Logo",
-      "imgSrc": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
+      "imgSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/newblack-grad.webp",
       "imgAlt": "",
       "id": "black-grad"
     },
@@ -145,7 +145,7 @@
       ],
       "iconSrc": "/departments/ccc/native-logo.png",
       "iconAlt": "Native Logo",
-      "imgSrc": "/departments/ccc/native-grad/native-graduates.png",
+      "imgSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-indigigrad.webp",
       "imgAlt": "",
       "id": "indigigrad"
     },
@@ -183,7 +183,7 @@
       ],
       "iconSrc": "/departments/logos/clsrc-logo.svg",
       "iconAlt": "Nuestra Logo",
-      "imgSrc": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-participants.jpg",
+      "imgSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/newestra-grad.webp",
       "imgAlt": "",
       "id": "nuestra-grad"
     },
@@ -216,7 +216,7 @@
       ],
       "iconSrc": "/departments/logos/gsrc-icon.svg",
       "iconAlt": "GSRC Logo",
-      "imgSrc": "/departments/ccc/gsrc/pride-grad/pride-grad-participants.jpg",
+      "imgSrc": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-pridegrad.webp",
       "imgAlt": "",
       "id": "pride-grad"
     }
