@@ -45,7 +45,7 @@
     "jotai": "^3.0.1",
     "lodash.throttle": "^4.1.1",
     "minisearch": "^7.2.0",
-    "next": "16.4.3",
+    "next": "16.4.5",
     "next-auth": "^4.24.15",
     "next-video": "2.8.1",
     "patch-package": "^8.0.0",
