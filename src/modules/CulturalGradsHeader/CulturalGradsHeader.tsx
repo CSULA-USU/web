@@ -309,7 +309,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             >
               Cultural Graduation Celebrations
             </Typography>
-            <PresentedBy>Presented by: The U-SU &amp; CCC</PresentedBy>
+            <PresentedBy>Presented by: The U-SU & CCC</PresentedBy>
           </div>
         </HeroInner>
       </Hero>

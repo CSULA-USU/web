@@ -29,9 +29,10 @@ const SECTION_SCROLL_MARGIN = '84px';
    'desktop' until after hydration and so makes phone headings jump. */
 const SECTION_TITLE_SIZE = `clamp(${FontSizes.lg}, 5vw, ${FontSizes['2xl']})`;
 
+/* Page order, not alphabetical: the links follow the sections down the page. */
 const anchorLinks = [
-  { label: 'Celebrations', href: '#celebrations' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Celebrations', href: '#celebrations' },
 ];
 
 /* Wide screens: the letter on the left, the centers' marks on the right,
@@ -294,7 +295,7 @@ export default function CulturalGrads() {
               celebrate the cultural influences that have contributed to your
               academic success. You deserve to celebrate your achievements with
               cultural influences that are integral to your being and important
-              to you and your community! Applications open on February 9, 2026!
+              to you and your community! Applications open on February 8, 2027!
             </Typography>
           </LetterText>
           <SignOff $count={cards.length}>
@@ -362,14 +363,76 @@ export default function CulturalGrads() {
       {/* Every section is rendered on the server and never scroll-gated:
           content that only enters the DOM on scroll is never indexed, because
           crawlers do not scroll, and an anchor link to it would land nowhere. */}
+      {/* A light band, not the black it used to be: straight under the black
+          letter card, a black band fuses with it into one dark mass. Grey
+          keeps it a section of its own against the white celebrations below
+          too. Yellow stays out of the text here — #ffce04 on light grey fails
+          contrast — so the brand carries through the gold rules instead. */}
+      <FluidContainer
+        id="faq"
+        scrollMarginTop={SECTION_SCROLL_MARGIN}
+        backgroundColor="greyLightest"
+        padding={`${Spaces.xl} ${Spaces['2xl']}`}
+        paddingDesktop={Spaces.xl}
+        paddingMobile={`${Spaces.xl} ${Spaces.md}`}
+      >
+        <Typography
+          as="h2"
+          variant="title"
+          fluidSize={SECTION_TITLE_SIZE}
+          lineHeight="1.15"
+          margin={`0 0 ${Spaces.md}`}
+        >
+          Graduate Participation Information
+        </Typography>
+        {questions.map((faq) => (
+          <React.Fragment key={faq.question}>
+            <Expandable
+              headingLevel={3}
+              indicator={
+                <BiChevronRight
+                  color={Colors.black}
+                  size={48}
+                  aria-hidden="true"
+                />
+              }
+              header={
+                <Typography
+                  variant="label"
+                  fluidSize={`clamp(${FontSizes.md}, 2.5vw, ${FontSizes.lg})`}
+                  as="span"
+                  margin={`${Spaces.sm} 0`}
+                >
+                  {faq.question}
+                </Typography>
+              }
+            >
+              {/* A div, not a p: some answers are lists, and a list inside
+                  a paragraph is invalid HTML that breaks hydration. */}
+              <Typography color="greyDarker" as="div">
+                {Array.isArray(faq.answer) ? (
+                  <ul>
+                    {faq.answer.map((answerLine) => (
+                      <li key={answerLine}>{answerLine}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  faq.answer
+                )}
+              </Typography>
+            </Expandable>
+            <Divider color="gold" />
+          </React.Fragment>
+        ))}
+      </FluidContainer>
       <FluidContainer
         id="celebrations"
         scrollMarginTop={SECTION_SCROLL_MARGIN}
-        padding={`0 ${Spaces['2xl']} ${Spaces['2xl']}`}
-        /* Below desktop width the letter section's own bottom padding drops
-           to 18px, too tight against this heading, so the gap moves here. */
-        paddingDesktop={`${Spaces.lg} ${Spaces.xl} ${Spaces.xl}`}
-        paddingMobile={`${Spaces.lg} ${Spaces.md} ${Spaces.xl}`}
+        /* Follows the grey band, so the heading needs its own top gap at
+           every width rather than borrowing the letter's bottom padding. */
+        padding={`${Spaces['2xl']} ${Spaces['2xl']}`}
+        paddingDesktop={Spaces.xl}
+        paddingMobile={`${Spaces.xl} ${Spaces.md}`}
       >
         <Typography
           as="h2"
@@ -396,58 +459,6 @@ export default function CulturalGrads() {
             />
           ))}
         </CardList>
-      </FluidContainer>
-      <FluidContainer
-        id="faq"
-        scrollMarginTop={SECTION_SCROLL_MARGIN}
-        backgroundColor="black"
-      >
-        <Typography
-          as="h2"
-          variant="title"
-          fluidSize={SECTION_TITLE_SIZE}
-          lineHeight="1.15"
-          color="primary"
-          margin={`0 0 ${Spaces.md}`}
-        >
-          Graduate Participation Information
-        </Typography>
-        {questions.map((faq) => (
-          <React.Fragment key={faq.question}>
-            <Expandable
-              headingLevel={3}
-              indicator={
-                <BiChevronRight color="white" size={48} aria-hidden="true" />
-              }
-              header={
-                <Typography
-                  variant="label"
-                  fluidSize={`clamp(${FontSizes.md}, 2.5vw, ${FontSizes.lg})`}
-                  color="white"
-                  as="span"
-                  margin={`${Spaces.sm} 0`}
-                >
-                  {faq.question}
-                </Typography>
-              }
-            >
-              {/* A div, not a p: some answers are lists, and a list inside
-                  a paragraph is invalid HTML that breaks hydration. */}
-              <Typography color="white" as="div">
-                {Array.isArray(faq.answer) ? (
-                  <ul>
-                    {faq.answer.map((answerLine) => (
-                      <li key={answerLine}>{answerLine}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  faq.answer
-                )}
-              </Typography>
-            </Expandable>
-            <Divider color="gold" />
-          </React.Fragment>
-        ))}
       </FluidContainer>
       <PhotoVideoDisclaimer />
       <FooterExtension
