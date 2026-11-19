@@ -389,6 +389,7 @@ export default function CulturalGrads() {
           <React.Fragment key={faq.question}>
             <Expandable
               headingLevel={3}
+              hoverEffect="highlight"
               indicator={
                 <BiChevronRight
                   color={Colors.black}
