@@ -325,7 +325,10 @@ export default function CulturalGrads() {
                   </Typography>
                 }
               >
-                <Typography color="white" as="p">
+                <Typography
+                  color="white"
+                  as={Array.isArray(e.answer) ? 'div' : 'p'}
+                >
                   {Array.isArray(e.answer) ? (
                     <>
                       <ul>

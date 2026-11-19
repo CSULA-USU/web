@@ -47,8 +47,8 @@ const Button = styled.button`
 `;
 
 const HeaderContainer = styled.span<{
-  isOpen?: boolean;
-  indicatorRotation: string;
+  $isOpen?: boolean;
+  $indicatorRotation: string;
 }>`
   display: flex;
   justify-content: space-between;
@@ -60,7 +60,7 @@ const HeaderContainer = styled.span<{
   .indicator {
     /* A long header must wrap rather than squeeze the chevron. */
     flex-shrink: 0;
-    rotate: ${(p) => (p.isOpen ? p.indicatorRotation : '0deg')};
+    rotate: ${(p) => (p.$isOpen ? p.$indicatorRotation : '0deg')};
     transition: rotate 0.2s ease-in-out;
   }
 
@@ -70,7 +70,7 @@ const HeaderContainer = styled.span<{
   &:hover {
     opacity: 0.8;
     .indicator {
-      translate: ${(p) => (p.isOpen ? '0' : '4px')};
+      translate: ${(p) => (p.$isOpen ? '0' : '4px')};
     }
   }
 `;
@@ -82,13 +82,13 @@ const HeaderContainer = styled.span<{
 
    Collapsed content stays in the DOM, so it is indexed, and `visibility`
    keeps it out of the tab order and the accessibility tree until opened. */
-const ContentContainer = styled.div<{ isOpen: boolean }>`
+const ContentContainer = styled.div<{ $isOpen: boolean }>`
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
   transition: 0.3s ease;
   ${(p) =>
-    p.isOpen &&
+    p.$isOpen &&
     `grid-template-rows: 1fr; margin-bottom: ${Spaces.md}; visibility: visible;`};
 `;
 
@@ -122,7 +122,7 @@ export const Expandable = ({
       aria-controls={panelId}
       onClick={handleToggle}
     >
-      <HeaderContainer isOpen={isOpen} indicatorRotation={indicatorRotation}>
+      <HeaderContainer $isOpen={isOpen} $indicatorRotation={indicatorRotation}>
         {header}
         {/* Purely a visual affordance — the button already takes its
             accessible name from the header text. */}
@@ -142,7 +142,7 @@ export const Expandable = ({
       ) : (
         trigger
       )}
-      <ContentContainer id={panelId} isOpen={isOpen}>
+      <ContentContainer id={panelId} $isOpen={isOpen}>
         <ContentClip>{children}</ContentClip>
       </ContentContainer>
     </Container>
