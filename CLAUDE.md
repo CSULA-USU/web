@@ -66,7 +66,9 @@ All credentials are injected via `.env.local` — see README for the full variab
 
 ### Media Assets
 
-Video belongs in MUX / next-video, not `public/`. Large media committed to `public/` stays in git history permanently even after it is deleted from the working tree, bloating every clone — several files already buried in this repo's history run 40–80 MB each and trigger GitHub's >50 MB push warning on every push.
+Images and video never get committed to the repo. Images go in Supabase Storage and are referenced by their public URL (`https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/...`; the `bookletHero` fields in `src/data/cgc-data.json` are working examples). Video goes in MUX / next-video.
+
+The reason is permanence. Anything committed to `public/` stays in git history even after it is deleted from the working tree, bloating every clone — several files already buried in this repo's history run 40–80 MB each and trigger GitHub's >50 MB push warning on every push. The images still in `public/` are legacy from before this rule: leave them where they are, and do not add to them. When a change needs a new or replacement image, upload it to Supabase rather than dropping it in `public/`.
 
 ### Dependencies
 

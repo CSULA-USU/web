@@ -70,4 +70,22 @@ describe('Expandable', () => {
     expect(button.parentElement).toBe(heading);
     expect(button.querySelector('h1, h2, h3, h4, h5, h6, div, p')).toBeNull();
   });
+
+  it('keeps hover styling props off the DOM', () => {
+    render(
+      <Expandable header="Question" hoverEffect="blob" hoverFillColor="gold">
+        Answer
+      </Expandable>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Question' });
+    for (const element of [
+      button,
+      ...Array.from(button.querySelectorAll('*')),
+    ]) {
+      expect(element.getAttribute('hovereffect')).toBeNull();
+      expect(element.getAttribute('hoverfillcolor')).toBeNull();
+      expect(element.getAttribute('isopen')).toBeNull();
+    }
+  });
 });
