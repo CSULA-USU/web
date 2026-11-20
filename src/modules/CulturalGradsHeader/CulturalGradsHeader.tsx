@@ -289,7 +289,7 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
         <HeroInner>
           <Feature>
             <Image
-              src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads016_720x480.webp"
               alt="2022 nuestra graduate participants on stage"
               width={842}
               height={999}

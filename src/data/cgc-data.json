@@ -25,7 +25,15 @@
       "alt": ""
     },
     {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051626BlackGrad019_720x480.webp",
+      "alt": ""
+    },
+    {
       "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_APIDA_grad__23_720x480.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads042_720x480.webp",
       "alt": ""
     },
     {
@@ -33,15 +41,7 @@
       "alt": ""
     },
     {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051626BlackGrad019_720x480.webp",
-      "alt": ""
-    },
-    {
       "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads013_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads042_720x480.webp",
       "alt": ""
     },
     {
@@ -263,6 +263,12 @@
   ],
   "questions": [
     {
+      "question": "How much is it going to cost?",
+      "answer": [
+        "Each Cultural Graduation Celebration will cost $25 per graduate. This fee is non-refundable and will be used to cover the cost of the event, including but not limited to venue rental, decorations, and other event-related expenses."
+      ]
+    },
+    {
       "question": "What do I need to submit in order to participate?",
       "answer": [
         "Submit the Cultural Graduation Application.",
@@ -283,7 +289,9 @@
     },
     {
       "question": "What should I wear?",
-      "answer": "We encourage you to wear business casual, graduation regalia, or cultural regalia."
+      "answer": [
+        "We encourage you to wear business casual, graduation regalia, or cultural regalia."
+      ]
     },
     {
       "question": "How many guest tickets do I get?",
@@ -298,7 +306,9 @@
     },
     {
       "question": "I have more questions. Who do I contact?",
-      "answer": "Please email the Cross Cultural Centers (CCC) directly at crossculturalcenters@calstatela.edu or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
+      "answer": [
+        "Please email the Cross Cultural Centers (CCC) directly at crossculturalcenters@calstatela.edu or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
+      ]
     }
   ],
   "grad-data": {
