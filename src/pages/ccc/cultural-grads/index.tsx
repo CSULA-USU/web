@@ -348,12 +348,6 @@ export default function CulturalGrads() {
           </Typography>
           <br />
           <Typography>
-            This year&apos;s Cultural Graduation Celebrations are{' '}
-            <strong>free</strong> to all graduating students who sign up. Please
-            make sure you sign up by the deadline (to be announced).
-          </Typography>
-          <br />
-          <Typography>
             Spaces are limited for each Cultural Graduation Celebration.
           </Typography>
           <br />
