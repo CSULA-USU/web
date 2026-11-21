@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { FaPause, FaPlay } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
 import { Image, Typography } from 'components';
 import { Colors, FontSizes, Radii, Spaces, media } from 'theme';
+import { useDriftControls } from './useDriftControls';
 
 interface StripPhoto {
   src: string;
@@ -25,7 +26,42 @@ const NAV_CLEARANCE = '84px';
 
 const TITLE_SIZE = `clamp(${FontSizes['2xl']}, 6vw, ${FontSizes['5xl']})`;
 
-const STRIP_HEIGHT = { wide: '240px', tablet: '140px' };
+/* In px. Numbers rather than CSS strings because the drift duration and the
+   eager-load count below are computed from the wide height. */
+const STRIP_HEIGHT = { wide: 240, tablet: 140 };
+const PHOTO_GAP = Spaces.xs;
+
+/* The drift is set as a speed, not a duration: a fixed duration makes every
+   added photo speed the strip up. Measured at the wide height, so the tablet
+   strip, being shorter, drifts proportionally slower over the same time. */
+const DRIFT_PX_PER_SECOND = 34;
+
+/* Photos that can be on screen at first paint load eagerly; the rest are
+   lazy. Sized for a 1920px-wide screen, the widest common one. */
+const EAGER_COVERAGE_PX = 1920;
+
+const isPortrait = (photo: StripPhoto) => photo.orientation === 'portrait';
+
+const photoWidthAtWide = (photo: StripPhoto) =>
+  STRIP_HEIGHT.wide * (isPortrait(photo) ? 2 / 3 : 3 / 2) +
+  parseFloat(PHOTO_GAP);
+
+const driftSeconds = (images: StripPhoto[]) =>
+  images.reduce((total, photo) => total + photoWidthAtWide(photo), 0) /
+  DRIFT_PX_PER_SECOND;
+
+/* Counts photos until they cover EAGER_COVERAGE_PX, so a set with portrait
+   (narrower) photos gets more eager ones. */
+const eagerPhotoCount = (images: StripPhoto[]) => {
+  let coveredPx = 0;
+  let count = 0;
+  for (const photo of images) {
+    if (coveredPx >= EAGER_COVERAGE_PX) break;
+    coveredPx += photoWidthAtWide(photo);
+    count += 1;
+  }
+  return count;
+};
 
 const Hero = styled.div`
   position: relative;
@@ -33,12 +69,9 @@ const Hero = styled.div`
   display: flex;
   align-items: center;
   min-height: 640px;
-  /* A small image stretched across a very large area, kept under a flat 80%
-     black on purpose: the darkness is what hides the upscaling. Lighten it
-     only together with a larger source image. */
-  background: ${Colors.black}
-    url('/departments/ccc/clsrc/nuestra-grad/header-background.png') center
-    bottom / cover no-repeat;
+  /* Black is the finished look whenever the backdrop is missing — still
+     loading, failed, or not yet requested — so nothing depends on it. */
+  background-color: ${Colors.black};
 
   &::before {
     content: '';
@@ -52,6 +85,56 @@ const Hero = styled.div`
     min-height: 360px;
   `)}
 `;
+
+/* A <picture> rather than a CSS background: backgrounds take neither srcset
+   nor fetchPriority. It sits below the overlay (z-index -2 vs -1) inside
+   Hero's isolated stack.
+
+   The crops are 2:1 at 768, 1280 and 1920 wide, AVIF first with WebP for
+   browsers without it. They are encoded at quality 45 because they only ever
+   show through Hero's 80% black; lightening that overlay means re-exporting
+   at a higher quality, or the compression starts to show. */
+const BACKDROP_BASE_URL =
+  'https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/nuestra_hero_q45';
+const BACKDROP_WIDTHS = [768, 1280, 1920];
+
+const backdropSrcSet = (format: 'avif' | 'webp') =>
+  BACKDROP_WIDTHS.map(
+    (width) =>
+      `${BACKDROP_BASE_URL}/nuestra-hero-${width}-q45.${format} ${width}w`,
+  ).join(', ');
+
+const Backdrop = styled.picture`
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+`;
+
+/* The backdrop is barely visible under the overlay, so it must never compete
+   with the featured photo or the strip. On a fresh page load it is not
+   requested until the window's load event, which waits for every eager image
+   above it. On a client-side navigation the document is already loaded, so it
+   requests at once — fetchPriority="low" is what keeps it behind the others
+   there. The server snapshot is false, so hydration always matches the
+   server's markup (no backdrop) before the client value takes over. */
+const subscribeToWindowLoad = (onChange: () => void) => {
+  window.addEventListener('load', onChange);
+  return () => window.removeEventListener('load', onChange);
+};
+
+const useAfterWindowLoad = () =>
+  useSyncExternalStore(
+    subscribeToWindowLoad,
+    () => document.readyState === 'complete',
+    () => false,
+  );
 
 /* Photo and title travel as one centered group, with the title centered on
    the photo's height. The side padding steps with FluidContainer's own
@@ -177,18 +260,32 @@ const Strip = styled.div`
     &::before, &::after { width: ${Spaces.lg}; }
   `)}
 
+  /* Drifting, the strip is dragged by useDriftControls. pan-y hands vertical
+     swipes to the page so the strip never traps scrolling on a phone, and
+     keeps horizontal ones for the drag. */
+  @media (prefers-reduced-motion: no-preference) {
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
   /* No drift: the strip becomes a row the visitor can scroll themselves. */
   @media (prefers-reduced-motion: reduce) {
     overflow-x: auto;
   }
 `;
 
-const Track = styled.div<{ $paused: boolean }>`
+/* Paused and played through the Web Animations API in useDriftControls, never
+   animation-play-state — see that hook's header for why. */
+const Track = styled.div<{ $durationSeconds: number }>`
   display: flex;
   width: max-content;
-  /* One full pass over the set. On desktop that's roughly 34px a second. */
-  animation: ${drift} 130s linear infinite;
-  animation-play-state: ${(p) => (p.$paused ? 'paused' : 'running')};
+  /* One full pass over the set, timed from DRIFT_PX_PER_SECOND. */
+  animation: ${drift} ${(p) => p.$durationSeconds}s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -209,11 +306,11 @@ const PhotoSet = styled.div`
   flex: none;
 
   img {
-    height: ${STRIP_HEIGHT.wide};
+    height: ${STRIP_HEIGHT.wide}px;
     width: auto;
     aspect-ratio: 3 / 2;
     object-fit: cover;
-    margin-right: ${Spaces.xs};
+    margin-right: ${PHOTO_GAP};
   }
 
   img[data-orientation='portrait'] {
@@ -221,7 +318,7 @@ const PhotoSet = styled.div`
   }
 
   ${media('tablet')(`
-    img { height: ${STRIP_HEIGHT.tablet}; }
+    img { height: ${STRIP_HEIGHT.tablet}px; }
   `)}
 `;
 
@@ -234,12 +331,27 @@ const LoopCopy = styled(PhotoSet)`
 `;
 
 /* Bottom-left on purpose: the site's fixed back-to-top button lives in the
-   bottom-right corner and sits on top of anything placed there. */
-const StripToggle = styled.button`
+   bottom-right corner and sits on top of anything placed there.
+
+   Previous and next exist for WCAG 2.5.7 (Dragging Movements): everything a
+   drag does must also be doable with single clicks, and they are how a mouse,
+   switch or keyboard user moves the strip without dragging. */
+const StripControls = styled.div`
   position: absolute;
   left: ${Spaces.md};
   bottom: ${Spaces.md};
   z-index: 2;
+  display: flex;
+  gap: ${Spaces.sm};
+
+  /* Nothing moves, and the row scrolls natively, so there is nothing to
+     pause or step. */
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+`;
+
+const StripButton = styled.button`
   display: grid;
   place-items: center;
   width: 40px;
@@ -261,40 +373,66 @@ const StripToggle = styled.button`
     outline: 2px solid ${Colors.primary};
     outline-offset: 3px;
   }
-
-  /* Nothing moves, so there is nothing to pause. */
-  @media (prefers-reduced-motion: reduce) {
-    display: none;
-  }
 `;
 
-const renderPhotos = (images: StripPhoto[]) =>
-  images.map((photo) => (
+/* Lazy photos start loading early in Chrome and Edge, which give clipped
+   containers like Strip a scroll margin. Firefox and Safari don't yet, so
+   there a lazy photo starts loading as it reaches the strip's edge and can
+   show as a black frame under the edge fade for a moment. That's acceptable
+   for photos the visitor waits seconds to reach; the alternative is every
+   visitor downloading the whole set up front. */
+const renderPhotos = (images: StripPhoto[], eagerCount: number) =>
+  images.map((photo, index) => (
     <Image
       key={photo.src}
       src={photo.src}
       alt={photo.alt}
-      data-orientation={
-        photo.orientation === 'portrait' ? 'portrait' : 'landscape'
-      }
+      lazy={index >= eagerCount}
+      data-orientation={isPortrait(photo) ? 'portrait' : 'landscape'}
     />
   ));
 
 export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
-  const [isPaused, setIsPaused] = useState(false);
+  const isWindowLoaded = useAfterWindowLoad();
+  const stripRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const photoSetRef = useRef<HTMLDivElement>(null);
+  const { isPaused, togglePaused, stepBack, stepForward, pointerHandlers } =
+    useDriftControls({ stripRef, trackRef, photoSetRef });
 
   return (
     <>
       <Hero>
+        {isWindowLoaded && (
+          <Backdrop>
+            <source
+              type="image/avif"
+              srcSet={backdropSrcSet('avif')}
+              sizes="100vw"
+            />
+            <source
+              type="image/webp"
+              srcSet={backdropSrcSet('webp')}
+              sizes="100vw"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element -- next/image would re-encode crops that are already sized and compressed */}
+            <img
+              src={`${BACKDROP_BASE_URL}/nuestra-hero-1280-q45.webp`}
+              alt=""
+              fetchPriority="low"
+              decoding="async"
+            />
+          </Backdrop>
+        )}
         <HeroInner>
           <Feature>
             <Image
-              src="/departments/ccc/cultural-grads/nuestra-grads-celebrating-onstage.png"
-              alt="2022 nuestra graduate participants on stage"
+              src="https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626NuestraGrad041_720x854.webp"
+              alt="2026 nuestra graduate participant on stage waving"
               width={842}
               height={999}
             />
-            <FeatureCaption>Nuestra Grad &apos;22</FeatureCaption>
+            <FeatureCaption>Nuestra Grad &apos;26</FeatureCaption>
           </Feature>
           <div>
             <Typography
@@ -309,26 +447,52 @@ export const CulturalGradsHeader = ({ images }: CulturalGradsHeaderProps) => {
             >
               Cultural Graduation Celebrations
             </Typography>
-            <PresentedBy>Presented by: The U-SU & CCC</PresentedBy>
+            <PresentedBy>Presented by: The CCC</PresentedBy>
           </div>
         </HeroInner>
       </Hero>
-      <Strip>
-        <Track $paused={isPaused}>
-          <PhotoSet>{renderPhotos(images)}</PhotoSet>
-          <LoopCopy aria-hidden="true">{renderPhotos(images)}</LoopCopy>
+      {/* Native image dragging is cancelled so a mouse drag moves the strip
+          instead of lifting a ghost copy of the photo. */}
+      <Strip
+        ref={stripRef}
+        onDragStart={(event) => event.preventDefault()}
+        {...pointerHandlers}
+      >
+        <Track ref={trackRef} $durationSeconds={driftSeconds(images)}>
+          <PhotoSet ref={photoSetRef}>
+            {renderPhotos(images, eagerPhotoCount(images))}
+          </PhotoSet>
+          {/* All lazy: the copy reuses the first set's URLs, so its photos
+              come from cache, and none of it is on screen at first paint. */}
+          <LoopCopy aria-hidden="true">{renderPhotos(images, 0)}</LoopCopy>
         </Track>
-        <StripToggle
-          type="button"
-          onClick={() => setIsPaused((paused) => !paused)}
-          aria-label={isPaused ? 'Play photo strip' : 'Pause photo strip'}
-        >
-          {isPaused ? (
-            <FaPlay size={14} aria-hidden="true" />
-          ) : (
-            <FaPause size={14} aria-hidden="true" />
-          )}
-        </StripToggle>
+        <StripControls role="group" aria-label="Photo strip">
+          <StripButton
+            type="button"
+            onClick={stepBack}
+            aria-label="Previous photo"
+          >
+            <FaChevronLeft size={14} aria-hidden="true" />
+          </StripButton>
+          <StripButton
+            type="button"
+            onClick={togglePaused}
+            aria-label={isPaused ? 'Play photo strip' : 'Pause photo strip'}
+          >
+            {isPaused ? (
+              <FaPlay size={14} aria-hidden="true" />
+            ) : (
+              <FaPause size={14} aria-hidden="true" />
+            )}
+          </StripButton>
+          <StripButton
+            type="button"
+            onClick={stepForward}
+            aria-label="Next photo"
+          >
+            <FaChevronRight size={14} aria-hidden="true" />
+          </StripButton>
+        </StripControls>
       </Strip>
     </>
   );

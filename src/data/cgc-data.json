@@ -1,35 +1,15 @@
 {
   "header-images": [
     {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_APIDA_grad__41_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_pride_grad__49_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_APIDA_grad__32_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051626BlackGrad062_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads016_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_pride_grad__19_720x480.webp",
-      "alt": ""
-    },
-    {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_APIDA_grad__23_720x480.webp",
-      "alt": ""
-    },
-    {
       "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051626NuestraGrad026_720x480.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/2026_pride_grad__1_720x480.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/2026_APIDA_grad__13_720x480.webp",
       "alt": ""
     },
     {
@@ -37,55 +17,63 @@
       "alt": ""
     },
     {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads013_720x480.webp",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626NuestraGrad065_720x480.webp",
       "alt": ""
     },
     {
-      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads042_720x480.webp",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051526IndigiGrads010_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-cap.png",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_pride_grad__49_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-smile.png",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626BlackGrad032_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-graduate.png",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051526IndigiGrads001_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-in-line-smiling.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/2026_APIDA_grad__57_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-grad-family-dancing.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626NuestraGrad002_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/clsrc/nuestra-grad/nuestra-performance.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626BlackGrad047_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/apida-grads-smiling.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051526IndigiGrads016_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/pasrc/black-grad/2022/grad-chorus.png",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/2026_pride_grad__36_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/drums-and-american-flags-performance.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626NuestraGrad057_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/gsrc/pride-grad/pride-performance.jpg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/051626BlackGrad052_720x480.webp",
       "alt": ""
     },
     {
-      "src": "/departments/ccc/apisrc/apida-grad/two-master-apida-grads.jpeg",
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/2026_APIDA_grad__31_720x480.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/better-images/051626NuestraGrad013_720x480.webp",
+      "alt": ""
+    },
+    {
+      "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/new-carousel/2026_APIDA_grad__41_720x480.webp",
       "alt": ""
     }
   ],
@@ -95,8 +83,8 @@
       "subheader": "Asian, Pacific Islander, South Asian, Desi-American",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/apida-grad-blue.webp",
       "copy": [
-        ["Date: TBA", "Time: TBA"],
-        "Location: TBA",
+        ["Date: Friday, May 21, 2027", "Time: 7:30 PM to 9:00 PM"],
+        "Location: University Gym",
         "Contact: Malia Otuhiva, Asian Pacific Islander Student Resource Center Coordinator",
         "Email: crossculturalcenters@calstatela.edu"
       ],
@@ -128,8 +116,8 @@
       "subheader": "Black, African-American, Pan-African Diaspora",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/Black%20Grad%20Cover_Web.png",
       "copy": [
-        ["Date: TBA", "Time: TBA"],
-        "Location: TBA",
+        ["Date: Saturday, May 22, 2027", "Time: 3:00 PM to 4:30 PM"],
+        "Location: University Gym",
         "Contact: Imani Thomas, Pan African Student Resource Center Coordinator",
         "Email: crossculturalcenters@calstatela.edu"
       ],
@@ -161,8 +149,8 @@
       "subheader": "American Indian, Alaska Native, Native Hawaiian, Indigenous",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/Indigigrad2026_Header.jpg",
       "copy": [
-        ["Date: TBA", "Time: TBA"],
-        "Location: TBA Theater",
+        ["Date: Friday, May 21, 2027", "Time: 10:30 AM to 12:00 PM"],
+        "Location: U-SU Theater",
         "Contact: Fabi Avina, Center for Student Involvement Director",
         "Email: crossculturalcenters@calstatela.edu"
       ],
@@ -194,8 +182,8 @@
       "subheader": "Chicanx/Latinx, Central American, South American, Caribbean, Indigenous, Afro-Latinx",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/nuestra-grad-header.webp",
       "copy": [
-        ["Date: TBA", "Time: TBA"],
-        "Location: TBA",
+        ["Date: Saturday, May 22, 2027", "Time: 10:00 AM to 11:30 AM"],
+        "Location: University Gym",
         "Contact: Emily Urrutia, Chicanx Latinx Student Resource Center Coordinator",
         "Email: crossculturalcenters@calstatela.edu"
       ],
@@ -232,8 +220,8 @@
       "subheader": "Lesbian, Gay, Bisexual, Trans, Queer, Intersex, Asexual + Community",
       "bookletHero": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/cultural-grads/2026/pride-grad-mobile.webp",
       "copy": [
-        ["Date: TBA", "Time: TBA"],
-        "Location: TBA",
+        ["Date: Friday, May 21, 2027", "Time: 4:30 PM to 6:00 PM"],
+        "Location: University Gym",
         "Contact: Mario Pizarro Rojas, Gender & Sexuality Resource Center Coordinator",
         "Email: crossculturalcenters@calstatela.edu"
       ],
@@ -263,6 +251,12 @@
   ],
   "questions": [
     {
+      "question": "How much is it going to cost?",
+      "answer": [
+        "Each Cultural Graduation Celebration will cost $25 per graduate. Credit card only. This fee is non-refundable and will be used to cover the cost of the event, including but not limited to venue rental, decorations, and other event-related expenses."
+      ]
+    },
+    {
       "question": "What do I need to submit in order to participate?",
       "answer": [
         "Submit the Cultural Graduation Application.",
@@ -283,7 +277,9 @@
     },
     {
       "question": "What should I wear?",
-      "answer": "We encourage you to wear business casual, graduation regalia, or cultural regalia."
+      "answer": [
+        "We encourage you to wear business casual, graduation regalia, or cultural regalia."
+      ]
     },
     {
       "question": "How many guest tickets do I get?",
@@ -298,7 +294,9 @@
     },
     {
       "question": "I have more questions. Who do I contact?",
-      "answer": "Please email the Cross Cultural Centers (CCC) directly at crossculturalcenters@calstatela.edu or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
+      "answer": [
+        "Please email the Cross Cultural Centers (CCC) directly at crossculturalcenters@calstatela.edu or visit the Cross Cultural Centers (CCC) located on the 2nd floor of the University-Student Union."
+      ]
     }
   ],
   "grad-data": {
