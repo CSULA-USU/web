@@ -1,8 +1,10 @@
 import { useId, useState } from 'react';
-import styled from 'styled-components';
-import { Spaces } from 'theme';
+import styled, { css } from 'styled-components';
+import { Colors, Radii, Spaces } from 'theme';
 
 type HeadingLevel = 2 | 3 | 4 | 5 | 6;
+
+type HoverEffect = 'fade' | 'blob' | 'highlight';
 
 interface ExpandableProps {
   /** Makes the component controlled: `onToggle` then owns the open state. */
@@ -18,6 +20,19 @@ interface ExpandableProps {
    * of headings screen-reader users navigate a page by.
    */
   headingLevel?: HeadingLevel;
+  /**
+   * `fade` (the default) dims the header on hover — the least opinionated
+   * treatment, so it stays the default. The others fill an oversized shape
+   * behind the header instead — `blob` a rounded, hand-drawn one, `highlight`
+   * a plain rectangle — and hold it while the panel is open so the panel
+   * never reads as detached from its trigger.
+   */
+  hoverEffect?: HoverEffect;
+  /**
+   * `blob` and `highlight` only. The header's own text and indicator colors
+   * must contrast with it — black on `primary`.
+   */
+  hoverFillColor?: keyof typeof Colors;
   /**
    * Rendered inside a `<button>`, so phrasing content only — text, `span`s,
    * icons. No headings (use `headingLevel`), `div`s, `p`s, or links and
@@ -37,18 +52,91 @@ const HeadingSlot = styled.div`
   font: inherit;
 `;
 
-const Button = styled.button`
+/* Shape only — everything else about the fill is shared in `fill` below, so a
+   new effect is one entry here.
+
+   `blob` deliberately breaks the `Radii` scale: it is meant to look
+   hand-drawn, not built. Its radii are percentages so the same lopsided shape
+   holds on a phone-width row and a 1300px one — pixel radii that outgrow a
+   short, wide box get scaled down unevenly and the shape collapses into a
+   plain pill. The tilt stays at half a degree because on a full-width row
+   every degree drops the far corner about 11px.
+
+   `highlight` is the plain counterpart and stays on the scale: a row a person
+   points at is a `control`. */
+const FILL_SHAPES: Record<Exclude<HoverEffect, 'fade'>, string> = {
+  blob: `
+    border-radius: 2% 6% 3% 4% / 40% 18% 45% 25%;
+    rotate: -0.5deg;
+  `,
+  highlight: `border-radius: ${Radii.control};`,
+};
+
+/* The sideways bleed stays at `Spaces.sm` so it fits inside the narrowest
+   section gutter (`Spaces.md`) without causing horizontal scroll. */
+const fill = css<{
+  isOpen: boolean;
+  hoverEffect: HoverEffect;
+  hoverFillColor: keyof typeof Colors;
+}>`
+  position: relative;
+  /* Lets the fill's negative z-index sit behind the header without falling
+     behind the section's own background. */
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -${Spaces.xs} -${Spaces.sm};
+    z-index: -1;
+    background-color: ${(p) => Colors[p.hoverFillColor]};
+    ${(p) => p.hoverEffect !== 'fade' && FILL_SHAPES[p.hoverEffect]}
+    opacity: ${(p) => (p.isOpen ? 1 : 0)};
+    scale: ${(p) => (p.isOpen ? 1 : 0.96)};
+    transition: opacity 0.2s ease, scale 0.2s ease;
+  }
+
+  /* Touch screens fire :hover on tap and leave it stuck until the next tap
+     elsewhere, so hover is limited to real pointers. The fill held while open
+     is what touch users see instead. */
+  @media (hover: hover) {
+    &:hover::before {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  /* Keyboard users get the same signal pointer users do. */
+  &:focus-visible::before {
+    opacity: 1;
+    scale: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      transition: none;
+    }
+  }
+`;
+
+const Button = styled.button<{
+  isOpen: boolean;
+  hoverEffect: HoverEffect;
+  hoverFillColor: keyof typeof Colors;
+}>`
   width: 100%;
   background: transparent;
   border: none;
   padding: 0;
   text-align: left;
   cursor: pointer;
+  ${(p) => p.hoverEffect !== 'fade' && fill}
 `;
 
 const HeaderContainer = styled.span<{
-  $isOpen?: boolean;
-  $indicatorRotation: string;
+  isOpen?: boolean;
+  indicatorRotation: string;
+  hoverEffect: HoverEffect;
 }>`
   display: flex;
   justify-content: space-between;
@@ -65,10 +153,10 @@ const HeaderContainer = styled.span<{
   }
 
   /* The indicator shifts rather than grows. Scaling it up restated what the
-     opacity change already said, and did it by resizing the one element whose
+     fade or fill already said, and did it by resizing the one element whose
      size is the open/closed signal. */
   &:hover {
-    opacity: 0.8;
+    ${(p) => p.hoverEffect === 'fade' && 'opacity: 0.8;'}
     .indicator {
       translate: ${(p) => (p.$isOpen ? '0' : '4px')};
     }
@@ -103,6 +191,8 @@ export const Expandable = ({
   indicator,
   indicatorRotation = '90deg',
   headingLevel,
+  hoverEffect = 'fade',
+  hoverFillColor = 'primary',
   header,
   children,
 }: ExpandableProps) => {
@@ -121,8 +211,15 @@ export const Expandable = ({
       aria-expanded={isOpen}
       aria-controls={panelId}
       onClick={handleToggle}
+      isOpen={isOpen}
+      hoverEffect={hoverEffect}
+      hoverFillColor={hoverFillColor}
     >
-      <HeaderContainer $isOpen={isOpen} $indicatorRotation={indicatorRotation}>
+      <HeaderContainer
+        isOpen={isOpen}
+        indicatorRotation={indicatorRotation}
+        hoverEffect={hoverEffect}
+      >
         {header}
         {/* Purely a visual affordance — the button already takes its
             accessible name from the header text. */}
