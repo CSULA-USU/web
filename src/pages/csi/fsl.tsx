@@ -459,6 +459,7 @@ const chipBase = css`
   line-height: 1;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
   color: ${Colors.black};
   transition: background-color 0.15s ease, border-color 0.15s ease;
 

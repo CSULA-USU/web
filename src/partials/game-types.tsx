@@ -87,6 +87,7 @@ const GameTitleWrapper = styled.h2<{ selected: boolean }>`
   margin: 0;
   padding: 0;
   user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
   &:hover {
     color: ${Colors.primary};

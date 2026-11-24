@@ -88,6 +88,7 @@ const StyledItem = styled(RadixSelect.Item)`
   padding: 0 35px 0 25px;
   position: relative;
   user-select: none;
+  -webkit-user-select: none;
   &[data-disabled] {
     color: ${Colors.greyLighter};
     pointer-events: none;
