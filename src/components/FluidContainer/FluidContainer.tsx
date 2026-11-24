@@ -39,7 +39,7 @@ const getElementBackgroundCSS = (p: FluidContainerProps) => {
 
     ${scrim &&
     `
-      ::after {
+      &::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -78,7 +78,7 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
       position: relative;
       overflow: hidden;
 
-      ::before {
+      &::before {
         content: '';
         position: absolute;
         /* Blur samples past the layer's edges, so a layer sized to the box
@@ -94,7 +94,7 @@ const getBackgroundCSS = (p: FluidContainerProps) => {
 
       ${p.backgroundOverlay &&
       `
-        ::after {
+        &::after {
           content: '';
           position: absolute;
           inset: 0;

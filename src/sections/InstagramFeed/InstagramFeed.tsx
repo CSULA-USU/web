@@ -75,7 +75,7 @@ const InstagramCardsSkeleton = () => {
 };
 
 const InstagramLinkContainer = styled.span`
-  :hover {
+  &:hover {
     color: ${Colors.gold};
   }
 `;

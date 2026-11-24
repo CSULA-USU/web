@@ -43,7 +43,7 @@ const EyebrowRow = styled.p<{
   ${(p) =>
     p.$accent &&
     `
-      ::before {
+      &::before {
         content: '';
         flex: none;
         width: 28px;

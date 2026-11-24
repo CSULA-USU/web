@@ -86,7 +86,7 @@ const CardWrapper = styled.div`
   box-shadow: rgb(38, 57, 77) 0px 18px 30px -10px;
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 
-  :hover {
+  &:hover {
     transform: translateY(-4px);
   }
 `;
