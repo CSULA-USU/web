@@ -2,7 +2,7 @@
 
 Prepared 2026-11-23 against HEAD `cd18e1e7`, including the 10 existing modified application files in the working tree. This is a repository investigation and proposed regression checklist, not browser sign-off. No application code was changed for this audit.
 
-**Status as of 2026-11-24:** the missing-`&` selector fixes are committed in `34245e01` (detailed in `docs/styled-components-6-selector-audit.md`), and the v5 JSX bridge deletion is committed in `91b08deb` with the type-check passing. The `Expandable` prop renames and the WebKit prefix additions are still uncommitted. Every page in the checklist below is still pending a browser pass.
+**Status as of 2026-11-24:** the missing-`&` selector fixes are committed in `34245e01` (detailed in `docs/styled-components-6-selector-audit.md`), and the v5 JSX bridge deletion is committed in `91b08deb` with the type-check passing. The `Expandable` transient props are committed in `a1b485bb` and the WebKit prefixes in `0fda32a7`. The browser checks for the Radix and styled-components 6 changes were reported complete the same day.
 
 ## Scope and verified dependency changes
 
