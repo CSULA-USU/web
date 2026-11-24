@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -18,6 +18,11 @@ import {
   AccessManagementRoleModal,
   AccessManagementPageModal,
   AccessManagementDepartmentModal,
+  AccessManagementUserFilters,
+  AccessManagementUserList,
+  EMPTY_USER_FILTERS,
+  filterUsers,
+  isUserFilterActive,
 } from 'modules/Backoffice/AccessManagement';
 import {
   formatRoleName,
@@ -33,6 +38,7 @@ import type {
   V2PageRow,
   V2DepartmentRow,
   V2Role,
+  UserFilterState,
 } from 'modules/Backoffice/AccessManagement';
 
 // ── styled ────────────────────────────────────────────────────────────────────
@@ -105,6 +111,8 @@ export default function AccessManagementPage() {
   const [departments, setDepartments] = useState<V2DepartmentRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedSection, setSelectedSection] = useState<SectionKey>('users');
+  const [userFilters, setUserFilters] =
+    useState<UserFilterState>(EMPTY_USER_FILTERS);
 
   // ── modal state ──────────────────────────────────────────────────────────
   const [editingUser, setEditingUser] = useState<V2UserRow | null | undefined>(
@@ -387,8 +395,22 @@ export default function AccessManagementPage() {
 
   // ── derived lists ────────────────────────────────────────────────────────
 
-  const activeUsers = users.filter((u) => u.is_active && !u.deactivated_at);
-  const deactivatedUsers = users.filter(
+  // Sorted once here so the table, the grouped mobile list, and the counts
+  // all share one order.
+  const sortedUsers = useMemo(
+    () => [...users].sort((a, b) => a.email.localeCompare(b.email, 'en')),
+    [users],
+  );
+  const visibleUsers = useMemo(
+    () => filterUsers(sortedUsers, userFilters),
+    [sortedUsers, userFilters],
+  );
+  const isFilteringUsers = isUserFilterActive(userFilters);
+
+  const activeUsers = visibleUsers.filter(
+    (u) => u.is_active && !u.deactivated_at,
+  );
+  const deactivatedUsers = visibleUsers.filter(
     (u) => !u.is_active || !!u.deactivated_at,
   );
 
@@ -1457,18 +1479,43 @@ export default function AccessManagementPage() {
           {loading ? (
             <Loading load={true} />
           ) : selectedSection === 'users' ? (
-            <Tabs
-              items={[
-                {
-                  title: 'Active Users',
-                  children: <FlexibleTable data={userTableData} />,
-                },
-                {
-                  title: 'Deactivated Users',
-                  children: <FlexibleTable data={deactivatedUserTableData} />,
-                },
-              ]}
-            />
+            <>
+              <AccessManagementUserFilters
+                users={users}
+                filters={userFilters}
+                onChange={setUserFilters}
+                activeCount={activeUsers.length}
+                deactivatedCount={deactivatedUsers.length}
+              />
+              <Tabs
+                items={[
+                  {
+                    title: 'Active Users',
+                    children: (
+                      <AccessManagementUserList
+                        data={userTableData}
+                        emptyMessage={
+                          isFilteringUsers ? 'No matches.' : 'No active users.'
+                        }
+                      />
+                    ),
+                  },
+                  {
+                    title: 'Deactivated Users',
+                    children: (
+                      <AccessManagementUserList
+                        data={deactivatedUserTableData}
+                        emptyMessage={
+                          isFilteringUsers
+                            ? 'No matches.'
+                            : 'No deactivated users.'
+                        }
+                      />
+                    ),
+                  },
+                ]}
+              />
+            </>
           ) : selectedSection === 'roles' ? (
             <Tabs
               items={[
