@@ -210,7 +210,7 @@ export default function Geek() {
             </Typography>
           }
         >
-          <Typography color="white" as="p">
+          <Typography color="white" as="div">
             <ul>
               <li>Maintain 2.0 GPA</li>
               <li>Complete a total of 5 events and/or 20 hours</li>

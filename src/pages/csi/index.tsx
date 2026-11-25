@@ -119,12 +119,12 @@ const ButtonContainer = styled.div`
   margin: ${Spaces.md} 0;
 `;
 
-export default function CSI() {
-  const SocialsContainer = styled.div`
-    display: flex;
-    margin: 16px 0px;
-  `;
+const SocialsContainer = styled.div`
+  display: flex;
+  margin: 16px 0px;
+`;
 
+export default function CSI() {
   const { returnByBreakpoint } = useBreakpoint();
 
   const descriptionCardWidth = returnByBreakpoint({

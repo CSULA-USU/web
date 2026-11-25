@@ -15,6 +15,7 @@ import { IoMdDownload } from 'react-icons/io';
 import { IoDocumentSharp } from 'react-icons/io5';
 import { TableColumn, TableData } from 'types';
 import { formatDate } from 'utils/dates';
+import { media } from 'theme';
 
 interface DocumentManagerProps {
   documents: Document[];
@@ -63,6 +64,10 @@ const UrlCell = styled.div`
 
 // Truncates the URL text only, not the whole link, so StyledLink's trailing
 // external-link icon (1em + 4px margin) stays visible after the ellipsis.
+//
+// Only the desktop table truncates; there the `title` tooltip reveals the
+// rest on hover. The mobile cards have no hover to reveal it, so the URL
+// wraps instead, breaking anywhere since URLs have few natural break points.
 const TruncatedUrl = styled.span`
   display: inline-block;
   max-width: calc(100% - 24px);
@@ -70,6 +75,13 @@ const TruncatedUrl = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: bottom;
+
+  ${media('tablet')`
+    display: inline;
+    max-width: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  `}
 `;
 
 const Controls = styled.div`

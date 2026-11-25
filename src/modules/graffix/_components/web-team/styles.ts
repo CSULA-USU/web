@@ -472,6 +472,7 @@ export const GamePlayBtn = styled.div`
   font-size: 16px;
   line-height: 1;
   user-select: none;
+  -webkit-user-select: none;
 `;
 
 export const GameBody = styled.div`

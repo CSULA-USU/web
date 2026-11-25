@@ -74,6 +74,7 @@ const CardContainerTop = styled.div`
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
     backdrop-filter: blur(0.5px); /* Blur effect */
+    -webkit-backdrop-filter: blur(0.5px);
     z-index: 1; /* Ensure the overlay is above the background image */
   }
 

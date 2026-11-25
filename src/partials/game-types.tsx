@@ -87,6 +87,7 @@ const GameTitleWrapper = styled.h2<{ selected: boolean }>`
   margin: 0;
   padding: 0;
   user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
   &:hover {
     color: ${Colors.primary};
@@ -118,12 +119,12 @@ const GameTitle = ({
   );
 };
 
-const GameDescription = styled.div<{ display: boolean }>`
+const GameDescription = styled.div<{ $display: boolean }>`
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transition: all 0.3s ease;
-  animation: ${(p) => (p.display ? slideDown : '')} 0.3s forwards;
+  animation: ${(p) => (p.$display ? slideDown : '')} 0.3s forwards;
   padding: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -180,7 +181,7 @@ export const GameTypes = () => {
                   onClickHandler={clickGameHandler}
                 />
 
-                <GameDescription display={selectedGame === game.id}>
+                <GameDescription $display={selectedGame === game.id}>
                   {typeof game.gameDescription === 'string' ? (
                     <Typography
                       weight="400"

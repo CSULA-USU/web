@@ -20,20 +20,20 @@ const SectionHeader = styled.span`
   align-items: center;
 `;
 
-const DeleteButton = styled.button<{ stagedDelete?: boolean }>`
+const DeleteButton = styled.button<{ $stagedDelete?: boolean }>`
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  color: ${(p) => (p.stagedDelete ? Colors.greyDarker : 'red')};
-  margin-left: ${(p) => (p.stagedDelete ? '-16px' : 0)};
+  color: ${(p) => (p.$stagedDelete ? Colors.greyDarker : 'red')};
+  margin-left: ${(p) => (p.$stagedDelete ? '-16px' : 0)};
   transition: 0.3s ease;
   > svg {
     transition: 0.3s ease;
-    transform: rotate(${(p) => (p.stagedDelete ? '-315deg' : '0deg')});
+    transform: rotate(${(p) => (p.$stagedDelete ? '-315deg' : '0deg')});
     &:hover {
       scale: 1.2;
-      color: ${(p) => (p.stagedDelete ? 'green' : 'orange')};
+      color: ${(p) => (p.$stagedDelete ? 'green' : 'orange')};
     }
   }
 `;
@@ -81,7 +81,7 @@ export const SectionForm = ({ section }: SectionFormProps) => {
   const SectionFormHeader = useMemo(
     () => (
       <SectionHeader>
-        <DeleteButton onClick={handleDelete} stagedDelete={stagedDelete}>
+        <DeleteButton onClick={handleDelete} $stagedDelete={stagedDelete}>
           <RiCloseCircleFill size={24} />
         </DeleteButton>
         <Typography

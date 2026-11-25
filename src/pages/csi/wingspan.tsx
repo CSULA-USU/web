@@ -736,8 +736,6 @@ export default function Wingspan() {
               width={descriptionCardWidth}
               margin="0 0 24px"
               minHeight="auto"
-              imgSrc=""
-              imgAlt=""
             >
               <StyledDescriptionCard description={text} prefix={`${number}.`} />
             </DescriptionCard>
