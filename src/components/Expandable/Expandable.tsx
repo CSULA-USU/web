@@ -75,9 +75,9 @@ const FILL_SHAPES: Record<Exclude<HoverEffect, 'fade'>, string> = {
 /* The sideways bleed stays at `Spaces.sm` so it fits inside the narrowest
    section gutter (`Spaces.md`) without causing horizontal scroll. */
 const fill = css<{
-  isOpen: boolean;
-  hoverEffect: HoverEffect;
-  hoverFillColor: keyof typeof Colors;
+  $isOpen: boolean;
+  $hoverEffect: HoverEffect;
+  $hoverFillColor: keyof typeof Colors;
 }>`
   position: relative;
   /* Lets the fill's negative z-index sit behind the header without falling
@@ -89,10 +89,10 @@ const fill = css<{
     position: absolute;
     inset: -${Spaces.xs} -${Spaces.sm};
     z-index: -1;
-    background-color: ${(p) => Colors[p.hoverFillColor]};
-    ${(p) => p.hoverEffect !== 'fade' && FILL_SHAPES[p.hoverEffect]}
-    opacity: ${(p) => (p.isOpen ? 1 : 0)};
-    scale: ${(p) => (p.isOpen ? 1 : 0.96)};
+    background-color: ${(p) => Colors[p.$hoverFillColor]};
+    ${(p) => p.$hoverEffect !== 'fade' && FILL_SHAPES[p.$hoverEffect]}
+    opacity: ${(p) => (p.$isOpen ? 1 : 0)};
+    scale: ${(p) => (p.$isOpen ? 1 : 0.96)};
     transition: opacity 0.2s ease, scale 0.2s ease;
   }
 
@@ -120,9 +120,9 @@ const fill = css<{
 `;
 
 const Button = styled.button<{
-  isOpen: boolean;
-  hoverEffect: HoverEffect;
-  hoverFillColor: keyof typeof Colors;
+  $isOpen: boolean;
+  $hoverEffect: HoverEffect;
+  $hoverFillColor: keyof typeof Colors;
 }>`
   width: 100%;
   background: transparent;
@@ -130,13 +130,13 @@ const Button = styled.button<{
   padding: 0;
   text-align: left;
   cursor: pointer;
-  ${(p) => p.hoverEffect !== 'fade' && fill}
+  ${(p) => p.$hoverEffect !== 'fade' && fill}
 `;
 
 const HeaderContainer = styled.span<{
-  isOpen?: boolean;
-  indicatorRotation: string;
-  hoverEffect: HoverEffect;
+  $isOpen?: boolean;
+  $indicatorRotation: string;
+  $hoverEffect: HoverEffect;
 }>`
   display: flex;
   justify-content: space-between;
@@ -148,7 +148,7 @@ const HeaderContainer = styled.span<{
   .indicator {
     /* A long header must wrap rather than squeeze the chevron. */
     flex-shrink: 0;
-    rotate: ${(p) => (p.isOpen ? p.indicatorRotation : '0deg')};
+    rotate: ${(p) => (p.$isOpen ? p.$indicatorRotation : '0deg')};
     transition: rotate 0.2s ease-in-out;
   }
 
@@ -156,9 +156,9 @@ const HeaderContainer = styled.span<{
      fade or fill already said, and did it by resizing the one element whose
      size is the open/closed signal. */
   &:hover {
-    ${(p) => p.hoverEffect === 'fade' && 'opacity: 0.8;'}
+    ${(p) => p.$hoverEffect === 'fade' && 'opacity: 0.8;'}
     .indicator {
-      translate: ${(p) => (p.isOpen ? '0' : '4px')};
+      translate: ${(p) => (p.$isOpen ? '0' : '4px')};
     }
   }
 `;
@@ -170,13 +170,13 @@ const HeaderContainer = styled.span<{
 
    Collapsed content stays in the DOM, so it is indexed, and `visibility`
    keeps it out of the tab order and the accessibility tree until opened. */
-const ContentContainer = styled.div<{ isOpen: boolean }>`
+const ContentContainer = styled.div<{ $isOpen: boolean }>`
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
   transition: 0.3s ease;
   ${(p) =>
-    p.isOpen &&
+    p.$isOpen &&
     `grid-template-rows: 1fr; margin-bottom: ${Spaces.md}; visibility: visible;`};
 `;
 
@@ -211,14 +211,14 @@ export const Expandable = ({
       aria-expanded={isOpen}
       aria-controls={panelId}
       onClick={handleToggle}
-      isOpen={isOpen}
-      hoverEffect={hoverEffect}
-      hoverFillColor={hoverFillColor}
+      $isOpen={isOpen}
+      $hoverEffect={hoverEffect}
+      $hoverFillColor={hoverFillColor}
     >
       <HeaderContainer
-        isOpen={isOpen}
-        indicatorRotation={indicatorRotation}
-        hoverEffect={hoverEffect}
+        $isOpen={isOpen}
+        $indicatorRotation={indicatorRotation}
+        $hoverEffect={hoverEffect}
       >
         {header}
         {/* Purely a visual affordance — the button already takes its
@@ -239,7 +239,7 @@ export const Expandable = ({
       ) : (
         trigger
       )}
-      <ContentContainer id={panelId} isOpen={isOpen}>
+      <ContentContainer id={panelId} $isOpen={isOpen}>
         <ContentClip>{children}</ContentClip>
       </ContentContainer>
     </Container>

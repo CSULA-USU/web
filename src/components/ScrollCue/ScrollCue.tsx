@@ -288,7 +288,7 @@ const Cue = styled.span<CueStyle>`
       );
     `}
 
-  ::before {
+  &::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -306,7 +306,7 @@ const Cue = styled.span<CueStyle>`
   ${(p) =>
     hasTravelingLayer(p) &&
     css`
-      ::after {
+      &::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -318,7 +318,7 @@ const Cue = styled.span<CueStyle>`
   /* At rest the cue is simply a line: no travelling highlight frozen partway
      down, no half-drawn stroke. */
   @media (prefers-reduced-motion: reduce) {
-    ::before {
+    &::before {
       animation: none;
       opacity: 1;
       transform: none;
@@ -329,7 +329,7 @@ const Cue = styled.span<CueStyle>`
         hasTravelingLayer(p) && !p.$trackColor && getPattern(p, p.$color)}
     }
 
-    ::after {
+    &::after {
       display: none;
     }
   }

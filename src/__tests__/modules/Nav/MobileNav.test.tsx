@@ -6,7 +6,23 @@
 jest.mock('lib/supabase', () => ({ supabase: {} }));
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
 import { MobileNav } from 'modules/Nav/MobileNav';
+
+// These renders bypass _app, so supply its styled-components prop filter.
+const renderWithAppStyles = (ui: Parameters<typeof render>[0]) =>
+  render(ui, {
+    wrapper: ({ children }) => (
+      <StyleSheetManager
+        shouldForwardProp={(propName, target) =>
+          typeof target === 'string' ? isPropValid(propName) : true
+        }
+      >
+        {children}
+      </StyleSheetManager>
+    ),
+  });
 
 const openMenu = () => {
   fireEvent.click(screen.getByRole('button', { name: 'Navigation Menu' }));
@@ -31,13 +47,13 @@ afterEach(() => {
 
 describe('MobileNav', () => {
   it('keeps the menu out of the page until it is opened', () => {
-    render(<MobileNav />);
+    renderWithAppStyles(<MobileNav />);
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(screen.queryByRole('link', { name: 'About' })).toBeNull();
   });
 
   it('opens a labeled dialog holding the site links', () => {
-    render(<MobileNav />);
+    renderWithAppStyles(<MobileNav />);
     openMenu();
 
     expect(
@@ -48,7 +64,7 @@ describe('MobileNav', () => {
   // Radix makes the dialog modal by hiding everything else from assistive
   // tech, not with aria-modal, so that is what is asserted.
   it('hides the rest of the page from screen readers while open', async () => {
-    render(
+    renderWithAppStyles(
       <>
         <main>Page content</main>
         <MobileNav />
@@ -67,7 +83,7 @@ describe('MobileNav', () => {
   });
 
   it('moves focus into the menu when it opens', async () => {
-    render(<MobileNav />);
+    renderWithAppStyles(<MobileNav />);
     const menu = openMenu();
 
     await waitFor(() =>
@@ -76,7 +92,7 @@ describe('MobileNav', () => {
   });
 
   it('closes on Escape and returns focus to the hamburger', async () => {
-    render(<MobileNav />);
+    renderWithAppStyles(<MobileNav />);
     const menu = openMenu();
 
     fireEvent.keyDown(menu, { key: 'Escape' });
@@ -88,7 +104,7 @@ describe('MobileNav', () => {
   });
 
   it('closes from its close button', async () => {
-    render(<MobileNav />);
+    renderWithAppStyles(<MobileNav />);
     openMenu();
 
     fireEvent.click(screen.getByRole('button', { name: 'Close Navigation' }));

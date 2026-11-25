@@ -60,7 +60,7 @@
     "place": "Honorable Mention",
     "category": "Cards/Invitations",
     "class": "Student",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/Screenshot%202026-05-06%20at%204.59.00%20PM.png"
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/pride-grad-booklet.png"
   },
   {
     "name": "Steven Phan",
@@ -69,7 +69,7 @@
     "place": "Third Place",
     "category": "Interior & Wall Art",
     "class": "Student",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/Screenshot%202026-05-06%20at%205.16.07%20PM.png"
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/la-map-wall.png"
   },
   {
     "name": "P Dacayan",
@@ -78,7 +78,7 @@
     "place": "First Place",
     "category": "Multi-Page Publication",
     "class": "Student",
-    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/Screenshot%202026-05-06%20at%205.20.52%20PM.png"
+    "src": "https://bubqscxokeycpuuoqphp.supabase.co/storage/v1/object/public/pages/departments/graffix/ACUI/2025/apida-grad-booklet.png"
   },
   {
     "name": "Robert Gonzales",
@@ -733,16 +733,7 @@
     "acuiName": "Sacramento 2012",
     "title": "Native American History Month",
     "place": "Second",
-    "category": "Cards,Invitations, and Postcards",
-    "class": "Professional",
-    "src": "/departments/graffix/acui-awards/2012/sacramento/native-american-history-month.jpg"
-  },
-  {
-    "name": "Gustavo Salazar",
-    "acuiName": "Sacramento 2012",
-    "title": "Native American History Month",
-    "place": "Second",
-    "category": "Cards,Invitations, and Postcards",
+    "category": "Cards, Invitations, and Postcards",
     "class": "Professional",
     "src": "/departments/graffix/acui-awards/2012/sacramento/native-american-history-month.jpg"
   },
@@ -1177,15 +1168,6 @@
     "category": "Promotional Campaign",
     "class": "Student",
     "src": "/departments/graffix/acui-awards/2009/san-bernadino/lunar-new-year-celebration-year-of-the-ox.jpg"
-  },
-  {
-    "name": "Natt Rermraksakul",
-    "acuiName": "San Bernadino 2009",
-    "title": "Take Back the Night",
-    "place": "Second",
-    "category": "Promotional Campaign",
-    "class": "Student",
-    "src": "/departments/graffix/acui-awards/2009/san-bernadino/take-back-the-night.jpg"
   },
   {
     "name": "Natt Rermraksakul",

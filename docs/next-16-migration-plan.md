@@ -10,7 +10,7 @@ React 19 followed the framework release in three steps, each merged separately s
 2. Libraries whose peer ranges stopped at React 18 (#1904): `@radix-ui/react-popover` ^1.3.1, `@radix-ui/react-select` ^2.4.1, `@testing-library/react` ^16.3.0 with `@testing-library/dom` ^10. Recoil had already been replaced with Jotai (#1899).
 3. React, React DOM and `react-is` 19.3.1 with `@types/react` and `@types/react-dom` 19 on `feat/react-19`. Type check, lint (0 errors) and 561 tests pass with no React warnings, and a server render through `ServerStyleSheet` (the path `_document.tsx` uses) collects every style. The mobile menu moved from `@accessible/drawer` (unpublished since 2022) to Radix Dialog: the old library read `element.ref`, which React 19 warns about and a later release removes.
 
-styled-components stays on 5 for now. Its runtime works on React 19, but `@types/styled-components` 5 reads element props through the global `JSX` namespace that `@types/react` 19 removed; `src/types/styled-components-jsx.d.ts` restores it and is deleted on the move to styled-components 6. Still open: preview validation (hydration, initial styles, Azure sign-in).
+styled-components has since moved to 6 on `chore/radix-react19`, which ships its own types, so `@types/styled-components` and the global `JSX` shim it needed (`src/types/styled-components-jsx.d.ts`) are gone. Still open: preview validation (hydration, initial styles, Azure sign-in).
 
 ## Progress (October 30, 2026)
 

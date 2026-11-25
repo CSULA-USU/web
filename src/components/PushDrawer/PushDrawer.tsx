@@ -6,10 +6,10 @@ interface PushDrawerProps {
   children: React.ReactNode;
 }
 
-const Container = styled.div<{ isOpen?: boolean; drawerWidth: number }>`
+const Container = styled.div<{ $isOpen?: boolean; $drawerWidth: number }>`
   position: relative;
   transition: 0.3s ease;
-  margin-left: ${(p) => (p.isOpen ? `${p.drawerWidth}` : 0)}px;
+  margin-left: ${(p) => (p.$isOpen ? `${p.$drawerWidth}` : 0)}px;
   > div:last-child {
     height: calc(100vh - 80px);
     overflow-y: scroll;
@@ -18,7 +18,7 @@ const Container = styled.div<{ isOpen?: boolean; drawerWidth: number }>`
     height: calc(100vh - 80px);
     position: absolute;
     top: 0;
-    left: ${(p) => `-${p.drawerWidth}px`};
+    left: ${(p) => `-${p.$drawerWidth}px`};
   }
 `;
 
@@ -33,7 +33,7 @@ export const PushDrawer = ({ isOpen, drawer, children }: PushDrawerProps) => {
   }, [ref, isOpen]);
 
   return (
-    <Container isOpen={isOpen} drawerWidth={drawerWidth}>
+    <Container $isOpen={isOpen} $drawerWidth={drawerWidth}>
       <div ref={ref}>{drawer}</div>
       <div>{children}</div>
     </Container>

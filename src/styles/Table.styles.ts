@@ -183,8 +183,11 @@ export const MobileFieldRow = styled.div`
   border-top: 1px solid ${Colors.greyLighter};
   min-width: 0;
 
+  /* minmax(0, …), not a bare 1fr: 1fr can never shrink below its content's
+     min-content, so one long unbreakable value (a URL) would widen the row
+     past the card and the viewport. */
   ${media('mini')`
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   `}
 `;
 

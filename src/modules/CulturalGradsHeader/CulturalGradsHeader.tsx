@@ -267,6 +267,7 @@ const Strip = styled.div`
     touch-action: pan-y;
     cursor: grab;
     user-select: none;
+    -webkit-user-select: none;
 
     &:active {
       cursor: grabbing;

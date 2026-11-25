@@ -77,7 +77,7 @@ const RuleHeader = styled.div`
   gap: ${Spaces.lg};
   margin-bottom: ${Spaces.md};
 
-  ::after {
+  &::after {
     content: '';
     flex: 1 1 auto;
     height: 2px;

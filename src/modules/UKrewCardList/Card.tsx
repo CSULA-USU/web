@@ -22,7 +22,7 @@ const CardWrapper = styled.div`
   gap: ${Spaces.xs};
   box-shadow: rgb(38, 57, 77) 0px 18px 30px -10px;
 
-  :hover {
+  &:hover {
     transform: translateY(-4px);
   }
 `;

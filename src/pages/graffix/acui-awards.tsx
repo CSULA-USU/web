@@ -53,6 +53,19 @@ const PaginationContainer = styled.menu`
   }
 `;
 
+const ScreenReaderOnly = styled.div`
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+`;
+
 export default function AcuiAwards() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [buttonType, setButtonType] = useState('');
@@ -155,20 +168,6 @@ export default function AcuiAwards() {
   function handlePageClick({ selected: selectedPage }: any) {
     setCurrentPage(selectedPage);
   }
-
-  const ScreenReaderOnly = styled.div`
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
-    padding: 0;
-    margin: -1px;
-  `;
-
   return (
     <Page>
       <Head>

@@ -70,7 +70,7 @@ const TabList = styled.div<{ $variant: TabsVariant }>`
         flex-wrap: nowrap;
         overflow-x: auto;
         scrollbar-width: none;
-        ::-webkit-scrollbar {
+        &::-webkit-scrollbar {
           display: none;
         }
       `
@@ -104,12 +104,12 @@ const Tab = styled.button<{
   cursor: pointer;
   ${(p) => p.$scrollMarginTop && `scroll-margin-top: ${p.$scrollMarginTop};`}
 
-  :hover {
+  &:hover {
     color: ${Colors.gold};
     ${(p) => p.$variant === 'plain' && 'text-decoration: underline;'}
   }
 
-  :focus-visible {
+  &:focus-visible {
     outline: 2px solid ${Colors.gold};
     outline-offset: 3px;
   }
@@ -136,11 +136,11 @@ const Tab = styled.button<{
       padding: ${p.$active ? Spaces.sm : Spaces.xs} ${Spaces.lg} ${Spaces.sm};
       margin-top: ${p.$active ? '0' : Spaces.xs};
 
-      :hover {
+      &:hover {
         background-color: ${p.$active ? FOLDER_FILL : Colors.greyLightest};
       }
 
-      :focus-visible {
+      &:focus-visible {
         outline-offset: -4px;
       }
     `}
@@ -176,7 +176,7 @@ const TabPanel = styled.div<{
       padding: clamp(20px, 3vw, 32px);
     `}
 
-  :focus-visible {
+  &:focus-visible {
     outline: 2px solid ${Colors.gold};
     outline-offset: 3px;
   }
